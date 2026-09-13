@@ -38,6 +38,15 @@ if ($source_file eq $destination_file) {
 #  Flag, keyword and label definitions
 #
 
+# Creature archetype names from mob_table in server/src/mob.c.
+# Keep this companion name list current when adding or renaming archetypes.
+# Trait definitions remain exclusively in the server's template tables.
+my %mob_archetype = map { $_ => 1 } qw/
+        reserved
+        goat
+        fire_elemental
+/;
+
 my %mob_act = (
         none               => 0,
         zero               => 0,
@@ -688,7 +697,7 @@ while (1) {
 
             next if &add_field_data(
                     \%mob, $field, $data,
-                    'sp sp2 sp3 spchance vn nm sh lo lv act aff bf sx al rnk res vuln imm atk '
+                    'sp sp2 sp3 spchance vn nm sh lo lv act aff bf sx al rnk archetype res vuln imm atk '
                     . 'hpmod dammod critmod swiftmod '
                     . 'height weight size language');
             print "    line $line: mob: unknown field '$field'\n";
@@ -1275,9 +1284,21 @@ foreach (0 .. $#mobs) {
         $mob_errors{$mob{'line'}}++;
     }
 
-    if ($msg = &get_single_flag(\%mob, 'rnk', \@mob_rank)) {
-        print "$err $msg\n";
-        $mob_errors{$mob{'line'}}++;
+    # Optional creature archetype, independent of rank and special functions.
+    # Keep the selected name as text; do not convert it to a table index.
+
+    if (exists $mob{'archetype'}) {
+        my $archetype = defined $mob{'archetype'}
+                ? lc $mob{'archetype'} : '';
+
+        if (!exists $mob_archetype{$archetype}) {
+            print "$err invalid archetype '$archetype'; use one of: "
+                    . join(', ', sort keys %mob_archetype) . "\n";
+            $mob_errors{$mob{'line'}}++;
+        }
+        else {
+            $mob{'archetype'} = $archetype;
+        }
     }
 
     if ($msg = &get_multiple_flags(\%mob, 'bf', \%mob_bf, '')) {
@@ -3062,8 +3083,15 @@ if (@mobs) {
             print AREA "|\n";
         }
 
-        if ( $mob{'rnk'} >= 1) {
-                print AREA "< reserved~ $mob_rank[$mob{'rnk'}]\~\n";
+        # Emit a selection when an archetype was supplied, even at common rank.
+        # Without an archetype, preserve the previous rank-only output.
+
+        if (exists $mob{'archetype'} || $mob{'rnk'} >= 1) {
+            my $archetype = exists $mob{'archetype'}
+                    ? $mob{'archetype'} : 'reserved';
+            my $rank = $mob_rank[$mob{'rnk'}];
+
+            print AREA "< $archetype~ $rank~\n";
         }
 
         while ($mob{'te'} && @{$mob{'te'}}) {

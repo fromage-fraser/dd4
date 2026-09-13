@@ -312,10 +312,63 @@ The syntax of this section is:
         "|"
      }
      {
-        < <species:word>~ <rank:word>~
+        < <archetype:word>~ <rank:word>~
      }
     }
     #0
+
+==Archetype and rank selection
+
+The optional selection line names a creature archetype and a rank:
+
+    < fire_elemental~ elite~
+
+The first name selects an entry in mob_table, not directly in species_table.
+That archetype determines its body species and inherited creature defaults.
+
+The selection belongs after any mobile programs and before teacher entries
+and optional footstep, resistance, attack-part and scalar declarations.
+
+Scribe uses two independent source fields:
+
+    archetype fire_elemental
+    rnk elite
+
+If archetype is supplied and rank is omitted or common, Scribe still emits
+the selection:
+
+    < fire_elemental~ common~
+
+When archetype is omitted, the previous behaviour is preserved: non-default
+ranks use reserved, and common rank emits no selection line.
+
+Current Scribe archetype names are reserved, goat and fire_elemental.
+The script normalises names to lowercase and checks its companion
+%mob_archetype registry. Keep that name list synchronized with mob_table
+when adding or renaming server archetypes.
+
+An empty or unknown archetype is invalid. The words none and inherit, numeric
+indices, and body-species names are not archetype selections. Omit the field
+for the previous default behaviour; use reserved for the explicit neutral
+placeholder.
+
+archetype does not define a new creature template. The server's C tables
+remain authoritative for all inherited properties.
+
+sp, sp2, sp3 and spchance remain independent special-function controls.
+rnk remains an independent rank choice. Names and descriptions never imply
+an archetype automatically.
+
+Scribe exports original individual masks and scalar choices unchanged.
+It must not expand inherited defaults into act, aff, bf, atk, res, vuln
+or imm, because repeated inherited bits are XOR cancellations.
+
+An archetype formerly added only by hand to a generated .are file must be
+recorded in its Scribe source before regeneration. This change does not
+import prior edits from generated files.
+
+AFF_MINDLESS and the skeleton archetype are subsequent implementation work,
+not features introduced by this source-field change.
 
 The 'vnum' is the virtual number of the mobile.
 
