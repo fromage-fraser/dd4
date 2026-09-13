@@ -18,7 +18,7 @@ The existing sixteen numbered sections and their cross-reference targets are
 retained.
 
 The verified repository baseline is DD4 `master`, commit
-`622d5de4abf2f761c0ab66af2da7d25025903904` (PR #716), checked on 13 September
+`2da2fed74de2b61c6dda452b877182ec665087ac` (PR #717), checked on 13 September
 2026. This identifies source-code availability; it does not establish which
 executable is running on a particular server.
 
@@ -72,23 +72,32 @@ classification or new physical gameplay effects are introduced.
 | Implemented through PR #716: individual and live language-code metadata,
 validation and immortal inspection/editing; no named-language or speech rules.
 | Three weighted specials
-| *Replacement Step 4C5 implementation.* Activates all three template slots,
-individual name/probability overrides, weighted single dispatch, capability
-checks, XP, Scribe and immortal editing. Requires the accompanying full code.
+| Implemented through PR #717: all three template slots, individual
+name/probability overrides, weighted single dispatch, capability checks,
+weighted special XP, Scribe fields and immortal editing.
+| Scribe creature-archetype selection
+| *Step 4D, supplied with this revision.* Adds the `archetype` source field
+and rank-independent export using the existing server syntax. Requires the
+accompanying Scribe edits; it is not part of the pinned PR #717 script.
+| Mindlessness and the skeleton reference archetype
+| Agreed for subsequent implementation. `AFF_MINDLESS` and `skeleton` are
+not introduced by the archetype-selection change. See
+<<scribe-skeleton-pilot-plan,approved skeleton pilot specification>>.
 | Further integration
 | Language semantics, dimension units and their physical gameplay consumers
 remain outside this chunk. The third special slot is not newly rank-gated.
 |===
 
-IMPORTANT: Steps through 4C4e are merged in the pinned PR #716 baseline.
-The three-weighted-special implementation below replaces the earlier
-primary-only Step 4C5a proposal. Install the complete matching code, not both
-proposals layered together. A manual update does not change a running binary.
+IMPORTANT: Steps through the three-weighted-special implementation are
+merged in the pinned PR #717 baseline. The `archetype` source field described
+in Step 4D requires this revision's accompanying Scribe changes. It selects
+existing server-defined archetypes; it does not create new ones. A manual
+update alone does not change Scribe or a running server binary.
 
 This manual distinguishes a Scribe source field, a generated `.are` field,
 and a server-side table field. A name in `mob_table` or `merc.h` is not
-automatically a valid Scribe keyword. In particular, do not invent a source
-field named `xp_mod`, `species`, or `archetype`; see
+automatically a valid Scribe keyword. Step 4D explicitly adds `archetype`;
+`xp_mod` and `species` are still not mobile source fields. See
 <<scribe-template-selection,selecting an archetype>> and
 <<scribe-template-xp,archetype XP adjustments>>.
 
@@ -103,6 +112,7 @@ field named `xp_mod`, `species`, or `archetype`; see
 * <<scribe-area-special,7. Area special header>>
 * <<scribe-mobiles,8. Mobiles>>
 ** <<scribe-mobile-inheritance,Body species, archetypes and XOR overrides>>
+** <<scribe-template-selection,Selecting a creature archetype — Step 4D>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-individual-resistances,Individual resistance fields>>
 ** <<scribe-individual-attack-parts,Individual attack-part masks>>
@@ -112,7 +122,7 @@ field named `xp_mod`, `species`, or `archetype`; see
 ** <<scribe-mobile-combat-modifiers,Critical and swiftness defaults>>
 ** <<scribe-mobile-dimensions,Dimension data and overrides>>
 ** <<scribe-mobile-language,Raw language-code data>>
-** <<scribe-weighted-specials,Three weighted special functions (replacement Step 4C5)>>
+** <<scribe-weighted-specials,Three weighted special functions>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
@@ -599,6 +609,9 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | `rnk`
 | “rank” of mob
 | keyword
+| `archetype`
+| creature archetype selected independently of rank — Step 4D
+| registered archetype name
 | `mp`
 | mob program
 | multi-line text block
@@ -645,10 +658,10 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | Raw language code replacing the inherited value
 | nonnegative integer or `inherit`
 | `sp2` / `sp3`
-| Second/third special slot — replacement Step 4C5
+| Second/third special slot — implemented through PR #717
 | registered name, `none` or `inherit`
 | `spchance`
-| Complete selection-probability vector — replacement Step 4C5
+| Complete selection-probability vector — implemented through PR #717
 | three integer percentages, `auto` or `inherit`
 |===
 
@@ -756,36 +769,117 @@ Do not put the final expanded flags back into `act`, `aff`, or `bf` on export.
 Doing so can cancel the very defaults the editor intended to preserve.
 
 [[scribe-template-selection]]
-===== Selecting an archetype: `.are` syntax versus Scribe syntax
+===== Selecting a creature archetype — Step 4D
 
-The server reads an optional mob-spec/rank line in a mobile's `.are` entry:
+IMPORTANT: The server syntax is already implemented in PR #717. The
+`archetype` Scribe input below requires the accompanying Step 4D script edits.
+
+*`archetype` — Creature archetype*
+
+_One registered name; optional_
+
+This chooses an entry from `mob_table` in `server/src/mob.c`. That entry
+selects its broad body species and supplies the inherited creature defaults.
+It is independent of `rnk` and of the `sp` / `sp2` / `sp3` special overrides.
+It does not define a new template or select a body species directly.
+
+Current accepted names are:
+
+[cols="<2,<4",options="header"]
+|===
+| Name | Meaning
+| `reserved` | Existing neutral placeholder archetype; no meaningful creature defaults.
+| `goat` | Existing goat archetype, based on `farm_mammal`.
+| `fire_elemental` | Existing fire-elemental test archetype, based on `elemental`.
+|===
+
+The script normalises an explicit name to lowercase and validates it against
+`%mob_archetype`. Empty, unknown and multiple-word values are errors. Do not
+use `none`, `inherit`, a numeric index or a body-species name such as
+`humanoid` in this field. To retain the old no-selection behaviour, omit it.
+An explicit `reserved` selects the existing neutral placeholder.
+
+The Scribe registry is a companion list of C-table names, not a second source
+of creature traits. Add or rename an entry there whenever `mob_table` changes.
+The server's definitions remain authoritative. This chunk deliberately does
+not yet register `skeleton`; that is done with the later skeleton implementation.
+
+[source,text]
+----
+archetype fire_elemental
+rnk elite
+----
+
+The above source fields produce:
 
 [source,text]
 ----
 < fire_elemental~ elite~
 ----
 
-The first string selects the creature archetype; the second selects the rank.
-The archetype in turn names its body species. Template definitions are
-server-side C tables and require a server rebuild when changed.
-
-The verified Scribe script does *not* provide a source field for choosing a
-creature archetype. Its `sp` field chooses a special function, and `rnk`
-chooses a rank. For a non-default rank, Scribe currently emits a line such as:
+Omitting `rnk`, or writing `rnk common`, produces:
 
 [source,text]
 ----
-< reserved~ elite~
+< fire_elemental~ common~
 ----
 
-A workflow using Scribe must therefore preserve or apply the desired archetype
-in the generated `.are` file after generation, replacing that `reserved`
-selection when necessary. Do not put the literal `< ...~ ...~` line into a
-Scribe `$mob` source block and expect it to be recognised. Regenerating the
-area can overwrite a hand-edited archetype selection.
+The output line is emitted whenever an archetype is explicitly supplied,
+even with the default rank. Its placement remains after any mobile programs
+and before teacher declarations and the optional foley/override fields.
+Do not put the literal `< ...~ ...~` line in a Scribe source block.
 
-The resistance and attack-part field additions do not add a source-level
-archetype selector. DD Builder integration must preserve this distinction too.
+[cols="<2,<2,<4",options="header"]
+|===
+| Archetype input | Rank input | Generated selection line
+| Omitted | Omitted or `common` | None; preserves the original default behaviour.
+| Omitted | `elite` | `< reserved~ elite~`; preserves rank-only behaviour.
+| `fire_elemental` | Omitted or `common` | `< fire_elemental~ common~`
+| `fire_elemental` | `elite` | `< fire_elemental~ elite~`
+| `reserved` | Omitted or `common` | `< reserved~ common~`
+|===
+
+Repeated `archetype` fields follow the existing source rule: the last input
+wins. No traits are expanded into `act`, `aff`, `bf`, `atk`, `res`, `vuln`
+or `imm` on export. Those fields remain raw individual XOR masks. Scalar
+inheritance choices and special-slot overrides are likewise preserved.
+A repeated inherited flag still cancels it; selecting an archetype does not
+change that rule.
+
+Scribe regeneration now retains an archetype that is recorded in its source.
+It does not import an archetype previously added only to an output `.are`
+file. Record any such manual selection in the source before regeneration.
+
+DD Builder needs a creature-archetype selector separate from rank and the
+three special controls. Export the original selection and individual inputs,
+not expanded effective values. Its list must track the server's archetype
+names. Displaying inherited traits is a preview, not an export operation.
+
+[[scribe-skeleton-pilot-plan]]
+===== Approved skeleton pilot — not implemented by Step 4D
+
+The next creature implementation uses a humanoid body species and a skeleton
+archetype, with the following agreed defaults. This is a specification, not
+an assertion that the current server or Scribe already supports `skeleton`.
+
+[cols="<2,<4",options="header"]
+|===
+| Property | Agreed direction
+| Classification | `ACT_UNDEAD`.
+| Mindlessness | Add `AFF_MINDLESS` and define its effects separately from undead status.
+| Resistances | `RES_PIERCE`, `RES_SLASH`, `RES_DARK`.
+| Vulnerabilities | `RES_BLUNT`, `RES_HOLY`.
+| Initial immunity categories | Poison, sleep, paralysis and drain; mindlessness-specific protections require their own implemented checks.
+| Anatomy | Skeletal humanoid layout with inappropriate flesh-dependent organs removed and existing body restrictions reconciled.
+| Active behaviour and numeric modifiers | No compulsory special or blanket HP/damage/XP bonus for an ordinary skeleton.
+| Mundane weapons | No general nonmagical-weapon immunity.
+|===
+
+Neither undead classification nor mindlessness should imply a global rule
+for every other undead creature. Physiology and mindlessness remain separate.
+The pending mindlessness change must implement its actual consumers rather
+than merely adding a label. Animate Dead, Turn/Detect Undead and other spell
+integrations remain separate work.
 
 ===== Template fields and live-application status
 
@@ -809,8 +903,8 @@ scalar>> for NPC attacks using `one_hit()`. PR #714 initialises the
 <<scribe-mobile-dimensions,raw dimension data>> to prototypes and live NPCs,
 without assigning units or physical gameplay rules, and restores the damage
 export. PR #716 adds <<scribe-mobile-language,raw language codes>> and restores
-`swiftmod`. The accompanying <<scribe-weighted-specials,weighted-specials
-chunk>> activates all three special slots through one weighted dispatcher.
+`swiftmod`. PR #717 activates all three
+<<scribe-weighted-specials,special slots through one weighted dispatcher>>.
 Language behaviour remains separate from its data layer.
 
 For the template scalar fields using `MOB_TEMPLATE_UNSET`, an archetype value
@@ -824,8 +918,8 @@ PR #716 adds the same input distinction for `language`. These scalar groups
 have different meanings; language codes are not scores or bitmasks.
 
 For template special names, `NULL` inherits, an empty string clears, and a
-non-empty string replaces. The accompanying weighted-specials chunk retains
-that rule per slot and introduces complete-vector percentage inheritance.
+non-empty string replaces. PR #717 retains that rule per slot and
+introduces complete-vector percentage inheritance.
 Legacy standalone `sp` remains a singleton override; extended `sp2`, `sp3`
 and `spchance` use slot-aware records. `xp_mod` keeps its independent additive
 rule, described in <<scribe-template-xp,Archetype XP>>.
@@ -1070,20 +1164,18 @@ E.g.    aff sneak hide invis infrared
 _Keyword_
 
 _Special functions_ give extra behaviours to mobs during or outside combat.
-In the verified PR #716 baseline, `sp` selects one routine. The accompanying
-<<scribe-weighted-specials,replacement Step 4C5>> supports up to three weighted
-slots. With that code installed, omission inherits the template set and
-standalone `sp none` disables it; a blank field is still invalid.
+The verified PR #717 baseline supports up to three
+<<scribe-weighted-specials,weighted slots>>. Standalone `sp` retains the legacy
+singleton override. Omission inherits the template set and standalone
+`sp none` disables it; a blank field is still invalid.
 
 The following legacy list of special descriptions is retained. Accepted names
 are checked against Scribe's registry and the server's `spec_lookup()`; this
 chunk does not introduce new special routines:
 
-This statement refers to the active `sp`/`#SPECIALS` mechanism. It is separate
-from the three default special-name slots stored in the new templates; those
-slots are currently resolved and validated but not all executed as inherited
-specials. `sp` is not an archetype selector. See
-<<scribe-template-selection,Selecting an archetype>>.
+The three template special names provide inherited defaults for the active
+`#SPECIALS` system. `sp` is not an archetype selector: use Step 4D's separate
+<<scribe-template-selection,`archetype` field>> for that purpose.
 
 
 [source, text]
@@ -1214,10 +1306,11 @@ _Keyword_
 
 Mobs may be of rank common (default), rare, elite, boss, and world (in increasing order of power). Common is assumed if this field is absent. Higher ranks increase the probability of dropping more powerful equipment and give a hitpoint bonus to mobiles.
 
-Rank and creature archetype are separate selections. The current Scribe rank
-export uses `reserved` as the archetype in its generated mob-spec line; it does
-not infer an archetype from the mob's name or `sp` field. Preserve the intended
-archetype selection when regenerating a ranked mobile's area entry.
+Rank and creature archetype are separate selections. With the Step 4D
+<<scribe-template-selection,`archetype` field>> installed, Scribe emits the
+selected archetype with this rank, including common rank. When `archetype`
+is omitted, a non-default rank still uses `reserved` and a common rank emits
+no selection line. Nothing is inferred from the mob's name or `sp` field.
 
 
 [source, text]
@@ -1803,7 +1896,8 @@ last value, including a final `inherit` which restores inheritance.
 
 The source keyword is `hpmod`, the area keyword is `MobHPMod`, and the server
 table member is `hp_mod`. They are not interchangeable. Scribe still does not
-acquire an archetype selector through this addition.
+acquire an archetype selector through the HP addition itself; Step 4D adds
+that selector separately.
 
 ===== Creation and runtime changes
 
@@ -2465,16 +2559,15 @@ a named-language dropdown from assumed meanings of the legacy numbers.
 Preserve all seven earlier scalar inputs and exports, including `swiftmod`
 and `MobDamMod`.
 
-Language metadata does not activate special slots. The accompanying
-weighted-specials implementation handles their execution separately below.
+Language metadata does not activate special slots. PR #717's weighted
+special system handles their execution separately below.
 
 [[scribe-weighted-specials]]
-==== Three weighted special functions — replacement Step 4C5
+==== Three weighted special functions
 
-IMPORTANT: This section requires the complete weighted-specials code supplied
-with this revision. It replaces the earlier primary-only Step 4C5a proposal;
-do not install the two proposals on top of one another. The pinned PR #716
-baseline still has one live special pointer.
+This implementation is merged in PR #717 and present in the pinned baseline.
+It replaces the earlier primary-only Step 4C5a proposal. A merged source
+revision does not establish which executable is deployed on a given server.
 
 ===== Source fields and a working example
 
@@ -2568,9 +2661,9 @@ MOB_SPECIAL_CHANCES_AUTO
 
 The inheritance macro expands to three `MOB_TEMPLATE_UNSET` values. The auto
 macro expands to three `MOB_SPECIAL_AUTO` values. A mixture of sentinels and
-percentages is invalid. The manual implementation steps append the inheritance
-macro to all existing table entries; their existing field positions and values
-remain unchanged.
+percentages is invalid. The probability member follows the existing fields.
+The pinned tables use inheritance, auto and explicit distributions; inspect
+the current entry rather than assuming that every archetype uses one policy.
 
 In `mob_table`, the new field comes *after* the existing `xp_mod`. For example,
 the final fields of an archetype can be:
@@ -2935,8 +3028,8 @@ successful messages include:
 ----
 
 The Combat-score line is implemented through PR #714 and the Dimension line
-through PR #716. Weighted-special validation/finalisation messages require
-the accompanying replacement Step 4C5 code.
+through PR #716. Weighted-special validation and finalisation are implemented
+through PR #717.
 These messages report the checks performed by those validators, not a full
 gameplay test. Unknown bits must be checked on raw template layers as well
 as resolved masks: identical invalid bits could otherwise cancel through XOR.
@@ -5309,37 +5402,38 @@ pb  120
 [[scribe-revision-notes]]
 === Documentation revision notes and source baseline
 
-This revision confirms the language-code data and `swiftmod` input repair
-through PR #716. It documents the complete replacement Step 4C5 for three
-weighted specials, superseding the earlier primary-only proposal. The original sixteen numbered sections remain in order.
+This revision confirms the weighted-specials merge through PR #717 and
+adds Step 4D's Scribe archetype-selection interface. It also records the
+approved, still-pending mindlessness/skeleton specification. The original
+sixteen numbered sections remain in order.
 New material is integrated into the existing mobile, object, weapon and
 area-XP sections.
 The field summaries also include already-described reset/audio/foley fields
 which were absent from their summary tables.
 
 The baseline was checked against
-https://github.com/fromage-fraser/dd4/tree/622d5de4abf2f761c0ab66af2da7d25025903904[DD4 master at PR #716].
+https://github.com/fromage-fraser/dd4/tree/2da2fed74de2b61c6dda452b877182ec665087ac[DD4 master at PR #717].
 The following files are the implementation references for the added material:
 
 [cols="<2,<5",options="header"]
 |===
 | Source | Relevance
-| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
-| Accepted source fields, validation, legacy single-special/rank export, exact-integer masks and scalar input. PR #716 restores `swiftmod` and adds language metadata. Extended special exports require the accompanying code.
-| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/merc.h[`server/src/merc.h`]
+| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
+| Accepted source fields, exact-integer masks, scalar input and weighted-special exports through PR #717. Step 4D adds the separate creature-archetype selector to this baseline.
+| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/merc.h[`server/src/merc.h`]
 | ACT/object/resistance flag definitions and template/prototype structures.
-| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/mob.c[`server/src/mob.c`]
+| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/mob.c[`server/src/mob.c`]
 | Template XOR/scalar/special-name resolution, original-mask handling, validation and additive XP helper.
-| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/db.c[`server/src/db.c`]
+| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/db.c[`server/src/db.c`]
 | Mobile loading, optional archetype/rank syntax, prototype/live copying, HP and attack-damage scalars, and critical/swiftness initialisation with creation snapshots.
-| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/fight.c[`server/src/fight.c`]
+| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/fight.c[`server/src/fight.c`]
 | Resistance adjustment, selected status helpers, ordinary-attack categories, damage messaging, death provenance and XP use.
-| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/act_info.c[`server/src/act_info.c`]
+| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/act_info.c[`server/src/act_info.c`]
 | Immortal flag/resistance/attack-part diagnostics, HP snapshots, live mask editing and body-form/resistance displays.
-| https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/622d5de4abf2f761c0ab66af2da7d25025903904/server/src/handler.c[`server/src/handler.c`]
+| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/handler.c[`server/src/handler.c`]
 | Effect classifications and text names for resistance/object flags.
-| Replacement Step 4C5 manual implementation instructions accompanying this manual
-| Basis for the explicitly marked three-slot inheritance, weight selection, runtime capability checks, weighted XP, Scribe exports and immortal editing. This is not attributed to the pinned PR #716 tree.
+| Step 4D manual implementation instructions accompanying this manual
+| Basis for the explicitly marked `archetype` source field, companion name registry, validation and independent rank export. These changes are not attributed to the pinned PR #717 script.
 |===
 
 The retained `fire_elemental` test archetype is not a general setting rule:
@@ -5347,11 +5441,14 @@ in this baseline it carries `ACT_UNDEAD`, `AFF_DETECT_MAGIC` and configured
 `PART_CLAWS`, an XP adjustment of `+5`, and test resistance data. Its default
 body form has no arms or legs, so the configured claws are normally inactive
 unless the body form is changed. The merged test archetype has `hp_mod = 50`,
-while mobile #2700 explicitly replaces that with `MobHPMod 25`. Its body species supplies cold
+while mobile #2700 explicitly replaces that with `MobHPMod 25`. It also
+retains fire breath, frost breath and poison at 60/30/10; the goat archetype
+retains fido and poison under automatic allocation. Its body species supplies cold
 immunity and the archetype repeats cold immunity, so cold cancels through
 XOR. Do not infer universal elemental or undead traits from that test entry.
 
 Other existing sections have been retained rather than subjected to an
 unrelated whole-engine behaviour audit. In particular, adding this
-documentation alone does not enable planned undead spells, extend Scribe's
-archetype selector, or execute weighted specials without the matching code.
+documentation alone does not enable planned undead spells or install the
+new Scribe archetype-selection field. AFF_MINDLESS and the skeleton archetype
+remain pending; the weighted-special system is already merged through PR #717.
