@@ -3887,12 +3887,14 @@ char* body_form_name (unsigned long int vector)
                 case PART_MANY_HEAD:            return "many_heads";
                 case PART_ARMS:                 return "arms";
                 case PART_MANY_ARMS:            return "many_arms";
-                case PART_2_LEGS:               return "tail";
+                case PART_2_LEGS:               return "two_legs";
                 case PART_4_LEGS:               return "four_legs";
                 case PART_MANY_LEGS:            return "many_legs";
                 case PART_HEART:                return "heart";
                 case PART_BRAINS:               return "brains";
                 case PART_GUTS:                 return "guts";
+                case PART_HANDS:                return "hands";
+                case PART_FEET:                 return "feet";
                 case PART_FINGERS:              return "fingers";
                 case PART_EAR:                  return "ear";
                 case PART_EYE:                  return "eye";

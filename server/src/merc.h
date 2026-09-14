@@ -5217,7 +5217,7 @@ DECLARE_SPELL_FUN(spell_sense_wisdom);
 DECLARE_SPELL_FUN(spell_sonic_blast);
 DECLARE_SPELL_FUN(spell_banish);
 
-#define MOB_VNUM_SKELETON 3404
+#define MOB_VNUM_SKELETON 85
 #define MOB_VNUM_GHOUL 3404
 #define MOB_VNUM_GHOST 3404
 #define MOB_VNUM_SPIRIT 83

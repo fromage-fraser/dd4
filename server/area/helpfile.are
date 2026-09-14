@@ -703,6 +703,7 @@ Gezhp, Owl and Shade
 - Scribe support for archetype field
 - Added AFF_MINDLESS and supporting code
 - Expanded anatomy-based body-part drops.
+- Animate Dead now uses the skeleton archetype for its skeletal servant.
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~
