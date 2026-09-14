@@ -8523,50 +8523,81 @@ void spell_hex(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_animate_dead(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         OBJ_DATA *obj = (OBJ_DATA *)vo;
-        CHAR_DATA *victim = (CHAR_DATA *)vo;
-        char buf[MAX_STRING_LENGTH];
+        MOB_INDEX_DATA *index;
+        CHAR_DATA *victim;
         AFFECT_DATA af;
+        int vnum;
 
-        if (obj->item_type != ITEM_CORPSE_NPC)
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
+
+        if (!obj || obj->deleted || obj->item_type != ITEM_CORPSE_NPC)
         {
-                send_to_char("There do not appear to be any fresh corpses about.\n\r", ch);
+                send_to_char(
+                    "There do not appear to be any fresh corpses about.\n\r",
+                    ch);
                 return;
         }
 
-        extract_obj(obj);
-
+        /* Preserve the existing caster-level selection thresholds. */
         if (ch->level < 35)
-                victim = (create_mobile(get_mob_index(MOB_VNUM_SKELETON)));
-
+                vnum = MOB_VNUM_SKELETON;
         else if (ch->level < 45)
-                victim = (create_mobile(get_mob_index(MOB_VNUM_GHOUL)));
-
+                vnum = MOB_VNUM_GHOUL;
         else
-                victim = (create_mobile(get_mob_index(MOB_VNUM_GHOST)));
+                vnum = MOB_VNUM_GHOST;
 
+        index = get_mob_index(vnum);
+
+        if (!index)
+        {
+                bug("Spell_animate_dead: missing mobile %d.", vnum);
+                send_to_char(
+                    "The animation fails; the corpse is undisturbed.\n\r",
+                    ch);
+                return;
+        }
+
+        victim = create_mobile(index);
+
+        if (!victim || victim->deleted)
+        {
+                bug("Spell_animate_dead: could not create mobile %d.", vnum);
+                send_to_char(
+                    "The animation fails; the corpse is undisturbed.\n\r",
+                    ch);
+                return;
+        }
+
+        /* Preserve the spell's existing level and HP scaling. */
         victim->level = UMAX(ch->level - 10, 1);
-        victim->max_hit = victim->level * 8 + number_range(victim->level * victim->level / 4, victim->level * victim->level);
+        victim->max_hit = victim->level * 8
+            + number_range(victim->level * victim->level / 4,
+                           victim->level * victim->level);
         victim->hit = victim->max_hit;
 
+        /* Consume only after the required mobile has been created. */
+        extract_obj(obj);
         char_to_room(victim, ch->in_room);
-
-        sprintf(buf, "You manipulate the corpse and it morphs into a %s.\n\r", victim->name);
-        send_to_char(buf, ch);
-
-        act("The corpse in the room decays and a $d materialises to serve $n",
-            ch, NULL, victim->name, TO_ROOM);
 
         if (victim->master)
                 stop_follower(victim);
 
         add_follower(victim, ch);
 
+        /* Necromantic control uses the existing follower/charm machinery. */
+        memset(&af, 0, sizeof(af));
         af.type = gsn_charm_person;
         af.duration = level;
         af.location = APPLY_NONE;
         af.modifier = 0;
         af.bitvector = AFF_CHARM;
         affect_to_char(victim, &af);
+
+        act("You animate the corpse, raising $N to serve you.",
+            ch, NULL, victim, TO_CHAR);
+        act("$n animates the corpse, raising $N as a servant.",
+            ch, NULL, victim, TO_ROOM);
 }
 
 void spell_lore(int sn, int level, CHAR_DATA *ch, void *vo)

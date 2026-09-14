@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 13 September 2026._
+_AsciiDoc documentation update: 14 September 2026._
 
 === Contents
 
@@ -762,7 +762,7 @@ file. Record any such manual selection in the source before regeneration.
 ===== Skeleton reference archetype
 
 
-Select the new archetype with:
+Select the archetype with:
 
 [source,text]
 ----
@@ -772,7 +772,8 @@ archetype skeleton
 Omitted rank means common. Scribe emits `< skeleton~ common~` without
 expanding inherited flags into individual masks. A mobile's name or appearance
 alone never selects an archetype. Select it explicitly in the source.
-Animate Dead uses its own existing servant definitions.
+Animate Dead uses a dedicated skeleton servant for casters below level 35;
+see <<scribe-animated-skeleton,Animated skeleton servant>>.
 
 [cols="<2,<4",options="header"]
 |===
@@ -782,7 +783,7 @@ Animate Dead uses its own existing servant definitions.
 | Mindlessness | `AFF_MINDLESS`; see <<scribe-mobile-mindlessness,Mindlessness>>.
 | Resistances | `RES_PIERCE`, `RES_SLASH`, `RES_DARK`; combined mask `262240`.
 | Vulnerabilities | `RES_BLUNT`, `RES_HOLY`; combined mask `131088`.
-| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_PARALYSIS`, `RES_DRAIN`; combined mask `34560`.
+| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`; combined mask `1792`.
 | Body restrictions | `BODY_NO_EYES`, `BODY_NO_HEART`, `BODY_NO_SPEECH`, `BODY_INORGANIC`.
 | Retained positive anatomy | Head, arms, two legs, hands, feet and fingers.
 | Removed positive anatomy | Heart, brains, guts, ear and eye.
@@ -896,6 +897,45 @@ resistance and the second removes inherited blunt vulnerability. Both are
 needed; adding only resistance leaves contradictory effective categories.
 The resulting resistance mask is `262256`, with holy-only vulnerability
 `131072`. Piercing, slashing and dark resistance remain inherited.
+
+[[scribe-animated-skeleton]]
+====== Animated skeleton servant
+
+Mobile 85 is the dedicated skeleton servant created by Animate Dead for a
+caster below level 35. Its definition selects the `skeleton` archetype and
+adds `ACT_NO_QUEST` and `ACT_NO_EXPERIENCE` as individual flags. The same
+source choices are:
+
+[source,text]
+----
+archetype skeleton
+act no_quest no_experience
+----
+
+Do not repeat inherited `undead`, `mindless`, anatomy or resistance flags.
+The no-quest/no-experience settings belong to this servant definition, not
+to every creature using the skeleton archetype.
+
+The spell sets the servant's level to the caster's level minus ten, with a
+minimum of one, and computes its current maximum HP from that level. These
+spell-assigned values can differ from the initial creation snapshots shown
+by `mstat`. Its other inherited traits remain intact.
+
+Necromantic control uses the existing master/follower relationship and
+`AFF_CHARM`, even though the servant is mindless. That control is not a
+successful casting of Charm Person against its mind. Control duration uses
+the supplied spell level. Losing control does not remove the servant's
+no-quest/no-experience flags.
+
+Only an NPC corpse object is eligible. Player corpses, remains and loose
+body parts are not eligible. The corpse's `ITEM_UNDEAD` flag does not by
+itself prevent this spell from using it. The corpse is consumed only after
+the required servant has been created successfully.
+
+A normally killed servant leaves the corpse and loose parts dictated by its
+inherited anatomy, with undead provenance. There is no automatic area reset
+for this servant. Higher-level Animate Dead results use their separately
+configured mobile prototypes.
 
 ====== Inspection and editor support
 
@@ -1549,9 +1589,10 @@ failure message for an explicitly attempted effect. These helpers do not
 perform a saving throw, consume a random roll, or mutate resistance masks.
 
 Mindlessness does not grant `RES_PSYCHIC` immunity. It rejects the specific
-mind-dependent effects listed above. Ballistic Attack is `RES_NONMAGIC` only,
-with no `RES_BLUNT` category, and is not rejected by mindlessness. Project
-Force, Detonate and Disintegrate also retain their normal handling. Do not
+mind-dependent effects listed above. Ballistic Attack is classified as
+`RES_NONMAGIC | RES_BLUNT` and is not rejected by mindlessness. Its damage
+therefore interacts with blunt resistance or vulnerability. Project Force,
+Detonate and Disintegrate retain their normal handling. Do not
 assume that every psionic ability requires a mind in its target.
 
 Ordinary target selection, spell costs, lag and any surrounding retaliation
