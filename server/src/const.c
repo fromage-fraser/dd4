@@ -3981,7 +3981,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "", "!Awe!"},
 
         {"ballistic attack", &gsn_ballistic_attack,
-         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_NONMAGIC,
+         TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_NONMAGIC | RES_BLUNT,
          spell_ballistic_attack, 5, 12,
          "ballistic attack", "!Ballistic Attack!"},
 

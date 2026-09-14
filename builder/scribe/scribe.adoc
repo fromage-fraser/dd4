@@ -9,101 +9,6 @@ _Original manual: version 1.3.w, July 2025._
 
 _AsciiDoc documentation update: 13 September 2026._
 
-[[scribe-documentation-status]]
-=== Documentation status — September 2026
-
-This AsciiDoc revision supplements the original version 1.3.w manual with the
-undead, mobile-template, resistance and XP work documented in this project.
-The existing sixteen numbered sections and their cross-reference targets are
-retained.
-
-The verified repository baseline is DD4 `master`, commit
-`b52b032badb0a09e290c53813ef6d5105a1044e5` (PR #721), checked on 13 September
-2026. This identifies source-code availability; it does not establish which
-executable is running on a particular server.
-
-[cols="<2,<5",options="header"]
-|===
-| Feature | Documentation status
-| Undead classification and object provenance
-| Implemented in the verified baseline: `ACT_UNDEAD`, the common
-`IS_UNDEAD()` test, `ITEM_UNDEAD`, automatic death-generated object tagging,
-and identification/immortal inspection.
-| Body species, creature archetypes and existing individual flags
-| Implemented: template resolution, individual ACT/AFF/body-form XOR masks,
-prototype initialisation, cancellation logging and `mstat` flag layers.
-| Resistance categories and archetype XP
-| Implemented: the 22 `RES_*` categories, including sonic and water;
-resistance-aware damage and selected status-effect paths; and additive
-archetype `xp_mod`.
-| Individual and live NPC resistance masks
-| Implemented in the verified baseline through PR #708: `res`, `vuln` and
-`imm` source fields, the corresponding optional area fields, independent live
-NPC resistance masks, and resistance-layer inspection/editing. A merged source
-revision does not by itself confirm the executable deployed to a server.
-| Individual and live attack-part masks
-| Implemented through PR #710: `atk`, `MobAttackParts`, prototype/live storage,
-raw-mask validation, cancellation logging and immortal inspection/editing.
-| Ordinary NPC natural attacks
-| Implemented through PR #711: an ordinary NPC attack with an empty attacking
-weapon slot can select a currently usable natural attack. Equipment precedence,
-anatomical filtering and the read-only Eligible/Inactive diagnostics are included.
-| HP modifier inheritance and individual overrides
-| Implemented through PR #712: resolved `hp_mod` applies once to normal
-level/rank-derived spawn HP, with Scribe `hpmod`, area `MobHPMod`, explicit
-inheritance versus zero, and creation snapshots in `mstat`.
-| NPC attack damage modifier
-| Implemented through PR #713: `dam_mod` adjusts NPC attacks routed through
-`one_hit()`, with `dammod` / `MobDamMod`, independent live values, and
-inspection/editing. It is not a universal multiplier for every damage path.
-| Critical and swiftness score defaults
-| Implemented through PR #714: template/individual score adjustments initialise
-live critical and swiftness scores, with `critmod` / `swiftmod`, validation and
-creation snapshots.
-| Height, weight and size data
-| Implemented through PR #715: individual and live raw dimension values,
-validation and immortal inspection/editing. No measurement units, size
-classification or new physical gameplay effects are introduced.
-| Scribe damage-modifier export
-| Restored in PR #715 after its accidental removal in PR #714.
-| Scribe swiftness source field
-| Restored by PR #716 after its accidental omission in PR #715.
-| Raw language-code data
-| Implemented through PR #716: individual and live language-code metadata,
-validation and immortal inspection/editing; no named-language or speech rules.
-| Three weighted specials
-| Implemented through PR #717: all three template slots, individual
-name/probability overrides, weighted single dispatch, capability checks,
-weighted special XP, Scribe fields and immortal editing.
-| Scribe creature-archetype selection
-| Implemented through PR #718. PR #721 restores rank keyword conversion and
-removes the duplicate archetype-validation block, preserving independent
-archetype/rank selection.
-| Mindlessness
-| *Step 4E, supplied with this revision.* Adds `AFF_MINDLESS`, Scribe
-`aff mindless`, named inspection, live editing, and the specific mind-dependent
-consumers listed in <<scribe-mobile-mindlessness,Mindlessness>>. Requires the
-accompanying C and Scribe edits; it is not part of the pinned PR #721 code.
-| Skeleton reference archetype
-| Still pending. See <<scribe-skeleton-pilot-plan,approved skeleton pilot
-specification>>. Step 4E does not add or register `skeleton`.
-| Further integration
-| Language semantics, dimension units and their physical gameplay consumers
-remain outside this chunk. The third special slot is not newly rank-gated.
-|===
-
-IMPORTANT: Archetype selection and its rank-conversion repair are merged in
-the pinned PR #721 baseline. The mindlessness feature in Step 4E requires the
-accompanying C and Scribe edits. The skeleton archetype remains a separate
-implementation. A manual update does not change a script or running binary.
-
-This manual distinguishes a Scribe source field, a generated `.are` field,
-and a server-side table field. A name in `mob_table` or `merc.h` is not
-automatically a valid Scribe keyword. Step 4D explicitly adds `archetype`;
-`xp_mod` and `species` are still not mobile source fields. See
-<<scribe-template-selection,selecting an archetype>> and
-<<scribe-template-xp,archetype XP adjustments>>.
-
 === Contents
 
 * <<scribe-introduction,1. Introduction>> — _What is Scribe? Why use Scribe?_
@@ -115,11 +20,12 @@ automatically a valid Scribe keyword. Step 4D explicitly adds `archetype`;
 * <<scribe-area-special,7. Area special header>>
 * <<scribe-mobiles,8. Mobiles>>
 ** <<scribe-mobile-inheritance,Body species, archetypes and XOR overrides>>
-** <<scribe-template-selection,Selecting a creature archetype — Step 4D>>
+** <<scribe-template-selection,Selecting a creature archetype>>
 ** <<scribe-mobile-undead,Undead classification>>
-** <<scribe-mobile-mindlessness,Mindlessness — Step 4E>>
+** <<scribe-mobile-mindlessness,Mindlessness>>
 ** <<scribe-individual-resistances,Individual resistance fields>>
 ** <<scribe-individual-attack-parts,Individual attack-part masks>>
+** <<scribe-death-parts,Death-generated body parts>>
 ** <<scribe-natural-attacks,Ordinary NPC natural attacks>>
 ** <<scribe-mobile-hp-modifier,HP modifier inheritance and overrides>>
 ** <<scribe-mobile-damage-modifier,NPC attack damage modifier>>
@@ -140,8 +46,6 @@ automatically a valid Scribe keyword. Step 4D explicitly adds `archetype`;
 * <<scribe-games,14. Games>>
 * <<scribe-helps,15. Helps>>
 * <<scribe-shops,16. Shops>>
-* <<scribe-documentation-status,Documentation status>>
-* <<scribe-revision-notes,Revision notes and source baseline>>
 
 === 1. Introduction [[scribe-introduction]]
 
@@ -614,7 +518,7 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | “rank” of mob
 | keyword
 | `archetype`
-| creature archetype selected independently of rank — Step 4D
+| creature archetype selected independently of rank
 | registered archetype name
 | `mp`
 | mob program
@@ -662,10 +566,10 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | Raw language code replacing the inherited value
 | nonnegative integer or `inherit`
 | `sp2` / `sp3`
-| Second/third special slot — implemented through PR #717
+| Second/third special slot
 | registered name, `none` or `inherit`
 | `spchance`
-| Complete selection-probability vector — implemented through PR #717
+| Complete selection-probability vector
 | three integer percentages, `auto` or `inherit`
 |===
 
@@ -773,10 +677,8 @@ Do not put the final expanded flags back into `act`, `aff`, or `bf` on export.
 Doing so can cancel the very defaults the editor intended to preserve.
 
 [[scribe-template-selection]]
-===== Selecting a creature archetype — Step 4D
+===== Selecting a creature archetype
 
-The server syntax and `archetype` Scribe input are implemented. PR #721
-restores the separate rank keyword conversion used by this exporter.
 
 *`archetype` — Creature archetype*
 
@@ -787,7 +689,7 @@ selects its broad body species and supplies the inherited creature defaults.
 It is independent of `rnk` and of the `sp` / `sp2` / `sp3` special overrides.
 It does not define a new template or select a body species directly.
 
-Current accepted names are:
+Accepted archetype names are:
 
 [cols="<2,<4",options="header"]
 |===
@@ -795,6 +697,7 @@ Current accepted names are:
 | `reserved` | Existing neutral placeholder archetype; no meaningful creature defaults.
 | `goat` | Existing goat archetype, based on `farm_mammal`.
 | `fire_elemental` | Existing fire-elemental test archetype, based on `elemental`.
+| `skeleton` | Skeletal humanoid archetype.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -804,9 +707,9 @@ use `none`, `inherit`, a numeric index or a body-species name such as
 An explicit `reserved` selects the existing neutral placeholder.
 
 The Scribe registry is a companion list of C-table names, not a second source
-of creature traits. Add or rename an entry there whenever `mob_table` changes.
-The server's definitions remain authoritative. This chunk deliberately does
-not yet register `skeleton`; that is done with the later skeleton implementation.
+of creature traits. Consult `server/src/mob.c` for the authoritative definitions.
+Scribe validates the selected name; it does not expand template traits into
+individual source fields.
 
 [source,text]
 ----
@@ -854,63 +757,173 @@ Scribe regeneration now retains an archetype that is recorded in its source.
 It does not import an archetype previously added only to an output `.are`
 file. Record any such manual selection in the source before regeneration.
 
-DD Builder needs a creature-archetype selector separate from rank and the
-three special controls. Export the original selection and individual inputs,
-not expanded effective values. Its list must track the server's archetype
-names. Displaying inherited traits is a preview, not an export operation.
 
 [[scribe-skeleton-pilot-plan]]
-===== Approved skeleton pilot — not implemented by Step 4E
+===== Skeleton reference archetype
 
-The next creature implementation uses a humanoid body species and a skeleton
-archetype, with the following agreed defaults. This is a specification, not
-an assertion that the current server or Scribe already supports `skeleton`.
+
+Select the new archetype with:
+
+[source,text]
+----
+archetype skeleton
+----
+
+Omitted rank means common. Scribe emits `< skeleton~ common~` without
+expanding inherited flags into individual masks. A mobile's name or appearance
+alone never selects an archetype. Select it explicitly in the source.
+Animate Dead uses its own existing servant definitions.
 
 [cols="<2,<4",options="header"]
 |===
-| Property | Agreed direction
+| Property | Skeleton default
+| Body species | `humanoid`; the existing species definition is unchanged.
 | Classification | `ACT_UNDEAD`.
-| Mindlessness | Use `AFF_MINDLESS` from the accompanying Step 4E implementation, independently of undead status.
-| Resistances | `RES_PIERCE`, `RES_SLASH`, `RES_DARK`.
-| Vulnerabilities | `RES_BLUNT`, `RES_HOLY`.
-| Initial immunity categories | Poison, sleep, paralysis and drain; mindlessness-specific protections require their own implemented checks.
-| Anatomy | Skeletal humanoid layout with inappropriate flesh-dependent organs removed and existing body restrictions reconciled.
-| Active behaviour and numeric modifiers | No compulsory special or blanket HP/damage/XP bonus for an ordinary skeleton.
-| Mundane weapons | No general nonmagical-weapon immunity.
+| Mindlessness | `AFF_MINDLESS`; see <<scribe-mobile-mindlessness,Mindlessness>>.
+| Resistances | `RES_PIERCE`, `RES_SLASH`, `RES_DARK`; combined mask `262240`.
+| Vulnerabilities | `RES_BLUNT`, `RES_HOLY`; combined mask `131088`.
+| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_PARALYSIS`, `RES_DRAIN`; combined mask `34560`.
+| Body restrictions | `BODY_NO_EYES`, `BODY_NO_HEART`, `BODY_NO_SPEECH`, `BODY_INORGANIC`.
+| Retained positive anatomy | Head, arms, two legs, hands, feet and fingers.
+| Removed positive anatomy | Heart, brains, guts, ear and eye.
+| Attack parts | Zero. No automatic claw/bite attack and no generated body-part weapon.
+| Numeric combat modifiers | Explicit zero HP/damage/critical/swiftness adjustments. Existing level/rank generation and base scores still apply.
+| Dimensions and language | Inherit the humanoid values, currently unspecified zero. No invented measurement units or language names.
+| Special functions | Three explicitly cleared names with an auto policy, resolving to an empty `0/0/0` set.
+| Archetype XP | Zero additional percentage points.
+| Other ACT properties | No mandatory aggression, sentinel, no-charm, objectlike, no-corpse or invulnerability property.
 |===
 
-Neither undead classification nor mindlessness should imply a global rule
-for every other undead creature. Physiology and mindlessness remain separate.
-The accompanying mindlessness change implements the specific consumers
-listed below rather than merely adding a label. It does not blanket-block
-all psionic effects. Animate Dead, Turn/Detect Undead and other integrations
-remain separate work.
+The immunity mask is separate from mindlessness. Removing `AFF_MINDLESS`
+does not remove the physiological immunities; removing `ACT_UNDEAD` does
+not automatically change either the anatomy or the resistance package.
+No blanket `RES_MAGIC`, `RES_NONMAGIC` or `RES_PSYCHIC` immunity is added.
 
-===== Template fields and live-application status
+====== Anatomy is a resolved XOR result
+
+The skeleton's body-form input is an XOR mask over `humanoid`, not its final
+body mask. It contains the five existing positive organ bits in order to
+cancel them, and four previously absent BODY flags in order to add them.
+Do not add retained head, arm, leg, hand, foot or finger bits to that XOR
+mask: doing so would remove the inherited bits.
+
+In particular, the current `HAS_HEART` and `HAS_EYES` macros allow their
+positive PART flags to establish presence despite the negative BODY flags.
+The skeleton therefore removes `PART_HEART` and `PART_EYE` as well as setting
+`BODY_NO_HEART` and `BODY_NO_EYES`. This prevents contradictory effective
+anatomy. `PART_BRAINS`, `PART_GUTS` and `PART_EAR` are also removed.
+
+The current `can_see` and `can_see_obj` routines do not treat `BODY_NO_EYES`
+as `AFF_BLIND`. This archetype adds no blindness effect and can use existing
+visibility rules. It gains no infrared, invisible-detection or universal
+perception ability. Darkness and other existing visibility restrictions
+remain relevant. Eye-targeting routines which consult `HAS_EYES` reject it.
+
+`BODY_NO_SPEECH` makes `CAN_SPEAK` false in routines that use that check.
+`BODY_INORGANIC` invokes DD4's non-living physiology rules; it does not
+make the creature an `ACT_OBJECT`.
+
+====== Corpses and generated body parts
+
+The skeleton is not `ACT_OBJECT`, so normal corpse creation uses
+`ITEM_CORPSE_NPC`, not `ITEM_REMAINS`. Its undead provenance adds
+`ITEM_UNDEAD`. It does not have `BODY_NO_CORPSE`; normal loot handling is
+preserved. Inorganic physiology changes applicable death descriptions and
+makes random death-generated parts `ITEM_TRASH` and inedible. Such parts
+retain undead provenance. Their appearance is random, not guaranteed on
+every kill. The no-heart result excludes a heart from the death-part candidate list.
+Hands, feet and fingers are eligible through the retained PART flags.
+
+Identification and immortal inspection reveal undead provenance. Random
+death drops are separate from combat dismemberment and corpse harvesting.
+
+====== Individual exceptions
+
+An ordinary skeleton should not repeat its inherited `undead` or `mindless`
+flags in source. Omission, `none`, or zero preserves those inherited bits.
+Repeating either keyword is an intentional XOR cancellation.
+
+An individual knight can add sentinel and a warrior special without changing
+the archetype:
+
+[source,text]
+----
+archetype skeleton
+rnk elite
+act sentinel
+sp spec_warrior
+----
+
+The special gives access through the existing enabled-special checks. It does
+not create equipment, guarantee a particular skill action, or alter anatomy.
+Equip weapons through the normal area resets when the routine needs them.
+
+An aware skeleton can cancel only mindlessness:
+
+[source,text]
+----
+archetype skeleton
+aff mindless
+----
+
+It remains undead and retains its physiological immunity masks. The live
+`mset <mobile> mindless off` command is a temporary instance-only equivalent.
+
+To cancel only undead classification:
+
+[source,text]
+----
+archetype skeleton
+act undead
+----
+
+This is an explicit authoring exception, not a rule that having a soul removes
+undead status. Such an individual still has skeletal anatomy and mindlessness
+unless those are separately changed. Generated corpse provenance follows the
+resulting classification, not its name.
+
+An obsidian variant changes blunt vulnerability into blunt resistance:
+
+[source,text]
+----
+archetype skeleton
+res blunt
+vuln blunt
+----
+
+These emit `MobResists 16` and `MobVulnerabilities 16`. The first adds blunt
+resistance and the second removes inherited blunt vulnerability. Both are
+needed; adding only resistance leaves contradictory effective categories.
+The resulting resistance mask is `262256`, with holy-only vulnerability
+`131072`. Piercing, slashing and dark resistance remain inherited.
+
+====== Inspection and editor support
+
+The existing `mstat` display already shows body species/archetype identity,
+ACT/AFF/body XOR layers, effective resistance masks, score/modifier layers
+and special slots. No new immortal command is introduced. `ostat` and
+Identify continue to show undead object provenance.
+
+
+===== How inherited fields are used
 
 The resolved template contains ACT, AFF, body form, attack parts, resistance
 masks, HP/damage/critical/haste modifiers, dimensions, size, language, special
 names and the archetype XP adjustment. The presence of a value in a template
 diagnostic is not proof that it is already applied to a live mobile.
 
-In the verified baseline, ACT/AFF/body and resistance masks are resolved at
-prototype loading and copied into live NPCs; resistance calculations read the
-live masks; and `xp_mod` is used by the XP helper.
+ACT, AFF, body and resistance masks resolve when prototypes load. Each new
+NPC receives its own copy; runtime checks read that live state.
 
-PR #710 adds prototype/live storage and individual overrides for attack parts.
-PR #711 connects usable parts to ordinary unarmed NPC attack-type selection.
-It adds neither extra attacks nor equipment or skill permissions.
+Natural attack parts select an ordinary attack type when an NPC's attacking
+weapon slot is empty. They do not add attacks, equipment or skill permissions.
 
-PR #712 activates the <<scribe-mobile-hp-modifier,HP scalar>> and its individual
-override. PR #713 activates the <<scribe-mobile-damage-modifier,attack damage
-scalar>> for NPC attacks using `one_hit()`. PR #714 initialises the
-<<scribe-mobile-combat-modifiers,critical and swiftness scores>>. PR #715 adds
-<<scribe-mobile-dimensions,raw dimension data>> to prototypes and live NPCs,
-without assigning units or physical gameplay rules, and restores the damage
-export. PR #716 adds <<scribe-mobile-language,raw language codes>> and restores
-`swiftmod`. PR #717 activates all three
-<<scribe-weighted-specials,special slots through one weighted dispatcher>>.
-Language behaviour remains separate from its data layer.
+The <<scribe-mobile-hp-modifier,HP modifier>> adjusts initial HP. The
+<<scribe-mobile-damage-modifier,damage modifier>> adjusts NPC `one_hit()`
+attacks. <<scribe-mobile-combat-modifiers,Critical and swiftness modifiers>>
+set initial scores. <<scribe-mobile-dimensions,Dimensions>> and
+<<scribe-mobile-language,language codes>> store raw metadata.
+The <<scribe-weighted-specials,three special slots>> use weighted selection.
 
 For the template scalar fields using `MOB_TEMPLATE_UNSET`, an archetype value
 inherits when it is unset; otherwise it replaces the body-species value.
@@ -919,12 +932,11 @@ the resolver returns zero. These sentinels are C-table conventions: do not
 write `MOB_TEMPLATE_UNSET` in a Scribe source file. Use `hpmod inherit` or
 `dammod inherit` for those scalars, and `critmod inherit` / `swiftmod inherit`
 for score-point adjustments. The dimension fields also accept `inherit`.
-PR #716 adds the same input distinction for `language`. These scalar groups
+`language` uses the same inheritance distinction. These scalar groups
 have different meanings; language codes are not scores or bitmasks.
 
 For template special names, `NULL` inherits, an empty string clears, and a
-non-empty string replaces. PR #717 retains that rule per slot and
-introduces complete-vector percentage inheritance.
+non-empty string replaces. Names resolve per slot; percentages inherit as a complete vector.
 Legacy standalone `sp` remains a singleton override; extended `sp2`, `sp3`
 and `spchance` use slot-aware records. `xp_mod` keeps its independent additive
 rule, described in <<scribe-template-xp,Archetype XP>>.
@@ -1051,6 +1063,34 @@ E.g.    bf  no_arms no_speech
 bf  no_heart inorganic no_speech huge
 ----
 
+*Positive body-part declarations*
+
+`bf` also accepts these PART keywords:
+
+[source,text]
+----
+head            many_heads      arms            many_arms
+two_legs        four_legs       many_legs       heart
+brains          guts            hands           feet
+fingers         ear             eye             long_tongue
+eyestalks       tentacles       fins            wings
+tail            scales          claws           fangs
+horns           tusks           tail_attack     sharp_scales
+beak            haunch          hooves          paws
+forelegs        feathers        husk_shell
+----
+
+These remain individual XOR inputs. Repeating an inherited part cancels that
+bit rather than adding another copy. `bf tail` is physical tail anatomy;
+`bf tail_attack` is the legacy combat-feature bit. The separate `atk tail`
+field uses that combat-feature bit in the attack mask. `bf` alone does not
+add a feature to the separate `atk` mask.
+
+Do not combine positive parts with contradictory negative BODY flags unless
+the resulting override is deliberate. Legacy head, heart, arm and leg tests
+accept the positive presence flags even when a negative flag is also set.
+Use `mstat` to inspect the resolved anatomy and death-part candidate list.
+
 *`act` — Act flags*
 
 _Keyword list_
@@ -1157,7 +1197,7 @@ DOT takes damage every tick update
 prone   can’t use skills, can still cast
 dazed   can’t do anything
 confusion   is confused; may wander despite sentinel
-mindless    lacks a mind; see the Step 4E consumer list below
+mindless    lacks a mind; see the mind-dependent effect list below
 slow    has been slowed (many negative effects)
 
 E.g.    aff sneak hide invis infrared
@@ -1170,17 +1210,15 @@ E.g.    aff sneak hide invis infrared
 _Keyword_
 
 _Special functions_ give extra behaviours to mobs during or outside combat.
-The verified PR #717 baseline supports up to three
-<<scribe-weighted-specials,weighted slots>>. Standalone `sp` retains the legacy
-singleton override. Omission inherits the template set and standalone
-`sp none` disables it; a blank field is still invalid.
+A mobile supports up to three <<scribe-weighted-specials,weighted slots>>.
+Standalone `sp` replaces the whole set with one function. Omission inherits
+the template set; standalone `sp none` disables it. A blank field is invalid.
 
-The following legacy list of special descriptions is retained. Accepted names
-are checked against Scribe's registry and the server's `spec_lookup()`; this
-chunk does not introduce new special routines:
+The following list describes special functions. Accepted names are checked
+against Scribe's registry and the server's `spec_lookup()`.
 
 The three template special names provide inherited defaults for the active
-`#SPECIALS` system. `sp` is not an archetype selector: use Step 4D's separate
+`#SPECIALS` system. `sp` is not an archetype selector: use the separate
 <<scribe-template-selection,`archetype` field>> for that purpose.
 
 
@@ -1312,11 +1350,11 @@ _Keyword_
 
 Mobs may be of rank common (default), rare, elite, boss, and world (in increasing order of power). Common is assumed if this field is absent. Higher ranks increase the probability of dropping more powerful equipment and give a hitpoint bonus to mobiles.
 
-Rank and creature archetype are separate selections. With the Step 4D
-<<scribe-template-selection,`archetype` field>> installed, Scribe emits the
-selected archetype with this rank, including common rank. When `archetype`
-is omitted, a non-default rank still uses `reserved` and a common rank emits
-no selection line. Nothing is inferred from the mob's name or `sp` field.
+Rank and creature archetype are separate selections. The
+<<scribe-template-selection,`archetype` field>> exports the selected archetype
+at any rank, including common. Without it, a non-default rank uses `reserved`
+and common rank emits no selection line. Neither name nor `sp` selects an
+archetype implicitly.
 
 
 [source, text]
@@ -1462,16 +1500,14 @@ Object provenance uses the separate `ex undead` flag, documented under
 object that flag does not make its holder undead.
 
 [[scribe-mobile-mindlessness]]
-==== Mindlessness — Step 4E
+==== Mindlessness
 
-IMPORTANT: This subsection describes the accompanying Step 4E C/Scribe edits.
-They are not part of the pinned PR #721 baseline.
 
 `aff mindless` represents `AFF_MINDLESS`, `BIT_49`, decimal
-`562949953421312`. It is a trait flag in the existing affected-by mask, not a
-new spell, a low intelligence score, a body-part flag, or undead classification.
-A living creature can be mindless and an undead creature can retain a mind.
-No existing archetype is automatically assigned the new flag in this chunk.
+`562949953421312`. It is a trait in the affected-by mask, independent of
+intelligence scores, anatomy and undead classification. The skeleton
+archetype supplies it as a default; other creatures can add or cancel it
+through their individual `aff` masks.
 
 [source,text]
 ----
@@ -1485,7 +1521,7 @@ mask leaves an inherited bit unchanged. No additional area-tail field is
 introduced; the flag is exported in the existing affected-flags position.
 Do not export an expanded effective mask as the individual mask.
 
-===== Implemented effect checks
+===== Mind-dependent effects
 
 The following existing routines reject a mindless target before applying
 their mind-dependent effect:
@@ -1512,13 +1548,11 @@ specials or item casting receive the same gate. The shared C predicate is
 failure message for an explicitly attempted effect. These helpers do not
 perform a saving throw, consume a random roll, or mutate resistance masks.
 
-`RES_PSYCHIC` is not automatically added to the immunity mask. The current
-classification includes physical psionic effects such as Ballistic Attack,
-which throws a stone, as well as attacks on a mind. Ballistic Attack,
-Project Force, Detonate, Disintegrate and other nonlisted routines retain
-their existing handling. Source classifications in the skill table are not
-changed by this chunk. The table above is the implemented consumer list,
-not a claim that every psionic or psychologically named ability is covered.
+Mindlessness does not grant `RES_PSYCHIC` immunity. It rejects the specific
+mind-dependent effects listed above. Ballistic Attack is `RES_NONMAGIC` only,
+with no `RES_BLUNT` category, and is not rejected by mindlessness. Project
+Force, Detonate and Disintegrate also retain their normal handling. Do not
+assume that every psionic ability requires a mind in its target.
 
 Ordinary target selection, spell costs, lag and any surrounding retaliation
 remain in place. Rejecting a mental effect is not a ceasefire or a refund.
@@ -1548,27 +1582,20 @@ possession, charms, equipment or follower relationships. It prevents the
 listed future effects while present. No generic `affect_to_char()` or
 `add_follower()` rejection is added: necromantic servants can still use the
 existing follower/AFF_CHARM machinery without being susceptible to Charm
-Person. This chunk does not alter Animate Dead.
+Person.
 
 There is no duration associated with the directly stored trait bit. It is
 not created as a timed spell affect. Existing whole-character resets or
 explicit flag edits retain their normal authority over character state.
 Mindlessness does not automatically remove a brain part, disable special
 functions, reduce INT/WIS, grant poison/sleep/paralysis immunity, prevent all
-movement or flight, or change speech permissions. Physiology and the planned
+movement or flight, or change speech permissions. Physiology and the
 skeleton immunity package remain separate.
 
-DD Builder must add `mindless` to its AFF choices using the same 64-bit value.
-Keep inherited previews and original individual XOR masks distinct. Do not
-convert mindlessness into undead status, body-part removals or a resistance
-mask, and do not change the special-function probability editor.
 
 [[scribe-individual-resistances]]
 ==== Individual resistance fields
 
-These fields were merged in PR #708 and are present in the verified baseline.
-Use a server and Scribe script containing those changes; see
-<<scribe-documentation-status,Documentation status>>.
 
 *`res` — Resistance XOR mask*
 
@@ -1680,9 +1707,6 @@ and live editing>>.
 [[scribe-individual-attack-parts]]
 ==== Individual attack-part masks
 
-The input, storage and editing interface in this section was merged in PR
-#710. Its ordinary-combat consumer was merged in PR #711; see
-<<scribe-natural-attacks,ordinary NPC natural attacks>> below.
 
 *`atk` — Attack-part XOR mask*
 
@@ -1720,7 +1744,7 @@ resistance values or converted through a 32-bit integer.
 
 Here `tail` means `PART_TAILATTACK`, not the general `PART_TAIL` morphology bit.
 Other general body parts, negative `BODY_NO_*` flags and undefined bits are not
-accepted in `atk`. This step does not expand the separate `bf` keyword list.
+accepted in `atk`. Use `bf` for general positive body-part declarations.
 
 [source,text]
 ----
@@ -1771,29 +1795,108 @@ expressions, not Scribe keywords. Unknown bits are rejected.
 
 ===== Behavioural boundary
 
-The data layer introduced in PR #710 does not itself select combat actions.
-PR #711 adds ordinary attack-type selection using the live mask, as described
-below.
-Neither chunk adds attacks per round, creates body-part equipment, grants
-poison/breath specials, changes player forms, or grants new combat skills.
-A zero live attack-part mask does not prevent the creature from fighting.
+The live `atk` mask supplies ordinary natural-attack types as described below.
+It does not add attacks per round, create body-part equipment, grant skills
+or specials, or alter player forms. A zero mask does not prevent fighting.
+It also contributes declared physical parts to death-generated drops; see
+<<scribe-death-parts,Death-generated body parts>>.
 
 `bf` and `atk` remain separate. An attack-part declaration does not repair
 missing anatomy or overwrite a body-form restriction. Eligibility is computed
 from the current body form and relevant trauma flags without modifying the
 configured attack-part mask.
 
-DD Builder must expose the same `atk` values and preserve the raw individual
-mask. Display inherited and effective values separately. Export `MobAttackParts`
-without pre-expanding the template; do not use the effective mask as the next
-individual input.
+
+[[scribe-death-parts]]
+==== Death-generated body parts
+
+At death, a creature that leaves a corpse can also drop one loose physical
+part into the room. The random death-message roll gives a five-in-sixteen
+opportunity to create a part; if at least one kind is eligible, one distinct
+kind is chosen uniformly. This is not one roll per flag, and multiple-head
+or multiple-limb flags do not create several objects on the same death.
+
+Eligibility uses the live `bf` mask and, for NPCs, the physical PART features
+in the live `atk` mask. It reads the already-resolved values, so inherited
+parts count and cancelled declarations are removed. The legacy `HAS_HEAD`, `HAS_HEART`,
+`HAS_ARMS`, `HAS_LEGS` and `HAS_TAIL` rules preserve ordinary body defaults
+for old definitions without explicit PART flags. Removing only a positive
+head, heart, arm or leg bit therefore does not remove its legacy default;
+also set the corresponding negative BODY flag. Other kinds require an
+explicit PART declaration. `no_corpse` prevents all random part drops.
+
+A declared PART feature is eligible for death drops even when it is not a
+currently usable natural attack. Feathers and shell therefore work, and
+injury-related attack penalties do not erase the stored declarations.
+This does not change combat's separate anatomy requirements or track exact
+numbers of limbs already lost in combat.
+
+[cols="<3,<2",options="header"]
+|===
+| `bf` keyword(s) | Generated kind
+| `head`, `many_heads` | Head
+| `heart` | Heart
+| `arms`, `many_arms` | Arm
+| `two_legs`, `four_legs`, `many_legs` | Leg
+| `tail`, `tail_attack`; also legacy `has_tail` | Tail
+| `brains` | Brain
+| `guts` | Bundle of entrails
+| `hands` | Hand
+| `feet` | Foot
+| `fingers` | Finger
+| `ear` | Ear
+| `eye` | Eye
+| `long_tongue` | Long tongue
+| `eyestalks` | Eyestalk
+| `tentacles` | Tentacle
+| `fins` | Fin
+| `wings` | Wing
+| `scales`, `sharp_scales` | Patch of scales
+| `claws` | Claw
+| `fangs` | Fang
+| `horns` | Horn
+| `tusks` | Tusk
+| `beak` | Beak
+| `haunch` | Haunch
+| `hooves` | Hoof
+| `paws` | Paw
+| `forelegs` | Foreleg
+| `feathers` | Feather
+| `husk_shell` | Shell fragment
+|===
+
+Equivalent features in `atk` contribute the same kinds. Duplicate declarations
+across the two masks, or related quantity flags, do not give that kind extra
+selection weight. Ordinary, undeclared bodies retain the legacy four
+head/heart/arm/leg candidates.
+
+Every generated piece has `body_part` and a short decay timer of four to
+seven object-update ticks. A source classified as undead supplies the
+`undead` extra flag, including a vampire player. All inorganic-source pieces
+are inedible `trash`. Organic soft pieces use food objects; hard pieces such
+as claws, fangs, horns, tusks, hooves, beaks, scales, feathers and shell are
+trash. These drops are not automatically usable weapons or armour.
+
+The existing head, heart, arm, leg and tail prototypes are retained. Other
+kinds use the shared generic body-part prototype, with individual runtime
+keywords and descriptions. No additional per-mobile source field is needed.
+`mstat` lists `Death-part candidates` without making a random roll; `ostat`
+inspects the resulting object's actual type, timer and extra flags.
+
+[source,text]
+----
+bf no_head no_heart no_arms no_legs tentacles
+----
+
+With no inherited parts or additional attack parts, this creature has only
+a tentacle in its candidate list. To prevent all loose parts, add `no_corpse`.
+The corpse's object type and loot handling remain separate from random
+part generation. No repeated corpse-decay generation or harvesting command
+is implied.
 
 [[scribe-natural-attacks]]
 ==== Ordinary NPC natural attacks
 
-The selection and eligibility behaviour in this section was merged in PR #711.
-The earlier PR #710 contains the input/storage layer. Running-server behaviour
-still depends on the executable deployed, not on the manual revision.
 
 ===== Selection and weapon precedence
 
@@ -1826,8 +1929,7 @@ newly granted to an NPC.
 
 ===== Default attack mapping
 
-These are mapping decisions introduced by Step 4C3b, using the existing
-ordinary attack vocabulary rather than new skill-table entries.
+These mappings use the existing ordinary attack vocabulary.
 
 [cols="<2,<2,<2,<4",options="header"]
 |===
@@ -1865,11 +1967,11 @@ specify whether claws or paws belong to hands or feet, either usable limb
 group is sufficient for those two features. Hooves, haunches and forelegs
 require the leg group specifically.
 
-A tail candidate requires `BODY_HAS_TAIL` or `PART_TAIL` in the live body
-form, as recognised by `HAS_TAIL`, and no `AFF_TAIL_TRAUMA`. Merely adding
-`PART_TAILATTACK` to `atk` does not create that anatomy. Head-based candidates
-require `HAS_HEAD`; this chunk does not introduce an additional all-or-nothing
-head-trauma exclusion. Existing general combat penalties remain separate.
+A tail attack requires `BODY_HAS_TAIL` or `PART_TAIL` in the live body form
+and no `AFF_TAIL_TRAUMA`. An `atk tail` declaration alone does not satisfy
+that combat requirement. Head-based attacks require `HAS_HEAD`. Other
+combat penalties remain separate. Death-part eligibility is a separate
+read of the declared parts, not of the currently usable attacks.
 
 Filtering never removes a bit from the live mask. Removing a relevant trauma
 affect or repairing the live body form makes a still-configured feature
@@ -1905,9 +2007,6 @@ raw mask, granting skill permissions or inventing extra attacks.
 [[scribe-mobile-hp-modifier]]
 ==== HP modifier inheritance and overrides
 
-This feature was merged in PR #712 and is present in the verified baseline.
-Use matching server and Scribe versions for `hpmod` and template HP adjustments;
-a merged revision alone does not confirm which executable is deployed.
 
 *`hpmod` — Individual HP percentage adjustment*
 
@@ -1972,10 +2071,8 @@ adjustment is zero. For the individual layer:
 | `hpmod -25` | Use `-25`: 75 percent of normal HP.
 |===
 
-An untemplated mobile can use the field too; its inherited adjustment is zero.
-In the retained tables, the goat archetype already has `hp_mod = 20`. Installing
-Step 4C4a activates that existing default for newly created goat-archetype NPCs.
-Do not change other table values merely to install the scalar mechanism.
+An untemplated mobile can use `hpmod`; its inherited adjustment is zero.
+The goat archetype supplies a +20% adjustment unless individually replaced.
 
 ===== Scribe and area syntax
 
@@ -2002,10 +2099,8 @@ the resistance declarations, after any mob programs, archetype/rank selection
 and teacher entries. It has no tilde terminator. Repeated declarations use the
 last value, including a final `inherit` which restores inheritance.
 
-The source keyword is `hpmod`, the area keyword is `MobHPMod`, and the server
-table member is `hp_mod`. They are not interchangeable. Scribe still does not
-acquire an archetype selector through the HP addition itself; Step 4D adds
-that selector separately.
+The source keyword is `hpmod`, the area keyword is `MobHPMod`, and the C
+member is `hp_mod`. Use the separate `archetype` field to select a template.
 
 ===== Creation and runtime changes
 
@@ -2029,19 +2124,12 @@ healing, equipment changes, or combat. Current HP starts at the initial maximum.
 Existing equipment and affect handling can then change the current maximum
 without being multiplied again.
 
-Later code that deliberately replaces a summoned mobile's level or maximum HP
-continues to do so. Step 4C4a does not intercept or reapply a multiplier to such
-absolute assignments; a creation snapshot can therefore differ from the final
-customised mobile. Existing live `mset hp` behaviour also remains unchanged.
-A fresh spawn uses its prototype defaults, not another instance's live edits.
-There is no new live `mset hpmod` command in this chunk.
+A script or summon routine can replace HP after creation. The recorded spawn
+values remain unchanged by that later assignment. Existing `mset hp` edits
+live HP; there is no `mset hpmod` command. New instances use their prototype
+defaults, not another instance's live edits.
 
-This HP adjustment is independent of `xp_mod`. The existing XP-percentage helper,
-area/spec/equipment XP contributions and XP award formula are not edited here.
-Attack damage and critical/swiftness defaults are documented
-separately below. PR #715 supplies raw dimension data; PR #716 supplies raw
-language codes. Their gameplay semantics remain separate. The HP mechanism
-itself adds no attacks or inherited special execution.
+The HP adjustment is independent of XP, damage and combat-score adjustments.
 
 ===== Validation and builder integration
 
@@ -2054,18 +2142,10 @@ Scribe checks the same numeric bounds using exact integer arithmetic.
 Use the recorded spawn base for tests: two independently generated NPCs may
 have different random base HP even when they use the same prototype.
 
-DD Builder must preserve the distinction between an inherited scalar and an
-explicit zero. Store/export the individual `hpmod` value or inheritance state,
-not a calculated HP total. Do not pre-expand template values, XOR the integer,
-or add the layers together. The exporter must retain `hpmod 0` rather than
-silently omitting it.
 
 [[scribe-mobile-damage-modifier]]
 ==== NPC attack damage modifier
 
-The server feature was merged in PR #713. PR #714 accidentally removed its
-Scribe `MobDamMod` export statement; PR #715 restores it in the verified
-baseline. Existing area declarations remain supported.
 
 *`dammod` — Individual NPC attack damage percentage adjustment*
 
@@ -2116,7 +2196,7 @@ Player attacks are unchanged. Independent spells, breath weapons, direct-damage
 skills such as Kick, damage-over-time events and reflected/module damage are
 not newly multiplied by this field merely because an NPC is involved. Effects
 which already derive an amount from a triggering attack can still reflect that
-attack's adjusted amount; this chunk does not apply a second multiplier to them.
+attack's adjusted amount; no second multiplier is applied to them.
 Skill-specific and secondary-effect behavior otherwise remains separate.
 
 The name in the tables remains `dam_mod`. For this implementation, read it as
@@ -2140,10 +2220,8 @@ resolved value; it is not XORed, added, or independently compounded.
 | `dammod -25` | Use `-25`.
 |===
 
-If no template supplies a value, the inherited adjustment is zero. Mobiles
-without an archetype may use the individual field. The retained goat archetype
-has a `dam_mod` of `20`; installing this chunk activates that default for its
-applicable attacks. Other archetype values need not be changed to install it.
+An untemplated mobile inherits a zero damage adjustment and can override it.
+The goat archetype supplies +20% damage for applicable attacks.
 
 [source,text]
 ----
@@ -2202,17 +2280,10 @@ a synonym for `mset dammod`. Existing HP creation snapshots, HP modifiers, XP
 calculation, critical/swiftness defaults, dimensions, language and special
 execution are not changed by this addition.
 
-DD Builder must preserve an explicit inheritance state separately from zero,
-export the raw individual scalar, and avoid calculating or combining layers
-on export. Use the same numeric limits as Scribe. Keep HP and attack damage
-controls separate; neither field is a resistance mask or a direct stat total.
 
 [[scribe-mobile-combat-modifiers]]
 ==== Critical and swiftness defaults
 
-This feature was merged in PR #714 and is present in the verified baseline.
-Use matching server and Scribe versions; repository availability does not
-identify the executable deployed on a particular server.
 
 *`critmod` — Individual critical-score adjustment*
 
@@ -2283,12 +2354,9 @@ For an inherited adjustment of +20:
 | `-5` | -5 | 0
 |===
 
-An untemplated mobile starts with an inherited adjustment of zero and can use
-these fields too. Existing table values are retained: goat supplies -10 critical
-and -2 swiftness points, producing initial scores -5 and 3; fire_elemental
-supplies an unset critical adjustment and +20 swiftness points, producing 5
-and 25 with no individual overrides. Installing the chunk activates those
-previously inactive defaults.
+Untemplated mobiles inherit a zero adjustment. The goat defaults are -10
+critical and -2 swiftness points, producing scores -5 and 3. The fire-elemental
+defaults produce scores 5 and 25 before individual overrides or equipment.
 
 [source,text]
 ----
@@ -2322,10 +2390,9 @@ with a diagnostic.
 
 ===== Existing combat semantics remain in use
 
-NPC critical handling currently tests `number_percent() < ch->crit` within
-`damage_internal()` and doubles damage on its successful branch. That existing
-critical path is broader than `one_hit()`; this chunk does not impose the
-separate `dammod` scope on critical hits or add a second critical roll.
+NPC critical handling tests `number_percent() < ch->crit` in
+`damage_internal()` and doubles damage when that branch succeeds. Its scope
+is broader than the `one_hit()`-only `dammod` adjustment.
 
 The existing NPC swiftness branch in `multi_hit()` similarly tests
 `number_percent() < ch->swiftness` before its bonus `one_hit()` call. Initialising
@@ -2338,10 +2405,9 @@ The existing strict `<` comparisons are not changed to `<=`. On a percentile
 range of 1 through 100, a score of 25 accepts rolls 1 through 24. The random
 number generator and player enhanced-skill/attribute calculations are unchanged.
 
-The existing `crit` and `swiftness` fields remain live values. Equipment and
-other existing consumers continue to see them. In particular, this chunk
-does not restrict swiftness to combat or rewrite the movement/digging code
-which already consults it. HP, attack damage and XP adjustments remain separate.
+Equipment and other consumers use the live `crit` and `swiftness` fields.
+Swiftness also participates in existing movement and digging calculations.
+HP, damage and XP adjustments remain independent.
 
 ===== Creation snapshots and live editing
 
@@ -2365,7 +2431,7 @@ mset filler swiftness 0
 
 These mean live scores 10 and 0, not +10 or +0 adjustments. They do not change
 the template, prototype, snapshots, other live instances or future spawns.
-There are no new live `mset critmod` or `mset swiftmod` commands in this chunk.
+There are no `mset critmod` or `mset swiftmod` commands.
 
 The inherited legacy command limits remain unchanged: `mset crit` accepts
 0 through 99, despite its existing error message saying 0 to 100;
@@ -2378,18 +2444,11 @@ with one using individual adjustments 20/0 (scores 25/5). Change a live score
 with the existing commands, confirm snapshots are unchanged, then purge and
 reload to confirm the prototype values return. Test zero and inherit separately.
 
-DD Builder must expose two signed score-point adjustments with an explicit
-inheritance state. Export the raw individual values without adding five,
-adding template layers, XORing, or converting them into percentages. Preserve
-explicit zero. The archetype editor maps swiftness to the existing `haste_mod`
-member, not to a new spell or affect.
 
 [[scribe-mobile-dimensions]]
 ==== Dimension data and overrides
 
-This feature was merged in PR #715 and is present in the verified baseline.
-Use matching server and Scribe versions. These fields store metadata; they
-do not implement physical units or new gameplay calculations.
+These fields store metadata. They do not define physical units or change gameplay calculations.
 
 *`height`, `weight`, `size` — Individual raw dimension values*
 
@@ -2410,29 +2469,22 @@ initialisers do not specify measurement units or a categorical size scale:
 | `fire_elemental` | 2 | 20 | 3
 |===
 
-This chunk does not label those numbers as centimetres, metres, pounds or
-kilograms, and does not reinterpret size as a new tiny/small/medium/large
-index. A value such as 100 is allowed in `size`; it is not rejected against
-an invented size enumeration.
+No centimetre, metre, pound or kilogram unit is assigned to these values.
+`size` is not a tiny/small/medium/large enumeration; 100 is a valid raw value.
 
 For this metadata interface, zero means that no numeric dimension is
 specified. It does not create a zero-sized or massless creature. An explicit
 zero can replace an inherited nonzero value. If no layer supplies a dimension,
 the existing scalar resolver returns zero.
 
-The fields do not yet affect combat, carrying capacity, carried-item weight,
+The fields do not affect combat, carrying capacity, carried-item weight,
 mount eligibility, corpse weight, room access, equipment fitting, movement or
 natural-attack eligibility. `BODY_HUGE`, other body-form flags, and their
 existing gameplay checks remain unchanged. Changing `size` does not add or
 remove `BODY_HUGE`; changing `weight` does not edit inventory weight.
 
-The legacy `APPLY_HEIGHT` and `APPLY_WEIGHT` equipment applies remain inactive.
-Adding live data members alone does not activate those effects. Player
-initialisation, player-file persistence and player forms are unchanged.
-PR #716 stores language codes separately. Language behaviour remains separate; special execution is addressed by
-the accompanying weighted-specials chunk. Measurement units and
-physical gameplay consumers must be defined explicitly before using the
-numeric dimensions in those systems.
+`APPLY_HEIGHT` and `APPLY_WEIGHT` equipment applies are inactive. Raw NPC
+dimension fields do not activate them or change player dimensions.
 
 ===== Scalar precedence and syntax
 
@@ -2517,38 +2569,12 @@ or alter future spawns. A new instance receives its prototype values again.
 Zero is accepted and clears that live metadata field to unspecified. Players
 cannot be edited through these new handlers.
 
-There is no new Advanced Consider, GMCP or player-score dimension output in
-this chunk. Do not infer additional interface support from the presence of
-the live data fields.
-
-===== Scribe export compatibility
-
-PR #714 accidentally removed the `MobDamMod` output statement while retaining
-the source-field parser and server support. PR #715 restores that statement.
-Do not regenerate an area containing `dammod` with the uncorrected PR #714
-exporter: the individual damage adjustment would be omitted from its output.
-A hand-authored or existing area `MobDamMod` line is still supported by the
-server; this is an exporter regression, not removal of the server feature.
-
-Explicit zero must remain distinct from an omitted field. PR #715 also
-accidentally drops `swiftmod` from the mobile input whitelist, so having its
-output statement alone is insufficient. PR #716 restores that input.
-
-===== DD Builder requirements
-
-Add three raw, nonnegative integer controls with an explicit inheritance
-state. Keep inheritance separate from explicit zero. Export the individual
-values without resolving the template, adding layers, converting units or
-assigning size categories. Do not generate body-form flags from these fields.
-Label the values as legacy dimension data until a unit and gameplay contract
-is established. Preserve the `MobDamMod` export when extending scalar output.
+Dimensions are inspected with `mstat`, not added to player score or GMCP output.
 
 
 [[scribe-mobile-language]]
 ==== Raw language-code data
 
-This feature and the `swiftmod` input repair were merged in PR #716 and are
-present in the verified baseline. Use matching server and Scribe versions.
 
 *`language` — Individual raw language code*
 
@@ -2568,18 +2594,12 @@ For this interface, `0` means unspecified metadata. It does not mean mute,
 unable to understand, unable to cast, or unable to communicate. A nonzero
 code also does not grant speech or a language proficiency.
 
-The existing `CAN_SPEAK(ch)` macro remains based on `BODY_NO_SPEECH`.
-Changing a language code does not add or remove that body flag. Existing
-speech, tell, channel, spell-incantation and mob-program behaviour remains
-unchanged. This chunk adds no translation, language-learning skill,
-listener-comprehension test, player language data, or NPC conversation AI.
+`CAN_SPEAK(ch)` depends on `BODY_NO_SPEECH`, not the language code. Changing
+that code does not alter speech permissions, translation or comprehension.
 
-The code is an absolute scalar, not a score, percentage adjustment or bitmask.
-The parser checks numeric range and syntax only. There is no dictionary of
-valid named languages and no current language-name membership validation.
-Using a large accepted code does not imply that a matching language exists.
-Future language semantics will require an explicit code-to-name contract and
-migration of legacy values before gameplay starts interpreting these codes.
+The language code is an absolute scalar, not a percentage or bitmask. Scribe
+validates syntax and numeric range; it does not use a dictionary of named
+languages. A valid number does not imply a named language exists for it.
 
 ===== Inheritance and syntax
 
@@ -2650,32 +2670,10 @@ modify the prototype or source input, affect other instances, or change
 future spawns. A new NPC receives the prototype code again. No new player,
 Advanced Consider or GMCP language output is introduced.
 
-===== Scribe input compatibility
-
-PR #715 correctly restores `MobDamMod` output but accidentally removes
-`swiftmod` from the mobile input whitelist. The field then produces an
-unknown-field message and is not retained for normal export, even though
-its validation/output code was still present. PR #716 restores the whitelist
-entry while adding `language`.
-
-===== DD Builder requirements
-
-Add one nonnegative raw `language` code control with an explicit inheritance
-state. Export it as `MobLanguage` without resolving the template or changing
-zero into omission. Use the same numeric bounds as Scribe. Do not populate
-a named-language dropdown from assumed meanings of the legacy numbers.
-Preserve all seven earlier scalar inputs and exports, including `swiftmod`
-and `MobDamMod`.
-
-Language metadata does not activate special slots. PR #717's weighted
-special system handles their execution separately below.
 
 [[scribe-weighted-specials]]
 ==== Three weighted special functions
 
-This implementation is merged in PR #717 and present in the pinned baseline.
-It replaces the earlier primary-only Step 4C5a proposal. A merged source
-revision does not establish which executable is deployed on a given server.
 
 ===== Source fields and a working example
 
@@ -2902,7 +2900,7 @@ contributions; it is not a second multiplier.
 Live special edits do not recalculate the already stored `exp_modifier`.
 The prototype diagnostic reports the contribution that ordinary area resets
 use; it does not claim that an immortal-loaded or specially constructed NPC
-has the same existing XP baseline as a reset-spawned one.
+has the same existing XP value as a reset-spawned one.
 
 ===== Immortal inspection and atomic editing
 
@@ -2937,21 +2935,6 @@ The legacy `spec <name>` command installs a singleton at 100%, and also
 accepts whole-set `none` and `inherit`. These operations reset call counters,
 not prototypes, other live instances, future spawns, area files, or stored XP.
 They do not reverse effects that a routine has already caused.
-
-===== DD Builder requirements
-
-Provide three name controls (inherit, none, registered function) and a
-separate whole-vector probability control (inherit, auto, three integers).
-Map slots 1/2/3 to the existing template names, including `spec_boss` for
-slot 3 without a rank gate. Keep each original individual setting separate
-from its resolved preview. Use the legacy M format for a standalone `sp`
-selection and N/P for extended definitions as described above.
-
-Explicit percentages must total 100 after slot resolution; empty slots need
-zero, and the all-empty set needs 0/0/0. Do not silently normalise invalid
-input, invent percentages for disabled slots, turn selection weights into
-three independent rolls, or export inherited values as explicit overrides.
-No scalar regression-test script is introduced or required by this chunk.
 
 [[scribe-resistance-flags]]
 ==== Resistance category reference
@@ -3039,13 +3022,13 @@ The added categories have specific, already-selected uses:
 |===
 | Ability | Effect categories | Implementation qualification
 | Sonic Blast | `RES_SONIC` and `RES_MAGIC`
-| Sonic replaces the previous generic energy classification. The supplied
+| Sonic replaces the previous generic energy classification. The
 immunity guard also blocks its secondary nausea, confusion and ongoing effect.
 | Bubble Jet | `RES_BLUNT`, `RES_NONMAGIC` and `RES_WATER`
 | Water is added without removing impact/source categories. Its immunity guard
 also blocks the subsequent disorientation effects.
 | Flood | `RES_BLUNT`, `RES_MAGIC` and `RES_WATER`
-| The water classification is metadata for this implementation stage. Flood
+| The water classification is metadata for this field. Flood
 changes the room; the flag does not automatically prevent flooding or drowning.
 |===
 
@@ -3135,14 +3118,10 @@ successful messages include:
 [MOB TYPE] Resistance validation complete: no issues found.
 ----
 
-The Combat-score line is implemented through PR #714 and the Dimension line
-through PR #716. Weighted-special validation and finalisation are implemented
-through PR #717.
-These messages report the checks performed by those validators, not a full
-gameplay test. Unknown bits must be checked on raw template layers as well
-as resolved masks: identical invalid bits could otherwise cancel through XOR.
-Raw archetype XOR masks are not checked for overlap as though they were an
-already-resolved creature state.
+Boot diagnostics validate the raw template values as well as resolved masks.
+A successful validation does not test gameplay. Raw XOR masks can overlap
+across categories when cancelling an inherited state; the resolved state
+must still satisfy resistance-conflict checks.
 
 For an individual flag cancellation, the load log includes the vnum, flag
 group, bit, inherited archetype and the fact that `#MOBILES` removed it.
@@ -3158,24 +3137,20 @@ group, bit, inherited archetype and the fact that `#MOBILES` removed it.
 | Live | Values on the particular NPC being inspected, including subsequent runtime changes.
 |===
 
-ACT, AFF, BODY, RESISTANCE, VULNERABILITY and IMMUNITY layers are implemented
-in the verified baseline, along with separate prototype/live resistance-validity
-results. PR #710 also adds ATTACK PART layers, and PR #711 adds the read-only
-`Eligible` and `Inactive` attack-part rows. Labels beginning with `Template`
-describe the inherited layer, not the final NPC state.
+`mstat` shows ACT, AFF, BODY, resistance and attack-part layers. `Eligible`
+and `Inactive` describe currently usable natural attacks. `Death-part
+candidates` separately lists physical pieces eligible for random death drops.
+Inspection does not create an object or consume a random roll. Template
+labels describe inherited defaults, not necessarily the live state.
 
-PR #712 adds an HP modifier section. It distinguishes the inherited and
-individual scalar values from the effective prototype value, recorded spawn
-base/adjustment/initial HP, and the current live HP/maximum. It does not treat
-this scalar as a flag mask or reapply it when inspected.
+The HP section distinguishes inherited and individual adjustments, the
+resolved prototype, recorded spawn values, and current HP. Inspection does
+not recalculate HP.
 
-PR #713 adds attack-damage modifier layers and a deterministic scaling sample.
-PR #714 adds critical/swiftness modifier layers and creation snapshots.
-PR #715 adds separate dimension groups showing template, individual,
-prototype and live values. PR #716 adds the same layers for a raw language
-code. These are scalar diagnostics, not XOR removal reports. Current live
-scores can differ from their creation values; dimensions and language codes
-can be edited independently without changing their prototypes.
+The damage section includes a deterministic scaling sample. Critical and
+swiftness sections show initial and live scores. Dimension and language
+sections show template, individual, prototype and live values. These are
+scalar diagnostics, not XOR removal reports.
 
 Advanced Consider uses live body-form and resistance masks in its existing
 archetype-information block. Its attack-part list also uses the live configured
@@ -3223,14 +3198,10 @@ spawn. For an effect with secondary penalties, inspect both HP changes and
 active affects. An immunity message alone is not evidence that every rider
 was blocked.
 
-Scribe, the server parser and any DD Builder exporter must agree on the
-input format. DD Builder must preserve raw individual masks, offer inherited
-and effective values separately, and defer cross-category overlap decisions
-until the masks have been resolved. The sonic/water categories and signed
-archetype XP adjustment also need corresponding editor support; this manual
-does not claim that a separate DD Builder implementation has already shipped.
+When moving a source between editors, preserve the original individual
+inputs rather than exporting a resolved inheritance preview.
 
-The accompanying <<scribe-mobile-damage-modifier,attack damage modifier>> adds
+The <<scribe-mobile-damage-modifier,attack damage modifier>> provides
 a separate percentage-layer display, an illustrative pre-defense scaling sample,
 and NPC-only `mset dammod`. These do not recalculate the recorded HP snapshots.
 
@@ -3559,10 +3530,9 @@ v3  pound
 [[scribe-weapon-resistance]]
 ===== Ordinary weapon attack categories
 
-For NPC attacks with an empty weapon slot, the accompanying
-<<scribe-natural-attacks,Step 4C3b natural-attack selector>> can supply the
-ordinary attack type from the live `atk` mask. It does not alter actual weapon
-items or their fields.
+For NPC attacks with an empty weapon slot, the
+<<scribe-natural-attacks,natural-attack selector>> supplies the ordinary
+attack type from `atk`. It does not alter equipped weapon objects.
 
 For ordinary `TYPE_HIT`-based attacks, the weapon's `v3` attack type determines
 its damage category:
@@ -3584,8 +3554,7 @@ is not the test used here; the object magic flag is. Primary and secondary
 weapons are classified using the actual weapon responsible for each hit.
 
 `ex blessed` and `ex cursed` do not automatically change this ordinary attack
-mask into holy or dark damage. The planned blessed/cursed anti-undead rules
-are separate work. A special skill's damage may use its fixed `skill_table`
+mask into holy or dark damage. A special skill's damage may use its fixed `skill_table`
 mask instead of this ordinary-weapon classification, even while the character
 is wielding a magical weapon.
 
@@ -4604,11 +4573,8 @@ from this addition. `ostat` displays the extra flag for immortal inspection.
 `oset` retains its existing whole-mask extra-flags interface; this change does
 not add a new text-based toggle command.
 
-The proposed Detect Undead display, corpse-feeding restrictions, soul checks,
-Animate Dead recycling rules, healing inversions, holy-water attacks and Turn
-Undead behaviour are not automatically enabled by adding the provenance flag.
-They require their own subsequent implementation. An object with `ex undead`
-can therefore be authored now without implying those future mechanics exist.
+The `undead` object flag records provenance. Do not assume that merely
+setting it changes healing, permits animation, or supplies a combat effect.
 
 === 10. Object sets [[scribe-object-sets]]
 
@@ -5507,56 +5473,3 @@ ps  85
 pb  120
 ----
 
-[[scribe-revision-notes]]
-=== Documentation revision notes and source baseline
-
-This revision confirms the weighted-specials merge through PR #717 and
-adds Step 4D's Scribe archetype-selection interface. It also records the
-approved, still-pending mindlessness/skeleton specification. The original
-sixteen numbered sections remain in order.
-New material is integrated into the existing mobile, object, weapon and
-area-XP sections.
-The field summaries also include already-described reset/audio/foley fields
-which were absent from their summary tables.
-
-The baseline was checked against
-https://github.com/fromage-fraser/dd4/tree/2da2fed74de2b61c6dda452b877182ec665087ac[DD4 master at PR #717].
-The following files are the implementation references for the added material:
-
-[cols="<2,<5",options="header"]
-|===
-| Source | Relevance
-| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/builder/scribe/scribe.pl[`builder/scribe/scribe.pl`]
-| Accepted source fields, exact-integer masks, scalar input and weighted-special exports through PR #717. Step 4D adds the separate creature-archetype selector to this baseline.
-| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/merc.h[`server/src/merc.h`]
-| ACT/object/resistance flag definitions and template/prototype structures.
-| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/mob.c[`server/src/mob.c`]
-| Template XOR/scalar/special-name resolution, original-mask handling, validation and additive XP helper.
-| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/db.c[`server/src/db.c`]
-| Mobile loading, optional archetype/rank syntax, prototype/live copying, HP and attack-damage scalars, and critical/swiftness initialisation with creation snapshots.
-| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/magic.c[`server/src/magic.c`] and https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/fight.c[`server/src/fight.c`]
-| Resistance adjustment, selected status helpers, ordinary-attack categories, damage messaging, death provenance and XP use.
-| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/act_wiz.c[`server/src/act_wiz.c`] and https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/act_info.c[`server/src/act_info.c`]
-| Immortal flag/resistance/attack-part diagnostics, HP snapshots, live mask editing and body-form/resistance displays.
-| https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/const.c[`server/src/const.c`] and https://github.com/fromage-fraser/dd4/blob/2da2fed74de2b61c6dda452b877182ec665087ac/server/src/handler.c[`server/src/handler.c`]
-| Effect classifications and text names for resistance/object flags.
-| Step 4D manual implementation instructions accompanying this manual
-| Basis for the explicitly marked `archetype` source field, companion name registry, validation and independent rank export. These changes are not attributed to the pinned PR #717 script.
-|===
-
-The retained `fire_elemental` test archetype is not a general setting rule:
-in this baseline it carries `ACT_UNDEAD`, `AFF_DETECT_MAGIC` and configured
-`PART_CLAWS`, an XP adjustment of `+5`, and test resistance data. Its default
-body form has no arms or legs, so the configured claws are normally inactive
-unless the body form is changed. The merged test archetype has `hp_mod = 50`,
-while mobile #2700 explicitly replaces that with `MobHPMod 25`. It also
-retains fire breath, frost breath and poison at 60/30/10; the goat archetype
-retains fido and poison under automatic allocation. Its body species supplies cold
-immunity and the archetype repeats cold immunity, so cold cancels through
-XOR. Do not infer universal elemental or undead traits from that test entry.
-
-Other existing sections have been retained rather than subjected to an
-unrelated whole-engine behaviour audit. In particular, adding this
-documentation alone does not enable planned undead spells or install the
-new Scribe archetype-selection field. AFF_MINDLESS and the skeleton archetype
-remain pending; the weighted-special system is already merged through PR #717.

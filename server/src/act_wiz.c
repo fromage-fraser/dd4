@@ -3800,6 +3800,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
         mstat_dimension_layers(ch, victim);
         mstat_language_layers(ch, victim);
         mstat_weighted_specials(ch, victim);
+        show_death_parts(ch, victim);
         return;
 }
 

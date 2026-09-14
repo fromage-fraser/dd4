@@ -45,6 +45,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         reserved
         goat
         fire_elemental
+        skeleton
 /;
 
 my %mob_act = (
@@ -163,6 +164,42 @@ my %mob_bf = (
         huge      => 128,
         inorganic => 256,
         has_tail  => 512,
+
+        head          => '1024',
+        many_heads    => '2048',
+        arms          => '4096',
+        many_arms     => '8192',
+        two_legs      => '32768',
+        four_legs     => '65536',
+        many_legs     => '131072',
+        heart         => '262144',
+        brains        => '524288',
+        guts          => '1048576',
+        hands         => '2097152',
+        feet          => '4194304',
+        fingers       => '8388608',
+        ear           => '16777216',
+        eye           => '33554432',
+        long_tongue   => '67108864',
+        eyestalks     => '134217728',
+        tentacles     => '268435456',
+        fins          => '536870912',
+        wings         => '1073741824',
+        tail          => '2147483648',
+        scales        => '4294967296',
+        claws         => '8589934592',
+        fangs         => '17179869184',
+        horns         => '34359738368',
+        tusks         => '68719476736',
+        tail_attack   => '137438953472',
+        sharp_scales  => '274877906944',
+        beak          => '549755813888',
+        haunch        => '1099511627776',
+        hooves        => '2199023255552',
+        paws          => '4398046511104',
+        forelegs      => '8796093022208',
+        feathers      => '17592186044416',
+        husk_shell    => '35184372088832',
 );
 
 my %mob_resistance = (

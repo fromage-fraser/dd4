@@ -159,6 +159,48 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_breath_fire", "spec_breath_frost", "spec_poison",
                 5,
                 { 60, 30, 10 }
+        },
+        {
+                "skeleton", "humanoid", "icon1", "icon2",
+
+                /* Add undead classification and explicit mindlessness. */
+                ACT_UNDEAD, AFF_MINDLESS,
+
+                /*
+                 * XOR against the humanoid body.
+                 *
+                 * Existing positive organ bits are cancelled.
+                 * Previously absent BODY restrictions are added.
+                 * Do not repeat the retained head/arm/leg/hand/foot bits.
+                 */
+                BODY_NO_EYES | BODY_NO_HEART | BODY_NO_SPEECH
+                    | BODY_INORGANIC
+                    | PART_HEART | PART_BRAINS | PART_GUTS
+                    | PART_EAR | PART_EYE,
+
+                /* No additional natural attack parts. */
+                0,
+
+                /* Resistance, vulnerability and immunity XOR masks. */
+                RES_PIERCE | RES_SLASH | RES_DARK,
+                RES_BLUNT | RES_HOLY,
+                RES_POISON | RES_SLEEP | RES_DRAIN,
+
+                /* Neutral HP, damage, critical and swiftness adjustments. */
+                0, 0, 0, 0,
+
+                /* Preserve unspecified humanoid dimension/language data. */
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                /* No compulsory inherited special in any slot. */
+                "", "", "",
+
+                /* No additional archetype XP adjustment. */
+                0,
+
+                /* Empty names resolve to a valid empty 0/0/0 set. */
+                MOB_SPECIAL_CHANCES_AUTO
         }
 };
 
