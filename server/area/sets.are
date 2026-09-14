@@ -10,18 +10,17 @@ $
 #MOBILES
 
 #2700
-mob filler~
-The mob filler~
-Here floats a filler.
+skeleton skelpilot bones~
+a skeleton test creature~
+A skeleton test creature stands here.
 ~
-no Desc.
+Bare bones are bound into a humanoid shape by necromantic force.
 ~
-1|2|32|128 8 -870 S
-25 6 0 25d25+250 6d6+5
+2 0 -500 S
+25 0 0 1d1+0 1d1+0
 0 0
 8 8 0
-< fire_elemental~ elite~
-MobHPMod 25
+< skeleton~ common~
 
 #0
 

@@ -2144,6 +2144,7 @@ extern WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_SLICED_TAIL 502
 #define OBJ_VNUM_REMAINS 571
 #define OBJ_VNUM_DIRT_PILE 581
+#define OBJ_VNUM_GENERIC_BODY_PART 593
 
 #define OBJ_VNUM_MUSHROOM 20
 #define OBJ_VNUM_LIGHT_BALL 21
@@ -3518,7 +3519,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 3
+#define MAX_MOB 4
 #define MAX_SPECIES 4
 #define MAX_RANK 6
 
@@ -5428,6 +5429,7 @@ void set_fighting args((CHAR_DATA * ch, CHAR_DATA *victim));
 void stop_fighting args((CHAR_DATA * ch, bool fBoth));
 void raw_kill(CHAR_DATA *ch, CHAR_DATA *victim, bool corpse);
 void death_cry args((CHAR_DATA * ch));
+void show_death_parts args((CHAR_DATA *viewer, CHAR_DATA *subject));
 bool one_hit args((CHAR_DATA * ch, CHAR_DATA *victim, int dt, bool haste));
 void death_penalty args((CHAR_DATA * ch, CHAR_DATA *victim));
 void check_player_death args((CHAR_DATA * opponent, CHAR_DATA *victim));

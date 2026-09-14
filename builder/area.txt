@@ -317,58 +317,6 @@ The syntax of this section is:
     }
     #0
 
-==Archetype and rank selection
-
-The optional selection line names a creature archetype and a rank:
-
-    < fire_elemental~ elite~
-
-The first name selects an entry in mob_table, not directly in species_table.
-That archetype determines its body species and inherited creature defaults.
-
-The selection belongs after any mobile programs and before teacher entries
-and optional footstep, resistance, attack-part and scalar declarations.
-
-Scribe uses two independent source fields:
-
-    archetype fire_elemental
-    rnk elite
-
-If archetype is supplied and rank is omitted or common, Scribe still emits
-the selection:
-
-    < fire_elemental~ common~
-
-When archetype is omitted, the previous behaviour is preserved: non-default
-ranks use reserved, and common rank emits no selection line.
-
-Current Scribe archetype names are reserved, goat and fire_elemental.
-The script normalises names to lowercase and checks its companion
-%mob_archetype registry. Keep that name list synchronized with mob_table
-when adding or renaming server archetypes.
-
-An empty or unknown archetype is invalid. The words none and inherit, numeric
-indices, and body-species names are not archetype selections. Omit the field
-for the previous default behaviour; use reserved for the explicit neutral
-placeholder.
-
-archetype does not define a new creature template. The server's C tables
-remain authoritative for all inherited properties.
-
-sp, sp2, sp3 and spchance remain independent special-function controls.
-rnk remains an independent rank choice. Names and descriptions never imply
-an archetype automatically.
-
-Scribe exports original individual masks and scalar choices unchanged.
-It must not expand inherited defaults into act, aff, bf, atk, res, vuln
-or imm, because repeated inherited bits are XOR cancellations.
-
-An archetype formerly added only by hand to a generated .are file must be
-recorded in its Scribe source before regeneration. This change does not
-import prior edits from generated files.
-
-AFF_MINDLESS and the skeleton archetype are subsequent implementation work,
-not features introduced by this source-field change.
 
 The 'vnum' is the virtual number of the mobile.
 
@@ -582,8 +530,16 @@ falls to the floor of the room.  If equipment or money falls a message is printe
 when the mob is killed.
 
 Corpse forming mobiles may produce body parts when killed or spray blood.
-Relevant checks for heads, arms etc are made to prevent wrong body parts from
-being produced.  Body parts from mobiles with 'BODY_INORGANIC' set are made type
+Random death-generated parts use the creature's resolved BODY/PART anatomy
+and declared natural parts. Legacy default head, heart and limb checks remain.
+A successful part-drop roll creates at most one eligible kind. Quantity flags
+do not create several objects, and BODY_NO_CORPSE suppresses all such drops.
+
+Generated parts decay, carry ITEM_BODY_PART, and retain undead provenance.
+Inorganic parts are inedible trash. See the Scribe manual for supported
+part keywords and examples. mstat lists the current death-part candidates.
+
+Body parts from mobiles with 'BODY_INORGANIC' set are made type
 'trash' and are inedible (but still have a timer set to prevent clutter).
 
 The "mob_foley_type" and  "mob_foley_key" values are what allow you to
@@ -623,10 +579,21 @@ mobprogs, simple mobile-specific programs written in the MUD's pseudo-scripting
 Mobprog language.  Their description is out of scope of this document, but read
 mobprogs.txt for full details.
 
-"species" and "rank" values (if present) will mark the species type of the mob
-(currently not fully implemented, use "reserved" as a dummy value) and the rank,
-which will affect the strength/power of the mob, and improve the likelihood of
-them dropping high-quality items at higher ranks.
+The optional mobile selection line names an archetype and rank:
+
+    < skeleton~ common~
+
+Scribe supplies these independently through archetype and rnk. The selected
+archetype determines the body species and inherited defaults.
+
+ACT, AFF, body-form, attack-part and resistance inputs are individual XOR
+masks. Scalar values replace or inherit defaults. Special names resolve per
+slot, with one complete selection-probability vector.
+
+Export the original individual inputs, not an expanded inherited state.
+Use mstat to inspect template, individual, prototype and live values.
+
+Consult mob.c or the Scribe manual for individual archetypes.
 
 Options for "rank" values (in increasing order of power) are "common", "rare",
 "elite", "boss" and "world".

@@ -2937,14 +2937,267 @@ TO_ROOM );
 }
 
 /*
+ * Physical part kinds. Quantity flags share one candidate so that, for
+ * example, two-leg and four-leg flags do not create duplicate leg entries.
+ * A zero food value denotes an inedible part for the generic prototype.
+ */
+typedef struct death_part_data
+{
+        unsigned long int flags;
+        int vnum;
+        const char *keywords;
+        const char *noun;
+        int food;
+} DEATH_PART_DATA;
+
+static const DEATH_PART_DATA death_parts[] =
+{
+        { PART_HEAD | PART_MANY_HEAD,
+          OBJ_VNUM_SEVERED_HEAD, "head", "head", 0 },
+        { PART_HEART,
+          OBJ_VNUM_TORN_HEART, "heart", "heart", 0 },
+        { PART_ARMS | PART_MANY_ARMS,
+          OBJ_VNUM_SLICED_ARM, "arm", "arm", 0 },
+        { PART_2_LEGS | PART_4_LEGS | PART_MANY_LEGS,
+          OBJ_VNUM_SLICED_LEG, "leg", "leg", 0 },
+        { PART_TAIL | PART_TAILATTACK,
+          OBJ_VNUM_SLICED_TAIL, "tail", "tail", 0 },
+
+        { PART_BRAINS, OBJ_VNUM_GENERIC_BODY_PART,
+          "brain brains", "brain", 5 },
+        { PART_GUTS, OBJ_VNUM_GENERIC_BODY_PART,
+          "guts entrails", "bundle of entrails", 5 },
+        { PART_HANDS, OBJ_VNUM_GENERIC_BODY_PART,
+          "hand hands", "hand", 5 },
+        { PART_FEET, OBJ_VNUM_GENERIC_BODY_PART,
+          "foot feet", "foot", 5 },
+        { PART_FINGERS, OBJ_VNUM_GENERIC_BODY_PART,
+          "finger fingers", "finger", 1 },
+        { PART_EAR, OBJ_VNUM_GENERIC_BODY_PART,
+          "ear ears", "ear", 1 },
+        { PART_EYE, OBJ_VNUM_GENERIC_BODY_PART,
+          "eye eyes", "eye", 1 },
+        { PART_LONG_TONGUE, OBJ_VNUM_GENERIC_BODY_PART,
+          "tongue", "long tongue", 3 },
+        { PART_EYESTALKS, OBJ_VNUM_GENERIC_BODY_PART,
+          "eyestalk eyestalks", "eyestalk", 3 },
+        { PART_TENTACLES, OBJ_VNUM_GENERIC_BODY_PART,
+          "tentacle tentacles", "tentacle", 5 },
+        { PART_FINS, OBJ_VNUM_GENERIC_BODY_PART,
+          "fin fins", "fin", 2 },
+        { PART_WINGS, OBJ_VNUM_GENERIC_BODY_PART,
+          "wing wings", "wing", 5 },
+        { PART_SCALES | PART_SHARPSCALES, OBJ_VNUM_GENERIC_BODY_PART,
+          "scale scales", "patch of scales", 0 },
+        { PART_CLAWS, OBJ_VNUM_GENERIC_BODY_PART,
+          "claw claws", "claw", 0 },
+        { PART_FANGS, OBJ_VNUM_GENERIC_BODY_PART,
+          "fang fangs", "fang", 0 },
+        { PART_HORNS, OBJ_VNUM_GENERIC_BODY_PART,
+          "horn horns", "horn", 0 },
+        { PART_TUSKS, OBJ_VNUM_GENERIC_BODY_PART,
+          "tusk tusks", "tusk", 0 },
+        { PART_BEAK, OBJ_VNUM_GENERIC_BODY_PART,
+          "beak", "beak", 0 },
+        { PART_HAUNCH, OBJ_VNUM_GENERIC_BODY_PART,
+          "haunch", "haunch", 5 },
+        { PART_HOOVES, OBJ_VNUM_GENERIC_BODY_PART,
+          "hoof hooves", "hoof", 0 },
+        { PART_PAWS, OBJ_VNUM_GENERIC_BODY_PART,
+          "paw paws", "paw", 5 },
+        { PART_FORELEGS, OBJ_VNUM_GENERIC_BODY_PART,
+          "foreleg forelegs", "foreleg", 5 },
+        { PART_FEATHERS, OBJ_VNUM_GENERIC_BODY_PART,
+          "feather feathers", "feather", 0 },
+        { PART_HUSK_SHELL, OBJ_VNUM_GENERIC_BODY_PART,
+          "husk shell fragment", "shell fragment", 0 }
+};
+
+/*
+ * Use live, already-resolved anatomy. Natural attack parts can also name
+ * physical pieces, including non-offensive feathers and shell material.
+ * Keep the old default head/heart/limb rules for legacy body definitions.
+ */
+static unsigned long int death_part_mask(CHAR_DATA *ch)
+{
+        unsigned long int parts;
+
+        if (!ch || !MAKES_CORPSE(ch))
+                return 0;
+
+        parts = ch->body_form;
+
+        if (IS_NPC(ch))
+                parts |= ch->attack_parts & MOB_ATTACK_PARTS_VALID_MASK;
+
+        if (HAS_HEAD(ch))
+                parts |= PART_HEAD;
+        if (HAS_HEART(ch))
+                parts |= PART_HEART;
+        if (HAS_ARMS(ch))
+                parts |= PART_ARMS;
+        if (HAS_LEGS(ch))
+                parts |= PART_2_LEGS;
+        if (HAS_TAIL(ch))
+                parts |= PART_TAIL;
+
+        return parts;
+}
+
+/* Choose one distinct eligible kind, not one roll per flag or limb. */
+static const DEATH_PART_DATA *choose_death_part(CHAR_DATA *ch)
+{
+        unsigned long int parts;
+        size_t i;
+        int count;
+        int choice;
+
+        parts = death_part_mask(ch);
+        count = 0;
+
+        for (i = 0; i < sizeof(death_parts) / sizeof(death_parts[0]); i++)
+        {
+                if (parts & death_parts[i].flags)
+                        count++;
+        }
+
+        if (count == 0)
+                return NULL;
+
+        choice = count == 1 ? 1 : number_range(1, count);
+
+        for (i = 0; i < sizeof(death_parts) / sizeof(death_parts[0]); i++)
+        {
+                if ((parts & death_parts[i].flags) && --choice == 0)
+                        return &death_parts[i];
+        }
+
+        return NULL;
+}
+
+/* Read-only mstat output; do not create items or consume random numbers. */
+void show_death_parts(CHAR_DATA *viewer, CHAR_DATA *subject)
+{
+        unsigned long int parts;
+        size_t i;
+        bool first;
+
+        if (!viewer || !subject)
+                return;
+
+        parts = death_part_mask(subject);
+        first = TRUE;
+        send_to_char("\n\r{WDeath-part candidates:{x ", viewer);
+
+        for (i = 0; i < sizeof(death_parts) / sizeof(death_parts[0]); i++)
+        {
+                if (!(parts & death_parts[i].flags))
+                        continue;
+
+                if (!first)
+                        send_to_char(", ", viewer);
+                send_to_char(death_parts[i].noun, viewer);
+                first = FALSE;
+        }
+
+        if (first)
+                send_to_char("none", viewer);
+
+        send_to_char("\n\r", viewer);
+}
+
+/* Create a detached object; death_cry() places it after the death message. */
+static OBJ_DATA *create_death_part(
+    CHAR_DATA *ch,
+    const DEATH_PART_DATA *part)
+{
+        OBJ_INDEX_DATA *index;
+        OBJ_DATA *obj;
+        const char *name;
+        char buf[MAX_STRING_LENGTH];
+
+        if (!ch || !part || !MAKES_CORPSE(ch))
+                return NULL;
+
+        index = get_obj_index(part->vnum);
+
+        if (!index)
+        {
+                bug("Create_death_part: missing object %d.", part->vnum);
+                return NULL;
+        }
+
+        obj = create_object(index, 0, "common", CREATED_NO_RANDOMISER);
+
+        if (!obj || obj->deleted)
+                return NULL;
+
+        name = IS_NPC(ch) ? ch->short_descr : ch->name;
+        if (!name || !name[0])
+                name = "an unknown creature";
+
+        if (part->vnum == OBJ_VNUM_GENERIC_BODY_PART)
+        {
+                free_string(obj->name);
+                obj->name = str_dup(part->keywords);
+
+                snprintf(buf, sizeof(buf), "the %s of %s", part->noun, name);
+                free_string(obj->short_descr);
+                obj->short_descr = str_dup(buf);
+
+                snprintf(buf, sizeof(buf),
+                         "The %s of %s lies here.", part->noun, name);
+                free_string(obj->description);
+                obj->description = str_dup(buf);
+
+                obj->item_type = part->food > 0 ? ITEM_FOOD : ITEM_TRASH;
+                obj->value[0] = part->food;
+                obj->value[1] = 0;
+                obj->value[2] = 0;
+                obj->value[3] = 0;
+                obj->cost = 0;
+        }
+        else
+        {
+                /* Preserve the five existing body-part object formats. */
+                snprintf(buf, sizeof(buf), obj->short_descr, name);
+                free_string(obj->short_descr);
+                obj->short_descr = str_dup(buf);
+
+                snprintf(buf, sizeof(buf), obj->description, name);
+                free_string(obj->description);
+                obj->description = str_dup(buf);
+        }
+
+        obj->timer = number_range(4, 7);
+        obj->timermax = obj->timer;
+        SET_BIT(obj->extra_flags, ITEM_BODY_PART);
+
+        if (IS_UNDEAD(ch))
+                SET_BIT(obj->extra_flags, ITEM_UNDEAD);
+        else
+                REMOVE_BIT(obj->extra_flags, ITEM_UNDEAD);
+
+        if (IS_INORGANIC(ch))
+        {
+                obj->item_type = ITEM_TRASH;
+                memset(obj->value, 0, sizeof(obj->value));
+        }
+
+        return obj;
+}
+
+/*
  * Improved Death_cry contributed by Diavolo.
  * Modified to comply with mobile body_form value.  Gezhp 99.
+ * Modified to produce more parts for mob archetypes, etc.  Owl 26.
  */
 void death_cry(CHAR_DATA *ch)
 {
         ROOM_INDEX_DATA *was_in_room;
+        const DEATH_PART_DATA *part;
+        OBJ_DATA *body_part = NULL;
         char msg[MAX_STRING_LENGTH];
-        int body_part_vnum = 0;
         int door;
 
         /* Default messages */
@@ -2987,51 +3240,38 @@ void death_cry(CHAR_DATA *ch)
                 break;
 
         case 3:
-                if (HAS_HEAD(ch) && MAKES_CORPSE(ch))
-                {
-                        strcpy(msg, "$c's head is separated from $s body.");
-                        body_part_vnum = OBJ_VNUM_SEVERED_HEAD;
-                }
-                break;
-
         case 4:
-                if (MAKES_CORPSE(ch) && HAS_HEART(ch))
-                {
-                        strcpy(msg, "$c's heart is torn from $s chest.");
-                        body_part_vnum = OBJ_VNUM_TORN_HEART;
-                }
-                break;
-
         case 5:
-                if (MAKES_CORPSE(ch) && HAS_ARMS(ch))
-                {
-                        strcpy(msg, "$c's arm is sliced from $s body.");
-                        body_part_vnum = OBJ_VNUM_SLICED_ARM;
-                }
-                break;
-
         case 6:
-                if (MAKES_CORPSE(ch) && HAS_LEGS(ch))
-                {
-                        strcpy(msg, "$c's leg is sliced from $s body.");
-                        body_part_vnum = OBJ_VNUM_SLICED_LEG;
-                }
-                break;
-
         case 7:
-                if (MAKES_CORPSE(ch) && HAS_TAIL(ch))
+                part = choose_death_part(ch);
+
+                if (part)
                 {
-                        strcpy(msg, "$c's tail is sliced from $s body.");
-                        body_part_vnum = OBJ_VNUM_SLICED_TAIL;
+                        body_part = create_death_part(ch, part);
+
+                        if (body_part)
+                        {
+                                snprintf(
+                                    msg, sizeof(msg),
+                                    "$c falls, leaving $s %s behind.",
+                                    part->noun);
+                        }
                 }
                 break;
 
         case 8:
-                if (MAKES_CORPSE(ch) && HAS_HEAD(ch) && !IS_INORGANIC(ch))
-                        strcpy(msg, "$c's head splits apart, revealing $s brain.");
+                if (MAKES_CORPSE(ch)
+                &&  HAS_HEAD(ch)
+                &&  !IS_INORGANIC(ch)
+                &&  IS_SET(ch->body_form, PART_BRAINS))
+                {
+                        strcpy(
+                            msg,
+                            "$c's head splits apart, revealing $s brain.");
+                }
                 break;
         }
-
         act(msg, ch, NULL, NULL, TO_ROOM);
 
         /* SFX: death cry (same room) */
@@ -3041,41 +3281,9 @@ void death_cry(CHAR_DATA *ch)
         if ( IS_NPC( ch ) && ( IS_INORGANIC( ch ) ) )
                 sound_mobdeath_room_key( ch->in_room, "sfx.combat.mobdeath.2", 40 );
 
-        /* Body parts */
-        if (body_part_vnum != 0)
-        {
-                OBJ_DATA *obj;
-                char *name;
-                char buf[MAX_STRING_LENGTH];
-
-                name = IS_NPC(ch) ? ch->short_descr : ch->name;
-                obj = create_object(get_obj_index(body_part_vnum), 0, "common", CREATED_NO_RANDOMISER);
-                obj->timer = number_range(4, 7);
-                obj->timermax = obj->timer;
-
-                /* Set body_part flag so you can't locate magically */
-                SET_BIT(obj->extra_flags, ITEM_BODY_PART);
-
-                /*
-                 * Preserve undead provenance on severed body parts.
-                 */
-                if (IS_UNDEAD(ch))
-                        SET_BIT(obj->extra_flags, ITEM_UNDEAD);
-
-                /*  Make body parts from inorganic mobs inedible.  */
-                if (IS_INORGANIC(ch))
-                        obj->item_type = ITEM_TRASH;
-
-                sprintf(buf, obj->short_descr, name);
-                free_string(obj->short_descr);
-                obj->short_descr = str_dup(buf);
-
-                sprintf(buf, obj->description, name);
-                free_string(obj->description);
-                obj->description = str_dup(buf);
-
-                obj_to_room(obj, ch->in_room);
-        }
+        /* Place the already-created part after the death message. */
+        if (body_part)
+                obj_to_room(body_part, ch->in_room);
 
         /* Death cry heard in neighbouring locations */
         if ( IS_NPC(ch) || CAN_SPEAK(ch) )
