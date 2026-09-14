@@ -704,6 +704,8 @@ A infantryman's spiked pauldron is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -15
 #27510
@@ -714,6 +716,8 @@ The spear of an Ota'ar Dar cavalryman has been left here.~
 5 16|64|134217728|274877906944 1|8192
 0~ 0~ 0~ 11~
 4 0 0
+T
+iron/wood~
 A
 18 4
 A
@@ -730,6 +734,8 @@ A cavalryman's spiked pauldron is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -18
 #27512
@@ -740,6 +746,8 @@ A elite soldier's spiked pauldron is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -20
 #27513
@@ -750,6 +758,8 @@ A very fine-looking trident has been left here.~
 5 16|64|274877906944 1|8192
 0~ 0~ 0~ 11~
 4 0 0
+T
+steel~
 A
 17 -10
 A
@@ -768,6 +778,8 @@ A spiked pauldron carrying lieutenant insignia is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -24
 #27515
@@ -799,6 +811,8 @@ A metal crest covered in sharpened spikes lies here.~
 9 64|16777216|274877906944 1|16
 8~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 A
 2 1
 A
@@ -876,6 +890,8 @@ A pair of leggings covered in silver stars lie here in a heap.~
 9 64 1|32
 3~ ~ ~ ~
 5 0 0
+T
+silver~
 A
 12 30
 A
@@ -888,6 +904,8 @@ Silvery robes lie here in a heap.~
 9 16|64 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+silver~
 A
 12 35
 A
@@ -900,6 +918,8 @@ A wire brush used to clean parasites from the skin of sea creatures is here.~
 5 0 1|8192
 0~ 8~ 18~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 18 7
 #27526
@@ -918,6 +938,8 @@ A thick, waterproofed leather apron lies in a heap here.~
 9 1 1|2048
 8~ 0~ 0~ 0~
 20 0 0
+T
+leather~
 A
 5 3
 A
@@ -940,6 +962,8 @@ A pair of iron tongs.~
 5 0 1|8192
 0~ 10~ 15~ 8~
 20 0 0
+T
+iron/wood/leather~
 A
 2 -4
 A
@@ -981,6 +1005,8 @@ A glowing green ring lies here.~
 9 1|8|64|32768|131072|262144|524288|268435456|536870912|17179869184|274877906944 1|2
 6~ 0~ 0~ 0~
 5 0 0
+T
+silver~
 A
 12 115
 A
@@ -1037,6 +1063,8 @@ A battle trident of meticulous craftsmanship is here.~
 5 16|64|274877906944 1|8192
 0~ 1~ 6~ 2~
 10 0 30
+T
+steel~
 A
 18 10
 A
@@ -1063,6 +1091,8 @@ A heavily-polished metal crest lies here.~
 9 64|274877906944 1|16
 8~ 0~ 0~ 0~
 10 0 0
+T
+leather~
 A
 2 24
 A
@@ -1083,6 +1113,8 @@ Golden robes lie here in a heap.~
 9 16|64 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+gold~
 A
 12 30
 A
@@ -1103,6 +1135,8 @@ A tall tower shield stamped with the sigil of Ota'ar Dar lies here.~
 9 0 1|512
 10~ 10~ 10~ 10~
 10 1300 0
+T
+steel/wood~
 A
 17 -20
 #27632

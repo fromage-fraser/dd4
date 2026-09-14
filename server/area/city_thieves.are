@@ -615,6 +615,8 @@ An undead claw rests here.~
 5 1|2048 1|8192
 0~ 30~ 50~ 11~
 5 0 0
+T
+bone~
 A
 19 12
 A
@@ -639,6 +641,8 @@ A cloak of death lies here.~
 9 64|128|4096 1|1024
 10~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 4 -5
 A
@@ -651,6 +655,8 @@ A pair of Gninkaew boots lie here.~
 9 64|128|4096 1|64
 50~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 1 -10
 #23504
@@ -661,6 +667,8 @@ A undead finger rests here.~
 5 1|64 1|8192
 0~ 20~ 30~ 11~
 5 0 0
+T
+steel/wood/leather~
 #23505
 black helm~
 a black helm~
@@ -669,6 +677,8 @@ A black helm rests here.~
 9 0 1|16
 10~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 #23506
 moon collar~
 a moon collar~
@@ -677,6 +687,8 @@ A moon collar lies here.~
 9 0 1|4
 15~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 3 -2
 A
@@ -689,6 +701,8 @@ Some black chainmail lies here.~
 9 0 1|8
 20~ 1~ 6~ 11~
 15 0 0
+T
+steel~
 #23508
 iron helmet~
 iron helmet~
@@ -697,6 +711,8 @@ A iron helmet lies here.~
 9 0 1|16
 8~ 1~ 6~ 11~
 5 0 0
+T
+iron/wood/leather~
 #23509
 pike~
 a pike~
@@ -705,6 +721,8 @@ A pike rests here.~
 5 134217728 1|8192
 0~ 10~ 26~ 2~
 10 0 0
+T
+steel/wood~
 #23510
 street rags~
 some street rags~
@@ -713,6 +731,8 @@ Some street rags lie here.~
 9 0 1|8
 6~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 1
 #23511
@@ -723,6 +743,8 @@ A apron rests here.~
 9 0 1|2048
 4~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 24 -5
 #23512
@@ -733,6 +755,8 @@ Some thief robes lie here.~
 9 0 1|1024
 15~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 2 2
 #23513
@@ -743,6 +767,8 @@ A black dagger lies here.~
 5 0 1|8192
 0~ 18~ 26~ 11~
 5 0 0
+T
+steel/wood/leather~
 #23514
 imp horns red~
 imp horns~
@@ -751,6 +777,8 @@ A pair of red horns lie here.~
 9 0 1|16
 5~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 24 -10
 #23515
@@ -761,6 +789,8 @@ A baggy yellow suit lies here.~
 9 0 1|8
 20~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 24 -10
 #23516
@@ -771,6 +801,8 @@ A loincloth lies here.~
 9 0 1|2048
 5~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 19 2
 #23517
@@ -781,6 +813,8 @@ A warhammer lies here.~
 5 0 1|8192
 0~ 20~ 26~ 7~
 5 0 0
+T
+iron/wood~
 #23518
 cannon ball cannonball~
 cannonball~
@@ -789,6 +823,8 @@ A cannonball rests here.~
 5 0 1|8192
 0~ 20~ 28~ 8~
 5 0 0
+T
+steel/wood/leather~
 #23519
 yellow cloth~
 yellow cloth~
@@ -797,6 +833,8 @@ Some yellow cloth lies here.~
 9 0 1|1024
 6~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 #23520
 yellow shawl~
 a yellow shawl~
@@ -805,6 +843,8 @@ A yellow shawl lies here.~
 9 0 1|16
 5~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #23521
 cutlass~
 a cutlass~
@@ -813,6 +853,8 @@ A cutlass rests here.~
 5 0 1|8192
 0~ 18~ 24~ 3~
 5 0 0
+T
+steel/wood/leather~
 #23522
 eyepatch~
 an eyepatch~
@@ -821,6 +863,8 @@ An eyepatch rests here.~
 9 0 1|16
 5~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 2
 #23523
@@ -831,6 +875,8 @@ A green parrot stands here.~
 9 0 1|256
 8~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 19 2
 #23524
@@ -841,6 +887,8 @@ A wooden stick rests here.~
 5 0 1|8192
 0~ 10~ 18~ 7~
 5 0 0
+T
+wood~
 #23525
 leather ball~
 a leather ball~
@@ -857,6 +905,8 @@ A leather vest lies here.~
 9 0 1|8
 10~ 1~ 6~ 11~
 10 0 0
+T
+leather~
 #23527
 ball chain~
 a ball and chain~
@@ -865,6 +915,8 @@ A ball and chain lie here.~
 9 128|4096 1|32
 3~ 1~ 6~ 11~
 15 0 0
+T
+steel~
 A
 14 -250
 #23528
@@ -875,6 +927,8 @@ A necklace made of rats lies here.~
 9 0 1|4
 10~ 1~ 6~ 11~
 5 0 0
+T
+silver~
 #23529
 spiked club~
 a spiked club~
@@ -883,6 +937,8 @@ A spiked club rests here.~
 5 0 1|8192
 0~ 13~ 20~ 8~
 10 0 0
+T
+steel/wood~
 #23530
 lavish gown~
 a lavish gown~
@@ -891,6 +947,8 @@ A lavish gown lies here.~
 9 0 1|1024
 8~ 1~ 6~ 11~
 6 0 0
+T
+leather~
 A
 4 2
 #23531
@@ -901,6 +959,8 @@ A white shirt lies here.~
 9 0 1|1024
 6~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #23532
 devil tattoo~
 tattoo of a devil~
@@ -909,6 +969,8 @@ A tattoo of a devil lies here.~
 9 0 1|128
 1~ 1~ 1~ 11~
 5 0 0
+T
+leather~
 A
 19 7
 A
@@ -921,6 +983,8 @@ Some leather pants lie here.~
 9 0 1|32
 10~ 1~ 6~ 11~
 6 0 0
+T
+leather~
 #23534
 black silk gown~
 black silk gown~
@@ -929,6 +993,8 @@ A black silk gown lies here.~
 9 0 1|8
 5~ 1~ 6~ 11~
 5 0 0
+T
+silk~
 A
 3 2
 #23535
@@ -939,6 +1005,8 @@ Some old bandages lie here~
 9 128|4096 1|8
 17~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 -1
 #23536
@@ -949,6 +1017,8 @@ A bottle of rum lies here.~
 9 128|4096 1|16384
 10~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 1 2
 A
@@ -987,6 +1057,8 @@ A hand axe rests here.~
 5 0 1|8192
 0~ 19~ 30~ 3~
 8 0 0
+T
+steel/wood~
 #23541
 neckbone undead~
 an undead neckbone~
@@ -995,6 +1067,8 @@ A neckbone lies here.~
 9 1|64|4096 1|4
 6~ 1~ 6~ 11~
 5 0 0
+T
+bone~
 A
 18 5
 A
@@ -1063,6 +1137,8 @@ A thief's mask lies here.~
 9 0 1|16
 7~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 2
 #23550
@@ -1073,6 +1149,8 @@ A pair of leather boots lies here.~
 9 0 1|64
 10~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #23551
 key chest~
 a chest key~
@@ -1089,6 +1167,8 @@ A red silk dress lies here.~
 9 0 1|8
 2~ 1~ 6~ 11~
 5 0 0
+T
+silk~
 #23553
 black rose~
 a black rose~
@@ -1097,6 +1177,8 @@ A black rose lies here.~
 5 0 1|8192
 0~ 1~ 6~ 4~
 5 0 0
+T
+steel/wood/leather~
 #23554
 pansies tasty~
 tasty pansies~
@@ -1121,6 +1203,8 @@ A blue shirt rests here.~
 9 0 1|8
 6~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #23557
 navy pants~
 some navy pants~
@@ -1129,6 +1213,8 @@ Some navy pants lie here.~
 9 0 1|32
 8~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #23558
 leather shoes~
 leather shoes~
@@ -1137,6 +1223,8 @@ A pair of leather shoes lie here~
 9 0 1|64
 6~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #23559
 black onyx ring~
 a black onyx ring~
@@ -1153,6 +1241,8 @@ A rose coloured ring lies here.~
 9 0 1|2
 10~ 1~ 6~ 11~
 5 0 0
+T
+sapphire~
 #23561
 uncut gem green~
 a green uncut gem~
@@ -1169,6 +1259,8 @@ A blue dress lies here.~
 9 0 1|8
 3~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #23563
 tartan pants~
 tartan pants~
@@ -1177,6 +1269,8 @@ A pair of tartan pants lie here, making your eyes sore.~
 9 128|4096 1|32
 20~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 9 100
 #23564
@@ -1187,6 +1281,8 @@ A riding cloak lies here.~
 9 0 1|1024
 15~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 14 50
 #23565
@@ -1205,6 +1301,8 @@ A pair of sandals lie here.~
 9 0 1|64
 1~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #23567
 apple~
 an apple~
@@ -1253,6 +1351,8 @@ Some robes the colour of night lie here.~
 9 1|64 1|1024
 30~ 1~ 6~ 11~
 10 0 0
+T
+cloth~
 A
 23 20
 A
@@ -1265,6 +1365,8 @@ A skullcap lies here.~
 9 1 1|16
 5~ 1~ 6~ 11~
 5 0 0
+T
+bone~
 A
 23 5
 A
@@ -1337,6 +1439,8 @@ A red hot iron poker smoulders on the ground.~
 5 1 1|8192
 0~ 20~ 30~ 0~
 5 0 0
+T
+iron/wood/leather~
 #23582
 leather gloves~
 leather gloves~
@@ -1345,6 +1449,8 @@ Some leather gloves lie here.~
 9 0 1|128
 6~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #23583
 copper urn large~
 a copper urn~

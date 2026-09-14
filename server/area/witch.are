@@ -188,6 +188,8 @@ A pair of teeth are here.~
 5 67108864 0
 1~ ~ ~ 10~
 5 0 0
+T
+steel/wood/leather~
 
 #10100
 claws~
@@ -197,6 +199,8 @@ A pair of claws drip with blood here.~
 5 67108864 0
 4~ ~ ~ 14~
 5 0 0
+T
+bone~
 
 #10101
 fangs~
@@ -206,6 +210,8 @@ Bloody Fangs.~
 5 67108864 0
 1~ ~ ~ 10~
 5 0 0
+T
+bone~
 
 #10102
 fire egg~
@@ -224,6 +230,8 @@ A plain wooden broom stick is here.~
 5 0 1|8192
 ~ ~ ~ 7~
 5 0 0
+T
+wood~
 A
 19 3
 A
@@ -237,6 +245,8 @@ A wicked looking trident is here.~
 5 64|16777216 1|8192
 ~ ~ ~ 11~
 10 0 0
+T
+steel~
 A
 19 5
 A
@@ -250,6 +260,8 @@ A pointy tail has been separated from its owner.~
 5 67108864 0
 6~ ~ ~ 11~
 10 0 0
+T
+steel/wood/leather~
 
 #10107
 hunter bracers~
@@ -259,6 +271,8 @@ A pair of hunter's bracers are here.~
 9 0 1|256
 ~ ~ ~ ~
 5 0 0
+T
+steel~
 A
 13 50
 #10108

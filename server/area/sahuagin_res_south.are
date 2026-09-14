@@ -664,6 +664,8 @@ transverse teeth, arranged in a way that makes it resemble a saw.~
 5 67108864 0
 1~ 0~ 0~ 15~
 1 0 0
+T
+steel/wood/leather~
 #27415
 spiny barb~
 a spiny barb~
@@ -673,6 +675,8 @@ venom.~
 5 16384|67108864 0
 6~ 0~ 0~ 16~
 1 0 0
+T
+steel/wood/leather~
 #27416
 jaws teeth spiny sharp~
 jaws full of sharp, spiny teeth~
@@ -681,6 +685,8 @@ Your sharp teeth protrude from your fearsome jaws.~
 5 67108864 0
 1~ 0~ 0~ 10~
 1 0 0
+T
+steel/wood/leather~
 #27417
 egg capsule fiddler ray~
 <227>a fiddler ray's egg capsule<0>~
@@ -705,6 +711,8 @@ A spiked pauldron is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -10
 #27420
@@ -715,6 +723,8 @@ A gleaming trident of excellent manufacture is here.~
 5 16|64 1|8192
 0~ 1~ 6~ 2~
 10 0 30
+T
+steel~
 A
 18 8
 A
@@ -727,6 +737,8 @@ A weighted net lies here.~
 5 16|64 1|8192
 0~ 1~ 6~ 9~
 10 0 30
+T
+steel/wood/leather~
 A
 18 8
 #27422
@@ -737,6 +749,8 @@ A gladiator's helmet with a face grate lies here.~
 9 0 1|16
 8~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 17 -15
 E
@@ -752,6 +766,8 @@ A pair of leather fasciae are here, for use as combat leg protection.~
 9 0 1|32
 0~ 0~ 0~ 0~
 45 0 0
+T
+leather~
 A
 17 -8
 #27424
@@ -770,6 +786,8 @@ A tasselled purple loincloth is here.~
 9 0 1|2048
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 #27426
 shell-covered sphere~
 a curious shell-covered sphere~
@@ -793,6 +811,8 @@ A rusty pauldron is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -4
 #27428
@@ -803,6 +823,8 @@ A rusty trident of dilapidated appearance is here.~
 5 16|64 1|8192
 0~ 1~ 6~ 2~
 10 0 30
+T
+steel~
 A
 18 5
 E
@@ -817,6 +839,8 @@ A stained and torn purple loincloth is here.~
 9 0 1|2048
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 #27430
 purple hooded cloak~
 a purple hooded cloak~
@@ -825,6 +849,8 @@ A long, dark purple hooded cloak has been left in a pile here.~
 9 64|32768|262144 1|1024
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 A
 17 -3
 A
@@ -846,6 +872,8 @@ A dagger with three blades is here.~
 5 64 1|8192
 0~ 0~ 0~ 11~
 3 0 0
+T
+steel/wood/leather~
 A
 18 7
 A
@@ -939,6 +967,8 @@ A dirty green cloak has been left in a pile here.~
 9 64|262144 1|1024
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 A
 4 4
 A
@@ -969,6 +999,8 @@ A wet scroll of sahuagin lore is here.~
 9 0 1|16384
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 E
 scroll wet sahuagin lore~
 From what you can make out, it is a treatise on the subject of Malenti, rare
@@ -1046,6 +1078,8 @@ Green robes lie here in a heap.~
 9 16|64 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 12 30
 A
@@ -1115,6 +1149,8 @@ A child-sized trident is here.~
 5 16|64 1|8192
 0~ 1~ 6~ 2~
 5 0 30
+T
+steel~
 #27453
 child-sized weighted net~
 a child-sized weighted net~
@@ -1123,6 +1159,8 @@ A child-sized weighted net lies here.~
 5 16|64 1|8192
 0~ 1~ 6~ 9~
 5 0 30
+T
+steel/wood/leather~
 #27454
 carved appointment tablet~
 an appointment tablet~
@@ -1139,6 +1177,8 @@ A luxurious purple robe lies here in a heap.~
 9 64|262144 1|1024
 0~ 0~ 0~ 0~
 3 0 0
+T
+cloth~
 A
 12 35
 #27456
@@ -1173,6 +1213,8 @@ A sturdy trident is here.~
 5 16|64 1|8192
 0~ 1~ 6~ 2~
 7 0 30
+T
+steel~
 A
 18 5
 A
@@ -1185,6 +1227,8 @@ A sturdy weighted net lies here.~
 5 16|64 1|8192
 0~ 1~ 6~ 9~
 10 0 30
+T
+steel/wood/leather~
 A
 18 4
 A
@@ -1205,6 +1249,8 @@ A jewelled trident of superb manufacture is here.~
 5 16|64 1|8192
 0~ 1~ 6~ 2~
 10 0 30
+T
+steel~
 A
 18 9
 A
@@ -1231,6 +1277,8 @@ A very ornate pauldron lies here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 17 -20
 E
@@ -1246,6 +1294,8 @@ A richly-decorated purple loinskirt lies here.~
 9 0 1|2048
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 17 -5
 #27468
@@ -1256,6 +1306,8 @@ A metal crown covered in sharpened spikes lies here.~
 9 64|16777216 1|16
 8~ 0~ 0~ 0~
 10 0 0
+T
+gold~
 A
 2 2
 A

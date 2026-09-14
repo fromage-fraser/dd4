@@ -393,6 +393,8 @@ A rusty sword has been discarded here.~
 5 0 1|8192
 0~ 0~ 0~ 1~
 1 0 0
+T
+steel/wood/leather~
 A
 2 -5
 A
@@ -410,6 +412,8 @@ A pile of tattered cloth has been discarded here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 #30403
 ripped leggings~
 ripped leggings~
@@ -418,6 +422,8 @@ A pair of ripped leggings lie on the ground here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 1 0 0
+T
+steel~
 #30404
 faded cloak~
 a faded cloak~
@@ -426,6 +432,8 @@ A pile faded cloth has been left here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 E
 faded cloak~
 This cloak is so old and faded that you can't
@@ -439,6 +447,8 @@ A suit of rusted armor has been discarded here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 2 0 0
+T
+steel~
 A
 2 -3
 A
@@ -451,6 +461,8 @@ A rusty dagger has been left here.~
 5 0 1|8192
 0~ 0~ 0~ 11~
 2 0 0
+T
+steel/wood/leather~
 A
 2 -5
 A
@@ -468,6 +480,8 @@ A pair of faded pants have been left here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 #30408
 tarnished ring~
 a tarnished ring~
@@ -476,6 +490,8 @@ A tarnished ring has been discarded here.~
 9 0 1|2
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 9 20
 #30409
@@ -486,6 +502,8 @@ A shroud of mist is floating here.~
 9 64 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 23 -15
 A
@@ -536,6 +554,8 @@ A pair of long talons ripped from some ghastly creature have been left here.~
 9 16|2048|4096 1|64
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 A
 19 6
 #30413
@@ -546,6 +566,8 @@ A chewed bone is partially buried here.~
 9 0 1|16384
 0~ 0~ 0~ 0~
 5 0 0
+T
+bone~
 A
 19 15
 A
@@ -565,6 +587,8 @@ Pieces of decaying flesh are scattered about the ground.~
 9 0 1|8
 0~ 0~ 0~ 0~
 3 0 0
+T
+organic~
 E
 decaying flesh~
 Some pieces of rotten meat from a long-dead animal are beginning to attract
@@ -578,6 +602,8 @@ A pair of large wings have been torn from some creature and left here.~
 9 2 1|1024
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 A
 27 -1
 A
@@ -595,6 +621,8 @@ A long thin tail with a spiked tip is lying at your feet.~
 5 0 1|8192
 0~ 0~ 0~ 2~
 2 0 0
+T
+steel/wood~
 A
 2 5
 A
@@ -665,6 +693,8 @@ Dark unnatural shadows are swirling before you.~
 9 16 1|1024
 0~ 0~ 0~ 0~
 0 0 0
+T
+leather~
 A
 23 -25
 A
@@ -682,6 +712,8 @@ Sharp claws have ripped from a large beast and left here.~
 5 4096|16777216|67108864 1|8192
 3~ 0~ 0~ 5~
 5 0 0
+T
+bone~
 A
 1 2
 A
@@ -701,6 +733,8 @@ Sharp claws have ripped from a large beast and left here.~
 9 16777216 1|64
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 18 2
 A
@@ -722,6 +756,8 @@ Some large black scales possibly from a dragon have been left here.~
 9 64 1|8
 0~ 0~ 0~ 0~
 3 0 0
+T
+dragonscale~
 A
 12 200
 A
@@ -764,6 +800,8 @@ A pile of black cloth is in a heap on the floor.~
 9 0 1|32
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 #30427
 baggy silk shirt~
 a baggy silk shirt~
@@ -772,6 +810,8 @@ A small pile of silk has been left here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+silk~
 #30428
 slippers red~
 a pair of red slippers~
@@ -780,6 +820,8 @@ A peculiar pair of red slippers have been left here.~
 9 64 1|64
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 12 100
 A
@@ -799,6 +841,8 @@ A small golden chain is lying here.~
 9 64|4096 1|4096
 0~ 0~ 0~ 0~
 1 0 0
+T
+gold~
 A
 12 100
 A
@@ -819,6 +863,8 @@ A sinister looking sphere floats before you.~
 9 16|64 1|32768
 0~ 0~ 0~ 0~
 0 0 0
+T
+leather~
 A
 18 8
 A
@@ -886,6 +932,8 @@ A small gold ring has been discarded here.~
 9 2 1|2
 0~ 0~ 0~ 0~
 1 0 0
+T
+gold~
 A
 17 -10
 A
@@ -905,6 +953,8 @@ A pair of long talons ripped from some ghastly creature have been left here.~
 5 16|2048|4096|67108864 1|8192
 4~ 0~ 0~ 5~
 3 0 0
+T
+steel/wood/leather~
 A
 18 10
 A
@@ -987,6 +1037,8 @@ An ancient full-helm has been left here.~
 9 2 1|16
 ~ ~ ~ ~
 10 0 0
+T
+steel~
 E
 ancient helm full-helm~
 The ancient full-helm is humming with mystical power that tingles through

@@ -323,6 +323,8 @@ A toy boomerang wants to be picked up.~
 5 0 1|8192
 0~ 2~ 4~ 7~
 5 5 2
+T
+steel/wood/leather~
 #1503
 staff gnarled~
 a gnarled staff~
@@ -331,6 +333,8 @@ A gnarled staff is here.~
 5 0 1|8192
 0~ 1~ 9~ 7~
 15 600 250
+T
+wood~
 #1504
 sword gnome~
 a gnome sword~
@@ -339,6 +343,8 @@ A gnome sword catches your eye.~
 5 0 8193
 0~ 3~ 3~ 3~
 15 4000 2000
+T
+steel/wood/leather~
 #1505
 shield studded~
 a studded shield~
@@ -347,6 +353,8 @@ A studded wooden shield lies here.~
 9 0 513
 4~ 0~ 0~ 0~
 16 3000 1500
+T
+wood~
 #1506
 potion bloody~
 a bloody potion~
@@ -363,6 +371,8 @@ A bloody cloak lies in a corner.~
 9 64 5
 4~ 0~ 0~ 0~
 15 2000 1000
+T
+cloth~
 #1508
 ring bat~
 a bat ring~
@@ -371,6 +381,8 @@ A ring in the shape of a bat lies here.~
 9 64 3
 3~ 0~ 0~ 0~
 2 2500 1250
+T
+silver~
 A
 14 15
 #1509
@@ -381,6 +393,8 @@ A string of beads is here.~
 9 0 5
 3~ 0~ 0~ 0~
 8 4000 2000
+T
+silver~
 A
 18 2
 #1510
@@ -391,6 +405,8 @@ An electrum sword lies here.~
 5 65 8193
 0~ 4~ 3~ 3~
 20 100000 25000
+T
+steel/wood/leather~
 #1511
 basket wicker~
 a wicker basket~
@@ -431,6 +447,8 @@ You notice a pair of Gnome Boots.~
 9 0 65
 4~ 0~ 0~ 0~
 12 12000 5000
+T
+leather~
 A
 14 10
 #1516
@@ -465,6 +483,8 @@ A stone slab lies here.~
 9 0 513
 4~ 0~ 0~ 0~
 35 9000 5000
+T
+granite~
 A
 1 2
 #1520
@@ -475,6 +495,8 @@ A large suit of heavy banded mail is here~
 9 0 9
 6~ 0~ 0~ 0~
 30 35000 10000
+T
+steel~
 #1521
 club large~
 a large club~
@@ -483,6 +505,8 @@ A large club sits here.~
 5 0 8193
 0~ 4~ 3~ 7~
 22 20000 10000
+T
+wood~
 #1522
 banana~
 a banana~

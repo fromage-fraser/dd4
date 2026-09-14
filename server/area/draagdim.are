@@ -1375,6 +1375,8 @@ A silver great-sword rests here.~
 5 1|2|64|1024|2048 1|8192
 ~ ~ ~ 1~
 1 0 0
+T
+silver~
 E
 crysomer~
 This is the fabled sword carried by the half-dragon hero, Fitharn
@@ -1412,6 +1414,8 @@ A metal scale shirt lies here.~
 9 0 1|8
 ~ ~ ~ ~
 7 0 0
+T
+leather~
 
 #28060
 dagger~
@@ -1421,6 +1425,8 @@ A blunt dagger rests here.~
 5 0 1|8192
 ~ ~ ~ 2~
 5 0 0
+T
+steel/wood/leather~
 A
 19 -1
 
@@ -1432,6 +1438,8 @@ A sword rests here.~
 5 0 1|8192
 ~ ~ ~ 1~
 5 0 0
+T
+steel/wood/leather~
 
 #28062
 honed blade~
@@ -1441,6 +1449,8 @@ A long, honed blade lies here.~
 5 64 1|8192
 ~ ~ ~ 1~
 5 0 0
+T
+steel/wood/leather~
 A
 19 4
 A
@@ -1454,6 +1464,8 @@ A heavy mace rests here.~
 5 0 1|8192
 ~ ~ ~ 8~
 8 0 0
+T
+iron/wood~
 A
 19 3
 A
@@ -1467,6 +1479,8 @@ A battle axe rests here.~
 5 0 1|8192
 ~ ~ ~ 13~
 5 0 0
+T
+steel/wood~
 A
 17 -2
 A
@@ -1482,6 +1496,8 @@ A steel helm rests here.~
 9 0 1|16
 ~ ~ ~ ~
 2 0 0
+T
+steel/wood/leather~
 
 #28066
 gauntlets leather~
@@ -1491,6 +1507,8 @@ A pair of leather gauntlets lie here.~
 9 0 1|128
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 
 #28067
 plate platemail breast breastplate~
@@ -1500,6 +1518,8 @@ A shiny breastplate lies here.~
 9 0 1|8
 ~ ~ ~ ~
 10 0 0
+T
+steel~
 A
 17 -15
 A
@@ -1513,6 +1533,8 @@ A pair of leather greaves rest here.~
 9 0 1|32
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 
 #28069
 pint beer~
@@ -1560,6 +1582,8 @@ A cloak rests here.~
 9 64 1|1024
 ~ ~ ~ ~
 5 0 0
+T
+cloth~
 A
 24 -10
 A
@@ -1579,6 +1603,8 @@ A needler rests here.~
 5 1 1|8192
 ~ ~ ~ 1~
 1 0 0
+T
+steel/wood/leather~
 A
 19 4
 A
@@ -1710,6 +1736,8 @@ Some Black Robes lie here.~
 9 1|64 1|1024
 ~ ~ ~ ~
 1 0 0
+T
+cloth~
 A
 18 10
 A
@@ -1771,6 +1799,8 @@ A High Quarter sword rests here.~
 5 64|1024 1|8192
 ~ ~ ~ 3~
 2 0 0
+T
+steel/wood/leather~
 
 #28019
 High armour~
@@ -1780,6 +1810,8 @@ A suit of High Quarter armour lies here.  You wonder where its owner is.~
 9 64|1024 1|8
 ~ ~ ~ ~
 5 0 0
+T
+steel~
 A
 24 -6
 A
@@ -1793,6 +1825,8 @@ A pair of High Quarter boots lie here.~
 9 64 1|64
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 5 3
 
@@ -1804,6 +1838,8 @@ A High Quarter buckler rests here.~
 9 64 1|512
 ~ ~ ~ ~
 6 0 0
+T
+leather~
 A
 24 -1
 A
@@ -1821,6 +1857,8 @@ A pair of High Quarter leggings lie here.~
 9 64 1|32
 ~ ~ ~ ~
 3 0 0
+T
+steel~
 A
 13 10
 A
@@ -1838,6 +1876,8 @@ A High Quarter bracer lies here.~
 9 64 1|4096
 ~ ~ ~ ~
 1 0 0
+T
+steel~
 A
 3 -1
 A
@@ -1862,6 +1902,8 @@ A High Quarter shirt lies here.~
 9 64 1|1024
 ~ ~ ~ ~
 3 0 0
+T
+leather~
 A
 14 25
 A
@@ -1877,6 +1919,8 @@ A pair of High Quarter sleeves lie here.~
 9 64 1|256
 ~ ~ ~ ~
 5 0 0
+T
+cloth~
 A
 24 -5
 A
@@ -1890,6 +1934,8 @@ A pair of High Quarter gloves lie here.~
 9 64 1|128
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 1 2
 A
@@ -1903,6 +1949,8 @@ A helmet bearing the crest of the High Quarter Warden lies here.~
 9 64 1|16
 ~ ~ ~ ~
 4 0 0
+T
+steel~
 A
 17 -10
 A
@@ -1916,6 +1964,8 @@ Jasmir's apron lies here.~
 9 1|64|1024|2048 1|2048
 ~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 5 -2
 A
@@ -1976,6 +2026,8 @@ A fine silk robe lies here.~
 9 128 1|1024
 ~ ~ ~ ~
 2 0 0
+T
+silk~
 A
 24 -3
 
@@ -2102,6 +2154,8 @@ a broken longsword~
 5 0 0
 ~ ~ ~ 3~
 20 0 0
+T
+steel/wood/leather~
 
 #28048
 armor plate full~
@@ -2111,6 +2165,8 @@ pitted full plate armor~
 9 0 0
 ~ ~ ~ ~
 50 0 0
+T
+steel~
 
 #28049
 shield kite~
@@ -2120,6 +2176,8 @@ a burnt kite shield~
 9 0 0
 ~ ~ ~ ~
 20 0 0
+T
+steel/wood~
 
 #28050
 elite sword~
@@ -2129,6 +2187,8 @@ A sword bearing the symbol of the Draagdim elite guard rests here.~
 5 64|1024 1|8192
 ~ ~ ~ 11~
 1 0 0
+T
+steel/wood/leather~
 A
 19 10
 
@@ -2140,6 +2200,8 @@ A breastplate bearing the symbol of the Draagdim Elite guard lies here.~
 9 64|1024 1|8
 ~ ~ ~ ~
 5 0 0
+T
+silver~
 A
 13 20
 A
@@ -2153,6 +2215,8 @@ A helmet bearing the symbol of the Draagdim Elite guard lies here.~
 9 64|1024 1|16
 ~ ~ ~ ~
 1 0 0
+T
+steel~
 A
 18 10
 A
@@ -2166,6 +2230,8 @@ A large and carefully sharpened battleaxe rests here.~
 5 64|2048 1|8192
 ~ ~ ~ 13~
 5 0 0
+T
+steel/wood~
 A
 19 20
 
@@ -2177,6 +2243,8 @@ A leather jerkin bearing the symbol of Draagdim lies here.~
 9 64|1024 1|8
 ~ ~ ~ ~
 2 0 0
+T
+leather~
 A
 5 2
 A
@@ -2190,6 +2258,8 @@ A shield bearing the symbol of the Draagdim elite guard lies here.~
 9 64|1024|2048 1|512
 ~ ~ ~ ~
 2 0 0
+T
+steel/wood~
 A
 18 10
 A
@@ -2212,6 +2282,8 @@ A sickle rests here.~
 5 0 1|8192
 ~ ~ ~ 1~
 5 0 0
+T
+steel/wood/leather~
 A
 19 10
 A
@@ -2225,6 +2297,8 @@ A black sword rests here.~
 5 2|64|1024|2048 1|8192
 ~ ~ ~ 13~
 5 0 0
+T
+steel/wood/leather~
 E
 dreamer Runesword black sword~
 The sword seems to be made of some type of black metal and the
@@ -2262,6 +2336,8 @@ A silver chain hauberk lies here.~
 9 1|32|64|1024|2048 1|8
 ~ ~ ~ ~
 25 0 0
+T
+silver~
 A
 23 -10
 A
@@ -2281,6 +2357,8 @@ A silvery crown rests here.~
 9 1|64|128 1|16
 ~ ~ ~ ~
 1 0 0
+T
+silver~
 A
 4 4
 A
@@ -2294,6 +2372,8 @@ A sword rests here.~
 5 0 1|8192
 ~ ~ ~ 1~
 1 0 0
+T
+steel/wood/leather~
 
 #28085
 shield~
@@ -2303,6 +2383,8 @@ A shield rests here.~
 9 0 1|512
 ~ ~ ~ ~
 1 0 0
+T
+steel/wood~
 
 #28086
 chain shirt~
@@ -2312,6 +2394,8 @@ A chain shirt rests here.~
 9 0 1|8
 ~ ~ ~ ~
 5 0 0
+T
+steel~
 
 #28087
 Cruorlech sword~
@@ -2334,6 +2418,8 @@ A Platine axe glitters here.~
 5 1 1|8192
 ~ ~ ~ 13~
 1 0 0
+T
+steel/wood~
 
 #28089
 platinum block~
@@ -2434,6 +2520,8 @@ The massive platinum claws of Rak'bensol'lafar lie here.~
 5 16777216|67108864 8192
 3~ ~ ~ 5~
 20 0 0
+T
+platinum~
 A
 18 50
 A
@@ -2447,6 +2535,8 @@ The scaled hide of Rak'bensol'lafar is here.~
 9 1|67108864 8
 ~ 7~ ~ ~
 50 0 0
+T
+platinum~
 A
 17 -200
 A
@@ -2498,6 +2588,8 @@ perfection~
 9 1 8
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 19 -10000
 A

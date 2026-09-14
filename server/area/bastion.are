@@ -466,6 +466,8 @@ A large pair of heavy stone wings are lying here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 15 0 0
+T
+granite~
 A
 1 -5
 A
@@ -488,6 +490,8 @@ A jade collar has been discarded here.~
 9 1|64|4096 1|4
 0~ 0~ 0~ 0~
 3 0 0
+T
+jade~
 A
 18 8
 A
@@ -509,6 +513,8 @@ Some scraggly patches of fur are scattered about.~
 9 0 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+fur~
 A
 17 0
 #30603
@@ -519,6 +525,8 @@ Large bony wings torn from the back of some creature are lying here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 E
 bony wings~
 Bones are poking out through the leathery surface of these wings. They are
@@ -555,6 +563,8 @@ Souls of the damned linger here.~
 9 0 1|32768
 0~ 0~ 0~ 0~
 0 0 0
+T
+leather~
 A
 18 8
 A
@@ -569,6 +579,8 @@ A charred poker has been left here.~
 5 0 1|8192
 0~ 0~ 0~ 2~
 2 0 0
+T
+steel/wood/leather~
 A
 18 15
 A
@@ -581,6 +593,8 @@ An amulet inscribed with unfamiliar symbols has been discarded here. ~
 9 2|32|64 1|4
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 19 12
 A
@@ -608,6 +622,8 @@ A pile of grey fabric is in a heap on the floor.~
 9 64 1|8
 0~ 0~ 0~ 0~
 2 0 0
+T
+cloth~
 A
 17 -50
 A
@@ -641,6 +657,8 @@ A pair of white feathered wings at lying here.~
 9 1024 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 E
 clipped wings~
 A pair of snow white wings have had all their primary feathers roughly
@@ -655,6 +673,8 @@ A set of heavy iron shackles have been left here.~
 9 2|64 1|256
 0~ 0~ 0~ 0~
 5 0 0
+T
+iron/wood/leather~
 A
 14 -200
 A
@@ -675,6 +695,8 @@ A tangle of thorns is here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 5 0 0
+T
+gold~
 A
 1 0
 E
@@ -691,6 +713,8 @@ A pile of tattered cloth is in a heap on the floor.~
 9 0 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 E
 grubby white robe~
 The robe is tattered and torn and singed in several places. It looks as if
@@ -706,6 +730,8 @@ A long black sword is lying here.~
 5 64|2048|1048576 1|8192
 0~ 0~ 0~ 11~
 4 0 0
+T
+steel/wood/leather~
 A
 19 20
 A
@@ -727,6 +753,8 @@ A black gothik breastplate etched with silver has been left here.~
 9 16 1|8
 0~ 0~ 0~ 0~
 5 0 0
+T
+silver~
 A
 19 10
 A
@@ -806,6 +834,8 @@ A pair of articulated steel gauntlets have been left here.~
 9 128 1|128
 0~ 0~ 0~ 0~
 3 0 0
+T
+steel/wood/leather~
 A
 18 6
 A
@@ -828,6 +858,8 @@ A heavy armour-piercing crossbow has been left here.~
 5 2|1073741824 1|8192
 0~ 0~ 0~ 0~
 4 0 0
+T
+wood~
 A
 18 15
 A
@@ -851,6 +883,8 @@ There is a sudden rush of displaced air and energy.~
 9 2|32 1|1024
 0~ 0~ 0~ 0~
 0 0 0
+T
+leather~
 #30625
 assassins dagger~
 an assassin's dagger~
@@ -859,6 +893,8 @@ A long sharp dagger has been left here.~
 5 8|64|4096|16384|65536|131072|262144|524288|268435456|536870912 1|8192
 0~ 0~ 0~ 11~
 1 0 0
+T
+steel/wood/leather~
 A
 18 10
 A
@@ -879,6 +915,8 @@ A black leather jerkin has been abandoned here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 19 10
 A
@@ -899,6 +937,8 @@ A pair of soft leather boots have been left here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 2 3
 A
@@ -918,6 +958,8 @@ A pile of ink-black cloth has been discarded here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 1 0 0
+T
+cloth~
 A
 2 3
 A
@@ -940,6 +982,8 @@ A black hood has been left here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 17 -5
 E
@@ -956,6 +1000,8 @@ A sharp throwing star has been left here.~
 9 16777216 1|16384
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 18 25
 A
@@ -974,6 +1020,8 @@ A bundle of white cloth embroidered with gold thread has been carelessly left he
 9 64|1024|2048 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+gold~
 A
 4 4
 A
@@ -1022,6 +1070,8 @@ A golden halo is hovering in the air.~
 9 1|64|1024 1|32768
 0~ 0~ 0~ 0~
 1 0 0
+T
+gold~
 A
 3 2
 A
@@ -1045,6 +1095,8 @@ A pair of white feathered wings are lying here.~
 9 1024|4096 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 2 5
 A
@@ -1063,6 +1115,8 @@ A pair of black feathered wings are lying here.~
 9 512|4096 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 2 2
 A
@@ -1098,6 +1152,8 @@ A pair of grey feathered wings are lying here.~
 9 512|1024|4096 1|1024
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 2 2
 A
@@ -1118,6 +1174,8 @@ A longsword has been abandoned here.~
 5 2|16777216 1|8192
 0~ 0~ 0~ 0~
 3 0 0
+T
+steel/wood/leather~
 A
 18 10
 A
@@ -1137,6 +1195,8 @@ A pair of scuffed work boots have been left here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 17 -20
 E
@@ -1152,6 +1212,8 @@ An old leather apron has been left here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 17 -20
 E
@@ -1167,6 +1229,8 @@ A pair of grubby work gloves have been left here.~
 9 0 1|128
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 17 -20
 E
@@ -1182,6 +1246,8 @@ A pair of old trousers have been discarded here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 17 -10
 E
@@ -1237,6 +1303,8 @@ Dark unnatural shadows swirl before you.~
 9 16 1|1024
 0~ 0~ 0~ 0~
 0 0 0
+T
+leather~
 A
 9 100
 A
@@ -1255,6 +1323,8 @@ A pile of chainmail has been left here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 3 0 0
+T
+steel~
 A
 17 -20
 A
@@ -1267,6 +1337,8 @@ A small pile of chainmail has been left here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 2 0 0
+T
+steel~
 A
 17 0
 A
@@ -1281,6 +1353,8 @@ A black gothik shield has been discarded here.~
 9 16 1|512
 0~ 0~ 0~ 0~
 4 0 0
+T
+steel/wood~
 A
 17 -20
 A
@@ -1304,6 +1378,8 @@ A falconry hood with feathers sprouting from the top has been left here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 17 -20
 E
@@ -1320,6 +1396,8 @@ A leather thong has been discarded here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 A
 2 -10
 #30652

@@ -169,6 +169,8 @@ A hard bread stick is here covered in mold.~
 5 512|2048 1|8192
 0~ 1~ 1~ 0~
 5 0 0
+T
+steel/wood/leather~
 #131
 tattered pants~
 tattered pants~
@@ -177,6 +179,8 @@ Some tattered pants lie here.~
 9 0 1|32
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #132
 loin cloth~
 a loin cloth~
@@ -185,6 +189,8 @@ A tiny piece of cloth that covers nothing is here.~
 9 0 1|32
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 #133
 spork~
 a {wspork{x~
@@ -193,6 +199,8 @@ A plastic eating utensil has been dropped here.~
 5 0 1|8192
 0~ 0~ 1~ 2~
 5 0 0
+T
+steel/wood/leather~
 E
 ~
 ~
@@ -204,6 +212,8 @@ A worthless dented helmet lies here.~
 9 1|1024 1|16
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 3 1
 A
@@ -216,6 +226,8 @@ A smelly diaper lies here.~
 9 64 1|2048
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #136
 polyester vest~
 a polyester vest~
@@ -224,6 +236,8 @@ A pretty polyester vest has been discarded here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #137
 trash bag~
 a trash bag~
@@ -232,6 +246,8 @@ A trash bag with holes in it lies here.~
 9 0 1|32
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #138
 bib~
 a severely soiled bib~
@@ -240,6 +256,8 @@ A bib with all kinds of crap on it is here.~
 9 0 1|4
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #139
 Xevlin corpse~
 the corpse of Xevlin the Cleric~
@@ -275,6 +293,8 @@ A shining breastplate is here.~
 9 1|2|1024|2048 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 #142
 Jeremiah's throne~
 jeremiah's throne~

@@ -237,6 +237,8 @@ A Demonsword rests here.~
 5 16|64|512|4096|32768|65536|131072|524288 1|8192
 0~ 1~ 6~ 3~
 3 0 0
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -255,6 +257,8 @@ A Demonring rests here.~
 9 0 1|2|524288|1048576
 0~ 1~ 6~ 11~
 5 0 0
+T
+silver~
 A
 3 2
 A
@@ -269,6 +273,8 @@ Some robes lie here.~
 9 0 1|1024
 0~ 1~ 6~ 11~
 2 0 0
+T
+cloth~
 #13103
 Ethereal Leather~
 Ethereal Leather~
@@ -277,6 +283,8 @@ Ethereal Leather~
 9 32|64 1|8
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 18 2
 A
@@ -289,6 +297,8 @@ Ethereal Leggings~
 9 32|64 1|32
 0~ 1~ 6~ 11~
 2 0 0
+T
+steel~
 A
 4 1
 A
@@ -301,6 +311,8 @@ an Ethereal Ninjato~
 5 32|64|32768|65536|262144|524288|1048576 1|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 18 3
 A
@@ -317,6 +329,8 @@ A Bloodaxe rests here.~
 5 0 1|8192
 0~ 1~ 6~ 13~
 5 0 0
+T
+steel/wood~
 #13107
 Hardened leather vest~
 a Hardened Leather Vest~
@@ -325,6 +339,8 @@ A Hardened Leather Vest lies on the ground~
 9 0 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #13108
 scroll~
 a scroll~
@@ -348,6 +364,8 @@ A Dreadsword rests here.~
 5 1|64 1|8192
 0~ 1~ 6~ 3~
 5 0 0
+T
+steel/wood/leather~
 A
 18 4
 #13110
@@ -358,6 +376,8 @@ Ethereal Bracers~
 9 32|64 1|4096
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 1 3
 A
@@ -370,6 +390,8 @@ Ethereal Boots~
 9 32|64|131072 1|64
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 14 25
 A
@@ -387,6 +409,8 @@ A Gordaron Battleaxe rests here.~
 5 64 1|8192
 0~ 1~ 6~ 13~
 1 0 0
+T
+steel/wood~
 A
 19 5
 #13186
@@ -397,6 +421,8 @@ Some furs lie on the ground~
 9 64 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+fur~
 A
 14 25
 A
@@ -413,6 +439,8 @@ A Gordaron Shortsword rests here.~
 5 64 1|8192
 0~ 1~ 6~ 1~
 5 0 0
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -429,6 +457,8 @@ Some Gordaron leather armor lies here.~
 9 64|4096 1|8
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 17 -5
 A
@@ -443,6 +473,8 @@ the Blackbelt~
 9 1|32|64|128|1024|2048|4096 1|2048
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 4 2
 A
@@ -475,6 +507,8 @@ Daeron's Robes are lying here~
 9 1|64|128|1024|2048 1|1024
 9~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 A
 1 3
 A

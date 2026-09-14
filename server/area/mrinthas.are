@@ -178,6 +178,8 @@ A bronze breastplate from one of the long-dead Temple Guards.~
 9 64|1024 1|8
 3~ ~ ~ ~
 5 0 0
+T
+bronze/wood/leather~
 #13003
 Spear~
 a spear~
@@ -186,6 +188,8 @@ A finely-crafted, rune carved spear lies here.~
 5 1024 1|8192
 0~ 3~ 8~ 2~
 3 0 0
+T
+iron/wood~
 A
 18 1
 #13004
@@ -238,6 +242,8 @@ Long, flowing, white robes made from heavy linen.~
 9 1024|2048 1|1024
 40~ ~ ~ ~
 10 0 0
+T
+cloth~
 A
 4 3
 A
@@ -278,6 +284,8 @@ A massive iron-bound, wooden gate rests here.~
 5 0 1|8192
 0~ 10~ 40~ 8~
 3000 0 0
+T
+iron/wood/leather~
 A
 1 -10
 A
@@ -303,6 +311,8 @@ A finely crafted, single bladed sword rests here.~
 5 1024 1|8192
 0~ 3~ 8~ 3~
 3 0 0
+T
+steel/wood/leather~
 A
 18 1
 E
@@ -319,6 +329,8 @@ A bronze helm rests here.~
 9 0 1|16
 0~ 1~ 6~ 11~
 2 0 0
+T
+bronze/wood/leather~
 A
 17 2
 E
@@ -341,6 +353,8 @@ A plain grey robe rests here.~
 9 0 1|1024
 8~ ~ ~ ~
 1 0 0
+T
+cloth~
 A
 17 3
 A
@@ -367,6 +381,8 @@ An axe rests here.~
 5 0 1|8192
 0~ 1~ 8~ 13~
 5 0 0
+T
+steel/wood~
 A
 4 -1
 A
@@ -428,6 +444,8 @@ Plain white robes from the undead priest rests here.~
 9 1024|2048 1|1024
 10~ 1~ ~ ~
 5 0 0
+T
+cloth~
 A
 24 3
 A
@@ -442,6 +460,8 @@ A ring with the temple crest on it lies here.~
 9 64|1024 1|2
 2~ ~ ~ ~
 1 0 0
+T
+silver~
 A
 24 3
 A
@@ -456,6 +476,8 @@ A shiny new longsword has been carelessly discarded here.~
 5 128|1024|2048|4096 1|8192
 0~ 9~ 24~ 3~
 25 0 0
+T
+steel/wood/leather~
 A
 4 3
 A
@@ -480,6 +502,8 @@ The Captains Platemail suit lies here.~
 9 64 1|8
 9~ ~ ~ ~
 10 0 0
+T
+leather~
 A
 18 2
 A
@@ -492,6 +516,8 @@ A pair of Guard Captains Boots are lying here.~
 9 2|64 1|64
 6~ ~ ~ ~
 8 0 0
+T
+leather~
 A
 14 15
 #13028
@@ -502,6 +528,8 @@ The Captains Sleeves are lying here.~
 9 1|64 1|256
 3~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 1 2
 A
@@ -514,6 +542,8 @@ The Captains Leggings are lying here.~
 9 64 1|32
 3~ ~ ~ ~
 5 0 0
+T
+leather~
 A
 12 10
 A
@@ -554,6 +584,8 @@ A pair of Captains Bracers are lying here.~
 9 64|1024|2048 1|4096
 8~ ~ ~ ~
 1 0 0
+T
+leather~
 A
 1 1
 A
@@ -566,6 +598,8 @@ A battle-scarred helmet is lying here.~
 9 1|64|1024|2048|4096 1|16
 7~ ~ ~ ~
 7 0 0
+T
+steel~
 A
 4 2
 A
@@ -580,6 +614,8 @@ A pair of heavy, spiked steel gauntlets lie here.~
 9 64 1|128
 7~ ~ ~ ~
 5 0 0
+T
+steel/wood/leather~
 A
 18 1
 A
@@ -592,6 +628,8 @@ A silver shield rests here.~
 9 64 1|512
 5~ ~ ~ ~
 2 0 0
+T
+silver~
 A
 17 3
 A

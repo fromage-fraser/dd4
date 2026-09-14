@@ -245,6 +245,8 @@ A small knife would have trouble cutting through butter.~
 5 0 1|8192
 ~ ~ ~ 2~
 1 0 0
+T
+steel~
 
 #703
 sack vegetables~
@@ -272,6 +274,8 @@ Crudely made iron bracers sit together.~
 9 0 1|256
 ~ ~ ~ ~
 25 0 0
+T
+iron/wood/leather~
 A
 17 -15
 A
@@ -285,6 +289,8 @@ A club has been fashioned from a thick tree branch.~
 5 0 1|8192
 ~ ~ ~ 7~
 30 0 0
+T
+wood~
 A
 19 3
 A
@@ -298,6 +304,8 @@ A large rock is covered with dark blood stains.~
 5 0 1|8192
 ~ ~ ~ 8~
 45 0 0
+T
+steel/wood/leather~
 A
 19 4
 A
@@ -311,6 +319,8 @@ Some rigid leather body armour looks in bad condition.~
 9 0 1|8
 ~ ~ ~ ~
 20 0 0
+T
+leather~
 
 #709
 green robes dirty material~
@@ -320,6 +330,8 @@ You see a large pile of dirty green material.~
 9 0 1|1024
 ~ ~ ~ ~
 5 0 0
+T
+cloth~
 A
 13 45
 
@@ -340,6 +352,8 @@ A ring has been crudely cut from a chunk of amber.~
 9 0 1|2
 ~ ~ ~ ~
 1 0 0
+T
+silver~
 A
 4 2
 A
