@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 14 September 2026._
+_AsciiDoc documentation update: 15 September 2026._
 
 === Contents
 
@@ -22,6 +22,7 @@ _AsciiDoc documentation update: 14 September 2026._
 ** <<scribe-mobile-inheritance,Body species, archetypes and XOR overrides>>
 ** <<scribe-template-selection,Selecting a creature archetype>>
 ** <<scribe-zombie-archetype,Zombie archetype>>
+** <<scribe-ghoul-archetype,Ghoul archetype>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-mobile-mindlessness,Mindlessness>>
 ** <<scribe-individual-resistances,Individual resistance fields>>
@@ -699,7 +700,8 @@ Accepted archetype names are:
 | `goat` | Existing goat archetype, based on `farm_mammal`.
 | `fire_elemental` | Existing fire-elemental test archetype, based on `elemental`.
 | `skeleton` | Skeletal humanoid archetype.
-| `zombie` | Mindless, nonliving humanoid retaining its physical organs and limbs.
+| `zombie` | Mindless undead humanoid retaining flesh, organs and limbs.
+| `ghoul` | Corporeal undead with claws, fangs, a long tongue, sleep/charm immunity and contact paralysis.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -967,7 +969,7 @@ expanding the template's flags.
 | Body species | `humanoid`.
 | Classification | `ACT_UNDEAD`.
 | Mindlessness | `AFF_MINDLESS`.
-| Body restrictions | `BODY_NO_SPEECH` and `BODY_INORGANIC`.
+| Body restrictions | `BODY_NO_SPEECH` only. `BODY_INORGANIC` is not supplied.
 | Positive anatomy | Head, arms, two legs, heart, brains, guts, hands, feet, fingers, ear and eye. No inherited organs are cancelled. No tail is declared.
 | Resistance | `RES_DARK`; mask `262144`.
 | Vulnerability | `RES_HOLY`; mask `131072`.
@@ -978,32 +980,35 @@ expanding the template's flags.
 | Dimensions and language | Inherit humanoid defaults, currently unspecified zero.
 |===
 
-`BODY_INORGANIC` selects DD4's existing nonliving-physiology handling.
-It does not remove the corpse's physical organs. A retained brain is an
-anatomical part; `AFF_MINDLESS` separately determines whether the creature
-has a mind that the supported mental effects can influence. A retained
-heart likewise remains present for existing `HAS_HEART` checks.
+The zombie does not receive `BODY_INORGANIC`. Undead classification and
+mindlessness are separate from that body flag: routines using
+`IS_INORGANIC()` treat this default zombie as organic. Its explicit poison,
+sleep and drain immunities still apply. A retained brain is an anatomical
+part; `AFF_MINDLESS` separately determines whether supported mental effects
+can influence it. The retained heart remains present for `HAS_HEART()` checks.
 
 An ordinary zombie receives no automatic aggression, sentinel, no-quest or
 no-experience flag. Add those as individual choices when appropriate.
 It receives no automatic paralysis or blanket psychic immunity.
 
-The effective body mask is `66884896`. `mstat` displays:
+The effective body mask is `66884640`. `mstat` displays:
 
 [source,text]
 ----
-no_speech inorganic head arms two_legs heart brains guts hands feet fingers ear eye
+no_speech head arms two_legs heart brains guts hands feet fingers ear eye
 ----
 
 Its death-part candidates are head, heart, arm, leg, brain, bundle of
 entrails, hand, foot, finger, ear and eye. Death-generated parts remain
-random, decay normally, carry undead provenance and are inedible because
-of the nonliving body flag. Ordinary death leaves an undead-tagged NPC
-corpse; the archetype supplies neither `ACT_OBJECT` nor `BODY_NO_CORPSE`.
+random, decay normally and carry undead provenance. Soft parts generated
+as food remain food; the archetype does not force them to become trash.
+Ordinary death leaves an undead-tagged NPC corpse; the archetype supplies
+neither `ACT_OBJECT` nor `BODY_NO_CORPSE`.
 
-Do not repeat `act undead`, `aff mindless` or `bf inorganic no_speech` on
-an ordinary zombie: those individual XOR inputs cancel the corresponding
-inherited properties.
+Do not repeat `act undead`, `aff mindless` or `bf no_speech` on an ordinary
+zombie: those individual XOR inputs cancel the corresponding inherited
+properties. In contrast, `bf inorganic` adds the body flag to this individual
+because it is absent from the zombie's inherited defaults.
 
 For an aware zombie that is permitted to speak, cancel those two restrictions:
 
@@ -1014,12 +1019,124 @@ aff mindless
 bf no_speech
 ----
 
-This retains undead classification, nonliving physiology, physical anatomy
+This retains undead classification, organic physical anatomy
 and the resistance package. It does not itself add a special function.
 
 A mobile is not converted by its name or description. Select the archetype
 explicitly. Animate Dead uses its existing configured servant prototypes;
 selecting this archetype for an area mobile does not alter the spell.
+
+[[scribe-ghoul-archetype]]
+===== Ghoul archetype
+
+[source,text]
+----
+archetype ghoul
+----
+
+The default rank is common. Select alignment independently; `al -1000` is
+an appropriate evil example. Do not expand inherited flags into individual
+masks. Archetype selection does not set level, armour class, alignment or
+an exact number of attacks.
+
+[cols="<2,<4",options="header"]
+|===
+| Property | Ghoul default
+| Body species | `humanoid`.
+| Classification | `ACT_UNDEAD`.
+| Mind and speech | No inherited `AFF_MINDLESS` or `BODY_NO_SPEECH`.
+| Anatomy | Organic humanoid anatomy plus `PART_LONG_TONGUE`; body mask `133993472`.
+| Natural attacks | `PART_CLAWS` and `PART_FANGS`; attack-part mask `25769803776`.
+| Resistance and vulnerability | Neither is supplied by the archetype.
+| Immunities | `RES_SLEEP` and `RES_CHARM`; mask `3072`.
+| Other protections | No default poison, drain, cold, physical, nonmagical, paralysis or psychic immunity.
+| Combat scalars | Zero HP, damage, critical and swiftness adjustments.
+| Special set | `spec_ghoul` in slot 1; other slots empty; auto resolves to `100/0/0`.
+| XP | Zero additional archetype adjustment. The default special contributes +10 percentage points through the existing special-XP calculation.
+| Dimensions and language | Inherit humanoid defaults, currently unspecified zero.
+|===
+
+The death-part list includes the inherited humanoid parts, a long tongue,
+claw and fang. Organic soft parts retain their configured food treatment;
+hard parts are trash. Generated corpses and parts carry undead provenance.
+
+====== Feeding and contact paralysis
+
+`spec_ghoul` enables idle corpse feeding and a separate natural-contact
+effect. It does not itself assign undead classification or anatomy.
+
+For feeding, the routine requires an awake NPC in a room, with a head,
+not fighting, waiting, charmed, held or dazed. It uses the existing
+`spec_fido` NPC-corpse handling: corpse contents fall into the room and the
+corpse is removed. This supplies no healing. Player corpses, remains and
+loose body parts are not selected. An undead-tagged NPC corpse is still
+eligible under that feeding rule.
+
+Contact paralysis is checked only after an unarmed claw or bite produces
+positive damage through the ordinary attack path. A weapon, spell, ordinary
+miss, successful defense or zero-damage outcome does not trigger it. The
+corresponding natural part must still be usable, and both characters must
+remain alive in the same room.
+
+The combined live weights of all `spec_ghoul` slots give the contact-effect
+activation chance. At the default 100%, every qualifying hit proceeds to
+the target checks and saving throw. There is no additional 25% roll. At
+zero weight the contact effect is disabled. Other special functions are
+not called by the contact check. Normal weighted scheduling still governs
+idle feeding. A necromantically bound ghoul retains its contact effect when
+it makes a qualifying attack; charm still suppresses scheduled feeding.
+
+Characters whose actual race field is elf, wild elf or drow are exempt.
+The exemption does not come from names or descriptions. Other DD4 targets
+use their existing `RES_PARALYSIS` defense and saving throw; there is no
+blanket mindless, undead or inorganic exemption and no `RES_MAGIC` tag on
+this contact effect.
+
+On failure to save, the victim receives the existing paralysis affect type
+with `AFF_HOLD | AFF_DAZED`, lasting 3 to 8 combat-pulse intervals. This
+prevents movement and ordinary actions through the existing flags. There
+is no added Dexterity, movement-maximum or no-recall modifier. Duration is
+counted globally on combat pulses, including when the victim is no longer
+fighting; the hourly affect update skips this particular form of paralysis.
+A held, dazed or already-paralysed target is not refreshed by more touches.
+
+`mstat` and `affects` display this duration in combat rounds. The existing
+Freedom spell removes it by stripping the paralysis affect. The regular
+cast Paralysis spell retains its original behavior and duration rules.
+
+Special invocation counters count scheduled calls, not contact saves or
+successful paralysis effects. Disabling or replacing `spec_ghoul` prevents
+new applications but does not remove an existing effect or recalculate
+stored live XP.
+
+Disable both feeding and contact effects with:
+
+[source,text]
+----
+archetype ghoul
+sp none
+----
+
+Remove the inherited claw and fang declarations with:
+
+[source,text]
+----
+archetype ghoul
+atk claws fangs
+----
+
+These are XOR cancellations. Feeding can still occur, but those parts no
+longer qualify for ordinary natural attacks or contact paralysis.
+
+The implementation uses DD4's normal level-scaled damage and attack count;
+it does not enforce a tabletop two-claw/one-bite sequence. Ordinary kills
+do not automatically create new ghouls, and this archetype does not create
+a protection-circle ward. Ghast-specific stench and cold-iron rules are not
+granted to an ordinary ghoul.
+
+Naming a mobile a ghoul does not select this archetype. Animate Dead uses
+its separately configured servant prototypes.
+
 
 ===== How inherited fields are used
 
@@ -1382,6 +1499,7 @@ spec_cast_priestess casts powerful cleric spells
 spec_cast_chill casts spell chill touch [combat]
 spec_executioner    attacks thieves and killers
 spec_fido   eats corpses
+spec_ghoul  paralysis on damaging natural claw/bite; idle corpse feeding
 spec_guard  cityguard
 spec_janitor    gathers rubbish from ground
 spec_poison poisonous bite [combat]

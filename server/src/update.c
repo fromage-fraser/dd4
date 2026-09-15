@@ -2313,6 +2313,10 @@ void char_update(void)
                         if (paf->deleted)
                                 continue;
 
+                        /* This duration is maintained on combat pulses. */
+                        if (is_ghoul_paralysis(paf))
+                                continue;
+
                         if (paf->duration < 0)
                                 continue;
 
