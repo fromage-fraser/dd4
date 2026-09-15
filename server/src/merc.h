@@ -3519,7 +3519,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 5
+#define MAX_MOB 6
 #define MAX_SPECIES 4
 #define MAX_RANK 6
 
@@ -5651,6 +5651,10 @@ bool resolve_mob_index_specials args((MOB_INDEX_DATA *index,
 int validate_mob_special_templates args((void));
 int mob_specials_exp_bonus args((const MOB_SPECIAL_DATA *set));
 const char *mob_special_name args((SPEC_FUN *special));
+/* Ghoul contact paralysis and its combat-round timing. */
+bool is_ghoul_paralysis args((const AFFECT_DATA *paf));
+void update_ghoul_paralysis args((void));
+void ghoul_touch_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));

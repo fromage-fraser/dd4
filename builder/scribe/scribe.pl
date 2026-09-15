@@ -47,6 +47,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         fire_elemental
         skeleton
         zombie
+        ghoul
 /;
 
 my %mob_act = (
@@ -280,7 +281,7 @@ my @mob_spec = qw/
     spec_cast_cleric	    spec_grail	            spec_small_whale	      spec_sahuagin_high_cleric
     spec_cast_judge	        spec_cast_orb	        spec_large_whale	      spec_red_grung
     spec_cast_mage	        spec_assassin	        spec_kappa                spec_blue_grung
-    spec_purple_grung	    spec_orange_grung	    spec_gold_grung
+    spec_purple_grung	    spec_orange_grung	    spec_gold_grung           spec_ghoul
 /;
 
 my %obj_ex = (

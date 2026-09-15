@@ -66,6 +66,7 @@ DECLARE_SPEC_FUN( spec_cast_psionicist      );
 DECLARE_SPEC_FUN( spec_cast_undead          );
 DECLARE_SPEC_FUN( spec_executioner          );
 DECLARE_SPEC_FUN( spec_fido                 );
+DECLARE_SPEC_FUN( spec_ghoul                );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
@@ -138,6 +139,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_fido"))                 return spec_fido;
         if (!str_cmp(name, "spec_clan_guard"))           return spec_clan_guard;
         if (!str_cmp(name, "spec_guard"))                return spec_guard;
+        if (!str_cmp(name, "spec_ghoul"))                return spec_ghoul;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
@@ -213,6 +215,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_cast_undead) return "spec_cast_undead";
         if (special == spec_executioner) return "spec_executioner";
         if (special == spec_fido) return "spec_fido";
+        if (special == spec_ghoul) return "spec_ghoul";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
@@ -1035,7 +1038,169 @@ bool spec_fido( CHAR_DATA *ch )
         return FALSE;
 }
 
+/*
+ * The ghoul's special handles idle feeding. Paralysis is applied only
+ * by the confirmed natural-hit path in fight.c.
+ */
+bool spec_ghoul(CHAR_DATA *ch)
+{
+        if (!ch || !IS_NPC(ch) || ch->deleted || !ch->in_room
+        ||  !IS_AWAKE(ch) || ch->fighting || ch->wait > 0
+        ||  IS_AFFECTED(ch, AFF_CHARM)
+        ||  IS_AFFECTED(ch, AFF_HOLD)
+        ||  IS_AFFECTED(ch, AFF_DAZED)
+        ||  !HAS_HEAD(ch))
+        {
+                return FALSE;
+        }
 
+        return spec_fido(ch);
+}
+
+/*
+ * A distinct form of the existing paralysis affect. Its duration is
+ * counted by violence_update(), not by the hourly affect update.
+ */
+bool is_ghoul_paralysis(const AFFECT_DATA *paf)
+{
+        return paf && !paf->deleted
+            && paf->type == gsn_paralysis
+            && paf->location == APPLY_NONE
+            && paf->modifier == 0
+            && paf->bitvector == (AFF_HOLD | AFF_DAZED);
+}
+
+/* Called once per combat pulse, before any attacks in that pulse. */
+void update_ghoul_paralysis(void)
+{
+        CHAR_DATA *ch;
+        AFFECT_DATA *paf;
+        AFFECT_DATA *next;
+        AFFECT_DATA *other;
+
+        for (ch = char_list; ch; ch = ch->next)
+        {
+                if (ch->deleted)
+                        continue;
+
+                for (paf = ch->affected; paf; paf = next)
+                {
+                        next = paf->next;
+
+                        if (!is_ghoul_paralysis(paf))
+                                continue;
+
+                        if (paf->duration > 0)
+                                paf->duration--;
+
+                        if (paf->duration > 0)
+                                continue;
+
+                        affect_remove(ch, paf);
+
+                        /* Preserve these flags if another active affect uses them. */
+                        for (other = ch->affected; other; other = other->next)
+                        {
+                                if (!other->deleted)
+                                {
+                                        SET_BIT(ch->affected_by,
+                                            other->bitvector
+                                            & (AFF_HOLD | AFF_DAZED));
+                                }
+                        }
+
+                        if (ch->in_room && ch->position != POS_DEAD)
+                        {
+                                send_to_char(
+                                    "The ghoul's paralysis wears off.\n\r", ch);
+                        }
+                }
+        }
+}
+
+/*
+ * Called only after an unarmed claw/bite inflicts positive damage.
+ * Special selection weights also control this contact effect: duplicate
+ * spec_ghoul slots add their weights; zero disables it completely.
+ */
+void ghoul_touch_after_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
+{
+        AFFECT_DATA af;
+        unsigned long int required_part;
+        int chance;
+        int i;
+
+        if (!ch || !victim || ch == victim || !IS_NPC(ch)
+        ||  ch->deleted || victim->deleted
+        ||  !ch->in_room || ch->in_room != victim->in_room
+        ||  ch->hit <= 0 || victim->hit <= 0
+        ||  ch->position == POS_DEAD || victim->position == POS_DEAD
+        ||  IS_AFFECTED(victim, AFF_HOLD)
+        ||  IS_AFFECTED(victim, AFF_DAZED)
+        ||  is_affected(victim, gsn_paralysis)
+        ||  !mob_specials_valid(&ch->specials))
+        {
+                return;
+        }
+
+        if (dt == TYPE_HIT + 5)
+                required_part = PART_CLAWS;
+        else if (dt == TYPE_HIT + 10)
+                required_part = PART_FANGS;
+        else
+                return;
+
+        if (!(mob_usable_attack_parts(ch) & required_part))
+                return;
+
+        /* DD4's explicit elven races share the ordinary ghoul exemption. */
+        if (victim->race == RACE_ELF
+        ||  victim->race == RACE_WILD_ELF
+        ||  victim->race == RACE_DROW)
+        {
+                return;
+        }
+
+        chance = 0;
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                if (ch->specials.fun[i] == spec_ghoul)
+                        chance += ch->specials.chance[i];
+        }
+
+        if (chance == 0)
+                return;
+
+        if (chance < 100 && number_range(1, 100) > chance)
+                return;
+
+        /* This is contact paralysis, not the cast Paralysis spell. */
+        if (saves_resistance_effect(ch->level, victim, RES_PARALYSIS))
+        {
+                if (victim->gag < 2)
+                {
+                        send_to_char(
+                            "You resist the paralysing touch.\n\r", victim);
+                }
+                return;
+        }
+
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_paralysis;
+        af.duration = number_range(3, 8);
+        af.location = APPLY_NONE;
+        af.modifier = 0;
+        af.bitvector = AFF_HOLD | AFF_DAZED;
+        affect_to_char(victim, &af);
+
+        act("$N stiffens under your paralysing touch.",
+            ch, NULL, victim, TO_CHAR);
+        act("You stiffen under $n's paralysing touch!",
+            ch, NULL, victim, TO_VICT);
+        act("$N stiffens under $n's paralysing touch.",
+            ch, NULL, victim, TO_NOTVICT);
+}
 
 bool spec_guard( CHAR_DATA *ch )
 {

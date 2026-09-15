@@ -52,7 +52,13 @@ bool check_shield_unit args((CHAR_DATA * ch, CHAR_DATA *victim, int dt));
 bool check_driver_unit args((CHAR_DATA * ch, CHAR_DATA *victim));
 bool remove_bodypart args((CHAR_DATA * ch, int iWear, bool fReplace));
 static unsigned long int ordinary_attack_resistance_types args((int dt, OBJ_DATA *weapon));
-static void damage_internal args((CHAR_DATA * ch, CHAR_DATA *victim, int dam, int dt, bool poison, unsigned long int res_types));
+static void damage_internal args((CHAR_DATA *ch,
+                                  CHAR_DATA *victim,
+                                  int dam,
+                                  int dt,
+                                  bool poison,
+                                  unsigned long int res_types,
+                                  bool natural_contact));
 
 /*
  * Death blurb
@@ -157,6 +163,9 @@ void violence_update(void)
         /* char buf2 [ MAX_STRING_LENGTH ];*/
 
         sprintf(last_function, "entering violence_update");
+
+        /* Update these durations once globally, including idle victims. */
+        update_ghoul_paralysis();
 
         for (ch = char_list; ch; ch = ch->next)
         {
@@ -1151,7 +1160,11 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                             dam,
                             dt,
                             poison,
-                            ordinary_attack_resistance_types(dt, wield));
+                            ordinary_attack_resistance_types(dt, wield),
+                            !wield
+                                && IS_NPC(ch)
+                                && (dt == TYPE_HIT + 5
+                                    || dt == TYPE_HIT + 10));
                 }
                 else
                 {
@@ -1285,7 +1298,7 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 res_types = skill_table[dt].res_type;
         }
 
-        damage_internal(ch, victim, dam, dt, poison, res_types);
+        damage_internal(ch, victim, dam, dt, poison, res_types, FALSE);
 }
 
 static void damage_internal(CHAR_DATA *ch,
@@ -1293,7 +1306,8 @@ static void damage_internal(CHAR_DATA *ch,
                             int dam,
                             int dt,
                             bool poison,
-                            unsigned long int res_types)
+                            unsigned long int res_types,
+                            bool natural_contact)
 {
         CHAR_DATA *fighter;
         CHAR_DATA *opponent;
@@ -1733,6 +1747,13 @@ static void damage_internal(CHAR_DATA *ch,
 
         if (is_affected(victim, gsn_berserk) && (victim->position <= POS_STUNNED))
                 affect_strip(victim, gsn_berserk);
+
+        /*
+         * This point is after defenses, damage reduction and HP loss.
+         * The helper also checks that both characters remain alive.
+         */
+        if (natural_contact && dam > 0)
+                ghoul_touch_after_hit(ch, victim, dt);
 
         /* poisoned weapons */
         if (dam > 0

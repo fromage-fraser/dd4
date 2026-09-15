@@ -3197,7 +3197,15 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                 paf->modifier);
                         strcat(buf1, buf);
 
-                        if (paf->bitvector && (paf->bitvector == AFF_PRONE || paf->bitvector == AFF_DAZED))
+                        if (is_ghoul_paralysis(paf))
+                        {
+                                snprintf(
+                                    buf, sizeof(buf),
+                                    " for {G%d{x combat rounds",
+                                    paf->duration);
+                                strcat(buf1, buf);
+                        }
+                        else if (paf->bitvector && (paf->bitvector == AFF_PRONE || paf->bitvector == AFF_DAZED))
                         {
                                 if (paf->duration > 1)
                                 {
@@ -3445,7 +3453,15 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                 paf->modifier);
                         strcat(buf1, buf);
 
-                        if (paf->duration > 1)
+                        if (is_ghoul_paralysis(paf))
+                        {
+                                snprintf(
+                                    buf, sizeof(buf),
+                                    " for {G%d{x combat rounds",
+                                    paf->duration);
+                                strcat(buf1, buf);
+                        }
+                        else if (paf->duration > 1)
                         {
                                 sprintf(buf, " for {G%d{x hours",
                                         paf->duration);

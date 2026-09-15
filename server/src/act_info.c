@@ -2620,7 +2620,15 @@ void do_affects(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, buf);
                                 }
 
-                                if (paf->bitvector && (paf->bitvector == AFF_PRONE || paf->bitvector == AFF_DAZED))
+                                if (is_ghoul_paralysis(paf))
+                                {
+                                        snprintf(
+                                            buf, sizeof(buf),
+                                            " for {G%d{x combat rounds",
+                                            paf->duration);
+                                        strcat(buf1, buf);
+                                }
+                                else if (paf->bitvector && (paf->bitvector == AFF_PRONE || paf->bitvector == AFF_DAZED))
                                 {
                                         if (paf->duration > 1)
                                         {
