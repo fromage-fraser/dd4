@@ -262,6 +262,40 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* No separate archetype XP adjustment. */
                 0,
                 MOB_SPECIAL_CHANCES_AUTO
+        },
+
+        {
+                "ghast", "humanoid", "icon1", "icon2",
+
+                /* Undead, with thought and speech retained. */
+                ACT_UNDEAD, 0,
+
+                /* Organic humanoid anatomy with an elongated tongue. */
+                PART_LONG_TONGUE,
+
+                /* Existing natural claw and bite attacks. */
+                PART_CLAWS | PART_FANGS,
+
+                /* No additional resistance or vulnerability in this entry. */
+                0,
+                0,
+
+                /* Shared ghoul-family defenses. */
+                RES_SLEEP | RES_CHARM,
+
+                /* Preserve ordinary DD4 level-scaled combat defaults. */
+                0, 0, 0, 0,
+
+                /* Inherit dimension and language metadata. */
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                /* Idle feeding and stronger contact paralysis. */
+                "spec_ghast", "", "",
+
+                /* No separate archetype XP adjustment. */
+                0,
+                MOB_SPECIAL_CHANCES_AUTO
         }
 
 };

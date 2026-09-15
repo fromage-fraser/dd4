@@ -67,6 +67,7 @@ DECLARE_SPEC_FUN( spec_cast_undead          );
 DECLARE_SPEC_FUN( spec_executioner          );
 DECLARE_SPEC_FUN( spec_fido                 );
 DECLARE_SPEC_FUN( spec_ghoul                );
+DECLARE_SPEC_FUN( spec_ghast                );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
@@ -140,6 +141,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_clan_guard"))           return spec_clan_guard;
         if (!str_cmp(name, "spec_guard"))                return spec_guard;
         if (!str_cmp(name, "spec_ghoul"))                return spec_ghoul;
+        if (!str_cmp(name, "spec_ghast"))                return spec_ghast;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
@@ -216,6 +218,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_executioner) return "spec_executioner";
         if (special == spec_fido) return "spec_fido";
         if (special == spec_ghoul) return "spec_ghoul";
+        if (special == spec_ghast) return "spec_ghast";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
@@ -1058,6 +1061,15 @@ bool spec_ghoul(CHAR_DATA *ch)
 }
 
 /*
+ * Share the ghoul's idle feeding conditions.
+ * The contact helper selects the ghast's stronger paralysis separately.
+ */
+bool spec_ghast(CHAR_DATA *ch)
+{
+        return spec_ghoul(ch);
+}
+
+/*
  * A distinct form of the existing paralysis affect. Its duration is
  * counted by violence_update(), not by the hourly affect update.
  */
@@ -1112,23 +1124,25 @@ void update_ghoul_paralysis(void)
                         if (ch->in_room && ch->position != POS_DEAD)
                         {
                                 send_to_char(
-                                    "The ghoul's paralysis wears off.\n\r", ch);
+                                    "The paralysis wears off.\n\r", ch);
                         }
                 }
         }
 }
 
 /*
- * Called only after an unarmed claw/bite inflicts positive damage.
- * Special selection weights also control this contact effect: duplicate
- * spec_ghoul slots add their weights; zero disables it completely.
+ * Called after a damaging natural claw/bite. Choose at most one contact
+ * effect using the live special weights, then make one resistance save.
  */
 void ghoul_touch_after_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 {
         AFFECT_DATA af;
         unsigned long int required_part;
-        int chance;
+        int ghoul_chance;
+        int ghast_chance;
+        int roll;
         int i;
+        bool ghast_touch;
 
         if (!ch || !victim || ch == victim || !IS_NPC(ch)
         ||  ch->deleted || victim->deleted
@@ -1153,29 +1167,49 @@ void ghoul_touch_after_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if (!(mob_usable_attack_parts(ch) & required_part))
                 return;
 
-        /* DD4's explicit elven races share the ordinary ghoul exemption. */
-        if (victim->race == RACE_ELF
-        ||  victim->race == RACE_WILD_ELF
-        ||  victim->race == RACE_DROW)
-        {
-                return;
-        }
-
-        chance = 0;
+        ghoul_chance = 0;
+        ghast_chance = 0;
 
         for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
         {
                 if (ch->specials.fun[i] == spec_ghoul)
-                        chance += ch->specials.chance[i];
+                        ghoul_chance += ch->specials.chance[i];
+                else if (ch->specials.fun[i] == spec_ghast)
+                        ghast_chance += ch->specials.chance[i];
         }
 
-        if (chance == 0)
+        if (ghoul_chance + ghast_chance == 0)
                 return;
 
-        if (chance < 100 && number_range(1, 100) > chance)
-                return;
+        /* A single 100-percent contact type needs no selection roll. */
+        if (ghoul_chance == 100 || ghast_chance == 100)
+                roll = 1;
+        else
+                roll = number_range(1, 100);
 
-        /* This is contact paralysis, not the cast Paralysis spell. */
+        if (roll <= ghast_chance)
+        {
+                ghast_touch = TRUE;
+        }
+        else if (roll <= ghast_chance + ghoul_chance)
+        {
+                ghast_touch = FALSE;
+        }
+        else
+        {
+                /* The remaining weight belongs to other special functions. */
+                return;
+        }
+
+        /* Elves resist the ghoul's touch, but not the ghast's stronger form. */
+        if (!ghast_touch
+        &&  (victim->race == RACE_ELF
+             || victim->race == RACE_WILD_ELF
+             || victim->race == RACE_DROW))
+        {
+                return;
+        }
+
         if (saves_resistance_effect(ch->level, victim, RES_PARALYSIS))
         {
                 if (victim->gag < 2)
@@ -1188,7 +1222,8 @@ void ghoul_touch_after_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
         memset(&af, 0, sizeof(af));
         af.type = gsn_paralysis;
-        af.duration = number_range(3, 8);
+        af.duration = ghast_touch
+            ? number_range(5, 10) : number_range(3, 8);
         af.location = APPLY_NONE;
         af.modifier = 0;
         af.bitvector = AFF_HOLD | AFF_DAZED;

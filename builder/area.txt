@@ -2473,6 +2473,7 @@ give you some idea of their effects:
     spec_executioner
     spec_fido
     spec_ghoul
+    spec_ghast
     spec_clan_guard
     spec_guard
     spec_janitor
