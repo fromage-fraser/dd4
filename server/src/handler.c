@@ -3649,13 +3649,13 @@ bool reject_mindless_target(CHAR_DATA *ch, CHAR_DATA *victim)
                 if (ch == victim)
                 {
                         send_to_char(
-                            "You have no mind for that effect to influence.\n\r",
+                            "You have no mind to affect.\n\r",
                             ch);
                 }
                 else
                 {
                         act(
-                            "$N has no mind for that effect to influence.",
+                            "$N has no mind to affect.",
                             ch, NULL, victim, TO_CHAR);
                 }
         }
