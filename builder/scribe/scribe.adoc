@@ -23,6 +23,7 @@ _AsciiDoc documentation update: 15 September 2026._
 ** <<scribe-template-selection,Selecting a creature archetype>>
 ** <<scribe-zombie-archetype,Zombie archetype>>
 ** <<scribe-ghoul-archetype,Ghoul archetype>>
+** <<scribe-ghast-archetype,Ghast archetype>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-mobile-mindlessness,Mindlessness>>
 ** <<scribe-individual-resistances,Individual resistance fields>>
@@ -702,6 +703,7 @@ Accepted archetype names are:
 | `skeleton` | Skeletal humanoid archetype.
 | `zombie` | Mindless undead humanoid retaining flesh, organs and limbs.
 | `ghoul` | Corporeal undead with claws, fangs, a long tongue, sleep/charm immunity and contact paralysis.
+| `ghast` | Corporeal undead with stronger contact paralysis that also affects elves.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1078,16 +1080,20 @@ miss, successful defense or zero-damage outcome does not trigger it. The
 corresponding natural part must still be usable, and both characters must
 remain alive in the same room.
 
-The combined live weights of all `spec_ghoul` slots give the contact-effect
-activation chance. At the default 100%, every qualifying hit proceeds to
-the target checks and saving throw. There is no additional 25% roll. At
-zero weight the contact effect is disabled. Other special functions are
-not called by the contact check. Normal weighted scheduling still governs
-idle feeding. A necromantically bound ghoul retains its contact effect when
-it makes a qualifying attack; charm still suppresses scheduled feeding.
+When the set contains `spec_ghoul` but no `spec_ghast`, the combined live
+weights of its `spec_ghoul` slots give the contact-effect activation chance.
+At the default 100%, every qualifying hit proceeds to the target checks
+and saving throw. There is no additional 25% roll. At zero weight that
+contact effect is disabled. If both contact specials are configured, one
+weighted choice selects the ghoul or ghast effect, or no contact effect;
+see <<scribe-ghast-archetype,Ghast archetype>>. Other special routines are
+not called by this check. Normal weighted scheduling still governs idle
+feeding. Necromantic control does not suppress contact effects on qualifying
+attacks; charm still suppresses scheduled feeding.
 
-Characters whose actual race field is elf, wild elf or drow are exempt.
-The exemption does not come from names or descriptions. Other DD4 targets
+Characters whose actual race field is elf, wild elf or drow are exempt from
+`spec_ghoul` contact paralysis. They are not exempt from `spec_ghast` contact
+paralysis. The exemption does not come from names or descriptions. Other DD4 targets
 use their existing `RES_PARALYSIS` defense and saving throw; there is no
 blanket mindless, undead or inorganic exemption and no `RES_MAGIC` tag on
 this contact effect.
@@ -1105,9 +1111,10 @@ Freedom spell removes it by stripping the paralysis affect. The regular
 cast Paralysis spell retains its original behavior and duration rules.
 
 Special invocation counters count scheduled calls, not contact saves or
-successful paralysis effects. Disabling or replacing `spec_ghoul` prevents
-new applications but does not remove an existing effect or recalculate
-stored live XP.
+successful paralysis effects. Disabling a contact special prevents new
+applications of its effect, but does not remove an existing paralysis or
+recalculate stored live XP. Another configured contact special remains
+independently eligible.
 
 Disable both feeding and contact effects with:
 
@@ -1137,6 +1144,89 @@ granted to an ordinary ghoul.
 Naming a mobile a ghoul does not select this archetype. Animate Dead uses
 its separately configured servant prototypes.
 
+
+[[scribe-ghast-archetype]]
+===== Ghast archetype
+
+[source,text]
+----
+archetype ghast
+----
+
+Rank, level and alignment remain individual choices. For an evil mobile,
+set `al -1000` in its source; selecting the archetype alone does not supply
+alignment or copy a tabletop hit-dice, armour-class or attack-count value.
+
+[cols="<2,<4",options="header"]
+|===
+| Property | Ghast default
+| Body species | `humanoid`.
+| Classification | `ACT_UNDEAD`.
+| Mind and speech | No inherited `AFF_MINDLESS` or `BODY_NO_SPEECH`.
+| Anatomy | Organic humanoid anatomy plus `PART_LONG_TONGUE`; body mask `133993472`.
+| Natural attacks | `PART_CLAWS` and `PART_FANGS`; attack-part mask `25769803776`.
+| Resistance and vulnerability | Neither is supplied by the archetype.
+| Immunities | `RES_SLEEP` and `RES_CHARM`; mask `3072`.
+| Combat scalars | Zero HP, damage, critical and swiftness adjustments.
+| Special set | `spec_ghast` in slot 1; other slots empty; auto resolves to `100/0/0`.
+| XP | Zero additional archetype adjustment; the default special contributes +10 percentage points through the existing calculation.
+| Dimensions and language | Inherit humanoid defaults, currently unspecified zero.
+|===
+
+`spec_ghast` uses the same idle feeding conditions and NPC-corpse handling
+as `spec_ghoul`. It also enables the stronger contact effect on a damaging,
+unarmed natural claw or bite. Elves, wild elves and drow receive the ordinary
+paralysis saving throw against this effect rather than automatic exemption.
+
+A failed save applies `AFF_HOLD | AFF_DAZED` for 5 to 10 combat-pulse
+intervals. The duration continues outside combat and appears as combat
+rounds in `mstat` and `affects`. Freedom removes the paralysis. Existing
+paralysis is not refreshed or upgraded by another touch. There are no added
+attribute penalties, movement-maximum penalties or no-recall modifier.
+The ordinary cast Paralysis spell remains separate and unchanged.
+
+Both contact variants use `RES_PARALYSIS`, not `RES_MAGIC`, for their save.
+No attack is added by the contact check. A miss, successful defense, weapon
+attack, spell or zero-damage outcome cannot trigger it. The corresponding
+natural part must remain usable and both characters must survive the hit
+in the same room.
+
+====== Mixing contact effects
+
+With only `spec_ghast` configured at 100%, every qualifying contact makes
+at most one save check for its 5-to-10-round effect. Setting its weight to
+zero disables it. Duplicate slots contribute their combined weight.
+
+When both ghoul-family specials are configured, their weights are mutually
+exclusive alternatives. For example:
+
+[source,text]
+----
+archetype ghast
+sp spec_ghast
+sp2 spec_ghoul
+sp3 spec_fido
+spchance 20 30 50
+----
+
+A qualifying contact has a 20% chance to select ghast paralysis, a 30%
+chance to select ghoul paralysis, and a 50% chance to produce no contact
+effect. Selection is followed by the relevant racial check and one save.
+The remaining weight never executes the other special from within combat.
+If an elf is selected for the ghoul version, that result has no paralysis;
+the code does not retry the ghast version. A resisted selection also ends
+the attempt. Normal weighted scheduling still invokes configured specials
+under each routine's own conditions.
+
+Replace the default with weaker ghoul behaviour using `sp spec_ghoul`, or
+clear the whole set using `sp none`. These changes do not alter the creature's
+archetype, anatomy or resistance masks. Live `mset` special edits have the
+same separation and do not recalculate stored XP.
+
+The death-part candidates and undead corpse provenance match the ghoul's.
+This implementation supplies no stench aura, weapon-material damage modifier
+or protection-circle interaction. It does not automatically convert victims
+into undead or change Animate Dead's servant prototypes.
 
 ===== How inherited fields are used
 
@@ -1499,7 +1589,8 @@ spec_cast_priestess casts powerful cleric spells
 spec_cast_chill casts spell chill touch [combat]
 spec_executioner    attacks thieves and killers
 spec_fido   eats corpses
-spec_ghoul  paralysis on damaging natural claw/bite; idle corpse feeding
+spec_ghoul  3-8 round natural-contact paralysis (elves exempt); idle corpse feeding
+spec_ghast  5-10 round natural-contact paralysis (elves not exempt); idle corpse feeding
 spec_guard  cityguard
 spec_janitor    gathers rubbish from ground
 spec_poison poisonous bite [combat]
