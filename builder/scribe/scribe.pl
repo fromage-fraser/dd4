@@ -46,6 +46,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         goat
         fire_elemental
         skeleton
+        zombie
 /;
 
 my %mob_act = (

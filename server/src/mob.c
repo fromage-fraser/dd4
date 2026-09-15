@@ -199,9 +199,38 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* No additional archetype XP adjustment. */
                 0,
 
-                /* Empty names resolve to a valid empty 0/0/0 set. */
+                                /* Empty names resolve to a valid empty 0/0/0 set. */
+                MOB_SPECIAL_CHANCES_AUTO
+        },
+
+        {
+                "zombie", "humanoid", "icon1", "icon2",
+
+                /* Undead classification and explicit mindlessness. */
+                ACT_UNDEAD, AFF_MINDLESS,
+                BODY_NO_SPEECH,
+
+                /* No additional natural attack parts. */
+                0,
+
+                /* Resistance, vulnerability and immunity XOR masks. */
+                RES_DARK,
+                RES_HOLY,
+                RES_POISON | RES_SLEEP | RES_DRAIN,
+
+                /* Neutral HP, damage, critical and swiftness adjustments. */
+                0, 0, 0, 0,
+
+                /* Inherit dimensions and language. */
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                /* No compulsory special functions or extra XP. */
+                "", "", "",
+                0,
                 MOB_SPECIAL_CHANCES_AUTO
         }
+
 };
 
 /*

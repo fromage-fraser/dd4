@@ -21,6 +21,7 @@ _AsciiDoc documentation update: 14 September 2026._
 * <<scribe-mobiles,8. Mobiles>>
 ** <<scribe-mobile-inheritance,Body species, archetypes and XOR overrides>>
 ** <<scribe-template-selection,Selecting a creature archetype>>
+** <<scribe-zombie-archetype,Zombie archetype>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-mobile-mindlessness,Mindlessness>>
 ** <<scribe-individual-resistances,Individual resistance fields>>
@@ -698,6 +699,7 @@ Accepted archetype names are:
 | `goat` | Existing goat archetype, based on `farm_mammal`.
 | `fire_elemental` | Existing fire-elemental test archetype, based on `elemental`.
 | `skeleton` | Skeletal humanoid archetype.
+| `zombie` | Mindless, nonliving humanoid retaining its physical organs and limbs.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -944,6 +946,80 @@ ACT/AFF/body XOR layers, effective resistance masks, score/modifier layers
 and special slots. No new immortal command is introduced. `ostat` and
 Identify continue to show undead object provenance.
 
+
+[[scribe-zombie-archetype]]
+===== Zombie archetype
+
+Select a zombie with:
+
+[source,text]
+----
+archetype zombie
+----
+
+Rank is independent; omitted rank means common. The generated selection is
+`< zombie~ common~`. The source retains individual overrides rather than
+expanding the template's flags.
+
+[cols="<2,<4",options="header"]
+|===
+| Property | Zombie default
+| Body species | `humanoid`.
+| Classification | `ACT_UNDEAD`.
+| Mindlessness | `AFF_MINDLESS`.
+| Body restrictions | `BODY_NO_SPEECH` and `BODY_INORGANIC`.
+| Positive anatomy | Head, arms, two legs, heart, brains, guts, hands, feet, fingers, ear and eye. No inherited organs are cancelled. No tail is declared.
+| Resistance | `RES_DARK`; mask `262144`.
+| Vulnerability | `RES_HOLY`; mask `131072`.
+| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`; mask `1792`.
+| Physical damage | No archetype resistance, vulnerability or immunity to blunt, piercing, slashing or nonmagical attacks.
+| Other balance defaults | Zero HP, damage, critical, swiftness and additional XP adjustments. No automatic Slow affect or additional fire weakness.
+| Attack parts and specials | No additional natural attack parts and no compulsory special. The three cleared names resolve to an empty `0/0/0` set.
+| Dimensions and language | Inherit humanoid defaults, currently unspecified zero.
+|===
+
+`BODY_INORGANIC` selects DD4's existing nonliving-physiology handling.
+It does not remove the corpse's physical organs. A retained brain is an
+anatomical part; `AFF_MINDLESS` separately determines whether the creature
+has a mind that the supported mental effects can influence. A retained
+heart likewise remains present for existing `HAS_HEART` checks.
+
+An ordinary zombie receives no automatic aggression, sentinel, no-quest or
+no-experience flag. Add those as individual choices when appropriate.
+It receives no automatic paralysis or blanket psychic immunity.
+
+The effective body mask is `66884896`. `mstat` displays:
+
+[source,text]
+----
+no_speech inorganic head arms two_legs heart brains guts hands feet fingers ear eye
+----
+
+Its death-part candidates are head, heart, arm, leg, brain, bundle of
+entrails, hand, foot, finger, ear and eye. Death-generated parts remain
+random, decay normally, carry undead provenance and are inedible because
+of the nonliving body flag. Ordinary death leaves an undead-tagged NPC
+corpse; the archetype supplies neither `ACT_OBJECT` nor `BODY_NO_CORPSE`.
+
+Do not repeat `act undead`, `aff mindless` or `bf inorganic no_speech` on
+an ordinary zombie: those individual XOR inputs cancel the corresponding
+inherited properties.
+
+For an aware zombie that is permitted to speak, cancel those two restrictions:
+
+[source,text]
+----
+archetype zombie
+aff mindless
+bf no_speech
+----
+
+This retains undead classification, nonliving physiology, physical anatomy
+and the resistance package. It does not itself add a special function.
+
+A mobile is not converted by its name or description. Select the archetype
+explicitly. Animate Dead uses its existing configured servant prototypes;
+selecting this archetype for an area mobile does not alter the spell.
 
 ===== How inherited fields are used
 
