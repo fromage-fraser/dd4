@@ -1064,9 +1064,12 @@ bool spec_ghoul(CHAR_DATA *ch)
  * Share the ghoul's idle feeding conditions.
  * The contact helper selects the ghast's stronger paralysis separately.
  */
+bool spec_ghast(CHAR_DATA *ch)
+{
+        return spec_ghoul(ch);
+}
 
-
- /*
+/*
  * Passive carrion stench. AFF_STENCH belongs to the emitter; exposure
  * uses an ordinary, flag-free affect so targets never become emitters.
  */
