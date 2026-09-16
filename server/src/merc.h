@@ -2339,6 +2339,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ITEM_ANTI_SHAPE_SHIFTER BIT_29
 #define ITEM_BOW BIT_30
 #define ITEM_UNDEAD BIT_31          /* Object has an undead nature or originated from an undead character */
+#define ITEM_COLD_IRON BIT_32       /* Explicit cold-iron material tag */
 #define ITEM_ANTI_SMITHY BIT_34
 #define ITEM_DEPLOYED BIT_35
 #define ITEM_RUNE BIT_36
@@ -3495,6 +3496,7 @@ struct skill_type
 #define RES_CURSE BIT_19
 #define RES_SONIC BIT_20
 #define RES_WATER BIT_21
+#define RES_COLD_IRON BIT_22
 
 /*
  * All currently defined RES_* categories.
@@ -3507,7 +3509,7 @@ struct skill_type
                              RES_HOLD | RES_NONMAGIC | RES_MAGIC |       \
                              RES_PARALYSIS | RES_PSYCHIC | RES_HOLY |    \
                              RES_DARK | RES_CURSE | RES_SONIC |          \
-                             RES_WATER))
+                             RES_WATER | RES_COLD_IRON))
 
 /*
  * Effective response to one or more RES_* categories.
