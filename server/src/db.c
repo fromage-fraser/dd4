@@ -714,6 +714,7 @@ int gsn_sense_wisdom;
 int gsn_sonic_blast;
 int gsn_bubble_jet;
 int gsn_banish;
+int gsn_stench = -1;
 
 /*
  *  Spell groups

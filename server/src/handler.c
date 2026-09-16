@@ -1045,6 +1045,9 @@ void char_from_room( CHAR_DATA *ch )
                 return;
         }
 
+        /* Departure ends this target's exposure and restores its modifier. */
+        clear_stench_exposure(ch, FALSE);
+
         if ( !IS_NPC( ch ) )
                 --ch->in_room->area->nplayer;
 
@@ -3720,6 +3723,7 @@ char *affect_bit_name (unsigned long int vector)
         if ( vector & AFF_BONUS_EXOTIC      ) return "exotic_reduction";
         if ( vector & AFF_BONUS_INITIATE    ) return "initiation_bonus";
         if ( vector & AFF_MINDLESS          ) return "mindless";
+        if ( vector & AFF_STENCH            ) return "stench";
 
         return "none";
 }
@@ -3761,7 +3765,7 @@ char* affect_bit_name_nice (unsigned long int vector)
         if ( vector & AFF_DETECT_CURSE      ) return "detect curse";
         if ( vector & AFF_DETECT_GOOD       ) return "detect good";
         if ( vector & AFF_SWALLOWED         ) return "swallowed";
-        if ( vector & AFF_NO_RECALL         ) return "no_recall";
+        if ( vector & AFF_NO_RECALL         ) return "no recall";
         if ( vector & AFF_SLOW              ) return "slow";
         if ( vector & AFF_DOT               ) return "DOT";
         if ( vector & AFF_DAZED             ) return "dazed";
@@ -3780,6 +3784,7 @@ char* affect_bit_name_nice (unsigned long int vector)
         if ( vector & AFF_BONUS_EXOTIC      ) return "exotic reduction";
         if ( vector & AFF_BONUS_INITIATE    ) return "initiation bonus";
         if ( vector & AFF_MINDLESS          ) return "mindlessness";
+        if ( vector & AFF_STENCH            ) return "carrion stench";
 
         return "some unknown effect";
 }

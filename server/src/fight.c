@@ -167,6 +167,9 @@ void violence_update(void)
         /* Update these durations once globally, including idle victims. */
         update_ghoul_paralysis();
 
+        /* Reconcile passive room exposure before this pulse's attacks. */
+        update_stench();
+
         for (ch = char_list; ch; ch = ch->next)
         {
                 if (!ch->in_room || ch->deleted)

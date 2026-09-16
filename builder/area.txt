@@ -411,6 +411,7 @@ AFF_ flags:
     AFF_DAZED               BIT_35     Can't do anything
     AFF_CONFUSION           BIT_36     Wanders
     AFF_MINDLESS            BIT_49     Lacks a mind. See "Mindlessness" below.
+    AFF_STENCH              BIT_50     Emits carrion stench.
     AFF_SLOW                BIT_63     Slowed down. Many negative consequences.
 
 ==Mindlessness

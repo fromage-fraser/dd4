@@ -268,7 +268,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 "ghast", "humanoid", "icon1", "icon2",
 
                 /* Undead, with thought and speech retained. */
-                ACT_UNDEAD, 0,
+                ACT_UNDEAD, AFF_STENCH,
 
                 /* Organic humanoid anatomy with an elongated tongue. */
                 PART_LONG_TONGUE,
