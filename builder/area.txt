@@ -728,6 +728,19 @@ the prototype, area file, other existing instances, or future spawns.
 
 These generic live resistance fields currently apply to NPCs only.
 
+Cold iron is RES_COLD_IRON, BIT_22, decimal 4194304. It is available through
+the normal res, vuln and imm fields and follows their existing inheritance,
+validation and combat-resolution rules.
+
+ITEM_COLD_IRON, BIT_32, decimal 4294967296, explicitly tags an object.
+Ordinary primary/secondary melee strikes with a tagged weapon add
+RES_COLD_IRON to the attack's existing physical and magic/nonmagic categories.
+The combined mask is resolved once. Names do not determine material.
+
+Cold iron is distinct from freezing damage. Other damage paths do not acquire
+the category merely because the attacker carries a tagged weapon. See the
+Scribe manual for supported attack paths and examples.
+
 ==Individual attack-part overrides
 
 Optional #MOBILES tail field:
@@ -1204,6 +1217,7 @@ Extra ITEM_ flags:
     ITEM_ANTI_SHAPE_SHIFTER         BIT_29
     ITEM_BOW                        BIT_30
     ITEM_UNDEAD                     BIT_31 **
+    ITEM_COLD_IRON                  BIT_32
     ITEM_ANTI_SMITHY                BIT_34
     ITEM_DEPLOYED                   BIT_35
     ITEM_RUNE                       BIT_36

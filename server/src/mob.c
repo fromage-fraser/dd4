@@ -276,9 +276,9 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* Existing natural claw and bite attacks. */
                 PART_CLAWS | PART_FANGS,
 
-                /* No additional resistance or vulnerability in this entry. */
+                /* Resistance and vulnerability XOR masks. */
                 0,
-                0,
+                RES_COLD_IRON,
 
                 /* Shared ghoul-family defenses. */
                 RES_SLEEP | RES_CHARM,

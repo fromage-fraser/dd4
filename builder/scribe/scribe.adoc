@@ -42,6 +42,7 @@ _AsciiDoc documentation update: 16 September 2026._
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
 * <<scribe-objects,9. Objects>>
 ** <<scribe-weapon-resistance,Ordinary weapon resistance categories>>
+** <<scribe-cold-iron,Cold iron>>
 ** <<scribe-object-undead,Undead objects and death-generated provenance>>
 * <<scribe-object-sets,10. Object sets>>
 * <<scribe-rooms,11. Rooms>>
@@ -1167,7 +1168,8 @@ alignment or copy a tabletop hit-dice, armour-class or attack-count value.
 | Mind and speech | No inherited `AFF_MINDLESS` or `BODY_NO_SPEECH`.
 | Anatomy | Organic humanoid anatomy plus `PART_LONG_TONGUE`; body mask `133993472`.
 | Natural attacks | `PART_CLAWS` and `PART_FANGS`; attack-part mask `25769803776`.
-| Resistance and vulnerability | Neither is supplied by the archetype.
+| Resistance | None supplied by the archetype.
+| Vulnerability | `RES_COLD_IRON`; mask `4194304`. Uses the ordinary resistance resolver, including its non-stacking +50% vulnerability adjustment.
 | Immunities | `RES_SLEEP` and `RES_CHARM`; mask `3072`.
 | Combat scalars | Zero HP, damage, critical and swiftness adjustments.
 | Special set | `spec_ghast` in slot 1; other slots empty; auto resolves to `100/0/0`.
@@ -1232,9 +1234,14 @@ rolls. Cancel it independently with `aff stench` in an individual ghast's
 source. `sp none` disables feeding and contact paralysis, but leaves stench
 in place.
 
-No weapon-material damage modifier or protection-circle interaction is
-supplied. This archetype does not automatically convert victims into undead
-or change Animate Dead's servant prototypes.
+Ordinary strikes from weapons tagged `ex cold_iron` add `RES_COLD_IRON`
+to their existing attack mask. The ghast's vulnerability therefore uses
+the standard resistance rules, not a separate double-damage multiplier.
+See <<scribe-cold-iron,Cold iron>> for supported attacks and overrides.
+
+No protection-circle interaction is supplied. This archetype does not
+automatically convert victims into undead or change Animate Dead's servant
+prototypes.
 
 ===== How inherited fields are used
 
@@ -3372,7 +3379,7 @@ They do not reverse effects that a routine has already caused.
 [[scribe-resistance-flags]]
 ==== Resistance category reference
 
-The 22 categories below are available to the server's template and effect
+The 23 categories below are available to the server's template and effect
 masks. The Scribe keywords in the first column are available for
 `res`, `vuln` and `imm`. The `atk`, `act`, `aff`, `bf` and object `ex` lists use
 separate flag namespaces and must not use these numeric values interchangeably.
@@ -3402,9 +3409,10 @@ separate flag namespaces and must not use these numeric values interchangeably.
 | `curse` | `RES_CURSE` | 524288 | Curse effects.
 | `sonic` | `RES_SONIC` | 1048576 | Sonic-classified harmful effects; added as `BIT_20`.
 | `water` | `RES_WATER` | 2097152 | Water-classified harmful effects; added as `BIT_21`.
+| `cold_iron` | `RES_COLD_IRON` | 4194304 | Explicit cold-iron attack classification; independent of freezing damage.
 |===
 
-The combined valid mask in this revision is `4194303` (bits 0 through 21).
+The combined valid mask is `8388607` (bits 0 through 22).
 This is the set of currently defined bits, not a separate resistance kind or
 a recommendation to give every category to a mobile.
 
@@ -3995,6 +4003,139 @@ See <<scribe-resistance-flags,Resistance category reference>> for the combined
 mask rule. Immunity which nullifies a connected ordinary hit has a distinct
 combat message; it is not reported as a genuine miss.
 
+[[scribe-cold-iron]]
+===== Cold iron
+
+Cold iron uses the existing object-extra and resistance systems:
+
+[cols="<2,<2,<2",options="header"]
+|===
+| Source field | C flag | Decimal bit
+| Object `ex cold_iron` | `ITEM_COLD_IRON` (`BIT_32`) | `4294967296`
+| Mobile `res cold_iron` | `RES_COLD_IRON` (`BIT_22`) | `4194304`
+| Mobile `vuln cold_iron` | `RES_COLD_IRON` (`BIT_22`) | `4194304`
+| Mobile `imm cold_iron` | `RES_COLD_IRON` (`BIT_22`) | `4194304`
+|===
+
+The same keyword has different bit values in these separate namespaces.
+Cold iron is not `RES_COLD` (freezing), and does not use an AFF flag.
+Object names and descriptive material text do not automatically set the tag.
+The tag may be stored on any object, but this combat path checks actual weapons.
+
+For example:
+
+[source,text]
+----
+$obj
+vn 1
+nm iron dagger
+sh a cold-iron dagger
+lo A cold-iron dagger lies here.
+ty weapon
+v3 stab
+we take wield
+wg 2
+ex cold_iron
+----
+
+Use `ex cold_iron magic` for a weapon carrying both properties. The material
+flag does not grant magic by itself and does not bypass nonmagical immunity.
+
+===== Attack classification and resolution
+
+An ordinary primary or secondary melee weapon strike adds `RES_COLD_IRON`
+when the actual attacking, non-deleted ITEM_WEAPON has `ITEM_COLD_IRON`.
+It retains its physical damage category and its magic/nonmagic source category.
+A nonmagical cold-iron dagger therefore supplies:
+
+[source,c]
+----
+RES_PIERCE | RES_NONMAGIC | RES_COLD_IRON
+----
+
+The complete mask goes through the existing resistance resolver once.
+A matching immunity nullifies the damage. With no matching immunity, a
+matching resistance and vulnerability cancel to normal; resistance alone
+halves positive damage (minimum one), and vulnerability alone adds half the
+original damage, rounded down. Several matching vulnerabilities do not stack.
+For an otherwise normal 100-point hit at this stage, the possible results are
+0 (immune), 50 (resistant), 100 (normal) and 150 (vulnerable).
+
+Cold-iron vulnerability is consequently +50%, not a separate doubled-damage
+rule. Normal defenses and subsequent combat modifiers remain in effect.
+A nullified connected hit uses the existing immunity message, not a miss.
+
+Only ordinary TYPE_HIT-based weapon strikes gain material classification from
+this object flag. Unarmed attacks, spells, named skill damage and ranged or
+thrown paths do not inherit it merely because a cold-iron object is carried
+or worn. Other effect paths can explicitly supply RES_COLD_IRON if designed
+to do so; it is an ordinary resistance category, not restricted to ghasts.
+
+The shared resistance masks currently apply to live NPCs, body-species and
+archetype templates. Player resistance skills and effects retain their existing
+separate handling; this category does not itself enable generic RES masks on PCs.
+
+===== Inheritance and live editing
+
+The ghast archetype supplies `vuln cold_iron` as a template default. Do not
+repeat it on an ordinary individual ghast: individual masks are XOR inputs.
+
+A neutral-to-cold-iron ghast cancels its inherited vulnerability:
+
+[source,text]
+----
+archetype ghast
+vuln cold_iron
+----
+
+A cold-iron-resistant ghast cancels vulnerability and adds resistance:
+
+[source,text]
+----
+archetype ghast
+vuln cold_iron
+res cold_iron
+----
+
+A cold-iron-immune ghast instead uses:
+
+[source,text]
+----
+archetype ghast
+vuln cold_iron
+imm cold_iron
+----
+
+Putting the same effective category in more than one response mask is invalid.
+On a template without inherited cold-iron properties, any one of `res`, `vuln`
+or `imm` can add the corresponding response normally.
+
+The existing live commands use absolute masks, not XOR. To change a default
+ghast from vulnerable to resistant, first clear that vulnerability, then set
+resistance. Preserve any unrelated bits in both masks:
+
+[source,text]
+----
+mset <mobile> vulnerabilities 0
+mset <mobile> resists 4194304
+----
+
+These values are for a default ghast with no other vulnerability or resistance
+bits. To change to immunity, clear the resistance and preserve sleep/charm:
+
+[source,text]
+----
+mset <mobile> resists 0
+mset <mobile> immunes 4197376
+----
+
+`4197376` combines cold iron with the ghast's existing sleep/charm mask `3072`.
+`mstat` names cold_iron in the relevant resistance layers. `ostat` and the
+ordinary identification path name cold_iron as an object extra flag. The
+existing `oset extra` command replaces an entire extra-flags mask: preserve
+unrelated flags when editing a real object. No special material mset field is
+required, and changing `spec_ghast` or stench does not change these masks.
+
 ==== Containers
 
 *`v0` — Capacity*
@@ -4559,6 +4700,7 @@ body_part   is a body part; may not be disarmed in combat
 lance   can be used to joust with
 bow can be used to shoot with
 undead  undead nature or provenance; revealed by identification
+cold_iron   explicit cold-iron material tag; see the weapon rules
 deployed    item has been deployed (engineer)
 rune    item has had a rune inscribed on it (runesmith)
 pure    item is not randomised at all by server
