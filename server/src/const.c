@@ -2951,7 +2951,10 @@ const struct skill_type skill_table[MAX_SKILL] =
          spell_fly, 10, 1,
          "", "You feel the pull of gravity slowly return."},
 
-        {"__EMPTY__", 0, 0, 0, 0, 0, NULL, 0, 0, "", ""},
+        {"stench exposure", &gsn_stench,
+         TYPE_NULL, TAR_IGNORE, POS_DEAD, RES_POISON,
+         spell_null, 0, 0,
+         "", "The carrion stench no longer troubles you."},
 
         {"__EMPTY__", 0, 0, 0, 0, 0, NULL, 0, 0, "", ""},
 

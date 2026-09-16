@@ -2048,6 +2048,7 @@ extern WANTED_DATA *wanted_list_last;
 #define AFF_BONUS_EXOTIC BIT_47     /* Reduction/immunity to exotic damage types */
 #define AFF_BONUS_INITIATE BIT_48   /* Gives bonus damage to "initiation" attacks--backstab, lunge etc */
 #define AFF_MINDLESS BIT_49         /* Lacks a mind */
+#define AFF_STENCH BIT_50           /* Emits carrion stench */
 #define AFF_SLOW BIT_63             /* last */
 
 /* forms - Brutus */
@@ -4368,6 +4369,7 @@ extern int gsn_sense_wisdom;
 extern int gsn_sonic_blast;
 extern int gsn_bubble_jet;
 extern int gsn_banish;
+extern int gsn_stench;
 /*
  *  Deity gsns
  */
@@ -5655,6 +5657,9 @@ const char *mob_special_name args((SPEC_FUN *special));
 bool is_ghoul_paralysis args((const AFFECT_DATA *paf));
 void update_ghoul_paralysis args((void));
 void ghoul_touch_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
+bool is_stench_exposure args((const AFFECT_DATA *paf));
+void clear_stench_exposure args((CHAR_DATA *ch, bool notify));
+void update_stench args((void));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));

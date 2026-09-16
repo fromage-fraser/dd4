@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 15 September 2026._
+_AsciiDoc documentation update: 16 September 2026._
 
 === Contents
 
@@ -26,6 +26,7 @@ _AsciiDoc documentation update: 15 September 2026._
 ** <<scribe-ghast-archetype,Ghast archetype>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-mobile-mindlessness,Mindlessness>>
+** <<scribe-mobile-stench,Carrion stench>>
 ** <<scribe-individual-resistances,Individual resistance fields>>
 ** <<scribe-individual-attack-parts,Individual attack-part masks>>
 ** <<scribe-death-parts,Death-generated body parts>>
@@ -703,7 +704,7 @@ Accepted archetype names are:
 | `skeleton` | Skeletal humanoid archetype.
 | `zombie` | Mindless undead humanoid retaining flesh, organs and limbs.
 | `ghoul` | Corporeal undead with claws, fangs, a long tongue, sleep/charm immunity and contact paralysis.
-| `ghast` | Corporeal undead with stronger contact paralysis that also affects elves.
+| `ghast` | Corporeal undead with carrion stench and stronger contact paralysis that also affects elves.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1162,6 +1163,7 @@ alignment or copy a tabletop hit-dice, armour-class or attack-count value.
 | Property | Ghast default
 | Body species | `humanoid`.
 | Classification | `ACT_UNDEAD`.
+| Passive stench | `AFF_STENCH`; see <<scribe-mobile-stench,Carrion stench>>. Independent of special-function selection.
 | Mind and speech | No inherited `AFF_MINDLESS` or `BODY_NO_SPEECH`.
 | Anatomy | Organic humanoid anatomy plus `PART_LONG_TONGUE`; body mask `133993472`.
 | Natural attacks | `PART_CLAWS` and `PART_FANGS`; attack-part mask `25769803776`.
@@ -1222,11 +1224,17 @@ Replace the default with weaker ghoul behaviour using `sp spec_ghoul`, or
 clear the whole set using `sp none`. These changes do not alter the creature's
 archetype, anatomy or resistance masks. Live `mset` special edits have the
 same separation and do not recalculate stored XP.
+Neither form of special replacement removes the inherited `AFF_STENCH` trait.
 
 The death-part candidates and undead corpse provenance match the ghoul's.
-This implementation supplies no stench aura, weapon-material damage modifier
-or protection-circle interaction. It does not automatically convert victims
-into undead or change Animate Dead's servant prototypes.
+The inherited carrion-stench trait can penalise nearby characters' attack
+rolls. Cancel it independently with `aff stench` in an individual ghast's
+source. `sp none` disables feeding and contact paralysis, but leaves stench
+in place.
+
+No weapon-material damage modifier or protection-circle interaction is
+supplied. This archetype does not automatically convert victims into undead
+or change Animate Dead's servant prototypes.
 
 ===== How inherited fields are used
 
@@ -1521,6 +1529,7 @@ prone   can’t use skills, can still cast
 dazed   can’t do anything
 confusion   is confused; may wander despite sentinel
 mindless    lacks a mind; see the mind-dependent effect list below
+stench      emits carrion stench; see the exposure rules below
 slow    has been slowed (many negative effects)
 
 E.g.    aff sneak hide invis infrared
@@ -1917,6 +1926,104 @@ Mindlessness does not automatically remove a brain part, disable special
 functions, reduce INT/WIS, grant poison/sleep/paralysis immunity, prevent all
 movement or flight, or change speech permissions. Physiology and the
 skeleton immunity package remain separate.
+
+
+[[scribe-mobile-stench]]
+==== Carrion stench
+
+`aff stench` supplies `AFF_STENCH`, `BIT_50`, decimal `1125899906842624`,
+to an NPC. The ghast archetype inherits this trait by default. A directly
+stored trait has no timer and is independent of special-function weights.
+
+[source,text]
+----
+aff stench
+----
+
+The existing individual AFF XOR rules apply. On a ghast, this same input
+cancels its inherited stench rather than reinforcing it:
+
+[source,text]
+----
+archetype ghast
+aff stench
+----
+
+Do not repeat the flag on an ordinary ghast. Omitted or zero individual
+AFF input preserves it. On an otherwise unflagged mobile it adds the trait.
+There is no new optional area-tail field or archetype-specific source field.
+
+===== Emission and exposure
+
+The room is the range unit. Stench does not spread through exits or depend
+on visibility, lighting, line of sight, or fighting status. Each combat
+pulse checks living engine characters in the room, even outside combat.
+This is a same-room gameplay approximation, not a measured ten-foot radius.
+
+A source must be a non-deleted, physically interacting NPC with positive
+HP and the live `AFF_STENCH` flag. A sleeping, held, dazed, waiting or charmed
+source still emits the passive odor. An objectlike NPC can be an emitter
+when deliberately given the trait. Non-corporeal or non-interacting sources
+do not emit through this system. Loose corpse objects are not emitters.
+
+Targets with `AFF_STENCH` are exempt. Inorganic, non-corporeal, objectlike,
+non-interacting and dead targets are also excluded. Undead classification,
+mindlessness and elven race alone do not grant protection. There is no
+ally or safe-room exemption; the odor is environmental and does not itself
+start combat, cause damage, consume mana, or assign a killer flag.
+
+The first detected exposure uses the highest-level eligible emitter for one
+`RES_POISON` resistance/save check. For players, existing Resist Toxin and
+Bonus Exotic checks are applied before the generic save. A failed defense
+applies `APPLY_HITROLL -2`; a successful defense applies a zero-modifier
+record. Both records remember the result, preventing fresh saves every pulse.
+Additional emitters do not stack penalties or cause extra saves while that
+exposure record remains. A later, stronger emitter likewise does not reroll
+an existing exposure.
+
+The penalty changes ordinary attack accuracy through the existing hitroll
+modifier. It does not apply poison damage, the Nausea spell, attribute or
+saving-throw penalties, paralysis, or a general spell-failure chance.
+The exposure record has no affect bits: affected targets never start
+emitting odor merely because they inhaled it.
+
+===== Recovery and inspection
+
+The internal affect is named `stench exposure`. It has no useful cast action.
+`mstat` and the detailed player `affects` display show the hitroll modifier
+and the text `while exposed`, rather than a duration in game hours. A zero
+modifier means the initial defense succeeded; it is not an attack penalty.
+
+The exposure record is removed immediately when its target leaves a room.
+It is removed on the next combat pulse if no eligible emitter remains, or
+if the target becomes ineligible. Removal reverses only the stench's own
+modifier and preserves unrelated affects and bonuses. It is safe to clear
+an already-cleared record.
+
+Emitter departure, destruction or live flag removal ends nearby exposure
+at the next pulse when no other source remains. Exposure changes between
+pulses are observed at the next check. Returning to an affected room allows
+a new save. Explicitly stripping the exposure affect also allows a new check
+on the next pulse; ordinary poison cures do not target this separate affect.
+
+The source's AFF layers and the target's exposure record are separate:
+`AFF_STENCH` means emission, whereas `stench exposure` records a successful
+or failed defense. No new special invocation is counted by this passive
+check. Stench does not change the stored experience modifier.
+
+Live editing is NPC-only:
+
+[source,text]
+----
+mset <mobile> stench on
+mset <mobile> stench off
+----
+
+These set or clear only the live emitter flag. They do not toggle it on
+repeated use, edit the prototype, alter other flags, or change future spawns.
+Invalid settings change nothing. Nearby exposure is reconciled at the next
+combat pulse. Removing or replacing `spec_ghast` does not remove this flag;
+use the source AFF mask or this targeted command for an odorless ghast.
 
 
 [[scribe-individual-resistances]]

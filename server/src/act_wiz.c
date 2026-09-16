@@ -3197,7 +3197,11 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                 paf->modifier);
                         strcat(buf1, buf);
 
-                        if (is_ghoul_paralysis(paf))
+                        if (is_stench_exposure(paf))
+                        {
+                                strcat(buf1, " while exposed");
+                        }
+                        else if (is_ghoul_paralysis(paf))
                         {
                                 snprintf(
                                     buf, sizeof(buf),
@@ -3453,7 +3457,11 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                 paf->modifier);
                         strcat(buf1, buf);
 
-                        if (is_ghoul_paralysis(paf))
+                        if (is_stench_exposure(paf))
+                        {
+                                strcat(buf1, " while exposed");
+                        }
+                        else if (is_ghoul_paralysis(paf))
                         {
                                 snprintf(
                                     buf, sizeof(buf),
@@ -6196,7 +6204,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                              "  max_bonus slept steel titanium adamantite\n\r"
                              "  electrum starmetal resists vulnerabilities \n\r"
                              "  immunes attack_parts dammod height weight size\n\r"
-                             "  language mindless(on/off)\n\r"
+                             "  language mindless(on/off) stench(on/off)\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec specials\n\r",
                              ch);
@@ -6259,6 +6267,44 @@ void do_mset(CHAR_DATA *ch, char *argument)
                     "Live mindlessness is now %s. "
                     "Other flags, prototype data and existing effects "
                     "are unchanged.\n\r",
+                    enabled ? "ON" : "OFF");
+                send_to_char(buf, ch);
+                return;
+        }
+
+                /* Change only the live emitter trait, not the complete AFF mask. */
+        if (!str_cmp(arg2, "stench"))
+        {
+                bool enabled;
+
+                if (!IS_NPC(victim))
+                {
+                        send_to_char(
+                            "The stench field is currently NPC-only.\n\r",
+                            ch);
+                        return;
+                }
+
+                if (!str_cmp(arg3, "on"))
+                        enabled = TRUE;
+                else if (!str_cmp(arg3, "off"))
+                        enabled = FALSE;
+                else
+                {
+                        send_to_char(
+                            "Use: mset <mobile> stench on|off\n\r",
+                            ch);
+                        return;
+                }
+
+                if (enabled)
+                        SET_BIT(victim->affected_by, AFF_STENCH);
+                else
+                        REMOVE_BIT(victim->affected_by, AFF_STENCH);
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "Live stench is now %s.\n\r",
                     enabled ? "ON" : "OFF");
                 send_to_char(buf, ch);
                 return;

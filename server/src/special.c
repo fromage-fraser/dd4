@@ -1064,9 +1064,156 @@ bool spec_ghoul(CHAR_DATA *ch)
  * Share the ghoul's idle feeding conditions.
  * The contact helper selects the ghast's stronger paralysis separately.
  */
-bool spec_ghast(CHAR_DATA *ch)
+
+
+ /*
+ * Passive carrion stench. AFF_STENCH belongs to the emitter; exposure
+ * uses an ordinary, flag-free affect so targets never become emitters.
+ */
+#define STENCH_HITROLL_PENALTY 2
+
+bool is_stench_exposure(const AFFECT_DATA *paf)
 {
-        return spec_ghoul(ch);
+        return gsn_stench >= 0 && paf && !paf->deleted
+            && paf->type == gsn_stench;
+}
+
+/* Remove only our own modifier, preserving every unrelated affect. */
+void clear_stench_exposure(CHAR_DATA *ch, bool notify)
+{
+        AFFECT_DATA *paf;
+        bool present;
+        bool sick;
+
+        if (!ch || gsn_stench < 0)
+                return;
+
+        present = FALSE;
+        sick = FALSE;
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (!is_stench_exposure(paf))
+                        continue;
+
+                present = TRUE;
+                if (paf->modifier < 0)
+                        sick = TRUE;
+        }
+
+        if (!present)
+                return;
+
+        affect_strip(ch, gsn_stench);
+
+        if (notify && sick && !ch->deleted && ch->in_room
+        &&  ch->position != POS_DEAD)
+        {
+                send_to_char("The carrion stench no longer troubles you.\n\r", ch);
+        }
+}
+
+/* Strongest eligible emitter sets the save level for a new exposure. */
+static CHAR_DATA *stench_source_for(CHAR_DATA *victim)
+{
+        CHAR_DATA *source;
+        CHAR_DATA *strongest;
+
+        if (!victim || victim->deleted || !victim->in_room
+        ||  victim->hit <= 0 || victim->position == POS_DEAD
+        ||  IS_AFFECTED(victim, AFF_STENCH)
+        ||  IS_AFFECTED(victim, AFF_NON_CORPOREAL)
+        ||  IS_INORGANIC(victim)
+        ||  (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        ||  !mob_interacts_players(victim))
+        {
+                return NULL;
+        }
+
+        strongest = NULL;
+
+        for (source = victim->in_room->people;
+             source;
+             source = source->next_in_room)
+        {
+                if (!IS_NPC(source) || source->deleted
+                ||  source->in_room != victim->in_room
+                ||  source->hit <= 0 || source->position == POS_DEAD
+                ||  !IS_AFFECTED(source, AFF_STENCH)
+                ||  IS_AFFECTED(source, AFF_NON_CORPOREAL)
+                ||  !mob_interacts_players(source))
+                {
+                        continue;
+                }
+
+                if (!strongest || source->level > strongest->level)
+                        strongest = source;
+        }
+
+        return strongest;
+}
+
+/* One reconciliation per combat pulse, including characters not fighting. */
+void update_stench(void)
+{
+        CHAR_DATA *ch;
+        CHAR_DATA *source;
+        AFFECT_DATA af;
+        bool resisted;
+
+        if (gsn_stench < 0)
+                return;
+
+        for (ch = char_list; ch; ch = ch->next)
+        {
+                if (ch->deleted)
+                        continue;
+
+                source = stench_source_for(ch);
+
+                if (!source)
+                {
+                        clear_stench_exposure(ch, TRUE);
+                        continue;
+                }
+
+                /* A zero-modifier record also remembers a successful save. */
+                if (is_affected(ch, gsn_stench))
+                        continue;
+
+                resisted = FALSE;
+
+                if (!IS_NPC(ch)
+                &&  (is_affected(ch, gsn_bonus_exotic)
+                     || number_percent()
+                        < ch->pcdata->learned[gsn_resist_toxin]))
+                {
+                        resisted = TRUE;
+                }
+
+                if (!resisted)
+                {
+                        resisted = saves_resistance_effect(
+                            source->level, ch, RES_POISON);
+                }
+
+                memset(&af, 0, sizeof(af));
+                af.type = gsn_stench;
+                af.duration = -1;
+                af.location = APPLY_HITROLL;
+                af.modifier = resisted ? 0 : -STENCH_HITROLL_PENALTY;
+                af.bitvector = 0;
+                affect_to_char(ch, &af);
+
+                if (!ch->deleted && ch->in_room && ch->gag < 2)
+                {
+                        send_to_char(
+                            resisted
+                                ? "You withstand the carrion stench.\n\r"
+                                : "The carrion stench makes you retch.\n\r",
+                            ch);
+                }
+        }
 }
 
 /*

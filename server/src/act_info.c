@@ -2620,7 +2620,11 @@ void do_affects(CHAR_DATA *ch, char *argument)
                                         strcat(buf1, buf);
                                 }
 
-                                if (is_ghoul_paralysis(paf))
+                                if (is_stench_exposure(paf))
+                                {
+                                        strcat(buf1, " while exposed");
+                                }
+                                else if (is_ghoul_paralysis(paf))
                                 {
                                         snprintf(
                                             buf, sizeof(buf),
