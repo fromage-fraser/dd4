@@ -777,15 +777,18 @@ static unsigned long int ordinary_attack_resistance_types(int dt,
                 res_types |= RES_NONMAGIC;
 
         /*
-         * Material is another category on this same damage event.
+         * Materials are additional categories on this same damage event.
          * Use only the actual weapon responsible for the strike.
          */
         if (weapon
         &&  !weapon->deleted
-        &&  weapon->item_type == ITEM_WEAPON
-        &&  IS_OBJ_STAT(weapon, ITEM_COLD_IRON))
+        &&  weapon->item_type == ITEM_WEAPON)
         {
-                res_types |= RES_COLD_IRON;
+                if (IS_OBJ_STAT(weapon, ITEM_COLD_IRON))
+                        res_types |= RES_COLD_IRON;
+
+                if (IS_OBJ_STAT(weapon, ITEM_SILVER))
+                        res_types |= RES_SILVER;
         }
 
         return res_types;

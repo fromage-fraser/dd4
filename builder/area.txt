@@ -596,6 +596,21 @@ Use mstat to inspect template, individual, prototype and live values.
 
 Consult mob.c or the Scribe manual for individual archetypes.
 
+The ghost archetype is currently a registration-stage development template:
+
+    < ghost~ common~
+
+It inherits the humanoid body species and adds ACT_UNDEAD. It supplies no
+additional AFF, body-form, attack-part or resistance masks, no compulsory
+special functions, and no additional combat or XP modifiers.
+
+Ghost anatomy, incorporeality, materialisation and active ghost abilities
+are not implemented by this registration stage. Do not convert existing
+world ghosts or Animate Dead servant prototypes to it yet.
+
+Scribe selects it with "archetype ghost". As with other archetypes,
+repeating the inherited undead flag in an individual ACT mask cancels it.
+
 Options for "rank" values (in increasing order of power) are "common", "rare",
 "elite", "boss" and "world".
 
@@ -740,6 +755,23 @@ The combined mask is resolved once. Names do not determine material.
 Cold iron is distinct from freezing damage. Other damage paths do not acquire
 the category merely because the attacker carries a tagged weapon. See the
 Scribe manual for supported attack paths and examples.
+
+Silver uses ITEM_SILVER (BIT_33, decimal 8589934592) for object tagging
+and RES_SILVER (BIT_23, decimal 8388608) for resistance classification.
+
+Scribe accepts object "ex silver" and mobile "res silver",
+"vuln silver" or "imm silver". Existing inheritance and validation apply.
+
+Ordinary primary/secondary strikes with the actual tagged weapon add
+RES_SILVER to their existing damage and magic/nonmagic categories.
+The combined mask is resolved once. Silver does not grant magic or
+automatically bypass RES_NONMAGIC immunity.
+
+Names and descriptions do not set the material flag. This change does
+not alter the ghost archetype or classify unrelated attacks as silver.
+
+The combined valid resistance mask is 16777215, covering bits 0 to 23.
+
 
 ==Individual attack-part overrides
 
@@ -1218,6 +1250,7 @@ Extra ITEM_ flags:
     ITEM_BOW                        BIT_30
     ITEM_UNDEAD                     BIT_31 **
     ITEM_COLD_IRON                  BIT_32
+    ITEM_SILVER                     BIT_33
     ITEM_ANTI_SMITHY                BIT_34
     ITEM_DEPLOYED                   BIT_35
     ITEM_RUNE                       BIT_36
