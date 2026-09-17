@@ -3970,6 +3970,7 @@ char* resist_name (unsigned long int vector)
                 case RES_SONIC:         return "sonic";
                 case RES_WATER:         return "water";
                 case RES_COLD_IRON:     return "cold_iron";
+                case RES_SILVER:        return "silver";
 
                 default:                return "(unknown)";
         }
@@ -4350,6 +4351,7 @@ char *extra_bit_name (unsigned long int extra_flags)
             case ITEM_BOW:                  return "bow";
             case ITEM_UNDEAD:               return "undead";
             case ITEM_COLD_IRON:            return "cold_iron";
+            case ITEM_SILVER:               return "silver";
             case ITEM_ANTI_SMITHY:          return "anti_smithy";
             case ITEM_CURSED:               return "cursed";
             case ITEM_RUNE:                 return "rune";

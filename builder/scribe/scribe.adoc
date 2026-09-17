@@ -43,6 +43,7 @@ _AsciiDoc documentation update: 16 September 2026._
 * <<scribe-objects,9. Objects>>
 ** <<scribe-weapon-resistance,Ordinary weapon resistance categories>>
 ** <<scribe-cold-iron,Cold iron>>
+** <<scribe-silver,Silver>>
 ** <<scribe-object-undead,Undead objects and death-generated provenance>>
 * <<scribe-object-sets,10. Object sets>>
 * <<scribe-rooms,11. Rooms>>
@@ -706,6 +707,7 @@ Accepted archetype names are:
 | `zombie` | Mindless undead humanoid retaining flesh, organs and limbs.
 | `ghoul` | Corporeal undead with claws, fangs, a long tongue, sleep/charm immunity and contact paralysis.
 | `ghast` | Corporeal undead with carrion stench and stronger contact paralysis that also affects elves.
+| `ghost` | Registration-stage undead template. Anatomy, incorporeality and ghost combat abilities are unfinished; use only for development tests.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1242,6 +1244,47 @@ See <<scribe-cold-iron,Cold iron>> for supported attacks and overrides.
 No protection-circle interaction is supplied. This archetype does not
 automatically convert victims into undead or change Animate Dead's servant
 prototypes.
+
+[[scribe-ghost-archetype]]
+===== Ghost archetype: registration stage
+
+[source,text]
+----
+archetype ghost
+----
+
+WARNING: This is an unfinished development template. Do not convert existing
+world ghosts or Animate Dead servant prototypes to it yet.
+
+This stage registers the archetype and its undead classification. It does
+not yet implement ghost anatomy, incorporeality, materialisation, special
+weapon defences, fear, aging or possession.
+
+[cols="<2,<4",options="header"]
+|===
+| Property | Current default
+| Body species | `humanoid`; its existing anatomy remains unchanged in this stage.
+| Classification | `ACT_UNDEAD`.
+| Affects | No additional affects; no inherited `AFF_MINDLESS` or `AFF_NON_CORPOREAL`.
+| Natural attacks | No additional attack-part declarations.
+| Resistance masks | No additional resistance, vulnerability or immunity.
+| Combat scalars | Zero HP, damage, critical and swiftness adjustments.
+| Dimensions and language | Inherit humanoid defaults.
+| Special functions | All three slots explicitly empty; auto resolves to `0/0/0`.
+| Archetype XP | Zero additional adjustment.
+|===
+
+The existing individual XOR rules apply. An ordinary test definition should
+not repeat `act undead`, because doing so cancels the inherited undead flag.
+
+Names and descriptions do not select this archetype. It must be selected
+explicitly with `archetype ghost`.
+
+The existing `AFF_NON_CORPOREAL` flag retains its current player-form
+behaviour. This registration stage does not assign it to ghosts or alter
+any checks which use it.
+
+Existing world mobiles and Animate Dead prototypes remain unchanged.
 
 ===== How inherited fields are used
 
@@ -3379,7 +3422,7 @@ They do not reverse effects that a routine has already caused.
 [[scribe-resistance-flags]]
 ==== Resistance category reference
 
-The 23 categories below are available to the server's template and effect
+The 24 categories below are available to the server's template and effect
 masks. The Scribe keywords in the first column are available for
 `res`, `vuln` and `imm`. The `atk`, `act`, `aff`, `bf` and object `ex` lists use
 separate flag namespaces and must not use these numeric values interchangeably.
@@ -3407,12 +3450,13 @@ separate flag namespaces and must not use these numeric values interchangeably.
 | `holy` | `RES_HOLY` | 131072 | Holy-classified effects.
 | `dark` | `RES_DARK` | 262144 | Dark-classified effects.
 | `curse` | `RES_CURSE` | 524288 | Curse effects.
-| `sonic` | `RES_SONIC` | 1048576 | Sonic-classified harmful effects; added as `BIT_20`.
-| `water` | `RES_WATER` | 2097152 | Water-classified harmful effects; added as `BIT_21`.
+| `sonic` | `RES_SONIC` | 1048576 | Sonic-classified harmful effects.
+| `water` | `RES_WATER` | 2097152 | Water-classified harmful effects.
 | `cold_iron` | `RES_COLD_IRON` | 4194304 | Explicit cold-iron attack classification; independent of freezing damage.
+| `silver` | `RES_SILVER` | 8388608 | Explicit silver or silvered attack classification; independent of magical status.
 |===
 
-The combined valid mask is `8388607` (bits 0 through 22).
+The combined valid mask is `16777215` (bits 0 through 23).
 This is the set of currently defined bits, not a separate resistance kind or
 a recommendation to give every category to a mobile.
 
@@ -4136,6 +4180,44 @@ existing `oset extra` command replaces an entire extra-flags mask: preserve
 unrelated flags when editing a real object. No special material mset field is
 required, and changing `spec_ghast` or stench does not change these masks.
 
+[[scribe-silver]]
+===== Silver
+
+`ex silver` sets `ITEM_SILVER` (`BIT_33`, decimal `8589934592`).
+Use it for silver or silvered objects. Names and descriptions do not set
+the flag automatically, and the flag does not grant `ITEM_MAGIC`.
+
+`res silver`, `vuln silver` and `imm silver` use `RES_SILVER`
+(`BIT_23`, decimal `8388608`). These are mobile resistance fields, in a
+different flag namespace from object extras.
+
+For ordinary primary and secondary weapon strikes, a non-deleted
+`ITEM_WEAPON` carrying `ITEM_SILVER` adds `RES_SILVER` to the attack's
+existing damage and magic/nonmagic categories.
+
+For example, a mundane silver dagger supplies
+`RES_PIERCE | RES_NONMAGIC | RES_SILVER`. A magical silver dagger supplies
+`RES_PIERCE | RES_MAGIC | RES_SILVER`.
+
+The complete mask is resolved once using the existing resistance rules.
+Multiple matching vulnerabilities or resistances do not stack.
+Silver does not automatically bypass nonmagical immunity.
+
+Named skills, spells, ranged and thrown attacks do not acquire silver
+classification merely because the attacker carries or wears a silver
+object. This change adds classification to the ordinary weapon-strike
+path only.
+
+Identification describes the silver property. Object inspection names
+the silver extra flag, and mobile inspection names silver resistance
+categories.
+
+Existing individual XOR inheritance and absolute live-mset rules remain
+unchanged. Generic mobile resistance masks remain NPC-only.
+
+This addition does not change the ghost archetype or implement its
+materialisation and special weapon-defence rules.
+
 ==== Containers
 
 *`v0` — Capacity*
@@ -4701,6 +4783,7 @@ lance   can be used to joust with
 bow can be used to shoot with
 undead  undead nature or provenance; revealed by identification
 cold_iron   explicit cold-iron material tag; see the weapon rules
+silver   explicit silver or silvered material tag; see the weapon rules
 deployed    item has been deployed (engineer)
 rune    item has had a rune inscribed on it (runesmith)
 pure    item is not randomised at all by server

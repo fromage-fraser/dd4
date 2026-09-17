@@ -290,10 +290,53 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
 
-                /* Idle feeding and stronger contact paralysis. */
+                                /* Idle feeding and stronger contact paralysis. */
                 "spec_ghast", "", "",
 
                 /* No separate archetype XP adjustment. */
+                0,
+                MOB_SPECIAL_CHANCES_AUTO
+        },
+
+        {
+                "ghost", "humanoid", "icon1", "icon2",
+
+                /*
+                 * Registration-stage template.
+                 *
+                 * Undead classification only; do not deploy existing
+                 * world ghosts with this unfinished template yet.
+                 */
+                ACT_UNDEAD, 0,
+
+                /*
+                 * Keep the inherited humanoid body unchanged for now.
+                 * Ghost anatomy and incorporeality are separate work.
+                 */
+                0,
+
+                /* No additional natural attack parts. */
+                0,
+
+                /*
+                 * No resistance, vulnerability or immunity defaults
+                 * until the ghost's combat rules are implemented.
+                 */
+                0,
+                0,
+                0,
+
+                /* Neutral HP, damage, critical and swiftness adjustments. */
+                0, 0, 0, 0,
+
+                /* Inherit dimensions and language metadata. */
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                /* No active ghost behaviour in this stage. */
+                "", "", "",
+
+                /* No additional archetype XP adjustment. */
                 0,
                 MOB_SPECIAL_CHANCES_AUTO
         }

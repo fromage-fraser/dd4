@@ -49,6 +49,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         zombie
         ghoul
         ghast
+        ghost
 /;
 
 my %mob_act = (
@@ -235,6 +236,7 @@ my %mob_resistance = (
         sonic       => 1048576,
         water       => 2097152,
         cold_iron   => 4194304,
+        silver      => 8388608,
 );
 
 my $mob_resistance_valid_mask = 0;
@@ -328,6 +330,7 @@ my %obj_ex = (
         bow          => 1073741824,
         undead       => 2147483648,
         cold_iron    => 4294967296,
+        silver       => 8589934592,
         anti_smithy  => 17179869184,
         deployed     => 34359738368,
         rune         => 68719476736,

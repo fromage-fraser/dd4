@@ -2340,6 +2340,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ITEM_BOW BIT_30
 #define ITEM_UNDEAD BIT_31          /* Object has an undead nature or originated from an undead character */
 #define ITEM_COLD_IRON BIT_32       /* Explicit cold-iron material tag */
+#define ITEM_SILVER BIT_33
 #define ITEM_ANTI_SMITHY BIT_34
 #define ITEM_DEPLOYED BIT_35
 #define ITEM_RUNE BIT_36
@@ -3497,6 +3498,7 @@ struct skill_type
 #define RES_SONIC BIT_20
 #define RES_WATER BIT_21
 #define RES_COLD_IRON BIT_22
+#define RES_SILVER BIT_23
 
 /*
  * All currently defined RES_* categories.
@@ -3509,7 +3511,7 @@ struct skill_type
                              RES_HOLD | RES_NONMAGIC | RES_MAGIC |       \
                              RES_PARALYSIS | RES_PSYCHIC | RES_HOLY |    \
                              RES_DARK | RES_CURSE | RES_SONIC |          \
-                             RES_WATER | RES_COLD_IRON))
+                             RES_WATER | RES_COLD_IRON | RES_SILVER))
 
 /*
  * Effective response to one or more RES_* categories.
@@ -3522,7 +3524,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 7
+#define MAX_MOB 8
 #define MAX_SPECIES 4
 #define MAX_RANK 6
 
