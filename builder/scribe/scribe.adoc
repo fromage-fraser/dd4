@@ -4260,10 +4260,9 @@ cold-iron item does not give unrelated attacks its material.
 Other effect paths may explicitly supply RES_COLD_IRON when designed to
 do so; the category is not restricted to ghasts.
 
-Body-species, archetype and individual resistance fields remain NPC data.
-Combat also consults the selected <<scribe-pc-innate-resistances,innate PC
-traits>>. Existing player resistance skills and effects retain their separate
-handling; NPC authoring masks are not copied onto player characters.
+The shared resistance masks currently apply to live NPCs, body-species and
+archetype templates. Player resistance skills and effects retain their existing
+separate handling; this category does not itself enable generic RES masks on PCs.
 
 ===== Inheritance and live editing
 
