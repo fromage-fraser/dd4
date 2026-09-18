@@ -1863,6 +1863,16 @@ static void damage_internal(CHAR_DATA *ch,
         {
                 int firedam = dam / 2;
 
+                /*
+                 * This retaliation bypasses damage(). Apply innate PC
+                 * fire vulnerability once, to the actual recipient.
+                 */
+                if (!IS_NPC(ch))
+                {
+                        firedam = apply_resistance_to_damage(
+                            ch, firedam, RES_FIRE);
+                }
+
                 if (is_affected(ch, gsn_resist_heat))
                         firedam *= 0.8;
 
@@ -7277,12 +7287,21 @@ void do_transfix(CHAR_DATA *ch, char *argument)
         }
 
         chance += (ch->level - victim->level) * 2;
+        chance = URANGE(5, chance, 95);
 
-        if (chance < 5)
-                chance = 5;
-
-        if (chance > 95)
-                chance = 95;
+        /*
+         * Preserve the single success roll and its strict-less-than
+         * convention. Resistance halves its winning outcomes.
+         * Existing NPC Transfix behaviour is unchanged.
+         */
+        if (!IS_NPC(victim)
+        &&  get_resistance_result(
+                victim,
+                skill_table[gsn_transfix].res_type)
+                == RES_RESULT_RESISTANT)
+        {
+                chance = 1 + (chance - 1) / 2;
+        }
 
         if (number_percent() < chance)
         {

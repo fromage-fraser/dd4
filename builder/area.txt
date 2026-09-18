@@ -796,6 +796,41 @@ Existing NPC-only resistance handling and XOR authoring remain unchanged.
 See the Scribe manual's "Named weapon and shield contacts" section for
 source selection, chance conventions and exclusions.
 
+==Innate player resistances and vulnerabilities
+
+The shared resistance resolver also handles selected innate PC traits:
+
+    Elf, Drow, Wild-Elf: resist sleep and charm.
+    Illithid: resist psychic.
+    Duergar: resist paralysis.
+
+    Fae: vulnerable to cold iron and silver.
+    Tiefling: vulnerable to cold iron.
+    Troll: vulnerable to fire and acid.
+    Werewolf and Vampire subclasses: vulnerable to silver in every form.
+    Shapeshifter class in demon form: vulnerable to silver while in that form.
+
+These are derived from current race, subclass and form, not stored in
+NPC resistance fields or removable affects. Racial traits persist through
+form changes. Repeated weaknesses combine once, not through XOR or
+stacked multipliers. No innate player immunity is supplied.
+
+The existing damage and resistance-aware save rules apply. Transfix
+additionally halves its success chance against a resistant PC, using
+its existing single roll. Confusion uses the resistance-aware save for
+PC targets. Fireshield retaliation applies innate fire vulnerability
+to PC recipients once.
+
+Player mstat displays these derived masks and their category names.
+Existing learned, equipment and spell defences remain separate.
+
+NPC templates, individual XOR overrides, live masks and immunity rules
+remain unchanged. A mobile with a player-race value does not receive
+the PC profile automatically. There are no new Scribe fields.
+
+See the Scribe manual's "Innate player resistances and vulnerabilities"
+section for scope, examples and diagnostic values.
+
 
 ==Individual attack-part overrides
 

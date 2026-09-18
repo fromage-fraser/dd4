@@ -5594,6 +5594,8 @@ bool wiz_do args((CHAR_DATA * ch, char *command));
 int skill_lookup args((const char *name));
 bool saves_spell args((int level, CHAR_DATA *victim));
 bool saves_resistance_effect args((int level, CHAR_DATA *victim, unsigned long int res_types));
+unsigned long int pc_innate_resists args((CHAR_DATA *ch));
+unsigned long int pc_innate_vulnerabilities args((CHAR_DATA *ch));
 RESISTANCE_RESULT get_resistance_result args((CHAR_DATA * victim, unsigned long int res_types));
 int apply_resistance_to_damage args((CHAR_DATA * victim, int dam, unsigned long int res_types));
 bool is_immune_to args((CHAR_DATA * victim, unsigned long int dam_type));
