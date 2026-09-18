@@ -772,6 +772,30 @@ not alter the ghost archetype or classify unrelated attacks as silver.
 
 The combined valid resistance mask is 16777215, covering bits 0 to 23.
 
+Named object-contact attacks now use the selected weapon or shield's
+ITEM_MAGIC, ITEM_SILVER and ITEM_COLD_IRON properties.
+
+Supported weapon paths are backstab/double backstab, circle/second circle,
+thrust, joust, riposte, counterbalance strikes, armed whirlwind, weapon
+Hurl and Decapitate. Smash uses the actual shield. Shield Hurl uses the
+selected equipped shield.
+
+Damage resolves its combined categories once. Decapitate, Assassinate's
+level-based proc and shield Hurl additionally adjust their percentage
+chance using material responses: immunity prevents success, resistance
+halves the chance, vulnerability adds half, and conflicting resistance
+and vulnerability cancel. Existing upper thresholds are retained.
+
+Matching contact immunity blocks finishing/status effects before their
+success side effects. Smash does not impose victim lag through immunity.
+
+Natural/body-part variants do not borrow material from unrelated items.
+A huge NPC's shieldless Smash has no item-material categories.
+Existing NPC-only resistance handling and XOR authoring remain unchanged.
+
+See the Scribe manual's "Named weapon and shield contacts" section for
+source selection, chance conventions and exclusions.
+
 
 ==Individual attack-part overrides
 
