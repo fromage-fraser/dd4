@@ -2942,6 +2942,62 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (!IS_NPC(victim))
+        {
+                unsigned long int masks[2];
+                const char *labels[2] =
+                {
+                        "Innate resistances",
+                        "Innate vulnerabilities"
+                };
+                int i;
+                bool first;
+
+                masks[0] = pc_innate_resists(victim);
+                masks[1] = pc_innate_vulnerabilities(victim);
+
+                send_to_char(
+                    "\n\r{WInnate player traits "
+                    "(race/subclass/current form):{x\n\r",
+                    ch);
+
+                for (i = 0; i < 2; i++)
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "%s: {W%lu{x (",
+                            labels[i], masks[i]);
+                        send_to_char(buf, ch);
+
+                        first = TRUE;
+
+                        for (next = 1;
+                             next != 0 && next <= RES_VALID_MASK;
+                             next <<= 1)
+                        {
+                                if ((masks[i] & next) == 0)
+                                        continue;
+
+                                if (!first)
+                                        send_to_char(", ", ch);
+
+                                send_to_char(resist_name(next), ch);
+                                first = FALSE;
+                        }
+
+                        if (first)
+                                send_to_char("none", ch);
+
+                        send_to_char(")\n\r", ch);
+                }
+
+                send_to_char(
+                    "Innate immunities: none\n\r"
+                    "Existing skill, equipment and spell defences "
+                    "are separate.\n\r\n\r",
+                    ch);
+        }
+
         buf1[0] = '\0';
 
         /*

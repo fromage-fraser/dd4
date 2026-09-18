@@ -712,6 +712,47 @@ Gezhp, Owl and Shade
   silver, cold-iron and magical properties.
 - Material resistance affects decapitation, assassination and shield-hurl
   chances; immune contact cannot produce those finishing/status effects.
+
+0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
+Innate resistances and vulnerabilities
+=====================================
+
+Some player races, subclasses and forms have inherent traits:
+
+Resistances:
+  Elf, Drow, Wild-Elf: sleep and charm.
+  Illithid: psychic.
+  Duergar: paralysis.
+
+Vulnerabilities:
+  Fae: cold iron and silver.
+  Tiefling: cold iron.
+  Troll: fire and acid.
+  Werewolf and Vampire subclasses: silver, in every form.
+  Shapeshifters in demon form: silver, while in that form.
+
+Racial traits remain active through form changes. Multiple sources of the
+same weakness do not stack. These traits cannot be dispelled and do not
+grant immunity.
+
+For classified damage, resistance halves positive damage and vulnerability
+adds half, rounded down. Other combat modifiers still apply. Matching
+resistance and vulnerability cancel under the existing combined-mask rule.
+
+Resistance-aware spell saves are improved against the appropriate effect.
+Resistance does not guarantee a save or reduce the duration of an effect
+that succeeds. Transfix instead has its existing success chance halved
+against a resistant player, with no additional roll.
+
+Paralysis resistance is not resistance to every trap or binding. Psychic
+resistance is not resistance to every spell. Sleep resistance does not
+prevent ordinary sleep. Existing target restrictions remain in force.
+
+Material weaknesses apply when the actual supported attacking weapon or
+shield carries the corresponding material flag, not merely because the
+attacker carries another silver or cold-iron object.
+
+Existing skills, equipment and protective spells remain separate.
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~

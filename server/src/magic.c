@@ -214,21 +214,82 @@ void say_spell(CHAR_DATA *ch, int sn)
 }
 
 /*
- * Resolve a target's response using its effective live NPC resistance masks.
- *
- * Templates and individual XOR masks are resolved when the prototype loads.
- * create_mobile() copies that state into each independent live instance.
- *
- * Existing PC resistance skills and effects remain separate.
+ * Innate PC traits are derived from current identity, never copied into
+ * the NPC runtime masks or stored as removable AFFECT_DATA.
+ */
+unsigned long int pc_innate_resists(CHAR_DATA *ch)
+{
+        if (!ch || IS_NPC(ch))
+                return 0;
+
+        switch (ch->race)
+        {
+        case RACE_ELF:
+        case RACE_DROW:
+        case RACE_WILD_ELF:
+                return RES_SLEEP | RES_CHARM;
+
+        case RACE_ILLITHID:
+                return RES_PSYCHIC;
+
+        case RACE_DUERGAR:
+                return RES_PARALYSIS;
+
+        default:
+                return 0;
+        }
+}
+
+unsigned long int pc_innate_vulnerabilities(CHAR_DATA *ch)
+{
+        unsigned long int types = 0;
+
+        if (!ch || IS_NPC(ch))
+                return 0;
+
+        switch (ch->race)
+        {
+        case RACE_FAE:
+                types |= RES_COLD_IRON | RES_SILVER;
+                break;
+
+        case RACE_TIEFLING:
+                types |= RES_COLD_IRON;
+                break;
+
+        case RACE_TROLL:
+                types |= RES_FIRE | RES_ACID;
+                break;
+
+        default:
+                break;
+        }
+
+        if (ch->sub_class == SUB_CLASS_WEREWOLF
+        ||  ch->sub_class == SUB_CLASS_VAMPIRE)
+                types |= RES_SILVER;
+
+        if (ch->class == CLASS_SHAPE_SHIFTER && ch->form == FORM_DEMON)
+                types |= RES_SILVER;
+
+        return types;
+}
+
+/*
+ * NPCs retain their resolved live masks and immunity rules.
+ * PCs use only the selected innate traits; they gain no immunity here.
+ * Existing PC skills, equipment and spell defences remain separate.
  */
 RESISTANCE_RESULT get_resistance_result(
     CHAR_DATA *victim,
     unsigned long int res_types)
 {
+        unsigned long int resists;
+        unsigned long int vulnerabilities;
         bool resistant;
         bool vulnerable;
 
-        if (!victim || !IS_NPC(victim))
+        if (!victim)
                 return RES_RESULT_NORMAL;
 
         res_types &= RES_VALID_MASK;
@@ -236,14 +297,22 @@ RESISTANCE_RESULT get_resistance_result(
         if (res_types == 0)
                 return RES_RESULT_NORMAL;
 
-        if ((victim->immunes & res_types) != 0)
-                return RES_RESULT_IMMUNE;
+        if (IS_NPC(victim))
+        {
+                if ((victim->immunes & res_types) != 0)
+                        return RES_RESULT_IMMUNE;
 
-        resistant =
-            (victim->resists & res_types) != 0;
+                resists = victim->resists;
+                vulnerabilities = victim->vulnerabilities;
+        }
+        else
+        {
+                resists = pc_innate_resists(victim);
+                vulnerabilities = pc_innate_vulnerabilities(victim);
+        }
 
-        vulnerable =
-            (victim->vulnerabilities & res_types) != 0;
+        resistant = (resists & res_types) != 0;
+        vulnerable = (vulnerabilities & res_types) != 0;
 
         if (resistant && vulnerable)
                 return RES_RESULT_NORMAL;
@@ -10150,7 +10219,14 @@ void spell_confusion(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (saves_spell(level, victim))
+                /*
+         * Preserve the existing NPC save. PC targets also consult their
+         * innate response to this spell's resistance categories.
+         */
+        if (IS_NPC(victim)
+            ? saves_spell(level, victim)
+            : saves_resistance_effect(
+                level, victim, skill_table[sn].res_type))
         {
                 send_to_char("Your confusion is resisted.\n\r", ch);
                 return;

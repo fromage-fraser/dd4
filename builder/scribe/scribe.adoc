@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 16 September 2026._
+_AsciiDoc documentation update: 19 September 2026._
 
 === Contents
 
@@ -38,6 +38,7 @@ _AsciiDoc documentation update: 16 September 2026._
 ** <<scribe-mobile-language,Raw language-code data>>
 ** <<scribe-weighted-specials,Three weighted special functions>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
+** <<scribe-pc-innate-resistances,Innate player resistances and vulnerabilities>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
 * <<scribe-objects,9. Objects>>
@@ -3496,8 +3497,149 @@ The existing save limits and other saving-throw rules still apply.
 A flag in `skill_table` does not by itself make every bespoke skill, rider,
 room effect or direct resource change consult the resistance system. Check
 the relevant implementation and test both damage and secondary effects.
-The generic NPC system also does not replace existing PC resistance skills
-and spells, even when the PC is a vampire.
+The shared resolver uses resolved live masks for NPCs and the selected
+<<scribe-pc-innate-resistances,derived innate traits>> for PCs. It does not
+replace existing PC resistance skills, equipment or protective spells.
+Innate PC traits never supply immunity.
+
+[[scribe-pc-innate-resistances]]
+===== Innate player resistances and vulnerabilities
+
+The shared resistance resolver derives the following PC traits from the
+character's current race, subclass and form. This is the complete selected
+profile for this stage; other races and classes receive no new innate traits.
+No profile supplies immunity.
+
+[cols="<2,<3,<3",options="header"]
+|===
+| Source | Resistances | Vulnerabilities
+| Elf, Drow, Wild-Elf | `sleep`, `charm` | None.
+| Fae | None. | `cold_iron`, `silver`.
+| Tiefling | None. | `cold_iron`.
+| Troll | None. | `fire`, `acid`.
+| Illithid | `psychic` | None.
+| Duergar | `paralysis` | None.
+| Werewolf subclass | None. | `silver`, in every form.
+| Vampire subclass | None. | `silver`, in every form.
+| Shapeshifter class currently in demon form | None. | `silver`, while in that form.
+|===
+
+These traits are computed by `pc_innate_resists()` and
+`pc_innate_vulnerabilities()`. They are not saved flags or `AFFECT_DATA` and
+are not removable by dispelling. No player-file conversion, login backfill,
+or morph-time flag toggling is required.
+
+Racial traits remain in force through form changes. Werewolf/Vampire silver
+weakness follows the subclass, not just wolf/direwolf/bat form. Demon-form
+silver weakness requires both the Shapeshifter class and current demon form;
+it disappears on leaving that form unless another source also supplies it.
+
+Repeated weaknesses combine with bitwise OR, not XOR or repeated damage
+multipliers. A Fae Vampire in demon form remains vulnerable to silver once.
+An existing character receives its correct profile as soon as this server
+code is running; the profile also follows later race/subclass/form changes.
+
+====== Combat and saving throws
+
+The existing damage helper applies one result per classified damage event:
+resistance halves positive damage with a minimum of one; vulnerability adds
+half the incoming damage, rounded down. A 100-point event becomes 50, 100
+or 150 at this stage. Later mitigation and caps may change the final result.
+Zero-damage misses remain zero.
+
+Matching resistance and vulnerability retain the existing cancellation rule.
+For example, a hypothetical event classified as both psychic and silver is
+normal against an Illithid Vampire. No blanket magic or nonmagic resistance
+has been added that could cancel the selected silver/cold-iron weaknesses.
+
+Status effects already using `saves_resistance_effect()` retain one saving
+throw. Resistance reduces effective casting level by five, with the existing
+minimum level and saving-throw limits. This nominally improves the save by
+20 percentage points away from those limits. It does not prevent ordinary
+sleep, guarantee a successful save, or shorten effects after they succeed.
+
+Sleep, Paralysis and the existing ghoul/ghast contact-paralysis save already
+use this path. Charm Person's existing prohibition on PC targets is unchanged;
+no new player-charming permission is introduced.
+
+Transfix has an attack-success threshold rather than a spell saving throw.
+For a resistant PC, halve the winning outcomes of that existing roll, rounded
+down, after its usual base clamp. There is no second roll. A threshold of 81
+(80 winning percentile outcomes) becomes 41 (40 outcomes). Elven charm
+resistance and Illithid psychic resistance therefore both protect against
+Transfix; its duration remains unchanged. NPC Transfix behaviour is unchanged.
+
+Confusion uses the resistance-aware saving throw for PC targets, while its
+existing NPC save is preserved. This changes the chance of applying the
+psychic spell, not its strength or duration on a failed save.
+
+Supported ordinary and named weapon/shield contacts already pass the actual
+contact object's materials. Their existing shared damage path now uses PC
+vulnerabilities as well. Decapitate, Assassinate's level-based threshold and
+shield Hurl's daze threshold also consult these traits through their existing
+material helper; do not apply another separate PC multiplier at those sites.
+
+Fireshield retaliation is a separate direct-HP path. Its damage against a PC
+attacker explicitly applies the innate fire response once, after the existing
+Resist Heat adjustment. The NPC retaliation path and remaining Fireshield
+processing are unchanged.
+
+====== Category boundaries and existing mechanics
+
+`paralysis` is not every effect using `AFF_HOLD`: a trap or binding does not
+become paralysis merely because it prevents movement. Likewise, `psychic`
+is not every spell, and sleep resistance is not immunity to normal sleep.
+No additional fire/cold/poison/holy/drain traits have been added.
+
+Existing PC resistance skills, item bonuses, buffs, target restrictions and
+legacy creature-specific exceptions remain separate. This stage does not
+retroactively remove all existing immunity-like abilities or target exclusions;
+it adds no new PC immunity and ignores NPC-style `immunes` data on PCs.
+
+A resistance bit still requires a classified damage or effect call. Apart
+from the explicit Transfix, Confusion and Fireshield integrations above,
+this stage does not normalise every bespoke status, reflected-damage,
+room-hazard or direct resource-loss path. Untyped HP subtraction and generic
+`aggro_damage()` cannot infer fire, acid, psychic or weapon material. Effects
+that intentionally bypass the shared resolver require an explicit later hook.
+
+The existing exclusions for projectile ammunition, weapon Stun, Target/trauma
+and unclassified effect riders are not silently removed by this change.
+Ghost implementation is unchanged.
+
+====== Builder and diagnostic behaviour
+
+`res`, `vuln`, `imm`, `MobResists`, `MobVulnerabilities` and `MobImmunes` remain
+NPC authoring fields. Scribe has no new PC fields or material keywords in this
+stage. A mobile with a player-race value does not automatically receive this
+PC profile: its NPC template, individual XOR values and live state remain
+authoritative. NPC immunity and cancellation rules are unchanged.
+
+For a PC, `mstat` prints the derived innate resistance and vulnerability masks
+with category names and explicitly reports that innate immunities are none.
+This report is not a total of every spell, equipment or learned defence.
+The existing NPC `mstat` report remains unchanged.
+
+[cols="<3,<2,<2",options="header"]
+|===
+| Test identity | Innate resistance mask | Innate vulnerability mask
+| Human without a qualifying subclass/form | `0` | `0`
+| Elf, Drow or Wild-Elf without a qualifying subclass/form | `3072` | `0`
+| Fae | `0` | `12582912`
+| Tiefling without a qualifying subclass/form | `0` | `4194304`
+| Troll without a qualifying subclass/form | `0` | `129`
+| Illithid without a qualifying subclass/form | `65536` | `0`
+| Duergar without a qualifying subclass/form | `32768` | `0`
+| Human Werewolf or Vampire, any form | `0` | `8388608`
+| Human Shapeshifter, no qualifying subclass, demon form | `0` | `8388608`
+| The same Shapeshifter after returning to normal form | `0` | `0`
+| Fae Vampire | `0` | `12582912`
+| Illithid Vampire | `65536` | `8388608`
+|===
+
+Verify both damage and status effects using disposable characters and normal
+PvP safeguards. Merely changing a live NPC's race does not make it a valid
+PC-resistance test. Do not use NPC mask-editing commands to configure a PC.
 
 [[scribe-sonic-water]]
 ===== Sonic and water categories
@@ -4216,7 +4358,8 @@ the silver extra flag, and mobile inspection names silver resistance
 categories.
 
 Existing individual XOR inheritance and absolute live-mset rules remain
-unchanged. Generic mobile resistance masks remain NPC-only.
+unchanged. Those stored masks remain NPC-only; selected innate player
+resistances and vulnerabilities are derived separately at runtime.
 
 This addition does not change the ghost archetype or implement its
 materialisation and special weapon-defence rules.
@@ -4294,7 +4437,9 @@ through the success branch.
 ====== Scope
 
 Existing NPC live resistance masks and XOR authoring rules are unchanged.
-No generic PC material resistance system is introduced.
+The same contact and finishing-chance paths now also consult the selected
+<<scribe-pc-innate-resistances,innate player traits>>. Player immunity is not
+introduced, and duplicate silver weaknesses do not stack.
 
 This stage does not extend Shoot, Snap Shot, Knife Toss, turret payloads,
 weapon Stun, Target/trauma, bleeding ticks or spells with object-material
