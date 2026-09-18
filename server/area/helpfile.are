@@ -708,6 +708,10 @@ Gezhp, Owl and Shade
 - Added passive carrion stench.
 - Added cold-iron resistance and weapon tagging.
 - Added silver resistance and silver/silvered weapon tagging.
+- Named weapon and shield attacks now respect their contact item's
+  silver, cold-iron and magical properties.
+- Material resistance affects decapitation, assassination and shield-hurl
+  chances; immune contact cannot produce those finishing/status effects.
 ~
 
 0 MULTIPLAYING MULTIPLAYERS~

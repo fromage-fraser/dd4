@@ -44,6 +44,7 @@ _AsciiDoc documentation update: 16 September 2026._
 ** <<scribe-weapon-resistance,Ordinary weapon resistance categories>>
 ** <<scribe-cold-iron,Cold iron>>
 ** <<scribe-silver,Silver>>
+** <<scribe-object-contact,Named weapon and shield contacts>>
 ** <<scribe-object-undead,Undead objects and death-generated provenance>>
 * <<scribe-object-sets,10. Object sets>>
 * <<scribe-rooms,11. Rooms>>
@@ -4064,7 +4065,8 @@ Cold iron uses the existing object-extra and resistance systems:
 The same keyword has different bit values in these separate namespaces.
 Cold iron is not `RES_COLD` (freezing), and does not use an AFF flag.
 Object names and descriptive material text do not automatically set the tag.
-The tag may be stored on any object, but this combat path checks actual weapons.
+The tag may be stored on any object. Ordinary strikes check actual weapons;
+supported shield attacks check the actual shield.
 
 For example:
 
@@ -4109,11 +4111,12 @@ Cold-iron vulnerability is consequently +50%, not a separate doubled-damage
 rule. Normal defenses and subsequent combat modifiers remain in effect.
 A nullified connected hit uses the existing immunity message, not a miss.
 
-Only ordinary TYPE_HIT-based weapon strikes gain material classification from
-this object flag. Unarmed attacks, spells, named skill damage and ranged or
-thrown paths do not inherit it merely because a cold-iron object is carried
-or worn. Other effect paths can explicitly supply RES_COLD_IRON if designed
-to do so; it is an ordinary resistance category, not restricted to ghasts.
+Ordinary TYPE_HIT-based weapon strikes and the documented
+<<scribe-object-contact,named object-contact attacks>> obtain cold-iron
+classification from their actual contact object. Carrying or wearing a
+cold-iron item does not give unrelated attacks its material.
+Other effect paths may explicitly supply RES_COLD_IRON when designed to
+do so; the category is not restricted to ghasts.
 
 The shared resistance masks currently apply to live NPCs, body-species and
 archetype templates. Player resistance skills and effects retain their existing
@@ -4203,10 +4206,10 @@ The complete mask is resolved once using the existing resistance rules.
 Multiple matching vulnerabilities or resistances do not stack.
 Silver does not automatically bypass nonmagical immunity.
 
-Named skills, spells, ranged and thrown attacks do not acquire silver
-classification merely because the attacker carries or wears a silver
-object. This change adds classification to the ordinary weapon-strike
-path only.
+Ordinary weapon strikes and the documented
+<<scribe-object-contact,named object-contact attacks>> obtain silver
+classification from their actual contact object. Other skills and spells
+do not acquire it merely because the attacker carries or wears silver.
 
 Identification describes the silver property. Object inspection names
 the silver extra flag, and mobile inspection names silver resistance
@@ -4217,6 +4220,85 @@ unchanged. Generic mobile resistance masks remain NPC-only.
 
 This addition does not change the ghost archetype or implement its
 materialisation and special weapon-defence rules.
+
+[[scribe-object-contact]]
+===== Named weapon and shield contacts
+
+The following attacks use their actual weapon's ITEM_MAGIC,
+ITEM_SILVER and ITEM_COLD_IRON properties:
+
+* weapon backstab and its double-backstab repetition;
+* circle and second circle;
+* thrust, joust and riposte;
+* counterbalance strikes and armed whirlwind;
+* weapon Hurl and Decapitate.
+
+Joust uses the selected lance. Hurl uses the selected hurled object.
+Decapitate uses a qualifying primary vorpal, or the off-hand vorpal when
+the primary weapon does not qualify.
+
+Natural/body-part variants retain their existing skill categories and
+do not borrow material from unrelated equipment.
+
+A named attack keeps its explicitly declared damage kind. Where none is
+declared, a weapon supplies its attack kind and a shield supplies blunt.
+ITEM_MAGIC determines the single magic/nonmagic source category.
+Silver and cold iron are additional material categories.
+
+Damage resolves the complete mask once. Matching immunity wins.
+Otherwise, matching resistance and vulnerability cancel. Several
+matching vulnerabilities or resistances do not stack.
+
+====== Shield attacks
+
+Smash obtains contact categories from the equipped shield, never the
+primary weapon. Its existing base-damage calculation is preserved.
+Matching contact immunity prevents the Smash-imposed victim lag.
+
+A huge NPC permitted to Smash without a shield receives no item-material
+categories. Existing separate off-hand follow-up strikes retain their
+own ordinary weapon classification.
+
+Shield Hurl uses the selected equipped shield. Material responses modify
+its daze success chance, not its duration. Nonweapon objects outside the
+shield slot are not eligible for this branch.
+
+====== Finishing and status chances
+
+Decapitate, Assassinate's level-based proc, and shield Hurl use one
+material-based chance adjustment:
+
+* immune: impossible;
+* resistant: half the chance, rounded down;
+* normal: unchanged;
+* vulnerable: add half the chance, rounded down.
+
+Matching material resistance and vulnerability cancel; immunity wins.
+The existing upper thresholds are retained, and no lower minimum is
+reapplied after the material adjustment.
+
+The code preserves the existing strict-less-than percentile convention.
+For example, a threshold of 21 permits 20 winning percentile outcomes.
+Material resistance reduces those to 10; vulnerability increases them
+to 30, subject to the existing ceiling.
+
+Other matching contact immunity also prevents these effects, even when
+it is not material immunity. Physical-type resistance or vulnerability
+does not itself scale their percentage chance in this stage.
+
+Assassinate retains its separate backstab and learned-assassinate checks.
+Only its level-based proc is adjusted. Unkillable NPCs cannot be
+assassinated. Immune Decapitate attempts cannot create a severed head
+through the success branch.
+
+====== Scope
+
+Existing NPC live resistance masks and XOR authoring rules are unchanged.
+No generic PC material resistance system is introduced.
+
+This stage does not extend Shoot, Snap Shot, Knife Toss, turret payloads,
+weapon Stun, Target/trauma, bleeding ticks or spells with object-material
+classification. Ghost materialisation remains separate.
 
 ==== Containers
 

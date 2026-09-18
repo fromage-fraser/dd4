@@ -705,6 +705,29 @@ void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 }
 
 /*
+ * Material categories belonging to an explicitly selected contact object.
+ */
+static unsigned long int object_material_types(OBJ_DATA *source)
+{
+        unsigned long int types = 0;
+
+        if (!source || source->deleted)
+                return 0;
+
+        if (source->item_type != ITEM_WEAPON
+        &&  !IS_SET(source->wear_flags, ITEM_WEAR_SHIELD))
+                return 0;
+
+        if (IS_OBJ_STAT(source, ITEM_COLD_IRON))
+                types |= RES_COLD_IRON;
+
+        if (IS_OBJ_STAT(source, ITEM_SILVER))
+                types |= RES_SILVER;
+
+        return types;
+}
+
+/*
  * Return the resistance categories for an ordinary TYPE_HIT-based attack.
  *
  * Wielded weapons supply their value[3] attack type. An NPC with an empty
@@ -777,21 +800,137 @@ static unsigned long int ordinary_attack_resistance_types(int dt,
                 res_types |= RES_NONMAGIC;
 
         /*
-         * Materials are additional categories on this same damage event.
-         * Use only the actual weapon responsible for the strike.
+         * Use only the actual weapon responsible for this strike.
          */
         if (weapon
         &&  !weapon->deleted
         &&  weapon->item_type == ITEM_WEAPON)
         {
-                if (IS_OBJ_STAT(weapon, ITEM_COLD_IRON))
-                        res_types |= RES_COLD_IRON;
-
-                if (IS_OBJ_STAT(weapon, ITEM_SILVER))
-                        res_types |= RES_SILVER;
+                res_types |= object_material_types(weapon);
         }
 
         return res_types;
+}
+
+/*
+ * Resistance categories for a named attack delivered by a specific object.
+ *
+ * Keep the skill's explicit damage kind. If it has no damage kind, derive
+ * one from the weapon, or use blunt for a shield.
+ *
+ * A NULL source preserves the skill's existing categories.
+ */
+unsigned long int object_attack_resistance_types(int dt, OBJ_DATA *source)
+{
+        unsigned long int types;
+        unsigned long int damage_types;
+
+        if (dt >= TYPE_HIT)
+                return ordinary_attack_resistance_types(dt, source);
+
+        types = (dt >= 0 && dt < MAX_SKILL)
+              ? skill_table[dt].res_type : 0;
+
+        if (!source || source->deleted)
+                return types;
+
+        if (source->item_type != ITEM_WEAPON
+        &&  !IS_SET(source->wear_flags, ITEM_WEAR_SHIELD))
+                return types;
+
+        damage_types = RES_BLUNT | RES_PIERCE | RES_SLASH
+                     | RES_ENERGY | RES_DRAIN;
+
+        /* Keep a skill's explicit damage kind; otherwise use its source. */
+        if ((types & damage_types) == 0)
+        {
+                if (source->item_type == ITEM_WEAPON)
+                        types |= ordinary_attack_resistance_types(
+                            TYPE_HIT + source->value[3], source) & damage_types;
+                else
+                        types |= RES_BLUNT;
+        }
+
+        /* Exactly one source category; materials come from this object. */
+        types &= ~(RES_MAGIC | RES_NONMAGIC | RES_COLD_IRON | RES_SILVER);
+        types |= IS_OBJ_STAT(source, ITEM_MAGIC) ? RES_MAGIC : RES_NONMAGIC;
+        types |= object_material_types(source);
+
+        return types;
+}
+
+/*
+ * Check contact eligibility before applying non-damage side effects.
+ */
+bool object_attack_is_immune(CHAR_DATA *victim, int dt, OBJ_DATA *source)
+{
+        if (!victim || victim->deleted || victim->position == POS_DEAD)
+                return TRUE;
+
+        if (source && source->deleted)
+                return TRUE;
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_INVULNERABLE))
+                return TRUE;
+
+        return get_resistance_result(
+            victim, object_attack_resistance_types(dt, source))
+            == RES_RESULT_IMMUNE;
+}
+
+/*
+ * Preserve the named attack and use the normal damage/death machinery.
+ * Object contact is not a ghoul/ghast natural-contact attack.
+ */
+void damage_from_object(CHAR_DATA *ch, CHAR_DATA *victim,
+                        int dam, int dt, bool poison, OBJ_DATA *source)
+{
+        if (!ch || !victim || ch->deleted || victim->deleted
+        ||  !ch->in_room || ch->in_room != victim->in_room
+        ||  ch->position == POS_DEAD || victim->position == POS_DEAD
+        ||  (source && source->deleted))
+                return;
+
+        damage_internal(ch, victim, dam, dt, poison,
+                        object_attack_resistance_types(dt, source), FALSE);
+}
+
+/*
+ * Preserve callers' existing number_percent() < threshold convention.
+ * Convert to winning percentage points, adjust once, then convert back.
+ * Only material resistance/vulnerability changes the chance; any matching
+ * contact immunity prevents the effect altogether.
+ */
+static int object_effect_threshold(CHAR_DATA *victim, int dt,
+                                   OBJ_DATA *source, int threshold,
+                                   int ceiling)
+{
+        int chance;
+
+        if (object_attack_is_immune(victim, dt, source))
+                return 0;
+
+        chance = URANGE(0, threshold - 1, 100);
+
+        switch (get_resistance_result(victim, object_material_types(source)))
+        {
+        case RES_RESULT_IMMUNE:
+                return 0;
+
+        case RES_RESULT_RESISTANT:
+                chance /= 2;
+                break;
+
+        case RES_RESULT_VULNERABLE:
+                chance += chance / 2;
+                break;
+
+        case RES_RESULT_NORMAL:
+        default:
+                break;
+        }
+
+        return UMIN(ceiling, chance + 1);
 }
 
 /*
@@ -1165,10 +1304,9 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                 dam = apply_mob_damage_modifier(ch, dam);
 
                 /*
-                 * For an ordinary attack, one_hit() still knows the exact
-                 * primary or secondary weapon which caused the hit. Supply
-                 * that attack's resistance categories to the internal damage
-                 * path so it can preserve an immunity result for messaging.
+                 * Ordinary attacks retain their existing natural-contact
+                 * handling. Selected named attacks carry their actual
+                 * weapon or shield source into the same damage pipeline.
                  */
                 if (dt >= TYPE_HIT)
                 {
@@ -1183,6 +1321,39 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                                 && IS_NPC(ch)
                                 && (dt == TYPE_HIT + 5
                                     || dt == TYPE_HIT + 10));
+                }
+                else if (dt == gsn_smash)
+                {
+                        damage_from_object(
+                            ch, victim, dam, dt, poison,
+                            get_eq_char(ch, WEAR_SHIELD));
+                }
+                else if (dt == gsn_backstab
+                     ||  dt == gsn_circle
+                     ||  dt == gsn_second_circle
+                     ||  dt == gsn_thrust
+                     ||  dt == gsn_joust
+                     ||  dt == gsn_riposte
+                     ||  dt == gsn_counterbalance
+                     ||  dt == gsn_whirlwind)
+                {
+                        OBJ_DATA *source = wield;
+
+                        /*
+                         * Natural/body-part versions retain their existing
+                         * skill categories, without borrowing item material.
+                         */
+                        if (source
+                        &&  (source->deleted
+                          || source->item_type != ITEM_WEAPON
+                          || IS_OBJ_STAT(source, ITEM_BODY_PART)))
+                                source = NULL;
+
+                        if (dt == gsn_backstab && ch->form == FORM_SCORPION)
+                                source = NULL;
+
+                        damage_from_object(
+                            ch, victim, dam, dt, poison, source);
                 }
                 else
                 {
@@ -5727,11 +5898,29 @@ void do_backstab(CHAR_DATA *ch, char *argument)
         else
                 assas_chance = 10;
 
+        assas_chance = object_effect_threshold(
+            victim,
+            gsn_backstab,
+            (ch->form == FORM_SCORPION
+                || IS_OBJ_STAT(obj, ITEM_BODY_PART)) ? NULL : obj,
+            assas_chance,
+            101);
+
         if (((!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_backstab]) || !IS_AWAKE(victim) || IS_AFFECTED(victim, AFF_HOLD) || IS_NPC(ch) || ch->form == FORM_SCORPION) && victim->backstab == 0)
         {
                 victim->backstab = 5;
 
-                if (!IS_NPC(ch) && number_percent() < ch->pcdata->learned[gsn_assassinate] && number_percent() < assas_chance && HAS_HEAD(victim) && !IS_SET(victim->act, ACT_OBJECT) && !IS_INORGANIC(victim) && !(is_entered_in_tournament(victim) && is_still_alive_in_tournament(victim) && tournament_status == TOURNAMENT_STATUS_RUNNING))
+                if (!IS_NPC(ch)
+                &&  number_percent() < ch->pcdata->learned[gsn_assassinate]
+                &&  number_percent() < assas_chance
+                &&  HAS_HEAD(victim)
+                &&  !IS_SET(victim->act, ACT_OBJECT)
+                &&  !IS_INORGANIC(victim)
+                &&  !(IS_NPC(victim)
+                   && IS_SET(victim->act, ACT_UNKILLABLE))
+                &&  !(is_entered_in_tournament(victim)
+                   && is_still_alive_in_tournament(victim)
+                   && tournament_status == TOURNAMENT_STATUS_RUNNING))
                 {
                         arena_commentary("$n assassinates $N!", ch, victim);
                         sound_combat_assassinate_sfx( ch, victim );
@@ -7342,7 +7531,6 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
         int chance;
         char msg[MAX_STRING_LENGTH];
         int vnum;
-        int ok;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_decapitate))
         {
@@ -7350,18 +7538,24 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        ok = 0;
+        /*
+         * Prefer a valid primary vorpal; otherwise use the off-hand vorpal.
+         * Keep this pointer for both the chance and damage calculations.
+         */
         wobj = get_eq_char(ch, WEAR_WIELD);
 
-        if (wobj && IS_OBJ_STAT(wobj, ITEM_VORPAL))
-                ok = 1;
+        if (!wobj
+        ||  wobj->deleted
+        ||  wobj->item_type != ITEM_WEAPON
+        ||  !IS_OBJ_STAT(wobj, ITEM_VORPAL))
+        {
+                wobj = get_eq_char(ch, WEAR_DUAL);
+        }
 
-        wobj = get_eq_char(ch, WEAR_DUAL);
-
-        if (wobj && IS_OBJ_STAT(wobj, ITEM_VORPAL))
-                ok = 1;
-
-        if (!ok)
+        if (!wobj
+        ||  wobj->deleted
+        ||  wobj->item_type != ITEM_WEAPON
+        ||  !IS_OBJ_STAT(wobj, ITEM_VORPAL))
         {
                 send_to_char("You must wield a vorpal to decapitate!\n\r", ch);
                 return;
@@ -7384,6 +7578,15 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
                 send_to_char("They aren't here.\n\r", ch);
                 return;
         }
+
+        if (victim == ch)
+        {
+                send_to_char("You cannot decapitate yourself.\n\r", ch);
+                return;
+        }
+
+        if (is_safe(ch, victim))
+                return;
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
@@ -7422,6 +7625,9 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
 
         if (chance > 95)
                 chance = 95;
+
+        chance = object_effect_threshold(
+            victim, gsn_decapitate, wobj, chance, 95);
 
         act("{WYou swing your vorpal blade at $N...{x", ch, NULL, victim, TO_CHAR);
         WAIT_STATE(ch, skill_table[gsn_decapitate].beats);
@@ -7467,7 +7673,9 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
                         obj_to_room(obj, ch->in_room);
                 }
 
-                damage(ch, victim, victim->max_hit / 2, gsn_decapitate, FALSE);
+                damage_from_object(
+                    ch, victim, victim->max_hit / 2,
+                    gsn_decapitate, FALSE, wobj);
                 return;
         }
         else
@@ -8545,6 +8753,15 @@ void do_hurl(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (obj->item_type != ITEM_WEAPON
+        &&  obj->wear_loc != WEAR_SHIELD)
+        {
+                send_to_char(
+                    "You can only hurl a weapon or an equipped shield.\n\r",
+                    ch);
+                return;
+        }
+
         if (obj->item_type != ITEM_WEAPON) /*do this if hurling a shield */
         {
                 int chance;
@@ -8561,21 +8778,16 @@ void do_hurl(CHAR_DATA *ch, char *argument)
 
                 WAIT_STATE(ch, skill_table[gsn_hurl].beats);
 
-                if (!IS_NPC(ch))
-                {
-                        chance = ch->pcdata->learned[gsn_hurl];
-                        chance += (ch->level - victim->level) * 5;
-
-                        if (chance < 5)
-                                chance = 5;
-
-                        if (chance > 95)
-                                chance = 95;
-                }
+                chance = ch->pcdata->learned[gsn_hurl];
+                chance += (ch->level - victim->level) * 5;
+                chance = URANGE(5, chance, 95);
 
                 WAIT_STATE(ch, PULSE_VIOLENCE);
 
-                if (IS_NPC(ch) || number_percent() < chance)
+                chance = object_effect_threshold(
+                    victim, gsn_hurl, obj, chance, 95);
+
+                if (number_percent() < chance)
                 {
                         act("You hurl your shield. It slams into the side of $S head.. THUNK!!",
                             ch, NULL, victim, TO_CHAR);
@@ -8602,7 +8814,14 @@ void do_hurl(CHAR_DATA *ch, char *argument)
                         arena_commentary("$n hurls their equipment at $N.", ch, victim);
 
                         WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
-                        damage(ch, victim, (ch->level / 2) + number_range(ch->level, ch->level * 2), gsn_hurl, FALSE);
+                        damage_from_object(
+                            ch,
+                            victim,
+                            (ch->level / 2)
+                                + number_range(ch->level, ch->level * 2),
+                            gsn_hurl,
+                            FALSE,
+                            obj);
 
                         if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                 return;
