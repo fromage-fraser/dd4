@@ -52,6 +52,10 @@ bool check_shield_unit args((CHAR_DATA * ch, CHAR_DATA *victim, int dt));
 bool check_driver_unit args((CHAR_DATA * ch, CHAR_DATA *victim));
 bool remove_bodypart args((CHAR_DATA * ch, int iWear, bool fReplace));
 static unsigned long int ordinary_attack_resistance_types args((int dt, OBJ_DATA *weapon));
+static bool blessed_weapon_vs_undead
+        args((OBJ_DATA *weapon, CHAR_DATA *victim));
+static int blessed_weapon_damage_bonus
+        args((int dam, OBJ_DATA *weapon, CHAR_DATA *victim));
 static void damage_internal args((CHAR_DATA *ch,
                                   CHAR_DATA *victim,
                                   int dam,
@@ -706,6 +710,53 @@ void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 }
 
 /*
+ * A blessed weapon gains a modest anti-undead bonus.
+ *
+ * Blessing is not magical status and does not add RES_HOLY.
+ * A cursed object receives no holy bonus even if ITEM_BLESS is also set.
+ */
+static bool blessed_weapon_vs_undead(
+    OBJ_DATA *weapon, CHAR_DATA *victim)
+{
+        if (!weapon || weapon->deleted || !victim || victim->deleted)
+                return FALSE;
+
+        if (weapon->item_type != ITEM_WEAPON)
+                return FALSE;
+
+        if (IS_OBJ_STAT(weapon, ITEM_BODY_PART))
+                return FALSE;
+
+        if (!IS_OBJ_STAT(weapon, ITEM_BLESS))
+                return FALSE;
+
+        if (IS_OBJ_STAT(weapon, ITEM_CURSED))
+                return FALSE;
+
+        return IS_UNDEAD(victim);
+}
+
+/*
+ * Apply the weapon's anti-undead damage bonus once, before the target's
+ * resistance/phase result. Saturate rather than overflowing an int.
+ */
+static int blessed_weapon_damage_bonus(
+    int dam, OBJ_DATA *weapon, CHAR_DATA *victim)
+{
+        int bonus;
+
+        if (dam <= 0 || !blessed_weapon_vs_undead(weapon, victim))
+                return dam;
+
+        bonus = UMAX(1, dam / 10);
+
+        if (dam > INT_MAX - bonus)
+                return INT_MAX;
+
+        return dam + bonus;
+}
+
+/*
  * Material categories belonging to an explicitly selected contact object.
  */
 static unsigned long int object_material_types(OBJ_DATA *source)
@@ -893,6 +944,9 @@ void damage_from_object(CHAR_DATA *ch, CHAR_DATA *victim,
         ||  ch->position == POS_DEAD || victim->position == POS_DEAD
         ||  (source && source->deleted))
                 return;
+
+        dam = blessed_weapon_damage_bonus(
+            dam, source, victim);
 
         damage_internal(
             ch, victim, dam, dt, poison,
@@ -1092,7 +1146,16 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                         thac0_47 = class_table[ch->class].thac0_47;
                 }
 
-                thac0 = interpolate(ch->level, thac0_00, thac0_47) - GET_HITROLL(ch);
+                thac0 =
+                    interpolate(ch->level, thac0_00, thac0_47)
+                    - GET_HITROLL(ch);
+
+                /*
+                 * Lower THAC0 is better. Blessing supplies a modest
+                 * +2 effective hitroll against an undead target.
+                 */
+                if (blessed_weapon_vs_undead(wield, victim))
+                        thac0 -= 2;
 
                 victim_ac = UMAX(-15, GET_AC(victim) / 10);
 
@@ -1346,6 +1409,9 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                  */
                 if (dt >= TYPE_HIT)
                 {
+                        dam = blessed_weapon_damage_bonus(
+                            dam, wield, victim);
+
                         damage_internal(
                             ch,
                             victim,
