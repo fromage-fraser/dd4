@@ -5081,6 +5081,7 @@ void clear_char(CHAR_DATA *ch)
         static CHAR_DATA ch_zero;
 
         *ch = ch_zero;
+        ch->ghost_phase = GHOST_PHASE_NONE;
         ch->name = &str_empty[0];
         ch->short_descr = &str_empty[0];
         ch->long_descr = &str_empty[0];

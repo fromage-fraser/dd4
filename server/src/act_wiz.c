@@ -2942,6 +2942,17 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_NPC(victim))
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "\n\rGhost phase (runtime): {W%s{x (%d)\n\r"
+                    "Phase-dependent contact rules: not connected.\n\r\n\r",
+                    ghost_phase_name(victim->ghost_phase),
+                    (int)victim->ghost_phase);
+                send_to_char(buf, ch);
+        }
+
         if (!IS_NPC(victim))
         {
                 unsigned long int masks[2];
@@ -6261,6 +6272,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                              "  electrum starmetal resists vulnerabilities \n\r"
                              "  immunes attack_parts dammod height weight size\n\r"
                              "  language mindless(on/off) stench(on/off)\n\r"
+                             "  ghostphase(none/ethereal/semi_material)\n\r"
                              "String being one of:\n\r"
                              "  name short long title spec specials\n\r",
                              ch);
@@ -6270,6 +6282,51 @@ void do_mset(CHAR_DATA *ch, char *argument)
         if (!(victim = get_char_world(ch, arg1)))
         {
                 send_to_char("They aren't here.\n\r", ch);
+                return;
+        }
+
+        /*
+         * Diagnostic control for one live NPC's ghost-phase state.
+         * No prototype edit, persistence or combat behaviour is implied.
+         */
+        if (!str_cmp(arg2, "ghostphase"))
+        {
+                GHOST_PHASE phase;
+
+                if (!IS_NPC(victim))
+                {
+                        send_to_char(
+                            "The ghostphase field is currently NPC-only.\n\r",
+                            ch);
+                        return;
+                }
+
+                if (!parse_ghost_phase(arg3, &phase))
+                {
+                        send_to_char(
+                            "Use: mset <mobile> ghostphase "
+                            "none|ethereal|semi_material\n\r"
+                            "The live state is unchanged.\n\r",
+                            ch);
+                        return;
+                }
+
+                if (!set_ghost_phase(victim, phase))
+                {
+                        send_to_char(
+                            "Cannot change the phase of that character. "
+                            "The live state is unchanged.\n\r",
+                            ch);
+                        return;
+                }
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "Live ghost phase set to %s. "
+                    "Phase-dependent contact rules are not connected yet; "
+                    "flags, resistance masks and prototype data are unchanged.\n\r",
+                    ghost_phase_name(victim->ghost_phase));
+                send_to_char(buf, ch);
                 return;
         }
 
