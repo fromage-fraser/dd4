@@ -308,7 +308,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET
         },
 
-        {
+                {
                 "ghost", "humanoid", "icon1", "icon2",
 
                 /*
