@@ -4814,6 +4814,7 @@ DECLARE_DO_FUN(do_pattern);
 DECLARE_DO_FUN(do_sconfig); /* Sound configuration - Owl 13/9/25 */
 DECLARE_DO_FUN(do_smoke);   /* for smokeables - Owl 17/12/23 */
 DECLARE_DO_FUN(do_soar);
+DECLARE_DO_FUN(do_splash);
 DECLARE_DO_FUN(do_infamy); /* Shade Apr 22 */
 DECLARE_DO_FUN(do_repair); /* Owl 16/6/22 */
 DECLARE_DO_FUN(do_strengthen);

@@ -1903,7 +1903,49 @@ Scribe keyword:
 
 This exports liquid number 16. Existing liquid numbers remain unchanged.
 
-The intentional offensive splash/throw use of holy water is separate later work.
+Splashing liquids
+-----------------
+
+The general player command is:
+
+    splash <container> <target>
+
+The source must be a carried ITEM_DRINK_CON containing at least one unit
+of any valid liquid.
+
+A valid splash consumes up to five liquid units, retains the container,
+and costs one combat pulse of wait state. Messages identify the actual
+liquid used.
+
+The command itself is liquid-neutral. Individual liquid effects are
+resolved separately so that new liquids can gain splash behaviour without
+duplicating container and command handling.
+
+At present, ordinary liquids have no mechanical splash effect. Water,
+alcohol, blood, salt water and all other current non-holy liquids simply
+produce the splash action.
+
+The only current special case is holy water splashed on an undead target.
+That combination is hostile and checks is_safe() before liquid is consumed.
+
+Holy-water splash base damage is the smaller of one eighth of the target's
+maximum HP and four times the attacker's level, with a minimum of 10.
+The result is RES_HOLY and uses the normal damage/death/resistance pipeline.
+
+Holy water splashed on a living target currently has no special effect.
+
+Holy resistance, vulnerability and immunity apply once. This is not a
+weapon/material attack and gains no RES_MAGIC, RES_SILVER or RES_COLD_IRON.
+Ghost phase does not block the holy effect.
+
+The drink-container poison field remains a drinking property only.
+Splashing a poisoned liquid does not currently poison the target.
+
+Fountains cannot be splashed directly; fill a portable drink container
+first.
+
+Future liquid-specific splash effects should be implemented in the shared
+liquid splash resolver rather than adding separate splash commands.
 
 18 ITEM_KEY
    value[0]    The vnum of room/container it unlocks
