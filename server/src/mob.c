@@ -298,7 +298,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_SPECIAL_CHANCES_AUTO
         },
 
-                {
+        {
                 "ghost", "humanoid", "icon1", "icon2",
 
                 /*
@@ -353,6 +353,70 @@ const struct mob_type mob_table[MAX_MOB] =
         }
 
 };
+
+/*
+ * Names for the live ghost-phase state. Unknown values remain visible
+ * in diagnostics rather than being mistaken for an ordinary default.
+ */
+const char *ghost_phase_name(GHOST_PHASE phase)
+{
+        switch (phase)
+        {
+        case GHOST_PHASE_NONE:
+                return "none";
+        case GHOST_PHASE_ETHEREAL:
+                return "ethereal";
+        case GHOST_PHASE_SEMI_MATERIAL:
+                return "semi_material";
+        default:
+                return "invalid";
+        }
+}
+
+/* Parse one complete named value; leave the output unchanged on failure. */
+bool parse_ghost_phase(const char *text, GHOST_PHASE *phase)
+{
+        GHOST_PHASE parsed;
+
+        if (!text || !phase)
+                return FALSE;
+
+        if (!str_cmp(text, "none"))
+                parsed = GHOST_PHASE_NONE;
+        else if (!str_cmp(text, "ethereal"))
+                parsed = GHOST_PHASE_ETHEREAL;
+        else if (!str_cmp(text, "semi_material"))
+                parsed = GHOST_PHASE_SEMI_MATERIAL;
+        else
+                return FALSE;
+
+        *phase = parsed;
+        return TRUE;
+}
+
+/*
+ * One validated live-state change. This foundation does not yet apply
+ * contact rules or edit flags, resistance masks, followers or combat.
+ */
+bool set_ghost_phase(CHAR_DATA *ch, GHOST_PHASE phase)
+{
+        if (!ch || ch->deleted || !IS_NPC(ch)
+        ||  ch->position == POS_DEAD)
+                return FALSE;
+
+        switch (phase)
+        {
+        case GHOST_PHASE_NONE:
+        case GHOST_PHASE_ETHEREAL:
+        case GHOST_PHASE_SEMI_MATERIAL:
+                break;
+        default:
+                return FALSE;
+        }
+
+        ch->ghost_phase = phase;
+        return TRUE;
+}
 
 /*
  * Return the body-species table index for a species name.

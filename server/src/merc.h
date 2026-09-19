@@ -2861,11 +2861,25 @@ struct mob_index_data
 };
 
 /*
+ * Per-instance ghost phase.
+ *
+ * This is a state value, not an ACT/AFF/RES bitfield.
+ * Zero deliberately means that no ghost phase has been selected.
+ */
+typedef enum ghost_phase
+{
+        GHOST_PHASE_NONE = 0,
+        GHOST_PHASE_ETHEREAL = 1,
+        GHOST_PHASE_SEMI_MATERIAL = 2
+} GHOST_PHASE;
+
+/*
  * One character (PC or NPC).
  */
 struct char_data
 {
         CHAR_DATA *next;
+        GHOST_PHASE ghost_phase;
         CHAR_DATA *next_in_room;
         CHAR_DATA *master;
         CHAR_DATA *inside;
@@ -5604,8 +5618,10 @@ bool mob_interacts_players(CHAR_DATA *mob);
 
 /* mob.c */
 int species_lookup args((const char *name));
-bool resolve_mob_template args((int mob_type,
-                                MOB_TEMPLATE_DATA *resolved));
+const char *ghost_phase_name args((GHOST_PHASE phase));
+bool parse_ghost_phase args((const char *text, GHOST_PHASE *phase));
+bool set_ghost_phase args((CHAR_DATA *ch, GHOST_PHASE phase));
+bool resolve_mob_template args((int mob_type, MOB_TEMPLATE_DATA *resolved));
 void initialise_mob_index_flags args((MOB_INDEX_DATA *index));
 int get_mob_exp_modifier args((CHAR_DATA *mob));
 int validate_mob_template_tables args((void));

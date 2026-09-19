@@ -619,8 +619,9 @@ No additional AFF, attack-part, resistance, vulnerability or immunity
 masks are supplied. The template has no compulsory special functions
 and no additional combat or XP modifiers.
 
-Ethereal/semi-material states, phase-dependent contact rules, special
-weapon defences, materialisation and active ghost abilities remain
+Live ghost-phase storage and immortal diagnostics are available as a
+development foundation. Phase-dependent contact rules, special weapon
+defences, automatic materialisation and active ghost abilities remain
 unimplemented. AFF_NON_CORPOREAL is not assigned or changed.
 
 Do not convert existing world ghosts or Animate Dead servant
@@ -631,6 +632,49 @@ XOR overrides. Repeating an inherited flag cancels it. Cancelling
 ACT_UNDEAD does not automatically change the separate body properties.
 
 See the Scribe manual's "Ghost archetype: permanent physiology" section.
+
+
+Ghost phase: runtime foundation
+------------------------------
+
+Each live character has a separate ghost_phase state. The accepted
+live NPC values are none, ethereal and semi_material, with diagnostic
+numbers 0, 1 and 2 respectively. These are enumeration values, not
+bitflags, and they must not be ORed or XORed together.
+
+clear_char() initialises the state to none for fresh and recycled
+characters. Every new NPC, including the development ghost archetype,
+starts at none in this foundation stage. No name, vnum, undead flag
+or special function automatically selects its phase.
+
+Authorised live controls:
+
+    mset <mobile> ghostphase none
+    mset <mobile> ghostphase ethereal
+    mset <mobile> ghostphase semi_material
+
+mstat reports the stored phase and explicitly states that the contact
+rules are not connected. Invalid input leaves the state unchanged.
+PCs, deleted characters and characters at POS_DEAD are rejected.
+
+The state belongs to the live instance, not its prototype. Two NPCs
+created from the same prototype can have different stored phases.
+A destroyed and recreated instance starts at none. A normal area
+reset that leaves an existing instance alive does not clear its state.
+
+No player-file field, #MOBILES tail field or Scribe source keyword
+is added. Do not put ghostphase into .src or .are records. Persistent
+initial-phase defaults and overrides remain separate later work.
+
+Setting ethereal does not yet make an NPC immune, invisible or able
+to pass through walls. Setting semi_material does not yet enable
+silver or magical-weapon exceptions. Phase changes do not alter ACT,
+AFF, body, resistance masks, followers, combat or corpse handling.
+
+There is no timer, expiration, automatic transition or new special.
+Existing world ghosts and Animate Dead prototypes remain unchanged.
+
+See the Scribe manual's "Ghost phase: runtime foundation" section.
 
 Options for "rank" values (in increasing order of power) are "common", "rare",
 "elite", "boss" and "world".
