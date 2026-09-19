@@ -859,6 +859,36 @@ choice of resistance categories.
 
 See the Scribe manual's "Weapon Stun: materials and resistance" section.
 
+==Tenketsu post-hit paralysis
+
+Tenketsu retains its blunt, nonmagical and paralysis categories.
+It does not acquire silver, cold iron or magical properties from
+unrelated equipment.
+
+The existing skill/combo damage calculation runs through the normal
+damage pipeline once. Its paralysis is applied only afterward, when
+positive damage has been applied and both combatants remain present,
+alive and above zero HP.
+
+The already-resolved response for that hit controls paralysis:
+normal or vulnerable means automatic application; resistant means
+a 50 percent chance; immune means no application. A vulnerable
+follow-up cannot exceed the existing automatic chance.
+
+Damage scaling and paralysis chance affect separate components.
+Damage is not scaled twice. No additional spell save or learned-skill
+check is introduced. Misses, zero-damage outcomes, lethal impacts
+and already held targets do not receive a new hold/no-recall pair.
+
+Successful paralysis retains the existing duration and penalties.
+Duergar paralysis resistance applies. Elven sleep/charm resistance
+alone does not. NPCs retain their existing live resistance masks.
+
+Both direct Tenketsu and combo use share this handling.
+No new player immunity, flag, Scribe keyword or save field is added.
+
+See the Scribe manual's "Tenketsu: post-hit paralysis" section.
+
 
 ==Individual attack-part overrides
 

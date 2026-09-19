@@ -712,6 +712,9 @@ Gezhp, Owl and Shade
   silver, cold-iron and magical properties.
 - Material resistance affects decapitation, assassination and shield-hurl
   chances; immune contact cannot produce those finishing/status effects.
+- Added selected innate player resistances and vulnerabilities; see HELP INNATE.
+- Tenketsu paralysis now follows damaging hits and respects resistance.
+~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
 Innate resistances and vulnerabilities
@@ -757,6 +760,16 @@ resistance and vulnerability cancel. Multiple matches do not stack.
 Duergar paralysis resistance protects against Stun. Elven sleep resistance
 alone does not protect against this physical knockout. A successful Stun
 keeps its existing duration and effects.
+
+Tenketsu's pressure-point paralysis now follows a damaging hit.
+A resistant target has a 50 percent chance of receiving the paralysis;
+normal and vulnerable targets retain automatic paralysis after an
+eligible hit. Successful paralysis keeps its existing duration and
+penalties. Missed, nullified or zero-damage attacks do not apply it.
+
+Duergar paralysis resistance also protects against Tenketsu.
+Carried silver or cold-iron equipment does not change this unarmed
+attack's classification.
 
 Material weaknesses apply when the actual supported attacking weapon or
 shield carries the corresponding material flag, not merely because the
