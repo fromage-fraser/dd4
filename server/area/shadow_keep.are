@@ -315,6 +315,8 @@ A old rusty sword lies here~
 5 0 1|8192
 14~ 5~ 15~ 1~
 16 0 0
+T
+steel/wood/leather~
 #16601
 Rusty Helm~
 a rusty helm~
@@ -323,6 +325,8 @@ A rusty helm rests here.~
 9 0 1|16
 0~ 1~ 6~ 11~
 10 0 0
+T
+steel~
 #16602
 Wraiths Claws~
 wraiths Claws~
@@ -331,6 +335,8 @@ A Pair of claws lie here.~
 5 0 1|8192
 10~ 1~ 6~ 3~
 15 0 0
+T
+bone~
 A
 19 0
 #16603
@@ -349,6 +355,8 @@ Some tattered rags lie here.~
 9 128 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #16605
 Silver visor~
 a silver visor~
@@ -357,6 +365,8 @@ A silver visor lies here.~
 9 1|1024 1|16
 0~ 1~ 6~ 11~
 10 0 0
+T
+silver~
 #16606
 Silver Platemail~
 silver platemail~
@@ -365,6 +375,8 @@ Some Silver platemail lies here.~
 9 1|1024 1|8
 0~ 1~ 6~ 11~
 15 0 0
+T
+silver~
 A
 1 0
 #16607
@@ -375,6 +387,8 @@ Some Silver leggings lie here.~
 9 1|512|1024 1|32
 0~ 1~ 6~ 11~
 15 0 0
+T
+silver~
 #16608
 Silver Battleaxe~
 a Silver battleaxe~
@@ -383,6 +397,8 @@ A Silver battleaxe rests here.~
 5 1024 1|8192
 0~ 7~ 20~ 3~
 25 0 0
+T
+silver~
 A
 18 2
 A
@@ -395,6 +411,8 @@ A chain rests here.~
 9 1|1024 1|4
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 18 3
 #16610
@@ -405,6 +423,8 @@ A archers bow rests here.~
 5 1024|1073741824 1|8192
 0~ 10~ 20~ 0~
 15 0 0
+T
+wood~
 #16611
 Archers Boots~
 archers boots~
@@ -413,6 +433,8 @@ Some boots rest here.~
 9 1024 1|64
 0~ 1~ 6~ 11~
 7 0 0
+T
+leather~
 A
 18 3
 A
@@ -425,6 +447,8 @@ A green cloak rests here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 13 25
 #16613
@@ -443,6 +467,8 @@ A expensive looking dagger lies here.~
 5 0 1|8192
 0~ 11~ 27~ 11~
 6 0 0
+T
+steel/wood/leather~
 A
 13 10
 #16615
@@ -461,6 +487,8 @@ A fine cloak lies  here.~
 9 0 1|1024
 6~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 #16617
 keep key~
 a gold key~
@@ -501,6 +529,8 @@ A flail rests here.~
 5 0 1|8192
 0~ 16~ 26~ 4~
 16 0 0
+T
+iron/steel~
 A
 19 3
 #16622
@@ -523,6 +553,8 @@ A pitch black shield rests here.~
 9 128|4096 1|512
 0~ 1~ 6~ 11~
 25 0 0
+T
+steel/wood~
 A
 23 4
 A
@@ -539,6 +571,8 @@ A devils trident smolders on the ground here.~
 5 128|512 1|8192
 0~ 20~ 37~ 2~
 35 0 0
+T
+steel~
 A
 1 1
 A
@@ -551,6 +585,8 @@ An evil ring lies here.~
 9 16|32|64|512|2048|4096 1|2
 8~ 1~ 6~ 11~
 5 0 0
+T
+silver~
 A
 19 5
 A
@@ -563,6 +599,8 @@ A leather helm rests here.~
 9 0 1|16
 6~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #16627
 dark dagger~
 a dark dagger~
@@ -571,6 +609,8 @@ A  dark dagger rests here.~
 5 0 1|8192
 0~ 6~ 20~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 13 20
 #16628
@@ -581,6 +621,8 @@ Some chainmail rests here.~
 9 0 1|8
 6~ 1~ 6~ 11~
 20 0 0
+T
+steel~
 #16629
 Black mask~
 a black mask~
@@ -589,6 +631,8 @@ A black mask lies here.~
 9 0 1|16
 7~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #16630
 Shrunken heads~
 shrunken heads~
@@ -597,6 +641,8 @@ Some shrunken heads lie here.~
 9 128|4096 1|4
 7~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 19 2
 A
@@ -613,6 +659,8 @@ A belt rests here.~
 9 128|4096 1|2048
 5~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #16632
 hot poker~
 a hot poker~
@@ -621,6 +669,8 @@ A hot poker lies here.~
 5 1 1|8192
 0~ 10~ 26~ 3~
 15 0 0
+T
+steel/wood/leather~
 A
 19 3
 #16633
@@ -631,6 +681,8 @@ Some black robes lie here.~
 9 0 1|1024
 4~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 #16634
 note~
 a note~
@@ -654,6 +706,8 @@ Some grey robes lie here.~
 9 0 1|1024
 4~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 #16636
 Blood red robe~
 a blood red robe~
@@ -662,6 +716,8 @@ A red robe lies here.~
 9 0 1|1024
 12~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 23 5
 A
@@ -674,6 +730,8 @@ A red dagger lies here.~
 5 1 1|8192
 0~ 15~ 36~ 11~
 6 0 0
+T
+steel/wood/leather~
 A
 1 1
 A
@@ -708,6 +766,8 @@ A crown rests here.~
 9 1 1|16
 4~ 1~ 6~ 11~
 8 0 0
+T
+gold~
 A
 3 1
 A
@@ -720,6 +780,8 @@ A sword rests here.~
 5 0 1|8192
 0~ 20~ 30~ 3~
 20 0 0
+T
+steel/wood/leather~
 A
 13 30
 #16642
@@ -730,6 +792,8 @@ Some leggings lie here.~
 9 0 1|32
 9~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 #16643
 Black platemail plate mail~
 some black platemail~
@@ -738,6 +802,8 @@ Some black platemail lies here.~
 9 128|4096 1|8
 12~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 A
 19 2
 A
@@ -750,6 +816,8 @@ A wazagashi rests here.~
 5 1 1|8192
 0~ 15~ 32~ 1~
 20 0 0
+T
+steel/wood/leather~
 A
 2 2
 #16645
@@ -796,6 +864,8 @@ A hat rests here.~
 9 0 1|16
 5~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 #16650
 Rotten bread~
 rotten bread~
@@ -812,6 +882,8 @@ A collar here.~
 9 0 1|4
 5~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 5 2
 #16652
@@ -822,6 +894,8 @@ Some fine robes lie here.~
 9 0 1|1024
 7~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 #16653
 Silk sash~
 a silk sash~
@@ -830,6 +904,8 @@ A silk sash lies here.~
 9 0 1|2048
 7~ 1~ 6~ 11~
 5 0 0
+T
+silk~
 #16654
 dwarven plate~
 some dwarven plate~
@@ -838,6 +914,8 @@ Some dwarven plate lies here.~
 9 0 1|8
 8~ 1~ 6~ 11~
 20 0 0
+T
+steel~
 #16655
 axe~
 an axe~
@@ -846,6 +924,8 @@ An axe rests here.~
 5 1 1|8192
 0~ 24~ 25~ 3~
 20 0 0
+T
+steel/wood~
 #16656
 letter~
 a letter~

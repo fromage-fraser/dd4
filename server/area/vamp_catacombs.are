@@ -1245,6 +1245,8 @@ A black beret lies here.~
 9 0 1|16
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 A
 3 2
 A
@@ -1274,6 +1276,8 @@ A top striped in dayglo colours lies here in a heap.~
 9 0 1|8
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 17 30
 A
@@ -1293,6 +1297,8 @@ A large chef's knife has been dropped here.~
 5 0 1|8192
 35~ 1~ 6~ 1~
 1 0 0
+T
+steel~
 A
 2 2
 A
@@ -1308,6 +1314,8 @@ You see a pair of brightly coloured flared trousers on the floor.~
 9 1|2|1024 1|32
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 3 -1
 A
@@ -1358,6 +1366,8 @@ A grubby black shirt has been discarded here.~
 9 2|4096 1|1024
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 19 6
 A
@@ -1374,6 +1384,8 @@ Someone's black denim jeans have been tossed haphazardly on the ground here.~
 9 16|512 1|32
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -50
 A
@@ -1438,6 +1450,8 @@ Black leather bondage cuffs sit on the floor.~
 9 16|64|274877906944 1|4096
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 12 75
 A
@@ -1457,6 +1471,8 @@ You see a nice pair of 20-up PVC boots standing here.~
 9 16|2048 1|64
 0~ 1~ 6~ 11~
 6 0 0
+T
+leather~
 A
 17 -15
 A
@@ -1473,6 +1489,8 @@ A smart pair of horn rimmed glasses has been carelessly left here.~
 9 2|16|64|512|2048|274877906944 1|16
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 3 -4
 A
@@ -1493,6 +1511,8 @@ On the ground you see a black leather bondage harness.~
 9 16|512|2048|274877906944 1|8
 0~ 1~ 6~ 11~
 10 0 0
+T
+leather~
 A
 17 -10
 A
@@ -1512,6 +1532,8 @@ A heavily studded bondage collar sits here.~
 9 16|512|274877906944 1|4
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 19 2
 A
@@ -1531,6 +1553,8 @@ A wicked-looking whip lies here.~
 5 1|16|64|512|2048|274877906944 1|8192
 0~ 1~ 6~ 4~
 5 0 0
+T
+leather~
 A
 18 10
 A
@@ -1543,6 +1567,8 @@ A studded black leather girdle occupies a space on the floor here.~
 9 16|274877906944 1|2048
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 19 2
 A
@@ -1562,6 +1588,8 @@ Some black leather gloves lie here.~
 9 16|64|512|2048 1|128
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 1 3
 #9523
@@ -1592,6 +1620,8 @@ A tiny collar lies here with a tag on it saying `Steigen'~
 9 1024 1|4
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 2 1
 E
@@ -1672,6 +1702,8 @@ A pair of finest quality leather cowboy boots stands here.~
 9 1|2048 1|64
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 19 4
 A
@@ -1691,6 +1723,8 @@ Some stylish leather chaps sit here in a pile.~
 9 64|2048 1|32
 0~ 1~ 6~ 11~
 8 0 0
+T
+leather~
 A
 23 -5
 A
@@ -1709,6 +1743,8 @@ A black felt stetson sits here.~
 9 2048 1|16
 0~ 1~ 6~ 11~
 2 0 0
+T
+cloth~
 A
 2 -1
 A
@@ -1725,6 +1761,8 @@ An open-chested leather vest lies here. Rock on!~
 9 64 1|1024
 0~ 1~ 6~ 11~
 4 0 0
+T
+leather~
 A
 2 2
 A
@@ -1742,6 +1780,8 @@ A switchblade has been tossed here.~
 5 512 1|8192
 0~ 1~ 6~ 2~
 1 0 0
+T
+steel/wood/leather~
 A
 18 -4
 A
@@ -1759,6 +1799,8 @@ A heavily decorated black leather belt sits on the ground.~
 9 4096 1|2048
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 14 30
 E
@@ -1777,6 +1819,8 @@ A set of vampire fangs lie here.~
 5 16|4096 1|8192
 0~ 1~ 6~ 10~
 1 0 0
+T
+bone~
 A
 19 6
 A
@@ -1803,6 +1847,8 @@ A towel lies here, covered in bloodstains.~
 9 0 1|1024
 0~ 1~ 6~ 11~
 6 0 0
+T
+leather~
 A
 12 0
 E
@@ -1841,6 +1887,8 @@ The severed hand of a metal sculpture lies here.~
 5 64 1|8192
 0~ 1~ 6~ 5~
 5 0 0
+T
+bone~
 A
 1 2
 A
@@ -1861,6 +1909,8 @@ A pair of human eyeballs lies on the ground, staring at you.~
 9 16|64 1|16
 0~ 1~ 6~ 11~
 1 0 0
+T
+silver~
 A
 3 2
 A
@@ -1903,6 +1953,8 @@ A pair of shiny black trousers glistens here.~
 9 1|4096 1|32
 0~ 1~ 6~ 11~
 3 0 0
+T
+leather~
 A
 13 25
 E
@@ -1918,6 +1970,8 @@ A pair of small titanium rings are here.~
 9 32|2048|4096 1|1024
 0~ 1~ 6~ 11~
 1 0 0
+T
+titanium~
 A
 2 4
 A
@@ -1949,6 +2003,8 @@ A huge two-handed sword is propped against the wall here.~
 5 2|16|64|512|4096|274877906944 1|8192
 0~ 1~ 6~ 13~
 20 0 0
+T
+steel/wood/leather~
 A
 19 15
 A
@@ -1964,6 +2020,8 @@ A peak-domed Norse helm sits here.~
 9 0 1|16
 0~ 1~ 6~ 11~
 10 0 0
+T
+steel~
 A
 13 20
 E
@@ -1977,6 +2035,8 @@ A chainmail hauberk is heaped here.~
 9 0 1|1024
 0~ 1~ 6~ 11~
 15 0 0
+T
+steel~
 A
 17 -30
 E
@@ -1990,6 +2050,8 @@ Some chainmail leggings have been left here.~
 9 0 1|32
 0~ 1~ 6~ 11~
 10 0 0
+T
+steel~
 A
 17 -15
 E
@@ -2003,6 +2065,8 @@ A steel breastplate sits here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 20 0 0
+T
+steel/wood/leather~
 A
 17 -20
 E
@@ -2019,6 +2083,8 @@ A steel bracer rolls about on the floor here.~
 9 0 1|4096
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 17 0
 E
@@ -2032,6 +2098,8 @@ A studded leather aventail lies here in a pile.~
 9 0 1|4
 0~ 1~ 6~ 11~
 3 0 0
+T
+leather~
 A
 17 -10
 E
@@ -2046,6 +2114,8 @@ Black steel gauntlets lies here, radiating evil.~
 9 16|64|4096|274877906944 1|128
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 19 4
 A
@@ -2065,6 +2135,8 @@ A pair of articulated steel boots stands neatly here.~
 9 0 1|64
 0~ 1~ 6~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 17 -10
 A
@@ -2081,6 +2153,8 @@ Some well-crafted chainmail sleeves lie here.~
 9 0 1|256
 0~ 1~ 6~ 11~
 10 0 0
+T
+steel~
 A
 17 -10
 E
@@ -2094,6 +2168,8 @@ A belt with `Grok' inscribed in the buckle sits here.~
 9 2|64|274877906944 1|2048
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 13 100
 A
@@ -2112,6 +2188,8 @@ A small steel band lies here.~
 9 64|4096 1|2
 0~ 1~ 6~ 11~
 1 0 0
+T
+steel/wood/leather~
 A
 2 2
 E
@@ -2205,6 +2283,8 @@ The dreadlocks of the Horned God lie here in a heap.~
 9 16|64|274877906944 1|16
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 19 3
 A
@@ -2223,6 +2303,8 @@ Leather braces are coiled here.~
 9 16|64|274877906944 1|1024
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 17 -30
 A
@@ -2249,6 +2331,8 @@ A pair of black leather pants has been dropped here.~
 9 16|4096 1|32
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 19 4
 A
@@ -2266,6 +2350,8 @@ A pair of studded leather gloves has been tossed here.~
 9 0 1|128
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 19 2
 A
@@ -2282,6 +2368,8 @@ A lucifuge ring lies here.~
 9 1|16|64|512|4096|274877906944 1|2
 0~ 1~ 6~ 11~
 1 0 0
+T
+silver~
 A
 19 5
 A
@@ -2300,6 +2388,8 @@ A pair of leather jackboots stands here.~
 9 16 1|64
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 19 2
 A
@@ -2315,6 +2405,8 @@ A bondage collar lies here, festooned with sharp spikes.~
 9 16 1|4
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 19 2
 A
@@ -2330,6 +2422,8 @@ A necklace with a curious star-shaped pendant attached to it lies here.~
 9 1|16|64|274877906944 1|4
 0~ 1~ 6~ 11~
 1 0 0
+T
+silver~
 A
 3 2
 A
@@ -2347,6 +2441,8 @@ The manacles of Herne lies here, pulsing.~
 9 1|2|16|64|128|512|2048|4096|274877906944 1|4096
 0~ 1~ 6~ 11~
 3 0 0
+T
+leather~
 A
 19 8
 A
@@ -2369,6 +2465,8 @@ White sleeves decorated with obscure symbols lie here.~
 9 1|64|2048|274877906944 1|256
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 12 20
 A
@@ -2385,6 +2483,8 @@ The Master's harness lies here.~
 9 16|64|2048|274877906944 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -20
 A
@@ -2403,6 +2503,8 @@ An ancient belt lies here.~
 9 64|274877906944 1|2048
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 13 50
 A
@@ -2429,6 +2531,8 @@ An ancient blade lies here, radiating dark magik.~
 5 1|2|16|64|128|4096|274877906944 1|8192
 0~ 1~ 6~ 1~
 15 0 0
+T
+steel/wood/leather~
 A
 18 10
 A
@@ -2448,6 +2552,8 @@ The shield of the Hunter has been propped against a wall here.~
 9 1|2|16|64|2048|274877906944 1|512
 0~ 1~ 6~ 11~
 10 0 0
+T
+steel/wood~
 A
 17 -40
 A
@@ -2484,6 +2590,8 @@ A pair of black stiletto high heels.~
 9 0 1|64
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 19 3
 A
@@ -2500,6 +2608,8 @@ A white t-shirt lies here in a heap.~
 9 0 1|8
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 17 5
 E
@@ -2513,6 +2623,8 @@ A pair of blue jeans has been discarded here.~
 9 0 1|32
 0~ 1~ 6~ 11~
 3 0 0
+T
+leather~
 A
 4 -2
 E
@@ -2526,6 +2638,8 @@ A slinky black dress spills out over the floor.~
 9 16 1|1024
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 18 3
 A
@@ -2577,6 +2691,8 @@ A pair of worn khaki shorts lie crumpled here.~
 9 512 1|32
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 4 0
 E
@@ -2590,6 +2706,8 @@ An anorak with a furry hood hangs up here.~
 9 0 1|8|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+fur~
 A
 17 -5
 A
@@ -2606,6 +2724,8 @@ A pair of roman sandals sits here.~
 9 0 1|64
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 3
 E
@@ -2646,6 +2766,8 @@ An odd-looking wig lies here.~
 9 4096 1|16
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 9 10
 A
@@ -2662,6 +2784,8 @@ A shiny black dress jacket sits here.~
 9 0 1|1024
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 0
 E
@@ -2676,6 +2800,8 @@ Some flared women's trousers lie here.~
 9 0 1|32
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 2 -4
 A
@@ -2706,6 +2832,8 @@ A dirty dressing gown has been tossed here.~
 9 2 1|1024
 0~ 1~ 6~ 11~
 3 0 0
+T
+leather~
 A
 19 2
 E
@@ -2719,6 +2847,8 @@ Some teeth that have been hacked from the mouth of a monster lie here.~
 5 16|512|16384 8192
 0~ 1~ 6~ 10~
 2 0 0
+T
+steel/wood/leather~
 A
 3 -15
 A
@@ -2740,6 +2870,8 @@ A tail cut from the body of some maleficent creature lies here.~
 5 16 1|8192
 0~ 1~ 6~ 4~
 10 0 0
+T
+steel/wood/leather~
 A
 19 5
 A
@@ -2756,6 +2888,8 @@ The nose of a giant insect lies here.~
 5 16|512|4096|274877906944 1|8192
 0~ 1~ 6~ 12~
 5 0 0
+T
+steel/wood/leather~
 A
 19 10
 A
@@ -2770,6 +2904,8 @@ Purple crushed-velvet robes lie at your feet in a heap.~
 9 16|64|512 1|1024
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 12 40
 A
@@ -2801,6 +2937,8 @@ A section of glass tubing has been forsaken here.~
 5 1 1|8192
 0~ 1~ 6~ 0~
 1 0 0
+T
+steel/wood/leather~
 A
 18 2
 E
@@ -2814,6 +2952,8 @@ A plain-banded ring lies here, set with a sparkling amethyst.~
 9 16|64|512 1|2
 0~ 1~ 6~ 11~
 1 0 0
+T
+amethyst~
 A
 17 -15
 A
@@ -2892,6 +3032,8 @@ A pale white ring lies on the floor, radiating magic.~
 9 1|32|64|2048|274877906944 1|2
 0~ 1~ 6~ 11~
 1 0 0
+T
+silver~
 A
 12 70
 A
@@ -2908,6 +3050,8 @@ White robes lie here in a heap.~
 9 1|64|2048 1|1024
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 4 2
 A
@@ -2926,6 +3070,8 @@ A pair of sandals is here on the ground.~
 9 512 1|64
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 E
 sandals~
 After a brief inspection you determine the sandals have been made from humanhide.~
@@ -2949,6 +3095,8 @@ A length of silvered cloth sits on the ground.~
 9 64|4096 1|2048
 0~ 1~ 6~ 11~
 1 0 0
+T
+silver~
 A
 4 3
 E
@@ -2985,6 +3133,8 @@ A beautiful purple crushed-velvet robe lies in a pile here.~
 9 274877906944 1|8
 0~ 1~ 6~ 11~
 4 0 0
+T
+cloth~
 A
 12 40
 A
@@ -3001,6 +3151,8 @@ A beautifully-crafted ruby pendant on a delicate chain lies here.~
 9 1|64 1|4
 0~ 1~ 6~ 11~
 1 0 0
+T
+ruby~
 A
 3 2
 E
@@ -3015,6 +3167,8 @@ A black-stoned ring rattles on the floor.~
 9 16|64|2048 1|2
 0~ 1~ 6~ 11~
 1 0 0
+T
+granite~
 A
 2 2
 A
@@ -3051,6 +3205,8 @@ A robust pair of leather-thonged boots have been propped against the wall here.~
 9 2|16|64|274877906944 1|64
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -10
 A
@@ -3067,6 +3223,8 @@ A dark suit has been neatly folded and placed here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 E
 dark suit double-breasted~
 The double-breasted suit is made from top of the line Krondorian silk, its owner
@@ -3079,6 +3237,8 @@ A pair of spectacles with dark lenses lies here.~
 9 4096 1|16
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 E
 sunglasses spectacles lenses dark~
 The outside of the lenses has been mirrored in order to make the wearer seem
@@ -3091,6 +3251,8 @@ A cheap glass ring has been dropped here in the dust, it's probably worthless.~
 9 16|64|128|4096|274877906944 1|2
 0~ 1~ 6~ 11~
 1 0 0
+T
+silver~
 A
 12 400
 A
@@ -3107,6 +3269,8 @@ A sharp-looking pair of shoes sits here.~
 9 0 1|64
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 E
 shoes patent leather sharp-looking~
 These stylish ultra chic foot accessories must have cost their owner a small fortune.~
@@ -3129,6 +3293,8 @@ A chisel lies here, of the kind used by sculptors.~
 5 4096 1|8192
 0~ 1~ 6~ 13~
 5 0 0
+T
+steel/wood/leather~
 A
 18 -3
 A
@@ -3144,6 +3310,8 @@ A black smock has been dropped here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 17 20
 E
@@ -3157,6 +3325,8 @@ A pair of stylish leather trousers has been dumped here.~
 9 0 1|32|8192
 0~ 1~ 6~ 11~
 3 0 0
+T
+leather~
 A
 17 -5
 A
@@ -3174,6 +3344,8 @@ Some leather jackboots stand here.~
 9 512 1|64|8192
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 19 3
 A
@@ -3191,6 +3363,8 @@ An earring set with a pearl sits at your feet.~
 9 64|274877906944 1|16|8192
 0~ 1~ 6~ 11~
 1 0 0
+T
+silver~
 A
 17 -40
 A
@@ -3208,6 +3382,8 @@ An antique violin lies in a half-open case at your feet.~
 5 1|2|16|64|512|2048|274877906944 1|8192
 35~ 1~ 6~ 9~
 5 0 0
+T
+steel/wood/leather~
 A
 19 10
 A
@@ -3248,6 +3424,8 @@ A gentleman's hat sits here.~
 9 16|64|512 1|16
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 A
 3 3
 A
@@ -3265,6 +3443,8 @@ A pair of gold cufflinks rest here.~
 9 0 1|256
 0~ 1~ 6~ 11~
 1 0 0
+T
+gold~
 E
 gold cufflinks~
 They're very well-made and the gold appears real.~
@@ -3276,6 +3456,8 @@ A very elegant cane leans against a wall here.~
 5 16|512|274877906944 1|8192
 0~ 1~ 6~ 4~
 3 0 0
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -3291,6 +3473,8 @@ A luxurious velvet cape has been carefully folded and placed here.~
 9 16 1|1024
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 13 0
 #9633
@@ -3301,6 +3485,8 @@ A dark 3-piece suit sits neatly folded here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 13 20
 E
@@ -3314,6 +3500,8 @@ A ring sits here, set with a black stone.~
 9 16|64|512|274877906944 1|2
 0~ 1~ 6~ 11~
 5 0 0
+T
+obsidian~
 A
 19 7
 A
@@ -3329,6 +3517,8 @@ A black leather belt lies here.~
 9 64|4096 1|2048
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 E
 black leather belt~
 This belt seems unremarkable but for a faint magical aura about it.~
@@ -3340,6 +3530,8 @@ An elegant silk ruffle sits here at your feet.~
 9 64|274877906944 1|4
 0~ 1~ 6~ 11~
 5 0 0
+T
+silk~
 A
 13 60
 A
@@ -3383,6 +3575,8 @@ An expensive silk suit lies neatly folded before you.~
 9 0 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+silk~
 E
 elegant silk suit~
 This really is a fine suit, must have cost someone a small fortune.~
@@ -3394,6 +3588,8 @@ A pale blue tie has been tossed on the floor.~
 9 0 1|4
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 9 5
 E
@@ -3408,6 +3604,8 @@ Some expensive footwear is here in a corner.~
 9 0 1|64
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 E
 footwear brown leather shoes~
 These are the sort of shoes a wealthy merchant might wear.~
@@ -3484,6 +3682,8 @@ An antique velvet cloak lies here crumpled in a heap.~
 9 0 1|1024
 0~ 1~ 6~ 11~
 2 0 0
+T
+cloth~
 A
 2 -2
 A
@@ -3500,6 +3700,8 @@ A tuxedo lies neatly folded on the floor before you.~
 9 0 1|8
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 2 -1
 E
@@ -3514,6 +3716,8 @@ A flashy glass ring rests here.~
 9 1 1|2
 0~ 1~ 6~ 11~
 5 0 0
+T
+silver~
 A
 19 1
 E
@@ -3528,6 +3732,8 @@ A pair of black leather shoes sits here.~
 9 0 1|64
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 14 -30
 E
@@ -3561,6 +3767,8 @@ Paint-splattered overalls lie here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 E
 overalls~
 These shabby overalls are completely splattered with paint.~
@@ -3620,6 +3828,8 @@ hooves~
 5 0 8192
 0~ 1~ 6~ 8~
 1 0 0
+T
+steel/wood/leather~
 #9659
 sack oats~
 a sack of oats~
@@ -3689,6 +3899,8 @@ A filthy shirt rots here.~
 9 2|128|4096 1|8
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 5 -4
 E
@@ -3703,6 +3915,8 @@ Some filthy leggings lie here rotting away.~
 9 2|128|4096 1|32
 0~ 1~ 6~ 11~
 2 0 0
+T
+steel~
 A
 5 -4
 E
@@ -3761,6 +3975,8 @@ Some blood-stained gloves lie at your feet.~
 9 1|2|16|32|64|2048|274877906944 1|128
 0~ 1~ 6~ 11~
 3 0 0
+T
+leather~
 A
 1 4
 A
@@ -3808,6 +4024,8 @@ Some fool has abandoned the mace of Saul here.~
 5 8|16|64|2048|4096|16384|32768|65536|131072|262144|536870912|274877906944 1|8192
 0~ 0~ 0~ 7~
 20 0 0
+T
+iron/wood~
 A
 18 7
 A
@@ -3828,6 +4046,8 @@ Poisoned teeth have been hacked from the mouth of some enormous monster.~
 5 16|64|128|512|1024|4096|16384|274877906944 0
 0~ 0~ 0~ 10~
 5 0 0
+T
+steel/wood/leather~
 A
 5 -10
 A
@@ -3847,6 +4067,8 @@ An ancient tome lies open here.~
 5 16|64|512|2048|274877906944 1|8192
 0~ 0~ 0~ 7~
 10 0 0
+T
+steel/wood/leather~
 A
 4 4
 A
@@ -3865,6 +4087,8 @@ Some dark-coloured religious vestments lie here in a pile.~
 9 16|512|2048|274877906944 1|1024
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 12 150
 A
@@ -3887,6 +4111,8 @@ Someone's black leather shoes lie here.~
 9 0 1|64
 0~ 0~ 0~ 0~
 2 0 0
+T
+leather~
 E
 black leather shoes~
 Shoes, black, made of leather.~
@@ -3898,6 +4124,8 @@ blood ring~
 9 16|64|512|274877906944 1|2|8192
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 19 6
 E
@@ -3911,6 +4139,8 @@ death ring~
 9 16|64|512|274877906944 1|2
 0~ 0~ 0~ 0~
 1 0 0
+T
+silver~
 A
 13 35
 A
@@ -3926,6 +4156,8 @@ A black silk shirt lies here.~
 9 0 1|1024
 0~ 0~ 0~ 0~
 1 0 0
+T
+silk~
 E
 black silk shirt~
 Quite impractical, but very nice-looking.~
@@ -3937,6 +4169,8 @@ A pair of velvet leggings lie here.~
 9 0 1|32
 0~ 0~ 0~ 0~
 1 0 0
+T
+steel~
 A
 5 1
 A
@@ -3953,6 +4187,8 @@ A feather flutters to the ground at your feet.~
 9 0 1|16384
 0~ 0~ 0~ 0~
 1 0 0
+T
+leather~
 E
 quill feather~
 A quill pen of exceptional quality. I has no ink in it.~
@@ -4008,6 +4244,8 @@ Someone's silk pyjamas have been left here.~
 9 0 1|8
 0~ 0~ 0~ 0~
 1 0 0
+T
+silk~
 E
 grey silk pyjamas~
 They're enormously comfortable and pleasant to look at.~
@@ -4087,6 +4325,8 @@ A white smock lies here.~
 9 64 1|8
 0~ 0~ 0~ 0~
 3 0 0
+T
+leather~
 A
 17 -10
 E
@@ -4100,6 +4340,8 @@ A ginsu blade lies at your feet.~
 5 128|16384 1|8192
 0~ 0~ 0~ 1~
 30 0 0
+T
+steel/wood/leather~
 A
 2 -10
 A
@@ -4118,6 +4360,8 @@ An apron hangs on a peg.~
 9 2 1|2048
 0~ 0~ 0~ 0~
 5 0 0
+T
+leather~
 A
 14 50
 E
@@ -4344,6 +4588,8 @@ A shadowy patch of light swims before your eyes.~
 9 16|32|64|128|274877906944 1|8
 0~ 0~ 0~ 0~
 5 0 0
+T
+cloth~
 A
 2 4
 A
@@ -4364,6 +4610,8 @@ The legendary dagger of the shadowthief lies humming on the ground.~
 5 1|2|16|32|64|2048|262144|1048576|274877906944 1|8192
 0~ 0~ 0~ 11~
 10 0 0
+T
+steel/wood/leather~
 A
 19 14
 A
@@ -4429,6 +4677,8 @@ A jade stone hovers in the air.~
 9 32|64|2048 1|32768
 0~ 1~ 6~ 11~
 1 0 0
+T
+jade~
 A
 13 50
 E

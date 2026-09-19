@@ -700,6 +700,8 @@ Stone Beard's mithril axe lays before you.~
 5 4096 1|8192
 0~ 1~ 6~ 13~
 35 0 0
+T
+mithril~
 A
 18 2
 A
@@ -717,6 +719,8 @@ Heavy stone armour rests here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 35 0 0
+T
+granite~
 A
 17 -10
 A
@@ -758,6 +762,8 @@ A crudely made stone axe has been abandoned here.~
 5 0 1|8192
 0~ 1~ 6~ 8~
 15 0 0
+T
+granite~
 A
 2 -1
 A
@@ -775,6 +781,8 @@ A steel rapier has been left here.~
 5 0 1|8192
 0~ 1~ 6~ 11~
 20 0 0
+T
+steel/wood/leather~
 A
 18 2
 A
@@ -792,6 +800,8 @@ A suit of slime armour lays here.~
 9 1|4096 1|8
 0~ 1~ 6~ 11~
 10 0 0
+T
+steel~
 A
 23 -4
 A
@@ -835,6 +845,8 @@ You spy some sharp serpent teeth.~
 5 0 1|8192
 0~ 1~ 6~ 10~
 5 0 0
+T
+steel/wood/leather~
 E
 serpent teeth~
 The teeth are large, triangular and very sharp, small serrations running
@@ -848,6 +860,8 @@ A long steel polearm lays on the floor.~
 5 134217728 1|8192
 0~ 1~ 6~ 2~
 25 0 0
+T
+steel/wood/leather~
 A
 1 2
 E
@@ -864,6 +878,8 @@ You spot a large, cast iron shield.~
 9 64 1|512
 0~ 1~ 6~ 11~
 35 0 0
+T
+iron/wood/leather~
 A
 17 -10
 A
@@ -881,6 +897,8 @@ A tiny grey thimble rests here.~
 9 32|64 1|2
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 17 -25
 A
@@ -901,6 +919,8 @@ A white bladed dagger rests on the floor.~
 5 0 1|8192
 0~ 1~ 6~ 11~
 10 0 0
+T
+steel/wood/leather~
 A
 14 50
 A
@@ -918,6 +938,8 @@ A shirt of mail made of tungsten lays here.~
 9 0 1|1024
 0~ 1~ 6~ 11~
 20 0 0
+T
+steel~
 E
 tungsten mail shirt~
 Strong and light, tungsten alloys have been fashioned into a protective
@@ -931,6 +953,8 @@ There is a pair of tungsten boots here.~
 9 0 1|64
 0~ 1~ 6~ 11~
 15 0 0
+T
+leather~
 E
 boots tungsten~
 The knee high tungsten plated boots are hard and slightly bulky, but very
@@ -957,6 +981,8 @@ The gleaming blue blade of a longsword attracts your attention.~
 5 64|2048 1|8192
 0~ 1~ 6~ 3~
 20 0 0
+T
+steel/wood/leather~
 A
 18 4
 A
@@ -989,6 +1015,8 @@ A faded grey cloak lays tossed in a heap.~
 9 0 1|4
 0~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 17 -50
 E
@@ -1055,6 +1083,8 @@ A thick leather sling sits on the ground.~
 5 0 1|8192
 0~ 1~ 6~ 0~
 5 0 0
+T
+leather~
 A
 18 -1
 A
@@ -1084,6 +1114,8 @@ A large hammer made of dried clay rests here.~
 5 0 1|8192
 0~ 1~ 6~ 7~
 20 0 0
+T
+iron/wood~
 E
 mud hammer dried clay~
 The head of this hammer is made of solid mud, a stout wooden handle forced
@@ -1097,6 +1129,8 @@ A rusted iron girth lays before you.~
 9 4096 1|2048
 0~ 1~ 6~ 11~
 10 0 0
+T
+iron/wood/leather~
 A
 9 50
 E
@@ -1111,6 +1145,8 @@ You spot a rusted iron neck chain.~
 9 4096 1|4
 0~ 1~ 6~ 11~
 10 0 0
+T
+iron/wood/leather~
 A
 17 -10
 E
@@ -1152,6 +1188,8 @@ An evil looking black spear has been thrown to the ground.~
 5 134217728 1|8192
 0~ 1~ 6~ 2~
 15 0 0
+T
+iron/wood~
 A
 19 3
 E
@@ -1194,6 +1232,8 @@ A giant black insect carapace sits on the floor.~
 9 0 1|1024
 30~ 5~ 0~ 11~
 15 0 0
+T
+leather~
 A
 17 -10
 A
@@ -1214,6 +1254,8 @@ A gleaming silver mace glows intensely.~
 5 1|64|128|4096 1|8192
 0~ 1~ 6~ 8~
 30 0 0
+T
+silver~
 A
 18 6
 A
@@ -1240,6 +1282,8 @@ Pale white chainmail lays in a bundle here.~
 9 1 1|8
 0~ 1~ 6~ 11~
 15 0 0
+T
+steel~
 A
 3 3
 A
@@ -1257,6 +1301,8 @@ A thin white metal crescent sits on the floor.~
 9 0 1|4
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 13 75
 A
@@ -1299,6 +1345,8 @@ Some arm plates have been constructed from molten lava.~
 9 0 1|256
 0~ 1~ 6~ 11~
 15 0 0
+T
+steel~
 E
 molten lava arm plates armplates~
 The armoured plates seem to be made of thick, molten magma, but radiate
@@ -1313,6 +1361,8 @@ A scimitar's blade is pale white.~
 5 0 1|8192
 0~ 1~ 6~ 1~
 15 0 0
+T
+steel/wood/leather~
 A
 18 3
 E
@@ -1354,6 +1404,8 @@ A large leather tunic sits here.~
 9 0 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 E
 leather tunic~
 This piece of armour has been made for someone far larger than yourself,
@@ -1367,6 +1419,8 @@ A pair of leather boots sit on the floor.~
 9 0 1|64
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 E
 leather boots~
 The leather boots are well made but very large and heavy.
@@ -1379,6 +1433,8 @@ Flames lick off the prongs of a long trident.~
 5 0 1|8192
 0~ 1~ 6~ 2~
 5 0 0
+T
+steel~
 A
 19 3
 E
@@ -1394,6 +1450,8 @@ A metal shield is surrounded by magical fire.~
 9 64 1|512
 0~ 1~ 6~ 11~
 15 0 0
+T
+steel/wood~
 A
 17 -20
 A
@@ -1413,6 +1471,8 @@ A kris knife made of pure emerald sits here.~
 5 64 1|8192
 0~ 1~ 6~ 11~
 35 0 0
+T
+emerald~
 A
 19 4
 A
@@ -1430,6 +1490,8 @@ A red broadsword lays on the ground.~
 5 2 1|8192
 0~ 1~ 6~ 1~
 25 0 0
+T
+ruby~
 A
 13 60
 A
@@ -1447,6 +1509,8 @@ An onyx mace floats before you.~
 5 1 1|8192
 0~ 1~ 6~ 8~
 35 0 0
+T
+iron/wood~
 A
 4 3
 A
@@ -1465,6 +1529,8 @@ A diamond sphere floats two feet from the floor.~
 5 64 1|8192
 0~ 1~ 6~ 6~
 5 0 0
+T
+diamond~
 A
 19 10
 A

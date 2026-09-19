@@ -958,6 +958,8 @@ A wicked looking trident is stuck into the ground here.~
 5 1|16|64|512 1|8192
 0~ 10~ 75~ 2~
 7 20 8
+T
+steel~
 
 #10402
 black leather whip~
@@ -967,6 +969,8 @@ A black leather whip lies on the ground here.~
 5 2|16|512 1|8192
 0~ 10~ 50~ 4~
 7 20 8
+T
+leather~
 
 #10403
 hickey maker~
@@ -976,6 +980,8 @@ A hickey maker lies on the ground here making a soft sucking sound.~
 5 0 1|8192
 0~ 10~ 80~ 12~
 7 20 8
+T
+steel/wood/leather~
 
 #10404
 sword farslayer~
@@ -985,6 +991,8 @@ A black hilted sword with engravings on the blade lies here.~
 5 2|32|64|128|512|4096 1|8192
 0~ 1~ 100~ 11~
 7 10000 100
+T
+steel/wood/leather~
 E
 sword~
 The blade of the sword is a full meter long, and straight as an arrow, with
@@ -1016,6 +1024,8 @@ An angel's skull lies here on the ground.~
 9 0 1|16
 20~ 0~ 0~ 0~
 4 20 8
+T
+bone~
 
 #10406
 rotting flesh~
@@ -1025,6 +1035,8 @@ Some rotting flesh lies here in a pile.~
 9 0 1|8
 15~ 0~ 0~ 0~
 3 20 8
+T
+organic~
 
 #10407
 sword vorpal blade~
@@ -1034,6 +1046,8 @@ A magnificently crafted blade lies here humming softly.~
 5 0 1|8192
 0~ 1~ 40~ 1~
 6 20 8
+T
+steel/wood/leather~
 
 #10408
 flaming claw~
@@ -1043,6 +1057,8 @@ A flaming claw lies here burning brightly.~
 5 0 1|8192
 0~ 1~ 70~ 5~
 4 20 8
+T
+bone~
 
 #10409
 Demonskin~
@@ -1052,6 +1068,8 @@ A black scaley pile of demonskin lies here.~
 9 0 1|8
 17~ 0~ 0~ 0~
 4 20 8
+T
+leather~
 
 #10410
 demon teeth~
@@ -1061,6 +1079,8 @@ A bunch of very sharp slimy teeth lie here.~
 5 0 1|8192
 0~ 1~ 73~ 10~
 1 20 8
+T
+steel/wood/leather~
 
 #10411
 burning flesh~
@@ -1070,6 +1090,8 @@ A pile of burning flesh lies here.~
 9 0 1|256
 14~ 0~ 0~ 0~
 5 20 8
+T
+organic~
 
 #10412
 rivet gun~
@@ -1088,6 +1110,8 @@ A circular saw lies here humming.~
 5 2 1|8192
 0~ 1~ 78~ 1~
 7 20 8
+T
+steel/wood/leather~
 
 #10414
 box matches~
@@ -1106,6 +1130,8 @@ A severed bloody black talon lies here.~
 5 16|64 1|8192
 0~ 1~ 85~ 5~
 6 20 8
+T
+steel/wood/leather~
 
 #10416
 jar of blood~
@@ -1124,6 +1150,8 @@ The bloody teeth of a hell hound sit here.~
 5 0 1|8192
 0~ 1~ 80~ 10~
 2 20 8
+T
+steel/wood/leather~
 
 #10418
 icy bottle~
@@ -1142,6 +1170,8 @@ A spear made out of ice lies here.~
 5 134217728 1|8192
 0~ 1~ 90~ 11~
 5 20 8
+T
+iron/wood~
 
 #10420
 large meat hook~
@@ -1151,6 +1181,8 @@ A large meat hook is stuck into the ground.~
 5 0 1|8192
 0~ 1~ 84~ 4~
 3 20 8
+T
+steel/wood/leather~
 
 #10421
 meat~
@@ -1178,6 +1210,8 @@ A electric eraser lies on the ground waiting an erasermate.~
 5 0 1|8192
 0~ 1~ 83~ 0~
 1 20 8
+T
+steel/wood/leather~
 
 #10424
 spectacles~
@@ -1187,6 +1221,8 @@ A set of spectacles lies here on the ground. Don't step on them.~
 9 0 1|16
 15~ 0~ 0~ 0~
 1 20 8
+T
+leather~
 A
 3 2
 
@@ -1207,6 +1243,8 @@ A stinking pile of cloth lies here.~
 9 16|512 1|1024
 20~ 0~ 0~ 0~
 4 20 8
+T
+cloth~
 A
 12 100
 
@@ -1218,6 +1256,8 @@ A set of sharp evil looking teeth lie here. Probably a lawyer's.~
 5 64 1|8192
 0~ 10~ 90~ 0~
 2 20 8
+T
+steel/wood/leather~
 
 #10428
 golden ring~
@@ -1254,6 +1294,8 @@ You see an ionic torque wrench on the ground.~
 5 0 1
 0~ 1~ 67~ 7~
 3 20 8
+T
+steel/wood/leather~
 
 #10432
 figurine horse~
@@ -1263,6 +1305,8 @@ You see a small figurine of a horse on the ground.~
 9 1|64 1|16384
 0~ 0~ 0~ 0~
 3 20 8
+T
+leather~
 A
 14 20
 
@@ -1360,6 +1404,8 @@ You see a photon displacement matrix on the ground.~
 5 1|2 1|8192
 0~ 10~ 90~ 6~
 7 20 8
+T
+steel/wood/leather~
 
 #10442
 black jumpsuit~
@@ -1369,6 +1415,8 @@ You see a black jumpsuit on the ground.~
 9 1 1|8
 25~ 0~ 0~ 0~
 4 20 8
+T
+leather~
 
 #10443
 antacid pill~
@@ -1387,6 +1435,8 @@ The severed claws of a sub-demon lie here, twitching.~
 5 0 1|8192
 0~ 1~ 40~ 5~
 4 20 8
+T
+bone~
 
 #10445
 welding torch~
@@ -1396,6 +1446,8 @@ A welding torch sits on the ground here.~
 5 0 1|8192
 0~ 1~ 78~ 0~
 7 20 8
+T
+steel/wood/leather~
 
 #10446
 blond wig~
@@ -1405,6 +1457,8 @@ A blond wig lies on the ground.~
 9 0 1|16
 12~ 0~ 0~ 0~
 2 20 8
+T
+leather~
 
 #10447
 yellow jumpsuit nuclear symbol~
@@ -1414,6 +1468,8 @@ You see a yellow jumpsuit with a nuclear warning symbol.~
 9 0 1|8
 20~ 0~ 0~ 0~
 3 20 8
+T
+leather~
 
 #10448
 cleaver~
@@ -1423,6 +1479,8 @@ You see a nasty looking cleaver stuck in the ground.~
 5 0 1|8192
 0~ 20~ 80~ 1~
 6 20 8
+T
+steel/wood/leather~
 
 #0
 

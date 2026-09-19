@@ -410,6 +410,8 @@ A long, slender whip lies here.~
 5 3 1|8192
 0~ 2~ 6~ 4~
 9 1000 1000
+T
+leather~
 #9302
 arm hercules~
 the Titanic Arm plates of Hercules~
@@ -418,6 +420,8 @@ Arm plates of the Zodiac lie here.~
 9 1089 1|256
 6~ 0~ 0~ 0~
 10 10000 5000
+T
+steel~
 E
 arm~
 These mighty armors have been worn by this immortal, since the ancient time.
@@ -434,6 +438,8 @@ A belt of the Zodiac lies here.~
 9 1089 1|2048
 9~ 0~ 0~ 0~
 7 10000 5000
+T
+leather~
 E
 belt~
 You can immediately see that it belongs to Orion, from the three stars
@@ -457,6 +463,8 @@ A fleece of the Zodiac lies here.~
 9 1089 1|4
 9~ 0~ 0~ 0~
 9 10000 5000
+T
+leather~
 E
 fleece~
 From a look it resembles the Golden Fleece that exists in the Greek myths.
@@ -471,6 +479,8 @@ A hoof of the Zodiac lies here.~
 9 1089 1|64
 3~ 0~ 0~ 0~
 10 10000 5000
+T
+leather~
 E
 hoof~
 It is with these hooves that Taurus can stand against Orion's attacks.
@@ -487,6 +497,8 @@ A mask of the Zodiac lies here.~
 9 1217 1|16
 2~ 0~ 0~ 0~
 7 10000 5000
+T
+leather~
 E
 mask~
 You notice the mask has got two faces, one smiling and the other crying.
@@ -504,6 +516,8 @@ A shell of the Zodiac lies here.~
 9 1089 1|8
 10~ 0~ 0~ 0~
 15 10000 5000
+T
+leather~
 E
 shell~
 A shell which is dented in the middle, resulting from the Hercules' mighty
@@ -519,6 +533,8 @@ A skin of the Zodiac lies here.~
 9 1089 1|1024
 11~ 0~ 0~ 0~
 15 10000 5000
+T
+leather~
 E
 skin~
 A skin made of metal, which was worn by Hercules during his Ten Labours.
@@ -533,6 +549,8 @@ A bracelet of the Zodiac lies here.~
 9 1089 1|4096
 4~ 0~ 0~ 0~
 4 10000 5000
+T
+leather~
 E
 bracelet~
 A bracelet of purity and youth, only worn by selected virgins.
@@ -547,6 +565,8 @@ A shield of the Zodiac lies here.~
 9 1089 1|512
 8~ 0~ 0~ 0~
 15 10000 5000
+T
+steel/wood~
 E
 scale~
 It is a shield of justice, used in the ancient battle against injustice.
@@ -563,6 +583,8 @@ A shield of the Zodiac lies here.~
 9 194 1|512
 0~ 0~ 0~ 0~
 15 10000 5000
+T
+steel/wood~
 E
 scale~
 It is a shield of injustice, it picks on the innocent.
@@ -579,6 +601,8 @@ Sting of the Zodiac lies here.~
 5 1089 1|8192
 0~ 4~ 4~ 11~
 7 10000 5000
+T
+steel/wood/leather~
 E
 sting~
 This dreadful weapon put a lot of mortals to death before Scorpio was banished.
@@ -607,6 +631,8 @@ the Titanic Bow of Sagittarius lies here.~
 5 1089|1073741824 1|8192
 0~ 2~ 9~ 6~
 20 10000 5000
+T
+wood~
 E
 bow~
 The gigantic bow used by the Archer; it is a very powerful weapon.
@@ -623,6 +649,8 @@ a pair of horns of the Zodiac lies here.~
 9 1089 1|128
 4~ 0~ 0~ 0~
 6 10000 5000
+T
+leather~
 E
 horn~
 These strange horns are the work of gods, shaped to fit on hands.
@@ -653,6 +681,8 @@ A fish tail of the Zodiac lies here.~
 9 1089 1|32
 10~ 0~ 0~ 0~
 10 10000 5000
+T
+leather~
 E
 tail~
 This tail can actually be worn by mortals somehow as leggings ... another
@@ -670,6 +700,8 @@ A ring of specialty lies here.~
 9 1123|274877906944 1|2
 0~ 0~ 0~ 0~
 3 20000 10000
+T
+silver~
 E
 ring~
 This ring belongs to Cassiopeia, queen of the Universe.
@@ -703,6 +735,8 @@ Here lies a fortune ... a small ring of power.~
 9 355|274877906944 1|2
 4~ 0~ 0~ 0~
 3 40000 20000
+T
+silver~
 E
 ring~
 It conceals the power of the universe.
@@ -719,6 +753,8 @@ A dazzling white object lies on the ground.~
 5 355|274877906944 1|8192
 0~ 4~ 6~ 6~
 20 30000 20000
+T
+steel/wood/leather~
 A
 18 2
 A

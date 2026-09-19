@@ -443,6 +443,8 @@ A breastplate made of the stone from deep within the earth lies here.~
 9 0 9
 10~ 0~ 0~ 0~
 70 200000 4000
+T
+granite~
 A
 5 1
 #9203
@@ -453,6 +455,8 @@ A dagger made of fire crackles mysteriously here.~
 5 1 8193
 0~ 4~ 4~ 11~
 2 100000 2000
+T
+steel/wood/leather~
 A
 19 4
 #9204
@@ -463,6 +467,8 @@ A cape made of ethereal red fiber lies neatly folded on the ground here.~
 9 1 5
 11~ 0~ 0~ 0~
 3 100000 2000
+T
+leather~
 A
 19 1
 #9205
@@ -473,6 +479,8 @@ A pair of boots that look fast standing still are here.~
 9 64 65
 10~ 0~ 0~ 0~
 1 100000 2000
+T
+cloth~
 A
 2 2
 #9206
@@ -483,6 +491,8 @@ A helmet that looks like it has weathered many storms has been set here.~
 9 2 17
 9~ 0~ 0~ 0~
 4 200000 4000
+T
+steel~
 A
 23 -4
 #9207
@@ -493,6 +503,8 @@ A lightning bolt fashioned into a sword spits sparks here.~
 5 3 8193
 0~ 6~ 3~ 3~
 10 100000 2000
+T
+steel/wood/leather~
 A
 18 3
 A
@@ -505,6 +517,8 @@ A shield made entirely of energy buzzes here.~
 9 2 513
 11~ 0~ 0~ 0~
 8 1000000 2000
+T
+steel/wood~
 A
 1 -1
 A
@@ -517,6 +531,8 @@ A girth made of magical ice has been left here.~
 9 0 2049
 10~ 0~ 0~ 0~
 10 100000 1000
+T
+leather~
 A
 5 -2
 #9210
@@ -527,6 +543,8 @@ A cloak fashioned from a small magical waterfall is here.~
 9 0 1025
 10~ 0~ 0~ 0~
 6 100000 2000
+T
+cloth~
 A
 12 25
 A
@@ -539,6 +557,8 @@ An amulet depicting fire, water, lightning, earth, and air lies here.~
 9 1 5
 7~ 0~ 0~ 0~
 1 100000 5000
+T
+silver~
 A
 23 -5
 #9212
@@ -549,6 +569,8 @@ A bracelet made of elemental magic lies here.~
 9 0 4097
 4~ 0~ 0~ 0~
 4 100000 4000
+T
+leather~
 A
 13 25
 #9213
@@ -559,6 +581,8 @@ A pair of platinum arm bands, once worn by the Cyclops, lie here.~
 9 0 257
 9~ 0~ 0~ 0~
 4 10000 1000
+T
+platinum~
 A
 1 1
 #9214
@@ -569,6 +593,8 @@ A pair of platinum leg bands, once worn by the Cyclops, lie here.~
 9 0 33
 9~ 0~ 0~ 0~
 4 10000 1000
+T
+platinum~
 A
 2 1
 #9215
@@ -619,6 +645,8 @@ A large stone club lies on the ground.~
 5 0 8193
 0~ 1~ 12~ 7~
 16 1000 10
+T
+granite~
 A
 19 3
 #9221
@@ -669,6 +697,8 @@ A lance of blue flame burns the ground around it.~
 5 1|134217728 8193
 0~ 2~ 15~ 3~
 14 5000 500
+T
+steel/wood~
 A
 13 -20
 A
@@ -681,6 +711,8 @@ A glowing icicle dagger lies here amid a patch of frost.~
 5 1 8193
 0~ 7~ 3~ 11~
 1 19000 900
+T
+steel/wood/leather~
 A
 19 2
 A
@@ -693,6 +725,8 @@ An avalanche is about to crush you!~
 5 0 8193
 0~ 1~ 30~ 6~
 16 20100 900
+T
+steel/wood/leather~
 A
 18 -1
 #9229
@@ -703,6 +737,8 @@ A chain with a star on the end lies here.~
 5 1 8193
 0~ 6~ 3~ 11~
 11 8200 900
+T
+steel/wood/leather~
 A
 23 -5
 A
@@ -715,6 +751,8 @@ A whip hums innocently to itself.~
 5 2 8193
 0~ 4~ 4~ 2~
 10 10000 900
+T
+leather~
 A
 19 3
 A
@@ -735,6 +773,8 @@ A bolt of lightning whizzes about the room!~
 5 64 1|8192
 0~ 5~ 5~ 6~
 8 100 100
+T
+steel/wood/leather~
 A
 18 5
 #0

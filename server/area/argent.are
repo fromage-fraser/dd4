@@ -519,6 +519,8 @@ Some leather armour lays here.~
 9 0 1|8
 5~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 E
 armour leather~
 The leather armour is patchy and of poor workmanship.
@@ -531,6 +533,8 @@ A small knife sits on the ground.~
 5 0 1|8192
 0~ 5~ 10~ 11~
 5 0 0
+T
+steel~
 E
 knife small~
 This knife is sharp but quite small, barely functioning as an effective weapon.
@@ -543,6 +547,8 @@ You spot a shortsword on the floor.~
 5 0 1|8192
 0~ 6~ 14~ 3~
 10 0 0
+T
+steel/wood/leather~
 E
 shortsword short sword~
 Although small, this blade is sharp, light and easily wielded.
@@ -582,6 +588,8 @@ A flimsy suit of chainmail lies in a heap.~
 9 0 1|8
 6~ 1~ 6~ 11~
 10 0 0
+T
+steel~
 E
 chainmail chain mail~
 The chainmail will serve as adequate protection, although the mail is uneven
@@ -595,6 +603,8 @@ A small, round wooden shield lays on the ground.~
 9 0 1|512
 5~ 1~ 6~ 11~
 5 0 0
+T
+wood~
 E
 shield wooden~
 This hardwood shield can be moved quickly and is quite solid.
@@ -619,6 +629,8 @@ A decorative square shield rests here.~
 9 0 1|512
 9~ 1~ 6~ 11~
 15 0 0
+T
+steel/wood~
 E
 shield square~
 The square shield is plate metal on a wooden frame, designed to allow a series
@@ -632,6 +644,8 @@ A sharp broadsword lays on the floor.~
 5 0 1|8192
 0~ 8~ 16~ 11~
 10 0 0
+T
+steel/wood/leather~
 E
 broadsword broad sword~
 This broadsword carries two keen edges and is extremely effective for fighting
@@ -645,6 +659,8 @@ A legionnaire's helmet sits on the ground here.~
 9 0 1|16
 8~ 1~ 6~ 11~
 5 0 0
+T
+steel~
 E
 helmet legionnaire's~
 The helmet is made of iron and has a red plume mounted on its crest.
@@ -671,6 +687,8 @@ You spy a luxuriant red cape.~
 9 0 1|1024
 8~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 18 1
 E
@@ -712,6 +730,8 @@ The jailer's arm greaves are here.~
 9 0 1|256
 8~ 1~ 6~ 11~
 10 0 0
+T
+steel~
 A
 19 1
 A
@@ -729,6 +749,8 @@ There are a pair of studded leather gloves here.~
 9 0 1|128
 8~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 18 1
 E
@@ -789,6 +811,8 @@ A vicious shortsword lays here.~
 5 0 1|8192
 0~ 10~ 20~ 11~
 10 0 0
+T
+steel/wood/leather~
 A
 18 1
 E
@@ -804,6 +828,8 @@ Some leather armour has been left here.~
 9 0 1|8
 10~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 2 2
 E
@@ -818,6 +844,8 @@ A large net is lined with sharp barbs.~
 5 0 1|8192
 0~ 12~ 22~ 9~
 10 0 0
+T
+steel/wood/leather~
 A
 19 2
 E
@@ -834,6 +862,8 @@ A thick leather belt lays on the ground.~
 9 0 1|2048
 8~ 1~ 6~ 11~
 10 0 0
+T
+leather~
 A
 14 -25
 A
@@ -850,6 +880,8 @@ A nasty bullwhip lays here.~
 5 0 1|8192
 0~ 12~ 22~ 4~
 10 0 0
+T
+leather~
 A
 18 2
 A
@@ -867,6 +899,8 @@ On the floor lays a leather facemask.~
 9 0 1|16
 10~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 19 1
 A
@@ -910,6 +944,8 @@ A thick-bladed dagger lays here.~
 5 0 1|8192
 0~ 8~ 18~ 11~
 5 0 0
+T
+steel/wood/leather~
 A
 19 1
 A
@@ -928,6 +964,8 @@ Some robes made of hemp fibre are here.~
 9 0 1|1024
 8~ 1~ 6~ 11~
 5 0 0
+T
+cloth~
 A
 24 -2
 A
@@ -945,6 +983,8 @@ A large white toga lays in a bundle.~
 9 0 1|1024
 5~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 3 1
 E
@@ -961,6 +1001,8 @@ You spot a small cudgel here.~
 5 0 1|8192
 0~ 2~ 12~ 7~
 5 0 0
+T
+wood~
 E
 cudgel~
 The cudgel is heavy and can effectively knock anything senseless.
@@ -1032,6 +1074,8 @@ A javelin stands in the ground.~
 5 134217728 1|8192
 0~ 8~ 20~ 2~
 15 0 0
+T
+steel/wood/leather~
 A
 2 1
 A
@@ -1049,6 +1093,8 @@ Some decorative brass leggings are here.~
 9 0 1|32
 10~ 1~ 6~ 11~
 15 0 0
+T
+brass/wood/leather~
 A
 14 25
 #25239
@@ -1059,6 +1105,8 @@ A brass breastplate rests on the ground.~
 9 0 1|8
 10~ 1~ 6~ 11~
 5 0 0
+T
+brass/wood/leather~
 A
 4 1
 E
@@ -1074,6 +1122,8 @@ You spy a sharp cutlass here.~
 5 0 1|8192
 0~ 8~ 20~ 3~
 5 0 0
+T
+steel/wood/leather~
 A
 19 3
 E
@@ -1089,6 +1139,8 @@ A silk sash lays on the ground.~
 9 0 1|2048
 6~ 1~ 6~ 11~
 5 0 0
+T
+silk~
 A
 5 1
 A
@@ -1106,6 +1158,8 @@ A simple gold ring glints from the flagstones.~
 9 0 1|2
 4~ 1~ 6~ 11~
 5 0 0
+T
+gold~
 A
 19 3
 A
@@ -1124,6 +1178,8 @@ A gleaming sword floats in the air before you.~
 5 1|64|1024 1|8192
 0~ 20~ 30~ 11~
 10 0 0
+T
+steel/wood/leather~
 A
 18 5
 A
@@ -1150,6 +1206,8 @@ A large wooden oar stands here.~
 5 0 1|8192
 0~ 5~ 10~ 7~
 5 0 0
+T
+wood~
 A
 18 -3
 E
@@ -1164,6 +1222,8 @@ A gigantic wooden club lays here.~
 5 0 1|8192
 0~ 12~ 24~ 7~
 45 0 0
+T
+wood~
 A
 19 3
 E

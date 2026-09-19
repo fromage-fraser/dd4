@@ -140,6 +140,8 @@ A small pick lies here on the ground.~
 5 0 8193
 0~ 1~ 6~ 11~
 10 100 20
+T
+steel/wood/leather~
 #4702
 helm dwarven~
 a dwarven helm~
@@ -148,6 +150,8 @@ A large dwarven helm lies here on the ground.~
 9 0 17
 6~ 0~ 0~ 0~
 10 1000 100
+T
+steel~
 #4703
 plate dwarven breast~
 a dwarven breast plate~
@@ -156,6 +160,8 @@ A dwarven breast plate lies here on the ground.~
 9 0 9
 10~ 0~ 0~ 0~
 15 1500 150
+T
+steel~
 #4704
 shield large dwarven~
 a large dwarven shield~
@@ -164,6 +170,8 @@ A large dwarven shield lies here on the ground.~
 9 1 513
 4~ 0~ 0~ 0~
 7 2000 200
+T
+steel/wood~
 A
 17 -45
 A
@@ -184,6 +192,8 @@ A large battle axe lies here on the ground.~
 5 320 8193
 0~ 2~ 12~ 1~
 5 10000 100
+T
+steel/wood~
 E
 dwarven battle axe~
 It is engraved with beautiful dwarven runes.~

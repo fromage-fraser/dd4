@@ -514,6 +514,8 @@ The amazing magical resistance item lies here.~
 9 1|128 1|64
 20~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 36 -1
 A
@@ -735,6 +737,8 @@ The talons of some creature have been torn off and lie here.~
 5 2|67108864 0
 4~ 10~ 15~ 11~
 1 10000 7500
+T
+steel/wood/leather~
 A
 2 2
 A
@@ -748,6 +752,8 @@ A stinger from the tail of some creature is here.~
 5 1|2|16384|67108864 0
 6~ 10~ 15~ 11~
 1 10000 7500
+T
+steel/wood/leather~
 A
 2 2
 
@@ -759,6 +765,8 @@ Strong mandibles have been severed from a creature and lie here.~
 5 16384|67108864 0
 1~ 15~ 20~ 10~
 1 10000 7500
+T
+steel/wood/leather~
 A
 2 1
 A
@@ -772,6 +780,8 @@ Claws lie here, attached to the paws of some large beast.~
 5 67108864 0
 4~ 15~ 20~ 15~
 1 10000 7500
+T
+bone~
 A
 1 5
 
@@ -783,6 +793,8 @@ The jaws of some animal lie here.~
 5 67108864 0
 1~ 15~ 20~ 10~
 1 10000 7500
+T
+steel/wood/leather~
 A
 3 2
 A
@@ -796,6 +808,8 @@ The severed claws of some creature lie here.~
 5 2|67108864 0
 4~ 15~ 20~ 14~
 1 10000 7500
+T
+bone~
 A
 1 2
 A
@@ -809,6 +823,8 @@ A jaw full of sharp teeth lies here.~
 5 67108864 0
 1~ 15~ 20~ 10~
 1 10000 7500
+T
+bone~
 A
 3 2
 A
@@ -822,6 +838,8 @@ The claws of some creature have been severed and lie here.~
 5 2|67108864 0
 4~ 15~ 20~ 14~
 1 10000 7500
+T
+bone~
 A
 1 2
 A
@@ -835,6 +853,8 @@ Teeth protrude from a mouth that has been cut from an animal and dropped here.~
 5 2|67108864 0
 1~ 15~ 20~ 14~
 1 10000 7500
+T
+steel/wood/leather~
 
 #59
 fangs~
@@ -844,6 +864,8 @@ Some fangs have been ripped from a creature and left here.~
 5 16384|67108864 0
 1~ 10~ 15~ 10~
 1 10000 7500
+T
+bone~
 A
 2 2
 
@@ -873,6 +895,8 @@ A duck collar has been dropped here.~
 9 0 1|4
 ~ ~ ~ ~
 1 0 0
+T
+leather~
 E
 duck collar~
 The collar has a tag that reads "{rDucky{x."
@@ -919,6 +943,8 @@ Jammer's Ibanez is lying here...~
 5 2|64 1|8192
 0~ 1~ 6~ 13~
 5 0 0
+T
+steel/wood/leather~
 A
 18 0
 E
@@ -938,6 +964,8 @@ madboy's Straight Jacket~
 9 1|64 1|1024
 20~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 23 -5
 A
@@ -1056,6 +1084,8 @@ A sword rests here.  It is covered in a runes twisting in a spiral pattern aroun
 5 1|2|64|512|1024 1|8192
 0~ 1~ 6~ 13~
 5 0 0
+T
+steel/wood/leather~
 A
 13 50
 A
@@ -1072,6 +1102,8 @@ A nondescript leather vest lies here...~
 9 64|512|1024 1|8
 0~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 13 100
 A
@@ -1132,6 +1164,8 @@ A leather cap lies here...~
 9 1|2|32|64|128|512|1024|4096 1|16
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 23 -20
 A
@@ -1148,6 +1182,8 @@ A sword rests here.~
 9 64|128|512|1024|4096 1|4096
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 19 2
 A
@@ -1160,6 +1196,8 @@ Some leather leggings lie here.~
 9 64|128|512|1024 1|32
 0~ 1~ 6~ 11~
 3 0 0
+T
+leather~
 A
 17 -30
 A
@@ -1172,6 +1210,8 @@ Some leather boots sit here.~
 9 64|128|512|1024|4096 1|64
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 14 200
 A
@@ -1184,6 +1224,8 @@ A pair of ordinary leather gloves lie here...~
 9 64|128|512|1024|4096 1|128
 0~ 1~ 6~ 11~
 1 0 0
+T
+leather~
 A
 2 3
 A
@@ -1198,6 +1240,8 @@ A pair of metal armbands lie here.~
 9 64|512|1024 1|256
 0~ 1~ 6~ 11~
 2 0 0
+T
+leather~
 A
 23 -20
 A
@@ -1212,6 +1256,8 @@ A worn and beaten metal shield lies here...~
 9 64|512|1024 1|512
 0~ 1~ 6~ 11~
 4 0 0
+T
+steel/wood~
 A
 17 -30
 A
@@ -1226,6 +1272,8 @@ A plain grey cloak lies here...~
 9 64|128|512|1024|4096 1|1024
 0~ 1~ 6~ 11~
 1 0 0
+T
+cloth~
 A
 3 4
 A
@@ -1275,6 +1323,8 @@ This item was created by Owl for testing.
 9 1|64 1|64
 20~ 1~ 6~ 11~
 5 0 0
+T
+leather~
 A
 1 30
 A
@@ -1328,6 +1378,8 @@ The severed beak of a large bird lies here, still twitching and clacking.~
 5 16777216|67108864 0
 1~ 15~ 20~ 14~
 1 10000 7500
+T
+steel/wood/leather~
 A
 18 15
 A
@@ -1341,6 +1393,8 @@ Trying to add extended BVs, this item is a test.~
 5 65536|262144|16777216|17179869184|2305843009213693952 1|64
 0~ 15~ 20~ 14~
 1 10000 7500
+T
+steel/wood/leather~
 
 #502
 tail~
@@ -1917,6 +1971,8 @@ A mechanical tummy lies here.~
 9 4096|274877906944|16777216|67108864 16
 0~ 7~ 0~ 0~
 20 0 0
+T
+leather~
 A
 17 -30
 A
@@ -1932,6 +1988,8 @@ A mechanical eye lies here.~
 9 4096|274877906944|16777216|67108864 4
 0~ 2~ 0~ 0~
 20 0 0
+T
+leather~
 A
 17 -30
 A
@@ -1947,6 +2005,8 @@ A long sharp sabre lies here.~
 5 1|2|16|64 1|8192
 0~ 1~ 6~ 11~
 15 0 0
+T
+steel/wood/leather~
 A
 18 7
 A
@@ -1960,6 +2020,8 @@ A fencer's main-gauche gleams brightly in the light.~
 5 2 1|8192
 0~ 1~ 6~ 11~
 8 0 0
+T
+steel/wood/leather~
 A
 18 8
 A
@@ -1993,6 +2055,8 @@ Some fangs have been ripped from a bat and left here.~
 5 67108864 0
 1~ 10~ 15~ 10~
 1 10000 7500
+T
+bone~
 
 
 #579
@@ -2040,6 +2104,8 @@ An ice-cream scoop has been dropped here.~
 5 0 1|8192
 1~ 10~ 15~ 17~
 1 10000 7500
+T
+steel/wood/leather~
 
 #584
 hoard treasure~
