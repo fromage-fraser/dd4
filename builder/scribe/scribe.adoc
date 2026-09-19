@@ -712,7 +712,7 @@ Accepted archetype names are:
 | `zombie` | Mindless undead humanoid retaining flesh, organs and limbs.
 | `ghoul` | Corporeal undead with claws, fangs, a long tongue, sleep/charm immunity and contact paralysis.
 | `ghast` | Corporeal undead with carrion stench and stronger contact paralysis that also affects elves.
-| `ghost` | Registration-stage undead template. Anatomy, incorporeality and ghost combat abilities are unfinished; use only for development tests.
+| `ghost` | Development-stage undead humanoid with inorganic physiology, no physical heart, brain or guts, and no corpse. Phase-dependent contact rules and active ghost abilities remain unfinished.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1251,26 +1251,29 @@ automatically convert victims into undead or change Animate Dead's servant
 prototypes.
 
 [[scribe-ghost-archetype]]
-===== Ghost archetype: registration stage
+===== Ghost archetype: permanent physiology
 
 [source,text]
 ----
 archetype ghost
 ----
 
-WARNING: This is an unfinished development template. Do not convert existing
-world ghosts or Animate Dead servant prototypes to it yet.
+WARNING: This remains an unfinished development template. Do not convert
+existing world ghosts or Animate Dead servant prototypes to it yet.
 
-This stage registers the archetype and its undead classification. It does
-not yet implement ghost anatomy, incorporeality, materialisation, special
-weapon defences, fear, aging or possession.
+This stage supplies undead classification and permanent body properties.
+It does not implement ethereal or semi-material states, phase-dependent
+contact rules, special weapon defences, fear, aging or possession.
 
 [cols="<2,<4",options="header"]
 |===
 | Property | Current default
-| Body species | `humanoid`; its existing anatomy remains unchanged in this stage.
+| Body species | `humanoid`; retain its limb and sensory capabilities.
 | Classification | `ACT_UNDEAD`.
-| Affects | No additional affects; no inherited `AFF_MINDLESS` or `AFF_NON_CORPOREAL`.
+| Physiology | Add `BODY_NO_HEART`, `BODY_NO_CORPSE` and `BODY_INORGANIC`.
+| Physical organs | Cancel inherited `PART_HEART`, `PART_BRAINS` and `PART_GUTS`.
+| Mind and speech | No inherited `AFF_MINDLESS` or `BODY_NO_SPEECH`.
+| Other affects | No additional affects; do not assign `AFF_NON_CORPOREAL`.
 | Natural attacks | No additional attack-part declarations.
 | Resistance masks | No additional resistance, vulnerability or immunity.
 | Combat scalars | Zero HP, damage, critical and swiftness adjustments.
@@ -1279,16 +1282,55 @@ weapon defences, fear, aging or possession.
 | Archetype XP | Zero additional adjustment.
 |===
 
-The existing individual XOR rules apply. An ordinary test definition should
-not repeat `act undead`, because doing so cancels the inherited undead flag.
+====== Anatomy and XOR inheritance
+
+The ghost body-form entry is an XOR mask against the humanoid body species.
+
+`PART_HEART`, `PART_BRAINS` and `PART_GUTS` are already inherited from
+humanoid, so repeating them in the archetype cancels those physical parts.
+The three added BODY flags are absent from the humanoid defaults.
+
+Both heart changes are required: adding `BODY_NO_HEART` without cancelling
+`PART_HEART` would still satisfy the current `HAS_HEART()` macro.
+
+The retained head, limb and sensory properties preserve existing capability
+checks. They do not establish whether the ghost is physically material.
+That distinction belongs to the later ghost state and contact rules.
+
+`PART_BRAINS` describes a physical body part. Its absence does not imply
+mindlessness. Supported mental effects continue to use their existing
+mindless-target checks and resistance rules.
+
+====== Death and existing physiology checks
+
+`BODY_NO_CORPSE` uses the existing no-corpse death handling. The default
+ghost produces neither a corpse nor death-generated body parts. Equipment
+and coins follow the existing no-corpse handling; do not add a separate
+ghost extraction or death path.
+
+`BODY_INORGANIC` and the absence of a heart participate in existing
+physiology checks where those checks are already used. This stage does
+not claim that every biological spell has been normalised, and it adds
+no blanket resistance or immunity.
+
+====== Individual overrides and development limits
+
+The existing individual XOR rules apply. An ordinary test definition
+should not repeat inherited flags unless cancellation is intended.
+In particular, `act undead` cancels the inherited undead classification.
+
+Undead classification and body properties remain independent. Cancelling
+`ACT_UNDEAD` does not automatically restore organs, make the creature
+organic or enable corpse generation.
 
 Names and descriptions do not select this archetype. It must be selected
 explicitly with `archetype ghost`.
 
 The existing `AFF_NON_CORPOREAL` flag retains its current player-form
-behaviour. This registration stage does not assign it to ghosts or alter
-any checks which use it.
+behaviour. This stage neither assigns it to ghosts nor changes its users.
 
+No ethereal/semi-material state, materialisation command, special weapon
+defence, fear, aging, possession or compulsory special function is added.
 Existing world mobiles and Animate Dead prototypes remain unchanged.
 
 ===== How inherited fields are used

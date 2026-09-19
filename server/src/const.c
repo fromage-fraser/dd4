@@ -681,7 +681,7 @@ const struct race_struct race_table[MAX_RACE] =
          2, -2, 1, -1, 1,
          30, -20, -20,
          "Grip", "Armor",
-         CHAR_SIZE_SMALL},
+         CHAR_SIZE_MEDIUM},
 
         {"Centaur", "Centaur",
          1, -1, -1, 2, 0,

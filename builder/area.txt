@@ -596,20 +596,41 @@ Use mstat to inspect template, individual, prototype and live values.
 
 Consult mob.c or the Scribe manual for individual archetypes.
 
-The ghost archetype is currently a registration-stage development template:
+The ghost archetype is currently a development-stage physiology template:
 
     < ghost~ common~
 
-It inherits the humanoid body species and adds ACT_UNDEAD. It supplies no
-additional AFF, body-form, attack-part or resistance masks, no compulsory
-special functions, and no additional combat or XP modifiers.
+It inherits the humanoid body species and adds ACT_UNDEAD. Its body-form
+XOR mask adds BODY_NO_HEART, BODY_NO_CORPSE and BODY_INORGANIC, while
+cancelling the inherited PART_HEART, PART_BRAINS and PART_GUTS.
 
-Ghost anatomy, incorporeality, materialisation and active ghost abilities
-are not implemented by this registration stage. Do not convert existing
-world ghosts or Animate Dead servant prototypes to it yet.
+The remaining humanoid limb and sensory capabilities are retained.
+Removing the physical brain part does not imply mindlessness. The
+template adds neither AFF_MINDLESS nor BODY_NO_SPEECH.
 
-Scribe selects it with "archetype ghost". As with other archetypes,
-repeating the inherited undead flag in an individual ACT mask cancels it.
+Both heart changes are necessary: BODY_NO_HEART alone does not negate
+an inherited PART_HEART under the current HAS_HEART() check.
+
+The default ghost leaves no corpse or death-generated body parts.
+Equipment and coins use the existing no-corpse death handling.
+Do not introduce a separate ghost death or extraction path.
+
+No additional AFF, attack-part, resistance, vulnerability or immunity
+masks are supplied. The template has no compulsory special functions
+and no additional combat or XP modifiers.
+
+Ethereal/semi-material states, phase-dependent contact rules, special
+weapon defences, materialisation and active ghost abilities remain
+unimplemented. AFF_NON_CORPOREAL is not assigned or changed.
+
+Do not convert existing world ghosts or Animate Dead servant
+prototypes to this unfinished template yet.
+
+Scribe selects it with "archetype ghost". Individual flag fields remain
+XOR overrides. Repeating an inherited flag cancels it. Cancelling
+ACT_UNDEAD does not automatically change the separate body properties.
+
+See the Scribe manual's "Ghost archetype: permanent physiology" section.
 
 Options for "rank" values (in increasing order of power) are "common", "rare",
 "elite", "boss" and "world".
