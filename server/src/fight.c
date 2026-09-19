@@ -58,7 +58,8 @@ static void damage_internal args((CHAR_DATA *ch,
                                   int dt,
                                   bool poison,
                                   unsigned long int res_types,
-                                  bool natural_contact));
+                                  bool natural_contact,
+                                  bool physical_contact));
 
 /*
  * Death blurb
@@ -860,11 +861,13 @@ unsigned long int object_attack_resistance_types(int dt, OBJ_DATA *source)
 }
 
 /*
- * Check contact eligibility before applying non-damage side effects.
+ * Check an actual object's contact before applying non-damage side effects.
  */
-bool object_attack_is_immune(CHAR_DATA *victim, int dt, OBJ_DATA *source)
+bool object_attack_is_immune(CHAR_DATA *ch, CHAR_DATA *victim,
+                            int dt, OBJ_DATA *source)
 {
-        if (!victim || victim->deleted || victim->position == POS_DEAD)
+        if (!ch || !victim || ch->deleted || victim->deleted
+        ||  ch->position == POS_DEAD || victim->position == POS_DEAD)
                 return TRUE;
 
         if (source && source->deleted)
@@ -873,8 +876,8 @@ bool object_attack_is_immune(CHAR_DATA *victim, int dt, OBJ_DATA *source)
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_INVULNERABLE))
                 return TRUE;
 
-        return get_resistance_result(
-            victim, object_attack_resistance_types(dt, source))
+        return get_contact_resistance_result(
+            ch, victim, object_attack_resistance_types(dt, source))
             == RES_RESULT_IMMUNE;
 }
 
@@ -891,8 +894,9 @@ void damage_from_object(CHAR_DATA *ch, CHAR_DATA *victim,
         ||  (source && source->deleted))
                 return;
 
-        damage_internal(ch, victim, dam, dt, poison,
-                        object_attack_resistance_types(dt, source), FALSE);
+        damage_internal(
+            ch, victim, dam, dt, poison,
+            object_attack_resistance_types(dt, source), FALSE, TRUE);
 }
 
 /*
@@ -930,15 +934,14 @@ static int resistance_result_threshold(RESISTANCE_RESULT result,
 }
 
 /*
- * Preserve the existing material-only chance rules for Decapitate,
- * Assassinate and shield Hurl. Any matching contact immunity still
- * prevents the effect before its material response is considered.
+ * Retain material-only chance scaling for the finishing/status callers.
+ * The full contact check first rejects unreachable or immune contact.
  */
-static int object_effect_threshold(CHAR_DATA *victim, int dt,
-                                   OBJ_DATA *source, int threshold,
-                                   int ceiling)
+static int object_effect_threshold(CHAR_DATA *ch, CHAR_DATA *victim,
+                                   int dt, OBJ_DATA *source,
+                                   int threshold, int ceiling)
 {
-        if (object_attack_is_immune(victim, dt, source))
+        if (object_attack_is_immune(ch, victim, dt, source))
                 return 0;
 
         return resistance_result_threshold(
@@ -1107,8 +1110,27 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
 
                 if (diceroll == 0 || (diceroll != 19 && diceroll < thac0 - victim_ac && victim->position > POS_SLEEPING))
                 {
-                        /* Miss. */
-                        damage(ch, victim, 0, dt, poison);
+                        /*
+                         * Preserve phase context for ordinary misses.
+                         * Otherwise the old zero-damage mob disarm/trip
+                         * branch could run through unreachable contact.
+                         */
+                        if (dt >= TYPE_HIT
+                        && ((IS_NPC(ch)
+                             && ch->ghost_phase != GHOST_PHASE_NONE)
+                         || (IS_NPC(victim)
+                             && victim->ghost_phase != GHOST_PHASE_NONE)))
+                        {
+                                damage_internal(
+                                    ch, victim, 0, dt, poison,
+                                    ordinary_attack_resistance_types(dt, wield),
+                                    FALSE, TRUE);
+                        }
+                        else
+                        {
+                                damage(ch, victim, 0, dt, poison);
+                        }
+
                         tail_chain();
 
                         if (!IS_NPC(ch) && CAN_DO(ch, gsn_second_attack))
@@ -1334,7 +1356,8 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                             !wield
                                 && IS_NPC(ch)
                                 && (dt == TYPE_HIT + 5
-                                    || dt == TYPE_HIT + 10));
+                                    || dt == TYPE_HIT + 10),
+                            TRUE);
                 }
                 else if (dt == gsn_smash)
                 {
@@ -1501,7 +1524,7 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 res_types = skill_table[dt].res_type;
         }
 
-        damage_internal(ch, victim, dam, dt, poison, res_types, FALSE);
+        damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE);
 }
 
 static void damage_internal(CHAR_DATA *ch,
@@ -1510,7 +1533,8 @@ static void damage_internal(CHAR_DATA *ch,
                             int dt,
                             bool poison,
                             unsigned long int res_types,
-                            bool natural_contact)
+                            bool natural_contact,
+                            bool physical_contact)
 {
         CHAR_DATA *fighter;
         CHAR_DATA *opponent;
@@ -1532,20 +1556,27 @@ static void damage_internal(CHAR_DATA *ch,
         }
 
         /*
-         * Preserve the reason that positive damage became zero. A true miss
-         * enters with dam == 0 and therefore remains RES_RESULT_NORMAL. An
-         * immune hit enters with positive damage and is explicitly marked
-         * RES_RESULT_IMMUNE before its damage is reduced to zero.
+         * Explicit physical contacts consult phase as well as the masks.
+         * Other callers retain ordinary mask-based resolution.
+         *
+         * Physical zero-damage attempts also preserve impossible-contact
+         * results, preventing contact-based miss side effects.
          */
-        if (dam > 0 && res_types != 0)
+        if (physical_contact)
         {
-                resistance_result =
-                    get_resistance_result(victim, res_types);
+                resistance_result = get_contact_resistance_result(
+                    ch, victim, res_types);
+        }
+        else if (dam > 0 && res_types != 0)
+        {
+                resistance_result = get_resistance_result(
+                    victim, res_types);
+        }
 
-                dam = apply_resistance_to_damage(
-                    victim,
-                    dam,
-                    res_types);
+        if (dam > 0)
+        {
+                dam = apply_resistance_result_to_damage(
+                    dam, resistance_result);
         }
 
         if (!IS_NPC(ch))
@@ -5931,6 +5962,7 @@ void do_backstab(CHAR_DATA *ch, char *argument)
                 assas_chance = 10;
 
         assas_chance = object_effect_threshold(
+            ch,
             victim,
             gsn_backstab,
             (ch->form == FORM_SCORPION
@@ -7641,6 +7673,20 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /*
+         * Do not fabricate severed remains for an inorganic, no-corpse
+         * creature. Corpse-producing inorganic targets retain their
+         * existing eligibility.
+         */
+        if (IS_NPC(victim)
+        &&  IS_INORGANIC(victim)
+        &&  !MAKES_CORPSE(victim))
+        {
+                act("$N has no physical head that can be severed.",
+                    ch, NULL, victim, TO_CHAR);
+                return;
+        }
+
         if (IS_NPC(victim) && !HAS_HEAD(victim))
         {
                 act("$N doesn't have a head to chop off!", ch, NULL, victim, TO_CHAR);
@@ -7674,7 +7720,7 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
                 chance = 95;
 
         chance = object_effect_threshold(
-            victim, gsn_decapitate, wobj, chance, 95);
+            ch, victim, gsn_decapitate, wobj, chance, 95);
 
         act("{WYou swing your vorpal blade at $N...{x", ch, NULL, victim, TO_CHAR);
         WAIT_STATE(ch, skill_table[gsn_decapitate].beats);
@@ -7899,6 +7945,17 @@ void do_stun(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /*
+         * A biological knockout requires organic NPC physiology.
+         * This does not change any PC resistance or target profile.
+         */
+        if (IS_NPC(victim) && IS_INORGANIC(victim))
+        {
+                act("$N cannot be knocked unconscious by that blow.",
+                    ch, NULL, victim, TO_CHAR);
+                return;
+        }
+
         if (!HAS_HEAD(victim))
         {
                 act("$C has no head for you to whack!", ch, NULL, victim, TO_CHAR);
@@ -7967,7 +8024,7 @@ void do_stun(CHAR_DATA *ch, char *argument)
          * Reject impossible contact before applying sleep or victim lag.
          * Retain the existing zero-damage failed-attempt path.
          */
-        if (object_attack_is_immune(victim, gsn_stun, source))
+        if (object_attack_is_immune(ch, victim, gsn_stun, source))
         {
                 act("Your stunning blow cannot affect $N.",
                     ch, NULL, victim, TO_CHAR);
@@ -7980,7 +8037,7 @@ void do_stun(CHAR_DATA *ch, char *argument)
          * Resolve once, then adjust the existing success roll once.
          */
         chance = resistance_result_threshold(
-            get_resistance_result(victim, res_types),
+            get_contact_resistance_result(ch, victim, res_types),
             chance,
             95);
 
@@ -8870,7 +8927,7 @@ void do_hurl(CHAR_DATA *ch, char *argument)
                 WAIT_STATE(ch, PULSE_VIOLENCE);
 
                 chance = object_effect_threshold(
-                    victim, gsn_hurl, obj, chance, 95);
+                    ch, victim, gsn_hurl, obj, chance, 95);
 
                 if (number_percent() < chance)
                 {

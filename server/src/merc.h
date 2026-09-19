@@ -5455,7 +5455,7 @@ bool is_safe args((CHAR_DATA * ch, CHAR_DATA *victim));
 void multi_hit args((CHAR_DATA * ch, CHAR_DATA *victim, int dt));
 void damage args((CHAR_DATA * ch, CHAR_DATA *victim, int dam, int dt, bool poison));
 unsigned long int object_attack_resistance_types args((int dt, OBJ_DATA *source));
-bool object_attack_is_immune args((CHAR_DATA *victim, int dt, OBJ_DATA *source));
+bool object_attack_is_immune args((CHAR_DATA *ch, CHAR_DATA *victim, int dt, OBJ_DATA *source));
 void damage_from_object args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison, OBJ_DATA *source));
 void update_pos args((CHAR_DATA * victim));
 void set_fighting args((CHAR_DATA * ch, CHAR_DATA *victim));
@@ -5621,6 +5621,8 @@ bool saves_resistance_effect args((int level, CHAR_DATA *victim, unsigned long i
 unsigned long int pc_innate_resists args((CHAR_DATA *ch));
 unsigned long int pc_innate_vulnerabilities args((CHAR_DATA *ch));
 RESISTANCE_RESULT get_resistance_result args((CHAR_DATA * victim, unsigned long int res_types));
+RESISTANCE_RESULT get_contact_resistance_result args((CHAR_DATA *ch, CHAR_DATA *victim, unsigned long int res_types));
+int apply_resistance_result_to_damage args((int dam, RESISTANCE_RESULT result));
 int apply_resistance_to_damage args((CHAR_DATA * victim, int dam, unsigned long int res_types));
 bool is_immune_to args((CHAR_DATA * victim, unsigned long int dam_type));
 void obj_cast_spell args((int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj));

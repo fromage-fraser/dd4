@@ -43,6 +43,7 @@ _AsciiDoc documentation update: 20 September 2026._
 ** <<scribe-tenketsu,Tenketsu: post-hit paralysis>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-ghost-phase,Ghost phase: initial defaults and live state>>
+** <<scribe-ghost-contact,Ghost phase: weapon and shield contact>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
 * <<scribe-objects,9. Objects>>
 ** <<scribe-weapon-resistance,Ordinary weapon resistance categories>>
@@ -713,7 +714,7 @@ Accepted archetype names are:
 | `zombie` | Mindless undead humanoid retaining flesh, organs and limbs.
 | `ghoul` | Corporeal undead with claws, fangs, a long tongue, sleep/charm immunity and contact paralysis.
 | `ghast` | Corporeal undead with carrion stench and stronger contact paralysis that also affects elves.
-| `ghost` | Development-stage undead humanoid with inorganic physiology, no physical heart, brain or guts, and no corpse. Phase-dependent contact rules and active ghost abilities remain unfinished.
+| `ghost` | Development-stage intelligent, inorganic undead with no physical heart, brain, guts or corpse. Starts semi-material and inherits nonmagical immunity; supported weapon/shield contacts use the phase exceptions below. Spell-phase rules and active abilities remain unfinished.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1264,22 +1265,23 @@ existing world ghosts or Animate Dead servant prototypes to it yet.
 
 The archetype supplies undead classification and permanent body properties.
 The separate <<scribe-ghost-phase,Ghost phase: initial defaults and live state>>
-adds inherited initial values, per-instance storage and live diagnostics,
-but not phase-dependent contact rules, special weapon defences, fear,
-aging or possession.
+provides initial-value inheritance and per-instance diagnostics. The
+<<scribe-ghost-contact,weapon/shield contact stage>> connects the supported
+physical attacks. Spell-phase rules, automatic transitions, fear, aging
+and possession remain unfinished.
 
 [cols="<2,<4",options="header"]
 |===
 | Property | Current default
 | Body species | `humanoid`; retain its limb and sensory capabilities.
 | Classification | `ACT_UNDEAD`.
-| Initial phase | `semi_material`, unless overridden by the individual mobile; contact rules remain unfinished.
+| Initial phase | `semi_material`, unless overridden; used by supported weapon/shield contacts.
 | Physiology | Add `BODY_NO_HEART`, `BODY_NO_CORPSE` and `BODY_INORGANIC`.
 | Physical organs | Cancel inherited `PART_HEART`, `PART_BRAINS` and `PART_GUTS`.
 | Mind and speech | No inherited `AFF_MINDLESS` or `BODY_NO_SPEECH`.
 | Other affects | No additional affects; do not assign `AFF_NON_CORPOREAL`.
 | Natural attacks | No additional attack-part declarations.
-| Resistance masks | No additional resistance, vulnerability or immunity.
+| Resistance masks | No resistance or vulnerability defaults; immunity to `RES_NONMAGIC`. Phase-specific exceptions are resolved per contact, not stored in these masks.
 | Combat scalars | Zero HP, damage, critical and swiftness adjustments.
 | Dimensions and language | Inherit humanoid defaults.
 | Special functions | All three slots explicitly empty; auto resolves to `0/0/0`.
@@ -1299,7 +1301,8 @@ Both heart changes are required: adding `BODY_NO_HEART` without cancelling
 
 The retained head, limb and sensory properties preserve existing capability
 checks. They do not establish whether the ghost is physically material.
-That distinction belongs to the later ghost state and contact rules.
+The live phase and supported contact rules determine that interaction;
+retaining a head does not authorise every biological finishing effect.
 
 `PART_BRAINS` describes a physical body part. Its absence does not imply
 mindlessness. Supported mental effects continue to use their existing
@@ -1333,19 +1336,19 @@ explicitly with `archetype ghost`.
 The existing `AFF_NON_CORPOREAL` flag retains its current player-form
 behaviour. This stage neither assigns it to ghosts nor changes its users.
 
-The phase foundation below adds inherited initial settings and an immortal
-live control. No player materialisation command, special weapon defence,
-fear, aging, possession or compulsory special function is added.
+The sections below provide inherited initial settings, immortal live
+control and supported weapon/shield defences. No player materialisation
+command, fear, aging, possession or compulsory special is introduced.
 Existing world mobiles and Animate Dead prototypes remain unchanged.
 
 [[scribe-ghost-phase]]
 ===== Ghost phase: initial defaults and live state
 
-WARNING: This is phase configuration and diagnostics, not implemented
-incorporeal combat. Selecting `ethereal` does not yet prevent damage,
-change visibility, permit movement through walls or supply a resistance.
-The development ghost template must not yet replace production ghosts or
-Animate Dead servant prototypes.
+WARNING: Phase configuration now affects the explicitly supported
+weapon/shield contacts. It does not yet govern every spell, projectile,
+status effect or direct resource change. The development ghost template
+must not replace production ghosts or Animate Dead servants yet.
+Phase alone does not change visibility or permit passage through walls.
 
 `CHAR_DATA.ghost_phase` remains a per-instance enumeration. It is not an
 ACT/AFF/RES bitfield or an affect record. This stage adds a separately
@@ -1357,8 +1360,8 @@ its prototype or the values of other NPC instances.
 |===
 | Phase | Numeric diagnostic | Meaning in this development stage
 | `none` | 0 | No ghost phase selected. This is not an assertion that a creature is physically material.
-| `ethereal` | 1 | Stored ethereal state; phase-dependent interaction rules are not connected yet.
-| `semi_material` | 2 | Stored semi-material state; phase-dependent interaction rules are not connected yet.
+| `ethereal` | 1 | Supported physical contact cannot cross to/from an unphased character.
+| `semi_material` | 2 | Supported contacts can interact with both sides; weapon-barrier exceptions apply as described below.
 |===
 
 ====== Initial-value inheritance
@@ -1377,7 +1380,7 @@ area setting has the same distinction between inherit and explicit zero.
 All four current body species explicitly supply `GHOST_PHASE_NONE`.
 The ghost archetype supplies `GHOST_PHASE_SEMI_MATERIAL`; the other seven
 archetypes inherit. This semi-material starting value is a DD4 development
-choice for controlled contact testing, not an active weapon defence.
+choice for controlled contact testing, now read by the supported contact paths.
 There is no archetype-name, vnum, ACT_UNDEAD or special-function check in
 mobile creation that independently assigns a phase.
 
@@ -1442,6 +1445,8 @@ existing XOR input does not automatically clear the independently selected
 phase or restore physical organs. A non-ghost prototype can explicitly
 select a phase for a development test without changing its classification.
 Scribe does not pre-expand any server template defaults into the file.
+Selecting `none` does not remove the ghost's separately inherited
+`RES_NONMAGIC` immunity. Cancelling that immunity is a separate XOR edit.
 
 ====== Initialisation and lifetime
 
@@ -1484,15 +1489,17 @@ ACT_UNDEAD or a particular archetype.
 template, individual #MOBILES override, effective prototype initial phase
 and current live phase. Raw settings can display `inherit`; resolved and
 live values display their phase names and expose invalid values rather
-than concealing them. The report continues to state that contact rules
-are not connected. No player mstat profile is changed.
+than concealing them. The report identifies weapon/shield contact
+coverage and warns that other effect paths are not phase-aware yet.
+No player mstat profile is changed.
 
 Use `set_ghost_phase()` for later live transitions, not the initial-value
 fields. Neither initial phase selection nor a live phase change edits
 ACT, AFF, body or resistance masks, grants player immunity, toggles
 AFF_NON_CORPOREAL, changes followers, stops combat or invokes a special.
-Silver does not become magical. Damage, status effects, death, corpse,
-reward and movement rules are not connected to these phase values yet.
+Silver does not become magical. Supported contact checks read the live
+phase at the attempt; the setter does not rewrite resistance masks.
+Unconverted spells, death/reward processing and movement remain separate.
 
 ====== Development checks
 
@@ -1508,8 +1515,150 @@ unchanged. Recreate an instance and check that its prototype initial phase
 is restored. Verify invalid Scribe values, invalid hand-authored phase
 tokens in an isolated boot test, case normalisation and explicit-none
 export. Snapshot the ACT/AFF/body/RES values before and after; the phase
-selection must not change them. Do not expect phase-dependent combat
-until its separate contact-integration stage.
+selection must not change them. Then use the contact tests below;
+passing them does not establish coverage of every spell or status rider.
+
+[[scribe-ghost-contact]]
+===== Ghost phase: weapon and shield contact
+
+WARNING: This is an incremental physical-contact integration, not a complete
+AD&D ghost or a general planar system. Keep production world ghosts and
+Animate Dead servants unchanged until the remaining effect paths are covered.
+The contact matrix and its combination rules below are explicit DD4 rules.
+
+====== Scope and source identity
+
+Supported damage paths are ordinary TYPE_HIT-based weapon and natural strikes,
+weapon Backstab/double Backstab, Circle/second Circle, Thrust, Joust, Riposte,
+Counterbalance strikes, armed Whirlwind, Smash, weapon Hurl and Decapitate.
+Existing body-part/objectless variants in that named dispatch remain physical
+contacts with their existing skill categories, not equipment-derived silver.
+
+The selected weapon or shield continues to supply material and magic flags.
+Joust uses its selected lance; Hurl uses its selected object; Smash uses the
+shield. No inventory scan or primary-weapon guess is introduced. The object
+helpers now receive the attacker as well as the victim so a fully ethereal
+attacker cannot use a covered contact against an unphased target.
+
+Assassinate, Decapitate, shield Hurl, Stun and Smash use the same contact gate
+before their success side effects. Stun's full response still adjusts one
+success roll. Decapitate, Assassinate and shield Hurl retain their material-only
+chance scaling after the full contact gate; the conditional half-damage silver
+exception is not an additional material-only chance multiplier.
+
+Inorganic NPCs cannot receive Stun's biological knockout. Decapitate rejects
+an NPC that is both inorganic and no-corpse. The default ghost therefore cannot
+produce a severed head even from an otherwise admitted magical/silver impact.
+Assassinate's existing inorganic exclusion remains. These changes grant no
+new PC immunity or trait and do not prohibit all attacks on inorganic NPCs.
+
+====== Contact matrix
+
+Only an NPC's ghost_phase participates; PC phase storage is ignored here.
+Existing AFF_NON_CORPOREAL behaviour is neither repurposed nor changed.
+The matrix governs reachability before the ordinary masks are resolved.
+
+[cols="<2,<2,<4",options="header"]
+|===
+| Attacker | Target | Supported physical contact
+| none | none | Existing resistance handling.
+| none | ethereal | Cannot reach, regardless of silver or magical weapon.
+| ethereal | none | Cannot reach; materialising is required first.
+| none | semi_material | Resolve the actual source, including the silver exception below.
+| semi_material | none | Existing resistance handling against the unphased target.
+| ethereal or semi_material | ethereal or semi_material | Shared ethereal-side contact; the target's nonmagical barrier does not block this contact. Other matching immunities still apply.
+|===
+
+This does not grant all ethereal attackers a magical attack against every
+creature. The shared-side exception is restricted to a phased target. No
+phase is inferred from name, vnum, ACT_UNDEAD, special function or equipped
+item. The stored phase can be assigned to a test NPC independently of its
+archetype, using the existing authoring or live controls.
+
+====== Mundane barrier and silver exception
+
+The ghost archetype now inherits RES_NONMAGIC immunity through the ordinary
+mask machinery. It does not acquire a permanent RES_SILVER resistance.
+For a default semi-material ghost struck from the unphased side:
+
+[cols="<3,<3",options="header"]
+|===
+| Actual contact source | Response at the resistance stage
+| Mundane, not silver | Immune.
+| Mundane cold iron only | Immune; cold iron is not a bypass.
+| Mundane silver (including silver plus cold iron) | Resistant: half positive damage, minimum one at this stage.
+| Magical weapon, including magical silver | Normal unless another explicit resistance/immunity applies.
+|===
+
+get_contact_resistance_result() implements this without modifying a character,
+prototype, object or stored mask. When the relevant RES_NONMAGIC immunity is
+present, a shared-side contact or eligible silver contact omits RES_NONMAGIC
+from that one local lookup. Silver is not marked magical. Other categories,
+such as slash, silver and cold iron, remain in the lookup; an immunity to any
+of those still wins.
+
+Admitted mundane silver contributes one conditional resistance, not an extra
+multiplier. Any matching vulnerability cancels it under DD4's existing
+non-stacking convention, even when another resistance also matches. Several
+matching resistances never quarter the hit. Magical silver does not receive
+this conditional resistance. Removing RES_NONMAGIC through an individual
+XOR override removes both that barrier and its conditional silver penalty;
+any separately configured material response still applies normally.
+
+Explicit ghostphase none does not remove RES_NONMAGIC. With that phase, the
+special ghost contact exceptions are inactive and ordinary masks still apply.
+Phase reachability, such as an ethereal target being unreachable from none,
+is distinct from the mundane-weapon immunity and is not removed by clearing
+the RES_NONMAGIC mask.
+
+====== Damage integration and diagnostics
+
+The private damage_internal() interface now has an explicit physical_contact
+argument, independent of its existing natural_contact ghoul/ghast-rider flag.
+Only the documented contact entry points set it. Generic damage() does not
+infer a weapon contact just because a spell has RES_MAGIC or physical damage.
+
+For a positive hit, damage_internal() resolves one contact-aware or ordinary
+response and applies it once with apply_resistance_result_to_damage(). Its
+normal resistance wrapper remains available to unconverted callers. The
+vulnerability arithmetic saturates at INT_MAX rather than overflowing;
+normal damage ranges retain the previous arithmetic.
+
+Phased ordinary miss paths also carry contact context. An impossible contact
+is identified as immune even at zero damage so it does not trigger the old
+zero-damage mob disarm/trip branch through an unreachable target. Ordinary
+unphased misses retain their old routing. Positive-damage riders still require
+positive damage. Existing XP, death, equipment and corpse processing is not
+replaced, and attempts may still establish combat through existing handling.
+
+mstat separates initial and live phases and now states that only supported
+weapon/shield paths are connected. mset changes only the live phase; the next
+supported contact reads that value. Changing phase does not stop combat,
+recreate the NPC or clear its stored immunity. A fresh NPC is required after
+reloading a changed prototype to obtain its new inherited mask.
+
+====== Exclusions and acceptance checks
+
+This does not add phase-aware spell targeting, spell status handling, ranged
+ammunition, generic damage() callers, Target/trauma, Snap Neck, direct HP
+subtraction or all legacy contact riders. Those paths keep their existing
+mask-based rules. RES_NONMAGIC already participates in some nonweapon effect
+masks, including Transfix and Howl; the new ghost mask also affects those
+ordinary lookups. No magical-spell versus magical-weapon equivalence is implied.
+A physical contact against a phased target lacking both source categories
+defaults to nonmagical; an absent category cannot bypass the mundane barrier.
+Automatic transitions, player phasing, fear, aging and possession remain later
+work. An ethereal test NPC is not yet protected from every unconverted path.
+
+Use fresh disposable ghost instances and compare plain, silver, cold-iron,
+magical and magical-silver weapons. Verify inherited immunity 8192 and no
+stored silver resistance. Repeat with explicit silver immunity and with a
+matching vulnerability plus resistance. Test both attack directions for none
+versus ethereal, and shared-side contacts between phased NPCs. Confirm an
+individual RES_NONMAGIC XOR cancellation and the separate ghostphase none
+case. Inspect both NPC instances and all masks before/after live phase edits.
+Use an organic, head-bearing phased test NPC for finisher/status phase tests;
+the default ghost is intentionally ineligible for biological knockout/severing.
 
 ===== How inherited fields are used
 
@@ -4755,8 +4904,10 @@ Existing individual XOR inheritance and absolute live-mset rules remain
 unchanged. Those stored masks remain NPC-only; selected innate player
 resistances and vulnerabilities are derived separately at runtime.
 
-This addition does not change the ghost archetype or implement its
-materialisation and special weapon-defence rules.
+Silver tagging by itself grants no universal immunity bypass.
+The <<scribe-ghost-contact,ghost contact rules>> provide a conditional
+exception for the existing mundane-weapon barrier. Automatic
+materialisation and spell-phase rules remain separate work.
 
 [[scribe-object-contact]]
 ===== Named weapon and shield contacts
@@ -4865,7 +5016,10 @@ they share only the threshold arithmetic helper with Stun.
 Stun remains player-operated: its early NPC-caller return is retained before
 any `pcdata` access. Its existing target restrictions, head and size checks,
 Gaia's Warning interaction, clan-guard exclusion and attacker action costs
-remain. Failed or immune attempts use the existing zero-damage failure path
+remain. Inorganic NPCs are now excluded from a biological knockout.
+Contact reachability is phase-aware; the existing single chance roll uses
+that full resolved contact response. Failed or immune attempts use the
+existing zero-damage failure path
 rather than inventing positive damage. A successful attempt retains its
 existing affect duration, forced-sleep behaviour and victim lag.
 
@@ -4900,7 +5054,10 @@ does not itself scale their percentage chance in this stage.
 Assassinate retains its separate backstab and learned-assassinate checks.
 Only its level-based proc is adjusted. Unkillable NPCs cannot be
 assassinated. Immune Decapitate attempts cannot create a severed head
-through the success branch.
+through the success branch. Decapitate now also excludes NPCs that
+are both inorganic and no-corpse, avoiding fabricated severed heads for
+the default ghost. Corpse-producing inorganic targets retain their
+existing eligibility. These are NPC-only physiology checks.
 
 ====== Scope
 
@@ -4913,7 +5070,8 @@ Weapon Stun is covered by its dedicated status-success integration above.
 This stage does not extend Shoot, Snap Shot, Knife Toss, turret payloads,
 Target/trauma, bleeding ticks or spells with object-material classification.
 Other bespoke status-effect paths are not automatically rewritten.
-Ghost materialisation remains separate.
+The <<scribe-ghost-contact,ghost contact rules>> now govern these
+supported physical paths. Automatic materialisation remains separate.
 
 ==== Containers
 

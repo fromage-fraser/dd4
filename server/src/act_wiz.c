@@ -2998,7 +2998,8 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                 snprintf(
                     buf, sizeof(buf),
                     "  Live:         {W%s{x (%d)\n\r"
-                    "Phase-dependent contact rules: not connected.\n\r\n\r",
+                    "Phase contact rules: supported weapon/shield paths only.\n\r"
+                    "Other effect paths are not phase-aware yet.\n\r\n\r",
                     ghost_phase_name(victim->ghost_phase),
                     (int)victim->ghost_phase);
                 send_to_char(buf, ch);
@@ -6374,7 +6375,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                 snprintf(
                     buf, sizeof(buf),
                     "Live ghost phase set to %s. "
-                    "Phase-dependent contact rules are not connected yet; "
+                    "Supported weapon/shield contacts now use this state; "
                     "flags, resistance masks and prototype data are unchanged.\n\r",
                     ghost_phase_name(victim->ghost_phase));
                 send_to_char(buf, ch);

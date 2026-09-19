@@ -102,7 +102,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 NULL, NULL, NULL,
-                MOB_SPECIAL_CHANCES_INHERIT
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE
         }
 };
 
@@ -337,15 +338,15 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
 
                 /*
-                 * No resistance, vulnerability or immunity defaults
-                 * are introduced by this physiology stage.
+                 * Ordinary mundane-weapon barrier.
                  *
-                 * Phase-dependent weapon defences belong in the
-                 * later ghost contact-resolution work.
+                 * Supported phase-aware contacts supply narrowly scoped
+                 * exceptions without changing this stored immunity.
+                 * Individual XOR overrides may remove it.
                  */
                 0,
                 0,
-                0,
+                RES_NONMAGIC,
 
                 /* Neutral HP, damage, critical and swiftness adjustments. */
                 0, 0, 0, 0,
@@ -406,8 +407,8 @@ bool parse_ghost_phase(const char *text, GHOST_PHASE *phase)
 }
 
 /*
- * One validated live-state change. This foundation does not yet apply
- * contact rules or edit flags, resistance masks, followers or combat.
+ * One validated live-state change. Supported contacts read the live value.
+ * This setter does not rewrite flags, resistance masks or prototype data.
  */
 bool set_ghost_phase(CHAR_DATA *ch, GHOST_PHASE phase)
 {
