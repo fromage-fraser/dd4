@@ -7312,18 +7312,15 @@ void do_transfix(CHAR_DATA *ch, char *argument)
         chance = URANGE(5, chance, 95);
 
         /*
-         * Preserve the single success roll and its strict-less-than
-         * convention. Resistance halves its winning outcomes.
-         * Existing NPC Transfix behaviour is unchanged.
+         * Resolve the existing full effect mask for either PC or NPC
+         * targets, then adjust the existing success threshold once.
          */
-        if (!IS_NPC(victim)
-        &&  get_resistance_result(
+        chance = resistance_result_threshold(
+            get_resistance_result(
                 victim,
-                skill_table[gsn_transfix].res_type)
-                == RES_RESULT_RESISTANT)
-        {
-                chance = 1 + (chance - 1) / 2;
-        }
+                skill_table[gsn_transfix].res_type),
+            chance,
+            95);
 
         if (number_percent() < chance)
         {
@@ -7423,16 +7420,25 @@ void do_howl(CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
+        if (reject_mindless_target(ch, victim))
+                return;
+
         WAIT_STATE(ch, skill_table[gsn_howl].beats);
 
         chance = ch->pcdata->learned[gsn_howl];
         chance += (ch->level - victim->level) * 2;
+        chance = URANGE(5, chance, 95);
 
-        if (chance < 5)
-                chance = 5;
-
-        if (chance > 95)
-                chance = 95;
+        /*
+         * Howl is a psychic/sonic effect, not a weapon contact.
+         * Use its declared categories and one existing success roll.
+         */
+        chance = resistance_result_threshold(
+            get_resistance_result(
+                victim,
+                skill_table[gsn_howl].res_type),
+            chance,
+            95);
 
         act("{W::HoooOOOOOooowwwwlll::{x", ch, NULL, NULL, TO_ROOM);
 

@@ -815,11 +815,29 @@ NPC resistance fields or removable affects. Racial traits persist through
 form changes. Repeated weaknesses combine once, not through XOR or
 stacked multipliers. No innate player immunity is supplied.
 
-The existing damage and resistance-aware save rules apply. Transfix
-additionally halves its success chance against a resistant PC, using
-its existing single roll. Confusion uses the resistance-aware save for
-PC targets. Fireshield retaliation applies innate fire vulnerability
-to PC recipients once.
+The existing damage and resistance-aware save rules apply.
+
+Transfix and targeted Howl consult their full skill masks for both PC
+and NPC targets. Resistance halves the winning outcomes of the existing
+success roll; vulnerability adds half, subject to the existing upper
+threshold. Matching immunity prevents success, while matching resistance
+and vulnerability cancel. Multiple matching categories do not stack.
+
+Transfix retains charm, nonmagical and psychic categories. Howl retains
+nonmagical, psychic and sonic categories. They do not borrow materials
+or magical status from equipment. AFF_HOLD does not classify them as
+paralysis. Targeted Howl now rejects mindless targets; its no-target
+cosmetic action is unchanged.
+
+Confusion uses the resistance-aware save for both PC and NPC targets.
+Its existing player behaviour is preserved. No additional saving throw
+is introduced, and a successful effect keeps its existing penalties
+and duration.
+
+Fireshield retaliation applies innate fire vulnerability to PC
+recipients once. No new player immunity is supplied.
+
+See the Scribe manual's "Transfix, Howl and Confusion" section.
 
 Player mstat displays these derived masks and their category names.
 Existing learned, equipment and spell defences remain separate.

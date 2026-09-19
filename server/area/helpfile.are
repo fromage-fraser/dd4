@@ -714,6 +714,7 @@ Gezhp, Owl and Shade
   chances; immune contact cannot produce those finishing/status effects.
 - Added selected innate player resistances and vulnerabilities; see HELP INNATE.
 - Tenketsu paralysis now follows damaging hits and respects resistance.
+- Transfix, Howl and Confusion now consistently consult target resistance.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
@@ -744,8 +745,22 @@ resistance and vulnerability cancel under the existing combined-mask rule.
 
 Resistance-aware spell saves are improved against the appropriate effect.
 Resistance does not guarantee a save or reduce the duration of an effect
-that succeeds. Transfix instead has its existing success chance halved
-against a resistant player, with no additional roll.
+that succeeds. Confusion uses this saving throw for both player and
+mobile targets.
+
+Transfix and targeted Howl instead adjust their existing success rolls.
+Resistance halves their chance; vulnerability adds half, subject to the
+existing upper limit. Matching mobile immunity prevents success.
+Matching resistance and vulnerability cancel, and multiple matches
+do not stack. No extra roll is added.
+
+Elven charm resistance protects against Transfix, but not Howl.
+Illithid psychic resistance protects against both and against Confusion.
+Duergar paralysis resistance alone does not protect against these
+mental effects. Targeted Howl cannot affect a mindless target.
+
+These changes do not grant player immunity or alter the duration and
+penalties of an effect that succeeds.
 
 Paralysis resistance is not resistance to every trap or binding. Psychic
 resistance is not resistance to every spell. Sleep resistance does not
