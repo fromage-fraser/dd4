@@ -5769,6 +5769,7 @@ void do_morph_direwolf(CHAR_DATA *ch, bool to_form);
 bool is_valid_soar args((CHAR_DATA * ch, int soar_index));
 
 /* skill.c */
+void tenketsu_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, RESISTANCE_RESULT result));
 void strip_mount(CHAR_DATA *ch);
 void strip_swallow(CHAR_DATA *ch);
 bool is_bladed_weapon(OBJ_DATA *obj);

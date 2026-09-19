@@ -1765,40 +1765,81 @@ void mawasigeri (CHAR_DATA *ch, CHAR_DATA *victim)
         damage(ch, victim, dam, gsn_mawasigeri, FALSE);
 }
 
-void tenketsu (CHAR_DATA *ch, CHAR_DATA *victim)
+void tenketsu(CHAR_DATA *ch, CHAR_DATA *victim)
 {
-        AFFECT_DATA af;
         int dam = ch->level * 1.9;
 
         if (combo_last_punch)
                 dam += dam / 5;
 
-        if (combo_count > 2 )
+        if (combo_count > 2)
                 dam *= -1.5 + combo_count;
 
-        arena_commentary("$n attacks $N with a pressure-point strike.", ch, victim);
+        arena_commentary("$n attacks $N with a pressure-point strike.",
+                         ch, victim);
 
-        if ( !IS_AFFECTED( victim, AFF_HOLD ) )
+        /* The combat pipeline applies paralysis only after a damaging hit. */
+        damage(ch, victim, dam, gsn_tenketsu, FALSE);
+}
+
+/*
+ * Called by damage_internal() after positive damage has been applied.
+ * Use that hit's already-resolved response; do not scale its damage again.
+ */
+void tenketsu_after_hit(CHAR_DATA *ch, CHAR_DATA *victim,
+                       RESISTANCE_RESULT result)
+{
+        AFFECT_DATA af = {0};
+
+        if (!ch || !victim || ch == victim
+        ||  ch->deleted || victim->deleted
+        ||  !ch->in_room || ch->in_room != victim->in_room
+        ||  ch->hit <= 0 || victim->hit <= 0
+        ||  ch->position == POS_DEAD || victim->position == POS_DEAD
+        ||  IS_AFFECTED(victim, AFF_HOLD)
+        ||  result == RES_RESULT_IMMUNE)
+                return;
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_INVULNERABLE))
+                return;
+
+        /*
+         * Normal/vulnerable damaging hits retain automatic paralysis.
+         * Resistance halves that chance, without another learned-skill roll.
+         */
+        if (result == RES_RESULT_RESISTANT && number_percent() > 50)
         {
-                af.type      = gsn_tenketsu;
-                af.duration  = 1 + ch->level / 15;
-                af.location  = APPLY_DEX;
-                af.modifier  = -5;
-                af.bitvector = AFF_HOLD;
-                affect_join( victim, &af );
+                if (ch->gag < 2)
+                        send_to_char(
+                            "Your pressure-point strike fails to paralyse them.\n\r",
+                            ch);
 
-                af.location     = APPLY_MOVE;
-                af.modifier     = ( ch->level * -10 );
-                af.bitvector    = AFF_NO_RECALL;
-                affect_to_char(victim, &af);
+                if (victim->gag < 2)
+                        send_to_char(
+                            "You resist the pressure-point paralysis.\n\r",
+                            victim);
 
-                if ( ch != victim )
-                        send_to_char( "<201>Your pressure-point strike successfully paralyses your victim.<0>\n\r", ch );
-
-                send_to_char( "<14>You cannot move, you are paralysed!<0>\n\r", victim );
+                return;
         }
 
-        damage(ch, victim, dam, gsn_tenketsu, FALSE);
+        af.type = gsn_tenketsu;
+        af.duration = 1 + ch->level / 15;
+        af.location = APPLY_DEX;
+        af.modifier = -5;
+        af.bitvector = AFF_HOLD;
+        affect_join(victim, &af);
+
+        af.location = APPLY_MOVE;
+        af.modifier = ch->level * -10;
+        af.bitvector = AFF_NO_RECALL;
+        affect_to_char(victim, &af);
+
+        send_to_char(
+            "<201>Your pressure-point strike successfully paralyses your victim.<0>\n\r",
+            ch);
+        send_to_char(
+            "<14>You cannot move, you are paralysed!<0>\n\r",
+            victim);
 }
 
 

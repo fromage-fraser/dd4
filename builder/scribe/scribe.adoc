@@ -39,6 +39,7 @@ _AsciiDoc documentation update: 19 September 2026._
 ** <<scribe-weighted-specials,Three weighted special functions>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
 ** <<scribe-pc-innate-resistances,Innate player resistances and vulnerabilities>>
+** <<scribe-tenketsu,Tenketsu: post-hit paralysis>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
 * <<scribe-objects,9. Objects>>
@@ -3597,9 +3598,9 @@ legacy creature-specific exceptions remain separate. This stage does not
 retroactively remove all existing immunity-like abilities or target exclusions;
 it adds no new PC immunity and ignores NPC-style `immunes` data on PCs.
 
-A resistance bit still requires a classified damage or effect call. Apart
-from the explicit Transfix, Confusion and Fireshield integrations above,
-this stage does not normalise every bespoke status, reflected-damage,
+A resistance bit still requires a classified damage or effect call. Beyond
+the explicitly documented integrations, this stage does not normalise
+every bespoke status, reflected-damage,
 room-hazard or direct resource-loss path. Untyped HP subtraction and generic
 `aggro_damage()` cannot infer fire, acid, psychic or weapon material. Effects
 that intentionally bypass the shared resolver require an explicit later hook.
@@ -3607,6 +3608,8 @@ that intentionally bypass the shared resolver require an explicit later hook.
 Weapon Stun now consults its full selected-object contact mask before its
 success roll; see <<scribe-weapon-stun,Weapon Stun>>. This includes Duergar
 paralysis resistance and the selected PC material vulnerabilities.
+Tenketsu also resolves its paralysis after a damaging hit; see
+<<scribe-tenketsu,Tenketsu: post-hit paralysis>>.
 The exclusions for projectile ammunition, Target/trauma and other unclassified
 effect riders remain. Ghost implementation is unchanged.
 
@@ -3643,6 +3646,75 @@ The existing NPC `mstat` report remains unchanged.
 Verify both damage and status effects using disposable characters and normal
 PvP safeguards. Merely changing a live NPC's race does not make it a valid
 PC-resistance test. Do not use NPC mask-editing commands to configure a PC.
+
+[[scribe-tenketsu]]
+===== Tenketsu: post-hit paralysis
+
+Tenketsu retains its existing `RES_BLUNT`, `RES_NONMAGIC` and `RES_PARALYSIS`
+classification. It is an unarmed pressure-point attack. Silver, cold iron
+and magic on unrelated equipment do not become categories of this attack.
+No skill-table flag or new player resistance profile is added.
+
+`tenketsu()` keeps the existing base/combo damage calculation and calls the
+normal damage pipeline exactly once. It no longer applies the hold or
+no-recall affects before damage is resolved.
+
+After positive damage is applied, `damage_internal()` calls
+`tenketsu_after_hit()` with the resistance result already computed for that
+same hit. This does not calculate another damage multiplier or make another
+attack. A failed skill roll that sends zero damage cannot trigger the hook.
+
+The callback requires both characters to remain present in the same room,
+not deleted or dead, and above zero HP. It rejects self-targeting, an already
+held target, an immune result, and an invulnerable NPC. Misses, fully avoided
+attacks, zero-damage outcomes and lethal impacts therefore do not apply a new
+Tenketsu hold/no-recall pair. If retaliation has reduced the attacker to zero
+HP or below, the callback does not apply paralysis either.
+
+The effect cannot penalise the target's Dexterity before that same attack's
+normal defences run. This ordering change intentionally removes the previous
+possibility of applying paralysis through a defended or nullified strike.
+
+[cols="<2,<3,<3",options="header"]
+|===
+| Resolved response | Categorised damage | Paralysis after an eligible damaging hit
+| Normal | Existing normal damage. | Automatic, as before.
+| Resistant | Existing half-damage rule, minimum one at the resistance stage. | 50% chance: percentile outcomes 1 through 50.
+| Vulnerable | Existing +50% damage rule. | Automatic; the existing 100% follow-up cannot increase beyond certainty.
+| Immune | Existing zero-damage rule. | No paralysis or no-recall affect.
+|===
+
+The damage response and secondary-effect response apply to different parts
+of the attack. Damage is not scaled twice. The callback does not invoke
+`saves_spell()`, `saves_resistance_effect()` or the learned-skill test again.
+Only a resistant, otherwise eligible target requires the added percentile
+roll. Normal and vulnerable targets retain automatic paralysis after a
+successful damaging hit. This post-hit 100%/50% convention is the DD4 rule
+for this integration, not a general new rule for all combat effects.
+
+The full skill mask supplies one combined resistance result. Matching
+resistance and vulnerability retain the existing cancellation rule, and
+multiple matching resistances do not produce repeated chance reductions.
+Duergar PCs qualify through their existing innate paralysis resistance.
+Elven sleep/charm resistance and Illithid psychic resistance alone do not
+match this attack. NPCs use their existing live masks, not player race
+profiles. No new player immunity is introduced.
+
+A successful effect retains `gsn_tenketsu`, duration `1 + level / 15`,
+Dexterity penalty `-5` with `AFF_HOLD`, and movement penalty `-10 * level`
+with `AFF_NO_RECALL`. The resistance branch either applies both effects or
+neither. It does not shorten or weaken a successful paralysis, and an
+already held target does not receive another pair.
+
+Both direct Tenketsu and the existing combo route pass through `tenketsu()`.
+Their learned-skill checks, action costs, target checks and combo arithmetic
+remain unchanged. No global rewrite of other martial-arts effects, Target
+trauma, spell effects, anatomy rules or ghost behaviour is part of this stage.
+
+For tests, compare a neutral target, a Duergar PC and deliberately configured
+resistant/immune/vulnerable NPCs. Check direct and combo use, zero-damage
+failures, a lethal blow, existing holds, and both affect records. Equipping
+silver/cold-iron items must not alter Tenketsu's categories.
 
 [[scribe-sonic-water]]
 ===== Sonic and water categories

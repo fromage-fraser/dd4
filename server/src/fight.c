@@ -1891,9 +1891,6 @@ static void damage_internal(CHAR_DATA *ch,
                             ch, firedam, RES_FIRE);
                 }
 
-                if (is_affected(ch, gsn_resist_heat))
-                        firedam *= 0.8;
-
                 dam_message(
                     victim,
                     ch,
@@ -1971,6 +1968,13 @@ static void damage_internal(CHAR_DATA *ch,
          */
         if (natural_contact && dam > 0)
                 ghoul_touch_after_hit(ch, victim, dt);
+
+        /*
+         * Pressure-point paralysis follows an actual damaging hit.
+         * Pass the response already resolved for this damage event.
+         */
+        if (dt == gsn_tenketsu && dam > 0)
+                tenketsu_after_hit(ch, victim, resistance_result);
 
         /* poisoned weapons */
         if (dam > 0
