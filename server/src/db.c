@@ -1027,6 +1027,9 @@ void boot_db(void)
         {
                 validate_mob_template_tables();
 
+                if (validate_mob_ghost_phases() != 0)
+                        exit(1);
+
                 if (validate_mob_special_templates() != 0)
                         exit(1);
 
@@ -2152,6 +2155,30 @@ static int read_mob_language(FILE *fp, MOB_INDEX_DATA *index)
         return value;
 }
 
+/* Read an individual initial phase, not a live phase transition. */
+static int read_mob_ghost_phase(FILE *fp, MOB_INDEX_DATA *index)
+{
+        const char *text;
+        int phase;
+        char buf[MAX_STRING_LENGTH];
+
+        text = fread_word(fp);
+
+        if (!parse_mob_ghost_phase(text, &phase))
+        {
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] vnum %d: invalid MobGhostPhase '%s'. "
+                    "Use inherit, none, ethereal or semi_material.",
+                    index->vnum,
+                    text ? text : "(missing)");
+                log_string(buf);
+                exit(1);
+        }
+
+        return phase;
+}
+
 /*
  * Snarf a mob section.
  */
@@ -2201,6 +2228,7 @@ void load_mobiles(FILE *fp)
                 pMobIndex->area_weight = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_size = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_language = MOB_TEMPLATE_UNSET;
+                pMobIndex->area_ghost_phase = MOB_TEMPLATE_UNSET;
 
                 for (stat = 0; stat < MOB_SPECIAL_SLOTS; stat++)
                 {
@@ -2405,6 +2433,11 @@ void load_mobiles(FILE *fp)
                         {
                                 pMobIndex->area_language =
                                     read_mob_language(fp, pMobIndex);
+                        }
+                        else if (!str_cmp(word, "MobGhostPhase"))
+                        {
+                                pMobIndex->area_ghost_phase =
+                                    read_mob_ghost_phase(fp, pMobIndex);
                         }
                         else if (!str_cmp(word, "FStepInside"))
                                 pMobIndex->footstep_key[SECT_INSIDE] = fread_string(fp);
@@ -4507,6 +4540,20 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         mob->weight = pMobIndex->weight;
         mob->size = pMobIndex->size;
         mob->language = pMobIndex->language;
+
+        /*
+         * Copy the resolved initial phase once. Live transitions are
+         * separate and must not rewrite the prototype's initial value.
+         */
+        if (pMobIndex->initial_ghost_phase < GHOST_PHASE_NONE
+        ||  pMobIndex->initial_ghost_phase > GHOST_PHASE_SEMI_MATERIAL)
+        {
+                bug("Create_mobile: invalid initial ghost phase for vnum %d.",
+                    pMobIndex->vnum);
+                exit(1);
+        }
+
+        mob->ghost_phase = (GHOST_PHASE)pMobIndex->initial_ghost_phase;
 
         mob->armor = interpolate(mob->level, 100, -100);
 

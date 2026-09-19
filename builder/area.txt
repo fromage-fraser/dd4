@@ -619,10 +619,11 @@ No additional AFF, attack-part, resistance, vulnerability or immunity
 masks are supplied. The template has no compulsory special functions
 and no additional combat or XP modifiers.
 
-Live ghost-phase storage and immortal diagnostics are available as a
-development foundation. Phase-dependent contact rules, special weapon
-defences, automatic materialisation and active ghost abilities remain
-unimplemented. AFF_NON_CORPOREAL is not assigned or changed.
+Live ghost-phase storage, inherited initial defaults and immortal
+diagnostics are available as a development foundation. Phase-dependent
+contact rules, special weapon defences, automatic materialisation and
+active ghost abilities remain unimplemented. AFF_NON_CORPOREAL is not
+assigned or changed.
 
 Do not convert existing world ghosts or Animate Dead servant
 prototypes to this unfinished template yet.
@@ -634,47 +635,74 @@ ACT_UNDEAD does not automatically change the separate body properties.
 See the Scribe manual's "Ghost archetype: permanent physiology" section.
 
 
-Ghost phase: runtime foundation
-------------------------------
+Ghost phase: initial defaults and live state
+------------------------------------------
 
-Each live character has a separate ghost_phase state. The accepted
-live NPC values are none, ethereal and semi_material, with diagnostic
-numbers 0, 1 and 2 respectively. These are enumeration values, not
-bitflags, and they must not be ORed or XORed together.
+Initial phase resolves through body species, creature archetype,
+individual mobile definition and prototype, then is copied into
+each newly created NPC.
 
-clear_char() initialises the state to none for fresh and recycled
-characters. Every new NPC, including the development ghost archetype,
-starts at none in this foundation stage. No name, vnum, undead flag
-or special function automatically selects its phase.
+Phase is a scalar selection, not a bitmask. A later explicit value
+replaces the earlier value; do not OR or XOR phases together.
 
-Authorised live controls:
+The C-table initial_ghost_phase fields accept MOB_TEMPLATE_UNSET
+for inheritance or one of GHOST_PHASE_NONE, GHOST_PHASE_ETHEREAL
+and GHOST_PHASE_SEMI_MATERIAL. Both raw tables are validated at boot.
+
+All current body species supply none. The ghost archetype supplies
+semi_material for development testing; other archetypes inherit.
+No name, vnum, undead flag or special function independently selects
+a phase in create_mobile().
+
+The optional Scribe mobile field is:
+
+    ghostphase inherit
+    ghostphase none
+    ghostphase ethereal
+    ghostphase semi_material
+
+Use the appropriate single setting. Omission or inherit emits no
+override. Explicit none is preserved.
+
+The corresponding optional #MOBILES tail field is:
+
+    MobGhostPhase <inherit|none|ethereal|semi_material>
+
+This field has no trailing tilde. Place it after any mob programs,
+archetype/rank selection and teacher entries, with the other optional
+metadata before the next # record. Invalid phase tokens stop loading
+with a diagnostic identifying the mobile.
+
+MOB_INDEX_DATA preserves the original setting in area_ghost_phase
+and the resolved initial value in initial_ghost_phase.
+CHAR_DATA.ghost_phase remains the independent live value.
+
+clear_char() still clears the live value to none. create_mobile()
+then copies the validated prototype initial value once. PCs keep
+the neutral value. Recreating an NPC restores its prototype's initial
+phase; a normal reset does not overwrite an existing living instance.
+
+Authorised live controls remain:
 
     mset <mobile> ghostphase none
     mset <mobile> ghostphase ethereal
     mset <mobile> ghostphase semi_material
 
-mstat reports the stored phase and explicitly states that the contact
-rules are not connected. Invalid input leaves the state unchanged.
-PCs, deleted characters and characters at POS_DEAD are rejected.
+Live mset does not accept inherit and does not edit the prototype.
+mstat separates body-species, archetype, template, individual,
+prototype-initial and current-live values.
 
-The state belongs to the live instance, not its prototype. Two NPCs
-created from the same prototype can have different stored phases.
-A destroyed and recreated instance starts at none. A normal area
-reset that leaves an existing instance alive does not clear its state.
+Phase remains independent of ACT_UNDEAD, anatomy and resistance masks.
+Explicit none does not remove undead classification or restore organs.
+Cancelling ACT_UNDEAD does not automatically clear the selected phase.
 
-No player-file field, #MOBILES tail field or Scribe source keyword
-is added. Do not put ghostphase into .src or .are records. Persistent
-initial-phase defaults and overrides remain separate later work.
+These values do not yet change combat accessibility, damage, status
+effects, movement, visibility, corpse handling or rewards.
+There is no timer, automatic transition, new special or player immunity.
+Existing world ghosts and Animate Dead prototypes are not converted.
 
-Setting ethereal does not yet make an NPC immune, invisible or able
-to pass through walls. Setting semi_material does not yet enable
-silver or magical-weapon exceptions. Phase changes do not alter ACT,
-AFF, body, resistance masks, followers, combat or corpse handling.
-
-There is no timer, expiration, automatic transition or new special.
-Existing world ghosts and Animate Dead prototypes remain unchanged.
-
-See the Scribe manual's "Ghost phase: runtime foundation" section.
+See the Scribe manual's "Ghost phase: initial defaults and live state"
+section.
 
 Options for "rank" values (in increasing order of power) are "common", "rare",
 "elite", "boss" and "world".

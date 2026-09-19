@@ -742,12 +742,11 @@ while (1) {
                 }
                 next;
             }
-
             next if &add_field_data(
                     \%mob, $field, $data,
                     'sp sp2 sp3 spchance vn nm sh lo lv act aff bf sx al rnk archetype res vuln imm atk '
                     . 'hpmod dammod critmod swiftmod '
-                    . 'height weight size language');
+                    . 'height weight size language ghostphase');
             print "    line $line: mob: unknown field '$field'\n";
         }
 
@@ -1403,6 +1402,24 @@ foreach (0 .. $#mobs) {
         if ($msg = &get_mob_nonnegative_scalar(\%mob, $field)) {
             print "$err $msg\n";
             $mob_errors{$mob{'line'}}++;
+        }
+    }
+
+    # Optional initial phase. Inherit is not the same as explicit none.
+    if (exists $mob{'ghostphase'}) {
+        my $phase = defined $mob{'ghostphase'}
+                ? lc $mob{'ghostphase'} : '';
+
+        if ($phase !~ /\A(?:inherit|none|ethereal|semi_material)\z/) {
+            print "$err invalid ghostphase '$phase'; use inherit, none, "
+                    . "ethereal or semi_material\n";
+            $mob_errors{$mob{'line'}}++;
+        }
+        elsif ($phase eq 'inherit') {
+            delete $mob{'ghostphase'};
+        }
+        else {
+            $mob{'ghostphase'} = $phase;
         }
     }
 
@@ -3194,6 +3211,9 @@ if (@mobs) {
 
         print AREA "MobLanguage $mob{'language'}\n"
                 if exists $mob{'language'};
+
+        print AREA "MobGhostPhase $mob{'ghostphase'}\n"
+                if exists $mob{'ghostphase'};
     }
 
     print AREA "#0\n\n";

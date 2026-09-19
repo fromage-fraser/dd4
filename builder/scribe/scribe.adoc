@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 19 September 2026._
+_AsciiDoc documentation update: 20 September 2026._
 
 === Contents
 
@@ -42,7 +42,7 @@ _AsciiDoc documentation update: 19 September 2026._
 ** <<scribe-mental-status,Transfix, Howl and Confusion>>
 ** <<scribe-tenketsu,Tenketsu: post-hit paralysis>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
-** <<scribe-ghost-phase,Ghost phase: runtime foundation>>
+** <<scribe-ghost-phase,Ghost phase: initial defaults and live state>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
 * <<scribe-objects,9. Objects>>
 ** <<scribe-weapon-resistance,Ordinary weapon resistance categories>>
@@ -1263,15 +1263,17 @@ WARNING: This remains an unfinished development template. Do not convert
 existing world ghosts or Animate Dead servant prototypes to it yet.
 
 The archetype supplies undead classification and permanent body properties.
-The separate <<scribe-ghost-phase,Ghost phase: runtime foundation>> adds
-state storage and live diagnostics, but not phase-dependent contact rules,
-special weapon defences, fear, aging or possession.
+The separate <<scribe-ghost-phase,Ghost phase: initial defaults and live state>>
+adds inherited initial values, per-instance storage and live diagnostics,
+but not phase-dependent contact rules, special weapon defences, fear,
+aging or possession.
 
 [cols="<2,<4",options="header"]
 |===
 | Property | Current default
 | Body species | `humanoid`; retain its limb and sensory capabilities.
 | Classification | `ACT_UNDEAD`.
+| Initial phase | `semi_material`, unless overridden by the individual mobile; contact rules remain unfinished.
 | Physiology | Add `BODY_NO_HEART`, `BODY_NO_CORPSE` and `BODY_INORGANIC`.
 | Physical organs | Cancel inherited `PART_HEART`, `PART_BRAINS` and `PART_GUTS`.
 | Mind and speech | No inherited `AFF_MINDLESS` or `BODY_NO_SPEECH`.
@@ -1331,53 +1333,139 @@ explicitly with `archetype ghost`.
 The existing `AFF_NON_CORPOREAL` flag retains its current player-form
 behaviour. This stage neither assigns it to ghosts nor changes its users.
 
-The runtime phase foundation below adds state storage and an immortal test
-control only. No player materialisation command, special weapon defence,
+The phase foundation below adds inherited initial settings and an immortal
+live control. No player materialisation command, special weapon defence,
 fear, aging, possession or compulsory special function is added.
 Existing world mobiles and Animate Dead prototypes remain unchanged.
 
 [[scribe-ghost-phase]]
-===== Ghost phase: runtime foundation
+===== Ghost phase: initial defaults and live state
 
-WARNING: This is state storage and diagnostic control, not implemented
-incorporeal combat. Setting `ethereal` does not yet prevent damage, change
-visibility, permit movement through walls or supply any resistance.
+WARNING: This is phase configuration and diagnostics, not implemented
+incorporeal combat. Selecting `ethereal` does not yet prevent damage,
+change visibility, permit movement through walls or supply a resistance.
+The development ghost template must not yet replace production ghosts or
+Animate Dead servant prototypes.
 
-`CHAR_DATA.ghost_phase` is one per-instance enumeration, not an ACT/AFF/RES
-bitfield, an affect record or a property stored on the shared prototype.
-It is independent of undead classification, body properties and special
-functions. Several mobiles created from one prototype can hold different
-live values.
+`CHAR_DATA.ghost_phase` remains a per-instance enumeration. It is not an
+ACT/AFF/RES bitfield or an affect record. This stage adds a separately
+stored initial value to the template/prototype layers, then copies that
+value into each new NPC. Later changes to the live value do not rewrite
+its prototype or the values of other NPC instances.
 
 [cols="<2,<1,<4",options="header"]
 |===
-| Value accepted by mset | Numeric diagnostic | Meaning in this development stage
-| `none` | 0 | No ghost phase selected. This is not a claim that an existing creature is physically material.
-| `ethereal` | 1 | Stored ethereal state, ready for later contact rules; currently diagnostic only.
-| `semi_material` | 2 | Stored semi-material state, ready for later contact rules; currently diagnostic only.
+| Phase | Numeric diagnostic | Meaning in this development stage
+| `none` | 0 | No ghost phase selected. This is not an assertion that a creature is physically material.
+| `ethereal` | 1 | Stored ethereal state; phase-dependent interaction rules are not connected yet.
+| `semi_material` | 2 | Stored semi-material state; phase-dependent interaction rules are not connected yet.
 |===
+
+====== Initial-value inheritance
+
+The order is body species, creature archetype, individual #MOBILES setting,
+resolved prototype, then the newly created live NPC. Phase is a scalar
+selection: a later explicit value replaces an earlier one. Never combine
+phase values through OR or XOR. The existing flag fields retain their
+independent XOR rules.
+
+In C, both raw template layers accept `MOB_TEMPLATE_UNSET` for inheritance
+or one of the three `GHOST_PHASE_*` constants. If neither layer specifies
+a value, the existing scalar resolver produces `none`. The individual
+area setting has the same distinction between inherit and explicit zero.
+
+All four current body species explicitly supply `GHOST_PHASE_NONE`.
+The ghost archetype supplies `GHOST_PHASE_SEMI_MATERIAL`; the other seven
+archetypes inherit. This semi-material starting value is a DD4 development
+choice for controlled contact testing, not an active weapon defence.
+There is no archetype-name, vnum, ACT_UNDEAD or special-function check in
+mobile creation that independently assigns a phase.
+
+[cols="<3,<4",options="header"]
+|===
+| Stored member | Role
+| `species_type.initial_ghost_phase` | Raw body-species default, or `MOB_TEMPLATE_UNSET`.
+| `mob_type.initial_ghost_phase` | Raw archetype replacement, or `MOB_TEMPLATE_UNSET`.
+| `MOB_TEMPLATE_DATA.initial_ghost_phase` | Resolved template initial phase.
+| `MOB_INDEX_DATA.area_ghost_phase` | Original individual setting; omission is `MOB_TEMPLATE_UNSET`.
+| `MOB_INDEX_DATA.initial_ghost_phase` | Effective prototype initial phase after individual replacement.
+| `CHAR_DATA.ghost_phase` | Current live value, initially copied from the prototype for an NPC.
+|===
+
+`validate_mob_ghost_phases()` checks both raw C tables, including values
+hidden by an override or belonging to an unused entry. Invalid table
+values stop boot at this validation step rather than silently becoming
+an ordinary default. Existing unrelated validators are not changed.
+
+====== Scribe field and area-file representation
+
+An optional mobile source field selects the starting phase:
+
+[source,text]
+----
+archetype ghost
+ghostphase ethereal
+----
+
+Accepted values are `inherit`, `none`, `ethereal` and `semi_material`.
+Scribe normalises valid names to lowercase. Numbers, bit expressions,
+abbreviations and multiple phase names are not accepted as phase values.
+An omitted field or explicit `inherit` emits no override; the server
+resolves the template. Explicit `none` is preserved, not treated as
+omission.
+
+[cols="<2,<3",options="header"]
+|===
+| Source field | Exported optional mobile tail
+| Omitted, or `ghostphase inherit` | No `MobGhostPhase` field.
+| `ghostphase none` | `MobGhostPhase none`
+| `ghostphase ethereal` | `MobGhostPhase ethereal`
+| `ghostphase semi_material` | `MobGhostPhase semi_material`
+|===
+
+A hand-authored area file may also contain `MobGhostPhase inherit`.
+The loader reads one named value and rejects invalid phase tokens with
+the mobile's vnum in its error. These lines have no trailing tilde.
+Place the field in the ordinary optional mobile tail, after any mob
+programs, archetype/rank selection and teacher entries, alongside the
+other metadata fields and before the next `#` record.
+
+[source,text]
+----
+< ghost~ common~
+MobGhostPhase none
+----
+
+This example retains the ghost anatomy and classification while explicitly
+clearing its initial phase. Conversely, cancelling ACT_UNDEAD through the
+existing XOR input does not automatically clear the independently selected
+phase or restore physical organs. A non-ghost prototype can explicitly
+select a phase for a development test without changing its classification.
+Scribe does not pre-expand any server template defaults into the file.
 
 ====== Initialisation and lifetime
 
-`clear_char()` sets the field to `GHOST_PHASE_NONE` after clearing the
-character structure. Both player loading and mobile creation use this
-initialisation path, including reuse of a character from the free list.
-A newly created mobile never inherits the old occupant's phase.
+`clear_char()` continues to initialise the live field to `GHOST_PHASE_NONE`
+for fresh and recycled character structures. Player loading retains this
+neutral value. `create_mobile()` subsequently copies the validated
+prototype initial value once, after assigning the prototype metadata.
+This direct initial assignment does not use the live setter, because
+creation is not yet a fully initialised live-state transition.
 
-Every new instance starts at `none`, including the development ghost
-archetype. No archetype-name, vnum, ACT_UNDEAD or special-function inference
-selects a phase. Default phase inheritance and persistent builder overrides
-are deferred until the interaction policy is connected; this neutral
-initialisation must not become an implicit permanent rule for ghosts.
+A new unoverridden ghost therefore starts at `semi_material`; an ordinary
+unconfigured NPC starts at `none`. Recreating a destroyed NPC restores its
+prototype initial phase, not the previous instance's last live phase.
+An ordinary area reset that leaves an existing NPC alive does not reset
+its phase. There is still no timer, expiry or automatic phase transition.
 
-The phase is not written to player files or area files, and is not copied
-back to a prototype. A live edit is lost when that NPC instance is destroyed
-and replaced. An ordinary area reset that leaves an existing NPC alive does
-not clear it. There is no timer, expiration or automatic transition yet.
+The runtime value is not written back to an area record or player file.
+The new persistent area field describes only the initial value. Existing
+area files require no conversion, and no existing world or summoned-mob
+prototype is converted by this stage.
 
 ====== Live editing and diagnostics
 
-The existing authorised `mset` command accepts:
+The existing authorised live commands are unchanged:
 
 [source,text]
 ----
@@ -1386,46 +1474,42 @@ mset <mobile> ghostphase ethereal
 mset <mobile> ghostphase semi_material
 ----
 
-Names are case-insensitive and must match a complete listed value. Numeric
-values, abbreviations, extra words and `inherit` are rejected. The stored
-state is unchanged on invalid input. The setter also rejects PCs, deleted
-characters and characters at POS_DEAD. It does not require ACT_UNDEAD or a
-specific archetype: this is a diagnostic control for isolated NPC tests,
-not a new ability available to ordinary players or a ghost-identification
-mechanism.
+Live `mset` does not accept `inherit`: choose the desired live state.
+Names remain case-insensitive and must match a complete listed value.
+Invalid input leaves the state unchanged. The live setter still rejects
+PCs, deleted characters and characters at POS_DEAD. It does not require
+ACT_UNDEAD or a particular archetype.
 
-`mstat <mobile>` reports `Ghost phase (runtime): <name> (<number>)` and states
-that phase-dependent contact rules are not connected. Unknown values are
-reported as `invalid`, rather than silently displayed as `none`. No change
-is made to the player mstat profile.
+`mstat` separates the body-species setting, archetype setting, resolved
+template, individual #MOBILES override, effective prototype initial phase
+and current live phase. Raw settings can display `inherit`; resolved and
+live values display their phase names and expose invalid values rather
+than concealing them. The report continues to state that contact rules
+are not connected. No player mstat profile is changed.
 
-Use `set_ghost_phase()` for later live transitions rather than writing the
-member in arbitrary skills. In this stage that setter changes only the
-stored phase. Initialisation writes `none` directly because it precedes the
-assignment of NPC flags and position.
+Use `set_ghost_phase()` for later live transitions, not the initial-value
+fields. Neither initial phase selection nor a live phase change edits
+ACT, AFF, body or resistance masks, grants player immunity, toggles
+AFF_NON_CORPOREAL, changes followers, stops combat or invokes a special.
+Silver does not become magical. Damage, status effects, death, corpse,
+reward and movement rules are not connected to these phase values yet.
 
-Changing phase neither edits resistance masks nor grants immunity. It does
-not add/remove AFF_NON_CORPOREAL, undo affects, alter followers, stop combat,
-teleport the creature, modify anatomy or invoke a special function. It does
-not infer that a silver weapon is magical. Current combat, death, corpse,
-XP and equipment handling remain unchanged.
+====== Development checks
 
-====== Builder scope and checks
+Use disposable prototypes with no unrelated individual overrides. Compare
+a ghost with the field omitted, a ghost with `ghostphase inherit`, a ghost
+with `ghostphase none`, a ghost with `ghostphase ethereal`, and an ordinary
+unconfigured non-ghost. Their initial values should be semi-material,
+semi-material, none, ethereal and none respectively.
 
-There is no new Scribe source field or #MOBILES tail keyword in this stage.
-Do not put `ghostphase` into a .src or .are record; it is a live mset field.
-The initial/runtime distinction is explicit, and existing template/XOR
-semantics are unchanged. Existing world ghosts and Animate Dead servants
-must not be converted to the development ghost template yet.
-
-Test two independently created NPCs from the same test prototype. Both
-start at `none`. Set the first to `ethereal` and the second to
-`semi_material`, and verify independent mstat output. Switch the first back
-to `none` and verify the second is unchanged. Invalid input and attempts
-against a PC must leave state unchanged. Destroy/recreate a test NPC and
-verify its fresh state is `none`. Snapshot ACT, AFF, body and RES masks
-before and after live edits; they must not change. Do not expect altered
-combat accessibility until the later contact-integration chunk.
+Create two instances of one test prototype. Edit only one live phase and
+verify that the other instance and both displayed initial settings remain
+unchanged. Recreate an instance and check that its prototype initial phase
+is restored. Verify invalid Scribe values, invalid hand-authored phase
+tokens in an isolated boot test, case normalisation and explicit-none
+export. Snapshot the ACT/AFF/body/RES values before and after; the phase
+selection must not change them. Do not expect phase-dependent combat
+until its separate contact-integration stage.
 
 ===== How inherited fields are used
 
