@@ -633,7 +633,6 @@ ACT_UNDEAD does not automatically change the separate body properties.
 
 See the Scribe manual's "Ghost archetype: permanent physiology" section.
 
-
 Ghost phase: runtime foundation
 ------------------------------
 

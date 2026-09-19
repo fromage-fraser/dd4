@@ -298,7 +298,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_SPECIAL_CHANCES_AUTO
         },
 
-        {
+                {
                 "ghost", "humanoid", "icon1", "icon2",
 
                 /*
