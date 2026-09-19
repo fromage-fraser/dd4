@@ -46,6 +46,7 @@ _AsciiDoc documentation update: 19 September 2026._
 ** <<scribe-cold-iron,Cold iron>>
 ** <<scribe-silver,Silver>>
 ** <<scribe-object-contact,Named weapon and shield contacts>>
+** <<scribe-weapon-stun,Weapon Stun: materials and resistance>>
 ** <<scribe-object-undead,Undead objects and death-generated provenance>>
 * <<scribe-object-sets,10. Object sets>>
 * <<scribe-rooms,11. Rooms>>
@@ -3603,9 +3604,11 @@ room-hazard or direct resource-loss path. Untyped HP subtraction and generic
 `aggro_damage()` cannot infer fire, acid, psychic or weapon material. Effects
 that intentionally bypass the shared resolver require an explicit later hook.
 
-The existing exclusions for projectile ammunition, weapon Stun, Target/trauma
-and unclassified effect riders are not silently removed by this change.
-Ghost implementation is unchanged.
+Weapon Stun now consults its full selected-object contact mask before its
+success roll; see <<scribe-weapon-stun,Weapon Stun>>. This includes Duergar
+paralysis resistance and the selected PC material vulnerabilities.
+The exclusions for projectile ammunition, Target/trauma and other unclassified
+effect riders remain. Ghost implementation is unchanged.
 
 ====== Builder and diagnostic behaviour
 
@@ -4260,9 +4263,10 @@ cold-iron item does not give unrelated attacks its material.
 Other effect paths may explicitly supply RES_COLD_IRON when designed to
 do so; the category is not restricted to ghasts.
 
-The shared resistance masks currently apply to live NPCs, body-species and
-archetype templates. Player resistance skills and effects retain their existing
-separate handling; this category does not itself enable generic RES masks on PCs.
+Body-species, archetype and individual resistance fields remain NPC data.
+Combat also consults the selected <<scribe-pc-innate-resistances,innate PC
+traits>>. Existing player resistance skills and effects retain their separate
+handling; NPC authoring masks are not copied onto player characters.
 
 ===== Inheritance and live editing
 
@@ -4376,6 +4380,10 @@ ITEM_SILVER and ITEM_COLD_IRON properties:
 * counterbalance strikes and armed whirlwind;
 * weapon Hurl and Decapitate.
 
+<<scribe-weapon-stun,Weapon Stun>> also uses the selected weapon's contact
+categories, but adjusts its status-effect success roll rather than adding
+another damage event.
+
 Joust uses the selected lance. Hurl uses the selected hurled object.
 Decapitate uses a qualifying primary vorpal, or the off-hand vorpal when
 the primary weapon does not qualify.
@@ -4405,6 +4413,76 @@ own ordinary weapon classification.
 Shield Hurl uses the selected equipped shield. Material responses modify
 its daze success chance, not its duration. Nonweapon objects outside the
 shield slot are not eligible for this branch.
+
+[[scribe-weapon-stun]]
+====== Weapon Stun: materials and resistance
+
+`do_stun()` selects a qualifying, non-deleted blunt weapon from the primary
+slot first, or from the off-hand slot when the primary object does not qualify.
+It does not combine the materials of two equipped objects. The existing
+`is_blunt_weapon()` eligibility test is retained.
+
+For an ordinary weapon, Stun retains its declared `RES_BLUNT` and
+`RES_PARALYSIS` categories. The actual selected weapon supplies exactly one
+of `RES_MAGIC` or `RES_NONMAGIC`, plus any `RES_SILVER` and `RES_COLD_IRON`
+material tags. The category remains blunt even when the qualifying weapon's
+normal attack is described differently: this preserves the Stun skill's own
+classification.
+
+A qualifying `ITEM_BODY_PART` object may still pass the existing equipment
+eligibility test, but does not supply item material or item magic to the
+knockout. That version uses the skill's existing blunt, nonmagical and
+paralysis categories. No objectless version of the command is added.
+
+[cols="<3,<4",options="header"]
+|===
+| Selected source | Stun contact categories
+| Plain blunt weapon | `RES_BLUNT`, `RES_PARALYSIS`, `RES_NONMAGIC`.
+| Mundane silver blunt weapon | `RES_BLUNT`, `RES_PARALYSIS`, `RES_NONMAGIC`, `RES_SILVER`.
+| Magical cold-iron blunt weapon | `RES_BLUNT`, `RES_PARALYSIS`, `RES_MAGIC`, `RES_COLD_IRON`.
+| Qualifying body-part object | Skill defaults only: `RES_BLUNT`, `RES_PARALYSIS`, `RES_NONMAGIC`.
+|===
+
+The initial learned-skill/level threshold is clamped to 5 through 95 as before.
+The full contact mask then produces one resistance result, used to adjust
+that existing success roll. No additional saving throw is introduced.
+
+[cols="<2,<4",options="header"]
+|===
+| Effective response | Effect on the existing success chance
+| Normal | Unchanged.
+| Resistant | Halve the winning percentile outcomes, rounded down.
+| Vulnerable | Add half the winning percentile outcomes, rounded down, retaining the existing upper threshold of 95.
+| Immune, or invulnerable NPC | The knockout cannot succeed. No success affect, forced sleep or victim lag is applied.
+|===
+
+The roll remains `number_percent() < chance`. Thus a threshold of 41 means
+40 winning outcomes; resistance changes it to 21 (20 outcomes), vulnerability
+to 61 (60 outcomes). The upper threshold of 95 means at most 94 winning
+outcomes. No minimum of five is re-applied after the resistance adjustment.
+
+Resistance and vulnerability matching different categories of the same
+attempt cancel to normal under the existing rule. For example, a silver
+bludgeon against a Duergar Vampire matches paralysis resistance and silver
+vulnerability, producing the normal success chance. Multiple material tags
+or repeated innate weaknesses do not cause multiple multipliers. NPC
+immunity takes priority over matching resistance and vulnerability.
+
+This is distinct from the material-only chance scaling for Decapitate,
+Assassinate and shield Hurl. Those three retain their previous semantics;
+they share only the threshold arithmetic helper with Stun.
+
+Stun remains player-operated: its early NPC-caller return is retained before
+any `pcdata` access. Its existing target restrictions, head and size checks,
+Gaia's Warning interaction, clan-guard exclusion and attacker action costs
+remain. Failed or immune attempts use the existing zero-damage failure path
+rather than inventing positive damage. A successful attempt retains its
+existing affect duration, forced-sleep behaviour and victim lag.
+
+The result still uses `AFF_SLEEP`, but the skill is classified as paralysis,
+not magical sleep. Elven `RES_SLEEP` alone therefore does not reduce a
+physical Stun attempt; Duergar `RES_PARALYSIS` does. No new player immunity,
+racial trait, skill-table flag, save-file field or Scribe keyword is added.
 
 ====== Finishing and status chances
 
@@ -4441,9 +4519,11 @@ The same contact and finishing-chance paths now also consult the selected
 <<scribe-pc-innate-resistances,innate player traits>>. Player immunity is not
 introduced, and duplicate silver weaknesses do not stack.
 
+Weapon Stun is covered by its dedicated status-success integration above.
 This stage does not extend Shoot, Snap Shot, Knife Toss, turret payloads,
-weapon Stun, Target/trauma, bleeding ticks or spells with object-material
-classification. Ghost materialisation remains separate.
+Target/trauma, bleeding ticks or spells with object-material classification.
+Other bespoke status-effect paths are not automatically rewritten.
+Ghost materialisation remains separate.
 
 ==== Containers
 
