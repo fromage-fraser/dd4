@@ -596,6 +596,38 @@ Use mstat to inspect template, individual, prototype and live values.
 
 Consult mob.c or the Scribe manual for individual archetypes.
 
+The wight archetype is an intelligent corporeal undead humanoid:
+
+    < wight~ common~
+
+It inherits ordinary humanoid anatomy and adds ACT_UNDEAD.
+
+Wights are not mindless and retain speech. The archetype does not add
+BODY_INORGANIC, BODY_NO_CORPSE, BODY_NO_SPEECH or ghost phase.
+
+Passive combat defaults are:
+
+    resistance:     RES_DARK
+    vulnerability:  RES_HOLY
+    immunity:       RES_POISON | RES_SLEEP | RES_DRAIN
+
+Wights do not inherit RES_NONMAGIC, silver vulnerability, cold-iron
+vulnerability, charm immunity or paralysis immunity.
+
+The template currently supplies no special function. Life drain is active
+wight behaviour and is implemented separately rather than encoded as a
+passive creature flag.
+
+A normally killed wight retains the ordinary corporeal death path. Its
+corpse is marked by the existing undead-provenance machinery.
+
+Scribe selects the archetype with "archetype wight". Individual ACT,
+resistance, vulnerability and immunity values remain XOR overrides.
+
+Do not convert existing world wights merely by name. Conversion should be
+performed explicitly after the archetype and its later life-drain behaviour
+have been tested.
+
 The ghost archetype is currently a development-stage physiology template:
 
     < ghost~ common~

@@ -715,6 +715,7 @@ Accepted archetype names are:
 | `ghoul` | Corporeal undead with claws, fangs, a long tongue, sleep/charm immunity and contact paralysis.
 | `ghast` | Corporeal undead with carrion stench and stronger contact paralysis that also affects elves.
 | `ghost` | Development-stage intelligent, inorganic undead with no physical heart, brain, guts or corpse. Starts semi-material and inherits nonmagical immunity; supported weapon/shield contacts use the phase exceptions below. Spell-phase rules and active abilities remain unfinished.
+| `wight` | Intelligent corporeal undead humanoid with dark resistance, holy vulnerability, and poison, sleep and drain immunity. Life-drain behaviour is implemented separately.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1251,6 +1252,52 @@ See <<scribe-cold-iron,Cold iron>> for supported attacks and overrides.
 No protection-circle interaction is supplied. This archetype does not
 automatically convert victims into undead or change Animate Dead's servant
 prototypes.
+
+[[scribe-wight-archetype]]
+===== Wight archetype
+
+The `wight` archetype is an intelligent corporeal undead humanoid.
+
+[source,text]
+----
+archetype wight
+----
+
+Its passive defaults are:
+
+[cols="<2,<4",options="header"]
+|===
+| Property | Default
+| Body species | `humanoid`.
+| Classification | `ACT_UNDEAD`.
+| Mind | Intelligent; no `AFF_MINDLESS`.
+| Speech | Retained; no `BODY_NO_SPEECH`.
+| Body | Ordinary inherited humanoid anatomy; no inorganic or no-corpse flag.
+| Natural attacks | No additional attack-part mask.
+| Resistance | `RES_DARK`.
+| Vulnerability | `RES_HOLY`.
+| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`.
+| Mundane weapons | No `RES_NONMAGIC`; ordinary weapons can affect the wight normally.
+| Ghost phase | Inherits `none`; wights are corporeal.
+| Special functions | None in this template stage.
+| XP adjustment | Zero.
+|===
+
+A wight therefore retains an ordinary corporeal death path. If killed
+normally it may produce a corpse, and the existing undead-provenance
+machinery marks that corpse as originating from an undead creature.
+
+The archetype deliberately does not add mindlessness, charm immunity,
+paralysis immunity, silver/cold-iron interaction, nonmagical immunity,
+ghost phase or a generic undead spellcasting special.
+
+Life drain is active behaviour rather than creature classification. It is
+therefore not represented through ACT, AFF, anatomy or resistance flags
+and will be added separately.
+
+Individual `#MOBILES` resistance, vulnerability, immunity and ACT inputs
+remain XOR overrides. Existing world wights are not automatically converted
+merely because this archetype exists.
 
 [[scribe-ghost-archetype]]
 ===== Ghost archetype: permanent physiology
