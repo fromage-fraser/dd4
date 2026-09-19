@@ -45,8 +45,18 @@ int modify_dig_wait_state args((CHAR_DATA * ch, int base_wait, int dig_mode, OBJ
 int modify_dig_move_cost args((CHAR_DATA * ch, int base_move, int dig_mode, OBJ_DATA *dig_tool));
 int modify_dig_damage args((CHAR_DATA * ch, int base_dmg, int dig_mode, OBJ_DATA *dig_tool));
 static void holy_water_drink_effect args((CHAR_DATA *ch, int liquid));
-static bool liquid_splash_is_hostile args((int liquid, CHAR_DATA *victim));
-static void liquid_splash_effect args((CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *container, int liquid, int amount));
+static bool liquid_splash_poison_target
+        args((CHAR_DATA *victim));
+
+static bool liquid_splash_is_hostile
+        args((OBJ_DATA *container, int liquid, CHAR_DATA *victim));
+
+static void liquid_splash_poison_effect
+        args((CHAR_DATA *ch, CHAR_DATA *victim, int amount));
+
+static void liquid_splash_effect
+        args((CHAR_DATA *ch, CHAR_DATA *victim,
+              OBJ_DATA *container, int liquid, int amount));
 
 void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
 {
@@ -2802,16 +2812,49 @@ void do_drink(CHAR_DATA *ch, char *argument)
 }
 
 /*
- * Does this particular liquid/target combination currently constitute
- * a hostile action?
- *
- * Keep this separate from do_splash() so later liquids can add harmful
- * effects without rebuilding the command's generic delivery machinery.
+ * Poison splashed onto a target requires living organic physiology.
+ * Undead status alone is irrelevant: an organic vampire may be poisoned,
+ * while an inorganic skeleton or ghost may not.
  */
-static bool liquid_splash_is_hostile(int liquid, CHAR_DATA *victim)
+static bool liquid_splash_poison_target(CHAR_DATA *victim)
+{
+        if (!victim || victim->deleted
+        ||  victim->hit <= 0
+        ||  victim->position == POS_DEAD)
+                return FALSE;
+
+        if (IS_AFFECTED(victim, AFF_NON_CORPOREAL))
+                return FALSE;
+
+        if (IS_INORGANIC(victim))
+                return FALSE;
+
+        if (IS_NPC(victim)
+        &&  IS_SET(victim->act, ACT_OBJECT))
+                return FALSE;
+
+        return TRUE;
+}
+
+/*
+ * A splash is hostile when one of its current mechanical effects is hostile.
+ * Keep this in step with liquid_splash_effect().
+ */
+static bool liquid_splash_is_hostile(
+    OBJ_DATA *container,
+    int liquid,
+    CHAR_DATA *victim)
 {
         if (!victim || victim->deleted)
                 return FALSE;
+
+        if (container
+        &&  !container->deleted
+        &&  container->value[3] != 0
+        &&  liquid_splash_poison_target(victim))
+        {
+                return TRUE;
+        }
 
         switch (liquid)
         {
@@ -2821,6 +2864,126 @@ static bool liquid_splash_is_hostile(int liquid, CHAR_DATA *victim)
         default:
                 return FALSE;
         }
+}
+
+/*
+ * Apply contact poison from a poisoned liquid.
+ *
+ * This is biological RES_POISON, not magical poison. Existing player
+ * Resist Toxin/Bonus Exotic and the shared resistance/save machinery apply.
+ */
+static void liquid_splash_poison_effect(
+    CHAR_DATA *ch,
+    CHAR_DATA *victim,
+    int amount)
+{
+        AFFECT_DATA af;
+        AFFECT_DATA *paf;
+
+        if (!ch || !victim
+        ||  ch->deleted || victim->deleted
+        ||  amount <= 0
+        ||  !liquid_splash_poison_target(victim))
+        {
+                return;
+        }
+
+        if (is_affected(victim, gsn_prayer_plague))
+                return;
+
+        /*
+         * Preserve the existing player Resist Toxin and Bonus Exotic
+         * protection used by the normal poison spell.
+         */
+        if (!IS_NPC(victim)
+        &&  (is_affected(victim, gsn_bonus_exotic)
+          || number_percent()
+             < victim->pcdata->learned[gsn_resist_toxin]))
+        {
+                if (victim->gag < 2)
+                {
+                        sound_combat_resist_toxin_sfx(victim);
+                        send_to_char(
+                            "<46>Yo<47>u r<48>es<49>is<48>t t<47>he "
+                            "<46>po<47>is<48>on.<0>\n\r",
+                            victim);
+                }
+
+                if (ch != victim)
+                {
+                        send_to_char(
+                            "The poison fails to take hold.\n\r",
+                            ch);
+                }
+
+                return;
+        }
+
+        /*
+         * A poisoned liquid is nonmagical poison contact. Do not include
+         * RES_MAGIC simply because spell_poison() normally does.
+         */
+        if (saves_resistance_effect(
+                UMAX(1, ch->level),
+                victim,
+                RES_POISON))
+        {
+                if (ch != victim)
+                {
+                        send_to_char(
+                            "The poison fails to take hold.\n\r",
+                            ch);
+                }
+
+                if (victim->gag < 2)
+                {
+                        send_to_char(
+                            "You resist the poison.\n\r",
+                            victim);
+                }
+
+                return;
+        }
+
+        memset(&af, 0, sizeof(af));
+
+        af.type = gsn_poison;
+        af.duration = 2 + amount;
+        af.location = APPLY_STR;
+        af.modifier = -2;
+        af.bitvector = AFF_POISON;
+
+        /*
+         * Preserve the existing poison stacking limit.
+         */
+        for (paf = victim->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted || paf->type != gsn_poison)
+                        continue;
+
+                af.duration = UMAX(1, amount);
+
+                if (paf->modifier <= -20)
+                {
+                        af.modifier = 0;
+                        af.duration = 0;
+                }
+
+                break;
+        }
+
+        affect_join(victim, &af);
+
+        if (ch != victim)
+        {
+                send_to_char(
+                    "The poisoned liquid takes effect.\n\r",
+                    ch);
+        }
+
+        send_to_char(
+            "<154>The poisoned liquid makes you feel very sick.<0>\n\r",
+            victim);
 }
 
 /*
@@ -2843,6 +3006,18 @@ static void liquid_splash_effect(
         ||  ch->deleted || victim->deleted
         ||  amount <= 0)
                 return;
+
+        /*
+         * Poison belongs to the container's liquid state rather than to
+         * any particular liquid type, so resolve it independently first.
+         */
+        if (container
+        &&  !container->deleted
+        &&  container->value[3] != 0)
+        {
+                liquid_splash_poison_effect(
+                    ch, victim, amount);
+        }
 
         switch (liquid)
         {
@@ -2974,7 +3149,7 @@ void do_splash(CHAR_DATA *ch, char *argument)
         }
 
         hostile = liquid_splash_is_hostile(
-            liquid, victim);
+            obj, liquid, victim);
 
         if (hostile && is_safe(ch, victim))
                 return;

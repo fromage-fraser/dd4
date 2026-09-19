@@ -5237,9 +5237,22 @@ Holy resistance, vulnerability and immunity therefore apply normally.
 The attack does not gain `RES_MAGIC`, silver, cold-iron or weapon-material
 categories. Ghost phase does not prevent this supernatural holy effect.
 
-Other liquids currently have no combat, status, poison or environmental
-effect when splashed. In particular, `value[3]` continues to describe a
-poisoned drink; it does not make the liquid a contact poison.
+Apart from holy water and poison, current liquids have no combat, status or
+environmental splash effect.
+
+A non-zero drink-container `value[3]` marks the contained liquid as poisoned.
+When that liquid is splashed onto a suitable living, organic target, it attempts
+to apply the normal poison affect. This is `RES_POISON` contact, not magical
+poison, and does not add `RES_MAGIC`.
+
+Inorganic creatures and object-like NPCs cannot be poisoned this way. Existing
+poison immunity, resistance and vulnerability apply through the shared
+resistance machinery. Player `Resist Toxin` and `Bonus Exotic` retain their
+normal protection.
+
+Poison and the liquid's own effect are independent. Poisoned holy water can
+therefore attempt to poison an eligible organic undead target and also apply
+the normal holy-water effect.
 
 Room fountains cannot be used directly by `splash`. Fill a carried drink
 container first.

@@ -1938,8 +1938,18 @@ Holy resistance, vulnerability and immunity apply once. This is not a
 weapon/material attack and gains no RES_MAGIC, RES_SILVER or RES_COLD_IRON.
 Ghost phase does not block the holy effect.
 
-The drink-container poison field remains a drinking property only.
-Splashing a poisoned liquid does not currently poison the target.
+A non-zero drink-container value[3] also makes a splashed liquid poisonous.
+
+Poison can affect suitable living, organic targets. Inorganic creatures and
+object-like NPCs cannot be poisoned by liquid contact. Existing RES_POISON
+immunity, resistance and vulnerability apply normally, as do player Resist
+Toxin and Bonus Exotic protections.
+
+Splash poison is RES_POISON only; it is not automatically RES_MAGIC.
+
+Poison is independent of the liquid's own special effect. Poisoned holy water
+can therefore poison an eligible organic undead target and also inflict its
+holy-water effect.
 
 Fountains cannot be splashed directly; fill a portable drink container
 first.
