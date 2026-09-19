@@ -2944,9 +2944,60 @@ void do_mstat(CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(victim))
         {
+                MOB_INDEX_DATA *index = victim->pIndexData;
+                MOB_TEMPLATE_DATA inherited;
+                int archetype = index ? mob_lookup(index->mobspec) : -1;
+                int species;
+                bool has_template;
+
+                has_template = resolve_mob_template(archetype, &inherited);
+
+                send_to_char("\n\r{WGhost phase: initial and live values{x\n\r", ch);
+
+                if (has_template)
+                {
+                        species = species_lookup(mob_table[archetype].species);
+
+                        snprintf(
+                            buf, sizeof(buf),
+                            "  Body species: %s\n\r"
+                            "  Archetype:    %s\n\r"
+                            "  Template:     %s\n\r",
+                            mob_ghost_phase_setting_name(
+                                species_table[species].initial_ghost_phase),
+                            mob_ghost_phase_setting_name(
+                                mob_table[archetype].initial_ghost_phase),
+                            ghost_phase_name(
+                                (GHOST_PHASE)inherited.initial_ghost_phase));
+                        send_to_char(buf, ch);
+                }
+                else
+                {
+                        send_to_char(
+                            "  Template:     none (no resolved archetype)\n\r",
+                            ch);
+                }
+
+                if (index)
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "  #MOBILES:     %s\n\r"
+                            "  Initial:      %s (%d)\n\r",
+                            mob_ghost_phase_setting_name(index->area_ghost_phase),
+                            ghost_phase_name(
+                                (GHOST_PHASE)index->initial_ghost_phase),
+                            index->initial_ghost_phase);
+                        send_to_char(buf, ch);
+                }
+                else
+                {
+                        send_to_char("  Initial:      no prototype\n\r", ch);
+                }
+
                 snprintf(
                     buf, sizeof(buf),
-                    "\n\rGhost phase (runtime): {W%s{x (%d)\n\r"
+                    "  Live:         {W%s{x (%d)\n\r"
                     "Phase-dependent contact rules: not connected.\n\r\n\r",
                     ghost_phase_name(victim->ghost_phase),
                     (int)victim->ghost_phase);

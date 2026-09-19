@@ -53,7 +53,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 NULL, NULL, NULL,
-                MOB_SPECIAL_CHANCES_INHERIT
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE
         },
 
         {
@@ -69,7 +70,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 NULL, NULL, NULL,
-                MOB_SPECIAL_CHANCES_INHERIT
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE
         },
 
         {
@@ -84,7 +86,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 NULL, NULL, NULL,
-                MOB_SPECIAL_CHANCES_INHERIT
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE
         },
 
         {
@@ -129,7 +132,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 NULL, NULL, NULL,
                 0,                        /* XP adjustment: percentage points */
-                MOB_SPECIAL_CHANCES_INHERIT
+                MOB_SPECIAL_CHANCES_INHERIT,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -143,7 +147,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 1, 30, 100, 3,
                 "spec_fido", "spec_poison", NULL,
                 0,
-                MOB_SPECIAL_CHANCES_AUTO
+                MOB_SPECIAL_CHANCES_AUTO,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -158,7 +163,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 2, 20, 3, 1,
                 "spec_breath_fire", "spec_breath_frost", "spec_poison",
                 5,
-                { 60, 30, 10 }
+                { 60, 30, 10 },
+                MOB_TEMPLATE_UNSET
         },
         {
                 "skeleton", "humanoid", "icon1", "icon2",
@@ -199,8 +205,9 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* No additional archetype XP adjustment. */
                 0,
 
-                                /* Empty names resolve to a valid empty 0/0/0 set. */
-                MOB_SPECIAL_CHANCES_AUTO
+                /* Empty names resolve to a valid empty 0/0/0 set. */
+                MOB_SPECIAL_CHANCES_AUTO,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -228,7 +235,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* No compulsory special functions or extra XP. */
                 "", "", "",
                 0,
-                MOB_SPECIAL_CHANCES_AUTO
+                MOB_SPECIAL_CHANCES_AUTO,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "ghoul", "humanoid", "icon1", "icon2",
@@ -261,7 +269,8 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 /* No separate archetype XP adjustment. */
                 0,
-                MOB_SPECIAL_CHANCES_AUTO
+                MOB_SPECIAL_CHANCES_AUTO,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -295,7 +304,8 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 /* No separate archetype XP adjustment. */
                 0,
-                MOB_SPECIAL_CHANCES_AUTO
+                MOB_SPECIAL_CHANCES_AUTO,
+                MOB_TEMPLATE_UNSET
         },
 
                 {
@@ -349,7 +359,8 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 /* No additional archetype XP adjustment. */
                 0,
-                MOB_SPECIAL_CHANCES_AUTO
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_SEMI_MATERIAL
         }
 
 };
@@ -416,6 +427,82 @@ bool set_ghost_phase(CHAR_DATA *ch, GHOST_PHASE phase)
 
         ch->ghost_phase = phase;
         return TRUE;
+}
+
+/* Name a raw inherited setting without confusing inherit with none. */
+const char *mob_ghost_phase_setting_name(int phase)
+{
+        if (phase == MOB_TEMPLATE_UNSET)
+                return "inherit";
+
+        return ghost_phase_name((GHOST_PHASE)phase);
+}
+
+/* Area/template settings may inherit; live mset values still may not. */
+bool parse_mob_ghost_phase(const char *text, int *phase)
+{
+        GHOST_PHASE parsed;
+
+        if (!text || !phase)
+                return FALSE;
+
+        if (!str_cmp(text, "inherit"))
+        {
+                *phase = MOB_TEMPLATE_UNSET;
+                return TRUE;
+        }
+
+        if (!parse_ghost_phase(text, &parsed))
+                return FALSE;
+
+        *phase = (int)parsed;
+        return TRUE;
+}
+
+/* Validate both raw table layers, including overridden values. */
+int validate_mob_ghost_phases(void)
+{
+        char buf[MAX_STRING_LENGTH];
+        const char *kind;
+        const char *name;
+        int i;
+        int value;
+        int issues = 0;
+
+        for (i = 0; i < MAX_SPECIES + MAX_MOB; i++)
+        {
+                if (i < MAX_SPECIES)
+                {
+                        kind = "Body species";
+                        name = species_table[i].species;
+                        value = species_table[i].initial_ghost_phase;
+                }
+                else
+                {
+                        kind = "Creature archetype";
+                        name = mob_table[i - MAX_SPECIES].name;
+                        value = mob_table[i - MAX_SPECIES].initial_ghost_phase;
+                }
+
+                if (value == MOB_TEMPLATE_UNSET
+                ||  value == GHOST_PHASE_NONE
+                ||  value == GHOST_PHASE_ETHEREAL
+                ||  value == GHOST_PHASE_SEMI_MATERIAL)
+                        continue;
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "[MOB TEMPLATE] %s '%s': invalid initial ghost phase %d. "
+                    "Use MOB_TEMPLATE_UNSET or a defined GHOST_PHASE value.",
+                    kind, name ? name : "unnamed", value);
+                log_string(buf);
+                issues++;
+        }
+
+        if (issues == 0)
+                log_string("[MOB TEMPLATE] Initial ghost phases: no issues found.");
+
+        return issues;
 }
 
 /*
@@ -580,6 +667,11 @@ bool resolve_mob_template(int mob_type,
             resolve_template_scalar(
                 body_species->language,
                 archetype->language);
+
+        resolved->initial_ghost_phase =
+            resolve_template_scalar(
+                body_species->initial_ghost_phase,
+                archetype->initial_ghost_phase);
 
         resolved->spec_fun1 =
             resolve_template_special(
@@ -1546,6 +1638,11 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
             resolve_template_scalar(
                 inherited.language,
                 index->area_language);
+
+        index->initial_ghost_phase =
+            resolve_template_scalar(
+                inherited.initial_ghost_phase,
+                index->area_ghost_phase);
 
         index->resists =
             inherited.resists ^ index->area_resists;

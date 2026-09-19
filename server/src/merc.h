@@ -2845,6 +2845,13 @@ struct mob_index_data
         int language;
 
         /*
+         * Original individual initial-phase setting and resolved value.
+         * MOB_TEMPLATE_UNSET means inherit; NONE is an explicit override.
+         */
+        int area_ghost_phase;
+        int initial_ghost_phase;
+
+        /*
          * Original individual #SPECIALS choices.
          *
          * NULL name: inherit that slot.
@@ -3601,6 +3608,7 @@ struct mob_template_data
          * selection percentages.
          */
         int spec_chance[MOB_SPECIAL_SLOTS];
+        int initial_ghost_phase;
 };
 
 /*
@@ -3651,6 +3659,7 @@ struct mob_type
          * selection percentages.
          */
         int spec_chance[MOB_SPECIAL_SLOTS];
+        int initial_ghost_phase;
 };
 
 /*
@@ -3690,6 +3699,7 @@ struct species_type
          * selection percentages.
          */
         int spec_chance[MOB_SPECIAL_SLOTS];
+        int initial_ghost_phase;
 };
 
 struct rank
@@ -5621,18 +5631,17 @@ int species_lookup args((const char *name));
 const char *ghost_phase_name args((GHOST_PHASE phase));
 bool parse_ghost_phase args((const char *text, GHOST_PHASE *phase));
 bool set_ghost_phase args((CHAR_DATA *ch, GHOST_PHASE phase));
+const char *mob_ghost_phase_setting_name args((int phase));
+bool parse_mob_ghost_phase args((const char *text, int *phase));
+int validate_mob_ghost_phases args((void));
 bool resolve_mob_template args((int mob_type, MOB_TEMPLATE_DATA *resolved));
 void initialise_mob_index_flags args((MOB_INDEX_DATA *index));
 int get_mob_exp_modifier args((CHAR_DATA *mob));
 int validate_mob_template_tables args((void));
 int validate_mob_resistance_table args((void));
-bool parse_mob_resistance_mask args((const char *text,
-                                    unsigned long int *mask));
-bool mob_resistance_masks_valid args((unsigned long int resists,
-                                      unsigned long int vulnerabilities,
-                                      unsigned long int immunes));
-bool parse_mob_attack_parts_mask args((const char *text,
-                                      unsigned long int *mask));
+bool parse_mob_resistance_mask args((const char *text, unsigned long int *mask));
+bool mob_resistance_masks_valid args((unsigned long int resists, unsigned long int vulnerabilities, unsigned long int immunes));
+bool parse_mob_attack_parts_mask args((const char *text, unsigned long int *mask));
 int validate_mob_attack_part_tables args((void));
 unsigned long int mob_usable_attack_parts args((CHAR_DATA *mob));
 int mob_natural_attack_type args((CHAR_DATA *mob));
@@ -5651,30 +5660,15 @@ int validate_mob_languages args((void));
 /* Three-slot weighted mobile special configuration. */
 bool mob_special_policy_valid args((const int *chance));
 bool parse_mob_special_percent args((const char *text, int *value));
-
-bool build_mob_specials args((const char *const *names,
-                              const int *chance,
-                              MOB_SPECIAL_DATA *result,
-                              char *error,
-                              size_t error_size));
-
+bool build_mob_specials args((const char *const *names, const int *chance, MOB_SPECIAL_DATA *result, char *error, size_t error_size));
 bool mob_specials_valid args((const MOB_SPECIAL_DATA *set));
 bool mob_has_special args((CHAR_DATA *mob, SPEC_FUN *special));
 bool mob_has_specials args((CHAR_DATA *mob));
-
-bool set_mob_specials args((CHAR_DATA *mob,
-                            const MOB_SPECIAL_DATA *set));
-
+bool set_mob_specials args((CHAR_DATA *mob, const MOB_SPECIAL_DATA *set));
 void set_mob_single_special args((CHAR_DATA *mob, SPEC_FUN *special));
 bool run_mob_special args((CHAR_DATA *mob));
-
-void mob_template_special_names args((const MOB_TEMPLATE_DATA *data,
-                                      const char **names));
-
-bool resolve_mob_index_specials args((MOB_INDEX_DATA *index,
-                                      char *error,
-                                      size_t error_size));
-
+void mob_template_special_names args((const MOB_TEMPLATE_DATA *data, const char **names));
+bool resolve_mob_index_specials args((MOB_INDEX_DATA *index, char *error, size_t error_size));
 int validate_mob_special_templates args((void));
 int mob_specials_exp_bonus args((const MOB_SPECIAL_DATA *set));
 const char *mob_special_name args((SPEC_FUN *special));

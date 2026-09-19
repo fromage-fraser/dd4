@@ -106,7 +106,7 @@
     "stats": {"str": 2, "int": -2, "wis": 1, "dex": -1, "con": 1},
     "regen": {"hp": 30, "mana": -20, "move": -20},
     "skills": ["Grip", "Armor"],
-    "size": "Small",
+    "size": "Medium",
     "terrain_mods": {"inside": 0, "city": 0, "field": 0, "forest": 0, "hills": -1, "mountain": -1, "water_swim": 0, "water_noswim": 0, "underwater": 0, "air": 0, "desert": 0, "swamp": 1, "underwater_ground": 0}
   },
   {
