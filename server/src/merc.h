@@ -3195,7 +3195,8 @@ struct pc_data
  * Liquids.
  */
 #define LIQ_WATER 0
-#define LIQ_MAX 16
+#define LIQ_HOLY_WATER 16
+#define LIQ_MAX 17
 
 struct liq_type
 {
@@ -5454,6 +5455,10 @@ void state_update args((void));
 bool is_safe args((CHAR_DATA * ch, CHAR_DATA *victim));
 void multi_hit args((CHAR_DATA * ch, CHAR_DATA *victim, int dt));
 void damage args((CHAR_DATA * ch, CHAR_DATA *victim, int dam, int dt, bool poison));
+void damage_with_resistance_types
+        args((CHAR_DATA *ch, CHAR_DATA *victim,
+              int dam, int dt, bool poison,
+              unsigned long int res_types));
 unsigned long int object_attack_resistance_types args((int dt, OBJ_DATA *source));
 bool object_attack_is_immune args((CHAR_DATA *ch, CHAR_DATA *victim, int dt, OBJ_DATA *source));
 void damage_from_object args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison, OBJ_DATA *source));

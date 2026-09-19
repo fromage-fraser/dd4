@@ -2023,7 +2023,8 @@ const struct liq_type liq_table[LIQ_MAX] =
         {"coffee", "black", {0, 1, 6}},
         {"blood", "red", {0, 2, -1}},
         {"salt water", "clear", {0, 1, -2}},
-        {"cola", "cherry", {0, 1, 5}} /* 15 */
+        {"cola", "cherry", {0, 1, 5}}, /* 15 */
+        {"holy water", "clear", {0, 0, 10}} /* 16 */
 };
 
 /*

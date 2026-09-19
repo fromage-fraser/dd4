@@ -1593,6 +1593,32 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE);
 }
 
+/*
+ * Public damage entry point for a caller that already knows its
+ * resistance categories.
+ *
+ * This is not physical weapon contact, so ghost weapon-phase rules are
+ * not inferred merely from RES_MAGIC/RES_HOLY/etc.
+ */
+void damage_with_resistance_types(
+    CHAR_DATA *ch,
+    CHAR_DATA *victim,
+    int dam,
+    int dt,
+    bool poison,
+    unsigned long int res_types)
+{
+        damage_internal(
+            ch,
+            victim,
+            dam,
+            dt,
+            poison,
+            res_types & RES_VALID_MASK,
+            FALSE,
+            FALSE);
+}
+
 static void damage_internal(CHAR_DATA *ch,
                             CHAR_DATA *victim,
                             int dam,

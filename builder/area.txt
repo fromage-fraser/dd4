@@ -1874,6 +1874,37 @@ the first value and discard the rest.
    value[2]    liquid number (see 'liq_table' in const.c)
    value[3]    if non-zero, drink is poisoned
 
+Holy water
+----------
+
+Holy water is liquid number 16 (LIQ_HOLY_WATER). It uses ordinary water-like
+condition values for thirst/fullness and has a separate undead interaction.
+
+When a character satisfying IS_UNDEAD() actually drinks holy water, the base
+damage is one quarter of maximum hit points, with a minimum of 10. The damage
+uses RES_HOLY and passes through the normal DD4 resistance and death machinery.
+
+Holy resistance, vulnerability and immunity therefore apply normally and only
+once. Holy water is not classified as generic RES_MAGIC merely because it is
+consecrated.
+
+Living drinkers receive only the ordinary liquid effects.
+
+Sahuagin and grung use the drink command to bathe/cover themselves rather than
+drink. Their contact with holy water is not handled by this drinking stage;
+that belongs to the later splash/contact mechanic.
+
+Drink containers consume their normal rolled number of draughts. Fountains are
+not consumed.
+
+Scribe keyword:
+
+    v2 holy_water
+
+This exports liquid number 16. Existing liquid numbers remain unchanged.
+
+The intentional offensive splash/throw use of holy water is separate later work.
+
 18 ITEM_KEY
    value[0]    The vnum of room/container it unlocks
    value[1]    unused
@@ -1916,6 +1947,8 @@ the first value and discard the rest.
    value[1]    unused
    value[2]    liquid number (see 'liq_table' in const.c)
    value[3]    if non-zero, fountain is poisoned
+
+Holy-water fountains use value[2] 16. See the Holy water section above.
 
 26 ITEM_PILL
    value[0]    level

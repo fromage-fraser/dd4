@@ -430,6 +430,7 @@ my @obj_liquids = qw/
         dark_ale    whisky         lemonade      firebreather
         local       slime_mould    milk          tea
         coffee      blood          salt_water    cola
+        holy_water
 /;
 
 my @room_st = qw/
