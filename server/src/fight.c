@@ -896,23 +896,19 @@ void damage_from_object(CHAR_DATA *ch, CHAR_DATA *victim,
 }
 
 /*
- * Preserve callers' existing number_percent() < threshold convention.
- * Convert to winning percentage points, adjust once, then convert back.
- * Only material resistance/vulnerability changes the chance; any matching
- * contact immunity prevents the effect altogether.
+ * Adjust one existing strict-less-than success threshold.
+ *
+ * Convert to winning percentile outcomes, apply one resolved response,
+ * then convert back. Callers choose the relevant resistance categories.
  */
-static int object_effect_threshold(CHAR_DATA *victim, int dt,
-                                   OBJ_DATA *source, int threshold,
-                                   int ceiling)
+static int resistance_result_threshold(RESISTANCE_RESULT result,
+                                       int threshold, int ceiling)
 {
         int chance;
 
-        if (object_attack_is_immune(victim, dt, source))
-                return 0;
-
         chance = URANGE(0, threshold - 1, 100);
 
-        switch (get_resistance_result(victim, object_material_types(source)))
+        switch (result)
         {
         case RES_RESULT_IMMUNE:
                 return 0;
@@ -931,6 +927,24 @@ static int object_effect_threshold(CHAR_DATA *victim, int dt,
         }
 
         return UMIN(ceiling, chance + 1);
+}
+
+/*
+ * Preserve the existing material-only chance rules for Decapitate,
+ * Assassinate and shield Hurl. Any matching contact immunity still
+ * prevents the effect before its material response is considered.
+ */
+static int object_effect_threshold(CHAR_DATA *victim, int dt,
+                                   OBJ_DATA *source, int threshold,
+                                   int ceiling)
+{
+        if (object_attack_is_immune(victim, dt, source))
+                return 0;
+
+        return resistance_result_threshold(
+            get_resistance_result(victim, object_material_types(source)),
+            threshold,
+            ceiling);
 }
 
 /*
@@ -1863,9 +1877,13 @@ static void damage_internal(CHAR_DATA *ch,
         {
                 int firedam = dam / 2;
 
+                if (is_affected(ch, gsn_resist_heat))
+                        firedam *= 0.8;
+
                 /*
                  * This retaliation bypasses damage(). Apply innate PC
-                 * fire vulnerability once, to the actual recipient.
+                 * fire vulnerability once, after Resist Heat, to the
+                 * actual recipient.
                  */
                 if (!IS_NPC(ch))
                 {
@@ -7794,9 +7812,11 @@ void do_snap_neck(CHAR_DATA *ch, char *argument)
 void do_stun(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
+        OBJ_DATA *source;
         CHAR_DATA *victim;
         AFFECT_DATA af;
         char arg[MAX_INPUT_LENGTH];
+        unsigned long int res_types;
         int chance = 0;
 
         if (IS_NPC(ch))
@@ -7820,9 +7840,21 @@ void do_stun(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ((!(obj = get_eq_char(ch, WEAR_WIELD)) || !is_blunt_weapon(obj)) && (!(obj = get_eq_char(ch, WEAR_DUAL)) || !is_blunt_weapon(obj)))
+        /*
+         * Prefer a qualifying primary weapon; otherwise use the off-hand.
+         * Keep the actual selected object for resistance classification.
+         */
+        obj = get_eq_char(ch, WEAR_WIELD);
+
+        if (!obj || obj->deleted || !is_blunt_weapon(obj))
+                obj = get_eq_char(ch, WEAR_DUAL);
+
+        if (!obj || obj->deleted || !is_blunt_weapon(obj))
         {
-                send_to_char("You need a weapon that pounds, blasts or crushes in order to stun.\n\r", ch);
+                send_to_char(
+                    "You need a weapon that pounds, blasts or crushes "
+                    "in order to stun.\n\r",
+                    ch);
                 return;
         }
 
@@ -7898,17 +7930,12 @@ void do_stun(CHAR_DATA *ch, char *argument)
 
         WAIT_STATE(ch, skill_table[gsn_stun].beats);
 
-        if (!IS_NPC(ch))
-        {
-                chance = ch->pcdata->learned[gsn_stun];
-                chance += (ch->level - victim->level) * 5;
-
-                if (chance < 5)
-                        chance = 5;
-
-                if (chance > 95)
-                        chance = 95;
-        }
+        /*
+         * NPC callers have already returned at the top of do_stun().
+         */
+        chance = ch->pcdata->learned[gsn_stun];
+        chance += (ch->level - victim->level) * 5;
+        chance = URANGE(5, chance, 95);
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_CLAN_GUARD))
         {
@@ -7918,7 +7945,36 @@ void do_stun(CHAR_DATA *ch, char *argument)
 
         WAIT_STATE(ch, PULSE_VIOLENCE);
 
-        if (IS_NPC(ch) || number_percent() < chance)
+        /*
+         * Body-part objects retain the skill's natural-contact defaults.
+         * They must not borrow silver, cold iron or magic from equipment.
+         */
+        source = IS_OBJ_STAT(obj, ITEM_BODY_PART) ? NULL : obj;
+
+        res_types = object_attack_resistance_types(gsn_stun, source);
+
+        /*
+         * Reject impossible contact before applying sleep or victim lag.
+         * Retain the existing zero-damage failed-attempt path.
+         */
+        if (object_attack_is_immune(victim, gsn_stun, source))
+        {
+                act("Your stunning blow cannot affect $N.",
+                    ch, NULL, victim, TO_CHAR);
+                damage(ch, victim, 0, gsn_stun, FALSE);
+                return;
+        }
+
+        /*
+         * Stun uses its complete impact/status mask, not material alone.
+         * Resolve once, then adjust the existing success roll once.
+         */
+        chance = resistance_result_threshold(
+            get_resistance_result(victim, res_types),
+            chance,
+            95);
+
+        if (number_percent() < chance)
         {
                 act("You viciously pound $N, causing $M to buckle and collapse.",
                     ch, NULL, victim, TO_CHAR);

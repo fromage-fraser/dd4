@@ -748,6 +748,16 @@ Paralysis resistance is not resistance to every trap or binding. Psychic
 resistance is not resistance to every spell. Sleep resistance does not
 prevent ordinary sleep. Existing target restrictions remain in force.
 
+Weapon Stun uses the actual selected bludgeon's materials and magical
+status, together with its blunt and paralysis categories, to adjust
+its existing success chance. Resistance halves that chance; vulnerability
+increases it by half, subject to the existing upper limit. Matching
+resistance and vulnerability cancel. Multiple matches do not stack.
+
+Duergar paralysis resistance protects against Stun. Elven sleep resistance
+alone does not protect against this physical knockout. A successful Stun
+keeps its existing duration and effects.
+
 Material weaknesses apply when the actual supported attacking weapon or
 shield carries the corresponding material flag, not merely because the
 attacker carries another silver or cold-iron object.

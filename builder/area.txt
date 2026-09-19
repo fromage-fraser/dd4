@@ -831,6 +831,34 @@ the PC profile automatically. There are no new Scribe fields.
 See the Scribe manual's "Innate player resistances and vulnerabilities"
 section for scope, examples and diagnostic values.
 
+==Weapon Stun resistance and material handling
+
+Weapon Stun selects a qualifying non-deleted primary blunt weapon,
+or the off-hand blunt weapon when the primary does not qualify.
+
+The selected weapon supplies its magical/nonmagical source and any
+silver or cold-iron material categories. Stun retains its existing
+blunt and paralysis categories. Qualifying body-part objects retain
+the skill defaults without item-material or item-magic additions.
+
+The complete contact mask produces one resistance result for the
+existing success roll. Resistance halves the winning percentage
+outcomes; vulnerability adds half, subject to the existing upper
+threshold. Matching resistance and vulnerability cancel. Immunity
+or NPC invulnerability prevents the knockout and its victim lag.
+
+There is no additional save, damage event or duration adjustment.
+The existing NPC-caller rejection and other target restrictions remain.
+
+Duergar paralysis resistance applies. Elven sleep resistance alone
+does not: AFF_SLEEP is the resulting state, not Stun's effect category.
+
+Decapitate, Assassinate and shield Hurl retain their material-only
+chance scaling. They share threshold arithmetic with Stun, not its
+choice of resistance categories.
+
+See the Scribe manual's "Weapon Stun: materials and resistance" section.
+
 
 ==Individual attack-part overrides
 
