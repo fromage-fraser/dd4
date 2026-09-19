@@ -362,6 +362,59 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_SEMI_MATERIAL
+        },
+
+        {
+                "wight", "humanoid", "icon1", "icon2",
+
+                /*
+                 * Intelligent corporeal undead.
+                 *
+                 * Wights retain thought, speech and ordinary humanoid
+                 * physical anatomy. Life-drain behaviour is added
+                 * separately rather than encoded as a passive flag.
+                 */
+                ACT_UNDEAD, 0,
+
+                /* Retain the inherited humanoid body unchanged. */
+                0,
+
+                /* No additional natural attack parts. */
+                0,
+
+                /*
+                 * Corporeal undead baseline:
+                 * resistant to dark power, vulnerable to holy power.
+                 */
+                RES_DARK,
+                RES_HOLY,
+
+                /*
+                 * Dead tissue is immune to poison and sleep, and a wight
+                 * cannot itself be life-drained.
+                 */
+                RES_POISON | RES_SLEEP | RES_DRAIN,
+
+                /* Ordinary DD4 HP, damage, critical and swiftness values. */
+                0, 0, 0, 0,
+
+                /* Inherit humanoid dimensions and language. */
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                /*
+                 * No compulsory active behaviour in this template stage.
+                 * Wight life drain is implemented separately.
+                 */
+                "", "", "",
+
+                /* No additional archetype XP adjustment. */
+                0,
+
+                MOB_SPECIAL_CHANCES_AUTO,
+
+                /* Corporeal; inherit the humanoid phase default of none. */
+                MOB_TEMPLATE_UNSET
         }
 
 };
