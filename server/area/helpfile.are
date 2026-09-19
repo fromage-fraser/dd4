@@ -6923,6 +6923,30 @@ and it will have to be re-memorised to return there again.
 
 ~
 
+0 SPLASH~
+Syntax: splash <<container> <<target>
+
+SPLASH throws some of the liquid from a carried drink container over another
+character.
+
+Any liquid may be splashed.  Most liquids currently have no special mechanical
+effect and simply produce the splash action while consuming some of the
+container's contents.
+
+Holy water has a special effect when splashed on an undead target.  It inflicts
+holy damage, subject to the target's normal holy resistance, vulnerability, or
+immunity.
+
+A splash uses up to five units of liquid.  Fountains cannot be used directly;
+fill a portable drink container first.
+
+A poisoned liquid can poison a suitable living, organic target when splashed.
+Normal poison immunity, resistance and saving effects apply.  Inorganic
+creatures cannot be poisoned by splashing.
+
+See also: DRINK FILL
+~
+
 0 PATTERN~
 Syntax: pattern
 Syntax: pattern <<number> | <<set> | <<return>
