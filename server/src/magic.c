@@ -10219,14 +10219,14 @@ void spell_confusion(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-                /*
-         * Preserve the existing NPC save. PC targets also consult their
-         * innate response to this spell's resistance categories.
+        /*
+         * Use the existing resistance-aware save for both PC and NPC
+         * targets. Do not add a second saving throw.
          */
-        if (IS_NPC(victim)
-            ? saves_spell(level, victim)
-            : saves_resistance_effect(
-                level, victim, skill_table[sn].res_type))
+        if (saves_resistance_effect(
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
                 send_to_char("Your confusion is resisted.\n\r", ch);
                 return;

@@ -39,6 +39,7 @@ _AsciiDoc documentation update: 19 September 2026._
 ** <<scribe-weighted-specials,Three weighted special functions>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
 ** <<scribe-pc-innate-resistances,Innate player resistances and vulnerabilities>>
+** <<scribe-mental-status,Transfix, Howl and Confusion>>
 ** <<scribe-tenketsu,Tenketsu: post-hit paralysis>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
@@ -1926,8 +1927,8 @@ and Possession.
 | Cognitive enhancement
 | Combat Mind also requires a mind to affect.
 | Combat abilities
-| Transfix rejects a mindless target. Aura of Fear cannot prevent a mindless
-attacker's attack; that passive check is silent.
+| Transfix and targeted Howl reject a mindless target. Aura of Fear cannot
+prevent a mindless attacker's attack; that passive check is silent.
 |===
 
 Checks are in the individual effect routines, so direct calls by mobile
@@ -3564,16 +3565,18 @@ Sleep, Paralysis and the existing ghoul/ghast contact-paralysis save already
 use this path. Charm Person's existing prohibition on PC targets is unchanged;
 no new player-charming permission is introduced.
 
-Transfix has an attack-success threshold rather than a spell saving throw.
-For a resistant PC, halve the winning outcomes of that existing roll, rounded
-down, after its usual base clamp. There is no second roll. A threshold of 81
-(80 winning percentile outcomes) becomes 41 (40 outcomes). Elven charm
-resistance and Illithid psychic resistance therefore both protect against
-Transfix; its duration remains unchanged. NPC Transfix behaviour is unchanged.
+Transfix and targeted Howl use attack-success thresholds rather than spell
+saving throws. Both now consult the shared resolver for PC and NPC targets;
+see <<scribe-mental-status,Transfix, Howl and Confusion>>. Resistance halves
+the winning outcomes of the existing roll. Vulnerability adds half, subject
+to the existing ceiling; matching NPC immunity prevents success. There is
+no second roll and no change to a successful effect's duration or penalties.
+The previously implemented Transfix protection for PCs is preserved.
 
-Confusion uses the resistance-aware saving throw for PC targets, while its
-existing NPC save is preserved. This changes the chance of applying the
-psychic spell, not its strength or duration on a failed save.
+Confusion uses the resistance-aware saving throw for both PC and NPC targets.
+This changes the chance of applying the psychic spell, not its strength or
+duration on a failed save. Its existing player behaviour is preserved; NPC
+masks are no longer bypassed.
 
 Supported ordinary and named weapon/shield contacts already pass the actual
 contact object's materials. Their existing shared damage path now uses PC
@@ -3646,6 +3649,101 @@ The existing NPC `mstat` report remains unchanged.
 Verify both damage and status effects using disposable characters and normal
 PvP safeguards. Merely changing a live NPC's race does not make it a valid
 PC-resistance test. Do not use NPC mask-editing commands to configure a PC.
+
+[[scribe-mental-status]]
+===== Transfix, Howl and Confusion
+
+This stage connects three existing mental status paths to the shared
+resistance system. It adds no skill-table category, player trait, immunity
+flag, save-file field or Scribe keyword. NPCs use their resolved live masks;
+PCs use their selected derived innate traits and receive no innate immunity.
+
+[cols="<2,<3,<3",options="header"]
+|===
+| Effect | Existing categories | Resolution
+| Transfix | `RES_CHARM`, `RES_NONMAGIC`, `RES_PSYCHIC`. | Adjust the existing learned/level success threshold for both PC and NPC targets.
+| Targeted Howl | `RES_NONMAGIC`, `RES_PSYCHIC`, `RES_SONIC`. | Adjust the existing learned/level success threshold for both PC and NPC targets; reject a mindless target first.
+| Confusion | `RES_MAGIC`, `RES_PSYCHIC`. | Use the existing resistance-aware saving throw for both PC and NPC targets.
+|===
+
+The complete effect mask supplies one response. Matching NPC immunity takes
+priority. Otherwise, matching resistance and vulnerability cancel to normal;
+several matching resistances or vulnerabilities do not stack.
+
+These are not weapon contacts. The caster's equipment contributes no silver,
+cold iron or magical-source category. The effect keeps its declared source
+category, so an NPC's matching `non_magic` immunity also prevents Transfix or
+Howl, and matching `magic` immunity prevents Confusion. No broader rewrite of
+the meaning of those existing categories is introduced here.
+
+====== Transfix and Howl: one existing success roll
+
+Each retains its learned-skill and level formula, followed by the existing
+base clamp to thresholds 5 through 95. `resistance_result_threshold()` then
+adjusts that threshold once, using `get_resistance_result()` with the full
+skill mask. Do not also apply the former PC-only Transfix reduction.
+
+The comparison remains `number_percent() < chance`. A threshold of 41 gives
+40 winning percentile outcomes. Normal response retains 41; resistance
+produces 21 (20 outcomes); vulnerability produces 61 (60 outcomes); immunity
+produces zero. Vulnerability remains limited by the upper threshold of 95
+(94 winning outcomes). Do not reapply a lower minimum after adjustment.
+
+No additional save, hit, damage multiplier or skill roll is introduced.
+Successful Transfix and Howl retain their existing duration of 3, hitroll
+penalty of -8, `AFF_HOLD`, and success-specific victim wait state. An immune
+attempt cannot enter those success blocks. It follows the existing failed-
+attempt path, which may initiate combat through the zero-damage call; this
+is not a promise that an immune attempted attack has no combat consequences.
+
+Existing user, form, target and PvP restrictions remain. In particular,
+Howl remains player-operated and requires wolf or direwolf form; the early
+NPC return remains before `pcdata` access. Transfix retains its existing
+permitted-NPC-caller exception, sight checks and mindless-target rejection.
+
+Targeted Howl now calls `reject_mindless_target()` after the ordinary safety
+check and before its full skill action cost and success roll. It does not
+apply a hold, victim wait state or failed-attempt damage call to that rejected
+target. Its earlier two-pulse anti-spam cost remains. Howl with no target
+continues to be its existing cosmetic action, and is not an area attack.
+
+====== Confusion: one resistance-aware saving throw
+
+Replace the PC/NPC conditional at the existing saving-throw site with one
+call to `saves_resistance_effect(level, victim, skill_table[sn].res_type)`.
+Do not keep the old save alongside it. Matching immunity rejects the effect
+without a save roll. Otherwise, resistance lowers effective casting level
+by five, vulnerability raises it by five, and the existing save helper uses
+its existing bounds. Normal targets keep the original saving throw.
+
+Mindless, object and already-confused target checks remain before that save.
+A saved or immune target gets no new Confusion affects. On failure, the
+existing duration, hitroll/Intelligence/Wisdom penalties, messages and
+confusion behaviour remain unchanged. The original casting level still
+sets those penalties and duration; the helper's adjusted level is only for
+the save. Confusion casts no replacement spell and adds no damage event.
+
+====== Player category boundaries and tests
+
+Elven charm resistance protects Elf, Drow and Wild-Elf PCs against Transfix,
+not Howl or Confusion. Illithid psychic resistance protects against all
+three. Duergar paralysis resistance alone protects against none of them:
+using `AFF_HOLD` does not make an effect paralysis. The words "bone-chilling"
+in Howl's messages do not classify it as cold damage.
+
+Fae, Tiefling, Werewolf/Vampire and demon-form material vulnerabilities do
+not match these objectless effects. No character gains another resistance,
+and player-owned NPCs continue to use NPC masks rather than their owner's
+race or subclass traits.
+
+Test a neutral NPC; NPCs with matching resistance, vulnerability, immunity
+and mixed masks; Elf/Illithid/Duergar PCs; and a mindless target. For Transfix
+or Howl with a normal base threshold of 41, compare rolls 20/21 and 60/61 at
+the resistant/vulnerable boundaries. Verify that matching immunity produces
+no successful hold or success-specific victim lag, and that a failed or
+immune Confusion produces no new Confusion records. Existing innate player
+profiles, material finishing-move rules, Stun, Tenketsu and ghost behaviour
+are unchanged.
 
 [[scribe-tenketsu]]
 ===== Tenketsu: post-hit paralysis
