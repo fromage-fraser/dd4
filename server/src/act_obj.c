@@ -45,6 +45,8 @@ int modify_dig_wait_state args((CHAR_DATA * ch, int base_wait, int dig_mode, OBJ
 int modify_dig_move_cost args((CHAR_DATA * ch, int base_move, int dig_mode, OBJ_DATA *dig_tool));
 int modify_dig_damage args((CHAR_DATA * ch, int base_dmg, int dig_mode, OBJ_DATA *dig_tool));
 static void holy_water_drink_effect args((CHAR_DATA *ch, int liquid));
+static bool liquid_splash_is_hostile args((int liquid, CHAR_DATA *victim));
+static void liquid_splash_effect args((CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *container, int liquid, int amount));
 
 void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
 {
@@ -2797,6 +2799,227 @@ void do_drink(CHAR_DATA *ch, char *argument)
         }
 
         return;
+}
+
+/*
+ * Does this particular liquid/target combination currently constitute
+ * a hostile action?
+ *
+ * Keep this separate from do_splash() so later liquids can add harmful
+ * effects without rebuilding the command's generic delivery machinery.
+ */
+static bool liquid_splash_is_hostile(int liquid, CHAR_DATA *victim)
+{
+        if (!victim || victim->deleted)
+                return FALSE;
+
+        switch (liquid)
+        {
+        case LIQ_HOLY_WATER:
+                return IS_UNDEAD(victim);
+
+        default:
+                return FALSE;
+        }
+}
+
+/*
+ * Resolve the special effect of liquid which has already been splashed.
+ *
+ * Generic splash handling—container validation, quantity consumption,
+ * messages and action cost—belongs in do_splash(). Add future liquid
+ * effects here rather than adding liquid-specific branches to the command.
+ */
+static void liquid_splash_effect(
+    CHAR_DATA *ch,
+    CHAR_DATA *victim,
+    OBJ_DATA *container,
+    int liquid,
+    int amount)
+{
+        int dam;
+
+        if (!ch || !victim
+        ||  ch->deleted || victim->deleted
+        ||  amount <= 0)
+                return;
+
+        switch (liquid)
+        {
+        case LIQ_HOLY_WATER:
+                /*
+                 * Holy water has no special splash effect on a living
+                 * target. Against undead it is explicit holy damage.
+                 */
+                if (!IS_UNDEAD(victim))
+                        return;
+
+                dam = UMAX(
+                    10,
+                    UMIN(
+                        victim->max_hit / 8,
+                        UMAX(10, ch->level * 4)));
+
+                send_to_char(
+                    "{WThe holy water burns through your undead essence!{x\n\r",
+                    victim);
+
+                act(
+                    "{WThe holy water burns into $N's undead form!{x",
+                    ch, NULL, victim, TO_CHAR);
+
+                act(
+                    "{WThe holy water burns into $N's undead form!{x",
+                    ch, NULL, victim, TO_NOTVICT);
+
+                damage_with_resistance_types(
+                    ch,
+                    victim,
+                    dam,
+                    TYPE_UNDEFINED,
+                    FALSE,
+                    RES_HOLY);
+                return;
+
+        default:
+                /*
+                 * Ordinary liquids currently have no mechanical splash
+                 * effect. They have still been physically splashed and
+                 * consumed by do_splash().
+                 */
+                return;
+        }
+}
+
+void do_splash(CHAR_DATA *ch, char *argument)
+{
+        OBJ_DATA *obj;
+        CHAR_DATA *victim;
+        char arg1[MAX_INPUT_LENGTH];
+        char arg2[MAX_INPUT_LENGTH];
+        int amount;
+        int liquid;
+        bool hostile;
+
+        argument = one_argument(argument, arg1);
+        one_argument(argument, arg2);
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char(
+                    "You cannot handle a container in your current form.\n\r",
+                    ch);
+                return;
+        }
+
+        if (arg1[0] == '\0' || arg2[0] == '\0')
+        {
+                send_to_char(
+                    "Syntax: splash <container> <target>\n\r",
+                    ch);
+                return;
+        }
+
+        if (!(obj = get_obj_carry(ch, arg1)))
+        {
+                send_to_char(
+                    "You are not carrying that container.\n\r",
+                    ch);
+                return;
+        }
+
+        if (obj->item_type != ITEM_DRINK_CON)
+        {
+                send_to_char(
+                    "You can only splash liquid from a drink container.\n\r",
+                    ch);
+                return;
+        }
+
+        if (obj->value[1] <= 0)
+        {
+                send_to_char(
+                    "That container is empty.\n\r",
+                    ch);
+                return;
+        }
+
+        liquid = obj->value[2];
+
+        if (liquid < 0 || liquid >= LIQ_MAX)
+        {
+                bug(
+                    "Do_splash: bad liquid number %d.",
+                    liquid);
+                send_to_char(
+                    "Something is wrong with the liquid in that container.\n\r",
+                    ch);
+                return;
+        }
+
+        if (!(victim = get_char_room(ch, arg2)))
+        {
+                send_to_char(
+                    "They aren't here.\n\r",
+                    ch);
+                return;
+        }
+
+        if (victim == ch)
+        {
+                send_to_char(
+                    "You would have better luck pouring it over yourself.\n\r",
+                    ch);
+                return;
+        }
+
+        hostile = liquid_splash_is_hostile(
+            liquid, victim);
+
+        if (hostile && is_safe(ch, victim))
+                return;
+
+        amount = UMIN(5, obj->value[1]);
+        obj->value[1] -= amount;
+
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+
+        {
+                char buf[MAX_STRING_LENGTH];
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "You splash $N with %s from $p!",
+                    liq_table[liquid].liq_name);
+                act(buf, ch, obj, victim, TO_CHAR);
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "$n splashes you with %s from $p!",
+                    liq_table[liquid].liq_name);
+                act(buf, ch, obj, victim, TO_VICT);
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "$n splashes $N with %s from $p!",
+                    liq_table[liquid].liq_name);
+                act(buf, ch, obj, victim, TO_NOTVICT);
+        }
+
+        if (obj->value[1] <= 0)
+        {
+                obj->value[1] = 0;
+                send_to_char(
+                    "The container is now empty.\n\r",
+                    ch);
+        }
+
+        liquid_splash_effect(
+            ch,
+            victim,
+            obj,
+            liquid,
+            amount);
 }
 
 void do_enter(CHAR_DATA *ch, char *argument)

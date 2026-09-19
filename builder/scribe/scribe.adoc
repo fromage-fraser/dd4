@@ -5197,8 +5197,55 @@ vulnerability and immunity to holy damage therefore apply once.
 
 Drinking holy water from a fountain does not consume the fountain. Drinking
 from a drink container consumes the ordinary rolled number of draughts before
-the holy-water damage is resolved. This section does not add the later
-splash/throw use against another target.
+the holy-water damage is resolved.
+
+Holy water participates in the general liquid-splash command:
+
+[source,text]
+----
+splash <container> <target>
+----
+
+`splash` is not specific to holy water. Any current liquid in a carried
+`ITEM_DRINK_CON` can be splashed at another character.
+
+A valid splash consumes up to five units of the liquid, retains the
+container, costs one combat pulse of wait state, and identifies the actual
+liquid in its messages.
+
+Most liquids currently have no mechanical splash effect. Water, beer,
+wine, blood, salt water and the other existing liquids therefore only
+produce the generic splash action and consume liquid.
+
+Liquid-specific mechanics are resolved separately after the generic
+delivery action. This allows later liquids to gain contact effects without
+duplicating container, quantity, target and message handling.
+
+At present the only special splash interaction is `holy_water` against a
+target satisfying `IS_UNDEAD()`.
+
+That combination is considered hostile and therefore passes through
+`is_safe()` before any liquid is consumed. Holy water splashed on a living
+target is currently an ordinary harmless splash.
+
+Against an undead target, holy-water base damage is the smaller of one
+eighth of the target's maximum HP and four times the attacker's level,
+with a minimum base value of 10. The damage is resolved exactly once as
+`RES_HOLY`.
+
+Holy resistance, vulnerability and immunity therefore apply normally.
+The attack does not gain `RES_MAGIC`, silver, cold-iron or weapon-material
+categories. Ghost phase does not prevent this supernatural holy effect.
+
+Other liquids currently have no combat, status, poison or environmental
+effect when splashed. In particular, `value[3]` continues to describe a
+poisoned drink; it does not make the liquid a contact poison.
+
+Room fountains cannot be used directly by `splash`. Fill a carried drink
+container first.
+
+Future splash effects should be added to the liquid-specific resolver
+rather than by adding liquid-specific branches throughout `do_splash()`.
 
 ==== Fountains
 
