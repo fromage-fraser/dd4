@@ -5165,7 +5165,7 @@ ale     dark_ale    whisky
 lemonade    firebreather    local
 slime_mould milk        tea
 coffee  blood       salt_water
-cola
+cola    holy_water
 ----
 
 *`v3` — Poison*
@@ -5187,6 +5187,19 @@ v2  blood
 v3  0
 ----
 
+`holy_water` is liquid index 16. It has the ordinary hydration values of
+water, but drinking it has an additional undead interaction in the server.
+A living drinker receives the normal liquid effects only. A character for
+which `IS_UNDEAD()` is true takes holy damage equal to one quarter of current
+maximum hit points, with a minimum base of 10, through the normal DD4 damage
+pipeline. The explicit damage category is `RES_HOLY`; resistance,
+vulnerability and immunity to holy damage therefore apply once.
+
+Drinking holy water from a fountain does not consume the fountain. Drinking
+from a drink container consumes the ordinary rolled number of draughts before
+the holy-water damage is resolved. This section does not add the later
+splash/throw use against another target.
+
 ==== Fountains
 
 *`v2` — Liquid type*
@@ -5202,7 +5215,7 @@ ale     dark_ale    whisky
 lemonade    firebreather    local
 slime_mould milk        tea
 coffee  blood       salt_water
-cola
+cola    holy_water
 ----
 
 *`v3` — Poison*

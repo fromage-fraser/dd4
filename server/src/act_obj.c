@@ -44,6 +44,7 @@ void create_or_update_dirt_pile args((ROOM_INDEX_DATA * room));
 int modify_dig_wait_state args((CHAR_DATA * ch, int base_wait, int dig_mode, OBJ_DATA *dig_tool));
 int modify_dig_move_cost args((CHAR_DATA * ch, int base_move, int dig_mode, OBJ_DATA *dig_tool));
 int modify_dig_damage args((CHAR_DATA * ch, int base_dmg, int dig_mode, OBJ_DATA *dig_tool));
+static void holy_water_drink_effect args((CHAR_DATA *ch, int liquid));
 
 void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
 {
@@ -2481,6 +2482,44 @@ void do_fill(CHAR_DATA *ch, char *argument)
         return;
 }
 
+/*
+ * Drinking holy water is intrinsically harmful to undead.
+ *
+ * This is holy damage, not generic magical damage. It therefore uses
+ * RES_HOLY only and passes through the ordinary damage/death machinery.
+ *
+ * Sahuagin/grung use do_drink() to bathe/cover themselves rather than
+ * actually drinking, so that contact is deliberately left for the
+ * later splash/contact implementation.
+ */
+static void holy_water_drink_effect(CHAR_DATA *ch, int liquid)
+{
+        int dam;
+
+        if (!ch || ch->deleted)
+                return;
+
+        if (liquid != LIQ_HOLY_WATER || !IS_UNDEAD(ch))
+                return;
+
+        dam = UMAX(10, ch->max_hit / 4);
+
+        send_to_char(
+            "{WThe holy water burns through your undead essence!{x\n\r",
+            ch);
+        act(
+            "{W$n recoils as the holy water burns through $s undead form!{x",
+            ch, NULL, NULL, TO_ROOM);
+
+        damage_with_resistance_types(
+            ch,
+            ch,
+            dam,
+            TYPE_UNDEFINED,
+            FALSE,
+            RES_HOLY);
+}
+
 void do_drink(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
@@ -2621,9 +2660,25 @@ void do_drink(CHAR_DATA *ch, char *argument)
                 }
 
                 /* Vampires can't just drink blood from containers/fountains */
-                if ((ch->sub_class == SUB_CLASS_VAMPIRE) && (liquid == 13) && (obj->value[3] == 0))
+                if ((ch->sub_class == SUB_CLASS_VAMPIRE)
+                &&  (liquid == 13)
+                &&  (obj->value[3] == 0))
                 {
-                        send_to_char("{RDelicious, but blood must be from a fresh corpse to satisfy your bloodlust.{x\n\r", ch);
+                        send_to_char(
+                            "{RDelicious, but blood must be from a fresh corpse "
+                            "to satisfy your bloodlust.{x\n\r",
+                            ch);
+                }
+
+                /*
+                 * Ordinary races actually drank the liquid above.
+                 * Sahuagin/grung bathed instead; leave that contact for
+                 * the later holy-water splash/contact mechanic.
+                 */
+                if (ch->race != RACE_SAHUAGIN
+                &&  ch->race != RACE_GRUNG)
+                {
+                        holy_water_drink_effect(ch, liquid);
                 }
 
                 break;
@@ -2727,6 +2782,17 @@ void do_drink(CHAR_DATA *ch, char *argument)
                         obj->value[1] = 0;
                         send_to_char("The container is now empty.\n\r", ch);
                 }
+
+                /*
+                 * Resolve the consumed liquid after its draughts have
+                 * actually been removed from the container.
+                 */
+                if (ch->race != RACE_SAHUAGIN
+                &&  ch->race != RACE_GRUNG)
+                {
+                        holy_water_drink_effect(ch, liquid);
+                }
+
                 break;
         }
 
