@@ -1543,6 +1543,32 @@ Extra ITEM_ flags:
    present on an unrelated object. For ordinary players, the property is
    revealed when the object is identified.
 
+Blessed weapons and undead
+--------------------------
+
+ITEM_BLESS has a specific combat effect when present on the actual
+ITEM_WEAPON making an attack against a target satisfying IS_UNDEAD().
+
+A blessed, non-cursed weapon receives +2 effective hitroll on ordinary
+one_hit() weapon rolls and +10 percent positive weapon damage, with a
+minimum damage bonus of one point.
+
+Blessing does not make a weapon magical, does not add RES_HOLY, and
+does not bypass RES_NONMAGIC. ITEM_MAGIC, silver, cold iron and ghost
+phase remain independent properties.
+
+An object carrying both ITEM_BLESS and ITEM_CURSED receives no blessing
+combat bonus. Cursed weapons receive no new beneficial undead mechanic.
+
+The bonus follows the actual attacking weapon. Inventory items, the
+other hand, shields and ITEM_BODY_PART objects do not transfer it.
+Named weapon-object damage routed through damage_from_object() uses
+its actual source weapon. Chance-based finishing/status rolls do not
+receive extra success percentage from blessing.
+
+Vampire PCs satisfy IS_UNDEAD() and are therefore valid undead targets,
+subject to the ordinary PvP and safety rules.
+
 
 WEAR_ flags:
     ITEM_TAKE                       BIT_0

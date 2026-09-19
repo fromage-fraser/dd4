@@ -4724,7 +4724,33 @@ is not the test used here; the object magic flag is. Primary and secondary
 weapons are classified using the actual weapon responsible for each hit.
 
 `ex blessed` and `ex cursed` do not automatically change this ordinary attack
-mask into holy or dark damage. A special skill's damage may use its fixed `skill_table`
+mask into holy or dark damage.
+
+A blessed, non-cursed ITEM_WEAPON gains a separate anti-undead combat
+bonus when the actual target satisfies `IS_UNDEAD()`: +2 effective
+hitroll on ordinary `one_hit()` weapon attack rolls and +10 percent
+positive weapon damage, with a minimum bonus of one point.
+
+This bonus does not add `RES_HOLY`, does not set `ITEM_MAGIC`, and does
+not itself bypass `RES_NONMAGIC`. Silver, cold iron, magical status and
+ghost phase continue to resolve independently through their existing
+contact rules.
+
+If an object carries both `ITEM_BLESS` and `ITEM_CURSED`, it receives
+no anti-undead blessing bonus. The cursed flag does not otherwise gain
+a new undead benefit.
+
+Only the actual attacking ITEM_WEAPON contributes the bonus. A blessed
+weapon elsewhere in inventory or in the other hand does not bless an
+unrelated strike. ITEM_BODY_PART objects and shields do not receive this
+weapon bonus.
+
+Named weapon attacks already routed through `damage_from_object()` use
+the selected source weapon for the damage bonus. Percentage/chance-based
+finishing or status rolls such as Decapitate and Hurl are not granted
+extra success percentage merely because the weapon is blessed.
+
+A special skill's damage may use its fixed `skill_table`
 mask instead of this ordinary-weapon classification, even while the character
 is wielding a magical weapon.
 
