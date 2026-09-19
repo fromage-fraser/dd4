@@ -327,20 +327,94 @@ RESISTANCE_RESULT get_resistance_result(
 }
 
 /*
- * Apply an effective resistance result to positive damage.
+ * Resolve an explicitly identified physical contact.
  *
- * Multiple RES_* categories have already been combined into one result by
- * get_resistance_result(), so resistance and vulnerability never stack more
- * than once for a single damage event.
+ * Phase reachability is separate from stored resistance masks.
+ * No character, prototype, object or mask is modified here.
  */
-int apply_resistance_to_damage(CHAR_DATA *victim,
-                               int dam,
-                               unsigned long int res_types)
+RESISTANCE_RESULT get_contact_resistance_result(
+    CHAR_DATA *ch, CHAR_DATA *victim, unsigned long int res_types)
 {
+        GHOST_PHASE attacker_phase;
+        GHOST_PHASE target_phase;
+        RESISTANCE_RESULT result;
+        bool silver_exception = FALSE;
+
+        if (!ch || !victim || ch->deleted || victim->deleted)
+                return RES_RESULT_IMMUNE;
+
+        /* PC phase storage is not a player incorporeality mechanism. */
+        attacker_phase = IS_NPC(ch) ? ch->ghost_phase : GHOST_PHASE_NONE;
+        target_phase = IS_NPC(victim) ? victim->ghost_phase : GHOST_PHASE_NONE;
+
+        if (attacker_phase < GHOST_PHASE_NONE
+        ||  attacker_phase > GHOST_PHASE_SEMI_MATERIAL
+        ||  target_phase < GHOST_PHASE_NONE
+        ||  target_phase > GHOST_PHASE_SEMI_MATERIAL)
+                return RES_RESULT_IMMUNE;
+
+        /* Fully ethereal and unphased contacts cannot reach each other. */
+        if ((attacker_phase == GHOST_PHASE_ETHEREAL
+          && target_phase == GHOST_PHASE_NONE)
+        ||  (target_phase == GHOST_PHASE_ETHEREAL
+          && attacker_phase == GHOST_PHASE_NONE))
+                return RES_RESULT_IMMUNE;
+
+        res_types &= RES_VALID_MASK;
+
+        /* Untyped physical contact must not bypass a phased target's barrier. */
+        if (target_phase != GHOST_PHASE_NONE
+        && !(res_types & (RES_MAGIC | RES_NONMAGIC)))
+                res_types |= RES_NONMAGIC;
+
+        /*
+         * The mundane-weapon barrier is still the existing NPC immunity.
+         * Remove its matching category from this local query only when
+         * contact is on a shared ethereal side, or admitted by silver.
+         */
+        if (target_phase != GHOST_PHASE_NONE
+        &&  IS_NPC(victim)
+        &&  (victim->immunes & RES_NONMAGIC)
+        &&  (res_types & RES_NONMAGIC))
+        {
+                if (attacker_phase != GHOST_PHASE_NONE)
+                {
+                        res_types &= ~(unsigned long int)RES_NONMAGIC;
+                }
+                else if (target_phase == GHOST_PHASE_SEMI_MATERIAL
+                     &&  (res_types & RES_SILVER)
+                     && !(res_types & RES_MAGIC))
+                {
+                        res_types &= ~(unsigned long int)RES_NONMAGIC;
+                        silver_exception = TRUE;
+                }
+        }
+
+        result = get_resistance_result(victim, res_types);
+
+        if (!silver_exception || result == RES_RESULT_IMMUNE)
+                return result;
+
+        /*
+         * Silver's admitted mundane contact contributes one resistance.
+         * Any matching vulnerability cancels it, even if another ordinary
+         * resistance also matches. Never apply a second damage multiplier.
+         */
+        if (victim->vulnerabilities & res_types)
+                return RES_RESULT_NORMAL;
+
+        return RES_RESULT_RESISTANT;
+}
+
+/* Apply a previously resolved response once, without querying the target. */
+int apply_resistance_result_to_damage(int dam, RESISTANCE_RESULT result)
+{
+        int extra;
+
         if (dam <= 0)
                 return dam;
 
-        switch (get_resistance_result(victim, res_types))
+        switch (result)
         {
         case RES_RESULT_IMMUNE:
                 return 0;
@@ -349,12 +423,24 @@ int apply_resistance_to_damage(CHAR_DATA *victim,
                 return UMAX(1, dam / 2);
 
         case RES_RESULT_VULNERABLE:
-                return dam + (dam / 2);
+                extra = dam / 2;
+                return dam > INT_MAX - extra ? INT_MAX : dam + extra;
 
         case RES_RESULT_NORMAL:
         default:
                 return dam;
         }
+}
+
+/* Compatibility wrapper for callers without physical-contact context. */
+int apply_resistance_to_damage(CHAR_DATA *victim, int dam,
+                               unsigned long int res_types)
+{
+        if (dam <= 0)
+                return dam;
+
+        return apply_resistance_result_to_damage(
+            dam, get_resistance_result(victim, res_types));
 }
 
 /*

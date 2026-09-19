@@ -3226,7 +3226,7 @@ void do_smash(CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_smash])
         {
                 if (object_attack_is_immune(
-                        ch->fighting, gsn_smash,
+                        ch, ch->fighting, gsn_smash,
                         get_eq_char(ch, WEAR_SHIELD)))
                 {
                         act("$N is unaffected by your smash.",

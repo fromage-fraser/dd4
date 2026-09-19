@@ -615,15 +615,15 @@ The default ghost leaves no corpse or death-generated body parts.
 Equipment and coins use the existing no-corpse death handling.
 Do not introduce a separate ghost death or extraction path.
 
-No additional AFF, attack-part, resistance, vulnerability or immunity
-masks are supplied. The template has no compulsory special functions
-and no additional combat or XP modifiers.
+No additional AFF, attack-part, resistance or vulnerability defaults
+are supplied. The ghost now inherits RES_NONMAGIC immunity, with
+per-contact exceptions in the supported phase-aware weapon/shield paths.
+It has no compulsory special functions or additional combat/XP modifiers.
 
-Live ghost-phase storage, inherited initial defaults and immortal
-diagnostics are available as a development foundation. Phase-dependent
-contact rules, special weapon defences, automatic materialisation and
-active ghost abilities remain unimplemented. AFF_NON_CORPOREAL is not
-assigned or changed.
+Inherited initial phases, live phase storage and supported weapon/shield
+contact rules are connected. Spell-phase handling, automatic
+materialisation and active ghost abilities remain unfinished.
+AFF_NON_CORPOREAL is not assigned or changed.
 
 Do not convert existing world ghosts or Animate Dead servant
 prototypes to this unfinished template yet.
@@ -696,10 +696,45 @@ Phase remains independent of ACT_UNDEAD, anatomy and resistance masks.
 Explicit none does not remove undead classification or restore organs.
 Cancelling ACT_UNDEAD does not automatically clear the selected phase.
 
-These values do not yet change combat accessibility, damage, status
-effects, movement, visibility, corpse handling or rewards.
-There is no timer, automatic transition, new special or player immunity.
-Existing world ghosts and Animate Dead prototypes are not converted.
+The live phase now affects the explicitly supported weapon/shield
+contacts and their pre-success contact checks.
+
+A fully ethereal NPC and an unphased character cannot reach one another
+through those physical contacts, even with a magical weapon.
+Semi-material and ethereal NPCs share an ethereal side for this contact
+policy; other matching immunities still apply.
+
+Against a default semi-material ghost from the unphased side, mundane
+weapons are blocked by RES_NONMAGIC. Mundane silver is admitted at half
+damage. Magical weapons, including magical silver, receive normal
+treatment unless another configured response applies. Cold iron alone
+does not bypass the barrier.
+
+These exceptions do not modify stored masks or make silver magical.
+Any other matching immunity still wins. The conditional silver
+resistance is combined once with other responses; a matching
+vulnerability cancels it under the existing non-stacking rule.
+
+Cancelling RES_NONMAGIC through an individual XOR override removes that
+barrier and its conditional silver penalty. Selecting ghostphase none
+alone does not remove the separately inherited immunity.
+
+Stun rejects inorganic NPCs. Decapitate rejects NPCs that are both
+inorganic and no-corpse, avoiding fabricated ghost heads. Player
+profiles are unchanged. The material-only finishing/status chance
+rules otherwise retain their existing scope after the contact gate.
+
+Generic damage callers, spell-phase rules, unconverted projectiles,
+Target/trauma and other bespoke effects are not automatically covered.
+Existing mask-based effects still use their declared categories.
+The ghost is not yet ready for conversion of production world mobs
+or Animate Dead servants.
+
+There is no automatic transition, timer, new special or player phasing.
+Visibility, movement, normal death and reward handling remain separate.
+
+See the Scribe manual's "Ghost phase: weapon and shield contact" section
+for the exact supported paths, contact matrix and tests.
 
 See the Scribe manual's "Ghost phase: initial defaults and live state"
 section.
