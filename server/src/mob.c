@@ -298,29 +298,40 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_SPECIAL_CHANCES_AUTO
         },
 
-        {
+                {
                 "ghost", "humanoid", "icon1", "icon2",
 
                 /*
-                 * Registration-stage template.
+                 * Permanent undead classification.
                  *
-                 * Undead classification only; do not deploy existing
-                 * world ghosts with this unfinished template yet.
+                 * Ghosts retain a mind. Neither mindlessness nor
+                 * the existing player non-corporeal affect is
+                 * supplied by this template.
                  */
                 ACT_UNDEAD, 0,
 
                 /*
-                 * Keep the inherited humanoid body unchanged for now.
-                 * Ghost anatomy and incorporeality are separate work.
+                 * XOR against the humanoid body.
+                 *
+                 * Add inorganic physiology, no heart and no corpse.
+                 * Cancel the inherited physical heart, brain and
+                 * guts. Retain humanoid limbs and sensory capability.
+                 *
+                 * Removing PART_BRAINS does not imply AFF_MINDLESS.
+                 * Contact and materialisation rules are separate.
                  */
-                0,
+                BODY_NO_HEART | BODY_NO_CORPSE | BODY_INORGANIC
+                    | PART_HEART | PART_BRAINS | PART_GUTS,
 
                 /* No additional natural attack parts. */
                 0,
 
                 /*
                  * No resistance, vulnerability or immunity defaults
-                 * until the ghost's combat rules are implemented.
+                 * are introduced by this physiology stage.
+                 *
+                 * Phase-dependent weapon defences belong in the
+                 * later ghost contact-resolution work.
                  */
                 0,
                 0,
