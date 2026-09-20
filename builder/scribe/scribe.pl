@@ -51,6 +51,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         ghast
         ghost
         wight
+        wraith
 /;
 
 my %mob_act = (

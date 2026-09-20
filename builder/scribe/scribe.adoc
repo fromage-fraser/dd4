@@ -24,6 +24,8 @@ _AsciiDoc documentation update: 20 September 2026._
 ** <<scribe-zombie-archetype,Zombie archetype>>
 ** <<scribe-ghoul-archetype,Ghoul archetype>>
 ** <<scribe-ghast-archetype,Ghast archetype>>
+** <<scribe-wight-archetype,Wight archetype>>
+** <<scribe-wraith-archetype,Wraith archetype>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-mobile-mindlessness,Mindlessness>>
 ** <<scribe-mobile-stench,Carrion stench>>
@@ -715,7 +717,8 @@ Accepted archetype names are:
 | `ghoul` | Corporeal undead with claws, fangs, a long tongue, sleep/charm immunity and contact paralysis.
 | `ghast` | Corporeal undead with carrion stench and stronger contact paralysis that also affects elves.
 | `ghost` | Development-stage intelligent, inorganic undead with no physical heart, brain, guts or corpse. Starts semi-material and inherits nonmagical immunity; supported weapon/shield contacts use the phase exceptions below. Spell-phase rules and active abilities remain unfinished.
-| `wight` | Intelligent corporeal undead humanoid with dark resistance, holy vulnerability, and poison, sleep and drain immunity. Life-drain behaviour is implemented separately.
+| `wight` | Intelligent corporeal undead humanoid with dark resistance, holy vulnerability, poison/sleep/drain immunity and dedicated `spec_wight` life drain.
+| `wraith` | Intelligent supernatural undead spirit with no biological corpse or internal organs, dark resistance, holy vulnerability, poison/sleep/drain/nonmagical immunity and an initial semi-material phase.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1311,6 +1314,75 @@ uses the normal +10 percentage-point special-function XP weighting.
 Individual `#MOBILES` resistance, vulnerability, immunity, ACT and special
 inputs retain their normal override behaviour. Existing world wights are not
 automatically converted merely because this archetype exists.
+
+[[scribe-wraith-archetype]]
+===== Wraith archetype
+
+The `wraith` archetype is an intelligent supernatural undead spirit.
+
+[source,text]
+----
+archetype wraith
+----
+
+Its passive defaults are:
+
+[cols="<2,<4",options="header"]
+|===
+| Property | Default
+| Body species | `humanoid`.
+| Classification | `ACT_UNDEAD`.
+| Mind | Intelligent; no `AFF_MINDLESS`.
+| Speech | Retained; no `BODY_NO_SPEECH`.
+| Physiology | `BODY_NO_HEART`, `BODY_NO_CORPSE`, `BODY_INORGANIC`.
+| Removed physical organs | Inherited `PART_HEART`, `PART_BRAINS` and `PART_GUTS` are cancelled.
+| Retained morphology | Humanoid limbs and sensory capabilities remain available.
+| Natural attacks | No additional attack-part mask.
+| Resistance | `RES_DARK`.
+| Vulnerability | `RES_HOLY`.
+| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`, `RES_NONMAGIC`.
+| Initial phase | `semi_material`.
+| Special functions | None in this passive-template stage.
+| Archetype XP adjustment | Zero.
+|===
+
+The wraith uses the same distinction between permanent physiology and live
+ghost phase established for ghosts. `BODY_INORGANIC` and the removed organs
+describe the creature's body; `ghost_phase` determines supported physical
+contact accessibility.
+
+The template does not assign `AFF_NON_CORPOREAL`. That existing affect retains
+its separate meaning and is not the NPC wraith-state mechanism.
+
+`RES_NONMAGIC` supplies the ordinary mundane-contact barrier. Because the
+default live phase is `semi_material`, the existing phase-aware contact
+resolver applies the established rules: ordinary mundane weapons are blocked,
+mundane silver is admitted with its conditional half-damage response, and
+magical weapons are handled normally unless another resistance applies.
+
+The initial semi-material state is deliberate for this incremental stage.
+A fully ethereal state would currently prevent physical contact with an
+unphased attacker entirely, including magical weapon contact. Automatic
+wraith phasing belongs to the later active-behaviour stage rather than the
+passive archetype.
+
+The wraith is vulnerable to holy effects and resistant to dark effects.
+Poison, sleep and drain immunity use the ordinary resistance machinery.
+
+A default wraith leaves no biological corpse. Existing equipment and coin
+handling continue through the normal no-corpse death machinery; do not add a
+separate extraction/death path.
+
+The archetype currently supplies no active special. Life drain and active
+incorporeal/phasing behaviour will be supplied separately rather than by
+assigning the broad legacy `spec_cast_undead`.
+
+Individual `#MOBILES` ACT, AFF, body, resistance, vulnerability, immunity and
+phase inputs retain their normal override semantics. In particular, cancelling
+`RES_NONMAGIC` is separate from changing `ghostphase`.
+
+Existing world wraiths are not automatically converted merely because this
+archetype exists.
 
 [[scribe-ghost-archetype]]
 ===== Ghost archetype: permanent physiology

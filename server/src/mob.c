@@ -415,6 +415,66 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 /* Corporeal; inherit the humanoid phase default of none. */
                 MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "wraith", "humanoid", "icon1", "icon2",
+
+                /*
+                 * Intelligent supernatural undead.
+                 *
+                 * Wraiths retain a mind and the ability to communicate,
+                 * but have no ordinary biological body.
+                 */
+                ACT_UNDEAD, 0,
+
+                /*
+                 * Spirit physiology.
+                 *
+                 * Add inorganic/no-heart/no-corpse properties and cancel
+                 * the inherited physical heart, brain and guts. Retain
+                 * humanoid limbs and sensory capability.
+                 */
+                BODY_NO_HEART | BODY_NO_CORPSE | BODY_INORGANIC
+                    | PART_HEART | PART_BRAINS | PART_GUTS,
+
+                /* No additional natural attack parts. */
+                0,
+
+                /*
+                 * Supernatural undead defenses.
+                 *
+                 * RES_NONMAGIC supplies the ordinary mundane-contact
+                 * barrier; the existing semi-material contact resolver
+                 * provides the silver exception without changing masks.
+                 */
+                RES_DARK,
+                RES_HOLY,
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC,
+
+                /* Ordinary DD4 HP, damage, critical and swiftness values. */
+                0, 0, 0, 0,
+
+                /* Retain humanoid dimension/language metadata. */
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                /*
+                 * Active wraith life-drain/phasing behaviour comes in the
+                 * next stage. Do not use broad spec_cast_undead here.
+                 */
+                "", "", "",
+
+                /* No additional archetype XP adjustment. */
+                0,
+
+                MOB_SPECIAL_CHANCES_AUTO,
+
+                /*
+                 * Start semi-material so the existing magic/silver contact
+                 * rules are usable before automatic phasing is introduced.
+                 */
+                GHOST_PHASE_SEMI_MATERIAL
         }
 
 };

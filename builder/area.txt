@@ -640,6 +640,59 @@ resistance, vulnerability and immunity values remain XOR overrides.
 Do not convert existing world wights merely by name. Conversion should be
 performed explicitly after the archetype and spec_wight have been tested.
 
+The wraith archetype is an intelligent supernatural undead spirit:
+
+    < wraith~ common~
+
+It uses the humanoid body species but has no ordinary biological interior.
+
+Its body-form XOR adds:
+
+    BODY_NO_HEART
+    BODY_NO_CORPSE
+    BODY_INORGANIC
+
+and cancels inherited:
+
+    PART_HEART
+    PART_BRAINS
+    PART_GUTS
+
+Humanoid limbs and sensory capability remain inherited. The wraith is not
+mindless and retains speech.
+
+Passive combat defaults are:
+
+    resistance:     RES_DARK
+    vulnerability:  RES_HOLY
+    immunity:       RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC
+
+The wraith starts with ghostphase semi_material.
+
+RES_NONMAGIC supplies the mundane-contact barrier. The existing supported
+phase-aware weapon/shield rules therefore apply: ordinary mundane weapons are
+blocked, mundane silver receives the established semi-material exception, and
+magical weapons use normal resistance handling.
+
+The template does not assign AFF_NON_CORPOREAL. Live NPC phase remains the
+separate ghost_phase state.
+
+The initial semi-material phase is intentional for this implementation stage.
+Automatic ethereal/semi-material transitions belong to later active wraith
+behaviour.
+
+Wraiths leave no biological corpse. Normal no-corpse equipment and coin
+handling remains in use.
+
+The passive archetype currently has no special function. Life drain and active
+incorporeal behaviour are implemented separately; do not assign the broad
+spec_cast_undead special merely because the creature is undead.
+
+Scribe selects it with "archetype wraith". Individual flag fields remain XOR
+overrides and ghostphase remains an independently inherited scalar.
+
+Do not convert existing world wraiths merely by name.
+
 The ghost archetype is currently a development-stage physiology template:
 
     < ghost~ common~
