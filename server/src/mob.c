@@ -460,10 +460,10 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
 
                 /*
-                 * Active wraith life-drain/phasing behaviour comes in the
-                 * next stage. Do not use broad spec_cast_undead here.
+                 * Dedicated life-drain and live phase behaviour.
+                 * Do not use the broad legacy undead caster.
                  */
-                "", "", "",
+                "spec_wraith", "", "",
 
                 /* No additional archetype XP adjustment. */
                 0,
@@ -3006,6 +3006,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_uzollru", 10 },
                 { "spec_warrior", 10 },
                 { "spec_wight", 10 },
+                { "spec_wraith", 10 },
                 { "spec_sahuagin_infantry", 10 },
                 { "spec_sahuagin_cavalry", 10 },
                 { "spec_sahuagin_cleric", 10 },

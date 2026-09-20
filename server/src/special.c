@@ -69,6 +69,7 @@ DECLARE_SPEC_FUN( spec_fido                 );
 DECLARE_SPEC_FUN( spec_ghoul                );
 DECLARE_SPEC_FUN( spec_ghast                );
 DECLARE_SPEC_FUN( spec_wight                );
+DECLARE_SPEC_FUN( spec_wraith               );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
@@ -144,6 +145,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_ghoul"))                return spec_ghoul;
         if (!str_cmp(name, "spec_ghast"))                return spec_ghast;
         if (!str_cmp(name, "spec_wight"))                return spec_wight;
+        if (!str_cmp(name, "spec_wraith"))               return spec_wraith;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
@@ -222,6 +224,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_ghoul) return "spec_ghoul";
         if (special == spec_ghast) return "spec_ghast";
         if (special == spec_wight) return "spec_wight";
+        if (special == spec_wraith) return "spec_wraith";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
@@ -1155,6 +1158,110 @@ bool spec_wight(CHAR_DATA *ch)
 
         return TRUE;
 }
+
+/*
+ * Wraith behaviour.
+ *
+ * A wraith normally remains ethereal while out of combat, materialising
+ * into its semi-material combat state when it acquires an opponent.
+ *
+ * An explicit live/prototype phase of GHOST_PHASE_NONE disables automatic
+ * phasing without disabling the wraith's life-drain special.
+ *
+ * Life drain reuses spec_wight(), which in turn uses the existing Energy
+ * Drain implementation and its resistance/save/cooldown behaviour.
+ */
+bool spec_wraith(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!ch
+        ||  !IS_NPC(ch)
+        ||  ch->deleted
+        ||  !ch->in_room
+        ||  ch->position == POS_DEAD
+        ||  !IS_AWAKE(ch)
+        ||  ch->wait > 0
+        ||  IS_AFFECTED(ch, AFF_CHARM)
+        ||  IS_AFFECTED(ch, AFF_HOLD)
+        ||  IS_AFFECTED(ch, AFF_DAZED))
+        {
+                return FALSE;
+        }
+
+        if (ch->ghost_phase != GHOST_PHASE_NONE
+        &&  ch->ghost_phase != GHOST_PHASE_ETHEREAL
+        &&  ch->ghost_phase != GHOST_PHASE_SEMI_MATERIAL)
+        {
+                return FALSE;
+        }
+
+        /*
+         * Outside combat, a normally phased wraith retreats completely
+         * from the material side. GHOST_PHASE_NONE is an explicit opt-out.
+         */
+        if (!ch->fighting)
+        {
+                if (ch->ghost_phase == GHOST_PHASE_SEMI_MATERIAL)
+                {
+                        if (!set_ghost_phase(
+                                ch,
+                                GHOST_PHASE_ETHEREAL))
+                        {
+                                return FALSE;
+                        }
+
+                        act(
+                            "{D$n's outline thins and they fade beyond "
+                            "the material world.{x",
+                            ch, NULL, NULL, TO_ROOM);
+                }
+
+                /*
+                 * Phasing out does not consume the rest of mobile_update().
+                 * The wraith may still wander or perform ordinary idle AI.
+                 */
+                return FALSE;
+        }
+
+        victim = ch->fighting;
+
+        if (!victim
+        ||  victim->deleted
+        ||  victim->in_room != ch->in_room
+        ||  victim->hit <= 0
+        ||  victim->position == POS_DEAD)
+        {
+                return FALSE;
+        }
+
+        /*
+         * Entering combat from the ethereal side requires one special
+         * opportunity to become physically interactive again.
+         */
+        if (ch->ghost_phase == GHOST_PHASE_ETHEREAL)
+        {
+                if (!set_ghost_phase(
+                        ch,
+                        GHOST_PHASE_SEMI_MATERIAL))
+                {
+                        return FALSE;
+                }
+
+                act(
+                    "{D$n coalesces into a shadowy, half-material form.{x",
+                    ch, NULL, NULL, TO_ROOM);
+
+                return TRUE;
+        }
+
+        /*
+         * Semi-material wraiths, and explicitly unphased wraiths, use
+         * the same audited Energy Drain behaviour as wights.
+         */
+        return spec_wight(ch);
+}
+
 /*
  * Passive carrion stench. AFF_STENCH belongs to the emitter; exposure
  * uses an ordinary, flag-free affect so targets never become emitters.
