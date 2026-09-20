@@ -614,9 +614,22 @@ Passive combat defaults are:
 Wights do not inherit RES_NONMAGIC, silver vulnerability, cold-iron
 vulnerability, charm immunity or paralysis immunity.
 
-The template currently supplies no special function. Life drain is active
-wight behaviour and is implemented separately rather than encoded as a
-passive creature flag.
+The template supplies spec_wight as its active behaviour. It does not use
+the broad legacy spec_cast_undead spellcaster.
+
+While fighting and able to act, spec_wight has a 20 percent chance at each
+special-function opportunity to attempt Energy Drain against the current
+opponent.
+
+The existing Energy Drain implementation remains authoritative. Its
+RES_DRAIN | RES_MAGIC resistance categories, save behaviour, edrain cooldown
+and existing resource/XP effects are reused rather than duplicated.
+
+A victim with an active edrain timer is not drained again. spec_wight also
+does not use the living-target drain against an IS_UNDEAD() opponent.
+
+The archetype XP adjustment remains zero. spec_wight receives the normal
++10 percentage-point special-function XP weighting.
 
 A normally killed wight retains the ordinary corporeal death path. Its
 corpse is marked by the existing undead-provenance machinery.
@@ -625,8 +638,7 @@ Scribe selects the archetype with "archetype wight". Individual ACT,
 resistance, vulnerability and immunity values remain XOR overrides.
 
 Do not convert existing world wights merely by name. Conversion should be
-performed explicitly after the archetype and its later life-drain behaviour
-have been tested.
+performed explicitly after the archetype and spec_wight have been tested.
 
 The ghost archetype is currently a development-stage physiology template:
 
@@ -2928,6 +2940,7 @@ give you some idea of their effects:
     spec_fido
     spec_ghoul
     spec_ghast
+    spec_wight
     spec_clan_guard
     spec_guard
     spec_janitor

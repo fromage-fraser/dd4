@@ -1279,8 +1279,8 @@ Its passive defaults are:
 | Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`.
 | Mundane weapons | No `RES_NONMAGIC`; ordinary weapons can affect the wight normally.
 | Ghost phase | Inherits `none`; wights are corporeal.
-| Special functions | None in this template stage.
-| XP adjustment | Zero.
+| Special functions | `spec_wight`: dedicated combat life drain.
+| Archetype XP adjustment | Zero. `spec_wight` contributes the normal +10 percentage-point special-function XP weighting.
 |===
 
 A wight therefore retains an ordinary corporeal death path. If killed
@@ -1289,15 +1289,28 @@ machinery marks that corpse as originating from an undead creature.
 
 The archetype deliberately does not add mindlessness, charm immunity,
 paralysis immunity, silver/cold-iron interaction, nonmagical immunity,
-ghost phase or a generic undead spellcasting special.
+ghost phase or the broad legacy `spec_cast_undead` spellcaster.
 
-Life drain is active behaviour rather than creature classification. It is
-therefore not represented through ACT, AFF, anatomy or resistance flags
-and will be added separately.
+Active wight behaviour is supplied by `spec_wight`. While the wight is
+fighting, awake and otherwise able to act, it has a 20 percent chance at each
+special-function opportunity to attempt a life drain against its current
+opponent.
 
-Individual `#MOBILES` resistance, vulnerability, immunity and ACT inputs
-remain XOR overrides. Existing world wights are not automatically converted
-merely because this archetype exists.
+`spec_wight` calls DD4's existing Energy Drain implementation rather than
+duplicating its mechanics. The attempted effect therefore retains Energy
+Drain's existing `RES_DRAIN | RES_MAGIC` resistance categories, saving
+behaviour, `edrain` cooldown and resource/XP effects.
+
+A target already carrying a positive `edrain` timer is not drained again.
+The special also declines to drain an `IS_UNDEAD()` target; broader Energy
+Drain interactions with undead remain separate spell-normalisation work.
+
+The wight archetype's explicit XP adjustment remains zero. Its active special
+uses the normal +10 percentage-point special-function XP weighting.
+
+Individual `#MOBILES` resistance, vulnerability, immunity, ACT and special
+inputs retain their normal override behaviour. Existing world wights are not
+automatically converted merely because this archetype exists.
 
 [[scribe-ghost-archetype]]
 ===== Ghost archetype: permanent physiology
@@ -2071,6 +2084,7 @@ spec_executioner    attacks thieves and killers
 spec_fido   eats corpses
 spec_ghoul  3-8 round natural-contact paralysis (elves exempt); idle corpse feeding
 spec_ghast  5-10 round natural-contact paralysis (elves not exempt); idle corpse feeding
+spec_wight  combat life drain using the existing Energy Drain effect
 spec_guard  cityguard
 spec_janitor    gathers rubbish from ground
 spec_poison poisonous bite [combat]

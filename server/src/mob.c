@@ -403,10 +403,10 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
 
                 /*
-                 * No compulsory active behaviour in this template stage.
-                 * Wight life drain is implemented separately.
+                 * Dedicated wight life drain. This is deliberately narrower
+                 * than the legacy general undead spellcasting special.
                  */
-                "", "", "",
+                "spec_wight", "", "",
 
                 /* No additional archetype XP adjustment. */
                 0,
@@ -2945,6 +2945,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_laghathti", 10 },
                 { "spec_uzollru", 10 },
                 { "spec_warrior", 10 },
+                { "spec_wight", 10 },
                 { "spec_sahuagin_infantry", 10 },
                 { "spec_sahuagin_cavalry", 10 },
                 { "spec_sahuagin_cleric", 10 },
