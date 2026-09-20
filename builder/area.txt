@@ -677,16 +677,44 @@ magical weapons use normal resistance handling.
 The template does not assign AFF_NON_CORPOREAL. Live NPC phase remains the
 separate ghost_phase state.
 
-The initial semi-material phase is intentional for this implementation stage.
-Automatic ethereal/semi-material transitions belong to later active wraith
-behaviour.
+The wraith archetype supplies spec_wraith.
+
+When not fighting and otherwise able to act, a semi-material wraith changes
+to ghostphase ethereal on its next special-function opportunity.
+
+When an ethereal wraith enters combat, its next eligible special-function
+opportunity changes it to semi_material. That materialisation uses the
+opportunity; it does not also attempt life drain.
+
+While fighting in semi_material, spec_wraith reuses the existing spec_wight
+Energy Drain behaviour, including its 20 percent attempt chance,
+RES_DRAIN | RES_MAGIC handling, save behaviour and edrain cooldown.
+
+An explicit ghostphase none disables the automatic phase transitions without
+disabling life drain or removing RES_NONMAGIC.
+
+After combat ends, a semi-material wraith returns to ethereal at its next
+eligible special opportunity.
+
+Charm, hold, daze, wait state, unconsciousness and death suppress both phase
+transitions and drain attempts.
+
+A fully ethereal wraith cannot use or be reached by the currently supported
+physical weapon/shield contacts with an unphased character, even with a
+magical weapon. Semi-material contact uses the established mundane/silver/
+magical rules.
+
+These live phases do not themselves alter visibility, movement, unrelated
+spells or AFF_NON_CORPOREAL.
 
 Wraiths leave no biological corpse. Normal no-corpse equipment and coin
 handling remains in use.
 
-The passive archetype currently has no special function. Life drain and active
-incorporeal behaviour are implemented separately; do not assign the broad
-spec_cast_undead special merely because the creature is undead.
+spec_wraith receives the normal +10 percentage-point special-function XP
+weighting. The archetype's own XP adjustment remains zero.
+
+Do not assign the broad spec_cast_undead special merely because the creature
+is undead.
 
 Scribe selects it with "archetype wraith". Individual flag fields remain XOR
 overrides and ghostphase remains an independently inherited scalar.
@@ -2994,6 +3022,7 @@ give you some idea of their effects:
     spec_ghoul
     spec_ghast
     spec_wight
+    spec_wraith
     spec_clan_guard
     spec_guard
     spec_janitor
