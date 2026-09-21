@@ -70,6 +70,7 @@ DECLARE_SPEC_FUN( spec_ghoul                );
 DECLARE_SPEC_FUN( spec_ghast                );
 DECLARE_SPEC_FUN( spec_wight                );
 DECLARE_SPEC_FUN( spec_wraith               );
+DECLARE_SPEC_FUN( spec_spectre              );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
@@ -146,6 +147,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_ghast"))                return spec_ghast;
         if (!str_cmp(name, "spec_wight"))                return spec_wight;
         if (!str_cmp(name, "spec_wraith"))               return spec_wraith;
+        if (!str_cmp(name, "spec_spectre"))              return spec_spectre;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
@@ -225,6 +227,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_ghast) return "spec_ghast";
         if (special == spec_wight) return "spec_wight";
         if (special == spec_wraith) return "spec_wraith";
+        if (special == spec_spectre) return "spec_spectre";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
@@ -1076,18 +1079,19 @@ bool spec_ghast(CHAR_DATA *ch)
 }
 
 /*
- * Wight life drain.
+ * Shared living-target Energy Drain behaviour for undead specials.
  *
- * The wight archetype supplies this active behaviour rather than using the
- * broad legacy spec_cast_undead spell list.
- *
- * Energy Drain remains the authoritative implementation of the actual drain
- * effect, including RES_DRAIN | RES_MAGIC resistance, saves, edrain timing
- * and its existing resource/XP consequences.
+ * The existing Energy Drain spell remains authoritative for RES_DRAIN |
+ * RES_MAGIC resistance, saves, edrain timing and resource/XP effects.
  */
 #define WIGHT_DRAIN_CHANCE 20
+#define SPECTRE_DRAIN_CHANCE 30
 
-bool spec_wight(CHAR_DATA *ch)
+static bool undead_energy_drain_special(
+    CHAR_DATA *ch,
+    int chance,
+    const char *room_message,
+    const char *victim_message)
 {
         CHAR_DATA *victim;
         int sn;
@@ -1105,6 +1109,9 @@ bool spec_wight(CHAR_DATA *ch)
                 return FALSE;
         }
 
+        if (chance < 1 || chance > 100)
+                return FALSE;
+
         victim = ch->fighting;
 
         if (!victim
@@ -1117,20 +1124,16 @@ bool spec_wight(CHAR_DATA *ch)
         }
 
         /*
-         * Do not use the living-target drain against undead. Energy Drain's
-         * eventual general undead interaction remains separate spell work.
+         * This is the existing living-target form of Energy Drain.
+         * Undead restoration through negative energy remains separate work.
          */
         if (IS_UNDEAD(victim))
                 return FALSE;
 
-        /*
-         * The existing Energy Drain cooldown prevents repeated drain stacking.
-         * Let the wight continue its ordinary mobile processing meanwhile.
-         */
         if (victim->edrain > 0)
                 return FALSE;
 
-        if (number_percent() > WIGHT_DRAIN_CHANCE)
+        if (number_percent() > chance)
                 return FALSE;
 
         sn = gsn_energy_drain;
@@ -1142,13 +1145,19 @@ bool spec_wight(CHAR_DATA *ch)
                 return FALSE;
         }
 
-        act(
-            "{D$n reaches toward $N with a deathly cold hand.{x",
-            ch, NULL, victim, TO_NOTVICT);
+        if (room_message && room_message[0] != '\0')
+        {
+                act(
+                    room_message,
+                    ch, NULL, victim, TO_NOTVICT);
+        }
 
-        act(
-            "{D$n's dead hand closes on you and tears at your life force!{x",
-            ch, NULL, victim, TO_VICT);
+        if (victim_message && victim_message[0] != '\0')
+        {
+                act(
+                    victim_message,
+                    ch, NULL, victim, TO_VICT);
+        }
 
         (*skill_table[sn].spell_fun)(
             sn,
@@ -1157,6 +1166,18 @@ bool spec_wight(CHAR_DATA *ch)
             victim);
 
         return TRUE;
+}
+
+/*
+ * Wight life drain.
+ */
+bool spec_wight(CHAR_DATA *ch)
+{
+        return undead_energy_drain_special(
+            ch,
+            WIGHT_DRAIN_CHANCE,
+            "{d$n reaches toward $N with a deathly-cold hand.{x",
+            "{d$n's dead hand closes on you and tears at your life force!{x");
 }
 
 /*
@@ -1212,7 +1233,7 @@ bool spec_wraith(CHAR_DATA *ch)
                         }
 
                         act(
-                            "{D$n's outline thins and they fade beyond "
+                            "{d$n's outline thins and they fade beyond "
                             "the material world.{x",
                             ch, NULL, NULL, TO_ROOM);
                 }
@@ -1249,7 +1270,7 @@ bool spec_wraith(CHAR_DATA *ch)
                 }
 
                 act(
-                    "{D$n coalesces into a shadowy, half-material form.{x",
+                    "{d$n coalesces into a shadowy, half-material form.{x",
                     ch, NULL, NULL, TO_ROOM);
 
                 return TRUE;
@@ -1260,6 +1281,106 @@ bool spec_wraith(CHAR_DATA *ch)
          * the same audited Energy Drain behaviour as wights.
          */
         return spec_wight(ch);
+}
+
+/*
+ * Spectre behaviour.
+ *
+ * Spectres use the wraith phase model but have a stronger life-drain
+ * opportunity while materialised.
+ *
+ * GHOST_PHASE_NONE remains an explicit opt-out from automatic phasing
+ * without disabling the life-drain special.
+ */
+bool spec_spectre(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!ch
+        ||  !IS_NPC(ch)
+        ||  ch->deleted
+        ||  !ch->in_room
+        ||  ch->position == POS_DEAD
+        ||  !IS_AWAKE(ch)
+        ||  ch->wait > 0
+        ||  IS_AFFECTED(ch, AFF_CHARM)
+        ||  IS_AFFECTED(ch, AFF_HOLD)
+        ||  IS_AFFECTED(ch, AFF_DAZED))
+        {
+                return FALSE;
+        }
+
+        if (ch->ghost_phase != GHOST_PHASE_NONE
+        &&  ch->ghost_phase != GHOST_PHASE_ETHEREAL
+        &&  ch->ghost_phase != GHOST_PHASE_SEMI_MATERIAL)
+        {
+                return FALSE;
+        }
+
+        /*
+         * Outside combat, a normally phased spectre becomes ethereal.
+         * Explicit GHOST_PHASE_NONE disables automatic transitions.
+         */
+        if (!ch->fighting)
+        {
+                if (ch->ghost_phase == GHOST_PHASE_SEMI_MATERIAL)
+                {
+                        if (!set_ghost_phase(
+                                ch,
+                                GHOST_PHASE_ETHEREAL))
+                        {
+                                return FALSE;
+                        }
+
+                        act(
+                            "{d$n's spectral form fades beyond "
+                            "the material world.{x",
+                            ch, NULL, NULL, TO_ROOM);
+                }
+
+                return FALSE;
+        }
+
+        victim = ch->fighting;
+
+        if (!victim
+        ||  victim->deleted
+        ||  victim->in_room != ch->in_room
+        ||  victim->hit <= 0
+        ||  victim->position == POS_DEAD)
+        {
+                return FALSE;
+        }
+
+        /*
+         * Materialisation consumes this special opportunity.
+         */
+        if (ch->ghost_phase == GHOST_PHASE_ETHEREAL)
+        {
+                if (!set_ghost_phase(
+                        ch,
+                        GHOST_PHASE_SEMI_MATERIAL))
+                {
+                        return FALSE;
+                }
+
+                act(
+                    "{d$n condenses from a spectral haze into "
+                    "a half-material form.{x",
+                    ch, NULL, NULL, TO_ROOM);
+
+                return TRUE;
+        }
+
+        /*
+         * Semi-material and explicitly unphased spectres use the stronger
+         * spectre drain chance.
+         */
+        return undead_energy_drain_special(
+            ch,
+            SPECTRE_DRAIN_CHANCE,
+            "{d$n reaches into $N's body with a spectral hand.{x",
+            "{d$n's spectral touch tears violently at your life force!{x");
 }
 
 /*

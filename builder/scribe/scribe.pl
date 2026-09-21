@@ -290,7 +290,7 @@ my @mob_spec = qw/
     spec_cast_judge	        spec_cast_orb	        spec_large_whale	      spec_red_grung
     spec_cast_mage	        spec_assassin	        spec_kappa                spec_blue_grung
     spec_purple_grung	    spec_orange_grung	    spec_gold_grung           spec_ghoul
-    spec_ghast              spec_wight              spec_wraith
+    spec_ghast              spec_wight              spec_wraith               spec_spectre
 /;
 
 my %obj_ex = (

@@ -517,10 +517,10 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
 
                 /*
-                 * Active spectre behaviour is added separately.
-                 * Do not use the broad legacy undead caster here.
+                 * Stronger life drain plus live spectral phasing.
+                 * Do not use the broad legacy undead caster.
                  */
-                "", "", "",
+                "spec_spectre", "", "",
 
                 /* No additional archetype XP adjustment. */
                 0,
@@ -3071,6 +3071,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_blue_grung", 10 },
 
                 { "spec_cast_druid", 15 },
+                { "spec_spectre", 15 },
                 { "spec_demon", 15 },
                 { "spec_cast_electric", 15 },
                 { "spec_assassin", 15 },
