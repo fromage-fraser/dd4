@@ -720,7 +720,7 @@ Accepted archetype names are:
 | `ghost` | Development-stage intelligent, inorganic undead with no physical heart, brain, guts or corpse. Starts semi-material and inherits nonmagical immunity; supported weapon/shield contacts use the phase exceptions below. Spell-phase rules and active abilities remain unfinished.
 | `wight` | Intelligent corporeal undead humanoid with dark resistance, holy vulnerability, poison/sleep/drain immunity and dedicated `spec_wight` life drain.
 | `wraith` | Intelligent supernatural undead spirit with no biological corpse or internal organs, dark resistance, holy vulnerability, poison/sleep/drain/nonmagical immunity and active life-drain/phasing behaviour.
-| `spectre` | Stronger supernatural undead spirit using the same passive spirit physiology as a wraith. Its distinct active behaviour is added separately.
+| `spectre` | Stronger supernatural undead spirit using the wraith passive spirit physiology, with stronger life drain and the same ethereal/semi-material phasing model.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1441,19 +1441,14 @@ Its passive defaults are:
 | Vulnerability | `RES_HOLY`.
 | Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`, `RES_NONMAGIC`.
 | Initial phase | `semi_material`.
-| Special functions | None in this passive-template stage.
-| Archetype XP adjustment | Zero.
+| Special functions | `spec_spectre`: stronger life drain plus automatic ethereal/semi-material phasing.
+| Archetype XP adjustment | Zero. `spec_spectre` contributes +15 percentage points through the special-function XP weighting.
 |===
 
 The implementation plan groups wraiths and spectres together for active
-life-drain/incorporeal behaviour, but does not define a separate passive
-resistance package for spectres. The passive spectre profile therefore reuses
-the established wraith spirit physiology rather than inventing unrelated
-differences at the template layer.
-
-The spectre remains a separate archetype so its later active behaviour,
-difficulty and special-function weighting can differ without changing the
-wraith.
+life-drain/incorporeal behaviour but does not prescribe a numeric difference
+between them. DD4 therefore keeps the same passive spirit physiology and phase
+model, while `spec_spectre` supplies the stronger active progression.
 
 `BODY_INORGANIC`, `BODY_NO_HEART` and `BODY_NO_CORPSE` describe permanent
 physiology. The inherited physical heart, brain and guts are cancelled.
@@ -1462,11 +1457,32 @@ Removing the physical brain does not imply `AFF_MINDLESS`.
 The template does not assign `AFF_NON_CORPOREAL`. Supported physical
 accessibility continues to use the separate live `ghost_phase` state.
 
-`RES_NONMAGIC` supplies the mundane-contact barrier. In the initial
-`semi_material` phase, the existing contact resolver therefore blocks ordinary
-mundane weapons, admits mundane silver through the established conditional
-half-damage exception, and handles magical weapons normally unless another
-configured response applies.
+`RES_NONMAGIC` supplies the mundane-contact barrier. In `semi_material`,
+ordinary mundane weapons are blocked, mundane silver uses the established
+conditional half-damage exception, and magical weapons are handled normally
+unless another configured response applies.
+
+`spec_spectre` uses the same automatic phase transitions as `spec_wraith`.
+Outside combat an eligible semi-material spectre becomes `ethereal`; when an
+ethereal spectre enters combat, its next eligible special opportunity changes
+it to `semi_material` and that materialisation consumes the opportunity.
+
+While fighting in `semi_material`, or while explicitly configured with
+`ghostphase none`, a spectre has a 30 percent chance at each eligible special
+opportunity to attempt Energy Drain. This is stronger than the wraith's
+20 percent chance but reuses exactly the same Energy Drain implementation:
+`RES_DRAIN | RES_MAGIC`, saving behaviour, the `edrain` cooldown and the
+existing resource/XP consequences remain authoritative.
+
+A target already carrying a positive `edrain` timer is not drained again.
+`IS_UNDEAD()` targets are not subjected to this living-target drain.
+
+An explicit live or inherited `ghostphase none` disables automatic phase
+transitions without disabling the spectre's life drain or removing its
+separate `RES_NONMAGIC` immunity.
+
+Charm, hold, daze, wait state, unconsciousness and death suppress both phase
+transitions and life-drain attempts.
 
 The spectre is resistant to dark effects and vulnerable to holy effects.
 Poison, sleep and drain immunity use the normal resistance machinery.
@@ -1474,12 +1490,12 @@ Poison, sleep and drain immunity use the normal resistance machinery.
 A default spectre leaves no biological corpse. Existing no-corpse equipment
 and coin handling remain authoritative.
 
-The passive template currently supplies no special function. Distinct spectre
-life-drain/phasing behaviour is added separately rather than assigning the
-broad legacy `spec_cast_undead`.
+The archetype does not use the broad legacy `spec_cast_undead`. The existing
+`spec_spectral_minion` is a Bastion-specific teleporting special and is not the
+spectre archetype behaviour.
 
-Individual `#MOBILES` ACT, AFF, body, resistance, vulnerability, immunity and
-phase inputs retain their normal override semantics.
+Individual `#MOBILES` ACT, AFF, body, resistance, vulnerability, immunity,
+special and phase inputs retain their normal override semantics.
 
 Existing world spectres are not automatically converted merely because this
 archetype exists.
@@ -2258,6 +2274,7 @@ spec_ghoul  3-8 round natural-contact paralysis (elves exempt); idle corpse feed
 spec_ghast  5-10 round natural-contact paralysis (elves not exempt); idle corpse feeding
 spec_wight  combat life drain using the existing Energy Drain effect
 spec_wraith life drain plus automatic ethereal/semi-material combat phasing
+spec_spectre stronger life drain plus automatic ethereal/semi-material combat phasing
 spec_guard  cityguard
 spec_janitor    gathers rubbish from ground
 spec_poison poisonous bite [combat]
@@ -5447,20 +5464,19 @@ A valid splash consumes up to five units of the liquid, retains the
 container, costs one combat pulse of wait state, and identifies the actual
 liquid in its messages.
 
-Most liquids currently have no mechanical splash effect. Water, beer,
-wine, blood, salt water and the other existing liquids therefore only
-produce the generic splash action and consume liquid.
+Most ordinary liquids have no intrinsic mechanical splash effect. Water,
+beer, wine, blood, salt water and the other existing liquids therefore only
+produce the generic splash action unless another property of the container,
+such as poison, supplies an effect.
 
 Liquid-specific mechanics are resolved separately after the generic
 delivery action. This allows later liquids to gain contact effects without
 duplicating container, quantity, target and message handling.
 
-At present the only special splash interaction is `holy_water` against a
-target satisfying `IS_UNDEAD()`.
-
-That combination is considered hostile and therefore passes through
+Holy water has a special splash interaction against a target satisfying
+`IS_UNDEAD()`. That combination is hostile and therefore passes through
 `is_safe()` before any liquid is consumed. Holy water splashed on a living
-target is currently an ordinary harmless splash.
+target is otherwise an ordinary splash.
 
 Against an undead target, holy-water base damage is the smaller of one
 eighth of the target's maximum HP and four times the attacker's level,
@@ -5470,9 +5486,6 @@ with a minimum base value of 10. The damage is resolved exactly once as
 Holy resistance, vulnerability and immunity therefore apply normally.
 The attack does not gain `RES_MAGIC`, silver, cold-iron or weapon-material
 categories. Ghost phase does not prevent this supernatural holy effect.
-
-Apart from holy water and poison, current liquids have no combat, status or
-environmental splash effect.
 
 A non-zero drink-container `value[3]` marks the contained liquid as poisoned.
 When that liquid is splashed onto a suitable living, organic target, it attempts
@@ -5487,6 +5500,9 @@ normal protection.
 Poison and the liquid's own effect are independent. Poisoned holy water can
 therefore attempt to poison an eligible organic undead target and also apply
 the normal holy-water effect.
+
+Apart from holy water and poison, current liquids have no combat, status or
+environmental splash effect.
 
 Room fountains cannot be used directly by `splash`. Fill a carried drink
 container first.
