@@ -721,6 +721,58 @@ overrides and ghostphase remains an independently inherited scalar.
 
 Do not convert existing world wraiths merely by name.
 
+The spectre archetype is an intelligent supernatural undead spirit:
+
+    < spectre~ common~
+
+Its passive physiology deliberately follows the established wraith spirit
+profile.
+
+The body-form XOR adds:
+
+    BODY_NO_HEART
+    BODY_NO_CORPSE
+    BODY_INORGANIC
+
+and cancels inherited:
+
+    PART_HEART
+    PART_BRAINS
+    PART_GUTS
+
+The spectre retains humanoid limbs and sensory capability. It is intelligent
+and retains speech.
+
+Passive combat defaults are:
+
+    resistance:     RES_DARK
+    vulnerability:  RES_HOLY
+    immunity:       RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC
+
+The initial ghostphase is semi_material.
+
+The implementation plan groups wraiths and spectres together for active
+life-drain/incorporeal behaviour but does not define a separate passive
+resistance package. Spectre therefore shares the wraith passive spirit
+profile; its stronger/distinct behaviour is implemented through spec_spectre
+in a later stage.
+
+RES_NONMAGIC and the existing phase-contact resolver provide the same initial
+mundane, silver and magical weapon behaviour as for a semi-material wraith.
+
+The template does not assign AFF_NON_CORPOREAL.
+
+Spectres leave no biological corpse. Existing no-corpse equipment and coin
+handling remains in use.
+
+The passive archetype has no special function at this stage. Do not assign
+spec_cast_undead merely because the creature is undead.
+
+Scribe selects it with "archetype spectre". Individual flag fields remain XOR
+overrides and ghostphase remains an independently inherited scalar.
+
+Do not convert existing world spectres merely by name.
+
 The ghost archetype is currently a development-stage physiology template:
 
     < ghost~ common~

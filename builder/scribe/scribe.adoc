@@ -26,6 +26,7 @@ _AsciiDoc documentation update: 20 September 2026._
 ** <<scribe-ghast-archetype,Ghast archetype>>
 ** <<scribe-wight-archetype,Wight archetype>>
 ** <<scribe-wraith-archetype,Wraith archetype>>
+** <<scribe-spectre-archetype,Spectre archetype>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-mobile-mindlessness,Mindlessness>>
 ** <<scribe-mobile-stench,Carrion stench>>
@@ -718,7 +719,8 @@ Accepted archetype names are:
 | `ghast` | Corporeal undead with carrion stench and stronger contact paralysis that also affects elves.
 | `ghost` | Development-stage intelligent, inorganic undead with no physical heart, brain, guts or corpse. Starts semi-material and inherits nonmagical immunity; supported weapon/shield contacts use the phase exceptions below. Spell-phase rules and active abilities remain unfinished.
 | `wight` | Intelligent corporeal undead humanoid with dark resistance, holy vulnerability, poison/sleep/drain immunity and dedicated `spec_wight` life drain.
-| `wraith` | Intelligent supernatural undead spirit with no biological corpse or internal organs, dark resistance, holy vulnerability, poison/sleep/drain/nonmagical immunity and an initial semi-material phase.
+| `wraith` | Intelligent supernatural undead spirit with no biological corpse or internal organs, dark resistance, holy vulnerability, poison/sleep/drain/nonmagical immunity and active life-drain/phasing behaviour.
+| `spectre` | Stronger supernatural undead spirit using the same passive spirit physiology as a wraith. Its distinct active behaviour is added separately.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1410,6 +1412,76 @@ special and phase inputs retain their normal override semantics. Cancelling
 `RES_NONMAGIC` remains separate from changing `ghostphase`.
 
 Existing world wraiths are not automatically converted merely because this
+archetype exists.
+
+[[scribe-spectre-archetype]]
+===== Spectre archetype
+
+The `spectre` archetype is an intelligent supernatural undead spirit.
+
+[source,text]
+----
+archetype spectre
+----
+
+Its passive defaults are:
+
+[cols="<2,<4",options="header"]
+|===
+| Property | Default
+| Body species | `humanoid`.
+| Classification | `ACT_UNDEAD`.
+| Mind | Intelligent; no `AFF_MINDLESS`.
+| Speech | Retained; no `BODY_NO_SPEECH`.
+| Physiology | `BODY_NO_HEART`, `BODY_NO_CORPSE`, `BODY_INORGANIC`.
+| Removed physical organs | Inherited `PART_HEART`, `PART_BRAINS` and `PART_GUTS` are cancelled.
+| Retained morphology | Humanoid limbs and sensory capabilities remain available.
+| Natural attacks | No additional attack-part mask.
+| Resistance | `RES_DARK`.
+| Vulnerability | `RES_HOLY`.
+| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`, `RES_NONMAGIC`.
+| Initial phase | `semi_material`.
+| Special functions | None in this passive-template stage.
+| Archetype XP adjustment | Zero.
+|===
+
+The implementation plan groups wraiths and spectres together for active
+life-drain/incorporeal behaviour, but does not define a separate passive
+resistance package for spectres. The passive spectre profile therefore reuses
+the established wraith spirit physiology rather than inventing unrelated
+differences at the template layer.
+
+The spectre remains a separate archetype so its later active behaviour,
+difficulty and special-function weighting can differ without changing the
+wraith.
+
+`BODY_INORGANIC`, `BODY_NO_HEART` and `BODY_NO_CORPSE` describe permanent
+physiology. The inherited physical heart, brain and guts are cancelled.
+Removing the physical brain does not imply `AFF_MINDLESS`.
+
+The template does not assign `AFF_NON_CORPOREAL`. Supported physical
+accessibility continues to use the separate live `ghost_phase` state.
+
+`RES_NONMAGIC` supplies the mundane-contact barrier. In the initial
+`semi_material` phase, the existing contact resolver therefore blocks ordinary
+mundane weapons, admits mundane silver through the established conditional
+half-damage exception, and handles magical weapons normally unless another
+configured response applies.
+
+The spectre is resistant to dark effects and vulnerable to holy effects.
+Poison, sleep and drain immunity use the normal resistance machinery.
+
+A default spectre leaves no biological corpse. Existing no-corpse equipment
+and coin handling remain authoritative.
+
+The passive template currently supplies no special function. Distinct spectre
+life-drain/phasing behaviour is added separately rather than assigning the
+broad legacy `spec_cast_undead`.
+
+Individual `#MOBILES` ACT, AFF, body, resistance, vulnerability, immunity and
+phase inputs retain their normal override semantics.
+
+Existing world spectres are not automatically converted merely because this
 archetype exists.
 
 [[scribe-ghost-archetype]]
