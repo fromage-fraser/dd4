@@ -475,6 +475,63 @@ const struct mob_type mob_table[MAX_MOB] =
                  * rules are usable before automatic phasing is introduced.
                  */
                 GHOST_PHASE_SEMI_MATERIAL
+        },
+
+                {
+                "spectre", "humanoid", "icon1", "icon2",
+
+                /*
+                 * Intelligent supernatural undead spirit.
+                 *
+                 * The passive spectre profile deliberately shares the
+                 * established wraith spirit physiology. Stronger spectre
+                 * behaviour is supplied separately by its active special.
+                 */
+                ACT_UNDEAD, 0,
+
+                /*
+                 * Non-biological spirit physiology.
+                 *
+                 * Add inorganic/no-heart/no-corpse properties and cancel
+                 * the inherited physical heart, brain and guts while
+                 * retaining humanoid limbs and sensory capability.
+                 */
+                BODY_NO_HEART | BODY_NO_CORPSE | BODY_INORGANIC
+                    | PART_HEART | PART_BRAINS | PART_GUTS,
+
+                /* No additional natural attack parts. */
+                0,
+
+                /*
+                 * Shared supernatural-spirit defensive profile.
+                 */
+                RES_DARK,
+                RES_HOLY,
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC,
+
+                /* Ordinary DD4 HP, damage, critical and swiftness values. */
+                0, 0, 0, 0,
+
+                /* Retain humanoid dimension/language metadata. */
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                /*
+                 * Active spectre behaviour is added separately.
+                 * Do not use the broad legacy undead caster here.
+                 */
+                "", "", "",
+
+                /* No additional archetype XP adjustment. */
+                0,
+
+                MOB_SPECIAL_CHANCES_AUTO,
+
+                /*
+                 * Begin semi-material so the existing physical-contact
+                 * rules remain usable before spec_spectre is introduced.
+                 */
+                GHOST_PHASE_SEMI_MATERIAL
         }
 
 };
