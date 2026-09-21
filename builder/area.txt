@@ -796,6 +796,52 @@ remain XOR overrides and ghostphase remains an independently inherited scalar.
 
 Do not convert existing world spectres merely by name.
 
+The mummy archetype is an intelligent corporeal undead humanoid:
+
+    < mummy~ common~
+
+It inherits ordinary humanoid anatomy and adds ACT_UNDEAD.
+
+The template does not add mindlessness or remove speech. It does not add
+BODY_INORGANIC, BODY_NO_HEART, BODY_NO_CORPSE or any ghost phase.
+
+Passive combat defaults are:
+
+    resistance:     RES_DARK
+    vulnerability:  RES_HOLY | RES_FIRE
+    immunity:       RES_POISON | RES_SLEEP | RES_DRAIN
+
+The fire vulnerability is mummy-specific. The undead implementation plan
+identifies fire weakness as appropriate for mummies rather than making fire
+a general undead vulnerability.
+
+Mummies do not inherit RES_NONMAGIC. Ordinary mundane weapons therefore
+affect them normally. They have no silver or cold-iron interaction unless an
+individual mobile explicitly adds one.
+
+The mummy remains corporeal and starts with ghostphase none. It does not use
+AFF_NON_CORPOREAL or the ghost/wraith phase-contact rules.
+
+No special body restrictions are inferred merely from mummification.
+Ordinary humanoid anatomy remains available. Biological-effect behaviour is
+controlled by explicit physiology and resistance checks rather than by
+IS_UNDEAD() alone.
+
+A normally killed mummy follows the ordinary corporeal death path. Its corpse
+is marked by the existing undead-provenance machinery.
+
+The passive archetype currently has no special function. Mummy rot and fear
+are active behaviours and are implemented separately. Do not assign the broad
+spec_cast_undead special merely because the creature is undead.
+
+The archetype XP adjustment is zero.
+
+Scribe selects the archetype with "archetype mummy". Individual ACT, AFF,
+body, resistance, vulnerability, immunity and special values retain their
+normal override behaviour.
+
+Do not convert existing world mummies merely by name.
+
 The ghost archetype is currently a development-stage physiology template:
 
     < ghost~ common~

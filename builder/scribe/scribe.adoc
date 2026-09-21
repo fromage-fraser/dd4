@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 20 September 2026._
+_AsciiDoc documentation update: 21 September 2026._
 
 === Contents
 
@@ -27,6 +27,7 @@ _AsciiDoc documentation update: 20 September 2026._
 ** <<scribe-wight-archetype,Wight archetype>>
 ** <<scribe-wraith-archetype,Wraith archetype>>
 ** <<scribe-spectre-archetype,Spectre archetype>>
+** <<scribe-mummy-archetype,Mummy archetype>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-mobile-mindlessness,Mindlessness>>
 ** <<scribe-mobile-stench,Carrion stench>>
@@ -721,6 +722,7 @@ Accepted archetype names are:
 | `wight` | Intelligent corporeal undead humanoid with dark resistance, holy vulnerability, poison/sleep/drain immunity and dedicated `spec_wight` life drain.
 | `wraith` | Intelligent supernatural undead spirit with no biological corpse or internal organs, dark resistance, holy vulnerability, poison/sleep/drain/nonmagical immunity and active life-drain/phasing behaviour.
 | `spectre` | Stronger supernatural undead spirit using the wraith passive spirit physiology, with stronger life drain and the same ethereal/semi-material phasing model.
+| `mummy` | Intelligent corporeal undead humanoid with dark resistance, holy and fire vulnerability, and poison, sleep and drain immunity. Mummy rot and fear behaviour are added separately.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1498,6 +1500,74 @@ Individual `#MOBILES` ACT, AFF, body, resistance, vulnerability, immunity,
 special and phase inputs retain their normal override semantics.
 
 Existing world spectres are not automatically converted merely because this
+archetype exists.
+
+[[scribe-mummy-archetype]]
+===== Mummy archetype
+
+The `mummy` archetype is an intelligent corporeal undead humanoid.
+
+[source,text]
+----
+archetype mummy
+----
+
+Its passive defaults are:
+
+[cols="<2,<4",options="header"]
+|===
+| Property | Default
+| Body species | `humanoid`.
+| Classification | `ACT_UNDEAD`.
+| Mind | Intelligent; no `AFF_MINDLESS`.
+| Speech | Retained; no `BODY_NO_SPEECH`.
+| Physiology | Ordinary inherited humanoid anatomy; no `BODY_INORGANIC` or `BODY_NO_CORPSE` default.
+| Natural attacks | No additional attack-part mask.
+| Resistance | `RES_DARK`.
+| Vulnerabilities | `RES_HOLY`, `RES_FIRE`.
+| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`.
+| Mundane weapons | No `RES_NONMAGIC`; ordinary weapons can affect the mummy normally.
+| Ghost phase | Inherits `none`; mummies are corporeal.
+| Special functions | None in this passive-template stage.
+| Archetype XP adjustment | Zero.
+|===
+
+The implementation plan identifies mummy rot and fear as suitable active mummy
+behaviour and specifically notes that a mummy may be vulnerable to fire. Those
+active behaviours are kept out of the passive template and are added separately.
+
+The passive mummy therefore follows DD4's established corporeal-undead combat
+package: dark resistance, holy vulnerability, and poison, sleep and drain
+immunity. `RES_FIRE` is additionally placed in the vulnerability mask for the
+mummy-specific fire weakness.
+
+The template does not add `AFF_MINDLESS`. The implementation plan names
+skeletons and zombies as the normal mindless examples but does not classify
+mummies that way. Individual builders may still override mindlessness through
+the normal AFF XOR layer where a particular creature requires it.
+
+The mummy remains corporeal. It does not inherit `RES_NONMAGIC`, ghost phase,
+`AFF_NON_CORPOREAL`, silver/cold-iron interaction or any special spirit contact
+rules.
+
+No new body restriction is inferred merely from mummification. The template
+retains ordinary humanoid anatomy and does not add `BODY_INORGANIC`,
+`BODY_NO_HEART`, `BODY_NO_SPEECH` or `BODY_NO_CORPSE`. Biological-effect
+normalisation remains governed by explicit physiology and resistance checks,
+not by `IS_UNDEAD()` alone.
+
+A normally killed mummy therefore follows the ordinary corporeal death path
+and may leave a corpse. The existing undead-provenance machinery marks that
+corpse as originating from an undead creature.
+
+The passive template currently supplies no special function. Mummy rot and
+fear are active behaviour and will be implemented separately rather than by
+assigning the broad legacy `spec_cast_undead` spellcaster.
+
+Individual `#MOBILES` ACT, AFF, body, resistance, vulnerability, immunity and
+special inputs retain their normal override semantics.
+
+Existing world mummies are not automatically converted merely because this
 archetype exists.
 
 [[scribe-ghost-archetype]]

@@ -532,6 +532,59 @@ const struct mob_type mob_table[MAX_MOB] =
                  * rules remain usable before spec_spectre is introduced.
                  */
                 GHOST_PHASE_SEMI_MATERIAL
+        },
+        {
+                "mummy", "humanoid", "icon1", "icon2",
+
+                /*
+                 * Intelligent corporeal undead.
+                 *
+                 * Mummies remain physical humanoids. Mummy rot and fear
+                 * are active behaviour and are added separately rather
+                 * than encoded as passive flags.
+                 */
+                ACT_UNDEAD, 0,
+
+                /*
+                 * Retain inherited humanoid anatomy unchanged.
+                 *
+                 * Do not infer inorganic physiology, removed organs,
+                 * mindlessness or no-corpse behaviour merely from the
+                 * mummy classification.
+                 */
+                0,
+
+                /* No additional natural attack parts. */
+                0,
+
+                /*
+                 * Corporeal undead baseline plus the mummy-specific
+                 * fire weakness called out by the undead design.
+                 */
+                RES_DARK,
+                RES_HOLY | RES_FIRE,
+                RES_POISON | RES_SLEEP | RES_DRAIN,
+
+                /* Ordinary DD4 HP, damage, critical and swiftness values. */
+                0, 0, 0, 0,
+
+                /* Inherit humanoid dimensions and language. */
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                /*
+                 * Mummy rot and fear are implemented separately.
+                 * Do not use the broad legacy undead caster.
+                 */
+                "", "", "",
+
+                /* No additional archetype XP adjustment. */
+                0,
+
+                MOB_SPECIAL_CHANCES_AUTO,
+
+                /* Corporeal; inherit humanoid ghost phase of none. */
+                MOB_TEMPLATE_UNSET
         }
 
 };
