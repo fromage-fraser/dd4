@@ -309,7 +309,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET
         },
 
-        {
+                {
                 "ghost", "humanoid", "icon1", "icon2",
 
                 /*
@@ -477,7 +477,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 GHOST_PHASE_SEMI_MATERIAL
         },
 
-                {
+        {
                 "spectre", "humanoid", "icon1", "icon2",
 
                 /*
