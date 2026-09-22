@@ -72,6 +72,7 @@ DECLARE_SPEC_FUN( spec_wight                );
 DECLARE_SPEC_FUN( spec_wraith               );
 DECLARE_SPEC_FUN( spec_spectre              );
 DECLARE_SPEC_FUN( spec_mummy                );
+DECLARE_SPEC_FUN( spec_banshee              );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
@@ -150,6 +151,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_wraith"))               return spec_wraith;
         if (!str_cmp(name, "spec_spectre"))              return spec_spectre;
         if (!str_cmp(name, "spec_mummy"))                return spec_mummy;
+        if (!str_cmp(name, "spec_banshee"))              return spec_banshee;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
@@ -231,6 +233,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_wraith) return "spec_wraith";
         if (special == spec_spectre) return "spec_spectre";
         if (special == spec_mummy) return "spec_mummy";
+        if (special == spec_banshee) return "spec_banshee";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
@@ -1541,6 +1544,79 @@ void mummy_rot_after_hit(CHAR_DATA *ch, CHAR_DATA *victim)
         act(
             "{dBlack decay spreads beneath $N's skin where $n touched $M.{x",
             ch, NULL, victim, TO_NOTVICT);
+}
+
+#define BANSHEE_WAIL_CHANCE 20
+
+/* Sonic/psychic fear attack. */
+bool spec_banshee(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!ch
+        ||  !IS_NPC(ch)
+        ||  ch->deleted
+        ||  !ch->in_room
+        ||  ch->position == POS_DEAD
+        ||  !IS_AWAKE(ch)
+        ||  ch->wait > 0
+        ||  IS_AFFECTED(ch, AFF_CHARM)
+        ||  IS_AFFECTED(ch, AFF_HOLD)
+        ||  IS_AFFECTED(ch, AFF_DAZED))
+        {
+                return FALSE;
+        }
+
+        if (IS_SET(ch->in_room->room_flags, ROOM_CONE_OF_SILENCE))
+                return FALSE;
+
+        victim = ch->fighting;
+
+        if (!victim
+        ||  victim->deleted
+        ||  victim->in_room != ch->in_room
+        ||  victim->hit <= 0
+        ||  victim->position == POS_DEAD
+        ||  is_mindless(victim)
+        ||  (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT)))
+        {
+                return FALSE;
+        }
+
+        if (number_percent() > BANSHEE_WAIL_CHANCE)
+                return FALSE;
+
+        act(
+            "$n throws back $s head and lets out a terrible wail!",
+            ch, NULL, NULL, TO_ROOM);
+
+        act(
+            "You let out a terrible wail!",
+            ch, NULL, NULL, TO_CHAR);
+
+        if (saves_resistance_effect(
+                ch->level,
+                victim,
+                RES_SONIC | RES_PSYCHIC))
+        {
+                act(
+                    "You withstand $n's terrible wail.",
+                    ch, NULL, victim, TO_VICT);
+
+                act(
+                    "$N withstands your terrible wail.",
+                    ch, NULL, victim, TO_CHAR);
+
+                return TRUE;
+        }
+
+        act(
+            "Terror seizes you at the sound of $n's wail!",
+            ch, NULL, victim, TO_VICT);
+
+        do_flee(victim, "Fear");
+
+        return TRUE;
 }
 
 /*

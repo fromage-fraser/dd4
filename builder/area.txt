@@ -882,68 +882,46 @@ their normal override behaviour.
 
 Do not convert existing world mummies merely by name.
 
-The banshee archetype is an intelligent supernatural undead spirit:
+The banshee archetype is an intelligent undead spirit:
 
     < banshee~ common~
 
-It uses the humanoid body species and adds ACT_UNDEAD.
-
-The body-form XOR adds:
-
-    BODY_NO_HEART
-    BODY_NO_CORPSE
-    BODY_INORGANIC
-
-and cancels inherited:
-
-    PART_HEART
-    PART_BRAINS
-    PART_GUTS
-
-Humanoid limbs and sensory capability remain inherited. The banshee is not
-mindless and retains speech.
-
-Passive combat defaults are:
+It starts semi-material and has these defaults:
 
     resistance:     RES_DARK
     vulnerability:  RES_HOLY
     immunity:       RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC
 
-The initial ghostphase is semi_material.
+A banshee is not mindless and can speak. Its body is inorganic, has no heart
+and leaves no corpse. The inherited humanoid heart, brains and guts are
+removed.
 
-The implementation plan specifies banshee wail as the active banshee behaviour
-but does not prescribe a separate passive resistance package. Existing DD4
-banshee material describes banshees as spirit or soul-like humanoid forms, so
-the archetype uses the established supernatural-spirit physiology shared by
-wraiths and spectres.
+Ordinary nonmagical weapons cannot hurt a banshee. Silver and magical weapons
+use the normal semi-material ghost rules. Banshees do not automatically change
+between ethereal and semi-material form.
 
-No RES_SONIC, fear, charm or psychic resistance is inferred merely because a
-banshee can produce a supernatural wail.
+The template supplies spec_banshee.
 
-RES_NONMAGIC supplies the ordinary mundane-contact barrier. The existing
-semi-material weapon/shield contact rules therefore apply: ordinary mundane
-contact is blocked, mundane silver receives the established semi-material
-exception, and magical contact uses normal resistance handling.
+During combat, spec_banshee has a 20 percent chance on each special check to
+wail at its current opponent. Objects and mindless creatures are unaffected.
 
-The banshee does not receive AFF_NON_CORPOREAL. ghostphase remains the separate
-live NPC phase state.
+The target saves against:
 
-This passive archetype has no automatic phase transition. It begins and
-remains semi_material unless some separate runtime behaviour or explicit
-builder setting changes it.
+    RES_SONIC | RES_PSYCHIC
 
-Banshees leave no biological corpse. Existing no-corpse equipment and coin
-handling remains authoritative.
+On a failed save it makes the same forced flee used by Fear. The wail does no
+direct damage. It cannot be used in a cone_of_silence room.
 
-The passive template currently has no special function and no additional XP
-adjustment. Wail behaviour is implemented separately rather than by assigning
-the broad spec_cast_undead special.
+spec_banshee adds +15 percent to the special-function XP calculation. The
+archetype itself adds no extra XP.
 
-Scribe selects the archetype with "archetype banshee". Individual ACT, AFF,
-body, resistance, vulnerability, immunity, special and ghostphase inputs
-retain their normal override behaviour.
+Banshees leave no corpse; equipment and coins use the normal no-corpse death
+handling.
 
-Do not convert existing world banshees merely by name.
+Scribe selects the archetype with "archetype banshee". Individual mobile
+fields can override the inherited defaults normally.
+
+Existing world banshees are not changed automatically.
 
 The ghost archetype is currently a development-stage physiology template:
 
@@ -3249,6 +3227,7 @@ give you some idea of their effects:
     spec_wraith
     spec_spectre
     spec_mummy
+    spec_banshee
     spec_clan_guard
     spec_guard
     spec_janitor
