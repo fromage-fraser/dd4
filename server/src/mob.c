@@ -586,62 +586,30 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* Corporeal; inherit humanoid ghost phase of none. */
                 MOB_TEMPLATE_UNSET
         },
-                {
+        {
                 "banshee", "humanoid", "icon1", "icon2",
 
-                /*
-                 * Intelligent supernatural undead spirit.
-                 *
-                 * Existing DD4 banshee material describes spirit/soul-like
-                 * humanoid forms. Wail behaviour is added separately.
-                 */
                 ACT_UNDEAD, 0,
 
-                /*
-                 * Established supernatural-spirit physiology.
-                 *
-                 * Add inorganic/no-heart/no-corpse properties and cancel
-                 * the inherited physical heart, brain and guts. Humanoid
-                 * limbs and sensory capability remain inherited.
-                 */
+                /* Spirit body; the PART_* bits remove humanoid organs. */
                 BODY_NO_HEART | BODY_NO_CORPSE | BODY_INORGANIC
                     | PART_HEART | PART_BRAINS | PART_GUTS,
 
-                /* No additional natural attack parts. */
                 0,
 
-                /*
-                 * Established supernatural-undead defensive profile.
-                 *
-                 * No separate sonic resistance is inferred merely from
-                 * the banshee's ability to wail.
-                 */
                 RES_DARK,
                 RES_HOLY,
                 RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC,
 
-                /* Ordinary DD4 HP, damage, critical and swiftness values. */
                 0, 0, 0, 0,
 
-                /* Retain humanoid dimension/language metadata. */
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
 
-                /*
-                 * Banshee wail is active behaviour and is added separately.
-                 * Do not use the broad legacy undead caster.
-                 */
-                "", "", "",
+                "spec_banshee", "", "",
 
-                /* No additional archetype XP adjustment. */
                 0,
-
                 MOB_SPECIAL_CHANCES_AUTO,
-
-                /*
-                 * Begin semi-material so the established spirit-contact
-                 * rules apply without assigning AFF_NON_CORPOREAL.
-                 */
                 GHOST_PHASE_SEMI_MATERIAL
         }
 
@@ -3184,6 +3152,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_cast_druid", 15 },
                 { "spec_spectre", 15 },
                 { "spec_mummy", 15 },
+                { "spec_banshee", 15 },
                 { "spec_demon", 15 },
                 { "spec_cast_electric", 15 },
                 { "spec_assassin", 15 },

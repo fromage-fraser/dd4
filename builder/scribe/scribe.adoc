@@ -724,7 +724,7 @@ Accepted archetype names are:
 | `wraith` | Intelligent supernatural undead spirit with no biological corpse or internal organs, dark resistance, holy vulnerability, poison/sleep/drain/nonmagical immunity and active life-drain/phasing behaviour.
 | `spectre` | Stronger supernatural undead spirit using the wraith passive spirit physiology, with stronger life drain and the same ethereal/semi-material phasing model.
 | `mummy` | Intelligent corporeal undead humanoid with dark resistance, holy and fire vulnerability, poison/sleep/drain immunity, and `spec_mummy` fear plus contact mummy rot.
-| `banshee` | Intelligent supernatural undead spirit using the established spirit physiology: no biological corpse or internal organs, dark resistance, holy vulnerability, poison/sleep/drain/nonmagical immunity and a semi-material initial phase. Wail behaviour is added separately.
+| `banshee` | Intelligent undead spirit with dark resistance, holy vulnerability, poison/sleep/drain/nonmagical immunity, a semi-material starting phase and `spec_banshee` wail.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1611,71 +1611,45 @@ archetype exists.
 [[scribe-banshee-archetype]]
 ===== Banshee archetype
 
-The `banshee` archetype is an intelligent supernatural undead spirit.
+Use:
 
 [source,text]
 ----
 archetype banshee
 ----
 
-Its passive defaults are:
+The default banshee is an intelligent undead spirit.
 
 [cols="<2,<4",options="header"]
 |===
 | Property | Default
 | Body species | `humanoid`.
 | Classification | `ACT_UNDEAD`.
-| Mind | Intelligent; no `AFF_MINDLESS`.
-| Speech | Retained; no `BODY_NO_SPEECH`.
-| Physiology | `BODY_NO_HEART`, `BODY_NO_CORPSE`, `BODY_INORGANIC`; inherited `PART_HEART`, `PART_BRAINS` and `PART_GUTS` are cancelled.
-| Natural attacks | No additional attack-part mask.
+| Mind | Intelligent; not `AFF_MINDLESS`.
+| Body | `BODY_NO_HEART`, `BODY_NO_CORPSE`, `BODY_INORGANIC`; inherited heart, brains and guts are removed.
 | Resistance | `RES_DARK`.
 | Vulnerability | `RES_HOLY`.
 | Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`, `RES_NONMAGIC`.
-| Mundane weapons | Blocked by `RES_NONMAGIC`, subject to the existing semi-material contact exceptions.
-| Ghost phase | `semi_material` initially.
-| Special functions | None in this passive-template stage; banshee wail is added separately.
-| Archetype XP adjustment | Zero.
+| Ghost phase | Starts `semi_material`.
+| Special | `spec_banshee`.
+| XP | No archetype adjustment; `spec_banshee` adds +15%.
 |===
 
-The implementation plan specifies banshee wail as the active behaviour but does
-not prescribe a distinct passive resistance package. DD4's existing banshee
-material describes banshees as spirit/soul-like humanoid forms, so this template
-uses the established supernatural-spirit physiology already shared by wraiths
-and spectres. This is an implementation choice rather than a separate passive
-profile stated by the plan.
+Banshees use the same semi-material weapon-contact rules as other spirit
+undead. Ordinary mundane weapons cannot hurt them, while silver and magical
+weapons use the existing semi-material rules. They do not automatically shift
+between ethereal and semi-material form.
 
-The template adds `BODY_NO_HEART`, `BODY_NO_CORPSE` and `BODY_INORGANIC`, and
-XOR-cancels the inherited physical `PART_HEART`, `PART_BRAINS` and `PART_GUTS`.
-Humanoid limbs and sensory capability remain inherited. Removing the physical
-brain part does not imply mindlessness.
+During combat, `spec_banshee` has a 20% chance on each special check to wail
+at its current opponent. Objects and mindless creatures are unaffected. The
+target saves against `RES_SONIC | RES_PSYCHIC`; on a failed save it flees as
+if affected by Fear. The wail does not work in a `cone_of_silence` room.
 
-Its passive combat profile is dark resistance, holy vulnerability, and immunity
-to poison, sleep, drain and ordinary nonmagical weapon contact. No additional
-`RES_SONIC`, fear, charm or psychic resistance is inferred merely because the
-creature is a banshee.
+Banshees leave no corpse. Equipment and coins use the normal no-corpse death
+handling.
 
-The initial phase is `semi_material`. The existing phase-aware weapon/shield
-contact rules therefore apply: ordinary mundane contact is blocked, mundane
-silver receives the established semi-material exception, and magical contact
-uses the normal resistance machinery. The passive archetype does not add an
-automatic ethereal/semi-material transition routine.
-
-The template does not assign `AFF_NON_CORPOREAL`. Ghost phase remains the
-separate live NPC state.
-
-Banshees leave no biological corpse. Existing no-corpse equipment and coin
-handling remains authoritative.
-
-The passive template has no special function and no additional XP adjustment.
-The implementation plan's wail behaviour will be added separately rather than
-by assigning the broad legacy `spec_cast_undead` special.
-
-Individual `#MOBILES` ACT, AFF, body, resistance, vulnerability, immunity,
-special and phase inputs retain their normal override semantics.
-
-Existing world banshees are not automatically converted merely because this
-archetype exists.
+Individual mobile fields can override the inherited defaults in the usual way.
+Existing world banshees are not changed automatically.
 
 [[scribe-ghost-archetype]]
 ===== Ghost archetype: permanent physiology
@@ -2453,6 +2427,7 @@ spec_wight  combat life drain using the existing Energy Drain effect
 spec_wraith life drain plus automatic ethereal/semi-material combat phasing
 spec_spectre stronger life drain plus automatic ethereal/semi-material combat phasing
 spec_mummy  combat fear plus weaponless-contact mummy rot
+spec_banshee combat wail that can force its opponent to flee
 spec_guard  cityguard
 spec_janitor    gathers rubbish from ground
 spec_poison poisonous bite [combat]
