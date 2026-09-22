@@ -882,6 +882,69 @@ their normal override behaviour.
 
 Do not convert existing world mummies merely by name.
 
+The banshee archetype is an intelligent supernatural undead spirit:
+
+    < banshee~ common~
+
+It uses the humanoid body species and adds ACT_UNDEAD.
+
+The body-form XOR adds:
+
+    BODY_NO_HEART
+    BODY_NO_CORPSE
+    BODY_INORGANIC
+
+and cancels inherited:
+
+    PART_HEART
+    PART_BRAINS
+    PART_GUTS
+
+Humanoid limbs and sensory capability remain inherited. The banshee is not
+mindless and retains speech.
+
+Passive combat defaults are:
+
+    resistance:     RES_DARK
+    vulnerability:  RES_HOLY
+    immunity:       RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC
+
+The initial ghostphase is semi_material.
+
+The implementation plan specifies banshee wail as the active banshee behaviour
+but does not prescribe a separate passive resistance package. Existing DD4
+banshee material describes banshees as spirit or soul-like humanoid forms, so
+the archetype uses the established supernatural-spirit physiology shared by
+wraiths and spectres.
+
+No RES_SONIC, fear, charm or psychic resistance is inferred merely because a
+banshee can produce a supernatural wail.
+
+RES_NONMAGIC supplies the ordinary mundane-contact barrier. The existing
+semi-material weapon/shield contact rules therefore apply: ordinary mundane
+contact is blocked, mundane silver receives the established semi-material
+exception, and magical contact uses normal resistance handling.
+
+The banshee does not receive AFF_NON_CORPOREAL. ghostphase remains the separate
+live NPC phase state.
+
+This passive archetype has no automatic phase transition. It begins and
+remains semi_material unless some separate runtime behaviour or explicit
+builder setting changes it.
+
+Banshees leave no biological corpse. Existing no-corpse equipment and coin
+handling remains authoritative.
+
+The passive template currently has no special function and no additional XP
+adjustment. Wail behaviour is implemented separately rather than by assigning
+the broad spec_cast_undead special.
+
+Scribe selects the archetype with "archetype banshee". Individual ACT, AFF,
+body, resistance, vulnerability, immunity, special and ghostphase inputs
+retain their normal override behaviour.
+
+Do not convert existing world banshees merely by name.
+
 The ghost archetype is currently a development-stage physiology template:
 
     < ghost~ common~
