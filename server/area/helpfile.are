@@ -3770,7 +3770,8 @@ etc.
 0 'CURE POISON'~
 Syntax: cast 'cure poison' <<character>
 
-This spell cures poison in one so unfortunate.
+This spell purges poison, venom, nausea, fleshrot and mummy rot from the
+victim.  It also sobers up an intoxicated player.
 ~
 
 0 CURSE HEX~

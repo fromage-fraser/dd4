@@ -2423,6 +2423,44 @@ void char_update(void)
                                 damage(ch, ch, number_range(2, 4), gsn_poison, FALSE);
                         }
 
+                        if (!ch->deleted
+                        &&  ch->position != POS_DEAD
+                        &&  gsn_mummy_rot >= 0
+                        &&  is_affected(ch, gsn_mummy_rot))
+                        {
+                                int low;
+                                int high;
+
+                                low = UMAX(2, ch->level / 10);
+                                high = UMAX(low, ch->level / 5);
+
+                                if (IS_AFFECTED(ch, AFF_MEDITATE))
+                                        REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
+
+                                send_to_char(
+                                    "{dThe mummy rot eats deeper into your flesh.{x\n\r",
+                                    ch);
+
+                                act(
+                                    "{d$n shudders as black decay spreads "
+                                    "beneath $s skin.{x",
+                                    ch, NULL, NULL, TO_ROOM);
+
+                                damage_with_resistance_types(
+                                    ch,
+                                    ch,
+                                    number_range(low, high),
+                                    gsn_mummy_rot,
+                                    FALSE,
+                                    0);
+
+                                if (ch->deleted
+                                ||  ch->position == POS_DEAD)
+                                {
+                                        continue;
+                                }
+                        }
+
                         if (((IS_AFFECTED(ch, AFF_DOT)) && (!IS_AFFECTED(ch, AFF_NON_CORPOREAL))) || (IS_AFFECTED(ch, AFF_DOT) && ch->form == FORM_FLY))
                         {
                                 for (paf = ch->affected; paf; paf = paf->next)

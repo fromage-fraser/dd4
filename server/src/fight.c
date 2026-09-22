@@ -1419,10 +1419,7 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                             dt,
                             poison,
                             ordinary_attack_resistance_types(dt, wield),
-                            !wield
-                                && IS_NPC(ch)
-                                && (dt == TYPE_HIT + 5
-                                    || dt == TYPE_HIT + 10),
+                            !wield && IS_NPC(ch),
                             TRUE);
                 }
                 else if (dt == gsn_smash)
@@ -2087,11 +2084,14 @@ static void damage_internal(CHAR_DATA *ch,
 
         /*
          * This point is after defenses, damage reduction and HP loss.
-         * The helper also checks that both characters remain alive.
+         * Weaponless NPC contacts may provide creature-specific effects.
+         * Each helper performs its own special/attack eligibility checks.
          */
         if (natural_contact && dam > 0)
+        {
                 ghoul_touch_after_hit(ch, victim, dt);
-
+                mummy_rot_after_hit(ch, victim);
+        }
         /*
          * Pressure-point paralysis follows an actual damaging hit.
          * Pass the response already resolved for this damage event.

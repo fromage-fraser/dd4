@@ -573,10 +573,10 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
 
                 /*
-                 * Mummy rot and fear are implemented separately.
+                 * Scheduled fear plus weaponless-contact mummy rot.
                  * Do not use the broad legacy undead caster.
                  */
-                "", "", "",
+                "spec_mummy", "", "",
 
                 /* No additional archetype XP adjustment. */
                 0,
@@ -3125,6 +3125,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
 
                 { "spec_cast_druid", 15 },
                 { "spec_spectre", 15 },
+                { "spec_mummy", 15 },
                 { "spec_demon", 15 },
                 { "spec_cast_electric", 15 },
                 { "spec_assassin", 15 },

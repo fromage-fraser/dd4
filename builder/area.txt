@@ -800,10 +800,8 @@ The mummy archetype is an intelligent corporeal undead humanoid:
 
     < mummy~ common~
 
-It inherits ordinary humanoid anatomy and adds ACT_UNDEAD.
-
-The template does not add mindlessness or remove speech. It does not add
-BODY_INORGANIC, BODY_NO_HEART, BODY_NO_CORPSE or any ghost phase.
+It inherits ordinary humanoid anatomy and ACT_UNDEAD. It is not mindless,
+retains speech, remains corporeal and uses ghostphase none.
 
 Passive combat defaults are:
 
@@ -811,34 +809,76 @@ Passive combat defaults are:
     vulnerability:  RES_HOLY | RES_FIRE
     immunity:       RES_POISON | RES_SLEEP | RES_DRAIN
 
-The fire vulnerability is mummy-specific. The undead implementation plan
-identifies fire weakness as appropriate for mummies rather than making fire
-a general undead vulnerability.
+Mummies do not inherit RES_NONMAGIC, silver/cold-iron interaction or spirit
+phase behaviour. Ordinary mundane weapons affect them normally.
 
-Mummies do not inherit RES_NONMAGIC. Ordinary mundane weapons therefore
-affect them normally. They have no silver or cold-iron interaction unless an
-individual mobile explicitly adds one.
+The template supplies spec_mummy. It does not use the broad legacy
+spec_cast_undead spellcaster.
 
-The mummy remains corporeal and starts with ghostphase none. It does not use
-AFF_NON_CORPOREAL or the ghost/wraith phase-contact rules.
+While fighting, awake and otherwise able to act, spec_mummy has a 20 percent
+chance on each selected special-function opportunity to attempt the existing
+Fear spell against its current opponent.
 
-No special body restrictions are inferred merely from mummification.
-Ordinary humanoid anatomy remains available. Biological-effect behaviour is
-controlled by explicit physiology and resistance checks rather than by
-IS_UNDEAD() alone.
+Mindless and object-like targets are ineligible. The existing Fear
+implementation remains authoritative for RES_MAGIC | RES_PSYCHIC and its
+normal saving-throw behaviour.
 
-A normally killed mummy follows the ordinary corporeal death path. Its corpse
+Mummy rot is a separate physical-contact disease. It is not the existing
+fleshrot spell.
+
+Only a successful damaging ordinary NPC attack made without a wielded weapon
+can transmit mummy rot. Weapon attacks cannot transmit it. The shared
+natural-contact stage now includes all weaponless NPC ordinary attacks;
+existing ghoul and ghast paralysis remains restricted to claw and bite
+attacks by its own helper.
+
+The live spec_mummy weight controls whether the contact capability is active.
+With the archetype's default 100-percent singleton special, each qualifying
+damaging contact has a 25 percent chance to attempt mummy rot. Lower
+builder-configured spec_mummy weights reduce contact opportunities
+proportionally.
+
+Objects, inorganic creatures and victims already carrying mummy rot are not
+eligible.
+
+Player Resist Toxin and Bonus Exotic defenses apply. Otherwise the contact
+uses:
+
+    RES_POISON | RES_CURSE | RES_DARK
+
+RES_MAGIC is deliberately absent because mummy rot is transmitted by physical
+contact rather than cast as a spell.
+
+A failed save applies mummy rot for 6-10 normal affect ticks. The effect gives:
+
+    Constitution: -2
+
+Once per character update while the effect remains, it also deals damage from:
+
+    max(2, victim level / 10)
+
+to:
+
+    max(low value, victim level / 5)
+
+Mummy rot does not stack or refresh while already present.
+
+Cure Poison removes mummy rot. Its eligibility checks also now correctly
+recognise standalone fleshrot; previously its later fleshrot-removal code was
+unreachable when fleshrot was the victim's only relevant condition.
+
+spec_mummy receives +15 percentage points through the special-function XP
+weighting. The mummy archetype's own XP adjustment remains zero.
+
+Disabling spec_mummy removes both new Fear attempts and new mummy-rot contact
+attempts. It does not remove mummy rot already affecting a victim.
+
+A normally killed mummy retains the ordinary corporeal death path. Its corpse
 is marked by the existing undead-provenance machinery.
 
-The passive archetype currently has no special function. Mummy rot and fear
-are active behaviours and are implemented separately. Do not assign the broad
-spec_cast_undead special merely because the creature is undead.
-
-The archetype XP adjustment is zero.
-
-Scribe selects the archetype with "archetype mummy". Individual ACT, AFF,
-body, resistance, vulnerability, immunity and special values retain their
-normal override behaviour.
+Scribe selects it with "archetype mummy". Individual ACT, AFF, body,
+resistance, vulnerability, immunity, special and special-weight inputs retain
+their normal override behaviour.
 
 Do not convert existing world mummies merely by name.
 
@@ -3145,6 +3185,7 @@ give you some idea of their effects:
     spec_wight
     spec_wraith
     spec_spectre
+    spec_mummy
     spec_clan_guard
     spec_guard
     spec_janitor

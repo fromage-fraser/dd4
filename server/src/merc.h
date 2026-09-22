@@ -418,7 +418,7 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 621            /* 620 +1 banish Owl 10/7/26 */
+#define MAX_SKILL 622            /* +1 mummy rot Owl 21/9/26 */
 #define MAX_PRE_REQ 1574         /* +2 for sense wisdom 6/7/25  */
 #define MAX_SPELL_GROUP 469      /*  */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
@@ -4399,6 +4399,7 @@ extern int gsn_sonic_blast;
 extern int gsn_bubble_jet;
 extern int gsn_banish;
 extern int gsn_stench;
+extern int gsn_mummy_rot;
 /*
  *  Deity gsns
  */
@@ -5680,10 +5681,11 @@ bool resolve_mob_index_specials args((MOB_INDEX_DATA *index, char *error, size_t
 int validate_mob_special_templates args((void));
 int mob_specials_exp_bonus args((const MOB_SPECIAL_DATA *set));
 const char *mob_special_name args((SPEC_FUN *special));
-/* Ghoul contact paralysis and its combat-round timing. */
+/* Natural-contact creature effects and combat-round timing. */
 bool is_ghoul_paralysis args((const AFFECT_DATA *paf));
 void update_ghoul_paralysis args((void));
 void ghoul_touch_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
+void mummy_rot_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool is_stench_exposure args((const AFFECT_DATA *paf));
 void clear_stench_exposure args((CHAR_DATA *ch, bool notify));
 void update_stench args((void));

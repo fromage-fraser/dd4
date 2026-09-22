@@ -2144,6 +2144,8 @@ void spell_cure_poison(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (!is_affected(victim, gsn_poison)
                 &&  !is_affected(victim, gsn_venom)
                 &&  !is_affected(victim, gsn_nausea)
+                &&  !is_affected(victim, gsn_fleshrot)
+                &&  !is_affected(victim, gsn_mummy_rot)
                 &&  victim->pcdata->condition[COND_DRUNK] <= 0)
                 {
                         return;
@@ -2154,7 +2156,9 @@ void spell_cure_poison(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 if (!is_affected(victim, gsn_poison)
                 &&  !is_affected(victim, gsn_venom)
-                &&  !is_affected(victim, gsn_nausea))
+                &&  !is_affected(victim, gsn_nausea)
+                &&  !is_affected(victim, gsn_fleshrot)
+                &&  !is_affected(victim, gsn_mummy_rot))
                 {
                         return;
                 }
@@ -2162,7 +2166,9 @@ void spell_cure_poison(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
-                send_to_char("Objects cannot be poisoned or nauseated.\n\r", ch);
+                send_to_char(
+                    "Objects cannot be poisoned or nauseated.\n\r",
+                    ch);
                 return;
         }
 
@@ -2175,15 +2181,21 @@ void spell_cure_poison(int sn, int level, CHAR_DATA *ch, void *vo)
         if (is_affected(victim, gsn_nausea))
                 affect_strip(victim, gsn_nausea);
 
+        if (is_affected(victim, gsn_mummy_rot))
+                affect_strip(victim, gsn_mummy_rot);
+
         if (is_affected(victim, gsn_fleshrot))
         {
                 affect_strip(victim, gsn_fleshrot);
                 affect_strip(victim, gsn_blindness);
                 REMOVE_BIT(victim->affected_by, AFF_DOT);
                 REMOVE_BIT(victim->affected_by, AFF_BLIND);
+
                 if (!is_affected(victim, gsn_target))
                 {
-                        REMOVE_BIT(victim->affected_by, AFF_EYE_TRAUMA);
+                        REMOVE_BIT(
+                            victim->affected_by,
+                            AFF_EYE_TRAUMA);
                 }
         }
 
@@ -2193,17 +2205,27 @@ void spell_cure_poison(int sn, int level, CHAR_DATA *ch, void *vo)
                 {
                         send_to_char("You sober up.\n\r", victim);
                 }
+
                 victim->pcdata->condition[COND_DRUNK] = 0;
         }
 
         if (ch != victim)
         {
-                act("You purge the illness from $M.", ch, NULL, victim, TO_CHAR);
+                act(
+                    "You purge the illness from $M.",
+                    ch, NULL, victim, TO_CHAR);
                 check_group_bonus(ch);
         }
 
-        send_to_char("<229>A w<228>ar<227>m f<226>ee<220>li<226>ng <227>ru<228>ns <229>th<228>ro<227>ug<226>h y<220>ou<226>r b<227>od<228>y.<0>\n\r", victim);
-        act("$N looks better.", ch, NULL, victim, TO_NOTVICT);
+        send_to_char(
+            "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng "
+            "<227>ru<228>ns <229>th<228>ro<227>ug<226>h "
+            "y<220>ou<226>r b<227>od<228>y.<0>\n\r",
+            victim);
+
+        act(
+            "$N looks better.",
+            ch, NULL, victim, TO_NOTVICT);
 }
 
 void spell_stabilise(int sn, int level, CHAR_DATA *ch, void *vo)

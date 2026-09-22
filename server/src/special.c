@@ -71,6 +71,7 @@ DECLARE_SPEC_FUN( spec_ghast                );
 DECLARE_SPEC_FUN( spec_wight                );
 DECLARE_SPEC_FUN( spec_wraith               );
 DECLARE_SPEC_FUN( spec_spectre              );
+DECLARE_SPEC_FUN( spec_mummy                );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
@@ -148,6 +149,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_wight"))                return spec_wight;
         if (!str_cmp(name, "spec_wraith"))               return spec_wraith;
         if (!str_cmp(name, "spec_spectre"))              return spec_spectre;
+        if (!str_cmp(name, "spec_mummy"))                return spec_mummy;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
@@ -228,6 +230,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_wight) return "spec_wight";
         if (special == spec_wraith) return "spec_wraith";
         if (special == spec_spectre) return "spec_spectre";
+        if (special == spec_mummy) return "spec_mummy";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
@@ -1381,6 +1384,163 @@ bool spec_spectre(CHAR_DATA *ch)
             SPECTRE_DRAIN_CHANCE,
             "{d$n reaches into $N's body with a spectral hand.{x",
             "{d$n's spectral touch tears violently at your life force!{x");
+}
+
+/*
+ * Mummy active behaviour.
+ *
+ * Fear is scheduled through the ordinary mobile-special dispatcher.
+ * Mummy rot is a separate physical-contact effect applied from fight.c
+ * after a successful damaging weaponless NPC attack.
+ */
+#define MUMMY_FEAR_CHANCE 20
+#define MUMMY_ROT_CONTACT_CHANCE 25
+
+bool spec_mummy(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!ch
+        ||  !IS_NPC(ch)
+        ||  ch->deleted
+        ||  !ch->in_room
+        ||  ch->position == POS_DEAD
+        ||  !IS_AWAKE(ch)
+        ||  ch->wait > 0
+        ||  IS_AFFECTED(ch, AFF_CHARM)
+        ||  IS_AFFECTED(ch, AFF_HOLD)
+        ||  IS_AFFECTED(ch, AFF_DAZED))
+        {
+                return FALSE;
+        }
+
+        victim = ch->fighting;
+
+        if (!victim
+        ||  victim->deleted
+        ||  victim->in_room != ch->in_room
+        ||  victim->hit <= 0
+        ||  victim->position == POS_DEAD
+        ||  is_mindless(victim)
+        ||  (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT)))
+        {
+                return FALSE;
+        }
+
+        if (number_percent() > MUMMY_FEAR_CHANCE)
+                return FALSE;
+
+        if (gsn_fear < 0 || gsn_fear >= MAX_SKILL)
+                return FALSE;
+
+        spell_fear(gsn_fear, ch->level, ch, victim);
+        return TRUE;
+}
+
+/*
+ * Called after a successful damaging weaponless NPC attack.
+ *
+ * The live special weight controls whether this creature currently has
+ * mummy-rot contact capability. The separate 25-percent roll controls
+ * whether a qualifying contact attempts transmission.
+ */
+void mummy_rot_after_hit(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        AFFECT_DATA af;
+        int mummy_weight;
+        int i;
+
+        if (!ch
+        ||  !victim
+        ||  ch == victim
+        ||  !IS_NPC(ch)
+        ||  ch->deleted
+        ||  victim->deleted
+        ||  !ch->in_room
+        ||  ch->in_room != victim->in_room
+        ||  ch->hit <= 0
+        ||  victim->hit <= 0
+        ||  ch->position == POS_DEAD
+        ||  victim->position == POS_DEAD
+        ||  gsn_mummy_rot < 0
+        ||  gsn_mummy_rot >= MAX_SKILL
+        ||  !mob_specials_valid(&ch->specials))
+        {
+                return;
+        }
+
+        if ((IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        ||  IS_INORGANIC(victim)
+        ||  is_affected(victim, gsn_mummy_rot))
+        {
+                return;
+        }
+
+        mummy_weight = 0;
+
+        for (i = 0; i < MOB_SPECIAL_SLOTS; i++)
+        {
+                if (ch->specials.fun[i] == spec_mummy)
+                        mummy_weight += ch->specials.chance[i];
+        }
+
+        if (mummy_weight <= 0)
+                return;
+
+        if (number_percent() > mummy_weight)
+                return;
+
+        if (number_percent() > MUMMY_ROT_CONTACT_CHANCE)
+                return;
+
+        if (!IS_NPC(victim)
+        &&  (number_percent()
+             < victim->pcdata->learned[gsn_resist_toxin]
+        ||   is_affected(victim, gsn_bonus_exotic)))
+        {
+                if (victim->gag < 2)
+                {
+                        sound_combat_resist_toxin_sfx(victim);
+                        send_to_char(
+                            "<46>You resist the rotting disease.<0>\n\r",
+                            victim);
+                }
+                return;
+        }
+
+        if (saves_resistance_effect(
+                ch->level,
+                victim,
+                RES_POISON | RES_CURSE | RES_DARK))
+        {
+                if (victim->gag < 2)
+                {
+                        send_to_char(
+                            "You resist the mummy's rotting touch.\n\r",
+                            victim);
+                }
+                return;
+        }
+
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_mummy_rot;
+        af.duration = number_range(6, 10);
+        af.location = APPLY_CON;
+        af.modifier = -2;
+        af.bitvector = 0;
+        affect_to_char(victim, &af);
+
+        act(
+            "{dBlack decay spreads beneath $N's skin where you touched $M.{x",
+            ch, NULL, victim, TO_CHAR);
+
+        act(
+            "{dBlack decay spreads beneath your skin where $n touched you!{x",
+            ch, NULL, victim, TO_VICT);
+
+        act(
+            "{dBlack decay spreads beneath $N's skin where $n touched $M.{x",
+            ch, NULL, victim, TO_NOTVICT);
 }
 
 /*
