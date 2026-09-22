@@ -715,6 +715,7 @@ int gsn_sonic_blast;
 int gsn_bubble_jet;
 int gsn_banish;
 int gsn_stench = -1;
+int gsn_mummy_rot = -1;
 
 /*
  *  Spell groups

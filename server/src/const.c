@@ -5622,6 +5622,12 @@ const struct skill_type skill_table[MAX_SKILL] =
          "<14>banishing spell<0>", "!Banish!"
         },
 
+        {"mummy rot", &gsn_mummy_rot,
+         TYPE_NULL, TAR_IGNORE, POS_DEAD,
+         RES_POISON | RES_CURSE | RES_DARK,
+         spell_null, 0, 0,
+         "mummy rot", "<173>The mummy rot fades from your flesh.<0>"},
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
