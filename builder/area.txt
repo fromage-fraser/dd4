@@ -923,6 +923,30 @@ fields can override the inherited defaults normally.
 
 Existing world banshees are not changed automatically.
 
+The death_knight archetype is an intelligent corporeal undead warrior:
+
+    < death_knight~ common~
+
+Its defaults are:
+
+    resistance:     RES_DARK
+    vulnerability:  RES_HOLY
+    immunity:       RES_POISON | RES_SLEEP | RES_DRAIN
+
+Death knights are not mindless and use normal humanoid anatomy. They are
+corporeal, so ordinary weapons can hurt them and they do not use ghost phases.
+
+The archetype does not yet supply a special function. Martial and spellcasting
+behaviour is added separately.
+
+Death knights leave a normal corpse when killed. The corpse is marked as
+coming from an undead creature.
+
+Scribe selects the archetype with "archetype death_knight". Individual mobile
+fields can override the inherited defaults normally.
+
+Existing world death knights are not changed automatically.
+
 The ghost archetype is currently a development-stage physiology template:
 
     < ghost~ common~
