@@ -5887,9 +5887,13 @@ the blood points of the Vampire.
 0 FEED~
 Syntax: feed <<corpse>
 
-Once an enemy has been slain, the vampire can feed on the victims fresh
-corpse, extracting any blood left in it.  Vampires automatically gain
-this skill.
+Once an enemy has been slain, the vampire can feed on the victim's fresh
+corpse, drawing nourishment from the remaining life force in its blood.
+
+Blood from an undead corpse does not contain that living essence and cannot
+sustain a vampire.
+
+Vampires automatically gain this skill.
 ~
 
 0 WHIRLWIND~

@@ -2032,6 +2032,15 @@ void do_feed (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_SET(corpse->extra_flags, ITEM_UNDEAD))
+        {
+                send_to_char(
+                    "The blood in that corpse carries no living essence "
+                    "to nourish you.\n\r",
+                    ch);
+                return;
+        }
+
         send_to_char("<196>You feed on the fresh corpse!<0>\n\r", ch);
         ch->rage = UMIN(ch->rage +5, ch->max_rage);
 
