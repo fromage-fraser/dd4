@@ -73,6 +73,7 @@ DECLARE_SPEC_FUN( spec_wraith               );
 DECLARE_SPEC_FUN( spec_spectre              );
 DECLARE_SPEC_FUN( spec_mummy                );
 DECLARE_SPEC_FUN( spec_banshee              );
+DECLARE_SPEC_FUN( spec_death_knight         );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
@@ -152,6 +153,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_spectre"))              return spec_spectre;
         if (!str_cmp(name, "spec_mummy"))                return spec_mummy;
         if (!str_cmp(name, "spec_banshee"))              return spec_banshee;
+        if (!str_cmp(name, "spec_death_knight"))         return spec_death_knight;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
@@ -234,6 +236,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_spectre) return "spec_spectre";
         if (special == spec_mummy) return "spec_mummy";
         if (special == spec_banshee) return "spec_banshee";
+        if (special == spec_death_knight) return "spec_death_knight";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
@@ -1615,6 +1618,110 @@ bool spec_banshee(CHAR_DATA *ch)
             ch, NULL, victim, TO_VICT);
 
         do_flee(victim, "Fear");
+
+        return TRUE;
+}
+
+/* Mix fighter moves with a small undead spell list. */
+bool spec_death_knight(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        OBJ_DATA *shield;
+        const char *spell;
+        int action;
+        int sn;
+
+        if (!ch
+        ||  !IS_NPC(ch)
+        ||  ch->deleted
+        ||  !ch->in_room
+        ||  ch->position == POS_DEAD
+        ||  !IS_AWAKE(ch)
+        ||  ch->wait > 0
+        ||  IS_AFFECTED(ch, AFF_CHARM)
+        ||  IS_AFFECTED(ch, AFF_HOLD)
+        ||  IS_AFFECTED(ch, AFF_DAZED))
+        {
+                return FALSE;
+        }
+
+        victim = ch->fighting;
+
+        if (!victim
+        ||  victim->deleted
+        ||  victim->in_room != ch->in_room
+        ||  victim->hit <= 0
+        ||  victim->position == POS_DEAD)
+        {
+                return FALSE;
+        }
+
+        action = number_range(0, 5);
+
+        switch (action)
+        {
+        case 0:
+                shield = get_eq_char(ch, WEAR_SHIELD);
+
+                if (shield && !IS_HUGE(victim))
+                        do_smash(ch, victim->name);
+                else
+                        one_hit(ch, victim, TYPE_UNDEFINED, FALSE);
+
+                return TRUE;
+
+        case 1:
+                if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+                        one_hit(ch, victim, TYPE_UNDEFINED, FALSE);
+                else
+                        do_kick(ch, victim->name);
+
+                return TRUE;
+
+        case 2:
+                one_hit(ch, victim, TYPE_UNDEFINED, FALSE);
+                return TRUE;
+
+        case 3:
+                spell = "curse";
+                break;
+
+        case 4:
+                spell = ch->level >= 6
+                    ? "chill touch"
+                    : "curse";
+                break;
+
+        default:
+                if (ch->level >= 18)
+                        spell = "harm";
+                else if (ch->level >= 6)
+                        spell = "chill touch";
+                else
+                        spell = "curse";
+                break;
+        }
+
+        if (IS_SET(ch->in_room->room_flags, ROOM_CONE_OF_SILENCE))
+        {
+                one_hit(ch, victim, TYPE_UNDEFINED, FALSE);
+                return TRUE;
+        }
+
+        sn = skill_lookup(spell);
+
+        if (sn < 0
+        ||  sn >= MAX_SKILL
+        ||  !skill_table[sn].spell_fun)
+        {
+                return FALSE;
+        }
+
+        (*skill_table[sn].spell_fun)(
+            sn,
+            ch->level,
+            ch,
+            victim);
 
         return TRUE;
 }
