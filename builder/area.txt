@@ -958,6 +958,47 @@ fields can override the inherited defaults normally.
 
 Existing world death knights are not changed automatically.
 
+The vampire archetype is an intelligent corporeal undead humanoid:
+
+    < vampire~ common~
+
+Vampires keep normal humanoid anatomy, including their heart, brains and guts.
+They are not mindless or inorganic, and they regenerate much faster than
+ordinary mobiles.
+
+Their defaults are:
+
+    resistance:     RES_COLD | RES_ELECTRICITY | RES_DARK | RES_PSYCHIC
+    vulnerability:  RES_SILVER | RES_HOLY | RES_WATER
+    immunity:       RES_POISON | RES_SLEEP | RES_CHARM | RES_CURSE
+                    | RES_NONMAGIC
+
+Hold and paralysis are not resisted by the archetype.
+
+Ordinary nonmagical weapons cannot hurt a vampire, but silver is an exception.
+A mundane silver weapon can strike a vampire and receives the normal silver
+vulnerability bonus. Magical silver weapons receive the same vulnerability.
+
+Holy attacks are especially effective against vampires. Water-based attacks
+also use the vampire's water vulnerability.
+
+A blessed weapon gets the normal anti-undead bonus, but blessing alone does not
+make a mundane weapon magical. A mundane blessed weapon therefore still needs
+to be silver to get through the vampire's nonmagical immunity.
+
+The archetype does not yet supply a special function. Gaze charm, energy drain,
+gaseous form, shapechanging, sunlight weakness and other active vampire powers
+are added separately.
+
+Vampires feed on the life force carried in living blood. FEED therefore refuses
+a corpse marked ITEM_UNDEAD: any blood remaining in such a corpse no longer
+contains the living essence needed to nourish a vampire.
+
+Scribe selects the archetype with "archetype vampire". Individual mobile fields
+can override the inherited defaults normally.
+
+Existing world vampires are not changed automatically.
+
 The ghost archetype is currently a development-stage physiology template:
 
     < ghost~ common~
@@ -1069,8 +1110,11 @@ policy; other matching immunities still apply.
 Against a default semi-material ghost from the unphased side, mundane
 weapons are blocked by RES_NONMAGIC. Mundane silver is admitted at half
 damage. Magical weapons, including magical silver, receive normal
-treatment unless another configured response applies. Cold iron alone
-does not bypass the barrier.
+treatment unless another configured response applies.
+
+A material vulnerability can also overcome RES_NONMAGIC. For example, a
+cold-iron-vulnerable creature can be struck by a mundane cold-iron weapon.
+Cold iron does not otherwise bypass the semi-material barrier.
 
 These exceptions do not modify stored masks or make silver magical.
 Any other matching immunity still wins. The conditional silver

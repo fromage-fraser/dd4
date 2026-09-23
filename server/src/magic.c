@@ -338,7 +338,8 @@ RESISTANCE_RESULT get_contact_resistance_result(
         GHOST_PHASE attacker_phase;
         GHOST_PHASE target_phase;
         RESISTANCE_RESULT result;
-        bool silver_exception = FALSE;
+        unsigned long int material_vulnerability;
+        bool phase_material_exception = FALSE;
 
         if (!ch || !victim || ch->deleted || victim->deleted)
                 return RES_RESULT_IMMUNE;
@@ -351,54 +352,70 @@ RESISTANCE_RESULT get_contact_resistance_result(
         ||  attacker_phase > GHOST_PHASE_SEMI_MATERIAL
         ||  target_phase < GHOST_PHASE_NONE
         ||  target_phase > GHOST_PHASE_SEMI_MATERIAL)
+        {
                 return RES_RESULT_IMMUNE;
+        }
 
         /* Fully ethereal and unphased contacts cannot reach each other. */
         if ((attacker_phase == GHOST_PHASE_ETHEREAL
           && target_phase == GHOST_PHASE_NONE)
         ||  (target_phase == GHOST_PHASE_ETHEREAL
           && attacker_phase == GHOST_PHASE_NONE))
+        {
                 return RES_RESULT_IMMUNE;
+        }
 
         res_types &= RES_VALID_MASK;
+
+        material_vulnerability =
+            IS_NPC(victim)
+                ? victim->vulnerabilities
+                    & res_types
+                    & (RES_SILVER | RES_COLD_IRON)
+                : 0;
 
         /* Untyped physical contact must not bypass a phased target's barrier. */
         if (target_phase != GHOST_PHASE_NONE
         && !(res_types & (RES_MAGIC | RES_NONMAGIC)))
+        {
                 res_types |= RES_NONMAGIC;
+        }
 
-        /*
-         * The mundane-weapon barrier is still the existing NPC immunity.
-         * Remove its matching category from this local query only when
-         * contact is on a shared ethereal side, or admitted by silver.
-         */
-        if (target_phase != GHOST_PHASE_NONE
-        &&  IS_NPC(victim)
+        if (IS_NPC(victim)
         &&  (victim->immunes & RES_NONMAGIC)
         &&  (res_types & RES_NONMAGIC))
         {
-                if (attacker_phase != GHOST_PHASE_NONE)
+                /*
+                 * A material the creature is specifically vulnerable to can
+                 * penetrate its ordinary nonmagical-weapon immunity.
+                 */
+                if (target_phase == GHOST_PHASE_NONE)
+                {
+                        if (material_vulnerability)
+                                res_types &= ~(unsigned long int)RES_NONMAGIC;
+                }
+                else if (attacker_phase != GHOST_PHASE_NONE)
                 {
                         res_types &= ~(unsigned long int)RES_NONMAGIC;
                 }
                 else if (target_phase == GHOST_PHASE_SEMI_MATERIAL
-                     &&  (res_types & RES_SILVER)
-                     && !(res_types & RES_MAGIC))
+                     && !(res_types & RES_MAGIC)
+                     && ((res_types & RES_SILVER)
+                      || material_vulnerability))
                 {
                         res_types &= ~(unsigned long int)RES_NONMAGIC;
-                        silver_exception = TRUE;
+                        phase_material_exception = TRUE;
                 }
         }
 
         result = get_resistance_result(victim, res_types);
 
-        if (!silver_exception || result == RES_RESULT_IMMUNE)
+        if (!phase_material_exception || result == RES_RESULT_IMMUNE)
                 return result;
 
         /*
-         * Silver's admitted mundane contact contributes one resistance.
-         * Any matching vulnerability cancels it, even if another ordinary
-         * resistance also matches. Never apply a second damage multiplier.
+         * Mundane material contact through a semi-material target still
+         * carries the phase resistance. A matching vulnerability cancels it.
          */
         if (victim->vulnerabilities & res_types)
                 return RES_RESULT_NORMAL;

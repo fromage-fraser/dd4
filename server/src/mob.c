@@ -636,6 +636,32 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET
+        },
+        {
+                "vampire", "humanoid", "icon1", "icon2",
+
+                /* Physical, intelligent undead with fast regeneration. */
+                ACT_UNDEAD | ACT_REGENERATOR, 0,
+
+                0,
+                0,
+
+                RES_COLD | RES_ELECTRICITY | RES_DARK | RES_PSYCHIC,
+                RES_SILVER | RES_HOLY | RES_WATER,
+                RES_POISON | RES_SLEEP | RES_CHARM | RES_CURSE
+                    | RES_NONMAGIC,
+
+                0, 0, 0, 0,
+
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                /* Active vampire powers come separately. */
+                "", "", "",
+
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                MOB_TEMPLATE_UNSET
         }
 
 };
