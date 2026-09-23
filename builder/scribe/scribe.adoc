@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 22 September 2026._
+_AsciiDoc documentation update: 23 September 2026._
 
 === Contents
 
@@ -726,7 +726,7 @@ Accepted archetype names are:
 | `spectre` | Stronger supernatural undead spirit using the wraith passive spirit physiology, with stronger life drain and the same ethereal/semi-material phasing model.
 | `mummy` | Intelligent corporeal undead humanoid with dark resistance, holy and fire vulnerability, poison/sleep/drain immunity, and `spec_mummy` fear plus contact mummy rot.
 | `banshee` | Intelligent undead spirit with dark resistance, holy vulnerability, poison/sleep/drain/nonmagical immunity, a semi-material starting phase and `spec_banshee` wail.
-| `death_knight` | Intelligent corporeal undead warrior with dark resistance, holy vulnerability and poison/sleep/drain immunity. Active martial and spell behaviour is added separately.
+| `death_knight` | Intelligent corporeal undead warrior with dark resistance, holy vulnerability, poison/sleep/drain immunity and `spec_death_knight` martial/spell combat behaviour.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1676,15 +1676,20 @@ A death knight is an intelligent, corporeal undead warrior.
 | Vulnerability | `RES_HOLY`.
 | Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`.
 | Ghost phase | `none`.
-| Special | None yet.
-| XP | No archetype adjustment.
+| Special | `spec_death_knight`.
+| XP | No archetype adjustment; `spec_death_knight` adds +15%.
 |===
 
 Death knights are solid, physical undead. Ordinary weapons can hurt them and
 they leave a normal undead corpse when killed.
 
-Their planned martial and spellcasting behaviour will be added separately.
-The archetype itself does not add a combat special.
+`spec_death_knight` mixes martial attacks with a small spell list. About half
+of its special actions are physical attacks: shield smash when possible, kick,
+or an extra normal attack. The other half cast curse, chill touch or harm.
+Lower-level death knights fall back to weaker spells when necessary.
+
+In a `cone_of_silence` room, a spell action becomes an extra normal attack
+instead. The special does not use the old `spec_cast_undead` spell list.
 
 Individual mobile fields can override the inherited defaults in the usual way.
 Existing world death knights are not changed automatically.
@@ -2466,6 +2471,7 @@ spec_wraith life drain plus automatic ethereal/semi-material combat phasing
 spec_spectre stronger life drain plus automatic ethereal/semi-material combat phasing
 spec_mummy  combat fear plus weaponless-contact mummy rot
 spec_banshee combat wail that can force its opponent to flee
+spec_death_knight martial attacks mixed with curse, chill touch and harm
 spec_guard  cityguard
 spec_janitor    gathers rubbish from ground
 spec_poison poisonous bite [combat]

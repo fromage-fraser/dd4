@@ -936,8 +936,19 @@ Its defaults are:
 Death knights are not mindless and use normal humanoid anatomy. They are
 corporeal, so ordinary weapons can hurt them and they do not use ghost phases.
 
-The archetype does not yet supply a special function. Martial and spellcasting
-behaviour is added separately.
+The template supplies spec_death_knight.
+
+In combat, the special mixes martial attacks and spells. About half its actions
+are physical: a shield smash where possible, a kick, or an extra normal attack.
+
+Its spells are curse, chill touch and harm. Lower-level death knights use weaker
+spells until they are high enough level for the stronger ones.
+
+In a cone_of_silence room, a spell action becomes an extra normal attack
+instead.
+
+spec_death_knight adds +15 percent to the special-function XP calculation. The
+archetype itself adds no extra XP.
 
 Death knights leave a normal corpse when killed. The corpse is marked as
 coming from an undead creature.
@@ -3252,6 +3263,7 @@ give you some idea of their effects:
     spec_spectre
     spec_mummy
     spec_banshee
+    spec_death_knight
     spec_clan_guard
     spec_guard
     spec_janitor
