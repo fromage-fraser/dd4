@@ -611,6 +611,31 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_SEMI_MATERIAL
+        },
+        {
+                "death_knight", "humanoid", "icon1", "icon2",
+
+                /* Intelligent corporeal undead. */
+                ACT_UNDEAD, 0,
+
+                0,
+                0,
+
+                RES_DARK,
+                RES_HOLY,
+                RES_POISON | RES_SLEEP | RES_DRAIN,
+
+                0, 0, 0, 0,
+
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                /* Martial/spell behaviour comes separately. */
+                "", "", "",
+
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                MOB_TEMPLATE_UNSET
         }
 
 };

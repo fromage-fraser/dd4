@@ -29,6 +29,7 @@ _AsciiDoc documentation update: 22 September 2026._
 ** <<scribe-spectre-archetype,Spectre archetype>>
 ** <<scribe-mummy-archetype,Mummy archetype>>
 ** <<scribe-banshee-archetype,Banshee archetype>>
+** <<scribe-death-knight-archetype,Death knight archetype>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-mobile-mindlessness,Mindlessness>>
 ** <<scribe-mobile-stench,Carrion stench>>
@@ -725,6 +726,7 @@ Accepted archetype names are:
 | `spectre` | Stronger supernatural undead spirit using the wraith passive spirit physiology, with stronger life drain and the same ethereal/semi-material phasing model.
 | `mummy` | Intelligent corporeal undead humanoid with dark resistance, holy and fire vulnerability, poison/sleep/drain immunity, and `spec_mummy` fear plus contact mummy rot.
 | `banshee` | Intelligent undead spirit with dark resistance, holy vulnerability, poison/sleep/drain/nonmagical immunity, a semi-material starting phase and `spec_banshee` wail.
+| `death_knight` | Intelligent corporeal undead warrior with dark resistance, holy vulnerability and poison/sleep/drain immunity. Active martial and spell behaviour is added separately.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1650,6 +1652,42 @@ handling.
 
 Individual mobile fields can override the inherited defaults in the usual way.
 Existing world banshees are not changed automatically.
+
+[[scribe-death-knight-archetype]]
+===== Death knight archetype
+
+Use:
+
+[source,text]
+----
+archetype death_knight
+----
+
+A death knight is an intelligent, corporeal undead warrior.
+
+[cols="<2,<4",options="header"]
+|===
+| Property | Default
+| Body species | `humanoid`.
+| Classification | `ACT_UNDEAD`.
+| Mind | Intelligent; not `AFF_MINDLESS`.
+| Body | Normal humanoid anatomy.
+| Resistance | `RES_DARK`.
+| Vulnerability | `RES_HOLY`.
+| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`.
+| Ghost phase | `none`.
+| Special | None yet.
+| XP | No archetype adjustment.
+|===
+
+Death knights are solid, physical undead. Ordinary weapons can hurt them and
+they leave a normal undead corpse when killed.
+
+Their planned martial and spellcasting behaviour will be added separately.
+The archetype itself does not add a combat special.
+
+Individual mobile fields can override the inherited defaults in the usual way.
+Existing world death knights are not changed automatically.
 
 [[scribe-ghost-archetype]]
 ===== Ghost archetype: permanent physiology
