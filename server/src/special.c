@@ -3204,6 +3204,9 @@ bool spec_warrior( CHAR_DATA *ch )
 
 static bool vampire_suck_attack(CHAR_DATA *ch, CHAR_DATA *victim)
 {
+        int hit_before;
+        int deaths_before;
+
         if (!ch
         ||  !victim
         ||  ch->deleted
@@ -3229,11 +3232,17 @@ static bool vampire_suck_attack(CHAR_DATA *ch, CHAR_DATA *victim)
         act("$n lunges for your throat!",
             ch, NULL, victim, TO_VICT);
 
+        hit_before = victim->hit;
+        deaths_before = IS_NPC(victim) ? 0 : victim->pcdata->killed;
+
         if (!one_hit(ch, victim, gsn_suck, FALSE))
                 return TRUE;
+        }
 
-        /* Preserve the existing Vampire blood-point drain. */
-        if (!IS_NPC(victim)
+        if (!victim->deleted
+        &&  !IS_NPC(victim)
+        &&  victim->pcdata->killed == deaths_before
+        &&  victim->hit < hit_before
         &&  victim->sub_class == SUB_CLASS_VAMPIRE
         &&  (victim->rage / 10) > 0)
         {
@@ -3619,6 +3628,8 @@ bool spec_mast_vampire(CHAR_DATA *ch)
 bool spec_bloodsucker( CHAR_DATA *ch )
 {
         CHAR_DATA *victim;
+        int hit_before;
+        int deaths_before;
 
         if (!( victim = ch->fighting )
             || number_percent() < 50 )
@@ -3628,19 +3639,29 @@ bool spec_bloodsucker( CHAR_DATA *ch )
         act( "$n lunges at $N's neck!", ch, NULL, victim, TO_NOTVICT );
         act( "$n lunges at your neck!", ch, NULL, victim, TO_VICT    );
 
-        if (one_hit( ch, victim,gsn_suck, FALSE ))
+        hit_before = victim->hit;
+        deaths_before = IS_NPC(victim) ? 0 : victim->pcdata->killed;
+
+        if (one_hit(ch, victim, gsn_suck, FALSE))
         {
-                aggro_damage(ch, victim, ch->level);
-
-                /* Suck some bloodpoints if victim is a vampire --Owl 23/9/24 */
-
-                if ( !IS_NPC( victim )
-                && ( victim->sub_class == SUB_CLASS_VAMPIRE ) )
+                if (!ch->deleted
+                &&  !victim->deleted
+                &&  ch->in_room
+                &&  ch->in_room == victim->in_room
+                &&  (IS_NPC(victim)
+                  || victim->pcdata->killed == deaths_before))
                 {
-                    if ( ( victim->rage / 10 ) > 0 )
-                    {
-                        victim->rage -= ( victim->rage / 10 );
-                    }
+                        aggro_damage(ch, victim, ch->level);
+                }
+
+                if (!victim->deleted
+                &&  !IS_NPC(victim)
+                &&  victim->pcdata->killed == deaths_before
+                &&  victim->hit < hit_before
+                &&  victim->sub_class == SUB_CLASS_VAMPIRE
+                &&  (victim->rage / 10) > 0)
+                {
+                        victim->rage -= victim->rage / 10;
                 }
         }
 
