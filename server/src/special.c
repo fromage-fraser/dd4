@@ -3237,7 +3237,6 @@ static bool vampire_suck_attack(CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (!one_hit(ch, victim, gsn_suck, FALSE))
                 return TRUE;
-        }
 
         if (!victim->deleted
         &&  !IS_NPC(victim)
