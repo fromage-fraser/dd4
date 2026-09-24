@@ -662,6 +662,33 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET
+        },
+        {
+                "lich", "humanoid", "icon1", "icon2",
+
+                ACT_UNDEAD, 0,
+
+                /* Remove the humanoid organs; keep speech and limbs. */
+                BODY_NO_HEART | BODY_INORGANIC
+                    | PART_HEART | PART_BRAINS | PART_GUTS,
+                0,
+
+                RES_DARK,
+                RES_HOLY,
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_CHARM
+                    | RES_COLD | RES_ELECTRICITY | RES_NONMAGIC,
+
+                0, 0, 0, 0,
+
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                /* Spellcasting gets its own special later. */
+                "", "", "",
+
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                MOB_TEMPLATE_UNSET
         }
 
 };

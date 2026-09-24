@@ -31,6 +31,7 @@ _AsciiDoc documentation update: 23 September 2026._
 ** <<scribe-banshee-archetype,Banshee archetype>>
 ** <<scribe-death-knight-archetype,Death knight archetype>>
 ** <<scribe-vampire-archetype,Vampire archetype>>
+** <<scribe-lich-archetype,Lich archetype>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-mobile-mindlessness,Mindlessness>>
 ** <<scribe-mobile-stench,Carrion stench>>
@@ -729,6 +730,7 @@ Accepted archetype names are:
 | `banshee` | Intelligent undead spirit with dark resistance, holy vulnerability, poison/sleep/drain/nonmagical immunity, a semi-material starting phase and `spec_banshee` wail.
 | `death_knight` | Intelligent corporeal undead warrior with dark resistance, holy vulnerability, poison/sleep/drain immunity and `spec_death_knight` martial/spell combat behaviour.
 | `vampire` | Corporeal vampire with fast regeneration, cold/electricity/dark/psychic resistance, silver/holy/water vulnerability, and immunity to poison, sleep, charm, curse and ordinary nonmagical weapons. `spec_vampire` supplies a blood-draining bite and hypnotic gaze.
+| `lich` | An intelligent, physical undead creature with no living heart, brain or guts. It resists dark power, is vulnerable to holy power, and is immune to poison, sleep, drain, charm, cold, electricity and ordinary nonmagical weapons. Its spellcasting special comes later.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1751,8 +1753,8 @@ Vampires regenerate faster than ordinary mobiles.
 `spec_vampire` keeps the regular vampire dangerous without giving a common
 mid-level mob the extra `aggro_damage()` formerly attached to its bite. Half of
 its special choices make a `gsn_suck` bite using the normal combat damage
-pipeline. A successful bite also removes 10% of a Vampire player's current
-blood pool, as the older master-vampire special already did.
+pipeline. When the bite actually lowers a Vampire player’s hit points, it also
+removes 10% of their current blood pool.
 
 One quarter of its special choices attempt a hypnotic gaze. Mindless, blind,
 eyeless and object targets cannot be caught by it. The target resists with
@@ -1774,6 +1776,34 @@ escape behaviour remain separate work.
 
 Individual mobile fields can override the inherited defaults in the usual way.
 Existing world vampires are not changed automatically.
+
+[[scribe-lich-archetype]]
+===== Lich archetype
+
+Use:
+
+[source,text]
+----
+archetype lich
+----
+
+A lich is an intelligent undead spellcaster with a physical, bloodless body.
+It can still see, speak, carry equipment and use its limbs, but it has no
+living heart, brain or guts. It is not mindless and does not move through
+ghost phases.
+
+A lich resists dark effects and is especially vulnerable to holy power.
+Poison, sleep, life drain, charm, cold and electricity do not affect it.
+Ordinary nonmagical weapons cannot hurt it, but magical weapons use the
+normal combat rules. This archetype does not add hold or paralysis immunity.
+
+The archetype does not make a lich cast spells yet. We will give it a dedicated
+special in the next chunk. A mobile with an explicitly assigned special keeps
+that choice, and existing world liches are not changed just because their
+names contain "lich".
+
+When a lich is killed, it leaves a corpse marked as undead. Phylacteries and
+returning after death are separate work.
 
 [[scribe-ghost-archetype]]
 ===== Ghost archetype: permanent physiology

@@ -989,8 +989,8 @@ The template supplies spec_vampire.
 
 In combat, half of its special choices make a blood-draining bite using the
 normal suck attack. This is a normal combat hit; it does not add aggro damage.
-If the victim is a Vampire player, a successful bite also removes 10 percent
-of their current blood points.
+If the target is a Vampire player, they lose 10 percent of their current blood
+points only when the bite actually lowers their hit points.
 
 One quarter of its special choices use a hypnotic gaze. Objects, mindless
 creatures, blind targets and creatures without eyes cannot be caught by it.
@@ -1021,6 +1021,26 @@ Scribe selects the archetype with "archetype vampire". Individual mobile fields
 can override the inherited defaults normally.
 
 Existing world vampires are not changed automatically.
+
+The lich archetype gives an intelligent undead caster a physical, bloodless
+body:
+
+    < lich~ common~
+
+A lich can still see, speak and use equipment, even though its heart, brain
+and guts are gone. It is not mindless and does not move through ghost phases.
+
+It resists dark effects and is especially vulnerable to holy power. Poison,
+sleep, life drain, charm, cold and electricity do not affect it. Ordinary
+nonmagical weapons cannot hurt it, while magical weapons use the normal
+combat rules. This archetype does not add hold or paralysis immunity.
+
+The archetype does not supply a special function yet. Existing mobiles keep
+any special you explicitly gave them, and named liches elsewhere in the
+world are not changed automatically.
+
+A killed lich leaves a corpse marked as undead. Phylacteries and returning
+after death are separate work.
 
 The ghost archetype is currently a development-stage physiology template:
 
