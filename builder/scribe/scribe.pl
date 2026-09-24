@@ -57,6 +57,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         banshee
         death_knight
         vampire
+        lich
 /;
 
 my %mob_act = (
