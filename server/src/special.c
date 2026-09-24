@@ -3202,68 +3202,139 @@ bool spec_warrior( CHAR_DATA *ch )
         return FALSE;
 }
 
-
-bool spec_vampire( CHAR_DATA *ch )
+static bool vampire_suck_attack(CHAR_DATA *ch, CHAR_DATA *victim)
 {
-        CHAR_DATA *victim;
-        int        sn;
-
-        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        if (!ch
+        ||  !victim
+        ||  ch->deleted
+        ||  victim->deleted
+        ||  !ch->in_room
+        ||  ch->in_room != victim->in_room
+        ||  ch->position == POS_DEAD
+        ||  victim->position == POS_DEAD)
         {
-                if (victim->deleted)
-                        continue;
-
-                if (victim->fighting == ch && !number_bits(1))
-                        break;
+                return FALSE;
         }
 
-        if (!victim)
+        if ((IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        ||  (IS_NPC(victim) && IS_INORGANIC(victim)))
+        {
                 return FALSE;
+        }
+
+        act("You lunge for $N's throat!",
+            ch, NULL, victim, TO_CHAR);
+        act("$n lunges for $N's throat!",
+            ch, NULL, victim, TO_NOTVICT);
+        act("$n lunges for your throat!",
+            ch, NULL, victim, TO_VICT);
+
+        if (!one_hit(ch, victim, gsn_suck, FALSE))
+                return TRUE;
+
+        /* Preserve the existing Vampire blood-point drain. */
+        if (!IS_NPC(victim)
+        &&  victim->sub_class == SUB_CLASS_VAMPIRE
+        &&  (victim->rage / 10) > 0)
+        {
+                victim->rage -= victim->rage / 10;
+        }
+
+        return TRUE;
+}
+
+static bool vampire_gaze(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        if (!ch
+        ||  !victim
+        ||  ch->deleted
+        ||  victim->deleted
+        ||  !ch->in_room
+        ||  ch->in_room != victim->in_room
+        ||  ch->position == POS_DEAD
+        ||  victim->position == POS_DEAD)
+        {
+                return FALSE;
+        }
+
+        if ((IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        ||  is_mindless(victim)
+        ||  IS_AFFECTED(ch, AFF_BLIND)
+        ||  IS_AFFECTED(victim, AFF_BLIND)
+        ||  (IS_NPC(victim) && !HAS_EYES(victim)))
+        {
+                return FALSE;
+        }
+
+        act("$n fixes $N with an unnatural, hypnotic stare.",
+            ch, NULL, victim, TO_NOTVICT);
+        act("$n fixes you with an unnatural, hypnotic stare.",
+            ch, NULL, victim, TO_VICT);
+        act("You fix $N with your hypnotic stare.",
+            ch, NULL, victim, TO_CHAR);
+
+        if (saves_resistance_effect(
+                ch->level,
+                victim,
+                RES_CHARM | RES_PSYCHIC))
+        {
+                act("You tear your eyes away from $n's gaze.",
+                    ch, NULL, victim, TO_VICT);
+                act("$N resists your gaze.",
+                    ch, NULL, victim, TO_CHAR);
+                return TRUE;
+        }
+
+        act("For a moment, you can do nothing but stare into $n's eyes.",
+            ch, NULL, victim, TO_VICT);
+
+        WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
+
+        return TRUE;
+}
+
+bool spec_vampire(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!ch
+        ||  !IS_NPC(ch)
+        ||  ch->deleted
+        ||  !ch->in_room
+        ||  ch->position == POS_DEAD
+        ||  !IS_AWAKE(ch)
+        ||  ch->wait > 0
+        ||  IS_AFFECTED(ch, AFF_CHARM)
+        ||  IS_AFFECTED(ch, AFF_HOLD)
+        ||  IS_AFFECTED(ch, AFF_DAZED))
+        {
+                return FALSE;
+        }
+
+        victim = ch->fighting;
+
+        if (!victim
+        ||  victim->deleted
+        ||  victim->in_room != ch->in_room
+        ||  victim->hit <= 0
+        ||  victim->position == POS_DEAD)
+        {
+                return FALSE;
+        }
 
         switch (number_bits(2))
         {
-            case 0:
-            case 1:
-                act("$c lunges for your neck!  You feel a sharp pain.",
-                    ch, NULL, NULL, TO_ROOM );
+        case 0:
+        case 1:
+                return vampire_suck_attack(ch, victim);
 
-                if (one_hit(ch, victim, gsn_suck, FALSE))
-                {
-                        aggro_damage(ch, victim, ch->level);
-                        /* Suck some bloodpoints if victim is a vampire --Owl 23/9/24 */
+        case 2:
+                return vampire_gaze(ch, victim);
 
-                        if ( !IS_NPC( victim )
-                        && ( victim->sub_class == SUB_CLASS_VAMPIRE ) )
-                        {
-                            if ( ( victim->rage / 10 ) > 0 )
-                            {
-                                victim->rage -= ( victim->rage / 10 );
-                            }
-                        }
-                }
-
-                return TRUE;
-
-            case 2:
-                if ((sn = skill_lookup("fireball")) < 0)
-                        return FALSE;
-
-                if ( CAN_SPEAK(ch) ) { do_say(ch, "Burn in fiery hell!"); }
-                (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
-                return TRUE;
-
-            case 3:
-                if ((sn = skill_lookup("acid blast")) < 0)
-                        return FALSE;
-
-                act("Acid streams from $n!", ch, NULL, NULL, TO_ROOM);
-                (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
-                return TRUE;
+        default:
+                return FALSE;
         }
-
-        return FALSE;
 }
-
 
 bool spec_cast_archmage (CHAR_DATA *ch)
 {
@@ -3503,23 +3574,15 @@ bool spec_mast_vampire(CHAR_DATA *ch)
         {
             case 0:
             case 1:
-                if ( CAN_SPEAK(ch) ) {
-                    act("$n screams, 'The streets will run red with your {Rblood{x!'",
-                    ch, NULL, NULL, TO_ROOM);
-                    }
+                if (CAN_SPEAK(ch))
+                {
+                        act("$n screams, 'The streets will run red with your {Rblood{x!'",
+                            ch, NULL, NULL, TO_ROOM);
+                }
 
-                    one_hit(ch, victim, gsn_suck, FALSE);
+                if (!vampire_suck_attack(ch, victim))
+                        return FALSE;
 
-                    /* Suck some bloodpoints if victim is a vampire --Owl 23/9/24 */
-
-                    if ( !IS_NPC( victim )
-                    && ( victim->sub_class == SUB_CLASS_VAMPIRE ) )
-                    {
-                        if ( ( victim->rage / 10 ) > 0 )
-                        {
-                            victim->rage -= ( victim->rage / 10 );
-                        }
-                    }
                 break;
 
             case 2:
