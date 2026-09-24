@@ -656,8 +656,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
 
-                /* Active vampire powers come separately. */
-                "", "", "",
+                /* Blood-draining bite and hypnotic gaze. */
+                "spec_vampire", "", "",
 
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,

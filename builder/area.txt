@@ -975,24 +975,47 @@ Their defaults are:
 
 Hold and paralysis are not resisted by the archetype.
 
-Ordinary nonmagical weapons cannot hurt a vampire, but silver is an exception.
-A mundane silver weapon can strike a vampire and receives the normal silver
-vulnerability bonus. Magical silver weapons receive the same vulnerability.
+Ordinary nonmagical weapons cannot hurt a vampire, but a material the vampire
+is vulnerable to can get through that immunity. A mundane silver weapon can
+therefore hurt a vampire and receives the normal silver vulnerability bonus.
 
 Holy attacks are especially effective against vampires. Water-based attacks
-also use the vampire's water vulnerability.
+use the vampire's water vulnerability.
 
 A blessed weapon gets the normal anti-undead bonus, but blessing alone does not
-make a mundane weapon magical. A mundane blessed weapon therefore still needs
-to be silver to get through the vampire's nonmagical immunity.
+make a mundane weapon magical.
 
-The archetype does not yet supply a special function. Gaze charm, energy drain,
-gaseous form, shapechanging, sunlight weakness and other active vampire powers
-are added separately.
+The template supplies spec_vampire.
 
-Vampires feed on the life force carried in living blood. FEED therefore refuses
-a corpse marked ITEM_UNDEAD: any blood remaining in such a corpse no longer
-contains the living essence needed to nourish a vampire.
+In combat, half of its special choices make a blood-draining bite using the
+normal suck attack. This is a normal combat hit; it does not add aggro damage.
+If the victim is a Vampire player, a successful bite also removes 10 percent
+of their current blood points.
+
+One quarter of its special choices use a hypnotic gaze. Objects, mindless
+creatures, blind targets and creatures without eyes cannot be caught by it.
+The target resists with:
+
+    RES_CHARM | RES_PSYCHIC
+
+A failed save costs the victim two combat pulses of action.
+
+The remaining quarter produces no special action.
+
+The old fireball and acid-blast choices are no longer part of spec_vampire.
+
+spec_mast_vampire uses the same suck attack for its bite, while retaining its
+stronger fear and prismatic-spray behaviour.
+
+spec_vampire receives the normal +10 percent special-function XP contribution.
+The vampire archetype itself adds no extra XP.
+
+Vampires feed on the life force carried in living blood. FEED refuses a corpse
+marked ITEM_UNDEAD because any blood remaining in it no longer contains the
+living essence needed to nourish a vampire.
+
+Sunlight damage, gaseous form, bat shape and other vampire transformations are
+handled separately.
 
 Scribe selects the archetype with "archetype vampire". Individual mobile fields
 can override the inherited defaults normally.
