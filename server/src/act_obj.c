@@ -5021,7 +5021,7 @@ void do_smoke(CHAR_DATA *ch, char *argument)
 
                 /* Some random 'colour' effects */
 
-                r_20 = rand() % 20 + 1;
+                r_20 = number_range(1, 20);
 
                 switch (r_20)
                 {
@@ -5101,7 +5101,7 @@ void do_smoke(CHAR_DATA *ch, char *argument)
 
         /* pipe benefit reduction  (1-5% randomly of max_benefit (pipe->value[1]) )*/
 
-        r_5 = rand() % 5 + 1;
+        r_5 = number_range(1, 5);
 
         benefit_reduction = rintf(((float)pipe->value[1] * (float)100) * (float)r_5 / (float)10000);
 

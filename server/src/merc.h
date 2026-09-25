@@ -24,6 +24,7 @@
 #include <unistd.h>
 #define _XOPEN_SOURCE
 #include "protocol.h"
+#include "rng.h"
 
 /*
  * Accommodate old non-Ansi compilers.
@@ -5428,11 +5429,6 @@ void free_mem args((void *pMem, int sMem));
 char *str_dup args((const char *str));
 void free_string args((char *pstr));
 int number_fuzzy args((int number));
-int number_range args((int from, int to));
-int number_percent args((void));
-int number_door args((void));
-int number_bits args((int width));
-int number_mm args((void));
 int dice args((int number, int size));
 int interpolate args((int level, int value_00, int value_32));
 void smash_tilde args((char *str));
@@ -5808,13 +5804,6 @@ bool room_has_other_buried_hoard(ROOM_INDEX_DATA *room, OBJ_DATA *exclude);
 void maybe_arm_hoard_trap(OBJ_DATA *hoard, int level);
 int roll_hoard_trap_type(int for_level);
 
-/* twister.c */
-#ifndef __MTWISTER_H
-#define __MTWISTER_H
-
-#define STATE_VECTOR_LENGTH 624
-#define STATE_VECTOR_M 397 /* changes to STATE_VECTOR_LENGTH also require changes to this */
-
 /* write_json.c */
 void json_write_status();
 void json_write_who();
@@ -5825,18 +5814,6 @@ void json_write_races();
 
 /* webgate.c */
 void webgate_send_char_enemies_for_desc args((DESCRIPTOR_DATA * mud_desc));
-
-typedef struct tagMTRand
-{
-        unsigned long mt[STATE_VECTOR_LENGTH];
-        int index;
-} MTRand;
-
-MTRand seedRand(unsigned long seed);
-unsigned long genRandLong(MTRand *rand);
-double genRand(MTRand *rand);
-
-#endif /* #ifndef __MTWISTER_H */
 
 #undef CD
 #undef MID

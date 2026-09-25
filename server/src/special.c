@@ -4661,7 +4661,7 @@ bool spec_superwimpy( CHAR_DATA *ch )
                         stopped_fight = TRUE;
                         for (i = 0;i <=3; i++)
                         {
-                                door = rand() % 5;
+                                door = number_door();
                                 if ( (door <= 5)
                                 && (pexit = ch->in_room->exit[door])
                                 && pexit->to_room
