@@ -1079,13 +1079,39 @@ combat rules. Set any resistance or immunity inherited from its former
 dragon type on the individual mobile; the archetype does not guess its
 colour or breath.
 
-This is the passive template only. It supplies no breath, gaze, spellcasting
-special or extra archetype XP yet. A killed dracolich leaves a corpse marked
-as undead. A spirit host and returning after death are separate work.
+The archetype supplies spec_dracolich. In combat it usually casts from the
+lich spell list. On 20 percent of the turns when that special is selected, it
+tries a paralysing gaze instead. The opponent needs working eyes and must not
+already be held. An invisible opponent can still be affected. The gaze uses a
+paralysis save, does no damage and works in a cone_of_silence room; spells do
+not. If the gaze cannot be used, the dracolich tries a spell.
 
-Scribe selects it with "archetype dracolich". Individual mobile fields can
-override inherited defaults normally. Existing world dracoliches, including
-Wyrenthoth, and existing living dragons are not changed automatically.
+The special has a +15 percent XP value when it is the only special. If you add
+a breath special, the usual weighted special-XP calculation applies. The
+archetype has no separate XP adjustment.
+
+Choose the breath of the original dragon on each individual mobile. For
+example, a former fire-breathing dragon can use:
+
+    archetype dracolich
+    sp2 spec_breath_fire
+    spchance auto
+
+That keeps spec_dracolich in slot 1 and puts fire breath in slot 2, with half
+the special opportunities going to each. Other dragons should use their own
+appropriate breath special. spec_breath_any chooses randomly, so it is not a
+replacement for a known original breath. Set any original elemental defences
+on the individual mobile as well. A standalone sp replaces the whole inherited
+special set, so do not use it unless you mean to remove spec_dracolich.
+
+A successful gaze save does not yet make that target permanently immune to
+this dracolich's gaze. Breath keeps DD4's existing dragon-breath timing; this
+chunk adds no new cooldown. Chilling or paralysing contact, the fear aura, a
+spirit host and return after death are separate work.
+
+A killed dracolich leaves a corpse marked as undead. Existing world
+dracoliches, including Wyrenthoth, and existing living dragons are not changed
+automatically.
 
 The ghost archetype is currently a development-stage physiology template:
 

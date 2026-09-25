@@ -75,6 +75,7 @@ DECLARE_SPEC_FUN( spec_mummy                );
 DECLARE_SPEC_FUN( spec_banshee              );
 DECLARE_SPEC_FUN( spec_death_knight         );
 DECLARE_SPEC_FUN( spec_lich                 );
+DECLARE_SPEC_FUN( spec_dracolich            );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
@@ -156,6 +157,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_banshee"))              return spec_banshee;
         if (!str_cmp(name, "spec_death_knight"))         return spec_death_knight;
         if (!str_cmp(name, "spec_lich"))                 return spec_lich;
+        if (!str_cmp(name, "spec_dracolich"))            return spec_dracolich;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
@@ -240,6 +242,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_banshee) return "spec_banshee";
         if (special == spec_death_knight) return "spec_death_knight";
         if (special == spec_lich) return "spec_lich";
+        if (special == spec_dracolich) return "spec_dracolich";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
@@ -1803,6 +1806,91 @@ bool spec_lich(CHAR_DATA *ch)
             ch->level,
             ch,
             victim);
+
+        return TRUE;
+}
+
+#define DRACOLICH_GAZE_CHANCE 20
+
+/* The gaze works even when silence prevents the lich spells. */
+bool spec_dracolich(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        AFFECT_DATA af;
+
+        if (!ch
+        ||  !IS_NPC(ch)
+        ||  ch->deleted
+        ||  !ch->in_room
+        ||  ch->hit <= 0
+        ||  ch->position < POS_FIGHTING
+        ||  !IS_AWAKE(ch)
+        ||  ch->wait > 0
+        ||  IS_AFFECTED(ch, AFF_CHARM)
+        ||  IS_AFFECTED(ch, AFF_HOLD)
+        ||  IS_AFFECTED(ch, AFF_DAZED)
+        ||  IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                return FALSE;
+        }
+
+        victim = ch->fighting;
+
+        if (!victim
+        ||  victim == ch
+        ||  victim->deleted
+        ||  victim->in_room != ch->in_room
+        ||  victim->hit <= 0
+        ||  victim->position == POS_DEAD)
+        {
+                return FALSE;
+        }
+
+        if (number_percent() > DRACOLICH_GAZE_CHANCE)
+                return spec_lich(ch);
+
+        /*
+         * No can_see() check: an invisible opponent can still see the gaze.
+         */
+        if (IS_AFFECTED(ch, AFF_BLIND)
+        ||  IS_AFFECTED(victim, AFF_BLIND)
+        ||  (IS_NPC(victim) && !HAS_EYES(victim))
+        ||  (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        ||  IS_AFFECTED(victim, AFF_HOLD))
+        {
+                return spec_lich(ch);
+        }
+
+        act("The light in $n's empty eye sockets fixes on $N.",
+            ch, NULL, victim, TO_NOTVICT);
+        act("The light in $n's empty eye sockets fixes on you.",
+            ch, NULL, victim, TO_VICT);
+        act("You fix $N with your paralysing gaze.",
+            ch, NULL, victim, TO_CHAR);
+
+        if (saves_resistance_effect(ch->level, victim, RES_PARALYSIS))
+        {
+                act("You resist $n's paralysing gaze.",
+                    ch, NULL, victim, TO_VICT);
+                act("$N resists your gaze.",
+                    ch, NULL, victim, TO_CHAR);
+                return TRUE;
+        }
+
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_paralysis;
+        af.duration = 1 + ch->level / 15;
+        af.location = APPLY_NONE;
+        af.modifier = 0;
+        af.bitvector = AFF_HOLD;
+        affect_to_char(victim, &af);
+
+        act("$N goes rigid under your gaze.",
+            ch, NULL, victim, TO_CHAR);
+        act("Your muscles lock under $n's gaze!",
+            ch, NULL, victim, TO_VICT);
+        act("$N goes rigid under $n's gaze.",
+            ch, NULL, victim, TO_NOTVICT);
 
         return TRUE;
 }
