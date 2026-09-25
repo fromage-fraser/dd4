@@ -101,6 +101,12 @@ int number_door(void)
         return (int)rng_uniform(6);
 }
 
+/* A uniform fraction from zero up to, but not including, one. */
+double rng_unit(void)
+{
+        return (double)rng_u32() / 4294967296.0;
+}
+
 /*
  * Return 0 through (2^width - 1), inclusive. Width must be 0..31.
  */

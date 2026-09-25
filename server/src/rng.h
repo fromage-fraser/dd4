@@ -7,5 +7,6 @@ int number_range(int from, int to);
 int number_percent(void);
 int number_door(void);
 int number_bits(int width);
+double rng_unit(void);
 
 #endif
