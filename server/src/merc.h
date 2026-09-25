@@ -5682,6 +5682,7 @@ bool is_ghoul_paralysis args((const AFFECT_DATA *paf));
 void update_ghoul_paralysis args((void));
 void ghoul_touch_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
 void mummy_rot_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim));
+void dracolich_paralysis_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool is_stench_exposure args((const AFFECT_DATA *paf));
 void clear_stench_exposure args((CHAR_DATA *ch, bool notify));
 void update_stench args((void));

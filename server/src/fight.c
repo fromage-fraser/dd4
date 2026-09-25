@@ -1616,6 +1616,25 @@ void damage_with_resistance_types(
             FALSE);
 }
 
+static bool dracolich_natural_attack(CHAR_DATA *ch, int dt)
+{
+        unsigned long int parts;
+
+        if (!ch
+        ||  !IS_NPC(ch)
+        ||  ch->deleted
+        ||  !mob_has_special(ch, spec_lookup("spec_dracolich")))
+        {
+                return FALSE;
+        }
+
+        parts = mob_usable_attack_parts(ch);
+
+        return (dt == TYPE_HIT + 5  && (parts & PART_CLAWS))
+            || (dt == TYPE_HIT + 10 && (parts & PART_FANGS))
+            || (dt == TYPE_HIT + 7  && (parts & PART_TAILATTACK));
+}
+
 static void damage_internal(CHAR_DATA *ch,
                             CHAR_DATA *victim,
                             int dam,
@@ -1634,6 +1653,8 @@ static void damage_internal(CHAR_DATA *ch,
         bool crit = FALSE;
         RESISTANCE_RESULT resistance_result;
         resistance_result = RES_RESULT_NORMAL;
+        bool dracolich_contact = FALSE;
+        int cold_bonus;
 
         if (victim->position == POS_DEAD)
                 return;
@@ -1666,6 +1687,33 @@ static void damage_internal(CHAR_DATA *ch,
         {
                 dam = apply_resistance_result_to_damage(
                     dam, resistance_result);
+        }
+
+        /*
+         * Add the chill after physical-contact resistance, but before
+         * ordinary combat defences. A blocked hit still deals nothing.
+         */
+        if (natural_contact
+        &&  physical_contact
+        &&  dam > 0
+        &&  victim != ch
+        &&  !(IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        &&  dracolich_natural_attack(ch, dt))
+        {
+                dracolich_contact = TRUE;
+                cold_bonus = dice(2, 8);
+
+                cold_bonus = apply_resistance_result_to_damage(
+                    cold_bonus,
+                    get_resistance_result(victim, RES_COLD));
+
+                if (is_affected(victim, gsn_resist_cold))
+                        cold_bonus /= 2;
+
+                if (cold_bonus > INT_MAX - dam)
+                        dam = INT_MAX;
+                else
+                        dam += cold_bonus;
         }
 
         if (!IS_NPC(ch))
@@ -2091,6 +2139,9 @@ static void damage_internal(CHAR_DATA *ch,
         {
                 ghoul_touch_after_hit(ch, victim, dt);
                 mummy_rot_after_hit(ch, victim);
+
+                if (dracolich_contact)
+                        dracolich_paralysis_after_hit(ch, victim);
         }
         /*
          * Pressure-point paralysis follows an actual damaging hit.

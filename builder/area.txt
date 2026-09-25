@@ -1090,6 +1090,18 @@ The special has a +15 percent XP value when it is the only special. If you add
 a breath special, the usual weighted special-XP calculation applies. The
 archetype has no separate XP adjustment.
 
+When spec_dracolich is enabled, an unarmed claw, bite or tail hit that actually
+hurts also carries a chill. The hit gains 2d8 cold damage, adjusted for the
+target's cold defences. It can also paralyse the target for 2d6 combat rounds
+on a failed paralysis save. Cold immunity stops the extra damage but not the
+paralysis. Paralysis immunity stops the paralysis but not the cold. A target
+already held is not paralysed again.
+
+These contact effects do not take a special turn. Adding a breath special in
+slot 2 does not halve their chance: they work on every qualifying natural hit
+while spec_dracolich remains enabled. A miss, blocked or zero-damage hit, or
+an attack with a weapon has no contact effect.
+
 Choose the breath of the original dragon on each individual mobile. For
 example, a former fire-breathing dragon can use:
 
@@ -1106,8 +1118,8 @@ special set, so do not use it unless you mean to remove spec_dracolich.
 
 A successful gaze save does not yet make that target permanently immune to
 this dracolich's gaze. Breath keeps DD4's existing dragon-breath timing; this
-chunk adds no new cooldown. Chilling or paralysing contact, the fear aura, a
-spirit host and return after death are separate work.
+chunk adds no new cooldown. The fear aura, undead control, a spirit host and
+return after death are separate work.
 
 A killed dracolich leaves a corpse marked as undead. Existing world
 dracoliches, including Wyrenthoth, and existing living dragons are not changed

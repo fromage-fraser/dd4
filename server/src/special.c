@@ -1895,6 +1895,56 @@ bool spec_dracolich(CHAR_DATA *ch)
         return TRUE;
 }
 
+/* Shares the existing combat-round paralysis marker with ghoul contact. */
+void dracolich_paralysis_after_hit(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        AFFECT_DATA af;
+
+        if (!ch
+        ||  !victim
+        ||  ch == victim
+        ||  !IS_NPC(ch)
+        ||  ch->deleted
+        ||  victim->deleted
+        ||  !ch->in_room
+        ||  ch->in_room != victim->in_room
+        ||  ch->hit <= 0
+        ||  victim->hit <= 0
+        ||  ch->position == POS_DEAD
+        ||  victim->position == POS_DEAD
+        ||  gsn_paralysis < 0
+        ||  gsn_paralysis >= MAX_SKILL
+        ||  !mob_has_special(ch, spec_dracolich))
+        {
+                return;
+        }
+
+        if ((IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        ||  IS_AFFECTED(victim, AFF_HOLD)
+        ||  is_affected(victim, gsn_paralysis))
+        {
+                return;
+        }
+
+        if (saves_resistance_effect(ch->level, victim, RES_PARALYSIS))
+                return;
+
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_paralysis;
+        af.duration = dice(2, 6);
+        af.location = APPLY_NONE;
+        af.modifier = 0;
+        af.bitvector = AFF_HOLD | AFF_DAZED;
+        affect_to_char(victim, &af);
+
+        act("$N stiffens under your paralysing touch.",
+            ch, NULL, victim, TO_CHAR);
+        act("Your limbs stiffen under $n's paralysing touch!",
+            ch, NULL, victim, TO_VICT);
+        act("$N stiffens under $n's paralysing touch.",
+            ch, NULL, victim, TO_NOTVICT);
+}
+
 /*
  * Passive carrion stench. AFF_STENCH belongs to the emitter; exposure
  * uses an ordinary, flag-free affect so targets never become emitters.
