@@ -710,7 +710,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET
         },
-                {
+        {
                 "dracolich", "dragon", "icon1", "icon2",
 
                 ACT_UNDEAD, 0,
@@ -730,7 +730,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
 
-                "", "", "",
+                "spec_dracolich", "", "",
 
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
@@ -3278,6 +3278,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_banshee", 15 },
                 { "spec_death_knight", 15 },
                 { "spec_lich", 15 },
+                { "spec_dracolich", 15 },
                 { "spec_demon", 15 },
                 { "spec_cast_electric", 15 },
                 { "spec_assassin", 15 },
