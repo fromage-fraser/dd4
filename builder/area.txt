@@ -1035,12 +1035,19 @@ sleep, life drain, charm, cold and electricity do not affect it. Ordinary
 nonmagical weapons cannot hurt it, while magical weapons use the normal
 combat rules. This archetype does not add hold or paralysis immunity.
 
-The archetype does not supply a special function yet. Existing mobiles keep
-any special you explicitly gave them, and named liches elsewhere in the
-world are not changed automatically.
+The template supplies spec_lich. When its combat special runs, it casts at the
+opponent it is already fighting. It can use curse from the start, chill touch
+at level 6, blindness at level 9, fireball at level 15 and acid blast at level
+25. It will not try to curse someone already cursed, or blind someone already
+blind or without eyes.
 
-A killed lich leaves a corpse marked as undead. Phylacteries and returning
-after death are separate work.
+A lich cannot use this special while held, dazed, unable to act, non-corporeal
+or in a cone_of_silence room. If it cannot cast, ordinary combat continues.
+
+spec_lich adds +15 percent to the special-function XP calculation. The
+archetype itself adds no extra XP. Existing mobiles keep any special you
+explicitly gave them, and named liches elsewhere in the world are not changed
+automatically.
 
 The ghost archetype is currently a development-stage physiology template:
 
@@ -3351,6 +3358,7 @@ give you some idea of their effects:
     spec_mummy
     spec_banshee
     spec_death_knight
+    spec_lich
     spec_clan_guard
     spec_guard
     spec_janitor
