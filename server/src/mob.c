@@ -683,8 +683,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
 
-                /* Spellcasting gets its own special later. */
-                "", "", "",
+                /* Casts at its current opponent. */
+                "spec_lich", "", "",
 
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
@@ -3232,6 +3232,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_mummy", 15 },
                 { "spec_banshee", 15 },
                 { "spec_death_knight", 15 },
+                { "spec_lich", 15 },
                 { "spec_demon", 15 },
                 { "spec_cast_electric", 15 },
                 { "spec_assassin", 15 },

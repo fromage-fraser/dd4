@@ -74,6 +74,7 @@ DECLARE_SPEC_FUN( spec_spectre              );
 DECLARE_SPEC_FUN( spec_mummy                );
 DECLARE_SPEC_FUN( spec_banshee              );
 DECLARE_SPEC_FUN( spec_death_knight         );
+DECLARE_SPEC_FUN( spec_lich                 );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
@@ -154,6 +155,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_mummy"))                return spec_mummy;
         if (!str_cmp(name, "spec_banshee"))              return spec_banshee;
         if (!str_cmp(name, "spec_death_knight"))         return spec_death_knight;
+        if (!str_cmp(name, "spec_lich"))                 return spec_lich;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
@@ -237,6 +239,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_mummy) return "spec_mummy";
         if (special == spec_banshee) return "spec_banshee";
         if (special == spec_death_knight) return "spec_death_knight";
+        if (special == spec_lich) return "spec_lich";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
@@ -1709,6 +1712,84 @@ bool spec_death_knight(CHAR_DATA *ch)
         }
 
         sn = skill_lookup(spell);
+
+        if (sn < 0
+        ||  sn >= MAX_SKILL
+        ||  !skill_table[sn].spell_fun)
+        {
+                return FALSE;
+        }
+
+        (*skill_table[sn].spell_fun)(
+            sn,
+            ch->level,
+            ch,
+            victim);
+
+        return TRUE;
+}
+
+/* Cast useful spells at the lich's current opponent. */
+bool spec_lich(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        const char *spells[5];
+        int count;
+        int sn;
+
+        if (!ch
+        ||  !IS_NPC(ch)
+        ||  ch->deleted
+        ||  !ch->in_room
+        ||  ch->hit <= 0
+        ||  ch->position < POS_FIGHTING
+        ||  ch->wait > 0
+        ||  IS_AFFECTED(ch, AFF_CHARM)
+        ||  IS_AFFECTED(ch, AFF_HOLD)
+        ||  IS_AFFECTED(ch, AFF_DAZED)
+        ||  IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+        ||  IS_SET(ch->in_room->room_flags, ROOM_CONE_OF_SILENCE))
+        {
+                return FALSE;
+        }
+
+        victim = ch->fighting;
+
+        if (!victim
+        ||  victim == ch
+        ||  victim->deleted
+        ||  victim->in_room != ch->in_room
+        ||  victim->hit <= 0
+        ||  victim->position == POS_DEAD)
+        {
+                return FALSE;
+        }
+
+        count = 0;
+
+        if (!IS_AFFECTED(victim, AFF_CURSE))
+                spells[count++] = "curse";
+
+        if (ch->level >= 6)
+                spells[count++] = "chill touch";
+
+        if (ch->level >= 9
+        &&  !IS_AFFECTED(victim, AFF_BLIND)
+        &&  (!IS_NPC(victim) || HAS_EYES(victim)))
+        {
+                spells[count++] = "blindness";
+        }
+
+        if (ch->level >= 15)
+                spells[count++] = "fireball";
+
+        if (ch->level >= 25)
+                spells[count++] = "acid blast";
+
+        if (count == 0)
+                return FALSE;
+
+        sn = skill_lookup(spells[number_range(0, count - 1)]);
 
         if (sn < 0
         ||  sn >= MAX_SKILL
