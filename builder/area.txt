@@ -368,6 +368,8 @@ ACT_ flags:
     ACT_INVULNERABLE        BIT_28     Cannot be physically damaged
     ACT_BLINK               BIT_29     Mob access to the "blink" ability
     ACT_UNDEAD              BIT_30     Mob is undead. Various implications.
+    ACT_FEAR_AURA           BIT_31     Visible combat opponents face one fear
+                                       save per fight
     ACT_UNKILLABLE          BIT_63     Cannot be killed. 'slay' still works
 
 The 'affected-flags' define more attributes of the mobile.
@@ -1116,10 +1118,17 @@ replacement for a known original breath. Set any original elemental defences
 on the individual mobile as well. A standalone sp replaces the whole inherited
 special set, so do not use it unless you mean to remove spec_dracolich.
 
+The archetype also supplies ACT_FEAR_AURA. This is a general mobile trait,
+not part of spec_dracolich. An opponent fighting the dracolich who can see it
+makes one magic/psychic fear save per fight. Failure makes the opponent try
+to flee. A builder can give the same aura to any other mobile with
+act fear_aura. On an individual dracolich, act fear_aura instead cancels the
+inherited flag. Replacing spec_dracolich does not remove the aura.
+
 A successful gaze save does not yet make that target permanently immune to
 this dracolich's gaze. Breath keeps DD4's existing dragon-breath timing; this
-chunk adds no new cooldown. The fear aura, undead control, a spirit host and
-return after death are separate work.
+chunk adds no new cooldown. Undead control, a spirit host and return after
+death are separate work.
 
 A killed dracolich leaves a corpse marked as undead. Existing world
 dracoliches, including Wyrenthoth, and existing living dragons are not changed

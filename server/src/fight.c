@@ -175,6 +175,9 @@ void violence_update(void)
         /* Reconcile passive room exposure before this pulse's attacks. */
         update_stench();
 
+        /* Give visible opponents one chance to face a fear aura. */
+        update_fear_auras();
+
         for (ch = char_list; ch; ch = ch->next)
         {
                 if (!ch->in_room || ch->deleted)
@@ -3194,6 +3197,7 @@ void stop_fighting(CHAR_DATA *ch, bool fBoth)
                 if (fch == ch || (fBoth && fch->fighting == ch))
                 {
                         fch->fighting = NULL;
+                        fch->fear_aura_checked = FALSE;
                         fch->position = POS_STANDING;
 
                         if (is_affected(fch, gsn_berserk))

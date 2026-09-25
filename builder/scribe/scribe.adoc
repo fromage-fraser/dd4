@@ -733,7 +733,7 @@ Accepted archetype names are:
 | `death_knight` | Intelligent corporeal undead warrior with dark resistance, holy vulnerability, poison/sleep/drain immunity and `spec_death_knight` martial/spell combat behaviour.
 | `vampire` | Corporeal vampire with fast regeneration, cold/electricity/dark/psychic resistance, silver/holy/water vulnerability, and immunity to poison, sleep, charm, curse and ordinary nonmagical weapons. `spec_vampire` supplies a blood-draining bite and hypnotic gaze.
 | `lich` | An intelligent, physical undead spellcaster with no living heart, brain or guts. It resists dark power, is vulnerable to holy power, and is immune to poison, sleep, drain, charm, cold, electricity and ordinary nonmagical weapons. `spec_lich` casts at its current opponent.
-| `dracolich` | An intelligent undead dragon with wings, tail and natural attacks. It has no living organs or physical eyes. Its special gives it a paralysing gaze, lich spells, and chilling, paralysing natural hits; choose its former dragon's breath separately.
+| `dracolich` | An intelligent undead dragon with wings, tail and natural attacks. It has no living organs or physical eyes. Its `fear_aura` act flag frightens opponents in combat; its special gives it a paralysing gaze, lich spells, and chilling, paralysing natural hits. Choose its former dragon's breath separately.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1854,6 +1854,20 @@ dracolich special adds +15% XP. Adding breath uses the normal weighted
 special-XP calculation. The archetype has no separate XP adjustment.
 The gaze does not yet remember a target that saved against it.
 
+The archetype also supplies the general `fear_aura` act flag. An opponent
+fighting the dracolich who can see it faces one fear save at the start of
+the first eligible combat round. A successful save lets them carry on;
+a failed save makes them try to flee. Even when escape is impossible, the
+aura does not force another save every round. Blind or mindless opponents
+and object mobiles are unaffected. Bystanders are not targeted. Leaving
+the fight and returning allows another save.
+
+The aura is not part of `spec_dracolich`: it still works when a breath
+special is chosen, and replacing the dracolich special does not remove it.
+Silence does not stop it. A builder can cancel the inherited aura on an
+individual dracolich with `act fear_aura`. The same field adds the aura to
+a mobile that does not inherit it. See the `act` flag list below.
+
 With `spec_dracolich` enabled, a successful unarmed claw, bite or tail hit
 also carries a chill. It adds 2d8 cold damage to that hit, subject to the
 target's cold defences. The same hit can paralyse its target for 2d6 combat
@@ -1887,8 +1901,8 @@ cooldown. A standalone `sp` replaces the whole inherited special set, so do
 not use it here unless you mean to remove the dracolich special.
 
 A mobile with an explicitly assigned special keeps that choice. A killed
-dracolich leaves a corpse marked as undead. Its fear aura, undead control,
-a spirit host and return after death are separate work.
+dracolich leaves a corpse marked as undead. Undead control, a spirit host
+and return after death are separate work.
 
 Individual mobile fields can override the inherited defaults in the usual
 way. Existing world dracoliches, including Wyrenthoth, are not changed just
@@ -2533,6 +2547,7 @@ objectlike  for mobs you want to behave like destructible
     invulnerable cannot be physically damaged
 blink    Access to the "blink" ability (defensive)
 undead         Marks mobile as undead
+fear_aura      Frightens opponents who can see this mobile in combat
 unkillable  will not die, no matter how much damage is
     done to it
 
@@ -2540,6 +2555,13 @@ E.g.    act aggro scavenger
     act no_charm no_quest lose_fame
     act mount
 ----
+
+`act fear_aura` gives any mobile the passive fear aura. Each opponent who
+fights and can see it makes one magic/psychic fear save per fight. Failure
+makes that opponent try to flee. The aura does not use a special turn and
+does not require an undead archetype. As with other inherited act flags,
+`act fear_aura` on an archetype that already has it cancels it for that
+individual mobile.
 
 *`aff` — Affect flags*
 

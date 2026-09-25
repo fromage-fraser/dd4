@@ -3865,6 +3865,7 @@ char *act_bit_name (unsigned long int vector)
         if ( vector & ACT_OBJECT                ) return "objectlike";
         if ( vector & ACT_BLINK                 ) return "can_blink";
         if ( vector & ACT_UNDEAD                ) return "undead";
+        if ( vector & ACT_FEAR_AURA             ) return "fear_aura";
 
         return "none";
 }
