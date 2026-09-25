@@ -5236,11 +5236,11 @@ void do_clean(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                r_2 = rand() % 2 + 1;
+                r_2 = number_range(1, 2);
 
                 if (r_2 == 2)
                 {
-                        r_10_20 = rand() % 10 + 10;
+                        r_10_20 = number_range(10, 20);
                         clean_reduction = rintf(((float)cleaner->value[2] * (float)100) * (float)r_10_20 / (float)10000);
 
                         if ((cleaner->value[2] - clean_reduction) >= 0)
@@ -8216,7 +8216,7 @@ int random_qnd(int ap_value, char *rank, int ap_type)
 
         char buf[MAX_STRING_LENGTH];
 
-        int r_100 = rand() % 100 + 1;
+        int r_100 = number_percent();
 
         if (ap_type > APPLY_LAST)
         {
@@ -8258,35 +8258,35 @@ int random_qnd(int ap_value, char *rank, int ap_type)
 
         if (r_100 == 1 || r_100 == 2)
         {
-                r = (float)rand() / (float)RAND_MAX;
+                r = (float)rng_unit();
                 changed_ap_value = minus_3_lb + r * (minus_3_ub - minus_3_lb);
                 /* printf("return ap value for -3SD between %f and %f: %f\n", minus_3_lb, minus_3_ub, changed_ap_value); */
         }
 
         if (r_100 > 2 && r_100 < 17)
         {
-                r = (float)rand() / (float)RAND_MAX;
+                r = (float)rng_unit();
                 changed_ap_value = minus_2_lb + r * (minus_2_ub - minus_2_lb);
                 /* printf("return ap value for -2SD between %f and %f: %f\n", minus_2_lb, minus_2_ub, changed_ap_value); */
         }
 
         if (r_100 > 16 && r_100 < 85)
         {
-                r = (float)rand() / (float)RAND_MAX;
+                r = (float)rng_unit();
                 changed_ap_value = minus_1_lb + r * (plus_1_ub - minus_1_lb);
                 /* printf("return ap value for -1SD/+1SD between %f and %f: %f\n", minus_1_lb, plus_1_ub, changed_ap_value); */
         }
 
         if (r_100 > 84 && r_100 < 99)
         {
-                r = (float)rand() / (float)RAND_MAX;
+                r = (float)rng_unit();
                 changed_ap_value = plus_2_lb + r * (plus_2_ub - plus_2_lb);
                 /* printf("return ap value for +2SD between %f and %f: %f\n", plus_2_lb, plus_2_ub, changed_ap_value); */
         }
 
         if (r_100 == 99 || r_100 == 100)
         {
-                r = (float)rand() / (float)RAND_MAX;
+                r = (float)rng_unit();
                 changed_ap_value = plus_3_lb + r * (plus_3_ub - plus_3_lb);
                 /* printf("return ap value for +3SD between %f and %f: %f\n", plus_3_lb, plus_3_ub, changed_ap_value); */
         }

@@ -612,7 +612,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
         {
                 if (ch->pcdata->condition[COND_DRUNK] > 0)
                 {
-                        drunk_random = (rand() % MAX_DRUNK) + 1;
+                        drunk_random = number_range(1, MAX_DRUNK);
 
                         if (drunk_random < ch->pcdata->condition[COND_DRUNK])
                         {
@@ -9706,12 +9706,10 @@ void spell_chaos_blast(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int dam;
         double factorials[7] = {1.0, 2.0, 6.0, 24.0, 120.0, 720.0, 5040.0};
-        int rnd_idx = rand() % 7;
+        int rnd_idx = number_range(0, 6);
         double rnd_factorial = factorials[rnd_idx];
         double fuzz_value;
-        int flip = rand() % 2;
-        double range = 1.0;
-        double div = RAND_MAX / range;
+        int flip = number_bits(1);
 
         if (victim->hit < victim->max_hit && IS_NPC(victim) && victim->pIndexData->vnum != BOT_VNUM)
         {
@@ -9734,7 +9732,7 @@ void spell_chaos_blast(int sn, int level, CHAR_DATA *ch, void *vo)
                 rnd_idx++;
         }
 
-        fuzz_value = (rnd_factorial / 20 * (rand() / div));
+        fuzz_value = (rnd_factorial / 20) * rng_unit();
 
         dam = (flip) ? (int)(((rnd_factorial / 100) * level) + fuzz_value) : (int)(((rnd_factorial / 100) * level) - fuzz_value);
 
@@ -10044,7 +10042,7 @@ void spell_nausea(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
         AFFECT_DATA *paf;
-        int target_stat = (rand() % 5) + 1;
+        int target_stat = number_range(1, 5);
 
         if (is_affected(victim, gsn_prayer_plague))
                 return;
