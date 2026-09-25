@@ -104,7 +104,30 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE
+        },
+        {
+                "dragon",
+                0, 0,
+
+                BODY_NO_ARMS
+                    | PART_HEAD | PART_4_LEGS | PART_HEART
+                    | PART_BRAINS | PART_GUTS | PART_EAR | PART_EYE
+                    | PART_WINGS | PART_TAIL | PART_SCALES,
+
+                PART_CLAWS | PART_FANGS | PART_TAILATTACK,
+
+                0, 0, 0,
+
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE
         }
+
 };
 
 /*
@@ -309,7 +332,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET
         },
 
-                {
+        {
                 "ghost", "humanoid", "icon1", "icon2",
 
                 /*
@@ -363,7 +386,6 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_SEMI_MATERIAL
         },
-
         {
                 "wight", "humanoid", "icon1", "icon2",
 
@@ -416,7 +438,6 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* Corporeal; inherit the humanoid phase default of none. */
                 MOB_TEMPLATE_UNSET
         },
-
         {
                 "wraith", "humanoid", "icon1", "icon2",
 
@@ -476,7 +497,6 @@ const struct mob_type mob_table[MAX_MOB] =
                  */
                 GHOST_PHASE_SEMI_MATERIAL
         },
-
         {
                 "spectre", "humanoid", "icon1", "icon2",
 
@@ -689,8 +709,33 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET
-        }
+        },
+                {
+                "dracolich", "dragon", "icon1", "icon2",
 
+                ACT_UNDEAD, 0,
+
+                BODY_NO_HEART | BODY_NO_EYES | BODY_INORGANIC
+                    | PART_HEART | PART_BRAINS | PART_GUTS | PART_EYE,
+                0,
+
+                RES_DARK,
+                RES_HOLY,
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_CHARM
+                    | RES_COLD | RES_ELECTRICITY | RES_HOLD
+                    | RES_PARALYSIS | RES_NONMAGIC,
+
+                0, 0, 0, 0,
+
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+
+                "", "", "",
+
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                MOB_TEMPLATE_UNSET
+        }
 };
 
 /*

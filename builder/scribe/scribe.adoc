@@ -32,6 +32,7 @@ _AsciiDoc documentation update: 23 September 2026._
 ** <<scribe-death-knight-archetype,Death knight archetype>>
 ** <<scribe-vampire-archetype,Vampire archetype>>
 ** <<scribe-lich-archetype,Lich archetype>>
+** <<scribe-dracolich-archetype,Dracolich archetype>>
 ** <<scribe-mobile-undead,Undead classification>>
 ** <<scribe-mobile-mindlessness,Mindlessness>>
 ** <<scribe-mobile-stench,Carrion stench>>
@@ -598,10 +599,11 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 ==== Body species, creature archetypes and individual mobile flags
 
 A *body species* describes a broad physical form, such as `humanoid`,
-`elemental` or `farm_mammal`. A *creature archetype* is a more specific entry
-in the server's `mob_table`, such as `goat` or `fire_elemental`, which refers
-to one body species. A particular `#MOBILES` entry supplies the individual
-mobile's descriptions, level, flags and other area-authored values.
+`elemental`, `farm_mammal` or `dragon`. A *creature archetype* is a more
+specific entry in the server's `mob_table`, such as `goat` or
+`fire_elemental`, which refers to one body species. A particular `#MOBILES`
+entry supplies the individual mobile's descriptions, level, flags and other
+area-authored values.
 
 For the ACT, AFF and body-form flags already supported by Scribe, the server
 resolves the layers in this order:
@@ -731,6 +733,7 @@ Accepted archetype names are:
 | `death_knight` | Intelligent corporeal undead warrior with dark resistance, holy vulnerability, poison/sleep/drain immunity and `spec_death_knight` martial/spell combat behaviour.
 | `vampire` | Corporeal vampire with fast regeneration, cold/electricity/dark/psychic resistance, silver/holy/water vulnerability, and immunity to poison, sleep, charm, curse and ordinary nonmagical weapons. `spec_vampire` supplies a blood-draining bite and hypnotic gaze.
 | `lich` | An intelligent, physical undead spellcaster with no living heart, brain or guts. It resists dark power, is vulnerable to holy power, and is immune to poison, sleep, drain, charm, cold, electricity and ordinary nonmagical weapons. `spec_lich` casts at its current opponent.
+| `dracolich` | An intelligent undead dragon. It keeps dragon wings, tail and natural attacks, but has no living organs or physical eyes. It resists dark power, is vulnerable to holy power, and has the immunities described below. Breath and other active powers are separate work.
 |===
 
 The script normalises an explicit name to lowercase and validates it against
@@ -1812,6 +1815,42 @@ names contain "lich".
 When a lich is killed, it leaves a corpse marked as undead. Phylacteries and
 returning after death are separate work.
 
+[[scribe-dracolich-archetype]]
+===== Dracolich archetype
+
+Use:
+
+[source,text]
+----
+archetype dracolich
+----
+
+The new `dragon` body species supplies a four-legged body with wings, a tail,
+scales, and ordinary claw, fang and tail attacks. It does not choose a breath
+weapon, colour, size or elemental resistance. Those vary from dragon to dragon.
+Its forelegs work as legs rather than humanoid arms.
+
+The `dracolich` archetype keeps that dragon shape and makes it undead. It is
+intelligent and can still see and speak. Its eyes are now points of light in
+empty sockets, so effects that need physical eyes cannot target them. It has
+no living heart, brain or guts, and ordinary biological effects such as poison
+have no useful target. It remains a physical creature, not a ghost.
+
+It resists dark power and is vulnerable to holy power. It is immune to poison,
+sleep, life drain, charm, cold, electricity, hold, paralysis and ordinary
+nonmagical weapons. Magical weapons use the normal combat rules. Its original
+dragon's elemental traits are not guessed by the archetype; set any such
+resistance or immunity on the individual mobile.
+
+This is the passive template only. It has no automatic breath weapon, gaze,
+spellcasting, extra XP or special function yet. A mobile with an explicitly
+assigned special keeps it. A killed dracolich leaves a corpse marked as
+undead; a spirit host and return after death are separate work.
+
+Individual mobile fields can override the inherited defaults in the usual
+way. Existing world dracoliches, including Wyrenthoth, are not changed just
+because of their names. Existing living dragons are unchanged too.
+
 [[scribe-ghost-archetype]]
 ===== Ghost archetype: permanent physiology
 
@@ -1937,8 +1976,8 @@ or one of the three `GHOST_PHASE_*` constants. If neither layer specifies
 a value, the existing scalar resolver produces `none`. The individual
 area setting has the same distinction between inherit and explicit zero.
 
-All four current body species explicitly supply `GHOST_PHASE_NONE`.
-The ghost archetype supplies `GHOST_PHASE_SEMI_MATERIAL`; the other seven
+All five current body species explicitly supply `GHOST_PHASE_NONE`.
+The ghost archetype supplies `GHOST_PHASE_SEMI_MATERIAL`; the other
 archetypes inherit. This semi-material starting value is a DD4 development
 choice for controlled contact testing, now read by the supported contact paths.
 There is no archetype-name, vnum, ACT_UNDEAD or special-function check in

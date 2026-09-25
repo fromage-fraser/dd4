@@ -1049,6 +1049,44 @@ archetype itself adds no extra XP. Existing mobiles keep any special you
 explicitly gave them, and named liches elsewhere in the world are not changed
 automatically.
 
+A killed lich leaves a corpse marked as undead. Phylacteries and returning
+after death are separate work.
+
+The dragon body species gives a mobile four legs, wings, a tail and scales,
+with ordinary claw, fang and tail attacks. Its forelegs work as legs rather
+than humanoid arms. It does not choose a dragon's size, colour, breath weapon
+or elemental defences.
+
+The dracolich archetype uses that dragon body:
+
+    < dracolich~ common~
+
+It is intelligent and undead, and it keeps the dragon's wings, tail, scales
+and natural attacks. It can see and speak, although its eyes are now points
+of light in empty sockets. It has no living heart, brain or guts, and it does
+not move through ghost phases.
+
+Its defaults are:
+
+    resistance:     RES_DARK
+    vulnerability:  RES_HOLY
+    immunity:       RES_POISON | RES_SLEEP | RES_DRAIN | RES_CHARM
+                    | RES_COLD | RES_ELECTRICITY | RES_HOLD
+                    | RES_PARALYSIS | RES_NONMAGIC
+
+Ordinary nonmagical weapons cannot hurt it. Magical weapons use the normal
+combat rules. Set any resistance or immunity inherited from its former
+dragon type on the individual mobile; the archetype does not guess its
+colour or breath.
+
+This is the passive template only. It supplies no breath, gaze, spellcasting
+special or extra archetype XP yet. A killed dracolich leaves a corpse marked
+as undead. A spirit host and returning after death are separate work.
+
+Scribe selects it with "archetype dracolich". Individual mobile fields can
+override inherited defaults normally. Existing world dracoliches, including
+Wyrenthoth, and existing living dragons are not changed automatically.
+
 The ghost archetype is currently a development-stage physiology template:
 
     < ghost~ common~
