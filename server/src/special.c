@@ -2096,6 +2096,78 @@ void update_stench(void)
 }
 
 /*
+ * Any mobile with ACT_FEAR_AURA frightens opponents who can see it.
+ * The attempt belongs to the fight, not to a special-function turn.
+ */
+void update_fear_auras(void)
+{
+        CHAR_DATA *victim;
+        CHAR_DATA *next;
+        CHAR_DATA *source;
+
+        for (victim = char_list; victim; victim = next)
+        {
+                next = victim->next;
+
+                if (victim->deleted)
+                        continue;
+
+                source = victim->fighting;
+
+                if (!source
+                ||  source == victim
+                ||  !IS_NPC(source)
+                ||  source->deleted
+                ||  !victim->in_room
+                ||  source->in_room != victim->in_room
+                ||  victim->hit <= 0
+                ||  source->hit <= 0
+                ||  victim->position == POS_DEAD
+                ||  source->position == POS_DEAD
+                ||  !IS_SET(source->act, ACT_FEAR_AURA))
+                {
+                        victim->fear_aura_checked = FALSE;
+                        continue;
+                }
+
+                if (victim->fear_aura_checked)
+                        continue;
+
+                if (IS_AFFECTED(victim, AFF_BLIND)
+                ||  is_mindless(victim)
+                ||  (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+                ||  !can_see(victim, source))
+                {
+                        continue;
+                }
+
+                /* Do not demand another save if fleeing proves impossible. */
+                victim->fear_aura_checked = TRUE;
+
+                if (saves_resistance_effect(
+                        UMIN(MAX_LEVEL, source->level + 1),
+                        victim,
+                        RES_MAGIC | RES_PSYCHIC))
+                {
+                        act("You stand firm against the dread of $n.",
+                            source, NULL, victim, TO_VICT);
+                        act("$N stands firm against your terrible presence.",
+                            source, NULL, victim, TO_CHAR);
+                        continue;
+                }
+
+                act("Terror seizes you at the sight of $n!",
+                    source, NULL, victim, TO_VICT);
+                act("$N recoils in terror from you.",
+                    source, NULL, victim, TO_CHAR);
+                act("$N recoils in terror from $n.",
+                    source, NULL, victim, TO_NOTVICT);
+
+                do_flee(victim, "Fear");
+        }
+}
+
+/*
  * A distinct form of the existing paralysis affect. Its duration is
  * counted by violence_update(), not by the hourly affect update.
  */

@@ -1993,6 +1993,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ACT_INVULNERABLE BIT_28       /* Cannot be physically damaged -- Owl */
 #define ACT_BLINK BIT_29              /* Mob access to the "blink" ability -- Owl */
 #define ACT_UNDEAD BIT_30             /* Mob is undead; various implications */
+#define ACT_FEAR_AURA BIT_31          /* Frightens visible opponents in combat */
 #define ACT_UNKILLABLE BIT_63         /* Can't be killed. 'slay' still works. - Owl */
 
 /*
@@ -2914,6 +2915,9 @@ struct char_data
          * Player characters retain zero.
          */
         uint64_t target_id;
+
+        /* Remember whether this fight has tested a fear aura. */
+        bool fear_aura_checked;
 
         char *name;
         char *short_descr;
@@ -5686,6 +5690,7 @@ void dracolich_paralysis_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool is_stench_exposure args((const AFFECT_DATA *paf));
 void clear_stench_exposure args((CHAR_DATA *ch, bool notify));
 void update_stench args((void));
+void update_fear_auras args((void));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));

@@ -713,7 +713,7 @@ const struct mob_type mob_table[MAX_MOB] =
         {
                 "dracolich", "dragon", "icon1", "icon2",
 
-                ACT_UNDEAD, 0,
+                ACT_UNDEAD | ACT_FEAR_AURA, 0,
 
                 BODY_NO_HEART | BODY_NO_EYES | BODY_INORGANIC
                     | PART_HEART | PART_BRAINS | PART_GUTS | PART_EYE,
