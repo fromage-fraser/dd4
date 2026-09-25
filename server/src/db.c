@@ -6111,10 +6111,12 @@ char *capitalize_initial(const char *str)
 /*
  * Initial letter of a string, lower-cased.
  */
-char *initial(const char *str)
+char *initial (const char *str)
 {
-        static char initial[1];
+        static char initial [2];
+
         initial[0] = LOWER(str[0]);
+        initial[1] = '\0';
         return initial;
 }
 

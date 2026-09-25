@@ -169,6 +169,7 @@ void read_from_buffer args((DESCRIPTOR_DATA * d));
 void stop_idling args((CHAR_DATA * ch));
 void bust_a_prompt args((DESCRIPTOR_DATA * d));
 void assert_directory_exists args((const char *path));
+static bool player_filename_safe args((const char *name));
 
 int main(int argc, char **argv)
 {
@@ -2054,6 +2055,27 @@ bool write_to_descriptor(int desc, char *txt, int length)
         return TRUE;
 }
 
+static bool player_filename_safe(const char *name)
+{
+        const unsigned char *p;
+        size_t length;
+
+        if (!name)
+                return FALSE;
+
+        length = strlen(name);
+        if (length == 0 || length > 64)
+                return FALSE;
+
+        for (p = (const unsigned char *)name; *p; p++)
+        {
+                if (!isalpha(*p))
+                        return FALSE;
+        }
+
+        return TRUE;
+}
+
 /*
  * Deal with sockets that haven't logged in yet.
  */
@@ -2067,9 +2089,8 @@ void nanny(DESCRIPTOR_DATA *d, char *argument)
         int iClass;
         bool fOld;
         int startcoinsamt;
-        COIN_DATA *startcoins;
+        COIN_DATA startcoins;
         DESCRIPTOR_DATA *temp;
-        startcoins = (COIN_DATA *)malloc(sizeof(COIN_DATA));
 
         /* Delete leading spaces UNLESS character is writing a note */
         if (d->connected != CON_NOTE_TEXT)
@@ -2095,15 +2116,30 @@ void nanny(DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
+                                if (!player_filename_safe(argument))
+                {
+                        write_to_buffer(d, "Illegal name: try another.\n\rName: ", 0);
+                        return;
+                }
+
                 argument[0] = UPPER(argument[0]);
                 fOld = load_char_obj(d, argument);
                 ch = d->character;
+
+                if (!ch)
+                {
+                        write_to_buffer(d, "Unable to load player data.\n\r", 0);
+                        close_socket(d);
+                        return;
+                }
 
                 if (!check_parse_name(argument))
                 {
                         if (!fOld)
                         {
                                 write_to_buffer(d, "Illegal name: try another.\n\rName: ", 0);
+                                free_char(d->character);
+                                d->character = NULL;
                                 return;
                         }
                         else
@@ -2115,6 +2151,8 @@ void nanny(DESCRIPTOR_DATA *d, char *argument)
                                 if (ch->level < 1)
                                 {
                                         write_to_buffer(d, "Illegal name: try another.\n\rName: ", 0);
+                                        free_char(d->character);
+                                        d->character = NULL;
                                         return;
                                 }
                                 sprintf(buf, "Illegal name:  %s", argument);
@@ -2715,12 +2753,11 @@ void nanny(DESCRIPTOR_DATA *d, char *argument)
 
                         startcoinsamt = 50 + number_fuzzy(3) * number_fuzzy(4) * number_fuzzy(5) * 9;
 
-                        coin_crunch(startcoinsamt, startcoins);
-                        ch->plat = startcoins->plat;
-                        ch->gold = startcoins->gold;
-                        ch->silver = startcoins->silver;
-                        ch->copper = startcoins->copper;
-                        free(startcoins);
+                        coin_crunch(startcoinsamt, &startcoins);
+                        ch->plat = startcoins.plat;
+                        ch->gold = startcoins.gold;
+                        ch->silver = startcoins.silver;
+                        ch->copper = startcoins.copper;
 
                         /*
                          * Shade 17.6.22

@@ -53,6 +53,59 @@ void    fwrite_char     args((CHAR_DATA *ch,  FILE *fp));
 void    fwrite_obj      args((CHAR_DATA *ch,  OBJ_DATA  *obj,  FILE *fp, int iNest, bool vault));
 void    fread_char      args((CHAR_DATA *ch,  FILE *fp));
 void    fread_obj       args((CHAR_DATA *ch,  FILE *fp, bool vault));
+static bool player_filename_safe args((const char *name));
+static bool build_player_path args((char *path, size_t path_size,
+                                    const char *name, const char *suffix));
+
+static bool player_filename_safe(const char *name)
+{
+        const unsigned char *p;
+        size_t length;
+
+        if (!name)
+                return FALSE;
+
+        length = strlen(name);
+        if (length == 0 || length > 64)
+                return FALSE;
+
+        for (p = (const unsigned char *)name; *p; p++)
+        {
+                if (!isalpha(*p))
+                        return FALSE;
+        }
+
+        return TRUE;
+}
+
+static bool build_player_path(char *path, size_t path_size,
+                              const char *name, const char *suffix)
+{
+        int written;
+
+        if (!path || path_size == 0 || !player_filename_safe(name))
+                return FALSE;
+
+        if (!suffix)
+                suffix = "";
+
+#if !defined(macintosh) && !defined(MSDOS)
+        written = snprintf(path, path_size, "%s%s/%s%s",
+                           PLAYER_DIR, initial(name), capitalize(name), suffix);
+#else
+        written = snprintf(path, path_size, "%s%s%s",
+                           PLAYER_DIR, capitalize(name), suffix);
+#endif
+
+        if (written < 0 || (size_t)written >= path_size)
+        {
+                path[0] = '\0';
+                bug("Build_player_path: player path too long.", 0);
+                return FALSE;
+        }
+
+        return TRUE;
+}
 
 /*
  * Save a character and inventory.
@@ -73,22 +126,15 @@ void save_char_obj (CHAR_DATA *ch)
         if (ch->desc && ch->desc->original)
                 ch = ch->desc->original;
 
+        if (!build_player_path(strsave, sizeof(strsave), ch->name, "")
+        ||  !build_player_path(strvaultsave, sizeof(strvaultsave), ch->name, ".vault"))
+        {
+                bug("Save_char_obj: unsafe or overlong player name.", 0);
+                return;
+        }
+
         ch->save_time = current_time;
         fclose(fpReserve);
-
-        /* player files parsed directories by Yaz 4th Realm */
-#if !defined(macintosh) && !defined(MSDOS)
-        sprintf(strsave, "%s%s%s%s", PLAYER_DIR, initial(ch->name),"/", capitalize(ch->name));
-#else
-        sprintf(strsave, "%s%s", PLAYER_DIR, capitalize(ch->name));
-#endif
-
-    /* For .vault files */
-#if !defined(macintosh) && !defined(MSDOS)
-        sprintf(strvaultsave, "%s%s%s%s.vault", PLAYER_DIR, initial(ch->name),"/", capitalize(ch->name));
-#else
-        sprintf(strvaultsave, "%s%s.vault", PLAYER_DIR, capitalize(ch->name));
-#endif
 
         if (!(fp = fopen(strsave, "w")))
         {
@@ -501,10 +547,21 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
 #if !defined(MSDOS)
         char       buf          [ MAX_STRING_LENGTH ];
 #endif
-        char       strsave      [ MAX_INPUT_LENGTH ];
-        char       strvaultsave [ MAX_INPUT_LENGTH ];
+        char       strsave         [ MAX_INPUT_LENGTH ];
+        char       strsave_gz      [ MAX_INPUT_LENGTH ];
+        char       strvaultsave    [ MAX_INPUT_LENGTH ];
+        char       strvaultsave_gz [ MAX_INPUT_LENGTH ];
         bool       found;
         int        next;
+
+        if (!build_player_path(strsave, sizeof(strsave), name, "")
+        ||  !build_player_path(strsave_gz, sizeof(strsave_gz), name, ".gz")
+        ||  !build_player_path(strvaultsave, sizeof(strvaultsave), name, ".vault")
+        ||  !build_player_path(strvaultsave_gz, sizeof(strvaultsave_gz), name, ".vault.gz"))
+        {
+                bug("Load_char_obj: unsafe or overlong player name.", 0);
+                return FALSE;
+        }
 
         if (!char_free)
                 ch = alloc_perm(sizeof(*ch));
@@ -613,24 +670,21 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
         found = FALSE;
         fclose(fpReserve);
 
-        /* parsed player file directories by Yaz of 4th Realm */
-        /* decompress if .gz file exists - Thx Alander */
+        /* Decompress the ordinary player file if a .gz copy exists. */
 #if !defined(macintosh) && !defined(MSDOS)
-        sprintf(strsave, "%s%s%s%s%s", PLAYER_DIR, initial(ch->name),
-                "/", capitalize(name), ".gz");
-        if ((fp = fopen(strsave, "r")))
+        if ((fp = fopen(strsave_gz, "r")))
         {
-                fclose(fp);
-                sprintf(buf, "gzip -dfq %s", strsave);
-                system(buf);
-        }
-#endif
+                int written;
 
-#if !defined(macintosh) && !defined(MSDOS)
-        sprintf(strsave, "%s%s%s%s", PLAYER_DIR, initial(ch->name),
-                "/", capitalize(name));
-#else
-        sprintf(strsave, "%s%s", PLAYER_DIR, capitalize(name));
+                fclose(fp);
+                written = snprintf(buf, sizeof(buf),
+                                   "gzip -dfq -- %s", strsave_gz);
+
+                if (written < 0 || (size_t)written >= sizeof(buf))
+                        bug("Load_char_obj: gzip command too long.", 0);
+                else
+                        system(buf);
+        }
 #endif
 
         if ((fp = fopen(strsave, "r")))
@@ -679,25 +733,21 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
                 fclose(fp);
         }
 
- /* parsed player file directories by Yaz of 4th Realm */
-        /* decompress if .gz file exists - Thx Alander */
-        /* Modified for vault files - Owl 23/2/23 */
+        /* Decompress the vault file if a .vault.gz copy exists. */
 #if !defined(macintosh) && !defined(MSDOS)
-        sprintf(strvaultsave, "%s%s%s%s%s.vault", PLAYER_DIR, initial(ch->name),
-                "/", capitalize(name), ".gz");
-        if ((vp = fopen(strvaultsave, "r")))
+        if ((vp = fopen(strvaultsave_gz, "r")))
         {
-                fclose(vp);
-                sprintf(buf, "gzip -dfq %s", strvaultsave);
-                system(buf);
-        }
-#endif
+                int written;
 
-#if !defined(macintosh) && !defined(MSDOS)
-        sprintf(strvaultsave, "%s%s%s%s.vault", PLAYER_DIR, initial(ch->name),
-                "/", capitalize(name));
-#else
-        sprintf(strvaultsave, "%s%s.vault", PLAYER_DIR, capitalize(name));
+                fclose(vp);
+                written = snprintf(buf, sizeof(buf),
+                                   "gzip -dfq -- %s", strvaultsave_gz);
+
+                if (written < 0 || (size_t)written >= sizeof(buf))
+                        bug("Load_char_obj: vault gzip command too long.", 0);
+                else
+                        system(buf);
+        }
 #endif
 
         if ((vp = fopen(strvaultsave, "r")))
