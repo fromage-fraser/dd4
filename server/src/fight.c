@@ -3674,7 +3674,7 @@ void death_cry(CHAR_DATA *ch)
                         {
                                 snprintf(
                                     msg, sizeof(msg),
-                                    "$c falls, leaving $s %s behind.",
+                                    "As $n perishes, $s %s is separated from $s body.",
                                     part->noun);
                         }
                 }

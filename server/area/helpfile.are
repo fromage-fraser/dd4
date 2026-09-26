@@ -1,5 +1,32 @@
 #HELPS
 
+#HELPS
+
+0 'DETECT UNDEAD'~
+Syntax: cast 'detect undead'
+
+This spell reveals the undead nature of creatures and objects you can
+already see.
+
+LOOK room listings and SCAN mark visible undead creatures with <63>(Undead)<0>.
+Player vampires count as undead.
+
+Objects bearing ITEM_UNDEAD receive the same marker in ground listings,
+inventory and equipment displays. This includes visible equipment worn
+by others when you are normally permitted to inspect it.
+
+An undead object does not make its living carrier appear undead.
+
+The spell does not reveal invisible or hidden targets. It does not expose
+closed-container contents or bypass equipment-viewing permissions.
+It does not extend scanning range or reveal objects through SCAN.
+
+A visible vampire in mist form can be marked. Its concealed name remains
+concealed unless your other abilities normally reveal it.
+
+Clerics can learn this spell early. Knights gain access later.
+~
+
 0 ANSI COLOR COLOUR~
 Syntax: ansi <<channel> <<colour name>
 Syntax: ansi <<channel> <<colour index number>

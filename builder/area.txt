@@ -3650,7 +3650,8 @@ paints, smokeables, and pills.
                regenerate                  possession
                   release                clairvoyance
              sense wisdom                 sonic blast
-                   banish
+                   banish               detect undead
+                mummy rot                  bubble jet
 
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)

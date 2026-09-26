@@ -288,6 +288,9 @@ void scan(CHAR_DATA *ch, int door)
                                         }
 
                                         buf[0] = UPPER(buf[0]);
+                                        if (can_detect_undead(ch, rch))
+                                                send_to_char("<63>(Undead)<0> ", ch);
+
                                         send_to_char(buf, ch);
                                 }
                         }

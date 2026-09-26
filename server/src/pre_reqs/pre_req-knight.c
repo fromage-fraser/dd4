@@ -5,6 +5,7 @@
 /* **** INITIAL SKILLS **** */
 
 {&gsn_armor,                    &gsn_knight_base,       31,     PRE_KNIGHT},
+{&gsn_detect_undead,            &gsn_knight_base,       31,     PRE_KNIGHT},
 {&gsn_group_conjuration,        &gsn_knight_base,       31,     PRE_KNIGHT},
 {&gsn_group_healing,            &gsn_knight_base,       31,     PRE_KNIGHT},
 

@@ -41,6 +41,7 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim);
 bool skill_cannot_be_dispelled(int sn);
 bool is_only_whitespace(const char *str);
 
+
 /*
  * Lookup a skill by name.
  */
@@ -10702,7 +10703,81 @@ void spell_sonic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
                 spell_sonic_blast_victim(sn, level, ch, victim);
         }
 }
+/*
+ * Detect the undead nature of an already-visible character.
+ * The caller still controls room visibility and scan range.
+ */
+bool can_detect_undead(CHAR_DATA *viewer, CHAR_DATA *victim)
+{
+        if (!viewer || !victim || viewer->deleted || victim->deleted)
+                return FALSE;
 
+        if (!viewer->in_room || !victim->in_room)
+                return FALSE;
+
+        if (gsn_detect_undead <= 0 || gsn_detect_undead >= MAX_SKILL)
+                return FALSE;
+
+        return is_affected(viewer, gsn_detect_undead)
+                && IS_UNDEAD(victim)
+                && can_see(viewer, victim);
+}
+
+/*
+ * Detect the undead nature of an already-visible object.
+ * The caller still controls inventory, equipment and container access.
+ */
+bool can_detect_undead_obj(CHAR_DATA *viewer, OBJ_DATA *obj)
+{
+        if (!viewer || !obj || viewer->deleted || obj->deleted)
+                return FALSE;
+
+        if (!viewer->in_room)
+                return FALSE;
+
+        if (gsn_detect_undead <= 0 || gsn_detect_undead >= MAX_SKILL)
+                return FALSE;
+
+        return is_affected(viewer, gsn_detect_undead)
+                && IS_OBJ_STAT(obj, ITEM_UNDEAD)
+                && can_see_obj(viewer, obj);
+}
+
+void spell_detect_undead(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+        AFFECT_DATA af = {0};
+
+        if (!ch || !victim || ch->deleted || victim->deleted)
+                return;
+
+        if (sn <= 0 || sn >= MAX_SKILL)
+                return;
+
+        if (is_affected(victim, sn))
+        {
+                if (ch == victim)
+                        send_to_char("You can already recognise the undead.\n\r", ch);
+                else
+                        send_to_char("They can already recognise the undead.\n\r", ch);
+
+                return;
+        }
+
+        af.type = sn;
+        af.duration = UMAX(1, level);
+        af.location = APPLY_NONE;
+        af.modifier = 0;
+        af.bitvector = 0;
+        affect_to_char(victim, &af);
+
+        send_to_char(
+                "<63>You develop a sensitivity to undead things.<0>\n\r",
+                victim);
+
+        if (ch != victim)
+                send_to_char("Ok.\n\r", ch);
+}
 
 
 /*

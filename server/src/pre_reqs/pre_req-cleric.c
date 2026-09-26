@@ -8,6 +8,7 @@
 {&gsn_cause_light,              &gsn_cleric_base,       30,     PRE_CLERIC},
 {&gsn_detect_evil,              &gsn_cleric_base,       30,     PRE_CLERIC},
 {&gsn_detect_good,              &gsn_cleric_base,       30,     PRE_CLERIC},
+{&gsn_detect_undead,            &gsn_cleric_base,       30,     PRE_CLERIC},
 {&gsn_detect_poison,            &gsn_cleric_base,       30,     PRE_CLERIC},
 {&gsn_armor,                    &gsn_cleric_base,       30,     PRE_CLERIC},
 {&gsn_continual_light,          &gsn_cleric_base,       30,     PRE_CLERIC},
