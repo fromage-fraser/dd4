@@ -2892,6 +2892,20 @@ sp  spec_warrior
 [[scribe-mobile-undead]]
 ==== Undead mobile classification
 
+Detect Undead marks perceivable undead creatures with `(Undead)` in room
+listings and `scan`. It uses effective undead classification, including
+individual overrides, and also recognises player vampires.
+
+Objects bearing `ITEM_UNDEAD` receive the same marker in ground, inventory
+and equipment listings. Equipment-viewing permissions remain unchanged.
+An undead object does not make its carrier undead.
+
+Detection does not reveal otherwise unseen targets, expose closed-container
+contents, extend scanning range or disclose concealed mist-form names.
+It adds no object listings to `scan`.
+
+No additional ACT, AFF or object flag is required.
+
 `act undead` represents `ACT_UNDEAD` (`BIT_30`, decimal `1073741824`). It
 classifies an NPC as undead; it does not automatically assign an alignment,
 anatomy, mindlessness, spell immunity, or an entire skeleton/vampire behaviour

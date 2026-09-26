@@ -2116,7 +2116,7 @@ void nanny(DESCRIPTOR_DATA *d, char *argument)
                         return;
                 }
 
-                                if (!player_filename_safe(argument))
+                if (!player_filename_safe(argument))
                 {
                         write_to_buffer(d, "Illegal name: try another.\n\rName: ", 0);
                         return;

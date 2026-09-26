@@ -318,6 +318,9 @@ char *format_obj_to_char(OBJ_DATA *obj, CHAR_DATA *ch, bool fShort)
         if (IS_AFFECTED(ch, AFF_DETECT_MAGIC) && IS_OBJ_STAT(obj, ITEM_MAGIC))
                 strcat(buf, "<27>(Magical)<0> ");
 
+        if (can_detect_undead_obj(ch, obj))
+                strcat(buf, "<63>(Undead)<0> ");
+
         /* Below is ugly, sorry -- Owl 4/3/22 */
 
         if (((IS_OBJ_STAT(obj, ITEM_NODROP) || IS_OBJ_STAT(obj, ITEM_NOREMOVE) || IS_OBJ_STAT(obj, ITEM_CURSED) || (obj->value[1] == 33) /* curse, hex, divine curse */
@@ -627,6 +630,9 @@ void show_char_to_char_0(CHAR_DATA *victim, CHAR_DATA *ch)
         {
                 strcat(buf, "     ");
         }
+
+        if (can_detect_undead(ch, victim))
+                strcat(buf, "<63>(Undead)<0> ");
 
         if (is_affected(victim, gsn_mist_walk))
         {

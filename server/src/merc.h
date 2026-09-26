@@ -419,9 +419,9 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 622            /* +1 mummy rot Owl 21/9/26 */
-#define MAX_PRE_REQ 1574         /* +2 for sense wisdom 6/7/25  */
-#define MAX_SPELL_GROUP 469      /*  */
+#define MAX_SKILL 623            /* +1 detect undead */
+#define MAX_PRE_REQ 1576          /* +2 detect undead prerequisites */
+#define MAX_SPELL_GROUP 470      /* +1 detect undead group entry */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
@@ -4234,6 +4234,7 @@ extern int gsn_feeblemind;
 extern int gsn_enchant_weapon;
 extern int gsn_detect_evil;
 extern int gsn_detect_good;
+extern int gsn_detect_undead;
 extern int gsn_detect_magic;
 extern int gsn_detect_poison;
 extern int gsn_faerie_fire;
@@ -5086,6 +5087,7 @@ DECLARE_SPELL_FUN(spell_cure_serious);
 DECLARE_SPELL_FUN(spell_curse);
 DECLARE_SPELL_FUN(spell_detect_evil);
 DECLARE_SPELL_FUN(spell_detect_good);
+DECLARE_SPELL_FUN(spell_detect_undead);
 DECLARE_SPELL_FUN(spell_detect_hidden);
 DECLARE_SPELL_FUN(spell_detect_invis);
 DECLARE_SPELL_FUN(spell_detect_sneak);
@@ -5634,6 +5636,8 @@ int apply_resistance_to_damage args((CHAR_DATA * victim, int dam, unsigned long 
 bool is_immune_to args((CHAR_DATA * victim, unsigned long int dam_type));
 void obj_cast_spell args((int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj));
 bool mob_interacts_players(CHAR_DATA *mob);
+bool can_detect_undead(CHAR_DATA *viewer, CHAR_DATA *victim);
+bool can_detect_undead_obj(CHAR_DATA *viewer, OBJ_DATA *obj);
 
 /* mob.c */
 int species_lookup args((const char *name));

@@ -2412,6 +2412,7 @@ struct spell_group_struct spell_group_table[MAX_SPELL_GROUP] =
 
         {&gsn_group_divination, 0},
         {&gsn_detect_evil, 0},
+        {&gsn_detect_undead, 0},
         {&gsn_detect_poison, 0},
         {&gsn_detect_good, 0},
         {&gsn_detect_invis, 0},
@@ -5627,6 +5628,11 @@ const struct skill_type skill_table[MAX_SKILL] =
          RES_POISON | RES_CURSE | RES_DARK,
          spell_null, 0, 0,
          "mummy rot", "<173>The mummy rot fades from your flesh.<0>"},
+
+         {"detect undead", &gsn_detect_undead,
+         TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_HOLY,
+         spell_detect_undead, 5, 1,
+         "", "<73>Your awareness of undead things fades.<0>"},
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
