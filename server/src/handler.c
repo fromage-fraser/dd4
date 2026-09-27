@@ -1031,6 +1031,28 @@ void affect_join( CHAR_DATA *ch, AFFECT_DATA *paf )
         return;
 }
 
+/*
+ * Check actual room membership, not merely a saved room pointer.
+ *
+ * Loading a player file sets ch->in_room before the character enters
+ * the world. That temporary character must not affect room lighting.
+ * NPCs and linkdead players still count when present in the room.
+ */
+static bool char_is_in_room_list(const CHAR_DATA *ch)
+{
+        const CHAR_DATA *rch;
+
+        if (!ch || !ch->in_room)
+                return FALSE;
+
+        for (rch = ch->in_room->people; rch; rch = rch->next_in_room)
+        {
+                if (rch == ch)
+                        return TRUE;
+        }
+
+        return FALSE;
+}
 
 /*
  * Move a char out of a room.
@@ -1054,7 +1076,7 @@ void char_from_room( CHAR_DATA *ch )
         if ( ( obj = get_eq_char( ch, WEAR_LIGHT ) )
             && obj->item_type == ITEM_LIGHT
             && obj->value[2] != 0
-            && (!IS_NPC(ch) && ch->desc && ch->desc->connected != CON_GET_OLD_PASSWORD)
+            && char_is_in_room_list(ch)
             && ch->in_room->light > 0 )
         {
                 --ch->in_room->light;
@@ -1117,8 +1139,12 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
         {
                 ++ch->in_room->area->nplayer;
 
+                /*
+                 * Replenish breath only outside both underwater sectors.
+                 * Moving between underwater rooms must preserve remaining air.
+                 */
                 if ( ( ch->in_room->sector_type != SECT_UNDERWATER )
-                  || ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
+                  && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
                 {
                         ch->pcdata->air_supply = FULL_AIR_SUPPLY;
                 }
@@ -1447,7 +1473,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 if ( obj->item_type == ITEM_LIGHT
                     && iWear == WEAR_LIGHT
                     && obj->value[2] != 0
-                    && ch->in_room )
+                    && char_is_in_room_list(ch) )
                         ++ch->in_room->light;
         }
 
@@ -1528,8 +1554,7 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
                 if ( obj->item_type == ITEM_LIGHT
                     && obj->wear_loc == WEAR_LIGHT
                     && obj->value[2] != 0
-                    && ch->in_room
-                    && (!IS_NPC(ch) && ch->desc && ch->desc->connected != CON_GET_OLD_PASSWORD)
+                    && char_is_in_room_list(ch)
                     && ch->in_room->light > 0 )
                         --ch->in_room->light;
         }

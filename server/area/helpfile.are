@@ -742,6 +742,10 @@ Gezhp, Owl and Shade
 - Added selected innate player resistances and vulnerabilities; see HELP INNATE.
 - Tenketsu paralysis now follows damaging hits and respects resistance.
 - Transfix, Howl and Confusion now consistently consult target resistance.
+- Moving between underwater rooms no longer replenishes your air supply.
+- Fixed room lighting left behind by NPCs and linkdead players carrying lights.
+- Infrared vision now correctly improves scan distance at night.
+- GMCP exit information now reports flying movement costs correctly for underwater rooms.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
@@ -8062,7 +8066,7 @@ Smithies can fashion legendary armour sets that grant extraordinary set bonuses.
 
 Syntax: reforge <<weapon>
 
-Reforging a weapon will tune the item based on your worldly experiance.
+Reforging a weapon will tune the item based on your worldly experience.
 Generally as you progress in capability, the knowledge that you gain
 will allow you to reforge your currently constructed weapon to ensure
 you bring your best weapon to bear on your enemies.
@@ -8263,7 +8267,7 @@ you are able to unleash a devastating attack on an opponent.
 
 Syntax: engrave <<item>
 
-An experianced SMITHY is able to apply an engraving to armour and
+An experienced SMITHY is able to apply an engraving to armour and
 weapons. Each item that is engraved will contribute to your total
 maximum enhanced damage.
 
@@ -8423,7 +8427,7 @@ All modules must be placed in the turret to use.
 
 1 'BLOODFORGED HELM' 'BLOODFORGED BOOTS' 'BLOODFORGED LEGGINGS' 'BLOODFORGED GRIPS'~
 
-This is an EPIC set only available for experianced smithies.
+This is an EPIC set only available for experienced smithies.
 
 Syntax: construct 'bloodforged helm'
 Syntax: construct 'bloodforged boots'
