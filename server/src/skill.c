@@ -47,11 +47,12 @@ static inline void smelted_to_char_loss( const int cost[5],
 }
 
 /*
- * Fly/Flight for native flyers, Halfdragons Danath
+ * Flight for native flyers.
  */
-void do_fly (CHAR_DATA *ch, char* argument )
+void do_fly(CHAR_DATA *ch, char *argument)
 {
         AFFECT_DATA af;
+        bool was_flying;
 
         if (IS_NPC(ch))
                 return;
@@ -62,25 +63,81 @@ void do_fly (CHAR_DATA *ch, char* argument )
                 return;
         }
 
-        if (IS_AFFECTED(ch, AFF_FLYING))
+        /*
+         * Toggle only the native Flight skill's own affect.
+         * Other sources of AFF_FLYING -- Fly, Levitation, forms, etc. --
+         * must remain untouched.
+         */
+        if (is_affected_source(
+                ch,
+                gsn_flight,
+                AFFECT_SOURCE_NONE,
+                0))
         {
-                send_to_char ("You feel the pull of gravity slowly return.\n\r", ch);
-                act ("$c seems to be affected by gravity once more.", ch, NULL, NULL, TO_ROOM);
-                affect_strip (ch, gsn_fly);
-                REMOVE_BIT(ch->affected_by, AFF_FLYING);
+                affect_strip(ch, gsn_flight);
+
+                if (IS_AFFECTED(ch, AFF_FLYING))
+                {
+                        send_to_char(
+                                "You stop flying under your own power, but remain aloft.\n\r",
+                                ch);
+                        act(
+                                "$n stops flying under $s own power, but remains aloft.",
+                                ch,
+                                NULL,
+                                NULL,
+                                TO_ROOM);
+                }
+                else
+                {
+                        send_to_char(
+                                "You fold your wings and settle on the ground.\n\r",
+                                ch);
+                        act(
+                                "$n folds $s wings and settles on the ground.",
+                                ch,
+                                NULL,
+                                NULL,
+                                TO_ROOM);
+                }
+
                 return;
         }
 
-        af.type      = gsn_fly;
+        was_flying = IS_AFFECTED(ch, AFF_FLYING);
+
+        af.type      = gsn_flight;
         af.duration  = -1;
         af.location  = APPLY_NONE;
         af.modifier  = 0;
         af.bitvector = AFF_FLYING;
-        affect_to_char( ch, &af );
 
-        send_to_char( "The sensation of gravity leaves your body.\n\r", ch );
-        act( "$n seems no longer to be affected by gravity.", ch, NULL, NULL, TO_ROOM );
-        return;
+        affect_to_char(ch, &af);
+
+        if (was_flying)
+        {
+                send_to_char(
+                        "You spread your wings and begin flying under your own power.\n\r",
+                        ch);
+                act(
+                        "$n spreads $s wings and begins flying under $s own power.",
+                        ch,
+                        NULL,
+                        NULL,
+                        TO_ROOM);
+        }
+        else
+        {
+                send_to_char(
+                        "You spread your wings and rise into the air.\n\r",
+                        ch);
+                act(
+                        "$n spreads $s wings and rises into the air.",
+                        ch,
+                        NULL,
+                        NULL,
+                        TO_ROOM);
+        }
 }
 
 void do_bonus(CHAR_DATA *ch, char *argument)

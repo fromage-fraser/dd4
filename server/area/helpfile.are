@@ -3954,7 +3954,7 @@ This spell inflicts damage on the victim.
 
 0 FLY LEVITATION FLIGHT~
 Syntax: cast fly <<target>
-Syntax: cast levitation <<target>
+Syntax: cast levitation
 Syntax: fly
 
 The spells FLY and LEVITATE enable the target to fly above the ground.

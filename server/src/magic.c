@@ -3626,8 +3626,14 @@ void spell_fly(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (IS_AFFECTED(victim, AFF_FLYING))
+        if (is_affected_source(
+                victim,
+                gsn_fly,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
                 return;
+        }
 
         af.type = gsn_fly;
         af.duration = level + 3;
@@ -7284,7 +7290,11 @@ void spell_levitation(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (IS_AFFECTED(victim, AFF_FLYING))
+        if (is_affected_source(
+                victim,
+                gsn_levitation,
+                AFFECT_SOURCE_NONE,
+                0))
         {
                 return;
         }
