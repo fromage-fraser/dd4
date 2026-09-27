@@ -864,12 +864,14 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                                         affect_free = affect_free->next;
                                 }
 
-                                paf->type       = fread_number( fp, &stat );
-                                paf->duration   = fread_number( fp, &stat );
-                                paf->modifier   = fread_number( fp, &stat );
-                                paf->location   = fread_number( fp, &stat );
-                                paf->bitvector  = fread_number64( fp, &stat );
-                                paf->deleted    = FALSE;
+                                paf->type        = fread_number( fp, &stat );
+                                paf->duration    = fread_number( fp, &stat );
+                                paf->modifier    = fread_number( fp, &stat );
+                                paf->location    = fread_number( fp, &stat );
+                                paf->bitvector   = fread_number64( fp, &stat );
+                                paf->source_type = AFFECT_SOURCE_NONE;
+                                paf->source_id   = 0;
+                                paf->deleted     = FALSE;
                                 paf->next       = ch->affected;
                                 ch->affected    = paf;
 

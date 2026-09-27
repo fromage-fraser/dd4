@@ -1301,6 +1301,17 @@ struct note_data
 };
 
 /*
+ * Affect source types.
+ *
+ * Most existing affects are unsourced.  Forms and equipped objects can use
+ * explicit source information so that removing one provider does not remove
+ * another provider's copy of the same effect.
+ */
+#define AFFECT_SOURCE_NONE      0
+#define AFFECT_SOURCE_FORM      1
+#define AFFECT_SOURCE_OBJECT    2
+
+/*
  * An affect.
  */
 struct affect_data
@@ -1311,6 +1322,8 @@ struct affect_data
         int location;
         int modifier;
         unsigned long int bitvector;
+        int source_type;
+        uint64_t source_id;
         bool deleted;
 };
 
@@ -5504,7 +5517,11 @@ bool multi_keyword_match args((char *keys, char *namelist));
 bool is_full_name args((const char *str, char *namelist));
 bool parse_target_id args((const char *argument, uint64_t *target_id));
 void affect_to_char args((CHAR_DATA * ch, AFFECT_DATA *paf));
+void affect_to_char_source args((CHAR_DATA * ch, AFFECT_DATA *paf,
+                                 int source_type, uint64_t source_id));
 void affect_remove args((CHAR_DATA * ch, AFFECT_DATA *paf));
+void affect_strip_source args((CHAR_DATA * ch, int source_type,
+                               uint64_t source_id));
 void affect_from_obj args((OBJ_DATA * obj, AFFECT_DATA *paf));
 void affect_obj_modify args((OBJ_DATA * obj, AFFECT_DATA *paf, bool fAdd));
 void affect_strip args((CHAR_DATA * ch, int sn));

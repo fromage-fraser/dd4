@@ -756,6 +756,7 @@ Gezhp, Owl and Shade
 - Trapped objects now retain their trap type, effects and remaining charges when saved.
 - Movement-triggered traps now correctly interrupt the movement attempt that triggers them.
 - Defensive Engineer pulses no longer replace the user's current combat target.
+- Overlapping character affects now preserve shared status flags when one affect ends.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
