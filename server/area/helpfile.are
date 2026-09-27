@@ -746,6 +746,10 @@ Gezhp, Owl and Shade
 - Fixed room lighting left behind by NPCs and linkdead players carrying lights.
 - Infrared vision now correctly improves scan distance at night.
 - GMCP exit information now reports flying movement costs correctly for underwater rooms.
+- Song of Rejuvenation mana recovery now scales correctly with proficiency and level.
+- Saved objects now retain their material properties after being reloaded.
+- NPC combat assistance now selects group targets without room-list ordering bias.
+- Hunger and thirst regeneration penalties now continue correctly at negative condition values.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
@@ -7212,8 +7216,8 @@ Syntax: sing rejuvenation
 
 Many travel-weary bards have found themselves in need of a healer after an
 ambush, and yet been a long way from a temple.  Because of this, a group
-of enterprising bards composed a song which, when sung, gradually heals
-the singer back to full health.
+of enterprising bards composed a song which, when sung, gradually restores
+the health and mana of the singer and nearby group members.
 ~
 
 0 'SONG OF FLIGHT'~

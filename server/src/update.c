@@ -1223,10 +1223,10 @@ int hit_gain(CHAR_DATA *ch)
 
         if (ch->level < LEVEL_HERO)
         {
-                if (!ch->pcdata->condition[COND_FULL])
+                if (ch->pcdata->condition[COND_FULL] <= 0)
                         gain /= 2;
 
-                if (!ch->pcdata->condition[COND_THIRST])
+                if (ch->pcdata->condition[COND_THIRST] <= 0)
                         gain /= 2;
         }
 
@@ -1445,10 +1445,10 @@ int mana_gain(CHAR_DATA *ch)
 
         if (ch->level < LEVEL_HERO)
         {
-                if (!ch->pcdata->condition[COND_FULL])
+                if (ch->pcdata->condition[COND_FULL] <= 0)
                         gain /= 2;
 
-                if (!ch->pcdata->condition[COND_THIRST])
+                if (ch->pcdata->condition[COND_THIRST] <= 0)
                         gain /= 2;
         }
 
@@ -1508,7 +1508,7 @@ int mana_gain(CHAR_DATA *ch)
 
         if (is_affected(ch, gsn_song_of_rejuvenation))
         {
-                amt = ch->pcdata->learned[gsn_song_of_rejuvenation] * ch->level;
+                amt = ch->pcdata->learned[gsn_song_of_rejuvenation] * ch->level / 100;
                 gain += amt;
 
                 for (gch = char_list; gch; gch = gch->next)
@@ -1564,10 +1564,10 @@ int move_gain(CHAR_DATA *ch)
 
         if (ch->level < LEVEL_HERO)
         {
-                if (!ch->pcdata->condition[COND_FULL])
+                if (ch->pcdata->condition[COND_FULL] <= 0)
                         gain /= 2;
 
-                if (!ch->pcdata->condition[COND_THIRST])
+                if (ch->pcdata->condition[COND_THIRST] <= 0)
                         gain /= 2;
         }
 
