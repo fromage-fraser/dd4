@@ -466,6 +466,12 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest, bool vault)
         fprintf(fp, "TimerMax     %d\n",        obj->timermax               );
         fprintf(fp, "Cost         %d\n",        obj->cost                   );
         fprintf(fp, "HowCreated   %d\n",        obj->how_created            );
+        if (IS_SET(obj->extra_flags, ITEM_TRAP))
+        {
+                fprintf(fp, "TrapEff      %d\n", obj->trap_eff);
+                fprintf(fp, "TrapDam      %d\n", obj->trap_dam);
+                fprintf(fp, "TrapCharge   %d\n", obj->trap_charge);
+        }
         fprintf(fp, "Values       %d %d %d %d\n",
                 obj->value[0], obj->value[1], obj->value[2], obj->value[3]  );
 
@@ -1484,8 +1490,11 @@ void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
                         break;
 
                     case 'T':
-                        KEY("Timer",    obj->timer,             fread_number( fp, &stat ));
-                        KEY("TimerMax", obj->timermax,          fread_number( fp, &stat ));
+                        KEY("Timer",      obj->timer,       fread_number( fp, &stat ));
+                        KEY("TimerMax",   obj->timermax,    fread_number( fp, &stat ));
+                        KEY("TrapEff",    obj->trap_eff,    fread_number( fp, &stat ));
+                        KEY("TrapDam",    obj->trap_dam,    fread_number( fp, &stat ));
+                        KEY("TrapCharge", obj->trap_charge, fread_number( fp, &stat ));
                         break;
 
                     case 'V':

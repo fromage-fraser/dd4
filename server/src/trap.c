@@ -507,32 +507,32 @@ bool checkmovetrap(CHAR_DATA *ch, int dir)
                 if (found == TRUE) {
                         if (IS_SET(obj->trap_eff, TRAP_EFF_NORTH) && dir == 0) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
 
                         if (IS_SET(obj->trap_eff, TRAP_EFF_EAST) && dir == 1) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
 
                         if (IS_SET(obj->trap_eff, TRAP_EFF_SOUTH) && dir == 2) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
 
                         if (IS_SET(obj->trap_eff, TRAP_EFF_WEST) && dir == 3) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
 
                         if (IS_SET(obj->trap_eff, TRAP_EFF_UP) && dir == 4) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
 
                         if (IS_SET(obj->trap_eff, TRAP_EFF_DOWN) && dir == 5) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
                 }
         }
