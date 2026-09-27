@@ -334,6 +334,33 @@ bool parse_target_id(const char *argument, uint64_t *target_id)
         return TRUE;
 }
 
+/*
+ * Restore any bits supplied by other active character affects after one
+ * affect has been removed.
+ *
+ * This is intentionally limited to AFFECT_DATA sources for now.  Form and
+ * equipment source handling is added in the following stages.
+ */
+static void restore_shared_affect_bits(CHAR_DATA *ch, AFFECT_DATA *removed)
+{
+        AFFECT_DATA *paf;
+        unsigned long int shared_bits;
+
+        if (!ch || !removed || !removed->bitvector)
+                return;
+
+        shared_bits = 0;
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf == removed || paf->deleted)
+                        continue;
+
+                shared_bits |= paf->bitvector & removed->bitvector;
+        }
+
+        SET_BIT(ch->affected_by, shared_bits);
+}
 
 /*
  * Apply or remove an affect to a character.
@@ -349,11 +376,12 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
 
         if ( fAdd )
         {
-                SET_BIT   ( ch->affected_by, paf->bitvector );
+                SET_BIT(ch->affected_by, paf->bitvector);
         }
         else
         {
-                REMOVE_BIT( ch->affected_by, paf->bitvector );
+                REMOVE_BIT(ch->affected_by, paf->bitvector);
+                restore_shared_affect_bits(ch, paf);
                 mod = 0 - mod;
         }
 
@@ -921,32 +949,40 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
 }
 
 
-/*
- * Give an affect to a char.
- */
-void affect_to_char( CHAR_DATA *ch, AFFECT_DATA *paf )
+void affect_to_char_source(CHAR_DATA *ch, AFFECT_DATA *paf,
+                           int source_type, uint64_t source_id)
 {
         AFFECT_DATA *paf_new;
 
-        if ( !affect_free )
+        if (!affect_free)
         {
-                paf_new         = alloc_perm( sizeof( *paf_new ) );
+                paf_new = alloc_perm(sizeof(*paf_new));
         }
         else
         {
-                paf_new         = affect_free;
-                affect_free     = affect_free->next;
+                paf_new = affect_free;
+                affect_free = affect_free->next;
         }
 
         *paf_new = *paf;
+        paf_new->source_type = source_type;
+        paf_new->source_id = source_id;
         paf_new->deleted = FALSE;
         paf_new->next = ch->affected;
         ch->affected = paf_new;
 
-        affect_modify( ch, paf_new, TRUE, NULL );
-        return;
+        affect_modify(ch, paf_new, TRUE, NULL);
 }
 
+
+void affect_to_char(CHAR_DATA *ch, AFFECT_DATA *paf)
+{
+        affect_to_char_source(
+                ch,
+                paf,
+                AFFECT_SOURCE_NONE,
+                0);
+}
 
 /*
  * Remove an affect from a char.
@@ -985,6 +1021,25 @@ void affect_strip( CHAR_DATA *ch, int sn )
         return;
 }
 
+/*
+ * Remove only affects belonging to one specific source.
+ */
+void affect_strip_source(CHAR_DATA *ch, int source_type, uint64_t source_id)
+{
+        AFFECT_DATA *paf;
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted)
+                        continue;
+
+                if (paf->source_type == source_type
+                &&  paf->source_id == source_id)
+                {
+                        affect_remove(ch, paf);
+                }
+        }
+}
 
 /*
  * Return true if a char is affected by a spell.
@@ -1013,16 +1068,21 @@ void affect_join( CHAR_DATA *ch, AFFECT_DATA *paf )
 {
         AFFECT_DATA *paf_old;
 
-        for ( paf_old = ch->affected; paf_old; paf_old = paf_old->next )
+        for (paf_old = ch->affected; paf_old; paf_old = paf_old->next)
         {
-                if ( paf_old->deleted )
+                if (paf_old->deleted)
                         continue;
 
-                if ( paf_old->type == paf->type )
+                /*
+                 * Ordinary joined affects must not absorb an affect owned by
+                 * a form, object, or other explicit source.
+                 */
+                if (paf_old->type == paf->type
+                &&  paf_old->source_type == AFFECT_SOURCE_NONE)
                 {
                         paf->duration += paf_old->duration;
                         paf->modifier += paf_old->modifier;
-                        affect_remove( ch, paf_old );
+                        affect_remove(ch, paf_old);
                         break;
                 }
         }
