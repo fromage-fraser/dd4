@@ -757,6 +757,8 @@ Gezhp, Owl and Shade
 - Movement-triggered traps now correctly interrupt the movement attempt that triggers them.
 - Defensive Engineer pulses no longer replace the user's current combat target.
 - Overlapping character affects now preserve shared status flags when one affect ends.
+- Hawk, dragon, cat, snake, wolf and direwolf form effects now coexist with independently 
+  supplied affects instead of replacing them.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
