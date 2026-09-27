@@ -10,6 +10,61 @@
 #include "merc.h"
 #include "sound.h"
 
+/*
+ * Identify permanent form affects written by the old unsourced system.
+ *
+ * Extend this as additional forms are converted to sourced affects.
+ */
+static bool is_legacy_form_affect(CHAR_DATA *ch, AFFECT_DATA *paf)
+{
+        if (!ch || !paf
+        ||  paf->deleted
+        ||  paf->source_type != AFFECT_SOURCE_NONE
+        ||  paf->duration >= 0)
+        {
+                return FALSE;
+        }
+
+        switch (ch->form)
+        {
+                case FORM_HAWK:
+                        return paf->type == gsn_fly
+                            && paf->bitvector == AFF_FLYING;
+
+                case FORM_DRAGON:
+                        if (paf->type == gsn_fly
+                        &&  paf->bitvector == AFF_FLYING)
+                                return TRUE;
+
+                        if (paf->type == gsn_dragon_aura
+                        ||  paf->type == gsn_dragon_shield)
+                                return TRUE;
+
+                        return FALSE;
+
+                default:
+                        return FALSE;
+        }
+}
+
+
+void migrate_form_affect_sources(CHAR_DATA *ch)
+{
+        AFFECT_DATA *paf;
+
+        if (!ch || ch->form == FORM_NORMAL)
+                return;
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (!is_legacy_form_affect(ch, paf))
+                        continue;
+
+                paf->source_type = AFFECT_SOURCE_FORM;
+                paf->source_id = (uint64_t)ch->form;
+        }
+}
+
 
 void do_morph_chameleon (CHAR_DATA *ch, bool to_form)
 {
@@ -403,11 +458,9 @@ void do_morph_hawk (CHAR_DATA *ch, bool to_form)
                 /* Remove any arm trauma, hawk form doesn't have arms */
                 affect_strip(ch, gsn_arm_trauma);
 
-                if (ch->pcdata->learned[gsn_form_hawk] > 40 || ch->pcdata->learned[gsn_fly])
+                if (ch->pcdata->learned[gsn_form_hawk] > 40
+                ||  ch->pcdata->learned[gsn_fly])
                 {
-                        affect_strip(ch, gsn_fly);
-                        affect_strip(ch, gsn_levitation);
-                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
                         send_to_char("Your new form enables you to fly.\n\r", ch);
 
                         af.type      = gsn_fly;
@@ -415,14 +468,20 @@ void do_morph_hawk (CHAR_DATA *ch, bool to_form)
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_FLYING;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_HAWK);
                 }
         }
         else
         {
-                affect_strip(ch, gsn_fly);
-                affect_strip(ch, gsn_levitation);
-                REMOVE_BIT(ch->affected_by, AFF_FLYING);
+                affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_HAWK);
         }
 }
 
@@ -1823,9 +1882,6 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
                 if (ch->pcdata->learned[gsn_form_dragon] > 60
                     || ch->pcdata->learned[gsn_fly])
                 {
-                        affect_strip(ch, gsn_fly);
-                        affect_strip(ch, gsn_levitation);
-                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
                         send_to_char("Your new form enables you to fly.\n\r", ch);
 
                         af.type      = gsn_fly;
@@ -1833,7 +1889,12 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_FLYING;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_DRAGON);
                 }
 
                 if (ch->pcdata->learned[gsn_form_dragon] > 75)
@@ -1857,36 +1918,50 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
                 if (ch->pcdata->learned[gsn_form_dragon] > 90)
                 {
                         send_to_char ("You are surrounded by a terrifying aura!\n\r", ch);
-                        affect_strip (ch, gsn_dragon_aura);
-                        affect_strip (ch, gsn_dragon_shield);
 
                         af.type         = gsn_dragon_aura;
                         af.duration     = -1;
                         af.modifier     = - ch->level;
                         af.bitvector    = 0;
                         af.location     = APPLY_AC;
-                        affect_to_char (ch, &af);
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_DRAGON);
 
                         af.type         = gsn_dragon_aura;
                         af.duration     = -1;
                         af.modifier     = ch->level / 8;
                         af.bitvector    = 0;
                         af.location     = APPLY_HITROLL;
-                        affect_to_char (ch, &af);
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_DRAGON);
 
                         af.type         = gsn_dragon_aura;
                         af.duration     = -1;
                         af.modifier     = 0;
                         af.bitvector    = AFF_BATTLE_AURA;
                         af.location     = APPLY_NONE;
-                        affect_to_char (ch, &af);
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_DRAGON);
 
                         af.type         = gsn_dragon_shield;
                         af.duration     = -1;
                         af.modifier     = 0;
                         af.bitvector    = 0;
                         af.location     = APPLY_NONE;
-                        affect_to_char( ch, &af );
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_DRAGON);
                 }
 
                 claws = create_object(get_obj_index(OBJ_DRAGON_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
@@ -1948,11 +2023,10 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
         }
         else
         {
-                affect_strip(ch, gsn_fly);
-                affect_strip(ch, gsn_levitation);
-                affect_strip(ch, gsn_dragon_aura);
-                affect_strip (ch, gsn_dragon_shield);
-                REMOVE_BIT(ch->affected_by, AFF_FLYING);
+                affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_DRAGON);
 
                 claws = get_obj_wear(ch, "sftclaws");
                 fangs = get_obj_wear(ch, "sftfangs");

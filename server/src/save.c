@@ -401,12 +401,27 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
                 if (paf->deleted)
                         continue;
 
-                fprintf(fp, "Aff         %3d %3d %3d %3d %20lu\n",
-                        paf->type,
-                        paf->duration,
-                        paf->modifier,
-                        paf->location,
-                        paf->bitvector);
+                if (paf->source_type == AFFECT_SOURCE_NONE)
+                {
+                        fprintf(fp, "Aff         %3d %3d %3d %3d %20lu\n",
+                                paf->type,
+                                paf->duration,
+                                paf->modifier,
+                                paf->location,
+                                paf->bitvector);
+                }
+                else
+                {
+                        fprintf(fp,
+                                "AffSrc      %3d %3d %3d %3d %20lu %3d %20lu\n",
+                                paf->type,
+                                paf->duration,
+                                paf->modifier,
+                                paf->location,
+                                paf->bitvector,
+                                paf->source_type,
+                                (unsigned long int)paf->source_id);
+                }
         }
 
         fprintf(fp, "End\n\n");
@@ -852,6 +867,33 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         KEY("Adamantite", ch->smelted_adamantite, fread_number( fp, &stat ));
                         KEY("AllowLook", ch->pcdata->allow_look, fread_number( fp, &stat ));
 
+                        if (!str_cmp(word, "AffSrc"))
+                        {
+                                AFFECT_DATA *paf;
+
+                                if (!affect_free)
+                                        paf = alloc_perm(sizeof(*paf));
+                                else
+                                {
+                                        paf = affect_free;
+                                        affect_free = affect_free->next;
+                                }
+
+                                paf->type        = fread_number(fp, &stat);
+                                paf->duration    = fread_number(fp, &stat);
+                                paf->modifier    = fread_number(fp, &stat);
+                                paf->location    = fread_number(fp, &stat);
+                                paf->bitvector   = fread_number64(fp, &stat);
+                                paf->source_type = fread_number(fp, &stat);
+                                paf->source_id   = (uint64_t)fread_number64(fp, &stat);
+                                paf->deleted     = FALSE;
+                                paf->next        = ch->affected;
+                                ch->affected     = paf;
+
+                                fMatch = TRUE;
+                                break;
+                        }
+
                         if (!str_cmp(word, "Aff"))
                         {
                                 AFFECT_DATA *paf;
@@ -1262,6 +1304,12 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         fread_to_eol(fp);
                 }
         }
+
+        /*
+         * Tag permanent effects from forms saved before affect source
+         * ownership was introduced.
+         */
+        migrate_form_affect_sources(ch);
 
         /*
          *  Init some variables that aren't saved

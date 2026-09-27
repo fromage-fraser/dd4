@@ -5526,6 +5526,8 @@ void affect_from_obj args((OBJ_DATA * obj, AFFECT_DATA *paf));
 void affect_obj_modify args((OBJ_DATA * obj, AFFECT_DATA *paf, bool fAdd));
 void affect_strip args((CHAR_DATA * ch, int sn));
 bool is_affected args((CHAR_DATA * ch, int sn));
+bool is_affected_source args((CHAR_DATA * ch, int sn,
+                              int source_type, uint64_t source_id));
 void affect_join args((CHAR_DATA * ch, AFFECT_DATA *paf));
 void char_from_room args((CHAR_DATA * ch));
 void char_to_room args((CHAR_DATA * ch, ROOM_INDEX_DATA *pRoomIndex));
@@ -5810,6 +5812,7 @@ void print_infamy_table(CHAR_DATA *ch, char *argument);
 void do_morph_wolf(CHAR_DATA *ch, bool to_form);
 void do_morph_direwolf(CHAR_DATA *ch, bool to_form);
 bool is_valid_soar args((CHAR_DATA * ch, int soar_index));
+void migrate_form_affect_sources args((CHAR_DATA *ch));
 
 /* skill.c */
 void tenketsu_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, RESISTANCE_RESULT result));

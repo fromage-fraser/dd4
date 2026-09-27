@@ -1003,19 +1003,25 @@ void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
 }
 
 
-/*
- * Strip all affects of a given sn.
- */
 void affect_strip( CHAR_DATA *ch, int sn )
 {
         AFFECT_DATA *paf;
 
-        for ( paf = ch->affected; paf; paf = paf->next )
+        for (paf = ch->affected; paf; paf = paf->next)
         {
-                if ( paf->deleted )
+                if (paf->deleted)
                         continue;
-                if ( paf->type == sn )
-                        affect_remove( ch, paf );
+
+                /*
+                 * Generic stripping applies only to ordinary affects.
+                 * Form- and object-owned affects must be removed by their
+                 * owning source.
+                 */
+                if (paf->type == sn
+                &&  paf->source_type == AFFECT_SOURCE_NONE)
+                {
+                        affect_remove(ch, paf);
+                }
         }
 
         return;
@@ -1060,6 +1066,29 @@ bool is_affected( CHAR_DATA *ch, int sn )
         return FALSE;
 }
 
+/*
+ * Return true if a specific source supplies this affect.
+ */
+bool is_affected_source(CHAR_DATA *ch, int sn,
+                        int source_type, uint64_t source_id)
+{
+        AFFECT_DATA *paf;
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted)
+                        continue;
+
+                if (paf->type == sn
+                &&  paf->source_type == source_type
+                &&  paf->source_id == source_id)
+                {
+                        return TRUE;
+                }
+        }
+
+        return FALSE;
+}
 
 /*
  * Add or enhance an affect.
