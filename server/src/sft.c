@@ -31,6 +31,44 @@ static bool is_legacy_form_affect(CHAR_DATA *ch, AFFECT_DATA *paf)
                         return paf->type == gsn_fly
                             && paf->bitvector == AFF_FLYING;
 
+                case FORM_CAT:
+                        return (paf->type == gsn_infravision
+                                && paf->bitvector == AFF_INFRARED)
+                            || (paf->type == gsn_detect_hidden
+                                && paf->bitvector == AFF_DETECT_HIDDEN)
+                            || (paf->type == gsn_detect_invis
+                                && paf->bitvector == AFF_DETECT_INVIS)
+                            || (paf->type == gsn_detect_sneak
+                                && paf->bitvector == AFF_DETECT_SNEAK);
+
+                case FORM_SNAKE:
+                        return (paf->type == gsn_swim
+                                && paf->bitvector == AFF_SWIM)
+                            || (paf->type == gsn_breathe_water
+                                && paf->bitvector == 0);
+
+                case FORM_WOLF:
+                        return (paf->type == gsn_infravision
+                                && paf->bitvector == AFF_INFRARED)
+                            || (paf->type == gsn_detect_hidden
+                                && paf->bitvector == AFF_DETECT_HIDDEN)
+                            || (paf->type == gsn_detect_invis
+                                && paf->bitvector == AFF_DETECT_INVIS)
+                            || (paf->type == gsn_detect_sneak
+                                && paf->bitvector == AFF_DETECT_SNEAK);
+
+                case FORM_DIREWOLF:
+                        return (paf->type == gsn_infravision
+                                && paf->bitvector == AFF_INFRARED)
+                            || (paf->type == gsn_detect_hidden
+                                && paf->bitvector == AFF_DETECT_HIDDEN)
+                            || (paf->type == gsn_detect_invis
+                                && paf->bitvector == AFF_DETECT_INVIS)
+                            || (paf->type == gsn_detect_sneak
+                                && paf->bitvector == AFF_DETECT_SNEAK)
+                            || (paf->type == gsn_form_direwolf
+                                && paf->bitvector == AFF_BATTLE_AURA);
+
                 case FORM_DRAGON:
                         if (paf->type == gsn_fly
                         &&  paf->bitvector == AFF_FLYING)
@@ -492,13 +530,11 @@ void do_morph_cat (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-
                 /* Remove any arm trauma, cat form doesn't have arms */
                 affect_strip(ch, gsn_arm_trauma);
 
                 if (ch->pcdata->learned[gsn_form_cat] > 30)
                 {
-                        affect_strip(ch, gsn_infravision);
                         send_to_char("Your new form causes your eyes to glow red.\n\r", ch);
 
                         af.type      = gsn_infravision;
@@ -506,13 +542,16 @@ void do_morph_cat (CHAR_DATA *ch, bool to_form)
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_INFRARED;
-                        affect_to_char(ch, &af);
 
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_CAT);
                 }
 
                 if (ch->pcdata->learned[gsn_form_cat] > 50)
                 {
-                        affect_strip(ch, gsn_detect_hidden);
                         send_to_char("Your new form causes your awareness to improve.\n\r", ch);
 
                         af.type      = gsn_detect_hidden;
@@ -520,12 +559,16 @@ void do_morph_cat (CHAR_DATA *ch, bool to_form)
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_DETECT_HIDDEN;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_CAT);
                 }
 
                 if (ch->pcdata->learned[gsn_form_cat] > 60)
                 {
-                        affect_strip(ch, gsn_detect_invis);
                         send_to_char("Your new form causes your senses to rocket.\n\r", ch);
 
                         af.type      = gsn_detect_invis;
@@ -533,28 +576,32 @@ void do_morph_cat (CHAR_DATA *ch, bool to_form)
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_DETECT_INVIS;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_CAT);
 
                         af.type      = gsn_detect_sneak;
                         af.duration  = -1;
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_DETECT_SNEAK;
-                        affect_to_char(ch, &af);
-                }
 
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_CAT);
+                }
         }
         else
         {
-                affect_strip(ch, gsn_infravision);
-                REMOVE_BIT(ch->affected_by, AFF_INFRARED);
-                affect_strip(ch, gsn_detect_hidden);
-                REMOVE_BIT(ch->affected_by, AFF_DETECT_HIDDEN);
-                affect_strip(ch, gsn_detect_invis);
-                REMOVE_BIT(ch->affected_by, AFF_DETECT_INVIS);
-                affect_strip(ch, gsn_detect_sneak);
-                REMOVE_BIT(ch->affected_by, AFF_DETECT_SNEAK);
-                affect_strip(ch, gsn_heighten);
+                affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_CAT);
         }
 }
 
@@ -776,7 +823,6 @@ void do_strangle (CHAR_DATA *ch, char *argument)
         damage(ch, victim, base_damage, gsn_strangle, FALSE);
 }
 
-
 void do_morph_snake (CHAR_DATA *ch, bool to_form)
 {
         AFFECT_DATA af;
@@ -788,13 +834,17 @@ void do_morph_snake (CHAR_DATA *ch, bool to_form)
                 affect_strip(ch, gsn_arm_trauma);
                 affect_strip(ch, gsn_leg_trauma);
 
-                bite = create_object(get_obj_index(OBJ_SNAKE_BITE), ch->level, "common", CREATED_NO_RANDOMISER);
+                bite = create_object(
+                        get_obj_index(OBJ_SNAKE_BITE),
+                        ch->level,
+                        "common",
+                        CREATED_NO_RANDOMISER);
+
                 obj_to_char(bite, ch);
                 form_equip_char(ch, bite, WEAR_WIELD);
 
                 if (ch->pcdata->learned[gsn_form_snake] > 30)
                 {
-                        affect_strip(ch, gsn_swim);
                         send_to_char("Your new form enables you to swim.\n\r", ch);
 
                         af.type      = gsn_swim;
@@ -802,35 +852,49 @@ void do_morph_snake (CHAR_DATA *ch, bool to_form)
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_SWIM;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_SNAKE);
                 }
 
                 if (ch->pcdata->learned[gsn_form_snake] > 50)
                 {
+                        send_to_char(
+                                "Your new form enables you to breathe underwater.\n\r",
+                                ch);
 
-                        send_to_char("Your new form enables you to breathe underwater.\n\r", ch);
-                        affect_strip(ch, gsn_breathe_water);
-                        af.type = gsn_breathe_water;
+                        af.type      = gsn_breathe_water;
+                        af.duration  = -1;
+                        af.location  = APPLY_NONE;
+                        af.modifier  = 0;
                         af.bitvector = 0;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_SNAKE);
                 }
         }
         else
         {
-
                 bite = get_obj_wear(ch, "bite");
+
                 if (bite)
                 {
                         unequip_char(ch, bite);
                         extract_obj(bite);
                 }
 
-                affect_strip(ch, gsn_swim);
-                affect_strip(ch, gsn_breathe_water);
-                REMOVE_BIT(ch->affected_by, AFF_SWIM);
+                affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_SNAKE);
         }
 }
-
 
 void do_morph_scorpion (CHAR_DATA *ch, bool to_form)
 {
@@ -1628,7 +1692,6 @@ void do_morph_wolf (CHAR_DATA *ch, bool to_form)
                 obj_to_char(fangs, ch);
                 form_equip_char(ch, fangs, WEAR_WIELD);
 
-                affect_strip(ch, gsn_infravision);
                 send_to_char("Your new form causes your eyes to glow red.\n\r", ch);
 
                 af.type      = gsn_infravision;
@@ -1636,9 +1699,13 @@ void do_morph_wolf (CHAR_DATA *ch, bool to_form)
                 af.location  = APPLY_NONE;
                 af.modifier  = 0;
                 af.bitvector = AFF_INFRARED;
-                affect_to_char(ch, &af);
 
-                affect_strip(ch, gsn_detect_hidden);
+                affect_to_char_source(
+                        ch,
+                        &af,
+                        AFFECT_SOURCE_FORM,
+                        FORM_WOLF);
+
                 send_to_char("Your new form causes your awareness to improve.\n\r", ch);
 
                 af.type      = gsn_detect_hidden;
@@ -1646,9 +1713,13 @@ void do_morph_wolf (CHAR_DATA *ch, bool to_form)
                 af.location  = APPLY_NONE;
                 af.modifier  = 0;
                 af.bitvector = AFF_DETECT_HIDDEN;
-                affect_to_char(ch, &af);
 
-                affect_strip(ch, gsn_detect_invis);
+                affect_to_char_source(
+                        ch,
+                        &af,
+                        AFFECT_SOURCE_FORM,
+                        FORM_WOLF);
+
                 send_to_char("Your new form causes your senses to rocket.\n\r", ch);
 
                 af.type      = gsn_detect_invis;
@@ -1656,14 +1727,24 @@ void do_morph_wolf (CHAR_DATA *ch, bool to_form)
                 af.location  = APPLY_NONE;
                 af.modifier  = 0;
                 af.bitvector = AFF_DETECT_INVIS;
-                affect_to_char(ch, &af);
+
+                affect_to_char_source(
+                        ch,
+                        &af,
+                        AFFECT_SOURCE_FORM,
+                        FORM_WOLF);
 
                 af.type      = gsn_detect_sneak;
                 af.duration  = -1;
                 af.location  = APPLY_NONE;
                 af.modifier  = 0;
                 af.bitvector = AFF_DETECT_SNEAK;
-                affect_to_char(ch, &af);
+
+                affect_to_char_source(
+                        ch,
+                        &af,
+                        AFFECT_SOURCE_FORM,
+                        FORM_WOLF);
         }
         else
         {
@@ -1681,16 +1762,17 @@ void do_morph_wolf (CHAR_DATA *ch, bool to_form)
                         extract_obj(fangs);
                 }
 
-                affect_strip(ch, gsn_infravision);
-                affect_strip(ch, gsn_detect_hidden);
-                REMOVE_BIT(ch->affected_by, AFF_DETECT_HIDDEN);
-                affect_strip(ch, gsn_detect_invis);
-                REMOVE_BIT(ch->affected_by, AFF_DETECT_INVIS);
-                affect_strip(ch, gsn_detect_sneak);
-                affect_strip(ch, gsn_heighten);
-                affect_strip(ch, gsn_form_direwolf);
+                 affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_WOLF);
+
+                /*
+                 * Gaia's Warning may only be maintained in wolf form.
+                 * It is cast separately rather than granted by the form,
+                 * so retain the existing explicit cleanup.
+                 */
                 affect_strip(ch, gsn_gaias_warning);
-                REMOVE_BIT(ch->affected_by, AFF_BATTLE_AURA);
         }
 }
 
@@ -1764,7 +1846,6 @@ void do_morph_direwolf (CHAR_DATA *ch, bool to_form)
                 obj_to_char(fangs, ch);
                 form_equip_char(ch, fangs, WEAR_WIELD);
 
-                affect_strip(ch, gsn_infravision);
                 send_to_char("Your new form causes your eyes to glow red.\n\r", ch);
 
                 af.type      = gsn_infravision;
@@ -1772,32 +1853,66 @@ void do_morph_direwolf (CHAR_DATA *ch, bool to_form)
                 af.location  = APPLY_NONE;
                 af.modifier  = 0;
                 af.bitvector = AFF_INFRARED;
-                affect_to_char(ch, &af);
 
-                affect_strip(ch, gsn_detect_hidden);
+                affect_to_char_source(
+                        ch,
+                        &af,
+                        AFFECT_SOURCE_FORM,
+                        FORM_DIREWOLF);
+
                 send_to_char("Your new form causes your awareness to improve.\n\r", ch);
 
                 af.type      = gsn_detect_hidden;
+                af.duration  = -1;
+                af.location  = APPLY_NONE;
+                af.modifier  = 0;
                 af.bitvector = AFF_DETECT_HIDDEN;
-                affect_to_char(ch, &af);
 
-                affect_strip(ch, gsn_detect_invis);
+                affect_to_char_source(
+                        ch,
+                        &af,
+                        AFFECT_SOURCE_FORM,
+                        FORM_DIREWOLF);
+
                 send_to_char("Your new form causes your senses to rocket.\n\r", ch);
 
                 af.type      = gsn_detect_invis;
+                af.duration  = -1;
+                af.location  = APPLY_NONE;
+                af.modifier  = 0;
                 af.bitvector = AFF_DETECT_INVIS;
-                affect_to_char(ch, &af);
 
-                affect_strip(ch, gsn_detect_sneak);
+                affect_to_char_source(
+                        ch,
+                        &af,
+                        AFFECT_SOURCE_FORM,
+                        FORM_DIREWOLF);
+
                 af.type      = gsn_detect_sneak;
+                af.duration  = -1;
+                af.location  = APPLY_NONE;
+                af.modifier  = 0;
                 af.bitvector = AFF_DETECT_SNEAK;
-                affect_to_char(ch, &af);
 
-                affect_strip(ch, gsn_form_direwolf);
+                affect_to_char_source(
+                        ch,
+                        &af,
+                        AFFECT_SOURCE_FORM,
+                        FORM_DIREWOLF);
+
                 send_to_char("You are surrounded by a terrifying aura!\n\r", ch);
+
                 af.type      = gsn_form_direwolf;
+                af.duration  = -1;
+                af.location  = APPLY_NONE;
+                af.modifier  = 0;
                 af.bitvector = AFF_BATTLE_AURA;
-                affect_to_char(ch, &af);
+
+                affect_to_char_source(
+                        ch,
+                        &af,
+                        AFFECT_SOURCE_FORM,
+                        FORM_DIREWOLF);
 
         }
         else
@@ -1816,16 +1931,13 @@ void do_morph_direwolf (CHAR_DATA *ch, bool to_form)
                         extract_obj(fangs);
                 }
 
-                affect_strip(ch, gsn_infravision);
-                affect_strip(ch, gsn_detect_hidden);
-                REMOVE_BIT(ch->affected_by, AFF_DETECT_HIDDEN);
-                affect_strip(ch, gsn_detect_invis);
-                REMOVE_BIT(ch->affected_by, AFF_DETECT_INVIS);
-                affect_strip(ch, gsn_detect_sneak);
-                affect_strip(ch, gsn_heighten);
-                affect_strip(ch, gsn_form_direwolf);
+                affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_DIREWOLF);
+
+                /* Gaia's Warning requires wolf/direwolf form. */
                 affect_strip(ch, gsn_gaias_warning);
-                REMOVE_BIT(ch->affected_by, AFF_BATTLE_AURA);
         }
 }
 
