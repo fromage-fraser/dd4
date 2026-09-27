@@ -755,6 +755,7 @@ Gezhp, Owl and Shade
 - Prone shifters now correctly have reduced chances of making form bonus attacks.
 - Trapped objects now retain their trap type, effects and remaining charges when saved.
 - Movement-triggered traps now correctly interrupt the movement attempt that triggers them.
+- Defensive Engineer pulses no longer replace the user's current combat target.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
