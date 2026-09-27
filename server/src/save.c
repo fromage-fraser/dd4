@@ -1512,7 +1512,10 @@ void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
                                         log_string(buf2);
                                 }
                                 else
+                                {
+                                        obj->material = obj->pIndexData->material;
                                         fVnum = TRUE;
+                                }
                                 fMatch = TRUE;
                                 break;
                         }

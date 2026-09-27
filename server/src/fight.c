@@ -300,16 +300,18 @@ void violence_update(void)
                                 }
 
                                 multi_hit(ch, victim, TYPE_UNDEFINED);
-                                return;
+                                continue;
                         }
 
                         /* mob attacks member of pc's group */
                         for (vch = ch->in_room->people; vch; vch = vch->next_in_room)
                         {
-                                if (can_see(ch, vch) && is_same_group(vch, victim) && number_range(0, number) == 0)
+                                if (can_see(ch, vch) && is_same_group(vch, victim))
                                 {
-                                        victim = vch;
                                         number++;
+
+                                        if (number_range(1, number) == 1)
+                                                victim = vch;
                                 }
                         }
 

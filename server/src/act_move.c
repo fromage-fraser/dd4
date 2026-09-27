@@ -43,8 +43,9 @@ DIR_DATA directions[MAX_DIR] =
         {"down", DIR_UP, "below"}};
 
 const int movement_loss[SECT_MAX] =
-    {
-        1, 2, 2, 3, 4, 5, 4, 1, 3, 10, 6, 4};
+{
+        1, 2, 2, 3, 4, 5, 4, 1, 5, 10, 6, 5, 5
+};
 
 /*
  * Local functions.
