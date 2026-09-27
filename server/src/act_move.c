@@ -2,7 +2,7 @@
  *  Original Diku Mud copyright (C) 1990, 1991 by Sebastian Hammer,        *
  *  Michael Seifert, Hans Henrik St{rfeldt, Tom Madsen, and Katja Nyboe.   *
  *                                                                         *
- *  Merc Diku Mud improvements copyright (C) 1992, 1993 by Michael          *
+ *  Merc Diku Mud improvements copyright (C) 1992, 1993 by Michael         *
  *  Chastain, Michael Quan, and Mitchell Tse.                              *
  *                                                                         *
  *  Envy Diku Mud improvements copyright (C) 1994 by Michael Quan, David   *
@@ -178,10 +178,10 @@ void scan(CHAR_DATA *ch, int door)
                         visibility = 4;
                         break;
                 case SUN_DARK:
-                        if (IS_AFFECTED(ch, AFF_INFRARED))
-                                visibility = 4;
                         if (is_affected(ch, gsn_clairvoyance))
                                 visibility = 6;
+                        else if (IS_AFFECTED(ch, AFF_INFRARED))
+                                visibility = 4;
                         else
                                 visibility = 2;
                         break;

@@ -258,8 +258,11 @@ static int gmcp_exit_cost(CHAR_DATA *ch,
         /*
          * This mirrors the effective current move_char() behaviour.
          */
-        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL)
-        ||  IS_AFFECTED(ch, AFF_FLYING))
+        if ((IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+        ||   IS_AFFECTED(ch, AFF_FLYING))
+        &&  ((to_room->sector_type != SECT_UNDERWATER
+        &&    to_room->sector_type != SECT_UNDERWATER_GROUND)
+        ||   ch->form == FORM_SNAKE))
         {
                 cost /= 3;
                 cost = UMAX(cost, 1);

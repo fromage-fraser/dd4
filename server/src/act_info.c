@@ -3507,6 +3507,45 @@ void do_where(CHAR_DATA *ch, char *argument)
         return;
 }
 
+/*
+ * Print a heading only when there is a non-empty value to display.
+ * The introduction is printed once, before the first populated line.
+ */
+static void consider_send_attribute_value(
+        CHAR_DATA *ch,
+        const char *heading,
+        const char *value,
+        bool *details_started,
+        bool *line_started)
+{
+        if (value == NULL)
+                return;
+
+        /* Ignore leading whitespace and entirely blank values. */
+        while (*value != '\0' && isspace((unsigned char)*value))
+                value++;
+
+        if (*value == '\0')
+                return;
+
+        if (!*details_started)
+        {
+                send_to_char(
+                        "<74>Your experience and insight provides additional details:<0>\n\r",
+                        ch);
+                *details_started = TRUE;
+        }
+
+        if (!*line_started)
+        {
+                send_to_char(heading, ch);
+                *line_started = TRUE;
+        }
+
+        send_to_char(" ", ch);
+        send_to_char(value, ch);
+}
+
 void do_consider(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
@@ -3707,101 +3746,121 @@ void do_consider(CHAR_DATA *ch, char *argument)
         if ( IS_NPC( victim ) && rank_sn(victim) > 1 )
                 act ("$N seems {Wmore powerful{x than your usual adversaries.", ch, NULL, victim, TO_CHAR );
 
-
-        if ( victim->mobspec )
+        if (victim->mobspec)
         {
                 MOB_TEMPLATE_DATA resolved;
                 int sn;
-                char buf[MAX_STRING_LENGTH];
-                char buf1[MAX_STRING_LENGTH];
+                size_t group;
                 unsigned long int next;
-                buf1[0] = '\0';
-                buf[0] = '\0';
+                const char *name;
+                bool details_started;
+                bool line_started;
 
-                for ( sn = 0; sn < MAX_MOB; sn++ )
+                /*
+                 * Preserve the existing headings, colours, and choice
+                 * of name function for each group.
+                 */
+                const struct
+                {
+                        unsigned long int flags;
+                        const char *heading;
+                        const char *ending;
+                        bool use_body_names;
+                } groups[] =
+                {
                         {
-                                if ( !mob_table[sn].name )
-                                        break;
-
-                                if ( !str_cmp(victim->mobspec, mob_table[sn].name))
-                                {
-                                        if (!resolve_mob_template(
-                                                sn,
-                                                &resolved))
-                                        {
-                                                break;
-                                        }
-
-                                        strcat(buf, "<74>Your experiance and insights provide additional detail:<0>\n\r");
-                                        strcat( buf1, buf );
-                                        sprintf( buf, "Species: {W%s{x\n\r",
-                                        mob_table[sn].species);
-                                        strcat( buf1, buf );
-
-                                        strcat(buf1, "<556>Vulnerable To:<0><15>");
-                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                                        {
-                                                if (IS_SET(victim->vulnerabilities, next))
-                                                {
-
-                                                        strcat(buf1, " ");
-                                                        strcat(buf1, resist_name(next));
-                                                        buf1[0] = UPPER( buf1[0] );
-                                                }
-                                        }
-                                        strcat(buf1, "<0>\n\r");
-
-                                        strcat(buf1, "Resistant To:{W");
-                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                                        {
-                                                if (IS_SET(victim->resists, next))
-                                                {
-                                                        strcat(buf1, " ");
-                                                        strcat(buf1, resist_name(next));
-
-                                                }
-                                        }
-                                        strcat(buf1, "{x\n\r");
-
-                                        strcat(buf1, "Immune To:{W");
-                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                                        {
-                                                if (IS_SET(victim->immunes, next))
-                                                {
-                                                        strcat(buf1, " ");
-                                                        strcat(buf1, resist_name(next));
-
-                                                }
-                                        }
-                                        strcat(buf1, "{x\n\r");
-
-                                        strcat(buf1, "Body Form:{W");
-
-                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                                        {
-                                                if (IS_SET(victim->body_form, next))
-                                                {
-                                                        strcat(buf1, " ");
-                                                        strcat(buf1, body_form_name(next));
-
-                                                }
-                                        }
-                                        strcat(buf1, "{x\n\r");
-
-                                        strcat(buf1, "Attack Parts:{W");
-                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                                        {
-                                                if (IS_SET(victim->attack_parts, next))
-                                                {
-                                                        strcat(buf1, " ");
-                                                        strcat(buf1, body_form_name(next));
-
-                                                }
-                                        }
-                                        strcat(buf1, "{x\n\r");
-                                send_to_char( buf1, ch );
-                                }
+                                victim->vulnerabilities,
+                                "Vulnerable To:{W",
+                                "{x\n\r",
+                                FALSE
+                        },
+                        {
+                                victim->resists,
+                                "Resistant To:{W",
+                                "{x\n\r",
+                                FALSE
+                        },
+                        {
+                                victim->immunes,
+                                "Immune To:{W",
+                                "{x\n\r",
+                                FALSE
+                        },
+                        {
+                                victim->body_form,
+                                "Body Form:{W",
+                                "{x\n\r",
+                                TRUE
+                        },
+                        {
+                                victim->attack_parts,
+                                "Attack Parts:{W",
+                                "{x\n\r",
+                                TRUE
                         }
+                };
+
+                for (sn = 0; sn < MAX_MOB; sn++)
+                {
+                        if (!mob_table[sn].name)
+                                break;
+
+                        if (str_cmp(victim->mobspec, mob_table[sn].name))
+                                continue;
+
+                        if (!resolve_mob_template(sn, &resolved))
+                                break;
+
+                        details_started = FALSE;
+                        line_started = FALSE;
+
+                        /*
+                         * Species is also optional: no value means
+                         * no heading and no newline.
+                         */
+                        consider_send_attribute_value(
+                                ch,
+                                "Basic type:{W",
+                                mob_table[sn].species,
+                                &details_started,
+                                &line_started);
+
+                        if (line_started)
+                                send_to_char("{x\n\r", ch);
+
+                        /*
+                         * Print each attribute group only when at least
+                         * one set flag produces a non-empty name.
+                         */
+                        for (group = 0;
+                             group < sizeof(groups) / sizeof(groups[0]);
+                             group++)
+                        {
+                                line_started = FALSE;
+
+                                for (next = 1;
+                                     next > 0 && next <= BIT_MAX;
+                                     next *= 2)
+                                {
+                                        if (!IS_SET(groups[group].flags, next))
+                                                continue;
+
+                                        name = groups[group].use_body_names
+                                                ? body_form_name(next)
+                                                : resist_name(next);
+
+                                        consider_send_attribute_value(
+                                                ch,
+                                                groups[group].heading,
+                                                name,
+                                                &details_started,
+                                                &line_started);
+                                }
+
+                                if (line_started)
+                                        send_to_char(groups[group].ending, ch);
+                        }
+                }
 
                 return;
         }
