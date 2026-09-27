@@ -613,19 +613,19 @@ void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         /*
          * Multiple attacks for shifter forms
          */
+        /*
+         * Multiple attacks for shifter forms.
+         * Prone characters have a 50% chance to lose each form bonus attack.
+         */
         if (ch->form == FORM_TIGER || ch->form == FORM_BEAR || ch->form == FORM_HYDRA || ch->form == FORM_DRAGON || ch->form == FORM_GRIFFIN)
         {
-                if ((IS_AFFECTED(ch, AFF_PRONE)) && (number_percent() < 50))
-                        one_hit(ch, victim, dt, FALSE);
-                else
+                if (!IS_AFFECTED(ch, AFF_PRONE) || number_percent() < 50)
                         one_hit(ch, victim, dt, FALSE);
         }
 
         if (ch->form == FORM_HYDRA || ch->form == FORM_DRAGON || ch->form == FORM_GRIFFIN)
         {
-                if ((IS_AFFECTED(ch, AFF_PRONE)) && (number_percent() < 50))
-                        one_hit(ch, victim, dt, FALSE);
-                else
+                if (!IS_AFFECTED(ch, AFF_PRONE) || number_percent() < 50)
                         one_hit(ch, victim, dt, FALSE);
         }
 

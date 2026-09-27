@@ -750,6 +750,11 @@ Gezhp, Owl and Shade
 - Saved objects now retain their material properties after being reloaded.
 - NPC combat assistance now selects group targets without room-list ordering bias.
 - Hunger and thirst regeneration penalties now continue correctly at negative condition values.
+- Grouped mob assistance no longer prematurely ends combat processing for the current round.
+- Rebalanced terrain movement costs and corrected underwater-ground movement cost.
+- Prone shifters now correctly have reduced chances of making form bonus attacks.
+- Trapped objects now retain their trap type, effects and remaining charges when saved.
+- Movement-triggered traps now correctly interrupt the movement attempt that triggers them.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
@@ -884,8 +889,9 @@ trapset axe move north
 trapset axe damage sleep
 trapset axe charge 10
 
-This would mean someone moving north from the room the object is in would be hit
-by the trap and put to sleep.
+This would mean someone attempting to move north from the room the object is in
+would trigger the trap and be put to sleep. The triggering movement attempt is
+interrupted. A teleport trap may instead move the character itself.
 ~
 
 101 TRAPLIST~
