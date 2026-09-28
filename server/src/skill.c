@@ -3254,8 +3254,14 @@ void do_intimidate (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_AFFECTED(ch, AFF_DETER))
+        if (is_affected_source(
+                ch,
+                gsn_intimidate,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
                 return;
+        }
 
         af.type      = gsn_intimidate;
         af.duration  = number_range(1, ch->level / 20 );
