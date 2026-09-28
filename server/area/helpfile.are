@@ -631,8 +631,8 @@ Gezhp, Owl and Shade
 
 {W October 2024{x
 
-- Skills "target" and spell "regenerate" added, to allow for targeting and healing
-  of body regions on players or mobiles.
+- Skills "target" and spell "regenerate" added, to allow for targeting and 
+  healing of body regions on players or mobiles.
 - Skills "harvest" and "carve" added for Druids and Rangers
 - Skill "bitsum" added for IMMs
 - Spell "possession" fixed and re-enabled. Spell "release" added (basically
@@ -641,8 +641,8 @@ Gezhp, Owl and Shade
 
 {W December 2024{x
 
-- 15 new level 70+ spells and skills now enabled for all classes. A few more +
-  "bonus" system mechanic still to code.
+- 15 new level 70+ spells and skills now enabled for all classes. A few more
+  "bonus" system mechanics still to code.
 - Skill "quicken" added for vampires and werewolves
 - Chant "dragonsbane" added for bards
 - Bat form added for vampires
@@ -745,21 +745,34 @@ Gezhp, Owl and Shade
 - Moving between underwater rooms no longer replenishes your air supply.
 - Fixed room lighting left behind by NPCs and linkdead players carrying lights.
 - Infrared vision now correctly improves scan distance at night.
-- GMCP exit information now reports flying movement costs correctly for underwater rooms.
-- Song of Rejuvenation mana recovery now scales correctly with proficiency and level.
+- GMCP exit information now reports flying movement costs correctly for 
+  underwater rooms.
+- Song of Rejuvenation mana recovery now scales correctly with proficiency and 
+  level.
 - Saved objects now retain their material properties after being reloaded.
-- NPC combat assistance now selects group targets without room-list ordering bias.
-- Hunger and thirst regeneration penalties now continue correctly at negative condition values.
-- Grouped mob assistance no longer prematurely ends combat processing for the current round.
-- Rebalanced terrain movement costs and corrected underwater-ground movement cost.
-- Prone shifters now correctly have reduced chances of making form bonus attacks.
-- Trapped objects now retain their trap type, effects and remaining charges when saved.
-- Movement-triggered traps now correctly interrupt the movement attempt that triggers them.
+- NPC combat assistance now selects group targets without room-list ordering 
+  bias.
+- Hunger and thirst regeneration penalties now continue correctly at negative 
+  condition values.
+- Grouped mob assistance no longer prematurely ends combat processing for the 
+  current round.
+- Rebalanced terrain movement costs and corrected underwater-ground movement 
+  cost.
+- Prone shifters now correctly have reduced chances of making form bonus 
+  attacks.
+- Trapped objects now retain their trap type, effects and remaining charges when 
+  saved.
+- Movement-triggered traps now correctly interrupt the movement attempt that 
+  triggers them.
 - Defensive Engineer pulses no longer replace the user's current combat target.
-- Overlapping character affects now preserve shared status flags when one affect ends.
-- Hawk, dragon, cat, snake, wolf and direwolf form effects now coexist with independently 
+- Overlapping character affects now preserve shared status flags when one affect 
+  ends.
+- Hawk, dragon, cat, snake, wolf and direwolf form effects now coexist with 
+  independently supplied affects instead of replacing them.
+- Chameleon form now owns its hide and sneak effects without removing 
+  independently supplied stealth effects.
+- Phoenix, demon and griffin form effects now coexist with independently 
   supplied affects instead of replacing them.
-- Chameleon form now owns its hide and sneak effects without removing independently supplied stealth effects.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
