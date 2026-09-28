@@ -90,6 +90,15 @@ static bool is_legacy_form_affect(CHAR_DATA *ch, AFFECT_DATA *paf)
                 case FORM_GRIFFIN:
                         return paf->type == gsn_fly
                             && paf->bitvector == AFF_FLYING;
+                
+                case FORM_FLY:
+                        return paf->type == gsn_form_fly
+                            && (paf->bitvector == AFF_FLYING
+                            ||  paf->bitvector == AFF_NON_CORPOREAL);
+
+                case FORM_BAT:
+                        return paf->type == gsn_form_bat
+                            && paf->bitvector == AFF_FLYING;
 
                 case FORM_DRAGON:
                         if (paf->type == gsn_fly
@@ -150,6 +159,38 @@ void migrate_form_affect_sources(CHAR_DATA *ch)
                         &af,
                         AFFECT_SOURCE_FORM,
                         FORM_CHAMELEON);
+        }
+}
+
+/*
+ * Fly and Bat form retain their existing behaviour of shedding temporary
+ * non-prayer affects when entered.
+ *
+ * Explicitly owned affects are not removed here; their provider is
+ * responsible for removing them.
+ */
+static void strip_temporary_morph_affects(CHAR_DATA *ch)
+{
+        AFFECT_DATA *paf;
+
+        if (!ch)
+                return;
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted)
+                        continue;
+
+                if (paf->source_type != AFFECT_SOURCE_NONE)
+                        continue;
+
+                if (paf->duration < 0)
+                        continue;
+
+                if (effect_is_prayer(paf))
+                        continue;
+
+                affect_remove(ch, paf);
         }
 }
 
@@ -2343,54 +2384,55 @@ void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
 void do_morph_fly (CHAR_DATA *ch, bool to_form)
 {
         AFFECT_DATA af;
-        AFFECT_DATA *paf;
 
         if (to_form)
         {
-
-                /* Remove any arm or tail trauma, fly form doesn't have arms or a tail */
+                /*
+                 * Fly form doesn't have arms or a tail.
+                 */
                 affect_strip(ch, gsn_arm_trauma);
                 affect_strip(ch, gsn_tail_trauma);
 
-                for ( paf = ch->affected; paf; paf = paf->next )
+                /*
+                 * Preserve Fly form's existing behaviour of shedding
+                 * temporary non-prayer affects.
+                 */
+                strip_temporary_morph_affects(ch);
+
+                if (ch->pcdata->learned[gsn_form_fly] > 10
+                ||  ch->pcdata->learned[gsn_fly])
                 {
-
-                        if ( paf->deleted )
-                                continue;
-
-                        if (paf->duration < 0 )
-                                continue;
-
-                        if (effect_is_prayer(paf))
-                                continue;
-
-                        affect_remove( ch, paf );
-                }
-
-                if ((ch->pcdata->learned[gsn_form_fly] > 10) || (ch->pcdata->learned[gsn_fly]))
-                {
-                        affect_strip(ch, gsn_fly);
-                        affect_strip(ch, gsn_levitation);
-                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
-
-                        send_to_char("Your new form enables you to fly.\n\r", ch);
+                        send_to_char(
+                                "Your new form enables you to fly.\n\r",
+                                ch);
 
                         af.type      = gsn_form_fly;
                         af.duration  = -1;
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_FLYING;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_FLY);
 
                         af.bitvector = AFF_NON_CORPOREAL;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_FLY);
                 }
         }
         else
         {
-                affect_strip(ch, gsn_form_fly);
-                REMOVE_BIT(ch->affected_by, AFF_FLYING);
-                REMOVE_BIT(ch->affected_by, AFF_NON_CORPOREAL);
+                affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_FLY);
         }
 }
 
@@ -2398,57 +2440,65 @@ void do_morph_bat (CHAR_DATA *ch, bool to_form)
 {
         OBJ_DATA *fangs;
         AFFECT_DATA af;
-        AFFECT_DATA *paf;
 
         if (to_form)
         {
-                /* Remove any arm trauma, bat form doesn't have arms */
+                /* Bat form doesn't have arms. */
                 affect_strip(ch, gsn_arm_trauma);
 
-                fangs = create_object(get_obj_index(OBJ_BAT_FANGS), ch->level, "common", CREATED_NO_RANDOMISER);
+                fangs = create_object(
+                        get_obj_index(OBJ_BAT_FANGS),
+                        ch->level,
+                        "common",
+                        CREATED_NO_RANDOMISER);
+
                 obj_to_char(fangs, ch);
                 form_equip_char(ch, fangs, WEAR_WIELD);
 
-                for ( paf = ch->affected; paf; paf = paf->next )
+                /*
+                 * Preserve Bat form's existing behaviour of shedding
+                 * temporary non-prayer affects.
+                 */
+                strip_temporary_morph_affects(ch);
+
+                /*
+                 * Bat form and Mist Walk are mutually exclusive.
+                 * Mist Walk is permanent-duration, so it is intentionally
+                 * removed separately from the temporary-affect purge.
+                 */
+                affect_strip(ch, gsn_mist_walk);
+
+                if (ch->pcdata->learned[gsn_form_bat]
+                ||  ch->pcdata->learned[gsn_fly])
                 {
-
-                        if ( paf->deleted )
-                                continue;
-
-                        if (paf->duration < 0 )
-                                continue;
-
-                        if (effect_is_prayer(paf))
-                                continue;
-
-                        affect_remove( ch, paf );
-                }
-
-                if ((ch->pcdata->learned[gsn_form_bat]) || (ch->pcdata->learned[gsn_fly]))
-                {
-                        affect_strip(ch, gsn_fly);
-                        affect_strip(ch, gsn_levitation);
-                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
-                        affect_strip(ch, gsn_mist_walk);
-                        REMOVE_BIT(ch->affected_by, AFF_NON_CORPOREAL);
-
-                        send_to_char("Your new form enables you to fly.\n\r", ch);
+                        send_to_char(
+                                "Your new form enables you to fly.\n\r",
+                                ch);
 
                         af.type      = gsn_form_bat;
                         af.duration  = -1;
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_FLYING;
-                        affect_to_char(ch, &af);
-                        ch->rage = ( ch->rage - ( ch->level / 10 ) );
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_BAT);
+
+                        ch->rage = ch->rage - (ch->level / 10);
                 }
         }
         else
         {
-                affect_strip(ch, gsn_form_bat);
-                REMOVE_BIT(ch->affected_by, AFF_FLYING);
+                affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_BAT);
 
                 fangs = get_obj_wear(ch, "fangs");
+
                 if (fangs)
                 {
                         unequip_char(ch, fangs);

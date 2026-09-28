@@ -773,6 +773,8 @@ Gezhp, Owl and Shade
   independently supplied stealth effects.
 - Phoenix, demon and griffin form effects now coexist with independently 
   supplied affects instead of replacing them.
+- Fly and bat form now own their flight effects without clearing independently 
+  supplied permanent flight sources.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
