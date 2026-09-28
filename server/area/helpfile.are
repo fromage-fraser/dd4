@@ -775,14 +775,14 @@ Gezhp, Owl and Shade
   supplied affects instead of replacing them.
 - Fly and bat form now own their flight effects without clearing independently 
   supplied permanent flight sources.
-- Equipment and set elemental resistance applies now provide their intended
-  resistance effects; fixed cold resistance also modifying lightning resistance.
 - Equipment and set special applies now coexist with independently supplied
   spell, form, equipment and set effects, including across morph equipment
   removal and restoration.
 - Swimming and invisibility cleanup now preserves independently supplied effects;
   no-swim terrain suppresses swimming without corrupting form-owned swim effects.
-~
+- Status spells can now establish their own effects while the same status is
+  supplied independently by equipment, sets or forms.
+- Room-wide trap damage now preserves independently supplied invisibility.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~

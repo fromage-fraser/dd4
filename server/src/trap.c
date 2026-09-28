@@ -1067,11 +1067,31 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 dam = MAX_DAMAGE;
                         }
 
-                        if ( IS_AFFECTED(wch, AFF_INVISIBLE) ) {
-                                affect_strip( wch, gsn_invis );
-                                affect_strip( wch, gsn_mass_invis );
-                                REMOVE_BIT( wch->affected_by, AFF_INVISIBLE );
-                                act( "$n fades into existence.", wch, NULL, NULL, TO_ROOM );
+                        if (IS_AFFECTED(wch, AFF_INVISIBLE))
+                        {
+                                affect_strip(wch, gsn_invis);
+                                affect_strip(wch, gsn_mass_invis);
+
+                                /*
+                                 * Room-wide trap damage breaks ordinary
+                                 * invisibility spells without destroying an
+                                 * independently supplied invisibility source.
+                                 */
+                                if (!affect_bit_is_supplied(
+                                        wch,
+                                        AFF_INVISIBLE))
+                                {
+                                        REMOVE_BIT(
+                                            wch->affected_by,
+                                            AFF_INVISIBLE);
+
+                                        act(
+                                            "$n fades into existence.",
+                                            wch,
+                                            NULL,
+                                            NULL,
+                                            TO_ROOM);
+                                }
                         }
 
                         /*

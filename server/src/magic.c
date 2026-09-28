@@ -2630,8 +2630,14 @@ void spell_detect_hidden(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (IS_AFFECTED(victim, AFF_DETECT_HIDDEN))
+        if (is_affected_source(
+                victim,
+                gsn_detect_hidden,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
                 return;
+        }
 
         af.type = gsn_detect_hidden;
         af.duration = level;
@@ -2652,8 +2658,14 @@ void spell_detect_invis(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (IS_AFFECTED(victim, AFF_DETECT_INVIS))
+        if (is_affected_source(
+                victim,
+                gsn_detect_invis,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
                 return;
+        }
 
         af.type = gsn_detect_invis;
         af.duration = level;
@@ -3526,8 +3538,14 @@ void spell_fireshield(int sn, int level, CHAR_DATA *ch, void *vo)
         AFFECT_DATA af;
         CHAR_DATA *victim = (CHAR_DATA *)vo;
 
-        if (IS_AFFECTED(victim, AFF_FLAMING))
+        if (is_affected_source(
+                victim,
+                sn,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
                 return;
+        }
 
         af.type = sn;
         af.duration = number_fuzzy(level / 12);
@@ -4751,8 +4769,14 @@ void spell_invis(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (IS_AFFECTED(victim, AFF_INVISIBLE))
+        if (is_affected_source(
+                victim,
+                sn,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
                 return;
+        }
 
         send_to_char("<51>Yo<45>u f<39>ad<33>e o<27>ut <21>of <20>ex<19>is<18>te<17>nce.<0>\n\r", victim);
         act("$n fades out of existence.", victim, NULL, NULL, TO_ROOM);
@@ -4943,8 +4967,17 @@ void spell_mass_invis(int sn, int level, CHAR_DATA *ch, void *vo)
 
         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
         {
-                if (!is_same_group(gch, ch) || IS_AFFECTED(gch, AFF_INVISIBLE))
+                if (!is_same_group(gch, ch))
                         continue;
+
+                if (is_affected_source(
+                        gch,
+                        sn,
+                        AFFECT_SOURCE_NONE,
+                        0))
+                {
+                        continue;
+                }
 
                 send_to_char("{cYou slowly fade out of existence.{x\n\r", gch);
                 act("$n slowly fades out of existence.", gch, NULL, NULL, TO_ROOM);
@@ -4975,8 +5008,14 @@ void spell_pass_door(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (IS_AFFECTED(victim, AFF_PASS_DOOR))
+        if (is_affected_source(
+                victim,
+                sn,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
                 return;
+        }
 
         af.type = sn;
         af.duration = number_fuzzy(level / 4);
@@ -5138,8 +5177,14 @@ void spell_protection(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (IS_AFFECTED(victim, AFF_PROTECT))
+        if (is_affected_source(
+                victim,
+                sn,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
                 return;
+        }
 
         af.type = sn;
         af.duration = 24;
@@ -5259,28 +5304,35 @@ void spell_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
         AFFECT_DATA af;
         char buf[MAX_STRING_LENGTH];
 
-        if (IS_AFFECTED(victim, AFF_SANCTUARY) && (ch != victim))
+        if (is_affected_source(
+                victim,
+                sn,
+                AFFECT_SOURCE_NONE,
+                0))
         {
                 if (victim == ch)
                 {
-                        sprintf(buf, "<193>You are already affected by that spell.<0>\n\r");
+                        sprintf(
+                            buf,
+                            "<193>You are already affected by that spell.<0>\n\r");
                         send_to_char(buf, ch);
-                        sound_spell_sfx_delay( ch, sn, "wearoff", 2 );
+                        sound_spell_sfx_delay(
+                            ch,
+                            sn,
+                            "wearoff",
+                            2);
                 }
                 else
                 {
-                        sprintf(buf, "<193>%s is already affected by that spell.<0>\n\r",
-                                IS_NPC(victim) ? victim->short_descr : victim->name);
+                        sprintf(
+                            buf,
+                            "<193>%s is already affected by that spell.<0>\n\r",
+                            IS_NPC(victim)
+                                ? victim->short_descr
+                                : victim->name);
                         send_to_char(buf, ch);
                 }
-                return;
-        }
 
-        if (IS_AFFECTED(victim, AFF_SANCTUARY) && (ch == victim))
-        {
-                sprintf(buf, "<193>You are already affected by that spell.<0>\n\r");
-                send_to_char(buf, ch);
-                sound_spell_sfx_delay( ch, sn, "wearoff", 2 );
                 return;
         }
 
@@ -8542,15 +8594,29 @@ void spell_globe(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
-
-        if (IS_AFFECTED(victim, AFF_GLOBE))
-                return;
+        int affect_sn;
 
         if (ch->sub_class == SUB_CLASS_INFERNALIST)
-                af.type = skill_lookup("dark globe");
+                affect_sn = skill_lookup("dark globe");
         else
-                af.type = sn;
+                affect_sn = sn;
 
+        if (affect_sn < 0)
+        {
+                bug("Spell_globe: invalid globe affect.", 0);
+                return;
+        }
+
+        if (is_affected_source(
+                victim,
+                affect_sn,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
+                return;
+        }
+
+        af.type = affect_sn;
         af.duration = number_fuzzy(level / 6);
         af.location = APPLY_NONE;
         af.modifier = 0;
@@ -8559,13 +8625,29 @@ void spell_globe(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (ch->sub_class == SUB_CLASS_INFERNALIST)
         {
-                send_to_char("<130>You are surrounded by a globe of dark energy.<0>\n\r", victim);
-                act("$n is surrounded by a ominous-looking globe.", victim, NULL, NULL, TO_ROOM);
+                send_to_char(
+                    "<130>You are surrounded by a globe of dark energy.<0>\n\r",
+                    victim);
+
+                act(
+                    "$n is surrounded by a ominous-looking globe.",
+                    victim,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
         }
         else
         {
-                send_to_char("<208>You are surrounded by an invulnerable globe.<0>\n\r", victim);
-                act("$n is surrounded by a scintillating globe.", victim, NULL, NULL, TO_ROOM);
+                send_to_char(
+                    "<208>You are surrounded by an invulnerable globe.<0>\n\r",
+                    victim);
+
+                act(
+                    "$n is surrounded by a scintillating globe.",
+                    victim,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
         }
 }
 
@@ -9585,8 +9667,18 @@ void spell_breathe_water(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (IS_NPC(victim) || victim->position == POS_FIGHTING || victim->race == RACE_SAHUAGIN || victim->race == RACE_GRUNG || is_affected(victim, sn))
+        if (IS_NPC(victim)
+        ||  victim->position == POS_FIGHTING
+        ||  victim->race == RACE_SAHUAGIN
+        ||  victim->race == RACE_GRUNG
+        ||  is_affected_source(
+                victim,
+                sn,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
                 return;
+        }
 
         af.type = sn;
         af.duration = 5 + level / 2;
