@@ -5633,6 +5633,7 @@ bool affect_bit_is_supplied args((CHAR_DATA *ch,
                                   unsigned long int bit));
 void affect_strip_source_sn args((CHAR_DATA *ch, int sn,
                                   int source_type, uint64_t source_id));
+bool has_elemental_resistance args((CHAR_DATA *ch, int sn));
 
 /* hunt.c   */
 void hunt_victim args((CHAR_DATA * ch));

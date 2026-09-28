@@ -800,96 +800,18 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
 
             case APPLY_RESIST_HEAT:
                 ch->resist_heat += mod;
-              /*  af.type = skill_lookup("resist heat");
-              if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
-
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
-
-                        send_to_char( "You feel resistant to heat and flame.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("You feel vulnerable to heat and flame.\n\r", ch);
-                } */
                 break;
 
             case APPLY_RESIST_COLD:
                 ch->resist_cold += mod;
- /*
-                af.type = skill_lookup("resist cold");
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
-
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
-
-                        send_to_char( "You feel resistant to cold and ice.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("You feel vulnerable to cold and ice.\n\r", ch);
-                }
-                break; */
+                break;
 
             case APPLY_RESIST_LIGHTNING:
                 ch->resist_lightning += mod;
-                /*
-                af.type = skill_lookup("resist lightning");
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
-
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
-
-                        send_to_char( "You feel resistant to electricity.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("You feel vulnerable to electricity.\n\r", ch);
-                } */
                 break;
 
             case APPLY_RESIST_ACID:
                 ch->resist_acid += mod;
-         /*     af.type = skill_lookup("resist acid");
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
-
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
-
-                        send_to_char( "You feel resistant to acid.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("You feel vulnerable to acid.\n\r", ch);
-                }*/
                 break;
 
             case APPLY_BREATHE_WATER:
@@ -1131,6 +1053,40 @@ bool is_affected_source(CHAR_DATA *ch, int sn,
                         return TRUE;
                 }
         }
+
+        return FALSE;
+}
+
+/*
+ * Elemental resistance can be supplied either by a named character
+ * affect or by an APPLY_RESIST_* modifier from equipment/set bonuses.
+ */
+bool has_elemental_resistance(CHAR_DATA *ch, int sn)
+{
+        if (!ch)
+                return FALSE;
+
+        /*
+         * Spells and form-owned effects retain their normal identity.
+         */
+        if (is_affected(ch, sn))
+                return TRUE;
+
+        /*
+         * Equipment and set bonuses contribute through the numeric
+         * resistance fields.
+         */
+        if (sn == gsn_resist_heat)
+                return ch->resist_heat > 0;
+
+        if (sn == gsn_resist_cold)
+                return ch->resist_cold > 0;
+
+        if (sn == gsn_resist_lightning)
+                return ch->resist_lightning > 0;
+
+        if (sn == gsn_resist_acid)
+                return ch->resist_acid > 0;
 
         return FALSE;
 }
