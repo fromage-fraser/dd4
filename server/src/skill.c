@@ -56,7 +56,7 @@ void do_fly(CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch))
                 return;
-
+                
         if (!CAN_DO(ch, gsn_flight))
         {
                 send_to_char("Huh?\n\r", ch);

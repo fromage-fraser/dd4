@@ -1067,6 +1067,51 @@ bool is_affected( CHAR_DATA *ch, int sn )
 }
 
 /*
+ * Return true if any active character affect supplies this bit.
+ */
+bool affect_bit_is_supplied(CHAR_DATA *ch, unsigned long int bit)
+{
+        AFFECT_DATA *paf;
+
+        if (!ch || !bit)
+                return FALSE;
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted)
+                        continue;
+
+                if (paf->bitvector & bit)
+                        return TRUE;
+        }
+
+        return FALSE;
+}
+
+
+/*
+ * Remove one affect type belonging to one specific source.
+ */
+void affect_strip_source_sn(CHAR_DATA *ch, int sn,
+                            int source_type, uint64_t source_id)
+{
+        AFFECT_DATA *paf;
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted)
+                        continue;
+
+                if (paf->type == sn
+                &&  paf->source_type == source_type
+                &&  paf->source_id == source_id)
+                {
+                        affect_remove(ch, paf);
+                }
+        }
+}
+
+/*
  * Return true if a specific source supplies this affect.
  */
 bool is_affected_source(CHAR_DATA *ch, int sn,

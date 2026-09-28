@@ -5629,6 +5629,10 @@ int objset_bonus_num(int vnum);
 int objset_bonus_num_pos(int vnum, int pos);
 bool gets_bonus_objset(OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos);
 bool rem_bonus_objset(OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos);
+bool affect_bit_is_supplied args((CHAR_DATA *ch,
+                                  unsigned long int bit));
+void affect_strip_source_sn args((CHAR_DATA *ch, int sn,
+                                  int source_type, uint64_t source_id));
 
 /* hunt.c   */
 void hunt_victim args((CHAR_DATA * ch));

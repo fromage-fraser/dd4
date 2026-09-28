@@ -759,6 +759,7 @@ Gezhp, Owl and Shade
 - Overlapping character affects now preserve shared status flags when one affect ends.
 - Hawk, dragon, cat, snake, wolf and direwolf form effects now coexist with independently 
   supplied affects instead of replacing them.
+- Chameleon form now owns its hide and sneak effects without removing independently supplied stealth effects.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~

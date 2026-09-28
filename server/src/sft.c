@@ -27,6 +27,10 @@ static bool is_legacy_form_affect(CHAR_DATA *ch, AFFECT_DATA *paf)
 
         switch (ch->form)
         {
+                case FORM_CHAMELEON:
+                        return paf->type == gsn_sneak
+                            && paf->bitvector == AFF_SNEAK;
+                
                 case FORM_HAWK:
                         return paf->type == gsn_fly
                             && paf->bitvector == AFF_FLYING;
@@ -85,10 +89,10 @@ static bool is_legacy_form_affect(CHAR_DATA *ch, AFFECT_DATA *paf)
         }
 }
 
-
 void migrate_form_affect_sources(CHAR_DATA *ch)
 {
         AFFECT_DATA *paf;
+        AFFECT_DATA af;
 
         if (!ch || ch->form == FORM_NORMAL)
                 return;
@@ -101,8 +105,35 @@ void migrate_form_affect_sources(CHAR_DATA *ch)
                 paf->source_type = AFFECT_SOURCE_FORM;
                 paf->source_id = (uint64_t)ch->form;
         }
-}
 
+        /*
+         * Older Chameleon form pfiles stored the form's Hide only as
+         * AFF_HIDE, with no corresponding AFFECT_DATA.
+         */
+        if (ch->form == FORM_CHAMELEON
+        &&  IS_AFFECTED(ch, AFF_HIDE)
+        &&  !is_affected_source(
+                ch,
+                gsn_hide,
+                AFFECT_SOURCE_FORM,
+                FORM_CHAMELEON)
+        &&  (ch->pcdata->learned[gsn_form_chameleon] > 60
+        ||   ch->pcdata->learned[gsn_hide]
+                > (80 - ch->pcdata->learned[gsn_form_chameleon])))
+        {
+                af.type      = gsn_hide;
+                af.duration  = -1;
+                af.location  = APPLY_NONE;
+                af.modifier  = 0;
+                af.bitvector = AFF_HIDE;
+
+                affect_to_char_source(
+                        ch,
+                        &af,
+                        AFFECT_SOURCE_FORM,
+                        FORM_CHAMELEON);
+        }
+}
 
 void do_morph_chameleon (CHAR_DATA *ch, bool to_form)
 {
@@ -110,40 +141,59 @@ void do_morph_chameleon (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                /* Remove any arm trauma, cat form doesn't have arms */
+                /* Chameleon form doesn't have arms. */
                 affect_strip(ch, gsn_arm_trauma);
 
                 if (ch->pcdata->learned[gsn_form_chameleon] > 60
-                    || (ch->pcdata->learned[gsn_hide] > (80 - ch->pcdata->learned[gsn_form_chameleon])))
+                ||  ch->pcdata->learned[gsn_hide]
+                        > (80 - ch->pcdata->learned[gsn_form_chameleon]))
                 {
-                        affect_strip(ch, gsn_hide);
-                        send_to_char("Your new form enables you to hide.\n\r", ch);
-                        SET_BIT(ch->affected_by, AFF_HIDE);
+                        send_to_char(
+                                "Your new form enables you to hide.\n\r",
+                                ch);
+
+                        af.type      = gsn_hide;
+                        af.duration  = -1;
+                        af.location  = APPLY_NONE;
+                        af.modifier  = 0;
+                        af.bitvector = AFF_HIDE;
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_CHAMELEON);
                 }
 
                 if (ch->pcdata->learned[gsn_form_chameleon] > 30
-                     || (ch->pcdata->learned[gsn_sneak] > (140 - ch->pcdata->learned[gsn_form_chameleon])))
+                ||  ch->pcdata->learned[gsn_sneak]
+                        > (140 - ch->pcdata->learned[gsn_form_chameleon]))
                 {
-                        affect_strip(ch, gsn_sneak);
-                        send_to_char("Your new form allows you to move amongst the shadows.\n\r", ch);
+                        send_to_char(
+                                "Your new form allows you to move amongst the shadows.\n\r",
+                                ch);
 
                         af.type      = gsn_sneak;
                         af.duration  = -1;
-                        af.modifier  = APPLY_NONE;
-                        af.location  = 0;
+                        af.location  = APPLY_NONE;
+                        af.modifier  = 0;
                         af.bitvector = AFF_SNEAK;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_CHAMELEON);
                 }
         }
         else
         {
-                affect_strip(ch, gsn_hide);
-                REMOVE_BIT(ch->affected_by, AFF_HIDE);
-                affect_strip(ch, gsn_sneak);
-                REMOVE_BIT(ch->affected_by, AFF_SNEAK);
+                affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_CHAMELEON);
         }
 }
-
 
 void do_spy (CHAR_DATA *ch, char *argument)
 {

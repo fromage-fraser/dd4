@@ -2804,7 +2804,9 @@ void interpret(CHAR_DATA *ch, char *argument)
         {
                 affect_strip(ch, gsn_hide);
                 affect_strip(ch, gsn_chameleon_power);
-                REMOVE_BIT(ch->affected_by, AFF_HIDE);
+
+                if (!affect_bit_is_supplied(ch, AFF_HIDE))
+                        REMOVE_BIT(ch->affected_by, AFF_HIDE);
         }
 
         /*
