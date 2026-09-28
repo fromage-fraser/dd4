@@ -614,7 +614,15 @@ void move_char(CHAR_DATA *ch, int door)
                         move = UMAX(move, 1);
                 }
 
-                if (((to_room->sector_type == SECT_WATER_NOSWIM) || (to_room->sector_type == SECT_WATER_SWIM) || (to_room->sector_type == SECT_SWAMP) || (to_room->sector_type == SECT_UNDERWATER) || (to_room->sector_type == SECT_UNDERWATER_GROUND)) && ((ch->race == RACE_SAHUAGIN) || (ch->race == RACE_GRUNG) || (IS_AFFECTED(ch, AFF_SWIM))))
+                if ((to_room->sector_type == SECT_WATER_NOSWIM
+                ||   to_room->sector_type == SECT_WATER_SWIM
+                ||   to_room->sector_type == SECT_SWAMP
+                ||   to_room->sector_type == SECT_UNDERWATER
+                ||   to_room->sector_type == SECT_UNDERWATER_GROUND)
+                &&  (ch->race == RACE_SAHUAGIN
+                ||   ch->race == RACE_GRUNG
+                ||  (to_room->sector_type != SECT_WATER_NOSWIM
+                &&   IS_AFFECTED(ch, AFF_SWIM))))
                 {
                         move /= 3;
                         move = UMAX(move, 1);
@@ -751,20 +759,50 @@ void move_char(CHAR_DATA *ch, int door)
                 ch->position = POS_STANDING;
         }
 
-        /* Strip swim if room we move to isn't wet.. AFTER moving. Imms can dispel themselves. */
+        /*
+         * Strip ordinary swimming when appropriate without destroying a
+         * separately supplied AFF_SWIM, such as Snake form's sourced effect.
+         */
 
-        if ((((IS_AFFECTED(ch, AFF_SWIM)) || (is_affected(ch, gsn_swim))) && (ch->form != FORM_SNAKE) && (ch->level <= LEVEL_HERO)) && (ch->in_room->sector_type != SECT_UNDERWATER) && (ch->in_room->sector_type != SECT_UNDERWATER_GROUND) && (ch->in_room->sector_type != SECT_WATER_SWIM) && (ch->in_room->sector_type != SECT_SWAMP) && (ch->in_room->sector_type != SECT_WATER_NOSWIM))
+        if ((((IS_AFFECTED(ch, AFF_SWIM))
+        ||    is_affected(ch, gsn_swim))
+        &&   ch->form != FORM_SNAKE
+        &&   ch->level <= LEVEL_HERO)
+        &&  ch->in_room->sector_type != SECT_UNDERWATER
+        &&  ch->in_room->sector_type != SECT_UNDERWATER_GROUND
+        &&  ch->in_room->sector_type != SECT_WATER_SWIM
+        &&  ch->in_room->sector_type != SECT_SWAMP
+        &&  ch->in_room->sector_type != SECT_WATER_NOSWIM)
         {
                 affect_strip(ch, gsn_swim);
-                REMOVE_BIT(ch->affected_by, AFF_SWIM);
-                send_to_char("{cNo longer in the water, you stop swimming.{x\n\r", ch);
+
+                if (!affect_bit_is_supplied(ch, AFF_SWIM))
+                {
+                        REMOVE_BIT(ch->affected_by, AFF_SWIM);
+
+                        send_to_char(
+                            "{cNo longer in the water, you stop swimming.{x\n\r",
+                            ch);
+                }
         }
 
-        if ((((IS_AFFECTED(ch, AFF_SWIM)) || (is_affected(ch, gsn_swim))) && (ch->level <= LEVEL_HERO)) && (ch->in_room->sector_type == SECT_WATER_NOSWIM))
+        if ((((IS_AFFECTED(ch, AFF_SWIM))
+        ||    is_affected(ch, gsn_swim))
+        &&   ch->level <= LEVEL_HERO)
+        &&  ch->in_room->sector_type == SECT_WATER_NOSWIM)
         {
                 affect_strip(ch, gsn_swim);
-                REMOVE_BIT(ch->affected_by, AFF_SWIM);
-                send_to_char("{cThis water is not suitable for swimming in.{x\n\r", ch);
+
+                /*
+                 * SECT_WATER_NOSWIM prevents use of the swim ability, but it
+                 * must not destroy an independently supplied swim effect.
+                 */
+                if (!affect_bit_is_supplied(ch, AFF_SWIM))
+                        REMOVE_BIT(ch->affected_by, AFF_SWIM);
+
+                send_to_char(
+                    "{cThis water is not suitable for swimming in.{x\n\r",
+                    ch);
         }
 
         /* Lets check we're a pc BEFORE we call the trigger */

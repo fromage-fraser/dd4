@@ -643,7 +643,6 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
         OBJ_DATA *wield;
         char buf [MAX_STRING_LENGTH];
         int mod;
-        AFFECT_DATA af;
 
         mod = paf->modifier;
 
@@ -749,12 +748,10 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
                 break;
 
             case APPLY_INSCRIBED:
-                af.type = skill_lookup( "inscribe");
                 ch->inscription_total += mod;
                 break;
 
             case APPLY_STRENGTHEN:
-                af.type = skill_lookup( "strengthen");
                 if ( fAdd )
                 {
                         ch->damage_mitigation += mod;
@@ -769,7 +766,6 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
                 }
 
             case APPLY_ENGRAVED:
-                af.type = skill_lookup( "engrave");
                 if ( fAdd )
                 {
                         ch->damage_enhancement += mod;
@@ -788,7 +784,6 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
 
             
             case APPLY_BALANCE:
-                af.type = skill_lookup( "counterbalance" );
                 if( fAdd )
                 {
                         send_to_char( "The counterbalanced weapon will improve your attack speed.\n\r", ch );
@@ -800,8 +795,7 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
                         break;
                 }
             case APPLY_SERRATED:
-                af.type = skill_lookup( "serrated" );
-                                if( fAdd )
+                if( fAdd )
                 {
                         break;
                 }
@@ -1581,7 +1575,6 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 }
 
         }
-                /* End set bonus hack */
                 /* End set bonus hack */
 
         if( iWear != WEAR_RANGED_WEAPON )
