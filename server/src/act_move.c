@@ -2412,8 +2412,9 @@ void do_meditate(CHAR_DATA *ch, char *argument)
 }
 
 /*
- * Contributed by Alander.
+ * Contributed by Alander.  Updated by Owl 28/9/26.
  */
+
 void do_visible(CHAR_DATA *ch, char *argument)
 {
         bool in_cham = FALSE;
@@ -2424,35 +2425,63 @@ void do_visible(CHAR_DATA *ch, char *argument)
         affect_strip(ch, gsn_chameleon_power);
         affect_strip(ch, gsn_sneak);
         affect_strip(ch, gsn_shadow_form);
-        REMOVE_BIT(ch->affected_by, AFF_INVISIBLE);
-        REMOVE_BIT(ch->affected_by, AFF_SNEAK);
 
-        /* Owl 26/3/22, to produce expected behaviour */
+        /*
+         * Preserve the old behaviour: VISIBLE removes Chameleon form's
+         * Sneak, but not its form-granted Hide.
+         */
+        if (ch->form == FORM_CHAMELEON)
+        {
+                affect_strip_source_sn(
+                        ch,
+                        gsn_sneak,
+                        AFFECT_SOURCE_FORM,
+                        FORM_CHAMELEON);
+        }
+
+        if (!affect_bit_is_supplied(ch, AFF_INVISIBLE))
+                REMOVE_BIT(ch->affected_by, AFF_INVISIBLE);
+
+        if (!affect_bit_is_supplied(ch, AFF_SNEAK))
+                REMOVE_BIT(ch->affected_by, AFF_SNEAK);
+
+        /* Chameleon form remains hidden even after VISIBLE. */
         if (ch->form != FORM_CHAMELEON)
         {
                 affect_strip(ch, gsn_hide);
-                REMOVE_BIT(ch->affected_by, AFF_HIDE);
+
+                if (!affect_bit_is_supplied(ch, AFF_HIDE))
+                        REMOVE_BIT(ch->affected_by, AFF_HIDE);
         }
         else
         {
-                send_to_char("You will continue to hide for as long as you are in chameleon form.\n\r", ch);
+                send_to_char(
+                        "You will continue to hide for as long as you are in chameleon form.\n\r",
+                        ch);
                 in_cham = TRUE;
         }
 
         if (is_affected(ch, gsn_mist_walk))
         {
-                send_to_char("You morph from mist form to normal form.\n\r", ch);
-                send_to_char("Your body reverts to its normal state.\n\r", ch);
-                act("A cloud of glowing mist withdraws to unveil $n!", ch, NULL, NULL, TO_ROOM);
+                send_to_char(
+                        "You morph from mist form to normal form.\n\r",
+                        ch);
+                send_to_char(
+                        "Your body reverts to its normal state.\n\r",
+                        ch);
+                act(
+                        "A cloud of glowing mist withdraws to unveil $n!",
+                        ch,
+                        NULL,
+                        NULL,
+                        TO_ROOM);
                 affect_strip(ch, gsn_mist_walk);
                 WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
                 return;
         }
 
         if (!in_cham)
-        {
                 send_to_char("You make yourself evident.\n\r", ch);
-        }
 }
 
 void do_kiai(CHAR_DATA *ch, char *argument)
