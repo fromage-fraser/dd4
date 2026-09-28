@@ -775,6 +775,8 @@ Gezhp, Owl and Shade
   supplied affects instead of replacing them.
 - Fly and bat form now own their flight effects without clearing independently 
   supplied permanent flight sources.
+- Equipment and set elemental resistance applies now provide their intended
+  resistance effects; fixed cold resistance also modifying lightning resistance.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~

@@ -1147,7 +1147,7 @@ void spell_acid_blast(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 8);
 
-        if (is_affected(victim, gsn_resist_acid) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_acid) || saves_spell(level, victim))
                 dam /= 2;
 
         if (spell_attack_number == 1)
@@ -1459,7 +1459,7 @@ void spell_burning_hands(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = number_range(10, 20) + dice(UMIN(level, 30), 3);
 
-        if (is_affected(victim, gsn_resist_heat) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -1497,7 +1497,7 @@ void spell_call_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
                 {
                         dam = dice(level, 8);
 
-                        if (is_affected(vch, gsn_resist_lightning) || saves_spell(level, vch))
+                        if (has_elemental_resistance(vch, gsn_resist_lightning) || saves_spell(level, vch))
                                 dam /= 2;
 
                         damage(ch, vch, dam, sn, FALSE);
@@ -1542,7 +1542,7 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 6);
 
-        if (is_affected(victim, gsn_resist_lightning) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_lightning) || saves_spell(level, victim))
                 dam /= 3;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -1571,7 +1571,7 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
                                 act("The bolt hits you!", tmp_vict, NULL, NULL, TO_CHAR);
                                 dam = dice(level, 6);
 
-                                if (is_affected(tmp_vict, gsn_resist_lightning) || saves_spell(level, tmp_vict))
+                                if (has_elemental_resistance(tmp_vict, gsn_resist_lightning) || saves_spell(level, tmp_vict))
                                         dam /= 3;
 
                                 damage(ch, tmp_vict, dam, sn, FALSE);
@@ -1588,7 +1588,7 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
                         send_to_char("You are struck by your own lightning!\n\r", ch);
                         dam = dice(level, 6);
 
-                        if (is_affected(ch, gsn_resist_lightning) || saves_spell(level, ch))
+                        if (has_elemental_resistance(ch, gsn_resist_lightning) || saves_spell(level, ch))
                                 dam /= 3;
 
                         damage(ch, ch, dam, sn, FALSE);
@@ -1686,7 +1686,7 @@ void spell_chill_touch(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = number_range(10, 20) + level;
 
-        if (!is_affected(victim, gsn_resist_cold)
+        if (!has_elemental_resistance(victim, gsn_resist_cold)
         &&  !saves_resistance_effect(
                  level,
                  victim,
@@ -3509,7 +3509,7 @@ void spell_fireball(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 6);
 
-        if (is_affected(victim, gsn_resist_heat) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(level, victim))
                 dam /= 2;
 
         if (spell_attack_number == 1)
@@ -3549,7 +3549,7 @@ void spell_flamestrike(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 4);
         dam += level * 2;
 
-        if (is_affected(victim, gsn_resist_heat) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(level, victim))
                 dam /= 2;
 
         if (spell_attack_number == 1)
@@ -4837,7 +4837,7 @@ void spell_lightning_bolt(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 4) + level;
 
-        if (is_affected(victim, gsn_resist_lightning) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_lightning) || saves_spell(level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -5381,7 +5381,7 @@ void spell_shocking_grasp(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = number_range(10, 20) + 2 * level;
 
-        if (is_affected(victim, gsn_resist_lightning))
+        if (has_elemental_resistance(victim, gsn_resist_lightning))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -5961,7 +5961,7 @@ void spell_acid_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         int hpch;
         bool resist = FALSE;
 
-        if (is_affected(victim, gsn_resist_acid))
+        if (has_elemental_resistance(victim, gsn_resist_acid))
                 resist = TRUE;
 
         if (number_percent() < 2 * level && !saves_spell(level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
@@ -6035,7 +6035,7 @@ void spell_fire_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         int hpch;
         bool resist = FALSE;
 
-        if (is_affected(victim, gsn_resist_heat))
+        if (has_elemental_resistance(victim, gsn_resist_heat))
                 resist = TRUE;
 
         if (number_percent() < 2 * level && !saves_spell(level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
@@ -6113,7 +6113,7 @@ void spell_steam_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         int hpch;
         bool resist = FALSE;
 
-        if (is_affected(victim, gsn_resist_heat))
+        if (has_elemental_resistance(victim, gsn_resist_heat))
                 resist = TRUE;
 
         if (number_percent() < 2 * level && !saves_spell(level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
@@ -6191,7 +6191,7 @@ void spell_frost_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         int hpch;
         bool resist = FALSE;
 
-        if (is_affected(victim, gsn_resist_cold))
+        if (has_elemental_resistance(victim, gsn_resist_cold))
                 resist = TRUE;
 
         if (number_percent() < 2 * level && !saves_spell(level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
@@ -6288,7 +6288,7 @@ void spell_lightning_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         int hpch = UMAX(10, ch->hit);
         int dam = number_range(hpch / 8 + 1, hpch / 4);
 
-        if (is_affected(victim, gsn_resist_lightning) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_lightning) || saves_spell(level, victim))
                 dam /= 2;
 
         if (is_affected(victim, gsn_dragon_shield) || is_affected(victim, gsn_bonus_exotic))
@@ -6679,7 +6679,7 @@ void spell_control_flames(int sn, int level, CHAR_DATA *ch, void *vo)
         level = UMAX(0, level);
         dam = number_range(dam_each[level] / 2, dam_each[level] * 2);
 
-        if (is_affected(victim, gsn_resist_heat) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -8594,7 +8594,7 @@ void spell_firestorm(int sn, int level, CHAR_DATA *ch, void *vo)
                 {
                         dam = dice(level, 6);
 
-                        if (is_affected(vch, gsn_resist_heat) || saves_spell(level, vch))
+                        if (has_elemental_resistance(vch, gsn_resist_heat) || saves_spell(level, vch))
                                 dam /= 1.5;
 
                         damage(ch, vch, dam, sn, FALSE);
@@ -9696,7 +9696,7 @@ void spell_hells_fire(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 8);
         dam += level * 2;
 
-        if (saves_spell(level, victim) || is_affected(victim, gsn_resist_heat))
+        if (saves_spell(level, victim) || has_elemental_resistance(victim, gsn_resist_heat))
                 dam /= 2;
 
         if (spell_attack_number == 1)

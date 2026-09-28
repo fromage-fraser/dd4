@@ -1726,7 +1726,7 @@ static void damage_internal(CHAR_DATA *ch,
                     cold_bonus,
                     get_resistance_result(victim, RES_COLD));
 
-                if (is_affected(victim, gsn_resist_cold))
+                if (has_elemental_resistance(victim, gsn_resist_cold))
                         cold_bonus /= 2;
 
                 if (cold_bonus > INT_MAX - dam)
@@ -2064,7 +2064,7 @@ static void damage_internal(CHAR_DATA *ch,
         {
                 int firedam = dam / 2;
 
-                if (is_affected(ch, gsn_resist_heat))
+                if (has_elemental_resistance(ch, gsn_resist_heat))
                         firedam *= 0.8;
 
                 /*

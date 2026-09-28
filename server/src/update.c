@@ -1321,14 +1321,14 @@ int hit_gain(CHAR_DATA *ch)
 
         if (!IS_NPC(ch) && ch->level <= LEVEL_HERO && !IS_AFFECTED(ch, AFF_NON_CORPOREAL))
         {
-                if (IS_SET(ch->in_room->room_flags, ROOM_BURNING) && !is_affected(ch, gsn_resist_heat))
+                if (IS_SET(ch->in_room->room_flags, ROOM_BURNING) && !has_elemental_resistance(ch, gsn_resist_heat))
                 {
                         send_to_char("{RThe intense heat is too much to bear!{x\n\r", ch);
                         damage(ch, ch, number_range(5, 15), TYPE_UNDEFINED, FALSE);
                         return 0;
                 }
 
-                if (IS_SET(ch->in_room->room_flags, ROOM_FREEZING) && !is_affected(ch, gsn_resist_cold))
+                if (IS_SET(ch->in_room->room_flags, ROOM_FREEZING) && !has_elemental_resistance(ch, gsn_resist_cold))
                 {
                         send_to_char("{WThe freezing temperature drains your energy!{x\n\r", ch);
                         damage(ch, ch, number_range(5, 15), TYPE_UNDEFINED, FALSE);
