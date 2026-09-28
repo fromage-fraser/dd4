@@ -72,6 +72,24 @@ static bool is_legacy_form_affect(CHAR_DATA *ch, AFFECT_DATA *paf)
                                 && paf->bitvector == AFF_DETECT_SNEAK)
                             || (paf->type == gsn_form_direwolf
                                 && paf->bitvector == AFF_BATTLE_AURA);
+                
+                case FORM_PHOENIX:
+                        return (paf->type == gsn_fly
+                                && paf->bitvector == AFF_FLYING)
+                            || (paf->type == gsn_fireshield
+                                && paf->bitvector == AFF_FLAMING)
+                            || (paf->type == gsn_resist_heat
+                                && paf->bitvector == 0)
+                            || (paf->type == gsn_globe
+                                && paf->bitvector == AFF_GLOBE);
+
+                case FORM_DEMON:
+                        return paf->type == gsn_fly
+                            && paf->bitvector == AFF_FLYING;
+
+                case FORM_GRIFFIN:
+                        return paf->type == gsn_fly
+                            && paf->bitvector == AFF_FLYING;
 
                 case FORM_DRAGON:
                         if (paf->type == gsn_fly
@@ -2207,7 +2225,6 @@ void do_morph_dragon (CHAR_DATA *ch, bool to_form)
         }
 }
 
-
 void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
 {
         AFFECT_DATA af;
@@ -2215,10 +2232,15 @@ void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
 
         if (to_form)
         {
-                /* Remove any arm trauma, phoenix form doesn't have arms */
+                /* Phoenix form doesn't have arms. */
                 affect_strip(ch, gsn_arm_trauma);
 
-                beak = create_object(get_obj_index(OBJ_PHOENIX_BEAK), ch->level, "common", CREATED_NO_RANDOMISER);
+                beak = create_object(
+                        get_obj_index(OBJ_PHOENIX_BEAK),
+                        ch->level,
+                        "common",
+                        CREATED_NO_RANDOMISER);
+
                 if (beak)
                 {
                         beak->value[1] *= 1.5;
@@ -2227,66 +2249,89 @@ void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
                         form_equip_char(ch, beak, WEAR_WIELD);
                 }
 
-                if ((ch->pcdata->learned[gsn_form_phoenix] > 40)
-                    || (ch->pcdata->learned[gsn_fly]))
+                if (ch->pcdata->learned[gsn_form_phoenix] > 40
+                ||  ch->pcdata->learned[gsn_fly])
                 {
-                        affect_strip(ch, gsn_fly);
-                        affect_strip(ch, gsn_levitation);
-                        send_to_char("Your new form enables you to fly.\n\r", ch);
+                        send_to_char(
+                                "Your new form enables you to fly.\n\r",
+                                ch);
 
                         af.type      = gsn_fly;
                         af.duration  = -1;
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_FLYING;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_PHOENIX);
                 }
 
                 if (ch->pcdata->learned[gsn_form_phoenix] > 80)
                 {
-                        affect_strip(ch, gsn_fireshield);
-                        send_to_char("The air around your form bursts into flame!\n\r", ch);
+                        send_to_char(
+                                "The air around your form bursts into flame!\n\r",
+                                ch);
 
                         af.type      = gsn_fireshield;
                         af.duration  = -1;
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_FLAMING;
-                        affect_to_char(ch, &af);
 
-                        affect_strip(ch, gsn_resist_heat);
-                        send_to_char("You resist heat and flame!\n\r", ch);
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_PHOENIX);
 
-                        af.type  = gsn_resist_heat;
+                        send_to_char(
+                                "You resist heat and flame!\n\r",
+                                ch);
+
+                        af.type      = gsn_resist_heat;
+                        af.duration  = -1;
+                        af.location  = APPLY_NONE;
+                        af.modifier  = 0;
                         af.bitvector = 0;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_PHOENIX);
                 }
 
                 if (ch->pcdata->learned[gsn_form_phoenix] > 95)
                 {
-                        affect_strip(ch, gsn_globe);
-                        send_to_char("A scintillating globe forms around you!\n\r", ch);
+                        send_to_char(
+                                "A scintillating globe forms around you!\n\r",
+                                ch);
 
                         af.type      = gsn_globe;
                         af.duration  = -1;
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_GLOBE;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_PHOENIX);
                 }
         }
         else
         {
-                affect_strip(ch, gsn_fly);
-                affect_strip(ch, gsn_levitation);
-                REMOVE_BIT(ch->affected_by, AFF_FLYING);
-                affect_strip(ch,gsn_fireshield);
-                REMOVE_BIT(ch->affected_by, AFF_FLAMING);
-                affect_strip(ch,gsn_globe);
-                REMOVE_BIT(ch->affected_by, AFF_GLOBE);
-                affect_strip(ch, gsn_resist_heat);
+                affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_PHOENIX);
 
                 beak = get_obj_wear(ch, "sftbeak");
+
                 if (beak)
                 {
                         unequip_char(ch, beak);
@@ -2294,7 +2339,6 @@ void do_morph_phoenix (CHAR_DATA *ch, bool to_form)
                 }
         }
 }
-
 
 void do_morph_fly (CHAR_DATA *ch, bool to_form)
 {
@@ -2413,40 +2457,43 @@ void do_morph_bat (CHAR_DATA *ch, bool to_form)
         }
 }
 
-
 void do_morph_demon (CHAR_DATA *ch, bool to_form)
 {
         AFFECT_DATA af;
 
         if (to_form)
         {
-                /* Remove any tail trauma, demon form does not have a tail */
+                /* Demon form does not have a tail. */
                 affect_strip(ch, gsn_tail_trauma);
 
-                if (ch->pcdata->learned[gsn_form_demon] > 10 || ch->pcdata->learned[gsn_fly])
+                if (ch->pcdata->learned[gsn_form_demon] > 10
+                ||  ch->pcdata->learned[gsn_fly])
                 {
-                        affect_strip(ch, gsn_fly);
-                        affect_strip(ch, gsn_levitation);
-                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
-
-                        send_to_char("Your new form enables you to fly.\n\r", ch);
+                        send_to_char(
+                                "Your new form enables you to fly.\n\r",
+                                ch);
 
                         af.type      = gsn_fly;
                         af.duration  = -1;
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_FLYING;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_DEMON);
                 }
         }
         else
         {
-                affect_strip(ch, gsn_fly);
-                affect_strip(ch, gsn_levitation);
-                REMOVE_BIT(ch->affected_by, AFF_FLYING);
+                affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_DEMON);
         }
 }
-
 
 void do_morph_griffin (CHAR_DATA *ch, bool to_form)
 {
@@ -2461,20 +2508,24 @@ void do_morph_griffin (CHAR_DATA *ch, bool to_form)
                 /* Remove any arm trauma, griffin form doesn't have arms */
                 affect_strip(ch, gsn_arm_trauma);
 
-                if (ch->pcdata->learned[gsn_form_fly] > 10 || ch->pcdata->learned[gsn_fly])
+                if (ch->pcdata->learned[gsn_form_fly] > 10
+                ||  ch->pcdata->learned[gsn_fly])
                 {
-                        affect_strip(ch, gsn_fly);
-                        affect_strip(ch, gsn_levitation);
-                        REMOVE_BIT(ch->affected_by, AFF_FLYING);
-
-                        send_to_char("Your new form enables you to fly.\n\r", ch);
+                        send_to_char(
+                                "Your new form enables you to fly.\n\r",
+                                ch);
 
                         af.type      = gsn_fly;
                         af.duration  = -1;
                         af.location  = APPLY_NONE;
                         af.modifier  = 0;
                         af.bitvector = AFF_FLYING;
-                        affect_to_char(ch, &af);
+
+                        affect_to_char_source(
+                                ch,
+                                &af,
+                                AFFECT_SOURCE_FORM,
+                                FORM_GRIFFIN);
                 }
 
                 claws = create_object(get_obj_index(OBJ_TIGER_CLAWS), ch->level, "common", CREATED_NO_RANDOMISER);
@@ -2536,9 +2587,10 @@ void do_morph_griffin (CHAR_DATA *ch, bool to_form)
         }
         else
         {
-                affect_strip(ch, gsn_fly);
-                affect_strip(ch, gsn_levitation);
-                REMOVE_BIT(ch->affected_by, AFF_FLYING);
+                affect_strip_source(
+                        ch,
+                        AFFECT_SOURCE_FORM,
+                        FORM_GRIFFIN);
 
                 claws = get_obj_wear(ch, "sftclaws");
                 claw = get_obj_wear(ch, "sftclaw");
