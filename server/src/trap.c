@@ -949,11 +949,26 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         dam = MAX_DAMAGE;
                 }
 
-                if ( IS_AFFECTED(ch, AFF_INVISIBLE) ) {
-                        affect_strip( ch, gsn_invis );
-                        affect_strip( ch, gsn_mass_invis );
-                        REMOVE_BIT( ch->affected_by, AFF_INVISIBLE );
-                        act( "$n fades into existence.", ch, NULL, NULL, TO_ROOM );
+                if ( IS_AFFECTED(ch, AFF_INVISIBLE) )
+                {
+                        affect_strip(ch, gsn_invis);
+                        affect_strip(ch, gsn_mass_invis);
+
+                        /*
+                         * Damage breaks ordinary invisibility spells, but must
+                         * not destroy invisibility still supplied by another
+                         * active source such as equipment.
+                         */
+                        if (!affect_bit_is_supplied(ch, AFF_INVISIBLE))
+                        {
+                                REMOVE_BIT(ch->affected_by, AFF_INVISIBLE);
+
+                                act("$n fades into existence.",
+                                    ch,
+                                    NULL,
+                                    NULL,
+                                    TO_ROOM);
+                        }
                 }
 
                 /*
