@@ -1310,6 +1310,7 @@ struct note_data
 #define AFFECT_SOURCE_NONE      0
 #define AFFECT_SOURCE_FORM      1
 #define AFFECT_SOURCE_OBJECT    2
+#define AFFECT_SOURCE_OBJSET    3
 
 /*
  * An affect.
