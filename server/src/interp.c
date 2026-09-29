@@ -2800,13 +2800,26 @@ void interpret(CHAR_DATA *ch, char *argument)
          * Strip hide if affected
          */
 
-        if ((IS_AFFECTED(ch, AFF_HIDE) || is_affected(ch, gsn_hide) || is_affected(ch, gsn_chameleon_power)) && ch->form != FORM_CHAMELEON && cmd_table[cmd].position != POS_DEAD && !is_name(cmd_table[cmd].name, "look") && !is_name(cmd_table[cmd].name, "exits") && !is_name(cmd_table[cmd].name, "scan"))
+        if ((IS_AFFECTED(ch, AFF_HIDE)
+        ||   is_affected(ch, gsn_hide)
+        ||   is_affected(ch, gsn_chameleon_power))
+        &&  ch->form != FORM_CHAMELEON
+        &&  cmd_table[cmd].position != POS_DEAD
+        &&  !is_name(cmd_table[cmd].name, "look")
+        &&  !is_name(cmd_table[cmd].name, "exits")
+        &&  !is_name(cmd_table[cmd].name, "scan"))
         {
                 affect_strip(ch, gsn_hide);
                 affect_strip(ch, gsn_chameleon_power);
 
-                if (!affect_bit_is_supplied(ch, AFF_HIDE))
-                        REMOVE_BIT(ch->affected_by, AFF_HIDE);
+                /*
+                 * Performing an ordinary revealing command deliberately
+                 * removes raw/intrinsic Hide as well as ordinary Hide
+                 * effects. Explicit form/equipment/set providers survive.
+                 */
+                affect_strip_raw_bit(
+                    ch,
+                    AFF_HIDE);
         }
 
         /*

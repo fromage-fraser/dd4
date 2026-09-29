@@ -786,6 +786,10 @@ Gezhp, Owl and Shade
 - Shared status providers now coexist across mass sanctuary, biofeedback,
   inertial barrier, infravision, swimming, deterrence and pass-door effects;
   dispel, stabilise and reveal effects preserve persistent sourced providers.
+- NPC intrinsic AFF flags now have independent live ownership: overlapping
+  temporary effects cannot erase them when they expire, while Dispel Magic,
+  healing, reveal and other deliberate removal effects can still remove
+  intrinsic mob effects according to their existing rules.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~

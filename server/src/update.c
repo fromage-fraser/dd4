@@ -1335,10 +1335,14 @@ int hit_gain(CHAR_DATA *ch)
                         return 0;
                 }
 
-                /*
+                                /*
                  * Strip ordinary swimming when the environment makes it
-                 * inappropriate, without destroying independently supplied
-                 * AFF_SWIM sources such as Snake form.
+                 * inappropriate.
+                 *
+                 * Raw/intrinsic AFF_SWIM is deliberately removable here,
+                 * preserving the behaviour of the old raw-bit code.  Explicit
+                 * AFFECT_DATA providers such as forms, equipment and sets
+                 * remain independently owned.
                  */
 
                 if ((((IS_AFFECTED(ch, AFF_SWIM))
@@ -1351,10 +1355,12 @@ int hit_gain(CHAR_DATA *ch)
                 {
                         affect_strip(ch, gsn_swim);
 
-                        if (!affect_bit_is_supplied(ch, AFF_SWIM))
-                        {
-                                REMOVE_BIT(ch->affected_by, AFF_SWIM);
+                        affect_strip_raw_bit(
+                            ch,
+                            AFF_SWIM);
 
+                        if (!IS_AFFECTED(ch, AFF_SWIM))
+                        {
                                 send_to_char(
                                     "{cNo longer in the water, you stop swimming.{w\n\r",
                                     ch);
@@ -1367,10 +1373,12 @@ int hit_gain(CHAR_DATA *ch)
                 {
                         affect_strip(ch, gsn_swim);
 
-                        if (!affect_bit_is_supplied(ch, AFF_SWIM))
-                        {
-                                REMOVE_BIT(ch->affected_by, AFF_SWIM);
+                        affect_strip_raw_bit(
+                            ch,
+                            AFF_SWIM);
 
+                        if (!IS_AFFECTED(ch, AFF_SWIM))
+                        {
                                 send_to_char(
                                     "{cThis water is not suitable for swimming in.{x\n\r",
                                     ch);

@@ -758,10 +758,14 @@ void move_char(CHAR_DATA *ch, int door)
                 strip_mount(ch);
                 ch->position = POS_STANDING;
         }
-
+        
         /*
-         * Strip ordinary swimming when appropriate without destroying a
-         * separately supplied AFF_SWIM, such as Snake form's sourced effect.
+         * Strip ordinary swimming when appropriate.
+         *
+         * Raw/intrinsic swimming is deliberately removed in the same
+         * situations where the old code removed AFF_SWIM.  Explicit
+         * AFFECT_DATA providers such as Snake form, equipment and sets
+         * remain independently owned.
          */
 
         if ((((IS_AFFECTED(ch, AFF_SWIM))
@@ -776,10 +780,12 @@ void move_char(CHAR_DATA *ch, int door)
         {
                 affect_strip(ch, gsn_swim);
 
-                if (!affect_bit_is_supplied(ch, AFF_SWIM))
-                {
-                        REMOVE_BIT(ch->affected_by, AFF_SWIM);
+                affect_strip_raw_bit(
+                    ch,
+                    AFF_SWIM);
 
+                if (!IS_AFFECTED(ch, AFF_SWIM))
+                {
                         send_to_char(
                             "{cNo longer in the water, you stop swimming.{x\n\r",
                             ch);
@@ -793,12 +799,9 @@ void move_char(CHAR_DATA *ch, int door)
         {
                 affect_strip(ch, gsn_swim);
 
-                /*
-                 * SECT_WATER_NOSWIM prevents use of the swim ability, but it
-                 * must not destroy an independently supplied swim effect.
-                 */
-                if (!affect_bit_is_supplied(ch, AFF_SWIM))
-                        REMOVE_BIT(ch->affected_by, AFF_SWIM);
+                affect_strip_raw_bit(
+                    ch,
+                    AFF_SWIM);
 
                 send_to_char(
                     "{cThis water is not suitable for swimming in.{x\n\r",
@@ -2471,50 +2474,63 @@ void do_visible(CHAR_DATA *ch, char *argument)
         if (ch->form == FORM_CHAMELEON)
         {
                 affect_strip_source_sn(
-                        ch,
-                        gsn_sneak,
-                        AFFECT_SOURCE_FORM,
-                        FORM_CHAMELEON);
+                    ch,
+                    gsn_sneak,
+                    AFFECT_SOURCE_FORM,
+                    FORM_CHAMELEON);
         }
 
-        if (!affect_bit_is_supplied(ch, AFF_INVISIBLE))
-                REMOVE_BIT(ch->affected_by, AFF_INVISIBLE);
+        affect_strip_raw_bit(
+            ch,
+            AFF_INVISIBLE);
 
-        if (!affect_bit_is_supplied(ch, AFF_SNEAK))
-                REMOVE_BIT(ch->affected_by, AFF_SNEAK);
+        affect_strip_raw_bit(
+            ch,
+            AFF_SNEAK);
 
-        /* Chameleon form remains hidden even after VISIBLE. */
+        /*
+         * Chameleon form remains hidden after VISIBLE.
+         */
         if (ch->form != FORM_CHAMELEON)
         {
                 affect_strip(ch, gsn_hide);
 
-                if (!affect_bit_is_supplied(ch, AFF_HIDE))
-                        REMOVE_BIT(ch->affected_by, AFF_HIDE);
+                affect_strip_raw_bit(
+                    ch,
+                    AFF_HIDE);
         }
         else
         {
                 send_to_char(
-                        "You will continue to hide for as long as you are in chameleon form.\n\r",
-                        ch);
+                    "You will continue to hide for as long as you are in chameleon form.\n\r",
+                    ch);
+
                 in_cham = TRUE;
         }
 
         if (is_affected(ch, gsn_mist_walk))
         {
                 send_to_char(
-                        "You morph from mist form to normal form.\n\r",
-                        ch);
+                    "You morph from mist form to normal form.\n\r",
+                    ch);
+
                 send_to_char(
-                        "Your body reverts to its normal state.\n\r",
-                        ch);
+                    "Your body reverts to its normal state.\n\r",
+                    ch);
+
                 act(
-                        "A cloud of glowing mist withdraws to unveil $n!",
-                        ch,
-                        NULL,
-                        NULL,
-                        TO_ROOM);
+                    "A cloud of glowing mist withdraws to unveil $n!",
+                    ch,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
+
                 affect_strip(ch, gsn_mist_walk);
-                WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+
+                WAIT_STATE(
+                    ch,
+                    2 * PULSE_VIOLENCE);
+
                 return;
         }
 
@@ -3408,7 +3424,6 @@ void do_quicken(CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch))
                 return;
-        /* Put any exceptions for spec_funs you want to have access to the skill above */
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_quicken))
         {
@@ -3418,43 +3433,74 @@ void do_quicken(CHAR_DATA *ch, char *argument)
 
         if (is_affected(ch, gsn_quicken))
         {
-                send_to_char("Your metabolism is already preternaturally hastened.\n\r", ch);
+                send_to_char(
+                    "Your metabolism is already preternaturally hastened.\n\r",
+                    ch);
                 return;
         }
 
         if (is_affected(ch, gsn_haste))
         {
-                send_to_char("You are already moving with superhuman speed.\n\r", ch);
+                send_to_char(
+                    "You are already moving with superhuman speed.\n\r",
+                    ch);
                 return;
         }
 
         if (IS_AFFECTED(ch, AFF_TORSO_TRAUMA))
         {
-                send_to_char("Your body is too damaged.\n\r", ch);
+                send_to_char(
+                    "Your body is too damaged.\n\r",
+                    ch);
                 return;
         }
 
-        if ((ch->sub_class == SUB_CLASS_VAMPIRE) && (ch->rage < (ch->level / 10)))
+        if ((ch->sub_class == SUB_CLASS_VAMPIRE)
+        &&  (ch->rage < (ch->level / 10)))
         {
-                send_to_char("You are too blood-starved to do that.\n\r", ch);
+                send_to_char(
+                    "You are too blood-starved to do that.\n\r",
+                    ch);
                 return;
         }
 
-        if ((ch->sub_class == SUB_CLASS_WEREWOLF) && (ch->rage < (ch->level / 10)))
+        if ((ch->sub_class == SUB_CLASS_WEREWOLF)
+        &&  (ch->rage < (ch->level / 10)))
         {
-                send_to_char("You aren't angry enough to do that.\n\r", ch);
+                send_to_char(
+                    "You aren't angry enough to do that.\n\r",
+                    ch);
                 return;
         }
 
-        if (IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_quicken])
+        if (IS_NPC(ch)
+        ||  number_percent() < ch->pcdata->learned[gsn_quicken])
         {
                 if (is_affected(ch, gsn_slow))
                 {
-                        affect_strip(ch, gsn_slow);
-                        REMOVE_BIT(ch->affected_by, AFF_SLOW);
-                        act("$c is no longer moving in slow motion.", ch, NULL, NULL, TO_ROOM);
-                        send_to_char("You start to move at your normal speed.\n\r", ch);
-                        ch->rage = (ch->rage - (ch->level / 10));
+                        affect_strip(
+                            ch,
+                            gsn_slow);
+
+                        affect_strip_raw_bit(
+                            ch,
+                            AFF_SLOW);
+
+                        act(
+                            "$c is no longer moving in slow motion.",
+                            ch,
+                            NULL,
+                            NULL,
+                            TO_ROOM);
+
+                        send_to_char(
+                            "You start to move at your normal speed.\n\r",
+                            ch);
+
+                        ch->rage =
+                            ch->rage
+                            - (ch->level / 10);
+
                         return;
                 }
 
@@ -3463,13 +3509,28 @@ void do_quicken(CHAR_DATA *ch, char *argument)
                 af.modifier = 0;
                 af.location = APPLY_NONE;
                 af.bitvector = 0;
+
                 affect_to_char(ch, &af);
 
-                act("$c vibrates rapidly, $s body becoming a blur.", ch, NULL, NULL, TO_ROOM);
-                send_to_char("You concentrate intensely, and begin to vibrate with supernatural energy.\n\r", ch);
-                ch->rage = (ch->rage - (ch->level / 10));
+                act(
+                    "$c vibrates rapidly, $s body becoming a blur.",
+                    ch,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
 
-                WAIT_STATE(ch, PULSE_VIOLENCE);
+                send_to_char(
+                    "You concentrate intensely, and begin to vibrate with supernatural energy.\n\r",
+                    ch);
+
+                ch->rage =
+                    ch->rage
+                    - (ch->level / 10);
+
+                WAIT_STATE(
+                    ch,
+                    PULSE_VIOLENCE);
+
                 return;
         }
 

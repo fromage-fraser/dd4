@@ -3016,7 +3016,19 @@ struct char_data
         int exp;
         unsigned long int act;
         int status;
+
+        /*
+         * Current aggregate AFF_* state and the NPC's currently active
+         * intrinsic/raw AFF_* providers.
+         *
+         * intrinsic_affected_by is zero for PCs.  For NPCs it begins with
+         * the mob's spawn-time flags, but deliberate dispels and other
+         * removal effects may clear individual bits for the lifetime of
+         * that mob instance.
+         */
         unsigned long int affected_by;
+        unsigned long int intrinsic_affected_by;
+
         int position;
         int carry_weight;
         int carry_number;
@@ -5632,6 +5644,10 @@ bool gets_bonus_objset(OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA 
 bool rem_bonus_objset(OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos);
 bool affect_bit_is_supplied args((CHAR_DATA *ch,
                                   unsigned long int bit));
+bool affect_bit_has_raw_source args((CHAR_DATA *ch,
+                                     unsigned long int bit));
+bool affect_strip_raw_bit args((CHAR_DATA *ch,
+                                unsigned long int bit));
 void affect_strip_source_sn args((CHAR_DATA *ch, int sn,
                                   int source_type, uint64_t source_id));
 bool has_elemental_resistance args((CHAR_DATA *ch, int sn));

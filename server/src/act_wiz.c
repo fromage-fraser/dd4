@@ -2098,8 +2098,23 @@ static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim)
                        inherited.affected_by & index->area_affected_by
                            & ~(unsigned long int)AFF_CHARM,
                        affect_bit_name);
-        mstat_flag_row(ch, "Prototype", index->affected_by, affect_bit_name);
-        mstat_flag_row(ch, "Live", victim->affected_by, affect_bit_name);
+        mstat_flag_row(
+            ch,
+            "Prototype",
+            index->affected_by,
+            affect_bit_name);
+
+        mstat_flag_row(
+            ch,
+            "Intrinsic",
+            victim->intrinsic_affected_by,
+            affect_bit_name);
+
+        mstat_flag_row(
+            ch,
+            "Live",
+            victim->affected_by,
+            affect_bit_name);
 
         send_to_char("\n\r{WBODY flag layers{x\n\r", ch);
         mstat_flag_row(ch, "Template", inherited.body_form, body_form_name);
@@ -6423,10 +6438,25 @@ void do_mset(CHAR_DATA *ch, char *argument)
                 }
 
                 if (enabled)
-                        SET_BIT(victim->affected_by, AFF_MINDLESS);
-                else
-                        REMOVE_BIT(victim->affected_by, AFF_MINDLESS);
+                {
+                        SET_BIT(
+                            victim->affected_by,
+                            AFF_MINDLESS);
 
+                        SET_BIT(
+                            victim->intrinsic_affected_by,
+                            AFF_MINDLESS);
+                }
+                else
+                {
+                        REMOVE_BIT(
+                            victim->affected_by,
+                            AFF_MINDLESS);
+
+                        REMOVE_BIT(
+                            victim->intrinsic_affected_by,
+                            AFF_MINDLESS);
+                }
                 snprintf(
                     buf, sizeof(buf),
                     "Live mindlessness is now %s. "
@@ -6463,9 +6493,25 @@ void do_mset(CHAR_DATA *ch, char *argument)
                 }
 
                 if (enabled)
-                        SET_BIT(victim->affected_by, AFF_STENCH);
+                {
+                        SET_BIT(
+                            victim->affected_by,
+                            AFF_STENCH);
+
+                        SET_BIT(
+                            victim->intrinsic_affected_by,
+                            AFF_STENCH);
+                }
                 else
-                        REMOVE_BIT(victim->affected_by, AFF_STENCH);
+                {
+                        REMOVE_BIT(
+                            victim->affected_by,
+                            AFF_STENCH);
+
+                        REMOVE_BIT(
+                            victim->intrinsic_affected_by,
+                            AFF_STENCH);
+                }
 
                 snprintf(
                     buf, sizeof(buf),
@@ -6999,6 +7045,14 @@ void do_mset(CHAR_DATA *ch, char *argument)
         if (!str_cmp(arg2, "affected_by"))
         {
                 victim->affected_by = bvalue;
+
+                /*
+                 * For NPCs this is an explicit live replacement of the raw
+                 * AFF state, so it also becomes the current intrinsic mask.
+                 */
+                if (IS_NPC(victim))
+                        victim->intrinsic_affected_by = bvalue;
+
                 return;
         }
 
