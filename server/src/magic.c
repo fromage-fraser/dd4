@@ -2288,6 +2288,7 @@ void spell_cure_poison(int sn, int level, CHAR_DATA *ch, void *vo)
             victim,
             TO_NOTVICT);
 }
+
 void spell_stabilise(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         /*
@@ -5648,25 +5649,6 @@ void spell_mass_invis(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 if (!is_same_group(gch, ch))
                         continue;
-                }
-
-                if (is_affected_source(
-                        gch,
-                        sn,
-                        AFFECT_SOURCE_NONE,
-                        0))
-                {
-                        continue;
-                }
-
-                if (is_affected_source(
-                        gch,
-                        sn,
-                        AFFECT_SOURCE_NONE,
-                        0))
-                {
-                        continue;
-                }
 
                 if (is_affected_source(
                         gch,
