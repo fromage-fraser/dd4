@@ -5659,18 +5659,30 @@ void spell_mass_invis(int sn, int level, CHAR_DATA *ch, void *vo)
                         continue;
                 }
 
-                send_to_char("{cYou slowly fade out of existence.{x\n\r", gch);
-                act("$n slowly fades out of existence.", gch, NULL, NULL, TO_ROOM);
+                send_to_char(
+                    "{cYou slowly fade out of existence.{x\n\r",
+                    gch);
+
+                act(
+                    "$n slowly fades out of existence.",
+                    gch,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
 
                 af.type = sn;
                 af.duration = 24;
                 af.location = APPLY_NONE;
                 af.modifier = 0;
                 af.bitvector = AFF_INVISIBLE;
+
                 affect_to_char(gch, &af);
         }
 
-        /* Need this out of the main loop so they don't get a bonus for casting it on themselves */
+        /*
+         * Need this outside the main loop so they don't get a bonus for
+         * casting it on themselves.
+         */
         check_group_bonus(ch);
 
         send_to_char("Ok.\n\r", ch);
