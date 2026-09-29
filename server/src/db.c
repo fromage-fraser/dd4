@@ -4039,9 +4039,17 @@ void reset_area(AREA_DATA *pArea)
                         }
 
                         if (room_is_dark(pRoomIndex))
-                                SET_BIT(mob->affected_by, AFF_INFRARED);
+                        {
+                                SET_BIT(
+                                    mob->affected_by,
+                                    AFF_INFRARED);
 
-                        char_to_room(mob, pRoomIndex);
+                                SET_BIT(
+                                    mob->intrinsic_affected_by,
+                                    AFF_INFRARED);
+                        }
+
+                        char_to_room(mob, pRoomIndex);;
                         level = URANGE(0, mob->level - 2, LEVEL_HERO);
                         last = TRUE;
                         break;
@@ -4599,6 +4607,15 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
 
         if (IS_SET(mob->act, ACT_CLAN_GUARD))
                 REMOVE_BIT(mob->affected_by, AFF_HIDE);
+
+        /*
+         * Record the mobile's final prototype-derived AFF state as its
+         * currently active intrinsic provider mask.
+         *
+         * This is deliberately after spawn-time prototype corrections such
+         * as removing Hide from clan guards.
+         */
+        mob->intrinsic_affected_by = mob->affected_by;
 
         mob->next = char_list;
         char_list = mob;

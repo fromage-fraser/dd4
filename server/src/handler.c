@@ -355,14 +355,33 @@ static void restore_shared_affect_bits(CHAR_DATA *ch, AFFECT_DATA *removed)
         if (!ch || !removed || !removed->bitvector)
                 return;
 
-        shared_bits = 0;
+        /*
+         * An NPC's currently active intrinsic flags are independent
+         * providers.  Removing a temporary spell, item, set or form affect
+         * must not erase an overlapping intrinsic mob flag.
+         *
+         * Deliberate dispels/removal effects clear intrinsic_affected_by
+         * separately before this restoration is relevant.
+         */
+        if (IS_NPC(ch))
+        {
+                shared_bits =
+                    ch->intrinsic_affected_by
+                    & removed->bitvector;
+        }
+        else
+        {
+                shared_bits = 0;
+        }
 
         for (paf = ch->affected; paf; paf = paf->next)
         {
                 if (paf == removed || paf->deleted)
                         continue;
 
-                shared_bits |= paf->bitvector & removed->bitvector;
+                shared_bits |=
+                    paf->bitvector
+                    & removed->bitvector;
         }
 
         SET_BIT(ch->affected_by, shared_bits);
@@ -1005,15 +1024,24 @@ bool is_affected( CHAR_DATA *ch, int sn )
         return FALSE;
 }
 
-/*
- * Return true if any active character affect supplies this bit.
- */
 bool affect_bit_is_supplied(CHAR_DATA *ch, unsigned long int bit)
 {
         AFFECT_DATA *paf;
 
         if (!ch || !bit)
                 return FALSE;
+
+        /*
+         * NPC prototype/spawn flags are an independent provider.
+         *
+         * They are not represented by AFFECT_DATA and therefore must be
+         * checked explicitly before examining temporary/sourced affects.
+         */
+        if (IS_NPC(ch)
+        &&  IS_SET(ch->intrinsic_affected_by, bit))
+        {
+                return TRUE;
+        }
 
         for (paf = ch->affected; paf; paf = paf->next)
         {
@@ -1027,6 +1055,75 @@ bool affect_bit_is_supplied(CHAR_DATA *ch, unsigned long int bit)
         return FALSE;
 }
 
+/*
+ * Return true if a status bit has a raw/intrinsic provider rather than
+ * existing solely because of AFFECT_DATA.
+ *
+ * For NPCs, intrinsic_affected_by records the currently active intrinsic
+ * providers.  The second case preserves support for legacy/raw runtime bits
+ * which are not represented by AFFECT_DATA.
+ */
+bool affect_bit_has_raw_source(CHAR_DATA *ch, unsigned long int bit)
+{
+        if (!ch || !bit)
+                return FALSE;
+
+        if (IS_NPC(ch)
+        &&  IS_SET(ch->intrinsic_affected_by, bit))
+        {
+                return TRUE;
+        }
+
+        if (IS_AFFECTED(ch, bit)
+        &&  !affect_bit_is_supplied(ch, bit))
+        {
+                return TRUE;
+        }
+
+        return FALSE;
+}
+
+
+/*
+ * Deliberately remove a raw/intrinsic provider of a status bit.
+ *
+ * This differs from ordinary AFFECT_DATA expiry.  On an NPC, the intrinsic
+ * provider itself is removed for the remainder of this mob instance's life.
+ *
+ * Other AFFECT_DATA providers remain authoritative.  Thus dispelling an
+ * intrinsic Sanctuary while an item still supplies Sanctuary removes the
+ * intrinsic copy but leaves the character Sanctuaried until the item is
+ * removed.
+ *
+ * Returns TRUE if the aggregate status remains active from another provider.
+ */
+bool affect_strip_raw_bit(CHAR_DATA *ch, unsigned long int bit)
+{
+        if (!ch || !bit)
+                return FALSE;
+
+        if (IS_NPC(ch))
+        {
+                REMOVE_BIT(
+                    ch->intrinsic_affected_by,
+                    bit);
+        }
+
+        if (affect_bit_is_supplied(ch, bit))
+        {
+                SET_BIT(
+                    ch->affected_by,
+                    bit);
+        }
+        else
+        {
+                REMOVE_BIT(
+                    ch->affected_by,
+                    bit);
+        }
+
+        return IS_AFFECTED(ch, bit);
+}
 
 /*
  * Remove one affect type belonging to one specific source.

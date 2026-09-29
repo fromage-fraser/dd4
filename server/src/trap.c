@@ -949,21 +949,19 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         dam = MAX_DAMAGE;
                 }
 
-                if ( IS_AFFECTED(ch, AFF_INVISIBLE) )
+                if (IS_AFFECTED(ch, AFF_INVISIBLE))
                 {
                         affect_strip(ch, gsn_invis);
                         affect_strip(ch, gsn_mass_invis);
 
-                        /*
-                         * Damage breaks ordinary invisibility spells, but must
-                         * not destroy invisibility still supplied by another
-                         * active source such as equipment.
-                         */
-                        if (!affect_bit_is_supplied(ch, AFF_INVISIBLE))
-                        {
-                                REMOVE_BIT(ch->affected_by, AFF_INVISIBLE);
+                        affect_strip_raw_bit(
+                            ch,
+                            AFF_INVISIBLE);
 
-                                act("$n fades into existence.",
+                        if (!IS_AFFECTED(ch, AFF_INVISIBLE))
+                        {
+                                act(
+                                    "$n fades into existence.",
                                     ch,
                                     NULL,
                                     NULL,
@@ -1072,19 +1070,12 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 affect_strip(wch, gsn_invis);
                                 affect_strip(wch, gsn_mass_invis);
 
-                                /*
-                                 * Room-wide trap damage breaks ordinary
-                                 * invisibility spells without destroying an
-                                 * independently supplied invisibility source.
-                                 */
-                                if (!affect_bit_is_supplied(
-                                        wch,
-                                        AFF_INVISIBLE))
-                                {
-                                        REMOVE_BIT(
-                                            wch->affected_by,
-                                            AFF_INVISIBLE);
+                                affect_strip_raw_bit(
+                                    wch,
+                                    AFF_INVISIBLE);
 
+                                if (!IS_AFFECTED(wch, AFF_INVISIBLE))
+                                {
                                         act(
                                             "$n fades into existence.",
                                             wch,
