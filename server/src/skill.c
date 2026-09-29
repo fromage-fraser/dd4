@@ -418,7 +418,11 @@ void do_swim (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (is_affected(ch, gsn_swim))
+        if (is_affected_source(
+                ch,
+                gsn_swim,
+                AFFECT_SOURCE_NONE,
+                0))
         {
                 send_to_char("You are already swimming.\n\r", ch);
                 return;
