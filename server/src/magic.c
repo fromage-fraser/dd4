@@ -2395,7 +2395,8 @@ void spell_stabilise(int sn, int level, CHAR_DATA *ch, void *vo)
          * already 'stabilised' in their forms.
          */
 
-        victim->pcdata->blink = FALSE;
+        if (!IS_NPC(victim))
+                victim->pcdata->blink = FALSE;
 
         affect_strip_raw_bit(
             victim,
@@ -5647,6 +5648,7 @@ void spell_mass_invis(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 if (!is_same_group(gch, ch))
                         continue;
+                }
 
                 if (is_affected_source(
                         gch,
@@ -6014,9 +6016,11 @@ void spell_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
                         sprintf(
                             buf,
                             "<193>%s is already affected by that spell.<0>\n\r",
-                            IS_NPC(victim)
-                                ? victim->short_descr
-                                : victim->name);
+                            capitalize_initial(
+                                IS_NPC(victim)
+                                    ? victim->short_descr
+                                    : victim->name));
+
                         send_to_char(buf, ch);
                 }
 
@@ -8022,15 +8026,6 @@ void spell_inertial_barrier(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 if (!is_same_group(gch, ch))
                         continue;
-
-                if (is_affected_source(
-                        gch,
-                        sn,
-                        AFFECT_SOURCE_NONE,
-                        0))
-                {
-                        continue;
-                }
 
                 if (is_affected_source(
                         gch,
