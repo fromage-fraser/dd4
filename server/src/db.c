@@ -4049,7 +4049,7 @@ void reset_area(AREA_DATA *pArea)
                                     AFF_INFRARED);
                         }
 
-                        char_to_room(mob, pRoomIndex);
+                        char_to_room(mob, pRoomIndex);;
                         level = URANGE(0, mob->level - 2, LEVEL_HERO);
                         last = TRUE;
                         break;
