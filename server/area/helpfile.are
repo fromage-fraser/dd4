@@ -783,6 +783,8 @@ Gezhp, Owl and Shade
 - Status spells can now establish their own effects while the same status is
   supplied independently by equipment, sets or forms.
 - Room-wide trap damage now preserves independently supplied invisibility.
+- Protection and Passage prayers now coexist with independently supplied
+  Sanctuary, Protection, Deter, flight and pass-door effects.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~

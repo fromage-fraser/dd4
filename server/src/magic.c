@@ -6880,8 +6880,14 @@ void spell_deter(int sn, int level, CHAR_DATA *ch, void *vo)
         if (IS_NPC(ch))
                 return;
 
-        if (IS_AFFECTED(ch, AFF_DETER))
+        if (is_affected_source(
+                victim,
+                sn,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
                 return;
+        }
 
         af.type = sn;
         af.duration = number_fuzzy(level / 20);
@@ -7041,8 +7047,14 @@ void spell_ectoplasmic_form(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (IS_AFFECTED(victim, AFF_PASS_DOOR))
+        if (is_affected_source(
+                victim,
+                sn,
+                AFFECT_SOURCE_NONE,
+                0))
+        {
                 return;
+        }
 
         af.type = sn;
         af.duration = number_fuzzy(level / 4);
