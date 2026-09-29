@@ -2288,7 +2288,6 @@ void spell_cure_poison(int sn, int level, CHAR_DATA *ch, void *vo)
             victim,
             TO_NOTVICT);
 }
-
 void spell_stabilise(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         /*
@@ -5658,6 +5657,15 @@ void spell_mass_invis(int sn, int level, CHAR_DATA *ch, void *vo)
                         continue;
                 }
 
+                if (is_affected_source(
+                        gch,
+                        sn,
+                        AFFECT_SOURCE_NONE,
+                        0))
+                {
+                        continue;
+                }
+
                 send_to_char("{cYou slowly fade out of existence.{x\n\r", gch);
                 act("$n slowly fades out of existence.", gch, NULL, NULL, TO_ROOM);
 
@@ -8014,6 +8022,15 @@ void spell_inertial_barrier(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 if (!is_same_group(gch, ch))
                         continue;
+
+                if (is_affected_source(
+                        gch,
+                        sn,
+                        AFFECT_SOURCE_NONE,
+                        0))
+                {
+                        continue;
+                }
 
                 if (is_affected_source(
                         gch,
