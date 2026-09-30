@@ -40,7 +40,12 @@ void say_spell(CHAR_DATA *ch, int sn);
 bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim);
 bool skill_cannot_be_dispelled(int sn);
 bool is_only_whitespace(const char *str);
-
+static bool spell_status_already_present(
+        CHAR_DATA *ch,
+        CHAR_DATA *victim,
+        int sn,
+        unsigned long int bit,
+        bool notify);
 
 /*
  * Lookup a skill by name.
@@ -60,6 +65,65 @@ int skill_lookup(const char *name)
 
         return -1;
 }
+
+
+/*
+ * Check whether applying a status spell would be redundant.
+ *
+ * Ordinary cast copies are identified by spell/source ownership.  NPC
+ * intrinsic AFF_* flags are also treated as already providing the status.
+ *
+ * Form, equipment and set providers are deliberately not considered here;
+ * those sources may continue to coexist with an ordinary spell affect.
+ */
+static bool spell_status_already_present(
+        CHAR_DATA *ch,
+        CHAR_DATA *victim,
+        int sn,
+        unsigned long int bit,
+        bool notify)
+{
+        char buf[MAX_STRING_LENGTH];
+
+        if (!victim || sn < 0 || !bit)
+                return FALSE;
+
+        if (!is_affected_source(
+                victim,
+                sn,
+                AFFECT_SOURCE_NONE,
+                0)
+        &&  !(IS_NPC(victim)
+        &&    IS_SET(victim->intrinsic_affected_by, bit)))
+        {
+                return FALSE;
+        }
+
+        if (!notify || !ch)
+                return TRUE;
+
+        if (victim == ch)
+        {
+                send_to_char(
+                    "<193>You are already affected by that spell.<0>\n\r",
+                    ch);
+        }
+        else
+        {
+                sprintf(
+                    buf,
+                    "<193>%s is already affected by that spell.<0>\n\r",
+                    capitalize_initial(
+                        IS_NPC(victim)
+                            ? victim->short_descr
+                            : victim->name));
+
+                send_to_char(buf, ch);
+        }
+
+        return TRUE;
+}
+
 
 void do_attack(CHAR_DATA *ch, char *argument)
 {
@@ -2803,11 +2867,12 @@ void spell_detect_hidden(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 gsn_detect_hidden,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_DETECT_HIDDEN,
+                TRUE))
         {
                 return;
         }
@@ -2831,11 +2896,12 @@ void spell_detect_invis(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 gsn_detect_invis,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_DETECT_INVIS,
+                TRUE))
         {
                 return;
         }
@@ -4105,11 +4171,12 @@ void spell_fireshield(int sn, int level, CHAR_DATA *ch, void *vo)
         AFFECT_DATA af;
         CHAR_DATA *victim = (CHAR_DATA *)vo;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 sn,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_FLAMING,
+                TRUE))
         {
                 return;
         }
@@ -4258,11 +4325,12 @@ void spell_fly(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 gsn_fly,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_FLYING,
+                TRUE))
         {
                 return;
         }
@@ -5403,11 +5471,12 @@ void spell_infravision(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 gsn_infravision,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_INFRARED,
+                TRUE))
         {
                 return;
         }
@@ -5449,11 +5518,12 @@ void spell_invis(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 sn,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_INVISIBLE,
+                TRUE))
         {
                 return;
         }
@@ -5650,11 +5720,12 @@ void spell_mass_invis(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (!is_same_group(gch, ch))
                         continue;
 
-                if (is_affected_source(
+                if (spell_status_already_present(
+                        ch,
                         gch,
                         sn,
-                        AFFECT_SOURCE_NONE,
-                        0))
+                        AFF_INVISIBLE,
+                        FALSE))
                 {
                         continue;
                 }
@@ -5700,11 +5771,12 @@ void spell_pass_door(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 sn,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_PASS_DOOR,
+                TRUE))
         {
                 return;
         }
@@ -5869,11 +5941,12 @@ void spell_protection(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 sn,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_PROTECT,
+                TRUE))
         {
                 return;
         }
@@ -5994,37 +6067,21 @@ void spell_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
-        char buf[MAX_STRING_LENGTH];
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 sn,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_SANCTUARY,
+                TRUE))
         {
                 if (victim == ch)
                 {
-                        sprintf(
-                            buf,
-                            "<193>You are already affected by that spell.<0>\n\r");
-                        send_to_char(buf, ch);
                         sound_spell_sfx_delay(
                             ch,
                             sn,
                             "wearoff",
                             2);
-                }
-                else
-                {
-                        sprintf(
-                            buf,
-                            "<193>%s is already affected by that spell.<0>\n\r",
-                            capitalize_initial(
-                                IS_NPC(victim)
-                                    ? victim->short_descr
-                                    : victim->name));
-
-                        send_to_char(buf, ch);
                 }
 
                 return;
@@ -7193,13 +7250,13 @@ void spell_biofeedback(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 sn,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_SANCTUARY,
+                TRUE))
         {
-                send_to_char("You are already protected.\n\r", victim);
                 return;
         }
 
@@ -7644,11 +7701,12 @@ void spell_deter(int sn, int level, CHAR_DATA *ch, void *vo)
         if (IS_NPC(ch))
                 return;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 sn,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_DETER,
+                TRUE))
         {
                 return;
         }
@@ -7811,11 +7869,12 @@ void spell_ectoplasmic_form(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 sn,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_PASS_DOOR,
+                TRUE))
         {
                 return;
         }
@@ -8030,11 +8089,12 @@ void spell_inertial_barrier(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (!is_same_group(gch, ch))
                         continue;
 
-                if (is_affected_source(
+                if (spell_status_already_present(
+                        ch,
                         gch,
                         sn,
-                        AFFECT_SOURCE_NONE,
-                        0))
+                        AFF_PROTECT,
+                        FALSE))
                 {
                         continue;
                 }
@@ -8127,14 +8187,16 @@ void spell_levitation(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 gsn_levitation,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_FLYING,
+                TRUE))
         {
                 return;
         }
+
         af.type = sn;
         af.duration = 12 + level;
         af.location = APPLY_NONE;
@@ -8864,11 +8926,12 @@ void spell_mass_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (!is_same_group(gch, ch))
                         continue;
 
-                if (is_affected_source(
+                if (spell_status_already_present(
+                        ch,
                         gch,
                         sn,
-                        AFFECT_SOURCE_NONE,
-                        0))
+                        AFF_SANCTUARY,
+                        FALSE))
                 {
                         continue;
                 }
@@ -9449,11 +9512,12 @@ void spell_globe(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (is_affected_source(
+        if (spell_status_already_present(
+                ch,
                 victim,
                 affect_sn,
-                AFFECT_SOURCE_NONE,
-                0))
+                AFF_GLOBE,
+                TRUE))
         {
                 return;
         }
