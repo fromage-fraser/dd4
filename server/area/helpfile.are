@@ -790,7 +790,10 @@ Gezhp, Owl and Shade
   temporary effects cannot erase them when they expire, while Dispel Magic,
   healing, reveal and other deliberate removal effects can still remove
   intrinsic mob effects according to their existing rules.
+- Status spells now recognise matching intrinsic NPC AFF flags as already
+  active, preventing redundant timed copies and misleading gain messages.
 ~
+
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
 Innate resistances and vulnerabilities
