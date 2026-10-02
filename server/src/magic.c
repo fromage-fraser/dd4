@@ -9799,6 +9799,10 @@ void spell_animate_dead(int sn, int level, CHAR_DATA *ch, void *vo)
                            victim->level * victim->level);
         victim->hit = victim->max_hit;
 
+        /* These are servants, not a source of farmable rewards. */
+        SET_BIT(victim->act, ACT_NO_EXPERIENCE);
+        SET_BIT(victim->act, ACT_NO_QUEST);
+
         /* Consume only after the required mobile has been created. */
         extract_obj(obj);
         char_to_room(victim, ch->in_room);

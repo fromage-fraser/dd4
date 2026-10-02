@@ -837,6 +837,8 @@ and undead objects on the ground, carried or worn.
 - Fixed expiring vault items corrupting vault contents and weight totals.
 - Prevented Dispel Magic from removing the shared TURN/CHANT recovery.
 - Self-cast status spells now coexist with equipment, set and form effects.
+- Animate Dead now uses a dedicated ghoul servant at levels 35-44.
+- Animated servants are consistently excluded from XP and quests.
 ~
 
 
@@ -1997,8 +1999,13 @@ of the damage inflicted upon by your opponents will be removed.
 0 'ANIMATE DEAD'~
 Syntax: cast 'animate dead' <<corpse>
 
-Reanimate a freshly dead corpse, and command the monstrosity to your
-service.
+Reanimate a fresh NPC corpse and bind the new servant to your service.
+The corpse is consumed only after the servant has been created.
+
+Player corpses, remains and loose body parts cannot be animated.
+
+Animated servants give no experience when killed and cannot serve as
+quest targets, even after their control wears off.
 ~
 
 0 'ANIMATE WEAPON'~
