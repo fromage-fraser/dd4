@@ -26,7 +26,15 @@ but the fight continues. The hitroll penalty grows with the vampire's
 level, reaching 20 points at level 100. It lasts for the turning recovery
 period.
 
-Player-controlled undead are not affected yet.
+Enemy-controlled undead can be affected while you are already in combat
+with them or their controller. The controller must be in the room, and
+normal PvP rules must allow the attempt.
+
+Turning a servant counts as a hostile attempt against its controller,
+even if it fails. Your own undead and your group's servants are left
+alone. Ridden or riding undead are not included yet.
+
+Repelling a servant does not break its master's control.
 
 Clerics learn this skill early; Knights gain it later.
 ~
@@ -839,6 +847,8 @@ and undead objects on the ground, carried or worn.
 - Self-cast status spells now coexist with equipment, set and form effects.
 - Animate Dead now uses a dedicated ghoul servant at levels 35-44.
 - Animated servants are consistently excluded from XP and quests.
+- Turning now affects enemy undead servants in existing combat,
+  with controller PvP checks and protection for allied servants.
 ~
 
 
@@ -7388,7 +7398,15 @@ but the fight continues. The hitroll penalty grows with the vampire's
 level, reaching 20 points at level 100. It lasts for the turning recovery
 period.
 
-Player-controlled undead are not affected yet.
+Enemy-controlled undead can be affected while you are already in combat
+with them or their controller. The controller must be in the room, and
+normal PvP rules must allow the attempt.
+
+Turning a servant counts as a hostile attempt against its controller,
+even if it fails. Your own undead and your group's servants are left
+alone. Ridden or riding undead are not included yet.
+
+Repelling a servant does not break its master's control.
 
 Bards can learn the chant from level 40, once Music reaches 80%.
 ~

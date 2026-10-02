@@ -2516,6 +2516,7 @@ CHAR_DATA *get_qchar_world(CHAR_DATA *ch, char *argument, int vnum)
                 ||  !IS_NPC(wch)
                 ||  !wch->in_room
                 ||  IS_SET(wch->act, ACT_NO_QUEST)
+                ||  IS_SET(wch->act, ACT_NO_EXPERIENCE)
                 ||  !can_see(ch, wch)
                 ||  strcmp(argument, wch->name)
                 ||  vnum != wch->pIndexData->vnum)

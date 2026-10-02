@@ -7678,12 +7678,68 @@ void do_howl(CHAR_DATA *ch, char *argument)
         WAIT_STATE(ch, PULSE_VIOLENCE);
 }
 
+static bool turn_undead_controller(CHAR_DATA *ch, CHAR_DATA *victim,
+                                   CHAR_DATA **controller)
+{
+        CHAR_DATA *owner;
+        int depth;
+
+        *controller = NULL;
+
+        /*
+         * Follow the master links. Protect allied servants even when
+         * the servants themselves have not joined the group.
+         */
+        for (owner = victim, depth = 0;
+             owner && depth < 32;
+             owner = owner->master, depth++)
+        {
+                if (owner->deleted
+                ||  owner == ch
+                ||  is_same_group(ch, owner))
+                {
+                        return FALSE;
+                }
+
+                /*
+                 * Stop at the first player. A player following another
+                 * player is not another layer of creature ownership.
+                 */
+                if (!IS_NPC(owner))
+                {
+                        *controller = owner;
+                        return TRUE;
+                }
+
+                /* Fleeing can move mounts and riders too. */
+                if (owner->rider || owner->mount)
+                        return FALSE;
+
+                /* An orphaned group link is not a safe ownership answer. */
+                if (!owner->master
+                &&  owner->leader
+                &&  owner->leader != owner)
+                {
+                        return FALSE;
+                }
+        }
+
+        /*
+         * A broken or unusually long chain must not accidentally
+         * turn a controlled creature into an ordinary wild target.
+         */
+        return owner == NULL;
+}
+
 static bool turn_undead_target_allowed(CHAR_DATA *ch, CHAR_DATA *victim)
 {
+        CHAR_DATA *controller;
+
         if (!ch
         ||  !victim
         ||  ch->deleted
         ||  victim->deleted
+        ||  !ch->in_room
         ||  victim == ch
         ||  victim->in_room != ch->in_room
         ||  !IS_UNDEAD(victim)
@@ -7697,11 +7753,8 @@ static bool turn_undead_target_allowed(CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
 
         /*
-         * A room-wide turn can affect a player vampire only during
-         * their existing fight with you. Bystanders are left alone.
-         *
-         * The actual attempt checks PvP rules separately. This scan
-         * must not announce attacks or change anyone's PvP state.
+         * Player vampires are eligible only during existing combat.
+         * The actual attempt checks PvP rules separately.
          */
         if (!IS_NPC(victim))
         {
@@ -7709,14 +7762,28 @@ static bool turn_undead_target_allowed(CHAR_DATA *ch, CHAR_DATA *victim)
                     || victim->fighting == ch;
         }
 
-        /*
-         * Player-owned undead still need their control and PvP rules
-         * handled separately.
-         */
-        if ((victim->master && !IS_NPC(victim->master))
-        ||  (victim->rider && !IS_NPC(victim->rider)))
-        {
+        if (!turn_undead_controller(ch, victim, &controller))
                 return FALSE;
+
+        if (controller)
+        {
+                /*
+                 * Keep the controller here so the PvP checks describe
+                 * this fight, rather than a player in another room.
+                 */
+                if (controller->in_room != ch->in_room)
+                        return FALSE;
+
+                /*
+                 * Do not start fights with uninvolved players' servants.
+                 */
+                if (ch->fighting != victim
+                &&  victim->fighting != ch
+                &&  ch->fighting != controller
+                &&  controller->fighting != ch)
+                {
+                        return FALSE;
+                }
         }
 
         /*
@@ -7855,7 +7922,9 @@ void turn_undead(CHAR_DATA *ch, int sn, int learned)
 
         for (victim = room->people; victim; victim = victim_next)
         {
+                CHAR_DATA *pvp_target;
                 unsigned long int old_body_form;
+
 
                 victim_next = victim->next_in_room;
 
@@ -7868,16 +7937,25 @@ void turn_undead(CHAR_DATA *ch, int sn, int learned)
                         continue;
                 }
 
-                                /*
-                 * Check player combat rules once, when we actually
-                 * attempt the turn. Even a failed attempt is hostile.
+                /*
+                 * Turning a player's servant counts as hostility toward
+                 * that player. Check PvP rules only for a real attempt.
                  */
                 if (!IS_NPC(victim))
                 {
-                        if (is_safe(ch, victim))
+                        pvp_target = victim;
+                }
+                else if (!turn_undead_controller(ch, victim, &pvp_target))
+                {
+                        continue;
+                }
+
+                if (pvp_target)
+                {
+                        if (is_safe(ch, pvp_target))
                                 continue;
 
-                        check_killer(ch, victim);
+                        check_killer(ch, pvp_target);
                 }
 
                 turn_undead_chances(ch, victim, learned,
