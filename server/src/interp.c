@@ -261,6 +261,7 @@ const struct cmd_type cmd_table[] =
         {"trap", do_trap, POS_STANDING, 0, LOG_NORMAL},
         {"trip", do_trip, POS_FIGHTING, 0, LOG_NORMAL},
         {"throw", do_throw, POS_FIGHTING, 0, LOG_NORMAL},
+        {"turn", do_turn, POS_FIGHTING, 0, LOG_NORMAL},
         {"web", do_web, POS_STANDING, 0, LOG_NORMAL},
         {"yokogeri", do_yokogeri, POS_FIGHTING, 0, LOG_NORMAL},
         {"whirlwind", do_whirlwind, POS_FIGHTING, 0, LOG_NORMAL},

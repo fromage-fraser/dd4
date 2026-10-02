@@ -1,6 +1,28 @@
 #HELPS
 
-#HELPS
+0 'TURN UNDEAD'~
+Syntax: turn
+
+Call on divine power to drive back the undead around you. Each undead
+creature you can perceive gets its own chance to resist. An undead
+opponent you are already fighting can also be affected if it turns
+invisible during the fight.
+
+A successful turn may force an ordinary undead creature to flee, or at
+least make it break off its attack. Much weaker undead may be destroyed
+outright. Rare and elite creatures are harder to turn; bosses and world
+creatures cannot be destroyed this way. Sentinel creatures stay in
+their assigned rooms.
+
+A creature cannot be subjected to another turning attempt immediately
+after one has been made, whether that attempt succeeded or failed.
+This recovery period is shared with the Bard's Chant of Turning.
+
+For now, Turn Undead affects NPC undead only. Player vampires and
+player-controlled undead need their PvP rules settled separately.
+
+Clerics learn this skill early; Knights gain it later.
+~
 
 0 'DETECT UNDEAD'~
 Syntax: cast 'detect undead'
@@ -631,7 +653,7 @@ Gezhp, Owl and Shade
 
 {W October 2024{x
 
-- Skills "target" and spell "regenerate" added, to allow for targeting and 
+- Skills "target" and spell "regenerate" added, to allow for targeting and
   healing of body regions on players or mobiles.
 - Skills "harvest" and "carve" added for Druids and Rangers
 - Skill "bitsum" added for IMMs
@@ -742,38 +764,40 @@ Gezhp, Owl and Shade
 - Added selected innate player resistances and vulnerabilities; see HELP INNATE.
 - Tenketsu paralysis now follows damaging hits and respects resistance.
 - Transfix, Howl and Confusion now consistently consult target resistance.
+- Added Detect Undead for Clerics and Knights, marking visible undead creatures
+and undead objects on the ground, carried or worn.
 - Moving between underwater rooms no longer replenishes your air supply.
 - Fixed room lighting left behind by NPCs and linkdead players carrying lights.
 - Infrared vision now correctly improves scan distance at night.
-- GMCP exit information now reports flying movement costs correctly for 
+- GMCP exit information now reports flying movement costs correctly for
   underwater rooms.
-- Song of Rejuvenation mana recovery now scales correctly with proficiency and 
+- Song of Rejuvenation mana recovery now scales correctly with proficiency and
   level.
 - Saved objects now retain their material properties after being reloaded.
-- NPC combat assistance now selects group targets without room-list ordering 
+- NPC combat assistance now selects group targets without room-list ordering
   bias.
-- Hunger and thirst regeneration penalties now continue correctly at negative 
+- Hunger and thirst regeneration penalties now continue correctly at negative
   condition values.
-- Grouped mob assistance no longer prematurely ends combat processing for the 
+- Grouped mob assistance no longer prematurely ends combat processing for the
   current round.
-- Rebalanced terrain movement costs and corrected underwater-ground movement 
+- Rebalanced terrain movement costs and corrected underwater-ground movement
   cost.
-- Prone shifters now correctly have reduced chances of making form bonus 
+- Prone shifters now correctly have reduced chances of making form bonus
   attacks.
-- Trapped objects now retain their trap type, effects and remaining charges when 
+- Trapped objects now retain their trap type, effects and remaining charges when
   saved.
-- Movement-triggered traps now correctly interrupt the movement attempt that 
+- Movement-triggered traps now correctly interrupt the movement attempt that
   triggers them.
 - Defensive Engineer pulses no longer replace the user's current combat target.
-- Overlapping character affects now preserve shared status flags when one affect 
+- Overlapping character affects now preserve shared status flags when one affect
   ends.
-- Hawk, dragon, cat, snake, wolf and direwolf form effects now coexist with 
+- Hawk, dragon, cat, snake, wolf and direwolf form effects now coexist with
   independently supplied affects instead of replacing them.
-- Chameleon form now owns its hide and sneak effects without removing 
+- Chameleon form now owns its hide and sneak effects without removing
   independently supplied stealth effects.
-- Phoenix, demon and griffin form effects now coexist with independently 
+- Phoenix, demon and griffin form effects now coexist with independently
   supplied affects instead of replacing them.
-- Fly and bat form now own their flight effects without clearing independently 
+- Fly and bat form now own their flight effects without clearing independently
   supplied permanent flight sources.
 - Equipment and set special applies now coexist with independently supplied
   spell, form, equipment and set effects, including across morph equipment
@@ -6089,7 +6113,7 @@ holy word               unholy word             detect good
 blink                   second attack           pattern
 invis                   teleport                knock
 create spring           control weather         detect curse
-sense wisdom
+sense wisdom            turn
 
 True clerics (those that don't change to templars or druids) may also
 learn these skills above level 30:
@@ -6378,7 +6402,7 @@ detect hidden           meditation              create food
 create water            dual                    disarm
 joust                   second spell            destrier
 flamestrike             cure poison             enhanced critical
-target
+target                  turn
 ~
 
 -1 'SMARTIAL ARTIST'~
@@ -7305,15 +7329,38 @@ learn to pass unseen when needed.
 0 CHANT~
 Syntax: chant <<chant name>
 
-As well as songs, bards have chants to ready them for combat, or aid them
-during combat if caught unawares.
+Bards use chants to prepare for combat and to influence a fight.
 
-These chants are divided into combat and non-combat groups:
+Enfeeblement and pain are used against your current opponent.
+Protection, battle, vigour and dragonsbane prepare you before combat.
+Turning can be used before or during a fight to drive back nearby undead.
 
-        enfeeblement        protection
-        pain                battle
-                            vigour
-                            dragonsbane
+Available chants:
+    battle          dragonsbane     enfeeblement
+    pain            protection      turning
+    vigour
+~
+
+0 'CHANT OF TURNING' TURNING~
+Syntax: chant turning
+
+Raise your voice in a chant that drives back nearby undead. Each eligible
+creature gets its own chance to resist. Much weaker undead may crumble
+under the chant.
+
+The chant uses the same rules as Turn Undead, but with three-quarters of
+your trained proficiency as its effective turning strength. Rare and elite
+undead are harder to affect. Bosses and world creatures cannot be destroyed
+this way, and sentinels stay in their assigned rooms.
+
+Turn Undead and Chant of Turning share the same short recovery period.
+Switching between them does not let you immediately retry against an
+undead that has already faced an attempt.
+
+For now, the chant affects NPC undead only. Player vampires and
+player-controlled undead need their PvP rules settled separately.
+
+Bards can learn the chant from level 40, once Music reaches 80%.
 ~
 
 0 'CHANT OF ENFEEBLEMENT' ENFEEBLEMENT~
@@ -7463,7 +7510,7 @@ song of revelation      song of rejuvenation    song of sustenance
 song of tranquility     song of shadows         song of flight
 chant of battle         chant of pain           chant of enfeeblement
 chant of protection     chant of vigour         dual
-chant of dragonsbane
+chant of dragonsbane    chant of turning
 ~
 
 0 KNOWLEDGE~
