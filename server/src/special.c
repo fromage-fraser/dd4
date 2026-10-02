@@ -4096,8 +4096,14 @@ bool spec_sahuagin (CHAR_DATA *ch)
                 {
                     case 0:
                     case 1:
-                        if (is_affected(ch, gsn_protection))
+                        if (is_affected_source(
+                                ch,
+                                gsn_protection,
+                                AFFECT_SOURCE_NONE,
+                                0))
+                        {
                                 return FALSE;
+                        }
 
                         spell = "protection";
                         act("$c's flesh begins to harden and swell!",

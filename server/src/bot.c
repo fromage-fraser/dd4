@@ -618,6 +618,13 @@ CHAR_DATA* create_bot (int id, int level)
         SET_BIT(bot->affected_by, AFF_DETECT_INVIS);
         SET_BIT(bot->affected_by, AFF_SANCTUARY);
 
+        /*
+         * The bot template replaces the ordinary BOT_VNUM AFF mask and the
+         * standard bot defaults above add further permanent starting flags.
+         * Treat the completed result as this bot instance's intrinsic state.
+         */
+        bot->intrinsic_affected_by = bot->affected_by;
+
         char_to_room(bot, get_room_index(ROOM_VNUM_ARENA));
 
         return bot;

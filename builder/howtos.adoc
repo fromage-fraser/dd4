@@ -496,7 +496,7 @@ on?"  They reference the following, and may be stacked. They will overwrite the 
 take/wear bits (meaning you can't take/wear a trap?)
 
 [source, "c"]
-TRAP_EFF_MOVE           BIT_0 (1)    /* trigger on movement */
+TRAP_EFF_MOVE           BIT_0 (1)    /* trigger on movement; interrupts movement */
 TRAP_EFF_OBJECT         BIT_1 (2)    /* trigger on get or put */
 TRAP_EFF_ROOM           BIT_2 (4)    /* affect all in room */
 TRAP_EFF_NORTH          BIT_3 (8)    /* movement in this direction */
@@ -528,6 +528,9 @@ TRAP_DAM_SPIRIT         12
 
 20 is the number of charges the trap has before it is exhausted.  I don't think +
 0 is important.
+
+A movement-triggered trap interrupts the movement attempt which triggered it. +
+The trap itself may move the character instead, for example a teleport trap. +
 
 `150~ 13~ 27207~ 0~` are capacity, pickable etc flags, and key vnum for the +
 container, but could be anything depending on what you trap. The 13 must be the +

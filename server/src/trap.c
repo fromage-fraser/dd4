@@ -507,32 +507,32 @@ bool checkmovetrap(CHAR_DATA *ch, int dir)
                 if (found == TRUE) {
                         if (IS_SET(obj->trap_eff, TRAP_EFF_NORTH) && dir == 0) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
 
                         if (IS_SET(obj->trap_eff, TRAP_EFF_EAST) && dir == 1) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
 
                         if (IS_SET(obj->trap_eff, TRAP_EFF_SOUTH) && dir == 2) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
 
                         if (IS_SET(obj->trap_eff, TRAP_EFF_WEST) && dir == 3) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
 
                         if (IS_SET(obj->trap_eff, TRAP_EFF_UP) && dir == 4) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
 
                         if (IS_SET(obj->trap_eff, TRAP_EFF_DOWN) && dir == 5) {
                                 trapdamage(ch, obj);
-                                return FALSE;
+                                return TRUE;
                         }
                 }
         }
@@ -949,11 +949,24 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         dam = MAX_DAMAGE;
                 }
 
-                if ( IS_AFFECTED(ch, AFF_INVISIBLE) ) {
-                        affect_strip( ch, gsn_invis );
-                        affect_strip( ch, gsn_mass_invis );
-                        REMOVE_BIT( ch->affected_by, AFF_INVISIBLE );
-                        act( "$n fades into existence.", ch, NULL, NULL, TO_ROOM );
+                if (IS_AFFECTED(ch, AFF_INVISIBLE))
+                {
+                        affect_strip(ch, gsn_invis);
+                        affect_strip(ch, gsn_mass_invis);
+
+                        affect_strip_raw_bit(
+                            ch,
+                            AFF_INVISIBLE);
+
+                        if (!IS_AFFECTED(ch, AFF_INVISIBLE))
+                        {
+                                act(
+                                    "$n fades into existence.",
+                                    ch,
+                                    NULL,
+                                    NULL,
+                                    TO_ROOM);
+                        }
                 }
 
                 /*
@@ -1052,11 +1065,24 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 dam = MAX_DAMAGE;
                         }
 
-                        if ( IS_AFFECTED(wch, AFF_INVISIBLE) ) {
-                                affect_strip( wch, gsn_invis );
-                                affect_strip( wch, gsn_mass_invis );
-                                REMOVE_BIT( wch->affected_by, AFF_INVISIBLE );
-                                act( "$n fades into existence.", wch, NULL, NULL, TO_ROOM );
+                        if (IS_AFFECTED(wch, AFF_INVISIBLE))
+                        {
+                                affect_strip(wch, gsn_invis);
+                                affect_strip(wch, gsn_mass_invis);
+
+                                affect_strip_raw_bit(
+                                    wch,
+                                    AFF_INVISIBLE);
+
+                                if (!IS_AFFECTED(wch, AFF_INVISIBLE))
+                                {
+                                        act(
+                                            "$n fades into existence.",
+                                            wch,
+                                            NULL,
+                                            NULL,
+                                            TO_ROOM);
+                                }
                         }
 
                         /*
