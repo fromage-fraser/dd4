@@ -7665,6 +7665,241 @@ void do_howl(CHAR_DATA *ch, char *argument)
         WAIT_STATE(ch, PULSE_VIOLENCE);
 }
 
+static bool turn_undead_target_allowed(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        if (!victim
+        ||  victim->deleted
+        ||  victim == ch
+        ||  !IS_NPC(victim)
+        ||  !IS_UNDEAD(victim)
+        ||  IS_SET(victim->act, ACT_OBJECT)
+        ||  is_same_group(ch, victim))
+        {
+                return FALSE;
+        }
+
+        /*
+         * Leave player-owned undead out of this first version. Turning
+         * another player's creature needs the same careful PvP rules as
+         * turning a player vampire.
+         */
+        if ((victim->master && !IS_NPC(victim->master))
+        ||  (victim->rider && !IS_NPC(victim->rider)))
+        {
+                return FALSE;
+        }
+
+        /*
+         * A hidden undead is not exposed by turning. An opponent already
+         * fighting you can still be affected even if it turns invisible.
+         */
+        if (!can_see(ch, victim)
+        &&  ch->fighting != victim
+        &&  victim->fighting != ch)
+        {
+                return FALSE;
+        }
+
+        return TRUE;
+}
+
+static void turn_undead_chances(CHAR_DATA *ch, CHAR_DATA *victim,
+                                int learned, int *turn_chance,
+                                int *destroy_chance)
+{
+        int level_gap = ch->level - victim->level;
+        int rank = rank_sn(victim);
+        int rank_penalty = UMAX(0, rank - 1) * 10;
+        int turn_base;
+        int destroy_base;
+
+        *turn_chance = 0;
+        *destroy_chance = 0;
+
+        if (level_gap < -10)
+                return;
+
+        /*
+         * At full skill, an equal-level undead has a 50% turn chance.
+         * Each level of difference moves that chance by four points.
+         */
+        turn_base = 50 + 4 * level_gap - rank_penalty;
+        turn_base = URANGE(0, turn_base,
+                           level_gap > 10 ? 99 : 95);
+        *turn_chance = turn_base * learned / 100;
+
+        if (level_gap <= 10
+        ||  rank >= 4
+        ||  IS_SET(victim->act, ACT_UNKILLABLE)
+        ||  IS_SET(victim->act, ACT_INVULNERABLE))
+        {
+                return;
+        }
+
+        /*
+         * At an eleven-level advantage, 44 points of the successful
+         * range are destruction. One roll decides destroy, repel or fail.
+         */
+        destroy_base = 44 + 4 * (level_gap - 11) - rank_penalty;
+        destroy_base = URANGE(0, destroy_base, 99);
+
+        *destroy_chance =
+            UMIN(*turn_chance, destroy_base * learned / 100);
+}
+
+void do_turn(CHAR_DATA *ch, char *argument)
+{
+        AFFECT_DATA af;
+        CHAR_DATA *victim;
+        CHAR_DATA *victim_next;
+        ROOM_INDEX_DATA *room;
+        int learned;
+        int turn_chance;
+        int destroy_chance;
+        int roll;
+        bool found = FALSE;
+
+        if (IS_NPC(ch) || !CAN_DO(ch, gsn_turn_undead))
+        {
+                send_to_char(
+                    "You have not learned how to turn the undead.\n\r",
+                    ch);
+                return;
+        }
+
+        room = ch->in_room;
+
+        if (IS_SET(room->room_flags, ROOM_SAFE)
+        ||  IS_SET(room->area->area_flags, AREA_FLAG_SAFE))
+        {
+                send_to_char(
+                    "This is not a place to call down that kind of force.\n\r",
+                    ch);
+                return;
+        }
+
+        for (victim = room->people; victim;
+             victim = victim->next_in_room)
+        {
+                if (turn_undead_target_allowed(ch, victim)
+                &&  !is_affected(victim, gsn_turn_undead))
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char(
+                    "There is no undead here that you can turn right now.\n\r",
+                    ch);
+                return;
+        }
+
+        learned = URANGE(0, ch->pcdata->learned[gsn_turn_undead], 100);
+
+        WAIT_STATE(ch, skill_table[gsn_turn_undead].beats);
+        send_to_char(
+            "You call on divine power to drive the undead back.\n\r",
+            ch);
+        act("$n calls on divine power to drive the undead back!",
+            ch, NULL, NULL, TO_ROOM);
+
+        for (victim = room->people; victim; victim = victim_next)
+        {
+                unsigned long int old_body_form;
+
+                victim_next = victim->next_in_room;
+
+                if (ch->deleted || ch->in_room != room)
+                        break;
+
+                if (!turn_undead_target_allowed(ch, victim)
+                ||  is_affected(victim, gsn_turn_undead))
+                {
+                        continue;
+                }
+
+                /*
+                 * This short-lived marker means repeated TURN commands
+                 * cannot keep rerolling against the same creature.
+                 */
+                memset(&af, 0, sizeof(af));
+                af.type = gsn_turn_undead;
+                af.duration = 2;
+                af.location = APPLY_NONE;
+                af.modifier = 0;
+                af.bitvector = 0;
+                affect_to_char(victim, &af);
+
+                turn_undead_chances(ch, victim, learned,
+                                    &turn_chance, &destroy_chance);
+                roll = number_percent();
+
+                if (roll <= destroy_chance)
+                {
+                        act("$N crumbles under your turning!",
+                            ch, NULL, victim, TO_CHAR);
+                        act("$N crumbles under $n's turning!",
+                            ch, NULL, victim, TO_NOTVICT);
+
+                        /*
+                         * The normal death path still awards credit and
+                         * handles equipment. BODY_NO_CORPSE makes the
+                         * belongings fall into the room instead of
+                         * leaving a biological corpse.
+                         */
+                        old_body_form = victim->body_form;
+                        SET_BIT(victim->body_form, BODY_NO_CORPSE);
+
+                        if (!aggro_damage(ch, victim,
+                                          UMAX(1, victim->hit))
+                        &&  !victim->deleted)
+                        {
+                                victim->body_form = old_body_form;
+                        }
+
+                        continue;
+                }
+
+                if (roll <= turn_chance)
+                {
+                        act("$N recoils from your turning!",
+                            ch, NULL, victim, TO_CHAR);
+                        act("$N recoils from $n's turning!",
+                            ch, NULL, victim, TO_NOTVICT);
+                        act("The divine force drives you back!",
+                            ch, NULL, victim, TO_VICT);
+
+                        WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
+
+                        /*
+                         * Ordinary undead may flee if they are fighting.
+                         * Sentinels and major bosses keep their place.
+                         */
+                        if (!IS_SET(victim->act, ACT_SENTINEL)
+                        &&  rank_sn(victim) < 4
+                        &&  victim->fighting)
+                        {
+                                do_flee(victim, "Fear");
+                        }
+
+                        if (!victim->deleted
+                        &&  victim->in_room == room)
+                        {
+                                stop_fighting(victim, TRUE);
+                        }
+
+                        continue;
+                }
+
+                act("$N stands firm against your call.",
+                    ch, NULL, victim, TO_CHAR);
+                damage(ch, victim, 0, gsn_turn_undead, FALSE);
+        }
+}
+
 void do_headbutt(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;

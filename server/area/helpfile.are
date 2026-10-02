@@ -1,6 +1,27 @@
 #HELPS
 
-#HELPS
+0 'TURN UNDEAD'~
+Syntax: turn
+
+Call on divine power to drive back the undead around you. Each undead
+creature you can perceive gets its own chance to resist. An undead
+opponent you are already fighting can also be affected if it turns
+invisible during the fight.
+
+A successful turn may force an ordinary undead creature to flee, or at
+least make it break off its attack. Much weaker undead may be destroyed
+outright. Rare and elite creatures are harder to turn; bosses and world
+creatures cannot be destroyed this way. Sentinel creatures stay in
+their assigned rooms.
+
+A creature cannot be subjected to another turning attempt immediately
+after one has been made, whether that attempt succeeded or failed.
+
+For now, Turn Undead affects NPC undead only. Player vampires and
+player-controlled undead need their PvP rules settled separately.
+
+Clerics learn this skill early; Knights gain it later.
+~
 
 0 'DETECT UNDEAD'~
 Syntax: cast 'detect undead'
@@ -742,6 +763,8 @@ Gezhp, Owl and Shade
 - Added selected innate player resistances and vulnerabilities; see HELP INNATE.
 - Tenketsu paralysis now follows damaging hits and respects resistance.
 - Transfix, Howl and Confusion now consistently consult target resistance.
+- Added Detect Undead for Clerics and Knights, marking visible undead creatures
+and undead objects on the ground, carried or worn.
 - Moving between underwater rooms no longer replenishes your air supply.
 - Fixed room lighting left behind by NPCs and linkdead players carrying lights.
 - Infrared vision now correctly improves scan distance at night.
@@ -6083,7 +6106,7 @@ holy word               unholy word             detect good
 blink                   second attack           pattern
 invis                   teleport                knock
 create spring           control weather         detect curse
-sense wisdom
+sense wisdom            turn
 
 True clerics (those that don't change to templars or druids) may also
 learn these skills above level 30:
@@ -6372,7 +6395,7 @@ detect hidden           meditation              create food
 create water            dual                    disarm
 joust                   second spell            destrier
 flamestrike             cure poison             enhanced critical
-target
+target                  turn
 ~
 
 -1 'SMARTIAL ARTIST'~
