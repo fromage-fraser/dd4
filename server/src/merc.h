@@ -419,9 +419,9 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 624            /* +1 turn undead */
-#define MAX_PRE_REQ 1578          /* +2 turn undead prerequisites */
-#define MAX_SPELL_GROUP 470      /* +1 detect undead group entry */
+#define MAX_SKILL 625            /* +1 chnat of turning */
+#define MAX_PRE_REQ 1580          /* +2 chant of turning prerequisites */
+#define MAX_SPELL_GROUP 471      /* +1 chant of turning related */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
@@ -4433,6 +4433,7 @@ extern int gsn_banish;
 extern int gsn_stench;
 extern int gsn_mummy_rot;
 extern int gsn_turn_undead;
+extern int gsn_chant_of_turning;
 /*
  *  Deity gsns
  */
@@ -5507,6 +5508,7 @@ bool in_pkill_range args((CHAR_DATA * ch, CHAR_DATA *victim));
 void chat_killer args((CHAR_DATA * ch, CHAR_DATA *victim));
 void reset_char_stats(CHAR_DATA *ch);
 bool aggro_damage(CHAR_DATA *ch, CHAR_DATA *victim, int damage);
+void turn_undead(CHAR_DATA *ch, int sn, int learned);
 void check_autoloot(CHAR_DATA *ch, CHAR_DATA *victim);
 void check_group_bonus(CHAR_DATA *ch);
 char *get_damage_string args((int damage_value, bool is_singular));
