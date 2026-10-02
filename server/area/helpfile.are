@@ -833,6 +833,10 @@ and undead objects on the ground, carried or worn.
 - Turning now affects player vampires in existing PvP fights, applying a
   level-scaled hitroll penalty without destroying them.
 - Updated undead skill help and lists.
+- Fixed EMPTY corrupting containers when an item could not be picked up.
+- Fixed expiring vault items corrupting vault contents and weight totals.
+- Prevented Dispel Magic from removing the shared TURN/CHANT recovery.
+- Self-cast status spells now coexist with equipment, set and form effects.
 ~
 
 

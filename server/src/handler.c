@@ -801,7 +801,7 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
                         break;
                 }
 
-            
+
             case APPLY_BALANCE:
                 if( fAdd )
                 {
@@ -822,7 +822,7 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
                 {
                         break;
                 }
-        
+
             case APPLY_SANCTUARY:
             case APPLY_SNEAK:
             case APPLY_INVIS:
@@ -858,7 +858,7 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
                 ch->resist_acid += mod;
                 break;
 
-           
+
 
         }
 
@@ -2112,6 +2112,8 @@ void extract_obj( OBJ_DATA *obj )
 {
         OBJ_DATA *obj_content;
         OBJ_DATA *obj_next;
+        OBJ_DATA *obj_container;
+        CHAR_DATA *vault_owner;
         extern bool delete_obj;
 
         if ( obj->deleted )
@@ -2126,8 +2128,31 @@ void extract_obj( OBJ_DATA *obj )
         else if ( obj->carried_by )
                 obj_from_char( obj );
 
+        else if ( obj->vaulted_by )
+        {
+                /* Unlink vault items before they can be recycled. */
+                vault_owner = obj->vaulted_by;
+                vault_owner->pcdata->vault_number -= get_obj_number( obj );
+                vault_owner->pcdata->vault_weight -= get_obj_weight( obj );
+                obj_from_charvault( obj );
+        }
+
         else if ( obj->in_obj )
-                obj_from_obj( obj );
+        {
+                obj_container = obj->in_obj;
+                while ( obj_container->in_obj )
+                        obj_container = obj_container->in_obj;
+
+                vault_owner = obj_container->vaulted_by;
+                if ( vault_owner )
+                {
+                        /* Contents use vault weight, but no extra slot. */
+                        vault_owner->pcdata->vault_weight -= get_obj_weight( obj );
+                        obj_from_objvault( obj );
+                }
+                else
+                        obj_from_obj( obj );
+        }
 
         for ( obj_content = obj->contains; obj_content; obj_content = obj_next )
         {
@@ -2141,7 +2166,6 @@ void extract_obj( OBJ_DATA *obj )
         delete_obj   = TRUE;
         return;
 }
-
 
 /*
  * Extract a char from the world.

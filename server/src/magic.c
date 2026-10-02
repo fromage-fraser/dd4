@@ -124,6 +124,35 @@ static bool spell_status_already_present(
         return TRUE;
 }
 
+/* Keep early duplicate checks aligned with each spell's source handling. */
+static bool self_cast_already_affected(CHAR_DATA *ch, int sn)
+{
+        SPELL_FUN *spell;
+
+        spell = skill_table[sn].spell_fun;
+
+        if (spell == spell_detect_hidden
+        ||  spell == spell_detect_invis
+        ||  spell == spell_fireshield
+        ||  spell == spell_fly
+        ||  spell == spell_infravision
+        ||  spell == spell_invis
+        ||  spell == spell_pass_door
+        ||  spell == spell_protection
+        ||  spell == spell_sanctuary
+        ||  spell == spell_biofeedback
+        ||  spell == spell_deter
+        ||  spell == spell_ectoplasmic_form
+        ||  spell == spell_levitation
+        ||  spell == spell_globe
+        ||  spell == spell_breathe_water)
+        {
+                return is_affected_source(
+                    ch, sn, AFFECT_SOURCE_NONE, 0);
+        }
+
+        return is_affected(ch, sn);
+}
 
 void do_attack(CHAR_DATA *ch, char *argument)
 {
@@ -804,7 +833,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         }
                 }
 
-                if (ch == victim && is_affected(ch, sn))
+                if (ch == victim && self_cast_already_affected(ch, sn))
                 {
                         sprintf(buf, "<193>You are already affected by '%s'.<0>\n\r",
                                 skill_table[sn].name);
@@ -823,7 +852,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (is_affected(ch, sn))
+                if (self_cast_already_affected(ch, sn))
                 {
                         sprintf(buf, "<193>You are already affected by '%s'.<0>\n\r",
                                 skill_table[sn].name);
@@ -11900,7 +11929,7 @@ void spell_detect_undead(int sn, int level, CHAR_DATA *ch, void *vo)
  */
 bool skill_cannot_be_dispelled(int sn)
 {
-        if (sn == gsn_dirt || sn == gsn_coil || sn == gsn_stun || sn == gsn_transfix || sn == gsn_trap || sn == gsn_gouge || sn == gsn_choke || sn == gsn_crush || sn == gsn_howl || sn == gsn_snare || sn == gsn_web || sn == gsn_mount || sn == gsn_battle_aura || sn == gsn_berserk || sn == gsn_warcry || sn == gsn_swallow || sn == gsn_eye_trauma || sn == gsn_head_trauma || sn == gsn_arm_trauma || sn == gsn_leg_trauma || sn == gsn_heart_trauma || sn == gsn_tail_trauma || sn == gsn_torso_trauma || sn == gsn_swim)
+        if (sn == gsn_dirt || sn == gsn_coil || sn == gsn_stun || sn == gsn_transfix || sn == gsn_trap || sn == gsn_gouge || sn == gsn_choke || sn == gsn_crush || sn == gsn_howl || sn == gsn_snare || sn == gsn_web || sn == gsn_mount || sn == gsn_battle_aura || sn == gsn_berserk || sn == gsn_warcry || sn == gsn_swallow || sn == gsn_eye_trauma || sn == gsn_head_trauma || sn == gsn_arm_trauma || sn == gsn_leg_trauma || sn == gsn_turn_undead || sn == gsn_heart_trauma || sn == gsn_tail_trauma || sn == gsn_torso_trauma || sn == gsn_swim)
                 return TRUE;
 
         return FALSE;
