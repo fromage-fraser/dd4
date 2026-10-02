@@ -2502,15 +2502,26 @@ CHAR_DATA *get_char_world(CHAR_DATA *ch, char *argument)
 /*
  * Get quest mob from world
  */
-CHAR_DATA *get_qchar_world( CHAR_DATA *ch, char *argument, int vnum )
+CHAR_DATA *get_qchar_world(CHAR_DATA *ch, char *argument, int vnum)
 {
         CHAR_DATA *wch;
 
-        for ( wch = char_list; wch ; wch = wch->next )
+        for (wch = char_list; wch; wch = wch->next)
         {
-                if ( !can_see( ch, wch ) || strcmp( argument, wch->name )
-                    || !IS_NPC(wch) || vnum != wch->pIndexData->vnum )
+                /*
+                 * Check the live creature too. A summoned servant can
+                 * have reward restrictions its prototype does not.
+                 */
+                if (wch->deleted
+                ||  !IS_NPC(wch)
+                ||  !wch->in_room
+                ||  IS_SET(wch->act, ACT_NO_QUEST)
+                ||  !can_see(ch, wch)
+                ||  strcmp(argument, wch->name)
+                ||  vnum != wch->pIndexData->vnum)
+                {
                         continue;
+                }
 
                 return wch;
         }

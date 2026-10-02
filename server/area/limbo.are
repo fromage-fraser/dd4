@@ -501,6 +501,19 @@ Necromantic power binds these bare bones in servitude.
 8 8 0
 < skeleton~ common~
 
+#86
+animated_ghoul ghoul servant~
+an animated ghoul~
+An animated ghoul waits here for orders.
+~
+Necromantic power keeps this hungry corpse moving and binds it to its
+master's service.
+~
+512|16777216 0 -500 S
+28 0 0 1d1+0 1d1+0
+0 0
+8 8 0
+< ghoul~ common~
 
 
 #0
