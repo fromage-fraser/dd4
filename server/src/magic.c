@@ -49,6 +49,7 @@ static bool spell_status_already_present(
 
 
 
+
 /*
  * Lookup a skill by name.
  */
