@@ -2602,8 +2602,12 @@ void do_affects(CHAR_DATA *ch, char *argument)
                                 printed = TRUE;
                         }
 
-                        sprintf(buf, "{W%-25s{x", skill_table[paf->type].name);
-                        strcat(buf1, buf);
+                        sprintf(
+                                buf,
+                                "{W%-25s{x%s",
+                                skill_table[paf->type].name,
+                                affect_source_display_suffix(paf));
+                                strcat(buf1, buf);
 
                         if (ch->level >= 20)
                         {

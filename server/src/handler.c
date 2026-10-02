@@ -907,6 +907,34 @@ void affect_modify(CHAR_DATA *ch, AFFECT_DATA *paf,
             0);
 }
 
+/*
+ * Human-readable marker for the owner of a sourced affect.
+ *
+ * Ordinary spell affects remain unmarked.  Intrinsic NPC AFF flags are not
+ * AFFECT_DATA sources and therefore also retain their existing display.
+ */
+const char *affect_source_display_suffix(const AFFECT_DATA *paf)
+{
+        if (!paf)
+                return "   ";
+
+        switch (paf->source_type)
+        {
+        case AFFECT_SOURCE_OBJECT:
+                return "{x({WO{x){x";
+
+        case AFFECT_SOURCE_OBJSET:
+                return "{x({CS{x){x";
+
+        case AFFECT_SOURCE_FORM:
+                return "{x({gF{x){x";
+
+        case AFFECT_SOURCE_NONE:
+        default:
+                return "   ";
+        }
+}
+
 void affect_to_char_source(CHAR_DATA *ch, AFFECT_DATA *paf,
                            int source_type, uint64_t source_id)
 {
