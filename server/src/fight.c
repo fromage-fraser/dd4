@@ -7904,7 +7904,7 @@ void turn_undead(CHAR_DATA *ch, int sn, int learned)
 
                 affect_to_char(victim, &af);
 
-                if (roll <= destroy_chance)
+                if (IS_NPC(victim) && roll <= destroy_chance)
                 {
                         act("$N crumbles under your turning!",
                             ch, NULL, victim, TO_CHAR);

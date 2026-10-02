@@ -20,8 +20,11 @@ This recovery period is shared with the Bard's Chant of Turning.
 
 Player vampires can be affected while they are already fighting you,
 provided normal PvP rules allow the attempt. They cannot be destroyed.
+
 A successful turn briefly shakes their aim and delays their next action,
-but the fight continues.
+but the fight continues. The hitroll penalty grows with the vampire's
+level, reaching 20 points at level 100. It lasts for the turning recovery
+period.
 
 Player-controlled undead are not affected yet.
 
@@ -825,8 +828,11 @@ and undead objects on the ground, carried or worn.
 
 - Affect listings now identify effects supplied by worn objects, object sets
   and forms with (O), (S) and (F) markers respectively.
+- Added Turn Undead for Clerics and Knights.
+- Added Bard Chant of Turning with a shared turning cooldown.
 - Turning now affects player vampires in existing PvP fights, applying a
   level-scaled hitroll penalty without destroying them.
+- Updated undead skill help and lists.
 ~
 
 
@@ -5140,6 +5146,7 @@ treasures they discover.
 
 Spells in divination magiks include:
     detect evil
+    detect undead
     detect good
     detect invis
     detect magic
@@ -6118,7 +6125,7 @@ holy word               unholy word             detect good
 blink                   second attack           pattern
 invis                   teleport                knock
 create spring           control weather         detect curse
-sense wisdom            turn
+sense wisdom            turn undead             detect undead
 
 True clerics (those that don't change to templars or druids) may also
 learn these skills above level 30:
@@ -6407,7 +6414,7 @@ detect hidden           meditation              create food
 create water            dual                    disarm
 joust                   second spell            destrier
 flamestrike             cure poison             enhanced critical
-target                  turn
+target                  turn undead             detect undead
 ~
 
 -1 'SMARTIAL ARTIST'~
@@ -7362,8 +7369,15 @@ Turn Undead and Chant of Turning share the same short recovery period.
 Switching between them does not let you immediately retry against an
 undead that has already faced an attempt.
 
-For now, the chant affects NPC undead only. Player vampires and
-player-controlled undead need their PvP rules settled separately.
+Player vampires can be affected while they are already fighting you,
+provided normal PvP rules allow the attempt. They cannot be destroyed.
+
+A successful turn briefly shakes their aim and delays their next action,
+but the fight continues. The hitroll penalty grows with the vampire's
+level, reaching 20 points at level 100. It lasts for the turning recovery
+period.
+
+Player-controlled undead are not affected yet.
 
 Bards can learn the chant from level 40, once Music reaches 80%.
 ~
