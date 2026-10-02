@@ -7680,21 +7680,38 @@ void do_howl(CHAR_DATA *ch, char *argument)
 
 static bool turn_undead_target_allowed(CHAR_DATA *ch, CHAR_DATA *victim)
 {
-        if (!victim
+        if (!ch
+        ||  !victim
+        ||  ch->deleted
         ||  victim->deleted
         ||  victim == ch
-        ||  !IS_NPC(victim)
+        ||  victim->in_room != ch->in_room
         ||  !IS_UNDEAD(victim)
-        ||  IS_SET(victim->act, ACT_OBJECT)
-        ||  is_same_group(ch, victim))
+        ||  is_same_group(ch, victim)
+        ||  (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT)))
         {
                 return FALSE;
         }
 
+        if (IS_AFFECTED(ch, AFF_CHARM) && ch->master == victim)
+                return FALSE;
+
         /*
-         * Leave player-owned undead out of this first version. Turning
-         * another player's creature needs the same careful PvP rules as
-         * turning a player vampire.
+         * A room-wide turn can affect a player vampire only during
+         * their existing fight with you. Bystanders are left alone.
+         *
+         * The actual attempt checks PvP rules separately. This scan
+         * must not announce attacks or change anyone's PvP state.
+         */
+        if (!IS_NPC(victim))
+        {
+                return ch->fighting == victim
+                    || victim->fighting == ch;
+        }
+
+        /*
+         * Player-owned undead still need their control and PvP rules
+         * handled separately.
          */
         if ((victim->master && !IS_NPC(victim->master))
         ||  (victim->rider && !IS_NPC(victim->rider)))
@@ -7703,8 +7720,8 @@ static bool turn_undead_target_allowed(CHAR_DATA *ch, CHAR_DATA *victim)
         }
 
         /*
-         * A hidden undead is not exposed by turning. An opponent already
-         * fighting you can still be affected even if it turns invisible.
+         * Turning does not reveal hidden undead. An opponent already
+         * fighting you can still be affected if it becomes invisible.
          */
         if (!can_see(ch, victim)
         &&  ch->fighting != victim
@@ -7721,7 +7738,7 @@ static void turn_undead_chances(CHAR_DATA *ch, CHAR_DATA *victim,
                                 int *destroy_chance)
 {
         int level_gap = ch->level - victim->level;
-        int rank = rank_sn(victim);
+        int rank = IS_NPC(victim) ? rank_sn(victim) : 1;
         int rank_penalty = UMAX(0, rank - 1) * 10;
         int turn_base;
         int destroy_base;
@@ -7733,7 +7750,7 @@ static void turn_undead_chances(CHAR_DATA *ch, CHAR_DATA *victim,
                 return;
 
         /*
-         * At full skill, an equal-level undead has a 50% turn chance.
+         * At full skill, equal-level undead have a 50% turn chance.
          * Each level of difference moves that chance by four points.
          */
         turn_base = 50 + 4 * level_gap - rank_penalty;
@@ -7741,7 +7758,12 @@ static void turn_undead_chances(CHAR_DATA *ch, CHAR_DATA *victim,
                            level_gap > 10 ? 99 : 95);
         *turn_chance = turn_base * learned / 100;
 
-        if (level_gap <= 10
+        /*
+         * Player vampires can be shaken, but never destroyed.
+         * Major bosses and protected mobiles keep their safeguards.
+         */
+        if (!IS_NPC(victim)
+        ||  level_gap <= 10
         ||  rank >= 4
         ||  IS_SET(victim->act, ACT_UNKILLABLE)
         ||  IS_SET(victim->act, ACT_INVULNERABLE))
@@ -7806,7 +7828,7 @@ void turn_undead(CHAR_DATA *ch, int sn, int learned)
         if (!found)
         {
                 send_to_char(
-                    "There are no undead here to turn.\n\r",
+                    "There are no undead here you can turn now.\n\r",
                     ch);
                 return;
         }
@@ -7846,9 +7868,26 @@ void turn_undead(CHAR_DATA *ch, int sn, int learned)
                         continue;
                 }
 
+                                /*
+                 * Check player combat rules once, when we actually
+                 * attempt the turn. Even a failed attempt is hostile.
+                 */
+                if (!IS_NPC(victim))
+                {
+                        if (is_safe(ch, victim))
+                                continue;
+
+                        check_killer(ch, victim);
+                }
+
+                turn_undead_chances(ch, victim, learned,
+                                    &turn_chance, &destroy_chance);
+                roll = number_percent();
+
                 /*
                  * TURN and the Bard chant share this recovery period.
-                 * Switching between them does not give another free roll.
+                 * For a successfully turned player vampire, this same
+                 * affect also carries the temporary hitroll penalty.
                  */
                 memset(&af, 0, sizeof(af));
                 af.type = gsn_turn_undead;
@@ -7856,11 +7895,14 @@ void turn_undead(CHAR_DATA *ch, int sn, int learned)
                 af.location = APPLY_NONE;
                 af.modifier = 0;
                 af.bitvector = 0;
-                affect_to_char(victim, &af);
 
-                turn_undead_chances(ch, victim, learned,
-                                    &turn_chance, &destroy_chance);
-                roll = number_percent();
+                if (!IS_NPC(victim) && roll <= turn_chance)
+                {
+                        af.location = APPLY_HITROLL;
+                        af.modifier = -(4 + (16 * (URANGE(1, victim->level, 100) - 1) + 49) / 99);
+                }
+
+                affect_to_char(victim, &af);
 
                 if (roll <= destroy_chance)
                 {
@@ -7897,6 +7939,14 @@ void turn_undead(CHAR_DATA *ch, int sn, int learned)
 
                         WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
 
+                        if (!IS_NPC(victim))
+                        {
+                                arena_commentary(
+                                    "$n's turning makes $N recoil.",
+                                    ch, victim);
+                                continue;
+                        }
+
                         /*
                          * Ordinary fighting undead may flee.
                          * Sentinels and major bosses keep their place.
@@ -7919,7 +7969,9 @@ void turn_undead(CHAR_DATA *ch, int sn, int learned)
 
                 act("$N stands firm against your call.",
                     ch, NULL, victim, TO_CHAR);
-                damage(ch, victim, 0, sn, FALSE);
+
+                if (IS_NPC(victim))
+                        damage(ch, victim, 0, sn, FALSE);
         }
 }
 

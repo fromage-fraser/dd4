@@ -18,8 +18,12 @@ A creature cannot be subjected to another turning attempt immediately
 after one has been made, whether that attempt succeeded or failed.
 This recovery period is shared with the Bard's Chant of Turning.
 
-For now, Turn Undead affects NPC undead only. Player vampires and
-player-controlled undead need their PvP rules settled separately.
+Player vampires can be affected while they are already fighting you,
+provided normal PvP rules allow the attempt. They cannot be destroyed.
+A successful turn briefly shakes their aim and delays their next action,
+but the fight continues.
+
+Player-controlled undead are not affected yet.
 
 Clerics learn this skill early; Knights gain it later.
 ~
@@ -817,11 +821,12 @@ and undead objects on the ground, carried or worn.
 - Status spells now recognise matching intrinsic NPC AFF flags as already
   active, preventing redundant timed copies and misleading gain messages.
 
-
 {WOctober 2026{x
 
 - Affect listings now identify effects supplied by worn objects, object sets
   and forms with (O), (S) and (F) markers respectively.
+- Turning now affects player vampires in existing PvP fights, applying a
+  level-scaled hitroll penalty without destroying them.
 ~
 
 
