@@ -47,6 +47,7 @@ static bool spell_status_already_present(
         unsigned long int bit,
         bool notify);
 
+
 /*
  * Lookup a skill by name.
  */
