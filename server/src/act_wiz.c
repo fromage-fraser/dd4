@@ -2027,6 +2027,792 @@ void do_osstat(CHAR_DATA *ch, char *argument)
         send_to_char(buf1, ch);
 }
 
+/* Local mstat diagnostics, defined below do_mstat. */
+static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim);
+static void mstat_resistance_layers(CHAR_DATA *ch, CHAR_DATA *victim);
+static void mstat_hp_modifier_layers(CHAR_DATA *ch, CHAR_DATA *victim);
+static void mstat_damage_modifier_layers(CHAR_DATA *ch, CHAR_DATA *victim);
+static void mstat_combat_modifier_layers(CHAR_DATA *ch, CHAR_DATA *victim);
+static void mstat_dimension_layers(CHAR_DATA *ch, CHAR_DATA *victim);
+static void mstat_language_layers(CHAR_DATA *ch, CHAR_DATA *victim);
+static void mstat_weighted_specials(CHAR_DATA *ch, CHAR_DATA *victim);
+
+void do_mstat(CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *rch;
+        CHAR_DATA *victim;
+        AFFECT_DATA *paf;
+        MPROG_DATA *mprg;
+        char buf[MAX_STRING_LENGTH];
+        char buf1[MAX_STRING_LENGTH];
+        char spec_result[MAX_STRING_LENGTH];
+        char arg[MAX_INPUT_LENGTH];
+        char mode[MAX_INPUT_LENGTH];
+        unsigned long int next;
+        int count;
+        const sound_event_def *sdef;
+        const char *fname;
+        int sect;
+        bool full;
+        rch = get_char(ch);
+        if (!authorized(rch, gsn_mstat))
+                return;
+        argument = one_argument(argument, arg);
+        argument = one_argument(argument, mode);
+
+        if (arg[0] == '\0')
+        {
+                send_to_char("Mstat whom?\n\r", ch);
+                return;
+        }
+
+        if (mode[0] != '\0' && str_cmp(mode, "full"))
+        {
+                send_to_char("Syntax: mstat <<character> [full]\n\r", ch);
+                return;
+        }
+
+        if (argument[0] != '\0')
+        {
+                send_to_char("Syntax: mstat <<character> [full]\n\r", ch);
+                return;
+        }
+
+        full = !str_cmp(mode, "full");
+        if (!(victim = get_char_world(ch, arg)))
+        {
+                send_to_char("They aren't here.\n\r", ch);
+                return;
+        }
+        if (!IS_NPC(victim))
+        {
+                unsigned long int masks[2];
+                const char *labels[2] =
+                {
+                        "Innate resistances",
+                        "Innate vulnerabilities"
+                };
+                int i;
+                bool first;
+                masks[0] = pc_innate_resists(victim);
+                masks[1] = pc_innate_vulnerabilities(victim);
+                send_to_char(
+                    "\n\r{WInnate player traits "
+                    "(race/subclass/current form):{x\n\r",
+                    ch);
+                for (i = 0; i < 2; i++)
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "%s: {W%lu{x (",
+                            labels[i], masks[i]);
+                        send_to_char(buf, ch);
+                        first = TRUE;
+                        for (next = 1;
+                             next != 0 && next <= RES_VALID_MASK;
+                             next <<= 1)
+                        {
+                                if ((masks[i] & next) == 0)
+                                        continue;
+                                if (!first)
+                                        send_to_char(", ", ch);
+                                send_to_char(resist_name(next), ch);
+                                first = FALSE;
+                        }
+                        if (first)
+                                send_to_char("none", ch);
+                        send_to_char(")\n\r", ch);
+                }
+                send_to_char(
+                    "Innate immunities: none\n\r"
+                    "Existing skill, equipment and spell defences "
+                    "are separate.\n\r\n\r",
+                    ch);
+        }
+        buf1[0] = '\0';
+        /*
+         *  Basically split this into 2 distinct routines based on whether it's a PC or
+         *  an NPC, as the information you're interested in (and the ORDER you're likely
+         *  to be interested in it) is sufficiently different between the two kinds of
+         *  entities.  Should likely be different commands entirely, but here we are.
+         *  --Owl 23/4/22
+         */
+        if (!IS_NPC(victim))
+        {
+                /* All PLAYER mstat stuff goes here. */
+                sprintf(buf, "Name: {W%s{x\n\r", victim->name);
+                strcat(buf1, buf);
+                if (get_trust(victim) != victim->level)
+                {
+                        sprintf(buf, "*** Trusted to level %d: %s ***\n\r", victim->trust,
+                                extra_level_name(victim));
+                        strcat(buf1, buf);
+                }
+                if (victim->short_descr[0] != '\0' && victim->long_descr[0] != '\0')
+                {
+                        sprintf(buf, "Short description: {W%s{x\n\rLong description: \n\r  {W%s{x",
+                                victim->short_descr,
+                                victim->long_descr);
+                        strcat(buf1, buf);
+                }
+                sprintf(buf, "Sex: {W%s{x  Race: {W%d{x ({G%s{x)  Size: {G%s{x\n\r",
+                        victim->sex == SEX_MALE ? "male" : victim->sex == SEX_FEMALE ? "female"
+                                                                                     : "neutral",
+                        victim->race,
+                        race_name(victim->race),
+                        race_size_name(race_table[victim->race].size));
+                strcat(buf1, buf);
+                sprintf(buf, "Level: {W%d{x  Room: {R%d{x  Undead: %s\n\r",
+                        victim->level,
+                        !victim->in_room ? 0 : victim->in_room->vnum,
+                        IS_UNDEAD(victim) ? "{Gyes{x" : "{Rno{x");
+                strcat(buf1, buf);
+                sprintf(buf, "Str: {C%d{x  Int: {C%d{x  Wis: {C%d{x  Dex: {C%d{x  Con: {C%d{x\n\r",
+                        get_curr_str(victim),
+                        get_curr_int(victim),
+                        get_curr_wis(victim),
+                        get_curr_dex(victim),
+                        get_curr_con(victim));
+                strcat(buf1, buf);
+                sprintf(buf, "Hp: {G%d{x/{g%d{x  Mana: {C%d{x/{c%d{x  Mv: {Y%d{x/{y%d{x  Wait: {C%d{x\n\r",
+                        victim->hit, victim->max_hit,
+                        victim->mana, victim->max_mana,
+                        victim->move, victim->max_move,
+                        victim->wait);
+                strcat(buf1, buf);
+                sprintf(buf, "Hitroll: {R%d{x  Damroll: {R%d{x   AC: {W%d{x  Saving throw: {W%d{x Damage Mitigation: {W%d{x\n\r",
+                        GET_HITROLL(victim),
+                        GET_DAMROLL(victim),
+                        GET_AC(victim),
+                        victim->saving_throw,
+                        victim->damage_mitigation);
+                strcat(buf1, buf);
+                sprintf(buf, "Crit: {R%d{x  Swiftness: {R%d{x  Bonus: {R%d{x/{r%d{x  Slept: {R%d{x  Last recharge: {R%ld{x\n\r",
+                        GET_CRIT(victim),
+                        GET_SWIFT(victim),
+                        victim->pcdata->bonus,
+                        victim->pcdata->max_bonus,
+                        victim->pcdata->slept,
+                        victim->pcdata->last_recharge);
+                strcat(buf1, buf);
+                sprintf(buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{w/{r%d{x\n\r",
+                        victim->alignment,
+                        (level_table[victim->level].exp_total) - victim->exp,
+                        victim->class,
+                        full_class_name(victim->class),
+                        victim->sub_class,
+                        full_sub_class_name(victim->sub_class),
+                        get_age(victim),
+                        !IS_NPC(victim) ? victim->pcdata->fame : 0,
+                        extra_form_name(victim->form),
+                        victim->aggro_dam,
+                        victim->rage,
+                        victim->max_rage);
+                strcat(buf1, buf);
+                sprintf(buf, "Str pracs: {W%d{x  Int pracs: {W%d{x  Bank: {Y%d{x  Bounty: {Y%d{x\n\rCurrent quest points: {C%d{x  Total quest points: {C%d{x  Quest timer: {C%d{x\n\r",
+                        victim->pcdata->str_prac,
+                        victim->pcdata->int_prac,
+                        victim->pcdata->questpoints,
+                        victim->pcdata->totalqp,
+                        victim->pcdata->nextquest,
+                        victim->pcdata->bank,
+                        victim->pcdata->bounty);
+                strcat(buf1, buf);
+                sprintf(buf, "Platinum: {W%d{x  Gold: {Y%d{x  Silver: %d  Copper: {y%d{x\n\r",
+                        victim->plat,
+                        victim->gold,
+                        victim->silver,
+                        victim->copper);
+                strcat(buf1, buf);
+                sprintf(buf, "Carry number: {C%d{x/{c%d{x  Carry weight: {C%d{x/{c%d{x  Coin weight: {W%d{x\n\r",
+                        victim->carry_number,
+                        can_carry_n(victim),
+                        (victim->carry_weight + victim->coin_weight),
+                        can_carry_w(victim),
+                        victim->coin_weight);
+                strcat(buf1, buf);
+                sprintf(buf,
+                        "Thirst: {W%d{x  Full: {W%d{x  Drunk: {W%d{x  Air Supply: {W%d{x\n\rPosition: {G%d{x [{W%s{x]  Wimpy: {G%d{x  Page Lines: {G%d{x\n\r",
+                        victim->pcdata->condition[COND_THIRST],
+                        victim->pcdata->condition[COND_FULL],
+                        victim->pcdata->condition[COND_DRUNK],
+                        victim->pcdata->air_supply,
+                        victim->position,
+                        position_name(victim->position),
+                        victim->wimpy,
+                        victim->pcdata->pagelen);
+                strcat(buf1, buf);
+                sprintf(buf, "Master: {W%s{x  Leader: {W%s{x  Clan: {W%d{x ({W%s{x)\n\rFighting: {W%s{x  Mount: {W%s{x  Inside: {W%s{x\n\r",
+                        victim->master ? victim->master->name : "(none)",
+                        victim->leader ? victim->leader->name : "(none)",
+                        !IS_NPC(victim) ? victim->clan : 0,
+                        !IS_NPC(victim) ? clan_table[victim->clan].who_name : "none",
+                        victim->fighting ? victim->fighting->name : "(none)",
+                        victim->mount ? victim->mount->name : "(none)",
+                        victim->inside ? victim->inside->name : "(none)");
+                strcat(buf1, buf);
+                sprintf(buf, "Play time: {W%d seconds{x ({G%d hours{x)  Timer: {W%d{x  Status: {W%d{x\n\r",
+                        (int)victim->played,
+                        ((get_age(victim) - 17) * 4),
+                        victim->timer,
+                        !IS_NPC(victim) ? victim->status : 0);
+                strcat(buf1, buf);
+                if (victim->affected_by)
+                {
+                        sprintf(buf, "Affected by (num): {W");
+                        strcat(buf1, buf);
+                        bit_explode(ch, buf, victim->affected_by);
+                        strcat(buf1, buf);
+                        strcat(buf1, "{x\n\r");
+                        strcat(buf1, "Affected by (txt):{R");
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                        {
+                                if (IS_AFFECTED(victim, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, affect_bit_name(next));
+                                }
+                        }
+                        strcat(buf1, "{x\n\r");
+                }
+                if (victim->act)
+                {
+                        sprintf(buf, "Act flags (num): {W");
+                        strcat(buf1, buf);
+                        bit_explode(ch, buf, victim->act);
+                        strcat(buf1, buf);
+                        strcat(buf1, "{x\n\r");
+                        strcat(buf1, "Act flags (txt):{R");
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                        {
+                                if (IS_SET(victim->act, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, pact_bit_name(next));
+                                }
+                        }
+                        strcat(buf1, "{x\n\r");
+                }
+                if (deities_active() && ch->level == L_IMM)
+                {
+                        sprintf(buf, "Patron: {W%d{x ({W%s{x)  Deity timer: {W%d{x  "
+                                     "Deity flags: {W%d{x\n\rFavour:\n\r",
+                                victim->pcdata->deity_patron,
+                                (victim->pcdata->deity_patron < 0 || victim->pcdata->deity_patron >= NUMBER_DEITIES)
+                                    ? "none"
+                                    : deity_info_table[victim->pcdata->deity_patron].name,
+                                victim->pcdata->deity_timer,
+                                victim->pcdata->deity_flags);
+                        strcat(buf1, buf);
+                        count = 1;
+                        for (next = 0; next < NUMBER_DEITIES; next++)
+                        {
+                                if (count != 5)
+                                {
+                                        sprintf(buf, "{W%-10s{x {G%-4d{x ",
+                                                deity_info_table[next].name,
+                                                victim->pcdata->deity_favour[next]);
+                                        strcat(buf1, buf);
+                                        ++count;
+                                }
+                                else
+                                {
+                                        count = 1;
+                                        sprintf(buf, "\n\r");
+                                        strcat(buf1, buf);
+                                }
+                        }
+                        strcat(buf1, "\n\rDeity type timers:       {W");
+                        for (next = 0; next < DEITY_NUMBER_TYPES; next++)
+                        {
+                                sprintf(buf, " %d", victim->pcdata->deity_type_timer[next]);
+                                strcat(buf1, buf);
+                        }
+                        strcat(buf1, "{x\n\rDeity personality timers:{W");
+                        for (next = 0; next < DEITY_NUMBER_PERSONALITIES; next++)
+                        {
+                                sprintf(buf, " %d", victim->pcdata->deity_personality_timer[next]);
+                                strcat(buf1, buf);
+                        }
+                        strcat(buf1, "{x\n\r");
+                }
+                if ((paf = victim->affected))
+                {
+                        sprintf(buf, "{W[{x{GSpell/s active{x{W]{x\n\r");
+                        strcat(buf1, buf);
+                }
+                for (paf = victim->affected; paf; paf = paf->next)
+                {
+                        if (paf->deleted)
+                                continue;
+                        sprintf(
+                                buf,
+                                "{W%-25s{x%s modifies {G%s{x by {Y%d{x",
+                                skill_table[(int)paf->type].name,
+                                affect_source_display_suffix(paf),
+                                affect_loc_name(paf->location),
+                                paf->modifier);
+                                strcat(buf1, buf);
+                        if (is_stench_exposure(paf))
+                        {
+                                strcat(buf1, " while exposed");
+                        }
+                        else if (is_ghoul_paralysis(paf))
+                        {
+                                snprintf(
+                                    buf, sizeof(buf),
+                                    " for {G%d{x combat rounds",
+                                    paf->duration);
+                                strcat(buf1, buf);
+                        }
+                        else if (paf->bitvector && (paf->bitvector == AFF_PRONE || paf->bitvector == AFF_DAZED))
+                        {
+                                if (paf->duration > 1)
+                                {
+                                        sprintf(buf, " for {G%d{x min", paf->duration);
+                                        strcat(buf1, buf);
+                                }
+                                else
+                                {
+                                        sprintf(buf, " for {G%d{x min", paf->duration);
+                                        strcat(buf1, buf);
+                                }
+                        }
+                        else
+                        {
+                                if (paf->duration > 1)
+                                {
+                                        sprintf(buf, " for {G%d{x hours",
+                                                paf->duration);
+                                        strcat(buf1, buf);
+                                }
+                                else if (paf->duration == 1)
+                                {
+                                        sprintf(buf, " for {G%d{x hour",
+                                                paf->duration);
+                                        strcat(buf1, buf);
+                                }
+                                else if (paf->duration == 0)
+                                {
+                                        sprintf(buf, " for less than an hour");
+                                        strcat(buf1, buf);
+                                }
+                                else
+                                {
+                                        strcat(buf1, " indefinitely");
+                                }
+                        }
+                        sprintf(buf, " with bit {R%s{x\n\r",
+                                affect_bit_name(paf->bitvector));
+                        strcat(buf1, buf);
+                }
+        }
+        else
+        {
+                /* All MOBILE mstat stuff goes here. */
+                int temp = rank_sn(victim);
+                sprintf(buf, "Vnum: {R%d{x  Rank: %s(%d){x\n\r",
+                        victim->pIndexData->vnum,
+                        rank_table[rank_sn(victim)].who_format, temp);
+                strcat(buf1, buf);
+                if (victim->short_descr[0] != '\0' && victim->long_descr[0] != '\0')
+                {
+                        sprintf(buf, "Short description: {W%s{x\n\rKeywords: {W%s{x\n\rLong description: \n\r  {W%s{x",
+                                victim->short_descr,
+                                victim->name,
+                                victim->long_descr);
+                        strcat(buf1, buf);
+                }
+                strcpy(spec_result, spec_fun_name(victim));
+                if (str_cmp(spec_result, "none"))
+                {
+                        sprintf(buf, "Special function: {Y%s{x\n\r", spec_fun_name(victim));
+                        strcat(buf1, buf);
+                }
+                if (IS_NPC(victim) && victim->pIndexData && victim->pIndexData->pGame && victim->pIndexData->pGame->game_fun != 0)
+                {
+                        sprintf(buf, "Game function: {Y%s{x\n\r",
+                                game_string(victim->pIndexData->pGame->game_fun));
+                        strcat(buf1, buf);
+                }
+                sprintf(buf, "Lvl: {W%d{x  Room: {R%d{x  Align: {W%d{x  Sex: {W%s{x\n\r",
+                        victim->level,
+                        !victim->in_room ? 0 : victim->in_room->vnum,
+                        victim->alignment,
+                        victim->sex == SEX_MALE ? "male" : victim->sex == SEX_FEMALE ? "female"
+                                                                                     : "neutral");
+                strcat(buf1, buf);
+                sprintf(buf, "Hp: {G%d{x/{g%d{x  Mana: {C%d{x/{c%d{x  Mv: {Y%d{x/{y%d{x  Wait: {C%d{x\n\r",
+                        victim->hit, victim->max_hit,
+                        victim->mana, victim->max_mana,
+                        victim->move, victim->max_move,
+                        victim->wait);
+                strcat(buf1, buf);
+                sprintf(buf, "Hitroll: {R%d{x  Damroll: {R%d{x   AC: {W%d{x  Saving throw: {W%d{x\n\r",
+                        GET_HITROLL(victim),
+                        GET_DAMROLL(victim),
+                        GET_AC(victim),
+                        victim->saving_throw);
+                strcat(buf1, buf);
+                sprintf(buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
+                        victim->crit,
+                        victim->swiftness);
+                strcat(buf1, buf);
+                sprintf(
+                    buf,
+                    "Position: {G%d{x [{W%s{x]  Wimpy: {W%d{x  "
+                    "Exp modifier: {W%d%%{x\n\r",
+                    victim->position,
+                    position_name(victim->position),
+                    victim->wimpy,
+                    get_mob_exp_modifier(victim));
+                strcat(buf1, buf);
+                sprintf(buf, "Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rRace: {W%d{x ({G%s{x)  Age: {W%d{x  Form: {W%s{x\n\r",
+                        victim->class,
+                        full_class_name(victim->class),
+                        victim->sub_class,
+                        full_sub_class_name(victim->sub_class),
+                        victim->race,
+                        race_name(victim->race),
+                        get_age(victim),
+                        extra_form_name(victim->form));
+                strcat(buf1, buf);
+                sprintf(buf, "Platinum: {W%d{x  Gold: {Y%d{x  Silver: %d  Copper: {y%d{x\n\r",
+                        victim->plat,
+                        victim->gold,
+                        victim->silver,
+                        victim->copper);
+                strcat(buf1, buf);
+                sprintf(buf, "Carry number: {C%d{x/{c%d{x  Carry weight: {C%d{x/{c%d{x  Coin weight: {W%d{x\n\r",
+                        victim->carry_number,
+                        can_carry_n(victim),
+                        (victim->carry_weight + victim->coin_weight),
+                        can_carry_w(victim),
+                        victim->coin_weight);
+                strcat(buf1, buf);
+                sprintf(buf, "Master: {W%s{x  Leader: {W%s{x  Inside: {W%s{x\n\rFighting: {W%s{x  Rider: {W%s{x\n\r",
+                        victim->master ? victim->master->name : "(none)",
+                        victim->leader ? victim->leader->name : "(none)",
+                        victim->inside ? victim->inside->name : "(none)",
+                        victim->fighting ? victim->fighting->name : "(none)",
+                        victim->rider ? victim->rider->name : "(none)");
+                strcat(buf1, buf);
+                if (victim->act)
+                {
+                        sprintf(buf, "Act flags (num): {W");
+                        strcat(buf1, buf);
+                        bit_explode(ch, buf, victim->act);
+                        strcat(buf1, buf);
+                        strcat(buf1, "{x\n\r");
+                        strcat(buf1, "Act flags (txt):{R");
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                        {
+                                if (IS_SET(victim->act, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, act_bit_name(next));
+                                }
+                        }
+                        strcat(buf1, "{x\n\r");
+                }
+                if (victim->affected_by)
+                {
+                        sprintf(buf, "Affected by (num): {W");
+                        strcat(buf1, buf);
+                        bit_explode(ch, buf, victim->affected_by);
+                        strcat(buf1, buf);
+                        strcat(buf1, "{x\n\r");
+                        strcat(buf1, "Affected by (txt):{R");
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                        {
+                                if (IS_AFFECTED(victim, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, affect_bit_name(next));
+                                }
+                        }
+                        strcat(buf1, "{x\n\r");
+                }
+                if (victim->resists)
+                {
+                        strcat(buf1, "Resistant to:{R");
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                        {
+                                if (IS_SET(victim->resists, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, resist_name(next));
+                                }
+                        }
+                        strcat(buf1, "{x\n\r");
+                }
+                if (victim->vulnerabilities)
+                {
+                        strcat(buf1, "Vulnerable to:{R");
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                        {
+                                if (IS_SET(victim->vulnerabilities, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, resist_name(next));
+                                }
+                        }
+                        strcat(buf1, "{x\n\r");
+                }
+                if (victim->immunes)
+                {
+                        strcat(buf1, "Immune to:{R");
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                        {
+                                if (IS_SET(victim->immunes, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, resist_name(next));
+                                }
+                        }
+                        strcat(buf1, "{x\n\r");
+                }
+                if (victim->body_form)
+                {
+                        sprintf(buf, "Body form (num): {W");
+                        strcat(buf1, buf);
+                        bit_explode(ch, buf, victim->body_form);
+                        strcat(buf1, buf);
+                        strcat(buf1, "{x\n\r");
+                }
+                if (victim->body_form)
+                {
+                        strcat(buf1, "Body form (txt):{R");
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                        {
+                                if (IS_SET(victim->body_form, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, body_form_name(next));
+                                }
+                        }
+                        strcat(buf1, "{x\n\r");
+                }
+                if (victim->attack_parts)
+                {
+                        sprintf(buf, "Attack parts (num): {W");
+                        strcat(buf1, buf);
+                        bit_explode(ch, buf, victim->attack_parts);
+                        strcat(buf1, buf);
+                        strcat(buf1, "{x\n\r");
+
+                        strcat(buf1, "Attack parts (txt):{R");
+                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
+                        {
+                                if (IS_SET(victim->attack_parts, next))
+                                {
+                                        strcat(buf1, " ");
+                                        strcat(buf1, body_form_name(next));
+                                }
+                        }
+                        strcat(buf1, "{x\n\r");
+                }
+                for ( sect = 0; sect < SECT_MAX; sect++ )
+                {
+                        if ( !victim->pIndexData->footstep_key[sect]
+                        ||   victim->pIndexData->footstep_key[sect][0] == '\0' )
+                                continue;
+                        sdef = sound_event_lookup( victim->pIndexData->footstep_key[sect] );
+                        fname = ( sdef && sdef->files[0] && sdef->files[0][0] != '\0' )
+                            ? sdef->files[0]
+                            : "(no sound_const.c match)";
+                        sprintf( buf,
+                                "Footstep foley: {W%s{x  Key: {C%s{x  File: {G%s{x\n\r",
+                                sector_name( sect ),
+                                victim->pIndexData->footstep_key[sect],
+                                fname );
+                        strcat( buf1, buf );
+                }
+                
+                send_to_char(buf1, ch);
+                buf1[0] = '\0';
+                show_death_parts(ch, victim);
+
+                if ((paf = victim->affected))
+                {
+                        sprintf(buf, "{W[{x{GSpell/s active{x{W]{x\n\r");
+                        strcat(buf1, buf);
+                }
+                for (paf = victim->affected; paf; paf = paf->next)
+                {
+                        if (paf->deleted)
+                                continue;
+                        sprintf(
+                                buf,
+                                "{W%-25s{x%s modifies {G%s{x by {Y%d{x",
+                                skill_table[(int)paf->type].name,
+                                affect_source_display_suffix(paf),
+                                affect_loc_name(paf->location),
+                                paf->modifier);
+                                strcat(buf1, buf);
+                        if (is_stench_exposure(paf))
+                        {
+                                strcat(buf1, " while exposed");
+                        }
+                        else if (is_ghoul_paralysis(paf))
+                        {
+                                snprintf(
+                                    buf, sizeof(buf),
+                                    " for {G%d{x combat rounds",
+                                    paf->duration);
+                                strcat(buf1, buf);
+                        }
+                        else if (paf->duration > 1)
+                        {
+                                sprintf(buf, " for {G%d{x hours",
+                                        paf->duration);
+                                strcat(buf1, buf);
+                        }
+                        else if (paf->duration == 1)
+                        {
+                                sprintf(buf, " for {G%d{x hour",
+                                        paf->duration);
+                                strcat(buf1, buf);
+                        }
+                        else if (paf->duration == 0)
+                        {
+                                sprintf(buf, " for less than an hour");
+                                strcat(buf1, buf);
+                        }
+                        else
+                        {
+                                strcat(buf1, " indefinitely");
+                        }
+                        sprintf(buf, " with bit {R%s{x\n\r",
+                                affect_bit_name(paf->bitvector));
+                        strcat(buf1, buf);
+                }
+                if (victim->pIndexData->progtypes)
+                {
+                        strcat(buf1, "{WMobprog:{x\n\r");
+                        for (mprg = victim->pIndexData->mobprogs; mprg != NULL;
+                             mprg = mprg->next)
+                        {
+                                sprintf(buf, ">%s %s\n\r%s\n\r",
+                                        mprog_type_to_name(mprg->type),
+                                        mprg->arglist,
+                                        mprg->comlist);
+                                strcat(buf1, buf);
+                        }
+                }
+                if (IS_SET(victim->act, ACT_PRACTICE) && (victim->pIndexData->skills))
+                {
+                        int sn;
+                        sprintf(buf, "----------------------------------\r\nCan {Wteach{x the following:\n\r----------------------------------\r\n");
+                        strcat(buf1, buf);
+                        for (sn = 0; sn < MAX_SKILL; sn++)
+                        {
+                                if (victim->pIndexData->skills->learned[sn] > 0)
+                                {
+                                        sprintf(buf, "%-30s {G%3d{x \n\r",
+                                                skill_table[sn].name,
+                                                victim->pIndexData->skills->learned[sn]);
+                                        strcat(buf1, buf);
+                                }
+                        }
+                }
+                 /*
+                 * Normal mstat stops after the live mob view above.  Full
+                 * mode continues into template and inheritance diagnostics.
+                 */
+                if (!full)
+                {
+                        send_to_char(buf1, ch);
+                        return;
+                }
+
+                /*
+                 * Flush the remaining live view before diagnostic output.
+                 */
+                send_to_char(buf1, ch);
+                buf1[0] = '\0';
+
+        }
+
+        /* Player mstat remains the normal player view. */
+        if (!IS_NPC(victim))
+        {
+                send_to_char(buf1, ch);
+                return;
+        }
+
+        /*
+         * NPC non-full mode has already returned from inside the mobile block.
+         * Full mode reaches here after the live view has been sent.
+         */
+        if (full)
+        {
+                MOB_INDEX_DATA *index = victim->pIndexData;
+                MOB_TEMPLATE_DATA inherited;
+                int archetype = index ? mob_lookup(index->mobspec) : -1;
+                int species;
+                bool has_template;
+
+                has_template = resolve_mob_template(archetype, &inherited);
+
+                send_to_char("\n\r{WGhost phase layers{x\n\r", ch);
+
+                if (has_template)
+                {
+                        species = species_lookup(mob_table[archetype].species);
+
+                        snprintf(
+                            buf, sizeof(buf),
+                            "  Body species: %s\n\r"
+                            "  Archetype:    %s\n\r"
+                            "  Template:     %s\n\r",
+                            mob_ghost_phase_setting_name(
+                                species_table[species].initial_ghost_phase),
+                            mob_ghost_phase_setting_name(
+                                mob_table[archetype].initial_ghost_phase),
+                            ghost_phase_name(
+                                (GHOST_PHASE)inherited.initial_ghost_phase));
+                        send_to_char(buf, ch);
+                }
+                else
+                {
+                        send_to_char("  Template:     none\n\r", ch);
+                }
+
+                if (index)
+                {
+                        snprintf(
+                            buf, sizeof(buf),
+                            "  #MOBILES:     %s\n\r"
+                            "  Initial:      %s (%d)\n\r",
+                            mob_ghost_phase_setting_name(index->area_ghost_phase),
+                            ghost_phase_name(
+                                (GHOST_PHASE)index->initial_ghost_phase),
+                            index->initial_ghost_phase);
+                        send_to_char(buf, ch);
+                }
+
+                snprintf(
+                    buf, sizeof(buf),
+                    "  Live:         {W%s{x (%d)\n\r",
+                    ghost_phase_name(victim->ghost_phase),
+                    (int)victim->ghost_phase);
+                send_to_char(buf, ch);
+
+                mstat_flag_layers(ch, victim);
+                mstat_resistance_layers(ch, victim);
+                mstat_hp_modifier_layers(ch, victim);
+                mstat_damage_modifier_layers(ch, victim);
+                mstat_combat_modifier_layers(ch, victim);
+                mstat_dimension_layers(ch, victim);
+                mstat_language_layers(ch, victim);
+                mstat_weighted_specials(ch, victim);
+        }
+
+        return;
+}
+
+
 /* Print one flag mask without extending do_mstat's main output buffer. */
 static void mstat_flag_row(
     CHAR_DATA *ch,
@@ -2055,7 +2841,6 @@ static void mstat_flag_row(
         send_to_char("\n\r", ch);
 }
 
-/* Show inherited, individual, prototype and live mobile flag masks. */
 static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         MOB_TEMPLATE_DATA inherited;
@@ -2103,13 +2888,11 @@ static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             "Prototype",
             index->affected_by,
             affect_bit_name);
-
         mstat_flag_row(
             ch,
             "Intrinsic",
             victim->intrinsic_affected_by,
             affect_bit_name);
-
         mstat_flag_row(
             ch,
             "Live",
@@ -2142,15 +2925,9 @@ static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim)
 
         mstat_flag_row(ch, "Eligible",
                        usable_attack_parts, body_form_name);
-
         mstat_flag_row(ch, "Inactive",
                        victim->attack_parts & ~usable_attack_parts,
                        body_form_name);
-
-        send_to_char(
-            "Eligibility is anatomical; an equipped weapon still takes "
-            "precedence over natural selection.\n\r",
-            ch);
 
         if (((index->attack_parts | victim->attack_parts)
              & ~MOB_ATTACK_PARTS_VALID_MASK) == 0)
@@ -2166,11 +2943,6 @@ static void mstat_flag_layers(CHAR_DATA *ch, CHAR_DATA *victim)
                     "{RINVALID -- undefined bits{x\n\r",
                     ch);
         }
-
-        send_to_char(
-            "\n\rACT_IS_NPC is always on; prototype AFF_CHARM is always off.\n\r"
-            "Live flags may also include reset, equipment, spell, or mset changes.\n\r",
-            ch);
 }
 
 static void mstat_resistance_group(
@@ -2257,7 +3029,7 @@ static void mstat_resistance_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             ch);
 }
 
-/* Show scalar inheritance and immutable creation snapshots separately. */
+
 static void mstat_hp_modifier_layers(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         MOB_TEMPLATE_DATA inherited;
@@ -2317,16 +3089,13 @@ static void mstat_hp_modifier_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             victim->hit, victim->max_hit,
             MOB_SPAWN_HP_LIMIT);
         send_to_char(buf, ch);
-        send_to_char(
-            "Spawn values are creation snapshots. Equipment, spells, scripts "
-            "and live edits can subsequently change current HP/max.\n\r",
-            ch);
 }
 
 /*
  * Show inheritance and the independently editable live attack modifier.
  * The sample uses no random numbers and does not perform an attack.
  */
+
 static void mstat_damage_modifier_layers(
     CHAR_DATA *ch,
     CHAR_DATA *victim)
@@ -2383,13 +3152,8 @@ static void mstat_damage_modifier_layers(
             victim->dam_mod,
             apply_mob_damage_modifier(victim, 100));
         send_to_char(buf, ch);
-
-        send_to_char(
-            "Applies once to NPC attacks through one_hit(). "
-            "The sample is before target defenses and later combat "
-            "adjustments; it is not the last hit.\n\r",
-            ch);
 }
+
 
 /* Display one scalar's inheritance, creation snapshot and current score. */
 static void mstat_combat_modifier_group(
@@ -2470,12 +3234,6 @@ static void mstat_combat_modifier_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             MOB_SPAWN_BASE_SWIFTNESS,
             victim->spawn_haste_mod, victim->spawn_swiftness,
             victim->swiftness);
-
-        send_to_char(
-            "These adjustments add score points, not percentage multipliers.\n\r"
-            "Equipment, effects and mset can change live scores after creation.\n\r"
-            "Existing roll comparisons and Haste/Quicken mechanics are unchanged.\n\r",
-            ch);
 }
 
 /* Display a raw dimension through the template, prototype and live layers. */
@@ -2514,6 +3272,7 @@ static void mstat_dimension_group(
         send_to_char(buf, ch);
 }
 
+
 static void mstat_dimension_layers(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         MOB_TEMPLATE_DATA inherited;
@@ -2551,15 +3310,8 @@ static void mstat_dimension_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             ch, "Size layers",
             inherited.size, index->area_size,
             index->size, victim->size);
-
-        send_to_char(
-            "Raw dimension data: 0 means unspecified. "
-            "This layer performs no unit conversion or size classification.\n\r"
-            "Changing these values does not alter body flags, carrying, "
-            "equipment fit, or combat.\n\r", ch);
 }
 
-/* Display the raw language code without interpreting it as a skill or flag. */
 static void mstat_language_layers(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         MOB_TEMPLATE_DATA inherited;
@@ -2609,12 +3361,8 @@ static void mstat_language_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             "  Prototype: %d\n\r  Live:      %d\n\r",
             index->language, victim->language);
         send_to_char(buf, ch);
-        send_to_char(
-            "Raw language code: 0 means unspecified. "
-            "No language names or comprehension rules are assigned here.\n\r"
-            "This value does not change speech permissions or BODY_NO_SPEECH.\n\r",
-            ch);
 }
+
 
 /*
  * Display a whole probability policy without consuming a random number.
@@ -2733,16 +3481,6 @@ static void mstat_weighted_specials(
                 ? "valid"
                 : "INVALID");
         send_to_char(buf, ch);
-
-        send_to_char(
-            "One routine is selected per existing opportunity; "
-            "internal checks still apply.\n\r"
-            "Calls count invocations, not successful effects, "
-            "since spawn or last live edit.\n\r"
-            "The old one-name summary shows the first enabled slot. "
-            "Slot 3 is not rank-gated.\n\r"
-            "Live edits leave the stored XP modifier unchanged.\n\r",
-            ch);
 }
 
 /*
@@ -2922,1045 +3660,6 @@ static void mset_weighted_specials(
             ch);
 }
 
-void do_mstat(CHAR_DATA *ch, char *argument)
-{
-        CHAR_DATA *rch;
-        CHAR_DATA *victim;
-        AFFECT_DATA *paf;
-        MPROG_DATA *mprg;
-        char buf[MAX_STRING_LENGTH];
-        char buf1[MAX_STRING_LENGTH];
-        char spec_result[MAX_STRING_LENGTH];
-        char arg[MAX_INPUT_LENGTH];
-        unsigned long int next;
-        int count;
-        const sound_event_def *sdef;
-        const char *fname;
-        int sect;
-
-        rch = get_char(ch);
-
-        if (!authorized(rch, gsn_mstat))
-                return;
-
-        one_argument(argument, arg);
-
-        if (arg[0] == '\0')
-        {
-                send_to_char("Mstat whom?\n\r", ch);
-                return;
-        }
-
-        if (!(victim = get_char_world(ch, arg)))
-        {
-                send_to_char("They aren't here.\n\r", ch);
-                return;
-        }
-
-        if (IS_NPC(victim))
-        {
-                MOB_INDEX_DATA *index = victim->pIndexData;
-                MOB_TEMPLATE_DATA inherited;
-                int archetype = index ? mob_lookup(index->mobspec) : -1;
-                int species;
-                bool has_template;
-
-                has_template = resolve_mob_template(archetype, &inherited);
-
-                send_to_char("\n\r{WGhost phase: initial and live values{x\n\r", ch);
-
-                if (has_template)
-                {
-                        species = species_lookup(mob_table[archetype].species);
-
-                        snprintf(
-                            buf, sizeof(buf),
-                            "  Body species: %s\n\r"
-                            "  Archetype:    %s\n\r"
-                            "  Template:     %s\n\r",
-                            mob_ghost_phase_setting_name(
-                                species_table[species].initial_ghost_phase),
-                            mob_ghost_phase_setting_name(
-                                mob_table[archetype].initial_ghost_phase),
-                            ghost_phase_name(
-                                (GHOST_PHASE)inherited.initial_ghost_phase));
-                        send_to_char(buf, ch);
-                }
-                else
-                {
-                        send_to_char(
-                            "  Template:     none (no resolved archetype)\n\r",
-                            ch);
-                }
-
-                if (index)
-                {
-                        snprintf(
-                            buf, sizeof(buf),
-                            "  #MOBILES:     %s\n\r"
-                            "  Initial:      %s (%d)\n\r",
-                            mob_ghost_phase_setting_name(index->area_ghost_phase),
-                            ghost_phase_name(
-                                (GHOST_PHASE)index->initial_ghost_phase),
-                            index->initial_ghost_phase);
-                        send_to_char(buf, ch);
-                }
-                else
-                {
-                        send_to_char("  Initial:      no prototype\n\r", ch);
-                }
-
-                snprintf(
-                    buf, sizeof(buf),
-                    "  Live:         {W%s{x (%d)\n\r"
-                    "Phase contact rules: supported weapon/shield paths only.\n\r"
-                    "Other effect paths are not phase-aware yet.\n\r\n\r",
-                    ghost_phase_name(victim->ghost_phase),
-                    (int)victim->ghost_phase);
-                send_to_char(buf, ch);
-        }
-
-        if (!IS_NPC(victim))
-        {
-                unsigned long int masks[2];
-                const char *labels[2] =
-                {
-                        "Innate resistances",
-                        "Innate vulnerabilities"
-                };
-                int i;
-                bool first;
-
-                masks[0] = pc_innate_resists(victim);
-                masks[1] = pc_innate_vulnerabilities(victim);
-
-                send_to_char(
-                    "\n\r{WInnate player traits "
-                    "(race/subclass/current form):{x\n\r",
-                    ch);
-
-                for (i = 0; i < 2; i++)
-                {
-                        snprintf(
-                            buf, sizeof(buf),
-                            "%s: {W%lu{x (",
-                            labels[i], masks[i]);
-                        send_to_char(buf, ch);
-
-                        first = TRUE;
-
-                        for (next = 1;
-                             next != 0 && next <= RES_VALID_MASK;
-                             next <<= 1)
-                        {
-                                if ((masks[i] & next) == 0)
-                                        continue;
-
-                                if (!first)
-                                        send_to_char(", ", ch);
-
-                                send_to_char(resist_name(next), ch);
-                                first = FALSE;
-                        }
-
-                        if (first)
-                                send_to_char("none", ch);
-
-                        send_to_char(")\n\r", ch);
-                }
-
-                send_to_char(
-                    "Innate immunities: none\n\r"
-                    "Existing skill, equipment and spell defences "
-                    "are separate.\n\r\n\r",
-                    ch);
-        }
-
-        buf1[0] = '\0';
-
-        /*
-         *  Basically split this into 2 distinct routines based on whether it's a PC or
-         *  an NPC, as the information you're interested in (and the ORDER you're likely
-         *  to be interested in it) is sufficiently different between the two kinds of
-         *  entities.  Should likely be different commands entirely, but here we are.
-         *  --Owl 23/4/22
-         */
-
-        if (!IS_NPC(victim))
-        {
-                /* All PLAYER mstat stuff goes here. */
-
-                sprintf(buf, "Name: {W%s{x\n\r", victim->name);
-                strcat(buf1, buf);
-
-                if (get_trust(victim) != victim->level)
-                {
-                        sprintf(buf, "*** Trusted to level %d: %s ***\n\r", victim->trust,
-                                extra_level_name(victim));
-                        strcat(buf1, buf);
-                }
-
-                if (victim->short_descr[0] != '\0' && victim->long_descr[0] != '\0')
-                {
-                        sprintf(buf, "Short description: {W%s{x\n\rLong description: \n\r  {W%s{x",
-                                victim->short_descr,
-                                victim->long_descr);
-                        strcat(buf1, buf);
-                }
-
-                sprintf(buf, "Sex: {W%s{x  Race: {W%d{x ({G%s{x)  Size: {G%s{x\n\r",
-                        victim->sex == SEX_MALE ? "male" : victim->sex == SEX_FEMALE ? "female"
-                                                                                     : "neutral",
-                        victim->race,
-                        race_name(victim->race),
-                        race_size_name(race_table[victim->race].size));
-                strcat(buf1, buf);
-
-                sprintf(buf, "Level: {W%d{x  Room: {R%d{x  Undead: %s\n\r",
-                        victim->level,
-                        !victim->in_room ? 0 : victim->in_room->vnum,
-                        IS_UNDEAD(victim) ? "{Gyes{x" : "{Rno{x");
-                strcat(buf1, buf);
-
-                sprintf(buf, "Str: {C%d{x  Int: {C%d{x  Wis: {C%d{x  Dex: {C%d{x  Con: {C%d{x\n\r",
-                        get_curr_str(victim),
-                        get_curr_int(victim),
-                        get_curr_wis(victim),
-                        get_curr_dex(victim),
-                        get_curr_con(victim));
-                strcat(buf1, buf);
-
-                sprintf(buf, "Hp: {G%d{x/{g%d{x  Mana: {C%d{x/{c%d{x  Mv: {Y%d{x/{y%d{x  Wait: {C%d{x\n\r",
-                        victim->hit, victim->max_hit,
-                        victim->mana, victim->max_mana,
-                        victim->move, victim->max_move,
-                        victim->wait);
-                strcat(buf1, buf);
-
-                sprintf(buf, "Hitroll: {R%d{x  Damroll: {R%d{x   AC: {W%d{x  Saving throw: {W%d{x Damage Mitigation: {W%d{x\n\r",
-                        GET_HITROLL(victim),
-                        GET_DAMROLL(victim),
-                        GET_AC(victim),
-                        victim->saving_throw,
-                        victim->damage_mitigation);
-                strcat(buf1, buf);
-
-                sprintf(buf, "Crit: {R%d{x  Swiftness: {R%d{x  Bonus: {R%d{x/{r%d{x  Slept: {R%d{x  Last recharge: {R%ld{x\n\r",
-                        GET_CRIT(victim),
-                        GET_SWIFT(victim),
-                        victim->pcdata->bonus,
-                        victim->pcdata->max_bonus,
-                        victim->pcdata->slept,
-                        victim->pcdata->last_recharge);
-                strcat(buf1, buf);
-
-                sprintf(buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{w/{r%d{x\n\r",
-                        victim->alignment,
-                        (level_table[victim->level].exp_total) - victim->exp,
-                        victim->class,
-                        full_class_name(victim->class),
-                        victim->sub_class,
-                        full_sub_class_name(victim->sub_class),
-                        get_age(victim),
-                        !IS_NPC(victim) ? victim->pcdata->fame : 0,
-                        extra_form_name(victim->form),
-                        victim->aggro_dam,
-                        victim->rage,
-                        victim->max_rage);
-                strcat(buf1, buf);
-
-                sprintf(buf, "Str pracs: {W%d{x  Int pracs: {W%d{x  Bank: {Y%d{x  Bounty: {Y%d{x\n\rCurrent quest points: {C%d{x  Total quest points: {C%d{x  Quest timer: {C%d{x\n\r",
-                        victim->pcdata->str_prac,
-                        victim->pcdata->int_prac,
-                        victim->pcdata->questpoints,
-                        victim->pcdata->totalqp,
-                        victim->pcdata->nextquest,
-                        victim->pcdata->bank,
-                        victim->pcdata->bounty);
-                strcat(buf1, buf);
-
-                sprintf(buf, "Platinum: {W%d{x  Gold: {Y%d{x  Silver: %d  Copper: {y%d{x\n\r",
-                        victim->plat,
-                        victim->gold,
-                        victim->silver,
-                        victim->copper);
-                strcat(buf1, buf);
-
-                sprintf(buf, "Carry number: {C%d{x/{c%d{x  Carry weight: {C%d{x/{c%d{x  Coin weight: {W%d{x\n\r",
-                        victim->carry_number,
-                        can_carry_n(victim),
-                        (victim->carry_weight + victim->coin_weight),
-                        can_carry_w(victim),
-                        victim->coin_weight);
-                strcat(buf1, buf);
-
-                sprintf(buf,
-                        "Thirst: {W%d{x  Full: {W%d{x  Drunk: {W%d{x  Air Supply: {W%d{x\n\rPosition: {G%d{x [{W%s{x]  Wimpy: {G%d{x  Page Lines: {G%d{x\n\r",
-                        victim->pcdata->condition[COND_THIRST],
-                        victim->pcdata->condition[COND_FULL],
-                        victim->pcdata->condition[COND_DRUNK],
-                        victim->pcdata->air_supply,
-                        victim->position,
-                        position_name(victim->position),
-                        victim->wimpy,
-                        victim->pcdata->pagelen);
-                strcat(buf1, buf);
-
-                sprintf(buf, "Master: {W%s{x  Leader: {W%s{x  Clan: {W%d{x ({W%s{x)\n\rFighting: {W%s{x  Mount: {W%s{x  Inside: {W%s{x\n\r",
-                        victim->master ? victim->master->name : "(none)",
-                        victim->leader ? victim->leader->name : "(none)",
-                        !IS_NPC(victim) ? victim->clan : 0,
-                        !IS_NPC(victim) ? clan_table[victim->clan].who_name : "none",
-                        victim->fighting ? victim->fighting->name : "(none)",
-                        victim->mount ? victim->mount->name : "(none)",
-                        victim->inside ? victim->inside->name : "(none)");
-                strcat(buf1, buf);
-
-                sprintf(buf, "Play time: {W%d seconds{x ({G%d hours{x)  Timer: {W%d{x  Status: {W%d{x\n\r",
-                        (int)victim->played,
-                        ((get_age(victim) - 17) * 4),
-                        victim->timer,
-                        !IS_NPC(victim) ? victim->status : 0);
-                strcat(buf1, buf);
-
-                if (victim->affected_by)
-                {
-                        sprintf(buf, "Affected by (num): {W");
-                        strcat(buf1, buf);
-                        bit_explode(ch, buf, victim->affected_by);
-                        strcat(buf1, buf);
-                        strcat(buf1, "{x\n\r");
-
-                        strcat(buf1, "Affected by (txt):{R");
-
-                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                        {
-                                if (IS_AFFECTED(victim, next))
-                                {
-                                        strcat(buf1, " ");
-                                        strcat(buf1, affect_bit_name(next));
-                                }
-                        }
-                        strcat(buf1, "{x\n\r");
-                }
-
-                if (victim->act)
-                {
-                        sprintf(buf, "Act flags (num): {W");
-                        strcat(buf1, buf);
-                        bit_explode(ch, buf, victim->act);
-                        strcat(buf1, buf);
-                        strcat(buf1, "{x\n\r");
-                        strcat(buf1, "Act flags (txt):{R");
-
-                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                        {
-                                if (IS_SET(victim->act, next))
-                                {
-                                        strcat(buf1, " ");
-                                        strcat(buf1, pact_bit_name(next));
-                                }
-                        }
-
-                        strcat(buf1, "{x\n\r");
-                }
-
-                if (deities_active() && ch->level == L_IMM)
-                {
-                        sprintf(buf, "Patron: {W%d{x ({W%s{x)  Deity timer: {W%d{x  "
-                                     "Deity flags: {W%d{x\n\rFavour:\n\r",
-                                victim->pcdata->deity_patron,
-                                (victim->pcdata->deity_patron < 0 || victim->pcdata->deity_patron >= NUMBER_DEITIES)
-                                    ? "none"
-                                    : deity_info_table[victim->pcdata->deity_patron].name,
-                                victim->pcdata->deity_timer,
-                                victim->pcdata->deity_flags);
-                        strcat(buf1, buf);
-                        count = 1;
-                        for (next = 0; next < NUMBER_DEITIES; next++)
-                        {
-                                if (count != 5)
-                                {
-                                        sprintf(buf, "{W%-10s{x {G%-4d{x ",
-                                                deity_info_table[next].name,
-                                                victim->pcdata->deity_favour[next]);
-                                        strcat(buf1, buf);
-                                        ++count;
-                                }
-                                else
-                                {
-                                        count = 1;
-                                        sprintf(buf, "\n\r");
-                                        strcat(buf1, buf);
-                                }
-                        }
-
-                        strcat(buf1, "\n\rDeity type timers:       {W");
-
-                        for (next = 0; next < DEITY_NUMBER_TYPES; next++)
-                        {
-                                sprintf(buf, " %d", victim->pcdata->deity_type_timer[next]);
-                                strcat(buf1, buf);
-                        }
-
-                        strcat(buf1, "{x\n\rDeity personality timers:{W");
-
-                        for (next = 0; next < DEITY_NUMBER_PERSONALITIES; next++)
-                        {
-                                sprintf(buf, " %d", victim->pcdata->deity_personality_timer[next]);
-                                strcat(buf1, buf);
-                        }
-
-                        strcat(buf1, "{x\n\r");
-                }
-
-                if ((paf = victim->affected))
-                {
-                        sprintf(buf, "{W[{x{GSpell/s active{x{W]{x\n\r");
-                        strcat(buf1, buf);
-                }
-
-                for (paf = victim->affected; paf; paf = paf->next)
-                {
-                        if (paf->deleted)
-                                continue;
-
-                        sprintf(buf, "{W%-25s{x modifies {G%s{x by {Y%d{x",
-                                skill_table[(int)paf->type].name,
-                                affect_loc_name(paf->location),
-                                paf->modifier);
-                        strcat(buf1, buf);
-
-                        if (is_stench_exposure(paf))
-                        {
-                                strcat(buf1, " while exposed");
-                        }
-                        else if (is_ghoul_paralysis(paf))
-                        {
-                                snprintf(
-                                    buf, sizeof(buf),
-                                    " for {G%d{x combat rounds",
-                                    paf->duration);
-                                strcat(buf1, buf);
-                        }
-                        else if (paf->bitvector && (paf->bitvector == AFF_PRONE || paf->bitvector == AFF_DAZED))
-                        {
-                                if (paf->duration > 1)
-                                {
-                                        sprintf(buf, " for {G%d{x min", paf->duration);
-                                        strcat(buf1, buf);
-                                }
-                                else
-                                {
-                                        sprintf(buf, " for {G%d{x min", paf->duration);
-                                        strcat(buf1, buf);
-                                }
-                        }
-                        else
-                        {
-
-                                if (paf->duration > 1)
-                                {
-                                        sprintf(buf, " for {G%d{x hours",
-                                                paf->duration);
-                                        strcat(buf1, buf);
-                                }
-                                else if (paf->duration == 1)
-                                {
-                                        sprintf(buf, " for {G%d{x hour",
-                                                paf->duration);
-                                        strcat(buf1, buf);
-                                }
-                                else if (paf->duration == 0)
-                                {
-                                        sprintf(buf, " for less than an hour");
-                                        strcat(buf1, buf);
-                                }
-                                else
-                                {
-                                        strcat(buf1, " indefinitely");
-                                }
-                        }
-                        sprintf(buf, " with bit {R%s{x\n\r",
-                                affect_bit_name(paf->bitvector));
-                        strcat(buf1, buf);
-                }
-        }
-        else
-        {
-                /* All MOBILE mstat stuff goes here. */
-                int temp = rank_sn(victim);
-                sprintf(buf, "Vnum: {R%d{x  Rank: %s(%d){x\n\r",
-                        victim->pIndexData->vnum,
-                        rank_table[rank_sn(victim)].who_format, temp);
-                strcat(buf1, buf);
-
-                if (victim->short_descr[0] != '\0' && victim->long_descr[0] != '\0')
-                {
-                        sprintf(buf, "Short description: {W%s{x\n\rKeywords: {W%s{x\n\rLong description: \n\r  {W%s{x",
-                                victim->short_descr,
-                                victim->name,
-                                victim->long_descr);
-                        strcat(buf1, buf);
-                }
-
-                strcpy(spec_result, spec_fun_name(victim));
-
-                if (str_cmp(spec_result, "none"))
-                {
-                        sprintf(buf, "Special function: {Y%s{x\n\r", spec_fun_name(victim));
-                        strcat(buf1, buf);
-                }
-
-                if (IS_NPC(victim) && victim->pIndexData && victim->pIndexData->pGame && victim->pIndexData->pGame->game_fun != 0)
-                {
-                        sprintf(buf, "Game function: {Y%s{x\n\r",
-                                game_string(victim->pIndexData->pGame->game_fun));
-                        strcat(buf1, buf);
-                }
-
-                sprintf(buf, "Lvl: {W%d{x  Room: {R%d{x  Align: {W%d{x  Sex: {W%s{x\n\r",
-                        victim->level,
-                        !victim->in_room ? 0 : victim->in_room->vnum,
-                        victim->alignment,
-                        victim->sex == SEX_MALE ? "male" : victim->sex == SEX_FEMALE ? "female"
-                                                                                     : "neutral");
-                strcat(buf1, buf);
-
-                sprintf(buf, "Hp: {G%d{x/{g%d{x  Mana: {C%d{x/{c%d{x  Mv: {Y%d{x/{y%d{x  Wait: {C%d{x\n\r",
-                        victim->hit, victim->max_hit,
-                        victim->mana, victim->max_mana,
-                        victim->move, victim->max_move,
-                        victim->wait);
-                strcat(buf1, buf);
-
-                sprintf(buf, "Hitroll: {R%d{x  Damroll: {R%d{x   AC: {W%d{x  Saving throw: {W%d{x\n\r",
-                        GET_HITROLL(victim),
-                        GET_DAMROLL(victim),
-                        GET_AC(victim),
-                        victim->saving_throw);
-                strcat(buf1, buf);
-
-                sprintf(buf, "Crit: {R%d{x  Swiftness: {R%d{x\n\r",
-                        victim->crit,
-                        victim->swiftness);
-                strcat(buf1, buf);
-
-                sprintf(
-                    buf,
-                    "Position: {G%d{x [{W%s{x]  Wimpy: {W%d{x  "
-                    "Exp modifier: {W%d%%{x\n\r",
-                    victim->position,
-                    position_name(victim->position),
-                    victim->wimpy,
-                    get_mob_exp_modifier(victim));
-                strcat(buf1, buf);
-
-                sprintf(buf, "Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rRace: {W%d{x ({G%s{x)  Age: {W%d{x  Form: {W%s{x\n\r",
-                        victim->class,
-                        full_class_name(victim->class),
-                        victim->sub_class,
-                        full_sub_class_name(victim->sub_class),
-                        victim->race,
-                        race_name(victim->race),
-                        get_age(victim),
-                        extra_form_name(victim->form));
-                strcat(buf1, buf);
-
-                sprintf(buf, "Platinum: {W%d{x  Gold: {Y%d{x  Silver: %d  Copper: {y%d{x\n\r",
-                        victim->plat,
-                        victim->gold,
-                        victim->silver,
-                        victim->copper);
-                strcat(buf1, buf);
-
-                sprintf(buf, "Carry number: {C%d{x/{c%d{x  Carry weight: {C%d{x/{c%d{x  Coin weight: {W%d{x\n\r",
-                        victim->carry_number,
-                        can_carry_n(victim),
-                        (victim->carry_weight + victim->coin_weight),
-                        can_carry_w(victim),
-                        victim->coin_weight);
-                strcat(buf1, buf);
-
-                sprintf(buf, "Master: {W%s{x  Leader: {W%s{x  Inside: {W%s{x\n\rFighting: {W%s{x  Rider: {W%s{x\n\r",
-                        victim->master ? victim->master->name : "(none)",
-                        victim->leader ? victim->leader->name : "(none)",
-                        victim->inside ? victim->inside->name : "(none)",
-                        victim->fighting ? victim->fighting->name : "(none)",
-                        victim->rider ? victim->rider->name : "(none)");
-                strcat(buf1, buf);
-
-                if (victim->act)
-                {
-                        sprintf(buf, "Act flags (num): {W");
-                        strcat(buf1, buf);
-                        bit_explode(ch, buf, victim->act);
-                        strcat(buf1, buf);
-                        strcat(buf1, "{x\n\r");
-                        strcat(buf1, "Act flags (txt):{R");
-
-                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                        {
-                                if (IS_SET(victim->act, next))
-                                {
-                                        strcat(buf1, " ");
-                                        strcat(buf1, act_bit_name(next));
-                                }
-                        }
-
-                        strcat(buf1, "{x\n\r");
-                }
-
-                if (victim->affected_by)
-                {
-                        sprintf(buf, "Affected by (num): {W");
-                        strcat(buf1, buf);
-                        bit_explode(ch, buf, victim->affected_by);
-                        strcat(buf1, buf);
-                        strcat(buf1, "{x\n\r");
-
-                        strcat(buf1, "Affected by (txt):{R");
-
-                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                        {
-                                if (IS_AFFECTED(victim, next))
-                                {
-                                        strcat(buf1, " ");
-                                        strcat(buf1, affect_bit_name(next));
-                                }
-                        }
-                        strcat(buf1, "{x\n\r");
-                }
-
-                if (victim->body_form)
-                {
-                        sprintf(buf, "Body form (num): {W");
-                        strcat(buf1, buf);
-                        bit_explode(ch, buf, victim->body_form);
-                        strcat(buf1, buf);
-                        strcat(buf1, "{x\n\r");
-                }
-
-                if (victim->body_form)
-                {
-                        strcat(buf1, "Body form (txt):{R");
-                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                        {
-                                if (IS_SET(victim->body_form, next))
-                                {
-                                        strcat(buf1, " ");
-                                        strcat(buf1, body_form_name(next));
-                                }
-                        }
-                        strcat(buf1, "{x\n\r");
-                }
-
-                for ( sect = 0; sect < SECT_MAX; sect++ )
-                {
-                        if ( !victim->pIndexData->footstep_key[sect]
-                        ||   victim->pIndexData->footstep_key[sect][0] == '\0' )
-                                continue;
-
-                        sdef = sound_event_lookup( victim->pIndexData->footstep_key[sect] );
-                        fname = ( sdef && sdef->files[0] && sdef->files[0][0] != '\0' )
-                            ? sdef->files[0]
-                            : "(no sound_const.c match)";
-
-                        sprintf( buf,
-                                "Footstep foley: {W%s{x  Key: {C%s{x  File: {G%s{x\n\r",
-                                sector_name( sect ),
-                                victim->pIndexData->footstep_key[sect],
-                                fname );
-                        strcat( buf1, buf );
-                }
-
-                if ((paf = victim->affected))
-                {
-                        sprintf(buf, "{W[{x{GSpell/s active{x{W]{x\n\r");
-                        strcat(buf1, buf);
-                }
-
-                for (paf = victim->affected; paf; paf = paf->next)
-                {
-                        if (paf->deleted)
-                                continue;
-
-                        sprintf(buf, "{W%-25s{x modifies {G%s{x by {Y%d{x",
-                                skill_table[(int)paf->type].name,
-                                affect_loc_name(paf->location),
-                                paf->modifier);
-                        strcat(buf1, buf);
-
-                        if (is_stench_exposure(paf))
-                        {
-                                strcat(buf1, " while exposed");
-                        }
-                        else if (is_ghoul_paralysis(paf))
-                        {
-                                snprintf(
-                                    buf, sizeof(buf),
-                                    " for {G%d{x combat rounds",
-                                    paf->duration);
-                                strcat(buf1, buf);
-                        }
-                        else if (paf->duration > 1)
-                        {
-                                sprintf(buf, " for {G%d{x hours",
-                                        paf->duration);
-                                strcat(buf1, buf);
-                        }
-                        else if (paf->duration == 1)
-                        {
-                                sprintf(buf, " for {G%d{x hour",
-                                        paf->duration);
-                                strcat(buf1, buf);
-                        }
-                        else if (paf->duration == 0)
-                        {
-                                sprintf(buf, " for less than an hour");
-                                strcat(buf1, buf);
-                        }
-                        else
-                        {
-                                strcat(buf1, " indefinitely");
-                        }
-
-                        sprintf(buf, " with bit {R%s{x\n\r",
-                                affect_bit_name(paf->bitvector));
-                        strcat(buf1, buf);
-                }
-
-                if (victim->pIndexData->progtypes)
-                {
-                        strcat(buf1, "{WMobprog:{x\n\r");
-                        for (mprg = victim->pIndexData->mobprogs; mprg != NULL;
-                             mprg = mprg->next)
-                        {
-                                sprintf(buf, ">%s %s\n\r%s\n\r",
-                                        mprog_type_to_name(mprg->type),
-                                        mprg->arglist,
-                                        mprg->comlist);
-                                strcat(buf1, buf);
-                        }
-                }
-
-                if (IS_SET(victim->act, ACT_PRACTICE) && (victim->pIndexData->skills))
-                {
-                        int sn;
-                        sprintf(buf, "----------------------------------\r\nCan {Wteach{x the following:\n\r----------------------------------\r\n");
-                        strcat(buf1, buf);
-                        for (sn = 0; sn < MAX_SKILL; sn++)
-                        {
-                                if (victim->pIndexData->skills->learned[sn] > 0)
-                                {
-                                        sprintf(buf, "%-30s {G%3d{x \n\r",
-                                                skill_table[sn].name,
-                                                victim->pIndexData->skills->learned[sn]);
-                                        strcat(buf1, buf);
-                                }
-                        }
-                }
-
-                /* Pull out the species specific info for this mob - Brutus Sept 2022 */
-                if (victim->mobspec)
-                {
-                        MOB_TEMPLATE_DATA resolved;
-                        unsigned long int resistance_conflicts;
-                        unsigned long int unknown_resistance_bits;
-                        int sn;
-
-                        for (sn = 0; sn < MAX_MOB; sn++)
-                        {
-                                if (!mob_table[sn].name)
-                                        break;
-
-                                if (!str_cmp(victim->mobspec, mob_table[sn].name))
-                                {
-
-                                        if (!resolve_mob_template(
-                                                    sn,
-                                                    &resolved))
-                                        {
-                                            sprintf(
-                                                buf,
-                                                "\n\r{RUnable to resolve "
-                                                "creature archetype '%s'. "
-                                                "See boot log.{x\n\r",
-                                                victim->mobspec);
-                                            strcat(buf1, buf);
-                                            break;
-                                        }
-                                        strcpy(
-                                            buf,
-                                            "\n\r{WCreature archetype / "
-                                            "body species:{x\n\r");
-                                        strcat(buf1, buf);
-
-                                        sprintf(
-                                            buf,
-                                            "Archetype: %s\n\r"
-                                            "Body species: %s\n\r",
-                                            mob_table[sn].name,
-                                            mob_table[sn].species);
-                                        strcat(buf1, buf);
-
-                                        strcat(
-                                            buf1,
-                                            "Template resolution: "
-                                            "{Wbody species XOR archetype{x\n\r"
-                                            "{DThese are template values. "
-                                            "Individual flag and resistance "
-                                            "layers follow below.{x\n\r");
-
-                                        sprintf(
-                                            buf,
-                                            "XP modifier: existing {W%d%%{x "
-                                            "+ archetype {W%+d points{x "
-                                            "= effective {W%d%%{x\n\r",
-                                            victim->exp_modifier,
-                                            resolved.xp_mod,
-                                            get_mob_exp_modifier(victim));
-                                        strcat(buf1, buf);
-
-                                        strcat(
-                                            buf1,
-                                            "Template ACT flags (num): {W");
-                                        bit_explode(
-                                            ch,
-                                            buf,
-                                            resolved.act);
-                                        strcat(buf1, buf);
-                                        strcat(buf1, "{x\n\r");
-
-                                        strcat(
-                                            buf1,
-                                            "Template ACT flags (txt):{R");
-                                        for (next = 1;
-                                             next > 0
-                                             && next <= BIT_MAX;
-                                             next *= 2)
-                                        {
-                                                if (IS_SET(
-                                                        resolved.act,
-                                                        next))
-                                                {
-                                                        strcat(buf1, " ");
-                                                        strcat(
-                                                            buf1,
-                                                            act_bit_name(
-                                                                next));
-                                                }
-                                        }
-                                        strcat(buf1, "{x\n\r");
-
-                                        strcat(
-                                            buf1,
-                                            "Template AFF flags (num): {W");
-                                        bit_explode(
-                                            ch,
-                                            buf,
-                                            resolved.affected_by);
-                                        strcat(buf1, buf);
-                                        strcat(buf1, "{x\n\r");
-
-                                        strcat(
-                                            buf1,
-                                            "Template AFF flags (txt):{R");
-                                        for (next = 1;
-                                             next > 0
-                                             && next <= BIT_MAX;
-                                             next *= 2)
-                                        {
-                                                if (IS_SET(
-                                                        resolved.affected_by,
-                                                        next))
-                                                {
-                                                        strcat(buf1, " ");
-                                                        strcat(
-                                                            buf1,
-                                                            affect_bit_name(
-                                                                next));
-                                                }
-                                        }
-                                        strcat(buf1, "{x\n\r");
-
-                                        /* resists */
-                                        sprintf(buf, "Template Resistant to (num): {W");
-                                        strcat(buf1, buf);
-                                        bit_explode(ch, buf, resolved.resists);
-                                        strcat(buf1, buf);
-                                        strcat(buf1, "{x\n\r");
-                                        strcat(buf1, "Template Resistant To (txt):{R");
-                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                                        {
-                                                if (IS_SET(resolved.resists, next))
-                                                {
-                                                        strcat(buf1, " ");
-                                                        strcat(buf1, resist_name(next));
-                                                }
-                                        }
-                                        strcat(buf1, "{x\n\r");
-
-                                        /* Vulnerable */
-                                        sprintf(buf, "Template Vulnerable to (num): {W");
-                                        strcat(buf1, buf);
-                                        bit_explode(ch, buf, resolved.vulnerabilities);
-                                        strcat(buf1, buf);
-                                        strcat(buf1, "{x\n\r");
-                                        strcat(buf1, "Template Vulnerable To (txt):{R");
-                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                                        {
-                                                if (IS_SET(resolved.vulnerabilities, next))
-                                                {
-                                                        strcat(buf1, " ");
-                                                        strcat(buf1, resist_name(next));
-                                                }
-                                        }
-                                        strcat(buf1, "{x\n\r");
-
-                                        /*  Immune */
-                                        sprintf(buf, "Template Immune to (num): {W");
-                                        strcat(buf1, buf);
-                                        bit_explode(ch, buf, resolved.immunes);
-                                        strcat(buf1, buf);
-                                        strcat(buf1, "{x\n\r");
-                                        strcat(buf1, "Template Immune To (txt):{R");
-                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                                        {
-                                                if (IS_SET(resolved.immunes, next))
-                                                {
-                                                        strcat(buf1, " ");
-                                                        strcat(buf1, resist_name(next));
-                                                }
-                                        }
-
-                                        strcat(buf1, "{x\n\r");
-
-                                         /*
-                                         * Check the resolved body-species and
-                                         * archetype resistance state, not the
-                                         * raw archetype XOR masks.
-                                         */
-                                        resistance_conflicts =
-                                            ((resolved.resists
-                                              & resolved.vulnerabilities)
-                                             | (resolved.resists
-                                                & resolved.immunes)
-                                             | (resolved.vulnerabilities
-                                                & resolved.immunes))
-                                            & RES_VALID_MASK;
-
-                                        unknown_resistance_bits =
-                                            (resolved.resists
-                                             | resolved.vulnerabilities
-                                             | resolved.immunes)
-                                            & ~RES_VALID_MASK;
-
-                                        if (resistance_conflicts == 0
-                                        &&  unknown_resistance_bits == 0)
-                                        {
-                                                strcat(
-                                                    buf1,
-                                                    "Template resistance data: "
-                                                    "{Gvalid{x\n\r");
-                                        }
-                                        else
-                                        {
-                                                strcat(
-                                                    buf1,
-                                                    "Template resistance data: "
-                                                    "{RINVALID -- see boot log"
-                                                    "{x\n\r");
-                                        }
-
-                                        sprintf(
-                                            buf,
-                                            "HP Mod: %d Dam Mod: %d "
-                                            "Crit Mod: %d Swiftness Mod: %d\n\r",
-                                            resolved.hp_mod,
-                                            resolved.dam_mod,
-                                            resolved.crit_mod,
-                                            resolved.haste_mod);
-                                        strcat(buf1, buf);
-                                        sprintf(
-                                            buf,
-                                            "Template dimensions (raw): "
-                                            "height %d weight %d size %d\n\r",
-                                            resolved.height,
-                                            resolved.weight,
-                                            resolved.size);
-                                        strcat(buf1, buf);
-
-                                        /* body parts from Species Table */
-                                        sprintf(buf, "Template Body Form (num):{W");
-                                        strcat(buf1, buf);
-                                        bit_explode(ch, buf, resolved.body_form);
-                                        strcat(buf1, buf);
-                                        strcat(buf1, "{x\n\r");
-                                        strcat(buf1, "Template Body Form (txt):{R");
-
-                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                                        {
-                                                if (IS_SET(resolved.body_form, next))
-                                                {
-                                                        strcat(buf1, " ");
-                                                        strcat(buf1, body_form_name(next));
-                                                }
-                                        }
-                                        strcat(buf1, "{x\n\r");
-
-                                        /* Attack Parts  from Species Table*/
-                                        sprintf(buf, "Template Attack Parts (num):{W");
-                                        strcat(buf1, buf);
-                                        bit_explode(ch, buf, resolved.attack_parts);
-                                        strcat(buf1, buf);
-                                        strcat(buf1, "{x\n\r");
-                                        strcat(buf1, "Template Attack Parts (txt):{R");
-                                        for (next = 1; next > 0 && next <= BIT_MAX; next *= 2)
-                                        {
-                                                if (IS_SET(resolved.attack_parts, next))
-                                                {
-                                                        strcat(buf1, " ");
-                                                        strcat(buf1, body_form_name(next));
-                                                }
-                                        }
-                                        strcat(buf1, "{x\n\r");
-
-                                        sprintf(
-                                            buf,
-                                            "Template language code: %d\n\r"
-                                            "Template slot 1: %s\n\r"
-                                            "Template slot 2: %s\n\r"
-                                            "Template slot 3: %s\n\r",
-                                            resolved.language,
-                                            resolved.spec_fun1
-                                                ? resolved.spec_fun1
-                                                : "none",
-                                            resolved.spec_fun2
-                                                ? resolved.spec_fun2
-                                                : "none",
-                                            resolved.spec_boss
-                                                ? resolved.spec_boss
-                                                : "none");
-                                        strcat(buf1, buf);
-                                        break;
-                                }
-                        }
-                }
-        }
-
-        send_to_char(buf1, ch);
-        mstat_flag_layers(ch, victim);
-        mstat_resistance_layers(ch, victim);
-        mstat_hp_modifier_layers(ch, victim);
-        mstat_damage_modifier_layers(ch, victim);
-        mstat_combat_modifier_layers(ch, victim);
-        mstat_dimension_layers(ch, victim);
-        mstat_language_layers(ch, victim);
-        mstat_weighted_specials(ch, victim);
-        show_death_parts(ch, victim);
-        return;
-}
 
 void do_mfind(CHAR_DATA *ch, char *argument)
 {

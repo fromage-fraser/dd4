@@ -816,6 +816,12 @@ and undead objects on the ground, carried or worn.
   intrinsic mob effects according to their existing rules.
 - Status spells now recognise matching intrinsic NPC AFF flags as already
   active, preventing redundant timed copies and misleading gain messages.
+
+
+{WOctober 2026{x
+
+- Affect listings now identify effects supplied by worn objects, object sets
+  and forms with (O), (S) and (F) markers respectively.
 ~
 
 

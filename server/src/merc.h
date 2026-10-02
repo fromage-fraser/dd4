@@ -5545,6 +5545,7 @@ void affect_strip args((CHAR_DATA * ch, int sn));
 bool is_affected args((CHAR_DATA * ch, int sn));
 bool is_affected_source args((CHAR_DATA * ch, int sn,
                               int source_type, uint64_t source_id));
+const char *affect_source_display_suffix args((const AFFECT_DATA *paf));
 void affect_join args((CHAR_DATA * ch, AFFECT_DATA *paf));
 void char_from_room args((CHAR_DATA * ch));
 void char_to_room args((CHAR_DATA * ch, ROOM_INDEX_DATA *pRoomIndex));

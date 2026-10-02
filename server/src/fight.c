@@ -3511,19 +3511,33 @@ static const DEATH_PART_DATA *choose_death_part(CHAR_DATA *ch)
         return NULL;
 }
 
-/* Read-only mstat output; do not create items or consume random numbers. */
 void show_death_parts(CHAR_DATA *viewer, CHAR_DATA *subject)
 {
         unsigned long int parts;
         size_t i;
         bool first;
+        bool any;
 
         if (!viewer || !subject)
                 return;
 
         parts = death_part_mask(subject);
+        any = FALSE;
+
+        for (i = 0; i < sizeof(death_parts) / sizeof(death_parts[0]); i++)
+        {
+                if (parts & death_parts[i].flags)
+                {
+                        any = TRUE;
+                        break;
+                }
+        }
+
+        if (!any)
+                return;
+
         first = TRUE;
-        send_to_char("\n\r{WDeath-part candidates:{x ", viewer);
+        send_to_char("Death parts:{x {G", viewer);
 
         for (i = 0; i < sizeof(death_parts) / sizeof(death_parts[0]); i++)
         {
@@ -3531,16 +3545,15 @@ void show_death_parts(CHAR_DATA *viewer, CHAR_DATA *subject)
                         continue;
 
                 if (!first)
-                        send_to_char(", ", viewer);
+                        send_to_char(" ", viewer);
+
                 send_to_char(death_parts[i].noun, viewer);
                 first = FALSE;
         }
 
-        if (first)
-                send_to_char("none", viewer);
-
-        send_to_char("\n\r", viewer);
+        send_to_char("{x\n\r", viewer);
 }
+
 
 /* Create a detached object; death_cry() places it after the death message. */
 static OBJ_DATA *create_death_part(
