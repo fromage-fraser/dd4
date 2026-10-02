@@ -419,8 +419,8 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 623            /* +1 detect undead */
-#define MAX_PRE_REQ 1576          /* +2 detect undead prerequisites */
+#define MAX_SKILL 624            /* +1 turn undead */
+#define MAX_PRE_REQ 1578          /* +2 turn undead prerequisites */
 #define MAX_SPELL_GROUP 470      /* +1 detect undead group entry */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
@@ -4406,6 +4406,7 @@ extern int gsn_bubble_jet;
 extern int gsn_banish;
 extern int gsn_stench;
 extern int gsn_mummy_rot;
+extern int gsn_turn_undead;
 /*
  *  Deity gsns
  */
@@ -4831,6 +4832,7 @@ DECLARE_DO_FUN(do_serrate);
 DECLARE_DO_FUN(do_spit_mucus); /* Owl 18/8/22 'lag out' attack for aboleth and similar */
 DECLARE_DO_FUN(do_reforge);
 DECLARE_DO_FUN(do_vault); /* Owl 22/2/23 allows players to see contents of their vault in a ROOM_VAULT */
+DECLARE_DO_FUN(do_turn);
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN(do_mpasound);

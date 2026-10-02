@@ -5629,10 +5629,15 @@ const struct skill_type skill_table[MAX_SKILL] =
          spell_null, 0, 0,
          "mummy rot", "<173>The mummy rot fades from your flesh.<0>"},
 
-         {"detect undead", &gsn_detect_undead,
+        {"detect undead", &gsn_detect_undead,
          TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_detect_undead, 5, 1,
          "", "<73>Your awareness of undead things fades.<0>"},
+
+        {"turn undead", &gsn_turn_undead,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_HOLY,
+         spell_null, 0, 2 * PULSE_VIOLENCE,
+         "", "!Turn Undead!"},
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
