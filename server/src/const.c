@@ -2581,6 +2581,7 @@ struct spell_group_struct spell_group_table[MAX_SPELL_GROUP] =
         {&gsn_chant_of_battle, 0},
         {&gsn_chant_of_protection, 0},
         {&gsn_chant_of_dragonsbane, 0},
+        {&gsn_chant_of_turning, 0},
 
         {&gsn_group_herb_lore, 0},
         {&gsn_gather_herbs, 0},
@@ -5638,6 +5639,11 @@ const struct skill_type skill_table[MAX_SKILL] =
          TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_HOLY,
          spell_null, 0, 2 * PULSE_VIOLENCE,
          "", "!Turn Undead!"},
+
+        {"chant of turning", &gsn_chant_of_turning,
+         TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_HOLY | RES_SONIC,
+         spell_null, 0, 2 * PULSE_VIOLENCE,
+         "", "!Chant of Turning!"},
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.

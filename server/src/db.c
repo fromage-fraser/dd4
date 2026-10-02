@@ -718,6 +718,7 @@ int gsn_stench = -1;
 int gsn_mummy_rot = -1;
 int gsn_detect_undead;
 int gsn_turn_undead;
+int gsn_chant_of_turning;
 
 /*
  *  Spell groups

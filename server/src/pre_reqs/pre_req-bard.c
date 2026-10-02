@@ -19,6 +19,9 @@
 
 {&gsn_chant_of_battle,          &gsn_group_music,           75,     PRE_BARD},
 
+{&gsn_chant_of_turning,         &gsn_group_music,           80,     PRE_BARD},
+{&gsn_chant_of_turning,         &gsn_bard_base,             40,     PRE_BARD},
+
 {&gsn_chant_of_pain,            &gsn_chant_of_battle,       75,     PRE_BARD},
 {&gsn_chant_of_pain,            &gsn_group_music,           80,     PRE_BARD},
 

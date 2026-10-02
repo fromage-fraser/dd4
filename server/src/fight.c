@@ -7747,23 +7747,24 @@ static void turn_undead_chances(CHAR_DATA *ch, CHAR_DATA *victim,
             UMIN(*turn_chance, destroy_base * learned / 100);
 }
 
-void do_turn(CHAR_DATA *ch, char *argument)
+void turn_undead(CHAR_DATA *ch, int sn, int learned)
 {
         AFFECT_DATA af;
         CHAR_DATA *victim;
         CHAR_DATA *victim_next;
         ROOM_INDEX_DATA *room;
-        int learned;
         int turn_chance;
         int destroy_chance;
         int roll;
         bool found = FALSE;
 
-        if (IS_NPC(ch) || !CAN_DO(ch, gsn_turn_undead))
+        if (!ch
+        ||  ch->deleted
+        ||  IS_NPC(ch)
+        ||  !ch->in_room
+        ||  sn < 0
+        ||  sn >= MAX_SKILL)
         {
-                send_to_char(
-                    "You have not learned how to turn the undead.\n\r",
-                    ch);
                 return;
         }
 
@@ -7792,19 +7793,30 @@ void do_turn(CHAR_DATA *ch, char *argument)
         if (!found)
         {
                 send_to_char(
-                    "There is no undead here that you can turn right now.\n\r",
+                    "There are no undead here to turn.\n\r",
                     ch);
                 return;
         }
 
-        learned = URANGE(0, ch->pcdata->learned[gsn_turn_undead], 100);
+        learned = URANGE(0, learned, 100);
+        WAIT_STATE(ch, skill_table[sn].beats);
 
-        WAIT_STATE(ch, skill_table[gsn_turn_undead].beats);
-        send_to_char(
-            "You call on divine power to drive the undead back.\n\r",
-            ch);
-        act("$n calls on divine power to drive the undead back!",
-            ch, NULL, NULL, TO_ROOM);
+        if (sn == gsn_chant_of_turning)
+        {
+                send_to_char(
+                    "You raise your voice in a chant to drive the undead back.\n\r",
+                    ch);
+                act("$n raises $s voice in a chant to drive the undead back!",
+                    ch, NULL, NULL, TO_ROOM);
+        }
+        else
+        {
+                send_to_char(
+                    "You call on divine power to drive the undead back.\n\r",
+                    ch);
+                act("$n calls on divine power to drive the undead back!",
+                    ch, NULL, NULL, TO_ROOM);
+        }
 
         for (victim = room->people; victim; victim = victim_next)
         {
@@ -7822,8 +7834,8 @@ void do_turn(CHAR_DATA *ch, char *argument)
                 }
 
                 /*
-                 * This short-lived marker means repeated TURN commands
-                 * cannot keep rerolling against the same creature.
+                 * TURN and the Bard chant share this recovery period.
+                 * Switching between them does not give another free roll.
                  */
                 memset(&af, 0, sizeof(af));
                 af.type = gsn_turn_undead;
@@ -7845,10 +7857,8 @@ void do_turn(CHAR_DATA *ch, char *argument)
                             ch, NULL, victim, TO_NOTVICT);
 
                         /*
-                         * The normal death path still awards credit and
-                         * handles equipment. BODY_NO_CORPSE makes the
-                         * belongings fall into the room instead of
-                         * leaving a biological corpse.
+                         * Keep normal kill credit and equipment handling,
+                         * but leave no biological corpse.
                          */
                         old_body_form = victim->body_form;
                         SET_BIT(victim->body_form, BODY_NO_CORPSE);
@@ -7869,13 +7879,13 @@ void do_turn(CHAR_DATA *ch, char *argument)
                             ch, NULL, victim, TO_CHAR);
                         act("$N recoils from $n's turning!",
                             ch, NULL, victim, TO_NOTVICT);
-                        act("The divine force drives you back!",
+                        act("The turning force drives you back!",
                             ch, NULL, victim, TO_VICT);
 
                         WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
 
                         /*
-                         * Ordinary undead may flee if they are fighting.
+                         * Ordinary fighting undead may flee.
                          * Sentinels and major bosses keep their place.
                          */
                         if (!IS_SET(victim->act, ACT_SENTINEL)
@@ -7896,8 +7906,24 @@ void do_turn(CHAR_DATA *ch, char *argument)
 
                 act("$N stands firm against your call.",
                     ch, NULL, victim, TO_CHAR);
-                damage(ch, victim, 0, gsn_turn_undead, FALSE);
+                damage(ch, victim, 0, sn, FALSE);
         }
+}
+
+void do_turn(CHAR_DATA *ch, char *argument)
+{
+        (void)argument;
+
+        if (IS_NPC(ch) || !CAN_DO(ch, gsn_turn_undead))
+        {
+                send_to_char(
+                    "You have not learned how to turn the undead.\n\r",
+                    ch);
+                return;
+        }
+
+        turn_undead(ch, gsn_turn_undead,
+                    ch->pcdata->learned[gsn_turn_undead]);
 }
 
 void do_headbutt(CHAR_DATA *ch, char *argument)
