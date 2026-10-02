@@ -258,8 +258,11 @@ static int gmcp_exit_cost(CHAR_DATA *ch,
         /*
          * This mirrors the effective current move_char() behaviour.
          */
-        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL)
-        ||  IS_AFFECTED(ch, AFF_FLYING))
+        if ((IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+        ||   IS_AFFECTED(ch, AFF_FLYING))
+        &&  ((to_room->sector_type != SECT_UNDERWATER
+        &&    to_room->sector_type != SECT_UNDERWATER_GROUND)
+        ||   ch->form == FORM_SNAKE))
         {
                 cost /= 3;
                 cost = UMAX(cost, 1);
@@ -1220,10 +1223,10 @@ int hit_gain(CHAR_DATA *ch)
 
         if (ch->level < LEVEL_HERO)
         {
-                if (!ch->pcdata->condition[COND_FULL])
+                if (ch->pcdata->condition[COND_FULL] <= 0)
                         gain /= 2;
 
-                if (!ch->pcdata->condition[COND_THIRST])
+                if (ch->pcdata->condition[COND_THIRST] <= 0)
                         gain /= 2;
         }
 
@@ -1318,39 +1321,68 @@ int hit_gain(CHAR_DATA *ch)
 
         if (!IS_NPC(ch) && ch->level <= LEVEL_HERO && !IS_AFFECTED(ch, AFF_NON_CORPOREAL))
         {
-                if (IS_SET(ch->in_room->room_flags, ROOM_BURNING) && !is_affected(ch, gsn_resist_heat))
+                if (IS_SET(ch->in_room->room_flags, ROOM_BURNING) && !has_elemental_resistance(ch, gsn_resist_heat))
                 {
                         send_to_char("{RThe intense heat is too much to bear!{x\n\r", ch);
                         damage(ch, ch, number_range(5, 15), TYPE_UNDEFINED, FALSE);
                         return 0;
                 }
 
-                if (IS_SET(ch->in_room->room_flags, ROOM_FREEZING) && !is_affected(ch, gsn_resist_cold))
+                if (IS_SET(ch->in_room->room_flags, ROOM_FREEZING) && !has_elemental_resistance(ch, gsn_resist_cold))
                 {
                         send_to_char("{WThe freezing temperature drains your energy!{x\n\r", ch);
                         damage(ch, ch, number_range(5, 15), TYPE_UNDEFINED, FALSE);
                         return 0;
                 }
 
-                /*
-                 *  Anti-swim (?); Owl 14/7/22
+                                /*
+                 * Strip ordinary swimming when the environment makes it
+                 * inappropriate.
                  *
-                 *  Strip the swim skill and affect for PCs when they're not in 'deep water' rooms.  Leaves
-                 *  shifter snake form unaffected.
+                 * Raw/intrinsic AFF_SWIM is deliberately removable here,
+                 * preserving the behaviour of the old raw-bit code.  Explicit
+                 * AFFECT_DATA providers such as forms, equipment and sets
+                 * remain independently owned.
                  */
 
-                if ((((IS_AFFECTED(ch, AFF_SWIM)) || (is_affected(ch, gsn_swim))) && (ch->form != FORM_SNAKE)) && (ch->in_room->sector_type != SECT_UNDERWATER) && (ch->in_room->sector_type != SECT_UNDERWATER_GROUND) && (ch->in_room->sector_type != SECT_WATER_SWIM) && (ch->in_room->sector_type != SECT_WATER_NOSWIM))
+                if ((((IS_AFFECTED(ch, AFF_SWIM))
+                ||    is_affected(ch, gsn_swim))
+                &&   ch->form != FORM_SNAKE)
+                &&  ch->in_room->sector_type != SECT_UNDERWATER
+                &&  ch->in_room->sector_type != SECT_UNDERWATER_GROUND
+                &&  ch->in_room->sector_type != SECT_WATER_SWIM
+                &&  ch->in_room->sector_type != SECT_WATER_NOSWIM)
                 {
                         affect_strip(ch, gsn_swim);
-                        REMOVE_BIT(ch->affected_by, AFF_SWIM);
-                        send_to_char("{cNo longer in the water, you stop swimming.{w\n\r", ch);
+
+                        affect_strip_raw_bit(
+                            ch,
+                            AFF_SWIM);
+
+                        if (!IS_AFFECTED(ch, AFF_SWIM))
+                        {
+                                send_to_char(
+                                    "{cNo longer in the water, you stop swimming.{w\n\r",
+                                    ch);
+                        }
                 }
 
-                if ((((IS_AFFECTED(ch, AFF_SWIM)) || (is_affected(ch, gsn_swim)))) && (ch->in_room->sector_type == SECT_WATER_NOSWIM))
+                if (((IS_AFFECTED(ch, AFF_SWIM))
+                ||   is_affected(ch, gsn_swim))
+                &&  ch->in_room->sector_type == SECT_WATER_NOSWIM)
                 {
                         affect_strip(ch, gsn_swim);
-                        REMOVE_BIT(ch->affected_by, AFF_SWIM);
-                        send_to_char("{cThis water is not suitable for swimming in.{x\n\r", ch);
+
+                        affect_strip_raw_bit(
+                            ch,
+                            AFF_SWIM);
+
+                        if (!IS_AFFECTED(ch, AFF_SWIM))
+                        {
+                                send_to_char(
+                                    "{cThis water is not suitable for swimming in.{x\n\r",
+                                    ch);
+                        }
                 }
 
                 /* Gravity code was here */
@@ -1442,10 +1474,10 @@ int mana_gain(CHAR_DATA *ch)
 
         if (ch->level < LEVEL_HERO)
         {
-                if (!ch->pcdata->condition[COND_FULL])
+                if (ch->pcdata->condition[COND_FULL] <= 0)
                         gain /= 2;
 
-                if (!ch->pcdata->condition[COND_THIRST])
+                if (ch->pcdata->condition[COND_THIRST] <= 0)
                         gain /= 2;
         }
 
@@ -1505,7 +1537,7 @@ int mana_gain(CHAR_DATA *ch)
 
         if (is_affected(ch, gsn_song_of_rejuvenation))
         {
-                amt = ch->pcdata->learned[gsn_song_of_rejuvenation] * ch->level;
+                amt = ch->pcdata->learned[gsn_song_of_rejuvenation] * ch->level / 100;
                 gain += amt;
 
                 for (gch = char_list; gch; gch = gch->next)
@@ -1561,10 +1593,10 @@ int move_gain(CHAR_DATA *ch)
 
         if (ch->level < LEVEL_HERO)
         {
-                if (!ch->pcdata->condition[COND_FULL])
+                if (ch->pcdata->condition[COND_FULL] <= 0)
                         gain /= 2;
 
-                if (!ch->pcdata->condition[COND_THIRST])
+                if (ch->pcdata->condition[COND_THIRST] <= 0)
                         gain /= 2;
         }
 

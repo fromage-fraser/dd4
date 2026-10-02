@@ -300,16 +300,18 @@ void violence_update(void)
                                 }
 
                                 multi_hit(ch, victim, TYPE_UNDEFINED);
-                                return;
+                                continue;
                         }
 
                         /* mob attacks member of pc's group */
                         for (vch = ch->in_room->people; vch; vch = vch->next_in_room)
                         {
-                                if (can_see(ch, vch) && is_same_group(vch, victim) && number_range(0, number) == 0)
+                                if (can_see(ch, vch) && is_same_group(vch, victim))
                                 {
-                                        victim = vch;
                                         number++;
+
+                                        if (number_range(1, number) == 1)
+                                                victim = vch;
                                 }
                         }
 
@@ -423,29 +425,36 @@ void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 }
         }
 
-        /* Pulse objects go off every round (mainly runesmiths) */
+        /* Engineer pulse objects go off every combat round. */
         if (!IS_NPC(ch))
         {
                 OBJ_DATA *pulse;
+
                 for (pulse = ch->in_room->contents; pulse; pulse = pulse->next_content)
                 {
-                        if ((IS_OBJ_STAT(pulse, ITEM_RUNE)) && (pulse->item_type == ITEM_COMBAT_PULSE || pulse->item_type == ITEM_DEFENSIVE_PULSE))
+                        if ((IS_OBJ_STAT(pulse, ITEM_RUNE))
+                        &&  (pulse->item_type == ITEM_COMBAT_PULSE
+                        ||   pulse->item_type == ITEM_DEFENSIVE_PULSE))
                         {
-                                if (skill_table[pulse->value[3]].target == TAR_CHAR_DEFENSIVE)
-                                        victim = ch;
+                                CHAR_DATA *pulse_victim;
 
-                                if (victim)
+                                pulse_victim = victim;
+
+                                if (skill_table[pulse->value[3]].target == TAR_CHAR_DEFENSIVE)
+                                        pulse_victim = ch;
+
+                                if (pulse_victim)
                                 {
-                                        if (ch == victim)
+                                        if (ch == pulse_victim)
                                         {
-                                                act("Your $p pulses.", ch, pulse, victim, TO_CHAR);
-                                                act("$n's $p pulses.", ch, pulse, victim, TO_NOTVICT);
+                                                act("Your $p pulses.", ch, pulse, pulse_victim, TO_CHAR);
+                                                act("$n's $p pulses.", ch, pulse, pulse_victim, TO_NOTVICT);
                                         }
                                         else
                                         {
-                                                act("$p pulses and targets $N.", ch, pulse, victim, TO_CHAR);
-                                                act("$n's $p pulses and targets you!", ch, pulse, victim, TO_VICT);
-                                                act("$n's $p pulses and targets $p.", ch, pulse, victim, TO_NOTVICT);
+                                                act("$p pulses and targets $N.", ch, pulse, pulse_victim, TO_CHAR);
+                                                act("$n's $p pulses and targets you!", ch, pulse, pulse_victim, TO_VICT);
+                                                act("$n's $p pulses and targets $p.", ch, pulse, pulse_victim, TO_NOTVICT);
                                         }
                                 }
                                 else
@@ -453,7 +462,14 @@ void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                                         act("You pulse with $p.", ch, pulse, NULL, TO_CHAR);
                                         act("$n pulse with $p.", ch, pulse, NULL, TO_ROOM);
                                 }
-                                obj_cast_spell(pulse->value[3], pulse->value[0], ch, victim, pulse);
+
+                                obj_cast_spell(
+                                        pulse->value[3],
+                                        pulse->value[0],
+                                        ch,
+                                        pulse_victim,
+                                        pulse);
+
                                 if (--pulse->value[2] <= 0)
                                 {
                                         act("Your $p explodes into fragments.", ch, pulse, NULL, TO_CHAR);
@@ -611,19 +627,19 @@ void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         /*
          * Multiple attacks for shifter forms
          */
+        /*
+         * Multiple attacks for shifter forms.
+         * Prone characters have a 50% chance to lose each form bonus attack.
+         */
         if (ch->form == FORM_TIGER || ch->form == FORM_BEAR || ch->form == FORM_HYDRA || ch->form == FORM_DRAGON || ch->form == FORM_GRIFFIN)
         {
-                if ((IS_AFFECTED(ch, AFF_PRONE)) && (number_percent() < 50))
-                        one_hit(ch, victim, dt, FALSE);
-                else
+                if (!IS_AFFECTED(ch, AFF_PRONE) || number_percent() < 50)
                         one_hit(ch, victim, dt, FALSE);
         }
 
         if (ch->form == FORM_HYDRA || ch->form == FORM_DRAGON || ch->form == FORM_GRIFFIN)
         {
-                if ((IS_AFFECTED(ch, AFF_PRONE)) && (number_percent() < 50))
-                        one_hit(ch, victim, dt, FALSE);
-                else
+                if (!IS_AFFECTED(ch, AFF_PRONE) || number_percent() < 50)
                         one_hit(ch, victim, dt, FALSE);
         }
 
@@ -1710,7 +1726,7 @@ static void damage_internal(CHAR_DATA *ch,
                     cold_bonus,
                     get_resistance_result(victim, RES_COLD));
 
-                if (is_affected(victim, gsn_resist_cold))
+                if (has_elemental_resistance(victim, gsn_resist_cold))
                         cold_bonus /= 2;
 
                 if (cold_bonus > INT_MAX - dam)
@@ -2048,7 +2064,7 @@ static void damage_internal(CHAR_DATA *ch,
         {
                 int firedam = dam / 2;
 
-                if (is_affected(ch, gsn_resist_heat))
+                if (has_elemental_resistance(ch, gsn_resist_heat))
                         firedam *= 0.8;
 
                 /*

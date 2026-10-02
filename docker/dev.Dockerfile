@@ -9,7 +9,8 @@
 # See 'dev' and 'buid-dev' targets in the main Makefile.
 
 FROM gcc:9.5
-RUN apt-get update && \
+RUN sed -i 's|http://deb.debian.org/debian-security|http://snapshot.debian.org/archive/debian-security/20260903T220410Z|g' /etc/apt/sources.list && \
+    apt-get -o Acquire::Check-Valid-Until=false update && \
     DEBIAN_FRONTEND=noninteractive apt-get -y install gdb vim less screen perl
 COPY ./docker/dev_content/.screenrc /root/
 COPY ./docker/dev_content/.gdbinit /root/

@@ -401,12 +401,27 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
                 if (paf->deleted)
                         continue;
 
-                fprintf(fp, "Aff         %3d %3d %3d %3d %20lu\n",
-                        paf->type,
-                        paf->duration,
-                        paf->modifier,
-                        paf->location,
-                        paf->bitvector);
+                if (paf->source_type == AFFECT_SOURCE_NONE)
+                {
+                        fprintf(fp, "Aff         %3d %3d %3d %3d %20lu\n",
+                                paf->type,
+                                paf->duration,
+                                paf->modifier,
+                                paf->location,
+                                paf->bitvector);
+                }
+                else
+                {
+                        fprintf(fp,
+                                "AffSrc      %3d %3d %3d %3d %20lu %3d %20lu\n",
+                                paf->type,
+                                paf->duration,
+                                paf->modifier,
+                                paf->location,
+                                paf->bitvector,
+                                paf->source_type,
+                                (unsigned long int)paf->source_id);
+                }
         }
 
         fprintf(fp, "End\n\n");
@@ -466,6 +481,12 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest, bool vault)
         fprintf(fp, "TimerMax     %d\n",        obj->timermax               );
         fprintf(fp, "Cost         %d\n",        obj->cost                   );
         fprintf(fp, "HowCreated   %d\n",        obj->how_created            );
+        if (IS_SET(obj->extra_flags, ITEM_TRAP))
+        {
+                fprintf(fp, "TrapEff      %d\n", obj->trap_eff);
+                fprintf(fp, "TrapDam      %d\n", obj->trap_dam);
+                fprintf(fp, "TrapCharge   %d\n", obj->trap_charge);
+        }
         fprintf(fp, "Values       %d %d %d %d\n",
                 obj->value[0], obj->value[1], obj->value[2], obj->value[3]  );
 
@@ -846,6 +867,33 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         KEY("Adamantite", ch->smelted_adamantite, fread_number( fp, &stat ));
                         KEY("AllowLook", ch->pcdata->allow_look, fread_number( fp, &stat ));
 
+                        if (!str_cmp(word, "AffSrc"))
+                        {
+                                AFFECT_DATA *paf;
+
+                                if (!affect_free)
+                                        paf = alloc_perm(sizeof(*paf));
+                                else
+                                {
+                                        paf = affect_free;
+                                        affect_free = affect_free->next;
+                                }
+
+                                paf->type        = fread_number(fp, &stat);
+                                paf->duration    = fread_number(fp, &stat);
+                                paf->modifier    = fread_number(fp, &stat);
+                                paf->location    = fread_number(fp, &stat);
+                                paf->bitvector   = fread_number64(fp, &stat);
+                                paf->source_type = fread_number(fp, &stat);
+                                paf->source_id   = (uint64_t)fread_number64(fp, &stat);
+                                paf->deleted     = FALSE;
+                                paf->next        = ch->affected;
+                                ch->affected     = paf;
+
+                                fMatch = TRUE;
+                                break;
+                        }
+
                         if (!str_cmp(word, "Aff"))
                         {
                                 AFFECT_DATA *paf;
@@ -858,12 +906,14 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                                         affect_free = affect_free->next;
                                 }
 
-                                paf->type       = fread_number( fp, &stat );
-                                paf->duration   = fread_number( fp, &stat );
-                                paf->modifier   = fread_number( fp, &stat );
-                                paf->location   = fread_number( fp, &stat );
-                                paf->bitvector  = fread_number64( fp, &stat );
-                                paf->deleted    = FALSE;
+                                paf->type        = fread_number( fp, &stat );
+                                paf->duration    = fread_number( fp, &stat );
+                                paf->modifier    = fread_number( fp, &stat );
+                                paf->location    = fread_number( fp, &stat );
+                                paf->bitvector   = fread_number64( fp, &stat );
+                                paf->source_type = AFFECT_SOURCE_NONE;
+                                paf->source_id   = 0;
+                                paf->deleted     = FALSE;
                                 paf->next       = ch->affected;
                                 ch->affected    = paf;
 
@@ -1256,6 +1306,12 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
         }
 
         /*
+         * Tag permanent effects from forms saved before affect source
+         * ownership was introduced.
+         */
+        migrate_form_affect_sources(ch);
+
+        /*
          *  Init some variables that aren't saved
          */
         ch->backstab = 0;
@@ -1484,8 +1540,11 @@ void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
                         break;
 
                     case 'T':
-                        KEY("Timer",    obj->timer,             fread_number( fp, &stat ));
-                        KEY("TimerMax", obj->timermax,          fread_number( fp, &stat ));
+                        KEY("Timer",      obj->timer,       fread_number( fp, &stat ));
+                        KEY("TimerMax",   obj->timermax,    fread_number( fp, &stat ));
+                        KEY("TrapEff",    obj->trap_eff,    fread_number( fp, &stat ));
+                        KEY("TrapDam",    obj->trap_dam,    fread_number( fp, &stat ));
+                        KEY("TrapCharge", obj->trap_charge, fread_number( fp, &stat ));
                         break;
 
                     case 'V':
@@ -1512,7 +1571,10 @@ void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
                                         log_string(buf2);
                                 }
                                 else
+                                {
+                                        obj->material = obj->pIndexData->material;
                                         fVnum = TRUE;
+                                }
                                 fMatch = TRUE;
                                 break;
                         }

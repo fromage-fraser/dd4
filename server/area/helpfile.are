@@ -652,8 +652,8 @@ Gezhp, Owl and Shade
 
 {W October 2024{x
 
-- Skills "target" and spell "regenerate" added, to allow for targeting and healing
-  of body regions on players or mobiles.
+- Skills "target" and spell "regenerate" added, to allow for targeting and 
+  healing of body regions on players or mobiles.
 - Skills "harvest" and "carve" added for Druids and Rangers
 - Skill "bitsum" added for IMMs
 - Spell "possession" fixed and re-enabled. Spell "release" added (basically
@@ -662,8 +662,8 @@ Gezhp, Owl and Shade
 
 {W December 2024{x
 
-- 15 new level 70+ spells and skills now enabled for all classes. A few more +
-  "bonus" system mechanic still to code.
+- 15 new level 70+ spells and skills now enabled for all classes. A few more
+  "bonus" system mechanics still to code.
 - Skill "quicken" added for vampires and werewolves
 - Chant "dragonsbane" added for bards
 - Bat form added for vampires
@@ -765,7 +765,58 @@ Gezhp, Owl and Shade
 - Transfix, Howl and Confusion now consistently consult target resistance.
 - Added Detect Undead for Clerics and Knights, marking visible undead creatures
 and undead objects on the ground, carried or worn.
+- Moving between underwater rooms no longer replenishes your air supply.
+- Fixed room lighting left behind by NPCs and linkdead players carrying lights.
+- Infrared vision now correctly improves scan distance at night.
+- GMCP exit information now reports flying movement costs correctly for 
+  underwater rooms.
+- Song of Rejuvenation mana recovery now scales correctly with proficiency and 
+  level.
+- Saved objects now retain their material properties after being reloaded.
+- NPC combat assistance now selects group targets without room-list ordering 
+  bias.
+- Hunger and thirst regeneration penalties now continue correctly at negative 
+  condition values.
+- Grouped mob assistance no longer prematurely ends combat processing for the 
+  current round.
+- Rebalanced terrain movement costs and corrected underwater-ground movement 
+  cost.
+- Prone shifters now correctly have reduced chances of making form bonus 
+  attacks.
+- Trapped objects now retain their trap type, effects and remaining charges when 
+  saved.
+- Movement-triggered traps now correctly interrupt the movement attempt that 
+  triggers them.
+- Defensive Engineer pulses no longer replace the user's current combat target.
+- Overlapping character affects now preserve shared status flags when one affect 
+  ends.
+- Hawk, dragon, cat, snake, wolf and direwolf form effects now coexist with 
+  independently supplied affects instead of replacing them.
+- Chameleon form now owns its hide and sneak effects without removing 
+  independently supplied stealth effects.
+- Phoenix, demon and griffin form effects now coexist with independently 
+  supplied affects instead of replacing them.
+- Fly and bat form now own their flight effects without clearing independently 
+  supplied permanent flight sources.
+- Equipment and set special applies now coexist with independently supplied
+  spell, form, equipment and set effects, including across morph equipment
+  removal and restoration.
+- Swimming and invisibility cleanup now preserves independently supplied effects;
+  no-swim terrain suppresses swimming without corrupting form-owned swim effects.
+- Status spells can now establish their own effects while the same status is
+  supplied independently by equipment, sets or forms.
+- Room-wide trap damage now preserves independently supplied invisibility.
+- Shared status providers now coexist across mass sanctuary, biofeedback,
+  inertial barrier, infravision, swimming, deterrence and pass-door effects;
+  dispel, stabilise and reveal effects preserve persistent sourced providers.
+- NPC intrinsic AFF flags now have independent live ownership: overlapping
+  temporary effects cannot erase them when they expire, while Dispel Magic,
+  healing, reveal and other deliberate removal effects can still remove
+  intrinsic mob effects according to their existing rules.
+- Status spells now recognise matching intrinsic NPC AFF flags as already
+  active, preventing redundant timed copies and misleading gain messages.
 ~
+
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
 Innate resistances and vulnerabilities
@@ -899,8 +950,9 @@ trapset axe move north
 trapset axe damage sleep
 trapset axe charge 10
 
-This would mean someone moving north from the room the object is in would be hit
-by the trap and put to sleep.
+This would mean someone attempting to move north from the room the object is in
+would trigger the trap and be put to sleep. The triggering movement attempt is
+interrupted. A teleport trap may instead move the character itself.
 ~
 
 101 TRAPLIST~
@@ -3961,7 +4013,7 @@ This spell inflicts damage on the victim.
 
 0 FLY LEVITATION FLIGHT~
 Syntax: cast fly <<target>
-Syntax: cast levitation <<target>
+Syntax: cast levitation
 Syntax: fly
 
 The spells FLY and LEVITATE enable the target to fly above the ground.
@@ -7231,8 +7283,8 @@ Syntax: sing rejuvenation
 
 Many travel-weary bards have found themselves in need of a healer after an
 ambush, and yet been a long way from a temple.  Because of this, a group
-of enterprising bards composed a song which, when sung, gradually heals
-the singer back to full health.
+of enterprising bards composed a song which, when sung, gradually restores
+the health and mana of the singer and nearby group members.
 ~
 
 0 'SONG OF FLIGHT'~
@@ -8085,7 +8137,7 @@ Smithies can fashion legendary armour sets that grant extraordinary set bonuses.
 
 Syntax: reforge <<weapon>
 
-Reforging a weapon will tune the item based on your worldly experiance.
+Reforging a weapon will tune the item based on your worldly experience.
 Generally as you progress in capability, the knowledge that you gain
 will allow you to reforge your currently constructed weapon to ensure
 you bring your best weapon to bear on your enemies.
@@ -8286,7 +8338,7 @@ you are able to unleash a devastating attack on an opponent.
 
 Syntax: engrave <<item>
 
-An experianced SMITHY is able to apply an engraving to armour and
+An experienced SMITHY is able to apply an engraving to armour and
 weapons. Each item that is engraved will contribute to your total
 maximum enhanced damage.
 
@@ -8446,7 +8498,7 @@ All modules must be placed in the turret to use.
 
 1 'BLOODFORGED HELM' 'BLOODFORGED BOOTS' 'BLOODFORGED LEGGINGS' 'BLOODFORGED GRIPS'~
 
-This is an EPIC set only available for experianced smithies.
+This is an EPIC set only available for experienced smithies.
 
 Syntax: construct 'bloodforged helm'
 Syntax: construct 'bloodforged boots'

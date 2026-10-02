@@ -35,7 +35,13 @@
 #include "sound.h"
 
 AFFECT_DATA *affect_free;
-void affect_modify (CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon);
+
+void affect_modify(CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd,
+                   OBJ_DATA *weapon);
+
+static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
+                                 bool fAdd, OBJ_DATA *weapon,
+                                 int source_type, uint64_t source_id);
 
 
 /*
@@ -334,26 +340,339 @@ bool parse_target_id(const char *argument, uint64_t *target_id)
         return TRUE;
 }
 
+/*
+ * Restore any bits supplied by other active character affects after one
+ * affect has been removed.
+ *
+ * This is intentionally limited to AFFECT_DATA sources for now.  Form and
+ * equipment source handling is added in the following stages.
+ */
+static void restore_shared_affect_bits(CHAR_DATA *ch, AFFECT_DATA *removed)
+{
+        AFFECT_DATA *paf;
+        unsigned long int shared_bits;
+
+        if (!ch || !removed || !removed->bitvector)
+                return;
+
+        /*
+         * An NPC's currently active intrinsic flags are independent
+         * providers.  Removing a temporary spell, item, set or form affect
+         * must not erase an overlapping intrinsic mob flag.
+         *
+         * Deliberate dispels/removal effects clear intrinsic_affected_by
+         * separately before this restoration is relevant.
+         */
+        if (IS_NPC(ch))
+        {
+                shared_bits =
+                    ch->intrinsic_affected_by
+                    & removed->bitvector;
+        }
+        else
+        {
+                shared_bits = 0;
+        }
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf == removed || paf->deleted)
+                        continue;
+
+                shared_bits |=
+                    paf->bitvector
+                    & removed->bitvector;
+        }
+
+        SET_BIT(ch->affected_by, shared_bits);
+}
+
+/*
+ * Equipped-object effects are owned by the wear slot rather than target_id.
+ *
+ * target_id identifies a live runtime object, but saved objects do not retain
+ * that identifier across login.  A wear slot is stable across save/load and
+ * only one object can occupy a slot at a time.
+ */
+static uint64_t equipment_affect_source_id(int wear_loc)
+{
+        return (uint64_t)(wear_loc + 1);
+}
+
+
+/*
+ * Each object-set bonus tier needs its own stable source.
+ */
+static uint64_t objset_affect_source_id(OBJSET_INDEX_DATA *pObjSetIndex,
+                                        int pos)
+{
+        return ((uint64_t)(unsigned int)pObjSetIndex->vnum * 16ULL)
+             + (uint64_t)(unsigned int)pos;
+}
+
+
+/*
+ * Apply/remove one of the APPLY_* values which represents a persistent
+ * character affect rather than a numeric modifier.
+ *
+ * Different providers receive different source ownership, allowing spells,
+ * forms, equipment and set bonuses to coexist without removing one another.
+ */
+static void modify_sourced_special_apply(CHAR_DATA *ch, AFFECT_DATA *source,
+                                         bool fAdd, int source_type,
+                                         uint64_t source_id)
+{
+        AFFECT_DATA af;
+        AFFECT_DATA *legacy;
+        int sn = -1;
+        unsigned long int bit = 0;
+        bool was_active;
+        bool is_active;
+        const char *gain_char = NULL;
+        const char *gain_room = NULL;
+        const char *lose_char = NULL;
+        const char *lose_room = NULL;
+
+        switch (source->location)
+        {
+        case APPLY_SANCTUARY:
+                sn = skill_lookup("sanctuary");
+                bit = AFF_SANCTUARY;
+                gain_char = "<15>You are surrounded by a white aura.<0>\n\r";
+                gain_room = "<15>$c is surrounded by a white aura.<0>";
+                lose_char = "<250>The white aura around your body vanishes.<0>\n\r";
+                lose_room = "<250>The white aura around $n's body vanishes.<0>";
+                break;
+
+        case APPLY_SNEAK:
+                sn = skill_lookup("sneak");
+                bit = AFF_SNEAK;
+                gain_char = "You can now move amongst the shadows.\n\r";
+                gain_room = "$n can now move amongst the shadows.";
+                lose_char = "You emerge from the shadows.\n\r";
+                lose_room = "$n emerges from the shadows.";
+                break;
+
+        case APPLY_INVIS:
+                sn = skill_lookup("invis");
+                bit = AFF_INVISIBLE;
+                gain_char = "<39>You fade out of existence.<0>\n\r";
+                gain_room = "$n fades out of existence.";
+                lose_char = "You fade back into existence.\n\r";
+                lose_room = "$n fades back into existence.";
+                break;
+
+        case APPLY_DETECT_INVIS:
+                sn = skill_lookup("detect invis");
+                bit = AFF_DETECT_INVIS;
+                gain_char = "Your eyes tingle.\n\r";
+                gain_room = "$n's eyes tingle.";
+                lose_char = "You no longer see invisible objects.\n\r";
+                lose_room = "$n's eyes stop tingling.";
+                break;
+
+        case APPLY_DETECT_HIDDEN:
+                sn = skill_lookup("detect hidden");
+                bit = AFF_DETECT_HIDDEN;
+                gain_char = "Your awareness improves.\n\r";
+                lose_char = "You feel less aware of your surroundings.\n\r";
+                break;
+
+        case APPLY_FLAMING:
+                sn = skill_lookup("fireshield");
+                bit = AFF_FLAMING;
+                gain_char = "<196>A flaming aura surrounds you!<0>\n\r";
+                gain_room = "<196>The air around $n's form bursts into flame.<0>";
+                lose_char = "<88>The flames around your body fizzle out.<0>\n\r";
+                lose_room = "<88>The flames around $n's body fizzle out.<0>";
+                break;
+
+        case APPLY_PROTECT:
+                sn = skill_lookup("protection");
+                bit = AFF_PROTECT;
+                gain_char = "You feel protected.\n\r";
+                lose_char = "<214>You feel less protected.<0>\n\r";
+                break;
+
+        case APPLY_FLY:
+                sn = skill_lookup("fly");
+                bit = AFF_FLYING;
+                gain_char = "The sensation of gravity leaves your body.\n\r";
+                gain_room = "$n seems no longer to be affected by gravity.";
+                lose_char = "You feel the pull of gravity slowly return.\n\r";
+                lose_room = "$n seems to be affected by gravity once more.";
+                break;
+
+        case APPLY_PASS_DOOR:
+                sn = skill_lookup("pass door");
+                bit = AFF_PASS_DOOR;
+                gain_char = "<230>You become translucent.<0>\n\r";
+                gain_room = "$n turns translucent.";
+                lose_char = "You feel solid again.\n\r";
+                lose_room = "$n looks solid once more.";
+                break;
+
+        case APPLY_GLOBE:
+                sn = skill_lookup("globe");
+                bit = AFF_GLOBE;
+                gain_char = "You are surrounded by an invulnerable globe.\n\r";
+                gain_room = "$n is surrounded by a scintillating globe.";
+                lose_char = "The globe around you implodes.\n\r";
+                lose_room = "The globe around $n implodes.";
+                break;
+
+        case APPLY_BREATHE_WATER:
+                sn = skill_lookup("breathe water");
+                bit = 0;
+                gain_char = "Your lungs begin to tingle and pulse.\n\r";
+                lose_char = "Your lungs revert to normal.\n\r";
+                break;
+
+        default:
+                return;
+        }
+
+        if (sn < 0)
+        {
+                bug("Modify_sourced_special_apply: missing skill for apply %d.",
+                    source->location);
+                return;
+        }
+
+        if (bit)
+                was_active = IS_AFFECTED(ch, bit);
+        else
+                was_active = is_affected(ch, sn);
+
+        if (fAdd)
+        {
+                /*
+                 * Only suppress a duplicate from this exact provider.
+                 *
+                 * A spell, form, another item or a set bonus supplying the
+                 * same effect must not prevent this provider being recorded.
+                 */
+                if (!is_affected_source(ch, sn, source_type, source_id))
+                {
+                        memset(&af, 0, sizeof(af));
+
+                        af.type = sn;
+                        af.duration = -1;
+                        af.location = APPLY_NONE;
+                        af.modifier = 0;
+                        af.bitvector = bit;
+
+                        affect_to_char_source(
+                            ch,
+                            &af,
+                            source_type,
+                            source_id);
+                }
+        }
+        else
+        {
+                if (source_type == AFFECT_SOURCE_NONE)
+                {
+                        affect_strip(ch, sn);
+                }
+                else
+                {
+                        /*
+                         * Backwards compatibility for player files written
+                         * before equipment/set affects had source ownership.
+                         *
+                         * Old item APPLYs created an unsourced permanent
+                         * affect. Adopt a matching legacy copy before removing
+                         * it. Finite-duration spell affects are deliberately
+                         * left alone.
+                         */
+                        if (!is_affected_source(
+                                ch,
+                                sn,
+                                source_type,
+                                source_id))
+                        {
+                                for (legacy = ch->affected;
+                                     legacy;
+                                     legacy = legacy->next)
+                                {
+                                        if (legacy->deleted)
+                                                continue;
+
+                                        if (legacy->type == sn
+                                        &&  legacy->duration == -1
+                                        &&  legacy->location == APPLY_NONE
+                                        &&  legacy->modifier == 0
+                                        &&  legacy->bitvector == bit
+                                        &&  legacy->source_type
+                                                == AFFECT_SOURCE_NONE)
+                                        {
+                                                legacy->source_type =
+                                                    source_type;
+                                                legacy->source_id =
+                                                    source_id;
+                                                break;
+                                        }
+                                }
+                        }
+
+                        affect_strip_source_sn(
+                            ch,
+                            sn,
+                            source_type,
+                            source_id);
+                }
+        }
+
+        if (bit)
+                is_active = IS_AFFECTED(ch, bit);
+        else
+                is_active = is_affected(ch, sn);
+
+        /*
+         * Only describe an effect appearing/disappearing when its overall
+         * state actually changes. Removing one of several providers should
+         * not claim that the effect has vanished.
+         */
+        if (fAdd && !was_active && is_active)
+        {
+                if (gain_char)
+                        send_to_char(gain_char, ch);
+
+                if (gain_room)
+                        act(gain_room, ch, NULL, NULL, TO_ROOM);
+        }
+        else if (!fAdd && was_active && !is_active)
+        {
+                if (lose_char)
+                        send_to_char(lose_char, ch);
+
+                if (lose_room)
+                        act(lose_room, ch, NULL, NULL, TO_ROOM);
+        }
+}
 
 /*
  * Apply or remove an affect to a character.
  */
-void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon )
+static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
+                                 bool fAdd, OBJ_DATA *weapon,
+                                 int source_type, uint64_t source_id)
 {
         OBJ_DATA *wield;
         char buf [MAX_STRING_LENGTH];
         int mod;
-        AFFECT_DATA af;
 
         mod = paf->modifier;
 
         if ( fAdd )
         {
-                SET_BIT   ( ch->affected_by, paf->bitvector );
+                SET_BIT(ch->affected_by, paf->bitvector);
         }
         else
         {
-                REMOVE_BIT( ch->affected_by, paf->bitvector );
+                REMOVE_BIT(ch->affected_by, paf->bitvector);
+                restore_shared_affect_bits(ch, paf);
                 mod = 0 - mod;
         }
 
@@ -448,12 +767,10 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 break;
 
             case APPLY_INSCRIBED:
-                af.type = skill_lookup( "inscribe");
                 ch->inscription_total += mod;
                 break;
 
             case APPLY_STRENGTHEN:
-                af.type = skill_lookup( "strengthen");
                 if ( fAdd )
                 {
                         ch->damage_mitigation += mod;
@@ -468,7 +785,6 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 }
 
             case APPLY_ENGRAVED:
-                af.type = skill_lookup( "engrave");
                 if ( fAdd )
                 {
                         ch->damage_enhancement += mod;
@@ -485,190 +801,8 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         break;
                 }
 
-            case APPLY_SANCTUARY:
-                af.type = skill_lookup( "sanctuary" );
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                        {
-                                send_to_char( "You are already sanctified.\n\r", ch );
-                                break;
-                        }
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = AFF_SANCTUARY;
-                        affect_to_char( ch, &af );
-                        send_to_char( "<15>You are surrounded by a white aura.<0>\n\r", ch );
-                        act( "<15>$c is surrounded by a white aura.<0>", ch, NULL, NULL, TO_ROOM );
-                        break;
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char( "<250>The white aura around your body vanishes.<0>\n\r", ch );
-                        act( "<250>The white aura around $n's body vanishes.<0>", ch,
-                            NULL, NULL, TO_ROOM);
-                        break;
-                }
-
-            case APPLY_SNEAK:
-                af.type = skill_lookup( "sneak" );
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                        {
-                                send_to_char( "You are already sneaking.\n\r", ch );
-                                break;
-                        }
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = AFF_SNEAK;
-                        affect_to_char( ch, &af );
-                        send_to_char( "You can now move amongst the shadows.\n\r", ch );
-                        act( "$n can now move amongst the shadows.", ch, NULL, NULL, TO_ROOM );
-                        break;
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char( "You emerge from the shadows.\n\r", ch );
-                        act( "$n emerges from the shadows.", ch, NULL, NULL, TO_ROOM);
-                        break;
-                }
-
-            case APPLY_INVIS:
-                af.type = skill_lookup( "invis" );
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                        {
-                                send_to_char( "You are already invisible.\n\r", ch );
-                                break;
-                        }
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = AFF_INVISIBLE;
-                        affect_to_char( ch, &af );
-                        send_to_char( "<39>You fade out of existence.<0>\n\r", ch );
-                        act( "$n fades out of existence.", ch, NULL, NULL, TO_ROOM );
-                        break;
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char( "You fade back into existence.\n\r", ch );
-                        act( "$n fades back into existence.", ch,
-                            NULL, NULL, TO_ROOM);
-                        break;
-                }
-
-            case APPLY_DETECT_INVIS:
-                af.type = skill_lookup( "detect invis" );
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                        {
-                                send_to_char( "You can already see the invisible.\n\r", ch );
-                                break;
-                        }
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = AFF_DETECT_INVIS;
-                        affect_to_char( ch, &af );
-                        send_to_char( "Your eyes tingle.\n\r", ch );
-                        act( "$n's eyes tingle.", ch, NULL, NULL, TO_ROOM );
-                        break;
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char( "You no longer see invisible objects.\n\r", ch );
-                        act( "$n's eyes stop tingling.", ch,
-                            NULL, NULL, TO_ROOM);
-                        break;
-                }
-
-            case APPLY_DETECT_HIDDEN:
-                af.type = skill_lookup( "detect hidden" );
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                        {
-                                send_to_char( "You can already see the hidden.\n\r", ch );
-                                break;
-                        }
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = AFF_DETECT_HIDDEN;
-                        affect_to_char( ch, &af );
-                        send_to_char( "Your awareness improves.\n\r", ch );
-                        break;
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char( "You feel less aware of your surroundings.\n\r", ch );
-                        break;
-                }
-
-            case APPLY_FLAMING:
-                af.type = skill_lookup( "fireshield" );
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                        {
-                                send_to_char( "You are already surrounded by flames.\n\r", ch );
-                                break;
-                        }
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = AFF_FLAMING;
-                        affect_to_char( ch, &af );
-                        send_to_char( "<196>A flaming aura surrounds you!<0>\n\r", ch );
-                        act( "<196>The air around $n's form bursts into flame.<0>", ch, NULL, NULL, TO_ROOM );
-                        break;
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char( "<88>The flames around your body fizzle out.<0>\n\r", ch );
-                        act( "<88>The flames around $n's body fizzle out.<0>", ch,
-                            NULL, NULL, TO_ROOM);
-                        break;
-                }
-
-            case APPLY_PROTECT:
-                af.type = skill_lookup( "protection" );
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                        {
-                                send_to_char( "You are already protected.\n\r", ch );
-                                break;
-                        }
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = AFF_PROTECT;
-                        affect_to_char( ch, &af );
-                        send_to_char( "You feel protected.\n\r", ch );
-                        break;
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char( "<214>You feel less protected.<0>\n\r", ch );
-                        break;
-                }
-
+            
             case APPLY_BALANCE:
-                af.type = skill_lookup( "counterbalance" );
                 if( fAdd )
                 {
                         send_to_char( "The counterbalanced weapon will improve your attack speed.\n\r", ch );
@@ -680,8 +814,7 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                         break;
                 }
             case APPLY_SERRATED:
-                af.type = skill_lookup( "serrated" );
-                                if( fAdd )
+                if( fAdd )
                 {
                         break;
                 }
@@ -689,202 +822,44 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
                 {
                         break;
                 }
-
-
+        
+            case APPLY_SANCTUARY:
+            case APPLY_SNEAK:
+            case APPLY_INVIS:
+            case APPLY_DETECT_INVIS:
+            case APPLY_DETECT_HIDDEN:
+            case APPLY_FLAMING:
+            case APPLY_PROTECT:
             case APPLY_FLY:
-                af.type = skill_lookup( "fly" );
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                        {
-                                break;
-                        }
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = AFF_FLYING;
-                        affect_to_char( ch, &af );
-                        send_to_char( "The sensation of gravity leaves your body.\n\r", ch );
-                        act( "$n seems no longer to be affected by gravity.", ch, NULL, NULL, TO_ROOM );
-                        break;
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char( "You feel the pull of gravity slowly return.\n\r", ch );
-                        act( "$n seems to be affected by gravity once more.", ch,
-                            NULL, NULL, TO_ROOM);
-                        break;
-                }
-
             case APPLY_PASS_DOOR:
-                af.type = skill_lookup( "pass door" );
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                        {
-                                send_to_char( "You are already translucent.\n\r", ch );
-                                break;
-                        }
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = AFF_PASS_DOOR;
-                        affect_to_char( ch, &af );
-                        send_to_char( "<230>You become translucent.<0>\n\r", ch );
-                        act( "$n turns translucent.", ch, NULL, NULL, TO_ROOM );
-                        break;
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char( "You feel solid again.\n\r", ch );
-                        act( "$n looks solid once more.", ch, NULL, NULL, TO_ROOM);
-                        break;
-                }
-
             case APPLY_GLOBE:
-                af.type = skill_lookup( "globe" );
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                        {
-                                send_to_char( "You are already globed.\n\r", ch );
-                                break;
-                        }
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = AFF_GLOBE;
-                        affect_to_char( ch, &af );
-                        send_to_char( "You are surrounded by an invulnerable globe.\n\r", ch );
-                        act( "$n is surrounded by a scintillating globe.", ch, NULL, NULL, TO_ROOM );
-                        break;
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char( "The globe around you implodes.\n\r", ch );
-                        act( "The globe around $n implodes.", ch,
-                            NULL, NULL, TO_ROOM);
-                        break;
-                }
+            case APPLY_BREATHE_WATER:
+                modify_sourced_special_apply(
+                    ch,
+                    paf,
+                    fAdd,
+                    source_type,
+                    source_id);
+                break;
 
             case APPLY_RESIST_HEAT:
                 ch->resist_heat += mod;
-              /*  af.type = skill_lookup("resist heat");
-              if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
-
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
-
-                        send_to_char( "You feel resistant to heat and flame.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("You feel vulnerable to heat and flame.\n\r", ch);
-                } */
                 break;
 
             case APPLY_RESIST_COLD:
                 ch->resist_cold += mod;
- /*
-                af.type = skill_lookup("resist cold");
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
-
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
-
-                        send_to_char( "You feel resistant to cold and ice.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("You feel vulnerable to cold and ice.\n\r", ch);
-                }
-                break; */
+                break;
 
             case APPLY_RESIST_LIGHTNING:
                 ch->resist_lightning += mod;
-                /*
-                af.type = skill_lookup("resist lightning");
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
-
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
-
-                        send_to_char( "You feel resistant to electricity.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("You feel vulnerable to electricity.\n\r", ch);
-                } */
                 break;
 
             case APPLY_RESIST_ACID:
                 ch->resist_acid += mod;
-         /*     af.type = skill_lookup("resist acid");
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
-
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
-
-                        send_to_char( "You feel resistant to acid.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("You feel vulnerable to acid.\n\r", ch);
-                }*/
                 break;
 
-            case APPLY_BREATHE_WATER:
-                af.type = skill_lookup("breathe water");
-                if( fAdd )
-                {
-                        if( is_affected( ch, af.type ) )
-                                break;
+           
 
-                        af.duration = -1;
-                        af.location = APPLY_NONE;
-                        af.modifier = 0;
-                        af.bitvector = 0;
-                        affect_to_char( ch, &af );
-
-                        send_to_char( "Your lungs begin to tingle and pulse.\n\r", ch );
-                }
-                else
-                {
-                        affect_strip( ch, af.type );
-                        send_to_char("Your lungs revert to normal.\n\r", ch);
-                }
-                break;
         }
 
         if (IS_NPC(ch))
@@ -920,33 +895,52 @@ void affect_modify( CHAR_DATA *ch, AFFECT_DATA *paf, bool fAdd, OBJ_DATA *weapon
         }
 }
 
+void affect_modify(CHAR_DATA *ch, AFFECT_DATA *paf,
+                   bool fAdd, OBJ_DATA *weapon)
+{
+        affect_modify_source(
+            ch,
+            paf,
+            fAdd,
+            weapon,
+            AFFECT_SOURCE_NONE,
+            0);
+}
 
-/*
- * Give an affect to a char.
- */
-void affect_to_char( CHAR_DATA *ch, AFFECT_DATA *paf )
+void affect_to_char_source(CHAR_DATA *ch, AFFECT_DATA *paf,
+                           int source_type, uint64_t source_id)
 {
         AFFECT_DATA *paf_new;
 
-        if ( !affect_free )
+        if (!affect_free)
         {
-                paf_new         = alloc_perm( sizeof( *paf_new ) );
+                paf_new = alloc_perm(sizeof(*paf_new));
         }
         else
         {
-                paf_new         = affect_free;
-                affect_free     = affect_free->next;
+                paf_new = affect_free;
+                affect_free = affect_free->next;
         }
 
         *paf_new = *paf;
+        paf_new->source_type = source_type;
+        paf_new->source_id = source_id;
         paf_new->deleted = FALSE;
         paf_new->next = ch->affected;
         ch->affected = paf_new;
 
-        affect_modify( ch, paf_new, TRUE, NULL );
-        return;
+        affect_modify(ch, paf_new, TRUE, NULL);
 }
 
+
+void affect_to_char(CHAR_DATA *ch, AFFECT_DATA *paf)
+{
+        affect_to_char_source(
+                ch,
+                paf,
+                AFFECT_SOURCE_NONE,
+                0);
+}
 
 /*
  * Remove an affect from a char.
@@ -967,24 +961,49 @@ void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
 }
 
 
-/*
- * Strip all affects of a given sn.
- */
 void affect_strip( CHAR_DATA *ch, int sn )
 {
         AFFECT_DATA *paf;
 
-        for ( paf = ch->affected; paf; paf = paf->next )
+        for (paf = ch->affected; paf; paf = paf->next)
         {
-                if ( paf->deleted )
+                if (paf->deleted)
                         continue;
-                if ( paf->type == sn )
-                        affect_remove( ch, paf );
+
+                /*
+                 * Generic stripping applies only to ordinary affects.
+                 * Form- and object-owned affects must be removed by their
+                 * owning source.
+                 */
+                if (paf->type == sn
+                &&  paf->source_type == AFFECT_SOURCE_NONE)
+                {
+                        affect_remove(ch, paf);
+                }
         }
 
         return;
 }
 
+/*
+ * Remove only affects belonging to one specific source.
+ */
+void affect_strip_source(CHAR_DATA *ch, int source_type, uint64_t source_id)
+{
+        AFFECT_DATA *paf;
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted)
+                        continue;
+
+                if (paf->source_type == source_type
+                &&  paf->source_id == source_id)
+                {
+                        affect_remove(ch, paf);
+                }
+        }
+}
 
 /*
  * Return true if a char is affected by a spell.
@@ -1005,6 +1024,186 @@ bool is_affected( CHAR_DATA *ch, int sn )
         return FALSE;
 }
 
+bool affect_bit_is_supplied(CHAR_DATA *ch, unsigned long int bit)
+{
+        AFFECT_DATA *paf;
+
+        if (!ch || !bit)
+                return FALSE;
+
+        /*
+         * NPC prototype/spawn flags are an independent provider.
+         *
+         * They are not represented by AFFECT_DATA and therefore must be
+         * checked explicitly before examining temporary/sourced affects.
+         */
+        if (IS_NPC(ch)
+        &&  IS_SET(ch->intrinsic_affected_by, bit))
+        {
+                return TRUE;
+        }
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted)
+                        continue;
+
+                if (paf->bitvector & bit)
+                        return TRUE;
+        }
+
+        return FALSE;
+}
+
+/*
+ * Return true if a status bit has a raw/intrinsic provider rather than
+ * existing solely because of AFFECT_DATA.
+ *
+ * For NPCs, intrinsic_affected_by records the currently active intrinsic
+ * providers.  The second case preserves support for legacy/raw runtime bits
+ * which are not represented by AFFECT_DATA.
+ */
+bool affect_bit_has_raw_source(CHAR_DATA *ch, unsigned long int bit)
+{
+        if (!ch || !bit)
+                return FALSE;
+
+        if (IS_NPC(ch)
+        &&  IS_SET(ch->intrinsic_affected_by, bit))
+        {
+                return TRUE;
+        }
+
+        if (IS_AFFECTED(ch, bit)
+        &&  !affect_bit_is_supplied(ch, bit))
+        {
+                return TRUE;
+        }
+
+        return FALSE;
+}
+
+
+/*
+ * Deliberately remove a raw/intrinsic provider of a status bit.
+ *
+ * This differs from ordinary AFFECT_DATA expiry.  On an NPC, the intrinsic
+ * provider itself is removed for the remainder of this mob instance's life.
+ *
+ * Other AFFECT_DATA providers remain authoritative.  Thus dispelling an
+ * intrinsic Sanctuary while an item still supplies Sanctuary removes the
+ * intrinsic copy but leaves the character Sanctuaried until the item is
+ * removed.
+ *
+ * Returns TRUE if the aggregate status remains active from another provider.
+ */
+bool affect_strip_raw_bit(CHAR_DATA *ch, unsigned long int bit)
+{
+        if (!ch || !bit)
+                return FALSE;
+
+        if (IS_NPC(ch))
+        {
+                REMOVE_BIT(
+                    ch->intrinsic_affected_by,
+                    bit);
+        }
+
+        if (affect_bit_is_supplied(ch, bit))
+        {
+                SET_BIT(
+                    ch->affected_by,
+                    bit);
+        }
+        else
+        {
+                REMOVE_BIT(
+                    ch->affected_by,
+                    bit);
+        }
+
+        return IS_AFFECTED(ch, bit);
+}
+
+/*
+ * Remove one affect type belonging to one specific source.
+ */
+void affect_strip_source_sn(CHAR_DATA *ch, int sn,
+                            int source_type, uint64_t source_id)
+{
+        AFFECT_DATA *paf;
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted)
+                        continue;
+
+                if (paf->type == sn
+                &&  paf->source_type == source_type
+                &&  paf->source_id == source_id)
+                {
+                        affect_remove(ch, paf);
+                }
+        }
+}
+
+/*
+ * Return true if a specific source supplies this affect.
+ */
+bool is_affected_source(CHAR_DATA *ch, int sn,
+                        int source_type, uint64_t source_id)
+{
+        AFFECT_DATA *paf;
+
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted)
+                        continue;
+
+                if (paf->type == sn
+                &&  paf->source_type == source_type
+                &&  paf->source_id == source_id)
+                {
+                        return TRUE;
+                }
+        }
+
+        return FALSE;
+}
+
+/*
+ * Elemental resistance can be supplied either by a named character
+ * affect or by an APPLY_RESIST_* modifier from equipment/set bonuses.
+ */
+bool has_elemental_resistance(CHAR_DATA *ch, int sn)
+{
+        if (!ch)
+                return FALSE;
+
+        /*
+         * Spells and form-owned effects retain their normal identity.
+         */
+        if (is_affected(ch, sn))
+                return TRUE;
+
+        /*
+         * Equipment and set bonuses contribute through the numeric
+         * resistance fields.
+         */
+        if (sn == gsn_resist_heat)
+                return ch->resist_heat > 0;
+
+        if (sn == gsn_resist_cold)
+                return ch->resist_cold > 0;
+
+        if (sn == gsn_resist_lightning)
+                return ch->resist_lightning > 0;
+
+        if (sn == gsn_resist_acid)
+                return ch->resist_acid > 0;
+
+        return FALSE;
+}
 
 /*
  * Add or enhance an affect.
@@ -1013,16 +1212,21 @@ void affect_join( CHAR_DATA *ch, AFFECT_DATA *paf )
 {
         AFFECT_DATA *paf_old;
 
-        for ( paf_old = ch->affected; paf_old; paf_old = paf_old->next )
+        for (paf_old = ch->affected; paf_old; paf_old = paf_old->next)
         {
-                if ( paf_old->deleted )
+                if (paf_old->deleted)
                         continue;
 
-                if ( paf_old->type == paf->type )
+                /*
+                 * Ordinary joined affects must not absorb an affect owned by
+                 * a form, object, or other explicit source.
+                 */
+                if (paf_old->type == paf->type
+                &&  paf_old->source_type == AFFECT_SOURCE_NONE)
                 {
                         paf->duration += paf_old->duration;
                         paf->modifier += paf_old->modifier;
-                        affect_remove( ch, paf_old );
+                        affect_remove(ch, paf_old);
                         break;
                 }
         }
@@ -1031,6 +1235,28 @@ void affect_join( CHAR_DATA *ch, AFFECT_DATA *paf )
         return;
 }
 
+/*
+ * Check actual room membership, not merely a saved room pointer.
+ *
+ * Loading a player file sets ch->in_room before the character enters
+ * the world. That temporary character must not affect room lighting.
+ * NPCs and linkdead players still count when present in the room.
+ */
+static bool char_is_in_room_list(const CHAR_DATA *ch)
+{
+        const CHAR_DATA *rch;
+
+        if (!ch || !ch->in_room)
+                return FALSE;
+
+        for (rch = ch->in_room->people; rch; rch = rch->next_in_room)
+        {
+                if (rch == ch)
+                        return TRUE;
+        }
+
+        return FALSE;
+}
 
 /*
  * Move a char out of a room.
@@ -1054,7 +1280,7 @@ void char_from_room( CHAR_DATA *ch )
         if ( ( obj = get_eq_char( ch, WEAR_LIGHT ) )
             && obj->item_type == ITEM_LIGHT
             && obj->value[2] != 0
-            && (!IS_NPC(ch) && ch->desc && ch->desc->connected != CON_GET_OLD_PASSWORD)
+            && char_is_in_room_list(ch)
             && ch->in_room->light > 0 )
         {
                 --ch->in_room->light;
@@ -1117,8 +1343,12 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
         {
                 ++ch->in_room->area->nplayer;
 
+                /*
+                 * Replenish breath only outside both underwater sectors.
+                 * Moving between underwater rooms must preserve remaining air.
+                 */
                 if ( ( ch->in_room->sector_type != SECT_UNDERWATER )
-                  || ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
+                  && ( ch->in_room->sector_type != SECT_UNDERWATER_GROUND ) )
                 {
                         ch->pcdata->air_supply = FULL_AIR_SUPPLY;
                 }
@@ -1414,14 +1644,27 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
         if ( !IS_NPC(ch) && ( pObjSetIndex = objects_objset(obj->pIndexData->vnum ) ) )
         {
                 int count;
-                count=0;
+
+                count = 0;
+
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {
                         count++;
+
                      /*   bug( "EQUIP_CHAR DEBUG: total count %d.", count ); */
+
                         if ( gets_bonus_objset ( pObjSetIndex, ch, obj, count) )
                         {
-                                affect_modify( ch, paf, TRUE, obj );
+                                affect_modify_source(
+                                    ch,
+                                    paf,
+                                    TRUE,
+                                    obj,
+                                    AFFECT_SOURCE_OBJSET,
+                                    objset_affect_source_id(
+                                        pObjSetIndex,
+                                        count));
+
                                 /* If the object your about to wear is NOT a set OR it is and you get a bonus then Apply effect */
                                 send_to_char ( "{WYou obtain a set bonus.{x\n\r", ch);
                                 break;
@@ -1437,17 +1680,33 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
 
                 if (!obj->how_created || obj->how_created == CREATED_PRE_DD5)
                 {
-                for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
-                        affect_modify( ch, paf, TRUE, obj );
+                        for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
+                        {
+                                affect_modify_source(
+                                    ch,
+                                    paf,
+                                    TRUE,
+                                    obj,
+                                    AFFECT_SOURCE_OBJECT,
+                                    equipment_affect_source_id(iWear));
+                        }
                 }
 
                 for ( paf = obj->affected; paf; paf = paf->next )
-                        affect_modify( ch, paf, TRUE, obj );
+                {
+                        affect_modify_source(
+                            ch,
+                            paf,
+                            TRUE,
+                            obj,
+                            AFFECT_SOURCE_OBJECT,
+                            equipment_affect_source_id(iWear));
+                }
 
                 if ( obj->item_type == ITEM_LIGHT
                     && iWear == WEAR_LIGHT
                     && obj->value[2] != 0
-                    && ch->in_room )
+                    && char_is_in_room_list(ch) )
                         ++ch->in_room->light;
         }
 
@@ -1491,12 +1750,12 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
                 return;
         }
 
-
         /* set bonus hack - Brutus Jul 2022 */
         if ( !IS_NPC(ch) && ( pObjSetIndex = objects_objset(obj->pIndexData->vnum ) ) )
         {
                 int count;
-                count=0;
+
+                count = 0;
 
                 for ( paf = pObjSetIndex->affected; paf; paf = paf->next )
                 {
@@ -1504,7 +1763,16 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
 
                         if ( rem_bonus_objset ( pObjSetIndex, ch, obj, count) )
                         {
-                                affect_modify( ch, paf, FALSE, obj );
+                                affect_modify_source(
+                                    ch,
+                                    paf,
+                                    FALSE,
+                                    obj,
+                                    AFFECT_SOURCE_OBJSET,
+                                    objset_affect_source_id(
+                                        pObjSetIndex,
+                                        count));
+
                                 send_to_char ( "{WYour set bonus is removed.{x\n\r", ch);
                                 break;
                         }
@@ -1519,17 +1787,34 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
                 if (!obj->how_created || obj->how_created == CREATED_PRE_DD5)
                 {
                         for ( paf = obj->pIndexData->affected; paf; paf = paf->next )
-                        affect_modify( ch, paf, FALSE, obj );
+                        {
+                                affect_modify_source(
+                                    ch,
+                                    paf,
+                                    FALSE,
+                                    obj,
+                                    AFFECT_SOURCE_OBJECT,
+                                    equipment_affect_source_id(
+                                        obj->wear_loc));
+                        }
                 }
 
                 for ( paf = obj->affected; paf; paf = paf->next )
-                        affect_modify( ch, paf, FALSE, obj );
+                {
+                        affect_modify_source(
+                            ch,
+                            paf,
+                            FALSE,
+                            obj,
+                            AFFECT_SOURCE_OBJECT,
+                            equipment_affect_source_id(
+                                obj->wear_loc));
+                }
 
                 if ( obj->item_type == ITEM_LIGHT
                     && obj->wear_loc == WEAR_LIGHT
                     && obj->value[2] != 0
-                    && ch->in_room
-                    && (!IS_NPC(ch) && ch->desc && ch->desc->connected != CON_GET_OLD_PASSWORD)
+                    && char_is_in_room_list(ch)
                     && ch->in_room->light > 0 )
                         --ch->in_room->light;
         }
