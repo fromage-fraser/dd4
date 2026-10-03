@@ -719,6 +719,8 @@ int gsn_mummy_rot = -1;
 int gsn_detect_undead;
 int gsn_turn_undead;
 int gsn_chant_of_turning;
+int gsn_protect_vs_evil;
+int gsn_protect_vs_good;
 
 /*
  *  Spell groups

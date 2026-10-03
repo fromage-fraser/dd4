@@ -4173,6 +4173,63 @@ spell requires great concentration and mana reserves.
 These spells may be used simultaneously for cumulative effect.
 ~
 
+0 'PROTECTION VS EVIL' PROTECTEVIL~
+Syntax: cast 'protection vs evil' <<target>
+
+This spell helps you fight evil creatures and the undead. If you leave
+out the target, you protect yourself.
+
+Against a qualifying opponent, it gives you:
+
+    +2 effective hitroll on normal physical hit rolls;
+    -2 effective hitroll for their normal physical attacks against you;
+    eight percentage points added to your saving threshold against them;
+    eight percentage points removed from their saving threshold against you.
+
+The normal saving limits still apply. Magical attacks benefit through
+their existing saving throws; this spell does not add another roll.
+
+An evil undead counts once, not twice. The protection lasts 24 ticks.
+It does not add damage, increase your training, make a weapon magical,
+or overcome immunity.
+
+This is separate from the ordinary Protection spell. Both can be active.
+Protection vs Evil and Protection vs Good can also coexist, but their
+bonuses do not double against the same opponent.
+
+Clerics learn this spell early. Knights gain access later. Cleric
+subclasses retain it through their early Cleric training.
+~
+
+0 'PROTECTION VS GOOD' PROTECTGOOD~
+Syntax: cast 'protection vs good' <<target>
+
+This spell helps you fight good-aligned creatures. If you leave out the
+target, you protect yourself.
+
+Against a qualifying opponent, it gives you:
+
+    +2 effective hitroll on normal physical hit rolls;
+    -2 effective hitroll for their normal physical attacks against you;
+    eight percentage points added to your saving threshold against them;
+    eight percentage points removed from their saving threshold against you.
+
+The normal saving limits still apply. Magical attacks benefit through
+their existing saving throws; this spell does not add another roll.
+
+Living creatures do not automatically qualify. A good-aligned undead
+qualifies because it is good, not because it is undead.
+
+The protection lasts 24 ticks. It does not add damage, increase your
+training, make a weapon magical, or overcome immunity.
+
+This is separate from the ordinary Protection spell. Both can be active.
+Protection vs Evil and Protection vs Good can also coexist, but their
+bonuses do not double against the same opponent.
+
+Necromancers and Infernalists can learn this spell.
+~
+
 0 REFRESH~
 Syntax: cast refresh <<target>
 
@@ -5295,6 +5352,8 @@ Spells in protective magiks include:
     armor
     shield
     protection
+    protection vs evil
+    protection vs good
     sanctuary
     stone skin
 ~
@@ -6148,6 +6207,7 @@ blink                   second attack           pattern
 invis                   teleport                knock
 create spring           control weather         detect curse
 sense wisdom            turn undead             detect undead
+protection vs evil
 
 True clerics (those that don't change to templars or druids) may also
 learn these skills above level 30:
@@ -6437,6 +6497,7 @@ create water            dual                    disarm
 joust                   second spell            destrier
 flamestrike             cure poison             enhanced critical
 target                  turn undead             detect undead
+protection vs evil
 ~
 
 -1 'SMARTIAL ARTIST'~
@@ -6497,6 +6558,7 @@ deter                   harm                    cure poison
 cure blindness          refresh                 remove curse
 second attack           stabilise               resist acid
 fleshrot                nausea                  resist cold
+protection vs good
 ~
 
 -1 SNINJA~
@@ -6519,7 +6581,7 @@ fireshield              detect good             summon demon
 dark ritual             second attack           third spell
 hellfire                chaos blast             detect evil
 possession              release                 resist heat
-resist lightning
+resist lightning        protection vs good
 ~
 
 -1 STEMPLAR~

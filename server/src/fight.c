@@ -1185,6 +1185,16 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                         victim_ac -= 4;
 
                 /*
+                 * These bonuses belong to this opponent, not to the
+                 * character's general hitroll or armour.
+                 */
+                if (alignment_protection_applies(ch, victim))
+                        thac0 -= ALIGNMENT_PROTECTION_HIT_BONUS;
+
+                if (alignment_protection_applies(victim, ch))
+                        victim_ac -= ALIGNMENT_PROTECTION_DEFENCE_BONUS;
+
+                /*
                  * The moment of excitement!
                  */
                 while ((diceroll = number_bits(5)) >= 20)

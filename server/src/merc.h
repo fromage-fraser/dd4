@@ -419,9 +419,9 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 625            /* +1 chnat of turning */
-#define MAX_PRE_REQ 1580          /* +2 chant of turning prerequisites */
-#define MAX_SPELL_GROUP 471      /* +1 chant of turning related */
+#define MAX_SKILL 627            /* Two new alignment protection spells. */
+#define MAX_PRE_REQ 1587         /* Seven new protection prerequisites. */
+#define MAX_SPELL_GROUP 473      /* Two new protective magiks entries. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
@@ -3524,6 +3524,10 @@ struct skill_type
  * saves_spell() changes its result by four percentage points per level.
  */
 #define RESISTANCE_SAVE_LEVEL_SHIFT 5
+#define ALIGNMENT_PROTECTION_HIT_BONUS 2
+#define ALIGNMENT_PROTECTION_DEFENCE_BONUS 2
+#define ALIGNMENT_PROTECTION_SAVE_BONUS 8
+#define ALIGNMENT_PROTECTION_DURATION 24
 
 /*
  * Resistant Immune Susceptible flags
@@ -4434,6 +4438,8 @@ extern int gsn_stench;
 extern int gsn_mummy_rot;
 extern int gsn_turn_undead;
 extern int gsn_chant_of_turning;
+extern int gsn_protect_vs_evil;
+extern int gsn_protect_vs_good;
 /*
  *  Deity gsns
  */
@@ -5285,6 +5291,8 @@ DECLARE_SPELL_FUN(spell_clairvoyance);
 DECLARE_SPELL_FUN(spell_sense_wisdom);
 DECLARE_SPELL_FUN(spell_sonic_blast);
 DECLARE_SPELL_FUN(spell_banish);
+DECLARE_SPELL_FUN(spell_protect_vs_evil);
+DECLARE_SPELL_FUN(spell_protect_vs_good);
 
 #define MOB_VNUM_SKELETON 85
 #define MOB_VNUM_GHOUL 86
@@ -5687,6 +5695,8 @@ void obj_cast_spell args((int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, O
 bool mob_interacts_players(CHAR_DATA *mob);
 bool can_detect_undead(CHAR_DATA *viewer, CHAR_DATA *victim);
 bool can_detect_undead_obj(CHAR_DATA *viewer, OBJ_DATA *obj);
+bool alignment_protection_applies args((CHAR_DATA *warded,
+                                        CHAR_DATA *opponent));
 
 /* mob.c */
 int species_lookup args((const char *name));

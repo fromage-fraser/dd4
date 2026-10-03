@@ -9,6 +9,9 @@
 
 {&gsn_dark_ritual,              &gsn_group_dark,                30,     PRE_INFERNALIST},
 
+{&gsn_protect_vs_good,          &gsn_group_dark,                40,     PRE_INFERNALIST},
+{&gsn_protect_vs_good,          &gsn_infernalist_base,          30,     PRE_INFERNALIST},
+
 {&gsn_steal_strength,           &gsn_group_dark,                50,     PRE_INFERNALIST},
 
 {&gsn_demon_flames,             &gsn_group_dark,                80,     PRE_INFERNALIST},
