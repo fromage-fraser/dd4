@@ -560,7 +560,8 @@ int apply_resistance_to_damage(CHAR_DATA *victim, int dam,
  * Resistance and vulnerability modify the effective casting level rather than
  * creating a second independent saving throw.
  */
-bool saves_resistance_effect(int level,
+bool saves_resistance_effect(CHAR_DATA *source,
+                             int level,
                              CHAR_DATA *victim,
                              unsigned long int res_types)
 {
@@ -586,7 +587,7 @@ bool saves_resistance_effect(int level,
                 break;
         }
 
-        return saves_spell(level, victim);
+        return saves_spell(source, level, victim);
 }
 
 /*
@@ -601,10 +602,16 @@ bool is_immune_to(CHAR_DATA *victim, unsigned long int damtype)
  * Compute a saving throw.
  * Negative applies make saving throw better.
  */
-bool saves_spell(int level, CHAR_DATA *victim)
+bool saves_spell(CHAR_DATA *source, int level, CHAR_DATA *victim)
 {
         int base = get_curr_wis(victim) + get_curr_int(victim);
         int save;
+
+        /*
+         * Keep the actual source available for protection checks.
+         * This groundwork leaves today's saving chances unchanged.
+         */
+        (void)source;
 
         if (IS_NPC(victim))
         {
@@ -616,7 +623,8 @@ bool saves_spell(int level, CHAR_DATA *victim)
                         base += 5;
         }
 
-        save = base + ((victim->level - level) * 4) - (victim->saving_throw / 4);
+        save = base + ((victim->level - level) * 4)
+                    - (victim->saving_throw / 4);
         save = URANGE(5, save, 95);
 
         return number_percent() < save;
@@ -1240,7 +1248,7 @@ void spell_acid_blast(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 8);
 
-        if (has_elemental_resistance(victim, gsn_resist_acid) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_acid) || saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (spell_attack_number == 1)
@@ -1270,7 +1278,7 @@ void spell_inner_fire(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 6);
         dam += 2 * level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (spell_attack_number == 1 && (ch != victim))
@@ -1308,7 +1316,7 @@ void spell_synaptic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 8);
         dam += 4 * level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (spell_attack_number == 1)
@@ -1336,7 +1344,7 @@ void spell_prismatic_spray(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 8);
         dam += 3 * level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 1.5;
 
         if (spell_attack_number == 1)
@@ -1356,7 +1364,7 @@ void spell_holy_word(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 4);
         dam += level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (IS_EVIL(ch))
@@ -1382,7 +1390,7 @@ void spell_unholy_word(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 4);
         dam += level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (IS_GOOD(ch))
@@ -1513,7 +1521,7 @@ void spell_blindness(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
         {
                 if (ch != victim)
                 {
@@ -1552,7 +1560,7 @@ void spell_burning_hands(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = number_range(10, 20) + dice(UMIN(level, 30), 3);
 
-        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -1590,7 +1598,7 @@ void spell_call_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
                 {
                         dam = dice(level, 8);
 
-                        if (has_elemental_resistance(vch, gsn_resist_lightning) || saves_spell(level, vch))
+                        if (has_elemental_resistance(vch, gsn_resist_lightning) || saves_spell(ch, level, vch))
                                 dam /= 2;
 
                         damage(ch, vch, dam, sn, FALSE);
@@ -1635,7 +1643,7 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 6);
 
-        if (has_elemental_resistance(victim, gsn_resist_lightning) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_lightning) || saves_spell(ch, level, victim))
                 dam /= 3;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -1664,7 +1672,7 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
                                 act("The bolt hits you!", tmp_vict, NULL, NULL, TO_CHAR);
                                 dam = dice(level, 6);
 
-                                if (has_elemental_resistance(tmp_vict, gsn_resist_lightning) || saves_spell(level, tmp_vict))
+                                if (has_elemental_resistance(tmp_vict, gsn_resist_lightning) || saves_spell(ch, level, tmp_vict))
                                         dam /= 3;
 
                                 damage(ch, tmp_vict, dam, sn, FALSE);
@@ -1681,7 +1689,7 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
                         send_to_char("You are struck by your own lightning!\n\r", ch);
                         dam = dice(level, 6);
 
-                        if (has_elemental_resistance(ch, gsn_resist_lightning) || saves_spell(level, ch))
+                        if (has_elemental_resistance(ch, gsn_resist_lightning) || saves_spell(ch, level, ch))
                                 dam /= 3;
 
                         damage(ch, ch, dam, sn, FALSE);
@@ -1748,7 +1756,7 @@ void spell_charm_person(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (IS_AFFECTED(victim, AFF_CHARM) || IS_SET(victim->act, ACT_NOCHARM) || IS_AFFECTED(ch, AFF_CHARM) || level < victim->level || ch->mount == victim || victim->rider || IS_SET(victim->act, ACT_BANKER) || IS_SET(victim->act, ACT_CLAN_GUARD) || !mob_interacts_players(victim) || mob_is_quest_target(victim) || saves_resistance_effect(level, victim, skill_table[sn].res_type))
+        if (IS_AFFECTED(victim, AFF_CHARM) || IS_SET(victim->act, ACT_NOCHARM) || IS_AFFECTED(ch, AFF_CHARM) || level < victim->level || ch->mount == victim || victim->rider || IS_SET(victim->act, ACT_BANKER) || IS_SET(victim->act, ACT_CLAN_GUARD) || !mob_interacts_players(victim) || mob_is_quest_target(victim) || saves_resistance_effect(ch,level,victim,skill_table[sn].res_type))
         {
                 send_to_char("Your charm failed.\n\r", ch);
                 return;
@@ -1781,9 +1789,10 @@ void spell_chill_touch(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (!has_elemental_resistance(victim, gsn_resist_cold)
         &&  !saves_resistance_effect(
-                 level,
-                 victim,
-                 skill_table[sn].res_type)
+                ch,
+                level,
+                victim,
+                skill_table[sn].res_type)
         &&  (!IS_NPC(victim)
         ||   (MAKES_CORPSE(victim) && !IS_INORGANIC(victim))))
         {
@@ -1816,7 +1825,7 @@ void spell_colour_spray(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 4) + level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -2815,6 +2824,7 @@ void spell_curse(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (IS_AFFECTED(victim, AFF_CURSE)
         ||  saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -3058,7 +3068,7 @@ static bool dispel_raw_affect(
                         return FALSE;
         }
         else if (!IS_IMMORTAL(ch)
-        &&       saves_spell(level, victim))
+        &&       saves_spell(ch, level, victim))
         {
                 return FALSE;
         }
@@ -3262,7 +3272,7 @@ void spell_dispel_magic(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (skill_cannot_be_dispelled(paf->type))
                         continue;
 
-                if (!saves_spell(level, victim)
+                if (!saves_spell(ch, level, victim)
                 ||  IS_IMMORTAL(ch))
                 {
                         send_to_char(
@@ -3947,7 +3957,7 @@ void spell_dispel_evil(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 4) + level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -4093,6 +4103,7 @@ void spell_energy_drain(int sn, int level, CHAR_DATA *ch, void *vo)
         int dam;
 
         if (saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type)
@@ -4138,6 +4149,7 @@ void spell_entrapment(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (victim->fighting
         ||  saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -4183,7 +4195,7 @@ void spell_fireball(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 6);
 
-        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (spell_attack_number == 1)
@@ -4230,7 +4242,7 @@ void spell_flamestrike(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 4);
         dam += level * 2;
 
-        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (spell_attack_number == 1)
@@ -4294,7 +4306,7 @@ void spell_faerie_fog(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (!mob_interacts_players(ich))
                         continue;
 
-                if (ich == ch || saves_spell(level, ich))
+                if (ich == ch || saves_spell(ch, level, ich))
                         continue;
 
                 was_concealed =
@@ -4479,7 +4491,7 @@ void spell_general_purpose(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 6);
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -4522,7 +4534,7 @@ void spell_harm(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int dam;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam = 50;
         else
                 dam = 100;
@@ -4852,7 +4864,7 @@ void spell_high_explosive(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 6);
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -5640,7 +5652,7 @@ void spell_lightning_bolt(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 4) + level;
 
-        if (has_elemental_resistance(victim, gsn_resist_lightning) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_lightning) || saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -5864,6 +5876,7 @@ void spell_poison(int sn, int level, CHAR_DATA *ch, void *vo)
          * player-specific resistance skill.
          */
         if (saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -5930,6 +5943,7 @@ void spell_paralysis(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
 
         if (saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -6231,6 +6245,7 @@ void spell_sleep(int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         if (saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -6301,7 +6316,7 @@ void spell_summon(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim;
 
-        if (!(victim = get_char_world(ch, target_name)) || victim == ch || !victim->in_room || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(ch->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->area->area_flags, AREA_FLAG_SAFE) || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_AFFECTED(victim, AFF_CURSE) || victim->level >= level + 3 || victim->fighting || victim->in_room->area != ch->in_room->area || victim->rider || mob_is_quest_target(victim) || (victim->in_room->area->low_level == -4 && victim->in_room->area->high_level == -4) || (IS_NPC(victim) && (IS_SET(victim->act, ACT_MOUNTABLE) || IS_SET(victim->act, ACT_NO_SUMMON) || saves_spell(level, victim))))
+        if (!(victim = get_char_world(ch, target_name)) || victim == ch || !victim->in_room || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(ch->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->area->area_flags, AREA_FLAG_SAFE) || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_AFFECTED(victim, AFF_CURSE) || victim->level >= level + 3 || victim->fighting || victim->in_room->area != ch->in_room->area || victim->rider || mob_is_quest_target(victim) || (victim->in_room->area->low_level == -4 && victim->in_room->area->high_level == -4) || (IS_NPC(victim) && (IS_SET(victim->act, ACT_MOUNTABLE) || IS_SET(victim->act, ACT_NO_SUMMON) || saves_spell(ch, level, victim))))
         {
                 send_to_char("You failed.\n\r", ch);
                 return;
@@ -6546,7 +6561,7 @@ void spell_teleport(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        if (!victim->in_room || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) || (!IS_NPC(ch) && victim->fighting) || (victim != ch && (saves_spell(level, victim) || saves_spell(level, victim))))
+        if (!victim->in_room || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) || (!IS_NPC(ch) && victim->fighting) || (victim != ch && (saves_spell(ch, level, victim) || saves_spell(ch, level, victim))))
         {
                 send_to_char("You failed.\n\r", ch);
                 return;
@@ -6645,7 +6660,7 @@ void spell_banish(int sn, int level, CHAR_DATA *ch, void *vo)
         ||  IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER)
         ||  IS_SET(victim->in_room->area->area_flags,
                    AREA_FLAG_NO_TELEPORT)
-        ||  saves_spell(level, victim))
+        ||  saves_spell(ch, level, victim))
                 goto failed;
 
         for (;;)
@@ -6732,7 +6747,7 @@ void spell_ventriloquate(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 /* if ( !is_name( speaker, vch->name ) ) */
                 if (vch != ch)
-                        send_to_char(saves_spell(level, vch) ? buf2 : buf1, vch);
+                        send_to_char(saves_spell(ch, level, vch) ? buf2 : buf1, vch);
                 else
                         send_to_char(buf1, ch);
         }
@@ -6755,6 +6770,7 @@ void spell_weaken(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (is_affected(victim, sn)
         ||  saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -6796,7 +6812,7 @@ void spell_acid_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         if (has_elemental_resistance(victim, gsn_resist_acid))
                 resist = TRUE;
 
-        if (number_percent() < 2 * level && !saves_spell(level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
+        if (number_percent() < 2 * level && !saves_spell(ch, level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
         {
 
                 for (obj_lose = victim->carrying; obj_lose; obj_lose = obj_next)
@@ -6849,7 +6865,7 @@ void spell_acid_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         hpch = UMAX(10, ch->hit);
         dam = number_range(hpch / 8 + 1, hpch / 4);
 
-        if (resist || saves_spell(level, victim))
+        if (resist || saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (is_affected(victim, gsn_dragon_shield) || is_affected(victim, gsn_bonus_exotic))
@@ -6870,7 +6886,7 @@ void spell_fire_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         if (has_elemental_resistance(victim, gsn_resist_heat))
                 resist = TRUE;
 
-        if (number_percent() < 2 * level && !saves_spell(level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
+        if (number_percent() < 2 * level && !saves_spell(ch, level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
         {
                 for (obj_lose = victim->carrying; obj_lose; obj_lose = obj_next)
                 {
@@ -6927,7 +6943,7 @@ void spell_fire_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         hpch = UMAX(10, ch->hit);
         dam = number_range(hpch / 8 + 1, hpch / 4);
 
-        if (resist || saves_spell(level, victim))
+        if (resist || saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (is_affected(victim, gsn_dragon_shield) || is_affected(victim, gsn_bonus_exotic))
@@ -6948,7 +6964,7 @@ void spell_steam_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         if (has_elemental_resistance(victim, gsn_resist_heat))
                 resist = TRUE;
 
-        if (number_percent() < 2 * level && !saves_spell(level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
+        if (number_percent() < 2 * level && !saves_spell(ch, level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
         {
                 for (obj_lose = victim->carrying; obj_lose; obj_lose = obj_next)
                 {
@@ -7005,7 +7021,7 @@ void spell_steam_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         hpch = UMAX(10, ch->hit);
         dam = number_range(hpch / 7 + 1, hpch / 4);
 
-        if (resist || saves_spell(level, victim))
+        if (resist || saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (is_affected(victim, gsn_dragon_shield) || is_affected(victim, gsn_bonus_exotic))
@@ -7026,7 +7042,7 @@ void spell_frost_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         if (has_elemental_resistance(victim, gsn_resist_cold))
                 resist = TRUE;
 
-        if (number_percent() < 2 * level && !saves_spell(level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
+        if (number_percent() < 2 * level && !saves_spell(ch, level, victim) && !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) && !is_affected(victim, gsn_dragon_shield) && !is_affected(victim, gsn_bonus_exotic))
         {
                 for (obj_lose = victim->carrying; obj_lose; obj_lose = obj_next)
                 {
@@ -7065,7 +7081,7 @@ void spell_frost_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         hpch = UMAX(10, ch->hit);
         dam = number_range(hpch / 8 + 1, hpch / 4);
 
-        if (resist || saves_spell(level, victim))
+        if (resist || saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (is_affected(victim, gsn_dragon_shield) || is_affected(victim, gsn_bonus_exotic))
@@ -7099,7 +7115,7 @@ void spell_gas_breath(int sn, int level, CHAR_DATA *ch, void *vo)
                         hpch = UMAX(10, ch->hit);
                         dam = number_range(hpch / 8 + 1, hpch / 4);
 
-                        if (saves_spell(level, vch))
+                        if (saves_spell(ch, level, vch))
                                 dam /= 2;
 
                         if (is_affected(vch, gsn_dragon_shield) || is_affected(vch, gsn_bonus_exotic))
@@ -7120,7 +7136,7 @@ void spell_lightning_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         int hpch = UMAX(10, ch->hit);
         int dam = number_range(hpch / 8 + 1, hpch / 4);
 
-        if (has_elemental_resistance(victim, gsn_resist_lightning) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_lightning) || saves_spell(ch, level, victim))
                 dam /= 2;
 
         if (is_affected(victim, gsn_dragon_shield) || is_affected(victim, gsn_bonus_exotic))
@@ -7173,7 +7189,7 @@ void spell_agitation(int sn, int level, CHAR_DATA *ch, void *vo)
         level = UMAX(0, level);
         dam = number_range(dam_each[level] / 2, dam_each[level] * 2);
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -7231,9 +7247,10 @@ void spell_awe(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (victim->fighting == ch
         &&  !saves_resistance_effect(
-                 level,
-                 victim,
-                 skill_table[sn].res_type))
+                ch,
+                level,
+                victim,
+                skill_table[sn].res_type))
         {
                 stop_fighting(victim, TRUE);
                 act("$N is in AWE of you, and refuses to continue fighting!", ch, NULL, victim, TO_CHAR);
@@ -7266,7 +7283,7 @@ void spell_ballistic_attack(int sn, int level, CHAR_DATA *ch, void *vo)
         level = UMAX(0, level);
         dam = number_range(dam_each[level] / 2, dam_each[level] * 2);
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         act("You chuckle as a stone strikes $N.", ch, NULL, victim, TO_CHAR);
@@ -7581,7 +7598,7 @@ void spell_control_flames(int sn, int level, CHAR_DATA *ch, void *vo)
         level = UMAX(0, level);
         dam = number_range(dam_each[level] / 2, dam_each[level] * 2);
 
-        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(level, victim))
+        if (has_elemental_resistance(victim, gsn_resist_heat) || saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -7603,7 +7620,7 @@ void spell_create_sound(int sn, int level, CHAR_DATA *ch, void *vo)
         for (vch = ch->in_room->people; vch; vch = vch->next_in_room)
         {
                 if (!is_name(speaker, vch->name))
-                        send_to_char(saves_spell(level, vch) ? buf2 : buf1, vch);
+                        send_to_char(saves_spell(ch, level, vch) ? buf2 : buf1, vch);
         }
         return;
 }
@@ -7637,7 +7654,7 @@ void spell_death_field(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (!IS_NPC(ch) ? IS_NPC(vch) : IS_NPC(vch))
                 {
                         hpch = URANGE(10, ch->hit, 999);
-                        if (!saves_spell(level, vch) && (level <= vch->level + 5 && level >= vch->level - 5))
+                        if (!saves_spell(ch, level, vch) && (level <= vch->level + 5 && level >= vch->level - 5))
                         {
                                 dam = 10; /* Enough to compensate for sanct. and prot. */
                                 vch->hit = 1;
@@ -7715,7 +7732,7 @@ void spell_detonate(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 6);
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -7763,7 +7780,7 @@ void spell_disintegrate(int sn, int level, CHAR_DATA *ch, void *vo)
         if (!IS_NPC(victim) && (victim->form == FORM_PHOENIX || IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER)))
                 return;
 
-        if (!saves_spell(level, victim))
+        if (!saves_spell(ch, level, victim))
         {
                 for (obj_lose = victim->carrying; obj_lose; obj_lose = obj_next)
                 {
@@ -7787,7 +7804,7 @@ void spell_disintegrate(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if ((IS_NPC(ch) || IS_NPC(victim)) && !saves_spell(level, victim))
+        if ((IS_NPC(ch) || IS_NPC(victim)) && !saves_spell(ch, level, victim))
         {
                 act("You have DISINTEGRATED $N!", ch, NULL, victim, TO_CHAR);
                 act("You have been DISINTEGRATED by $n!", ch, NULL, victim, TO_VICT);
@@ -7867,7 +7884,7 @@ void spell_domination(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (IS_AFFECTED(victim, AFF_CHARM) || IS_SET(victim->act, ACT_NOCHARM) || IS_AFFECTED(ch, AFF_CHARM) || level < victim->level || ch->mount == victim || victim->rider || IS_SET(victim->act, ACT_BANKER) || IS_SET(victim->act, ACT_CLAN_GUARD) || !mob_interacts_players(victim) || mob_is_quest_target(victim) || saves_spell(level, victim))
+        if (IS_AFFECTED(victim, AFF_CHARM) || IS_SET(victim->act, ACT_NOCHARM) || IS_AFFECTED(ch, AFF_CHARM) || level < victim->level || ch->mount == victim || victim->rider || IS_SET(victim->act, ACT_BANKER) || IS_SET(victim->act, ACT_CLAN_GUARD) || !mob_interacts_players(victim) || mob_is_quest_target(victim) || saves_spell(ch, level, victim))
         {
                 send_to_char("Your domination failed.\n\r", ch);
                 return;
@@ -7938,6 +7955,7 @@ void spell_ego_whip(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (is_affected(victim, sn)
         ||  saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -8291,7 +8309,7 @@ void spell_psionic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = number_range(20, 30) + dice(level, 4);
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -8325,6 +8343,7 @@ void spell_psychic_drain(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (is_affected(victim, sn)
         ||  saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -8454,7 +8473,7 @@ void spell_ultrablast(int sn, int level, CHAR_DATA *ch, void *vo)
                         hpch = UMAX(10, ch->hit);
                         dam = number_range(hpch / 8 + 1, hpch / 4);
 
-                        if (saves_spell(level, vch))
+                        if (saves_spell(ch, level, vch))
                                 dam /= 1.5;
 
                         damage(ch, vch, dam, sn, FALSE);
@@ -8487,7 +8506,7 @@ void spell_wrath_of_god(int sn, int level, CHAR_DATA *ch, void *vo)
                         hpch = UMAX(10, ch->hit);
                         dam = number_range(hpch / 8 + 1, hpch / 4);
 
-                        if (saves_spell(level, vch))
+                        if (saves_spell(ch, level, vch))
                                 dam /= 1.5;
 
                         damage(ch, vch, dam, sn, FALSE);
@@ -8510,6 +8529,7 @@ void spell_spiritwrack(int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         if (saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -8576,6 +8596,7 @@ void spell_feeblemind(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
 
         if (saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -8629,7 +8650,7 @@ void spell_wither(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 8);
         dam += level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 1.5;
 
         if (spell_attack_number == 1 && (ch != victim))
@@ -9287,7 +9308,7 @@ void spell_moonray(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (vch->in_room == ch->in_room)
                 {
                         if (vch != ch && (IS_NPC(ch) ? !IS_NPC(vch) : IS_NPC(vch)))
-                                damage(ch, vch, saves_spell(level, vch) ? dam / 2 : dam, sn, FALSE);
+                                damage(ch, vch, saves_spell(ch, level, vch) ? dam / 2 : dam, sn, FALSE);
                         continue;
                 }
 
@@ -9342,7 +9363,7 @@ void spell_sunray(int sn, int level, CHAR_DATA *ch, void *vo)
                         if (!IS_NPC(vch) && is_safe(ch, vch))
                                 continue;
 
-                        if (!(vch == ch || IS_AFFECTED(vch, AFF_BLIND) || saves_spell(level, vch) || is_same_group(vch, ch)))
+                        if (!(vch == ch || IS_AFFECTED(vch, AFF_BLIND) || saves_spell(ch, level, vch) || is_same_group(vch, ch)))
                         {
                                 af.type = gsn_blindness;
                                 af.duration = 1 + level;
@@ -9362,25 +9383,25 @@ void spell_sunray(int sn, int level, CHAR_DATA *ch, void *vo)
                                 if (vch->race == RACE_ILLITHID)
                                 {
                                         racedam = (dam * 2);
-                                        damage(ch, vch, saves_spell(level, vch) ? racedam / 2 : racedam, sn, FALSE);
+                                        damage(ch, vch, saves_spell(ch, level, vch) ? racedam / 2 : racedam, sn, FALSE);
                                         continue;
                                 }
 
                                 if (vch->race == RACE_DROW)
                                 {
                                         racedam = (dam * 1.25);
-                                        damage(ch, vch, saves_spell(level, vch) ? racedam / 2 : racedam, sn, FALSE);
+                                        damage(ch, vch, saves_spell(ch, level, vch) ? racedam / 2 : racedam, sn, FALSE);
                                         continue;
                                 }
 
                                 if (vch->race == RACE_DUERGAR)
                                 {
                                         racedam = (dam * 1.2);
-                                        damage(ch, vch, saves_spell(level, vch) ? racedam / 2 : racedam, sn, FALSE);
+                                        damage(ch, vch, saves_spell(ch, level, vch) ? racedam / 2 : racedam, sn, FALSE);
                                         continue;
                                 }
 
-                                damage(ch, vch, saves_spell(level, vch) ? dam / 2 : dam, sn, FALSE);
+                                damage(ch, vch, saves_spell(ch, level, vch) ? dam / 2 : dam, sn, FALSE);
                         }
                         continue;
                 }
@@ -9399,7 +9420,7 @@ void spell_natures_fury(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 8);
         dam += 3 * level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         switch (ch->in_room->sector_type)
@@ -9611,7 +9632,7 @@ void spell_firestorm(int sn, int level, CHAR_DATA *ch, void *vo)
                 {
                         dam = dice(level, 6);
 
-                        if (has_elemental_resistance(vch, gsn_resist_heat) || saves_spell(level, vch))
+                        if (has_elemental_resistance(vch, gsn_resist_heat) || saves_spell(ch, level, vch))
                                 dam /= 1.5;
 
                         damage(ch, vch, dam, sn, FALSE);
@@ -9639,7 +9660,7 @@ void spell_meteor_storm(int sn, int level, CHAR_DATA *ch, void *vo)
                 {
                         dam = dice(level, 8);
 
-                        if (saves_spell(level, vch))
+                        if (saves_spell(ch, level, vch))
                                 dam /= 1.5;
 
                         damage(ch, vch, dam, sn, FALSE);
@@ -9674,6 +9695,7 @@ void spell_hex(int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         if (saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -9872,6 +9894,7 @@ void spell_possession(int sn, int level, CHAR_DATA *ch, void *vo)
         if (!IS_NPC(victim)
         ||  (ch->level - victim->level) < -5
         ||  saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -9969,6 +9992,7 @@ void spell_steal_strength(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (is_affected(victim, sn)
         ||  saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -10054,7 +10078,7 @@ void spell_infernal_fury(int sn, int level, CHAR_DATA *ch, void *vo)
                         hpch = UMAX(10, ch->hit);
                         dam = number_range(hpch / 4, hpch / 2);
 
-                        if (saves_spell(level, vch))
+                        if (saves_spell(ch, level, vch))
                                 dam /= 1.5;
 
                         damage(ch, vch, dam, sn, FALSE);
@@ -10077,6 +10101,7 @@ void spell_abyssal_hand(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
 
         if (saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -10136,6 +10161,7 @@ void spell_fear(int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         if (saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -10338,6 +10364,7 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (victim != ch)
                 {
                         if (saves_resistance_effect(
+                                ch,
                                 level,
                                 victim,
                                 skill_table[sn].res_type))
@@ -10369,6 +10396,7 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (victim != ch)
                 {
                         if (saves_resistance_effect(
+                                ch,
                                 level,
                                 victim,
                                 skill_table[sn].res_type))
@@ -10396,6 +10424,7 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         if (saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -10437,7 +10466,7 @@ void spell_animate_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 act("You focus on $N's off-hand weapon.", ch, NULL, victim, TO_CHAR);
 
-                if (saves_spell(level, victim))
+                if (saves_spell(ch, level, victim))
                 {
                         send_to_char("{cThey moved too quickly.{x\n\r", ch);
                         return;
@@ -10470,7 +10499,7 @@ void spell_animate_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 act("You focus on $N's weapon.", ch, NULL, victim, TO_CHAR);
 
-                if (saves_spell(level, victim))
+                if (saves_spell(ch, level, victim))
                 {
                         send_to_char("{cThey moved too quickly.{x\n\r", ch);
                         return;
@@ -10759,7 +10788,7 @@ void spell_hells_fire(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 8);
         dam += level * 2;
 
-        if (saves_spell(level, victim) || has_elemental_resistance(victim, gsn_resist_heat))
+        if (saves_spell(ch, level, victim) || has_elemental_resistance(victim, gsn_resist_heat))
                 dam /= 2;
 
         if (spell_attack_number == 1)
@@ -10825,7 +10854,7 @@ void spell_runic_flames(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 4) + level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -10838,7 +10867,7 @@ void spell_runic_frost(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 4) + level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -10851,7 +10880,7 @@ void spell_runic_bolts(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 4) + level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -10864,7 +10893,7 @@ void spell_runic_stab(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 4) + level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -10877,7 +10906,7 @@ void spell_runic_rend(int sn, int level, CHAR_DATA *ch, void *vo)
 
         dam = dice(level, 4) + level;
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
                 dam /= 2;
 
         damage(ch, victim, dam, sn, FALSE);
@@ -11250,7 +11279,7 @@ void spell_starve(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
 
-        if ((IS_NPC(victim)) || ((!IS_NPC(victim)) && ((victim->level >= LEVEL_HERO || victim->sub_class == SUB_CLASS_VAMPIRE || IS_AFFECTED(victim, AFF_NON_CORPOREAL)))) || (saves_spell(level, victim)))
+        if ((IS_NPC(victim)) || ((!IS_NPC(victim)) && ((victim->level >= LEVEL_HERO || victim->sub_class == SUB_CLASS_VAMPIRE || IS_AFFECTED(victim, AFF_NON_CORPOREAL)))) || (saves_spell(ch, level, victim)))
         {
                 send_to_char("Your victim looks no hungrier than they did.\n\r", ch);
                 return;
@@ -11279,7 +11308,7 @@ void spell_parch(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
 
-        if ((IS_NPC(victim)) || ((!IS_NPC(victim)) && ((victim->level >= LEVEL_HERO || victim->sub_class == SUB_CLASS_VAMPIRE || IS_AFFECTED(victim, AFF_NON_CORPOREAL)))) || (saves_spell(level, victim)))
+        if ((IS_NPC(victim)) || ((!IS_NPC(victim)) && ((victim->level >= LEVEL_HERO || victim->sub_class == SUB_CLASS_VAMPIRE || IS_AFFECTED(victim, AFF_NON_CORPOREAL)))) || (saves_spell(ch, level, victim)))
         {
                 send_to_char("Your victim looks no thirstier than they did.\n\r", ch);
                 return;
@@ -11308,7 +11337,7 @@ void spell_inebriate(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
 
-        if ((IS_NPC(victim)) || ((!IS_NPC(victim)) && ((victim->level >= LEVEL_HERO || victim->sub_class == SUB_CLASS_VAMPIRE || IS_AFFECTED(victim, AFF_NON_CORPOREAL)))) || (saves_spell(level, victim)))
+        if ((IS_NPC(victim)) || ((!IS_NPC(victim)) && ((victim->level >= LEVEL_HERO || victim->sub_class == SUB_CLASS_VAMPIRE || IS_AFFECTED(victim, AFF_NON_CORPOREAL)))) || (saves_spell(ch, level, victim)))
         {
                 send_to_char("Your victim looks no more intoxicated than they did.\n\r", ch);
                 return;
@@ -11482,6 +11511,7 @@ void spell_confusion(int sn, int level, CHAR_DATA *ch, void *vo)
          * targets. Do not add a second saving throw.
          */
         if (saves_resistance_effect(
+                ch,
                 level,
                 victim,
                 skill_table[sn].res_type))
@@ -11635,7 +11665,7 @@ void spell_fleshrot(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (saves_spell(level, victim))
+        if (saves_spell(ch, level, victim))
         {
                 if (ch != victim)
                 {
@@ -11719,7 +11749,7 @@ static void spell_sonic_blast_victim(int sn, int level, CHAR_DATA *ch, CHAR_DATA
                 return;
 
         dam = dice(level, 3);
-        saved = saves_spell(level, victim);
+        saved = saves_spell(ch, level, victim);
 
         immune =
             get_resistance_result(

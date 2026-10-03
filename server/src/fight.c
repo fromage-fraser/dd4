@@ -2174,6 +2174,7 @@ static void damage_internal(CHAR_DATA *ch,
         &&  dt > TYPE_HIT
         &&  poison
         &&  !saves_resistance_effect(
+                 ch,
                  ch->level,
                  victim,
                  RES_POISON))
@@ -2365,7 +2366,7 @@ static void damage_internal(CHAR_DATA *ch,
 
         /* wimp out? */
 
-        if (has_ego_item_effect(victim, EGO_ITEM_BATTLE_TERROR) && !saves_spell(victim->level, victim) && (victim->level > LEVEL_HERO || !victim->wait) && !number_bits(3))
+        if (has_ego_item_effect(victim, EGO_ITEM_BATTLE_TERROR) && !saves_spell(NULL, victim->level, victim) && (victim->level > LEVEL_HERO || !victim->wait) && !number_bits(3))
         {
                 act("$c's eyes fill with terror!", victim, NULL, NULL, TO_ROOM);
 

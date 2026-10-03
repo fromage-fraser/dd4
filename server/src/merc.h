@@ -5671,8 +5671,11 @@ bool wiz_do args((CHAR_DATA * ch, char *command));
 
 /* magic.c */
 int skill_lookup args((const char *name));
-bool saves_spell args((int level, CHAR_DATA *victim));
-bool saves_resistance_effect args((int level, CHAR_DATA *victim, unsigned long int res_types));
+bool saves_spell args((CHAR_DATA *source, int level,
+                       CHAR_DATA *victim));
+bool saves_resistance_effect args((CHAR_DATA *source, int level,
+                                   CHAR_DATA *victim,
+                                   unsigned long int res_types));
 unsigned long int pc_innate_resists args((CHAR_DATA *ch));
 unsigned long int pc_innate_vulnerabilities args((CHAR_DATA *ch));
 RESISTANCE_RESULT get_resistance_result args((CHAR_DATA * victim, unsigned long int res_types));
