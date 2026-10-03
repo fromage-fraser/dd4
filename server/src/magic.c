@@ -139,6 +139,8 @@ static bool self_cast_already_affected(CHAR_DATA *ch, int sn)
         ||  spell == spell_invis
         ||  spell == spell_pass_door
         ||  spell == spell_protection
+        ||  spell == spell_protect_vs_evil
+        ||  spell == spell_protect_vs_good
         ||  spell == spell_sanctuary
         ||  spell == spell_biofeedback
         ||  spell == spell_deter
@@ -599,6 +601,32 @@ bool is_immune_to(CHAR_DATA *victim, unsigned long int damtype)
 }
 
 /*
+ * Check the actual opponent. Being evil and undead does not make
+ * the same protection count twice.
+ */
+bool alignment_protection_applies(CHAR_DATA *warded,
+                                   CHAR_DATA *opponent)
+{
+        if (!warded
+        ||  !opponent
+        ||  warded->deleted
+        ||  opponent->deleted
+        ||  warded == opponent)
+        {
+                return FALSE;
+        }
+
+        if ((IS_EVIL(opponent) || IS_UNDEAD(opponent))
+        &&  is_affected(warded, gsn_protect_vs_evil))
+        {
+                return TRUE;
+        }
+
+        return IS_GOOD(opponent)
+            && is_affected(warded, gsn_protect_vs_good);
+}
+
+/*
  * Compute a saving throw.
  * Negative applies make saving throw better.
  */
@@ -606,12 +634,6 @@ bool saves_spell(CHAR_DATA *source, int level, CHAR_DATA *victim)
 {
         int base = get_curr_wis(victim) + get_curr_int(victim);
         int save;
-
-        /*
-         * Keep the actual source available for protection checks.
-         * This groundwork leaves today's saving chances unchanged.
-         */
-        (void)source;
 
         if (IS_NPC(victim))
         {
@@ -625,11 +647,19 @@ bool saves_spell(CHAR_DATA *source, int level, CHAR_DATA *victim)
 
         save = base + ((victim->level - level) * 4)
                     - (victim->saving_throw / 4);
+
+        /* The recipient's protection makes resisting this source easier. */
+        if (alignment_protection_applies(victim, source))
+                save += ALIGNMENT_PROTECTION_SAVE_BONUS;
+
+        /* The source's protection helps its attacks get through. */
+        if (alignment_protection_applies(source, victim))
+                save -= ALIGNMENT_PROTECTION_SAVE_BONUS;
+
         save = URANGE(5, save, 95);
 
         return number_percent() < save;
 }
-
 /*
  * The kludgy global is for spells who want more stuff from command line.
  */
@@ -5977,6 +6007,98 @@ void spell_paralysis(int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char("You successfully paralyse your victim.\n\r", ch);
 
         send_to_char("<14>You cannot move, you are paralysed!<0>\n\r", victim);
+}
+
+static void spell_alignment_protection(int sn,
+                                       CHAR_DATA *ch,
+                                       CHAR_DATA *victim,
+                                       bool against_evil)
+{
+        AFFECT_DATA af;
+
+        if (!ch
+        ||  !victim
+        ||  ch->deleted
+        ||  victim->deleted
+        ||  sn < 0
+        ||  sn >= MAX_SKILL)
+        {
+                return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char(
+                    "That protection is meant for a creature.\n\r",
+                    ch);
+                return;
+        }
+
+        /*
+         * Leave independently supplied protection alone. We only
+         * prevent another ordinary timed copy of this spell.
+         */
+        if (is_affected_source(
+                victim, sn, AFFECT_SOURCE_NONE, 0))
+        {
+                if (victim == ch)
+                {
+                        send_to_char(
+                            "That protection is already working for you.\n\r",
+                            ch);
+                }
+                else
+                {
+                        act("$N already has that protection.",
+                            ch, NULL, victim, TO_CHAR);
+                }
+
+                return;
+        }
+
+        memset(&af, 0, sizeof(af));
+        af.type = sn;
+        af.duration = ALIGNMENT_PROTECTION_DURATION;
+        af.location = APPLY_NONE;
+        af.modifier = 0;
+        af.bitvector = 0;
+        affect_to_char(victim, &af);
+
+        if (against_evil)
+        {
+                send_to_char(
+                    "You are warded against evil creatures and the undead.\n\r",
+                    victim);
+                act("$n is warded against evil creatures and the undead.",
+                    victim, NULL, NULL, TO_ROOM);
+        }
+        else
+        {
+                send_to_char(
+                    "You are warded against good-aligned creatures.\n\r",
+                    victim);
+                act("$n is warded against good-aligned creatures.",
+                    victim, NULL, NULL, TO_ROOM);
+        }
+
+        if (ch != victim)
+                send_to_char("Your protection settles around them.\n\r", ch);
+}
+
+void spell_protect_vs_evil(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        (void)level;
+
+        spell_alignment_protection(
+            sn, ch, (CHAR_DATA *)vo, TRUE);
+}
+
+void spell_protect_vs_good(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        (void)level;
+
+        spell_alignment_protection(
+            sn, ch, (CHAR_DATA *)vo, FALSE);
 }
 
 void spell_protection(int sn, int level, CHAR_DATA *ch, void *vo)

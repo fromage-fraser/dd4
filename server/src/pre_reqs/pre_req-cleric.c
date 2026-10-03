@@ -128,6 +128,9 @@
 {&gsn_protection,               &gsn_group_protection,  30,     PRE_CLERIC},
 {&gsn_protection,               &gsn_cleric_base,       30,     PRE_CLERIC},
 
+{&gsn_protect_vs_evil,          &gsn_group_protection,  30,     PRE_CLERIC},
+{&gsn_protect_vs_evil,          &gsn_cleric_base,       30,     PRE_CLERIC},
+
 {&gsn_sanctuary,                &gsn_group_protection,  45,     PRE_CLERIC},
 {&gsn_sanctuary,                &gsn_protection,        40,     PRE_CLERIC},
 

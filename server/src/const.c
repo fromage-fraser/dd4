@@ -2345,6 +2345,8 @@ struct spell_group_struct spell_group_table[MAX_SPELL_GROUP] =
 
         {&gsn_group_protection, 0},
         {&gsn_protection, 0},
+        {&gsn_protect_vs_evil, 0},
+        {&gsn_protect_vs_good, 0},
         {&gsn_armor, 0},
         {&gsn_sanctuary, 0},
         {&gsn_shield, 0},
@@ -5644,6 +5646,18 @@ const struct skill_type skill_table[MAX_SKILL] =
          TYPE_INT, TAR_IGNORE, POS_FIGHTING, RES_HOLY | RES_SONIC,
          spell_null, 0, 2 * PULSE_VIOLENCE,
          "", "!Chant of Turning!"},
+
+        {"protection vs evil", &gsn_protect_vs_evil,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+         RES_MAGIC | RES_HOLY,
+         spell_protect_vs_evil, 10, 12,
+         "", "<37>You feel less protected against evil and the undead.<0>"},
+
+        {"protection vs good", &gsn_protect_vs_good,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING,
+         RES_MAGIC | RES_DARK,
+         spell_protect_vs_good, 10, 12,
+         "", "<186>Your protection against selfless virtue fades.<0>"},
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.

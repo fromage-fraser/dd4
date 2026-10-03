@@ -3548,114 +3548,115 @@ The following tags are available for text decoration:
 
 === Spells
 
-The following is a list of spells which can be used on DD4.  These names
-would appear in the appropriate locations for wands, scrolls, staves, potions,
-paints, smokeables, and pills.
+These are the spells registered in the skill table. Use their exact names
+when choosing spells for wands, scrolls, staves, potions, paints, smokeables,
+and pills. Make sure the spell's targeting suits the item.
 
-               inner fire              synaptic blast
-          prismatic spray                   holy word
-              unholy word                       armor
-            astral vortex                       bless
-                blindness               burning hands
-           call lightning              cause critical
-              cause light               cause serious
-               change sex             chain lightning
-             charm person                 chill touch
-             colour spray             continual light
-          control weather                 create food
-            create spring                create water
-           cure blindness               cure critical
-               cure light                 cure poison
-             cure serious                       curse
-              detect good                 detect evil
-            detect hidden                detect invis
-             detect sneak                detect magic
-            detect poison                 dispel evil
-             dispel magic                  earthquake
-           enchant weapon                energy drain
-               entrapment                 faerie fire
-               faerie fog                    fireball
-               fireshield                 flamestrike
-                     gate              giant strength
-                     harm                       haste
-                     heal                       knock
-               power heal                    identify
-              infravision                       invis
-           know alignment              lightning bolt
-            locate object               magic missile
-               mass invis                   pass door
-                   poison                   paralysis
-               protection                     refresh
-             remove curse                   sanctuary
-              sense traps                      shield
-            dragon shield              shocking grasp
-                    sleep                  stone skin
-                   summon             summon familiar
-                 teleport               ventriloquate
-                   weaken              word of recall
-              acid breath                 fire breath
-             frost breath                  gas breath
-         lightning breath              animate weapon
-                transport             general purpose
-           high explosive          adrenaline control
-                agitation                  aura sight
-                      awe            ballistic attack
-              biofeedback             cell adjustment
-              combat mind               recharge mana
-                 vitalize            complete healing
-           control flames                create sound
-              death field                       decay
-                 detonate                disintegrate
-             displacement                  domination
-         ectoplasmic form                    ego whip
-       energy containment               enhance armor
-        enhanced strength                 flesh armor
-         inertial barrier                inflict pain
-       intellect fortress                 lend health
-               levitation              mental barrier
-              mind thrust               project force
-            psionic blast               psychic crush
-            psychic drain             psychic healing
-           share strength              thought shield
-               ultrablast                wrath of god
-               feeblemind                 spiritwrack
-                   wither                        lore
-                      hex                animate dead
-              dark ritual                   bark skin
-                  moonray                      sunray
-                   prayer                      frenzy
-                mass heal             mass power heal
-           mass sanctuary    globe of invulnerability
-                firestorm                meteor storm
-             bless weapon               recharge item
-               possession                demon flames
-           steal strength               infernal fury
-             abyssal hand                  steal soul
-             summon demon                        fear
-                    deter             astral sidestep
-            gaias warning                resist magic
-            summon avatar               breathe water
-              resist heat                 resist cold
-         resist lightning                 resist acid
-                 hellfire              fury of nature
-              chaos blast                detect curse
-                     slow                   stabilise
-             steam breath                   pyro rune
-                cryo rune                   bolt rune
-                stab rune                   rend rune
-             mending rune                   cure rune
-                ward rune                  acid blast
-                      fly                      starve
-                    parch                   inebriate
-               glaciation               conflagration
-                    flood                   confusion
-              psychometry                      nausea
-                  freedom                    fleshrot
-               regenerate                  possession
-                  release                clairvoyance
-             sense wisdom                 sonic blast
-                   banish               detect undead
-                mummy rot                  bubble jet
+    abyssal hand                acid blast
+    acid breath                 adrenaline control
+    agitation                   animate dead
+    animate weapon              armor
+    astral sidestep             astral vortex
+    aura sight                  awe
+    ballistic attack            banish
+    bark skin                   biofeedback
+    bless                       bless weapon
+    blindness                   bolt rune
+    breathe water               burning hands
+    call lightning              cause critical
+    cause light                 cause serious
+    cell adjustment             chain lightning
+    change sex                  chaos blast
+    charm person                chill touch
+    clairvoyance                colour spray
+    combat mind                 complete healing
+    conflagration               confusion
+    continual light             control flames
+    control weather             create food
+    create sound                create spring
+    create water                cryo rune
+    cure blindness              cure critical
+    cure light                  cure poison
+    cure rune                   cure serious
+    curse                       dark globe
+    dark ritual                 death field
+    decay                       demon flames
+    detect curse                detect evil
+    detect good                 detect hidden
+    detect invis                detect magic
+    detect poison               detect sneak
+    detect undead               deter
+    detonate                    disintegrate
+    dispel evil                 dispel magic
+    displacement                domination
+    dragon shield               earthquake
+    ectoplasmic form            ego whip
+    enchant weapon              energy containment
+    energy drain                enhance armor
+    enhanced strength           entrapment
+    faerie fire                 faerie fog
+    fear                        feeblemind
+    fire breath                 fireball
+    fireshield                  firestorm
+    flamestrike                 flesh armor
+    fleshrot                    flood
+    fly                         freedom
+    frenzy                      frost breath
+    fury of nature              gaias warning
+    gas breath                  gate
+    general purpose             giant strength
+    glaciation                  globe of invulnerability
+    harm                        haste
+    heal                        hellfire
+    hex                         high explosive
+    holy word                   identify
+    inebriate                   inertial barrier
+    infernal fury               inflict pain
+    infravision                 inner fire
+    intellect fortress          invis
+    knock                       know alignment
+    lend health                 levitation
+    lightning bolt              lightning breath
+    locate object               lore
+    magic missile               mass heal
+    mass invis                  mass power heal
+    mass sanctuary              mending rune
+    mental barrier              meteor storm
+    mind thrust                 moonray
+    nausea                      paralysis
+    parch                       pass door
+    poison                      possession
+    power heal                  prayer
+    prismatic spray             project force
+    protection                  protection vs evil
+    protection vs good          psionic blast
+    psychic crush               psychic drain
+    psychic healing             psychometry
+    pyro rune                   recharge item
+    recharge mana               refresh
+    regenerate                  release
+    remove curse                rend rune
+    resist acid                 resist cold
+    resist heat                 resist lightning
+    resist magic                sanctuary
+    sense traps                 sense wisdom
+    share strength              shield
+    shocking grasp              sleep
+    slow                        sonic blast
+    spiritwrack                 stab rune
+    stabilise                   starve
+    steal soul                  steal strength
+    steam breath                stone skin
+    summon                      summon avatar
+    summon demon                summon familiar
+    sunray                      synaptic blast
+    teleport                    thought shield
+    transport                   ultrablast
+    unholy word                 ventriloquate
+    vitalize                    ward rune
+    weaken                      wither
+    word of recall              wrath of god
+
 
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)

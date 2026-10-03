@@ -65,6 +65,9 @@
 
 /* **** PROTECTIVE **** */
 
+{&gsn_protect_vs_good,          &gsn_group_protection,  50,     PRE_NECRO},
+{&gsn_protect_vs_good,          &gsn_necro_base,        30,     PRE_NECRO},
+
 {&gsn_fireshield,               &gsn_group_protection,  90,     PRE_NECRO},
 {&gsn_fireshield,               &gsn_necro_base,        30,     PRE_NECRO},
 
