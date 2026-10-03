@@ -849,6 +849,7 @@ and undead objects on the ground, carried or worn.
 - Animated servants are consistently excluded from XP and quests.
 - Turning now affects enemy undead servants in existing combat,
   with controller PvP checks and protection for allied servants.
+- Prepared spell and undead-effect saves for source-based protections.
 ~
 
 

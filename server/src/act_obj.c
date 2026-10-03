@@ -2959,6 +2959,7 @@ static void liquid_splash_poison_effect(
          * RES_MAGIC simply because spell_poison() normally does.
          */
         if (saves_resistance_effect(
+                ch,
                 UMAX(1, ch->level),
                 victim,
                 RES_POISON))
