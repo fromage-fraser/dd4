@@ -3620,6 +3620,7 @@ and pills. Make sure the spell's targeting suits the item.
     locate object               lore
     magic missile               mass heal
     mass invis                  mass power heal
+    mass protection vs evil     mass protection vs good
     mass sanctuary              mending rune
     mental barrier              meteor storm
     mind thrust                 moonray
