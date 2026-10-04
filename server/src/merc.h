@@ -419,9 +419,9 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 623            /* +1 detect undead */
-#define MAX_PRE_REQ 1576          /* +2 detect undead prerequisites */
-#define MAX_SPELL_GROUP 470      /* +1 detect undead group entry */
+#define MAX_SKILL 627            /* Two new alignment protection spells. */
+#define MAX_PRE_REQ 1587         /* Seven new protection prerequisites. */
+#define MAX_SPELL_GROUP 473      /* Two new protective magiks entries. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
@@ -3527,6 +3527,10 @@ struct skill_type
  * saves_spell() changes its result by four percentage points per level.
  */
 #define RESISTANCE_SAVE_LEVEL_SHIFT 5
+#define ALIGNMENT_PROTECTION_HIT_BONUS 2
+#define ALIGNMENT_PROTECTION_DEFENCE_BONUS 2
+#define ALIGNMENT_PROTECTION_SAVE_BONUS 8
+#define ALIGNMENT_PROTECTION_DURATION 24
 
 /*
  * Resistant Immune Susceptible flags
@@ -4435,6 +4439,10 @@ extern int gsn_bubble_jet;
 extern int gsn_banish;
 extern int gsn_stench;
 extern int gsn_mummy_rot;
+extern int gsn_turn_undead;
+extern int gsn_chant_of_turning;
+extern int gsn_protect_vs_evil;
+extern int gsn_protect_vs_good;
 /*
  *  Deity gsns
  */
@@ -4860,6 +4868,7 @@ DECLARE_DO_FUN(do_serrate);
 DECLARE_DO_FUN(do_spit_mucus); /* Owl 18/8/22 'lag out' attack for aboleth and similar */
 DECLARE_DO_FUN(do_reforge);
 DECLARE_DO_FUN(do_vault); /* Owl 22/2/23 allows players to see contents of their vault in a ROOM_VAULT */
+DECLARE_DO_FUN(do_turn);
 
 /* The following are for mob programs - Brutus */
 DECLARE_DO_FUN(do_mpasound);
@@ -5285,9 +5294,11 @@ DECLARE_SPELL_FUN(spell_clairvoyance);
 DECLARE_SPELL_FUN(spell_sense_wisdom);
 DECLARE_SPELL_FUN(spell_sonic_blast);
 DECLARE_SPELL_FUN(spell_banish);
+DECLARE_SPELL_FUN(spell_protect_vs_evil);
+DECLARE_SPELL_FUN(spell_protect_vs_good);
 
 #define MOB_VNUM_SKELETON 85
-#define MOB_VNUM_GHOUL 3404
+#define MOB_VNUM_GHOUL 86
 #define MOB_VNUM_GHOST 3404
 #define MOB_VNUM_SPIRIT 83
 
@@ -5509,6 +5520,7 @@ bool in_pkill_range args((CHAR_DATA * ch, CHAR_DATA *victim));
 void chat_killer args((CHAR_DATA * ch, CHAR_DATA *victim));
 void reset_char_stats(CHAR_DATA *ch);
 bool aggro_damage(CHAR_DATA *ch, CHAR_DATA *victim, int damage);
+void turn_undead(CHAR_DATA *ch, int sn, int learned);
 void check_autoloot(CHAR_DATA *ch, CHAR_DATA *victim);
 void check_group_bonus(CHAR_DATA *ch);
 char *get_damage_string args((int damage_value, bool is_singular));
@@ -5671,8 +5683,11 @@ bool wiz_do args((CHAR_DATA * ch, char *command));
 
 /* magic.c */
 int skill_lookup args((const char *name));
-bool saves_spell args((int level, CHAR_DATA *victim));
-bool saves_resistance_effect args((int level, CHAR_DATA *victim, unsigned long int res_types));
+bool saves_spell args((CHAR_DATA *source, int level,
+                       CHAR_DATA *victim));
+bool saves_resistance_effect args((CHAR_DATA *source, int level,
+                                   CHAR_DATA *victim,
+                                   unsigned long int res_types));
 unsigned long int pc_innate_resists args((CHAR_DATA *ch));
 unsigned long int pc_innate_vulnerabilities args((CHAR_DATA *ch));
 RESISTANCE_RESULT get_resistance_result args((CHAR_DATA * victim, unsigned long int res_types));
@@ -5684,6 +5699,8 @@ void obj_cast_spell args((int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, O
 bool mob_interacts_players(CHAR_DATA *mob);
 bool can_detect_undead(CHAR_DATA *viewer, CHAR_DATA *victim);
 bool can_detect_undead_obj(CHAR_DATA *viewer, OBJ_DATA *obj);
+bool alignment_protection_applies args((CHAR_DATA *warded,
+                                        CHAR_DATA *opponent));
 
 /* mob.c */
 int species_lookup args((const char *name));

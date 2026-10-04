@@ -10,6 +10,8 @@
 {&gsn_group_healing,            &gsn_knight_base,       31,     PRE_KNIGHT},
 
 {&gsn_flamestrike,              &gsn_knight_base,       31,     PRE_KNIGHT},
+{&gsn_turn_undead,              &gsn_knight_base,       50,     PRE_KNIGHT},
+{&gsn_protect_vs_evil,          &gsn_knight_base,       50,     PRE_KNIGHT},
 
 /* **** HEALING **** */
 

@@ -1185,6 +1185,16 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                         victim_ac -= 4;
 
                 /*
+                 * These bonuses belong to this opponent, not to the
+                 * character's general hitroll or armour.
+                 */
+                if (alignment_protection_applies(ch, victim))
+                        thac0 -= ALIGNMENT_PROTECTION_HIT_BONUS;
+
+                if (alignment_protection_applies(victim, ch))
+                        victim_ac -= ALIGNMENT_PROTECTION_DEFENCE_BONUS;
+
+                /*
                  * The moment of excitement!
                  */
                 while ((diceroll = number_bits(5)) >= 20)
@@ -2174,6 +2184,7 @@ static void damage_internal(CHAR_DATA *ch,
         &&  dt > TYPE_HIT
         &&  poison
         &&  !saves_resistance_effect(
+                 ch,
                  ch->level,
                  victim,
                  RES_POISON))
@@ -2365,7 +2376,7 @@ static void damage_internal(CHAR_DATA *ch,
 
         /* wimp out? */
 
-        if (has_ego_item_effect(victim, EGO_ITEM_BATTLE_TERROR) && !saves_spell(victim->level, victim) && (victim->level > LEVEL_HERO || !victim->wait) && !number_bits(3))
+        if (has_ego_item_effect(victim, EGO_ITEM_BATTLE_TERROR) && !saves_spell(NULL, victim->level, victim) && (victim->level > LEVEL_HERO || !victim->wait) && !number_bits(3))
         {
                 act("$c's eyes fill with terror!", victim, NULL, NULL, TO_ROOM);
 
@@ -7715,6 +7726,397 @@ void do_howl(CHAR_DATA *ch, char *argument)
         }
 
         WAIT_STATE(ch, PULSE_VIOLENCE);
+}
+
+static bool turn_undead_controller(CHAR_DATA *ch, CHAR_DATA *victim,
+                                   CHAR_DATA **controller)
+{
+        CHAR_DATA *owner;
+        int depth;
+
+        *controller = NULL;
+
+        /*
+         * Follow the master links. Protect allied servants even when
+         * the servants themselves have not joined the group.
+         */
+        for (owner = victim, depth = 0;
+             owner && depth < 32;
+             owner = owner->master, depth++)
+        {
+                if (owner->deleted
+                ||  owner == ch
+                ||  is_same_group(ch, owner))
+                {
+                        return FALSE;
+                }
+
+                /*
+                 * Stop at the first player. A player following another
+                 * player is not another layer of creature ownership.
+                 */
+                if (!IS_NPC(owner))
+                {
+                        *controller = owner;
+                        return TRUE;
+                }
+
+                /* Fleeing can move mounts and riders too. */
+                if (owner->rider || owner->mount)
+                        return FALSE;
+
+                /* An orphaned group link is not a safe ownership answer. */
+                if (!owner->master
+                &&  owner->leader
+                &&  owner->leader != owner)
+                {
+                        return FALSE;
+                }
+        }
+
+        /*
+         * A broken or unusually long chain must not accidentally
+         * turn a controlled creature into an ordinary wild target.
+         */
+        return owner == NULL;
+}
+
+static bool turn_undead_target_allowed(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        CHAR_DATA *controller;
+
+        if (!ch
+        ||  !victim
+        ||  ch->deleted
+        ||  victim->deleted
+        ||  !ch->in_room
+        ||  victim == ch
+        ||  victim->in_room != ch->in_room
+        ||  !IS_UNDEAD(victim)
+        ||  is_same_group(ch, victim)
+        ||  (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT)))
+        {
+                return FALSE;
+        }
+
+        if (IS_AFFECTED(ch, AFF_CHARM) && ch->master == victim)
+                return FALSE;
+
+        /*
+         * Player vampires are eligible only during existing combat.
+         * The actual attempt checks PvP rules separately.
+         */
+        if (!IS_NPC(victim))
+        {
+                return ch->fighting == victim
+                    || victim->fighting == ch;
+        }
+
+        if (!turn_undead_controller(ch, victim, &controller))
+                return FALSE;
+
+        if (controller)
+        {
+                /*
+                 * Keep the controller here so the PvP checks describe
+                 * this fight, rather than a player in another room.
+                 */
+                if (controller->in_room != ch->in_room)
+                        return FALSE;
+
+                /*
+                 * Do not start fights with uninvolved players' servants.
+                 */
+                if (ch->fighting != victim
+                &&  victim->fighting != ch
+                &&  ch->fighting != controller
+                &&  controller->fighting != ch)
+                {
+                        return FALSE;
+                }
+        }
+
+        /*
+         * Turning does not reveal hidden undead. An opponent already
+         * fighting you can still be affected if it becomes invisible.
+         */
+        if (!can_see(ch, victim)
+        &&  ch->fighting != victim
+        &&  victim->fighting != ch)
+        {
+                return FALSE;
+        }
+
+        return TRUE;
+}
+
+static void turn_undead_chances(CHAR_DATA *ch, CHAR_DATA *victim,
+                                int learned, int *turn_chance,
+                                int *destroy_chance)
+{
+        int level_gap = ch->level - victim->level;
+        int rank = IS_NPC(victim) ? rank_sn(victim) : 1;
+        int rank_penalty = UMAX(0, rank - 1) * 10;
+        int turn_base;
+        int destroy_base;
+
+        *turn_chance = 0;
+        *destroy_chance = 0;
+
+        if (level_gap < -10)
+                return;
+
+        /*
+         * At full skill, equal-level undead have a 50% turn chance.
+         * Each level of difference moves that chance by four points.
+         */
+        turn_base = 50 + 4 * level_gap - rank_penalty;
+        turn_base = URANGE(0, turn_base,
+                           level_gap > 10 ? 99 : 95);
+        *turn_chance = turn_base * learned / 100;
+
+        /*
+         * Player vampires can be shaken, but never destroyed.
+         * Major bosses and protected mobiles keep their safeguards.
+         */
+        if (!IS_NPC(victim)
+        ||  level_gap <= 10
+        ||  rank >= 4
+        ||  IS_SET(victim->act, ACT_UNKILLABLE)
+        ||  IS_SET(victim->act, ACT_INVULNERABLE))
+        {
+                return;
+        }
+
+        /*
+         * At an eleven-level advantage, 44 points of the successful
+         * range are destruction. One roll decides destroy, repel or fail.
+         */
+        destroy_base = 44 + 4 * (level_gap - 11) - rank_penalty;
+        destroy_base = URANGE(0, destroy_base, 99);
+
+        *destroy_chance =
+            UMIN(*turn_chance, destroy_base * learned / 100);
+}
+
+void turn_undead(CHAR_DATA *ch, int sn, int learned)
+{
+        AFFECT_DATA af;
+        CHAR_DATA *victim;
+        CHAR_DATA *victim_next;
+        ROOM_INDEX_DATA *room;
+        int turn_chance;
+        int destroy_chance;
+        int roll;
+        bool found = FALSE;
+
+        if (!ch
+        ||  ch->deleted
+        ||  IS_NPC(ch)
+        ||  !ch->in_room
+        ||  sn < 0
+        ||  sn >= MAX_SKILL)
+        {
+                return;
+        }
+
+        room = ch->in_room;
+
+        if (IS_SET(room->room_flags, ROOM_SAFE)
+        ||  IS_SET(room->area->area_flags, AREA_FLAG_SAFE))
+        {
+                send_to_char(
+                    "This is not a place to call down that kind of force.\n\r",
+                    ch);
+                return;
+        }
+
+        for (victim = room->people; victim;
+             victim = victim->next_in_room)
+        {
+                if (turn_undead_target_allowed(ch, victim)
+                &&  !is_affected(victim, gsn_turn_undead))
+                {
+                        found = TRUE;
+                        break;
+                }
+        }
+
+        if (!found)
+        {
+                send_to_char(
+                    "There are no undead here you can turn now.\n\r",
+                    ch);
+                return;
+        }
+
+        learned = URANGE(0, learned, 100);
+        WAIT_STATE(ch, skill_table[sn].beats);
+
+        if (sn == gsn_chant_of_turning)
+        {
+                send_to_char(
+                    "You raise your voice in a chant to drive the undead back.\n\r",
+                    ch);
+                act("$n raises $s voice in a chant to drive the undead back!",
+                    ch, NULL, NULL, TO_ROOM);
+        }
+        else
+        {
+                send_to_char(
+                    "You call on divine power to drive the undead back.\n\r",
+                    ch);
+                act("$n calls on divine power to drive the undead back!",
+                    ch, NULL, NULL, TO_ROOM);
+        }
+
+        for (victim = room->people; victim; victim = victim_next)
+        {
+                CHAR_DATA *pvp_target;
+                unsigned long int old_body_form;
+
+
+                victim_next = victim->next_in_room;
+
+                if (ch->deleted || ch->in_room != room)
+                        break;
+
+                if (!turn_undead_target_allowed(ch, victim)
+                ||  is_affected(victim, gsn_turn_undead))
+                {
+                        continue;
+                }
+
+                /*
+                 * Turning a player's servant counts as hostility toward
+                 * that player. Check PvP rules only for a real attempt.
+                 */
+                if (!IS_NPC(victim))
+                {
+                        pvp_target = victim;
+                }
+                else if (!turn_undead_controller(ch, victim, &pvp_target))
+                {
+                        continue;
+                }
+
+                if (pvp_target)
+                {
+                        if (is_safe(ch, pvp_target))
+                                continue;
+
+                        check_killer(ch, pvp_target);
+                }
+
+                turn_undead_chances(ch, victim, learned,
+                                    &turn_chance, &destroy_chance);
+                roll = number_percent();
+
+                /*
+                 * TURN and the Bard chant share this recovery period.
+                 * For a successfully turned player vampire, this same
+                 * affect also carries the temporary hitroll penalty.
+                 */
+                memset(&af, 0, sizeof(af));
+                af.type = gsn_turn_undead;
+                af.duration = 2;
+                af.location = APPLY_NONE;
+                af.modifier = 0;
+                af.bitvector = 0;
+
+                if (!IS_NPC(victim) && roll <= turn_chance)
+                {
+                        af.location = APPLY_HITROLL;
+                        af.modifier = -(4 + (16 * (URANGE(1, victim->level, 100) - 1) + 49) / 99);
+                }
+
+                affect_to_char(victim, &af);
+
+                if (IS_NPC(victim) && roll <= destroy_chance)
+                {
+                        act("$N crumbles under your turning!",
+                            ch, NULL, victim, TO_CHAR);
+                        act("$N crumbles under $n's turning!",
+                            ch, NULL, victim, TO_NOTVICT);
+
+                        /*
+                         * Keep normal kill credit and equipment handling,
+                         * but leave no biological corpse.
+                         */
+                        old_body_form = victim->body_form;
+                        SET_BIT(victim->body_form, BODY_NO_CORPSE);
+
+                        if (!aggro_damage(ch, victim,
+                                          UMAX(1, victim->hit))
+                        &&  !victim->deleted)
+                        {
+                                victim->body_form = old_body_form;
+                        }
+
+                        continue;
+                }
+
+                if (roll <= turn_chance)
+                {
+                        act("$N recoils from your turning!",
+                            ch, NULL, victim, TO_CHAR);
+                        act("$N recoils from $n's turning!",
+                            ch, NULL, victim, TO_NOTVICT);
+                        act("The turning force drives you back!",
+                            ch, NULL, victim, TO_VICT);
+
+                        WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
+
+                        if (!IS_NPC(victim))
+                        {
+                                arena_commentary(
+                                    "$n's turning makes $N recoil.",
+                                    ch, victim);
+                                continue;
+                        }
+
+                        /*
+                         * Ordinary fighting undead may flee.
+                         * Sentinels and major bosses keep their place.
+                         */
+                        if (!IS_SET(victim->act, ACT_SENTINEL)
+                        &&  rank_sn(victim) < 4
+                        &&  victim->fighting)
+                        {
+                                do_flee(victim, "Fear");
+                        }
+
+                        if (!victim->deleted
+                        &&  victim->in_room == room)
+                        {
+                                stop_fighting(victim, TRUE);
+                        }
+
+                        continue;
+                }
+
+                act("$N stands firm against your call.",
+                    ch, NULL, victim, TO_CHAR);
+
+                if (IS_NPC(victim))
+                        damage(ch, victim, 0, sn, FALSE);
+        }
+}
+
+void do_turn(CHAR_DATA *ch, char *argument)
+{
+        (void)argument;
+
+        if (IS_NPC(ch) || !CAN_DO(ch, gsn_turn_undead))
+        {
+                send_to_char(
+                    "You have not learned how to turn the undead.\n\r",
+                    ch);
+                return;
+        }
+
+        turn_undead(ch, gsn_turn_undead,
+                    ch->pcdata->learned[gsn_turn_undead]);
 }
 
 void do_headbutt(CHAR_DATA *ch, char *argument)

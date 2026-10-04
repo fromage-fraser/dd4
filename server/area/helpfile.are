@@ -1,6 +1,43 @@
 #HELPS
 
-#HELPS
+0 'TURN UNDEAD'~
+Syntax: turn
+
+Call on divine power to drive back the undead around you. Each undead
+creature you can perceive gets its own chance to resist. An undead
+opponent you are already fighting can also be affected if it turns
+invisible during the fight.
+
+A successful turn may force an ordinary undead creature to flee, or at
+least make it break off its attack. Much weaker undead may be destroyed
+outright. Rare and elite creatures are harder to turn; bosses and world
+creatures cannot be destroyed this way. Sentinel creatures stay in
+their assigned rooms.
+
+A creature cannot be subjected to another turning attempt immediately
+after one has been made, whether that attempt succeeded or failed.
+This recovery period is shared with the Bard's Chant of Turning.
+
+Player vampires can be affected while they are already fighting you,
+provided normal PvP rules allow the attempt. They cannot be destroyed.
+
+A successful turn briefly shakes their aim and delays their next action,
+but the fight continues. The hitroll penalty grows with the vampire's
+level, reaching 20 points at level 100. It lasts for the turning recovery
+period.
+
+Enemy-controlled undead can be affected while you are already in combat
+with them or their controller. The controller must be in the room, and
+normal PvP rules must allow the attempt.
+
+Turning a servant counts as a hostile attempt against its controller,
+even if it fails. Your own undead and your group's servants are left
+alone. Ridden or riding undead are not included yet.
+
+Repelling a servant does not break its master's control.
+
+Clerics learn this skill early; Knights gain it later.
+~
 
 0 'DETECT UNDEAD'~
 Syntax: cast 'detect undead'
@@ -631,7 +668,7 @@ Gezhp, Owl and Shade
 
 {W October 2024{x
 
-- Skills "target" and spell "regenerate" added, to allow for targeting and 
+- Skills "target" and spell "regenerate" added, to allow for targeting and
   healing of body regions on players or mobiles.
 - Skills "harvest" and "carve" added for Druids and Rangers
 - Skill "bitsum" added for IMMs
@@ -742,38 +779,40 @@ Gezhp, Owl and Shade
 - Added selected innate player resistances and vulnerabilities; see HELP INNATE.
 - Tenketsu paralysis now follows damaging hits and respects resistance.
 - Transfix, Howl and Confusion now consistently consult target resistance.
+- Added Detect Undead for Clerics and Knights, marking visible undead creatures
+and undead objects on the ground, carried or worn.
 - Moving between underwater rooms no longer replenishes your air supply.
 - Fixed room lighting left behind by NPCs and linkdead players carrying lights.
 - Infrared vision now correctly improves scan distance at night.
-- GMCP exit information now reports flying movement costs correctly for 
+- GMCP exit information now reports flying movement costs correctly for
   underwater rooms.
-- Song of Rejuvenation mana recovery now scales correctly with proficiency and 
+- Song of Rejuvenation mana recovery now scales correctly with proficiency and
   level.
 - Saved objects now retain their material properties after being reloaded.
-- NPC combat assistance now selects group targets without room-list ordering 
+- NPC combat assistance now selects group targets without room-list ordering
   bias.
-- Hunger and thirst regeneration penalties now continue correctly at negative 
+- Hunger and thirst regeneration penalties now continue correctly at negative
   condition values.
-- Grouped mob assistance no longer prematurely ends combat processing for the 
+- Grouped mob assistance no longer prematurely ends combat processing for the
   current round.
-- Rebalanced terrain movement costs and corrected underwater-ground movement 
+- Rebalanced terrain movement costs and corrected underwater-ground movement
   cost.
-- Prone shifters now correctly have reduced chances of making form bonus 
+- Prone shifters now correctly have reduced chances of making form bonus
   attacks.
-- Trapped objects now retain their trap type, effects and remaining charges when 
+- Trapped objects now retain their trap type, effects and remaining charges when
   saved.
-- Movement-triggered traps now correctly interrupt the movement attempt that 
+- Movement-triggered traps now correctly interrupt the movement attempt that
   triggers them.
 - Defensive Engineer pulses no longer replace the user's current combat target.
-- Overlapping character affects now preserve shared status flags when one affect 
+- Overlapping character affects now preserve shared status flags when one affect
   ends.
-- Hawk, dragon, cat, snake, wolf and direwolf form effects now coexist with 
+- Hawk, dragon, cat, snake, wolf and direwolf form effects now coexist with
   independently supplied affects instead of replacing them.
-- Chameleon form now owns its hide and sneak effects without removing 
+- Chameleon form now owns its hide and sneak effects without removing
   independently supplied stealth effects.
-- Phoenix, demon and griffin form effects now coexist with independently 
+- Phoenix, demon and griffin form effects now coexist with independently
   supplied affects instead of replacing them.
-- Fly and bat form now own their flight effects without clearing independently 
+- Fly and bat form now own their flight effects without clearing independently
   supplied permanent flight sources.
 - Equipment and set special applies now coexist with independently supplied
   spell, form, equipment and set effects, including across morph equipment
@@ -824,6 +863,20 @@ blocking unrelated directions.
 - Fixed LOCK and UNLOCK corrupting non-key objects used as puzzle keys.
 - Fixed food and drink recovery causing extra hunger or thirst damage.
 - Failed PATTERN RETURN attempts no longer consume the saved return point.
+- Added Turn Undead for Clerics and Knights.
+- Added Bard Chant of Turning with a shared turning cooldown.
+- Turning now affects player vampires in existing PvP fights, applying a
+  level-scaled hitroll penalty without destroying them.
+- Updated undead skill help and lists.
+- Fixed EMPTY corrupting containers when an item could not be picked up.
+- Fixed expiring vault items corrupting vault contents and weight totals.
+- Prevented Dispel Magic from removing the shared TURN/CHANT recovery.
+- Self-cast status spells now coexist with equipment, set and form effects.
+- Animate Dead now uses a dedicated ghoul servant at levels 35-44.
+- Animated servants are consistently excluded from XP and quests.
+- Turning now affects enemy undead servants in existing combat,
+  with controller PvP checks and protection for allied servants.
+- Prepared spell and undead-effect saves for source-based protections.
 ~
 
 
@@ -1984,8 +2037,13 @@ of the damage inflicted upon by your opponents will be removed.
 0 'ANIMATE DEAD'~
 Syntax: cast 'animate dead' <<corpse>
 
-Reanimate a freshly dead corpse, and command the monstrosity to your
-service.
+Reanimate a fresh NPC corpse and bind the new servant to your service.
+The corpse is consumed only after the servant has been created.
+
+Player corpses, remains and loose body parts cannot be animated.
+
+Animated servants give no experience when killed and cannot serve as
+quest targets, even after their control wears off.
 ~
 
 0 'ANIMATE WEAPON'~
@@ -4142,6 +4200,63 @@ spell requires great concentration and mana reserves.
 These spells may be used simultaneously for cumulative effect.
 ~
 
+0 'PROTECTION VS EVIL' PROTECTEVIL~
+Syntax: cast 'protection vs evil' <<target>
+
+This spell helps you fight evil creatures and the undead. If you leave
+out the target, you protect yourself.
+
+Against a qualifying opponent, it gives you:
+
+    +2 effective hitroll on normal physical hit rolls;
+    -2 effective hitroll for their normal physical attacks against you;
+    eight percentage points added to your saving threshold against them;
+    eight percentage points removed from their saving threshold against you.
+
+The normal saving limits still apply. Magical attacks benefit through
+their existing saving throws; this spell does not add another roll.
+
+An evil undead counts once, not twice. The protection lasts 24 ticks.
+It does not add damage, increase your training, make a weapon magical,
+or overcome immunity.
+
+This is separate from the ordinary Protection spell. Both can be active.
+Protection vs Evil and Protection vs Good can also coexist, but their
+bonuses do not double against the same opponent.
+
+Clerics learn this spell early. Knights gain access later. Cleric
+subclasses retain it through their early Cleric training.
+~
+
+0 'PROTECTION VS GOOD' PROTECTGOOD~
+Syntax: cast 'protection vs good' <<target>
+
+This spell helps you fight good-aligned creatures. If you leave out the
+target, you protect yourself.
+
+Against a qualifying opponent, it gives you:
+
+    +2 effective hitroll on normal physical hit rolls;
+    -2 effective hitroll for their normal physical attacks against you;
+    eight percentage points added to your saving threshold against them;
+    eight percentage points removed from their saving threshold against you.
+
+The normal saving limits still apply. Magical attacks benefit through
+their existing saving throws; this spell does not add another roll.
+
+Living creatures do not automatically qualify. A good-aligned undead
+qualifies because it is good, not because it is undead.
+
+The protection lasts 24 ticks. It does not add damage, increase your
+training, make a weapon magical, or overcome immunity.
+
+This is separate from the ordinary Protection spell. Both can be active.
+Protection vs Evil and Protection vs Good can also coexist, but their
+bonuses do not double against the same opponent.
+
+Necromancers and Infernalists can learn this spell.
+~
+
 0 REFRESH~
 Syntax: cast refresh <<target>
 
@@ -5137,6 +5252,7 @@ treasures they discover.
 
 Spells in divination magiks include:
     detect evil
+    detect undead
     detect good
     detect invis
     detect magic
@@ -5263,6 +5379,8 @@ Spells in protective magiks include:
     armor
     shield
     protection
+    protection vs evil
+    protection vs good
     sanctuary
     stone skin
 ~
@@ -6115,7 +6233,8 @@ holy word               unholy word             detect good
 blink                   second attack           pattern
 invis                   teleport                knock
 create spring           control weather         detect curse
-sense wisdom
+sense wisdom            turn undead             detect undead
+protection vs evil
 
 True clerics (those that don't change to templars or druids) may also
 learn these skills above level 30:
@@ -6404,7 +6523,8 @@ detect hidden           meditation              create food
 create water            dual                    disarm
 joust                   second spell            destrier
 flamestrike             cure poison             enhanced critical
-target
+target                  turn undead             detect undead
+protection vs evil
 ~
 
 -1 'SMARTIAL ARTIST'~
@@ -6465,6 +6585,7 @@ deter                   harm                    cure poison
 cure blindness          refresh                 remove curse
 second attack           stabilise               resist acid
 fleshrot                nausea                  resist cold
+protection vs good
 ~
 
 -1 SNINJA~
@@ -6487,7 +6608,7 @@ fireshield              detect good             summon demon
 dark ritual             second attack           third spell
 hellfire                chaos blast             detect evil
 possession              release                 resist heat
-resist lightning
+resist lightning        protection vs good
 ~
 
 -1 STEMPLAR~
@@ -7331,15 +7452,53 @@ learn to pass unseen when needed.
 0 CHANT~
 Syntax: chant <<chant name>
 
-As well as songs, bards have chants to ready them for combat, or aid them
-during combat if caught unawares.
+Bards use chants to prepare for combat and to influence a fight.
 
-These chants are divided into combat and non-combat groups:
+Enfeeblement and pain are used against your current opponent.
+Protection, battle, vigour and dragonsbane prepare you before combat.
+Turning can be used before or during a fight to drive back nearby undead.
 
-        enfeeblement        protection
-        pain                battle
-                            vigour
-                            dragonsbane
+Available chants:
+    battle          dragonsbane     enfeeblement
+    pain            protection      turning
+    vigour
+~
+
+0 'CHANT OF TURNING' TURNING~
+Syntax: chant turning
+
+Raise your voice in a chant that drives back nearby undead. Each eligible
+creature gets its own chance to resist. Much weaker undead may crumble
+under the chant.
+
+The chant uses the same rules as Turn Undead, but with three-quarters of
+your trained proficiency as its effective turning strength. Rare and elite
+undead are harder to affect. Bosses and world creatures cannot be destroyed
+this way, and sentinels stay in their assigned rooms.
+
+Turn Undead and Chant of Turning share the same short recovery period.
+Switching between them does not let you immediately retry against an
+undead that has already faced an attempt.
+
+Player vampires can be affected while they are already fighting you,
+provided normal PvP rules allow the attempt. They cannot be destroyed.
+
+A successful turn briefly shakes their aim and delays their next action,
+but the fight continues. The hitroll penalty grows with the vampire's
+level, reaching 20 points at level 100. It lasts for the turning recovery
+period.
+
+Enemy-controlled undead can be affected while you are already in combat
+with them or their controller. The controller must be in the room, and
+normal PvP rules must allow the attempt.
+
+Turning a servant counts as a hostile attempt against its controller,
+even if it fails. Your own undead and your group's servants are left
+alone. Ridden or riding undead are not included yet.
+
+Repelling a servant does not break its master's control.
+
+Bards can learn the chant from level 40, once Music reaches 80%.
 ~
 
 0 'CHANT OF ENFEEBLEMENT' ENFEEBLEMENT~
@@ -7489,7 +7648,7 @@ song of revelation      song of rejuvenation    song of sustenance
 song of tranquility     song of shadows         song of flight
 chant of battle         chant of pain           chant of enfeeblement
 chant of protection     chant of vigour         dual
-chant of dragonsbane
+chant of dragonsbane    chant of turning
 ~
 
 0 KNOWLEDGE~

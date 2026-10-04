@@ -1521,6 +1521,7 @@ void mummy_rot_after_hit(CHAR_DATA *ch, CHAR_DATA *victim)
         }
 
         if (saves_resistance_effect(
+                ch,
                 ch->level,
                 victim,
                 RES_POISON | RES_CURSE | RES_DARK))
@@ -1604,6 +1605,7 @@ bool spec_banshee(CHAR_DATA *ch)
             ch, NULL, NULL, TO_CHAR);
 
         if (saves_resistance_effect(
+                ch,
                 ch->level,
                 victim,
                 RES_SONIC | RES_PSYCHIC))
@@ -1868,7 +1870,7 @@ bool spec_dracolich(CHAR_DATA *ch)
         act("You fix $N with your paralysing gaze.",
             ch, NULL, victim, TO_CHAR);
 
-        if (saves_resistance_effect(ch->level, victim, RES_PARALYSIS))
+        if (saves_resistance_effect(ch, ch->level, victim, RES_PARALYSIS))
         {
                 act("You resist $n's paralysing gaze.",
                     ch, NULL, victim, TO_VICT);
@@ -1926,7 +1928,7 @@ void dracolich_paralysis_after_hit(CHAR_DATA *ch, CHAR_DATA *victim)
                 return;
         }
 
-        if (saves_resistance_effect(ch->level, victim, RES_PARALYSIS))
+        if (saves_resistance_effect(ch, ch->level, victim, RES_PARALYSIS))
                 return;
 
         memset(&af, 0, sizeof(af));
@@ -2073,7 +2075,7 @@ void update_stench(void)
                 if (!resisted)
                 {
                         resisted = saves_resistance_effect(
-                            source->level, ch, RES_POISON);
+                            source, source->level, ch, RES_POISON);
                 }
 
                 memset(&af, 0, sizeof(af));
@@ -2145,6 +2147,7 @@ void update_fear_auras(void)
                 victim->fear_aura_checked = TRUE;
 
                 if (saves_resistance_effect(
+                        source,
                         UMIN(MAX_LEVEL, source->level + 1),
                         victim,
                         RES_MAGIC | RES_PSYCHIC))
@@ -2308,7 +2311,7 @@ void ghoul_touch_after_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                 return;
         }
 
-        if (saves_resistance_effect(ch->level, victim, RES_PARALYSIS))
+        if (saves_resistance_effect(ch, ch->level, victim, RES_PARALYSIS))
         {
                 if (victim->gag < 2)
                 {
@@ -3573,6 +3576,7 @@ static bool vampire_gaze(CHAR_DATA *ch, CHAR_DATA *victim)
             ch, NULL, victim, TO_CHAR);
 
         if (saves_resistance_effect(
+                ch,
                 ch->level,
                 victim,
                 RES_CHARM | RES_PSYCHIC))

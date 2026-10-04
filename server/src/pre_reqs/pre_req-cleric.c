@@ -16,6 +16,7 @@
 {&gsn_group_disease,            &gsn_cleric_base,       30,     PRE_CLERIC},
 {&gsn_group_conjuration,        &gsn_cleric_base,       30,     PRE_CLERIC},
 {&gsn_group_divine,             &gsn_cleric_base,       30,     PRE_CLERIC},
+{&gsn_turn_undead,              &gsn_cleric_base,       30,     PRE_CLERIC},
 
 /* **** GROUPS **** */
 {&gsn_group_summoning,          &gsn_group_conjuration, 50,     PRE_CLERIC},
@@ -126,6 +127,9 @@
 
 {&gsn_protection,               &gsn_group_protection,  30,     PRE_CLERIC},
 {&gsn_protection,               &gsn_cleric_base,       30,     PRE_CLERIC},
+
+{&gsn_protect_vs_evil,          &gsn_group_protection,  30,     PRE_CLERIC},
+{&gsn_protect_vs_evil,          &gsn_cleric_base,       30,     PRE_CLERIC},
 
 {&gsn_sanctuary,                &gsn_group_protection,  45,     PRE_CLERIC},
 {&gsn_sanctuary,                &gsn_protection,        40,     PRE_CLERIC},

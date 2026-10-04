@@ -56,7 +56,7 @@ void do_fly(CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch))
                 return;
-                
+
         if (!CAN_DO(ch, gsn_flight))
         {
                 send_to_char("Huh?\n\r", ch);
@@ -3585,6 +3585,29 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 return;
         }
 
+                if (is_name(arg, "turning"))
+        {
+                if (!CAN_DO(ch, gsn_chant_of_turning))
+                {
+                        send_to_char(
+                            "You have not learned the chant of turning.\n\r",
+                            ch);
+                        return;
+                }
+
+                /*
+                 * The chant uses the same turning rules, with less power.
+                 * There is no separate success roll before those rules run.
+                 */
+                turn_undead(
+                    ch,
+                    gsn_chant_of_turning,
+                    URANGE(0,
+                           ch->pcdata->learned[gsn_chant_of_turning],
+                           100) * 3 / 4);
+                return;
+        }
+
         if( is_name( arg, "protection" ) )
         {
                 if( ch->fighting )
@@ -3753,7 +3776,7 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 chance = URANGE( 5, ch->pcdata->learned[gsn_chant_of_enfeeblement],95 );
 
                 if( is_affected( victim, gsn_chant_of_enfeeblement )
-                   || saves_spell( ch->level, victim ) || number_percent() > chance )
+                   || saves_spell( ch, ch->level, victim ) || number_percent() > chance )
                 {
                         send_to_char( "Your chant of enfeeblement has no effect.\n\r", ch );
                         sound_spell_sfx_delay( ch, gsn_chant_of_enfeeblement, "wearoff", 2 );
@@ -3815,7 +3838,7 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 arena_commentary("$n's chant inflicts pain on $N.", ch, victim);
                 dam = dice( ch->level, 6 ) + ch->level;
 
-                if( saves_spell( ch->level, victim ) )
+                if( saves_spell( ch, ch->level, victim ) )
                         dam /= 2;
 
                 damage( ch, victim, dam, gsn_chant_of_pain, FALSE );

@@ -1750,6 +1750,7 @@ void do_empty(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
         OBJ_DATA *container;
+        ROOM_INDEX_DATA *room = ch->in_room;
         char arg[MAX_INPUT_LENGTH];
         bool found;
         bool first;
@@ -1868,8 +1869,25 @@ void do_empty(CHAR_DATA *ch, char *argument)
                                                         act("{W$n removes all the items from $p.{x", ch, container, NULL, TO_ROOM);
                                                 }
                                                 get_obj(ch, obj, container);
+
+                                                /* Stop if a trap has interrupted the command. */
+                                                if (ch->deleted || ch->in_room != room
+                                                    || !IS_AWAKE(ch) || ch->fighting || container->deleted)
+                                                        return;
+
+                                                /* Getting coins consumes their object. */
+                                                if (obj->deleted)
+                                                {
+                                                        if (obj->item_type == ITEM_MONEY)
+                                                                continue;
+                                                        return;
+                                                }
+
+                                                if (obj->carried_by != ch)
+                                                        return;
+
                                                 obj_from_char(obj);
-                                                obj_to_room(obj, ch->in_room);
+                                                obj_to_room(obj, room);
                                                 act("You drop $p.", ch, obj, NULL, TO_CHAR);
                                                 act("$n drops $p.", ch, obj, NULL, TO_ROOM);
                                         }
@@ -1918,8 +1936,25 @@ void do_empty(CHAR_DATA *ch, char *argument)
                                         act("{W$n empties $p.{x", ch, container, NULL, TO_ROOM);
                                 }
                                 get_obj(ch, obj, container);
+
+                                /* Stop if a trap has interrupted the command. */
+                                if (ch->deleted || ch->in_room != room
+                                    || !IS_AWAKE(ch) || ch->fighting || container->deleted)
+                                        return;
+
+                                /* Getting coins consumes their object. */
+                                if (obj->deleted)
+                                {
+                                        if (obj->item_type == ITEM_MONEY)
+                                                continue;
+                                        return;
+                                }
+
+                                if (obj->carried_by != ch)
+                                        return;
+
                                 obj_from_char(obj);
-                                obj_to_room(obj, ch->in_room);
+                                obj_to_room(obj, room);
                                 act("You drop $p.", ch, obj, NULL, TO_CHAR);
                                 act("$n drops $p.", ch, obj, NULL, TO_ROOM);
                         }
@@ -2924,6 +2959,7 @@ static void liquid_splash_poison_effect(
          * RES_MAGIC simply because spell_poison() normally does.
          */
         if (saves_resistance_effect(
+                ch,
                 UMAX(1, ch->level),
                 victim,
                 RES_POISON))
