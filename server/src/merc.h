@@ -419,9 +419,9 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 627            /* Two new alignment protection spells. */
-#define MAX_PRE_REQ 1587         /* Seven new protection prerequisites. */
-#define MAX_SPELL_GROUP 473      /* Two new protective magiks entries. */
+#define MAX_SKILL 629           /* Includes both mass protection spells. */
+#define MAX_PRE_REQ 1596        /* Nine more protection prerequisites. */
+#define MAX_SPELL_GROUP 475     /* Both mass spells join protective magiks. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
@@ -4443,6 +4443,8 @@ extern int gsn_turn_undead;
 extern int gsn_chant_of_turning;
 extern int gsn_protect_vs_evil;
 extern int gsn_protect_vs_good;
+extern int gsn_mass_protect_vs_evil;
+extern int gsn_mass_protect_vs_good;
 /*
  *  Deity gsns
  */
@@ -5296,6 +5298,8 @@ DECLARE_SPELL_FUN(spell_sonic_blast);
 DECLARE_SPELL_FUN(spell_banish);
 DECLARE_SPELL_FUN(spell_protect_vs_evil);
 DECLARE_SPELL_FUN(spell_protect_vs_good);
+DECLARE_SPELL_FUN(spell_mass_protect_vs_evil);
+DECLARE_SPELL_FUN(spell_mass_protect_vs_good);
 
 #define MOB_VNUM_SKELETON 85
 #define MOB_VNUM_GHOUL 86

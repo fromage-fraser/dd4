@@ -2347,6 +2347,8 @@ struct spell_group_struct spell_group_table[MAX_SPELL_GROUP] =
         {&gsn_protection, 0},
         {&gsn_protect_vs_evil, 0},
         {&gsn_protect_vs_good, 0},
+        {&gsn_mass_protect_vs_evil, 0},
+        {&gsn_mass_protect_vs_good, 0},
         {&gsn_armor, 0},
         {&gsn_sanctuary, 0},
         {&gsn_shield, 0},
@@ -5658,6 +5660,18 @@ const struct skill_type skill_table[MAX_SKILL] =
          RES_MAGIC | RES_DARK,
          spell_protect_vs_good, 10, 12,
          "", "<186>Your protection against selfless virtue fades.<0>"},
+
+        {"mass protection vs evil", &gsn_mass_protect_vs_evil,
+         TYPE_INT, TAR_IGNORE, POS_STANDING,
+         RES_MAGIC | RES_HOLY,
+         spell_mass_protect_vs_evil, 50, 24,
+         "", ""},
+
+        {"mass protection vs good", &gsn_mass_protect_vs_good,
+         TYPE_INT, TAR_IGNORE, POS_STANDING,
+         RES_MAGIC | RES_DARK,
+         spell_mass_protect_vs_good, 50, 24,
+         "", ""},
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.

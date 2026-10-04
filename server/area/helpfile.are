@@ -849,10 +849,10 @@ blocking unrelated directions.
 - Removing equipment now removes only set bonuses that were earned.
 - Items from other sets no longer prevent set bonuses from being removed.
 - Fixed SUMMON crashing while an immortal is switched into a mobile.
-- Kick, Knife Toss, Snap Neck and Flying Headbutt now respect target 
+- Kick, Knife Toss, Snap Neck and Flying Headbutt now respect target
   protections.
 - Fixed EAT failing to find pills stored in a worn pouch.
-- Failed FLEE and smoke-bomb attempts now keep combat active until escape 
+- Failed FLEE and smoke-bomb attempts now keep combat active until escape
   succeeds.
 - Offensive staves now target eligible enemies instead of group members.
 - Defensive staves keep their existing group-targeting rules.
@@ -878,6 +878,7 @@ blocking unrelated directions.
   with controller PvP checks and protection for allied servants.
 - Prepared spell and undead-effect saves for source-based protections.
 - HOME now refuses magical travel while carrying cursed items.
+- Added mass protection vs evil/good for groups.
 ~
 
 
@@ -4258,6 +4259,38 @@ bonuses do not double against the same opponent.
 Necromancers and Infernalists can learn this spell.
 ~
 
+0 'MASS PROTECTION VS EVIL' MASSPROTECTEVIL~
+Syntax: cast 'mass protection vs evil'
+
+This gives everyone in your group in this room Protection vs Evil,
+including you and any grouped followers.
+
+It works just like the single-target spell and lasts 24 ticks. It does
+not strengthen or refresh an ordinary timed ward that is already active.
+Equipment, set and form effects are left alone.
+
+Your affect list shows Protection vs Evil, even when the mass spell
+supplied it. True Clerics can learn this spell.
+
+See HELP PROTECTION VS EVIL.
+~
+
+0 'MASS PROTECTION VS GOOD' MASSPROTECTGOOD~
+Syntax: cast 'mass protection vs good'
+
+This gives everyone in your group in this room Protection vs Good,
+including you and any grouped followers.
+
+It works just like the single-target spell and lasts 24 ticks. It does
+not strengthen or refresh an ordinary timed ward that is already active.
+Equipment, set and form effects are left alone.
+
+Your affect list shows Protection vs Good, even when the mass spell
+supplied it. Necromancers and Infernalists can learn this spell.
+
+See HELP PROTECTION VS GOOD.
+~
+
 0 REFRESH~
 Syntax: cast refresh <<target>
 
@@ -5382,6 +5415,8 @@ Spells in protective magiks include:
     protection
     protection vs evil
     protection vs good
+    mass protection vs evil
+    mass protection vs good
     sanctuary
     stone skin
 ~
@@ -6235,7 +6270,7 @@ blink                   second attack           pattern
 invis                   teleport                knock
 create spring           control weather         detect curse
 sense wisdom            turn undead             detect undead
-protection vs evil
+protection vs evil      mass protection vs evil
 
 True clerics (those that don't change to templars or druids) may also
 learn these skills above level 30:
@@ -6586,7 +6621,7 @@ deter                   harm                    cure poison
 cure blindness          refresh                 remove curse
 second attack           stabilise               resist acid
 fleshrot                nausea                  resist cold
-protection vs good
+protection vs good      mass protection vs good
 ~
 
 -1 SNINJA~
@@ -6609,7 +6644,7 @@ fireshield              detect good             summon demon
 dark ritual             second attack           third spell
 hellfire                chaos blast             detect evil
 possession              release                 resist heat
-resist lightning        protection vs good
+resist lightning        protection vs good      mass protection vs good
 ~
 
 -1 STEMPLAR~

@@ -12,6 +12,10 @@
 {&gsn_protect_vs_good,          &gsn_group_dark,                40,     PRE_INFERNALIST},
 {&gsn_protect_vs_good,          &gsn_infernalist_base,          30,     PRE_INFERNALIST},
 
+{&gsn_mass_protect_vs_good,     &gsn_group_dark,                80,     PRE_INFERNALIST},
+{&gsn_mass_protect_vs_good,     &gsn_infernalist_base,          60,     PRE_INFERNALIST},
+{&gsn_mass_protect_vs_good,     &gsn_protect_vs_good,           75,     PRE_INFERNALIST},
+
 {&gsn_steal_strength,           &gsn_group_dark,                50,     PRE_INFERNALIST},
 
 {&gsn_demon_flames,             &gsn_group_dark,                80,     PRE_INFERNALIST},

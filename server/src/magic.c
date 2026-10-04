@@ -6101,6 +6101,87 @@ void spell_protect_vs_good(int sn, int level, CHAR_DATA *ch, void *vo)
             sn, ch, (CHAR_DATA *)vo, FALSE);
 }
 
+static void spell_mass_alignment_protection(CHAR_DATA *ch,
+                                            bool against_evil)
+{
+        CHAR_DATA *gch;
+        CHAR_DATA *gch_next;
+        int protection_sn;
+        bool added_protection = FALSE;
+        bool helped_player = FALSE;
+
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
+
+        protection_sn = against_evil
+            ? gsn_protect_vs_evil
+            : gsn_protect_vs_good;
+
+        if (protection_sn <= 0 || protection_sn >= MAX_SKILL)
+                return;
+
+        for (gch = ch->in_room->people; gch; gch = gch_next)
+        {
+                gch_next = gch->next_in_room;
+
+                if (gch->deleted || !is_same_group(gch, ch))
+                        continue;
+
+                if (IS_NPC(gch) && IS_SET(gch->act, ACT_OBJECT))
+                        continue;
+
+                /* Leave an existing timed ward and its remaining time alone. */
+                if (is_affected_source(
+                        gch, protection_sn, AFFECT_SOURCE_NONE, 0))
+                {
+                        continue;
+                }
+
+                /*
+                 * Use the normal ward's identity so single and mass
+                 * casts give the same protection without stacking.
+                 */
+                spell_alignment_protection(
+                    protection_sn, ch, gch, against_evil);
+
+                added_protection = TRUE;
+
+                if (gch != ch && !IS_NPC(gch))
+                        helped_player = TRUE;
+        }
+
+        /* Support credit belongs to helping another player, not just yourself. */
+        if (helped_player)
+                check_group_bonus(ch);
+
+        if (!added_protection)
+        {
+                send_to_char(
+                    "There's no new protection to add to your group here.\n\r",
+                    ch);
+        }
+}
+
+void spell_mass_protect_vs_evil(int sn, int level,
+                                 CHAR_DATA *ch, void *vo)
+{
+        (void)sn;
+        (void)level;
+        (void)vo;
+
+        spell_mass_alignment_protection(ch, TRUE);
+}
+
+void spell_mass_protect_vs_good(int sn, int level,
+                                 CHAR_DATA *ch, void *vo)
+{
+        (void)sn;
+        (void)level;
+        (void)vo;
+
+        spell_mass_alignment_protection(ch, FALSE);
+}
+
 void spell_protection(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
