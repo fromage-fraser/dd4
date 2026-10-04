@@ -877,6 +877,7 @@ blocking unrelated directions.
 - Turning now affects enemy undead servants in existing combat,
   with controller PvP checks and protection for allied servants.
 - Prepared spell and undead-effect saves for source-based protections.
+- HOME now refuses magical travel while carrying cursed items.
 ~
 
 
