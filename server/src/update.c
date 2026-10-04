@@ -1304,7 +1304,7 @@ int hit_gain(CHAR_DATA *ch)
                 gain = -number_range(30, 60);
 
                 if (ch->hit + gain <= 0)
-                        gain = ch->hit - 1;
+                        gain = 1 - ch->hit;
         }
 
         /* Being in watery rooms rehydrates and somewhat speeds healing for Sahuagin & Grung */
@@ -1730,7 +1730,7 @@ void gain_condition(CHAR_DATA *ch, int iCond, int value)
         condition = ch->pcdata->condition[iCond];
         ch->pcdata->condition[iCond] = URANGE(-10, condition + value, MAX_FOOD);
 
-        if (ch->pcdata->condition[iCond] <= -8)
+        if (value < 0 && ch->pcdata->condition[iCond] <= -8)
         {
                 switch (iCond)
                 {
@@ -1766,7 +1766,7 @@ void gain_condition(CHAR_DATA *ch, int iCond, int value)
                 return;
         }
 
-        if (ch->pcdata->condition[iCond] <= -4)
+        if (value < 0 && ch->pcdata->condition[iCond] <= -4)
         {
                 switch (iCond)
                 {

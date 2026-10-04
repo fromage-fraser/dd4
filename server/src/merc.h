@@ -2933,6 +2933,9 @@ struct char_data
         /* Remember whether this fight has tested a fear aura. */
         bool fear_aura_checked;
 
+        /* Prevent the same escape attempt re-entering through movement scripts. */
+        bool flee_attempt;
+
         char *name;
         char *short_descr;
         char *long_descr;
@@ -5399,6 +5402,7 @@ int calc_aff_score(int apply, int level);
 
 /* act_move.c */
 void move_char args((CHAR_DATA * ch, int door));
+void move_char_flee args((CHAR_DATA * ch, int door));
 int find_door args((CHAR_DATA * ch, char *arg));
 int get_move_ws args((CHAR_DATA * ch, int sect));
 ED *get_exit args((ROOM_INDEX_DATA * room, int dir));

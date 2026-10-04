@@ -2125,32 +2125,36 @@ void mprog_bribe_trigger( CHAR_DATA *mob, CHAR_DATA *ch, int amount )
 
 bool mprog_move_trigger( CHAR_DATA *ch, int door )
 {
+        CHAR_DATA *vmob;
+        MPROG_DATA *mprg;
+        char percent[MAX_INPUT_LENGTH];
+        char *dirlist;
+        char *dirs[6] = {"north", "east", "south", "west", "up", "down"};
 
-    CHAR_DATA *vmob;
-    bool fired;
-
-    char *dirs[6]   = {"north", "east", "south", "west", "up", "down"};
-    char *txt       = dirs[door];
-
-    fired = FALSE;
-
-    for ( vmob = ch->in_room->people; vmob != NULL; vmob = vmob->next_in_room )
-    {
-        fired = FALSE;
-
-        if ( IS_NPC( vmob ) && ( vmob->pIndexData->progtypes & MOVE_PROG ) )
+        for ( vmob = ch->in_room->people; vmob != NULL; vmob = vmob->next_in_room )
         {
-            fired = moveprog_percent_check( vmob );
+                if ( vmob->deleted || !IS_NPC( vmob )
+                    || !( vmob->pIndexData->progtypes & MOVE_PROG )
+                    || IS_AFFECTED( vmob, AFF_CHARM ) )
+                        continue;
 
-            if (fired)
-            {
-                mprog_wordlist_check( txt, vmob, ch, NULL, NULL, MOVE_PROG );
-            }
+                for ( mprg = vmob->pIndexData->mobprogs; mprg != NULL; mprg = mprg->next )
+                {
+                        if ( !( mprg->type & MOVE_PROG ) )
+                                continue;
+
+                        dirlist = one_argument( mprg->arglist, percent );
+                        if ( !is_full_name( dirs[door], dirlist )
+                            || number_percent( ) > atoi( percent ) )
+                                continue;
+
+                        /* Stop after handling the move; scripts can move or extract characters. */
+                        mprog_driver( mprg->comlist, vmob, ch, NULL, NULL );
+                        return TRUE;
+                }
         }
-    }
 
-    return fired;
-
+        return FALSE;
 }
 
 void mprog_death_trigger( CHAR_DATA *mob )

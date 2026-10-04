@@ -3396,7 +3396,7 @@ void do_eat(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!(obj = get_obj_here(ch, arg)))
+        if (IS_NPC(ch) && !(obj = get_obj_here(ch, arg)))
         {
                 send_to_char("You can't find it.\n\r", ch);
                 return;
@@ -3452,6 +3452,12 @@ void do_eat(CHAR_DATA *ch, char *argument)
                         send_to_char("You can only eat pills you are holding during combat!\n\r", ch);
                         return;
                 }
+        }
+
+        if (!obj)
+        {
+                send_to_char("You can't find it.\n\r", ch);
+                return;
         }
 
         if (ch->level <= LEVEL_HERO)
@@ -4926,7 +4932,7 @@ void do_brandish(CHAR_DATA *ch, char *argument)
                 {
                         vch_next = vch->next_in_room;
 
-                        if (vch->deleted || !is_same_group(ch, vch))
+                        if (vch->deleted)
                                 continue;
 
                         switch (skill_table[sn].target)
@@ -4941,12 +4947,19 @@ void do_brandish(CHAR_DATA *ch, char *argument)
                                 break;
 
                         case TAR_CHAR_OFFENSIVE:
-                                if (IS_NPC(ch) ? IS_NPC(vch) : !IS_NPC(vch))
+                                if (is_same_group(ch, vch)
+                                ||  vch == ch->mount
+                                ||  is_group_members_mount(vch, ch)
+                                ||  (IS_AFFECTED(ch, AFF_CHARM) && ch->master == vch)
+                                ||  (IS_NPC(ch) ? IS_NPC(vch) : !IS_NPC(vch))
+                                ||  !mob_interacts_players(vch)
+                                ||  is_safe(ch, vch))
                                         continue;
                                 break;
 
                         case TAR_CHAR_DEFENSIVE:
-                                if (IS_NPC(ch) ? !IS_NPC(vch) : IS_NPC(vch))
+                                if (!is_same_group(ch, vch)
+                                ||  (IS_NPC(ch) ? !IS_NPC(vch) : IS_NPC(vch)))
                                         continue;
                                 break;
 
@@ -7392,14 +7405,29 @@ void do_deposit(CHAR_DATA *ch, char *argument)
                         send_to_char("You have no coins to deposit.\n\r", ch);
                 else
                 {
-                        ch->pcdata->bank += ch->plat * COIN_PLAT + ch->gold * COIN_GOLD + ch->silver * COIN_SILVER + ch->copper * COIN_COPPER;
+                        int64_t new_balance;
 
+                        new_balance = (int64_t)ch->pcdata->bank
+                                    + (int64_t)ch->plat * COIN_PLAT
+                                    + (int64_t)ch->gold * COIN_GOLD
+                                    + (int64_t)ch->silver * COIN_SILVER
+                                    + (int64_t)ch->copper * COIN_COPPER;
+
+                        if (new_balance > max_balance)
+                        {
+                                sprintf(buf, "Sorry %s, but you may only keep the equivalent of one million "
+                                             "platinum in your account.",
+                                        ch->name);
+                                do_say(banker, buf);
+                                return;
+                        }
+
+                        ch->pcdata->bank = (int)new_balance;
                         ch->plat = 0;
                         ch->gold = 0;
                         ch->silver = 0;
                         ch->copper = 0;
                         calc_coin_weight(ch);
-                        ch->pcdata->bank = UMIN(ch->pcdata->bank, max_balance);
 
                         send_to_char("You deposit all of your coins.\n\r", ch);
                         do_balance(ch, "");
@@ -7861,7 +7889,9 @@ void coins_from_char(int numcoins, CHAR_DATA *ch)
         {
                 holder -= numcoins;
                 coin_crunch(holder, coins);
-                ch->silver = coins->silver + (coins->gold * 10);
+                ch->silver = coins->silver
+                        + (coins->gold * 10)
+                        + (coins->plat * 100);
                 ch->copper = coins->copper;
                 calc_coin_weight(ch);
                 free(coins);
