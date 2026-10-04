@@ -798,6 +798,32 @@ Gezhp, Owl and Shade
 
 - Affect listings now identify effects supplied by worn objects, object sets
   and forms with (O), (S) and (F) markers respectively.
+- Fixed payments losing change when spending silver coins.
+- Fixed DEPOSIT ALL losing coins when exceeding the bank limit.
+- Fixed sunlight damage healing badly injured vampires.
+- Fixed movement scripts allowing passage after refusing it, and incorrectly
+blocking unrelated directions.
+- Fixed ARENA allowing entry while cursed or affected by no-recall magic.
+- Fixed room-wide traps applying damage reductions cumulatively and using
+  the triggering character's resilience instead of each victim's.
+- Fixed the missing 25% XP bonus for qualifying alignment differences.
+- Removing equipment now removes only set bonuses that were earned.
+- Items from other sets no longer prevent set bonuses from being removed.
+- Fixed SUMMON crashing while an immortal is switched into a mobile.
+- Kick, Knife Toss, Snap Neck and Flying Headbutt now respect target 
+  protections.
+- Fixed EAT failing to find pills stored in a worn pouch.
+- Failed FLEE and smoke-bomb attempts now keep combat active until escape 
+  succeeds.
+- Offensive staves now target eligible enemies instead of group members.
+- Defensive staves keep their existing group-targeting rules.
+- Knights and Templars now receive their quest point bonus when returning
+  quest items, including those recovered from hoards.
+- WAKE no longer makes stunned, incapacitated or mortally wounded characters
+  stand up.
+- Fixed LOCK and UNLOCK corrupting non-key objects used as puzzle keys.
+- Fixed food and drink recovery causing extra hunger or thirst damage.
+- Failed PATTERN RETURN attempts no longer consume the saved return point.
 ~
 
 

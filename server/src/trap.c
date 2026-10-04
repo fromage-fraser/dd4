@@ -1042,7 +1042,8 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                 }
         }
         else {
-                CHAR_DATA *wch_next;
+                CHAR_DATA *wch_next = NULL;
+                const int base_dam = dam;
 
                 for (wch = ch->in_room->people; wch; wch = wch_next) {
 
@@ -1050,6 +1051,9 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 
                         if (wch->deleted || wch->position == POS_DEAD)
                                 continue;
+
+                        /* Start fresh for each victim. */
+                        dam = base_dam;
 
                         if (obj->trap_dam == TRAP_DAM_BLUNT
                             || obj->trap_dam == TRAP_DAM_PIERCE
@@ -1092,8 +1096,8 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         if ( IS_AFFECTED(wch, AFF_SANCTUARY) )
                                 dam /= 2;
 
-                        if (!IS_NPC(ch)
-                        &&   IS_AFFECTED(ch, AFF_BONUS_RESILIENCE))
+                        if (!IS_NPC(wch)
+                        &&   IS_AFFECTED(wch, AFF_BONUS_RESILIENCE))
                                 dam -= dam / 3;
 
                         if ( dam < 0 )

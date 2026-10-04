@@ -547,6 +547,9 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                                 pointreward += pointreward / 2;
                                         else if (questman->level > 40)
                                                 pointreward += pointreward / 4;
+                                        
+                                        if (ch->sub_class == SUB_CLASS_KNIGHT || ch->sub_class == SUB_CLASS_TEMPLAR)
+                                                pointreward += pointreward / 4;
 
                                         act("You hand $p to $N.",ch, obj, questman, TO_CHAR);
                                         act("$n hands $p to $N.",ch, obj, questman, TO_ROOM);
@@ -1199,13 +1202,20 @@ void generate_special_quest (CHAR_DATA *ch, CHAR_DATA *questman)
 bool mob_is_quest_target (CHAR_DATA *ch)
 {
         DESCRIPTOR_DATA *d;
+        CHAR_DATA *questor;
 
-        if (!IS_NPC(ch))
+        if (!ch || !IS_NPC(ch) || !ch->pIndexData)
                 return FALSE;
 
         for (d = descriptor_list; d; d = d->next)
         {
-                if (d->character && d->character->pcdata->questmob == ch->pIndexData->vnum)
+                /* A switched descriptor's quests belong to the original player. */
+                questor = d->original ? d->original : d->character;
+
+                if (!questor || IS_NPC(questor) || !questor->pcdata)
+                        continue;
+
+                if (questor->pcdata->questmob == ch->pIndexData->vnum)
                         return TRUE;
         }
 

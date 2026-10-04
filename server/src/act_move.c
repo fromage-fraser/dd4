@@ -55,6 +55,7 @@ bool has_key args((CHAR_DATA * ch, int key));
 int find_wall args((CHAR_DATA * ch, char *arg));
 void scan args((CHAR_DATA * ch, int door));
 OBJ_DATA *get_haskey_obj args((CHAR_DATA * ch, int key));
+static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing);
 
 /*
  * Scan command.
@@ -313,6 +314,19 @@ void scan(CHAR_DATA *ch, int door)
 /* Modified 23/10/99 to reduce branches and include mapping funcs - Tavolir */
 
 void move_char(CHAR_DATA *ch, int door)
+{
+        move_char_internal(ch, door, FALSE);
+}
+
+/* Failed escape attempts must retain combat until departure is possible. */
+void move_char_flee(CHAR_DATA *ch, int door)
+{
+        ch->flee_attempt = TRUE;
+        move_char_internal(ch, door, TRUE);
+        ch->flee_attempt = FALSE;
+}
+
+static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
 {
         CHAR_DATA *fch;
         CHAR_DATA *fch_next;
@@ -601,7 +615,10 @@ void move_char(CHAR_DATA *ch, int door)
                 if (checkmovetrap(ch, door))
                         return;
 
-                if (mprog_move_trigger(ch, door))
+                /* A script owns any transfer or extraction, even if it returns FALSE. */
+                if (mprog_move_trigger(ch, door)
+                ||  ch->deleted
+                ||  ch->in_room != in_room)
                 {
                         return;
                 }
@@ -705,8 +722,15 @@ void move_char(CHAR_DATA *ch, int door)
         GMCPSetArrival(ch->desc,
                        in_room->vnum,
                        to_room->vnum,
-                       door,
+                        door,
                        "walk");
+
+        /* End the old fight before arrival scripts can start a new one. */
+        if (fleeing && to_room != in_room)
+        {
+                stop_fighting(ch, TRUE);
+                ch->flee_attempt = FALSE;
+        }
 
         char_from_room(ch);
         char_to_room(ch, to_room);
@@ -740,7 +764,7 @@ void move_char(CHAR_DATA *ch, int door)
                         continue;
 
                 if (fch->rider == ch && fch->position == POS_STANDING && ch->in_room != fch->in_room)
-                        move_char(fch, door);
+                        move_char_internal(fch, door, fleeing);
 
                 else if (fch->master == ch && fch->position == POS_STANDING && ch->in_room != fch->in_room)
                 {
@@ -758,7 +782,7 @@ void move_char(CHAR_DATA *ch, int door)
                 strip_mount(ch);
                 ch->position = POS_STANDING;
         }
-        
+
         /*
          * Strip ordinary swimming when appropriate.
          *
@@ -1602,7 +1626,8 @@ void do_lock(CHAR_DATA *ch, char *argument)
                 container it was last used to unlock.  --Owl 7/4/23 */
 
                 key_obj = get_haskey_obj(ch, obj->value[2]);
-                key_obj->value[0] = obj->pIndexData->vnum;
+                if (key_obj && key_obj->item_type == ITEM_KEY)
+                        key_obj->value[0] = obj->pIndexData->vnum;
 
                 SET_BIT(obj->value[1], CONT_LOCKED);
                 send_to_char("*Click*\n\r", ch);
@@ -1649,7 +1674,8 @@ void do_lock(CHAR_DATA *ch, char *argument)
                         container it was last used to unlock.  --Owl 7/4/23 */
 
                         key_obj = get_haskey_obj(ch, obj->value[2]);
-                        key_obj->value[0] = obj->pIndexData->vnum;
+                        if (key_obj && key_obj->item_type == ITEM_KEY)
+                                key_obj->value[0] = obj->pIndexData->vnum;
 
                         SET_BIT(obj->value[1], CONT_LOCKED);
                         send_to_char("*Click*\n\r", ch);
@@ -1694,7 +1720,8 @@ void do_lock(CHAR_DATA *ch, char *argument)
                 last used in.  --Owl 7/4/23 */
 
                 key_obj = get_haskey_obj(ch, pexit->key);
-                key_obj->value[0] = ch->in_room->vnum;
+                if (key_obj && key_obj->item_type == ITEM_KEY)
+                        key_obj->value[0] = ch->in_room->vnum;
 
                 SET_BIT(pexit->exit_info, EX_LOCKED);
                 send_to_char("*Click*\n\r", ch);
@@ -1765,7 +1792,8 @@ void do_unlock(CHAR_DATA *ch, char *argument)
                 container it was last used to unlock.  --Owl 7/4/23 */
 
                 key_obj = get_haskey_obj(ch, obj->value[2]);
-                key_obj->value[0] = obj->pIndexData->vnum;
+                if (key_obj && key_obj->item_type == ITEM_KEY)
+                        key_obj->value[0] = obj->pIndexData->vnum;
 
                 REMOVE_BIT(obj->value[1], CONT_LOCKED);
                 send_to_char("*Click*\n\r", ch);
@@ -1812,7 +1840,8 @@ void do_unlock(CHAR_DATA *ch, char *argument)
                         container it was last used to unlock.  --Owl 7/4/23 */
 
                         key_obj = get_haskey_obj(ch, obj->value[2]);
-                        key_obj->value[0] = obj->pIndexData->vnum;
+                        if (key_obj && key_obj->item_type == ITEM_KEY)
+                                key_obj->value[0] = obj->pIndexData->vnum;
 
                         REMOVE_BIT(obj->value[1], CONT_LOCKED);
                         send_to_char("*Click*\n\r", ch);
@@ -1857,7 +1886,8 @@ void do_unlock(CHAR_DATA *ch, char *argument)
                 last used in.  --Owl 7/4/23 */
 
                 key_obj = get_haskey_obj(ch, pexit->key);
-                key_obj->value[0] = ch->in_room->vnum;
+                if (key_obj && key_obj->item_type == ITEM_KEY)
+                        key_obj->value[0] = ch->in_room->vnum;
 
                 REMOVE_BIT(pexit->exit_info, EX_LOCKED);
                 send_to_char("*Click*\n\r", ch);
@@ -2248,7 +2278,8 @@ void do_wake(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_AFFECTED(victim, AFF_SLEEP) || IS_AFFECTED(victim, AFF_MEDITATE))
+        if (victim->position != POS_SLEEPING ||
+            IS_AFFECTED(victim, AFF_SLEEP) || IS_AFFECTED(victim, AFF_MEDITATE))
         {
                 act("You can't wake $M!", ch, NULL, victim, TO_CHAR);
                 return;
@@ -3001,7 +3032,7 @@ void do_arena(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || is_affected(ch, AFF_CURSE) || is_affected(ch, AFF_NO_RECALL))
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || IS_AFFECTED(ch, AFF_CURSE) || IS_AFFECTED(ch, AFF_NO_RECALL))
         {
                 send_to_char("Your cries fall upon deaf ears.\n\r", ch);
                 return;
@@ -3920,7 +3951,6 @@ void do_pattern(CHAR_DATA *ch, char *argument)
                 if (ch->pcdata->pattern)
                 {
                         location = get_room_index(ch->pcdata->pattern);
-                        ch->pcdata->pattern = 0;
                 }
                 else
                 {
@@ -3941,7 +3971,7 @@ void do_pattern(CHAR_DATA *ch, char *argument)
                 location = get_room_index(pattern_list[target].location);
         }
 
-        if (IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL))
+        if (!location || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL))
         {
                 send_to_char("You cannot find a link to a mystic pattern here.\n\r", ch);
                 return;
@@ -3969,6 +3999,8 @@ void do_pattern(CHAR_DATA *ch, char *argument)
         do_look(ch, "auto");
         act("A small chime sounds and $n appears.", ch, NULL, NULL, TO_ROOM);
         ch->mana -= 100;
+        if (!str_cmp(arg, "return"))
+                ch->pcdata->pattern = 0;
         WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
 
         return;

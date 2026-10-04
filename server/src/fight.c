@@ -4179,7 +4179,7 @@ int xp_compute(CHAR_DATA *gch, CHAR_DATA *victim)
 
                 if ((IS_GOOD(gch) && IS_EVIL(victim)) || (IS_EVIL(gch) && IS_GOOD(victim)) || (IS_NEUTRAL(gch) && !IS_NEUTRAL(victim)))
                 {
-                        xp *= 5 / 4;
+                        xp += xp / 4;
                 }
         }
         else
@@ -6495,7 +6495,11 @@ void do_flee(CHAR_DATA *ch, char *argument)
         ROOM_INDEX_DATA *was_in;
         ROOM_INDEX_DATA *now_in;
         int attempt;
+        int killed;
         bool lose_xp;
+
+        if (ch->flee_attempt)
+                return;
 
         if (!(victim = ch->fighting))
         {
@@ -6565,6 +6569,7 @@ void do_flee(CHAR_DATA *ch, char *argument)
         }
 
         was_in = ch->in_room;
+        killed = IS_NPC(ch) ? 0 : ch->pcdata->killed;
         lose_xp = TRUE;
 
         if (IS_SET(was_in->room_flags, ROOM_PLAYER_KILLER))
@@ -6586,8 +6591,6 @@ void do_flee(CHAR_DATA *ch, char *argument)
                 if (IS_NPC(ch) && number_bits(1) && str_cmp("Fear", argument))
                         break;
 
-                stop_fighting(ch, TRUE);
-
                 if (IS_AFFECTED(ch, AFF_HOLD))
                 {
                         act("$n breaks free from $s prison!", ch, NULL, victim, TO_ROOM);
@@ -6595,22 +6598,30 @@ void do_flee(CHAR_DATA *ch, char *argument)
                         REMOVE_BIT(ch->affected_by, AFF_HOLD);
                 }
 
-                move_char(ch, door);
-                if ((now_in = ch->in_room) == was_in)
-                        continue;
+                move_char_flee(ch, door);
+                if (ch->deleted || !ch->in_room
+                ||  (!IS_NPC(ch) && ch->pcdata->killed != killed))
+                        return;
 
-                if (ch->mount)
+                if ((now_in = ch->in_room) == was_in)
                 {
-                        char_from_room(ch->mount);
-                        char_to_room(ch->mount, ch->in_room);
-                        stop_fighting(ch->mount, TRUE);
+                        if (!ch->fighting)
+                                return;
+                        continue;
                 }
 
-                if (ch->rider)
+                if (ch->mount && ch->mount->in_room == was_in)
                 {
+                        stop_fighting(ch->mount, TRUE);
+                        char_from_room(ch->mount);
+                        char_to_room(ch->mount, ch->in_room);
+                }
+
+                if (ch->rider && ch->rider->in_room == was_in)
+                {
+                        stop_fighting(ch->rider, TRUE);
                         char_from_room(ch->rider);
                         char_to_room(ch->rider, ch->in_room);
-                        stop_fighting(ch->rider, TRUE);
                 }
 
                 ch->in_room = was_in;
@@ -6675,7 +6686,6 @@ void do_flee(CHAR_DATA *ch, char *argument)
                         }
                 }
 
-                stop_fighting(ch, TRUE);
                 return;
         }
 
@@ -6689,11 +6699,16 @@ void do_bomb(CHAR_DATA *ch, char *argument)
         ROOM_INDEX_DATA *was_in;
         ROOM_INDEX_DATA *now_in;
         int attempt;
+        int killed;
         EXIT_DATA *pexit;
         int door;
         AFFECT_DATA af;
+        AFFECT_DATA *smoke;
 
         if (IS_NPC(ch) && !mob_has_special(ch, spec_lookup("spec_superwimpy")))
+                return;
+
+        if (ch->flee_attempt)
                 return;
 
         if (!(victim = ch->fighting))
@@ -6753,6 +6768,7 @@ void do_bomb(CHAR_DATA *ch, char *argument)
         }
 
         was_in = ch->in_room;
+        killed = IS_NPC(ch) ? 0 : ch->pcdata->killed;
 
         /*
          * Have 30 goes at randomly finding an exit to escape too
@@ -6768,10 +6784,12 @@ void do_bomb(CHAR_DATA *ch, char *argument)
                         continue;
                 }
 
-                stop_fighting(ch, TRUE);
-                send_to_char("{WYou drop a smoke bomb and escape!{x\n\r\n\r", ch);
-                act("{W$c drops a smoke bomb and escapes!{x", ch, NULL, NULL, TO_ROOM);
-                arena_commentary("$c drops a smoke bomb and escapes!", ch, ch);
+                if (IS_AFFECTED(ch, AFF_HOLD))
+                {
+                        act("$n breaks free from $s prison!", ch, NULL, victim, TO_ROOM);
+                        affect_strip(ch, gsn_trap);
+                        REMOVE_BIT(ch->affected_by, AFF_HOLD);
+                }
 
                 /*
                  * Make the character sneak so characters in the room don't see which way they go
@@ -6783,39 +6801,54 @@ void do_bomb(CHAR_DATA *ch, char *argument)
                 af.modifier = 0;
                 af.bitvector = AFF_SNEAK;
 
-                affect_to_char(ch, &af);
+                smoke = NULL;
+                if (!IS_AFFECTED(ch, AFF_SNEAK))
+                {
+                        affect_to_char(ch, &af);
+                        smoke = ch->affected;
+                }
 
                 /*
                  * I think this handles random rooms looping back on itself
                  */
 
-                move_char(ch, door);
+                move_char_flee(ch, door);
+                if (ch->deleted || !ch->in_room
+                ||  (!IS_NPC(ch) && ch->pcdata->killed != killed))
+                        return;
+
                 if ((now_in = ch->in_room) == was_in)
+                {
+                        /* Remove only this attempt's smoke, not existing sneak. */
+                        if (smoke && !smoke->deleted)
+                                affect_remove(ch, smoke);
+                        if (!ch->fighting)
+                                return;
                         continue;
+                }
 
                 /*
                  * Valid exit - we escape
                  */
 
-                if (IS_AFFECTED(ch, AFF_HOLD))
-                {
-                        act("$n breaks free from $s prison!", ch, NULL, victim, TO_ROOM);
-                        affect_strip(ch, gsn_trap);
-                        REMOVE_BIT(ch->affected_by, AFF_HOLD);
-                }
+                send_to_char("{WYou drop a smoke bomb and escape!{x\n\r\n\r", ch);
+                ch->in_room = was_in;
+                act("{W$c drops a smoke bomb and escapes!{x", ch, NULL, NULL, TO_ROOM);
+                arena_commentary("$c drops a smoke bomb and escapes!", ch, ch);
+                ch->in_room = now_in;
 
-                if (ch->mount)
+                if (ch->mount && ch->mount->in_room == was_in)
                 {
+                        stop_fighting(ch->mount, TRUE);
                         char_from_room(ch->mount);
                         char_to_room(ch->mount, ch->in_room);
-                        stop_fighting(ch->mount, TRUE);
                 }
 
-                if (ch->rider)
+                if (ch->rider && ch->rider->in_room == was_in)
                 {
+                        stop_fighting(ch->rider, TRUE);
                         char_from_room(ch->rider);
                         char_to_room(ch->rider, ch->in_room);
-                        stop_fighting(ch->rider, TRUE);
                 }
 
                 ch->in_room = now_in;
@@ -7120,6 +7153,9 @@ void do_kick(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (victim != ch && is_safe(ch, victim))
+                return;
+
         WAIT_STATE(ch, skill_table[gsn_kick].beats);
 
         if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
@@ -7171,6 +7207,9 @@ void do_knife_toss(CHAR_DATA *ch, char *argument)
                 send_to_char("They aren't here.\n\r", ch);
                 return;
         }
+
+        if (victim != ch && is_safe(ch, victim))
+                return;
 
         WAIT_STATE(ch, skill_table[gsn_knife_toss].beats);
 
@@ -7985,6 +8024,9 @@ void do_snap_neck(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (victim != ch && is_safe(ch, victim))
+                return;
+
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         {
                 send_to_char("You can't snap the neck of an object.\n\r", ch);
@@ -8616,6 +8658,9 @@ void do_flying_headbutt(CHAR_DATA *ch, char *argument)
                 send_to_char("They aren't here.\n\r", ch);
                 return;
         }
+
+        if (victim != ch && is_safe(ch, victim))
+                return;
 
         if (!HAS_HEAD(victim))
         {
