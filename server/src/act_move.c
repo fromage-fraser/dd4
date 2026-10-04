@@ -2911,6 +2911,7 @@ void do_home(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
         ROOM_INDEX_DATA *location;
+        OBJ_DATA *pobj;
         char buf[MAX_STRING_LENGTH];
         int place;
 
@@ -2943,6 +2944,18 @@ void do_home(CHAR_DATA *ch, char *argument)
         {
                 send_to_char("God has forsaken you.\n\r", ch);
                 return;
+        }
+
+        for (pobj = ch->carrying; pobj; pobj = pobj->next_content)
+        {
+                if (pobj->deleted)
+                        continue;
+
+                if (IS_SET(pobj->extra_flags, ITEM_CURSED))
+                {
+                        send_to_char("The gods will not assist carriers of cursed items.\n\r", ch);
+                        return;
+                }
         }
 
         if ((victim = ch->fighting))
