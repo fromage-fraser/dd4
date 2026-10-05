@@ -721,6 +721,8 @@ int gsn_turn_undead;
 int gsn_chant_of_turning;
 int gsn_protect_vs_evil;
 int gsn_protect_vs_good;
+int gsn_mass_protect_vs_evil;
+int gsn_mass_protect_vs_good;
 
 /*
  *  Spell groups
