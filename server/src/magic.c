@@ -9215,10 +9215,13 @@ void spell_mass_heal(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (!is_same_group(gch, ch))
                         continue;
 
-                gch->hit =
-                    UMIN(
-                        gch->hit + 100,
-                        gch->max_hit - gch->aggro_dam);
+                if (gch->hit < gch->max_hit - gch->aggro_dam)
+                {
+                        gch->hit =
+                            UMIN(
+                                (long long)gch->hit + 100,
+                                gch->max_hit - gch->aggro_dam);
+                }
 
                 update_pos(gch);
 
@@ -9275,10 +9278,13 @@ void spell_mass_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (!is_same_group(gch, ch))
                         continue;
 
-                gch->hit =
-                    UMIN(
-                        gch->hit + 300,
-                        gch->max_hit - gch->aggro_dam);
+                if (gch->hit < gch->max_hit - gch->aggro_dam)
+                {
+                        gch->hit =
+                            UMIN(
+                                (long long)gch->hit + 300,
+                                gch->max_hit - gch->aggro_dam);
+                }
 
                 update_pos(gch);
 
