@@ -3976,9 +3976,8 @@ void wear_obj(CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                 }
         }
 
-        if (((obj->item_type == ITEM_WAND || obj->item_type == ITEM_STAFF || obj->item_type == ITEM_PIPE) && (!ch->form || form_wear_table[ch->form].can_wear[WEAR_HOLD])) || CAN_WEAR(eff_class, ch->form, obj, ITEM_HOLD, BIT_HOLD))
-        {
-                if (!remove_obj(ch, WEAR_HOLD, fReplace))
+        if (((obj->item_type == ITEM_WAND || obj->item_type == ITEM_STAFF || obj->item_type == ITEM_PIPE) && (!ch->form || form_wear_table[ch->form].can_wear[BIT_HOLD])) || CAN_WEAR(eff_class, ch->form, obj, ITEM_HOLD, BIT_HOLD))
+        {        if (!remove_obj(ch, WEAR_HOLD, fReplace))
                         return;
                 act("You hold $p in your hands.", ch, obj, NULL, TO_CHAR);
                 act("$n holds $p in $s hands.", ch, obj, NULL, TO_ROOM);
@@ -6668,7 +6667,7 @@ void do_bladethirst(CHAR_DATA *ch, char *argument)
         paf->type = -1;
         paf->duration = -1;
         paf->location = APPLY_DAMROLL;
-        paf->modifier = (in_sc_room) ? 2 + (ch->level / (mod_room_bonus / 20)) : 2 + ch->level / 5;
+        paf->modifier = (in_sc_room) ? 2 + (long long)ch->level * mod_room_bonus / 500 : 2 + ch->level / 5;
         paf->bitvector = 0;
         paf->next = obj->affected;
         obj->affected = paf;

@@ -883,6 +883,11 @@ blocking unrelated directions.
 - Corrected Bard prerequisite grouping.
 - PUT ALL and LODGE ALL now respect turret module and skill restrictions.
 - Added mass protection vs evil/good for groups.
+- Holding wands, staves and pipes now respects form restrictions.
+- Fixed holding breath underwater skipping other characters' tick updates,
+  autosaves and idle logouts.
+- Mass heal and mass power heal no longer reduce existing hit points.
+- Fixed spellcraft rooms reducing the damage bonus from bladethirst.
 ~
 
 

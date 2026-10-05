@@ -2528,7 +2528,7 @@ void char_update(void)
                                 {
                                         send_to_char("{BYou hold your breath under the water...{x\n\r", ch);
                                         sound_condition_sfx( ch, "sfx.condition.hold_breath" );
-                                        return;
+                                        continue;
                                 }
                                 else
                                 {
