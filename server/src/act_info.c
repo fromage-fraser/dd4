@@ -1493,7 +1493,9 @@ void do_look(CHAR_DATA *ch, char *argument)
                                                 continue;
                                         sprintf(buf, "<97>============================={x\n\r");
                                         send_to_char(buf, ch);
-                                        sprintf(buf, "<97>|<0><15> %-20s %3d%%  <0>\n\r", obj->name, ((obj->value[2] * 100) / obj->value[3]));
+                                        /* Invalid capacity must not make inspection unsafe. */
+                                        sprintf(buf, "<97>|<0><15> %-20s %3lld%%  <0>\n\r", obj->name,
+                                                obj->value[3] > 0 ? (100LL * obj->value[2]) / obj->value[3] : 0LL);
                                         send_to_char(buf, ch);
 
                                         count++;
@@ -4227,7 +4229,7 @@ void do_advice(CHAR_DATA *ch, char *argument)
         if (ch->sub_class)
                 pre_group = ch->sub_class + MAX_CLASS;
 
-        for (iter = 0; iter < gsn_mage_base; iter++)
+        for (iter = 0; iter < MAX_PRE_REQ; iter++)
         {
                 if (*pre_req_table[iter].pre_req == sn)
                 {
@@ -4248,7 +4250,8 @@ void do_advice(CHAR_DATA *ch, char *argument)
                                         else
                                                 effective_teach -= get_phys_penalty(ch);
 
-                                        if (pre_req_table[iter].min <= effective_teach)
+                                        /* Practice stops one point below effective teaching ability. */
+                                        if (pre_req_table[iter].min < effective_teach)
                                         {
                                                 result = TRUE;
                                                 break;
