@@ -878,6 +878,10 @@ blocking unrelated directions.
   with controller PvP checks and protection for allied servants.
 - Prepared spell and undead-effect saves for source-based protections.
 - HOME now refuses magical travel while carrying cursed items.
+- Fixed LOOK IN and EXAMINE crashing on turret modules with no capacity.
+- ADVICE now checks all class prerequisites and respects trainer limits.
+- Corrected Bard prerequisite grouping.
+- PUT ALL and LODGE ALL now respect turret module and skill restrictions.
 ~
 
 

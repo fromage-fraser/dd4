@@ -1379,6 +1379,14 @@ void do_put(CHAR_DATA *ch, char *argument)
 
                         if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name)) && can_see_obj(ch, obj) && obj->wear_loc == WEAR_NONE && obj != container && can_drop_obj(ch, obj) && ch->level >= obj->level && get_obj_weight(obj) + get_obj_weight(container) <= container->value[0])
                         {
+                                if (IS_SET(container->ego_flags, EGO_ITEM_TURRET)
+                                    && (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE)
+                                        || IS_NPC(ch)
+                                        || (ch->pcdata->learned[gsn_turret] < 60 && get_container_count(container) >= 1)
+                                        || (ch->pcdata->learned[gsn_turret] < 85 && get_container_count(container) >= 2)
+                                        || (ch->pcdata->learned[gsn_turret] < 95 && get_container_count(container) >= 3)))
+                                        continue;
+
                                 obj_from_char(obj);
                                 obj_to_obj(obj, container);
                                 act("You put $p in $P.", ch, obj, container, TO_CHAR);
@@ -1619,6 +1627,14 @@ void do_lodge(CHAR_DATA *ch, char *argument)
 
                         if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name)) && can_see_obj(ch, obj) && obj->wear_loc == WEAR_NONE && can_drop_obj(ch, obj) && (!obj->deleted) && (ch->level + VAULT_LEVEL_BUFFER) >= obj->level && ((get_obj_weight(obj) + get_obj_weight(container)) <= container->value[0]) && ((get_obj_weight(obj) + ch->pcdata->vault_weight) <= can_vault_w(ch)))
                         {
+                                if (IS_SET(container->ego_flags, EGO_ITEM_TURRET)
+                                    && (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE)
+                                        || IS_NPC(ch)
+                                        || (ch->pcdata->learned[gsn_turret] < 60 && get_container_count(container) >= 1)
+                                        || (ch->pcdata->learned[gsn_turret] < 85 && get_container_count(container) >= 2)
+                                        || (ch->pcdata->learned[gsn_turret] < 95 && get_container_count(container) >= 3)))
+                                        continue;
+
                                 found = TRUE;
                                 obj_from_char(obj);
                                 obj_to_objvault(obj, container);
