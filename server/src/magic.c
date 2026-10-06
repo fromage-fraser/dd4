@@ -9468,7 +9468,7 @@ void spell_moonray(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *vch;
         int dam;
 
-        if (!IS_OUTSIDE(ch) && (ch->in_room->sector_type != SECT_UNDERWATER) && (ch->in_room->sector_type != SECT_UNDERWATER_GROUND))
+        if (!IS_OUTSIDE(ch) || (ch->in_room->sector_type == SECT_UNDERWATER) || (ch->in_room->sector_type == SECT_UNDERWATER_GROUND))
         {
                 send_to_char("You can't be indoors or underwater.\n\r", ch);
                 return;
@@ -9533,7 +9533,7 @@ void spell_sunray(int sn, int level, CHAR_DATA *ch, void *vo)
         int racedam;
         AFFECT_DATA af;
 
-        if (!IS_OUTSIDE(ch) && (ch->in_room->sector_type != SECT_UNDERWATER) && (ch->in_room->sector_type != SECT_UNDERWATER_GROUND))
+        if (!IS_OUTSIDE(ch) || (ch->in_room->sector_type == SECT_UNDERWATER) || (ch->in_room->sector_type == SECT_UNDERWATER_GROUND))
         {
                 send_to_char("You can't be indoors or underwater.\n\r", ch);
                 return;
@@ -11788,6 +11788,7 @@ void spell_freedom(int sn, int level, CHAR_DATA *ch, void *vo)
         affect_strip(victim, gsn_entrapment);
         affect_strip(victim, gsn_trap);
         affect_strip(victim, gsn_paralysis);
+        affect_strip(victim, gsn_tenketsu);
         affect_strip(victim, gsn_coil);
         affect_strip(victim, gsn_web);
         affect_strip(victim, gsn_crush);

@@ -1287,7 +1287,7 @@ int hit_gain(CHAR_DATA *ch)
                 gain += (get_curr_con(ch) / 3);
         }
 
-        if (ch->sub_class == CLASS_RANGER && (ch->in_room->sector_type == SECT_HILLS || ch->in_room->sector_type == SECT_FOREST))
+        if (((ch->class == CLASS_RANGER) && (ch->sub_class == SUB_CLASS_NONE)) && (ch->in_room->sector_type == SECT_HILLS || ch->in_room->sector_type == SECT_FOREST))
         {
                 gain += (get_curr_con(ch) / 3);
         }
@@ -2043,12 +2043,12 @@ void weather_update()
         switch (++time_info.hour)
         {
         case 5:
-                weather_info.sunlight = SUN_LIGHT;
+                weather_info.sunlight = SUN_RISE;
                 strcat(buf, "<229>The day has begun.<0>\n\r");
                 break;
 
         case 6:
-                weather_info.sunlight = SUN_RISE;
+                weather_info.sunlight = SUN_LIGHT;
                 strcat(buf, "The <226>sun<0> rises in the east.\n\r");
                 break;
 

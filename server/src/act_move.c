@@ -2413,6 +2413,12 @@ void do_hide(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (ch->fighting || ch->position == POS_FIGHTING)
+        {
+                send_to_char("You can't hide while fighting.\n\r", ch);
+                return;
+        }
+
         send_to_char("You attempt to hide.\n\r", ch);
         affect_strip(ch, gsn_hide);
         affect_strip(ch, gsn_chameleon_power);
@@ -3858,6 +3864,8 @@ void do_bash(CHAR_DATA *ch, char *argument)
                         damage(ch, ch, (ch->max_hit / 10), gsn_bash, FALSE);
                 }
         }
+        else
+                return;
 
         /*
          * Check for "guards"... anyone bashing a door is considered as

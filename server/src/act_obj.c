@@ -647,7 +647,7 @@ int modify_dig_damage(CHAR_DATA *ch, int base_dmg, int dig_mode, OBJ_DATA *dig_t
                         mod_dmg *= 1.40f;
                 else if (ch->form == FORM_WOLF)
                         mod_dmg *= 1.30f;
-                else if (ch->class == SUB_CLASS_WEREWOLF)
+                else if (ch->sub_class == SUB_CLASS_WEREWOLF)
                         mod_dmg *= 1.10f;
 
                 /* DEBUGF("Post form bonus is %.2f", mod_dmg); */
@@ -5160,7 +5160,7 @@ void do_smoke(CHAR_DATA *ch, char *argument)
 
         if (ch->level < LEVEL_HERO)
         {
-                ch->pcdata->condition[COND_THIRST] -= ((pipe->value[2] / 100) * base_thirst_inc);
+                ch->pcdata->condition[COND_THIRST] -= (long long)pipe->value[2] * base_thirst_inc / 100;
         }
 
         /* pipe benefit reduction  (1-5% randomly of max_benefit (pipe->value[1]) )*/
