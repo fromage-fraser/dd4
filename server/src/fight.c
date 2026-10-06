@@ -2706,7 +2706,7 @@ bool check_shield_block(CHAR_DATA *ch, CHAR_DATA *victim)
 
         chance += (victim->level - ch->level) * 2;
 
-        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+        if (IS_AFFECTED(victim, AFF_ARM_TRAUMA))
                 chance /= 2;
 
         if (chance > 66)
@@ -2904,7 +2904,7 @@ bool check_dodge(CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_AFFECTED(victim, AFF_PRONE))
                 return FALSE;
 
-        if (!IS_NPC(victim) && (ch->form == FORM_WOLF || ch->form == FORM_DIREWOLF))
+        if (!IS_NPC(victim) && (victim->form == FORM_WOLF || victim->form == FORM_DIREWOLF))
                 return FALSE;
 
         if (IS_NPC(victim))
@@ -2923,7 +2923,7 @@ bool check_dodge(CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_AFFECTED(victim, AFF_BLIND))
                 chance /= 2;
 
-        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+        if (IS_AFFECTED(victim, AFF_LEG_TRAUMA))
                 chance /= 2;
 
         if (number_percent() >= chance)
@@ -2967,10 +2967,10 @@ bool check_acrobatics(CHAR_DATA *ch, CHAR_DATA *victim)
 
         chance += (victim->level - ch->level) * 2;
 
-        if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
+        if (IS_AFFECTED(victim, AFF_ARM_TRAUMA))
                 chance /= 2;
 
-        if (IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+        if (IS_AFFECTED(victim, AFF_LEG_TRAUMA))
                 chance /= 2;
 
         if (chance > 50)

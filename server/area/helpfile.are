@@ -888,6 +888,18 @@ blocking unrelated directions.
   autosaves and idle logouts.
 - Mass heal and mass power heal no longer reduce existing hit points.
 - Fixed spellcraft rooms reducing the damage bonus from bladethirst.
+- Fixed werewolves missing their 10% digging bonus in normal form.
+- Fixed forest and hills healing bonuses going to Thugs instead of Rangers.
+- Fixed wolf and direwolf dodge restrictions checking the attacker
+  instead of the defender.
+- Shield block, dodge and acrobatics now apply trauma penalties to the
+  defender instead of the attacker.
+- Freedom now removes the effects of tenketsu.
+- Fixed sunrise and daylight states being reversed during weather updates.
+- Fixed sunray and moonray being usable underwater.
+- Fixed invalid BASH targets provoking nearby mobs.
+- HIDE can no longer be used while fighting.
+- Fixed pipe thirst modifiers being rounded down before applying their effect.
 ~
 
 
