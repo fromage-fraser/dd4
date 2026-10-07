@@ -1099,11 +1099,13 @@ void do_combo (CHAR_DATA *ch, char *argument)
                         return;
 
                 if (number == 3
-                    && number_percent() >= (45 + ch->pcdata->learned[gsn_combo3] / 2))
+                    && (ch->pcdata->learned[gsn_combo3] <= 0
+                        || number_percent() >= (45 + ch->pcdata->learned[gsn_combo3] / 2)))
                         return;
 
                 if (number == 4
-                    && number_percent() >= (40 + ch->pcdata->learned[gsn_combo4] / 2))
+                    && (ch->pcdata->learned[gsn_combo4] <= 0
+                        || number_percent() >= (40 + ch->pcdata->learned[gsn_combo4] / 2)))
                         return;
 
                 if (number > 4)

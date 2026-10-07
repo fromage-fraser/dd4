@@ -981,6 +981,9 @@ void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
                 return;
         }
 
+        if (paf->deleted)
+                return;
+
         affect_modify( ch, paf, FALSE, NULL );
 
         paf->deleted = TRUE;

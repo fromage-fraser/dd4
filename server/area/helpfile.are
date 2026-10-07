@@ -900,6 +900,25 @@ blocking unrelated directions.
 - Fixed invalid BASH targets provoking nearby mobs.
 - HIDE can no longer be used while fighting.
 - Fixed pipe thirst modifiers being rounded down before applying their effect.
+- MEDITATE can no longer be used while fighting.
+- RECALL now rejects cursed items before combat costs or ending the fight.
+- Food poison duration now scales with item level and nutrition.
+- READ now preserves hiding, just like LOOK.
+- Fixed GAG disabling toxin resistance to nausea and fleshrot.
+- Fixed exotic resistance increasing damage from poisoned weapons.
+- Fixed COMBO using third and fourth attacks before their skills are learned.
+- Healer mana restoration no longer reduces existing mana.
+- Fixed GMCP underreporting swimming costs into unswimmable water.
+- Fixed cleric trainers being unable to teach protection.
+- Fixed cure light, cure serious, cure critical, heal, power heal, psychic
+  healing and runic mend reducing existing hit points.
+- FILL now carries fountain poison into containers and clears old poison
+  when refilling an empty container from a clean fountain.
+- Group kills now update each eligible member's deity favour timers.
+- Fixed an out-of-bounds read when hunting.
+- Fixed death changing maximum stats after effects expire.
+- Fixed mounted travel reporting exhaustion despite having enough movement.
+- Group kills now check each member's equipment after alignment changes.
 ~
 
 

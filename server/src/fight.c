@@ -1287,7 +1287,10 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                  */
                 dam += GET_DAMROLL(ch);
 
-                if (wield && IS_SET(wield->extra_flags, ITEM_POISONED) && (IS_NPC(victim) || number_percent() > victim->pcdata->learned[gsn_resist_toxin] || is_affected(victim, gsn_bonus_exotic)))
+                if (wield && IS_SET(wield->extra_flags, ITEM_POISONED)
+                &&  (IS_NPC(victim)
+                ||   (number_percent() > victim->pcdata->learned[gsn_resist_toxin]
+                &&    !is_affected(victim, gsn_bonus_exotic))))
                 {
                         dam += dam / 4;
                 }
@@ -4118,23 +4121,23 @@ void group_gain(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
                                 else
                                         reward = 8;
 
-                                SET_DEITY_TYPE_TIMER(ch, DEITY_TYPE_PEACEFUL, 5);
-                                SET_DEITY_TYPE_TIMER(ch, DEITY_TYPE_CHAOTIC, -2);
-                                SET_DEITY_TYPE_TIMER(ch, DEITY_TYPE_WARLIKE, -1 - reward);
-                                SET_DEITY_PERSONALITY_TIMER(ch, DEITY_PERSONALITY_JUDGEMENTAL, 4 - reward);
-                                SET_DEITY_PERSONALITY_TIMER(ch, DEITY_PERSONALITY_PROUD, 4 - reward);
-                                SET_DEITY_PERSONALITY_TIMER(ch, DEITY_PERSONALITY_PROTECTIVE, 4 - reward);
+                                SET_DEITY_TYPE_TIMER(gch, DEITY_TYPE_PEACEFUL, 5);
+                                SET_DEITY_TYPE_TIMER(gch, DEITY_TYPE_CHAOTIC, -2);
+                                SET_DEITY_TYPE_TIMER(gch, DEITY_TYPE_WARLIKE, -1 - reward);
+                                SET_DEITY_PERSONALITY_TIMER(gch, DEITY_PERSONALITY_JUDGEMENTAL, 4 - reward);
+                                SET_DEITY_PERSONALITY_TIMER(gch, DEITY_PERSONALITY_PROUD, 4 - reward);
+                                SET_DEITY_PERSONALITY_TIMER(gch, DEITY_PERSONALITY_PROTECTIVE, 4 - reward);
                         }
                 }
                 else
                 {
-                        SET_DEITY_TYPE_TIMER(ch, DEITY_TYPE_LAWFUL, 40);
+                        SET_DEITY_TYPE_TIMER(gch, DEITY_TYPE_LAWFUL, 40);
                 }
 
                 /*
                  *  Check whether incompatibly aligned or poisoned items should be dropped
                  */
-                for (obj = ch->carrying; obj; obj = obj_next)
+                for (obj = gch->carrying; obj; obj = obj_next)
                 {
                         obj_next = obj->next_content;
 
@@ -4144,12 +4147,12 @@ void group_gain(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
                         if (obj->wear_loc == WEAR_NONE)
                                 continue;
 
-                        if ((IS_OBJ_STAT(obj, ITEM_ANTI_EVIL) && IS_EVIL(ch)) || (IS_OBJ_STAT(obj, ITEM_ANTI_GOOD) && IS_GOOD(ch)) || (IS_OBJ_STAT(obj, ITEM_ANTI_NEUTRAL) && IS_NEUTRAL(ch)) || (IS_SET(obj->extra_flags, ITEM_POISONED) && (!can_use_poison_weapon(ch))))
+                        if ((IS_OBJ_STAT(obj, ITEM_ANTI_EVIL) && IS_EVIL(gch)) || (IS_OBJ_STAT(obj, ITEM_ANTI_GOOD) && IS_GOOD(gch)) || (IS_OBJ_STAT(obj, ITEM_ANTI_NEUTRAL) && IS_NEUTRAL(gch)) || (IS_SET(obj->extra_flags, ITEM_POISONED) && (!can_use_poison_weapon(gch))))
                         {
-                                act("{YYou are zapped by $p and drop it.{x", ch, obj, NULL, TO_CHAR);
-                                act("{Y$c is zapped by $p and drops it.{x", ch, obj, NULL, TO_ROOM);
+                                act("{YYou are zapped by $p and drop it.{x", gch, obj, NULL, TO_CHAR);
+                                act("{Y$c is zapped by $p and drops it.{x", gch, obj, NULL, TO_ROOM);
                                 obj_from_char(obj);
-                                obj_to_room(obj, ch->in_room);
+                                obj_to_room(obj, gch->in_room);
                         }
                 }
         }

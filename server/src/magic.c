@@ -2093,10 +2093,13 @@ void spell_cure_critical(int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim->hit > victim->max_hit)
                 return;
 
-        victim->hit =
-            UMIN(
-                victim->hit + heal,
-                victim->max_hit - victim->aggro_dam);
+        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        {
+                victim->hit =
+                    UMIN(
+                        (long long)victim->hit + heal,
+                        (long long)victim->max_hit - victim->aggro_dam);
+        }
 
         update_pos(victim);
 
@@ -2231,7 +2234,13 @@ void spell_cure_light(int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim->hit > victim->max_hit)
                 return;
 
-        victim->hit = UMIN(victim->hit + heal, victim->max_hit - victim->aggro_dam);
+        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        {
+                victim->hit =
+                    UMIN(
+                        (long long)victim->hit + heal,
+                        (long long)victim->max_hit - victim->aggro_dam);
+        }
         update_pos(victim);
 
         if (ch != victim)
@@ -2599,7 +2608,13 @@ void spell_cure_serious(int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim->hit > victim->max_hit)
                 return;
 
-        victim->hit = UMIN(victim->hit + heal, victim->max_hit - victim->aggro_dam);
+        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        {
+                victim->hit =
+                    UMIN(
+                        (long long)victim->hit + heal,
+                        (long long)victim->max_hit - victim->aggro_dam);
+        }
         update_pos(victim);
 
         if (ch != victim)
@@ -4592,10 +4607,13 @@ void spell_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim->hit > victim->max_hit)
                 return;
 
-        victim->hit =
-            UMIN(
-                victim->hit + 100,
-                victim->max_hit - victim->aggro_dam);
+        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        {
+                victim->hit =
+                    UMIN(
+                        (long long)victim->hit + 100,
+                        (long long)victim->max_hit - victim->aggro_dam);
+        }
 
         update_pos(victim);
 
@@ -4726,10 +4744,13 @@ void spell_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim->hit > victim->max_hit)
                 return;
 
-        victim->hit =
-            UMIN(
-                victim->hit + 300,
-                victim->max_hit - victim->aggro_dam);
+        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        {
+                victim->hit =
+                    UMIN(
+                        (long long)victim->hit + 300,
+                        (long long)victim->max_hit - victim->aggro_dam);
+        }
 
         update_pos(victim);
 
@@ -8584,7 +8605,13 @@ void spell_psychic_healing(int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim->hit > victim->max_hit)
                 return;
 
-        victim->hit = UMIN(victim->hit + heal, victim->max_hit - victim->aggro_dam);
+        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        {
+                victim->hit =
+                    UMIN(
+                        (long long)victim->hit + heal,
+                        (long long)victim->max_hit - victim->aggro_dam);
+        }
         update_pos(victim);
 
         send_to_char("You feel better!\n\r", victim);
@@ -11134,7 +11161,13 @@ void spell_runic_mend(int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim->hit > victim->max_hit)
                 return;
 
-        victim->hit = UMIN(victim->hit + heal, victim->max_hit - victim->aggro_dam);
+        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        {
+                victim->hit =
+                    UMIN(
+                        (long long)victim->hit + heal,
+                        (long long)victim->max_hit - victim->aggro_dam);
+        }
         update_pos(victim);
 
         send_to_char("You feel better!\n\r", victim);
@@ -11426,10 +11459,14 @@ void spell_nausea(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (!IS_NPC(victim) && (number_percent() < victim->pcdata->learned[gsn_resist_toxin] || is_affected(victim, gsn_bonus_exotic)) && victim->gag < 2)
+        if (!IS_NPC(victim) && (number_percent() < victim->pcdata->learned[gsn_resist_toxin] || is_affected(victim, gsn_bonus_exotic)))
         {
-                sound_combat_resist_toxin_sfx( victim );
-                send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>wa<47>ve <48>of <49>na<48>us<47>ea <46>th<47>re<48>at<49>en<48>in<47>g t<46>o o<47>ve<48>rw<49>he<48>lm <47>yo<46>u.<0>\n\r", victim);
+                if (victim->gag < 2)
+                {
+                        sound_combat_resist_toxin_sfx( victim );
+                        send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>wa<47>ve <48>of <49>na<48>us<47>ea <46>th<47>re<48>at<49>en<48>in<47>g t<46>o o<47>ve<48>rw<49>he<48>lm <47>yo<46>u.<0>\n\r", victim);
+                }
+
                 return;
         }
 
@@ -11868,10 +11905,14 @@ void spell_fleshrot(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (!IS_NPC(victim) && (number_percent() < victim->pcdata->learned[gsn_resist_toxin] || is_affected(victim, gsn_bonus_exotic)) && victim->gag < 2)
+        if (!IS_NPC(victim) && (number_percent() < victim->pcdata->learned[gsn_resist_toxin] || is_affected(victim, gsn_bonus_exotic)))
         {
-                sound_combat_resist_toxin_sfx( victim );
-                send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>di<47>se<48>as<49>e t<48>ha<47>t a<46>ss<47>ai<48>ls <49>yo<48>ur <47>sy<46>st<47>em<48>.<0>\n\r", victim);
+                if (victim->gag < 2)
+                {
+                        sound_combat_resist_toxin_sfx( victim );
+                        send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>di<47>se<48>as<49>e t<48>ha<47>t a<46>ss<47>ai<48>ls <49>yo<48>ur <47>sy<46>st<47>em<48>.<0>\n\r", victim);
+                }
+
                 return;
         }
 

@@ -2540,6 +2540,9 @@ void do_fill(CHAR_DATA *ch, char *argument)
         act("You fill $p with $T.", ch, obj, liq_table[fountain->value[2]].liq_name, TO_CHAR);
         act("$n fills $p with $T.", ch, obj, liq_table[fountain->value[2]].liq_name, TO_ROOM);
 
+        if (obj->value[1] == 0 || fountain->value[3] != 0)
+                obj->value[3] = fountain->value[3];
+
         obj->value[2] = fountain->value[2];
         obj->value[1] = obj->value[0];
         return;
@@ -3523,7 +3526,10 @@ void do_eat(CHAR_DATA *ch, char *argument)
                         send_to_char("You choke and gag.\n\r", ch);
 
                         af.type = gsn_poison;
-                        af.duration = 2 * obj->value[0];
+                        /* Level sets potency; nutrition adds up to twice the duration. */
+                        af.duration =
+                            (URANGE(1, obj->level, LEVEL_HERO)
+                             * (24 + URANGE(0, obj->value[0], 24)) + 23) / 24;
                         af.location = APPLY_STR;
                         af.modifier = -5;
                         af.bitvector = AFF_POISON;

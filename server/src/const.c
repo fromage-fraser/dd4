@@ -2651,7 +2651,6 @@ struct spell_group_struct spell_group_table[MAX_SPELL_GROUP] =
 
         {&gsn_group_inscription, 0},
         {&gsn_inscribe, 0},
-        {&gsn_protection, 0},
         {&gsn_adamantite_runic_blade, 0},
         {&gsn_electrum_runic_blade, 0},
         {&gsn_starmetal_runic_blade, 0},

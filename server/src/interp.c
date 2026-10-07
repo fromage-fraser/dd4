@@ -2800,13 +2800,13 @@ void interpret(CHAR_DATA *ch, char *argument)
         /*
          * Strip hide if affected
          */
-
+        
         if ((IS_AFFECTED(ch, AFF_HIDE)
         ||   is_affected(ch, gsn_hide)
         ||   is_affected(ch, gsn_chameleon_power))
         &&  ch->form != FORM_CHAMELEON
         &&  cmd_table[cmd].position != POS_DEAD
-        &&  !is_name(cmd_table[cmd].name, "look")
+        &&  cmd_table[cmd].do_fun != do_look
         &&  !is_name(cmd_table[cmd].name, "exits")
         &&  !is_name(cmd_table[cmd].name, "scan"))
         {
