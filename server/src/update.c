@@ -275,7 +275,8 @@ static int gmcp_exit_cost(CHAR_DATA *ch,
         ||   to_room->sector_type == SECT_UNDERWATER_GROUND)
         &&  (ch->race == RACE_SAHUAGIN
         ||   ch->race == RACE_GRUNG
-        ||   IS_AFFECTED(ch, AFF_SWIM)))
+        ||  (to_room->sector_type != SECT_WATER_NOSWIM
+        &&   IS_AFFECTED(ch, AFF_SWIM))))
         {
                 cost /= 3;
                 cost = UMAX(cost, 1);

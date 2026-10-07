@@ -421,7 +421,7 @@ bool has_tranquility(CHAR_DATA *ch);
 
 #define MAX_SKILL 629           /* Includes both mass protection spells. */
 #define MAX_PRE_REQ 1596        /* Nine more protection prerequisites. */
-#define MAX_SPELL_GROUP 475     /* Both mass spells join protective magiks. */
+#define MAX_SPELL_GROUP 474     /* Protection belongs only to protective magiks. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */

@@ -123,8 +123,8 @@ void do_heal(CHAR_DATA *ch, char *argument)
 
                         if (is_name(arg, "mana"))
                         {
-                                ch->mana += 100;
-                                ch->mana = UMIN(ch->mana, ch->max_mana);
+                                if (ch->mana < ch->max_mana)
+                                        ch->mana = UMIN((long long)ch->mana + 100, ch->max_mana);
                                 sound_spell_sfx( ch, 0, "cast" );
                                 send_to_char("A warm glow passes through you.\n\r", ch);
 

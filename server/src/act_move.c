@@ -653,6 +653,10 @@ static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
                         move = UMAX(move, 1);
                 }
 
+                /* Check affordability against the same cost that will be charged. */
+                if (is_affected(ch, gsn_mount))
+                        move = 1;
+
                 /* Don't put a wait state on or take movement points from imms -- Owl 22/2/22 */
 
                 if (ch->move < move && !IS_IMMORTAL(ch))
@@ -665,10 +669,7 @@ static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
                 {
                         WAIT_STATE(ch, get_move_ws(ch, in_room->sector_type));
 
-                        if (is_affected(ch, gsn_mount))
-                                ch->move -= 1;
-                        else
-                                ch->move -= move;
+                        ch->move -= move;
                 }
         } /* end PC checks */
 
@@ -2466,6 +2467,12 @@ void do_meditate(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (ch->fighting || ch->position == POS_FIGHTING)
+        {
+                send_to_char("You can't meditate while fighting.\n\r", ch);
+                return;
+        }
+
         if (IS_AFFECTED(ch, AFF_MEDITATE))
                 REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
 
@@ -2707,6 +2714,25 @@ void do_recall(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                /* Check to see if the character is carrying any ITEM_CURSED items.  They
+                 * will prevent recall as well as other forms of magical travel.
+                 */
+
+                for (pobj = ch->carrying; pobj; pobj = pobj_next)
+                {
+                        pobj_next = pobj->next_content;
+
+                        if (pobj->deleted)
+                                continue;
+
+                        if (IS_SET(pobj->extra_flags, ITEM_CURSED))
+                        {
+                                sprintf(buf, "The gods will not assist carriers of cursed items.\n\r");
+                                send_to_char(buf, ch);
+                                return;
+                        }
+                }
+
                 if ((victim = ch->fighting))
                 {
                         int lose;
@@ -2739,25 +2765,6 @@ void do_recall(CHAR_DATA *ch, char *argument)
                                 send_to_char(buf, ch);
                                 ch->pcdata->fame = ch->pcdata->fame - (ch->pcdata->fame / 40);
                                 check_fame_table(ch);
-                        }
-                }
-
-                /* Check to see if the character is carrying any ITEM_CURSED items.  They
-                 * will prevent recall as well as other forms of magical travel.
-                 */
-
-                for (pobj = ch->carrying; pobj; pobj = pobj_next)
-                {
-                        pobj_next = pobj->next_content;
-
-                        if (pobj->deleted)
-                                continue;
-
-                        if (IS_SET(pobj->extra_flags, ITEM_CURSED))
-                        {
-                                sprintf(buf, "The gods will not assist carriers of cursed items.\n\r");
-                                send_to_char(buf, ch);
-                                return;
                         }
                 }
 
