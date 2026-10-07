@@ -1725,11 +1725,14 @@ void gain_condition(CHAR_DATA *ch, int iCond, int value)
         int condition;
         int gain;
 
-        if (IS_NPC(ch) || value == -10 || ch->level >= LEVEL_HERO || ch->level < 2 || ch->sub_class == SUB_CLASS_VAMPIRE || IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        if (IS_NPC(ch) || ch->level >= LEVEL_HERO || ch->level < 2 || ch->sub_class == SUB_CLASS_VAMPIRE || IS_AFFECTED(ch, AFF_NON_CORPOREAL))
                 return;
 
         condition = ch->pcdata->condition[iCond];
-        ch->pcdata->condition[iCond] = URANGE(-10, condition + value, MAX_FOOD);
+        if (iCond == COND_DRUNK)
+                ch->pcdata->condition[iCond] = URANGE(0, UMAX(0, condition) + value, MAX_FOOD);
+        else
+                ch->pcdata->condition[iCond] = URANGE(-10, condition + value, MAX_FOOD);
 
         if (value < 0 && ch->pcdata->condition[iCond] <= -8)
         {
@@ -2348,6 +2351,11 @@ void char_update(void)
 
                         /* This duration is maintained on combat pulses. */
                         if (is_ghoul_paralysis(paf))
+                                continue;
+
+                        /* These durations are maintained by state_update(). */
+                        if (paf->bitvector == AFF_DAZED
+                        ||  paf->bitvector == AFF_PRONE)
                                 continue;
 
                         if (paf->duration < 0)

@@ -60,6 +60,7 @@ static void liquid_splash_effect
 
 void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
 {
+        OBJ_DATA *carrier_container;
         char buf[MAX_STRING_LENGTH];
 
         if (!IS_SET(obj->wear_flags, ITEM_TAKE) || obj->item_type == ITEM_PORTAL)
@@ -139,7 +140,14 @@ void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
                 return;
         }
 
-        if ((ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
+        /* Non-money contents of carried containers keep the same total weight. */
+        for (carrier_container = container; carrier_container && carrier_container->in_obj;
+             carrier_container = carrier_container->in_obj)
+                ;
+
+        if ((obj->item_type == ITEM_MONEY || !carrier_container
+             || carrier_container->deleted || carrier_container->carried_by != ch)
+            && (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
         {
                 act("$d: you can't carry that much weight.", ch, NULL, obj->name, TO_CHAR);
                 return;

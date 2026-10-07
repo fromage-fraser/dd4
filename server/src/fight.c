@@ -1550,6 +1550,9 @@ void death_penalty(CHAR_DATA *ch, CHAR_DATA *victim)
                          */
                         if (victim->pcdata->level_xp_loss < (level_table[victim->level].exp_total - level_table[victim->level - 1].exp_total))
                         {
+                                loss = UMAX(loss, victim->pcdata->level_xp_loss
+                                    - (level_table[victim->level].exp_total
+                                       - level_table[victim->level - 1].exp_total));
                                 gain_exp(victim, loss);
                                 victim->pcdata->level_xp_loss -= loss;
                         }
@@ -4153,6 +4156,8 @@ void group_gain(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
                                 act("{Y$c is zapped by $p and drops it.{x", gch, obj, NULL, TO_ROOM);
                                 obj_from_char(obj);
                                 obj_to_room(obj, gch->in_room);
+                                /* Unequipping can also drop the cached next weapon. */
+                                obj_next = gch->carrying;
                         }
                 }
         }
