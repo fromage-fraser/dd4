@@ -1528,7 +1528,10 @@ void do_close(CHAR_DATA *ch, char *argument)
                 send_to_char("Ok.\n\r", ch);
 
                 /* close the other side */
-                if ((to_room = pexit->to_room) && (pexit_rev = to_room->exit[directions[door].reverse]) && pexit_rev->to_room == ch->in_room)
+                if ((to_room = pexit->to_room)
+                &&  (pexit_rev = to_room->exit[directions[door].reverse])
+                &&  pexit_rev->to_room == ch->in_room
+                &&  IS_SET(pexit_rev->exit_info, EX_ISDOOR))
                 {
                         CHAR_DATA *rch;
 
@@ -2221,8 +2224,11 @@ void do_sleep(CHAR_DATA *ch, char *argument)
                         act("$n falls asleep - and off your back.",
                             ch, NULL, ch->mount, TO_VICT);
                         damage(ch, ch, number_range(10, ch->mount->level), TYPE_UNDEFINED, FALSE);
-                        strip_mount(ch);
-                        ch->position = POS_RESTING;
+                        if (ch->mount)
+                        {
+                                strip_mount(ch);
+                                ch->position = POS_RESTING;
+                        }
                         return;
                 }
         }

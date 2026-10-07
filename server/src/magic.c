@@ -131,6 +131,10 @@ static bool self_cast_already_affected(CHAR_DATA *ch, int sn)
 
         spell = skill_table[sn].spell_fun;
 
+        /* Prayer checks each group member so an affected caster can recast it. */
+        if (spell == spell_prayer)
+                return FALSE;
+
         if (spell == spell_detect_hidden
         ||  spell == spell_detect_invis
         ||  spell == spell_fireshield

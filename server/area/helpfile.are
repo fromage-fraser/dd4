@@ -919,6 +919,15 @@ blocking unrelated directions.
 - Fixed death changing maximum stats after effects expire.
 - Fixed mounted travel reporting exhaustion despite having enough movement.
 - Group kills now check each member's equipment after alignment changes.
+- Fixed equipment checks skipping items after strength loss drops a weapon.
+- Fixed closing doors blocking reverse exits that are not doors.
+- Death experience losses now stop at the per-level cap.
+- Fixed GET double-counting weight when taking items from carried containers.
+- Fixed ten-point thirst penalties from salt water and blood being ignored.
+- Fixed sober characters accumulating negative drunkenness.
+- Fixed mounted SLEEP overwriting injury and death positions after a fall.
+- Fixed prayer failing to bless group members when the caster is already affected.
+- Fixed dazed and prone effects wearing off early when a game tick occurs.
 ~
 
 
