@@ -941,6 +941,7 @@ blocking unrelated directions.
 - Fixed gravity checks skipping later connected players during the same pulse.
 - Rejected poisoned weapons no longer remove an eligible existing single weapon.
 - VALUE now rejects owner-bound and donated items instead of quoting a price.
+- Added Protection vs Undead to deter fresh automatic undead attacks.
 ~
 
 
@@ -4292,6 +4293,34 @@ Clerics learn this spell early. Knights gain access later. Cleric
 subclasses retain it through their early Cleric training.
 ~
 
+0 'PROTECTION VS UNDEAD' PROTECTUNDEAD~
+Syntax: cast 'protection vs undead' <<target>
+
+This ward discourages uncommanded undead from starting automatic attacks
+against you or joining someone else's attack against you.
+
+Its strength comes from the casting level, not the recipient's level.
+Mindless undead count five levels easier to deter. Rare undead count
+five levels harder, and elite undead count ten levels harder.
+
+Magic/holy resistance reduces the ward's effective strength by five
+levels. Vulnerability increases it by five. Immunity overrides it.
+Bosses, world bosses, clan guards and unkillable or invulnerable
+creatures ignore this ordinary ward.
+
+It does not stop existing fights, retaliation, a hunter pursuing you,
+scripted attacks or a commanded servant's normal behaviour. It also
+does not stop attacks by player vampires or living creatures.
+
+Sentinels stay where they belong. This version does not make anyone
+flee or end a fight.
+
+The ward lasts 24 ticks. Another ordinary cast does not refresh or
+replace it. Independently supplied effects are left alone.
+
+Clerics and Knights can learn this spell.
+~
+
 0 'PROTECTION VS GOOD' PROTECTGOOD~
 Syntax: cast 'protection vs good' <<target>
 
@@ -5479,6 +5508,7 @@ Spells in protective magiks include:
     protection vs good
     mass protection vs evil
     mass protection vs good
+    protection vs undead
     sanctuary
     stone skin
 ~
@@ -6332,7 +6362,7 @@ blink                   second attack           pattern
 invis                   teleport                knock
 create spring           control weather         detect curse
 sense wisdom            turn undead             detect undead
-protection vs evil      mass protection vs evil
+protection vs evil      mass protection vs evil protection vs undead
 
 True clerics (those that don't change to templars or druids) may also
 learn these skills above level 30:
@@ -6622,7 +6652,7 @@ create water            dual                    disarm
 joust                   second spell            destrier
 flamestrike             cure poison             enhanced critical
 target                  turn undead             detect undead
-protection vs evil
+protection vs evil      protection vs undead
 ~
 
 -1 'SMARTIAL ARTIST'~

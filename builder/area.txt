@@ -3630,35 +3630,35 @@ and pills. Make sure the spell's targeting suits the item.
     power heal                  prayer
     prismatic spray             project force
     protection                  protection vs evil
-    protection vs good          psionic blast
-    psychic crush               psychic drain
-    psychic healing             psychometry
-    pyro rune                   recharge item
-    recharge mana               refresh
-    regenerate                  release
-    remove curse                rend rune
-    resist acid                 resist cold
-    resist heat                 resist lightning
-    resist magic                sanctuary
-    sense traps                 sense wisdom
-    share strength              shield
-    shocking grasp              sleep
-    slow                        sonic blast
-    spiritwrack                 stab rune
-    stabilise                   starve
-    steal soul                  steal strength
-    steam breath                stone skin
-    summon                      summon avatar
-    summon demon                summon familiar
-    sunray                      synaptic blast
-    teleport                    thought shield
-    transport                   ultrablast
-    unholy word                 ventriloquate
-    vitalize                    ward rune
-    weaken                      wither
-    word of recall              wrath of god
-
-
+    protection vs good          protection vs undead
+    psionic blast               psychic crush
+    psychic drain               psychic healing
+    psychometry                 pyro rune
+    recharge item               recharge mana
+    refresh                     regenerate
+    release                     remove curse
+    rend rune                   resist acid
+    resist cold                 resist heat
+    resist lightning            resist magic
+    sanctuary                   sense traps
+    sense wisdom                share strength
+    shield                      shocking grasp
+    sleep                       slow
+    sonic blast                 spiritwrack
+    stab rune                   stabilise
+    starve                      steal soul
+    steal strength              steam breath
+    stone skin                  summon
+    summon avatar               summon demon
+    summon familiar             sunray
+    synaptic blast              teleport
+    thought shield              transport
+    ultrablast                  unholy word
+    ventriloquate               vitalize
+    ward rune                   weaken
+    wither                      word of recall
+    wrath of god
+    
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)
 or email the team at dragonsdomainteam@gmail.com
