@@ -4069,7 +4069,8 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
                 in_sc_room = TRUE;
         }
 
-        if (obj->item_type != ITEM_WEAPON || IS_OBJ_STAT(obj, ITEM_MAGIC) || obj->affected)
+        if (obj->wear_loc != WEAR_NONE || obj->item_type != ITEM_WEAPON
+            || IS_OBJ_STAT(obj, ITEM_MAGIC) || obj->affected)
         {
                 send_to_char("That item cannot be enchanted.\n\r", ch);
                 return;
@@ -5485,6 +5486,12 @@ void spell_identify(int sn, int level, CHAR_DATA *ch, void *vo)
                                 if (paf->location == APPLY_CRIT || paf->location == APPLY_SWIFTNESS)
                                         sprintf(buf, "It improves {Y%s{x by {Y%d%%{x.\n\r",
                                                 affect_loc_name(paf->location), paf->modifier);
+                                else if (paf->location == APPLY_RESIST_ACID
+                                     ||  paf->location == APPLY_RESIST_COLD
+                                     ||  paf->location == APPLY_RESIST_HEAT
+                                     ||  paf->location == APPLY_RESIST_LIGHTNING)
+                                        sprintf(buf, "It modifies {Y%s{x by {Y%+d{x.\n\r",
+                                                affect_loc_name(paf->location), paf->modifier);
                                 else if (paf->location < APPLY_SANCTUARY)
                                         sprintf(buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
                                                 affect_loc_name(paf->location), paf->modifier);
@@ -5504,6 +5511,12 @@ void spell_identify(int sn, int level, CHAR_DATA *ch, void *vo)
                         {
                                 if (paf->location == APPLY_CRIT || paf->location == APPLY_SWIFTNESS)
                                         sprintf(buf, "It improves {Y%s{x by {Y%d%%{x.\n\r",
+                                                affect_loc_name(paf->location), paf->modifier);
+                                else if (paf->location == APPLY_RESIST_ACID
+                                     ||  paf->location == APPLY_RESIST_COLD
+                                     ||  paf->location == APPLY_RESIST_HEAT
+                                     ||  paf->location == APPLY_RESIST_LIGHTNING)
+                                        sprintf(buf, "It modifies {Y%s{x by {Y%+d{x.\n\r",
                                                 affect_loc_name(paf->location), paf->modifier);
                                 else if (paf->location < APPLY_SANCTUARY)
                                         sprintf(buf, "It modifies {Y%s{x by {Y%d{x.\n\r",
@@ -6496,13 +6509,10 @@ void spell_sleep(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 send_to_char("You feel very sleepy... zzzZZZzzz\n\r", victim);
 
-                if (victim->position == POS_FIGHTING)
-                        stop_fighting(victim, TRUE);
-
-                do_sleep(victim, "");
         }
 
         check_group_bonus(ch);
+        force_sleep(victim, ch);
 }
 
 void spell_stone_skin(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -8251,7 +8261,8 @@ void spell_enhance_armor(int sn, int level, CHAR_DATA *ch, void *vo)
                 in_sc_room = TRUE;
         }
 
-        if (obj->item_type != ITEM_ARMOR || IS_OBJ_STAT(obj, ITEM_MAGIC) || obj->affected)
+        if (obj->wear_loc != WEAR_NONE || obj->item_type != ITEM_ARMOR
+            || IS_OBJ_STAT(obj, ITEM_MAGIC) || obj->affected)
         {
                 send_to_char("That item cannot be enhanced.\n\r", ch);
                 return;
@@ -9378,7 +9389,8 @@ void spell_bless_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
                 in_sc_room = TRUE;
         }
 
-        if (obj->item_type != ITEM_WEAPON || IS_OBJ_STAT(obj, ITEM_BLESS) || obj->affected)
+        if (obj->wear_loc != WEAR_NONE || obj->item_type != ITEM_WEAPON
+            || IS_OBJ_STAT(obj, ITEM_BLESS) || obj->affected)
         {
                 send_to_char("That item cannot be blessed.\n\r", ch);
                 return;

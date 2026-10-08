@@ -2630,6 +2630,9 @@ struct spell_group_struct spell_group_table[MAX_SPELL_GROUP] =
         {&gsn_shield_module, 0},
         {&gsn_arrestor_module, 0},
         {&gsn_driver_module, 0},
+        {&gsn_blade_module, 0},
+        {&gsn_shuriken_module, 0},
+        {&gsn_spear_module, 0},
         {&gsn_emergency, 0},
 
         {&gsn_group_mech_tech, 0},

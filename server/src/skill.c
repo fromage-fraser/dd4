@@ -3,6 +3,8 @@
 #else
 #include <sys/types.h>
 #endif
+#include <errno.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -682,10 +684,9 @@ void do_choke (CHAR_DATA *ch, char *argument)
                 af.bitvector = AFF_SLEEP;
                 affect_to_char(victim, &af);
 
-                do_sleep(victim, "");
                 check_group_bonus(ch);
-
                 WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
+                force_sleep(victim, ch);
         }
         else
                 damage(ch, victim, 0, gsn_choke, FALSE);
@@ -4418,6 +4419,8 @@ void do_carve (CHAR_DATA *ch, char *arg)
         int             i;
         int             move_cost;
         int             created_level;
+        long            requested_level;
+        char            *level_end;
         int             load_level;
         char            arg1 [ MAX_INPUT_LENGTH ];
         char            arg2 [ MAX_INPUT_LENGTH ];
@@ -4442,6 +4445,27 @@ void do_carve (CHAR_DATA *ch, char *arg)
         {
                 send_to_char( "Huh?\n\r", ch );
                 return;
+        }
+
+        if ( arg2[0] != '\0' )
+        {
+                errno = 0;
+                requested_level = strtol( arg2, &level_end, 10 );
+                if ( errno == ERANGE || level_end == arg2 || *level_end != '\0'
+                ||   requested_level < 0 || requested_level > INT_MAX )
+                {
+                        send_to_char( "Huh?\n\r", ch );
+                        return;
+                }
+
+                if ( requested_level > ch->level )
+                {
+                        send_to_char( "You aren't skilled enough to make a pipe of that quality.\n\r", ch );
+                        return;
+                }
+
+                /* Zero retains the existing default of the carver's level. */
+                created_level = (int)requested_level;
         }
 
         if (!(obj = get_eq_char(ch, WEAR_WIELD)) || !is_carving_weapon(obj))
@@ -4507,17 +4531,6 @@ void do_carve (CHAR_DATA *ch, char *arg)
                         {
                             send_to_char( "You aren't experienced enough to know how to do that.\n\r", ch );
                             return;
-                        }
-
-                        if (arg2[0] != '\0')
-                        {
-                                created_level = atoi( arg2 );
-
-                                if ( created_level > ch->level )
-                                {
-                                        send_to_char( "You aren't skilled enough to make a pipe of that quality.\n\r", ch );
-                                        return;
-                                }
                         }
 
                         pipe_type = i;
@@ -5152,8 +5165,12 @@ void do_discharge (CHAR_DATA *ch, char *argument)
 
         if (!(obj = get_eq_char(ch, WEAR_WIELD)))
         {
-                if (!IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+                send_to_char("You must wield a weapon first.\n\r", ch);
+                return;
+        }
 
+        if (!IS_SET(obj->ego_flags, EGO_ITEM_EMPOWERED))
+        {
                 send_to_char("You will need to empower that weapon first.\n\r", ch);
                 return;
         }

@@ -668,6 +668,8 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
         if ( fAdd )
         {
                 SET_BIT(ch->affected_by, paf->bitvector);
+                if (paf->bitvector & AFF_FLYING)
+                        clear_fall_source(ch);
         }
         else
         {
@@ -1295,6 +1297,8 @@ static bool char_is_in_room_list(const CHAR_DATA *ch)
 void char_from_room( CHAR_DATA *ch )
 {
         OBJ_DATA *obj;
+
+        clear_fall_source(ch);
 
         if ( !ch->in_room )
         {
@@ -2179,6 +2183,8 @@ void extract_char( CHAR_DATA *ch, bool fPull )
         OBJ_DATA  *obj;
         OBJ_DATA  *obj_next;
         extern bool delete_char;
+
+        invalidate_fall_source(ch);
 
         if ( !ch->in_room )
         {
@@ -4966,6 +4972,50 @@ int advatoi( const char *s )
     /* anything left is likely extra digits (ie: 14k4443  -> 3 is extra) */
 
     return number;
+}
+
+
+/* Detect cursed flags and curse spells only in type-specific spell slots. */
+bool obj_is_cursed(const OBJ_DATA *obj)
+{
+        int first_spell;
+        int slot;
+
+        if (IS_OBJ_STAT(obj, ITEM_NODROP)
+        ||  IS_OBJ_STAT(obj, ITEM_NOREMOVE)
+        ||  IS_OBJ_STAT(obj, ITEM_CURSED))
+                return TRUE;
+
+        switch (obj->item_type)
+        {
+        case ITEM_SCROLL:
+        case ITEM_POTION:
+        case ITEM_PILL:
+        case ITEM_PAINT:
+        case ITEM_SMOKEABLE:
+                first_spell = 1;
+                break;
+
+        case ITEM_WAND:
+        case ITEM_STAFF:
+        case ITEM_COMBAT_PULSE:
+        case ITEM_DEFENSIVE_PULSE:
+                first_spell = 3;
+                break;
+
+        default:
+                return FALSE;
+        }
+
+        for (slot = first_spell; slot <= 3; slot++)
+        {
+                if (obj->value[slot] == gsn_curse
+                ||  obj->value[slot] == gsn_hex
+                ||  obj->value[slot] == gsn_prayer_weaken)
+                        return TRUE;
+        }
+
+        return FALSE;
 }
 
 /* EOF handler.c */

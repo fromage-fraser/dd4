@@ -421,7 +421,7 @@ bool has_tranquility(CHAR_DATA *ch);
 
 #define MAX_SKILL 629           /* Includes both mass protection spells. */
 #define MAX_PRE_REQ 1596        /* Nine more protection prerequisites. */
-#define MAX_SPELL_GROUP 474     /* Protection belongs only to protective magiks. */
+#define MAX_SPELL_GROUP 477     /* Includes all three offensive turret modules. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
@@ -2929,6 +2929,11 @@ struct char_data
          * Player characters retain zero.
          */
         uint64_t target_id;
+
+        /* Runtime-only fall attribution; never persist character pointers. */
+        uint64_t fall_credit_id;
+        uint64_t fall_source_id;
+        int fall_room_vnum;
 
         /* Remember whether this fight has tested a fear aura. */
         bool fear_aura_checked;
@@ -5511,6 +5516,11 @@ void damage_with_resistance_types
 unsigned long int object_attack_resistance_types args((int dt, OBJ_DATA *source));
 bool object_attack_is_immune args((CHAR_DATA *ch, CHAR_DATA *victim, int dt, OBJ_DATA *source));
 void damage_from_object args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison, OBJ_DATA *source));
+void force_sleep args((CHAR_DATA *ch, CHAR_DATA *causer));
+void remember_fall_source args((CHAR_DATA *ch, CHAR_DATA *causer));
+void clear_fall_source args((CHAR_DATA *ch));
+void invalidate_fall_source args((CHAR_DATA *ch));
+bool forced_fall_damage args((CHAR_DATA *ch, int dam));
 void update_pos args((CHAR_DATA * victim));
 void set_fighting args((CHAR_DATA * ch, CHAR_DATA *victim));
 void stop_fighting args((CHAR_DATA * ch, bool fBoth));
@@ -5871,6 +5881,7 @@ bool is_blunt_weapon(OBJ_DATA *obj);
 bool is_piercing_weapon(OBJ_DATA *obj);
 bool is_carving_weapon(OBJ_DATA *obj);
 bool is_magnetic(OBJ_DATA *obj);
+bool obj_is_cursed(const OBJ_DATA *obj);
 bool is_cursed(CHAR_DATA *ch);
 int scale_pipe(int limit_level, int load_level, int base_value, bool higher_bad);
 

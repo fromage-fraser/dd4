@@ -1422,6 +1422,12 @@ void do_close(CHAR_DATA *ch, char *argument)
 
         one_argument(argument, arg);
 
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("You cannot do that in your current form.\n\r", ch);
+                return;
+        }
+
         if (arg[0] == '\0')
         {
                 send_to_char("Close what?\n\r", ch);
@@ -2151,7 +2157,7 @@ void do_stand(CHAR_DATA *ch, char *argument)
                 send_to_char("You ready yourself for action.\n\r", ch);
                 act("$n readies $mself for action.", ch, NULL, NULL, TO_ROOM);
                 sound_condition_sfx( ch, "sfx.condition.wake" );
-                ch->position = POS_STANDING;
+                ch->position = ch->fighting ? POS_FIGHTING : POS_STANDING;
                 break;
 
         case POS_FIGHTING:
@@ -2193,6 +2199,66 @@ void do_rest(CHAR_DATA *ch, char *argument)
                 ch->position = POS_RESTING;
                 break;
         }
+}
+
+/* Forced sleep bypasses voluntary refusals and resolves one rider's fall. */
+void force_sleep(CHAR_DATA *ch, CHAR_DATA *causer)
+{
+        CHAR_DATA *fallen = NULL;
+        int mount_level = 0;
+        int sector;
+
+        if (!ch || ch->deleted || !ch->in_room || ch->position == POS_DEAD)
+                return;
+
+        if (ch->mount)
+        {
+                fallen = ch;
+                mount_level = ch->mount->level;
+                send_to_char("You lose your grip and fall from your mount.\n\r", ch);
+                act("$n falls from $s mount.", ch, NULL, NULL, TO_ROOM);
+                strip_mount(ch);
+        }
+        else if (ch->rider)
+        {
+                fallen = ch->rider;
+                mount_level = ch->level;
+                send_to_char("Your mount collapses, throwing you off!\n\r", fallen);
+                act("$n collapses, throwing $N off!", ch, NULL, fallen, TO_NOTVICT);
+                strip_mount(fallen);
+                if (!fallen->fighting && fallen->position == POS_STANDING)
+                        fallen->position = POS_RESTING;
+        }
+
+        if (ch->fighting)
+                stop_fighting(ch, TRUE);
+
+        if (IS_AWAKE(ch))
+        {
+                remove_songs(ch);
+                send_to_char("You sleep.\n\r", ch);
+                act("$n sleeps.", ch, NULL, NULL, TO_ROOM);
+                ch->position = POS_SLEEPING;
+                sound_condition_sfx(ch, "sfx.condition.sleep");
+                if (!IS_NPC(ch) && ch->pcdata)
+                        ch->pcdata->slept = true;
+        }
+
+        if (!fallen || fallen->deleted || !fallen->in_room)
+                return;
+
+        clear_fall_source(fallen);
+        sector = fallen->in_room->sector_type;
+        if (IS_AFFECTED(fallen, AFF_FLYING)
+        ||  sector == SECT_UNDERWATER || sector == SECT_UNDERWATER_GROUND)
+                return;
+
+        remember_fall_source(fallen, causer);
+        if (sector == SECT_AIR)
+                return;
+
+        /* Last: death/extraction/respawn must not be overwritten afterward. */
+        forced_fall_damage(fallen, number_range(10, mount_level));
 }
 
 void do_sleep(CHAR_DATA *ch, char *argument)
