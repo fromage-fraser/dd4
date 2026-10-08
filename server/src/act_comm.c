@@ -1001,6 +1001,20 @@ void do_reply(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (!IS_TRUE_IMMORTAL(ch)
+        &&  (victim->silent_mode
+                || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NO_TELL))))
+        {
+                act("$N's mobile is off or outside the coverage area.", ch, 0, victim, TO_CHAR);
+                return;
+        }
+
+        if (!IS_TRUE_IMMORTAL(ch) && victim->fighting)
+        {
+                act("$N's fighting right now, try again later.", ch, 0, victim, TO_CHAR);
+                return;
+        }
+
         sprintf(buf, "%sYou tell $N '$t'$R",
                 color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_TELL])].act_code);
         act(buf, ch, argument, victim, TO_CHAR);

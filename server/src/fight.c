@@ -56,6 +56,7 @@ static bool blessed_weapon_vs_undead
         args((OBJ_DATA *weapon, CHAR_DATA *victim));
 static int blessed_weapon_damage_bonus
         args((int dam, OBJ_DATA *weapon, CHAR_DATA *victim));
+static void group_gain_internal args((CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called, bool solo));
 static void damage_internal args((CHAR_DATA *ch,
                                   CHAR_DATA *victim,
                                   int dam,
@@ -63,7 +64,8 @@ static void damage_internal args((CHAR_DATA *ch,
                                   bool poison,
                                   unsigned long int res_types,
                                   bool natural_contact,
-                                  bool physical_contact));
+                                  bool physical_contact,
+                                  bool forced_fall));
 
 /*
  * Death blurb
@@ -969,7 +971,7 @@ void damage_from_object(CHAR_DATA *ch, CHAR_DATA *victim,
 
         damage_internal(
             ch, victim, dam, dt, poison,
-            object_attack_resistance_types(dt, source), FALSE, TRUE);
+            object_attack_resistance_types(dt, source), FALSE, TRUE, FALSE);
 }
 
 /*
@@ -1216,7 +1218,7 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                                 damage_internal(
                                     ch, victim, 0, dt, poison,
                                     ordinary_attack_resistance_types(dt, wield),
-                                    FALSE, TRUE);
+                                    FALSE, TRUE, FALSE);
                         }
                         else
                         {
@@ -1452,7 +1454,7 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                             poison,
                             ordinary_attack_resistance_types(dt, wield),
                             !wield && IS_NPC(ch),
-                            TRUE);
+                            TRUE, FALSE);
                 }
                 else if (dt == gsn_smash)
                 {
@@ -1622,7 +1624,7 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 res_types = skill_table[dt].res_type;
         }
 
-        damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE);
+        damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE, FALSE);
 }
 
 /*
@@ -1648,7 +1650,79 @@ void damage_with_resistance_types(
             poison,
             res_types & RES_VALID_MASK,
             FALSE,
+            FALSE,
             FALSE);
+}
+
+/* Runtime-only, monotonically allocated identities survive no extraction. */
+static uint64_t next_fall_credit_id = 1;
+
+void clear_fall_source(CHAR_DATA *ch)
+{
+        ch->fall_source_id = 0;
+        ch->fall_room_vnum = 0;
+}
+
+void invalidate_fall_source(CHAR_DATA *ch)
+{
+        CHAR_DATA *vch;
+        uint64_t id = ch->fall_credit_id;
+
+        clear_fall_source(ch);
+        ch->fall_credit_id = 0;
+        if (id)
+                for (vch = char_list; vch; vch = vch->next)
+                        if (vch->fall_source_id == id)
+                                clear_fall_source(vch);
+}
+
+void remember_fall_source(CHAR_DATA *ch, CHAR_DATA *causer)
+{
+        clear_fall_source(ch);
+        if (!causer || causer == ch || causer->deleted || !causer->in_room
+        ||  causer->position == POS_DEAD)
+                return;
+
+        if (!causer->fall_credit_id)
+        {
+                if (!next_fall_credit_id)
+                        return;
+                causer->fall_credit_id = next_fall_credit_id++;
+        }
+        ch->fall_source_id = causer->fall_credit_id;
+        ch->fall_room_vnum = ch->in_room ? ch->in_room->vnum : 0;
+}
+
+/* Credit a live cause without turning the impact into a weapon attack. */
+bool forced_fall_damage(CHAR_DATA *ch, int dam)
+{
+        CHAR_DATA *causer = ch;
+        CHAR_DATA *vch;
+        int deaths;
+        uint64_t source;
+
+        if (!ch || ch->deleted || !ch->in_room || ch->position == POS_DEAD)
+                return FALSE;
+
+        source = ch->fall_source_id;
+        clear_fall_source(ch);
+        if (source)
+                for (vch = char_list; vch; vch = vch->next)
+                        if (vch->fall_credit_id == source && vch != ch
+                        &&  !vch->deleted && vch->in_room
+                        &&  vch->position != POS_DEAD
+                        &&  (IS_NPC(vch) || (vch->desc
+                             && vch->desc->connected == CON_PLAYING)))
+                        {
+                                causer = vch;
+                                break;
+                        }
+
+        deaths = IS_NPC(ch) ? 0 : ch->pcdata->killed;
+        damage_internal(causer, ch, UMAX(0, dam), TYPE_UNDEFINED, FALSE, 0,
+                        FALSE, FALSE, TRUE);
+        return !ch->deleted && ch->in_room && ch->position != POS_DEAD
+            && (IS_NPC(ch) || ch->pcdata->killed == deaths);
 }
 
 static bool dracolich_natural_attack(CHAR_DATA *ch, int dt)
@@ -1677,7 +1751,8 @@ static void damage_internal(CHAR_DATA *ch,
                             bool poison,
                             unsigned long int res_types,
                             bool natural_contact,
-                            bool physical_contact)
+                            bool physical_contact,
+                            bool forced_fall)
 {
         CHAR_DATA *fighter;
         CHAR_DATA *opponent;
@@ -1751,10 +1826,10 @@ static void damage_internal(CHAR_DATA *ch,
                         dam += cold_bonus;
         }
 
-        if (!IS_NPC(ch))
+        if ((!forced_fall || ch != victim) && !IS_NPC(ch))
                 ch->pcdata->dam_per_fight += dam;
 
-        if (!IS_NPC(ch) && (ch->position == POS_STANDING) && IS_AFFECTED(ch, AFF_BONUS_INITIATE))
+        if (!forced_fall && !IS_NPC(ch) && (ch->position == POS_STANDING) && IS_AFFECTED(ch, AFF_BONUS_INITIATE))
         {
                 dam += dam / 3;
         }
@@ -1762,7 +1837,7 @@ static void damage_internal(CHAR_DATA *ch,
         /*
          *  Damage inflicted to other
          */
-        if (victim != ch)
+        if (!forced_fall && victim != ch)
         {
                 check_killer(ch, victim);
 
@@ -2024,7 +2099,7 @@ static void damage_internal(CHAR_DATA *ch,
         {
                 if (turret_unit->item_type == ITEM_REFLECTOR_UNIT)
                 {
-                        if ((dam > 0) && (dt < 1000) && (ch != victim) && (!IS_NPC(victim)))
+                        if (!forced_fall && (dam > 0) && (dt < 1000) && (ch != victim) && (!IS_NPC(victim)))
                         {
                                 reflected_dam = dam;
                                 dam = 0;
@@ -2076,7 +2151,7 @@ static void damage_internal(CHAR_DATA *ch,
         }
 
         /* Fireshield */
-        if (IS_AFFECTED(victim, AFF_FLAMING) && dam > 0 && (dt >= TYPE_HIT || !IS_SPELL(dt)) && dt != gsn_shoot && dt != gsn_kiai && dt != gsn_chant_of_pain && ch != victim)
+        if (!forced_fall && IS_AFFECTED(victim, AFF_FLAMING) && dam > 0 && (dt >= TYPE_HIT || !IS_SPELL(dt)) && dt != gsn_shoot && dt != gsn_kiai && dt != gsn_chant_of_pain && ch != victim)
         {
                 int firedam = dam / 2;
 
@@ -2111,8 +2186,9 @@ static void damage_internal(CHAR_DATA *ch,
                         ch->hit = 1;
         }
 
-        /* if we get here add a stack of serrate */
-        if (dam > 0
+        /* A terrain impact cannot apply the rider's weapon effects. */
+        if (!forced_fall
+        &&  dam > 0
         &&  !IS_NPC(ch)
         &&  ch->pcdata->learned[gsn_serrate] > 0
         &&  get_eq_char(ch, WEAR_WIELD)
@@ -2147,7 +2223,7 @@ static void damage_internal(CHAR_DATA *ch,
                 }
         }
 
-        if (!IS_NPC(ch) && IS_AFFECTED(ch, AFF_BONUS_DAMAGE))
+        if (!forced_fall && !IS_NPC(ch) && IS_AFFECTED(ch, AFF_BONUS_DAMAGE))
                 dam += dam / 3;
 
         /* hurt the victim, and inform the victim of his new state */
@@ -2159,7 +2235,7 @@ static void damage_internal(CHAR_DATA *ch,
                         victim->hit = 1;
 
         /* this is for exp (damage bonus) */
-        if ((!IS_NPC(ch) && (ch->level - victim->level < 6)) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
+        if ((!forced_fall || ch != victim) && (!IS_NPC(ch) && (ch->level - victim->level < 6)) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
                 ch->pcdata->dam_bonus += dam;
 
         if (is_affected(victim, gsn_berserk) && (victim->position <= POS_STUNNED))
@@ -2246,7 +2322,8 @@ static void damage_internal(CHAR_DATA *ch,
          *  Gezhp 2000
          */
 
-        update_pos(ch);
+        if (!forced_fall)
+                update_pos(ch);
         update_pos(victim);
 
         /*
@@ -2258,8 +2335,9 @@ static void damage_internal(CHAR_DATA *ch,
         if (!IS_NPC(victim) && victim->desc && victim != ch)
                 webgate_send_char_enemies_for_desc(victim->desc);
 
-        for (fighter = ch, opponent = victim, count = 0;
-             (!count) || (ch != victim && count == 1);
+        for (fighter = forced_fall ? victim : ch,
+             opponent = forced_fall ? ch : victim, count = 0;
+             (!count) || (!forced_fall && ch != victim && count == 1);
              fighter = victim, opponent = ch, count++)
         {
                 if (!fighter)
@@ -2322,13 +2400,21 @@ static void damage_internal(CHAR_DATA *ch,
                 if (fighter->position == POS_DEAD)
                 {
                         /* If a mob you're grouped with killsteals for you, you get the reward */
-                        if ((IS_NPC(opponent) && opponent->master) && (opponent->master->sub_class == SUB_CLASS_WITCH || opponent->master->sub_class == SUB_CLASS_INFERNALIST || opponent->master->sub_class == SUB_CLASS_NECROMANCER || opponent->master->sub_class == SUB_CLASS_KNIGHT || ((opponent->master->class == CLASS_SHAPE_SHIFTER) && (opponent->master->sub_class == 0)) || opponent->master->sub_class == SUB_CLASS_WEREWOLF))
+                        if ((IS_NPC(opponent) && opponent->master)
+                        && (!forced_fall || (!opponent->master->deleted
+                            && opponent->master->in_room == fighter->in_room
+                            && opponent->master->position != POS_DEAD
+                            && opponent->master->desc
+                            && opponent->master->desc->connected == CON_PLAYING))
+                        && (opponent->master->sub_class == SUB_CLASS_WITCH || opponent->master->sub_class == SUB_CLASS_INFERNALIST || opponent->master->sub_class == SUB_CLASS_NECROMANCER || opponent->master->sub_class == SUB_CLASS_KNIGHT || ((opponent->master->class == CLASS_SHAPE_SHIFTER) && (opponent->master->sub_class == 0)) || opponent->master->sub_class == SUB_CLASS_WEREWOLF))
                         {
-                                group_gain(opponent->master, fighter, TRUE);
+                                group_gain_internal(opponent->master, fighter, TRUE,
+                                    forced_fall && opponent->master->in_room != fighter->in_room);
                         }
                         else
                         {
-                                group_gain(opponent, fighter, FALSE);
+                                group_gain_internal(opponent, fighter, FALSE,
+                                    forced_fall && opponent->in_room != fighter->in_room);
                         }
 
                         if (IS_NPC(fighter))
@@ -2356,14 +2442,15 @@ static void damage_internal(CHAR_DATA *ch,
                                 death_penalty(opponent, fighter);
                                 death_cry(fighter);
                                 raw_kill(opponent, fighter, TRUE);
-                                check_autoloot(opponent, fighter);
+                                if (!forced_fall)
+                                        check_autoloot(opponent, fighter);
                         }
                 }
         }
         /* End fighter/opponent loop */
 
         /* return on a self-kill */
-        if (victim == ch)
+        if (forced_fall || victim == ch)
                 return;
 
         /* Tournament stuff */
@@ -3853,6 +3940,12 @@ void raw_kill(CHAR_DATA *ch, CHAR_DATA *victim, bool corpse)
 
 void group_gain(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
 {
+        group_gain_internal(ch, victim, mob_called, FALSE);
+}
+
+/* A remote fall credits its live cause, never the cause's unrelated room group. */
+static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called, bool solo)
+{
         CHAR_DATA *gch;
         char buf[MAX_STRING_LENGTH];
         int members;
@@ -3882,7 +3975,8 @@ void group_gain(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
         npc_members = 0;
         pc_members = 0;
 
-        for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
+        for (gch = solo ? ch : ch->in_room->people; gch;
+             gch = solo ? NULL : gch->next_in_room)
         {
                 if (is_same_group(gch, ch))
                 {
@@ -3906,7 +4000,7 @@ void group_gain(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
          * has fled.  --Owl 31/7/22
          */
 
-        if (mob_called)
+        if (mob_called && !solo)
         {
                 if (npc_members == 0)
                 {
@@ -3914,7 +4008,8 @@ void group_gain(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
                 }
         }
 
-        for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
+        for (gch = solo ? ch : ch->in_room->people; gch;
+             gch = solo ? NULL : gch->next_in_room)
         {
                 OBJ_DATA *obj;
                 OBJ_DATA *obj_next;
@@ -8685,11 +8780,9 @@ void do_stun(CHAR_DATA *ch, char *argument)
                 af.bitvector = AFF_SLEEP;
                 affect_to_char(victim, &af);
 
-                do_sleep(victim, "");
-
                 check_group_bonus(ch);
-
                 WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
+                force_sleep(victim, ch);
         }
         else
                 damage(ch, victim, 0, gsn_stun, FALSE);

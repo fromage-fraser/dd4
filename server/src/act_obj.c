@@ -831,6 +831,8 @@ void do_get(CHAR_DATA *ch, char *argument)
         char arg1[MAX_INPUT_LENGTH];
         char arg2[MAX_INPUT_LENGTH];
         bool found;
+        ROOM_INDEX_DATA *room = ch->in_room;
+        int killed = IS_NPC(ch) ? 0 : ch->pcdata->killed;
 
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);
@@ -929,6 +931,11 @@ void do_get(CHAR_DATA *ch, char *argument)
 
                                         found = TRUE;
                                         get_obj(ch, obj, NULL);
+
+                                        /* Stop if a trap interrupted this looting command. */
+                                        if (ch->deleted || ch->in_room != room || !IS_AWAKE(ch)
+                                            || (!IS_NPC(ch) && ch->pcdata->killed != killed))
+                                                return;
                                 }
                         }
 
@@ -1026,8 +1033,7 @@ void do_get(CHAR_DATA *ch, char *argument)
                         {
                                 obj_next = obj->next_content;
                                 /* detect curse prevents autolooting of cursed and noremove/nodrop items */
-                                /* Fix this so it checks spell num AND name at some point -- Owl 7/3/22 */
-                                if (((IS_OBJ_STAT(obj, ITEM_NODROP) || IS_OBJ_STAT(obj, ITEM_NOREMOVE) || IS_OBJ_STAT(obj, ITEM_CURSED) || (obj->value[1] == 33) || (obj->value[1] == 304) || (obj->value[1] == 458) || (obj->value[2] == 33) || (obj->value[2] == 304) || (obj->value[2] == 458) || (obj->value[3] == 33) || (obj->value[3] == 304) || (obj->value[3] == 458)) && IS_AFFECTED(ch, AFF_DETECT_CURSE)))
+                                if (IS_AFFECTED(ch, AFF_DETECT_CURSE) && obj_is_cursed(obj))                               
                                 {
                                         send_to_char("{WYou are reluctant to acquire a cursed item.{x\n\r", ch);
                                         continue;
@@ -1037,6 +1043,12 @@ void do_get(CHAR_DATA *ch, char *argument)
                                 {
                                         found = TRUE;
                                         get_obj(ch, obj, container);
+
+                                        /* Stop if a trap interrupted this looting command. */
+                                        if (ch->deleted || ch->in_room != room || !IS_AWAKE(ch)
+                                            || (!IS_NPC(ch) && ch->pcdata->killed != killed)
+                                            || container->deleted)
+                                                return;
                                 }
                         }
 
@@ -3574,11 +3586,9 @@ void do_eat(CHAR_DATA *ch, char *argument)
         return;
 }
 
-bool remove_obj(CHAR_DATA *ch, int iWear, bool fReplace)
+static bool can_remove_obj(CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
 {
-        OBJ_DATA *obj;
-
-        if (!(obj = get_eq_char(ch, iWear)))
+        if (!obj)
                 return TRUE;
 
         if (!fReplace)
@@ -3595,6 +3605,18 @@ bool remove_obj(CHAR_DATA *ch, int iWear, bool fReplace)
                 act("You try in vain to pull your $p from your body, but to no avail.", ch, obj, NULL, TO_CHAR);
                 return FALSE;
         }
+
+        return TRUE;
+}
+
+bool remove_obj(CHAR_DATA *ch, int iWear, bool fReplace)
+{
+        OBJ_DATA *obj = get_eq_char(ch, iWear);
+
+        if (!can_remove_obj(ch, obj, fReplace))
+                return FALSE;
+        if (!obj)
+                return TRUE;
 
         if (obj->item_type == ITEM_INSTRUMENT && obj->wear_loc == WEAR_HOLD)
                 remove_songs(ch);
@@ -3968,7 +3990,7 @@ void wear_obj(CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                                 return;
                         }
 
-                        if (!remove_obj(ch, WEAR_WIELD, fReplace))
+                        if (!can_remove_obj(ch, get_eq_char(ch, WEAR_WIELD), fReplace))
                                 return;
 
                         if (IS_SET(obj->extra_flags, ITEM_POISONED) && (!can_use_poison_weapon(ch)))
@@ -3976,6 +3998,9 @@ void wear_obj(CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                                 send_to_char("That's an evil weapon, you can't wield that!\n\r", ch);
                                 return;
                         }
+
+                        if (!remove_obj(ch, WEAR_WIELD, fReplace))
+                                return;
 
                         if (get_obj_weight(obj) > str_app[get_curr_str(ch)].wield)
                         {
@@ -4800,6 +4825,12 @@ void do_quaff(CHAR_DATA *ch, char *argument)
                         send_to_char("You can only quaff potions you are holding during combat!\n\r", ch);
                         return;
                 }
+        }
+
+        if (!obj)
+        {
+                send_to_char("You do not have that potion on your person.\n\r", ch);
+                return;
         }
 
         if (obj->item_type != ITEM_POTION)
@@ -6373,6 +6404,18 @@ void do_value(CHAR_DATA *ch, char *argument)
         if (!can_drop_obj(ch, obj))
         {
                 send_to_char("You can't let go of it.\n\r", ch);
+                return;
+        }
+
+        if (obj->owner[0] != '\0')
+        {
+                act("$n looks uninterested in $p.", keeper, obj, ch, TO_VICT);
+                return;
+        }
+
+        if (IS_SET(obj->extra_flags, ITEM_DONATED))
+        {
+                send_to_char("You can't sell a donated item.\n\r", ch);
                 return;
         }
 

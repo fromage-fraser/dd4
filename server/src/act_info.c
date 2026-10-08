@@ -24,6 +24,7 @@
 #include <sys/types.h>
 #endif
 #include <ctype.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -321,11 +322,7 @@ char *format_obj_to_char(OBJ_DATA *obj, CHAR_DATA *ch, bool fShort)
         if (can_detect_undead_obj(ch, obj))
                 strcat(buf, "<63>(Undead)<0> ");
 
-        /* Below is ugly, sorry -- Owl 4/3/22 */
-
-        if (((IS_OBJ_STAT(obj, ITEM_NODROP) || IS_OBJ_STAT(obj, ITEM_NOREMOVE) || IS_OBJ_STAT(obj, ITEM_CURSED) || (obj->value[1] == 33) /* curse, hex, divine curse */
-              || (obj->value[1] == 304) || (obj->value[1] == 458) || (obj->value[2] == 33) || (obj->value[2] == 304) || (obj->value[2] == 458) || (obj->value[3] == 33) || (obj->value[3] == 304) || (obj->value[3] == 458)) &&
-             IS_AFFECTED(ch, AFF_DETECT_CURSE)))
+        if (IS_AFFECTED(ch, AFF_DETECT_CURSE) && obj_is_cursed(obj))
                 strcat(buf, "<19>(Cursed)<0> ");
 
         if (IS_OBJ_STAT(obj, ITEM_TRAP) && IS_AFFECTED(ch, AFF_DETECT_TRAPS))
@@ -5836,6 +5833,8 @@ void do_repair(CHAR_DATA *ch, char *argument)
         CHAR_DATA *rch;
         char buf[MAX_STRING_LENGTH];
         int cost;
+        int64_t missing;
+        int64_t repair_cost;
         for (rch = ch->in_room->people; rch; rch = rch->next_in_room)
         {
                 if (IS_NPC(rch) && IS_SET(rch->act, ACT_TINKER))
@@ -5869,33 +5868,18 @@ void do_repair(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        /* have enough cash for repair? */
-
-        if (((obj->item_type != ITEM_PIPE) && (obj->item_type != ITEM_PIPE_CLEANER)) && (total_coins_char(ch) < ((obj->timermax - obj->timer) * obj->level)))
+        /* Validate all repair inputs before calculating or charging a cost. */
+        if (obj->level < 0
+        ||  ((obj->item_type == ITEM_PIPE || obj->item_type == ITEM_PIPE_CLEANER)
+        &&   (obj->value[0] < 0 || obj->value[1] < obj->value[0]))
+        ||  (obj->item_type == ITEM_PIPE_CLEANER
+        &&   (obj->value[2] < 0 || obj->value[3] < obj->value[2]))
+        ||  ((obj->item_type != ITEM_PIPE && obj->item_type != ITEM_PIPE_CLEANER)
+        &&   obj->timer > obj->timermax))
         {
-                act("$C decides you do not have enough money for $s services.",
-                    ch, obj, rch, TO_CHAR);
+                act("$C rejects your item.  It is not a suitable candidate for $s services.",
+                        ch, obj, rch, TO_CHAR);
                 return;
-        }
-
-        if (obj->item_type == ITEM_PIPE)
-        {
-                if (total_coins_char(ch) < ((obj->value[1] - obj->value[0]) * obj->level))
-                {
-                        act("$C decides you do not have enough money for $s services.",
-                            ch, obj, rch, TO_CHAR);
-                        return;
-                }
-        }
-
-        if (obj->item_type == ITEM_PIPE_CLEANER)
-        {
-                if (total_coins_char(ch) < (((obj->value[1] - obj->value[0]) + (obj->value[3] - obj->value[2])) * obj->level))
-                {
-                        act("$C decides you do not have enough money for $s services.",
-                            ch, obj, rch, TO_CHAR);
-                        return;
-                }
         }
 
         /* Reject if nothing wrong with repairable item */
@@ -5903,39 +5887,53 @@ void do_repair(CHAR_DATA *ch, char *argument)
         if (((obj->timer <= 0) || (obj->timer == obj->timermax) || (obj->timermax <= 0)) && ((obj->item_type != ITEM_PIPE) && (obj->item_type != ITEM_PIPE_CLEANER)))
         {
                 act("$C rejects your item.  It is not a suitable candidate for $s services.",
-                    ch, obj, rch, TO_CHAR);
+                        ch, obj, rch, TO_CHAR);
                 return;
         }
 
         if ((obj->item_type == ITEM_PIPE) && (obj->value[0] == obj->value[1]))
         {
                 act("$C rejects your pipe for repair. There's nothing wrong with it.",
-                    ch, obj, rch, TO_CHAR);
+                        ch, obj, rch, TO_CHAR);
                 return;
         }
 
         if ((obj->item_type == ITEM_PIPE_CLEANER) && (obj->value[0] == obj->value[1]) && (obj->value[2] == obj->value[3]))
         {
                 act("$C rejects your pipe cleaner for repair. There's nothing wrong with it.",
-                    ch, obj, rch, TO_CHAR);
+                        ch, obj, rch, TO_CHAR);
                 return;
         }
 
-        /* Item can be fixed, determine costs */
-
-        if ((obj->item_type != ITEM_PIPE) && (obj->item_type != ITEM_PIPE_CLEANER))
-        {
-                cost = (obj->timermax - obj->timer) * obj->level;
-        }
-
+        /* Widen before subtraction and addition, then range-check the charge. */
         if (obj->item_type == ITEM_PIPE)
         {
-                cost = (obj->value[1] - obj->value[0]) * obj->level;
+                missing = (int64_t)obj->value[1] - obj->value[0];
+        }
+        else if (obj->item_type == ITEM_PIPE_CLEANER)
+        {
+                missing = (int64_t)obj->value[1] - obj->value[0]
+                        + (int64_t)obj->value[3] - obj->value[2];
+        }
+        else
+        {
+                missing = (int64_t)obj->timermax - obj->timer;
         }
 
-        if (obj->item_type == ITEM_PIPE_CLEANER)
+        repair_cost = missing * obj->level;
+        if (repair_cost < 0 || repair_cost > INT_MAX)
         {
-                cost = (((obj->value[1] - obj->value[0]) + (obj->value[3] - obj->value[2])) * obj->level);
+                act("$C rejects your item.  It is not a suitable candidate for $s services.",
+                        ch, obj, rch, TO_CHAR);
+                return;
+        }
+
+        cost = (int)repair_cost;
+        if (total_coins_char(ch) < cost)
+        {
+                act("$C decides you do not have enough money for $s services.",
+                        ch, obj, rch, TO_CHAR);
+                return;
         }
 
         sprintf(buf, "{WYou pay %d coppers for the repair.{x\n\r", cost);
@@ -6168,8 +6166,11 @@ void print_player_status(CHAR_DATA *ch, char *buf)
                 }
                 strcat(buf, "\n\r");
 
-                sprintf(tmp, "\n\r{WResistances:{x  Acid:{G%3d%%{x  Lightning:{W%3d%%{x  Heat:{R%3d%%{x  Cold:{C%3d%%{x ",
-                        ch->resist_acid, ch->resist_lightning, ch->resist_heat, ch->resist_cold);
+                sprintf(tmp, "\n\r{WElemental wards:{x  Acid:{G%3s{x  Lightning:{W%3s{x  Heat:{R%3s{x  Cold:{C%3s{x ",
+                        has_elemental_resistance(ch, gsn_resist_acid) ? "yes" : "no",
+                        has_elemental_resistance(ch, gsn_resist_lightning) ? "yes" : "no",
+                        has_elemental_resistance(ch, gsn_resist_heat) ? "yes" : "no",
+                        has_elemental_resistance(ch, gsn_resist_cold) ? "yes" : "no");
                 strcat(buf, tmp);
         }
         strcat(buf, "\n\r");
