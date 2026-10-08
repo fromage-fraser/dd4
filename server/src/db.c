@@ -723,6 +723,7 @@ int gsn_protect_vs_evil;
 int gsn_protect_vs_good;
 int gsn_mass_protect_vs_evil;
 int gsn_mass_protect_vs_good;
+int gsn_protect_vs_undead;
 
 /*
  *  Spell groups

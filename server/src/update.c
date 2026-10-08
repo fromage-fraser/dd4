@@ -3052,24 +3052,53 @@ void aggr_update()
                         count = 0;
                         victim = NULL;
 
-                        for (vch = mch->in_room->people; vch; vch = vch->next_in_room)
+                        for (vch = mch->in_room->people;
+                             vch;
+                             vch = vch->next_in_room)
                         {
-                                if (IS_NPC(vch) || vch->deleted || IS_AFFECTED(vch, AFF_NON_CORPOREAL) || vch->level >= LEVEL_IMMORTAL)
+                                if (IS_NPC(vch)
+                                ||  vch->deleted
+                                ||  IS_AFFECTED(vch, AFF_NON_CORPOREAL)
+                                ||  vch->level >= LEVEL_IMMORTAL)
+                                {
                                         continue;
+                                }
 
-                                if ((!IS_SET(mch->act, ACT_WIMPY) || !IS_AWAKE(vch)) && can_see(mch, vch))
+                                if (undead_protection_blocks_aggression(
+                                        mch, vch))
+                                {
+                                        continue;
+                                }
+
+                                if ((!IS_SET(mch->act, ACT_WIMPY)
+                                  || !IS_AWAKE(vch))
+                                &&  can_see(mch, vch))
                                 {
                                         if (!number_range(0, count))
                                         {
-                                                if (vch->pcdata->group_leader && !(IS_AFFECTED(vch->pcdata->group_leader, AFF_NON_CORPOREAL)) && can_see(mch, vch->pcdata->group_leader) && vch->pcdata->group_leader->in_room == mch->in_room)
+                                                if (vch->pcdata->group_leader
+                                                &&  !vch->pcdata->group_leader->deleted
+                                                &&  !IS_AFFECTED(
+                                                        vch->pcdata->group_leader,
+                                                        AFF_NON_CORPOREAL)
+                                                &&  can_see(
+                                                        mch,
+                                                        vch->pcdata->group_leader)
+                                                &&  vch->pcdata->group_leader->in_room
+                                                        == mch->in_room
+                                                &&  !undead_protection_blocks_aggression(
+                                                        mch,
+                                                        vch->pcdata->group_leader))
                                                 {
-                                                        victim = vch->pcdata->group_leader;
+                                                        victim =
+                                                            vch->pcdata->group_leader;
                                                 }
                                                 else
                                                 {
                                                         victim = vch;
                                                 }
                                         }
+
                                         count++;
                                 }
                         }
