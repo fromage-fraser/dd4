@@ -2894,8 +2894,23 @@ ROOM_ flags:
     ROOM_NO_MOUNT           BIT_19      Mounts cannot access room
     ROOM_TOXIC              BIT_20      Healing slowed, chance of being poisoned
     ROOM_NO_WEATHER         BIT_21      No weather in room
+    ROOM_NO_UNDEAD          BIT_22      Blocks undead NPCs; burns player vampires
     ROOM_NO_DROP            BIT_63      Cannot drop items in room
 
+
+ROOM_NO_UNDEAD is a permanent room flag, separate from the planned Ward
+Against Undead spell. It currently checks ordinary exit travel, mobile
+resets and Animate Dead. Undead NPC mounts and servants have no exception.
+
+Player vampires can enter and leave normally. The room burns them for
+30-60 HP each game tick instead of their usual HP regeneration, without
+taking them below 1 HP. This works indoors, at night, underwater and in
+mist form. Sunlight does not add another burn, and crossing an exit does
+not cause an extra burn.
+
+Creatures already inside are not removed. Teleports, summons, recall,
+portals, gravity, scripted placement and immortal loading or transfer
+are not checked yet, so this is not a complete entry barrier.
 
 The 'sector-type' identifies the type of terrain.  This primarily affects
 movement cost through the room, but may have various other effects--for example,
@@ -3658,7 +3673,7 @@ and pills. Make sure the spell's targeting suits the item.
     ward rune                   weaken
     wither                      word of recall
     wrath of god
-    
+
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)
 or email the team at dragonsdomainteam@gmail.com
