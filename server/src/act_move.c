@@ -769,6 +769,17 @@ static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
 
                 else if (fch->master == ch && fch->position == POS_STANDING && ch->in_room != fch->in_room)
                 {
+                        /* Match the interpreter's revealing-command cleanup.
+                         * An attempted follow reveals even if movement fails;
+                         * Chameleon form and independently owned Hide survive.
+                         */
+                        if (fch->form != FORM_CHAMELEON)
+                        {
+                                affect_strip(fch, gsn_hide);
+                                affect_strip(fch, gsn_chameleon_power);
+                                affect_strip_raw_bit(fch, AFF_HIDE);
+                        }
+
                         act("You follow $N.\n\r", fch, NULL, ch, TO_CHAR);
                         move_char(fch, door);
                 }

@@ -926,21 +926,37 @@ blocking unrelated directions.
 - Fixed ten-point thirst penalties from salt water and blood being ignored.
 - Fixed sober characters accumulating negative drunkenness.
 - Fixed mounted SLEEP overwriting injury and death positions after a fall.
-- Fixed prayer failing to bless group members when the caster is already affected.
+- Fixed prayer failing to bless group members when the caster is already 
+  affected.
 - Fixed dazed and prone effects wearing off early when a game tick occurs.
 - enchant weapon, enhance armor and bless weapon now reject worn items.
 - Standing or waking yourself from rest now preserves an ongoing fight.
 - Fixed CLOSE allowing non-corporeal characters to close doors and containers.
-- Fixed IDENTIFY and LORE descriptions to show signed elemental resistance modifiers.
+- Fixed IDENTIFY and LORE descriptions to show signed elemental resistance 
+  modifiers.
 - GET ALL now stops when a trap interrupts looting.
 - CARVE now rejects invalid pipe levels before spending movement.
 - Tinkers now reject invalid or overflowing repair costs.
 - Detect curse now checks item-specific spell slots, avoiding false cursed items.
 - Fixed discharge weapon checks to require an empowered primary weapon.
-- Forced sleep, choke and stun now dismount riders with terrain-aware damage and eligible credit for the cause.
+- Forced sleep, choke and stun now dismount riders with terrain-aware damage and 
+  eligible credit for the cause.
 - Fixed gravity checks skipping later connected players during the same pulse.
 - Rejected poisoned weapons no longer remove an eligible existing single weapon.
 - VALUE now rejects owner-bound and donated items instead of quoting a price.
+- Fixed NPCs attempting to QUAFF a missing potion causing a crash.
+- REPLY now respects recipient quiet, tellmode and combat restrictions.
+- Turret-tech trainers can now teach blade, shuriken, and spear modules.
+- Fixed SCORE and STATUS showing elemental wards as percentages instead of 
+  yes/no.
+- Removing a group member now clears tank assignments for that member instead of 
+  the group owner. 
+- Added NO_UNDEAD checks for exit travel, resets and Animate Dead;
+  player vampires can pass through but suffer sunlight-level harm.
+- Fixed REFORGE success checks using STRENGTHEN proficiency.
+- Fixed BRANDISH failing for staves with single-target offensive spells.
+- Clear tank assignments that point to a character when they stop following.
+- Automatic FOLLOW now removes ordinary Hide and Chameleon Power like normal movement.
 ~
 
 

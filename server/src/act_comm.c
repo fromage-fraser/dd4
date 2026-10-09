@@ -1688,6 +1688,8 @@ void add_follower(CHAR_DATA *ch, CHAR_DATA *master)
 
 void stop_follower(CHAR_DATA *ch)
 {
+        CHAR_DATA *gch;
+
         if (!ch->master)
         {
                 bug("Stop_follower: null master.", 0);
@@ -1713,6 +1715,12 @@ void stop_follower(CHAR_DATA *ch)
 
         if (!IS_NPC(ch))
                 ch->pcdata->group_leader = NULL;
+
+        for (gch = char_list; gch; gch = gch->next)
+        {
+                if (!IS_NPC(gch) && gch->pcdata->group_leader == ch)
+                        gch->pcdata->group_leader = NULL;
+        }
 
         return;
 }
@@ -1919,7 +1927,7 @@ void do_group(CHAR_DATA *ch, char *argument)
 
                 for (gch = char_list; gch; gch = gch->next)
                 {
-                        if (!IS_NPC(gch) && gch->pcdata->group_leader == ch)
+                        if (!IS_NPC(gch) && gch->pcdata->group_leader == victim)
                                 gch->pcdata->group_leader = NULL;
                 }
 

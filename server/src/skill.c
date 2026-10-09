@@ -2933,7 +2933,7 @@ void do_reforge (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (number_percent() > ch->pcdata->learned[gsn_strengthen])
+        if (number_percent() > ch->pcdata->learned[gsn_reforge])
         {
                 send_to_char("You slip while reforging your weapon and pound yourself!\n\r", ch);
                 damage(ch, ch, ch->level, gsn_forge, FALSE);

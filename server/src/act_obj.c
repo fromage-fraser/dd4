@@ -5007,6 +5007,7 @@ void do_brandish(CHAR_DATA *ch, char *argument)
                                 break;
 
                         case TAR_CHAR_OFFENSIVE:
+                        case TAR_CHAR_OFFENSIVE_SINGLE:
                                 if (is_same_group(ch, vch)
                                 ||  vch == ch->mount
                                 ||  is_group_members_mount(vch, ch)
