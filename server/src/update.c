@@ -1298,7 +1298,20 @@ int hit_gain(CHAR_DATA *ch)
                 gain += (get_curr_con(ch) / 4);
         }
 
-        if (ch->sub_class == SUB_CLASS_VAMPIRE && IS_OUTSIDE(ch) && !IS_SET(ch->in_room->room_flags, ROOM_DARK) && ch->in_room->sector_type != SECT_UNDERWATER && ch->in_room->sector_type != SECT_UNDERWATER_GROUND && weather_info.sky < SKY_RAINING && (time_info.hour >= 6 && time_info.hour <= 18) && !is_affected(ch, gsn_mist_walk) && !IS_SET(ch->in_room->room_flags, ROOM_NO_WEATHER) )
+        /*
+         * The room ward burns in char_update, so don't charge sunlight twice.
+         */
+        if (ch->sub_class == SUB_CLASS_VAMPIRE
+        &&  !IS_SET(ch->in_room->room_flags, ROOM_NO_UNDEAD)
+        &&  IS_OUTSIDE(ch)
+        &&  !IS_SET(ch->in_room->room_flags, ROOM_DARK)
+        &&  ch->in_room->sector_type != SECT_UNDERWATER
+        &&  ch->in_room->sector_type != SECT_UNDERWATER_GROUND
+        &&  weather_info.sky < SKY_RAINING
+        &&  time_info.hour >= 6
+        &&  time_info.hour <= 18
+        &&  !is_affected(ch, gsn_mist_walk)
+        &&  !IS_SET(ch->in_room->room_flags, ROOM_NO_WEATHER))
         {
                 send_to_char("Your skin burns as the {Ysunlight{x hits it!\n\r", ch);
                 act("$n's skin starts to burn!", ch, NULL, NULL, TO_ROOM);
@@ -2254,7 +2267,33 @@ void char_update(void)
 
                 if (ch->position >= POS_STUNNED)
                 {
-                        ch->hit += hit_gain(ch);
+                        int hit_change = hit_gain(ch);
+
+                        if (ch->deleted)
+                                continue;
+
+                        if (!IS_NPC(ch)
+                        &&  ch->sub_class == SUB_CLASS_VAMPIRE
+                        &&  ch->in_room
+                        &&  IS_SET(ch->in_room->room_flags, ROOM_NO_UNDEAD))
+                        {
+                                send_to_char(
+                                    "The room's ward burns your undead flesh!\n\r",
+                                    ch);
+                                act(
+                                    "$n's skin burns in the room's ward!",
+                                    ch, NULL, NULL, TO_ROOM);
+
+                                /*
+                                 * Replace this tick's healing with a sunlight-sized
+                                 * burn. It cannot kill or heal an injured vampire.
+                                 */
+                                hit_change = -UMIN(
+                                    number_range(30, 60),
+                                    UMAX(0, ch->hit - 1));
+                        }
+
+                        ch->hit += hit_change;
 
                         if (ch->aggro_dam > 0)
                                 ch->aggro_dam -= UMIN(ch->level / 8, ch->aggro_dam);

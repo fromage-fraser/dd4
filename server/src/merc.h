@@ -2559,6 +2559,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ROOM_NO_MOUNT BIT_19
 #define ROOM_TOXIC BIT_20
 #define ROOM_NO_WEATHER BIT_21 /* Weather cannot occur in this room --Owl 16/6/26 */
+#define ROOM_NO_UNDEAD BIT_22 /* Keeps undead mobs out and burns player vampires. */
 #define ROOM_NO_DROP BIT_63 /* Can't drop items in room, will prevent disarming in room too -- Owl 6/8/22 */
 
 /*
@@ -5625,6 +5626,13 @@ int race_lookup args((const char *name));
 int class_lookup args((const char *name));
 bool room_is_dark args((ROOM_INDEX_DATA * pRoomIndex));
 bool room_is_private args((ROOM_INDEX_DATA * pRoomIndex));
+bool room_blocks_undead args((const ROOM_INDEX_DATA *room));
+bool undead_can_enter_room args((const CHAR_DATA *ch,
+                                const ROOM_INDEX_DATA *room));
+bool undead_can_travel_to_room args((const CHAR_DATA *ch,
+                                    const ROOM_INDEX_DATA *room));
+bool undead_can_spawn_in_room args((const MOB_INDEX_DATA *index,
+                                   const ROOM_INDEX_DATA *room));
 bool can_see args((CHAR_DATA * ch, CHAR_DATA *victim));
 bool can_see_obj args((CHAR_DATA * ch, OBJ_DATA *obj));
 bool can_drop_obj args((CHAR_DATA * ch, OBJ_DATA *obj));

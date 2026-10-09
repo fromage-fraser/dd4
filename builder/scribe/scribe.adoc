@@ -7080,9 +7080,29 @@ burning         players take heat damage per tick
 no_mount          room may not be entered while mounted
 toxic    healing slowed, chance of being poisoned
 no_weather        weather effects prevented in room
+no_undead         bars undead NPCs; player vampires take sunlight-level harm
 no_drop           objects may not be dropped in room
 E.g.    rf  safe healing no_mob
 ----
+
+`no_undead` is a permanent room setting, not the temporary Ward Against Undead
+spell. This first slice checks ordinary exit travel (including following,
+hunting and fleeing), mobile resets and Animate Dead. Riders cannot bring an
+undead NPC mount through an ordinary exit into the room.
+
+Player vampires can enter and leave normally. While they stay here, the room
+burns them for 30-60 HP each game tick instead of their usual HP regeneration.
+Like sunlight, this burn cannot take them below 1 HP. It still works indoors,
+at night, underwater or in mist form, and does not add a second sunlight burn
+if the room is also sunny. There is no extra burn just for crossing an exit.
+
+Creatures already inside are not removed. Controlled undead are still undead,
+so undead NPC servants do not get an exception to the entry rule. A blocked
+animation leaves its corpse untouched.
+
+Teleportation, summoning, recall, portals, gravity, scripted placement and
+immortal loading or transfer are not connected to this rule yet. Do not rely on
+this first slice as a complete entry barrier; those paths are the next step.
 
 *`ed` — Extra description*
 

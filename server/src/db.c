@@ -4020,6 +4020,14 @@ void reset_area(AREA_DATA *pArea)
                                 continue;
                         }
 
+                        if (!undead_can_spawn_in_room(pMobIndex, pRoomIndex))
+                        {
+                                mob = NULL;
+                                level = 0;
+                                last = FALSE;
+                                break;
+                        }
+
                         level = URANGE(0, pMobIndex->level - 2, LEVEL_HERO);
 
                         if (pMobIndex->count >= pReset->arg2)

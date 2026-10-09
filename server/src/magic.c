@@ -10221,6 +10221,14 @@ void spell_animate_dead(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
+        if (!undead_can_spawn_in_room(index, ch->in_room))
+        {
+                send_to_char(
+                    "The room's ward prevents the animation; the corpse is undisturbed.\n\r",
+                    ch);
+                return;
+        }
+
         victim = create_mobile(index);
 
         if (!victim || victim->deleted)

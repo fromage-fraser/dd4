@@ -942,8 +942,29 @@ blocking unrelated directions.
 - Rejected poisoned weapons no longer remove an eligible existing single weapon.
 - VALUE now rejects owner-bound and donated items instead of quoting a price.
 - Added Protection vs Undead to deter fresh automatic undead attacks.
+- Added NO_UNDEAD checks for exit travel, resets and Animate Dead;
+  player vampires can pass through but suffer sunlight-level harm.
 ~
 
+0 'NO UNDEAD' NO_UNDEAD~
+NO_UNDEAD is a permanent room flag, not a spell you cast.
+
+Undead NPCs cannot enter through ordinary exits or be created here by
+mobile resets or Animate Dead. Undead mounts and commanded servants
+have no exception. A blocked animation leaves its corpse untouched.
+
+Player vampires can enter and leave normally, but the room burns them
+for 30-60 HP each game tick instead of their usual HP regeneration.
+The burn cannot take them below 1 HP.
+
+It works indoors, at night, underwater and in mist form. Being in
+sunlight does not add another burn, and crossing an exit does not
+cause extra damage.
+
+Creatures already inside are not removed. Teleports, summons, recall,
+portals, gravity, scripted placement and immortal loading or transfer
+are not checked yet.
+~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
 Innate resistances and vulnerabilities
