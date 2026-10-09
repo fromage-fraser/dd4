@@ -145,6 +145,7 @@ static bool self_cast_already_affected(CHAR_DATA *ch, int sn)
         ||  spell == spell_protection
         ||  spell == spell_protect_vs_evil
         ||  spell == spell_protect_vs_good
+        ||  spell == spell_protect_vs_undead
         ||  spell == spell_sanctuary
         ||  spell == spell_biofeedback
         ||  spell == spell_deter
@@ -628,6 +629,107 @@ bool alignment_protection_applies(CHAR_DATA *warded,
 
         return IS_GOOD(opponent)
             && is_affected(warded, gsn_protect_vs_good);
+}
+
+/*
+ * This only discourages fresh automatic aggression. It does not
+ * stop an existing fight or interfere with a servant's orders.
+ */
+bool undead_protection_blocks_aggression(CHAR_DATA *mob,
+                                         CHAR_DATA *victim)
+{
+        AFFECT_DATA *paf;
+        RESISTANCE_RESULT resistance;
+        int power = 0;
+        int rank;
+
+        if (!mob
+        ||  !victim
+        ||  mob->deleted
+        ||  victim->deleted
+        ||  gsn_protect_vs_undead <= 0
+        ||  gsn_protect_vs_undead >= MAX_SKILL
+        ||  mob == victim
+        ||  !IS_NPC(mob)
+        ||  !IS_UNDEAD(mob)
+        ||  !mob->in_room
+        ||  victim->in_room != mob->in_room)
+        {
+                return FALSE;
+        }
+
+        /* Fighting back and pursuing a known enemy are still allowed. */
+        if (mob->fighting
+        ||  victim->fighting == mob
+        ||  mob->hunting == victim)
+        {
+                return FALSE;
+        }
+
+        if (mob->master
+        ||  IS_AFFECTED(mob, AFF_CHARM)
+        ||  is_same_group(mob, victim)
+        ||  IS_SET(mob->act,
+                   ACT_OBJECT | ACT_CLAN_GUARD
+                       | ACT_UNKILLABLE | ACT_INVULNERABLE))
+        {
+                return FALSE;
+        }
+
+        /*
+         * A ward keeps its casting strength in modifier. If several
+         * sources supply it, use the strongest one rather than add them.
+         */
+        for (paf = victim->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted
+                ||  paf->type != gsn_protect_vs_undead
+                ||  paf->location != APPLY_NONE)
+                {
+                        continue;
+                }
+
+                power = UMAX(power, paf->modifier);
+        }
+
+        if (power <= 0)
+                return FALSE;
+
+        rank = rank_sn(mob);
+
+        /* This ordinary ward does not switch off major encounters. */
+        if (rank >= NPC_BOSS)
+                return FALSE;
+
+        if (is_mindless(mob))
+                power += UNDEAD_PROTECTION_MINDLESS_BONUS;
+
+        if (rank == NPC_RARE)
+                power -= UNDEAD_PROTECTION_RARE_PENALTY;
+        else if (rank == NPC_ELITE)
+                power -= UNDEAD_PROTECTION_ELITE_PENALTY;
+
+        resistance = get_resistance_result(
+            mob, RES_MAGIC | RES_HOLY);
+
+        switch (resistance)
+        {
+        case RES_RESULT_IMMUNE:
+                return FALSE;
+
+        case RES_RESULT_RESISTANT:
+                power -= RESISTANCE_SAVE_LEVEL_SHIFT;
+                break;
+
+        case RES_RESULT_VULNERABLE:
+                power += RESISTANCE_SAVE_LEVEL_SHIFT;
+                break;
+
+        default:
+                break;
+        }
+
+        return mob->level <= power;
 }
 
 /*
@@ -6220,6 +6322,70 @@ void spell_mass_protect_vs_good(int sn, int level,
         spell_mass_alignment_protection(ch, FALSE);
 }
 
+void spell_protect_vs_undead(int sn, int level,
+                             CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+        AFFECT_DATA af;
+
+        if (!ch
+        ||  !victim
+        ||  ch->deleted
+        ||  victim->deleted
+        ||  sn <= 0
+        ||  sn >= MAX_SKILL)
+        {
+                return;
+        }
+
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char(
+                    "That ward is meant for a creature.\n\r",
+                    ch);
+                return;
+        }
+
+        if (is_affected_source(
+                victim, sn, AFFECT_SOURCE_NONE, 0))
+        {
+                if (victim == ch)
+                {
+                        send_to_char(
+                            "You are already warded against the undead.\n\r",
+                            ch);
+                }
+                else
+                {
+                        act("$N already has a ward against the undead.",
+                            ch, NULL, victim, TO_CHAR);
+                }
+
+                return;
+        }
+
+        memset(&af, 0, sizeof(af));
+        af.type = sn;
+        af.duration = UNDEAD_PROTECTION_DURATION;
+        af.location = APPLY_NONE;
+
+        /* Keep the casting level here; APPLY_NONE changes no stats. */
+        af.modifier = UMAX(1, level);
+        af.bitvector = 0;
+
+        affect_to_char(victim, &af);
+
+        send_to_char(
+            "You are warded against the undead.\n\r",
+            victim);
+
+        act("$n is warded against the undead.",
+            victim, NULL, NULL, TO_ROOM);
+
+        if (ch != victim)
+                send_to_char("Your ward settles around them.\n\r", ch);
+}
+
 void spell_protection(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
@@ -10051,6 +10217,14 @@ void spell_animate_dead(int sn, int level, CHAR_DATA *ch, void *vo)
                 bug("Spell_animate_dead: missing mobile %d.", vnum);
                 send_to_char(
                     "The animation fails; the corpse is undisturbed.\n\r",
+                    ch);
+                return;
+        }
+
+        if (!undead_can_spawn_in_room(index, ch->in_room))
+        {
+                send_to_char(
+                    "The room's ward prevents the animation; the corpse is undisturbed.\n\r",
                     ch);
                 return;
         }

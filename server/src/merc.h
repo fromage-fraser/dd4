@@ -419,9 +419,9 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 629           /* Includes both mass protection spells. */
-#define MAX_PRE_REQ 1596        /* Nine more protection prerequisites. */
-#define MAX_SPELL_GROUP 477     /* Includes all three offensive turret modules. */
+#define MAX_SKILL 630           /* Includes Protection vs Undead. */
+#define MAX_PRE_REQ 1601        /* Five more protection prerequisites. */
+#define MAX_SPELL_GROUP 478     /* Keeps the turret entries and adds the undead ward. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
@@ -2559,6 +2559,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ROOM_NO_MOUNT BIT_19
 #define ROOM_TOXIC BIT_20
 #define ROOM_NO_WEATHER BIT_21 /* Weather cannot occur in this room --Owl 16/6/26 */
+#define ROOM_NO_UNDEAD BIT_22 /* Keeps undead mobs out and burns player vampires. */
 #define ROOM_NO_DROP BIT_63 /* Can't drop items in room, will prevent disarming in room too -- Owl 6/8/22 */
 
 /*
@@ -3536,6 +3537,10 @@ struct skill_type
 #define ALIGNMENT_PROTECTION_DEFENCE_BONUS 2
 #define ALIGNMENT_PROTECTION_SAVE_BONUS 8
 #define ALIGNMENT_PROTECTION_DURATION 24
+#define UNDEAD_PROTECTION_DURATION 24
+#define UNDEAD_PROTECTION_MINDLESS_BONUS 5
+#define UNDEAD_PROTECTION_RARE_PENALTY 5
+#define UNDEAD_PROTECTION_ELITE_PENALTY 10
 
 /*
  * Resistant Immune Susceptible flags
@@ -4450,6 +4455,7 @@ extern int gsn_protect_vs_evil;
 extern int gsn_protect_vs_good;
 extern int gsn_mass_protect_vs_evil;
 extern int gsn_mass_protect_vs_good;
+extern int gsn_protect_vs_undead;
 /*
  *  Deity gsns
  */
@@ -5305,6 +5311,7 @@ DECLARE_SPELL_FUN(spell_protect_vs_evil);
 DECLARE_SPELL_FUN(spell_protect_vs_good);
 DECLARE_SPELL_FUN(spell_mass_protect_vs_evil);
 DECLARE_SPELL_FUN(spell_mass_protect_vs_good);
+DECLARE_SPELL_FUN(spell_protect_vs_undead);
 
 #define MOB_VNUM_SKELETON 85
 #define MOB_VNUM_GHOUL 86
@@ -5619,6 +5626,13 @@ int race_lookup args((const char *name));
 int class_lookup args((const char *name));
 bool room_is_dark args((ROOM_INDEX_DATA * pRoomIndex));
 bool room_is_private args((ROOM_INDEX_DATA * pRoomIndex));
+bool room_blocks_undead args((const ROOM_INDEX_DATA *room));
+bool undead_can_enter_room args((const CHAR_DATA *ch,
+                                const ROOM_INDEX_DATA *room));
+bool undead_can_travel_to_room args((const CHAR_DATA *ch,
+                                    const ROOM_INDEX_DATA *room));
+bool undead_can_spawn_in_room args((const MOB_INDEX_DATA *index,
+                                   const ROOM_INDEX_DATA *room));
 bool can_see args((CHAR_DATA * ch, CHAR_DATA *victim));
 bool can_see_obj args((CHAR_DATA * ch, OBJ_DATA *obj));
 bool can_drop_obj args((CHAR_DATA * ch, OBJ_DATA *obj));
@@ -5715,6 +5729,8 @@ bool can_detect_undead(CHAR_DATA *viewer, CHAR_DATA *victim);
 bool can_detect_undead_obj(CHAR_DATA *viewer, OBJ_DATA *obj);
 bool alignment_protection_applies args((CHAR_DATA *warded,
                                         CHAR_DATA *opponent));
+bool undead_protection_blocks_aggression args((CHAR_DATA *mob,
+                                               CHAR_DATA *victim));
 
 /* mob.c */
 int species_lookup args((const char *name));

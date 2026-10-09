@@ -3511,6 +3511,73 @@ bool room_is_dark( ROOM_INDEX_DATA *pRoomIndex )
 }
 
 /*
+ * Keep the room rule in one place so other entry paths can use it.
+ */
+bool room_blocks_undead(const ROOM_INDEX_DATA *room)
+{
+        return room
+            && IS_SET(room->room_flags, ROOM_NO_UNDEAD);
+}
+
+bool undead_can_enter_room(const CHAR_DATA *ch,
+                           const ROOM_INDEX_DATA *room)
+{
+        if (!ch || ch->deleted || !room)
+                return FALSE;
+
+        /*
+         * Player vampires can pass through. Their room burn is handled
+         * by the normal character tick.
+         */
+        return !IS_NPC(ch)
+            || !IS_UNDEAD(ch)
+            || !room_blocks_undead(room);
+}
+
+bool undead_can_travel_to_room(const CHAR_DATA *ch,
+                               const ROOM_INDEX_DATA *room)
+{
+        if (!undead_can_enter_room(ch, room))
+                return FALSE;
+
+        /*
+         * Check the mounted pair before moving either half, rather than
+         * leaving a rider on one side and an undead mount on the other.
+         */
+        if (ch->mount
+        &&  !ch->mount->deleted
+        &&  ch->mount->in_room == ch->in_room
+        &&  !undead_can_enter_room(ch->mount, room))
+        {
+                return FALSE;
+        }
+
+        if (ch->rider
+        &&  !ch->rider->deleted
+        &&  ch->rider->in_room == ch->in_room
+        &&  !undead_can_enter_room(ch->rider, room))
+        {
+                return FALSE;
+        }
+
+        return TRUE;
+}
+
+bool undead_can_spawn_in_room(const MOB_INDEX_DATA *index,
+                              const ROOM_INDEX_DATA *room)
+{
+        if (!index || !room)
+                return FALSE;
+
+        /*
+         * index->act already includes inheritance and the area's XOR
+         * changes, so use those resolved flags here.
+         */
+        return !IS_SET(index->act, ACT_UNDEAD)
+            || !room_blocks_undead(room);
+}
+
+/*
  * True if room is private.
  */
 bool room_is_private( ROOM_INDEX_DATA *pRoomIndex )
@@ -4321,6 +4388,7 @@ char* room_flag_name (unsigned long int vector)
                 case ROOM_NO_MOUNT:         return "no_mount";
                 case ROOM_TOXIC:            return "toxic";
                 case ROOM_NO_WEATHER:       return "no_weather";
+                case ROOM_NO_UNDEAD:        return "no_undead";
                 case ROOM_NO_DROP:          return "no_drop";
 
                 default: return "(unknown)";

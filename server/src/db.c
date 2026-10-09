@@ -723,6 +723,7 @@ int gsn_protect_vs_evil;
 int gsn_protect_vs_good;
 int gsn_mass_protect_vs_evil;
 int gsn_mass_protect_vs_good;
+int gsn_protect_vs_undead;
 
 /*
  *  Spell groups
@@ -4017,6 +4018,14 @@ void reset_area(AREA_DATA *pArea)
                         {
                                 bug("Reset_area: 'R': bad vnum %d.", pReset->arg3);
                                 continue;
+                        }
+
+                        if (!undead_can_spawn_in_room(pMobIndex, pRoomIndex))
+                        {
+                                mob = NULL;
+                                level = 0;
+                                last = FALSE;
+                                break;
                         }
 
                         level = URANGE(0, pMobIndex->level - 2, LEVEL_HERO);

@@ -268,6 +268,12 @@ void violence_update(void)
 
                         if (grmobfighting)
                         {
+                                if (undead_protection_blocks_aggression(
+                                        ch, victim))
+                                {
+                                        continue;
+                                }
+
                                 /*It's a mob we're grouped with fighting, join in. */
                                 if (CAN_SPEAK(ch))
                                 {
@@ -306,9 +312,17 @@ void violence_update(void)
                         }
 
                         /* mob attacks member of pc's group */
-                        for (vch = ch->in_room->people; vch; vch = vch->next_in_room)
+                        for (vch = ch->in_room->people;
+                             vch;
+                             vch = vch->next_in_room)
                         {
-                                if (can_see(ch, vch) && is_same_group(vch, victim))
+                                if (vch->deleted)
+                                        continue;
+
+                                if (can_see(ch, vch)
+                                &&  is_same_group(vch, victim)
+                                &&  !undead_protection_blocks_aggression(
+                                        ch, vch))
                                 {
                                         number++;
 
@@ -316,6 +330,10 @@ void violence_update(void)
                                                 victim = vch;
                                 }
                         }
+
+                        /* Don't fall back to a protected original target. */
+                        if (number == 0)
+                                continue;
 
                         if ((rch->pIndexData != ch->pIndexData && number_bits(3) != 0) || (IS_GOOD(ch) && IS_GOOD(victim)) || victim->level - ch->level > 3 || victim->level - ch->level < -6)
                                 continue;
