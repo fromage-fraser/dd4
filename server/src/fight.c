@@ -2252,7 +2252,7 @@ static void damage_internal(CHAR_DATA *ch,
                         victim->hit = 1;
 
         /* this is for exp (damage bonus) */
-        if ((ch != victim) && (!IS_NPC(ch) && (ch->level - victim->level < 6)) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
+        if ((ch != victim) && IS_NPC(victim) && (!IS_NPC(ch) && (ch->level - victim->level < 6)) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
                 ch->pcdata->dam_bonus += dam;
 
         if (is_affected(victim, gsn_berserk) && (victim->position <= POS_STUNNED))

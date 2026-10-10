@@ -835,8 +835,6 @@ and undead objects on the ground, carried or worn.
 
 {WOctober 2026{x
 
-- Combat now temporarily suppresses gear/set invisibility, sneak and hide.
-- These effects return after combat only while their sources remain active.
 - Affect listings now identify effects supplied by worn objects, object sets
   and forms with (O), (S) and (F) markers respectively.
 - Fixed payments losing change when spending silver coins.
@@ -1012,6 +1010,10 @@ blocking unrelated directions.
 - Damage suffered from yourself no longer builds damage-bonus experience.
 - Combat now temporarily suppresses gear/set invisibility, sneak and hide.
 - These effects return after combat only while their sources remain active.
+- Only damage dealt to NPCs now builds damage-bonus experience.
+- Unavailable Bard songs are now rejected safely without stopping an active 
+  song.
+- Slow now checks combat protection before affecting another character.
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~
