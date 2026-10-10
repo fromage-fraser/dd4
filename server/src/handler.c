@@ -346,13 +346,112 @@ bool parse_target_id(const char *argument, uint64_t *target_id)
         return TRUE;
 }
 
-/*
- * Restore any bits supplied by other active character affects after one
- * affect has been removed.
- *
- * This is intentionally limited to AFFECT_DATA sources for now.  Form and
- * equipment source handling is added in the following stages.
- */
+/* Gear remains owned while combat temporarily suppresses its stealth bits. */
+static unsigned long int combat_gear_stealth_mask(CHAR_DATA *ch)
+{
+        CHAR_DATA *fch;
+        bool fighting;
+        unsigned long int mask;
+
+        if (!ch)
+                return 0;
+
+        fighting = ch->combat_stealth_transition || ch->fighting != NULL;
+        if (!fighting)
+        {
+                for (fch = char_list; fch; fch = fch->next)
+                {
+                        if (!fch->deleted && fch->fighting == ch)
+                        {
+                                fighting = TRUE;
+                                break;
+                        }
+                }
+        }
+
+        if (!fighting)
+                return 0;
+
+        mask = AFF_INVISIBLE;
+        if (ch->form != FORM_CHAMELEON)
+                mask |= AFF_SNEAK | AFF_HIDE;
+        return mask;
+}
+
+static unsigned long int affect_bits_from_source(CHAR_DATA *ch,
+    unsigned long int bits, int source_type)
+{
+        if (source_type == AFFECT_SOURCE_OBJECT
+        ||  source_type == AFFECT_SOURCE_OBJSET)
+                bits &= ~combat_gear_stealth_mask(ch);
+        return bits;
+}
+
+unsigned long int affect_effective_bits(CHAR_DATA *ch, AFFECT_DATA *paf)
+{
+        if (!paf || paf->deleted)
+                return 0;
+        return affect_bits_from_source(ch, paf->bitvector, paf->source_type);
+}
+
+/* Raw object bitvectors do not have character-owned APPLY records. */
+static unsigned long int worn_gear_stealth_bits(CHAR_DATA *ch)
+{
+        OBJ_DATA *obj;
+        AFFECT_DATA *paf;
+        unsigned long int bits = 0;
+
+        for (obj = ch->carrying; obj; obj = obj->next_content)
+        {
+                if (obj->deleted || obj->wear_loc == WEAR_NONE
+                ||  obj->wear_loc == WEAR_RANGED_WEAPON)
+                        continue;
+
+                if (!obj->how_created || obj->how_created == CREATED_PRE_DD5)
+                {
+                        for (paf = obj->pIndexData->affected; paf; paf = paf->next)
+                                if (!paf->deleted)
+                                        bits |= paf->bitvector;
+                }
+                for (paf = obj->affected; paf; paf = paf->next)
+                        if (!paf->deleted)
+                                bits |= paf->bitvector;
+        }
+
+        return bits & (AFF_INVISIBLE | AFF_SNEAK | AFF_HIDE);
+}
+
+/* Re-read current providers; never replay a saved pre-combat flag mask. */
+void refresh_combat_gear_stealth(CHAR_DATA *ch)
+{
+        AFFECT_DATA *paf;
+        unsigned long int gear_bits;
+        unsigned long int other_bits;
+        unsigned long int mask;
+
+        if (!ch || ch->deleted)
+                return;
+
+        gear_bits = worn_gear_stealth_bits(ch);
+        other_bits = IS_NPC(ch) ? ch->intrinsic_affected_by : 0;
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted)
+                        continue;
+                if (paf->source_type == AFFECT_SOURCE_OBJECT
+                ||  paf->source_type == AFFECT_SOURCE_OBJSET)
+                        gear_bits |= paf->bitvector;
+                else
+                        other_bits |= paf->bitvector;
+        }
+
+        gear_bits &= AFF_INVISIBLE | AFF_SNEAK | AFF_HIDE;
+        mask = combat_gear_stealth_mask(ch);
+        REMOVE_BIT(ch->affected_by, gear_bits & mask & ~other_bits);
+        SET_BIT(ch->affected_by, gear_bits & ~mask);
+}
+
+/* Restore only the currently effective bits of remaining providers. */
 static void restore_shared_affect_bits(CHAR_DATA *ch, AFFECT_DATA *removed)
 {
         AFFECT_DATA *paf;
@@ -386,7 +485,7 @@ static void restore_shared_affect_bits(CHAR_DATA *ch, AFFECT_DATA *removed)
                         continue;
 
                 shared_bits |=
-                    paf->bitvector
+                    affect_effective_bits(ch, paf)
                     & removed->bitvector;
         }
 
@@ -849,7 +948,8 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
 
         if ( fAdd )
         {
-                SET_BIT(ch->affected_by, paf->bitvector);
+                SET_BIT(ch->affected_by,
+                    affect_bits_from_source(ch, paf->bitvector, source_type));
                 if (paf->bitvector & AFF_FLYING)
                         clear_fall_source(ch);
         }
@@ -1113,7 +1213,7 @@ void affect_to_char_source(CHAR_DATA *ch, AFFECT_DATA *paf,
         paf_new->next = ch->affected;
         ch->affected = paf_new;
 
-        affect_modify(ch, paf_new, TRUE, NULL);
+        affect_modify_source(ch, paf_new, TRUE, NULL, source_type, source_id);
 }
 
 
@@ -1235,7 +1335,7 @@ bool affect_bit_is_supplied(CHAR_DATA *ch, unsigned long int bit)
                 if (paf->deleted)
                         continue;
 
-                if (paf->bitvector & bit)
+                if (affect_effective_bits(ch, paf) & bit)
                         return TRUE;
         }
 

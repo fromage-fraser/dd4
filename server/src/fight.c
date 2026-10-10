@@ -1879,8 +1879,7 @@ static void damage_internal(CHAR_DATA *ch,
                          */
                         if (IS_NPC(ch) && IS_NPC(victim) && IS_AFFECTED(victim, AFF_CHARM) && victim->master && victim->master->in_room == ch->in_room && number_bits(3) == 0 && !ch->mount)
                         {
-                                stop_fighting(ch, FALSE);
-                                set_fighting(ch, victim->master);
+                                change_fighting(ch, victim->master);
                                 return;
                         }
                 }
@@ -2253,7 +2252,7 @@ static void damage_internal(CHAR_DATA *ch,
                         victim->hit = 1;
 
         /* this is for exp (damage bonus) */
-        if ((!forced_fall || ch != victim) && (!IS_NPC(ch) && (ch->level - victim->level < 6)) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
+        if ((ch != victim) && (!IS_NPC(ch) && (ch->level - victim->level < 6)) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
                 ch->pcdata->dam_bonus += dam;
 
         if (is_affected(victim, gsn_berserk) && (victim->position <= POS_STUNNED))
@@ -3217,6 +3216,8 @@ void update_pos(CHAR_DATA *victim)
 void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         char buf[MAX_STRING_LENGTH];
+        bool transition;
+        bool was_active;
 
         if (ch->fighting)
         {
@@ -3228,6 +3229,9 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
                 bug(buf, 0);
                 return;
         }
+
+        transition = ch->combat_stealth_transition;
+        ch->combat_stealth_transition = TRUE;
 
         if (IS_AFFECTED(ch, AFF_SLEEP))
                 affect_strip(ch, gsn_sleep);
@@ -3256,8 +3260,9 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
         {
                 affect_strip(ch, gsn_invis);
                 affect_strip(ch, gsn_mass_invis);
-                REMOVE_BIT(ch->affected_by, AFF_INVISIBLE);
-                act("$c fades into existence.", ch, NULL, NULL, TO_ROOM);
+                affect_strip_raw_bit(ch, AFF_INVISIBLE);
+                if (!IS_AFFECTED(ch, AFF_INVISIBLE))
+                        act("$c fades into existence.", ch, NULL, NULL, TO_ROOM);
         }
 
         if (!IS_NPC(ch) && (ch->pcdata->tailing))
@@ -3269,18 +3274,22 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
         {
                 if (IS_AFFECTED(ch, AFF_SNEAK) || is_affected(ch, gsn_sneak) || is_affected(ch, gsn_shadow_form))
                 {
+                        was_active = IS_AFFECTED(ch, AFF_SNEAK) != 0;
                         affect_strip(ch, gsn_sneak);
                         affect_strip(ch, gsn_shadow_form);
-                        REMOVE_BIT(ch->affected_by, AFF_SNEAK);
-                        act("$c emerges from the shadows.", ch, NULL, NULL, TO_ROOM);
+                        affect_strip_raw_bit(ch, AFF_SNEAK);
+                        if (was_active && !IS_AFFECTED(ch, AFF_SNEAK))
+                                act("$c emerges from the shadows.", ch, NULL, NULL, TO_ROOM);
                 }
 
                 if (IS_AFFECTED(ch, AFF_HIDE) || is_affected(ch, gsn_hide) || is_affected(ch, gsn_chameleon_power))
                 {
+                        was_active = IS_AFFECTED(ch, AFF_HIDE) != 0;
                         affect_strip(ch, gsn_hide);
                         affect_strip(ch, gsn_chameleon_power);
-                        REMOVE_BIT(ch->affected_by, AFF_HIDE);
-                        act("$c is revealed from a hidden location.", ch, NULL, NULL, TO_ROOM);
+                        affect_strip_raw_bit(ch, AFF_HIDE);
+                        if (was_active && !IS_AFFECTED(ch, AFF_HIDE))
+                                act("$c is revealed from a hidden location.", ch, NULL, NULL, TO_ROOM);
                 }
         }
 
@@ -3309,6 +3318,9 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
 
         ch->fighting = victim;
         ch->position = POS_FIGHTING;
+        ch->combat_stealth_transition = transition;
+        refresh_combat_gear_stealth(ch);
+        refresh_combat_gear_stealth(victim);
 
         /* Send enemy status update to web clients when combat starts */
         if (!IS_NPC(ch) && ch->desc)
@@ -3323,6 +3335,7 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
 void stop_fighting(CHAR_DATA *ch, bool fBoth)
 {
         CHAR_DATA *fch;
+        CHAR_DATA *old_victim = ch->fighting;
 
         if (!IS_NPC(ch))
         {
@@ -3352,6 +3365,7 @@ void stop_fighting(CHAR_DATA *ch, bool fBoth)
                                 affect_strip(fch, gsn_unarmed_combat);
 
                         update_pos(fch);
+                        refresh_combat_gear_stealth(fch);
 
                         /* Send enemy status update (empty array) to web clients when combat ends */
                         if (!IS_NPC(fch) && fch->desc)
@@ -3359,7 +3373,22 @@ void stop_fighting(CHAR_DATA *ch, bool fBoth)
                 }
         }
 
+        /* The final incoming link may have been cleared after ch's turn. */
+        refresh_combat_gear_stealth(ch);
+        refresh_combat_gear_stealth(old_victim);
         return;
+}
+
+/* Keep gear suppressed across an existing stop/start opponent change. */
+void change_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        bool transition = ch->combat_stealth_transition;
+
+        ch->combat_stealth_transition = TRUE;
+        stop_fighting(ch, FALSE);
+        set_fighting(ch, victim);
+        ch->combat_stealth_transition = transition;
+        refresh_combat_gear_stealth(ch);
 }
 
 /*
@@ -7118,8 +7147,7 @@ void do_rescue(CHAR_DATA *ch, char *argument)
         act("$n rescues you!", ch, NULL, victim, TO_VICT);
         act("$n rescues $N!", ch, NULL, victim, TO_NOTVICT);
 
-        stop_fighting(vch, FALSE);
-        set_fighting(vch, ch);
+        change_fighting(vch, ch);
 
         if (!IS_NPC(ch))
                 ch->pcdata->group_support_bonus += 1;

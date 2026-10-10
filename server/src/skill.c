@@ -2190,8 +2190,7 @@ void do_focus (CHAR_DATA *ch, char *argument)
         act ("$n shifts his attacks toward you!", ch, NULL, victim, TO_VICT);
         act ("$n shifts the focus of his attacks toward $N!",  ch, NULL, victim, TO_NOTVICT);
 
-        stop_fighting(ch, FALSE);
-        set_fighting(ch, victim);
+        change_fighting(ch, victim);
 
         return;
 }

@@ -1954,7 +1954,7 @@ void do_group(CHAR_DATA *ch, char *argument)
                 if (is_same_group(gch, ch) && IS_NPC(gch))
                         npc_count++;
         }
-        if (npc_count > 5)
+        if (IS_NPC(victim) && npc_count > 5)
         {
                 send_to_char("You can't have any more NPCs in your group.\n\r", ch);
                 return;
