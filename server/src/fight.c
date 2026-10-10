@@ -3988,6 +3988,13 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
                 return;
         }
 
+        /* A pet's ordinary kill only rewards a master at the kill location. */
+        if (mob_called && !solo
+            && (!ch->in_room || ch->in_room != victim->in_room))
+        {
+                return;
+        }
+
         tlevel = 0;
         members = 0;
         npc_members = 0;
@@ -7114,7 +7121,8 @@ void do_rescue(CHAR_DATA *ch, char *argument)
         stop_fighting(vch, FALSE);
         set_fighting(vch, ch);
 
-        ch->pcdata->group_support_bonus += 1;
+        if (!IS_NPC(ch))
+                ch->pcdata->group_support_bonus += 1;
 }
 
 void do_dirt_kick(CHAR_DATA *ch, char *argument)

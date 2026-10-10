@@ -747,9 +747,7 @@ void do_nskipall (CHAR_DATA *ch, char *argument)
 
         for (i=0; i < MAX_BOARD; i++)
         {
-                ch->pcdata->board = &boards[i];
-
-                for (p = ch->pcdata->board->note_first; p && p->next; p = p->next);
+                for (p = boards[i].note_first; p && p->next; p = p->next);
 
                 if (p)
                         ch->pcdata->last_note[i] = p->date_stamp;

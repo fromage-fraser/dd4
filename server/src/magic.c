@@ -1401,7 +1401,12 @@ void spell_acid_blast(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        damage(ch, victim, dam, sn, FALSE);
+        if (sn == gsn_breathe)
+                damage_with_resistance_types(
+                    ch, victim, dam, sn, FALSE,
+                    skill_table[sn].res_type | RES_ACID);
+        else
+                damage(ch, victim, dam, sn, FALSE);
 }
 
 void spell_inner_fire(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -1964,7 +1969,12 @@ void spell_colour_spray(int sn, int level, CHAR_DATA *ch, void *vo)
         if (saves_spell(ch, level, victim))
                 dam /= 2;
 
-        damage(ch, victim, dam, sn, FALSE);
+        if (sn == gsn_breathe)
+                damage_with_resistance_types(
+                    ch, victim, dam, sn, FALSE,
+                    skill_table[sn].res_type | RES_ENERGY);
+        else
+                damage(ch, victim, dam, sn, FALSE);
 }
 
 void spell_continual_light(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -4356,7 +4366,12 @@ void spell_fireball(int sn, int level, CHAR_DATA *ch, void *vo)
                 act("$c conjures a fireball and hurls it towards $N!", ch, NULL, victim, TO_NOTVICT);
         }
 
-        damage(ch, victim, dam, sn, FALSE);
+        if (sn == gsn_breathe)
+                damage_with_resistance_types(
+                    ch, victim, dam, sn, FALSE,
+                    skill_table[sn].res_type | RES_FIRE);
+        else
+                damage(ch, victim, dam, sn, FALSE);
 }
 
 void spell_fireshield(int sn, int level, CHAR_DATA *ch, void *vo)

@@ -3118,6 +3118,9 @@ void aggr_update()
                                         {
                                                 if (vch->pcdata->group_leader
                                                 &&  !vch->pcdata->group_leader->deleted
+                                                &&  is_same_group(
+                                                        vch,
+                                                        vch->pcdata->group_leader)
                                                 &&  !IS_AFFECTED(
                                                         vch->pcdata->group_leader,
                                                         AFF_NON_CORPOREAL)
