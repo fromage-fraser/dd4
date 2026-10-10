@@ -349,6 +349,15 @@ static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
                 return;
         }
 
+        if (to_room != in_room
+        &&  !undead_can_travel_to_room(ch, to_room))
+        {
+                send_to_char(
+                    "That room bars undead creatures from entering.\n\r",
+                    ch);
+                return;
+        }
+
         if (IS_AFFECTED(ch, AFF_HOLD))
         {
                 send_to_char("You cannot move!\n\r", ch);
@@ -620,6 +629,19 @@ static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
                 ||  ch->deleted
                 ||  ch->in_room != in_room)
                 {
+                        return;
+                }
+
+                /*
+                 * The movement script may have changed the room flag
+                 * or the mounted pair, so check again before spending moves.
+                 */
+                if (to_room != in_room
+                &&  !undead_can_travel_to_room(ch, to_room))
+                {
+                        send_to_char(
+                            "That room bars undead creatures from entering.\n\r",
+                            ch);
                         return;
                 }
 

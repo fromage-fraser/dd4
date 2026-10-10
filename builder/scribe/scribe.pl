@@ -511,6 +511,7 @@ my %room_rf = (
         no_mount        => 524288,
         toxic           => 1048576,
         no_weather      => 2097152,
+        no_undead       => 4194304,
         no_drop         => 9223372036854775808,
         nodrop          => 9223372036854775808,
 
