@@ -835,6 +835,8 @@ and undead objects on the ground, carried or worn.
 
 {WOctober 2026{x
 
+- Combat now temporarily suppresses gear/set invisibility, sneak and hide.
+- These effects return after combat only while their sources remain active.
 - Affect listings now identify effects supplied by worn objects, object sets
   and forms with (O), (S) and (F) markers respectively.
 - Fixed payments losing change when spending silver coins.
