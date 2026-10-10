@@ -1122,7 +1122,13 @@ void do_cast(CHAR_DATA *ch, char *argument)
                  * Add a counter for support spells cast on your group members
                  */
 
-                if (skill_table[sn].target == TAR_CHAR_DEFENSIVE && victim && ch != victim)
+                if (!IS_NPC(ch)
+                &&  skill_table[sn].target == TAR_CHAR_DEFENSIVE
+                &&  skill_table[sn].spell_fun != spell_armor
+                &&  skill_table[sn].spell_fun != spell_bless
+                &&  skill_table[sn].spell_fun != spell_shield
+                &&  victim
+                &&  ch != victim)
                 {
                         if (is_same_group(ch, victim))
                         {
@@ -1568,7 +1574,11 @@ void spell_armor(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("They are now protected.\n\r", ch);
-                check_group_bonus(ch);
+                if (!IS_NPC(ch)
+                &&  is_same_group(ch, victim))
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                }
         }
 
         send_to_char("You feel someone protecting you.\n\r", victim);
@@ -1637,7 +1647,11 @@ void spell_bless(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("They are surrounded by righteousness.\n\r", ch);
-                check_group_bonus(ch);
+                if (!IS_NPC(ch)
+                &&  is_same_group(ch, victim))
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                }
         }
 
         send_to_char("<229>You feel righteous.<0>\n\r", victim);
@@ -2122,6 +2136,9 @@ void spell_create_water(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (water > 0)
         {
+                if (obj->value[1] == 0)
+                        obj->value[3] = 0;
+
                 obj->value[2] = LIQ_WATER;
                 obj->value[1] += water;
 
@@ -6636,8 +6653,12 @@ void spell_shield(int sn, int level, CHAR_DATA *ch, void *vo)
         send_to_char("You are surrounded by a force shield.\n\r", victim);
         act("$n is surrounded by a force shield.", victim, NULL, NULL, TO_ROOM);
 
-        if (ch != victim)
-                check_group_bonus(ch);
+        if (!IS_NPC(ch)
+        &&  ch != victim
+        &&  is_same_group(ch, victim))
+        {
+                ch->pcdata->group_support_bonus += 1;
+        }
 
         return;
 }
@@ -7914,9 +7935,12 @@ void spell_vitalize(int sn, int level, CHAR_DATA *ch, void *vo)
         if (!IS_NPC(ch))
                 return;
 
-        victim->hit = victim->max_hit - victim->aggro_dam;
-        victim->mana = victim->max_mana;
-        victim->move = victim->max_move;
+        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+                victim->hit = (long long)victim->max_hit - victim->aggro_dam;
+        if (victim->mana < victim->max_mana)
+                victim->mana = victim->max_mana;
+        if (victim->move < victim->max_move)
+                victim->move = victim->max_move;
 
         send_to_char("You feel a massive rush as raw magical energy courses through your body.\n\r", victim);
         return;

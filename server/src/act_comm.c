@@ -620,6 +620,25 @@ void talk_channel(CHAR_DATA *ch, char *argument, int channel, const char *verb)
                 }
         }
 
+        switch (channel)
+        {
+        case CHANNEL_CHAT:
+                add_to_public_review_buffer(ch, REVIEW_CHAT, argument);
+                break;
+        case CHANNEL_NEWBIE:
+                add_to_public_review_buffer(ch, REVIEW_NEWBIE, argument);
+                break;
+        case CHANNEL_MUSIC:
+                add_to_public_review_buffer(ch, REVIEW_MUSIC, argument);
+                break;
+        case CHANNEL_SHOUT:
+                add_to_public_review_buffer(ch, REVIEW_SHOUT, argument);
+                break;
+        case CHANNEL_CLAN:
+                add_to_clan_review_buffer(ch, ch->clan, argument);
+                break;
+        }
+
         return;
 }
 
@@ -634,11 +653,6 @@ void do_chat(CHAR_DATA *ch, char *argument)
         */
 
         talk_channel(ch, argument, CHANNEL_CHAT, "chat");
-        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))
-        {
-                return;
-        }
-        add_to_public_review_buffer(ch, REVIEW_CHAT, argument);
 }
 
 void do_newbie(CHAR_DATA *ch, char *argument)
@@ -650,11 +664,6 @@ void do_newbie(CHAR_DATA *ch, char *argument)
         }
 
         talk_channel(ch, argument, CHANNEL_NEWBIE, "newbie");
-        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))
-        {
-                return;
-        }
-        add_to_public_review_buffer(ch, REVIEW_NEWBIE, argument);
 }
 
 void do_music(CHAR_DATA *ch, char *argument)
@@ -666,11 +675,6 @@ void do_music(CHAR_DATA *ch, char *argument)
         }
 
         talk_channel(ch, argument, CHANNEL_MUSIC, "music");
-        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))
-        {
-                return;
-        }
-        add_to_public_review_buffer(ch, REVIEW_MUSIC, argument);
 }
 
 void do_question(CHAR_DATA *ch, char *argument)
@@ -692,12 +696,7 @@ void do_shout(CHAR_DATA *ch, char *argument)
                 send_to_char("You must be level 5 to shout, use NEWBIE instead.\n\r", ch);
                 return;
         }
-
         talk_channel(ch, argument, CHANNEL_SHOUT, "shout");
-        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))
-        {
-                return;
-        }
         add_to_public_review_buffer(ch, REVIEW_SHOUT, argument);
 }
 
@@ -722,11 +721,6 @@ void do_clantalk(CHAR_DATA *ch, char *argument)
         }
 
         talk_channel(ch, argument, CHANNEL_CLAN, "clan-talk");
-        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))
-        {
-                return;
-        }
-        add_to_clan_review_buffer(ch, ch->clan, argument);
 }
 
 void do_immtalk(CHAR_DATA *ch, char *argument)
@@ -1039,7 +1033,7 @@ void do_reply(CHAR_DATA *ch, char *argument)
         victim->position = POS_STANDING;
 
         sprintf(buf, "%s$c tells you '$t'$R",
-                color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_TELL])].act_code);
+                color_table_8bit[get_colour_index_by_code(victim->colors[COLOR_TELL])].act_code);
 
         act(buf, ch, argument, victim, TO_VICT);
 

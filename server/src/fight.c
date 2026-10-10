@@ -1558,7 +1558,8 @@ void death_penalty(CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (!IS_NPC(victim))
         {
-                if (!IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER))
+                if (victim->level < LEVEL_HERO
+                &&  !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER))
                 {
                         if (!IS_NPC(ch))
                                 loss = (level_table[victim->level - 1].exp_total - victim->exp) / 4;
@@ -4110,12 +4111,15 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
 
                 if ((level_dif > -6 && gch->pcdata->dam_bonus) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
                 {
-                        sprintf(buf, "The damage you caused gains you %d experience.\n\r",
-                                gch->pcdata->dam_bonus);
-                        send_to_char(buf, gch);
-                        gain_exp(gch, gch->pcdata->dam_bonus);
-                        total_xp += gch->pcdata->dam_bonus;
-                        total_message = 1;
+                        if (gch->level < LEVEL_HERO)
+                        {
+                                sprintf(buf, "The damage you caused gains you %d experience.\n\r",
+                                        gch->pcdata->dam_bonus);
+                                send_to_char(buf, gch);
+                                gain_exp(gch, gch->pcdata->dam_bonus);
+                                total_xp += gch->pcdata->dam_bonus;
+                                total_message = 1;
+                        }
                         gch->pcdata->dam_bonus = 0;
                 }
 
@@ -4127,18 +4131,24 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
                 log_string(ch->name);
                 log_string(gch->name);
 
-                if (IS_SET(victim->act, ACT_OBJECT))
+                if (gch->level < LEVEL_HERO)
                 {
-                        sprintf(buf, "You receive %d experience points for its destruction.\n\r", xp);
+                        if (IS_SET(victim->act, ACT_OBJECT))
+                        {
+                                sprintf(buf, "You receive %d experience points for its destruction.\n\r", xp);
+                        }
+                        else
+                        {
+                                sprintf(buf, "You receive %d experience points for the kill.\n\r", xp);
+                        }
+                        send_to_char(buf, gch);
                 }
-                else
-                {
-                        sprintf(buf, "You receive %d experience points for the kill.\n\r", xp);
-                }
-                send_to_char(buf, gch);
                 gch->pcdata->kills++;
-                gain_exp(gch, xp);
-                total_xp += xp;
+                if (gch->level < LEVEL_HERO)
+                {
+                        gain_exp(gch, xp);
+                        total_xp += xp;
+                }
 
                 if (!IS_SET(gch->status, PLR_KILLER) && ((IS_SET(victim->act, ACT_IS_FAMOUS) && level_dif > -10) || level_dif > 5) && !IS_SET(victim->act, ACT_LOSE_FAME))
                 {
@@ -4147,7 +4157,8 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
                         if (get_mob_exp_modifier(victim) < 100)
                                 fame /= 2;
 
-                        if (!(gch->exp == (level_table[gch->level].exp_total - 1) && !check_questpoints_allow_level_gain(gch, FALSE)))
+                        if (gch->level >= LEVEL_HERO
+                        ||  !(gch->exp == (level_table[gch->level].exp_total - 1) && !check_questpoints_allow_level_gain(gch, FALSE)))
                         {
                                 sprintf(buf, "{YFor your heroic actions, you gain %d fame!{x\n\r", fame);
                                 send_to_char(buf, gch);
@@ -4163,15 +4174,18 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
 
                 if (members > 1 && pc_members > npc_members)
                 {
-                        grxp = (xp / 4) * members;
+                        if (gch->level < LEVEL_HERO)
+                        {
+                                grxp = (xp / 4) * members;
 
-                        if (fame)
-                                grxp *= 1.5;
+                                if (fame)
+                                        grxp *= 1.5;
 
-                        sprintf(buf, "You get a grouping bonus of %d experience points.\n\r", grxp);
-                        send_to_char(buf, gch);
-                        gain_exp(gch, grxp);
-                        total_xp += grxp;
+                                sprintf(buf, "You get a grouping bonus of %d experience points.\n\r", grxp);
+                                send_to_char(buf, gch);
+                                gain_exp(gch, grxp);
+                                total_xp += grxp;
+                        }
 
                         /*
                          * Shade 22.3.22
@@ -4187,27 +4201,30 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
 
                         if (gch->pcdata->group_support_bonus > 0)
                         {
-                                /*
-                                 * Starting point - let's try 33% xp bonus per helpful action
-                                 */
-
-                                grxp = (xp / 3) * gch->pcdata->group_support_bonus;
-
-                                /*
-                                 * So players will figure out how to abuse this I'm sure so let's cap it
-                                 */
-
-                                if (grxp > (2 * xp))
+                                if (gch->level < LEVEL_HERO)
                                 {
-                                        sprintf(buf, "Capping max group bonus for %s", gch->name);
-                                        log_string(buf);
-                                        grxp = 2 * xp;
-                                }
+                                        /*
+                                         * Starting point - let's try 33% xp bonus per helpful action
+                                         */
 
-                                sprintf(buf, "For supporting your group, you gain %d bonus experience points.\n\r", grxp);
-                                send_to_char(buf, gch);
-                                gain_exp(gch, grxp);
-                                total_xp += grxp;
+                                        grxp = (xp / 3) * gch->pcdata->group_support_bonus;
+
+                                        /*
+                                         * So players will figure out how to abuse this I'm sure so let's cap it
+                                         */
+
+                                        if (grxp > (2 * xp))
+                                        {
+                                                sprintf(buf, "Capping max group bonus for %s", gch->name);
+                                                log_string(buf);
+                                                grxp = 2 * xp;
+                                        }
+
+                                        sprintf(buf, "For supporting your group, you gain %d bonus experience points.\n\r", grxp);
+                                        send_to_char(buf, gch);
+                                        gain_exp(gch, grxp);
+                                        total_xp += grxp;
+                                }
 
                                 gch->pcdata->group_support_bonus = 0;
                         }
@@ -6820,6 +6837,10 @@ void do_flee(CHAR_DATA *ch, char *argument)
                                 sprintf(buf, "You escape from your opponent without futher harm.\n\r");
                                 send_to_char(buf, ch);
                         }
+                        else if (ch->level >= LEVEL_HERO)
+                        {
+                                send_to_char("You flee from combat!\n\r", ch);
+                        }
                         else
                         {
                                 sprintf(buf, "You flee from combat! You lose %d exp.\n\r",
@@ -6847,9 +6868,12 @@ void do_flee(CHAR_DATA *ch, char *argument)
 
                         if (ch->pcdata->dam_bonus > 0)
                         {
-                                sprintf(buf, "However, you damaged your opponent sufficiently for %d experience.\n\r", ch->pcdata->dam_bonus);
-                                send_to_char(buf, ch);
-                                gain_exp(ch, ch->pcdata->dam_bonus);
+                                if (ch->level < LEVEL_HERO)
+                                {
+                                        sprintf(buf, "However, you damaged your opponent sufficiently for %d experience.\n\r", ch->pcdata->dam_bonus);
+                                        send_to_char(buf, ch);
+                                        gain_exp(ch, ch->pcdata->dam_bonus);
+                                }
                                 ch->pcdata->dam_bonus = 0;
                         }
                 }

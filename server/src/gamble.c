@@ -170,9 +170,9 @@ void do_bet( CHAR_DATA *ch, char *argument )
     else
 	amount = advatoi( wager );
 
-    if ( amount > ch->gold )
+    if ( amount > total_coins_char( ch ) / COIN_GOLD )
     {
-	send_to_char( "You don't have enough gold!\n\r", ch );
+	send_to_char( "You don't have enough coins for that wager!\n\r", ch );
 	return;
     }
 
@@ -209,6 +209,7 @@ void do_bet( CHAR_DATA *ch, char *argument )
     cheat = pGameIndex->cheat;
 
     ( *pGameIndex->game_fun ) ( ch, croupier, amount, cheat, argument );
+    calc_coin_weight( ch );
 
     if ( pGameIndex->bankroll <= 0 )
     {
@@ -264,13 +265,13 @@ void game_u_l_t( CHAR_DATA *ch, CHAR_DATA *croupier,
  *  Now we have a wagering amount, and a choice.
  *  Let's place the bets and roll the dice, shall we?
  */
-    act( "You place {Y$t gold coins{x on the table, and bet {W$T{x.",
+    act( "You place {Y$t gold{x worth of coins on the table, and bet {W$T{x.",
 	ch, wager, choice,   TO_CHAR    );
     act( "$n places a bet with you.",
 	ch, NULL,  croupier, TO_VICT    );
     act( "$n plays a dice game.",
 	ch, NULL,  croupier, TO_NOTVICT );
-    ch->gold -= amount;
+    coins_from_char( amount * COIN_GOLD, ch );
     pGameIndex->bankroll += amount;
 
     die1 = number_range( 1, 6 );
@@ -373,13 +374,13 @@ void game_high_dice( CHAR_DATA *ch, CHAR_DATA *croupier,
  	   strcpy ( msg, "Today's my lucky day..." );
 	   break;
     }
-    act( "You place {Y$t gold coins{x on the table and say,{W\"$T\"{x",
+    act( "You place {Y$t gold{x worth of coins on the table and say,{W\"$T\"{x",
         ch, wager, msg, TO_CHAR    );
     act( "$n places a bet with you.",
         ch, NULL,  croupier, TO_VICT    );
     act( "$n plays a dice game.",
         ch, NULL,  croupier, TO_NOTVICT );
-    ch->gold -= amount;
+    coins_from_char( amount * COIN_GOLD, ch );
     pGameIndex->bankroll += amount;
 
     die1 = number_range( 1, 6 );
@@ -476,13 +477,13 @@ void game_seven( CHAR_DATA *ch, CHAR_DATA *croupier,
  *  Now we have a wagering amount, and a choice.
  *  Let's place the bets and roll the dice, shall we?
  */
-    act( "You place {Y$t gold coins{x on the table, and bet '{W$T{x'.",
+    act( "You place {Y$t gold{x worth of coins on the table, and bet '{W$T{x'.",
         ch, wager, choice,   TO_CHAR    );
     act( "$n places a bet with you.",
         ch, NULL,  croupier, TO_VICT    );
     act( "$n plays a dice game.",
         ch, NULL,  croupier, TO_NOTVICT );
-    ch->gold -= amount;
+    coins_from_char( amount * COIN_GOLD, ch );
     pGameIndex->bankroll += amount;
 
     die1 = number_range( 1, 6 );
