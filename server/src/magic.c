@@ -6952,8 +6952,7 @@ void spell_summon_avatar(int sn, int level, CHAR_DATA *ch, void *vo)
             ch, NULL, victim->name, TO_ROOM);
 
         add_follower(victim, ch);
-        stop_fighting(target, FALSE);
-        set_fighting(target, victim);
+        change_fighting(target, victim);
         do_rescue(victim, ch->name);
 
         SET_BIT(victim->act, ACT_NO_EXPERIENCE);
@@ -11278,6 +11277,7 @@ void spell_chaos_blast(int sn, int level, CHAR_DATA *ch, void *vo)
             (rnd_idx != 6))
         {
                 rnd_idx++;
+                rnd_factorial = factorials[rnd_idx];
         }
 
         fuzz_value = (rnd_factorial / 20) * rng_unit();

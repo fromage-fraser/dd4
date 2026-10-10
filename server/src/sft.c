@@ -2983,6 +2983,8 @@ void do_morph (CHAR_DATA *ch, char *argument)
                 break;
 
         }
+
+        refresh_combat_gear_stealth(ch);
 }
 
 /* EOF sft.c */

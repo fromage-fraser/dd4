@@ -4482,7 +4482,8 @@ void gmcp_update(void)
                                         {
                                                 sprintf(buf, "[ { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
                                                         skill_table[paf->type].name,
-                                                        affect_bit_name_nice(paf->bitvector),
+                                                        affect_bit_name_nice(
+                                                            affect_effective_bits(d->character, paf)),
                                                         affect_loc_name(paf->location),
                                                         paf->modifier,
                                                         paf->duration);
@@ -4491,7 +4492,8 @@ void gmcp_update(void)
                                         {
                                                 sprintf(buf2, ", { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
                                                         skill_table[paf->type].name,
-                                                        affect_bit_name_nice(paf->bitvector),
+                                                        affect_bit_name_nice(
+                                                            affect_effective_bits(d->character, paf)),
                                                         affect_loc_name(paf->location),
                                                         paf->modifier,
                                                         paf->duration);

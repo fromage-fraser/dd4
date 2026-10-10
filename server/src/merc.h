@@ -2939,6 +2939,9 @@ struct char_data
         /* Remember whether this fight has tested a fear aura. */
         bool fear_aura_checked;
 
+        /* Runtime-only guard across combat entry and opponent changes. */
+        bool combat_stealth_transition;
+
         /* Prevent the same escape attempt re-entering through movement scripts. */
         bool flee_attempt;
 
@@ -5532,6 +5535,7 @@ bool forced_fall_damage args((CHAR_DATA *ch, int dam));
 void update_pos args((CHAR_DATA * victim));
 void set_fighting args((CHAR_DATA * ch, CHAR_DATA *victim));
 void stop_fighting args((CHAR_DATA * ch, bool fBoth));
+void change_fighting args((CHAR_DATA *ch, CHAR_DATA *victim));
 void raw_kill(CHAR_DATA *ch, CHAR_DATA *victim, bool corpse);
 void death_cry args((CHAR_DATA * ch));
 void show_death_parts args((CHAR_DATA *viewer, CHAR_DATA *subject));
@@ -5585,6 +5589,8 @@ bool is_affected args((CHAR_DATA * ch, int sn));
 bool is_affected_source args((CHAR_DATA * ch, int sn,
                               int source_type, uint64_t source_id));
 const char *affect_source_display_suffix args((const AFFECT_DATA *paf));
+unsigned long int affect_effective_bits args((CHAR_DATA *ch, AFFECT_DATA *paf));
+void refresh_combat_gear_stealth args((CHAR_DATA *ch));
 void affect_join args((CHAR_DATA * ch, AFFECT_DATA *paf));
 void char_from_room args((CHAR_DATA * ch));
 void char_to_room args((CHAR_DATA * ch, ROOM_INDEX_DATA *pRoomIndex));

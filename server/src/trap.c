@@ -892,6 +892,8 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                     spirit->alignment = -1000;
                     spirit->fighting = ch;
                     char_to_room(spirit, ch->in_room);
+                    refresh_combat_gear_stealth(spirit);
+                    refresh_combat_gear_stealth(ch);
                     multi_hit(spirit, ch, TYPE_UNDEFINED);
                 }
                 break;

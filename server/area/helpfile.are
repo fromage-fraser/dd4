@@ -835,6 +835,8 @@ and undead objects on the ground, carried or worn.
 
 {WOctober 2026{x
 
+- Combat now temporarily suppresses gear/set invisibility, sneak and hide.
+- These effects return after combat only while their sources remain active.
 - Affect listings now identify effects supplied by worn objects, object sets
   and forms with (O), (S) and (F) markers respectively.
 - Fixed payments losing change when spending silver coins.
@@ -1004,6 +1006,12 @@ blocking unrelated directions.
   without counting the incoming weapon's bonuses.
 - Fixed Hydra breath ignoring energy, fire and acid resistance, immunity
   and vulnerability.
+- Fixed inscribed healing runes referring to an invalid spell name.
+- Fixed Chaos Blast's damage bonus against held targets having no effect.
+- Fixed the group NPC limit incorrectly preventing players from joining.
+- Damage suffered from yourself no longer builds damage-bonus experience.
+- Combat now temporarily suppresses gear/set invisibility, sneak and hide.
+- These effects return after combat only while their sources remain active.
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~
