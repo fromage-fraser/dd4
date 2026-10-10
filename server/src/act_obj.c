@@ -134,7 +134,8 @@ void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
         if (checkgetput(ch, obj))
                 return;
 
-        if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
+        if (obj->item_type != ITEM_MONEY
+            && ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
         {
                 act("$d: you can't carry that many items.", ch, NULL, obj->name, TO_CHAR);
                 return;
@@ -145,9 +146,27 @@ void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
              carrier_container = carrier_container->in_obj)
                 ;
 
-        if ((obj->item_type == ITEM_MONEY || !carrier_container
-             || carrier_container->deleted || carrier_container->carried_by != ch)
-            && (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
+        if (obj->item_type == ITEM_MONEY)
+        {
+                long long coin_count = (long long)ch->copper + ch->silver
+                                     + ch->gold + ch->plat
+                                     + obj->value[0] + obj->value[1]
+                                     + obj->value[2] + obj->value[3];
+                long long projected_weight = (long long)ch->carry_weight + coin_count / 10;
+
+                if (carrier_container && !carrier_container->deleted
+                    && carrier_container->carried_by == ch)
+                        projected_weight -= get_obj_weight(obj);
+
+                if (projected_weight > can_carry_w(ch))
+                {
+                        act("$d: you can't carry that much weight.", ch, NULL, obj->name, TO_CHAR);
+                        return;
+                }
+        }
+        else if ((!carrier_container || carrier_container->deleted
+                  || carrier_container->carried_by != ch)
+                 && (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
         {
                 act("$d: you can't carry that much weight.", ch, NULL, obj->name, TO_CHAR);
                 return;
@@ -2061,6 +2080,12 @@ void do_drop(CHAR_DATA *ch, char *argument)
                 amount = atoi(arg);
                 argument = one_argument(argument, arg);
 
+                if (arg[0] == '\0')
+                {
+                        send_to_char("Specify platinum, gold, silver or copper.\n\r", ch);
+                        return;
+                }
+
                 if (amount <= 0)
                 {
                         send_to_char("You can't drop negative coin amounts.\n\r", ch);
@@ -2425,6 +2450,9 @@ void do_give(CHAR_DATA *ch, char *argument)
                         send_to_char(buf, ch);
                         return;
                 }
+
+                calc_coin_weight(ch);
+                calc_coin_weight(victim);
 
                 if (amount == 1)
                 {

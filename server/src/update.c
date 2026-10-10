@@ -1095,6 +1095,9 @@ void gain_exp(CHAR_DATA *ch, int gain)
         char buf[MAX_STRING_LENGTH];
         int tmp;
 
+        if (IS_NPC(ch) || ch->level >= LEVEL_HERO)
+                return;
+
         /* This is the new quest points required for level - Shade Sept 99 */
         /* It's this hacky on purpose because we don't want the player to */
         /* get the xp until we've checked they can advance! */
@@ -1435,6 +1438,7 @@ int hit_gain(CHAR_DATA *ch)
                                         gch->hit += amt;
                                         if (gch->hit > gch->max_hit)
                                                 gch->hit = gch->max_hit;
+                                        update_pos(gch);
                                 }
                         }
                 }
@@ -4272,9 +4276,18 @@ void gmcp_update(void)
 
                         UpdateGMCPNumber(d, GMCP_LEVEL, d->character->level);
                         UpdateGMCPNumber(d, GMCP_XP, d->character->exp);
-                        UpdateGMCPNumber(d, GMCP_XP_MAX, (level_table[d->character->level].exp_total));
-                        UpdateGMCPNumber(d, GMCP_XP_TNL, (level_table[d->character->level].exp_total) - d->character->exp);
-                        UpdateGMCPNumber(d, GMCP_XP_CURLEVEL, (level_table[d->character->level].exp_level));
+                        if (d->character->level >= LEVEL_HERO)
+                        {
+                                UpdateGMCPNumber(d, GMCP_XP_MAX, d->character->exp);
+                                UpdateGMCPNumber(d, GMCP_XP_TNL, 0);
+                                UpdateGMCPNumber(d, GMCP_XP_CURLEVEL, 0);
+                        }
+                        else
+                        {
+                                UpdateGMCPNumber(d, GMCP_XP_MAX, (level_table[d->character->level].exp_total));
+                                UpdateGMCPNumber(d, GMCP_XP_TNL, (level_table[d->character->level].exp_total) - d->character->exp);
+                                UpdateGMCPNumber(d, GMCP_XP_CURLEVEL, (level_table[d->character->level].exp_level));
+                        }
                         UpdateGMCPNumber(d, GMCP_PRACTICE, d->character->pcdata->str_prac);
                         UpdateGMCPNumber(d, GMCP_PLATINUM, d->character->plat);
                         UpdateGMCPNumber(d, GMCP_GOLD, d->character->gold);

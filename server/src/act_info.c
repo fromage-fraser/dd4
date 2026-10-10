@@ -2537,7 +2537,7 @@ void do_fixexp(CHAR_DATA *ch, char *argument)
         int extra_xp;
         int needed_xp;
 
-        if (ch->level < 2 || ch->level == 99)
+        if (IS_NPC(ch) || ch->level < 2 || ch->level >= LEVEL_HERO - 1)
                 return;
 
         if ((ch->exp >= level_table[ch->level - 1].exp_total) &&

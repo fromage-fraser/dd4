@@ -2851,16 +2851,22 @@ void do_recall(CHAR_DATA *ch, char *argument)
                         if (number_bits(1) || (IS_AFFECTED(ch, AFF_HOLD) && number_percent() < 80))
                         {
                                 WAIT_STATE(ch, PULSE_VIOLENCE);
-                                lose = (ch->desc) ? 50 : 100;
+                                lose = ch->level < LEVEL_HERO ? ((ch->desc) ? 50 : 100) : 0;
                                 gain_exp(ch, 0 - lose);
-                                sprintf(buf, "You failed!  You lose %d experience points.\n\r", lose);
+                                if (lose)
+                                        sprintf(buf, "You failed!  You lose %d experience points.\n\r", lose);
+                                else
+                                        sprintf(buf, "You failed!\n\r");
                                 send_to_char(buf, ch);
                                 return;
                         }
 
-                        lose = level_table[ch->level].exp_level / 100;
+                        lose = ch->level < LEVEL_HERO ? level_table[ch->level].exp_level / 100 : 0;
                         gain_exp(ch, 0 - lose);
-                        sprintf(buf, "You recall from combat!  You lose %d experience points.\n\r", lose);
+                        if (lose)
+                                sprintf(buf, "You recall from combat!  You lose %d experience points.\n\r", lose);
+                        else
+                                sprintf(buf, "You recall from combat!\n\r");
                         send_to_char(buf, ch);
                         stop_fighting(ch, TRUE);
 
@@ -3089,16 +3095,22 @@ void do_home(CHAR_DATA *ch, char *argument)
                 if (number_bits(1) || (IS_AFFECTED(ch, AFF_HOLD) && number_percent() < 80))
                 {
                         WAIT_STATE(ch, PULSE_VIOLENCE);
-                        lose = (ch->desc) ? 50 : 100;
+                        lose = ch->level < LEVEL_HERO ? ((ch->desc) ? 50 : 100) : 0;
                         gain_exp(ch, 0 - lose);
-                        sprintf(buf, "You failed!  You lose %d exps.\n\r", lose);
+                        if (lose)
+                                sprintf(buf, "You failed!  You lose %d exps.\n\r", lose);
+                        else
+                                sprintf(buf, "You failed!\n\r");
                         send_to_char(buf, ch);
                         return;
                 }
 
-                lose = (ch->desc) ? 100 : 200;
+                lose = ch->level < LEVEL_HERO ? ((ch->desc) ? 100 : 200) : 0;
                 gain_exp(ch, 0 - lose);
-                sprintf(buf, "You recall from combat!  You lose %d exps.\n\r", lose);
+                if (lose)
+                        sprintf(buf, "You recall from combat!  You lose %d exps.\n\r", lose);
+                else
+                        sprintf(buf, "You recall from combat!\n\r");
                 send_to_char(buf, ch);
                 stop_fighting(ch, TRUE);
 

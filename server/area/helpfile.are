@@ -1016,6 +1016,23 @@ blocking unrelated directions.
 - Unavailable Bard songs are now rejected safely without stopping an active 
   song.
 - Slow now checks combat protection before affecting another character.
+- Vitalize no longer reduces existing hit points, mana or movement.
+- Replies now use the recipient's chosen tell colour.
+- DROP now rejects a missing coin type before deducting any money.
+- Song of Rejuvenation now immediately updates healed allies' injury posture.
+- NPC spellcasters no longer access player-only group-support experience data.
+- Rejected CHAT, NEWBIE, MUSIC, SHOUT and CLANTALK messages no longer enter 
+  REVIEW.
+- Armor, Bless and Shield now award support credit once per successful buff
+  on another group member, including NPCs and pets.
+- Coin pickups now check final wallet weight and no longer require a spare
+  inventory slot. Coins in carried containers are not counted twice.
+- BET and WAGER now accept equivalent mixed coin denominations, returning
+  change as needed. Coin weight updates after wagers and winnings.
+- Create Water now clears stale poison when refilling an empty container.
+- Hero XP now freezes silently, with fame and other consequences unchanged.
+- Fixed hero XP table reads during kills, fleeing, recalling, death,
+  FIXEXP, MSTAT and GMCP updates.
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~
