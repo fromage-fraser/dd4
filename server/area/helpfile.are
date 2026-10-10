@@ -974,10 +974,19 @@ blocking unrelated directions.
 - Fixed Scribe swapping named east and south trap-trigger flags.
 - Fixed Scribe object resets rejecting or omitting valid relative vnum 0.
 - Scribe now rejects random-exit counts outside 0 to 6.
-- Automatic FOLLOW now removes ordinary Hide and Chameleon Power like normal movement.
+- Automatic FOLLOW now removes ordinary Hide and Chameleon Power like normal 
+  movement.
 - Added Protection vs Undead to deter fresh automatic undead attacks.
-- Added NO_UNDEAD checks for exit travel, resets and Animate Dead;
-  player vampires can pass through but suffer sunlight-level harm.
+- Fixed Scribe counting flag aliases more than once when generating area files.
+- Fixed the full moon forcing critically injured werewolves to stand.
+- Fixed CONSTRUCT checking the wrong skills for crafted set equipment.
+- Fixed blindness and eye trauma failing to slow digging.
+- Fixed bulk PUT and LODGE bypassing pouch item-type restrictions.
+- Fixed heroes becoming permanently too full to eat pills.
+- ADVICE now recognises inherited skills that further practice can directly
+  unlock after subclassing.
+- Recall-point loading now handles added slots without corrupting later fields.
+- Repaired zero-valued nondefault recalls and invalid saved recall selections.
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~

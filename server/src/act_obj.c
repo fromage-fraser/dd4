@@ -751,7 +751,8 @@ int modify_dig_wait_state(CHAR_DATA *ch, int base_wait, int dig_mode, OBJ_DATA *
                 /* DEBUGF("Post bonus attack mod is %.2f", mod_wait); */
         }
 
-        if (!can_see(ch, ch))
+        if (IS_AFFECTED(ch, AFF_BLIND)
+        ||  IS_AFFECTED(ch, AFF_EYE_TRAUMA))
         {
                 mod_wait = fmaxf(mod_wait *= 1.20f, 1.0f);
                 /* DEBUGF("Post blind check mod is %.2f", mod_wait); */
@@ -1399,6 +1400,12 @@ void do_put(CHAR_DATA *ch, char *argument)
 
                         if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name)) && can_see_obj(ch, obj) && obj->wear_loc == WEAR_NONE && obj != container && can_drop_obj(ch, obj) && ch->level >= obj->level && get_obj_weight(obj) + get_obj_weight(container) <= container->value[0])
                         {
+                                 if (IS_SET(container->wear_flags, ITEM_WEAR_POUCH)
+                                    && obj->item_type != ITEM_POTION
+                                    && obj->item_type != ITEM_PILL
+                                    && obj->item_type != ITEM_PAINT)
+                                        continue;
+
                                 if (IS_SET(container->ego_flags, EGO_ITEM_TURRET)
                                     && (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE)
                                         || IS_NPC(ch)
@@ -1647,6 +1654,12 @@ void do_lodge(CHAR_DATA *ch, char *argument)
 
                         if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name)) && can_see_obj(ch, obj) && obj->wear_loc == WEAR_NONE && can_drop_obj(ch, obj) && (!obj->deleted) && (ch->level + VAULT_LEVEL_BUFFER) >= obj->level && ((get_obj_weight(obj) + get_obj_weight(container)) <= container->value[0]) && ((get_obj_weight(obj) + ch->pcdata->vault_weight) <= can_vault_w(ch)))
                         {
+                                if (IS_SET(container->wear_flags, ITEM_WEAR_POUCH)
+                                    && obj->item_type != ITEM_POTION
+                                    && obj->item_type != ITEM_PILL
+                                    && obj->item_type != ITEM_PAINT)
+                                        continue;
+
                                 if (IS_SET(container->ego_flags, EGO_ITEM_TURRET)
                                     && (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE)
                                         || IS_NPC(ch)
@@ -3507,7 +3520,8 @@ void do_eat(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL] > (MAX_FOOD - 5))
+                if (!IS_NPC(ch) && ch->level < LEVEL_HERO
+                    && ch->pcdata->condition[COND_FULL] > (MAX_FOOD - 5))
                 {
                         send_to_char("You are too full to eat more.\n\r", ch);
                         return;
