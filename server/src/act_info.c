@@ -4234,9 +4234,24 @@ void do_advice(CHAR_DATA *ch, char *argument)
         {
                 if (*pre_req_table[iter].pre_req == sn)
                 {
-                        /* Check the group is the correct one or a common pre-req */
+                         bool inherited = FALSE;
 
-                        if ((pre_req_table[iter].group == pre_group) || (!pre_req_table[iter].group))
+                        /* Only add inherited routes that this skill can directly unlock. */
+                        if (ch->sub_class && pre_req_table[iter].group == ch->class + 1 &&
+                            pre_req_table[iter].min > ch->pcdata->learned[sn] && has_pre_req(ch, sn))
+                        {
+                                CHAR_DATA student = *ch;
+                                PC_DATA pcdata = *ch->pcdata;
+
+                                student.pcdata = &pcdata;
+                                pcdata.learned[sn] = pre_req_table[iter].min;
+                                inherited = !has_pre_req(ch, *pre_req_table[iter].skill) &&
+                                            has_pre_req(&student, *pre_req_table[iter].skill);
+                        }
+
+                        /* Check the current group, common pre-reqs or a direct inherited unlock. */
+                        if ((pre_req_table[iter].group == pre_group) ||
+                            (!pre_req_table[iter].group) || inherited)
                         {
                                 if (pre_req_table[iter].min > ch->pcdata->learned[sn])
                                 {

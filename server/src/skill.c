@@ -4797,7 +4797,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 {
         OBJ_DATA        *creation;
         OBJ_DATA        *anvil;
-        int             found, i;
+        int             found, i, sn;
         char            buf[MAX_STRING_LENGTH];
         const char* bar = "_____________________________________________________________________________\n\r\n\r";
         char            arg1[MAX_INPUT_LENGTH];
@@ -4896,7 +4896,8 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
-        if( !ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
+        sn = skill_lookup(blueprint_list[i].skill_name);
+        if (sn < 0 || sn >= MAX_SKILL || !ch->pcdata->learned[sn])
         {
                 send_to_char( "You don't know how to construct that.\n\r", ch );
                 return;
@@ -5001,12 +5002,12 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
-        if ( number_percent() > ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
+        if ( number_percent() > ch->pcdata->learned[sn] )
         {
                 send_to_char("You heat the forge and ready your materials.\n\r", ch);
                 send_to_char("You fumble... some of your materials slip into the forge and are lost to the flames.\n\r", ch);
                 act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
-                smelted_to_char_loss(blueprint_list[i].blueprint_cost, ch, COINS_REPLACE, ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]);
+                smelted_to_char_loss(blueprint_list[i].blueprint_cost, ch, COINS_REPLACE, ch->pcdata->learned[sn]);
                 return;
         }
 

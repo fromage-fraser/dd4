@@ -1178,8 +1178,62 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
 
                         if (!str_cmp(word, "RecPoints"))
                         {
-                                for (next = 0; next < MAX_RECALL_POINTS; next++)
-                                        ch->pcdata->recall_points[next] = fread_number( fp, &stat );
+                                int c, digit, value;
+                                bool negative, have_digit, valid;
+
+                                ch->pcdata->recall_points[0] = DEFAULT_RECALL;
+                                for (next = 1; next < MAX_RECALL_POINTS; next++)
+                                        ch->pcdata->recall_points[next] = -1;
+
+                                next = 0;
+                                c = getc(fp);
+                                while (next < MAX_RECALL_POINTS
+                                       && c != EOF && c != '\n' && c != '\r')
+                                {
+                                        if (isspace(c))
+                                        {
+                                                c = getc(fp);
+                                                continue;
+                                        }
+
+                                        negative = (c == '-');
+                                        if (c == '-' || c == '+')
+                                                c = getc(fp);
+
+                                        value = 0;
+                                        have_digit = FALSE;
+                                        valid = TRUE;
+                                        while (c != EOF && !isspace(c))
+                                        {
+                                                if (c >= '0' && c <= '9')
+                                                {
+                                                        digit = c - '0';
+                                                        have_digit = TRUE;
+                                                        /* Accumulate negatively to avoid signed overflow. */
+                                                        if (value < (INT_MIN + digit) / 10)
+                                                                valid = FALSE;
+                                                        else
+                                                                value = value * 10 - digit;
+                                                }
+                                                else
+                                                        valid = FALSE;
+                                                c = getc(fp);
+                                        }
+
+                                        if (valid && have_digit
+                                            && (negative || value != INT_MIN))
+                                        {
+                                                if (!negative)
+                                                        value = -value;
+                                                if (next == 0 || value != 0)
+                                                        ch->pcdata->recall_points[next] = value;
+                                        }
+                                        next++;
+                                }
+
+                                /* Discard surplus slots without reading the next field. */
+                                while (c != EOF && c != '\n' && c != '\r')
+                                        c = getc(fp);
 
                                 fMatch = TRUE;
                                 break;
@@ -1304,6 +1358,12 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         fread_to_eol(fp);
                 }
         }
+
+        if (ch->pcdata->current_recall < 0
+            || ch->pcdata->current_recall >= MAX_RECALL_POINTS
+            || (ch->pcdata->current_recall > 0
+                && ch->pcdata->recall_points[ch->pcdata->current_recall] == -1))
+                ch->pcdata->current_recall = 0;
 
         /*
          * Tag permanent effects from forms saved before affect source

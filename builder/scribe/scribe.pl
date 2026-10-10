@@ -2855,7 +2855,10 @@ sub get_multiple_flags(\%$\%$) {
 
     my @sorted = sort {$$list{$a} <=> $$list{$b}} keys %flags;
 
+    my %seen = ();
+
     foreach (@sorted) {
+        next if $seen{$$list{$_}}++;
         if ($sum) {
             $$var{$field} += $$list{$_};
         }

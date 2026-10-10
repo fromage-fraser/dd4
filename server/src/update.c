@@ -2176,7 +2176,8 @@ void weather_update()
 
                 if (time_info.hour == 20
                 &&  ch->sub_class == SUB_CLASS_WEREWOLF
-                &&  weather_info.moonlight == MOON_FULL)
+                &&  weather_info.moonlight == MOON_FULL
+                &&  ch->position > POS_STUNNED)
                 {
                         if (ch->position != POS_FIGHTING)
                                 ch->position = POS_STANDING;
