@@ -6889,6 +6889,39 @@ void do_donate(CHAR_DATA *ch, char *argument)
         return;
 }
 
+/* Reject invalid imprints before brew/scribe can alter or destroy the item.
+ * Keep spell_imprint's attempt rolls and costs unchanged. */
+static bool can_craft_imprint(CHAR_DATA *ch, OBJ_DATA *obj, int sn)
+{
+        int i, sp_slot;
+
+        if (skill_table[sn].spell_fun == spell_null)
+        {
+                send_to_char("That is not a spell.\n\r", ch);
+                return FALSE;
+        }
+
+        for (sp_slot = i = 1; i < 4; i++)
+        {
+                if (obj->value[i] != -1)
+                        sp_slot++;
+        }
+
+        if (sp_slot > 3)
+        {
+                act("$p cannot contain any more spells.", ch, obj, NULL, TO_CHAR);
+                return FALSE;
+        }
+
+        if (ch->mana < 4 * mana_cost(ch, sn))
+        {
+                send_to_char("You don't have enough mana.\n\r", ch);
+                return FALSE;
+        }
+
+        return TRUE;
+}
+
 void do_brew(CHAR_DATA *ch, char *argument)
 {
         char arg[MAX_INPUT_LENGTH];
@@ -6947,6 +6980,9 @@ void do_brew(CHAR_DATA *ch, char *argument)
                 send_to_char("You don't know any spells by that name.\n\r", ch);
                 return;
         }
+
+        if (!can_craft_imprint(ch, obj, sn))
+                return;
 
         send_to_char("You focus your mind's energies...\n\r", ch);
         act("$n begins preparing a potion.", ch, obj, NULL, TO_ROOM);
@@ -7031,6 +7067,9 @@ void do_scribe(CHAR_DATA *ch, char *argument)
                 send_to_char("You can't remember how to do that.\n\r", ch);
                 return;
         }
+
+        if (!can_craft_imprint(ch, obj, sn))
+                return;
 
         act("$n begins writing a scroll.", ch, obj, NULL, TO_ROOM);
         WAIT_STATE(ch, skill_table[gsn_scribe].beats);

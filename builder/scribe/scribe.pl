@@ -411,7 +411,7 @@ my @obj_ty = qw/
         instrument      armourers_hammer        mithril             whetstone
         craft           spellcraft              turret_module       forge
         arrestor_unit   driver_unit             reflector_unit      shield_unit
-        turret          defensive_turret_module combat_pulse        defensive_pulse
+        defensive_turret_module turret          combat_pulse        defensive_pulse
         pipe            pipe_cleaner            smokeable           remains
 /;
 
@@ -538,8 +538,8 @@ my %trap_trig = (
         object => 2,
         room   => 4,
         north  => 8,
-        south  => 16,
-        east   => 32,
+        south  => 32,
+        east   => 16,
         west   => 64,
         up     => 128,
         down   => 256,
@@ -911,7 +911,7 @@ while (1) {
 
             foreach (qw/con rm/) {
                 if ($field eq $_) {
-                    if (!$data) {
+                    if (!defined $data || $data eq '') {
                         print "    line $line: addobj: field '$_' empty\n";
                     }
                     else {
@@ -1708,7 +1708,7 @@ foreach (0 .. $#rooms) {
         $room{'rnd'} = 4 if $room{'rnd'} eq '2d';
         $room{'rnd'} = 6 if $room{'rnd'} eq '3d';
 
-        if ($msg = &check_field_number(\%room, 'rnd', 0, 6)) {
+        if ($msg = &check_field_number_range(\%room, 'rnd', 0, 6)) {
             print "$err $msg\n";
             $room_errors{$room{'line'}}++;
         }
@@ -2068,7 +2068,7 @@ foreach (0 .. $#addobjs) {
                 next;
             }
 
-            if (!$addobj_errors{$obj{'line'}} && $obj_names{$next} && $obj{'ob'}
+            if (!$addobj_errors{$obj{'line'}} && $obj_names{$next}
                     && $obj_names{$obj{'ob'}}) {
                 push @resets, "P 0 " . ($obj{'ob'} + $area{'bv'}) . " 0 "
                         . ($next + $area{'bv'}) . "\tput $obj_names{$obj{'ob'}} "

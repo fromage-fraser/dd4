@@ -5428,7 +5428,25 @@ void do_inscribe (CHAR_DATA *ch, char *argument)
         if (found_rune)
         {
                 OBJ_DATA        *creation;
-                creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level, "common", CREATED_NO_RANDOMISER );
+                OBJ_INDEX_DATA  *rune_index;
+                int             sn;
+
+                rune_index = blueprint_list[i].blueprint_ref > 0
+                        ? get_obj_index(blueprint_list[i].blueprint_ref) : NULL;
+                if (!rune_index || !IS_SET(rune_index->extra_flags, ITEM_RUNE))
+                {
+                        send_to_char("That blueprint cannot be inscribed as a rune.\n\r", ch);
+                        return;
+                }
+
+                sn = skill_lookup(blueprint_list[i].skill_name);
+                if (sn < 0 || sn >= MAX_SKILL || !CAN_DO(ch, sn))
+                {
+                        send_to_char("You don't know how to inscribe that rune.\n\r", ch);
+                        return;
+                }
+
+                creation = create_object( rune_index, ch->level, "common", CREATED_NO_RANDOMISER );
                 obj_to_room( creation, ch->in_room );
                 if (blueprint_list[i].blueprint_ego >= 1 )
                 {
@@ -5447,6 +5465,12 @@ void do_inscribe (CHAR_DATA *ch, char *argument)
  /*        ---------------------------  */
         if (found_obj)
         {
+                if (!CAN_DO(ch, gsn_inscribe))
+                {
+                        send_to_char("You don't know how to inscribe equipment.\n\r", ch);
+                        return;
+                }
+
                 if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_INSCRIBED))
                 {
                         send_to_char("That is already inscribed.\n\r", ch);

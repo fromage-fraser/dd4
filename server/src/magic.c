@@ -1713,7 +1713,7 @@ void spell_call_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (weather_info.sky < SKY_RAINING)
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_WEATHER) || weather_info.sky < SKY_RAINING)
         {
                 send_to_char("You need bad weather.\n\r", ch);
                 return;
@@ -5063,9 +5063,9 @@ void spell_identify(int sn, int level, CHAR_DATA *ch, void *vo)
                 "some poison powder", "a lockpick", "a musical instrument",
                 "an armourer's hammer", "some mithril", "a whetstone",
                 "a crafting tool", "a magical crafting tool", "a turret module",
-                "a forge", "something strange", "something strange",
-                "an arrestor unit", "a reflector unit",
-                "a shield unit", "a defensive turret module", "a combat pulse",
+                "a forge", "an arrestor unit", "a driver unit",
+                "a reflector unit", "a shield unit",
+                "a defensive turret module", "a turret", "a combat pulse",
                 "a defensive pulse", "a pipe", "a pipe cleaner",
                 "a smokeable substance", "remains"};
 
@@ -7924,7 +7924,11 @@ void spell_complete_healing(int sn, int level, CHAR_DATA *ch, void *vo)
                         return;
         }
 
-        victim->hit = victim->max_hit - victim->aggro_dam;
+        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        {
+                victim->hit = (long long)victim->max_hit - victim->aggro_dam;
+        }
+
         update_pos(victim);
 
         if (IS_AFFECTED(victim, AFF_CONFUSION)
