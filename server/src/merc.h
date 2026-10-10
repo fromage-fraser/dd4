@@ -3393,6 +3393,7 @@ struct exit_data
 struct reset_data
 {
         RESET_DATA *next;
+        EXIT_DATA *door; /* Original D-reset exit; survives R-reset shuffles. */
 
         char command;
         int arg0; /* Gezhp 2000 */

@@ -1594,6 +1594,10 @@ void do_look(CHAR_DATA *ch, char *argument)
                         if (pdesc)
                         {
                                 send_to_char(pdesc, ch);
+                                if (obj->identified)
+                                {
+                                        spell_identify(1, 1, ch, obj);
+                                }
                                 return;
                         }
                 }

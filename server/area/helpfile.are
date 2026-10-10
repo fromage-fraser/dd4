@@ -956,7 +956,24 @@ blocking unrelated directions.
 - Fixed REFORGE success checks using STRENGTHEN proficiency.
 - Fixed BRANDISH failing for staves with single-target offensive spells.
 - Clear tank assignments that point to a character when they stop following.
-- Automatic FOLLOW now removes ordinary Hide and Chameleon Power like normal movement.
+- Automatic FOLLOW now removes ordinary Hide and Chameleon Power like normal 
+  movement.
+- CALL LIGHTNING now respects rooms with no weather.
+- INSCRIBE now validates rune blueprints and requires the rune's skill and 
+  permitted form.
+- Equipment inscription now checks INSCRIBE eligibility before spending 
+  materials.
+- BREW and SCRIBE now reject non-spells, full containers and insufficient mana
+  before crafting can alter or destroy the item.
+- Fixed door resets targeting the wrong exit after maze shuffles.
+- Fixed IDENTIFY and LORE mislabelling Engineer item types.
+- LOOK and EXAMINE now show known properties for carried items with template 
+  descriptions.
+- Fixed COMPLETE HEALING reducing HP above the effective healing cap.
+- Fixed Scribe swapping turret and defensive turret module object types.
+- Fixed Scribe swapping named east and south trap-trigger flags.
+- Fixed Scribe object resets rejecting or omitting valid relative vnum 0.
+- Scribe now rejects random-exit counts outside 0 to 6.
 ~
 
 
