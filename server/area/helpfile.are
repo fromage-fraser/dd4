@@ -987,6 +987,23 @@ blocking unrelated directions.
   unlock after subclassing.
 - Recall-point loading now handles added slots without corrupting later fields.
 - Repaired zero-valued nondefault recalls and invalid saved recall selections.
+- Fixed reconnect hints showing the wrong command for unfinished notes.
+- Fixed NOTE SKIPALL changing your current board to Personal.
+- Aggressive mobs now ignore tank assignments outside the selected player's 
+  group.
+- Fixed pet kills granting experience and kill rewards to a master and group
+  in another room.
+- Fixed successful NPC rescues accessing player-only group support data.
+- Fixed strength loss leaving overweight offhand weapons or weapon pairs
+  equipped.
+- SMELT now reports the full amount of each material recovered; material
+  payouts are unchanged.
+- Fixed the empower prompt showing incorrect percentages at full charge.
+- Rejected melee weapon replacements now preserve existing equipment.
+- Wield checks account for strength lost when removing old equipment,
+  without counting the incoming weapon's bonuses.
+- Fixed Hydra breath ignoring energy, fire and acid resistance, immunity
+  and vulnerability.
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~

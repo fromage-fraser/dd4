@@ -4746,32 +4746,42 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 send_to_char (buf, ch);
                 if (steel > 0)
                 {
+                        int base_amount = steel;
+
                         steel = number_fuzzy (steel);
-                         sprintf(buf,"    {wSteel {W[{C%d{W]{x\n",steel);
+                         sprintf(buf,"    {wSteel {W[{C%d{W]{x\n",base_amount + steel);
                         send_to_char (buf, ch);
                 }
                 if (titanium > 0)
                 {
+                        int base_amount = titanium;
+
                         titanium = number_fuzzy (titanium);
-                        sprintf(buf,"    {yTitanium {W[{C%d{W]{x\n", titanium);
+                        sprintf(buf,"    {yTitanium {W[{C%d{W]{x\n", base_amount + titanium);
                         send_to_char (buf, ch);
                 }
                 if (adamantite > 0)
                 {
+                        int base_amount = adamantite;
+
                         adamantite = number_fuzzy (adamantite);
-                        sprintf(buf,"    {YAdamantite {W[{C%d{W]{x\n", adamantite);
+                        sprintf(buf,"    {YAdamantite {W[{C%d{W]{x\n", base_amount + adamantite);
                         send_to_char (buf, ch);
                 }
                 if (electrum > 0)
                 {
+                        int base_amount = electrum;
+
                         electrum = number_fuzzy (electrum);
-                        sprintf(buf,"    {WElectrum {W[{C%d{W]{x\n", electrum);
+                        sprintf(buf,"    {WElectrum {W[{C%d{W]{x\n", base_amount + electrum);
                         send_to_char (buf, ch);
                 }
                 if (starmetal > 0)
                 {
+                        int base_amount = starmetal;
+
                         starmetal = number_fuzzy (starmetal);
-                        sprintf(buf,"    {RStarmetal {W[{C%d{W]{x\n", starmetal);
+                        sprintf(buf,"    {RStarmetal {W[{C%d{W]{x\n", base_amount + starmetal);
                         send_to_char (buf, ch);
                 }
                 ch->smelted_steel += steel;

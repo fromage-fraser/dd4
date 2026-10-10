@@ -1644,19 +1644,14 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                 case 'G':
                         if (!IS_NPC(ch) && ch->pcdata->meter >= 0)
                         {
-                                int last = ch->pcdata->meter % 10;
-                                int first = ch->pcdata->meter;
-                                while (first >= 10)
-                                        first /= 10;
-
                                 if (ch->pcdata->meter == 0)
                                         sprintf(buf2, "[  <51>0%%<0> ]");
                                 else if (ch->pcdata->meter < 10)
-                                        sprintf(buf2, "[<154><454>-<0> <51>%d%%<0> ]", last);
+                                        sprintf(buf2, "[<154><454>-<0> <51>%d%%<0> ]", ch->pcdata->meter);
                                 else
                                         sprintf(buf2,
-                                                "[<154><454>-<0><51>%d%d%%<0> ]",
-                                                first, last);
+                                                "[<154><454>-<0><51>%d%%<0> ]",
+                                                ch->pcdata->meter);
                         }
                         else
                                 sprintf(buf2, " ");
@@ -3453,7 +3448,7 @@ bool check_reconnect(DESCRIPTOR_DATA *d, char *name, bool fConn)
                                 }
 
                                 if (ch->pcdata->in_progress)
-                                        send_to_char("You have a note in progress. Type NWRITE to continue it.\n\r", ch);
+                                        send_to_char("You have a note in progress. Type NOTE WRITE to continue it.\n\r", ch);
 
                                 /*
                                  * Contributed by Gene Choi

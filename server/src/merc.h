@@ -5555,6 +5555,11 @@ int get_dir args((char *txt));
 int get_trust args((CHAR_DATA * ch));
 int get_age args((CHAR_DATA * ch));
 int get_curr_str args((CHAR_DATA * ch));
+int get_wield_limit_after_removals(CHAR_DATA *ch, OBJ_DATA *const *removed,
+                                  int removed_count);
+int preview_wield_removal(CHAR_DATA *ch, OBJ_DATA *obj,
+                          OBJ_DATA **removed, int removed_count);
+bool check_equip_alignment(CHAR_DATA *ch, OBJ_DATA *obj);
 int get_curr_int args((CHAR_DATA * ch));
 int get_curr_wis args((CHAR_DATA * ch));
 int get_curr_dex args((CHAR_DATA * ch));

@@ -3641,6 +3641,119 @@ bool remove_obj(CHAR_DATA *ch, int iWear, bool fReplace)
         return TRUE;
 }
 
+typedef struct wield_preview_data
+{
+        OBJ_DATA *removed[3];
+        int removed_count;
+        int remove_slots[3];
+        int remove_count;
+} WIELD_PREVIEW_DATA;
+
+static OBJ_DATA *wield_preview_eq(CHAR_DATA *ch, int iWear,
+                                  WIELD_PREVIEW_DATA *preview)
+{
+        OBJ_DATA *obj = get_eq_char(ch, iWear);
+        int i;
+
+        for (i = 0; i < preview->removed_count; i++)
+        {
+                if (preview->removed[i] == obj)
+                        return NULL;
+        }
+
+        return obj;
+}
+
+static bool wield_preview_remove(CHAR_DATA *ch, int iWear, bool fReplace,
+                                 WIELD_PREVIEW_DATA *preview)
+{
+        OBJ_DATA *obj = wield_preview_eq(ch, iWear, preview);
+
+        if (!can_remove_obj(ch, obj, fReplace))
+                return FALSE;
+        if (!obj)
+                return TRUE;
+
+        preview->remove_slots[preview->remove_count++] = iWear;
+        preview->removed_count = preview_wield_removal(
+            ch, obj, preview->removed, preview->removed_count);
+        return TRUE;
+}
+
+/*
+ * Reject an impossible replacement before disturbing existing equipment.
+ * Eligibility uses the strength left after removals, including their normal
+ * automatic drops, but not the incoming weapon or any set bonus it adds.
+ */
+static void wield_melee_weapon(CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace,
+                               bool dual_wield)
+{
+        WIELD_PREVIEW_DATA preview = { { NULL }, 0, { 0 }, 0 };
+        OBJ_DATA *other_weapon = NULL;
+        int iWear = WEAR_WIELD;
+        int weight;
+        int i;
+
+        if (dual_wield)
+        {
+                if (wield_preview_eq(ch, WEAR_WIELD, &preview) &&
+                    ((wield_preview_eq(ch, WEAR_DUAL, &preview) &&
+                      !wield_preview_remove(ch, WEAR_DUAL, fReplace, &preview)) ||
+                     !wield_preview_remove(ch, WEAR_SHIELD, fReplace, &preview)) &&
+                    !wield_preview_remove(ch, WEAR_WIELD, fReplace, &preview))
+                        return;
+
+                if (!wield_preview_eq(ch, WEAR_WIELD, &preview))
+                {
+                        other_weapon = wield_preview_eq(ch, WEAR_DUAL, &preview);
+                }
+                else if (!wield_preview_eq(ch, WEAR_DUAL, &preview))
+                {
+                        iWear = WEAR_DUAL;
+                        other_weapon = wield_preview_eq(ch, WEAR_WIELD, &preview);
+                }
+                else
+                {
+                        bug("Wear_obj: no free weapon slot.", 0);
+                        send_to_char("You already wield two weapons.\n\r", ch);
+                        return;
+                }
+        }
+        else if (!wield_preview_remove(ch, WEAR_WIELD, fReplace, &preview))
+        {
+                return;
+        }
+
+        weight = other_weapon ? get_obj_weight(other_weapon) : 0;
+        if (weight + get_obj_weight(obj) > get_wield_limit_after_removals(
+                ch, preview.removed, preview.removed_count))
+        {
+                send_to_char("It is too heavy for you to wield.\n\r", ch);
+                return;
+        }
+
+        if (!check_equip_alignment(ch, obj))
+                return;
+
+        for (i = 0; i < preview.remove_count; i++)
+        {
+                if (!remove_obj(ch, preview.remove_slots[i], fReplace))
+                        return;
+        }
+
+        if (iWear == WEAR_DUAL)
+        {
+                act("You dual wield $p.", ch, obj, NULL, TO_CHAR);
+                act("$n dual wields $p.", ch, obj, NULL, TO_ROOM);
+        }
+        else
+        {
+                act("You wield $p.", ch, obj, NULL, TO_CHAR);
+                act("$n wields $p.", ch, obj, NULL, TO_ROOM);
+        }
+        equip_char(ch, obj, iWear);
+}
+
 /*
  * Wear one object.
  * Optional replacement of existing objects.
@@ -3928,52 +4041,7 @@ void wear_obj(CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                                 return;
                         }
 
-                        if (get_eq_char(ch, WEAR_WIELD) &&
-                            ((get_eq_char(ch, WEAR_DUAL) && !remove_obj(ch, WEAR_DUAL, fReplace)) || !remove_obj(ch, WEAR_SHIELD, fReplace)) && !remove_obj(ch, WEAR_WIELD, fReplace))
-                                return;
-
-                        if (!get_eq_char(ch, WEAR_WIELD))
-                        {
-                                OBJ_DATA *other_weapon;
-                                int weight = 0;
-
-                                if ((other_weapon = get_eq_char(ch, WEAR_DUAL)))
-                                        weight = get_obj_weight(other_weapon);
-
-                                if (weight + get_obj_weight(obj) > str_app[get_curr_str(ch)].wield)
-                                {
-                                        send_to_char("It is too heavy for you to wield.\n\r", ch);
-                                        return;
-                                }
-
-                                act("You wield $p.", ch, obj, NULL, TO_CHAR);
-                                act("$n wields $p.", ch, obj, NULL, TO_ROOM);
-                                equip_char(ch, obj, WEAR_WIELD);
-                                return;
-                        }
-
-                        if (!get_eq_char(ch, WEAR_DUAL))
-                        {
-                                OBJ_DATA *primary_weapon;
-                                int weight;
-
-                                primary_weapon = get_eq_char(ch, WEAR_WIELD);
-                                weight = get_obj_weight(primary_weapon);
-
-                                if (weight + get_obj_weight(obj) > str_app[get_curr_str(ch)].wield)
-                                {
-                                        send_to_char("It is too heavy for you to wield.\n\r", ch);
-                                        return;
-                                }
-
-                                act("You dual wield $p.", ch, obj, NULL, TO_CHAR);
-                                act("$n dual wields $p.", ch, obj, NULL, TO_ROOM);
-                                equip_char(ch, obj, WEAR_DUAL);
-                                return;
-                        }
-
-                        bug("Wear_obj: no free weapon slot.", 0);
-                        send_to_char("You already wield two weapons.\n\r", ch);
+                        wield_melee_weapon(ch, obj, fReplace, TRUE);
                         return;
                 }
                 else /* can only wield one weapon */
@@ -4013,18 +4081,7 @@ void wear_obj(CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                                 return;
                         }
 
-                        if (!remove_obj(ch, WEAR_WIELD, fReplace))
-                                return;
-
-                        if (get_obj_weight(obj) > str_app[get_curr_str(ch)].wield)
-                        {
-                                send_to_char("It is too heavy for you to wield.\n\r", ch);
-                                return;
-                        }
-
-                        act("You wield $p.", ch, obj, NULL, TO_CHAR);
-                        act("$n wields $p.", ch, obj, NULL, TO_ROOM);
-                        equip_char(ch, obj, WEAR_WIELD);
+                        wield_melee_weapon(ch, obj, fReplace, FALSE);
                         return;
                 }
         }

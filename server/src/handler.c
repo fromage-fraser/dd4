@@ -76,7 +76,7 @@ int get_age( CHAR_DATA *ch )
  * Retrieve character's current stats........ - geoff.
  */
 
-int get_curr_str(CHAR_DATA *ch)
+static int get_curr_str_modified(CHAR_DATA *ch, int modifier)
 {
         int max;
 
@@ -84,7 +84,13 @@ int get_curr_str(CHAR_DATA *ch)
                 return 13;
 
         max = 25 + race_table[ch->race].str_bonus +  class_table[ch->class].class_stats[0];
-        return URANGE(3, ch->pcdata->perm_str + ch->pcdata->mod_str, max);
+        return URANGE(3, ch->pcdata->perm_str + ch->pcdata->mod_str + modifier, max);
+}
+
+
+int get_curr_str(CHAR_DATA *ch)
+{
+        return get_curr_str_modified(ch, 0);
 }
 
 
@@ -652,6 +658,181 @@ static void modify_sourced_special_apply(CHAR_DATA *ch, AFFECT_DATA *source,
         }
 }
 
+static int affect_update_depth;
+
+static bool rem_bonus_objset_after_removals(
+    OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos,
+    OBJ_DATA *const *removed, int removed_count);
+
+static bool wield_preview_removed(OBJ_DATA *obj,
+                                  OBJ_DATA *const *removed, int removed_count)
+{
+        int i;
+
+        for (i = 0; i < removed_count; i++)
+        {
+                if (removed[i] == obj)
+                        return TRUE;
+        }
+
+        return FALSE;
+}
+
+/* Keep real and projected automatic drops in the same priority order. */
+static OBJ_DATA *overweight_weapon(OBJ_DATA *primary, OBJ_DATA *secondary,
+                                   int max_weight)
+{
+        int primary_weight = primary ? get_obj_weight(primary) : 0;
+        int secondary_weight = secondary ? get_obj_weight(secondary) : 0;
+
+        if (primary && primary_weight > max_weight)
+                return primary;
+        if (secondary && secondary_weight > max_weight)
+                return secondary;
+        if (primary && secondary
+            && primary_weight + secondary_weight > max_weight)
+                return secondary;
+
+        return NULL;
+}
+
+/*
+ * Predict complete unequips without changing affects, equipment or messages.
+ * Removed objects are ordered, so a set bonus is lost only at the same
+ * threshold crossing as a real unequip. Incoming effects never count here.
+ */
+int get_wield_limit_after_removals(CHAR_DATA *ch, OBJ_DATA *const *removed,
+                                  int removed_count)
+{
+        int modifier = 0;
+        int i;
+
+        if (IS_NPC(ch))
+                return str_app[get_curr_str(ch)].wield;
+
+        for (i = 0; i < removed_count; i++)
+        {
+                OBJ_DATA *obj = removed[i];
+                OBJSET_INDEX_DATA *pObjSetIndex;
+                AFFECT_DATA *paf;
+
+                pObjSetIndex = objects_objset(obj->pIndexData->vnum);
+                if (pObjSetIndex)
+                {
+                        int pos = 0;
+
+                        for (paf = pObjSetIndex->affected; paf; paf = paf->next)
+                        {
+                                pos++;
+                                if (rem_bonus_objset_after_removals(
+                                        pObjSetIndex, ch, obj, pos, removed, i))
+                                {
+                                        if (paf->location == APPLY_STR)
+                                                modifier -= paf->modifier;
+                                        break;
+                                }
+                        }
+                }
+
+                if (obj->wear_loc == WEAR_RANGED_WEAPON)
+                        continue;
+
+                if (!obj->how_created || obj->how_created == CREATED_PRE_DD5)
+                {
+                        for (paf = obj->pIndexData->affected; paf; paf = paf->next)
+                        {
+                                if (paf->location == APPLY_STR)
+                                        modifier -= paf->modifier;
+                        }
+                }
+
+                for (paf = obj->affected; paf; paf = paf->next)
+                {
+                        if (paf->location == APPLY_STR)
+                                modifier -= paf->modifier;
+                }
+        }
+
+        return str_app[get_curr_str_modified(ch, modifier)].wield;
+}
+
+/*
+ * WIELD can remove only its two weapons and shield. The caller provides
+ * three entries and passes each manual removal only while it is still worn
+ * in the preview. Automatic drops follow the normal completed-unequip check.
+ */
+int preview_wield_removal(CHAR_DATA *ch, OBJ_DATA *obj,
+                          OBJ_DATA **removed, int removed_count)
+{
+        removed[removed_count++] = obj;
+
+        if (IS_NPC(ch) || affect_update_depth)
+                return removed_count;
+
+        for (;;)
+        {
+                OBJ_DATA *primary = get_eq_char(ch, WEAR_WIELD);
+                OBJ_DATA *secondary = get_eq_char(ch, WEAR_DUAL);
+                OBJ_DATA *wield;
+
+                if (wield_preview_removed(primary, removed, removed_count))
+                        primary = NULL;
+                if (wield_preview_removed(secondary, removed, removed_count))
+                        secondary = NULL;
+
+                wield = overweight_weapon(
+                    primary, secondary,
+                    get_wield_limit_after_removals(ch, removed, removed_count));
+                if (!wield)
+                        break;
+
+                removed[removed_count++] = wield;
+        }
+
+        return removed_count;
+}
+
+/*
+ * Enforce the combined weapon-weight limit only after an affect or equipment
+ * update has finished. Dropping a weapon can change strength again.
+ */
+static void check_weapon_weight(CHAR_DATA *ch, OBJ_DATA *weapon)
+{
+        OBJ_DATA *wield;
+
+        if (IS_NPC(ch) || affect_update_depth)
+                return;
+
+        affect_update_depth++;
+
+        for (;;)
+        {
+                OBJ_DATA *primary = get_eq_char(ch, WEAR_WIELD);
+                OBJ_DATA *secondary = get_eq_char(ch, WEAR_DUAL);
+                int max_weight = str_app[get_curr_str(ch)].wield;
+
+                /* Never count or drop an item whose affects are in progress. */
+                if (primary == weapon)
+                        primary = NULL;
+                if (secondary == weapon)
+                        secondary = NULL;
+
+                wield = overweight_weapon(primary, secondary, max_weight);
+                if (!wield)
+                        break;
+
+                unequip_char(ch, wield);
+                obj_from_char(wield);
+                act("$p is too heavy for you to hold!\n\rYour weapon slips from your hand.",
+                    ch, wield, NULL, TO_CHAR);
+                act("$n drops $p.", ch, wield, NULL, TO_ROOM);
+                obj_to_room(wield, ch->in_room);
+        }
+
+        affect_update_depth--;
+}
+
+
 /*
  * Apply or remove an affect to a character.
  */
@@ -663,6 +844,7 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
         char buf [MAX_STRING_LENGTH];
         int mod;
 
+        affect_update_depth++;
         mod = paf->modifier;
 
         if ( fAdd )
@@ -684,6 +866,7 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
                 sprintf( buf, "Affect_modify: unknown location %d on %s.",
                         paf->location, ch->name );
                 bug ( buf, 0 );
+                affect_update_depth--;
                 return;
 
             case APPLY_NONE:
@@ -864,37 +1047,8 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
 
         }
 
-        if (IS_NPC(ch))
-                return;
-
-        /*
-         * Check for weapon wielding.
-         * Guard against recursion (for weapons with affects).
-         *
-         * OBJ_DATA *weapon is the item (if any) whose effects are being destroyed in
-         * this whole function.  We do NOT want to drop any wielded weapon with the code
-         * below if that weapon is the same as OBJ_DATA *weapon: otherwise effects and
-         * objects are removed TWICE and WE ALL BURN IN HELL.  Gezhp 2001
-         */
-
-        if (((wield = get_eq_char(ch, WEAR_WIELD)) || (wield = get_eq_char(ch, WEAR_DUAL)))
-            && wield != weapon
-            && get_obj_weight(wield) > str_app[get_curr_str(ch)].wield)
-        {
-                static int depth;
-
-                if (!depth)
-                {
-                        depth++;
-                        unequip_char(ch, wield);
-                        obj_from_char(wield);
-                        act("$p is too heavy for you to hold!\n\rYour weapon slips from your hand.",
-                            ch, wield, NULL, TO_CHAR);
-                        act("$n drops $p.", ch, wield, NULL, TO_ROOM);
-                        obj_to_room(wield, ch->in_room);
-                        depth--;
-                }
-        }
+        affect_update_depth--;
+        check_weapon_weight(ch, weapon);
 }
 
 void affect_modify(CHAR_DATA *ch, AFFECT_DATA *paf,
@@ -1644,6 +1798,29 @@ OBJ_DATA *get_eq_char( CHAR_DATA *ch, int iWear )
 
 
 /*
+ * Reject incompatible equipment before a replacement removes existing gear.
+ */
+bool check_equip_alignment(CHAR_DATA *ch, OBJ_DATA *obj)
+{
+        if (   ( IS_OBJ_STAT( obj, ITEM_ANTI_EVIL   ) && IS_EVIL   ( ch ) )
+            || ( IS_OBJ_STAT( obj, ITEM_ANTI_GOOD   ) && IS_GOOD   ( ch ) )
+            || ( IS_OBJ_STAT( obj, ITEM_ANTI_NEUTRAL) && IS_NEUTRAL( ch ) ) )
+        {
+                /*
+                 * Thanks to Morgenes for the bug fix here!
+                 */
+                act( "You are {Yzapped{x by $p and drop it.", ch, obj, NULL, TO_CHAR );
+                act( "$n is {Yzapped{x by $p and drops it.",  ch, obj, NULL, TO_ROOM );
+                obj_from_char( obj );
+                obj_to_room( obj, ch->in_room );
+                return FALSE;
+        }
+
+        return TRUE;
+}
+
+
+/*
  * Equip a char with an obj.
  */
 void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
@@ -1659,21 +1836,11 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
                 bug( buf, 0 );
                 return;
         }
-
-        if (   ( IS_OBJ_STAT( obj, ITEM_ANTI_EVIL   ) && IS_EVIL   ( ch ) )
-            || ( IS_OBJ_STAT( obj, ITEM_ANTI_GOOD   ) && IS_GOOD   ( ch ) )
-            || ( IS_OBJ_STAT( obj, ITEM_ANTI_NEUTRAL) && IS_NEUTRAL( ch ) ) )
-        {
-                /*
-                 * Thanks to Morgenes for the bug fix here!
-                 */
-                act( "You are {Yzapped{x by $p and drop it.", ch, obj, NULL, TO_CHAR );
-                act( "$n is {Yzapped{x by $p and drops it.",  ch, obj, NULL, TO_ROOM );
-                obj_from_char( obj );
-                obj_to_room( obj, ch->in_room );
+        if (!check_equip_alignment(ch, obj))
                 return;
-        }
 
+
+        affect_update_depth++;
 
                 /* set bonus hack - Brutus Jul 2022 */
         if ( !IS_NPC(ch) && ( pObjSetIndex = objects_objset(obj->pIndexData->vnum ) ) )
@@ -1746,6 +1913,8 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
         }
 
         obj->wear_loc = iWear;
+        affect_update_depth--;
+        check_weapon_weight(ch, NULL);
         update_pos( ch );
         return;
 }
@@ -1784,6 +1953,8 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
                 bug( buf, 0 );
                 return;
         }
+
+        affect_update_depth++;
 
         /* set bonus hack - Brutus Jul 2022 */
         if ( !IS_NPC(ch) && ( pObjSetIndex = objects_objset(obj->pIndexData->vnum ) ) )
@@ -1855,6 +2026,8 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
         }
 
         obj->wear_loc = -1;
+        affect_update_depth--;
+        check_weapon_weight(ch, NULL);
         return;
 }
 
@@ -3295,7 +3468,9 @@ bool  gets_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DA
         return FALSE;
 }
 
-bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos )
+static bool rem_bonus_objset_after_removals(
+    OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos,
+    OBJ_DATA *const *removed, int removed_count)
 {
         int pre_remove, post_remove;
         int required = objset_bonus_num_pos(pObjSetIndex->vnum, pos);
@@ -3315,6 +3490,7 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
         for (objworn = ch->carrying; objworn; objworn = objworn->next_content)
         {
                 if (objworn->wear_loc == WEAR_NONE
+                ||  wield_preview_removed(objworn, removed, removed_count)
                 ||  objects_objset(objworn->pIndexData->vnum) != pObjSetIndex)
                         continue;
 
@@ -3332,6 +3508,12 @@ bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA
 
         /* Remove only a bonus whose threshold is crossed downward. */
         return pre_remove >= required && post_remove < required;
+}
+
+bool rem_bonus_objset ( OBJSET_INDEX_DATA *pObjSetIndex, CHAR_DATA *ch, OBJ_DATA *obj, int pos )
+{
+        return rem_bonus_objset_after_removals(
+            pObjSetIndex, ch, obj, pos, NULL, 0);
 }
 
 /* Returns the Object set from a objects vnum - Brutus */
