@@ -10790,6 +10790,9 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
+        if (victim != ch && is_safe(ch, victim))
+                return;
+
         if (is_affected(victim, sn) || IS_AFFECTED(victim, AFF_SLOW))
         {
                 if (victim == ch)

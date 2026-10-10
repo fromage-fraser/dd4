@@ -3939,7 +3939,7 @@ int remove_songs(CHAR_DATA *ch)
 
 void do_sing(CHAR_DATA *ch, char* arg)
 {
-        int             found, i;
+        int             found, i, sn;
         AFFECT_DATA     af;
         char            buf[MAX_STRING_LENGTH];
         OBJ_DATA        *obj;
@@ -3992,7 +3992,14 @@ void do_sing(CHAR_DATA *ch, char* arg)
                 return;
         }
 
-        if( !ch->pcdata->learned[skill_lookup(song_table[i].affect)] )
+        sn = skill_lookup(song_table[i].affect);
+        if (sn < 0 || sn >= MAX_SKILL)
+        {
+                send_to_char("That song is not available.\n\r", ch);
+                return;
+        }
+
+        if( !ch->pcdata->learned[sn] )
         {
                 send_to_char( "You don't know how to sing that song.\n\r", ch );
                 return;
@@ -4018,7 +4025,7 @@ void do_sing(CHAR_DATA *ch, char* arg)
         sprintf(buf, "$n starts to play '%s' on %s.", song_table[i].long_desc,obj->short_descr);
         act(buf, ch, NULL, NULL, TO_ROOM);
 
-        af.type      = skill_lookup(song_table[i].affect);
+        af.type      = sn;
         af.duration  = -1;
         af.location  = APPLY_NONE;
         af.modifier  = 0;
