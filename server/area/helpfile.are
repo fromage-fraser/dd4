@@ -5625,17 +5625,20 @@ Spells in protective magiks include:
 
 0 'DIVINE MAGIKS'~
 
-These magiks require the caster to be at one with their God, as the spells
-in this group are often gifted by the gods to the caster.
+Divine Magiks covers holy powers as well as spells.
 
-Spells in divine magiks include:
-    earthquake
-    dispel evil
-    flamestrike
-    holy word
-    wrath of god
+Skills and spells in this group include:
     bless
+    bless weapon
+    dispel evil
+    earthquake
+    flamestrike
+    frenzy
+    holy word
     prayer
+    turn undead
+    unholy word
+    wrath of god
 ~
 
 0 'HARMFUL MAGIKS'~
