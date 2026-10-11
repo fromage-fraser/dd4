@@ -1522,10 +1522,19 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
  * 22.3.22 - Shade group support bonus
  */
 
-void check_group_bonus(CHAR_DATA *ch)
+void check_group_bonus(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         CHAR_DATA *vch;
         CHAR_DATA *vch_next;
+
+        /* Credit hostile support only after an effect on an enemy. */
+        if (!ch || !victim
+        ||  ch->deleted || victim->deleted
+        ||  IS_NPC(ch) || !ch->pcdata || !ch->in_room
+        ||  ch == victim
+        ||  ch->position == POS_DEAD || victim->position == POS_DEAD
+        ||  is_same_group(ch, victim))
+                return;
 
         for (vch = ch->in_room->people; vch; vch = vch_next)
         {
@@ -4786,7 +4795,7 @@ void disarm(CHAR_DATA *ch, CHAR_DATA *victim)
                 webgate_send_char_equipment_for_desc(victim->desc);
         }
 
-        check_group_bonus(ch);
+        check_group_bonus(ch, victim);
 }
 
 /*
@@ -5064,6 +5073,7 @@ void do_target(CHAR_DATA *ch, char *argument)
         int vnum;
         int dot_dam;
         char msg[MAX_STRING_LENGTH];
+        bool support_effect_applied = FALSE;
 
         one_argument(argument, arg);
         victim = ch->fighting;
@@ -5159,6 +5169,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = (AFF_BLIND + AFF_EYE_TRAUMA);
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5170,10 +5181,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 2);
+                                        if (disarm_bodypart(ch, victim, 2))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5215,6 +5230,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.modifier = -(ch->level / 10);
                                         af.bitvector = AFF_HEAD_TRAUMA;
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5273,10 +5289,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 1);
+                                        if (disarm_bodypart(ch, victim, 1))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5322,6 +5342,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = AFF_ARM_TRAUMA;
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5330,10 +5351,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 3);
+                                        if (disarm_bodypart(ch, victim, 3))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5386,6 +5411,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = AFF_LEG_TRAUMA;
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5397,10 +5423,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 4);
+                                        if (disarm_bodypart(ch, victim, 4))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5449,6 +5479,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = AFF_HEART_TRAUMA;
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5460,10 +5491,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 5);
+                                        if (disarm_bodypart(ch, victim, 5))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5509,6 +5544,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = AFF_TAIL_TRAUMA;
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5520,10 +5556,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target]) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level))))
                                 {
-                                        disarm_bodypart(ch, victim, 6);
+                                        if (disarm_bodypart(ch, victim, 6))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5571,6 +5611,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = AFF_TORSO_TRAUMA;
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5582,10 +5623,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 7);
+                                        if (disarm_bodypart(ch, victim, 7))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5636,6 +5681,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = (AFF_BLIND + AFF_EYE_TRAUMA);
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5647,10 +5693,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 2);
+                                        if (disarm_bodypart(ch, victim, 2))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5693,6 +5743,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.modifier = -(ch->level / 10);
                                         af.bitvector = AFF_HEAD_TRAUMA;
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5751,10 +5802,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 1);
+                                        if (disarm_bodypart(ch, victim, 1))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5792,6 +5847,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = AFF_ARM_TRAUMA;
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5803,10 +5859,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 3);
+                                        if (disarm_bodypart(ch, victim, 3))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5852,6 +5912,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = AFF_LEG_TRAUMA;
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5863,10 +5924,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 4);
+                                        if (disarm_bodypart(ch, victim, 4))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5915,6 +5980,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = AFF_HEART_TRAUMA;
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5926,10 +5992,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 5);
+                                        if (disarm_bodypart(ch, victim, 5))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -5968,6 +6038,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = AFF_TAIL_TRAUMA;
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -5979,10 +6050,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target]) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level))))
                                 {
-                                        disarm_bodypart(ch, victim, 6);
+                                        if (disarm_bodypart(ch, victim, 6))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -6029,6 +6104,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                         af.bitvector = AFF_TORSO_TRAUMA;
 
                                         affect_to_char(victim, &af);
+                                        support_effect_applied = TRUE;
                                 }
                                 else
                                 {
@@ -6040,10 +6116,14 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 if ((!IS_NPC(ch) && (number_percent() < UMAX(5, ((ch->pcdata->learned[gsn_target] / 2) - (victim->level - ch->level))))) || (IS_NPC(ch) && (number_percent() < (ch->level / 2))))
                                 {
-                                        disarm_bodypart(ch, victim, 7);
+                                        if (disarm_bodypart(ch, victim, 7))
+                                                support_effect_applied = TRUE;
                                 }
 
-                                check_group_bonus(ch);
+                                if (support_effect_applied
+                                &&  !victim->deleted
+                                &&  victim->position != POS_DEAD)
+                                        check_group_bonus(ch, victim);
 
                                 if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                         return;
@@ -7310,7 +7390,7 @@ void do_dirt_kick(CHAR_DATA *ch, char *argument)
 
                 affect_to_char(victim, &af);
 
-                check_group_bonus(ch);
+                check_group_bonus(ch, victim);
         }
         else
                 damage(ch, victim, 0, gsn_dirt, FALSE);
@@ -7534,7 +7614,7 @@ void do_trap(CHAR_DATA *ch, char *argument)
                 if (!IS_NPC(ch) && ch->pcdata->tailing)
                         ch->pcdata->tailing = str_dup("");
 
-                check_group_bonus(ch);
+                check_group_bonus(ch, victim);
         }
         else
         {
@@ -7642,7 +7722,7 @@ void do_snare(CHAR_DATA *ch, char *argument)
                 if (!IS_NPC(ch) && ch->pcdata->tailing)
                         ch->pcdata->tailing = str_dup("");
 
-                check_group_bonus(ch);
+                check_group_bonus(ch, victim);
         }
         else
         {
@@ -7778,7 +7858,7 @@ void do_transfix(CHAR_DATA *ch, char *argument)
                 affect_to_char(victim, &af);
                 WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
 
-                check_group_bonus(ch);
+                check_group_bonus(ch, victim);
 
                 if (!IS_NPC(ch) && ch->pcdata->tailing)
                         ch->pcdata->tailing = str_dup("");
@@ -8858,7 +8938,7 @@ void do_stun(CHAR_DATA *ch, char *argument)
                 af.bitvector = AFF_SLEEP;
                 affect_to_char(victim, &af);
 
-                check_group_bonus(ch);
+                check_group_bonus(ch, victim);
                 WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
                 force_sleep(victim, ch);
         }
@@ -10510,7 +10590,7 @@ void do_swallow(CHAR_DATA *ch, char *argument)
 
                 affect_to_char(victim, &af);
 
-                check_group_bonus(ch);
+                check_group_bonus(ch, victim);
         }
         else
         {
@@ -11086,10 +11166,11 @@ char *get_dpr(int dam)
    first body part of bp_kind that CHAR is wearing with percent probability
    --Owl 25/9/24 */
 
-void disarm_bodypart(CHAR_DATA *ch, CHAR_DATA *victim, int bp_kind)
+bool disarm_bodypart(CHAR_DATA *ch, CHAR_DATA *victim, int bp_kind)
 {
         OBJ_DATA *obj;
         OBJ_DATA *obj_next;
+        bool removed = FALSE;
 
         for (obj = victim->carrying; obj; obj = obj_next)
         {
@@ -11097,14 +11178,20 @@ void disarm_bodypart(CHAR_DATA *ch, CHAR_DATA *victim, int bp_kind)
 
                 if ((obj->wear_loc != WEAR_NONE) && (IS_SET(obj->extra_flags, ITEM_BODY_PART)) && ((obj->item_type == ITEM_LIGHT) || (obj->item_type == ITEM_WEAPON)) && (obj->value[0] == bp_kind))
                 {
-                        remove_bodypart(victim, obj->wear_loc, TRUE);
+                        if (remove_bodypart(victim, obj->wear_loc, TRUE)
+                        &&  obj->wear_loc == WEAR_NONE)
+                                removed = TRUE;
                 }
 
                 if ((obj->wear_loc != WEAR_NONE) && (IS_SET(obj->extra_flags, ITEM_BODY_PART)) && (obj->item_type == ITEM_ARMOR) && (obj->value[1] == bp_kind))
                 {
-                        remove_bodypart(victim, obj->wear_loc, TRUE);
+                        if (remove_bodypart(victim, obj->wear_loc, TRUE)
+                        &&  obj->wear_loc == WEAR_NONE)
+                                removed = TRUE;
                 }
         }
+
+        return removed;
 }
 
 bool remove_bodypart(CHAR_DATA *ch, int iWear, bool fReplace)

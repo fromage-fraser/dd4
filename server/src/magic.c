@@ -47,6 +47,20 @@ static bool spell_status_already_present(
         unsigned long int bit,
         bool notify);
 
+/* Award recipient-based support only after a spell produces a benefit. */
+static bool credit_group_support(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        if (!ch || !victim || ch->deleted || victim->deleted
+        ||  IS_NPC(ch) || !ch->pcdata || ch == victim
+        ||  !is_same_group(ch, victim))
+        {
+                return FALSE;
+        }
+
+        ch->pcdata->group_support_bonus += 1;
+        return TRUE;
+}
+
 /*
  * Lookup a skill by name.
  */
@@ -1118,28 +1132,6 @@ void do_cast(CHAR_DATA *ch, char *argument)
                 (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
                 sound_spell_sfx( ch, sn, "cast" );
 
-                /*
-                 * Add a counter for support spells cast on your group members
-                 */
-
-                if (!IS_NPC(ch)
-                &&  skill_table[sn].target == TAR_CHAR_DEFENSIVE
-                &&  skill_table[sn].spell_fun != spell_armor
-                &&  skill_table[sn].spell_fun != spell_bless
-                &&  skill_table[sn].spell_fun != spell_cure_light
-                &&  skill_table[sn].spell_fun != spell_haste
-                &&  skill_table[sn].spell_fun != spell_refresh
-                &&  skill_table[sn].spell_fun != spell_sanctuary
-                &&  skill_table[sn].spell_fun != spell_shield
-                &&  victim
-                &&  ch != victim)
-                {
-                        if (is_same_group(ch, victim))
-                        {
-                                ch->pcdata->group_support_bonus += 1;
-                        }
-                }
-
                 if (skill_table[sn].target == TAR_CHAR_OFFENSIVE)
                 {
                         if (victim->position == POS_DEAD || ch->in_room != victim->in_room || ch->position < POS_FIGHTING)
@@ -1707,7 +1699,7 @@ void spell_blindness(int sn, int level, CHAR_DATA *ch, void *vo)
         act("{W$C is blinded!{x", ch, NULL, victim, TO_NOTVICT);
         damage(ch, victim, number_range(1, ch->level / 2) + 10, gsn_blindness, FALSE);
 
-        check_group_bonus(ch);
+        check_group_bonus(ch, victim);
 
         return;
 }
@@ -1879,6 +1871,7 @@ void spell_change_sex(int sn, int level, CHAR_DATA *ch, void *vo)
 
         af.bitvector = 0;
         affect_to_char(victim, &af);
+        credit_group_support(ch, victim);
 
         if (ch != victim)
                 send_to_char("Ok.\n\r", ch);
@@ -2160,9 +2153,29 @@ void spell_create_water(int sn, int level, CHAR_DATA *ch, void *vo)
         return;
 }
 
+/* Count only live ordinary affects, which these remedies can remove. */
+static int spell_support_affect_count(CHAR_DATA *victim)
+{
+        AFFECT_DATA *paf;
+        int count = 0;
+
+        for (paf = victim->affected; paf; paf = paf->next)
+        {
+                if (!paf->deleted
+                &&  paf->source_type == AFFECT_SOURCE_NONE)
+                {
+                        count++;
+                }
+        }
+
+        return count;
+}
+
 void spell_cure_blindness(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_affect_count = spell_support_affect_count(victim);
+        unsigned long int old_affected_by = victim->affected_by;
 
         if (!IS_AFFECTED(victim, AFF_BLIND) && (victim == ch))
         {
@@ -2200,7 +2213,9 @@ void spell_cure_blindness(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("You restore their vision.\n\r", ch);
-                check_group_bonus(ch);
+                if (spell_support_affect_count(victim) < old_affect_count
+                ||  (old_affected_by & ~victim->affected_by) != 0)
+                        credit_group_support(ch, victim);
                 return;
         }
 
@@ -2215,6 +2230,8 @@ void spell_cure_critical(int sn, int level, CHAR_DATA *ch, void *vo)
         int percent;
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int heal;
+        int old_hit = victim->hit;
+        bool was_confused = IS_AFFECTED(victim, AFF_CONFUSION) != 0;
 
         heal = 4 + dice(4, 8) + level;
 
@@ -2341,7 +2358,13 @@ void spell_cure_critical(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("Ok.\n\r", ch);
-                check_group_bonus(ch);
+                if (!IS_NPC(ch)
+                &&  is_same_group(ch, victim)
+                &&  (victim->hit > old_hit
+                ||   (was_confused && !IS_AFFECTED(victim, AFF_CONFUSION))))
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                }
         }
 
         send_to_char("You feel better!\n\r", victim);
@@ -2472,6 +2495,10 @@ void spell_cure_mana(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_cure_poison(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_affect_count = spell_support_affect_count(victim);
+        unsigned long int old_affected_by = victim->affected_by;
+        int old_drunk = IS_NPC(victim)
+            ? 0 : victim->pcdata->condition[COND_DRUNK];
 
         if (!IS_NPC(victim))
         {
@@ -2556,7 +2583,13 @@ void spell_cure_poison(int sn, int level, CHAR_DATA *ch, void *vo)
                     victim,
                     TO_CHAR);
 
-                check_group_bonus(ch);
+                if (spell_support_affect_count(victim) < old_affect_count
+                ||  (old_affected_by & ~victim->affected_by) != 0
+                ||  (!IS_NPC(victim)
+                &&   victim->pcdata->condition[COND_DRUNK] < old_drunk))
+                {
+                        credit_group_support(ch, victim);
+                }
         }
 
         send_to_char(
@@ -2584,6 +2617,9 @@ void spell_stabilise(int sn, int level, CHAR_DATA *ch, void *vo)
          */
 
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_affect_count = spell_support_affect_count(victim);
+        unsigned long int old_affected_by = victim->affected_by;
+        bool was_blinking = !IS_NPC(victim) && victim->pcdata->blink;
 
         if (is_affected(victim, gsn_haste))
                 affect_strip(victim, gsn_haste);
@@ -2712,7 +2748,12 @@ void spell_stabilise(int sn, int level, CHAR_DATA *ch, void *vo)
                             TO_CHAR);
                 }
 
-                check_group_bonus(ch);
+                if (spell_support_affect_count(victim) < old_affect_count
+                ||  (old_affected_by & ~victim->affected_by) != 0
+                ||  (was_blinking && !victim->pcdata->blink))
+                {
+                        credit_group_support(ch, victim);
+                }
         }
 
         send_to_char(
@@ -2734,6 +2775,7 @@ void spell_cure_serious(int sn, int level, CHAR_DATA *ch, void *vo)
         int percent;
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int heal;
+        int old_hit = victim->hit;
 
         heal = 4 + dice(3, 8) + level / 2;
 
@@ -2819,7 +2861,12 @@ void spell_cure_serious(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("Ok.\n\r", ch);
-                check_group_bonus(ch);
+                if (!IS_NPC(ch)
+                &&  is_same_group(ch, victim)
+                &&  victim->hit > old_hit)
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                }
         }
 
         send_to_char("You feel better!\n\r", victim);
@@ -2829,6 +2876,8 @@ void spell_cure_serious(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_regenerate(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_affect_count = spell_support_affect_count(victim);
+        unsigned long int old_affected_by = victim->affected_by;
 
         if (IS_NPC(victim))
         {
@@ -2844,7 +2893,6 @@ void spell_regenerate(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("Ok.\n\r", ch);
-                check_group_bonus(ch);
         }
 
         if (IS_AFFECTED(victim, AFF_EYE_TRAUMA))
@@ -3000,6 +3048,12 @@ void spell_regenerate(int sn, int level, CHAR_DATA *ch, void *vo)
                     NULL,
                     NULL,
                     TO_ROOM);
+        }
+
+        if (spell_support_affect_count(victim) < old_affect_count
+        ||  (old_affected_by & ~victim->affected_by) != 0)
+        {
+                credit_group_support(ch, victim);
         }
 
         return;
@@ -3279,7 +3333,7 @@ static bool dispel_raw_affect(
         return TRUE;
 }
 
-void spell_dispel_magic(int sn, int level, CHAR_DATA *ch, void *vo)
+static void apply_dispel_magic(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA *paf;
@@ -4120,6 +4174,21 @@ void spell_dispel_magic(int sn, int level, CHAR_DATA *ch, void *vo)
         return;
 }
 
+void spell_dispel_magic(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_affect_count = spell_support_affect_count(victim);
+        unsigned long int old_affected_by = victim->affected_by;
+
+        apply_dispel_magic(sn, level, ch, vo);
+
+        if (spell_support_affect_count(victim) < old_affect_count
+        ||  (old_affected_by & ~victim->affected_by) != 0)
+        {
+                credit_group_support(ch, victim);
+        }
+}
+
 void spell_dispel_evil(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
@@ -4372,7 +4441,7 @@ void spell_entrapment(int sn, int level, CHAR_DATA *ch, void *vo)
         act("A stasis field forms around $N, preventing $m from moving.",
             ch, NULL, victim, TO_ROOM);
 
-        check_group_bonus(ch);
+        check_group_bonus(ch, victim);
 
         return;
 }
@@ -4474,7 +4543,7 @@ void spell_faerie_fire(int sn, int level, CHAR_DATA *ch, void *vo)
         send_to_char("<168>You are surrounded by a pink outline.<0>\n\r", victim);
         act("$n is surrounded by a pink outline.", victim, NULL, NULL, TO_ROOM);
 
-        check_group_bonus(ch);
+        check_group_bonus(ch, victim);
 
         return;
 }
@@ -4590,7 +4659,7 @@ void spell_fly(int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         if (ch != victim)
-                check_group_bonus(ch);
+                credit_group_support(ch, victim);
 
         return;
 }
@@ -4716,7 +4785,7 @@ void spell_giant_strength(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("You strengthen them.\n\r", ch);
-                check_group_bonus(ch);
+                credit_group_support(ch, victim);
         }
 
         send_to_char("You feel stronger.\n\r", victim);
@@ -4743,6 +4812,8 @@ void spell_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         int percent;
 
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_hit = victim->hit;
+        bool was_confused = IS_AFFECTED(victim, AFF_CONFUSION) != 0;
 
         if (IS_NPC(victim))
         {
@@ -4861,9 +4932,14 @@ void spell_heal(int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char(buf, ch);
                 send_to_char("Ok.\n\r", ch);
 
-                check_group_bonus(ch);
+                if (!IS_NPC(ch)
+                &&  is_same_group(ch, victim)
+                &&  (victim->hit > old_hit
+                ||   (was_confused && !IS_AFFECTED(victim, AFF_CONFUSION))))
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                }
         }
-
         send_to_char(
             "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng "
             "<227>fi<228>ll<229>s y<228>ou<227>r b<226>od"
@@ -4880,6 +4956,8 @@ void spell_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         int percent;
 
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_hit = victim->hit;
+        bool was_confused = IS_AFFECTED(victim, AFF_CONFUSION) != 0;
 
         if (IS_NPC(victim))
         {
@@ -5001,7 +5079,13 @@ void spell_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("Ok.\n\r", ch);
-                check_group_bonus(ch);
+                if (!IS_NPC(ch)
+                &&  is_same_group(ch, victim)
+                &&  (victim->hit > old_hit
+                ||   (was_confused && !IS_AFFECTED(victim, AFF_CONFUSION))))
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                }
         }
 
         send_to_char(
@@ -5792,7 +5876,7 @@ void spell_invis(int sn, int level, CHAR_DATA *ch, void *vo)
         affect_to_char(victim, &af);
 
         if (ch != victim)
-                check_group_bonus(ch);
+                credit_group_support(ch, victim);
 
         return;
 }
@@ -5967,6 +6051,7 @@ void spell_mass_invis(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *gch;
         AFFECT_DATA af;
+        bool support_credited = FALSE;
 
         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
         {
@@ -6001,13 +6086,10 @@ void spell_mass_invis(int sn, int level, CHAR_DATA *ch, void *vo)
                 af.bitvector = AFF_INVISIBLE;
 
                 affect_to_char(gch, &af);
-        }
 
-        /*
-         * Need this outside the main loop so they don't get a bonus for
-         * casting it on themselves.
-         */
-        check_group_bonus(ch);
+                if (!support_credited)
+                        support_credited = credit_group_support(ch, gch);
+        }
 
         send_to_char("Ok.\n\r", ch);
         return;
@@ -6194,7 +6276,8 @@ void spell_paralysis(int sn, int level, CHAR_DATA *ch, void *vo)
 static void spell_alignment_protection(int sn,
                                        CHAR_DATA *ch,
                                        CHAR_DATA *victim,
-                                       bool against_evil)
+                                       bool against_evil,
+                                       bool award_support)
 {
         AFFECT_DATA af;
 
@@ -6246,6 +6329,9 @@ static void spell_alignment_protection(int sn,
         af.bitvector = 0;
         affect_to_char(victim, &af);
 
+        if (award_support)
+                credit_group_support(ch, victim);
+
         if (against_evil)
         {
                 send_to_char(
@@ -6272,7 +6358,7 @@ void spell_protect_vs_evil(int sn, int level, CHAR_DATA *ch, void *vo)
         (void)level;
 
         spell_alignment_protection(
-            sn, ch, (CHAR_DATA *)vo, TRUE);
+            sn, ch, (CHAR_DATA *)vo, TRUE, TRUE);
 }
 
 void spell_protect_vs_good(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -6280,7 +6366,7 @@ void spell_protect_vs_good(int sn, int level, CHAR_DATA *ch, void *vo)
         (void)level;
 
         spell_alignment_protection(
-            sn, ch, (CHAR_DATA *)vo, FALSE);
+            sn, ch, (CHAR_DATA *)vo, FALSE, TRUE);
 }
 
 static void spell_mass_alignment_protection(CHAR_DATA *ch,
@@ -6290,7 +6376,7 @@ static void spell_mass_alignment_protection(CHAR_DATA *ch,
         CHAR_DATA *gch_next;
         int protection_sn;
         bool added_protection = FALSE;
-        bool helped_player = FALSE;
+        CHAR_DATA *support_recipient = NULL;
 
         if (!ch || ch->deleted || !ch->in_room)
                 return;
@@ -6324,17 +6410,16 @@ static void spell_mass_alignment_protection(CHAR_DATA *ch,
                  * casts give the same protection without stacking.
                  */
                 spell_alignment_protection(
-                    protection_sn, ch, gch, against_evil);
+                    protection_sn, ch, gch, against_evil, FALSE);
 
                 added_protection = TRUE;
 
-                if (gch != ch && !IS_NPC(gch))
-                        helped_player = TRUE;
+                if (gch != ch)
+                        support_recipient = gch;
         }
 
-        /* Support credit belongs to helping another player, not just yourself. */
-        if (helped_player)
-                check_group_bonus(ch);
+        /* One award for a cast that adds a ward to another group member. */
+        credit_group_support(ch, support_recipient);
 
         if (!added_protection)
         {
@@ -6417,6 +6502,8 @@ void spell_protect_vs_undead(int sn, int level,
 
         affect_to_char(victim, &af);
 
+        credit_group_support(ch, victim);
+
         send_to_char(
             "You are warded against the undead.\n\r",
             victim);
@@ -6494,6 +6581,7 @@ void spell_remove_curse(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int iWear;
         int yesno = 0;
+        bool helped = FALSE;
 
         if (IS_AFFECTED(victim, AFF_NON_CORPOREAL))
                 return;
@@ -6509,6 +6597,8 @@ void spell_remove_curse(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (is_affected(victim, gsn_curse))
         {
+                helped = is_affected_source(
+                    victim, gsn_curse, AFFECT_SOURCE_NONE, 0);
                 affect_strip(victim, gsn_curse);
                 send_to_char("Your curse has lifted.\n\r", victim);
                 yesno = 1;
@@ -6517,7 +6607,6 @@ void spell_remove_curse(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim && yesno)
         {
                 send_to_char("Ok.\n\r", ch);
-                check_group_bonus(ch);
         }
 
         for (iWear = 0; iWear < MAX_WEAR; iWear++)
@@ -6528,6 +6617,7 @@ void spell_remove_curse(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (IS_SET(obj->extra_flags, ITEM_CURSED))
                 {
                         REMOVE_BIT(obj->extra_flags, ITEM_CURSED);
+                        helped = TRUE;
                         act("{WYou notice $p flash brightly.{x", victim, obj, NULL, TO_CHAR);
                         yesno = 1;
                 }
@@ -6537,6 +6627,7 @@ void spell_remove_curse(int sn, int level, CHAR_DATA *ch, void *vo)
                         unequip_char(victim, obj);
                         obj_from_char(obj);
                         obj_to_room(obj, victim->in_room);
+                        helped = TRUE;
                         act("You toss $p away.", victim, obj, NULL, TO_CHAR);
                         act("$n tosses $p away.", victim, obj, NULL, TO_ROOM);
                         yesno = 1;
@@ -6550,6 +6641,7 @@ void spell_remove_curse(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (IS_SET(obj->extra_flags, ITEM_CURSED))
                 {
                         REMOVE_BIT(obj->extra_flags, ITEM_CURSED);
+                        helped = TRUE;
                         act("{WYou notice $p flash brightly.{x", victim, obj, NULL, TO_CHAR);
                         yesno = 1;
                 }
@@ -6558,10 +6650,14 @@ void spell_remove_curse(int sn, int level, CHAR_DATA *ch, void *vo)
                 {
                         obj_from_char(obj);
                         obj_to_room(obj, victim->in_room);
+                        helped = TRUE;
                         act("You toss $p away.", victim, obj, NULL, TO_CHAR);
                         act("$n tosses $p away.", victim, obj, NULL, TO_ROOM);
                 }
         }
+
+        if (helped)
+                credit_group_support(ch, victim);
 }
 
 void spell_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -6736,7 +6832,7 @@ void spell_sleep(int sn, int level, CHAR_DATA *ch, void *vo)
 
         }
 
-        check_group_bonus(ch);
+        check_group_bonus(ch, victim);
         force_sleep(victim, ch);
 }
 
@@ -7931,7 +8027,7 @@ void spell_combat_mind(int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim != ch)
         {
                 send_to_char("You heighten their combat skills.\n\r", ch);
-                check_group_bonus(ch);
+                credit_group_support(ch, victim);
         }
 
         send_to_char("You gain a keen understanding of battle tactics.\n\r", victim);
@@ -7972,6 +8068,8 @@ void spell_vitalize(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_complete_healing(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_hit = victim->hit;
+        bool was_confused = IS_AFFECTED(victim, AFF_CONFUSION) != 0;
 
         if (victim == ch->fighting)
                 return;
@@ -8027,7 +8125,11 @@ void spell_complete_healing(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("Ok.\n\r", ch);
-                check_group_bonus(ch);
+                if (victim->hit > old_hit
+                ||  (was_confused && !IS_AFFECTED(victim, AFF_CONFUSION)))
+                {
+                        credit_group_support(ch, victim);
+                }
         }
 
         send_to_char(
@@ -8232,6 +8334,8 @@ void spell_deter(int sn, int level, CHAR_DATA *ch, void *vo)
         af.modifier = 0;
         af.bitvector = AFF_DETER;
         affect_to_char(victim, &af);
+
+        credit_group_support(ch, victim);
 
         if (ch != victim)
                 send_to_char("Ok.\n\r", ch);
@@ -8696,7 +8800,7 @@ void spell_lend_health(int sn, int level, CHAR_DATA *ch, void *vo)
         act("You lend some of your health to $N.", ch, NULL, victim, TO_CHAR);
         act("$n lends you some of $s health.", ch, NULL, victim, TO_VICT);
 
-        check_group_bonus(ch);
+        credit_group_support(ch, victim);
 }
 
 void spell_levitation(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -8898,6 +9002,8 @@ void spell_share_strength(int sn, int level, CHAR_DATA *ch, void *vo)
         af.modifier = 1 + (level >= 20) + (level >= 30);
         af.bitvector = 0;
         affect_to_char(victim, &af);
+
+        credit_group_support(ch, victim);
 
         af.modifier = -1 - (level >= 20) - (level >= 30);
         affect_to_char(ch, &af);
@@ -9319,6 +9425,7 @@ void OLD_spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_prayer(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *gch;
+        CHAR_DATA *support_recipient = NULL;
         AFFECT_DATA af;
 
         if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
@@ -9364,9 +9471,14 @@ void spell_prayer(int sn, int level, CHAR_DATA *ch, void *vo)
                         af.modifier = -level / 6;
                         affect_to_char(gch, &af);
 
+                        if (gch != ch && !gch->deleted)
+                                support_recipient = gch;
+
                         send_to_char("You feel _very_ righteous.\n\r", gch);
                 }
         }
+
+        credit_group_support(ch, support_recipient);
 }
 
 /*
@@ -9429,6 +9541,8 @@ void spell_frenzy(int sn, int level, CHAR_DATA *caster, void *vo)
                 affect_to_char(target, &affects);
         }
 
+        credit_group_support(caster, target);
+
         act("$n kneels deep in prayer.  Fires of divine rage burn brightly in $s eyes.",
             caster, NULL, target, TO_ROOM);
 
@@ -9445,6 +9559,7 @@ void spell_frenzy(int sn, int level, CHAR_DATA *caster, void *vo)
 void spell_mass_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *gch;
+        CHAR_DATA *support_recipient = NULL;
         AFFECT_DATA af;
 
         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
@@ -9469,24 +9584,32 @@ void spell_mass_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
                 af.bitvector = AFF_SANCTUARY;
                 affect_to_char(gch, &af);
 
+                if (gch != ch && !gch->deleted)
+                        support_recipient = gch;
+
                 send_to_char("<15>You are surrounded by a white aura.<0>\n\r", gch);
                 act("<15>$c is surrounded by a white aura.<0>", gch, NULL, NULL, TO_ROOM);
         }
 
         send_to_char("Ok.\n\r", ch);
 
-        /* Needs to be outside the main loop to avoid a bonus for casting on themselves */
-        check_group_bonus(ch);
+        credit_group_support(ch, support_recipient);
 }
 
 void spell_mass_heal(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *gch;
+        CHAR_DATA *support_recipient = NULL;
+        int old_hit;
+        bool was_confused;
 
         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
         {
                 if (!is_same_group(gch, ch))
                         continue;
+
+                old_hit = gch->hit;
+                was_confused = IS_AFFECTED(gch, AFF_CONFUSION) != 0;
 
                 if (gch->hit < gch->max_hit - gch->aggro_dam)
                 {
@@ -9530,6 +9653,14 @@ void spell_mass_heal(int sn, int level, CHAR_DATA *ch, void *vo)
                             gch);
                 }
 
+                if (gch != ch
+                &&  !gch->deleted
+                &&  (gch->hit > old_hit
+                ||   (was_confused && !IS_AFFECTED(gch, AFF_CONFUSION))))
+                {
+                        support_recipient = gch;
+                }
+
                 send_to_char(
                     "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng "
                     "<227>fi<228>ll<229>s y<228>ou<227>r b<226>od"
@@ -9539,17 +9670,23 @@ void spell_mass_heal(int sn, int level, CHAR_DATA *ch, void *vo)
 
         send_to_char("Ok.\n\r", ch);
 
-        check_group_bonus(ch);
+        credit_group_support(ch, support_recipient);
 }
 
 void spell_mass_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *gch;
+        CHAR_DATA *support_recipient = NULL;
+        int old_hit;
+        bool was_confused;
 
         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
         {
                 if (!is_same_group(gch, ch))
                         continue;
+
+                old_hit = gch->hit;
+                was_confused = IS_AFFECTED(gch, AFF_CONFUSION) != 0;
 
                 if (gch->hit < gch->max_hit - gch->aggro_dam)
                 {
@@ -9593,6 +9730,14 @@ void spell_mass_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
                             gch);
                 }
 
+                if (gch != ch
+                &&  !gch->deleted
+                &&  (gch->hit > old_hit
+                ||   (was_confused && !IS_AFFECTED(gch, AFF_CONFUSION))))
+                {
+                        support_recipient = gch;
+                }
+
                 send_to_char(
                     "A pulse of energy surges through your body.\n\r",
                     gch);
@@ -9600,7 +9745,7 @@ void spell_mass_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
 
         send_to_char("Ok.\n\r", ch);
 
-        check_group_bonus(ch);
+        credit_group_support(ch, support_recipient);
 }
 
 void spell_bless_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -10463,7 +10608,7 @@ void spell_demon_flames(int sn, int level, CHAR_DATA *ch, void *vo)
             send_to_char("Summoned demons breathe on you; you are surrounded by a fiery aura.\n\r", victim);
         act("$c is surrounded by the fiery breath of summoned demons.", victim, NULL, NULL, TO_ROOM);
 
-        check_group_bonus(ch);
+        check_group_bonus(ch, victim);
 
         return;
 }
@@ -10626,7 +10771,7 @@ void spell_abyssal_hand(int sn, int level, CHAR_DATA *ch, void *vo)
         act("Dark mist forms into a hand which grabs $N, preventing $S escape.",
             ch, NULL, victim, TO_NOTVICT);
 
-        check_group_bonus(ch);
+        check_group_bonus(ch, victim);
 
         return;
 }
@@ -10852,6 +10997,7 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
+        int old_affects = spell_support_affect_count(victim);
 
         if (victim != ch && is_safe(ch, victim))
                 return;
@@ -10886,6 +11032,14 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
                         else
                         {
                                 affect_strip(victim, gsn_haste);
+                                if (old_affects
+                                    > spell_support_affect_count(victim))
+                                {
+                                        if (is_same_group(ch, victim))
+                                                credit_group_support(ch, victim);
+                                        else
+                                                check_group_bonus(ch, victim);
+                                }
                                 act("$c slows down to a normal speed.", victim, NULL, NULL, TO_ROOM);
                                 act("You start to move at your normal speed.", ch, NULL, victim, TO_VICT);
                         }
@@ -10918,6 +11072,14 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
                         else
                         {
                                 affect_strip(victim, gsn_quicken);
+                                if (old_affects
+                                    > spell_support_affect_count(victim))
+                                {
+                                        if (is_same_group(ch, victim))
+                                                credit_group_support(ch, victim);
+                                        else
+                                                check_group_bonus(ch, victim);
+                                }
                                 act("$c slows down to a normal speed.", victim, NULL, NULL, TO_ROOM);
                                 act("You start to move at your normal speed.", ch, NULL, victim, TO_VICT);
                         }
@@ -10956,7 +11118,7 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
         send_to_char("You feel yourself slowing d o  w   n...\n\r", victim);
         act("$c starts to move in slow motion.", victim, NULL, NULL, TO_ROOM);
 
-        check_group_bonus(ch);
+        check_group_bonus(ch, victim);
 
         return;
 }
@@ -10992,6 +11154,7 @@ void spell_animate_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 act("Your weapon slips from your hands!", ch, NULL, victim, TO_VICT);
                 act("$N's weapon slips from $s hands.", ch, NULL, victim, TO_NOTVICT);
+                check_group_bonus(ch, victim);
 
                 if (ch != victim)
                         send_to_char("<15>Success!<0>\n\r", ch);
@@ -11025,7 +11188,7 @@ void spell_animate_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 act("Your weapon slips from your hands!", ch, NULL, victim, TO_VICT);
                 act("$N's weapon slips from $s hands.", ch, NULL, victim, TO_NOTVICT);
-                check_group_bonus(ch);
+                check_group_bonus(ch, victim);
 
                 if (ch != victim)
                         send_to_char("<15>Success!<0>\n\r", ch);
@@ -11145,7 +11308,7 @@ void spell_dragon_shield(int sn, int level, CHAR_DATA *ch, void *vo)
         send_to_char("You feel less vulnerable.\n\r", victim);
 
         if (ch != victim)
-                check_group_bonus(ch);
+                credit_group_support(ch, victim);
 }
 
 /*
@@ -11427,6 +11590,7 @@ void spell_runic_mend(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int heal;
+        int old_hit = victim->hit;
 
         heal = 4 + dice(4, 8) + level;
 
@@ -11445,12 +11609,18 @@ void spell_runic_mend(int sn, int level, CHAR_DATA *ch, void *vo)
         }
         update_pos(victim);
 
+        if (victim->hit > old_hit)
+                credit_group_support(ch, victim);
+
         send_to_char("You feel better!\n\r", victim);
 }
 
 void spell_runic_cure(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_affects = spell_support_affect_count(victim);
+        unsigned long int old_affected_by = victim->affected_by;
+        bool helped = FALSE;
 
         if ((!is_affected(victim, gsn_poison))
         &&  (!is_affected(victim, gsn_nausea)))
@@ -11497,6 +11667,7 @@ void spell_runic_cure(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (victim->pcdata->condition[COND_DRUNK] > 0)
                 {
                         victim->pcdata->condition[COND_DRUNK] = 0;
+                        helped = TRUE;
                         send_to_char("You sober up.\n\r", victim);
                 }
         }
@@ -11510,7 +11681,12 @@ void spell_runic_cure(int sn, int level, CHAR_DATA *ch, void *vo)
                     victim,
                     TO_CHAR);
 
-                check_group_bonus(ch);
+                if (helped
+                ||  old_affects > spell_support_affect_count(victim)
+                ||  (old_affected_by & ~victim->affected_by) != 0)
+                {
+                        credit_group_support(ch, victim);
+                }
         }
 
         send_to_char(
@@ -11530,6 +11706,9 @@ void spell_runic_cure(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_runic_ward(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_affects = spell_support_affect_count(victim);
+        unsigned long int old_affected_by = victim->affected_by;
+        bool helped = FALSE;
 
         if ((!is_affected(victim, gsn_poison))
         &&  (!is_affected(victim, gsn_nausea)))
@@ -11578,6 +11757,7 @@ void spell_runic_ward(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (victim->pcdata->condition[COND_DRUNK] > 0)
                 {
                         victim->pcdata->condition[COND_DRUNK] = 0;
+                        helped = TRUE;
                         send_to_char("You sober up.\n\r", victim);
                 }
         }
@@ -11591,7 +11771,12 @@ void spell_runic_ward(int sn, int level, CHAR_DATA *ch, void *vo)
                     victim,
                     TO_CHAR);
 
-                check_group_bonus(ch);
+                if (helped
+                ||  old_affects > spell_support_affect_count(victim)
+                ||  (old_affected_by & ~victim->affected_by) != 0)
+                {
+                        credit_group_support(ch, victim);
+                }
         }
 
         send_to_char(
@@ -12070,6 +12255,9 @@ void spell_confusion(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_freedom(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_affects = spell_support_affect_count(victim);
+        int old_move = victim->move;
+        unsigned long int old_affected_by = victim->affected_by;
 
         if (IS_AFFECTED(victim, AFF_HOLD))
         {
@@ -12125,6 +12313,13 @@ void spell_freedom(int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char(
                     "You free them from their bondage.\n\r",
                     ch);
+        }
+
+        if (victim->move > old_move
+        ||  old_affects > spell_support_affect_count(victim)
+        ||  (old_affected_by & ~victim->affected_by) != 0)
+        {
+                credit_group_support(ch, victim);
         }
 
         return;
