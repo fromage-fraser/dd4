@@ -1126,6 +1126,10 @@ void do_cast(CHAR_DATA *ch, char *argument)
                 &&  skill_table[sn].target == TAR_CHAR_DEFENSIVE
                 &&  skill_table[sn].spell_fun != spell_armor
                 &&  skill_table[sn].spell_fun != spell_bless
+                &&  skill_table[sn].spell_fun != spell_cure_light
+                &&  skill_table[sn].spell_fun != spell_haste
+                &&  skill_table[sn].spell_fun != spell_refresh
+                &&  skill_table[sn].spell_fun != spell_sanctuary
                 &&  skill_table[sn].spell_fun != spell_shield
                 &&  victim
                 &&  ch != victim)
@@ -2350,6 +2354,7 @@ void spell_cure_light(int sn, int level, CHAR_DATA *ch, void *vo)
         int percent;
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int heal;
+        int old_hit = victim->hit;
 
         heal = 4 + dice(1, 8) + level / 2;
 
@@ -2436,7 +2441,12 @@ void spell_cure_light(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("Ok.\n\r", ch);
-                check_group_bonus(ch);
+                if (!IS_NPC(ch)
+                &&  is_same_group(ch, victim)
+                &&  victim->hit > old_hit)
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                }
         }
 
         send_to_char("You feel better!\n\r", victim);
@@ -6449,6 +6459,7 @@ void spell_protection(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_refresh(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int old_move = victim->move;
 
         if (victim->move > victim->max_move)
                 return;
@@ -6463,7 +6474,15 @@ void spell_refresh(int sn, int level, CHAR_DATA *ch, void *vo)
                             victim->max_move);
 
         if (ch != victim)
+        {
                 send_to_char("Ok.\n\r", ch);
+                if (!IS_NPC(ch)
+                &&  victim->move > old_move
+                &&  is_same_group(ch, victim))
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                }
+        }
 
         send_to_char("You feel less tired.\n\r", victim);
 }
@@ -6579,8 +6598,12 @@ void spell_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
         send_to_char("<15>You are surrounded by a white aura.<0>\n\r", victim);
         act("<15>$c is surrounded by a white aura.<0>", victim, NULL, NULL, TO_ROOM);
 
-        if (ch != victim)
-                check_group_bonus(ch);
+        if (!IS_NPC(ch)
+        &&  ch != victim
+        &&  is_same_group(ch, victim))
+        {
+                ch->pcdata->group_support_bonus += 1;
+        }
 
         return;
 }
@@ -10787,6 +10810,15 @@ void spell_haste(int sn, int level, CHAR_DATA *ch, void *vo)
                     "You start to move at your normal speed.\n\r",
                     victim);
 
+                if (!IS_NPC(ch)
+                &&  ch != victim
+                &&  !is_affected(victim, gsn_slow)
+                &&  !IS_AFFECTED(victim, AFF_SLOW)
+                &&  is_same_group(ch, victim))
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                }
+
                 return;
         }
 
@@ -10807,6 +10839,13 @@ void spell_haste(int sn, int level, CHAR_DATA *ch, void *vo)
         send_to_char(
             "You feel quick.\n\r",
             victim);
+
+        if (!IS_NPC(ch)
+        &&  ch != victim
+        &&  is_same_group(ch, victim))
+        {
+                ch->pcdata->group_support_bonus += 1;
+        }
 }
 
 void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)

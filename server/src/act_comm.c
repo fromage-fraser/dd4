@@ -697,7 +697,6 @@ void do_shout(CHAR_DATA *ch, char *argument)
                 return;
         }
         talk_channel(ch, argument, CHANNEL_SHOUT, "shout");
-        add_to_public_review_buffer(ch, REVIEW_SHOUT, argument);
 }
 
 void do_yell(CHAR_DATA *ch, char *argument)

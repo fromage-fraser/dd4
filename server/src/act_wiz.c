@@ -4813,8 +4813,6 @@ void do_advance(CHAR_DATA *ch, char *argument)
                 victim->mana = victim->max_mana;
                 victim->move = victim->max_move;
 
-                ch->pcdata->learned[gsn_mage_base + ch->class] = 29;
-
                 for (sn = 0; sn < MAX_SKILL; sn++)
                         victim->pcdata->learned[sn] = 0;
 
@@ -4833,7 +4831,7 @@ void do_advance(CHAR_DATA *ch, char *argument)
                 advance_level(victim);
         }
 
-        victim->exp = level_table[victim->level - 1].exp_total;
+        victim->exp = level_table[UMIN(victim->level, LEVEL_HERO) - 1].exp_total;
         victim->trust = 0;
         return;
 }
