@@ -835,6 +835,11 @@ and undead objects on the ground, carried or worn.
 
 {WOctober 2026{x
 
+- Support spells now award credit for actual effects on other group members,
+  including pets, without duplicate or ineffective-cast credit.
+- Group spells grant one support award when they benefit another group member.
+- Hostile support requires an enemy target; TARGET only counts new trauma or
+  actual body-part removal.
 - Affect listings now identify effects supplied by worn objects, object sets
   and forms with (O), (S) and (F) markers respectively.
 - Fixed payments losing change when spending silver coins.
@@ -1046,6 +1051,14 @@ blocking unrelated directions.
 - Cure Light now grants support credit once, only when it restores hit points
   to another group member.
 - Fixed trainers being unable to teach Turn Undead through Divine Magiks.
+- Cure Serious now grants support credit once, only when it restores hit points
+  to another group member.
+- Cure Critical now grants support credit once when it heals another group
+  member or clears their confusion, with no credit for ineffective casts.
+- Heal now grants support credit once when it heals another group member
+  or clears their confusion, with no credit for ineffective casts.
+- Power Heal now grants support credit once when it heals another group member
+  or clears their confusion, with no credit for ineffective casts.
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~

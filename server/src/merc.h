@@ -5548,10 +5548,10 @@ void reset_char_stats(CHAR_DATA *ch);
 bool aggro_damage(CHAR_DATA *ch, CHAR_DATA *victim, int damage);
 void turn_undead(CHAR_DATA *ch, int sn, int learned);
 void check_autoloot(CHAR_DATA *ch, CHAR_DATA *victim);
-void check_group_bonus(CHAR_DATA *ch);
+void check_group_bonus(CHAR_DATA *ch, CHAR_DATA *victim);
 char *get_damage_string args((int damage_value, bool is_singular));
 char *get_dpr args((int dam));
-void disarm_bodypart(CHAR_DATA *ch, CHAR_DATA *victim, int bp_kind);
+bool disarm_bodypart(CHAR_DATA *ch, CHAR_DATA *victim, int bp_kind);
 bool remove_bodypart(CHAR_DATA *ch, int iWear, bool fReplace);
 
 /* handler.c */
