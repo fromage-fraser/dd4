@@ -1122,7 +1122,13 @@ void do_cast(CHAR_DATA *ch, char *argument)
                  * Add a counter for support spells cast on your group members
                  */
 
-                if (skill_table[sn].target == TAR_CHAR_DEFENSIVE && victim && ch != victim)
+                if (!IS_NPC(ch)
+                &&  skill_table[sn].target == TAR_CHAR_DEFENSIVE
+                &&  skill_table[sn].spell_fun != spell_armor
+                &&  skill_table[sn].spell_fun != spell_bless
+                &&  skill_table[sn].spell_fun != spell_shield
+                &&  victim
+                &&  ch != victim)
                 {
                         if (is_same_group(ch, victim))
                         {
@@ -1401,7 +1407,12 @@ void spell_acid_blast(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        damage(ch, victim, dam, sn, FALSE);
+        if (sn == gsn_breathe)
+                damage_with_resistance_types(
+                    ch, victim, dam, sn, FALSE,
+                    skill_table[sn].res_type | RES_ACID);
+        else
+                damage(ch, victim, dam, sn, FALSE);
 }
 
 void spell_inner_fire(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -1563,7 +1574,11 @@ void spell_armor(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("They are now protected.\n\r", ch);
-                check_group_bonus(ch);
+                if (!IS_NPC(ch)
+                &&  is_same_group(ch, victim))
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                }
         }
 
         send_to_char("You feel someone protecting you.\n\r", victim);
@@ -1632,7 +1647,11 @@ void spell_bless(int sn, int level, CHAR_DATA *ch, void *vo)
         if (ch != victim)
         {
                 send_to_char("They are surrounded by righteousness.\n\r", ch);
-                check_group_bonus(ch);
+                if (!IS_NPC(ch)
+                &&  is_same_group(ch, victim))
+                {
+                        ch->pcdata->group_support_bonus += 1;
+                }
         }
 
         send_to_char("<229>You feel righteous.<0>\n\r", victim);
@@ -1713,7 +1732,7 @@ void spell_call_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (weather_info.sky < SKY_RAINING)
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_WEATHER) || weather_info.sky < SKY_RAINING)
         {
                 send_to_char("You need bad weather.\n\r", ch);
                 return;
@@ -1964,7 +1983,12 @@ void spell_colour_spray(int sn, int level, CHAR_DATA *ch, void *vo)
         if (saves_spell(ch, level, victim))
                 dam /= 2;
 
-        damage(ch, victim, dam, sn, FALSE);
+        if (sn == gsn_breathe)
+                damage_with_resistance_types(
+                    ch, victim, dam, sn, FALSE,
+                    skill_table[sn].res_type | RES_ENERGY);
+        else
+                damage(ch, victim, dam, sn, FALSE);
 }
 
 void spell_continual_light(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -2112,6 +2136,9 @@ void spell_create_water(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (water > 0)
         {
+                if (obj->value[1] == 0)
+                        obj->value[3] = 0;
+
                 obj->value[2] = LIQ_WATER;
                 obj->value[1] += water;
 
@@ -4356,7 +4383,12 @@ void spell_fireball(int sn, int level, CHAR_DATA *ch, void *vo)
                 act("$c conjures a fireball and hurls it towards $N!", ch, NULL, victim, TO_NOTVICT);
         }
 
-        damage(ch, victim, dam, sn, FALSE);
+        if (sn == gsn_breathe)
+                damage_with_resistance_types(
+                    ch, victim, dam, sn, FALSE,
+                    skill_table[sn].res_type | RES_FIRE);
+        else
+                damage(ch, victim, dam, sn, FALSE);
 }
 
 void spell_fireshield(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -5063,9 +5095,9 @@ void spell_identify(int sn, int level, CHAR_DATA *ch, void *vo)
                 "some poison powder", "a lockpick", "a musical instrument",
                 "an armourer's hammer", "some mithril", "a whetstone",
                 "a crafting tool", "a magical crafting tool", "a turret module",
-                "a forge", "something strange", "something strange",
-                "an arrestor unit", "a reflector unit",
-                "a shield unit", "a defensive turret module", "a combat pulse",
+                "a forge", "an arrestor unit", "a driver unit",
+                "a reflector unit", "a shield unit",
+                "a defensive turret module", "a turret", "a combat pulse",
                 "a defensive pulse", "a pipe", "a pipe cleaner",
                 "a smokeable substance", "remains"};
 
@@ -6621,8 +6653,12 @@ void spell_shield(int sn, int level, CHAR_DATA *ch, void *vo)
         send_to_char("You are surrounded by a force shield.\n\r", victim);
         act("$n is surrounded by a force shield.", victim, NULL, NULL, TO_ROOM);
 
-        if (ch != victim)
-                check_group_bonus(ch);
+        if (!IS_NPC(ch)
+        &&  ch != victim
+        &&  is_same_group(ch, victim))
+        {
+                ch->pcdata->group_support_bonus += 1;
+        }
 
         return;
 }
@@ -6937,8 +6973,7 @@ void spell_summon_avatar(int sn, int level, CHAR_DATA *ch, void *vo)
             ch, NULL, victim->name, TO_ROOM);
 
         add_follower(victim, ch);
-        stop_fighting(target, FALSE);
-        set_fighting(target, victim);
+        change_fighting(target, victim);
         do_rescue(victim, ch->name);
 
         SET_BIT(victim->act, ACT_NO_EXPERIENCE);
@@ -7900,9 +7935,12 @@ void spell_vitalize(int sn, int level, CHAR_DATA *ch, void *vo)
         if (!IS_NPC(ch))
                 return;
 
-        victim->hit = victim->max_hit - victim->aggro_dam;
-        victim->mana = victim->max_mana;
-        victim->move = victim->max_move;
+        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+                victim->hit = (long long)victim->max_hit - victim->aggro_dam;
+        if (victim->mana < victim->max_mana)
+                victim->mana = victim->max_mana;
+        if (victim->move < victim->max_move)
+                victim->move = victim->max_move;
 
         send_to_char("You feel a massive rush as raw magical energy courses through your body.\n\r", victim);
         return;
@@ -7924,7 +7962,11 @@ void spell_complete_healing(int sn, int level, CHAR_DATA *ch, void *vo)
                         return;
         }
 
-        victim->hit = victim->max_hit - victim->aggro_dam;
+        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        {
+                victim->hit = (long long)victim->max_hit - victim->aggro_dam;
+        }
+
         update_pos(victim);
 
         if (IS_AFFECTED(victim, AFF_CONFUSION)
@@ -10772,6 +10814,9 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
 
+        if (victim != ch && is_safe(ch, victim))
+                return;
+
         if (is_affected(victim, sn) || IS_AFFECTED(victim, AFF_SLOW))
         {
                 if (victim == ch)
@@ -11259,6 +11304,7 @@ void spell_chaos_blast(int sn, int level, CHAR_DATA *ch, void *vo)
             (rnd_idx != 6))
         {
                 rnd_idx++;
+                rnd_factorial = factorials[rnd_idx];
         }
 
         fuzz_value = (rnd_factorial / 20) * rng_unit();

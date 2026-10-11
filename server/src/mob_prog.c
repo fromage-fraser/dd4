@@ -1688,67 +1688,67 @@ void mprog_translate( char ch, char *t, CHAR_DATA *mob, CHAR_DATA *actor,
 
      case 'e':
          if ( actor )
-           can_see( mob, actor ) ? strcpy( t, he_she[ actor->sex ] )
+           can_see( mob, actor ) ? strcpy( t, he_she[ URANGE( 0, actor->sex, 2 ) ] )
                                  : strcpy( t, "someone" );
          break;
 
      case 'm':
          if ( actor )
-           can_see( mob, actor ) ? strcpy( t, him_her[ actor->sex ] )
+           can_see( mob, actor ) ? strcpy( t, him_her[ URANGE( 0, actor->sex, 2 ) ] )
                                  : strcpy( t, "someone" );
          break;
 
      case 's':
          if ( actor )
-           can_see( mob, actor ) ? strcpy( t, his_her[ actor->sex ] )
+           can_see( mob, actor ) ? strcpy( t, his_her[ URANGE( 0, actor->sex, 2 ) ] )
                                  : strcpy( t, "someone's" );
          break;
 
      case 'E':
          if ( vict )
-           can_see( mob, vict ) ? strcpy( t, he_she[ vict->sex ] )
+           can_see( mob, vict ) ? strcpy( t, he_she[ URANGE( 0, vict->sex, 2 ) ] )
                                 : strcpy( t, "someone" );
          break;
 
      case 'M':
          if ( vict )
-           can_see( mob, vict ) ? strcpy( t, him_her[ vict->sex ] )
+           can_see( mob, vict ) ? strcpy( t, him_her[ URANGE( 0, vict->sex, 2 ) ] )
                                 : strcpy( t, "someone" );
          break;
 
      case 'S':
          if ( vict )
-           can_see( mob, vict ) ? strcpy( t, his_her[ vict->sex ] )
+           can_see( mob, vict ) ? strcpy( t, his_her[ URANGE( 0, vict->sex, 2 ) ] )
                                 : strcpy( t, "someone's" );
          break;
 
      case 'j':
-         strcpy( t, he_she[ mob->sex ] );
+         strcpy( t, he_she[ URANGE( 0, mob->sex, 2 ) ] );
          break;
 
      case 'k':
-         strcpy( t, him_her[ mob->sex ] );
+         strcpy( t, him_her[ URANGE( 0, mob->sex, 2 ) ] );
          break;
 
      case 'l':
-         strcpy( t, his_her[ mob->sex ] );
+         strcpy( t, his_her[ URANGE( 0, mob->sex, 2 ) ] );
          break;
 
      case 'J':
          if ( rndm )
-           can_see( mob, rndm ) ? strcpy( t, he_she[ rndm->sex ] )
+           can_see( mob, rndm ) ? strcpy( t, he_she[ URANGE( 0, rndm->sex, 2 ) ] )
                                 : strcpy( t, "someone" );
          break;
 
      case 'K':
          if ( rndm )
-           can_see( mob, rndm ) ? strcpy( t, him_her[ rndm->sex ] )
+           can_see( mob, rndm ) ? strcpy( t, him_her[ URANGE( 0, rndm->sex, 2 ) ] )
                                 : strcpy( t, "someone" );
          break;
 
      case 'L':
          if ( rndm )
-           can_see( mob, rndm ) ? strcpy( t, his_her[ rndm->sex ] )
+           can_see( mob, rndm ) ? strcpy( t, his_her[ URANGE( 0, rndm->sex, 2 ) ] )
                                 : strcpy( t, "someone's" );
          break;
 

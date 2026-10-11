@@ -791,6 +791,17 @@ static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
 
                 else if (fch->master == ch && fch->position == POS_STANDING && ch->in_room != fch->in_room)
                 {
+                        /* Match the interpreter's revealing-command cleanup.
+                         * An attempted follow reveals even if movement fails;
+                         * Chameleon form and independently owned Hide survive.
+                         */
+                        if (fch->form != FORM_CHAMELEON)
+                        {
+                                affect_strip(fch, gsn_hide);
+                                affect_strip(fch, gsn_chameleon_power);
+                                affect_strip_raw_bit(fch, AFF_HIDE);
+                        }
+
                         act("You follow $N.\n\r", fch, NULL, ch, TO_CHAR);
                         move_char(fch, door);
                 }
@@ -2840,16 +2851,22 @@ void do_recall(CHAR_DATA *ch, char *argument)
                         if (number_bits(1) || (IS_AFFECTED(ch, AFF_HOLD) && number_percent() < 80))
                         {
                                 WAIT_STATE(ch, PULSE_VIOLENCE);
-                                lose = (ch->desc) ? 50 : 100;
+                                lose = ch->level < LEVEL_HERO ? ((ch->desc) ? 50 : 100) : 0;
                                 gain_exp(ch, 0 - lose);
-                                sprintf(buf, "You failed!  You lose %d experience points.\n\r", lose);
+                                if (lose)
+                                        sprintf(buf, "You failed!  You lose %d experience points.\n\r", lose);
+                                else
+                                        sprintf(buf, "You failed!\n\r");
                                 send_to_char(buf, ch);
                                 return;
                         }
 
-                        lose = level_table[ch->level].exp_level / 100;
+                        lose = ch->level < LEVEL_HERO ? level_table[ch->level].exp_level / 100 : 0;
                         gain_exp(ch, 0 - lose);
-                        sprintf(buf, "You recall from combat!  You lose %d experience points.\n\r", lose);
+                        if (lose)
+                                sprintf(buf, "You recall from combat!  You lose %d experience points.\n\r", lose);
+                        else
+                                sprintf(buf, "You recall from combat!\n\r");
                         send_to_char(buf, ch);
                         stop_fighting(ch, TRUE);
 
@@ -3078,16 +3095,22 @@ void do_home(CHAR_DATA *ch, char *argument)
                 if (number_bits(1) || (IS_AFFECTED(ch, AFF_HOLD) && number_percent() < 80))
                 {
                         WAIT_STATE(ch, PULSE_VIOLENCE);
-                        lose = (ch->desc) ? 50 : 100;
+                        lose = ch->level < LEVEL_HERO ? ((ch->desc) ? 50 : 100) : 0;
                         gain_exp(ch, 0 - lose);
-                        sprintf(buf, "You failed!  You lose %d exps.\n\r", lose);
+                        if (lose)
+                                sprintf(buf, "You failed!  You lose %d exps.\n\r", lose);
+                        else
+                                sprintf(buf, "You failed!\n\r");
                         send_to_char(buf, ch);
                         return;
                 }
 
-                lose = (ch->desc) ? 100 : 200;
+                lose = ch->level < LEVEL_HERO ? ((ch->desc) ? 100 : 200) : 0;
                 gain_exp(ch, 0 - lose);
-                sprintf(buf, "You recall from combat!  You lose %d exps.\n\r", lose);
+                if (lose)
+                        sprintf(buf, "You recall from combat!  You lose %d exps.\n\r", lose);
+                else
+                        sprintf(buf, "You recall from combat!\n\r");
                 send_to_char(buf, ch);
                 stop_fighting(ch, TRUE);
 

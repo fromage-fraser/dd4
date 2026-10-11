@@ -134,7 +134,8 @@ void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
         if (checkgetput(ch, obj))
                 return;
 
-        if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
+        if (obj->item_type != ITEM_MONEY
+            && ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
         {
                 act("$d: you can't carry that many items.", ch, NULL, obj->name, TO_CHAR);
                 return;
@@ -145,9 +146,27 @@ void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
              carrier_container = carrier_container->in_obj)
                 ;
 
-        if ((obj->item_type == ITEM_MONEY || !carrier_container
-             || carrier_container->deleted || carrier_container->carried_by != ch)
-            && (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
+        if (obj->item_type == ITEM_MONEY)
+        {
+                long long coin_count = (long long)ch->copper + ch->silver
+                                     + ch->gold + ch->plat
+                                     + obj->value[0] + obj->value[1]
+                                     + obj->value[2] + obj->value[3];
+                long long projected_weight = (long long)ch->carry_weight + coin_count / 10;
+
+                if (carrier_container && !carrier_container->deleted
+                    && carrier_container->carried_by == ch)
+                        projected_weight -= get_obj_weight(obj);
+
+                if (projected_weight > can_carry_w(ch))
+                {
+                        act("$d: you can't carry that much weight.", ch, NULL, obj->name, TO_CHAR);
+                        return;
+                }
+        }
+        else if ((!carrier_container || carrier_container->deleted
+                  || carrier_container->carried_by != ch)
+                 && (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
         {
                 act("$d: you can't carry that much weight.", ch, NULL, obj->name, TO_CHAR);
                 return;
@@ -751,7 +770,8 @@ int modify_dig_wait_state(CHAR_DATA *ch, int base_wait, int dig_mode, OBJ_DATA *
                 /* DEBUGF("Post bonus attack mod is %.2f", mod_wait); */
         }
 
-        if (!can_see(ch, ch))
+        if (IS_AFFECTED(ch, AFF_BLIND)
+        ||  IS_AFFECTED(ch, AFF_EYE_TRAUMA))
         {
                 mod_wait = fmaxf(mod_wait *= 1.20f, 1.0f);
                 /* DEBUGF("Post blind check mod is %.2f", mod_wait); */
@@ -1399,6 +1419,12 @@ void do_put(CHAR_DATA *ch, char *argument)
 
                         if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name)) && can_see_obj(ch, obj) && obj->wear_loc == WEAR_NONE && obj != container && can_drop_obj(ch, obj) && ch->level >= obj->level && get_obj_weight(obj) + get_obj_weight(container) <= container->value[0])
                         {
+                                 if (IS_SET(container->wear_flags, ITEM_WEAR_POUCH)
+                                    && obj->item_type != ITEM_POTION
+                                    && obj->item_type != ITEM_PILL
+                                    && obj->item_type != ITEM_PAINT)
+                                        continue;
+
                                 if (IS_SET(container->ego_flags, EGO_ITEM_TURRET)
                                     && (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE)
                                         || IS_NPC(ch)
@@ -1647,6 +1673,12 @@ void do_lodge(CHAR_DATA *ch, char *argument)
 
                         if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name)) && can_see_obj(ch, obj) && obj->wear_loc == WEAR_NONE && can_drop_obj(ch, obj) && (!obj->deleted) && (ch->level + VAULT_LEVEL_BUFFER) >= obj->level && ((get_obj_weight(obj) + get_obj_weight(container)) <= container->value[0]) && ((get_obj_weight(obj) + ch->pcdata->vault_weight) <= can_vault_w(ch)))
                         {
+                                if (IS_SET(container->wear_flags, ITEM_WEAR_POUCH)
+                                    && obj->item_type != ITEM_POTION
+                                    && obj->item_type != ITEM_PILL
+                                    && obj->item_type != ITEM_PAINT)
+                                        continue;
+
                                 if (IS_SET(container->ego_flags, EGO_ITEM_TURRET)
                                     && (!IS_SET(obj->ego_flags, EGO_ITEM_TURRET_MODULE)
                                         || IS_NPC(ch)
@@ -2048,6 +2080,12 @@ void do_drop(CHAR_DATA *ch, char *argument)
                 amount = atoi(arg);
                 argument = one_argument(argument, arg);
 
+                if (arg[0] == '\0')
+                {
+                        send_to_char("Specify platinum, gold, silver or copper.\n\r", ch);
+                        return;
+                }
+
                 if (amount <= 0)
                 {
                         send_to_char("You can't drop negative coin amounts.\n\r", ch);
@@ -2412,6 +2450,9 @@ void do_give(CHAR_DATA *ch, char *argument)
                         send_to_char(buf, ch);
                         return;
                 }
+
+                calc_coin_weight(ch);
+                calc_coin_weight(victim);
 
                 if (amount == 1)
                 {
@@ -3507,7 +3548,8 @@ void do_eat(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (!IS_NPC(ch) && ch->pcdata->condition[COND_FULL] > (MAX_FOOD - 5))
+                if (!IS_NPC(ch) && ch->level < LEVEL_HERO
+                    && ch->pcdata->condition[COND_FULL] > (MAX_FOOD - 5))
                 {
                         send_to_char("You are too full to eat more.\n\r", ch);
                         return;
@@ -3625,6 +3667,119 @@ bool remove_obj(CHAR_DATA *ch, int iWear, bool fReplace)
         act("$n stops using $p.", ch, obj, NULL, TO_ROOM);
         act("You stop using $p.", ch, obj, NULL, TO_CHAR);
         return TRUE;
+}
+
+typedef struct wield_preview_data
+{
+        OBJ_DATA *removed[3];
+        int removed_count;
+        int remove_slots[3];
+        int remove_count;
+} WIELD_PREVIEW_DATA;
+
+static OBJ_DATA *wield_preview_eq(CHAR_DATA *ch, int iWear,
+                                  WIELD_PREVIEW_DATA *preview)
+{
+        OBJ_DATA *obj = get_eq_char(ch, iWear);
+        int i;
+
+        for (i = 0; i < preview->removed_count; i++)
+        {
+                if (preview->removed[i] == obj)
+                        return NULL;
+        }
+
+        return obj;
+}
+
+static bool wield_preview_remove(CHAR_DATA *ch, int iWear, bool fReplace,
+                                 WIELD_PREVIEW_DATA *preview)
+{
+        OBJ_DATA *obj = wield_preview_eq(ch, iWear, preview);
+
+        if (!can_remove_obj(ch, obj, fReplace))
+                return FALSE;
+        if (!obj)
+                return TRUE;
+
+        preview->remove_slots[preview->remove_count++] = iWear;
+        preview->removed_count = preview_wield_removal(
+            ch, obj, preview->removed, preview->removed_count);
+        return TRUE;
+}
+
+/*
+ * Reject an impossible replacement before disturbing existing equipment.
+ * Eligibility uses the strength left after removals, including their normal
+ * automatic drops, but not the incoming weapon or any set bonus it adds.
+ */
+static void wield_melee_weapon(CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace,
+                               bool dual_wield)
+{
+        WIELD_PREVIEW_DATA preview = { { NULL }, 0, { 0 }, 0 };
+        OBJ_DATA *other_weapon = NULL;
+        int iWear = WEAR_WIELD;
+        int weight;
+        int i;
+
+        if (dual_wield)
+        {
+                if (wield_preview_eq(ch, WEAR_WIELD, &preview) &&
+                    ((wield_preview_eq(ch, WEAR_DUAL, &preview) &&
+                      !wield_preview_remove(ch, WEAR_DUAL, fReplace, &preview)) ||
+                     !wield_preview_remove(ch, WEAR_SHIELD, fReplace, &preview)) &&
+                    !wield_preview_remove(ch, WEAR_WIELD, fReplace, &preview))
+                        return;
+
+                if (!wield_preview_eq(ch, WEAR_WIELD, &preview))
+                {
+                        other_weapon = wield_preview_eq(ch, WEAR_DUAL, &preview);
+                }
+                else if (!wield_preview_eq(ch, WEAR_DUAL, &preview))
+                {
+                        iWear = WEAR_DUAL;
+                        other_weapon = wield_preview_eq(ch, WEAR_WIELD, &preview);
+                }
+                else
+                {
+                        bug("Wear_obj: no free weapon slot.", 0);
+                        send_to_char("You already wield two weapons.\n\r", ch);
+                        return;
+                }
+        }
+        else if (!wield_preview_remove(ch, WEAR_WIELD, fReplace, &preview))
+        {
+                return;
+        }
+
+        weight = other_weapon ? get_obj_weight(other_weapon) : 0;
+        if (weight + get_obj_weight(obj) > get_wield_limit_after_removals(
+                ch, preview.removed, preview.removed_count))
+        {
+                send_to_char("It is too heavy for you to wield.\n\r", ch);
+                return;
+        }
+
+        if (!check_equip_alignment(ch, obj))
+                return;
+
+        for (i = 0; i < preview.remove_count; i++)
+        {
+                if (!remove_obj(ch, preview.remove_slots[i], fReplace))
+                        return;
+        }
+
+        if (iWear == WEAR_DUAL)
+        {
+                act("You dual wield $p.", ch, obj, NULL, TO_CHAR);
+                act("$n dual wields $p.", ch, obj, NULL, TO_ROOM);
+        }
+        else
+        {
+                act("You wield $p.", ch, obj, NULL, TO_CHAR);
+                act("$n wields $p.", ch, obj, NULL, TO_ROOM);
+        }
+        equip_char(ch, obj, iWear);
 }
 
 /*
@@ -3914,52 +4069,7 @@ void wear_obj(CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                                 return;
                         }
 
-                        if (get_eq_char(ch, WEAR_WIELD) &&
-                            ((get_eq_char(ch, WEAR_DUAL) && !remove_obj(ch, WEAR_DUAL, fReplace)) || !remove_obj(ch, WEAR_SHIELD, fReplace)) && !remove_obj(ch, WEAR_WIELD, fReplace))
-                                return;
-
-                        if (!get_eq_char(ch, WEAR_WIELD))
-                        {
-                                OBJ_DATA *other_weapon;
-                                int weight = 0;
-
-                                if ((other_weapon = get_eq_char(ch, WEAR_DUAL)))
-                                        weight = get_obj_weight(other_weapon);
-
-                                if (weight + get_obj_weight(obj) > str_app[get_curr_str(ch)].wield)
-                                {
-                                        send_to_char("It is too heavy for you to wield.\n\r", ch);
-                                        return;
-                                }
-
-                                act("You wield $p.", ch, obj, NULL, TO_CHAR);
-                                act("$n wields $p.", ch, obj, NULL, TO_ROOM);
-                                equip_char(ch, obj, WEAR_WIELD);
-                                return;
-                        }
-
-                        if (!get_eq_char(ch, WEAR_DUAL))
-                        {
-                                OBJ_DATA *primary_weapon;
-                                int weight;
-
-                                primary_weapon = get_eq_char(ch, WEAR_WIELD);
-                                weight = get_obj_weight(primary_weapon);
-
-                                if (weight + get_obj_weight(obj) > str_app[get_curr_str(ch)].wield)
-                                {
-                                        send_to_char("It is too heavy for you to wield.\n\r", ch);
-                                        return;
-                                }
-
-                                act("You dual wield $p.", ch, obj, NULL, TO_CHAR);
-                                act("$n dual wields $p.", ch, obj, NULL, TO_ROOM);
-                                equip_char(ch, obj, WEAR_DUAL);
-                                return;
-                        }
-
-                        bug("Wear_obj: no free weapon slot.", 0);
-                        send_to_char("You already wield two weapons.\n\r", ch);
+                        wield_melee_weapon(ch, obj, fReplace, TRUE);
                         return;
                 }
                 else /* can only wield one weapon */
@@ -3999,18 +4109,7 @@ void wear_obj(CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace)
                                 return;
                         }
 
-                        if (!remove_obj(ch, WEAR_WIELD, fReplace))
-                                return;
-
-                        if (get_obj_weight(obj) > str_app[get_curr_str(ch)].wield)
-                        {
-                                send_to_char("It is too heavy for you to wield.\n\r", ch);
-                                return;
-                        }
-
-                        act("You wield $p.", ch, obj, NULL, TO_CHAR);
-                        act("$n wields $p.", ch, obj, NULL, TO_ROOM);
-                        equip_char(ch, obj, WEAR_WIELD);
+                        wield_melee_weapon(ch, obj, fReplace, FALSE);
                         return;
                 }
         }
@@ -5007,6 +5106,7 @@ void do_brandish(CHAR_DATA *ch, char *argument)
                                 break;
 
                         case TAR_CHAR_OFFENSIVE:
+                        case TAR_CHAR_OFFENSIVE_SINGLE:
                                 if (is_same_group(ch, vch)
                                 ||  vch == ch->mount
                                 ||  is_group_members_mount(vch, ch)
@@ -6888,6 +6988,39 @@ void do_donate(CHAR_DATA *ch, char *argument)
         return;
 }
 
+/* Reject invalid imprints before brew/scribe can alter or destroy the item.
+ * Keep spell_imprint's attempt rolls and costs unchanged. */
+static bool can_craft_imprint(CHAR_DATA *ch, OBJ_DATA *obj, int sn)
+{
+        int i, sp_slot;
+
+        if (skill_table[sn].spell_fun == spell_null)
+        {
+                send_to_char("That is not a spell.\n\r", ch);
+                return FALSE;
+        }
+
+        for (sp_slot = i = 1; i < 4; i++)
+        {
+                if (obj->value[i] != -1)
+                        sp_slot++;
+        }
+
+        if (sp_slot > 3)
+        {
+                act("$p cannot contain any more spells.", ch, obj, NULL, TO_CHAR);
+                return FALSE;
+        }
+
+        if (ch->mana < 4 * mana_cost(ch, sn))
+        {
+                send_to_char("You don't have enough mana.\n\r", ch);
+                return FALSE;
+        }
+
+        return TRUE;
+}
+
 void do_brew(CHAR_DATA *ch, char *argument)
 {
         char arg[MAX_INPUT_LENGTH];
@@ -6946,6 +7079,9 @@ void do_brew(CHAR_DATA *ch, char *argument)
                 send_to_char("You don't know any spells by that name.\n\r", ch);
                 return;
         }
+
+        if (!can_craft_imprint(ch, obj, sn))
+                return;
 
         send_to_char("You focus your mind's energies...\n\r", ch);
         act("$n begins preparing a potion.", ch, obj, NULL, TO_ROOM);
@@ -7030,6 +7166,9 @@ void do_scribe(CHAR_DATA *ch, char *argument)
                 send_to_char("You can't remember how to do that.\n\r", ch);
                 return;
         }
+
+        if (!can_craft_imprint(ch, obj, sn))
+                return;
 
         act("$n begins writing a scroll.", ch, obj, NULL, TO_ROOM);
         WAIT_STATE(ch, skill_table[gsn_scribe].beats);

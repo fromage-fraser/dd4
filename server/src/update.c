@@ -1095,6 +1095,9 @@ void gain_exp(CHAR_DATA *ch, int gain)
         char buf[MAX_STRING_LENGTH];
         int tmp;
 
+        if (IS_NPC(ch) || ch->level >= LEVEL_HERO)
+                return;
+
         /* This is the new quest points required for level - Shade Sept 99 */
         /* It's this hacky on purpose because we don't want the player to */
         /* get the xp until we've checked they can advance! */
@@ -1435,6 +1438,7 @@ int hit_gain(CHAR_DATA *ch)
                                         gch->hit += amt;
                                         if (gch->hit > gch->max_hit)
                                                 gch->hit = gch->max_hit;
+                                        update_pos(gch);
                                 }
                         }
                 }
@@ -2176,7 +2180,8 @@ void weather_update()
 
                 if (time_info.hour == 20
                 &&  ch->sub_class == SUB_CLASS_WEREWOLF
-                &&  weather_info.moonlight == MOON_FULL)
+                &&  weather_info.moonlight == MOON_FULL
+                &&  ch->position > POS_STUNNED)
                 {
                         if (ch->position != POS_FIGHTING)
                                 ch->position = POS_STANDING;
@@ -3117,6 +3122,9 @@ void aggr_update()
                                         {
                                                 if (vch->pcdata->group_leader
                                                 &&  !vch->pcdata->group_leader->deleted
+                                                &&  is_same_group(
+                                                        vch,
+                                                        vch->pcdata->group_leader)
                                                 &&  !IS_AFFECTED(
                                                         vch->pcdata->group_leader,
                                                         AFF_NON_CORPOREAL)
@@ -4268,9 +4276,18 @@ void gmcp_update(void)
 
                         UpdateGMCPNumber(d, GMCP_LEVEL, d->character->level);
                         UpdateGMCPNumber(d, GMCP_XP, d->character->exp);
-                        UpdateGMCPNumber(d, GMCP_XP_MAX, (level_table[d->character->level].exp_total));
-                        UpdateGMCPNumber(d, GMCP_XP_TNL, (level_table[d->character->level].exp_total) - d->character->exp);
-                        UpdateGMCPNumber(d, GMCP_XP_CURLEVEL, (level_table[d->character->level].exp_level));
+                        if (d->character->level >= LEVEL_HERO)
+                        {
+                                UpdateGMCPNumber(d, GMCP_XP_MAX, d->character->exp);
+                                UpdateGMCPNumber(d, GMCP_XP_TNL, 0);
+                                UpdateGMCPNumber(d, GMCP_XP_CURLEVEL, 0);
+                        }
+                        else
+                        {
+                                UpdateGMCPNumber(d, GMCP_XP_MAX, (level_table[d->character->level].exp_total));
+                                UpdateGMCPNumber(d, GMCP_XP_TNL, (level_table[d->character->level].exp_total) - d->character->exp);
+                                UpdateGMCPNumber(d, GMCP_XP_CURLEVEL, (level_table[d->character->level].exp_level));
+                        }
                         UpdateGMCPNumber(d, GMCP_PRACTICE, d->character->pcdata->str_prac);
                         UpdateGMCPNumber(d, GMCP_PLATINUM, d->character->plat);
                         UpdateGMCPNumber(d, GMCP_GOLD, d->character->gold);
@@ -4478,7 +4495,8 @@ void gmcp_update(void)
                                         {
                                                 sprintf(buf, "[ { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
                                                         skill_table[paf->type].name,
-                                                        affect_bit_name_nice(paf->bitvector),
+                                                        affect_bit_name_nice(
+                                                            affect_effective_bits(d->character, paf)),
                                                         affect_loc_name(paf->location),
                                                         paf->modifier,
                                                         paf->duration);
@@ -4487,7 +4505,8 @@ void gmcp_update(void)
                                         {
                                                 sprintf(buf2, ", { \"name\": \"%s\", \"gives\": \"%s\", \"modifies\": \"%s\", \"mod_amount\": \"%d\", \"duration\": \"%d\" }",
                                                         skill_table[paf->type].name,
-                                                        affect_bit_name_nice(paf->bitvector),
+                                                        affect_bit_name_nice(
+                                                            affect_effective_bits(d->character, paf)),
                                                         affect_loc_name(paf->location),
                                                         paf->modifier,
                                                         paf->duration);

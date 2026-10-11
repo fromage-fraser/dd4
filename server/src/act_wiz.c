@@ -2197,7 +2197,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                 strcat(buf1, buf);
                 sprintf(buf, "Align: {W%d{x  Exp: {W%d{x  Class: {W%d{x ({G%s{x)  SubCl: {W%d{x ({G%s{x)\n\rAge: {W%d{x  Fame: {W%d{x  Form: {W%s{x  Aggro_dam: {R%d{x  Rage: {R%d{w/{r%d{x\n\r",
                         victim->alignment,
-                        (level_table[victim->level].exp_total) - victim->exp,
+                        victim->level >= LEVEL_HERO ? 0 : (level_table[victim->level].exp_total) - victim->exp,
                         victim->class,
                         full_class_name(victim->class),
                         victim->sub_class,

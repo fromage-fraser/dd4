@@ -1594,6 +1594,10 @@ void do_look(CHAR_DATA *ch, char *argument)
                         if (pdesc)
                         {
                                 send_to_char(pdesc, ch);
+                                if (obj->identified)
+                                {
+                                        spell_identify(1, 1, ch, obj);
+                                }
                                 return;
                         }
                 }
@@ -2533,7 +2537,7 @@ void do_fixexp(CHAR_DATA *ch, char *argument)
         int extra_xp;
         int needed_xp;
 
-        if (ch->level < 2 || ch->level == 99)
+        if (IS_NPC(ch) || ch->level < 2 || ch->level >= LEVEL_HERO - 1)
                 return;
 
         if ((ch->exp >= level_table[ch->level - 1].exp_total) &&
@@ -4230,9 +4234,24 @@ void do_advice(CHAR_DATA *ch, char *argument)
         {
                 if (*pre_req_table[iter].pre_req == sn)
                 {
-                        /* Check the group is the correct one or a common pre-req */
+                         bool inherited = FALSE;
 
-                        if ((pre_req_table[iter].group == pre_group) || (!pre_req_table[iter].group))
+                        /* Only add inherited routes that this skill can directly unlock. */
+                        if (ch->sub_class && pre_req_table[iter].group == ch->class + 1 &&
+                            pre_req_table[iter].min > ch->pcdata->learned[sn] && has_pre_req(ch, sn))
+                        {
+                                CHAR_DATA student = *ch;
+                                PC_DATA pcdata = *ch->pcdata;
+
+                                student.pcdata = &pcdata;
+                                pcdata.learned[sn] = pre_req_table[iter].min;
+                                inherited = !has_pre_req(ch, *pre_req_table[iter].skill) &&
+                                            has_pre_req(&student, *pre_req_table[iter].skill);
+                        }
+
+                        /* Check the current group, common pre-reqs or a direct inherited unlock. */
+                        if ((pre_req_table[iter].group == pre_group) ||
+                            (!pre_req_table[iter].group) || inherited)
                         {
                                 if (pre_req_table[iter].min > ch->pcdata->learned[sn])
                                 {

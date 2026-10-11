@@ -2778,7 +2778,7 @@ void load_resets(FILE *fp)
 
                 pReset = alloc_perm(sizeof(*pReset));
                 pReset->command = letter;
-
+                pReset->door = NULL;
                 /*
                  * if_flag
                  * fread_number( fp, &stat );
@@ -2873,6 +2873,7 @@ void load_resets(FILE *fp)
                                 exit(1);
                         }
 
+                        pReset->door = pexit;
                         break;
 
                 case 'R':
@@ -4432,7 +4433,8 @@ void reset_area(AREA_DATA *pArea)
                                 continue;
                         }
 
-                        if (!(pexit = pRoomIndex->exit[pReset->arg2]))
+                        /* R resets move exits, but this reset follows its door. */
+                        if (!(pexit = pReset->door))
                                 break;
 
                         /* Bashed doors persist across resets */

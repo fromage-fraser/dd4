@@ -2190,8 +2190,7 @@ void do_focus (CHAR_DATA *ch, char *argument)
         act ("$n shifts his attacks toward you!", ch, NULL, victim, TO_VICT);
         act ("$n shifts the focus of his attacks toward $N!",  ch, NULL, victim, TO_NOTVICT);
 
-        stop_fighting(ch, FALSE);
-        set_fighting(ch, victim);
+        change_fighting(ch, victim);
 
         return;
 }
@@ -2933,7 +2932,7 @@ void do_reforge (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (number_percent() > ch->pcdata->learned[gsn_strengthen])
+        if (number_percent() > ch->pcdata->learned[gsn_reforge])
         {
                 send_to_char("You slip while reforging your weapon and pound yourself!\n\r", ch);
                 damage(ch, ch, ch->level, gsn_forge, FALSE);
@@ -3940,7 +3939,7 @@ int remove_songs(CHAR_DATA *ch)
 
 void do_sing(CHAR_DATA *ch, char* arg)
 {
-        int             found, i;
+        int             found, i, sn;
         AFFECT_DATA     af;
         char            buf[MAX_STRING_LENGTH];
         OBJ_DATA        *obj;
@@ -3993,7 +3992,14 @@ void do_sing(CHAR_DATA *ch, char* arg)
                 return;
         }
 
-        if( !ch->pcdata->learned[skill_lookup(song_table[i].affect)] )
+        sn = skill_lookup(song_table[i].affect);
+        if (sn < 0 || sn >= MAX_SKILL)
+        {
+                send_to_char("That song is not available.\n\r", ch);
+                return;
+        }
+
+        if( !ch->pcdata->learned[sn] )
         {
                 send_to_char( "You don't know how to sing that song.\n\r", ch );
                 return;
@@ -4019,7 +4025,7 @@ void do_sing(CHAR_DATA *ch, char* arg)
         sprintf(buf, "$n starts to play '%s' on %s.", song_table[i].long_desc,obj->short_descr);
         act(buf, ch, NULL, NULL, TO_ROOM);
 
-        af.type      = skill_lookup(song_table[i].affect);
+        af.type      = sn;
         af.duration  = -1;
         af.location  = APPLY_NONE;
         af.modifier  = 0;
@@ -4746,32 +4752,42 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 send_to_char (buf, ch);
                 if (steel > 0)
                 {
+                        int base_amount = steel;
+
                         steel = number_fuzzy (steel);
-                         sprintf(buf,"    {wSteel {W[{C%d{W]{x\n",steel);
+                         sprintf(buf,"    {wSteel {W[{C%d{W]{x\n",base_amount + steel);
                         send_to_char (buf, ch);
                 }
                 if (titanium > 0)
                 {
+                        int base_amount = titanium;
+
                         titanium = number_fuzzy (titanium);
-                        sprintf(buf,"    {yTitanium {W[{C%d{W]{x\n", titanium);
+                        sprintf(buf,"    {yTitanium {W[{C%d{W]{x\n", base_amount + titanium);
                         send_to_char (buf, ch);
                 }
                 if (adamantite > 0)
                 {
+                        int base_amount = adamantite;
+
                         adamantite = number_fuzzy (adamantite);
-                        sprintf(buf,"    {YAdamantite {W[{C%d{W]{x\n", adamantite);
+                        sprintf(buf,"    {YAdamantite {W[{C%d{W]{x\n", base_amount + adamantite);
                         send_to_char (buf, ch);
                 }
                 if (electrum > 0)
                 {
+                        int base_amount = electrum;
+
                         electrum = number_fuzzy (electrum);
-                        sprintf(buf,"    {WElectrum {W[{C%d{W]{x\n", electrum);
+                        sprintf(buf,"    {WElectrum {W[{C%d{W]{x\n", base_amount + electrum);
                         send_to_char (buf, ch);
                 }
                 if (starmetal > 0)
                 {
+                        int base_amount = starmetal;
+
                         starmetal = number_fuzzy (starmetal);
-                        sprintf(buf,"    {RStarmetal {W[{C%d{W]{x\n", starmetal);
+                        sprintf(buf,"    {RStarmetal {W[{C%d{W]{x\n", base_amount + starmetal);
                         send_to_char (buf, ch);
                 }
                 ch->smelted_steel += steel;
@@ -4797,7 +4813,7 @@ void do_construct( CHAR_DATA *ch, char *arg )
 {
         OBJ_DATA        *creation;
         OBJ_DATA        *anvil;
-        int             found, i;
+        int             found, i, sn;
         char            buf[MAX_STRING_LENGTH];
         const char* bar = "_____________________________________________________________________________\n\r\n\r";
         char            arg1[MAX_INPUT_LENGTH];
@@ -4896,7 +4912,8 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
-        if( !ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
+        sn = skill_lookup(blueprint_list[i].skill_name);
+        if (sn < 0 || sn >= MAX_SKILL || !ch->pcdata->learned[sn])
         {
                 send_to_char( "You don't know how to construct that.\n\r", ch );
                 return;
@@ -5001,12 +5018,12 @@ void do_construct( CHAR_DATA *ch, char *arg )
                 return;
         }
 
-        if ( number_percent() > ch->pcdata->learned[skill_lookup(blueprint_list[i].blueprint_name)] )
+        if ( number_percent() > ch->pcdata->learned[sn] )
         {
                 send_to_char("You heat the forge and ready your materials.\n\r", ch);
                 send_to_char("You fumble... some of your materials slip into the forge and are lost to the flames.\n\r", ch);
                 act ("$n pounds $mself while creating $s armour!", ch, NULL, NULL, TO_ROOM);
-                smelted_to_char_loss(blueprint_list[i].blueprint_cost, ch, COINS_REPLACE, ch->pcdata->learned[skill_lookup(blueprint_list[i].skill_name)]);
+                smelted_to_char_loss(blueprint_list[i].blueprint_cost, ch, COINS_REPLACE, ch->pcdata->learned[sn]);
                 return;
         }
 
@@ -5428,7 +5445,25 @@ void do_inscribe (CHAR_DATA *ch, char *argument)
         if (found_rune)
         {
                 OBJ_DATA        *creation;
-                creation = create_object( get_obj_index( blueprint_list[i].blueprint_ref ), ch->level, "common", CREATED_NO_RANDOMISER );
+                OBJ_INDEX_DATA  *rune_index;
+                int             sn;
+
+                rune_index = blueprint_list[i].blueprint_ref > 0
+                        ? get_obj_index(blueprint_list[i].blueprint_ref) : NULL;
+                if (!rune_index || !IS_SET(rune_index->extra_flags, ITEM_RUNE))
+                {
+                        send_to_char("That blueprint cannot be inscribed as a rune.\n\r", ch);
+                        return;
+                }
+
+                sn = skill_lookup(blueprint_list[i].skill_name);
+                if (sn < 0 || sn >= MAX_SKILL || !CAN_DO(ch, sn))
+                {
+                        send_to_char("You don't know how to inscribe that rune.\n\r", ch);
+                        return;
+                }
+
+                creation = create_object( rune_index, ch->level, "common", CREATED_NO_RANDOMISER );
                 obj_to_room( creation, ch->in_room );
                 if (blueprint_list[i].blueprint_ego >= 1 )
                 {
@@ -5447,6 +5482,12 @@ void do_inscribe (CHAR_DATA *ch, char *argument)
  /*        ---------------------------  */
         if (found_obj)
         {
+                if (!CAN_DO(ch, gsn_inscribe))
+                {
+                        send_to_char("You don't know how to inscribe equipment.\n\r", ch);
+                        return;
+                }
+
                 if (IS_SET(obj->extra_flags, ITEM_EGO) && IS_SET(obj->ego_flags, EGO_ITEM_INSCRIBED))
                 {
                         send_to_char("That is already inscribed.\n\r", ch);

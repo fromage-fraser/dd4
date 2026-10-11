@@ -1558,7 +1558,8 @@ void death_penalty(CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (!IS_NPC(victim))
         {
-                if (!IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER))
+                if (victim->level < LEVEL_HERO
+                &&  !IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER))
                 {
                         if (!IS_NPC(ch))
                                 loss = (level_table[victim->level - 1].exp_total - victim->exp) / 4;
@@ -1879,8 +1880,7 @@ static void damage_internal(CHAR_DATA *ch,
                          */
                         if (IS_NPC(ch) && IS_NPC(victim) && IS_AFFECTED(victim, AFF_CHARM) && victim->master && victim->master->in_room == ch->in_room && number_bits(3) == 0 && !ch->mount)
                         {
-                                stop_fighting(ch, FALSE);
-                                set_fighting(ch, victim->master);
+                                change_fighting(ch, victim->master);
                                 return;
                         }
                 }
@@ -2253,7 +2253,7 @@ static void damage_internal(CHAR_DATA *ch,
                         victim->hit = 1;
 
         /* this is for exp (damage bonus) */
-        if ((!forced_fall || ch != victim) && (!IS_NPC(ch) && (ch->level - victim->level < 6)) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
+        if ((ch != victim) && IS_NPC(victim) && (!IS_NPC(ch) && (ch->level - victim->level < 6)) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
                 ch->pcdata->dam_bonus += dam;
 
         if (is_affected(victim, gsn_berserk) && (victim->position <= POS_STUNNED))
@@ -3217,6 +3217,8 @@ void update_pos(CHAR_DATA *victim)
 void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         char buf[MAX_STRING_LENGTH];
+        bool transition;
+        bool was_active;
 
         if (ch->fighting)
         {
@@ -3228,6 +3230,9 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
                 bug(buf, 0);
                 return;
         }
+
+        transition = ch->combat_stealth_transition;
+        ch->combat_stealth_transition = TRUE;
 
         if (IS_AFFECTED(ch, AFF_SLEEP))
                 affect_strip(ch, gsn_sleep);
@@ -3256,8 +3261,9 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
         {
                 affect_strip(ch, gsn_invis);
                 affect_strip(ch, gsn_mass_invis);
-                REMOVE_BIT(ch->affected_by, AFF_INVISIBLE);
-                act("$c fades into existence.", ch, NULL, NULL, TO_ROOM);
+                affect_strip_raw_bit(ch, AFF_INVISIBLE);
+                if (!IS_AFFECTED(ch, AFF_INVISIBLE))
+                        act("$c fades into existence.", ch, NULL, NULL, TO_ROOM);
         }
 
         if (!IS_NPC(ch) && (ch->pcdata->tailing))
@@ -3269,18 +3275,22 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
         {
                 if (IS_AFFECTED(ch, AFF_SNEAK) || is_affected(ch, gsn_sneak) || is_affected(ch, gsn_shadow_form))
                 {
+                        was_active = IS_AFFECTED(ch, AFF_SNEAK) != 0;
                         affect_strip(ch, gsn_sneak);
                         affect_strip(ch, gsn_shadow_form);
-                        REMOVE_BIT(ch->affected_by, AFF_SNEAK);
-                        act("$c emerges from the shadows.", ch, NULL, NULL, TO_ROOM);
+                        affect_strip_raw_bit(ch, AFF_SNEAK);
+                        if (was_active && !IS_AFFECTED(ch, AFF_SNEAK))
+                                act("$c emerges from the shadows.", ch, NULL, NULL, TO_ROOM);
                 }
 
                 if (IS_AFFECTED(ch, AFF_HIDE) || is_affected(ch, gsn_hide) || is_affected(ch, gsn_chameleon_power))
                 {
+                        was_active = IS_AFFECTED(ch, AFF_HIDE) != 0;
                         affect_strip(ch, gsn_hide);
                         affect_strip(ch, gsn_chameleon_power);
-                        REMOVE_BIT(ch->affected_by, AFF_HIDE);
-                        act("$c is revealed from a hidden location.", ch, NULL, NULL, TO_ROOM);
+                        affect_strip_raw_bit(ch, AFF_HIDE);
+                        if (was_active && !IS_AFFECTED(ch, AFF_HIDE))
+                                act("$c is revealed from a hidden location.", ch, NULL, NULL, TO_ROOM);
                 }
         }
 
@@ -3309,6 +3319,9 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
 
         ch->fighting = victim;
         ch->position = POS_FIGHTING;
+        ch->combat_stealth_transition = transition;
+        refresh_combat_gear_stealth(ch);
+        refresh_combat_gear_stealth(victim);
 
         /* Send enemy status update to web clients when combat starts */
         if (!IS_NPC(ch) && ch->desc)
@@ -3323,6 +3336,7 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
 void stop_fighting(CHAR_DATA *ch, bool fBoth)
 {
         CHAR_DATA *fch;
+        CHAR_DATA *old_victim = ch->fighting;
 
         if (!IS_NPC(ch))
         {
@@ -3352,6 +3366,7 @@ void stop_fighting(CHAR_DATA *ch, bool fBoth)
                                 affect_strip(fch, gsn_unarmed_combat);
 
                         update_pos(fch);
+                        refresh_combat_gear_stealth(fch);
 
                         /* Send enemy status update (empty array) to web clients when combat ends */
                         if (!IS_NPC(fch) && fch->desc)
@@ -3359,7 +3374,22 @@ void stop_fighting(CHAR_DATA *ch, bool fBoth)
                 }
         }
 
+        /* The final incoming link may have been cleared after ch's turn. */
+        refresh_combat_gear_stealth(ch);
+        refresh_combat_gear_stealth(old_victim);
         return;
+}
+
+/* Keep gear suppressed across an existing stop/start opponent change. */
+void change_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        bool transition = ch->combat_stealth_transition;
+
+        ch->combat_stealth_transition = TRUE;
+        stop_fighting(ch, FALSE);
+        set_fighting(ch, victim);
+        ch->combat_stealth_transition = transition;
+        refresh_combat_gear_stealth(ch);
 }
 
 /*
@@ -3988,6 +4018,13 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
                 return;
         }
 
+        /* A pet's ordinary kill only rewards a master at the kill location. */
+        if (mob_called && !solo
+            && (!ch->in_room || ch->in_room != victim->in_room))
+        {
+                return;
+        }
+
         tlevel = 0;
         members = 0;
         npc_members = 0;
@@ -4074,12 +4111,15 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
 
                 if ((level_dif > -6 && gch->pcdata->dam_bonus) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
                 {
-                        sprintf(buf, "The damage you caused gains you %d experience.\n\r",
-                                gch->pcdata->dam_bonus);
-                        send_to_char(buf, gch);
-                        gain_exp(gch, gch->pcdata->dam_bonus);
-                        total_xp += gch->pcdata->dam_bonus;
-                        total_message = 1;
+                        if (gch->level < LEVEL_HERO)
+                        {
+                                sprintf(buf, "The damage you caused gains you %d experience.\n\r",
+                                        gch->pcdata->dam_bonus);
+                                send_to_char(buf, gch);
+                                gain_exp(gch, gch->pcdata->dam_bonus);
+                                total_xp += gch->pcdata->dam_bonus;
+                                total_message = 1;
+                        }
                         gch->pcdata->dam_bonus = 0;
                 }
 
@@ -4091,18 +4131,24 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
                 log_string(ch->name);
                 log_string(gch->name);
 
-                if (IS_SET(victim->act, ACT_OBJECT))
+                if (gch->level < LEVEL_HERO)
                 {
-                        sprintf(buf, "You receive %d experience points for its destruction.\n\r", xp);
+                        if (IS_SET(victim->act, ACT_OBJECT))
+                        {
+                                sprintf(buf, "You receive %d experience points for its destruction.\n\r", xp);
+                        }
+                        else
+                        {
+                                sprintf(buf, "You receive %d experience points for the kill.\n\r", xp);
+                        }
+                        send_to_char(buf, gch);
                 }
-                else
-                {
-                        sprintf(buf, "You receive %d experience points for the kill.\n\r", xp);
-                }
-                send_to_char(buf, gch);
                 gch->pcdata->kills++;
-                gain_exp(gch, xp);
-                total_xp += xp;
+                if (gch->level < LEVEL_HERO)
+                {
+                        gain_exp(gch, xp);
+                        total_xp += xp;
+                }
 
                 if (!IS_SET(gch->status, PLR_KILLER) && ((IS_SET(victim->act, ACT_IS_FAMOUS) && level_dif > -10) || level_dif > 5) && !IS_SET(victim->act, ACT_LOSE_FAME))
                 {
@@ -4111,7 +4157,8 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
                         if (get_mob_exp_modifier(victim) < 100)
                                 fame /= 2;
 
-                        if (!(gch->exp == (level_table[gch->level].exp_total - 1) && !check_questpoints_allow_level_gain(gch, FALSE)))
+                        if (gch->level >= LEVEL_HERO
+                        ||  !(gch->exp == (level_table[gch->level].exp_total - 1) && !check_questpoints_allow_level_gain(gch, FALSE)))
                         {
                                 sprintf(buf, "{YFor your heroic actions, you gain %d fame!{x\n\r", fame);
                                 send_to_char(buf, gch);
@@ -4127,15 +4174,18 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
 
                 if (members > 1 && pc_members > npc_members)
                 {
-                        grxp = (xp / 4) * members;
+                        if (gch->level < LEVEL_HERO)
+                        {
+                                grxp = (xp / 4) * members;
 
-                        if (fame)
-                                grxp *= 1.5;
+                                if (fame)
+                                        grxp *= 1.5;
 
-                        sprintf(buf, "You get a grouping bonus of %d experience points.\n\r", grxp);
-                        send_to_char(buf, gch);
-                        gain_exp(gch, grxp);
-                        total_xp += grxp;
+                                sprintf(buf, "You get a grouping bonus of %d experience points.\n\r", grxp);
+                                send_to_char(buf, gch);
+                                gain_exp(gch, grxp);
+                                total_xp += grxp;
+                        }
 
                         /*
                          * Shade 22.3.22
@@ -4151,27 +4201,30 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
 
                         if (gch->pcdata->group_support_bonus > 0)
                         {
-                                /*
-                                 * Starting point - let's try 33% xp bonus per helpful action
-                                 */
-
-                                grxp = (xp / 3) * gch->pcdata->group_support_bonus;
-
-                                /*
-                                 * So players will figure out how to abuse this I'm sure so let's cap it
-                                 */
-
-                                if (grxp > (2 * xp))
+                                if (gch->level < LEVEL_HERO)
                                 {
-                                        sprintf(buf, "Capping max group bonus for %s", gch->name);
-                                        log_string(buf);
-                                        grxp = 2 * xp;
-                                }
+                                        /*
+                                         * Starting point - let's try 33% xp bonus per helpful action
+                                         */
 
-                                sprintf(buf, "For supporting your group, you gain %d bonus experience points.\n\r", grxp);
-                                send_to_char(buf, gch);
-                                gain_exp(gch, grxp);
-                                total_xp += grxp;
+                                        grxp = (xp / 3) * gch->pcdata->group_support_bonus;
+
+                                        /*
+                                         * So players will figure out how to abuse this I'm sure so let's cap it
+                                         */
+
+                                        if (grxp > (2 * xp))
+                                        {
+                                                sprintf(buf, "Capping max group bonus for %s", gch->name);
+                                                log_string(buf);
+                                                grxp = 2 * xp;
+                                        }
+
+                                        sprintf(buf, "For supporting your group, you gain %d bonus experience points.\n\r", grxp);
+                                        send_to_char(buf, gch);
+                                        gain_exp(gch, grxp);
+                                        total_xp += grxp;
+                                }
 
                                 gch->pcdata->group_support_bonus = 0;
                         }
@@ -6784,6 +6837,10 @@ void do_flee(CHAR_DATA *ch, char *argument)
                                 sprintf(buf, "You escape from your opponent without futher harm.\n\r");
                                 send_to_char(buf, ch);
                         }
+                        else if (ch->level >= LEVEL_HERO)
+                        {
+                                send_to_char("You flee from combat!\n\r", ch);
+                        }
                         else
                         {
                                 sprintf(buf, "You flee from combat! You lose %d exp.\n\r",
@@ -6811,9 +6868,12 @@ void do_flee(CHAR_DATA *ch, char *argument)
 
                         if (ch->pcdata->dam_bonus > 0)
                         {
-                                sprintf(buf, "However, you damaged your opponent sufficiently for %d experience.\n\r", ch->pcdata->dam_bonus);
-                                send_to_char(buf, ch);
-                                gain_exp(ch, ch->pcdata->dam_bonus);
+                                if (ch->level < LEVEL_HERO)
+                                {
+                                        sprintf(buf, "However, you damaged your opponent sufficiently for %d experience.\n\r", ch->pcdata->dam_bonus);
+                                        send_to_char(buf, ch);
+                                        gain_exp(ch, ch->pcdata->dam_bonus);
+                                }
                                 ch->pcdata->dam_bonus = 0;
                         }
                 }
@@ -7111,10 +7171,10 @@ void do_rescue(CHAR_DATA *ch, char *argument)
         act("$n rescues you!", ch, NULL, victim, TO_VICT);
         act("$n rescues $N!", ch, NULL, victim, TO_NOTVICT);
 
-        stop_fighting(vch, FALSE);
-        set_fighting(vch, ch);
+        change_fighting(vch, ch);
 
-        ch->pcdata->group_support_bonus += 1;
+        if (!IS_NPC(ch))
+                ch->pcdata->group_support_bonus += 1;
 }
 
 void do_dirt_kick(CHAR_DATA *ch, char *argument)
