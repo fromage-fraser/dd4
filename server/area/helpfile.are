@@ -926,20 +926,20 @@ blocking unrelated directions.
 - Fixed ten-point thirst penalties from salt water and blood being ignored.
 - Fixed sober characters accumulating negative drunkenness.
 - Fixed mounted SLEEP overwriting injury and death positions after a fall.
-- Fixed prayer failing to bless group members when the caster is already 
+- Fixed prayer failing to bless group members when the caster is already
   affected.
 - Fixed dazed and prone effects wearing off early when a game tick occurs.
 - enchant weapon, enhance armor and bless weapon now reject worn items.
 - Standing or waking yourself from rest now preserves an ongoing fight.
 - Fixed CLOSE allowing non-corporeal characters to close doors and containers.
-- Fixed IDENTIFY and LORE descriptions to show signed elemental resistance 
+- Fixed IDENTIFY and LORE descriptions to show signed elemental resistance
   modifiers.
 - GET ALL now stops when a trap interrupts looting.
 - CARVE now rejects invalid pipe levels before spending movement.
 - Tinkers now reject invalid or overflowing repair costs.
 - Detect curse now checks item-specific spell slots, avoiding false cursed items.
 - Fixed discharge weapon checks to require an empowered primary weapon.
-- Forced sleep, choke and stun now dismount riders with terrain-aware damage and 
+- Forced sleep, choke and stun now dismount riders with terrain-aware damage and
   eligible credit for the cause.
 - Fixed gravity checks skipping later connected players during the same pulse.
 - Rejected poisoned weapons no longer remove an eligible existing single weapon.
@@ -947,34 +947,34 @@ blocking unrelated directions.
 - Fixed NPCs attempting to QUAFF a missing potion causing a crash.
 - REPLY now respects recipient quiet, tellmode and combat restrictions.
 - Turret-tech trainers can now teach blade, shuriken, and spear modules.
-- Fixed SCORE and STATUS showing elemental wards as percentages instead of 
+- Fixed SCORE and STATUS showing elemental wards as percentages instead of
   yes/no.
-- Removing a group member now clears tank assignments for that member instead of 
-  the group owner. 
+- Removing a group member now clears tank assignments for that member instead of
+  the group owner.
 - Added NO_UNDEAD checks for exit travel, resets and Animate Dead;
   player vampires can pass through but suffer sunlight-level harm.
 - Fixed REFORGE success checks using STRENGTHEN proficiency.
 - Fixed BRANDISH failing for staves with single-target offensive spells.
 - Clear tank assignments that point to a character when they stop following.
-- Automatic FOLLOW now removes ordinary Hide and Chameleon Power like normal 
+- Automatic FOLLOW now removes ordinary Hide and Chameleon Power like normal
   movement.
 - CALL LIGHTNING now respects rooms with no weather.
-- INSCRIBE now validates rune blueprints and requires the rune's skill and 
+- INSCRIBE now validates rune blueprints and requires the rune's skill and
   permitted form.
-- Equipment inscription now checks INSCRIBE eligibility before spending 
+- Equipment inscription now checks INSCRIBE eligibility before spending
   materials.
 - BREW and SCRIBE now reject non-spells, full containers and insufficient mana
   before crafting can alter or destroy the item.
 - Fixed door resets targeting the wrong exit after maze shuffles.
 - Fixed IDENTIFY and LORE mislabelling Engineer item types.
-- LOOK and EXAMINE now show known properties for carried items with template 
+- LOOK and EXAMINE now show known properties for carried items with template
   descriptions.
 - Fixed COMPLETE HEALING reducing HP above the effective healing cap.
 - Fixed Scribe swapping turret and defensive turret module object types.
 - Fixed Scribe swapping named east and south trap-trigger flags.
 - Fixed Scribe object resets rejecting or omitting valid relative vnum 0.
 - Scribe now rejects random-exit counts outside 0 to 6.
-- Automatic FOLLOW now removes ordinary Hide and Chameleon Power like normal 
+- Automatic FOLLOW now removes ordinary Hide and Chameleon Power like normal
   movement.
 - Added Protection vs Undead to deter fresh automatic undead attacks.
 - Fixed Scribe counting flag aliases more than once when generating area files.
@@ -989,7 +989,7 @@ blocking unrelated directions.
 - Repaired zero-valued nondefault recalls and invalid saved recall selections.
 - Fixed reconnect hints showing the wrong command for unfinished notes.
 - Fixed NOTE SKIPALL changing your current board to Personal.
-- Aggressive mobs now ignore tank assignments outside the selected player's 
+- Aggressive mobs now ignore tank assignments outside the selected player's
   group.
 - Fixed pet kills granting experience and kill rewards to a master and group
   in another room.
@@ -1011,7 +1011,7 @@ blocking unrelated directions.
 - Combat now temporarily suppresses gear/set invisibility, sneak and hide.
 - These effects return after combat only while their sources remain active.
 - Only damage dealt to NPCs now builds damage-bonus experience.
-- Unavailable Bard songs are now rejected safely without stopping an active 
+- Unavailable Bard songs are now rejected safely without stopping an active
   song.
 - Slow now checks combat protection before affecting another character.
 - Vitalize no longer reduces existing hit points, mana or movement.
@@ -1019,7 +1019,7 @@ blocking unrelated directions.
 - DROP now rejects a missing coin type before deducting any money.
 - Song of Rejuvenation now immediately updates healed allies' injury posture.
 - NPC spellcasters no longer access player-only group-support experience data.
-- Rejected CHAT, NEWBIE, MUSIC, SHOUT and CLANTALK messages no longer enter 
+- Rejected CHAT, NEWBIE, MUSIC, SHOUT and CLANTALK messages no longer enter
   REVIEW.
 - Armor, Bless and Shield now award support credit once per successful buff
   on another group member, including NPCs and pets.
@@ -1031,7 +1031,7 @@ blocking unrelated directions.
 - Hero XP now freezes silently, with fame and other consequences unchanged.
 - Fixed hero XP table reads during kills, fleeing, recalling, death,
   FIXEXP, MSTAT and GMCP updates.
-   SHOUT now enters REVIEW exactly once, and only after successful delivery.
+- SHOUT now enters REVIEW exactly once, and only after successful delivery.
 - Giving coins now immediately updates the giver's and recipient's coin weight.
 - Mob-program pronouns now safely handle out-of-range sex values.
 - Fixed ADVANCE reading beyond the XP table above hero level.
@@ -1045,6 +1045,7 @@ blocking unrelated directions.
   group member, with no credit for rejected casts or ungrouped recipients.
 - Cure Light now grants support credit once, only when it restores hit points
   to another group member.
+- Fixed trainers being unable to teach Turn Undead through Divine Magiks.
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~
@@ -5637,17 +5638,20 @@ Spells in protective magiks include:
 
 0 'DIVINE MAGIKS'~
 
-These magiks require the caster to be at one with their God, as the spells
-in this group are often gifted by the gods to the caster.
+Divine Magiks covers holy powers as well as spells.
 
-Spells in divine magiks include:
-    earthquake
-    dispel evil
-    flamestrike
-    holy word
-    wrath of god
+Skills and spells in this group include:
     bless
+    bless weapon
+    dispel evil
+    earthquake
+    flamestrike
+    frenzy
+    holy word
     prayer
+    turn undead
+    unholy word
+    wrath of god
 ~
 
 0 'HARMFUL MAGIKS'~
