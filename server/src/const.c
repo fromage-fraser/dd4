@@ -2364,6 +2364,7 @@ struct spell_group_struct spell_group_table[MAX_SPELL_GROUP] =
         {&gsn_mass_power_heal, 0},
 
         {&gsn_group_divine, 0},
+        {&gsn_turn_undead, 0},
         {&gsn_bless, 0},
         {&gsn_earthquake, 0},
         {&gsn_dispel_evil, 0},
