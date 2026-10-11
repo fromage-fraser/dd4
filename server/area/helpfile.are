@@ -835,8 +835,6 @@ and undead objects on the ground, carried or worn.
 
 {WOctober 2026{x
 
-- Combat now temporarily suppresses gear/set invisibility, sneak and hide.
-- These effects return after combat only while their sources remain active.
 - Affect listings now identify effects supplied by worn objects, object sets
   and forms with (O), (S) and (F) markers respectively.
 - Fixed payments losing change when spending silver coins.
@@ -1033,6 +1031,20 @@ blocking unrelated directions.
 - Hero XP now freezes silently, with fame and other consequences unchanged.
 - Fixed hero XP table reads during kills, fleeing, recalling, death,
   FIXEXP, MSTAT and GMCP updates.
+   SHOUT now enters REVIEW exactly once, and only after successful delivery.
+- Giving coins now immediately updates the giver's and recipient's coin weight.
+- Mob-program pronouns now safely handle out-of-range sex values.
+- Fixed ADVANCE reading beyond the XP table above hero level.
+- ADVANCE no longer changes the administrator's base proficiency when
+  resetting another player's level.
+- Refresh now grants group-support credit only when it restores movement
+  to another group member.
+- Haste now awards group-support credit only when it hastens another group
+  member or fully removes their slow effect.
+- Sanctuary now awards support credit once per successful cast on another
+  group member, with no credit for rejected casts or ungrouped recipients.
+- Cure Light now grants support credit once, only when it restores hit points
+  to another group member.
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~
