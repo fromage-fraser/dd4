@@ -45,6 +45,7 @@
 #include <ctype.h>
 #include <dirent.h>
 #include <errno.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -54,6 +55,14 @@
 #include "sound.h"
 #include "protocol.h"
 #include "webgate.h"
+
+/* Notes use a heap-owned, fully rendered pager; ordinary output is unchanged. */
+static void colourconv_8bit_sized(char *buffer, size_t capacity,
+                                const char *txt, CHAR_DATA *ch,
+                                bool keep_escaped_braces);
+static void write_to_buffer_raw(DESCRIPTOR_DATA *d, const char *txt, int length);
+static void page_to_char(const char *txt, CHAR_DATA *ch);
+static char *rendered_atom_end(char *point);
 
 /*
  * Malloc debugging stuff.
@@ -1016,7 +1025,8 @@ void new_descriptor(int control)
         dnew->descriptor = desc;
         dnew->character = NULL;
         dnew->connected = CON_GET_NAME;
-        dnew->showstr_head = str_dup("");
+        dnew->showstr_head = NULL;
+        dnew->showstr_raw = FALSE;
         dnew->showstr_point = 0;
         dnew->outsize = 2000;
         dnew->outbuf = alloc_mem(dnew->outsize);
@@ -1193,6 +1203,9 @@ void close_socket(DESCRIPTOR_DATA *dclose)
         close(dclose->descriptor);
 
         free_string(dclose->host);
+        free(dclose->showstr_head);
+        dclose->showstr_head = dclose->showstr_point = NULL;
+        dclose->showstr_raw = FALSE;
 
         /* RT socket leak fix */
         free_mem(dclose->outbuf, dclose->outsize);
@@ -1965,8 +1978,14 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
 void write_to_buffer(DESCRIPTOR_DATA *d, const char *txt, int length)
 {
         txt = ProtocolOutput(d, txt, &length); /* <--- GCMP */
-        if (d->pProtocol->WriteOOB > 0)        /* <--- GCMP */
-                --d->pProtocol->WriteOOB;      /* <--- GCMP */
+        write_to_buffer_raw(d, txt, length);
+}
+
+/* Append already protocol-rendered text without interpreting it a second time. */
+static void write_to_buffer_raw(DESCRIPTOR_DATA *d, const char *txt, int length)
+{
+        if (d->pProtocol && d->pProtocol->WriteOOB > 0)
+                --d->pProtocol->WriteOOB;
         /*
          * Find length in case caller didn't.
          */
@@ -1977,7 +1996,8 @@ void write_to_buffer(DESCRIPTOR_DATA *d, const char *txt, int length)
          * Initial \n\r if needed.
          *
         if (d->outtop == 0 && !d->fcommand) */
-        if (d->outtop == 0 && !d->fcommand && !d->pProtocol->WriteOOB)
+        if (d->outtop == 0 && !d->fcommand
+        && (!d->pProtocol || !d->pProtocol->WriteOOB))
         {
                 d->outbuf[0] = '\n';
                 d->outbuf[1] = '\r';
@@ -3172,10 +3192,7 @@ void send_to_char(const char *txt, CHAR_DATA *ch)
                                 *++point2 = '\0';
                         }
                         *point2 = '\0';
-                        free_string(ch->desc->showstr_head);
-                        ch->desc->showstr_head = str_dup(buf);
-                        ch->desc->showstr_point = ch->desc->showstr_head;
-                        show_string(ch->desc, "");
+                        page_to_char(buf, ch);
                 }
                 else
                 {
@@ -3287,10 +3304,7 @@ void send_to_char(const char *txt, CHAR_DATA *ch)
                                 *++point2 = '\0';
                         }
                         *point2 = '\0';
-                        free_string(ch->desc->showstr_head);
-                        ch->desc->showstr_head = str_dup(buf);
-                        ch->desc->showstr_point = ch->desc->showstr_head;
-                        show_string(ch->desc, "");
+                        page_to_char(buf, ch);
                 }
         }
         return;
@@ -3553,6 +3567,218 @@ void send_to_all_char(const char *text)
 /*
  * Write to one char.
  */
+/* Pager strings have one owner and are never passed to the pooled allocator. */
+static void clear_page(DESCRIPTOR_DATA *d)
+{
+        free(d->showstr_head);
+        d->showstr_head = d->showstr_point = NULL;
+        d->showstr_raw = FALSE;
+}
+
+static void page_to_char(const char *txt, CHAR_DATA *ch)
+{
+        char *copy = malloc(strlen(txt) + 1);
+
+        if (copy == NULL)
+                return;
+        strcpy(copy, txt);
+        clear_page(ch->desc);
+        ch->desc->showstr_head = ch->desc->showstr_point = copy;
+        show_string(ch->desc, "");
+}
+
+/* Colour helpers emit at most 19 bytes per source byte; protocol atoms less
+ * than 32. Check the arithmetic before allocating, and shrink retained text. */
+bool send_to_char_paged(const char *txt, CHAR_DATA *ch)
+{
+        char *coloured, *rendered, *smaller, *scan, *next;
+        const char *result;
+        size_t length, capacity;
+        int output_length;
+        DESCRIPTOR_DATA render_desc;
+        protocol_t render_protocol;
+
+        if (txt == NULL || ch == NULL || ch->desc == NULL)
+                return FALSE;
+        length = strlen(txt);
+        if (length > MAX_NOTE_DISPLAY_LENGTH
+        || length > (size_t)(INT_MAX - 1) / 32)
+                goto failed;
+        capacity = length * 20 + 1;
+        coloured = malloc(capacity);
+        if (coloured == NULL)
+                goto failed;
+        colourconv_8bit_sized(coloured, capacity, txt, ch, TRUE);
+        output_length = strlen(coloured);
+        /* Colour expansions contain no tabs, and COLOUR_CHAR is disabled in
+         * protocol.h. Expansion factors therefore do not multiply: bound
+         * both stages by the original source. */
+        capacity = length * 32 + 1;
+        /* ProtocolOutput reserves its final byte and rejects a full buffer. */
+        if (capacity < 2)
+                capacity = 2;
+        rendered = malloc(capacity);
+        if (rendered == NULL)
+        {
+                free(coloured);
+                goto failed;
+        }
+        /* Rendering ahead must not change live MXP state for unread pages. */
+        render_desc = *ch->desc;
+        if (ch->desc->pProtocol != NULL)
+        {
+                render_protocol = *ch->desc->pProtocol;
+                render_desc.pProtocol = &render_protocol;
+        }
+        result = ProtocolOutputSized(&render_desc, coloured, &output_length,
+                                     rendered, (int)capacity);
+        if (result == NULL)
+        {
+                free(coloured);
+                free(rendered);
+                goto failed;
+        }
+        if (result != rendered)
+                strcpy(rendered, result);
+        free(coloured);
+        for (scan = rendered; *scan; scan = next)
+        {
+                next = rendered_atom_end(scan);
+                if (next - scan > 61440)
+                {
+                        free(rendered);
+                        goto failed;
+                }
+        }
+        smaller = realloc(rendered, strlen(rendered) + 1);
+        if (smaller != NULL)
+                rendered = smaller;
+        clear_page(ch->desc);
+        ch->desc->showstr_head = ch->desc->showstr_point = rendered;
+        ch->desc->showstr_raw = TRUE;
+        show_string(ch->desc, "");
+        return TRUE;
+
+failed:
+        write_to_buffer(ch->desc, "Unable to display this note right now.\n\r", 0);
+        return FALSE;
+}
+
+/* Do not insert the pager prompt inside ANSI/MXP escapes or a UTF-8 character. */
+static char *rendered_atom_end(char *point)
+{
+        char *end = point + 1;
+
+        if ((*point == '\r' && *end == '\n')
+        || (*point == '\n' && *end == '\r'))
+                end++;
+        else if ((unsigned char)*point == 27 && *end == '[')
+        {
+                end++;
+                while (*end && (*end < '@' || *end > '~'))
+                        end++;
+                if (*end)
+                        end++;
+                if (!strncmp(point, "\033[1z<", 5))
+                {
+                        while (*end && *end != '>')
+                                end++;
+                        if (*end)
+                                end++;
+                        if (!strncmp(end, "\033[7z", 4))
+                                end += 4;
+                }
+        }
+        else if ((unsigned char)*point >= 0xc2)
+        {
+                int remaining = (unsigned char)*point < 0xe0 ? 1
+                              : (unsigned char)*point < 0xf0 ? 2 : 3;
+                while (remaining-- > 0 && ((unsigned char)*end & 0xc0) == 0x80)
+                        end++;
+        }
+        return end;
+}
+
+/* Byte-limited pages also cover long generated notes and very large pagelens. */
+static char *rendered_page_end(char *start, int pagelines)
+{
+        char *point = start, *next;
+        int lines = 0;
+
+        while (*point)
+        {
+                next = rendered_atom_end(point);
+                if (next - start > 16384 && point != start)
+                        break;
+                /* A single display atom cannot safely hold the output queue. */
+                if (next - start > 61440)
+                        return NULL;
+                if ((*point == '\n' || (*point == '\r' && point[1] == '\n'))
+                && lines++ >= pagelines)
+                {
+                        point = next;
+                        break;
+                }
+                point = next;
+                if (point - start >= 16384)
+                        break;
+        }
+        return point;
+}
+
+static void show_rendered_string(DESCRIPTOR_DATA *d, char *input)
+{
+        char arg[MAX_INPUT_LENGTH];
+        char *start = d->showstr_point, *end, *scan, *previous = NULL;
+        int pagelines;
+
+        one_argument(input, arg);
+        if (d->original && d->original->pcdata)
+                pagelines = d->original->pcdata->pagelen;
+        else if (d->character && d->character->pcdata)
+                pagelines = d->character->pcdata->pagelen;
+        else
+                return;
+        if (UPPER(arg[0]) == 'R' || UPPER(arg[0]) == 'B')
+        {
+                /* Recompute the same boundaries, including byte-limited pages. */
+                for (scan = d->showstr_head; scan < d->showstr_point; scan = end)
+                {
+                        end = rendered_page_end(scan, pagelines);
+                        if (end == NULL)
+                                goto invalid;
+                        if (end == d->showstr_point)
+                        {
+                                start = UPPER(arg[0]) == 'B' && previous
+                                      ? previous : scan;
+                                break;
+                        }
+                        previous = scan;
+                }
+        }
+        else if (arg[0] != '\0' && UPPER(arg[0]) != 'C')
+        {
+                clear_page(d);
+                return;
+        }
+        end = rendered_page_end(start, pagelines);
+        if (end == NULL)
+                goto invalid;
+        /* Leave queued text and the cursor intact until there is room. The
+         * next input can resume after output has drained, with prompt room. */
+        if (d->outtop > 64512 - (end - start))
+                return;
+        write_to_buffer_raw(d, start, (int)(end - start));
+        d->showstr_point = end;
+        if (*end == '\0')
+                clear_page(d);
+        return;
+
+invalid:
+        clear_page(d);
+        write_to_buffer(d, "This note contains an overlong display sequence.\n\r", 0);
+}
+
 void send_to_char_bw(const char *txt, CHAR_DATA *ch)
 {
         if (!txt || !ch->desc)
@@ -3566,10 +3792,7 @@ void send_to_char_bw(const char *txt, CHAR_DATA *ch)
                 write_to_buffer(ch->desc, txt, strlen(txt));
         else
         {
-                free_string(ch->desc->showstr_head);
-                ch->desc->showstr_head = str_dup(txt);
-                ch->desc->showstr_point = ch->desc->showstr_head;
-                show_string(ch->desc, "");
+                page_to_char(txt, ch);
         }
 
         return;
@@ -3583,6 +3806,14 @@ void show_string(struct descriptor_data *d, char *input)
         int line = 0;
         int toggle = 0;
         int pagelines = 20;
+
+        if (d->showstr_point == NULL)
+                return;
+        if (d->showstr_raw)
+        {
+                show_rendered_string(d, input);
+                return;
+        }
 
         one_argument(input, buf);
 
@@ -3603,8 +3834,8 @@ void show_string(struct descriptor_data *d, char *input)
         default: /*otherwise, stop the text viewing */
                 if (d->showstr_head)
                 {
-                        free_string(d->showstr_head);
-                        d->showstr_head = str_dup("");
+                        free(d->showstr_head);
+                        d->showstr_head = NULL;
                 }
                 d->showstr_point = 0;
                 return;
@@ -3659,8 +3890,8 @@ void show_string(struct descriptor_data *d, char *input)
         write_to_buffer(d, buffer, strlen(buffer));
         if (*d->showstr_point == 0)
         {
-                free_string(d->showstr_head);
-                d->showstr_head = str_dup("");
+                free(d->showstr_head);
+                d->showstr_head = NULL;
                 d->showstr_point = 0;
         }
 
@@ -4539,7 +4770,9 @@ void assert_directory_exists(const char *path)
  * buffer must point to an array containing at least
  * MAX_STRING_LENGTH bytes.
  */
-void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
+static void colourconv_8bit_sized(char *buffer, size_t capacity,
+                                const char *txt, CHAR_DATA *ch,
+                                bool keep_escaped_braces)
 {
         const char *point;
         const char *scan;
@@ -4555,7 +4788,7 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
         size_t remaining;
         size_t length;
 
-        if (buffer == NULL)
+        if (buffer == NULL || capacity == 0)
                 return;
 
         /*
@@ -4581,7 +4814,7 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
 
         point = txt;
         out = buffer;
-        remaining = MAX_STRING_LENGTH - 1;
+        remaining = capacity - 1;
 
         /*
          * IS_SET() returns the complete bit mask. PLR_ANSI is BIT_24,
@@ -4617,6 +4850,11 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
                                 break;
                         }
 
+                        if (!ansi_enabled && keep_escaped_braces && *point == marker)
+                        {
+                                *out++ = marker;
+                                remaining--;
+                        }
                         if (ansi_enabled)
                         {
                                 escape[0] = '\0';
@@ -4766,6 +5004,11 @@ void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
         }
 
         *out = '\0';
+}
+
+void colourconv_8bit(char *buffer, const char *txt, CHAR_DATA *ch)
+{
+        colourconv_8bit_sized(buffer, MAX_STRING_LENGTH, txt, ch, FALSE);
 }
 
 #if 0 /* Temporarily disable old colourconv_8bit implementation */

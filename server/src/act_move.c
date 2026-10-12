@@ -329,7 +329,6 @@ void move_char_flee(CHAR_DATA *ch, int door)
 static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
 {
         CHAR_DATA *fch;
-        CHAR_DATA *fch_next;
         EXIT_DATA *pexit;
         ROOM_INDEX_DATA *in_room;
         ROOM_INDEX_DATA *to_room;
@@ -779,33 +778,73 @@ static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
                 act_move("$n has arrived.", ch, NULL, NULL, TO_ROOM);
         }
 
-        for (fch = in_room->people; fch; fch = fch_next)
         {
-                fch_next = fch->next_in_room;
-
-                if (fch->deleted)
-                        continue;
-
-                if (fch->rider == ch && fch->position == POS_STANDING && ch->in_room != fch->in_room)
-                        move_char_internal(fch, door, fleeing);
-
-                else if (fch->master == ch && fch->position == POS_STANDING && ch->in_room != fch->in_room)
+                struct follow_entry
                 {
-                        /* Match the interpreter's revealing-command cleanup.
-                         * An attempted follow reveals even if movement fails;
-                         * Chameleon form and independently owned Hide survive.
-                         */
-                        if (fch->form != FORM_CHAMELEON)
-                        {
-                                affect_strip(fch, gsn_hide);
-                                affect_strip(fch, gsn_chameleon_power);
-                                affect_strip_raw_bit(fch, AFF_HIDE);
-                        }
+                        CHAR_DATA *ch;
+                        struct follow_entry *next;
+                };
+                struct follow_entry *followers = NULL;
+                struct follow_entry **tail = &followers;
+                struct follow_entry *entry;
 
-                        act("You follow $N.\n\r", fch, NULL, ch, TO_CHAR);
-                        move_char(fch, door);
+                /* Snapshot before recursion can rewrite next_in_room. */
+                for (fch = in_room->people; fch; fch = fch->next_in_room)
+                {
+                        if (fch->deleted
+                        ||  fch->in_room != in_room
+                        ||  fch->position != POS_STANDING
+                        ||  ch->in_room == fch->in_room
+                        ||  (fch->rider != ch && fch->master != ch))
+                                continue;
+
+                        entry = alloc_mem(sizeof(*entry));
+                        entry->ch = fch;
+                        entry->next = NULL;
+                        *tail = entry;
+                        tail = &entry->next;
+                }
+
+                while (followers)
+                {
+                        entry = followers;
+                        followers = entry->next;
+                        fch = entry->ch;
+                        free_mem(entry, sizeof(*entry));
+
+                        /* Never retry a failed move in this snapshot. */
+                        if (ch->deleted
+                        ||  ch->in_room != to_room
+                        ||  fch->deleted
+                        ||  fch->in_room != in_room
+                        ||  fch->position != POS_STANDING
+                        ||  ch->in_room == fch->in_room)
+                                continue;
+
+                        if (fch->rider == ch)
+                                move_char_internal(fch, door, fleeing);
+
+                        else if (fch->master == ch)
+                        {
+                                /* Match the interpreter's revealing-command cleanup.
+                                 * An attempted follow reveals even if movement fails;
+                                 * Chameleon form and independently owned Hide survive.
+                                 */
+                                if (fch->form != FORM_CHAMELEON)
+                                {
+                                        affect_strip(fch, gsn_hide);
+                                        affect_strip(fch, gsn_chameleon_power);
+                                        affect_strip_raw_bit(fch, AFF_HIDE);
+                                }
+
+                                act("You follow $N.\n\r", fch, NULL, ch, TO_CHAR);
+                                move_char(fch, door);
+                        }
                 }
         }
+
+        if (ch->deleted || ch->in_room != to_room)
+                return;
 
         if (ch->mount && ch->in_room != ch->mount->in_room)
         {
@@ -1632,6 +1671,12 @@ void do_lock(CHAR_DATA *ch, char *argument)
 
         one_argument(argument, arg);
 
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("You cannot do that in your current form.\n\r", ch);
+                return;
+        }
+
         if (arg[0] == '\0')
         {
                 send_to_char("Lock what?\n\r", ch);
@@ -1797,6 +1842,12 @@ void do_unlock(CHAR_DATA *ch, char *argument)
         int door;
 
         one_argument(argument, arg);
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("You cannot do that in your current form.\n\r", ch);
+                return;
+        }
 
         if (arg[0] == '\0')
         {
@@ -1968,6 +2019,12 @@ void do_pick(CHAR_DATA *ch, char *argument)
                 return;
 
         one_argument(argument, arg);
+
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+        {
+                send_to_char("You cannot do that in your current form.\n\r", ch);
+                return;
+        }
 
         if (arg[0] == '\0')
         {
@@ -3853,8 +3910,10 @@ void do_shadow_form(CHAR_DATA *ch, char *argument)
 void do_bash(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *gch;
+        ROOM_INDEX_DATA *in_room;
         char arg[MAX_INPUT_LENGTH];
         int door;
+        int deaths;
 
         if (IS_NPC(ch))
                 return;
@@ -3890,6 +3949,9 @@ void do_bash(CHAR_DATA *ch, char *argument)
                 send_to_char("Your arms are too damaged to bash things with.\n\r", ch);
                 return;
         }
+
+        in_room = ch->in_room;
+        deaths = ch->pcdata->killed;
 
         if ((door = find_door(ch, arg)) >= 0)
         {
@@ -3952,7 +4014,7 @@ void do_bash(CHAR_DATA *ch, char *argument)
                         damage(ch, ch, (ch->max_hit / 20), gsn_bash, FALSE);
 
                         /* Bash through the other side */
-                        if ((to_room = pexit->to_room) && (pexit_rev = to_room->exit[directions[door].reverse]) && pexit_rev->to_room == ch->in_room)
+                        if ((to_room = pexit->to_room) && (pexit_rev = to_room->exit[directions[door].reverse]) && pexit_rev->to_room == in_room)
                         {
                                 CHAR_DATA *rch;
 
@@ -3974,9 +4036,9 @@ void do_bash(CHAR_DATA *ch, char *argument)
                                         webgate_notify_room_update(to_room);
                         }
 
-                        /* Notify web clients in current room that exits changed */
-                        if (webgate_room_has_web_clients(ch->in_room))
-                                webgate_notify_room_update(ch->in_room);
+                        /* Damage may have moved ch; notify the room bashed. */
+                        if (webgate_room_has_web_clients(in_room))
+                                webgate_notify_room_update(in_room);
                 }
                 else
                 {
@@ -3996,8 +4058,13 @@ void do_bash(CHAR_DATA *ch, char *argument)
          * a potential aggressor, and there's a 25% chance that mobs
          * will do unto before being done unto.
          */
-        for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
+        for (gch = in_room->people; gch; gch = gch->next_in_room)
         {
+                /* Death can reset position, even without changing rooms. */
+                if (ch->deleted || ch->position == POS_DEAD
+                    || ch->in_room != in_room || ch->pcdata->killed != deaths)
+                        return;
+
                 if (gch->deleted)
                         continue;
                 if (IS_AWAKE(gch) && !gch->fighting && (IS_NPC(gch) && !IS_AFFECTED(gch, AFF_CHARM)) && (ch->level - gch->level <= 4) && number_bits(2) == 0)

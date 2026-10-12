@@ -1139,6 +1139,12 @@ void gain_exp(CHAR_DATA *ch, int gain)
 
         while (ch->level < LEVEL_HERO && ch->exp >= (level_table[ch->level].exp_total))
         {
+                if (!check_questpoints_allow_level_gain(ch, TRUE))
+                {
+                        ch->exp = level_table[ch->level].exp_total - 1;
+                        return;
+                }
+
                 send_to_char("\n\rYou raise a level!!  ", ch);
                 ch->level += 1;
                 advance_level(ch);
