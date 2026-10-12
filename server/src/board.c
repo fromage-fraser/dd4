@@ -246,11 +246,14 @@ static NOTE_DATA* find_note (CHAR_DATA *ch, BOARD_DATA *board, int num)
         int count = 0;
         NOTE_DATA *p;
 
+        if (num < 1)
+                return NULL;
+
         for (p = board->note_first; p ; p = p->next)
                         if (++count == num)
                                 break;
 
-        if ( (count == num) && is_note_to (ch, p))
+        if (p && (count == num) && is_note_to (ch, p))
                 return p;
         else
                 return NULL;
@@ -283,21 +286,55 @@ static void save_board (BOARD_DATA *board)
 }
 
 /* Show one not to a character */
-static void show_note_to_char (CHAR_DATA *ch, NOTE_DATA *note, int num)
+static bool show_note_to_char (CHAR_DATA *ch, NOTE_DATA *note, int num)
 {
-        char buf[4*MAX_STRING_LENGTH];
+        const char *format =
+                "{c[{C%3d{x{c]  {W%s{x\n\r{cBy:    {C%s{x\n\r"
+                "{cDate:  {C%s{x\n\r{cTo:    {C%s{x\n\r"
+                "{c---------------------------------------------------------------------------{x\n\r"
+                "%s\n\r";
+        char *buf, *subject;
+        int length, i;
+        size_t total = 512;
+        const char *fields[5];
+        bool displayed;
 
-        sprintf (buf, "{c[{C%3d{x{c]  {W%s{x\n\r{cBy:    {C%s{x\n\r{cDate:  {C%s{x\n\r{cTo:    {C%s{x\n\r"
-                 "{c---------------------------------------------------------------------------{x\n\r"
-                 "%s\n\r",
-                 num,
-                 capitalize_initial(note->subject),
-                 note->sender,
-                 note->date,
-                 note->to_list,
-                 note->text);
-
-        send_to_char (buf,ch);
+        fields[0] = note->subject;
+        fields[1] = note->sender;
+        fields[2] = note->date;
+        fields[3] = note->to_list;
+        fields[4] = note->text;
+        for (i = 0; i < 5; i++)
+        {
+                if (strlen(fields[i]) > MAX_NOTE_DISPLAY_LENGTH - total)
+                {
+                        write_to_buffer(ch->desc, "Unable to display this note right now.\n\r", 0);
+                        return FALSE;
+                }
+                total += strlen(fields[i]);
+        }
+        subject = malloc(strlen(note->subject) + 1);
+        if (subject == NULL)
+        {
+                write_to_buffer(ch->desc, "Unable to display this note right now.\n\r", 0);
+                return FALSE;
+        }
+        strcpy(subject, note->subject);
+        subject[0] = UPPER(subject[0]);
+        length = snprintf(NULL, 0, format, num, subject, note->sender,
+                          note->date, note->to_list, note->text);
+        if (length < 0 || (buf = malloc((size_t)length + 1)) == NULL)
+        {
+                free(subject);
+                write_to_buffer(ch->desc, "Unable to display this note right now.\n\r", 0);
+                return FALSE;
+        }
+        snprintf(buf, (size_t)length + 1, format, num, subject, note->sender,
+                 note->date, note->to_list, note->text);
+        free(subject);
+        displayed = send_to_char_paged(buf, ch);
+        free(buf);
+        return displayed;
 }
 
 /* Save changed boards */
@@ -574,14 +611,13 @@ static void do_nwrite (CHAR_DATA *ch, char *argument)
         }
         else /* we are continuing, print out all the fields and the note so far*/
         {
-                sprintf (buf,
-                         "{YTo{x:      %s\n\r"
-                         "{YExpires{x: %s\n\r"
-                         "{YSubject{x: %s\n\r",
-                         ch->pcdata->in_progress->to_list,
-                         ctime(&ch->pcdata->in_progress->expire),
-                         ch->pcdata->in_progress->subject);
-                send_to_char (buf,ch);
+                send_to_char("{YTo{x:      ", ch);
+                send_to_char(ch->pcdata->in_progress->to_list, ch);
+                send_to_char("\n\r{YExpires{x: ", ch);
+                send_to_char(ctime(&ch->pcdata->in_progress->expire), ch);
+                send_to_char("\n\r{YSubject{x: ", ch);
+                send_to_char(ch->pcdata->in_progress->subject, ch);
+                send_to_char("\n\r", ch);
                 send_to_char ("{gYour note so far:\n\r{x", ch);
                 send_to_char (ch->pcdata->in_progress->text, ch);
 
@@ -616,8 +652,8 @@ static void do_nread (CHAR_DATA *ch, char *argument)
                         send_to_char ("No such note.\n\r",ch);
                 else
                 {
-                        show_note_to_char (ch,p,count);
-                        *last_note =  UMAX (*last_note, p->date_stamp);
+                        if (show_note_to_char (ch,p,count))
+                                *last_note = UMAX (*last_note, p->date_stamp);
                 }
         }
         else /* just next one */
@@ -628,9 +664,9 @@ static void do_nread (CHAR_DATA *ch, char *argument)
                 for (p = ch->pcdata->board->note_first; p ; p = p->next, count++)
                         if ((p->date_stamp > *last_note) && is_note_to(ch,p))
                         {
-                                show_note_to_char (ch,p,count);
-                                /* Advance if new note is newer than the currently newest for that char */
-                                *last_note =  UMAX (*last_note, p->date_stamp);
+                                /* Mark it read only after successful display setup. */
+                                if (show_note_to_char (ch,p,count))
+                                        *last_note = UMAX (*last_note, p->date_stamp);
                                 return;
                         }
 
@@ -970,6 +1006,12 @@ void handle_con_note_to (DESCRIPTOR_DATA *d, char * argument)
                 return;
         }
 
+        if (strlen(argument) >= sizeof(buf))
+        {
+                send_to_char("Recipient list too long. Try again.\n\r{YTo{x:      ", ch);
+                return;
+        }
+
         strcpy (buf, argument);
         smash_tilde (buf); /* change ~ to - as we save this field as a string later */
 
@@ -990,14 +1032,23 @@ void handle_con_note_to (DESCRIPTOR_DATA *d, char * argument)
                 case DEF_INCLUDE: /* forced default */
                         if (!is_full_name (ch->pcdata->board->names, buf))
                         {
+                                if (strlen(buf) + strlen(ch->pcdata->board->names) + 2 > sizeof(buf))
+                                {
+                                        send_to_char("Recipient list too long to add the required recipient. Try again.\n\r"
+                                                     "{YTo{x:      ", ch);
+                                        return;
+                                }
+
                                 strcat (buf, " ");
                                 strcat (buf, ch->pcdata->board->names);
                                 ch->pcdata->in_progress->to_list = str_dup(buf);
 
-                                sprintf (buf, "\n\rYou did not specify %s as recipient, so it was automatically added.\n\r"
-                                         "{YNew To{x:  %s\n\r",
-                                         ch->pcdata->board->names, ch->pcdata->in_progress->to_list);
-                                send_to_char(buf, ch);
+                                send_to_char("\n\rYou did not specify ", ch);
+                                send_to_char(ch->pcdata->board->names, ch);
+                                send_to_char(" as recipient, so it was automatically added.\n\r"
+                                             "{YNew To{x:  ", ch);
+                                send_to_char(ch->pcdata->in_progress->to_list, ch);
+                                send_to_char("\n\r", ch);
                         }
                         else
                                 ch->pcdata->in_progress->to_list = str_dup (buf);

@@ -667,6 +667,14 @@ void ProtocolInput(descriptor_t *apDescriptor, char *apData, int aSize, char *ap
 const char *ProtocolOutput(descriptor_t *apDescriptor, const char *apData, int *apLength)
 {
    static char Result[MAX_OUTPUT_BUFFER + 1];
+   const char *output = ProtocolOutputSized(apDescriptor, apData, apLength,
+                                             Result, sizeof(Result));
+   return output != NULL ? output : Result;
+}
+
+const char *ProtocolOutputSized(descriptor_t *apDescriptor, const char *apData,
+                                int *apLength, char *Result, int capacity)
+{
    const char Tab[] = "\t";
    const char MSP[] = "!!";
    const char MXPStart[] = "\033[1z<";
@@ -680,6 +688,9 @@ const char *ProtocolOutput(descriptor_t *apDescriptor, const char *apData, int *
    int i = 0, j = 0; /* Index values */
 
    protocol_t *pProtocol = apDescriptor ? apDescriptor->pProtocol : NULL;
+   if (Result == NULL || capacity < 1)
+      return "";
+
    if (pProtocol == NULL || apData == NULL)
       return apData;
 
@@ -687,13 +698,14 @@ const char *ProtocolOutput(descriptor_t *apDescriptor, const char *apData, int *
    if (pProtocol->bMSP || pProtocol->pVariables[eMSDP_SOUND]->ValueInt)
       bUseMSP = true;
 
-   for (; i < MAX_OUTPUT_BUFFER && apData[j] != '\0' && !bTerminate &&
+   for (; i < (capacity - 1) && apData[j] != '\0' && !bTerminate &&
           (*apLength <= 0 || j < *apLength);
         ++j)
    {
       if (apData[j] == '\t')
       {
          const char *pCopyFrom = NULL;
+         char UnicodeFallback[8] = {'\0'};
 
          switch (apData[++j])
          {
@@ -812,7 +824,8 @@ const char *ProtocolOutput(descriptor_t *apDescriptor, const char *apData, int *
          case '[':
             if (tolower(apData[++j]) == 'u')
             {
-               char Buffer[8] = {'\0'}, BugString[256];
+               char *Buffer = UnicodeFallback;
+               char BugString[256];
                int Index = 0;
                int Number = 0;
                bool_t bDone = false, bValid = true;
@@ -964,7 +977,7 @@ const char *ProtocolOutput(descriptor_t *apDescriptor, const char *apData, int *
          /* Copy the colour code, if any. */
          if (pCopyFrom != NULL)
          {
-            while (*pCopyFrom != '\0' && i < MAX_OUTPUT_BUFFER)
+            while (*pCopyFrom != '\0' && i < (capacity - 1))
                Result[i++] = *pCopyFrom++;
          }
       }
@@ -1106,7 +1119,7 @@ const char *ProtocolOutput(descriptor_t *apDescriptor, const char *apData, int *
          /* Copy the colour code, if any. */
          if (pCopyFrom != NULL)
          {
-            while (*pCopyFrom != '\0' && i < MAX_OUTPUT_BUFFER)
+            while (*pCopyFrom != '\0' && i < (capacity - 1))
                Result[i++] = *pCopyFrom++;
          }
       }
@@ -1114,7 +1127,7 @@ const char *ProtocolOutput(descriptor_t *apDescriptor, const char *apData, int *
       else if (bUseMXP && apData[j] == '>')
       {
          const char *pCopyFrom = MXPStop;
-         while (*pCopyFrom != '\0' && i < MAX_OUTPUT_BUFFER)
+         while (*pCopyFrom != '\0' && i < (capacity - 1))
             Result[i++] = *pCopyFrom++;
          bUseMXP = false;
       }
@@ -1131,10 +1144,13 @@ const char *ProtocolOutput(descriptor_t *apDescriptor, const char *apData, int *
    }
 
    /* If we'd overflow the buffer, we don't send any output */
-   if (i >= MAX_OUTPUT_BUFFER)
+   if (i >= (capacity - 1))
    {
-      i = 0;
+      Result[0] = '\0';
+      if (apLength)
+         *apLength = 0;
       ReportBug("ProtocolOutput: Too much outgoing data to store in the buffer.\n");
+      return NULL;
    }
 
    /* Terminate the string */

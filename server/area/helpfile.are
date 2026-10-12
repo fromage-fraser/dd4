@@ -835,6 +835,8 @@ and undead objects on the ground, carried or worn.
 
 {WOctober 2026{x
 
+- Fixed long-note display and paging without truncating note text.
+- Fixed lethal door BASH exit syncing and retaliation after death or movement.
 - Support spells now award credit for actual effects on other group members,
   including pets, without duplicate or ineffective-cast credit.
 - Group spells grant one support award when they benefit another group member.
@@ -1059,6 +1061,14 @@ blocking unrelated directions.
   or clears their confusion, with no credit for ineffective casts.
 - Power Heal now grants support credit once when it heals another group member
   or clears their confusion, with no credit for ineffective casts.
+- Fixed BONUS accessing player-only data before rejecting NPC commands.
+- Fixed invalid note numbers accessing a missing note on empty boards.
+- Large experience awards now check quest-point requirements for every level.
+- Fixed nested followers and mounts causing later followers to be left behind.
+- Note recipient entry now rejects oversized lists without truncating them.
+- Fixed buffer overflows in recipient notices and resumed note headers.
+- Block lock, unlock and pick while non-corporeal.
+
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~

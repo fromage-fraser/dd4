@@ -150,18 +150,21 @@ void do_bonus(CHAR_DATA *ch, char *argument)
         long       current_lhour = (current_time - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
         long       current_lday = current_lhour / 24;
 
-        long       last_lhour = (ch->pcdata->last_recharge - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
-        long       last_lday = last_lhour / 24;
+        long       last_lhour;
+        long       last_lday;
         int        must_sleep = 0;
+
+        if (IS_NPC(ch))
+        {
+                return;
+        }
+
+        last_lhour = (ch->pcdata->last_recharge - 650336715) / (PULSE_TICK / PULSE_PER_SECOND);
+        last_lday = last_lhour / 24;
 
         buf1[0] = '\0';
 
         one_argument(argument, arg);
-
-        if (IS_NPC(ch))
-        {
-            return;
-        }
 
         if (arg[0] == '\0')
         {

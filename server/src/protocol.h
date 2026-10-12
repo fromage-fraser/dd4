@@ -748,6 +748,9 @@ void ProtocolInput(descriptor_t *apDescriptor, char *apData, int aSize, char *ap
  * support MXP, but it's very important you remember to close the tags.
  */
 const char *ProtocolOutput(descriptor_t *apDescriptor, const char *apData, int *apLength);
+/* Returns NULL rather than partial text if the supplied buffer is too small. */
+const char *ProtocolOutputSized(descriptor_t *apDescriptor, const char *apData,
+                                int *apLength, char *Result, int capacity);
 
 /******************************************************************************
  Copyover save/load functions.

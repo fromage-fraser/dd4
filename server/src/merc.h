@@ -514,6 +514,8 @@ void add_to_clan_review_buffer(CHAR_DATA *ch, int clan, char *text);
                            /* This only applies in the Body of the note */
 
 #define MAX_NOTE_TEXT (4 * MAX_STRING_LENGTH - 1000)
+/* Five stored fields can each occupy the largest existing string block. */
+#define MAX_NOTE_DISPLAY_LENGTH (5 * (4 * MAX_STRING_LENGTH - 1) + 512)
 
 #define BOARD_NOTFOUND -1 /* Error code from board_lookup() and board_number */
 
@@ -902,6 +904,7 @@ struct descriptor_data
         int repeat;
         char *showstr_head;
         char *showstr_point;
+        bool showstr_raw; /* Heap-owned note text already protocol-rendered. */
         char *outbuf;
         int outsize;
         int outtop;
@@ -5456,6 +5459,7 @@ void close_socket args((DESCRIPTOR_DATA * dclose));
 void write_to_buffer args((DESCRIPTOR_DATA * d, const char *txt, int length));
 void send_to_all_char args((const char *text));
 void send_to_char args((const char *txt, CHAR_DATA *ch));
+bool send_to_char_paged args((const char *txt, CHAR_DATA *ch));
 void send_paragraph_to_char(char *text, CHAR_DATA *ch, unsigned int indent);
 void ansi_color args((const char *txt, CHAR_DATA *ch));
 void show_string args((DESCRIPTOR_DATA * d, char *input));
