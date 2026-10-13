@@ -27,6 +27,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <errno.h>
 #include <time.h>
 #include "merc.h"
 #include "webgate.h"
@@ -5976,6 +5977,7 @@ void do_buy(CHAR_DATA *ch, char *argument)
                 OBJ_DATA *obj;
                 CHAR_DATA *keeper;
                 int cost;
+                int64_t total_cost;
                 int charcoins;
                 int discount;
 
@@ -5987,13 +5989,25 @@ void do_buy(CHAR_DATA *ch, char *argument)
 
                 if (arg2[0])
                 {
+                        char *end;
+                        long count;
+
                         if (!is_number(arg))
                         {
                                 send_to_char("Syntax for BUY is: BUY [number] <<>item>\n\r\"number\" is an optional number of items to buy.\n\r", ch);
                                 return;
                         }
 
-                        item_count = atoi(arg);
+                        errno = 0;
+                        count = strtol(arg, &end, 10);
+                        if (errno == ERANGE || end == arg || *end != '\0'
+                            || count < 1 || count > INT_MAX)
+                        {
+                                send_to_char("Buy how many? Number must be a positive integer in range!\n\r", ch);
+                                return;
+                        }
+
+                        item_count = (int)count;
                         strcpy(arg, arg2);
                 }
 
@@ -6007,7 +6021,7 @@ void do_buy(CHAR_DATA *ch, char *argument)
 
                 obj = get_obj_carry(keeper, arg);
                 cost = get_cost(keeper, obj, TRUE);
-                cost -= cost * discount / 100;
+                cost -= (int)((int64_t)cost * discount / 100);
 
                 if (cost <= 0)
                 {
@@ -6025,13 +6039,6 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                /* more mutiple buy additions */
-                if (item_count < 1)
-                {
-                        send_to_char("Buy how many? Number must be positive!\n\r", ch);
-                        return;
-                }
-
                 if (ch->pcdata->fame < 0)
                 {
                         act("$n tells you 'I will not serve the likes of YOU! GET OUT!'.",
@@ -6041,9 +6048,11 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                /* Check the full price before narrowing or changing inventory. */
+                total_cost = (int64_t)cost * item_count;
                 charcoins = total_coins_char(ch);
 
-                if (charcoins < (cost * item_count))
+                if (total_cost > INT_MAX || charcoins < total_cost)
                 {
                         if (item_count == 1)
                         {
@@ -6089,7 +6098,8 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (ch->carry_number + (get_obj_number(obj) * item_count) > can_carry_n(ch))
+                if ((int64_t)ch->carry_number
+                    + (int64_t)get_obj_number(obj) * item_count > can_carry_n(ch))
                 {
                         send_to_char("You can't carry that many items.\n\r", ch);
                         if (webgate_has_web_desc(ch))
@@ -6097,7 +6107,8 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if ((ch->carry_weight + ch->coin_weight) + item_count * get_obj_weight(obj) > can_carry_w(ch))
+                if ((int64_t)ch->carry_weight + ch->coin_weight
+                    + (int64_t)item_count * get_obj_weight(obj) > can_carry_w(ch))
                 {
                         send_to_char("You can't carry that much weight.\n\r", ch);
                         if (webgate_has_web_desc(ch))
@@ -6177,8 +6188,8 @@ void do_buy(CHAR_DATA *ch, char *argument)
                             keeper, NULL, ch, TO_VICT);
                 }
 
-                coins_from_char(cost * item_count, ch);
-                /* coins_to_char ( (cost*item_count), keeper, COINS_ADD); */
+                coins_from_char((int)total_cost, ch);
+                /* coins_to_char((int)total_cost, keeper, COINS_ADD); */
 
                 if (IS_SET(obj->extra_flags, ITEM_INVENTORY))
                 {
@@ -6441,7 +6452,7 @@ void do_sell(CHAR_DATA *ch, char *argument)
         act(buf, ch, obj, NULL, TO_CHAR);
         act("$n sells $p.", ch, obj, NULL, TO_ROOM);
 
-        if (ch->pcdata->bank < 0)
+        if (!IS_NPC(ch) && ch->pcdata->bank < 0)
         {
                 act("$n tells you 'I see you have a loan with the bank, I am giving them 1/2 the sale.",
                     keeper, NULL, ch, TO_VICT);

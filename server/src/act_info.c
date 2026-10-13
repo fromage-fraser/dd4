@@ -6018,6 +6018,12 @@ void do_identify(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+        {
+                send_to_char("You can't remember how to identify objects.\n\r", ch);
+                return;
+        }
+
         if (total_coins_char(ch) < 100)
         {
                 act("$C decides you do not have enough money for $s services.",

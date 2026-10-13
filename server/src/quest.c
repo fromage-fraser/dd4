@@ -757,6 +757,9 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                 }
                 while( !room
                     ||  room->area == ch->in_room->area
+                    ||  (ch->level <= LEVEL_HERO
+                         && (ch->level < room->area->low_enforced
+                             || ch->level > room->area->high_enforced))
                     ||  room->sector_type == SECT_UNDERWATER
                     ||  room->sector_type == SECT_WATER_SWIM
                     ||  room->sector_type == SECT_WATER_NOSWIM

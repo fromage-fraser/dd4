@@ -11011,6 +11011,7 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
                 else
                 {
                         act("$N can't get any slower than they are.", ch, NULL, victim, TO_CHAR);
+                        damage(ch, victim, 0, TYPE_UNDEFINED, FALSE);
                 }
                 return;
         }
@@ -11042,6 +11043,7 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
                                 }
                                 act("$c slows down to a normal speed.", victim, NULL, NULL, TO_ROOM);
                                 act("You start to move at your normal speed.", ch, NULL, victim, TO_VICT);
+                                damage(ch, victim, 0, TYPE_UNDEFINED, FALSE);
                         }
                         return;
                 }
@@ -11082,6 +11084,7 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
                                 }
                                 act("$c slows down to a normal speed.", victim, NULL, NULL, TO_ROOM);
                                 act("You start to move at your normal speed.", ch, NULL, victim, TO_VICT);
+                                damage(ch, victim, 0, TYPE_UNDEFINED, FALSE);
                         }
                         return;
                 }
@@ -11119,6 +11122,10 @@ void spell_slow(int sn, int level, CHAR_DATA *ch, void *vo)
         act("$c starts to move in slow motion.", victim, NULL, NULL, TO_ROOM);
 
         check_group_bonus(ch, victim);
+
+        /* Completed non-self casts are hostile, even without damage. */
+        if (victim != ch)
+                damage(ch, victim, 0, TYPE_UNDEFINED, FALSE);
 
         return;
 }

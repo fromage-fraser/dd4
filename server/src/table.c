@@ -166,7 +166,7 @@ void check_fame_table (CHAR_DATA *ch)
 
                 fame_table[prev].fame = ch->pcdata->fame;
 
-                if (ch->desc->connected == CON_PLAYING
+                if (ch->desc && ch->desc->connected == CON_PLAYING
                     && prev < FAME_TABLE_LENGTH_PRINT && ((i && i != prev) || !i))
                 {
 

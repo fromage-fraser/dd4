@@ -556,6 +556,7 @@ void handle_con_note_subject(DESCRIPTOR_DATA *d, char *argument);
 void handle_con_note_expire(DESCRIPTOR_DATA *d, char *argument);
 void handle_con_note_text(DESCRIPTOR_DATA *d, char *argument);
 void handle_con_note_finish(DESCRIPTOR_DATA *d, char *argument);
+void note_preview_prompt(DESCRIPTOR_DATA *d);
 
 DECLARE_DO_FUN(do_note);
 DECLARE_DO_FUN(do_board);
@@ -5460,6 +5461,7 @@ void write_to_buffer args((DESCRIPTOR_DATA * d, const char *txt, int length));
 void send_to_all_char args((const char *text));
 void send_to_char args((const char *txt, CHAR_DATA *ch));
 bool send_to_char_paged args((const char *txt, CHAR_DATA *ch));
+bool send_to_char_paged_bw args((const char *txt, CHAR_DATA *ch));
 void send_paragraph_to_char(char *text, CHAR_DATA *ch, unsigned int indent);
 void ansi_color args((const char *txt, CHAR_DATA *ch));
 void show_string args((DESCRIPTOR_DATA * d, char *input));

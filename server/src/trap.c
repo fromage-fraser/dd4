@@ -572,6 +572,51 @@ bool checkopen(CHAR_DATA *ch, OBJ_DATA *obj)
 }
 
 
+/* Finish each sleep victim before a fall can move or extract either partner. */
+static void sleep_trap_victim(CHAR_DATA *ch, int level, bool room_trap)
+{
+        AFFECT_DATA af;
+        bool already_asleep;
+
+        if (!ch || ch->deleted || !ch->in_room || ch->position == POS_DEAD)
+                return;
+
+        already_asleep = IS_AFFECTED(ch, AFF_SLEEP) != 0;
+        if (already_asleep && !room_trap)
+                return;
+
+        if (!already_asleep)
+        {
+                af.type = room_trap ? gsn_trap : gsn_sleep;
+                af.duration = 4 + (room_trap
+                    ? number_range(level / 3, level)
+                    : number_range(level / 6, level / 4));
+                af.location = APPLY_NONE;
+                af.modifier = 0;
+                af.bitvector = AFF_SLEEP;
+                affect_join(ch, &af);
+
+                if (IS_AWAKE(ch))
+                        send_to_char("You feel very sleepy...\n\r", ch);
+        }
+
+        /* Preserve the reveal from the old zero-damage trap tail. */
+        if (IS_AFFECTED(ch, AFF_INVISIBLE))
+        {
+                affect_strip(ch, gsn_invis);
+                affect_strip(ch, gsn_mass_invis);
+                affect_strip_raw_bit(ch, AFF_INVISIBLE);
+                if (!IS_AFFECTED(ch, AFF_INVISIBLE))
+                        act("$n fades into existence.", ch, NULL, NULL,
+                            TO_ROOM);
+        }
+
+        /* Traps have no character attacker to receive fall credit. */
+        if (!already_asleep)
+                force_sleep(ch, NULL);
+}
+
+
 void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 {
         ROOM_INDEX_DATA *pRoomIndex;
@@ -589,45 +634,56 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
         switch(obj->trap_dam) {
 
             case TRAP_DAM_SLEEP:
-                if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM) ) {
+                if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM))
+                        sleep_trap_victim(ch, obj->level, FALSE);
+                else
+                {
+                        struct sleep_target
+                        {
+                                CHAR_DATA *ch;
+                                struct sleep_target *next;
+                                int deaths;
+                        };
+                        struct sleep_target *targets = NULL;
+                        struct sleep_target **tail = &targets;
+                        struct sleep_target *entry;
+                        ROOM_INDEX_DATA *room = ch->in_room;
+                        const int level = obj->level;
 
-                        if ( IS_AFFECTED(ch, AFF_SLEEP) )
-                                return;
-
-                        af.type      = gsn_sleep;
-                        af.duration  = 4 + number_range(obj->level/6, obj->level/4);
-                        af.location  = APPLY_NONE;
-                        af.modifier  = 0;
-                        af.bitvector = AFF_SLEEP;
-                        affect_join( ch, &af );
-
-                        if ( IS_AWAKE(ch) ) {
-                                send_to_char( "You feel very sleepy...\n\r", ch );
-                                act( "$n goes to sleep.", ch, NULL, NULL, TO_ROOM );
-                                ch->position = POS_SLEEPING;
-                        }
-                }
-                else {
-                        for (wch = ch->in_room->people; wch != NULL; wch = wch->next_in_room) {
-
-                                if ( IS_AFFECTED(wch, AFF_SLEEP) )
+                        /* A mount's fall can remove a later rider as well. */
+                        for (wch = room->people; wch; wch = wch->next_in_room)
+                        {
+                                if (wch->deleted || wch->position == POS_DEAD)
                                         continue;
+                                entry = alloc_mem(sizeof(*entry));
+                                entry->ch = wch;
+                                entry->deaths = IS_NPC(wch)
+                                    ? 0 : wch->pcdata->killed;
+                                entry->next = NULL;
+                                *tail = entry;
+                                tail = &entry->next;
+                        }
 
-                                af.type      = gsn_trap;
-                                af.duration  = 4 + number_range(obj->level/3, obj->level);
-                                af.location  = APPLY_NONE;
-                                af.modifier  = 0;
-                                af.bitvector = AFF_SLEEP;
-                                affect_join( wch, &af );
+                        while (targets)
+                        {
+                                int deaths;
 
-                                if ( IS_AWAKE(wch) ) {
-                                        send_to_char( "You feel very sleepy...\n\r", wch );
-                                        act( "$n goes to sleep.", wch, NULL, NULL, TO_ROOM );
-                                        wch->position = POS_SLEEPING;
-                                }
+                                entry = targets;
+                                targets = entry->next;
+                                wch = entry->ch;
+                                deaths = entry->deaths;
+                                free_mem(entry, sizeof(*entry));
+
+                                if (wch->deleted || wch->in_room != room
+                                ||  wch->position == POS_DEAD
+                                || (!IS_NPC(wch)
+                                    && wch->pcdata->killed != deaths))
+                                        continue;
+                                sleep_trap_victim(wch, level, TRUE);
                         }
                 }
-                break;
+                /* A lethal fall may have moved ch or extracted obj. */
+                return;
 
             case TRAP_DAM_POISON:
                 if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM) ) {
