@@ -834,6 +834,10 @@ and undead objects on the ground, carried or worn.
 
 
 {WOctober 2026{x
+- High-level skill prerequisites now require the stated character level.
+  Existing class paths and earlier skill requirements are unchanged.
+- Advanced Healing trainers can now teach Regenerate to eligible Clerics.
+- ADVICE now explains later character-level requirements for new skills.
 
 - Fixed long-note display and paging without truncating note text.
 - Fixed lethal door BASH exit syncing and retaliation after death or movement.
@@ -4156,6 +4160,10 @@ Syntax: cast regenerate <<character>
 This spell will heal major non-fatal trauma that has been done to a player or
 mobile, for example serious brain injury, missing eyes or arms, a severed tail,
 etc.
+
+Only true Clerics (not Templars or Druids) can learn this spell.  You must
+reach character level 80 and master Complete Healing at 100 percent.
+An Advanced Healing teacher must also be skilled enough to train you.
 ~
 
 0 'CURE POISON'~
@@ -5787,6 +5795,22 @@ As an example, if you get advice where the teacher says there are no long
 term benefits then he cannot help you get a pre-req with that skill. This
 doesn't mean that skill doesn't give a pre-req, it means the teacher can't
 get you to it IF it exists.
+
+When a suggested new skill also needs a higher character level, the teacher
+will mention that requirement.  See HELP HIGH LEVEL SKILLS.
+~
+
+0 'HIGH LEVEL SKILLS' 'HIGH LEVEL SPELLS'~
+The high-level skill expansion unlocks skills at character levels 70, 80
+and 90, depending on your class path.  You must also meet the skill's other
+prerequisites and find a sufficiently skilled teacher.
+
+Pure classes and their subclasses have separate high-level skills.  For
+example, Regenerate belongs to the true Cleric path and requires level 80
+and Complete Healing at 100 percent.
+
+PRACTICE lists the skills you can currently learn.  ADVICE can explain
+whether improving a known skill could help you learn something new.
 ~
 
 0 'MANA CONTROL'~
@@ -5844,6 +5868,9 @@ knowledge and skills.  For example, cure serious wounds will require
 proficiency in cure light wounds and healing knowledge.  Each skill has
 associated knowledge areas which must be learnt.  A skill may have more
 than one skill or area of knowledge associated with it.
+
+High-level skills also require the appropriate character level.  See
+HELP HIGH LEVEL SKILLS.
 
 When a character levels, he is allocated practices for that level.  There
 are two types of practice: physical and intellectual.  A character's

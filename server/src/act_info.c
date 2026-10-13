@@ -4066,6 +4066,31 @@ int has_groups(CHAR_DATA *ch, int sn)
         return min;
 }
 
+/*
+ * The post-70 expansion uses class-base minima as actual character levels.
+ * Keep the base-counter check as well: it selects the appropriate class path.
+ * These two older rows use the original base-counter scale (level + 29),
+ * rather than expansion levels, and must retain their level 41/45 gates.
+ */
+static bool is_high_level_base_prereq(const struct pre_req_struct *prereq)
+{
+        int base = *prereq->pre_req;
+
+        /* Class and subclass bases are contiguous; teacher base is excluded. */
+        if (prereq->min < 70 || base < gsn_mage_base || base >= gsn_teacher_base)
+                return FALSE;
+
+        if ((*prereq->skill == gsn_advanced_consider &&
+             base == gsn_brawler_base && prereq->min == 70 &&
+             prereq->group == PRE_BRAWLER) ||
+            (*prereq->skill == gsn_poison_weapon &&
+             base == gsn_thief_base && prereq->min == 74 &&
+             prereq->group == PRE_THIEF))
+                return FALSE;
+
+        return TRUE;
+}
+
 int has_pre_req(CHAR_DATA *ch, int sn)
 {
 
@@ -4119,7 +4144,9 @@ int has_pre_req(CHAR_DATA *ch, int sn)
                                 sub = TRUE;
                         }
 
-                        if (ch->pcdata->learned[*pre_req_table[iter].pre_req] < pre_req_table[iter].min)
+                        if (ch->pcdata->learned[*pre_req_table[iter].pre_req] < pre_req_table[iter].min ||
+                            (is_high_level_base_prereq(&pre_req_table[iter]) &&
+                             ch->level < pre_req_table[iter].min))
                         {
                                 if (pre_req_table[iter].group == 0)
                                         return 0;
@@ -4157,6 +4184,9 @@ void do_advice(CHAR_DATA *ch, char *argument)
         int sn;
         int iter;
         int pre_group;
+        int next_sn = -1;
+        int next_group = 0;
+        int level_required = 0;
         bool result;
         CHAR_DATA *mob;
 
@@ -4270,6 +4300,8 @@ void do_advice(CHAR_DATA *ch, char *argument)
                                         if (pre_req_table[iter].min < effective_teach)
                                         {
                                                 result = TRUE;
+                                                next_sn = *pre_req_table[iter].skill;
+                                                next_group = pre_req_table[iter].group;
                                                 break;
                                         }
                                 }
@@ -4281,6 +4313,23 @@ void do_advice(CHAR_DATA *ch, char *argument)
         {
                 sprintf(buf, "If you were more proficient in %s %s, then I may be able to teach you some new knowledge.", skill_table[sn].name, ch->name);
                 do_say(mob, buf);
+
+                /* Explain any later level gate on this particular class path. */
+                for (iter = 0; iter < MAX_PRE_REQ; iter++)
+                {
+                        if (*pre_req_table[iter].skill == next_sn &&
+                            (pre_req_table[iter].group == next_group ||
+                             pre_req_table[iter].group == 0) &&
+                            is_high_level_base_prereq(&pre_req_table[iter]))
+                                level_required = UMAX(level_required, pre_req_table[iter].min);
+                }
+
+                if (ch->level < level_required)
+                {
+                        sprintf(buf, "You must also reach level %d before you can learn %s.",
+                                level_required, skill_table[next_sn].name);
+                        do_say(mob, buf);
+                }
         }
         else
         {
