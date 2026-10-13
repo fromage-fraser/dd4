@@ -1430,7 +1430,11 @@ bool process_output(DESCRIPTOR_DATA *d, bool fPrompt)
 
         if (d->pProtocol->WriteOOB) /* <-- Add this, and the ";" and "else" */
                 ;                   /* The last sent data was OOB, so do NOT draw the prompt */
-        else if (fPrompt && !merc_down && d->connected == CON_PLAYING)
+        else if (fPrompt && !merc_down
+        && (d->connected == CON_PLAYING
+            || (d->showstr_point && d->showstr_raw
+                && (d->connected == CON_NOTE_TEXT
+                    || d->connected == CON_NOTE_FINISH))))
         {
                 if (d->showstr_point)
                 {
@@ -3577,8 +3581,17 @@ static void clear_page(DESCRIPTOR_DATA *d)
 
 static void page_to_char(const char *txt, CHAR_DATA *ch)
 {
-        char *copy = malloc(strlen(txt) + 1);
+        char *copy;
 
+        /* Messages arriving during a draft preview must not replace it. */
+        if (ch->desc->showstr_raw
+        && (ch->desc->connected == CON_NOTE_TEXT
+            || ch->desc->connected == CON_NOTE_FINISH))
+        {
+                write_to_buffer(ch->desc, txt, 0);
+                return;
+        }
+        copy = malloc(strlen(txt) + 1);
         if (copy == NULL)
                 return;
         strcpy(copy, txt);
@@ -3589,7 +3602,7 @@ static void page_to_char(const char *txt, CHAR_DATA *ch)
 
 /* Colour helpers emit at most 19 bytes per source byte; protocol atoms less
  * than 32. Check the arithmetic before allocating, and shrink retained text. */
-bool send_to_char_paged(const char *txt, CHAR_DATA *ch)
+static bool send_to_char_paged_mode(const char *txt, CHAR_DATA *ch, bool colour)
 {
         char *coloured, *rendered, *smaller, *scan, *next;
         const char *result;
@@ -3604,11 +3617,14 @@ bool send_to_char_paged(const char *txt, CHAR_DATA *ch)
         if (length > MAX_NOTE_DISPLAY_LENGTH
         || length > (size_t)(INT_MAX - 1) / 32)
                 goto failed;
-        capacity = length * 20 + 1;
+        capacity = length * (colour ? 20 : 1) + 1;
         coloured = malloc(capacity);
         if (coloured == NULL)
                 goto failed;
-        colourconv_8bit_sized(coloured, capacity, txt, ch, TRUE);
+        if (colour)
+                colourconv_8bit_sized(coloured, capacity, txt, ch, TRUE);
+        else
+                strcpy(coloured, txt);
         output_length = strlen(coloured);
         /* Colour expansions contain no tabs, and COLOUR_CHAR is disabled in
          * protocol.h. Expansion factors therefore do not multiply: bound
@@ -3662,6 +3678,17 @@ bool send_to_char_paged(const char *txt, CHAR_DATA *ch)
 failed:
         write_to_buffer(ch->desc, "Unable to display this note right now.\n\r", 0);
         return FALSE;
+}
+
+bool send_to_char_paged(const char *txt, CHAR_DATA *ch)
+{
+        return send_to_char_paged_mode(txt, ch, TRUE);
+}
+
+/* Draft View shows literal DD4 markup, like its former write_to_buffer path. */
+bool send_to_char_paged_bw(const char *txt, CHAR_DATA *ch)
+{
+        return send_to_char_paged_mode(txt, ch, FALSE);
 }
 
 /* Do not insert the pager prompt inside ANSI/MXP escapes or a UTF-8 character. */
@@ -3812,6 +3839,8 @@ void show_string(struct descriptor_data *d, char *input)
         if (d->showstr_raw)
         {
                 show_rendered_string(d, input);
+                if (d->showstr_point == NULL)
+                        note_preview_prompt(d);
                 return;
         }
 

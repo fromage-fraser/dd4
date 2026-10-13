@@ -1068,6 +1068,17 @@ blocking unrelated directions.
 - Note recipient entry now rejects oversized lists without truncating them.
 - Fixed buffer overflows in recipient notices and resumed note headers.
 - Block lock, unlock and pick while non-corporeal.
+- Slow casts on other targets are now hostile after a successful casting roll.
+  Self-casting and failed casting rolls remain nonhostile.
+- Long unfinished notes can now be previewed safely with editor paging.
+- Sleep traps now dismount riders and apply normal terrain-aware fall damage.
+- Room sleep traps safely handle characters moved or killed by falling.
+- Fame updates no longer crash when a character loses their connection.
+- NPC identification checks head trauma before charging its fee.
+- MSET attribute limits now use the target's race and class.
+- Hoard quests respect the quester's enforced area-level limits.
+- NPC shop sales no longer access player-only bank data.
+- BUY validates quantities and checks totals without integer overflow.
 
 ~
 

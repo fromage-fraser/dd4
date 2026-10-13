@@ -6464,7 +6464,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                max = 21 + race_table[ch->race].str_bonus + class_table[ch->class].class_stats[0];
+                max = 21 + race_table[victim->race].str_bonus + class_table[victim->class].class_stats[0];
 
                 if (value < 3 || value > max)
                 {
@@ -6485,7 +6485,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                max = 21 + race_table[ch->race].int_bonus + class_table[ch->class].class_stats[1];
+                max = 21 + race_table[victim->race].int_bonus + class_table[victim->class].class_stats[1];
 
                 if (value < 3 || value > max)
                 {
@@ -6506,7 +6506,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                max = 21 + race_table[ch->race].wis_bonus + class_table[ch->class].class_stats[2];
+                max = 21 + race_table[victim->race].wis_bonus + class_table[victim->class].class_stats[2];
 
                 if (value < 3 || value > max)
                 {
@@ -6527,7 +6527,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                max = 21 + race_table[ch->race].dex_bonus + class_table[ch->class].class_stats[3];
+                max = 21 + race_table[victim->race].dex_bonus + class_table[victim->class].class_stats[3];
 
                 if (value < 3 || value > max)
                 {
@@ -6548,7 +6548,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                max = 21 + race_table[ch->race].con_bonus + class_table[ch->class].class_stats[4];
+                max = 21 + race_table[victim->race].con_bonus + class_table[victim->class].class_stats[4];
 
                 if (value < 3 || value > max)
                 {

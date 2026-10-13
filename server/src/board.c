@@ -573,6 +573,37 @@ static void do_nwrite (CHAR_DATA *ch, char *argument)
 
         act ("{G$c starts writing a note.{x", ch, NULL, NULL, TO_ROOM);
 
+        if (ch->pcdata->in_progress->text)
+        {
+                const char *format =
+                        "You are now continuing a new note on the {W%s{x board.\n\r"
+                        "If you are using tintin, type #verbose to turn off alias expansion!\n\r\n\r"
+                        "{YFrom{x:    %s\n\r\n\r{YTo{x:      %s\n\r"
+                        "{YExpires{x: %s\n\r{YSubject{x: %s\n\r"
+                        "{gYour note so far:\n\r{x%s";
+                NOTE_DATA *note = ch->pcdata->in_progress;
+                char *preview;
+                int length;
+
+                ch->desc->connected = CON_NOTE_TEXT;
+                length = snprintf(NULL, 0, format, ch->pcdata->board->short_name,
+                                  ch->name, note->to_list, ctime(&note->expire),
+                                  note->subject, note->text);
+                if (length < 0 || (preview = malloc((size_t)length + 1)) == NULL)
+                {
+                        write_to_buffer(ch->desc, "Unable to display this note right now.\n\r", 0);
+                        note_preview_prompt(ch->desc);
+                        return;
+                }
+                snprintf(preview, (size_t)length + 1, format,
+                         ch->pcdata->board->short_name, ch->name, note->to_list,
+                         ctime(&note->expire), note->subject, note->text);
+                if (!send_to_char_paged(preview, ch))
+                        note_preview_prompt(ch->desc);
+                free(preview);
+                return;
+        }
+
         /* Begin writing the note ! */
         sprintf (buf, "You are now %s a new note on the {W%s{x board.\n\r"
                       "If you are using tintin, type #verbose to turn off alias expansion!\n\r\n\r",
@@ -608,22 +639,6 @@ static void do_nwrite (CHAR_DATA *ch, char *argument)
                 ch->desc->connected = CON_NOTE_TO;
                 /* nanny takes over from here */
 
-        }
-        else /* we are continuing, print out all the fields and the note so far*/
-        {
-                send_to_char("{YTo{x:      ", ch);
-                send_to_char(ch->pcdata->in_progress->to_list, ch);
-                send_to_char("\n\r{YExpires{x: ", ch);
-                send_to_char(ctime(&ch->pcdata->in_progress->expire), ch);
-                send_to_char("\n\r{YSubject{x: ", ch);
-                send_to_char(ch->pcdata->in_progress->subject, ch);
-                send_to_char("\n\r", ch);
-                send_to_char ("{gYour note so far:\n\r{x", ch);
-                send_to_char (ch->pcdata->in_progress->text, ch);
-
-                send_to_char ("\n\rEnter text. Type '{W~{x' or '{WEND{x' on an empty line to end note.\n\r"
-                              "---------------------------------------------------------------------------\n\r",ch);
-                ch->desc->connected = CON_NOTE_TEXT;
         }
 
 }
@@ -1175,6 +1190,24 @@ void handle_con_note_expire(DESCRIPTOR_DATA *d, char * argument)
 
 
 
+/* Return from a draft preview to the same editor state, even after Quit. */
+void note_preview_prompt(DESCRIPTOR_DATA *d)
+{
+        if (d->connected == CON_NOTE_TEXT)
+        {
+                char buf[MAX_STRING_LENGTH];
+
+                colourconv_8bit(buf, "\n\rEnter text. Type '{W~{x' or '{WEND{x' on an empty line to end note.\n\r"
+                                    "---------------------------------------------------------------------------\n\r", d->character);
+                write_to_buffer(d, buf, 0);
+        }
+        else if (d->connected == CON_NOTE_FINISH)
+        {
+                write_to_buffer (d, szFinishPrompt, 0);
+                write_to_buffer (d, "\n\r", 0);
+        }
+}
+
 void handle_con_note_text (DESCRIPTOR_DATA *d, char * argument)
 {
         CHAR_DATA *ch = d->character;
@@ -1185,6 +1218,13 @@ void handle_con_note_text (DESCRIPTOR_DATA *d, char * argument)
         {
                 d->connected = CON_PLAYING;
                 bug ("nanny: In CON_NOTE_TEXT, but no note in progress",0);
+                return;
+        }
+
+        /* Preview controls must never become note text or editor commands. */
+        if (d->showstr_point && d->showstr_raw)
+        {
+                show_string(d, argument);
                 return;
         }
 
@@ -1255,6 +1295,12 @@ void handle_con_note_finish (DESCRIPTOR_DATA *d, char * argument)
                         return;
                 }
 
+                if (d->showstr_point && d->showstr_raw)
+                {
+                        show_string(d, argument);
+                        return;
+                }
+
                 switch (tolower(argument[0]))
                 {
                         case 'c': /* keep writing */
@@ -1265,13 +1311,16 @@ void handle_con_note_finish (DESCRIPTOR_DATA *d, char * argument)
                         case 'v': /* view note so far */
                                 if (ch->pcdata->in_progress->text)
                                 {
-                                        send_to_char("{gText of your note so far:{x\n\r", ch);
-                                        write_to_buffer (d, ch->pcdata->in_progress->text, 0);
+                                        colourconv_8bit(buf, "{gText of your note so far:{x\n\r", ch);
+                                        write_to_buffer(d, buf, 0);
+                                        if (!send_to_char_paged_bw(ch->pcdata->in_progress->text, ch))
+                                                note_preview_prompt(d);
                                 }
                                 else
+                                {
                                         write_to_buffer (d,"You haven't written a thing!\n\r\n\r",0);
-                                write_to_buffer (d, szFinishPrompt, 0);
-                                write_to_buffer (d, "\n\r",0);
+                                        note_preview_prompt(d);
+                                }
                                 break;
 
                         case 'p': /* post note */
