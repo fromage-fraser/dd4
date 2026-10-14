@@ -860,25 +860,30 @@ void strip_mount (CHAR_DATA* ch)
 void strip_swallow (CHAR_DATA* ch)
 {
         char buf[MAX_STRING_LENGTH];
+        CHAR_DATA *inside;
 
-        if (!ch->inside)
+        /* Never dereference an expired or unlinked host pointer. */
+        for (inside = char_list; inside; inside = inside->next)
         {
-                /* bug("strip_swallow: 'ch->inside' is null", 0); */
-                return;
+                if (inside == ch->inside && !inside->deleted)
+                        break;
         }
 
-        REMOVE_BIT(ch->affected_by, AFF_SWALLOWED);
+        ch->inside = NULL;
         affect_strip(ch, gsn_swallow);
+        if (!affect_bit_is_supplied(ch, AFF_SWALLOWED))
+                REMOVE_BIT(ch->affected_by, AFF_SWALLOWED);
+
+        if (!inside)
+                return;
 
         sprintf(buf, "You broke out from inside of %s!\n\r",
-                IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
+                IS_NPC(inside) ? inside->short_descr : inside->name);
         send_to_char (buf, ch);
 
         sprintf(buf, "$c broke out from inside of %s!",
-                IS_NPC(ch->inside) ? ch->inside->short_descr : ch->inside->name);
+                IS_NPC(inside) ? inside->short_descr : inside->name);
         act (buf, ch, NULL, NULL, TO_ROOM);
-
-        ch->inside = NULL;
 }
 
 
@@ -4627,7 +4632,7 @@ void do_smelt (CHAR_DATA *ch, char *argument)
         int             adamantite=0;
         int             titanium=0;
         int             steel=0;
-        bool found;
+        bool found = FALSE;
         int next;
 
         argument = one_argument(argument, arg);
@@ -5062,7 +5067,7 @@ void do_empower (CHAR_DATA *ch, char *argument)
         char            arg [ MAX_INPUT_LENGTH ];
         OBJ_DATA        *obj;
         OBJ_DATA        *forge;
-        bool found;
+        bool found = FALSE;
         argument = one_argument(argument, arg);
 
         if( !CAN_DO( ch, gsn_empower ) )
@@ -5608,7 +5613,7 @@ void do_serrate (CHAR_DATA *ch, char *argument)
         OBJ_DATA *forge;
         char arg [ MAX_INPUT_LENGTH ];
         AFFECT_DATA *paf;
-        bool found;
+        bool found = FALSE;
 
         if ( IS_NPC( ch ) )
                 return;
@@ -5722,7 +5727,7 @@ void do_imbue (CHAR_DATA *ch, char *argument)
         int             random_buff;
         int value = 1;
         AFFECT_DATA     *paf;
-        bool found;
+        bool found = FALSE;
 
         random_buff = -1;
 

@@ -166,11 +166,12 @@ void scan(CHAR_DATA *ch, int door)
 {
         char buf[MAX_STRING_LENGTH];
         char buf2[MAX_STRING_LENGTH];
-        int distance, visibility;
+        int distance, visibility, sky_penalty;
         bool found;
         ROOM_INDEX_DATA *was_in_room;
 
         visibility = 6;
+        sky_penalty = 0;
 
         if (!IS_SET(ch->act, PLR_HOLYLIGHT))
         {
@@ -199,13 +200,13 @@ void scan(CHAR_DATA *ch, int door)
                 case SKY_CLOUDLESS:
                         break;
                 case SKY_CLOUDY:
-                        visibility -= 1;
+                        sky_penalty = 1;
                         break;
                 case SKY_RAINING:
-                        visibility -= 2;
+                        sky_penalty = 2;
                         break;
                 case SKY_LIGHTNING:
-                        visibility -= 3;
+                        sky_penalty = 3;
                         break;
                 }
         }
@@ -217,7 +218,10 @@ void scan(CHAR_DATA *ch, int door)
           || ch->form == FORM_BAT
           || ch->form == FORM_WOLF
           || ch->form == FORM_DIREWOLF  ) )
-            visibility = 6;
+        {
+                visibility = 6;
+                sky_penalty = 0;
+        }
 
         was_in_room = ch->in_room;
         found = FALSE;
@@ -252,7 +256,17 @@ void scan(CHAR_DATA *ch, int door)
                         }
 
                         ch->in_room = pexit->to_room;
-                        if (IS_OUTSIDE(ch) ? distance > visibility : distance > 4)
+                        if (IS_OUTSIDE(ch))
+                        {
+                                int room_visibility = visibility;
+
+                                if (!IS_SET(ch->in_room->room_flags,
+                                            ROOM_NO_WEATHER))
+                                        room_visibility -= sky_penalty;
+                                if (distance > room_visibility)
+                                        break;
+                        }
+                        else if (distance > 4)
                                 break;
 
                         list = ch->in_room->people;
@@ -475,7 +489,14 @@ static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
                          * your swim skill ON.
                          */
 
-                        if (IS_AFFECTED(ch, AFF_FLYING) || IS_IMMORTAL(ch) || (ch->race == RACE_SAHUAGIN) || (ch->race == RACE_GRUNG) || ch->mount || IS_AFFECTED(ch, AFF_SWIM) || ((ch->in_room->sector_type != SECT_UNDERWATER) && (ch->in_room->sector_type != SECT_UNDERWATER_GROUND) && (ch->in_room->sector_type != SECT_WATER_SWIM) && (ch->in_room->sector_type != SECT_WATER_NOSWIM)) || is_affected(ch, gsn_mist_walk) || is_affected(ch, gsn_astral_sidestep) || ch->form == FORM_FLY)
+                        if (IS_AFFECTED(ch, AFF_FLYING) || IS_IMMORTAL(ch)
+                        || ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG
+                        || ch->mount || IS_AFFECTED(ch, AFF_SWIM)
+                        || (ch->in_room->sector_type != SECT_WATER_SWIM
+                            && ch->in_room->sector_type != SECT_WATER_NOSWIM)
+                        || is_affected(ch, gsn_mist_walk)
+                        || is_affected(ch, gsn_astral_sidestep)
+                        || ch->form == FORM_FLY)
                         {
                                 found = TRUE;
                         }
