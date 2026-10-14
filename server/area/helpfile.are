@@ -834,11 +834,21 @@ and undead objects on the ground, carried or worn.
 
 
 {WOctober 2026{x
+- Pet shops reject player characters and invalid pet prototypes.
+- HEAL correctly casts its three basic cures and validates before charging.
+- Lodging an item in a vault container now checks the vault weight limit.
+- You can surface from underwater into shallow water without a swim aid.
+- SCAN ignores sky penalties in rooms marked as having no weather.
+- Swallow effects release their target links on expiry or character removal.
+- BORROW validates loan amounts and coin capacity before changing balances.
+- STEAL correctly calculates coin amounts from large purses.
+- Banking rejects out-of-range coin amounts and safely checks large values.
+- Withdrawals check coin capacity before changing your wallet or balance.
+- Large coin stacks now update their weight without integer overflow.
 - High-level skill prerequisites now require the stated character level.
   Existing class paths and earlier skill requirements are unchanged.
 - Advanced Healing trainers can now teach Regenerate to eligible Clerics.
 - ADVICE now explains later character-level requirements for new skills.
-
 - Fixed long-note display and paging without truncating note text.
 - Fixed lethal door BASH exit syncing and retaliation after death or movement.
 - Support spells now award credit for actual effects on other group members,
@@ -1083,6 +1093,7 @@ blocking unrelated directions.
 - Hoard quests respect the quester's enforced area-level limits.
 - NPC shop sales no longer access player-only bank data.
 - BUY validates quantities and checks totals without integer overflow.
+- SMELT, EMPOWER, SERRATE and IMBUE now reliably require a forge in the room.
 
 ~
 

@@ -1611,6 +1611,15 @@ void do_lodge(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                if ((int64_t)get_obj_weight(obj)
+                    + ch->pcdata->vault_weight > can_vault_w(ch))
+                {
+                        send_to_char(
+                            "You can't put that much weight into your vault.\n\r",
+                            ch);
+                        return;
+                }
+
                 obj_from_char(obj);
                 obj_to_objvault(obj, container);
                 act("You put $p in $P in your vault.", ch, obj, container, TO_CHAR);
@@ -5717,7 +5726,8 @@ void do_steal(CHAR_DATA *ch, char *argument)
         if (!str_prefix(arg1, "coins"))
         {
                 int amount;
-                amount = (total_coins_char(victim) * number_range(10, 30)) / 50;
+                amount = (int)((int64_t)total_coins_char(victim)
+                               * number_range(10, 30) / 50);
 
                 if (amount <= 0)
                 {
@@ -5919,7 +5929,8 @@ void do_buy(CHAR_DATA *ch, char *argument)
                 pet = get_char_room(ch, arg);
                 ch->in_room = in_room;
 
-                if (!pet || !IS_SET(pet->act, ACT_PET))
+                if (!pet || !IS_NPC(pet) || !pet->pIndexData
+                || !IS_SET(pet->act, ACT_PET))
                 {
                         sprintf(log_buf, "Pet: %s Pet->act: %lu", pet ? "Created" : "Not Created", pet ? pet->act : 0);
                         log_string(log_buf);
@@ -6240,7 +6251,8 @@ void do_list(CHAR_DATA *ch, char *argument)
 
                 for (pet = pRoomIndexNext->people; pet; pet = pet->next_in_room)
                 {
-                        if (IS_SET(pet->act, ACT_PET))
+                        if (IS_NPC(pet) && pet->pIndexData
+                        && IS_SET(pet->act, ACT_PET))
                         {
                                 if (!found)
                                 {
@@ -7566,6 +7578,24 @@ void do_balance(CHAR_DATA *ch, char *argument)
         }
 }
 
+static bool parse_bank_amount(char *argument, int *amount)
+{
+        char *end;
+        long value;
+
+        if (!is_number(argument))
+                return FALSE;
+
+        errno = 0;
+        value = strtol(argument, &end, 10);
+        if (errno == ERANGE || end == argument || *end != '\0'
+            || value < 1 || value > INT_MAX)
+                return FALSE;
+
+        *amount = (int)value;
+        return TRUE;
+}
+
 void do_deposit(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *banker = NULL;
@@ -7573,6 +7603,7 @@ void do_deposit(CHAR_DATA *ch, char *argument)
         char arg2[MAX_INPUT_LENGTH];
         char buf[MAX_STRING_LENGTH];
         int amnt = 0;
+        int64_t new_balance;
         bool depositok = FALSE;
         bool all = FALSE;
 
@@ -7606,13 +7637,11 @@ void do_deposit(CHAR_DATA *ch, char *argument)
                 all = TRUE;
         else
         {
-                if (!is_number(arg1) || atoi(arg1) < 1)
+                if (!parse_bank_amount(arg1, &amnt))
                 {
                         send_to_char("That is not a valid number of coins to deposit.\n\r", ch);
                         return;
                 }
-
-                amnt = atoi(arg1);
         }
 
         if (arg2[0] == '\0')
@@ -7627,8 +7656,6 @@ void do_deposit(CHAR_DATA *ch, char *argument)
                         send_to_char("You have no coins to deposit.\n\r", ch);
                 else
                 {
-                        int64_t new_balance;
-
                         new_balance = (int64_t)ch->pcdata->bank
                                     + (int64_t)ch->plat * COIN_PLAT
                                     + (int64_t)ch->gold * COIN_GOLD
@@ -7677,7 +7704,9 @@ void do_deposit(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (ch->pcdata->bank + (amnt * COIN_PLAT) > max_balance)
+                new_balance = (int64_t)ch->pcdata->bank
+                            + (int64_t)amnt * COIN_PLAT;
+                if (new_balance > max_balance)
                 {
                         sprintf(buf, "Sorry %s, but you may only keep the equivalent of one million "
                                      "platinum in your account.",
@@ -7686,7 +7715,7 @@ void do_deposit(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                ch->pcdata->bank += (amnt * COIN_PLAT);
+                ch->pcdata->bank = (int)new_balance;
                 ch->plat -= amnt;
                 depositok = TRUE;
         }
@@ -7711,7 +7740,9 @@ void do_deposit(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (ch->pcdata->bank + (amnt * COIN_GOLD) > max_balance)
+                new_balance = (int64_t)ch->pcdata->bank
+                            + (int64_t)amnt * COIN_GOLD;
+                if (new_balance > max_balance)
                 {
                         sprintf(buf, "Sorry %s, but you may only keep the equivalent of one million "
                                      "platinum in your account.",
@@ -7720,7 +7751,7 @@ void do_deposit(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                ch->pcdata->bank += (amnt * COIN_GOLD);
+                ch->pcdata->bank = (int)new_balance;
                 ch->gold -= amnt;
                 depositok = TRUE;
         }
@@ -7744,7 +7775,9 @@ void do_deposit(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (ch->pcdata->bank + (amnt * COIN_SILVER) > max_balance)
+                new_balance = (int64_t)ch->pcdata->bank
+                            + (int64_t)amnt * COIN_SILVER;
+                if (new_balance > max_balance)
                 {
                         sprintf(buf, "Sorry %s, but you may only keep the equivalent of one million "
                                      "platinum in your account.",
@@ -7753,7 +7786,7 @@ void do_deposit(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                ch->pcdata->bank += (amnt * COIN_SILVER);
+                ch->pcdata->bank = (int)new_balance;
                 ch->silver -= amnt;
                 depositok = TRUE;
         }
@@ -7777,7 +7810,9 @@ void do_deposit(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (ch->pcdata->bank + (amnt * COIN_COPPER) > max_balance)
+                new_balance = (int64_t)ch->pcdata->bank
+                            + (int64_t)amnt * COIN_COPPER;
+                if (new_balance > max_balance)
                 {
                         sprintf(buf, "Sorry %s, but you may only keep the equivalent of one million "
                                      "platinum in your account.",
@@ -7786,7 +7821,7 @@ void do_deposit(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                ch->pcdata->bank += (amnt * COIN_COPPER);
+                ch->pcdata->bank = (int)new_balance;
                 ch->copper -= amnt;
                 depositok = TRUE;
         }
@@ -7814,6 +7849,7 @@ void do_withdraw(CHAR_DATA *ch, char *argument)
         char arg2[MAX_INPUT_LENGTH];
         char buf[MAX_STRING_LENGTH];
         int amnt;
+        int64_t value;
         bool withdrawok;
 
         if (IS_NPC(ch))
@@ -7842,13 +7878,12 @@ void do_withdraw(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!is_number(arg1) || atoi(arg1) < 1)
+        if (!parse_bank_amount(arg1, &amnt))
         {
                 send_to_char("That is not a valid number of coins to withdraw.\n\r", ch);
                 return;
         }
 
-        amnt = atoi(arg1);
         withdrawok = FALSE;
 
         if (!str_prefix(arg2, "platinum"))
@@ -7859,13 +7894,19 @@ void do_withdraw(CHAR_DATA *ch, char *argument)
                         do_say(banker, buf);
                         return;
                 }
-                if (ch->pcdata->bank < (amnt * COIN_PLAT))
+                value = (int64_t)amnt * COIN_PLAT;
+                if (ch->pcdata->bank < value)
                 {
                         sprintf(buf, "%s, you do not have %d platinum coins to withdraw.", ch->name, amnt);
                         do_say(banker, buf);
                         return;
                 }
-                ch->pcdata->bank -= (amnt * COIN_PLAT);
+                if ((int64_t)ch->plat + amnt > INT_MAX)
+                {
+                        send_to_char("You cannot carry that many platinum coins.\n\r", ch);
+                        return;
+                }
+                ch->pcdata->bank -= (int)value;
                 ch->plat += amnt;
                 withdrawok = TRUE;
         }
@@ -7878,13 +7919,19 @@ void do_withdraw(CHAR_DATA *ch, char *argument)
                         do_say(banker, buf);
                         return;
                 }
-                if (ch->pcdata->bank < (amnt * COIN_GOLD))
+                value = (int64_t)amnt * COIN_GOLD;
+                if (ch->pcdata->bank < value)
                 {
                         sprintf(buf, "%s, you do not have %d gold coins to withdraw.", ch->name, amnt);
                         do_say(banker, buf);
                         return;
                 }
-                ch->pcdata->bank -= (amnt * COIN_GOLD);
+                if ((int64_t)ch->gold + amnt > INT_MAX)
+                {
+                        send_to_char("You cannot carry that many gold coins.\n\r", ch);
+                        return;
+                }
+                ch->pcdata->bank -= (int)value;
                 ch->gold += amnt;
                 withdrawok = TRUE;
         }
@@ -7897,13 +7944,19 @@ void do_withdraw(CHAR_DATA *ch, char *argument)
                         do_say(banker, buf);
                         return;
                 }
-                if (ch->pcdata->bank < (amnt * COIN_SILVER))
+                value = (int64_t)amnt * COIN_SILVER;
+                if (ch->pcdata->bank < value)
                 {
                         sprintf(buf, "%s, you do not have %d silver coins to withdraw.", ch->name, amnt);
                         do_say(banker, buf);
                         return;
                 }
-                ch->pcdata->bank -= (amnt * COIN_SILVER);
+                if ((int64_t)ch->silver + amnt > INT_MAX)
+                {
+                        send_to_char("You cannot carry that many silver coins.\n\r", ch);
+                        return;
+                }
+                ch->pcdata->bank -= (int)value;
                 ch->silver += amnt;
                 withdrawok = TRUE;
         }
@@ -7916,13 +7969,19 @@ void do_withdraw(CHAR_DATA *ch, char *argument)
                         do_say(banker, buf);
                         return;
                 }
-                if (ch->pcdata->bank < (amnt * COIN_COPPER))
+                value = (int64_t)amnt * COIN_COPPER;
+                if (ch->pcdata->bank < value)
                 {
                         sprintf(buf, "%s, you do not have %d copper coins to withdraw.", ch->name, amnt);
                         do_say(banker, buf);
                         return;
                 }
-                ch->pcdata->bank -= (amnt * COIN_COPPER);
+                if ((int64_t)ch->copper + amnt > INT_MAX)
+                {
+                        send_to_char("You cannot carry that many copper coins.\n\r", ch);
+                        return;
+                }
+                ch->pcdata->bank -= (int)value;
                 ch->copper += amnt;
                 withdrawok = TRUE;
         }
@@ -7948,6 +8007,8 @@ void do_borrow(CHAR_DATA *ch, char *argument)
         char arg[MAX_INPUT_LENGTH];
         char buf[MAX_STRING_LENGTH];
         int amnt;
+        int64_t debt;
+        COIN_DATA coins;
 
         if (IS_NPC(ch))
                 return;
@@ -7974,16 +8035,22 @@ void do_borrow(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        amnt = atoi(arg);
+        if (!parse_bank_amount(arg, &amnt))
+        {
+                send_to_char("That is not a valid number of coins to borrow.\n\r", ch);
+                return;
+        }
 
-        if ((amnt - ch->pcdata->bank) > ch->level * 2000)
+        debt = (int64_t)amnt - ch->pcdata->bank;
+
+        if (debt > ch->level * 2000)
         {
                 sprintf(buf, "Your credit limit is %d %s.", ch->level * 2000, ch->name);
                 do_say(banker, buf);
                 return;
         }
 
-        if (amnt - ch->pcdata->bank < 0)
+        if (debt < 0)
         {
                 sprintf(buf, "If you are only borrowing that much, withdraw the coins instead %s.", ch->name);
                 do_say(banker, buf);
@@ -7994,6 +8061,16 @@ void do_borrow(CHAR_DATA *ch, char *argument)
         {
                 sprintf(buf, "You must borrow at least 100 coins %s.", ch->name);
                 do_say(banker, buf);
+                return;
+        }
+
+        coin_crunch(amnt, &coins);
+        if ((int64_t)ch->plat + coins.plat > INT_MAX
+            || (int64_t)ch->gold + coins.gold > INT_MAX
+            || (int64_t)ch->silver + coins.silver > INT_MAX
+            || (int64_t)ch->copper + coins.copper > INT_MAX)
+        {
+                send_to_char("You cannot carry that many coins.\n\r", ch);
                 return;
         }
 
@@ -8017,7 +8094,8 @@ void calc_coin_weight(CHAR_DATA *ch)
 {
         int cw;
 
-        cw = (ch->plat + ch->gold + ch->silver + ch->copper) / 10;
+        cw = (int)(((int64_t)ch->plat + ch->gold
+                    + ch->silver + ch->copper) / 10);
         ch->coin_weight = cw;
 }
 

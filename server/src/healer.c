@@ -36,9 +36,9 @@ void do_heal(CHAR_DATA *ch, char *argument)
         const struct healer_spell spell_list[14] =
             {
                 /*  keyword, spell name, price in gold pieces */
-                {"light", "cure light wounds", 2},
-                {"serious", "cure serious wounds", 5},
-                {"critical", "cure critical wounds", 10},
+                {"light", "cure light", 2},
+                {"serious", "cure serious", 5},
+                {"critical", "cure critical", 10},
                 {"heal", "heal", 15},
                 {"power", "power heal", 35},
                 {"blindness", "cure blindness", 5},
@@ -107,6 +107,22 @@ void do_heal(CHAR_DATA *ch, char *argument)
         {
                 if (is_name(arg, spell_list[i].keyword))
                 {
+                        /* Validate the service before taking payment. */
+                        sn = -1;
+                        if (str_cmp(spell_list[i].keyword, "mana"))
+                        {
+                                sn = skill_lookup(spell_list[i].spell_name);
+                                if (sn < 0 || sn >= MAX_SKILL
+                                || !skill_table[sn].spell_fun
+                                || skill_table[sn].spell_fun == spell_null)
+                                {
+                                        send_to_char(
+                                            "That service is unavailable.\n\r",
+                                            ch);
+                                        return;
+                                }
+                        }
+
                         if ((spell_list[i].price * 100) > total_coins_char(ch))
                         {
                                 act("$C says 'You do not have enough money for my services.'",
@@ -133,9 +149,6 @@ void do_heal(CHAR_DATA *ch, char *argument)
                                 return;
                         }
 
-                        sn = skill_lookup(spell_list[i].spell_name);
-                        if (sn < 0 || sn >= MAX_SKILL)
-                                return;
                         sound_spell_sfx( ch, sn, "cast" );
                         (*skill_table[sn].spell_fun)(sn, mob->level, mob, ch);
 

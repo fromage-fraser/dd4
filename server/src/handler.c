@@ -1244,6 +1244,22 @@ void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
 
         paf->deleted = TRUE;
 
+        /* The inside link belongs only to the ordinary swallow affects. */
+        if (paf->type == gsn_swallow
+        &&  paf->source_type == AFFECT_SOURCE_NONE)
+        {
+                AFFECT_DATA *other;
+
+                for (other = ch->affected; other; other = other->next)
+                {
+                        if (!other->deleted && other->type == gsn_swallow
+                        &&  other->source_type == AFFECT_SOURCE_NONE)
+                                break;
+                }
+                if (!other)
+                        ch->inside = NULL;
+        }
+
         return;
 }
 
@@ -2463,6 +2479,15 @@ void extract_char( CHAR_DATA *ch, bool fPull )
         {
                 bug( "Extract_char: NULL.", 0 );
                 return;
+        }
+
+        /* Extraction must not leave links to this character behind. */
+        if (ch->inside || is_affected(ch, gsn_swallow))
+                strip_swallow(ch);
+        for (wch = char_list; wch; wch = wch->next)
+        {
+                if (wch->inside == ch)
+                        strip_swallow(wch);
         }
 
         /* Grab protocol (may be NULL for NPCs or non-GMCP connections) */
