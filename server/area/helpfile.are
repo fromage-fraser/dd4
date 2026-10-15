@@ -1132,6 +1132,8 @@ blocking unrelated directions.
 - Teleport now checks the traveller's mount and limits destination retries.
 - NO_UNDEAD now also checks Recall, Word of Recall and clan Home.
 - Recall leaves blocked followers behind and no longer moves mounts twice.
+- NO_UNDEAD now also checks Astral Vortex and Banish.
+- Astral Vortex keeps riders with their mounts; Banish limits room searches.
 
 ~
 
@@ -1139,13 +1141,17 @@ blocking unrelated directions.
 NO_UNDEAD is a permanent room flag, not a spell you cast.
 
 Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
-portals, Recall or clan Home. Mobile resets and Animate Dead cannot
-create them here either. Undead mounts and commanded servants have
-no exception. A blocked animation leaves its corpse untouched.
+portals, Recall, clan Home, Astral Vortex or Banish. Mobile resets
+and Animate Dead cannot create them here either. Undead mounts and
+commanded servants have no exception. A blocked animation leaves
+its corpse untouched.
 
 Recall leaves blocked followers behind. An undead NPC mount stops
 its rider's whole Recall or Home attempt instead. Word of Recall
 uses the same checks. Clan Home does not bring other followers.
+
+Astral Vortex takes the caster's mount along. Banish keeps a mounted
+pair together, whether it targets the rider or the mount.
 
 Player vampires can enter and leave normally, but the room burns them
 for 30-60 HP each game tick instead of their usual HP regeneration.
@@ -1155,9 +1161,9 @@ It works indoors, at night, underwater and in mist form. Being in
 sunlight does not add another burn, and crossing an exit does not
 cause extra damage.
 
-Creatures already inside are not removed. Arena travel, Astral Vortex,
-Banish and Mass Teleport are not checked yet. Neither are gravity,
-scripted placement or immortal loading and transfer.
+Creatures already inside are not removed. Arena travel, Mass Teleport,
+gravity, scripted placement and immortal loading or transfer are not
+checked yet.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
