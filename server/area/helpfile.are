@@ -834,6 +834,7 @@ and undead objects on the ground, carried or worn.
 
 
 {WOctober 2026{x
+- Resist Toxin now protects against poison in food, drinks and fountains.
 - RESCUE follows PvP protections and KILLER rules. Redirected opponents
   may retaliate lawfully against that rescuer while the fight continues.
 - BANISH moves rider and mount together, checking both travellers. Either
@@ -6479,6 +6480,9 @@ quivering wrecks incapable of action.
 
 Improve your resistance to being poisoned.  This skill is used
 automatically once learned.
+
+This includes poison in food, drinks and fountains. Bonus Exotic prevents
+these poisons while the effect lasts.
 ~
 
 0 FOCUS~

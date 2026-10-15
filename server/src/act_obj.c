@@ -2732,6 +2732,34 @@ static void holy_water_drink_effect(CHAR_DATA *ch, int liquid)
             RES_HOLY);
 }
 
+/*
+ * Ingested poison uses the existing player toxin protections. Bonus Exotic
+ * guarantees protection; gag settings suppress only the success feedback.
+ */
+static bool resists_ingested_poison(CHAR_DATA *ch)
+{
+        if (IS_NPC(ch))
+                return FALSE;
+
+        if (is_affected(ch, gsn_bonus_exotic)
+        ||  number_percent() < ch->pcdata->learned[gsn_resist_toxin])
+        {
+                if (ch->gag < 2)
+                {
+                        sound_combat_resist_toxin_sfx(ch);
+                        send_to_char(
+                            "<46>Yo<47>u r<48>es<49>is<48>t t<47>he "
+                            "<46>po<47>is<48>on <49>su<48>rg<47>in<46>g "
+                            "t<47>hr<48>ou<49>gh <48>yo<47>ur "
+                            "<46>ve<47>in<48>s.<0>\n\r",
+                            ch);
+                }
+                return TRUE;
+        }
+
+        return FALSE;
+}
+
 void do_drink(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
@@ -2856,7 +2884,7 @@ void do_drink(CHAR_DATA *ch, char *argument)
                         }
 
                         /* Fountain has been poisoned */
-                        if (obj->value[3] != 0)
+                        if (obj->value[3] != 0 && !resists_ingested_poison(ch))
                         {
                                 AFFECT_DATA af;
 
@@ -2973,7 +3001,7 @@ void do_drink(CHAR_DATA *ch, char *argument)
                         send_to_char("{RDelicious, but blood must be from a fresh corpse to satisfy your bloodlust.{x\n\r", ch);
                 }
 
-                if (obj->value[3] != 0)
+                if (obj->value[3] != 0 && !resists_ingested_poison(ch))
                 {
                         AFFECT_DATA af;
 
@@ -3665,7 +3693,7 @@ void do_eat(CHAR_DATA *ch, char *argument)
                                 send_to_char("You are no longer hungry.\n\r", ch);
                 }
 
-                if (obj->value[3] != 0)
+                if (obj->value[3] != 0 && !resists_ingested_poison(ch))
                 {
                         AFFECT_DATA af;
 
