@@ -834,6 +834,38 @@ and undead objects on the ground, carried or worn.
 
 
 {WOctober 2026{x
+- RESCUE follows PvP protections and KILLER rules. Redirected opponents
+  may retaliate lawfully against that rescuer while the fight continues.
+- BANISH moves rider and mount together, checking both travellers. Either
+  participant saving prevents both from moving.
+- TELL and REPLY reach players using SWITCH or POSSESSION through their
+  active body, preserving identity, communication settings and reply target.
+- Player silence remains in force while controlling another body.
+- NPC social retaliation respects noncorporeal forms.
+- Injured mobile creatures safely handle exits without a destination.
+- Player corpses protect their contents for the owner and current group.
+  Bound items retain their own restrictions, including when emptying corpses.
+- Death and character removal safely transfer strength-dependent equipment.
+- ORDER applies player permissions to each follower's commands.
+- Mobile programs handle missing purge targets and extracted actors safely.
+- QUAFF checks potion ownership when drinking from a pouch.
+- LOOK and EXAMINE safely report containers with invalid liquid types.
+- WHO safely displays large player lists with paging.
+- Auctions cancel before expired items or departing participants are removed.
+  Refunds try the original purse or bank, then the other if needed. If both
+  are full, coins appear on the ground in the bidder's room.
+- Large purses retain their full value when calculating totals and change.
+  Transfers, splitting, theft, sales and gambling check coin capacity before
+  changing balances. Money given to bribe programs retains its full value.
+- Dropped coin piles and coins in NPC corpses retain their full amounts.
+- Bids and wager amounts reject values outside their numeric range.
+- Quest rewards use the bank, then gold in the purse, then ground overflow.
+- Sacrifice and extortion rewards keep their denominations at purse limits.
+  Any excess appears as coins on the ground. Failed extortion safely charges
+  the intended penalty from large purses.
+- Chaos converts coins to copper while space remains, leaving excess intact.
+- Simultaneous Fireshield deaths reward surviving party members at the fight.
+  Dead combatants and characters elsewhere receive no kill experience.
 - Pet shops reject player characters and invalid pet prototypes.
 - HEAL correctly casts its three basic cures and validates before charging.
 - Lodging an item in a vault container now checks the vault weight limit.
@@ -2142,9 +2174,9 @@ Syntax: order <<character> command
 Syntax: order all         command
 
 ORDER orders one or all of your charmed followers (including pets) to
-perform any command.  The command may have arguments.  You are responsible
-for the actions of your followers, and others who attack your followers
-will incur the same penalty as if they attacked you directly.
+perform permitted commands.  The command may have arguments.  You are
+responsible for the actions of your followers, and others who attack your
+followers will incur the same penalty as if they attacked you directly.
 
 Most charmed creatures lose their aggressive nature (while charmed).
 
@@ -2193,6 +2225,10 @@ work even if you can't see the player, and without revealing their
 identity.
 
 You must be awake to SAY or TELL, but you can still REPLY while sleeping.
+
+TELL and REPLY addressed to a player using SWITCH or POSSESSION reach the
+body they control, using their player identity and communication settings.
+Sleep and combat restrictions apply to the body receiving the message.
 ~
 
 0 HOLD REMOVE WEAR WIELD~
@@ -2367,6 +2403,10 @@ Corpses decay after time, and the objects inside corpses decay with them.
 Player corpses last *roughly* 30 hours of game time (15 minutes of real
 time).  Only the player who died, or someone in the same group, can
 retrieve objects from a player's corpse.
+
+Group access uses your current group with the deceased player while that
+player remains in the world. Item bindings still apply to each object.
+Immortals can access corpses independently of group membership.
 ~
 
 
@@ -3269,6 +3309,13 @@ of their attacks to the rescuer.  If your group member is facing multiple
 opponents you'll need to rescue them multiple times.  Note you can set the
 order of your group so that when you walk into a room one member gets
 attacked initially - see HELP GRORDER for details.
+
+Rescuing someone from a player is your choice to engage that opponent.
+Normal PvP protections apply, and a successful rescue follows normal
+KILLER rules. The redirected opponent may retaliate against that rescuer
+without becoming a KILLER for the retaliation. This permission ends when
+that opponent stops or changes targets, or either character leaves or dies.
+Rescuing someone from a KILLER does not make you a KILLER.
 ~
 
 0 'BASH DOOR'~
@@ -3383,6 +3430,8 @@ Syntax: cast possession <<victim>
 This spell will allow you to POSSESS your victim (unless they are very
 strong-willed), taking full control of them.  To return to your own body, cast
 the RELEASE spell.
+
+Any silence imposed on you still applies while you possess another body.
 
 Note: it is a very bad idea to learn this spell and NOT learn RELEASE at the
 same time.
@@ -4605,6 +4654,10 @@ Syntax: cast <<banish> <<target>
 
 If successful the target is BANISHED to a random location in the world.  If they
 resist, or the attempt fails, combat will be initiated if not already occurring.
+
+If the target is a ridden mount, or is riding one, both travel together.
+Both must be eligible to move, and each gets a saving throw. If either
+resists, neither moves. The destination must allow mounted travel.
 ~
 
 0 VENTRILOQUATE 'CREATE SOUND'~
@@ -6183,6 +6236,12 @@ you have a large enough balance, or from your person if not.  Money
 received for selling an item by auction goes straight to your bank account.
 
 Immortals may cancel an auction with 'AUCTION STOP'.
+
+An auction is cancelled if its item expires or a participant leaves the
+world. Refunds first return to the purse or bank that paid the bid. If it
+cannot hold the money, the other destination is tried. If neither can hold
+it, the refunded coins are placed on the ground in the bidder's room.
+A sale is cancelled if the seller's bank cannot hold the payment.
 ~
 
 0 'SUMMON AVATAR'~

@@ -56,7 +56,9 @@ static bool blessed_weapon_vs_undead
         args((OBJ_DATA *weapon, CHAR_DATA *victim));
 static int blessed_weapon_damage_bonus
         args((int dam, OBJ_DATA *weapon, CHAR_DATA *victim));
-static void group_gain_internal args((CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called, bool solo));
+static void group_gain_internal
+        args((CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called,
+              bool solo, bool survivors_only));
 static void damage_internal args((CHAR_DATA *ch,
                                   CHAR_DATA *victim,
                                   int dam,
@@ -1619,8 +1621,9 @@ void death_penalty(CHAR_DATA *ch, CHAR_DATA *victim)
                                         victim->name);
                                 do_info(ch, buf);
 
-                                ch->pcdata->bank = UMIN(2000000000,
-                                                        ch->pcdata->bank + victim->pcdata->bounty);
+                                ch->pcdata->bank = (int)UMIN((int64_t)2000000000,
+                                                        (int64_t)ch->pcdata->bank
+                                                        + victim->pcdata->bounty);
                                 victim->pcdata->bounty = 0;
 
                                 if (IS_SET(victim->status, PLR_HUNTED))
@@ -1772,6 +1775,31 @@ static bool dracolich_natural_attack(CHAR_DATA *ch, int dt)
             || (dt == TYPE_HIT + 7  && (parts & PART_TAILATTACK));
 }
 
+/* Resolve ownership before a simultaneous death can sever follower links. */
+static void damage_death_gain(CHAR_DATA *opponent, CHAR_DATA *fighter,
+                              bool forced_fall, bool survivors_only)
+{
+        /* If a mob you're grouped with killsteals for you, you get the reward */
+        if ((IS_NPC(opponent) && opponent->master)
+        && (!forced_fall || (!opponent->master->deleted
+            && opponent->master->in_room == fighter->in_room
+            && opponent->master->position != POS_DEAD
+            && opponent->master->desc
+            && opponent->master->desc->connected == CON_PLAYING))
+        && (opponent->master->sub_class == SUB_CLASS_WITCH || opponent->master->sub_class == SUB_CLASS_INFERNALIST || opponent->master->sub_class == SUB_CLASS_NECROMANCER || opponent->master->sub_class == SUB_CLASS_KNIGHT || ((opponent->master->class == CLASS_SHAPE_SHIFTER) && (opponent->master->sub_class == 0)) || opponent->master->sub_class == SUB_CLASS_WEREWOLF))
+        {
+                group_gain_internal(opponent->master, fighter, TRUE,
+                    forced_fall && opponent->master->in_room != fighter->in_room,
+                    survivors_only);
+        }
+        else
+        {
+                group_gain_internal(opponent, fighter, FALSE,
+                    forced_fall && opponent->in_room != fighter->in_room,
+                    survivors_only);
+        }
+}
+
 static void damage_internal(CHAR_DATA *ch,
                             CHAR_DATA *victim,
                             int dam,
@@ -1785,6 +1813,7 @@ static void damage_internal(CHAR_DATA *ch,
         CHAR_DATA *fighter;
         CHAR_DATA *opponent;
         int count;
+        bool simultaneous_deaths;
         int no_defense = 0;
         OBJ_DATA *turret_unit;
         int reflected_dam = 0;
@@ -2354,6 +2383,31 @@ static void damage_internal(CHAR_DATA *ch,
         update_pos(victim);
 
         /*
+         * Settle simultaneous deaths before raw_kill() can move a player or
+         * extract a pet. Keep the original group totals, but pay survivors
+         * only. The flag prevents a second award after either death.
+         */
+        simultaneous_deaths = !forced_fall && ch != victim
+            && ch->position == POS_DEAD && victim->position == POS_DEAD;
+        if (simultaneous_deaths)
+        {
+                damage_death_gain(victim, ch, FALSE, TRUE);
+                damage_death_gain(ch, victim, FALSE, TRUE);
+
+                /* These casualties must not cash in old credit later. */
+                if (!IS_NPC(ch))
+                {
+                        ch->pcdata->dam_bonus = 0;
+                        ch->pcdata->group_support_bonus = 0;
+                }
+                if (!IS_NPC(victim))
+                {
+                        victim->pcdata->dam_bonus = 0;
+                        victim->pcdata->group_support_bonus = 0;
+                }
+        }
+
+        /*
          * Send real-time enemy status update to web clients
          * Triggered on every damage tick for live HP tracking in UI
          */
@@ -2426,23 +2480,9 @@ static void damage_internal(CHAR_DATA *ch,
                 /* payoff for killing things */
                 if (fighter->position == POS_DEAD)
                 {
-                        /* If a mob you're grouped with killsteals for you, you get the reward */
-                        if ((IS_NPC(opponent) && opponent->master)
-                        && (!forced_fall || (!opponent->master->deleted
-                            && opponent->master->in_room == fighter->in_room
-                            && opponent->master->position != POS_DEAD
-                            && opponent->master->desc
-                            && opponent->master->desc->connected == CON_PLAYING))
-                        && (opponent->master->sub_class == SUB_CLASS_WITCH || opponent->master->sub_class == SUB_CLASS_INFERNALIST || opponent->master->sub_class == SUB_CLASS_NECROMANCER || opponent->master->sub_class == SUB_CLASS_KNIGHT || ((opponent->master->class == CLASS_SHAPE_SHIFTER) && (opponent->master->sub_class == 0)) || opponent->master->sub_class == SUB_CLASS_WEREWOLF))
-                        {
-                                group_gain_internal(opponent->master, fighter, TRUE,
-                                    forced_fall && opponent->master->in_room != fighter->in_room);
-                        }
-                        else
-                        {
-                                group_gain_internal(opponent, fighter, FALSE,
-                                    forced_fall && opponent->in_room != fighter->in_room);
-                        }
+                        if (!simultaneous_deaths)
+                                damage_death_gain(opponent, fighter,
+                                                  forced_fall, FALSE);
 
                         if (IS_NPC(fighter))
                         {
@@ -2676,6 +2716,18 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim)
  */
 void check_killer(CHAR_DATA *ch, CHAR_DATA *victim)
 {
+        /*
+         * A rescue redirects this opponent involuntarily. Only that exact
+         * ongoing fight permits retaliation against the voluntary rescuer.
+         */
+        if (!IS_NPC(ch) && !IS_NPC(victim)
+        &&  !ch->deleted && !victim->deleted
+        &&  ch->position != POS_DEAD && victim->position != POS_DEAD
+        &&  ch->rescue_retaliation == victim
+        &&  ch->fighting == victim
+        &&  ch->in_room && ch->in_room == victim->in_room)
+                return;
+
         /*
          *  KILLER flag is set if:
          *  a) player murders another player, and
@@ -3163,6 +3215,9 @@ bool check_aura_of_fear(CHAR_DATA *ch, CHAR_DATA *victim)
 
 void update_pos(CHAR_DATA *victim)
 {
+        /* Death ends the pair's right even if later healing revives it. */
+        if (victim->position == POS_DEAD)
+                clear_rescue_retaliation(victim);
 
         if (IS_SET(victim->act, ACT_UNKILLABLE))
         {
@@ -3202,6 +3257,7 @@ void update_pos(CHAR_DATA *victim)
         if (IS_NPC(victim))
         {
                 victim->position = POS_DEAD;
+                clear_rescue_retaliation(victim);
                 return;
         }
 
@@ -3216,6 +3272,9 @@ void update_pos(CHAR_DATA *victim)
 
         else
                 victim->position = POS_STUNNED;
+
+        if (victim->position == POS_DEAD)
+                clear_rescue_retaliation(victim);
 
         return;
 }
@@ -3326,6 +3385,7 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
                 act("$c has gone BERSERK!", ch, NULL, NULL, TO_ROOM);
         }
 
+        ch->rescue_retaliation = NULL;
         ch->fighting = victim;
         ch->position = POS_FIGHTING;
         ch->combat_stealth_transition = transition;
@@ -3357,6 +3417,7 @@ void stop_fighting(CHAR_DATA *ch, bool fBoth)
         {
                 if (fch == ch || (fBoth && fch->fighting == ch))
                 {
+                        fch->rescue_retaliation = NULL;
                         fch->fighting = NULL;
                         fch->fear_aura_checked = FALSE;
                         fch->position = POS_STANDING;
@@ -3387,6 +3448,26 @@ void stop_fighting(CHAR_DATA *ch, bool fBoth)
         refresh_combat_gear_stealth(ch);
         refresh_combat_gear_stealth(old_victim);
         return;
+}
+
+/*
+ * Departure and character reuse must not preserve rescue rights or leave
+ * live characters holding pointers to a departed rescuer. One world-list
+ * pass bounds cleanup without allocating or persisting combat state.
+ */
+void clear_rescue_retaliation(CHAR_DATA *ch)
+{
+        CHAR_DATA *fch;
+
+        if (!ch)
+                return;
+
+        ch->rescue_retaliation = NULL;
+        for (fch = char_list; fch; fch = fch->next)
+        {
+                if (fch->rescue_retaliation == ch)
+                        fch->rescue_retaliation = NULL;
+        }
 }
 
 /* Keep gear suppressed across an existing stop/start opponent change. */
@@ -3442,7 +3523,7 @@ void make_corpse(CHAR_DATA *ch)
                 name = ch->short_descr;
                 corpse->level = ch->level;
 
-                if ((ch->plat + ch->gold + ch->silver + ch->copper) > 0)
+                if ((int64_t)ch->plat + ch->gold + ch->silver + ch->copper > 0)
                 {
                         coins = create_money(ch->plat, ch->gold, ch->silver, ch->copper);
 
@@ -3482,6 +3563,8 @@ void make_corpse(CHAR_DATA *ch)
         corpse->description = str_dup(buf);
 
         report_eq_falling = FALSE;
+
+        unequip_all_for_removal(ch);
 
         for (obj = ch->carrying; obj; obj = obj_next)
         {
@@ -3997,13 +4080,16 @@ void raw_kill(CHAR_DATA *ch, CHAR_DATA *victim, bool corpse)
 
 void group_gain(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called)
 {
-        group_gain_internal(ch, victim, mob_called, FALSE);
+        group_gain_internal(ch, victim, mob_called, FALSE, FALSE);
 }
 
 /* A remote fall credits its live cause, never the cause's unrelated room group. */
-static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called, bool solo)
+static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim,
+                                bool mob_called, bool solo,
+                                bool survivors_only)
 {
         CHAR_DATA *gch;
+        ROOM_INDEX_DATA *room;
         char buf[MAX_STRING_LENGTH];
         int members;
         int npc_members;
@@ -4034,14 +4120,22 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
                 return;
         }
 
+        room = survivors_only ? victim->in_room : ch->in_room;
+        if (survivors_only && (!room || ch->deleted || victim->deleted))
+                return;
+
         tlevel = 0;
         members = 0;
         npc_members = 0;
         pc_members = 0;
 
-        for (gch = solo ? ch : ch->in_room->people; gch;
+        for (gch = solo ? ch : room->people; gch;
              gch = solo ? NULL : gch->next_in_room)
         {
+                if (survivors_only && (gch->deleted || gch->in_room != room))
+                        continue;
+
+                /* Casualties still count for the existing reward formulas. */
                 if (is_same_group(gch, ch))
                 {
                         tlevel += gch->level;
@@ -4072,13 +4166,21 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool mob_calle
                 }
         }
 
-        for (gch = solo ? ch : ch->in_room->people; gch;
+        if (survivors_only && (members == 0 || tlevel <= 0))
+                return;
+
+        for (gch = solo ? ch : room->people; gch;
              gch = solo ? NULL : gch->next_in_room)
         {
                 OBJ_DATA *obj;
                 OBJ_DATA *obj_next;
                 total_xp = 0;
                 total_message = 0;
+
+                if (survivors_only
+                    && (gch->deleted || gch->position == POS_DEAD
+                        || gch->in_room != room))
+                        continue;
 
                 if (!is_same_group(gch, ch))
                         continue;
@@ -7239,6 +7341,11 @@ void do_rescue(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /* Choosing a player or their mount uses ordinary PvP limits. */
+        if (!IS_NPC(ch) && (!IS_NPC(vch) || vch->rider)
+        &&  is_safe(ch, vch))
+                return;
+
         WAIT_STATE(ch, skill_table[gsn_rescue].beats);
 
         if (!IS_NPC(ch) && number_percent() > ch->pcdata->learned[gsn_rescue])
@@ -7247,11 +7354,17 @@ void do_rescue(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (!IS_NPC(ch) && !IS_NPC(vch))
+                check_killer(ch, vch);
+
         act("You rescue $N!", ch, NULL, victim, TO_CHAR);
         act("$n rescues you!", ch, NULL, victim, TO_VICT);
         act("$n rescues $N!", ch, NULL, victim, TO_NOTVICT);
 
         change_fighting(vch, ch);
+
+        if (!IS_NPC(ch) && !IS_NPC(vch))
+                vch->rescue_retaliation = ch;
 
         if (!IS_NPC(ch))
                 ch->pcdata->group_support_bonus += 1;

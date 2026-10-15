@@ -551,7 +551,7 @@ void do_mppurge( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( !( victim = get_char_room( ch, arg ) ) == 0 )
+    if ( !( victim = get_char_room( ch, arg ) ) )
     {
         if ( ( obj = get_obj_here( ch, arg ) ) )
         {
@@ -655,7 +655,7 @@ void do_mpat( CHAR_DATA *ch, char *argument )
      */
     for ( wch = char_list; wch != NULL; wch = wch->next )
     {
-        if ( wch == ch )
+        if ( wch == ch && !wch->deleted && wch->in_room )
         {
             char_from_room( ch );
             char_to_room( ch, original );

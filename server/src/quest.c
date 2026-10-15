@@ -47,6 +47,28 @@
 
 DECLARE_DO_FUN( do_say );
 
+/* Keep ordinary bank rewards, with complete gold payment if the bank is full. */
+static bool quest_reward_coins(CHAR_DATA *ch, int reward)
+{
+        int64_t value;
+
+        if (!ch || ch->deleted || !ch->in_room || !ch->pcdata || reward < 0)
+                return FALSE;
+
+        value = (int64_t)reward * COIN_GOLD;
+        if ((int64_t)ch->pcdata->bank + value <= INT_MAX)
+        {
+                ch->pcdata->bank = (int)((int64_t)ch->pcdata->bank + value);
+                send_to_char("The money is placed into your bank account.\n\r", ch);
+                return TRUE;
+        }
+
+        if (!reward_coins(ch, 0, reward, 0, 0))
+                return FALSE;
+        send_to_char("Your bank account cannot hold the reward, so you are paid in gold coins.\n\r", ch);
+        return TRUE;
+}
+
 /* Object vnums for Quest Rewards */
 
 #define QUEST_ITEM1 8322
@@ -304,6 +326,12 @@ void do_quest (CHAR_DATA *ch, char *argument)
          * ACT_QUESTMASTER flag instead of a special procedure.
          */
 
+        if (!ch->in_room)
+        {
+                send_to_char("You can't do that here.\n\r", ch);
+                return;
+        }
+
         for (questman = ch->in_room->people; questman != NULL; questman = questman->next_in_room)
         {
                 if (IS_NPC(questman) && IS_SET(questman->act, ACT_QUESTMASTER))
@@ -484,7 +512,8 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                         (famereward == 1) ? "" : "s",
                                         reward);
                                 do_say(questman,buf);
-                                send_to_char ("The money is placed into your bank account.\n\r", ch);
+                                if (!quest_reward_coins(ch, reward))
+                                        return;
 
                                 if (ch->pcdata->str_prac < 10 && chance(8))
                                 {
@@ -514,7 +543,6 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                 ch->pcdata->questroom = NULL;
                                 ch->pcdata->questarea = NULL;
                                 ch->pcdata->nextquest = QUEST_MAX_DELAY;
-                                ch->pcdata->bank += reward * 100;
                                 ch->pcdata->questpoints += pointreward;
                                 ch->pcdata->totalqp += pointreward;
 
@@ -559,7 +587,8 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                         sprintf(buf,"As a reward, I am giving you %d quest points and %d gold coins.",
                                                 pointreward,reward);
                                         do_say(questman,buf);
-                                        send_to_char ("The money is placed into your bank account.\n\r", ch);
+                                        if (!quest_reward_coins(ch, reward))
+                                                return;
 
                                         if (ch->pcdata->str_prac < 10 && chance(8))
                                         {
@@ -588,7 +617,6 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                         ch->pcdata->questroom = NULL;
                                         ch->pcdata->questarea = NULL;
                                         ch->pcdata->nextquest = QUEST_MAX_DELAY;
-                                        ch->pcdata->bank += reward * 100;
                                         ch->pcdata->questpoints += pointreward;
                                         ch->pcdata->totalqp += pointreward;
                                         extract_obj(obj);

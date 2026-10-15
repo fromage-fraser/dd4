@@ -3305,16 +3305,32 @@ void prayer_chaos (CHAR_DATA *ch)
                         break;
 
                     case 2:
+                    {
+                        int capacity;
+                        int converted;
 
                         /*
-                         * Coins -> copper
+                         * Convert physical coins in expression order, preserving
+                         * denominations that cannot fit in the copper field.
                          */
 
-                        victim->copper += victim->silver + victim->gold + victim->plat;
-                        victim->plat = 0;
-                        victim->gold = 0;
-                        victim->silver = 0;
+                        if (!can_receive_coins(0, victim))
+                                break;
+                        capacity = INT_MAX - victim->copper;
+                        converted = UMIN(victim->silver, capacity);
+                        victim->silver -= converted;
+                        victim->copper += converted;
+                        capacity -= converted;
+                        converted = UMIN(victim->gold, capacity);
+                        victim->gold -= converted;
+                        victim->copper += converted;
+                        capacity -= converted;
+                        converted = UMIN(victim->plat, capacity);
+                        victim->plat -= converted;
+                        victim->copper += converted;
+                        calc_coin_weight(victim);
                         break;
+                    }
 
                     case 3:
 

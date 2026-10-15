@@ -2913,6 +2913,8 @@ struct char_data
         CHAR_DATA *inside;
         CHAR_DATA *leader;
         CHAR_DATA *fighting;
+        /* Runtime-only lawful target after an involuntary PvP rescue. */
+        CHAR_DATA *rescue_retaliation;
         CHAR_DATA *hunting;
         CHAR_DATA *reply;
         CHAR_DATA *mount;
@@ -5384,6 +5386,7 @@ char *crypt args((const char *key, const char *salt));
 #define GF GAME_FUN
 
 /* act_comm.c */
+bool is_silenced args((CHAR_DATA * ch));
 void add_follower args((CHAR_DATA * ch, CHAR_DATA *master));
 void stop_follower args((CHAR_DATA * ch));
 void die_follower args((CHAR_DATA * ch, char *name));
@@ -5434,11 +5437,13 @@ ED *get_exit args((ROOM_INDEX_DATA * room, int dir));
 /* act_obj.c */
 void do_auction args((CHAR_DATA * ch, char *argument));
 void calc_coin_weight args((CHAR_DATA * ch));
-void coins_to_char args((int numcoins, CHAR_DATA *ch, int mode));
+bool coins_to_char args((int64_t numcoins, CHAR_DATA *ch, int mode));
+bool can_receive_coins args((int64_t numcoins, CHAR_DATA *ch));
+bool reward_coins args((CHAR_DATA *ch, int plat, int gold, int silver, int copper));
 void smelted_to_char args((int st, int ti, int ad, int el, int sm, CHAR_DATA *ch, int mode));
-void coins_from_char args((int numcoins, CHAR_DATA *ch));
+bool coins_from_char args((int64_t numcoins, CHAR_DATA *ch));
 void coin_crunch args((int numcoins, COIN_DATA *coins));
-int total_coins_char args((CHAR_DATA * ch));
+int64_t total_coins_char args((CHAR_DATA * ch));
 void do_get_coins args((CHAR_DATA * ch, char *argument));
 bool can_use_poison_weapon(CHAR_DATA *ch);
 void set_obj_owner(OBJ_DATA *obj, char *owner);
@@ -5542,6 +5547,7 @@ void update_pos args((CHAR_DATA * victim));
 void set_fighting args((CHAR_DATA * ch, CHAR_DATA *victim));
 void stop_fighting args((CHAR_DATA * ch, bool fBoth));
 void change_fighting args((CHAR_DATA *ch, CHAR_DATA *victim));
+void clear_rescue_retaliation args((CHAR_DATA *ch));
 void raw_kill(CHAR_DATA *ch, CHAR_DATA *victim, bool corpse);
 void death_cry args((CHAR_DATA * ch));
 void show_death_parts args((CHAR_DATA *viewer, CHAR_DATA *subject));
@@ -5611,6 +5617,7 @@ OD *get_eq_char args((CHAR_DATA * ch, int iWear));
 void equip_char args((CHAR_DATA * ch, OBJ_DATA *obj, int iWear));
 void form_equip_char(CHAR_DATA *ch, OBJ_DATA *obj, int iWear);
 void unequip_char args((CHAR_DATA * ch, OBJ_DATA *obj));
+void unequip_all_for_removal args((CHAR_DATA *ch));
 int count_obj_list args((OBJ_INDEX_DATA * obj, OBJ_DATA *list));
 void obj_from_room args((OBJ_DATA * obj));
 void obj_to_room args((OBJ_DATA * obj, ROOM_INDEX_DATA *pRoomIndex));
@@ -5720,6 +5727,8 @@ void hunt_victim args((CHAR_DATA * ch));
 
 /* interp.c */
 void interpret args((CHAR_DATA * ch, char *argument));
+void interpret_ordered args((CHAR_DATA * ch, char *argument,
+                            CHAR_DATA * issuer));
 bool is_number args((char *arg));
 int number_argument args((char *argument, char *arg));
 char *one_argument args((char *argument, char *arg_first));
@@ -5821,7 +5830,7 @@ void mprog_wordlist_check args((char *arg, CHAR_DATA *mob, CHAR_DATA *actor, OBJ
 void mprog_percent_check args((CHAR_DATA * mob, CHAR_DATA *actor, OBJ_DATA *object, void *vo, int type));
 bool moveprog_percent_check args((CHAR_DATA * mob));
 void mprog_act_trigger args((char *buf, CHAR_DATA *mob, CHAR_DATA *ch, OBJ_DATA *obj, void *vo));
-void mprog_bribe_trigger args((CHAR_DATA * mob, CHAR_DATA *ch, int amount));
+void mprog_bribe_trigger args((CHAR_DATA * mob, CHAR_DATA *ch, int64_t amount));
 void mprog_entry_trigger args((CHAR_DATA * mob));
 void mprog_give_trigger args((CHAR_DATA * mob, CHAR_DATA *ch, OBJ_DATA *obj));
 void mprog_greet_trigger args((CHAR_DATA * mob));
@@ -5865,6 +5874,9 @@ void gain_exp args((CHAR_DATA * ch, int gain));
 void gain_condition args((CHAR_DATA * ch, int iCond, int value));
 void update_handler args((void));
 void auction_update args((void));
+bool refund_auction_bid args((void));
+bool cancel_auction args((const char *reason, bool return_item,
+                         CHAR_DATA *leaving));
 void form_equipment_update(CHAR_DATA *ch);
 int check_stat_advance(CHAR_DATA *ch, int stat);
 bool check_questpoints_allow_level_gain(CHAR_DATA *ch, bool verbose);

@@ -7195,30 +7195,76 @@ void spell_teleport(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_banish(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
-        CHAR_DATA *mount;
+        CHAR_DATA *mount = NULL;
+        CHAR_DATA *rider = NULL;
+        CHAR_DATA *companion = NULL;
+        CHAR_DATA *traveller;
         ROOM_INDEX_DATA *room;
         OBJ_DATA *obj;
 
-        if (!victim || victim == ch
+        if (!victim || victim->deleted || victim == ch
         ||  !victim->in_room
         ||  victim->in_room != ch->in_room)
                 return;
 
-        mount = is_affected(victim, gsn_mount) ? victim->mount : NULL;
-
-        for (obj = victim->carrying; obj; obj = obj->next_content)
+        /* A mounted pair travels together, whichever member was addressed. */
+        if (victim->rider || victim->mount || is_affected(victim, gsn_mount))
         {
-                if (!obj->deleted
-                &&  IS_SET(obj->extra_flags, ITEM_CURSED))
+                if (victim->rider)
+                {
+                        mount = victim;
+                        rider = victim->rider;
+                        companion = rider;
+                }
+                else
+                {
+                        rider = victim;
+                        mount = victim->mount;
+                        companion = mount;
+                }
+
+                /* Refuse stale or broken riding links without splitting them. */
+                for (traveller = victim->in_room->people; traveller;
+                     traveller = traveller->next_in_room)
+                {
+                        if (traveller == companion)
+                                break;
+                }
+
+                if (!traveller || traveller->deleted || companion == ch
+                ||  companion->in_room != victim->in_room
+                ||  !IS_NPC(mount) || IS_NPC(rider)
+                ||  rider->mount != mount || mount->rider != rider
+                ||  !is_affected(rider, gsn_mount))
+                        return;
+        }
+
+        /* Include the accompanying target without repeating player chat. */
+        if (companion
+        &&  ((IS_NPC(victim) && is_safe(ch, victim))
+             || is_safe(ch, companion)))
+                return;
+
+        for (traveller = victim; traveller;
+             traveller = traveller == victim ? companion : NULL)
+        {
+                for (obj = traveller->carrying; obj; obj = obj->next_content)
+                {
+                        if (!obj->deleted
+                        &&  IS_SET(obj->extra_flags, ITEM_CURSED))
+                                goto failed;
+                }
+
+                if (IS_AFFECTED(traveller, AFF_NO_RECALL))
                         goto failed;
         }
 
-        if (IS_AFFECTED(victim, AFF_NO_RECALL)
-        ||  IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
+        if (IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
         ||  IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER)
         ||  IS_SET(victim->in_room->area->area_flags,
                    AREA_FLAG_NO_TELEPORT)
-        ||  saves_spell(ch, level, victim))
+        ||  saves_spell(ch, level, victim)
+        ||  (companion && saves_spell(ch, level, companion)))
                 goto failed;
 
         for (;;)
@@ -7249,6 +7295,17 @@ void spell_banish(int sn, int level, CHAR_DATA *ch, void *vo)
             ch, NULL, victim, TO_NOTVICT);
 
         stop_fighting(victim, TRUE);
+        if (companion)
+        {
+                act("<14>$c banishes you in a flash of blue-white light!<0>",
+                    ch, NULL, companion, TO_VICT);
+                stop_fighting(companion, TRUE);
+                GMCPSetArrival(companion->desc,
+                        companion->in_room->vnum,
+                        room->vnum,
+                        -1,
+                        "banish");
+        }
 
         GMCPSetArrival(victim->desc,
                 victim->in_room->vnum,
@@ -7259,15 +7316,21 @@ void spell_banish(int sn, int level, CHAR_DATA *ch, void *vo)
         char_from_room(victim);
         char_to_room(victim, room);
 
-        if (mount)
+        if (companion)
         {
-                char_from_room(mount);
-                char_to_room(mount, room);
+                char_from_room(companion);
+                char_to_room(companion, room);
         }
 
         act("{C$c is hurled into being.{x", victim, NULL, NULL, TO_ROOM);
         do_look(victim, "auto");
         send_to_char("\n\r{CYou are hurled back into being.{x\n\r", victim);
+        if (companion)
+        {
+                do_look(companion, "auto");
+                send_to_char("\n\r{CYou are hurled back into being.{x\n\r",
+                             companion);
+        }
         return;
 
 failed:

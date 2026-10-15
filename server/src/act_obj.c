@@ -46,6 +46,7 @@ int modify_dig_wait_state args((CHAR_DATA * ch, int base_wait, int dig_mode, OBJ
 int modify_dig_move_cost args((CHAR_DATA * ch, int base_move, int dig_mode, OBJ_DATA *dig_tool));
 int modify_dig_damage args((CHAR_DATA * ch, int base_dmg, int dig_mode, OBJ_DATA *dig_tool));
 static void holy_water_drink_effect args((CHAR_DATA *ch, int liquid));
+static bool parse_bank_amount args((char *argument, int *amount));
 static bool liquid_splash_poison_target
         args((CHAR_DATA *victim));
 
@@ -59,10 +60,63 @@ static void liquid_splash_effect
         args((CHAR_DATA *ch, CHAR_DATA *victim,
               OBJ_DATA *container, int liquid, int amount));
 
+/*
+ * Corpse keywords retain the deceased's identity across display changes and
+ * object saves. Group access uses the deceased's current live player, without
+ * visibility or room restrictions. Each corpse ancestor protects its contents;
+ * individual item ownership remains a separate restriction.
+ */
+static bool can_access_player_corpse(CHAR_DATA *ch, OBJ_DATA *obj)
+{
+        CHAR_DATA *deceased;
+        char kind[MAX_INPUT_LENGTH];
+        char name[MAX_INPUT_LENGTH];
+        char extra[MAX_INPUT_LENGTH];
+        char *argument;
+
+        for (; obj; obj = obj->in_obj)
+        {
+                if (obj->item_type != ITEM_CORPSE_PC)
+                        continue;
+                if (IS_NPC(ch))
+                        return FALSE;
+                if (ch->level > LEVEL_HERO)
+                        continue;
+                if (!obj->name || strlen(obj->name) >= MAX_INPUT_LENGTH)
+                        return FALSE;
+
+                argument = one_argument(obj->name, kind);
+                argument = one_argument(argument, name);
+                one_argument(argument, extra);
+                if (str_cmp(kind, "corpse") || name[0] == '\0'
+                    || extra[0] != '\0')
+                        return FALSE;
+
+                if (!str_cmp(name, ch->name))
+                        continue;
+                for (deceased = char_list; deceased; deceased = deceased->next)
+                {
+                        if (!deceased->deleted && !IS_NPC(deceased)
+                            && !str_cmp(name, deceased->name))
+                                break;
+                }
+                if (!deceased || !is_same_group(ch, deceased))
+                        return FALSE;
+        }
+        return TRUE;
+}
+
 void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
 {
         OBJ_DATA *carrier_container;
         char buf[MAX_STRING_LENGTH];
+
+        if (!can_access_player_corpse(ch, obj)
+            || !can_access_player_corpse(ch, container))
+        {
+                send_to_char("You can't do that.\n\r", ch);
+                return;
+        }
 
         if (!IS_SET(obj->wear_flags, ITEM_TAKE) || obj->item_type == ITEM_PORTAL)
         {
@@ -149,6 +203,19 @@ void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
 
         if (obj->item_type == ITEM_MONEY)
         {
+                if (ch->plat < 0 || ch->gold < 0
+                ||  ch->silver < 0 || ch->copper < 0
+                ||  obj->value[0] < 0 || obj->value[1] < 0
+                ||  obj->value[2] < 0 || obj->value[3] < 0
+                ||  (int64_t)ch->copper + obj->value[0] > INT_MAX
+                ||  (int64_t)ch->silver + obj->value[1] > INT_MAX
+                ||  (int64_t)ch->gold + obj->value[2] > INT_MAX
+                ||  (int64_t)ch->plat + obj->value[3] > INT_MAX)
+                {
+                        send_to_char("You cannot carry that many coins.\n\r", ch);
+                        return;
+                }
+
                 long long coin_count = (long long)ch->copper + ch->silver
                                      + ch->gold + ch->plat
                                      + obj->value[0] + obj->value[1]
@@ -167,7 +234,8 @@ void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
         }
         else if ((!carrier_container || carrier_container->deleted
                   || carrier_container->carried_by != ch)
-                 && (ch->carry_weight + ch->coin_weight) + get_obj_weight(obj) > can_carry_w(ch))
+                 && (int64_t)ch->carry_weight + ch->coin_weight
+                    + get_obj_weight(obj) > can_carry_w(ch))
         {
                 act("$d: you can't carry that much weight.", ch, NULL, obj->name, TO_CHAR);
                 return;
@@ -245,6 +313,13 @@ void get_obj(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
 void get_obj_vault(CHAR_DATA *ch, OBJ_DATA *obj, OBJ_DATA *container)
 {
         char buf[MAX_STRING_LENGTH];
+
+        if (!can_access_player_corpse(ch, obj)
+            || !can_access_player_corpse(ch, container))
+        {
+                send_to_char("You can't do that.\n\r", ch);
+                return;
+        }
 
         if (!IS_SET(obj->wear_flags, ITEM_TAKE) || obj->item_type == ITEM_PORTAL)
         {
@@ -990,6 +1065,12 @@ void do_get(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                if (!can_access_player_corpse(ch, container))
+                {
+                        send_to_char("You can't do that.\n\r", ch);
+                        return;
+                }
+
                 switch (container->item_type)
                 {
                 default:
@@ -1000,30 +1081,8 @@ void do_get(CHAR_DATA *ch, char *argument)
                 case ITEM_TURRET:
                 case ITEM_CORPSE_NPC:
                 case ITEM_REMAINS:
-                        break;
-
                 case ITEM_CORPSE_PC:
-                {
-                        char *pd;
-                        char name[MAX_INPUT_LENGTH];
-
-                        if (IS_NPC(ch))
-                        {
-                                send_to_char("You can't do that.\n\r", ch);
-                                return;
-                        }
-
-                        pd = container->short_descr;
-                        pd = one_argument(pd, name);
-                        pd = one_argument(pd, name);
-                        pd = one_argument(pd, name);
-
-                        if (!str_cmp(name, ch->name) && ch->level <= LEVEL_HERO)
-                        {
-                                send_to_char("You can't do that.\n\r", ch);
-                                return;
-                        }
-                }
+                        break;
                 }
 
                 if (IS_SET(container->value[1], CONT_CLOSED))
@@ -1208,6 +1267,12 @@ void do_claim(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                if (!can_access_player_corpse(ch, container))
+                {
+                        send_to_char("You can't do that.\n\r", ch);
+                        return;
+                }
+
                 switch (container->item_type)
                 {
                 default:
@@ -1218,30 +1283,8 @@ void do_claim(CHAR_DATA *ch, char *argument)
                 case ITEM_TURRET:
                 case ITEM_CORPSE_NPC:
                 case ITEM_REMAINS:
-                        break;
-
                 case ITEM_CORPSE_PC:
-                {
-                        char *pd;
-                        char name[MAX_INPUT_LENGTH];
-
-                        if (IS_NPC(ch))
-                        {
-                                send_to_char("You can't do that.\n\r", ch);
-                                return;
-                        }
-
-                        pd = container->short_descr;
-                        pd = one_argument(pd, name);
-                        pd = one_argument(pd, name);
-                        pd = one_argument(pd, name);
-
-                        if (!str_cmp(name, ch->name) && ch->level <= LEVEL_HERO)
-                        {
-                                send_to_char("You can't do that.\n\r", ch);
-                                return;
-                        }
-                }
+                        break;
                 }
 
                 if (IS_SET(container->value[1], CONT_CLOSED))
@@ -1869,6 +1912,12 @@ void do_empty(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                if (!can_access_player_corpse(ch, container))
+                {
+                        send_to_char("You can't do that.\n\r", ch);
+                        return;
+                }
+
                 switch (container->item_type)
                 {
                 default:
@@ -1900,86 +1949,64 @@ void do_empty(CHAR_DATA *ch, char *argument)
 
                 case ITEM_CORPSE_PC:
                 {
-                        char *pd;
-                        char name[MAX_INPUT_LENGTH];
+                        /* Keep item bindings and retrieval checks before each drop. */
+                        OBJ_DATA *obj_next;
+                        found = FALSE;
+                        first = FALSE;
 
-                        if (IS_NPC(ch))
+                        for (obj = container->contains; obj; obj = obj_next)
                         {
-                                send_to_char("You can't do that.\n\r", ch);
-                                return;
-                        }
+                                obj_next = obj->next_content;
 
-                        pd = container->short_descr;
-                        pd = one_argument(pd, name);
-                        pd = one_argument(pd, name);
-                        pd = one_argument(pd, name);
-
-                        if (!str_cmp(name, ch->name) && ch->level <= LEVEL_HERO)
-                        {
-                                send_to_char("You can't do that.\n\r", ch);
-                                return;
-                        }
-                        else
-                        {
-                                /* Be an Imm looting a player corpse or a player emptying their own corpse? */
-                                OBJ_DATA *obj_next;
-                                found = FALSE;
-                                first = FALSE;
-
-                                for (obj = container->contains; obj; obj = obj_next)
+                                if (can_see_obj(ch, obj))
                                 {
-                                        obj_next = obj->next_content;
+                                        found = TRUE;
 
-                                        if (can_see_obj(ch, obj))
+                                        if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
                                         {
-                                                found = TRUE;
-
-                                                if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
-                                                {
-                                                        act("Your hands are too full to get items from $p.", ch, container, NULL, TO_CHAR);
-                                                        return;
-                                                }
-
-                                                if (first == FALSE)
-                                                {
-                                                        first = TRUE;
-                                                        act("{WYou remove all the items from $p.{x", ch, container, NULL, TO_CHAR);
-                                                        act("{W$n removes all the items from $p.{x", ch, container, NULL, TO_ROOM);
-                                                }
-                                                get_obj(ch, obj, container);
-
-                                                /* Stop if a trap has interrupted the command. */
-                                                if (ch->deleted || ch->in_room != room
-                                                    || !IS_AWAKE(ch) || ch->fighting || container->deleted)
-                                                        return;
-
-                                                /* Getting coins consumes their object. */
-                                                if (obj->deleted)
-                                                {
-                                                        if (obj->item_type == ITEM_MONEY)
-                                                                continue;
-                                                        return;
-                                                }
-
-                                                if (obj->carried_by != ch)
-                                                        return;
-
-                                                obj_from_char(obj);
-                                                obj_to_room(obj, room);
-                                                act("You drop $p.", ch, obj, NULL, TO_CHAR);
-                                                act("$n drops $p.", ch, obj, NULL, TO_ROOM);
+                                                act("Your hands are too full to get items from $p.", ch, container, NULL, TO_CHAR);
+                                                return;
                                         }
-                                }
 
-                                if (!found)
-                                {
-                                        /* Means there was nothing in the corpse */
-                                        send_to_char("You can't see anything in it.\n\r", ch);
-                                        return;
-                                }
+                                        if (first == FALSE)
+                                        {
+                                                first = TRUE;
+                                                act("{WYou remove all the items from $p.{x", ch, container, NULL, TO_CHAR);
+                                                act("{W$n removes all the items from $p.{x", ch, container, NULL, TO_ROOM);
+                                        }
+                                        get_obj(ch, obj, container);
 
+                                        /* Stop if a trap has interrupted the command. */
+                                        if (ch->deleted || ch->in_room != room
+                                            || !IS_AWAKE(ch) || ch->fighting || container->deleted)
+                                                return;
+
+                                        /* Getting coins consumes their object. */
+                                        if (obj->deleted)
+                                        {
+                                                if (obj->item_type == ITEM_MONEY)
+                                                        continue;
+                                                return;
+                                        }
+
+                                        if (obj->carried_by != ch)
+                                                return;
+
+                                        obj_from_char(obj);
+                                        obj_to_room(obj, room);
+                                        act("You drop $p.", ch, obj, NULL, TO_CHAR);
+                                        act("$n drops $p.", ch, obj, NULL, TO_ROOM);
+                                }
+                        }
+
+                        if (!found)
+                        {
+                                /* Means there was nothing in the corpse */
+                                send_to_char("You can't see anything in it.\n\r", ch);
                                 return;
                         }
+
+                        return;
                 }
                 }
 
@@ -2087,7 +2114,11 @@ void do_drop(CHAR_DATA *ch, char *argument)
                 int amount, plat, gold, silver, copper;
                 bool dropok;
 
-                amount = atoi(arg);
+                if (!parse_bank_amount(arg, &amount))
+                {
+                        send_to_char("You can't drop that coin amount.\n\r", ch);
+                        return;
+                }
                 argument = one_argument(argument, arg);
 
                 if (arg[0] == '\0')
@@ -2202,6 +2233,15 @@ void do_drop(CHAR_DATA *ch, char *argument)
                         {
                         case OBJ_VNUM_MONEY_ONE:
                         case OBJ_VNUM_MONEY_SOME:
+                                /* Keep piles separate when saved counts cannot merge. */
+                                if (obj->value[0] < 0 || obj->value[1] < 0
+                                ||  obj->value[2] < 0 || obj->value[3] < 0
+                                ||  (int64_t)copper + obj->value[0] > INT_MAX
+                                ||  (int64_t)silver + obj->value[1] > INT_MAX
+                                ||  (int64_t)gold + obj->value[2] > INT_MAX
+                                ||  (int64_t)plat + obj->value[3] > INT_MAX)
+                                        break;
+
                                 copper += obj->value[0];
                                 silver += obj->value[1];
                                 gold += obj->value[2];
@@ -2335,12 +2375,11 @@ void do_give(CHAR_DATA *ch, char *argument)
         {
                 /* 'give NNNN coins victim' */
                 int amount;
+                int64_t bribe_amount;
                 char buf[MAX_STRING_LENGTH];
                 bool giveok;
 
-                amount = atoi(arg1);
-
-                if (amount <= 0)
+                if (!parse_bank_amount(arg1, &amount))
                 {
                         send_to_char("Sorry, you can't do that.\n\r", ch);
                         return;
@@ -2365,6 +2404,14 @@ void do_give(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                if (victim != ch && (victim->plat < 0 || victim->gold < 0
+                ||  victim->silver < 0 || victim->copper < 0))
+                {
+                        send_to_char("They cannot carry that many coins.\n\r", ch);
+                        return;
+                }
+
+                bribe_amount = amount;
                 giveok = FALSE;
 
                 if (!str_prefix(arg2, "platinum"))
@@ -2383,9 +2430,16 @@ void do_give(CHAR_DATA *ch, char *argument)
                                 send_to_char(buf, ch);
                                 return;
                         }
+                        if (victim != ch
+                        &&  (victim->plat < 0
+                        ||   (int64_t)victim->plat + amount > INT_MAX))
+                        {
+                                send_to_char("They cannot carry that many coins.\n\r", ch);
+                                return;
+                        }
                         ch->plat -= amount;
                         victim->plat += amount;
-                        amount = amount * COIN_PLAT;
+                        bribe_amount = (int64_t)amount * COIN_PLAT;
                         giveok = TRUE;
                 }
 
@@ -2405,9 +2459,16 @@ void do_give(CHAR_DATA *ch, char *argument)
                                 send_to_char(buf, ch);
                                 return;
                         }
+                        if (victim != ch
+                        &&  (victim->gold < 0
+                        ||   (int64_t)victim->gold + amount > INT_MAX))
+                        {
+                                send_to_char("They cannot carry that many coins.\n\r", ch);
+                                return;
+                        }
                         ch->gold -= amount;
                         victim->gold += amount;
-                        amount = amount * COIN_GOLD;
+                        bribe_amount = (int64_t)amount * COIN_GOLD;
                         giveok = TRUE;
                 }
 
@@ -2427,9 +2488,16 @@ void do_give(CHAR_DATA *ch, char *argument)
                                 send_to_char(buf, ch);
                                 return;
                         }
+                        if (victim != ch
+                        &&  (victim->silver < 0
+                        ||   (int64_t)victim->silver + amount > INT_MAX))
+                        {
+                                send_to_char("They cannot carry that many coins.\n\r", ch);
+                                return;
+                        }
                         ch->silver -= amount;
                         victim->silver += amount;
-                        amount = amount * COIN_SILVER;
+                        bribe_amount = (int64_t)amount * COIN_SILVER;
                         giveok = TRUE;
                 }
 
@@ -2449,6 +2517,13 @@ void do_give(CHAR_DATA *ch, char *argument)
                                 send_to_char(buf, ch);
                                 return;
                         }
+                        if (victim != ch
+                        &&  (victim->copper < 0
+                        ||   (int64_t)victim->copper + amount > INT_MAX))
+                        {
+                                send_to_char("They cannot carry that many coins.\n\r", ch);
+                                return;
+                        }
                         ch->copper -= amount;
                         victim->copper += amount;
                         giveok = TRUE;
@@ -2464,7 +2539,7 @@ void do_give(CHAR_DATA *ch, char *argument)
                 calc_coin_weight(ch);
                 calc_coin_weight(victim);
 
-                if (amount == 1)
+                if (bribe_amount == 1)
                 {
                         act("You give $N a coin.", ch, NULL, victim, TO_CHAR);
                         act("$n gives you a coin.", ch, NULL, victim, TO_VICT);
@@ -2477,7 +2552,7 @@ void do_give(CHAR_DATA *ch, char *argument)
                         act("$n gives $N some coins.", ch, NULL, victim, TO_NOTVICT);
                 }
 
-                mprog_bribe_trigger(victim, ch, amount);
+                mprog_bribe_trigger(victim, ch, bribe_amount);
 
                 return;
         }
@@ -4427,9 +4502,7 @@ void do_bounty(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (is_number(arg2))
-                amnt = atoi(arg2);
-        else
+        if (!parse_bank_amount(arg2, &amnt))
         {
                 send_to_char("What amount of coin for the reward was that?\n\r", ch);
                 return;
@@ -4492,11 +4565,14 @@ void do_bounty(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (victim->pcdata->bounty + amnt > max_bounty)
+        if ((int64_t)victim->pcdata->bounty + amnt > max_bounty)
         {
                 send_to_char("You can't add that many more coins to the reward, sorry.\n\r", ch);
                 return;
         }
+
+        if (!coins_from_char(amnt, ch))
+                return;
 
         if (victim->pcdata->bounty)
         {
@@ -4515,7 +4591,6 @@ void do_bounty(CHAR_DATA *ch, char *argument)
                 do_info(ch, buf);
         }
 
-        coins_from_char(amnt, ch);
         victim->pcdata->bounty += amnt;
         SET_BIT(victim->status, PLR_HUNTED);
         update_wanted_table(victim);
@@ -4713,11 +4788,19 @@ void do_sacrifice(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
         char arg[MAX_INPUT_LENGTH];
+        int level_dif;
+        bool earns_coin;
 
         one_argument(argument, arg);
 
         if (IS_NPC(ch))
                 return;
+
+        if (!ch->in_room)
+        {
+                send_to_char("Your coin reward cannot be delivered right now.\n\r", ch);
+                return;
+        }
 
         if (arg[0] == '\0' || !str_cmp(arg, ch->name))
         {
@@ -4741,27 +4824,32 @@ void do_sacrifice(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        earns_coin = obj->item_type == ITEM_CORPSE_NPC
+            && !(IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+                 || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE));
+        level_dif = earns_coin ? obj->level - ch->level : 0;
+        if (earns_coin
+        && !reward_coins(ch, 0, level_dif > 5 ? 1 : 0,
+                         level_dif <= 5 && level_dif > -6 ? 1 : 0,
+                         level_dif <= -6 ? 1 : 0))
+                return;
+
         act("$n sacrifices $p to $s god.", ch, obj, NULL, TO_ROOM);
         act("You sacrifice $p to $D.", ch, obj, NULL, TO_CHAR);
 
-        if (obj->item_type == ITEM_CORPSE_NPC && !(IS_SET(ch->in_room->room_flags, ROOM_SAFE) || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE)))
+        if (earns_coin)
         {
-                int level_dif = obj->level - ch->level;
-
                 if (level_dif > 5)
                 {
                         send_to_char("Your god gives you one gold coin for your sacrifice.\n\r", ch);
-                        ch->gold++;
                 }
                 else if (level_dif > -6)
                 {
                         send_to_char("Your god gives you one silver coin for your sacrifice.\n\r", ch);
-                        ch->silver++;
                 }
                 else
                 {
                         send_to_char("Your god gives you one copper coin for your sacrifice.\n\r", ch);
-                        ch->copper++;
                 }
 
                 if (ch->pcdata->deity_patron > -1)
@@ -4945,6 +5033,13 @@ void do_quaff(CHAR_DATA *ch, char *argument)
         if (obj->item_type != ITEM_POTION)
         {
                 send_to_char("You can quaff only potions.\n\r", ch);
+                return;
+        }
+
+        /* Pouch transfers must preserve self-only potion ownership. */
+        if (!is_obj_owner(obj, ch))
+        {
+                act("$p does not belong to you.", ch, obj, NULL, TO_CHAR);
                 return;
         }
 
@@ -5725,9 +5820,10 @@ void do_steal(CHAR_DATA *ch, char *argument)
 
         if (!str_prefix(arg1, "coins"))
         {
-                int amount;
-                amount = (int)((int64_t)total_coins_char(victim)
-                               * number_range(10, 30) / 50);
+                int64_t amount;
+                CHAR_DATA before_victim;
+                amount = total_coins_char(victim)
+                       * number_range(10, 30) / 50;
 
                 if (amount <= 0)
                 {
@@ -5735,9 +5831,26 @@ void do_steal(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                coins_from_char(amount, victim);
-                coins_to_char(amount, ch, COINS_ADD);
-                sprintf(buf, "Jackpot!  You have stolen %d coppers worth of coins.\n\r", amount);
+                if (!can_receive_coins(amount, ch))
+                {
+                        send_to_char("You cannot carry that many coins.\n\r", ch);
+                        return;
+                }
+                before_victim = *victim;
+                if (!coins_from_char(amount, victim))
+                        return;
+                if (!coins_to_char(amount, ch, COINS_ADD))
+                {
+                        victim->plat = before_victim.plat;
+                        victim->gold = before_victim.gold;
+                        victim->silver = before_victim.silver;
+                        victim->copper = before_victim.copper;
+                        calc_coin_weight(victim);
+                        send_to_char("You cannot carry that many coins.\n\r", ch);
+                        return;
+                }
+                sprintf(buf, "Jackpot!  You have stolen %lld coppers worth of coins.\n\r",
+                        (long long)amount);
                 send_to_char(buf, ch);
                 return;
         }
@@ -5950,13 +6063,17 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (total_coins_char(ch) < (10 * pet->level * pet->level))
+                if (total_coins_char(ch) < (int64_t)10 * pet->level * pet->level)
                 {
                         send_to_char("You can't afford it.\n\r", ch);
                         return;
                 }
 
-                coins_from_char((10 * pet->level * pet->level), ch);
+                if (!coins_from_char((int64_t)10 * pet->level * pet->level, ch))
+                {
+                        send_to_char("You can't afford it.\n\r", ch);
+                        return;
+                }
                 pet = create_mobile(pet->pIndexData);
                 SET_BIT(ch->act, PLR_BOUGHT_PET);
                 SET_BIT(pet->act, ACT_PET);
@@ -5989,7 +6106,7 @@ void do_buy(CHAR_DATA *ch, char *argument)
                 CHAR_DATA *keeper;
                 int cost;
                 int64_t total_cost;
-                int charcoins;
+                int64_t charcoins;
                 int discount;
 
                 /* multiple buy additions :P */
@@ -6079,8 +6196,8 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         {
                                 char buf[MAX_STRING_LENGTH];
                                 if ((charcoins / cost) > 0)
-                                        sprintf(buf, "$n tells you 'You can only afford %d of those!",
-                                                (charcoins / cost));
+                                        sprintf(buf, "$n tells you 'You can only afford %lld of those!",
+                                                (long long)(charcoins / cost));
                                 else
                                         sprintf(buf, "$n tells you '%s? You must be kidding - you can't even afford a single one, let alone %d!'", capitalize(obj->short_descr), item_count);
 
@@ -6137,6 +6254,12 @@ void do_buy(CHAR_DATA *ch, char *argument)
                                 snprintf(msg, sizeof(msg), "Sorry, %s is something I have only one of.", obj->short_descr);
                                 webgate_send_shop_inventory_safe(ch, keeper, msg);
                         }
+                        return;
+                }
+
+                if (!coins_from_char(total_cost, ch))
+                {
+                        send_to_char("You can't afford it.\n\r", ch);
                         return;
                 }
 
@@ -6199,8 +6322,7 @@ void do_buy(CHAR_DATA *ch, char *argument)
                             keeper, NULL, ch, TO_VICT);
                 }
 
-                coins_from_char((int)total_cost, ch);
-                /* coins_to_char((int)total_cost, keeper, COINS_ADD); */
+                /* coins_to_char(total_cost, keeper, COINS_ADD); */
 
                 if (IS_SET(obj->extra_flags, ITEM_INVENTORY))
                 {
@@ -6377,6 +6499,8 @@ void do_sell(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
         CHAR_DATA *keeper;
+        CHAR_DATA seller_balance;
+        CHAR_DATA keeper_balance;
         char buf[MAX_STRING_LENGTH];
         char arg[MAX_INPUT_LENGTH];
         int cost;
@@ -6460,6 +6584,41 @@ void do_sell(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /* Plan both wallets before transferring the item or repaying a loan. */
+        seller_balance = *ch;
+        if (!coins_to_char(!IS_NPC(ch) && ch->pcdata->bank < 0
+                           ? cost / 2 : cost, &seller_balance, COINS_ADD))
+        {
+                send_to_char("You cannot carry that many coins.\n\r", ch);
+                if (webgate_has_web_desc(ch))
+                        webgate_send_shop_inventory_safe(ch, keeper,
+                                "You cannot carry that many coins.");
+                return;
+        }
+
+        keeper_balance = keeper == ch ? seller_balance : *keeper;
+        if (total_coins_char(&keeper_balance) < cost)
+        {
+                if (!coins_to_char(0, &keeper_balance, COINS_REPLACE))
+                        return;
+        }
+        else if (!coins_from_char(cost, &keeper_balance))
+        {
+                send_to_char("That sale cannot be completed.\n\r", ch);
+                return;
+        }
+
+        ch->plat = seller_balance.plat;
+        ch->gold = seller_balance.gold;
+        ch->silver = seller_balance.silver;
+        ch->copper = seller_balance.copper;
+        calc_coin_weight(ch);
+        keeper->plat = keeper_balance.plat;
+        keeper->gold = keeper_balance.gold;
+        keeper->silver = keeper_balance.silver;
+        keeper->copper = keeper_balance.copper;
+        calc_coin_weight(keeper);
+
         sprintf(buf, "You sell $p for %d coin%s.", cost, cost == 1 ? "" : "s");
         act(buf, ch, obj, NULL, TO_CHAR);
         act("$n sells $p.", ch, obj, NULL, TO_ROOM);
@@ -6469,16 +6628,8 @@ void do_sell(CHAR_DATA *ch, char *argument)
                 act("$n tells you 'I see you have a loan with the bank, I am giving them 1/2 the sale.",
                     keeper, NULL, ch, TO_VICT);
                 ch->reply = keeper;
-                coins_to_char(cost / 2, ch, COINS_ADD);
                 ch->pcdata->bank += cost / 2;
         }
-        else
-                coins_to_char(cost, ch, COINS_ADD);
-
-        if (total_coins_char(keeper) < cost)
-                coins_to_char(0, keeper, COINS_REPLACE);
-        else
-                coins_from_char(cost, keeper);
 
         if (obj->item_type == ITEM_TRASH)
                 extract_obj(obj);
@@ -7284,22 +7435,15 @@ void do_auction(CHAR_DATA *ch, char *argument)
                 }
                 else
                 {
+                        if (!refund_auction_bid())
+                                return;
+
                         sprintf(buf, "Sale of %s has been stopped and the item confiscated.",
                                 auction->item->short_descr);
                         talk_auction(buf);
 
                         obj_to_char(auction->item, ch);
-                        auction->item = NULL;
-
-                        if (auction->buyer)
-                        {
-                                if (auction->from_bank)
-                                        auction->buyer->pcdata->bank += auction->bet * COIN_PLAT;
-                                else
-                                        coins_to_char(auction->bet * COIN_PLAT, auction->buyer, COINS_ADD);
-
-                                send_to_char("Your money has been refunded.\n\r", auction->buyer);
-                        }
+                        memset(auction, 0, sizeof(*auction));
 
                         return;
                 }
@@ -7361,12 +7505,11 @@ void do_auction(CHAR_DATA *ch, char *argument)
                          */
                         if (newbet * COIN_PLAT <= ch->pcdata->bank)
                         {
-                                ch->pcdata->bank -= newbet * COIN_PLAT;
                                 use_bank_for_bet = TRUE;
                         }
-                        else if (newbet * COIN_PLAT <= total_coins_char(ch))
+                        else if (newbet * COIN_PLAT <= total_coins_char(ch)
+                                 && can_receive_coins(0, ch))
                         {
-                                coins_from_char(newbet * COIN_PLAT, ch);
                                 use_bank_for_bet = FALSE;
                         }
                         else
@@ -7375,13 +7518,14 @@ void do_auction(CHAR_DATA *ch, char *argument)
                                 return;
                         }
 
-                        if (auction->buyer)
-                        {
-                                if (auction->from_bank)
-                                        auction->buyer->pcdata->bank += auction->bet * COIN_PLAT;
-                                else
-                                        coins_to_char(auction->bet * COIN_PLAT, auction->buyer, COINS_ADD);
-                        }
+                        /* Refund existing escrow before replacing its owner. */
+                        if (!refund_auction_bid())
+                                return;
+
+                        if (use_bank_for_bet)
+                                ch->pcdata->bank -= newbet * COIN_PLAT;
+                        else if (!coins_from_char((int64_t)newbet * COIN_PLAT, ch))
+                                return;
 
                         auction->buyer = ch;
                         auction->bet = newbet;
@@ -8074,7 +8218,11 @@ void do_borrow(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        coins_to_char(amnt, ch, COINS_ADD);
+        if (!coins_to_char(amnt, ch, COINS_ADD))
+        {
+                send_to_char("You cannot carry that many coins.\n\r", ch);
+                return;
+        }
         ch->pcdata->bank -= amnt;
 
         sprintf(buf, "%s, you now owe us: %d coins,", ch->name, -ch->pcdata->bank);
@@ -8099,39 +8247,120 @@ void calc_coin_weight(CHAR_DATA *ch)
         ch->coin_weight = cw;
 }
 
-/* Call with mode where COINS_ADD = 0, all others will replace */
-void coins_to_char(int numcoins, CHAR_DATA *ch, int mode)
+/* Greedy change must fit the existing saved denomination fields. */
+static bool coin_crunch_wide(int64_t numcoins, COIN_DATA *coins)
 {
-        COIN_DATA *coins;
+        if (numcoins < 0 || numcoins / COIN_PLAT > INT_MAX)
+                return FALSE;
 
-        coins = (COIN_DATA *)malloc(sizeof(COIN_DATA));
-        if (!coins)
+        coins->plat = (int)(numcoins / COIN_PLAT);
+        numcoins %= COIN_PLAT;
+        coins->gold = (int)(numcoins / COIN_GOLD);
+        numcoins %= COIN_GOLD;
+        coins->silver = (int)(numcoins / COIN_SILVER);
+        coins->copper = (int)(numcoins % COIN_SILVER);
+        return TRUE;
+}
+
+/* Preflight each denomination without exchanging the recipient's coins. */
+bool can_receive_coins(int64_t numcoins, CHAR_DATA *ch)
+{
+        COIN_DATA coins;
+
+        if (!ch || !coin_crunch_wide(numcoins, &coins)
+        ||  ch->plat < 0 || ch->gold < 0
+        ||  ch->silver < 0 || ch->copper < 0)
+                return FALSE;
+
+        return (int64_t)ch->plat + coins.plat <= INT_MAX
+            && (int64_t)ch->gold + coins.gold <= INT_MAX
+            && (int64_t)ch->silver + coins.silver <= INT_MAX
+            && (int64_t)ch->copper + coins.copper <= INT_MAX;
+}
+
+/*
+ * Preserve reward denominations and their complete value when a purse fills.
+ * Validate and allocate the ground remainder before changing any balance.
+ */
+bool reward_coins(CHAR_DATA *ch, int plat, int gold, int silver, int copper)
+{
+        COIN_DATA credit;
+        COIN_DATA remainder;
+        OBJ_DATA *money = NULL;
+        ROOM_INDEX_DATA *room;
+
+        if (!ch || ch->deleted)
+                return FALSE;
+
+        if (!ch->in_room || plat < 0 || gold < 0 || silver < 0 || copper < 0
+        ||  ch->plat < 0 || ch->gold < 0 || ch->silver < 0 || ch->copper < 0)
         {
-                bug("coins_to_char: COIN_DATA - not enough memory to allocate", 0);
-                exit(1);
+                send_to_char("Your coin reward cannot be delivered right now.\n\r", ch);
+                return FALSE;
         }
 
-        coin_crunch(numcoins, coins);
+        room = ch->in_room;
+        credit.plat = UMIN(plat, INT_MAX - ch->plat);
+        credit.gold = UMIN(gold, INT_MAX - ch->gold);
+        credit.silver = UMIN(silver, INT_MAX - ch->silver);
+        credit.copper = UMIN(copper, INT_MAX - ch->copper);
+        remainder.plat = plat - credit.plat;
+        remainder.gold = gold - credit.gold;
+        remainder.silver = silver - credit.silver;
+        remainder.copper = copper - credit.copper;
+
+        if (remainder.plat || remainder.gold || remainder.silver || remainder.copper)
+        {
+                money = create_money(remainder.plat, remainder.gold,
+                                     remainder.silver, remainder.copper);
+                if (!money)
+                {
+                        send_to_char("Your coin reward cannot be delivered right now.\n\r", ch);
+                        return FALSE;
+                }
+        }
+
+        ch->plat += credit.plat;
+        ch->gold += credit.gold;
+        ch->silver += credit.silver;
+        ch->copper += credit.copper;
+        calc_coin_weight(ch);
+
+        if (money)
+        {
+                obj_to_room(money, room);
+                send_to_char("Some of your reward coins will not fit in your purse.\n\r"
+                             "They have been placed on the ground here.\n\r", ch);
+        }
+        return TRUE;
+}
+
+/* Failed credits leave every denomination and its weight unchanged. */
+bool coins_to_char(int64_t numcoins, CHAR_DATA *ch, int mode)
+{
+        COIN_DATA coins;
+
+        if (!ch || !coin_crunch_wide(numcoins, &coins)
+        ||  (mode == COINS_ADD && !can_receive_coins(numcoins, ch)))
+                return FALSE;
 
         if (mode == COINS_ADD)
         {
-                ch->plat += coins->plat;
-                ch->gold += coins->gold;
-                ch->silver += coins->silver;
-                ch->copper += coins->copper;
+                ch->plat += coins.plat;
+                ch->gold += coins.gold;
+                ch->silver += coins.silver;
+                ch->copper += coins.copper;
         }
         else
         {
-                ch->plat = coins->plat;
-                ch->gold = coins->gold;
-                ch->silver = coins->silver;
-                ch->copper = coins->copper;
+                ch->plat = coins.plat;
+                ch->gold = coins.gold;
+                ch->silver = coins.silver;
+                ch->copper = coins.copper;
         }
 
-        free(coins);
-
         calc_coin_weight(ch);
-        return;
+        return TRUE;
 }
 
 void smelted_to_char(int st, int ti, int ad, int el, int sm, CHAR_DATA *ch, int mode)
@@ -8156,99 +8385,70 @@ void smelted_to_char(int st, int ti, int ad, int el, int sm, CHAR_DATA *ch, int 
 }
 
 /*
- * MAKE SURE that you call total_coins_char BEFORE this function as there is
- * no bounds checking done here
+ * Debit only sufficient valid balances, preserving copper, silver, gold,
+ * then platinum spending order. Wide change avoids intermediate overflow
+ * without promoting or normalizing denominations that were not spent.
  */
-void coins_from_char(int numcoins, CHAR_DATA *ch)
+bool coins_from_char(int64_t numcoins, CHAR_DATA *ch)
 {
-        COIN_DATA *coins;
-        int holder;
+        int64_t holder;
+
+        if (!ch || numcoins < 0
+        ||  ch->plat < 0 || ch->gold < 0
+        ||  ch->silver < 0 || ch->copper < 0
+        ||  total_coins_char(ch) < numcoins)
+                return FALSE;
 
         if (ch->copper >= numcoins)
         {
-                ch->copper -= numcoins;
+                ch->copper -= (int)numcoins;
                 calc_coin_weight(ch);
-                return;
+                return TRUE;
         }
-        else
-        {
-                numcoins -= ch->copper;
-                ch->copper = 0;
-        }
+        numcoins -= ch->copper;
+        ch->copper = 0;
 
-        coins = (COIN_DATA *)malloc(sizeof(COIN_DATA));
-        if (!coins)
-        {
-                bug("coins_from_char: COIN_DATA - not enough memory to allocate", 0);
-                exit(1);
-        }
-
-        /* Process silver coins */
-        holder = (ch->silver * COIN_SILVER);
+        holder = (int64_t)ch->silver * COIN_SILVER;
         if (holder >= numcoins)
         {
                 holder -= numcoins;
-                coin_crunch(holder, coins);
-                ch->silver = coins->silver
-                        + (coins->gold * 10)
-                        + (coins->plat * 100);
-                ch->copper = coins->copper;
+                ch->silver = (int)(holder / COIN_SILVER);
+                ch->copper = (int)(holder % COIN_SILVER);
                 calc_coin_weight(ch);
-                free(coins);
-                return;
+                return TRUE;
         }
-        else
-        {
-                numcoins -= holder;
-                ch->silver = 0;
-        }
+        numcoins -= holder;
+        ch->silver = 0;
 
-        /* Process gold coins */
-        holder = (ch->gold * COIN_GOLD);
+        holder = (int64_t)ch->gold * COIN_GOLD;
         if (holder >= numcoins)
         {
                 holder -= numcoins;
-                coin_crunch(holder, coins);
-                ch->gold = coins->gold + (coins->plat * 10);
-                ch->silver = coins->silver;
-                ch->copper = coins->copper;
+                ch->gold = (int)(holder / COIN_GOLD);
+                ch->silver = (int)(holder % COIN_GOLD / COIN_SILVER);
+                ch->copper = (int)(holder % COIN_SILVER);
                 calc_coin_weight(ch);
-                free(coins);
-                return;
+                return TRUE;
         }
-        else
-        {
-                numcoins -= holder;
-                ch->gold = 0;
-        }
+        numcoins -= holder;
+        ch->gold = 0;
 
-        /* Process plat coins */
-        holder = (ch->plat * COIN_PLAT);
-        if (holder >= numcoins)
-        {
-                holder -= numcoins;
-                coin_crunch(holder, coins);
-                ch->plat = coins->plat;
-                ch->gold = coins->gold;
-                ch->silver = coins->silver;
-                ch->copper = coins->copper;
-                calc_coin_weight(ch);
-                free(coins);
-                return;
-        }
-        else
-        {
-                bug("coins_from_char: Called while numcoins < ch->coins.", 0);
-                send_to_char("You do not have that many coins!\n\r", ch);
-                calc_coin_weight(ch);
-                free(coins);
-                return;
-        }
+        holder = (int64_t)ch->plat * COIN_PLAT - numcoins;
+        ch->plat = (int)(holder / COIN_PLAT);
+        holder %= COIN_PLAT;
+        ch->gold = (int)(holder / COIN_GOLD);
+        holder %= COIN_GOLD;
+        ch->silver = (int)(holder / COIN_SILVER);
+        ch->copper = (int)(holder % COIN_SILVER);
+        calc_coin_weight(ch);
+        return TRUE;
 }
 
-int total_coins_char(CHAR_DATA *ch)
+int64_t total_coins_char(CHAR_DATA *ch)
 {
-        return (ch->plat * COIN_PLAT) + (ch->gold * COIN_GOLD) + (ch->silver * COIN_SILVER) + (ch->copper);
+        return (int64_t)ch->plat * COIN_PLAT
+             + (int64_t)ch->gold * COIN_GOLD
+             + (int64_t)ch->silver * COIN_SILVER + ch->copper;
 }
 
 /*
@@ -8510,37 +8710,37 @@ int advatoi (const char *s)
 
 int parsebet(const int currentbet, const char *argument)
 {
-        int newbet = 0;
-        char string[MAX_INPUT_LENGTH];
-        char *stringptr = string;
+        int64_t newbet;
+        long factor;
+        char *end;
 
-        strcpy(string, argument);
+        if (!argument || currentbet < 0 || !*argument)
+                return 0;
 
-        if (*stringptr)
+        if (isdigit((unsigned char)*argument))
+                return advatoi(argument);
+
+        if (*argument != '+' && *argument != '*' && *argument != 'x')
+                return 0;
+
+        if (!argument[1])
+                factor = *argument == '+' ? 25 : 2;
+        else
         {
-                if (isdigit(*stringptr))
-                        newbet = advatoi(stringptr);
-
-                else if (*stringptr == '+')
-                {
-                        if (strlen(stringptr) == 1)
-                                newbet = (currentbet * 125) / 100;
-                        else
-                                newbet = (currentbet * (100 + atoi(++stringptr))) / 100;
-                }
-                else
-                {
-                        if ((*stringptr == '*') || (*stringptr == 'x'))
-                        {
-                                if (strlen(stringptr) == 1)
-                                        newbet = currentbet * 2;
-                                else
-                                        newbet = currentbet * atoi(++stringptr);
-                        }
-                }
+                errno = 0;
+                factor = strtol(argument + 1, &end, 10);
+                if (errno == ERANGE || end == argument + 1 || *end != '\0'
+                ||  factor < INT_MIN || factor > INT_MAX)
+                        return 0;
         }
 
-        return newbet;
+        /* Relative bids use wide arithmetic before the existing int ceiling. */
+        if (*argument == '+')
+                newbet = (int64_t)currentbet * (100 + (int64_t)factor) / 100;
+        else
+                newbet = (int64_t)currentbet * factor;
+
+        return newbet < 0 || newbet > INT_MAX ? 0 : (int)newbet;
 }
 
 int random_qnd(int ap_value, char *rank, int ap_type)

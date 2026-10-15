@@ -223,6 +223,31 @@ void do_bet( CHAR_DATA *ch, char *argument )
 }
 
 /*
+ * The saved wallet and house bankroll must represent every possible outcome
+ * before a wager is taken. Keep the existing gold payouts and house odds.
+ */
+static bool game_payment_possible(CHAR_DATA *ch, CHAR_DATA *croupier,
+                                  int amount, int multiplier)
+{
+    CHAR_DATA after_bet = *ch;
+
+    if ((int64_t)croupier->pIndexData->pGame->bankroll + amount > INT_MAX)
+    {
+        send_to_char("The house cannot accept that wager.\n\r", ch);
+        return FALSE;
+    }
+
+    if (!coins_from_char((int64_t)amount * COIN_GOLD, &after_bet)
+        || (int64_t)after_bet.gold + (int64_t)amount * multiplier > INT_MAX)
+    {
+        send_to_char("You cannot carry that many coins.\n\r", ch);
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+/*
  * Upper-Lower-Triple
  * Game idea by Partan
  * Coded by Thelonius
@@ -261,17 +286,23 @@ void game_u_l_t( CHAR_DATA *ch, CHAR_DATA *croupier,
 		     ch );
 	return;
     }
+    if (!game_payment_possible(ch, croupier, amount,
+                               ichoice == 3 ? 37 : 2))
+        return;
+
 /*
  *  Now we have a wagering amount, and a choice.
  *  Let's place the bets and roll the dice, shall we?
  */
+    if (!coins_from_char((int64_t)amount * COIN_GOLD, ch))
+        return;
+
     act( "You place {Y$t gold{x worth of coins on the table, and bet {W$T{x.",
 	ch, wager, choice,   TO_CHAR    );
     act( "$n places a bet with you.",
 	ch, NULL,  croupier, TO_VICT    );
     act( "$n plays a dice game.",
 	ch, NULL,  croupier, TO_NOTVICT );
-    coins_from_char( amount * COIN_GOLD, ch );
     pGameIndex->bankroll += amount;
 
     die1 = number_range( 1, 6 );
@@ -352,6 +383,9 @@ void game_high_dice( CHAR_DATA *ch, CHAR_DATA *croupier,
     pGameIndex = croupier->pIndexData->pGame;
     sprintf ( wager, "%d", amount );
 
+    if (!game_payment_possible(ch, croupier, amount, 2))
+        return;
+
 /*
  *  Now we have a wagering amount...
  *  Let's place the bets and roll the dice, shall we?
@@ -374,13 +408,15 @@ void game_high_dice( CHAR_DATA *ch, CHAR_DATA *croupier,
  	   strcpy ( msg, "Today's my lucky day..." );
 	   break;
     }
+    if (!coins_from_char((int64_t)amount * COIN_GOLD, ch))
+        return;
+
     act( "You place {Y$t gold{x worth of coins on the table and say,{W\"$T\"{x",
         ch, wager, msg, TO_CHAR    );
     act( "$n places a bet with you.",
         ch, NULL,  croupier, TO_VICT    );
     act( "$n plays a dice game.",
         ch, NULL,  croupier, TO_NOTVICT );
-    coins_from_char( amount * COIN_GOLD, ch );
     pGameIndex->bankroll += amount;
 
     die1 = number_range( 1, 6 );
@@ -473,17 +509,23 @@ void game_seven( CHAR_DATA *ch, CHAR_DATA *croupier,
         return;
     }
 
+    if (!game_payment_possible(ch, croupier, amount,
+                               ichoice == 3 ? 5 : 2))
+        return;
+
 /*
  *  Now we have a wagering amount, and a choice.
  *  Let's place the bets and roll the dice, shall we?
  */
+    if (!coins_from_char((int64_t)amount * COIN_GOLD, ch))
+        return;
+
     act( "You place {Y$t gold{x worth of coins on the table, and bet '{W$T{x'.",
         ch, wager, choice,   TO_CHAR    );
     act( "$n places a bet with you.",
         ch, NULL,  croupier, TO_VICT    );
     act( "$n plays a dice game.",
         ch, NULL,  croupier, TO_NOTVICT );
-    coins_from_char( amount * COIN_GOLD, ch );
     pGameIndex->bankroll += amount;
 
     die1 = number_range( 1, 6 );

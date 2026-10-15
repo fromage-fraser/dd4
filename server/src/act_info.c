@@ -1466,10 +1466,18 @@ void do_look(CHAR_DATA *ch, char *argument)
                                 break;
                         }
 
+                        /* Inspection must not trust liquid IDs from saved objects. */
+                        if (obj->value[2] < 0 || obj->value[2] >= LIQ_MAX)
+                        {
+                                bug("Do_look: bad liquid number %d.", obj->value[2]);
+                                send_to_char("Something is wrong with the liquid in that container.\n\r", ch);
+                                break;
+                        }
+
                         sprintf(buf, "It's %s full of a %s liquid.\n\r",
                                 obj->value[1] < obj->value[0] / 4
                                     ? "less than"
-                                : obj->value[1] < 3 * obj->value[0] / 4
+                                : obj->value[1] < 3LL * obj->value[0] / 4
                                     ? "about"
                                     : "more than",
                                 liq_table[obj->value[2]].liq_color);
@@ -2969,14 +2977,57 @@ void do_help(CHAR_DATA *ch, char *argument)
  *  Routines for printing 'who' information for individual characters
  *  moved to print_who_data() for reuse by 'whois'; Gezhp 2000.
  */
+/* Keep the complete list for paging without a fixed aggregate string limit. */
+static bool append_who_text(char **buffer, size_t *length, size_t *capacity,
+                            const char *text)
+{
+        size_t added = strlen(text);
+        size_t needed;
+        char *grown;
+
+        if (*length > MAX_NOTE_DISPLAY_LENGTH
+        || added > MAX_NOTE_DISPLAY_LENGTH - *length)
+                return FALSE;
+
+        needed = *length + added + 1;
+        if (needed > *capacity)
+        {
+                size_t next = *capacity ? *capacity : 1024;
+
+                while (next < needed)
+                {
+                        if (next > (MAX_NOTE_DISPLAY_LENGTH + 1) / 2)
+                        {
+                                next = MAX_NOTE_DISPLAY_LENGTH + 1;
+                                break;
+                        }
+                        next *= 2;
+                }
+
+                grown = realloc(*buffer, next);
+                if (!grown)
+                        return FALSE;
+                *buffer = grown;
+                *capacity = next;
+        }
+
+        memcpy(*buffer + *length, text, added + 1);
+        *length += added;
+        return TRUE;
+}
+
 void do_who(CHAR_DATA *ch, char *argument)
 {
         DESCRIPTOR_DATA *d;
-        char buf[MAX_STRING_LENGTH * 3];
+        char *sections[3] = { NULL, NULL, NULL };
+        size_t lengths[3] = { 0, 0, 0 };
+        size_t capacities[3] = { 0, 0, 0 };
+        char *buf = NULL;
+        size_t length = 0;
+        size_t capacity = 0;
         char buf2[MAX_STRING_LENGTH];
-        char buf_imm[MAX_STRING_LENGTH];
-        char buf_hero[MAX_STRING_LENGTH];
         char arg[MAX_INPUT_LENGTH];
+        int group;
         int iClass = -1;
         int iClan = 0;
         int iLevelLower = 0;
@@ -2984,9 +3035,6 @@ void do_who(CHAR_DATA *ch, char *argument)
         int count = 0;
         int nNumber = 0;
         int nMatch = 0;
-        int nImm = 0;
-        int nHero = 0;
-        int nMort = 0;
         bool fImmortal = FALSE;
         bool fTarget = FALSE;
         bool fClan = FALSE;
@@ -3070,10 +3118,7 @@ void do_who(CHAR_DATA *ch, char *argument)
                 }
         }
 
-        strcpy(buf, "Mortals in the Dragons Domain\n\r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
-        strcpy(buf_hero, "Heroes of the Dragons Domain\n\r-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\r");
-        strcpy(buf_imm, "\n\rImmortals of the Dragons Domain\n\r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r");
-
+        /* Preserve visibility checks and descriptor order within each group. */
         for (d = descriptor_list; d; d = d->next)
         {
                 CHAR_DATA *wch;
@@ -3084,33 +3129,31 @@ void do_who(CHAR_DATA *ch, char *argument)
                         continue;
 
                 if (wch->level < iLevelLower || wch->level > iLevelUpper || (fImmortal && wch->level < LEVEL_HERO) || (fClass && wch->class != iClass) || (fClan && (!wch->clan || wch->level > LEVEL_HERO)) || (fClan && iClan && iClan != wch->clan))
-                {
                         continue;
-                }
 
                 if (fTarget && (ch == wch || wch->level > LEVEL_HERO || !(ch->clan || IS_SET(ch->status, PLR_RONIN)) || !(wch->clan || IS_SET(wch->status, PLR_RONIN)) || (ch->clan && ch->clan == wch->clan) || !in_pkill_range(ch, wch)))
-                {
                         continue;
+
+                group = wch->level > LEVEL_HERO ? 0
+                    : wch->level == LEVEL_HERO ? 1 : 2;
+                if (!sections[group])
+                {
+                        const char *title = group == 0
+                            ? "\n\rImmortals of the Dragons Domain\n\r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r"
+                            : group == 1
+                            ? "Heroes of the Dragons Domain\n\r-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\r"
+                            : "Mortals in the Dragons Domain\n\r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n\r";
+
+                        if (!append_who_text(&sections[group], &lengths[group],
+                                             &capacities[group], title))
+                                goto failed;
                 }
 
-                nMatch++;
                 print_who_data(wch, buf2);
-
-                if (wch->level < LEVEL_HERO)
-                {
-                        strcat(buf, buf2);
-                        nMort++;
-                }
-                else if (wch->level == LEVEL_HERO)
-                {
-                        strcat(buf_hero, buf2);
-                        nHero++;
-                }
-                else
-                {
-                        strcat(buf_imm, buf2);
-                        nImm++;
-                }
+                if (!append_who_text(&sections[group], &lengths[group],
+                                     &capacities[group], buf2))
+                        goto failed;
+                nMatch++;
         }
 
         /* The following is for the maximum players - taken from the ROM code */
@@ -3118,7 +3161,7 @@ void do_who(CHAR_DATA *ch, char *argument)
 
         for (d = descriptor_list; d; d = d->next)
         {
-                if ((d->connected == CON_PLAYING || (d->connected >= CON_NOTE_TO && d->connected <= CON_NOTE_FINISH)) && can_see(ch, d->character))
+                if ((d->connected == CON_PLAYING || (d->connected >= CON_NOTE_TO && d->connected <= CON_NOTE_FINISH)) && d->character && can_see(ch, d->character))
                         count++;
         }
 
@@ -3133,26 +3176,30 @@ void do_who(CHAR_DATA *ch, char *argument)
         else
         {
                 send_to_char("Nobody matches.\n\r", ch);
-                return;
+                goto cleanup;
         }
 
-        if (!nImm)
-                buf_imm[0] = '\0';
-        else
-                strcat(buf_imm, "\n\r");
+        for (group = 0; group < 3; group++)
+        {
+                if (!sections[group])
+                        continue;
+                if (!append_who_text(&buf, &length, &capacity, sections[group]))
+                        goto failed;
+                if (group < 2
+                && !append_who_text(&buf, &length, &capacity, "\n\r"))
+                        goto failed;
+        }
+        if (!append_who_text(&buf, &length, &capacity, buf2))
+                goto failed;
+        send_to_char_paged(buf, ch);
+        goto cleanup;
 
-        if (!nHero)
-                buf_hero[0] = '\0';
-        else
-                strcat(buf_hero, "\n\r");
-
-        if (!nMort)
-                buf[0] = '\0';
-
-        strcat(buf_imm, buf_hero);
-        strcat(buf_imm, buf);
-        strcat(buf_imm, buf2);
-        send_to_char(buf_imm, ch);
+failed:
+        send_to_char("Unable to display the player list right now.\n\r", ch);
+cleanup:
+        free(buf);
+        for (group = 0; group < 3; group++)
+                free(sections[group]);
 }
 
 /*
@@ -6004,9 +6051,14 @@ void do_repair(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (!coins_from_char(cost, ch))
+        {
+                act("$C decides you do not have enough money for $s services.",
+                        ch, obj, rch, TO_CHAR);
+                return;
+        }
         sprintf(buf, "{WYou pay %d coppers for the repair.{x\n\r", cost);
         send_to_char(buf, ch);
-        coins_from_char(cost, ch);
         act("$C goes to work on $p and soon has it looking as good as new!", ch, obj, rch, TO_CHAR);
 
         /* fix item */
@@ -6081,8 +6133,13 @@ void do_identify(CHAR_DATA *ch, char *argument)
         }
         /* Setting to 1G as its now permanent - Brutus */
         cost = 100;
+        if (!coins_from_char(cost, ch))
+        {
+                act("$C decides you do not have enough money for $s services.",
+                    ch, obj, rch, TO_CHAR);
+                return;
+        }
         send_to_char("Your purse feels lighter.\n\r", ch);
-        coins_from_char(cost, ch);
         act("$C examines $p and identifies its properties.\n\r", ch, obj, rch, TO_CHAR);
         spell_identify(0, 0, ch, obj);
 }

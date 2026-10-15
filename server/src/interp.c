@@ -35,6 +35,7 @@ bool check_social(CHAR_DATA *ch, char *command, char *argument);
 char last_command[MAX_STRING_LENGTH];
 char last_function[MAX_STRING_LENGTH];
 bool fLogAll = FALSE;
+static bool player_order_active = FALSE;
 
 /*
  * Command logging types.
@@ -2706,6 +2707,20 @@ const struct social_type social_table[] =
          NULL, NULL, NULL, NULL, NULL, NULL, NULL}};
 
 /*
+ * Player orders retain their permissions through recursive command execution.
+ * Autonomous NPC programs do not enter this context.
+ */
+void interpret_ordered(CHAR_DATA *ch, char *argument, CHAR_DATA *issuer)
+{
+        bool previous = player_order_active;
+
+        player_order_active = previous || !IS_NPC(issuer)
+                || (issuer->desc && issuer->desc->original);
+        interpret(ch, argument);
+        player_order_active = previous;
+}
+
+/*
  * The main entry point for executing commands.
  * Can be recursively called from 'at', 'order', 'force'.
  */
@@ -2780,6 +2795,11 @@ void interpret(CHAR_DATA *ch, char *argument)
                         break;
                 }
         }
+
+        /* MobProg privileges are reserved for autonomous script execution. */
+        if (found && player_order_active
+        &&  !str_prefix("mp", cmd_table[cmd].name))
+                return;
 
         /* IF you're DAZED you can't do much.
          * If you're PRONE you can't do attack skills
@@ -2944,7 +2964,7 @@ bool check_social(CHAR_DATA *ch, char *command, char *argument)
         if (!found)
                 return FALSE;
 
-        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))
+        if (is_silenced(ch))
         {
                 send_to_char("You are mute. Sssh.\n\r", ch);
                 return TRUE;
@@ -3016,7 +3036,8 @@ bool check_social(CHAR_DATA *ch, char *command, char *argument)
                         switch (number_bits(4))
                         {
                         case 0:
-                                if ((victim->level < ch->level) && !(victim->fighting))
+                                if ((victim->level < ch->level) && !(victim->fighting)
+                                &&  !is_safe(victim, ch))
                                         multi_hit(victim, ch, TYPE_UNDEFINED);
                                 break;
 
