@@ -1583,14 +1583,14 @@ void spell_armor(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_astral_vortex(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim;
+        CHAR_DATA *mount = NULL;
+        CHAR_DATA *rch;
+        ROOM_INDEX_DATA *location;
         OBJ_DATA *pobj;
         OBJ_DATA *pobj_next;
 
-        /*
-         * return;
-         * Re-enabled 24/09/18.  And may God have mercy on my soul.
-         * --Owl
-         */
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
 
         for (pobj = ch->carrying; pobj; pobj = pobj_next)
         {
@@ -1606,17 +1606,95 @@ void spell_astral_vortex(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        if ((!(victim = get_char_world(ch, target_name))) || (!IS_NPC(ch) && ch->fighting) || IS_SET(victim->in_room->room_flags, ROOM_PRIVATE) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(victim->in_room->room_flags, ROOM_SAFE) || IS_SET(victim->in_room->area->area_flags, AREA_FLAG_SAFE) || victim->level >= level + 3 || victim == ch)
+        victim = get_char_world(ch, target_name);
+        if (!victim || victim->deleted || !victim->in_room)
         {
                 send_to_char("You failed.\n\r", ch);
                 return;
         }
 
-        act("$n creates a magical vortex and is suddenly sucked through it.", ch, NULL, victim, TO_ROOM);
-        act("You focus your energies on $N, a magical vortex appears into which you step.", ch, NULL, victim, TO_CHAR);
+        location = victim->in_room;
+
+        if ((!IS_NPC(ch) && ch->fighting)
+        ||  ch->rider
+        ||  IS_SET(location->room_flags, ROOM_PRIVATE)
+        ||  IS_SET(location->room_flags, ROOM_SOLITARY)
+        ||  IS_SET(location->room_flags, ROOM_NO_RECALL)
+        ||  IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
+        ||  IS_SET(location->room_flags, ROOM_SAFE)
+        ||  IS_SET(location->area->area_flags, AREA_FLAG_SAFE)
+        ||  victim->level >= level + 3
+        ||  victim == ch)
+        {
+                send_to_char("You failed.\n\r", ch);
+                return;
+        }
+
+        /* Cast as the rider, and make sure the mount is really here. */
+        if (ch->mount || is_affected(ch, gsn_mount))
+        {
+                mount = ch->mount;
+
+                for (rch = ch->in_room->people; rch;
+                     rch = rch->next_in_room)
+                {
+                        if (rch == mount)
+                                break;
+                }
+
+                if (!rch || rch->deleted
+                ||  mount->in_room != ch->in_room
+                ||  mount->rider != ch
+                ||  !is_affected(ch, gsn_mount))
+                {
+                        send_to_char("Your mount is not ready to travel with you.\n\r", ch);
+                        return;
+                }
+        }
+
+        if (mount && IS_SET(location->room_flags, ROOM_NO_MOUNT))
+        {
+                send_to_char("Your mount cannot enter that room.\n\r", ch);
+                return;
+        }
+
+        /* Check whoever is travelling, not the person at the destination. */
+        if (!undead_can_travel_to_room(ch, location))
+        {
+                send_to_char("That room will not let you through.\n\r", ch);
+                return;
+        }
+
+        act("$n creates a magical vortex and is suddenly sucked through it.",
+            ch, NULL, victim, TO_ROOM);
+        act("You focus your energies on $N, a magical vortex appears into which you step.",
+            ch, NULL, victim, TO_CHAR);
+
+        if (mount)
+                act_move("$n disappears into the vortex.", mount, NULL, NULL, TO_ROOM);
+
+        stop_fighting(ch, TRUE);
+        if (mount)
+                stop_fighting(mount, TRUE);
+
+        GMCPSetArrival(ch->desc,
+                       ch->in_room->vnum,
+                       location->vnum,
+                       -1,
+                       "astral_vortex");
+
         char_from_room(ch);
-        char_to_room(ch, victim->in_room);
-        act("A vortex appears overhead and $n is thrown from it.", ch, NULL, victim, TO_ROOM);
+        char_to_room(ch, location);
+
+        if (mount)
+        {
+                char_from_room(mount);
+                char_to_room(mount, location);
+                act_move("$n emerges from the vortex.", mount, NULL, NULL, TO_ROOM);
+        }
+
+        act("A vortex appears overhead and $n is thrown from it.",
+            ch, NULL, victim, TO_ROOM);
         do_look(ch, "auto");
         return;
 }
@@ -7246,6 +7324,7 @@ void spell_banish(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *traveller;
         ROOM_INDEX_DATA *room;
         OBJ_DATA *obj;
+        int attempts;
 
         if (!victim || victim->deleted || victim == ch
         ||  !victim->in_room
@@ -7312,7 +7391,8 @@ void spell_banish(int sn, int level, CHAR_DATA *ch, void *vo)
         ||  (companion && saves_spell(ch, level, companion)))
                 goto failed;
 
-        for (;;)
+        /* Find a room that allows the whole travelling pair. */
+        for (attempts = 0; attempts < 10000; attempts++)
         {
                 room = get_room_index(number_range(0, 65535));
 
@@ -7321,7 +7401,8 @@ void spell_banish(int sn, int level, CHAR_DATA *ch, void *vo)
                 ||  IS_SET(room->room_flags, ROOM_PLAYER_KILLER)
                 ||  IS_SET(room->room_flags, ROOM_NO_RECALL)
                 ||  IS_SET(room->room_flags, ROOM_SOLITARY)
-                ||  IS_SET(room->room_flags, ROOM_CONE_OF_SILENCE))
+                ||  IS_SET(room->room_flags, ROOM_CONE_OF_SILENCE)
+                ||  !undead_can_travel_to_room(victim, room))
                         continue;
 
                 if (mount
@@ -7331,6 +7412,9 @@ void spell_banish(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 break;
         }
+
+        if (attempts == 10000)
+                goto failed;
 
         act("<14>You banish $N in a flash of blue-white light!<0>",
             ch, NULL, victim, TO_CHAR);
