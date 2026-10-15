@@ -6887,6 +6887,12 @@ void spell_summon(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
+        if (!undead_can_travel_to_room(victim, ch->in_room))
+        {
+                send_to_char("That room will not let them through.\n\r", ch);
+                return;
+        }
+
         act("$c disappears suddenly.", victim, NULL, NULL, TO_ROOM);
         act("$c has summoned you!", ch, NULL, victim, TO_VICT);
         GMCPSetArrival(victim->desc,
@@ -7101,9 +7107,15 @@ void spell_summon_avatar(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_teleport(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
-        ROOM_INDEX_DATA *pRoomIndex;
+        CHAR_DATA *mount = NULL;
+        CHAR_DATA *rch;
+        ROOM_INDEX_DATA *pRoomIndex = NULL;
         OBJ_DATA *pobj;
         OBJ_DATA *pobj_next;
+        int attempts;
+
+        if (!victim || victim->deleted || !victim->in_room)
+                return;
 
         for (pobj = ch->carrying; pobj; pobj = pobj_next)
         {
@@ -7119,76 +7131,109 @@ void spell_teleport(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        if (!victim->in_room || IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL) || IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER) || (!IS_NPC(ch) && victim->fighting) || (victim != ch && (saves_spell(ch, level, victim) || saves_spell(ch, level, victim))))
+        /* Target the rider rather than pulling a mount out from under them. */
+        if (victim->rider
+        ||  IS_SET(victim->in_room->room_flags, ROOM_NO_RECALL)
+        ||  IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER)
+        ||  (!IS_NPC(ch) && victim->fighting)
+        ||  (victim != ch
+             && (saves_spell(ch, level, victim)
+                 || saves_spell(ch, level, victim))))
         {
                 send_to_char("You failed.\n\r", ch);
                 return;
         }
 
-        for (;;)
+        /* Take the traveller's mount, not the caster's. */
+        if (victim->mount || is_affected(victim, gsn_mount))
+        {
+                mount = victim->mount;
+
+                for (rch = victim->in_room->people; rch;
+                     rch = rch->next_in_room)
+                {
+                        if (rch == mount)
+                                break;
+                }
+
+                if (!rch || rch->deleted
+                ||  mount->in_room != victim->in_room
+                ||  mount->rider != victim
+                ||  !is_affected(victim, gsn_mount))
+                {
+                        send_to_char("You failed.\n\r", ch);
+                        return;
+                }
+        }
+
+        /* Give up safely if the search cannot find a suitable room. */
+        for (attempts = 0; attempts < 10000; attempts++)
         {
                 pRoomIndex = get_room_index(number_range(0, 65535));
 
-                if (!is_affected(ch, gsn_mount))
-                {
-                        if (pRoomIndex && !IS_SET(pRoomIndex->area->area_flags, AREA_FLAG_NO_TELEPORT) && !IS_SET(pRoomIndex->room_flags, ROOM_PLAYER_KILLER) && !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL) && !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) && !IS_SET(pRoomIndex->room_flags, ROOM_CONE_OF_SILENCE))
-                                break;
-                }
-                else
-                {
-                        if (pRoomIndex && !IS_SET(pRoomIndex->room_flags, ROOM_NO_MOUNT) && !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE) && !IS_SET(pRoomIndex->area->area_flags, AREA_FLAG_NO_TELEPORT) && !IS_SET(pRoomIndex->room_flags, ROOM_PLAYER_KILLER) && !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL) && !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) && !IS_SET(pRoomIndex->room_flags, ROOM_CONE_OF_SILENCE))
-                                break;
-                }
+                if (!pRoomIndex
+                ||  IS_SET(pRoomIndex->area->area_flags, AREA_FLAG_NO_TELEPORT)
+                ||  IS_SET(pRoomIndex->room_flags, ROOM_PLAYER_KILLER)
+                ||  IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL)
+                ||  IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY)
+                ||  IS_SET(pRoomIndex->room_flags, ROOM_CONE_OF_SILENCE)
+                ||  !undead_can_travel_to_room(victim, pRoomIndex))
+                        continue;
+
+                if (mount
+                && (IS_SET(pRoomIndex->room_flags, ROOM_NO_MOUNT)
+                    || IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)))
+                        continue;
+
+                break;
+        }
+
+        if (attempts == 10000)
+        {
+                send_to_char("You failed.\n\r", ch);
+                return;
         }
 
         send_to_char("{cYou slowly fade out of existence.{x\n\r", victim);
         act("{c$c slowly fades out of existence.{x", victim, NULL, NULL, TO_ROOM);
-        arena_commentary("$c teleports away.", ch, NULL);
+        arena_commentary("$c teleports away.", victim, NULL);
 
-        if (is_affected(ch, gsn_mount))
-        {
-                CHAR_DATA *mount;
-                mount = ch->mount;
+        if (mount)
                 act_move("$c fades out of existence.\n\r", mount, NULL, NULL, TO_ROOM);
-        }
         else
-        {
                 send_to_char("\n\r", victim);
-        }
 
         stop_fighting(victim, TRUE);
-
+        if (mount)
+                stop_fighting(mount, TRUE);
 
         GMCPSetArrival(victim->desc,
-                victim->in_room->vnum,
-                pRoomIndex->vnum,
-                -1,
-                "teleport");
+                       victim->in_room->vnum,
+                       pRoomIndex->vnum,
+                       -1,
+                       "teleport");
 
-        char_from_room(victim);
-
-        if (is_entered_in_tournament(ch) && tournament_status == TOURNAMENT_STATUS_RUNNING && is_still_alive_in_tournament(ch))
+        if (is_entered_in_tournament(victim)
+        &&  tournament_status == TOURNAMENT_STATUS_RUNNING
+        &&  is_still_alive_in_tournament(victim))
         {
-                disqualify_tournament_entrant(ch, "left the Arena");
+                disqualify_tournament_entrant(victim, "left the Arena");
                 check_for_tournament_winner();
         }
 
+        char_from_room(victim);
         char_to_room(victim, pRoomIndex);
-        act("{c$c slowly fades into existence.{x", victim, NULL, NULL, TO_ROOM);
 
-        do_look(victim, "auto");
-
-        send_to_char("\n\r{cYou slowly fade into existence.{x\n\r", victim);
-
-        if (is_affected(ch, gsn_mount))
+        if (mount)
         {
-                CHAR_DATA *mount;
-                mount = ch->mount;
                 char_from_room(mount);
                 char_to_room(mount, pRoomIndex);
                 act_move("$c fades into existence.\n\r", mount, NULL, NULL, TO_ROOM);
         }
 
+        act("{c$c slowly fades into existence.{x", victim, NULL, NULL, TO_ROOM);
+        do_look(victim, "auto");
+        send_to_char("\n\r{cYou slowly fade into existence.{x\n\r", victim);
         return;
 }
 
