@@ -2900,9 +2900,14 @@ ROOM_ flags:
 
 ROOM_NO_UNDEAD is a permanent room flag, separate from the planned Ward
 Against Undead spell. It checks ordinary exit travel, mobile resets,
-Animate Dead, Summon, Teleport and portal entry. Undead NPC mounts and
-servants have no exception. An undead NPC mount blocks the whole mounted
-pair on checked travel paths.
+Animate Dead, Summon, Teleport, portal entry, Recall and clan Home.
+Undead NPC mounts and servants have no exception. An undead NPC mount
+blocks the whole mounted pair on checked travel paths.
+
+Recall leaves blocked followers behind instead of cancelling their
+master's trip. The player's own mount is checked with its rider and
+moves only once. Word of Recall uses the same checks. Clan Home does
+not bring other followers.
 
 Player vampires can enter and leave normally. The room burns them for
 30-60 HP each game tick instead of their usual HP regeneration, without
@@ -2910,10 +2915,9 @@ taking them below 1 HP. This works indoors, at night, underwater and in
 mist form. Sunlight does not add another burn, and crossing an exit does
 not cause an extra burn.
 
-Creatures already inside are not removed. Other magical travel
-(including recall, Astral Vortex, Banish and Mass Teleport), gravity,
-scripted placement and immortal loading or transfer are not checked
-yet, so this is not a complete entry barrier.
+Creatures already inside are not removed. Arena travel, Astral Vortex,
+Banish, Mass Teleport, gravity, scripted placement and immortal loading
+or transfer are not checked yet, so this is not a complete entry barrier.
 
 The 'sector-type' identifies the type of terrain.  This primarily affects
 movement cost through the room, but may have various other effects--for example,

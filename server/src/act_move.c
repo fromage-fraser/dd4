@@ -2832,6 +2832,55 @@ void do_kiai(CHAR_DATA *ch, char *argument)
                 damage(ch, victim, 0, gsn_kiai, FALSE);
 }
 
+/*
+ * Recall and clan Home use the same checks before anyone moves.
+ */
+static bool recall_destination_allowed(CHAR_DATA *ch,
+                                       ROOM_INDEX_DATA *location)
+{
+        CHAR_DATA *mount;
+        CHAR_DATA *rch;
+
+        if (!ch || ch->deleted || !ch->in_room || !location)
+                return FALSE;
+
+        if (ch->rider)
+        {
+                send_to_char("You cannot travel while someone is riding you.\n\r", ch);
+                return FALSE;
+        }
+
+        /* Make sure the mount is really here and still paired with its rider. */
+        if (ch->mount || is_affected(ch, gsn_mount))
+        {
+                mount = ch->mount;
+
+                for (rch = ch->in_room->people; rch;
+                     rch = rch->next_in_room)
+                {
+                        if (rch == mount)
+                                break;
+                }
+
+                if (!rch || rch->deleted
+                ||  mount->in_room != ch->in_room
+                ||  mount->rider != ch
+                ||  !is_affected(ch, gsn_mount))
+                {
+                        send_to_char("Your mount is not ready to travel with you.\n\r", ch);
+                        return FALSE;
+                }
+        }
+
+        if (!undead_can_travel_to_room(ch, location))
+        {
+                send_to_char("That room will not let you through.\n\r", ch);
+                return FALSE;
+        }
+
+        return TRUE;
+}
+
 void do_recall(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
@@ -2889,6 +2938,9 @@ void do_recall(CHAR_DATA *ch, char *argument)
                 }
 
                 if (ch->in_room == location)
+                        return;
+
+                if (!recall_destination_allowed(ch, location))
                         return;
 
                 if ((IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || IS_AFFECTED(ch, AFF_CURSE) || IS_AFFECTED(ch, AFF_NO_RECALL)) && !IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER))
@@ -2958,23 +3010,33 @@ void do_recall(CHAR_DATA *ch, char *argument)
                 }
 
                 /*
-                 * Check the room for mobs where victim->master == ch.  If you find one,
-                 * Send them to the room ch will recall to. Put in to make life a little
-                 * less painful for Infernalists -- Owl 24/7/22
+                 * Bring nearby NPC followers if the destination allows them.
+                 * The player's mount moves with its rider below, not here.
                  */
-
                 for (mob = ch->in_room->people; mob; mob = vnext)
                 {
                         vnext = mob->next_in_room;
 
-                        if ((mob != ch) && (mob->master == ch) && (IS_NPC(mob)))
+                        if (mob->deleted || !IS_NPC(mob)
+                        ||  mob->master != ch || mob == ch->mount)
+                                continue;
+
+                        /* Leave any other mounted pair together. */
+                        if (mob->rider || mob->mount)
+                                continue;
+
+                        if (!undead_can_travel_to_room(mob, location))
                         {
-                                followers_found++;
-                                char_from_room(mob);
-                                char_to_room(mob, location);
-                                act_move("$n appears suddenly.", mob, NULL, NULL, TO_ROOM);
-                                mob = mob->next_in_room;
+                                act("$N cannot follow you into that room.",
+                                    ch, NULL, mob, TO_CHAR);
+                                continue;
                         }
+
+                        stop_fighting(mob, TRUE);
+                        char_from_room(mob);
+                        char_to_room(mob, location);
+                        act_move("$n appears suddenly.", mob, NULL, NULL, TO_ROOM);
+                        followers_found++;
                 }
 
                 if (tournament_status == TOURNAMENT_STATUS_RUNNING && is_entered_in_tournament(ch) && IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER) && is_still_alive_in_tournament(ch))
@@ -3140,6 +3202,9 @@ void do_home(CHAR_DATA *ch, char *argument)
         }
 
         if (ch->in_room == location)
+                return;
+
+        if (!recall_destination_allowed(ch, location))
                 return;
 
         if (IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || IS_AFFECTED(ch, AFF_CURSE) || IS_AFFECTED(ch, AFF_NO_RECALL))
