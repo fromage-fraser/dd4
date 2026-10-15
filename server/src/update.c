@@ -1983,7 +1983,7 @@ void mobile_update(void)
                 /*
                  * Flee
                  */
-                if (ch->hit < (ch->max_hit / 2) && !IS_SET(ch->act, ACT_SENTINEL) && (door = number_bits(3)) <= 5 && (pexit = ch->in_room->exit[door]) && !IS_SET(ch->act, ACT_DIE_IF_MASTER_GONE) && (!IS_SET(ch->act, ACT_STAY_AREA) || pexit->to_room->area == ch->in_room->area) && pexit->to_room && !IS_SET(pexit->exit_info, EX_CLOSED) && !IS_SET(pexit->to_room->room_flags, ROOM_NO_MOB))
+                if (ch->hit < (ch->max_hit / 2) && !IS_SET(ch->act, ACT_SENTINEL) && (door = number_bits(3)) <= 5 && (pexit = ch->in_room->exit[door]) && pexit->to_room && !IS_SET(ch->act, ACT_DIE_IF_MASTER_GONE) && (!IS_SET(ch->act, ACT_STAY_AREA) || pexit->to_room->area == ch->in_room->area) && !IS_SET(pexit->exit_info, EX_CLOSED) && !IS_SET(pexit->to_room->room_flags, ROOM_NO_MOB))
                 {
                         move_char(ch, door);
                 }
@@ -3607,9 +3607,135 @@ void form_equipment_update(CHAR_DATA *ch)
 /*
  * the auction update - another very important part
  */
+/*
+ * Return escrow to its original destination, then the alternate destination.
+ * When both are full, a room money object preserves the complete refund.
+ * Clear escrow before messages so repeated cleanup cannot pay it twice.
+ */
+bool refund_auction_bid(void)
+{
+        CHAR_DATA *buyer;
+        int64_t amount;
+        int destination;
+        bool bank_fits;
+        bool purse_fits;
+        OBJ_DATA *money;
+
+        if (!auction || auction->bet == 0)
+                return TRUE;
+
+        buyer = auction->buyer;
+        if (auction->bet < 0 || auction->bet > 1000000
+            || !buyer || buyer->deleted || IS_NPC(buyer) || !buyer->pcdata)
+        {
+                bug("Refund_auction_bid: invalid escrow or buyer.", 0);
+                return FALSE;
+        }
+
+        amount = (int64_t)auction->bet * COIN_PLAT;
+        bank_fits = (int64_t)buyer->pcdata->bank + amount <= INT_MAX;
+        purse_fits = can_receive_coins(amount, buyer);
+
+        if (auction->from_bank)
+                destination = bank_fits ? 1 : purse_fits ? 2 : 3;
+        else
+                destination = purse_fits ? 2 : bank_fits ? 1 : 3;
+
+        if (destination == 3 && !buyer->in_room)
+        {
+                /* Leave escrow intact if an invalid lifecycle removed its room. */
+                bug("Refund_auction_bid: buyer has no room for refund.", 0);
+                return FALSE;
+        }
+
+        if (destination == 1)
+                buyer->pcdata->bank = (int)((int64_t)buyer->pcdata->bank + amount);
+        else if (destination == 2)
+        {
+                if (!coins_to_char(amount, buyer, COINS_ADD))
+                        return FALSE;
+        }
+        else
+        {
+                money = create_money(auction->bet, 0, 0, 0);
+                if (!money)
+                {
+                        bug("Refund_auction_bid: unable to create refund coins.", 0);
+                        return FALSE;
+                }
+                obj_to_room(money, buyer->in_room);
+        }
+
+        auction->buyer = NULL;
+        auction->bet = 0;
+        auction->from_bank = FALSE;
+
+        if (destination == 1)
+                send_to_char("Your auction money has been refunded to your bank account.\n\r", buyer);
+        else if (destination == 2)
+                send_to_char("Your auction money has been refunded to your purse.\n\r", buyer);
+        else
+        {
+                send_to_char("Your auction refund will not fit in your purse or bank account.\n\r"
+                             "The auctioneer has placed your coins on the ground here.\n\r", buyer);
+                act("The auctioneer places $n's refunded coins on the ground.",
+                    buyer, NULL, NULL, TO_ROOM);
+        }
+        return TRUE;
+}
+
+/* End all auction references while the item and participants are still valid. */
+bool cancel_auction(const char *reason, bool return_item, CHAR_DATA *leaving)
+{
+        OBJ_DATA *item;
+        CHAR_DATA *seller;
+        char buf[MAX_STRING_LENGTH];
+
+        if (!auction || !auction->item)
+                return TRUE;
+
+        item = auction->item;
+        seller = auction->seller;
+        if (return_item && (!seller || seller->deleted
+                            || (seller == leaving && !seller->in_room)))
+        {
+                bug("Cancel_auction: invalid seller for returned item.", 0);
+                return FALSE;
+        }
+        if (!refund_auction_bid())
+                return FALSE;
+
+        memset(auction, 0, sizeof(*auction));
+        sprintf(buf, "%s: auction cancelled because %s.", item->short_descr, reason);
+        talk_auction(buf);
+
+        if (return_item && !item->deleted)
+        {
+                if (seller == leaving)
+                {
+                        obj_to_room(item, seller->in_room);
+                        act("The auctioneer places $p on the ground as your sale is cancelled.",
+                            seller, item, NULL, TO_CHAR);
+                }
+                else
+                {
+                        obj_to_char(item, seller);
+                        act("The auctioneer returns $p to you as your sale is cancelled.",
+                            seller, item, NULL, TO_CHAR);
+                }
+        }
+        return TRUE;
+}
+
 void auction_update()
 {
         char buf[MAX_STRING_LENGTH];
+
+        if (auction->item && auction->item->deleted)
+        {
+                cancel_auction("the item is no longer available", FALSE, NULL);
+                return;
+        }
 
         if (auction->item && --auction->pulse <= 0)
         {
@@ -3638,6 +3764,14 @@ void auction_update()
                 case 3:
                         if (auction->bet > 0)
                         {
+                                if ((int64_t)auction->seller->pcdata->bank
+                                    + (int64_t)auction->bet * COIN_PLAT > INT_MAX)
+                                {
+                                        cancel_auction("the seller's bank cannot hold the payment",
+                                                       TRUE, NULL);
+                                        break;
+                                }
+
                                 sprintf(buf, "%s has been sold to %s for %d platinum.",
                                         auction->item->short_descr,
                                         auction->buyer->name,
@@ -3651,12 +3785,14 @@ void auction_update()
                                 act("The auctioneer appears before $n, and hands $m $p.",
                                     auction->buyer, auction->item, NULL, TO_ROOM);
 
-                                auction->seller->pcdata->bank += auction->bet * COIN_PLAT;
+                                auction->seller->pcdata->bank =
+                                    (int)((int64_t)auction->seller->pcdata->bank
+                                          + (int64_t)auction->bet * COIN_PLAT);
                                 sprintf(buf, "%d platinum has been placed in your bank account.\n\r",
                                         auction->bet);
                                 send_to_char(buf, auction->seller);
 
-                                auction->item = NULL;
+                                memset(auction, 0, sizeof(*auction));
                         }
                         else
                         {
@@ -3670,7 +3806,7 @@ void auction_update()
                                     auction->seller, auction->item, NULL, TO_ROOM);
 
                                 obj_to_char(auction->item, auction->seller);
-                                auction->item = NULL;
+                                memset(auction, 0, sizeof(*auction));
                         }
                 }
         }

@@ -2089,23 +2089,31 @@ void mprog_act_trigger( char *buf, CHAR_DATA * mob, CHAR_DATA * ch,
     return;
 }
 
-void mprog_bribe_trigger( CHAR_DATA *mob, CHAR_DATA *ch, int amount )
+void mprog_bribe_trigger( CHAR_DATA *mob, CHAR_DATA *ch, int64_t amount )
 {
 
-  char        buf[ MAX_STRING_LENGTH ];
   MPROG_DATA *mprg;
   OBJ_DATA   *obj;
 
   if ( IS_NPC( mob )
       && ( mob->pIndexData->progtypes & BRIBE_PROG ) )
     {
-      obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0, "common", FALSE );
-      sprintf( buf, obj->short_descr, amount );
-      free_string( obj->short_descr );
-      obj->short_descr = str_dup( buf );
-      obj->value[0]    = amount;
+      int64_t change = amount;
+      int plat, gold, silver, copper;
+
+      /* Preserve the bribe's value when scripts receive a money object. */
+      if (amount <= 0 || amount / COIN_PLAT > INT_MAX
+          || !coins_from_char(amount, mob))
+        return;
+
+      plat = (int)(change / COIN_PLAT);
+      change %= COIN_PLAT;
+      gold = (int)(change / COIN_GOLD);
+      change %= COIN_GOLD;
+      silver = (int)(change / COIN_SILVER);
+      copper = (int)(change % COIN_SILVER);
+      obj = create_money(plat, gold, silver, copper);
       obj_to_char( obj, mob );
-      mob->gold -= amount;
 
       for ( mprg = mob->pIndexData->mobprogs; mprg != NULL; mprg = mprg->next )
         if ( ( mprg->type & BRIBE_PROG )

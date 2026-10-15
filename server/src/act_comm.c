@@ -26,6 +26,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <errno.h>
 #include <string.h>
 #include <time.h>
 #include "merc.h"
@@ -38,6 +39,12 @@ bool is_note_to args((CHAR_DATA * ch, NOTE_DATA *pnote));
 void note_attach args((CHAR_DATA * ch));
 void note_remove args((CHAR_DATA * ch, NOTE_DATA *pnote));
 void talk_channel args((CHAR_DATA * ch, char *argument, int channel, const char *verb));
+
+static CHAR_DATA *comm_identity(CHAR_DATA *ch);
+static CHAR_DATA *comm_body(CHAR_DATA *ch);
+static void deliver_tell(CHAR_DATA *ch, CHAR_DATA *speaker,
+                         CHAR_DATA *victim, CHAR_DATA *body,
+                         char *argument, bool show_afk);
 
 static const char *gmcp_comm_channel_name(int channel);
 
@@ -52,6 +59,47 @@ static void gmcp_send_comm(DESCRIPTOR_DATA *d,
  */
 struct review_data review_buffer_public[REVIEW_CHANNEL_COUNT][REVIEW_BUFFER_LENGTH];
 struct review_data review_buffer_clan[MAX_CLAN][REVIEW_BUFFER_LENGTH];
+
+/* Player communication restrictions follow the descriptor into an NPC. */
+static CHAR_DATA *comm_identity(CHAR_DATA *ch)
+{
+        if (ch && ch->desc && ch->desc->original)
+                return ch->desc->original;
+
+        return ch;
+}
+
+bool is_silenced(CHAR_DATA *ch)
+{
+        CHAR_DATA *identity = comm_identity(ch);
+
+        return identity && !IS_NPC(identity)
+                && IS_SET(identity->act, PLR_SILENCE);
+}
+
+/* Keep a player's name and settings while reaching their controlled body. */
+static CHAR_DATA *comm_body(CHAR_DATA *ch)
+{
+        DESCRIPTOR_DATA *d;
+
+        if (!ch || ch->deleted)
+                return NULL;
+
+        if (IS_NPC(ch) || ch->desc)
+                return ch;
+
+        for (d = descriptor_list; d; d = d->next)
+        {
+                if (d->original == ch)
+                        return d->character && !d->character->deleted
+                                ? d->character : NULL;
+        }
+
+        if (ch->pcdata && ch->pcdata->switched)
+                return NULL;
+
+        return ch;
+}
 
 int chan(int channel)
 {
@@ -461,7 +509,7 @@ void talk_channel(CHAR_DATA *ch, char *argument, int channel, const char *verb)
                 return;
         }
 
-        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE) && channel != CHANNEL_INFO)
+        if (is_silenced(ch) && channel != CHANNEL_INFO)
         {
                 sprintf(buf, "You can't %s.\n\r", verb);
                 send_to_char(buf, ch);
@@ -731,7 +779,7 @@ void do_immtalk(CHAR_DATA *ch, char *argument)
         }
 
         talk_channel(ch, argument, CHANNEL_IMMTALK, "immtalk");
-        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))
+        if (is_silenced(ch))
         {
                 return;
         }
@@ -747,6 +795,8 @@ void do_dirtalk(CHAR_DATA *ch, char *argument)
         }
 
         talk_channel(ch, argument, CHANNEL_DIRTALK, "dirtalk");
+        if (is_silenced(ch))
+                return;
         add_to_public_review_buffer(ch, REVIEW_DIRTALK, argument);
 }
 
@@ -774,7 +824,7 @@ void do_say(CHAR_DATA *ch, char *argument)
         CHAR_DATA *mob;
         char *verb;
 
-        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))
+        if (is_silenced(ch))
         {
                 send_to_char("You are mute. Sssh.\n\r", ch);
                 return;
@@ -859,15 +909,59 @@ void do_say(CHAR_DATA *ch, char *argument)
         return;
 }
 
-void do_tell(CHAR_DATA *ch, char *argument)
+/* Text, GMCP and reply state must reach the same active recipient. */
+static void deliver_tell(CHAR_DATA *ch, CHAR_DATA *speaker,
+                         CHAR_DATA *victim, CHAR_DATA *body,
+                         char *argument, bool show_afk)
 {
-        CHAR_DATA *victim;
-        char arg[MAX_INPUT_LENGTH];
+        CHAR_DATA *settings = comm_identity(body);
         char buf[MAX_STRING_LENGTH];
         char gmcp_channel[MAX_INPUT_LENGTH];
         int position;
 
-        if (!IS_NPC(ch) && (IS_SET(ch->act, PLR_SILENCE) || ch->silent_mode || IS_SET(ch->act, PLR_NO_TELL)))
+        sprintf(buf, "%sYou tell $N '$t'$R",
+                color_table_8bit[get_colour_index_by_code(speaker->colors[COLOR_TELL])].act_code);
+        act(buf, ch, argument, victim, TO_CHAR);
+
+        if (ch->desc && IS_AWAKE(ch))
+        {
+                snprintf(gmcp_channel, sizeof(gmcp_channel),
+                         "tell %s", PERS(victim, ch));
+                gmcp_send_comm(ch->desc, speaker, ch, gmcp_channel, argument);
+        }
+
+        sprintf(buf, "%s$C tells you '$t'$R",
+                color_table_8bit[get_colour_index_by_code(settings->colors[COLOR_TELL])].act_code);
+        position = body->position;
+        body->position = POS_STANDING;
+        act(buf, body, argument, speaker, TO_CHAR);
+
+        if (body->desc)
+        {
+                snprintf(gmcp_channel, sizeof(gmcp_channel),
+                         "tell %s", PERS(speaker, body));
+                gmcp_send_comm(body->desc, speaker, body, gmcp_channel, argument);
+        }
+
+        body->position = position;
+        body->reply = speaker;
+        settings->reply = speaker;
+
+        if (show_afk && IS_SET(settings->act, PLR_AFK))
+                act("Just so you know, $E is AFK.", ch, NULL, victim, TO_CHAR);
+}
+
+void do_tell(CHAR_DATA *ch, char *argument)
+{
+        CHAR_DATA *speaker = comm_identity(ch);
+        CHAR_DATA *victim;
+        CHAR_DATA *body;
+        CHAR_DATA *settings;
+        char arg[MAX_INPUT_LENGTH];
+
+        if (is_silenced(ch)
+        ||  (!IS_NPC(speaker)
+                && (speaker->silent_mode || IS_SET(speaker->act, PLR_NO_TELL))))
         {
                 send_to_char("Your message didn't get through.\n\r", ch);
                 return;
@@ -887,84 +981,45 @@ void do_tell(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!(victim = get_char_world(ch, arg)) || (IS_NPC(victim) && victim->in_room != ch->in_room))
+        if (!(victim = get_char_world(ch, arg))
+        ||  (IS_NPC(victim) && victim->in_room != ch->in_room)
+        ||  !(body = comm_body(victim)))
         {
                 send_to_char("They aren't here.\n\r", ch);
                 return;
         }
 
-        if (!IS_TRUE_IMMORTAL(ch) && (victim->silent_mode || IS_SET(victim->act, PLR_NO_TELL)))
+        settings = comm_identity(body);
+        if (!IS_TRUE_IMMORTAL(speaker)
+        &&  (settings->silent_mode || IS_SET(settings->act, PLR_NO_TELL)))
         {
                 act("$N's mobile is off or outside the coverage area.", ch, 0, victim, TO_CHAR);
                 return;
         }
 
-        if (!IS_TRUE_IMMORTAL(ch) && victim->fighting)
+        if (body != settings && !IS_IMMORTAL(speaker) && !IS_AWAKE(body))
+        {
+                act("$E can't hear you.", ch, 0, victim, TO_CHAR);
+                return;
+        }
+
+        if (!IS_TRUE_IMMORTAL(speaker) && body->fighting)
         {
                 act("$N's fighting right now, try again later.", ch, 0, victim, TO_CHAR);
                 return;
         }
 
-        sprintf(buf, "%sYou tell $N '$t'$R",
-                color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_TELL])].act_code);
-        act(buf, ch, argument, victim, TO_CHAR);
-
-        if (ch->desc && IS_AWAKE(ch))
-        {
-                snprintf(
-                        gmcp_channel,
-                        sizeof(gmcp_channel),
-                        "tell %s",
-                        PERS(victim, ch));
-
-                gmcp_send_comm(
-                        ch->desc,
-                        ch,
-                        ch,
-                        gmcp_channel,
-                        argument);
-        }
-
-        sprintf(buf, "%s$C tells you '$t'$R",
-                color_table_8bit[get_colour_index_by_code(victim->colors[COLOR_TELL])].act_code);
-
-        position = victim->position;
-        victim->position = POS_STANDING;
-        act(buf, victim, argument, ch, TO_CHAR);
-
-        if (victim->desc)
-        {
-                snprintf(
-                        gmcp_channel,
-                        sizeof(gmcp_channel),
-                        "tell %s",
-                        PERS(ch, victim));
-
-                gmcp_send_comm(
-                        victim->desc,
-                        ch,
-                        victim,
-                        gmcp_channel,
-                        argument);
-        }
-
-        victim->position = position;
-        victim->reply = ch;
-
-        if (IS_SET(victim->act, PLR_AFK))
-                act("Just so you know, $E is AFK.", ch, NULL, victim, TO_CHAR);
-
-        return;
+        deliver_tell(ch, speaker, victim, body, argument, TRUE);
 }
 
 void do_reply(CHAR_DATA *ch, char *argument)
 {
+        CHAR_DATA *speaker = comm_identity(ch);
         CHAR_DATA *victim;
-        char buf[MAX_STRING_LENGTH];
-        char gmcp_channel[MAX_INPUT_LENGTH];
-        int position;
+        CHAR_DATA *body;
+        CHAR_DATA *settings;
 
-        if (!IS_NPC(ch) && (IS_SET(ch->act, PLR_SILENCE)))
+        if (is_silenced(ch))
         {
                 send_to_char("Your message didn't get through.\n\r", ch);
                 return;
@@ -976,7 +1031,8 @@ void do_reply(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!(victim = ch->reply))
+        victim = speaker->reply ? speaker->reply : ch->reply;
+        if (!victim || !(body = comm_body(victim)))
         {
                 send_to_char("They aren't here.\n\r", ch);
                 return;
@@ -988,74 +1044,28 @@ void do_reply(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!IS_IMMORTAL(ch) && !IS_AWAKE(victim))
+        if (!IS_IMMORTAL(speaker) && !IS_AWAKE(body))
         {
                 act("$E can't hear you.", ch, 0, victim, TO_CHAR);
                 return;
         }
 
-        if (!IS_TRUE_IMMORTAL(ch)
-        &&  (victim->silent_mode
-                || (!IS_NPC(victim) && IS_SET(victim->act, PLR_NO_TELL))))
+        settings = comm_identity(body);
+        if (!IS_TRUE_IMMORTAL(speaker)
+        &&  (settings->silent_mode
+                || (!IS_NPC(settings) && IS_SET(settings->act, PLR_NO_TELL))))
         {
                 act("$N's mobile is off or outside the coverage area.", ch, 0, victim, TO_CHAR);
                 return;
         }
 
-        if (!IS_TRUE_IMMORTAL(ch) && victim->fighting)
+        if (!IS_TRUE_IMMORTAL(speaker) && body->fighting)
         {
                 act("$N's fighting right now, try again later.", ch, 0, victim, TO_CHAR);
                 return;
         }
 
-        sprintf(buf, "%sYou tell $N '$t'$R",
-                color_table_8bit[get_colour_index_by_code(ch->colors[COLOR_TELL])].act_code);
-        act(buf, ch, argument, victim, TO_CHAR);
-
-        if (ch->desc && IS_AWAKE(ch))
-        {
-                snprintf(
-                        gmcp_channel,
-                        sizeof(gmcp_channel),
-                        "tell %s",
-                        PERS(victim, ch));
-
-                gmcp_send_comm(
-                        ch->desc,
-                        ch,
-                        ch,
-                        gmcp_channel,
-                        argument);
-        }
-
-        position = victim->position;
-        victim->position = POS_STANDING;
-
-        sprintf(buf, "%s$c tells you '$t'$R",
-                color_table_8bit[get_colour_index_by_code(victim->colors[COLOR_TELL])].act_code);
-
-        act(buf, ch, argument, victim, TO_VICT);
-
-        if (victim->desc)
-        {
-                snprintf(
-                        gmcp_channel,
-                        sizeof(gmcp_channel),
-                        "tell %s",
-                        PERS(ch, victim));
-
-                gmcp_send_comm(
-                        victim->desc,
-                        ch,
-                        victim,
-                        gmcp_channel,
-                        argument);
-        }
-
-        victim->position = position;
-        victim->reply = ch;
-
-        return;
+        deliver_tell(ch, speaker, victim, body, argument, FALSE);
 }
 
 void do_emote(CHAR_DATA *ch, char *argument)
@@ -1063,7 +1073,7 @@ void do_emote(CHAR_DATA *ch, char *argument)
         char buf[MAX_STRING_LENGTH];
         char *plast;
 
-        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))
+        if (is_silenced(ch))
         {
                 send_to_char("You are mute. Sssh.\n\r", ch);
                 return;
@@ -1816,7 +1826,7 @@ void do_order(CHAR_DATA *ch, char *argument)
                         found = TRUE;
                         act("$n orders you to '$t'.", ch, argument, och, TO_VICT);
                         if (!och->rider)
-                                interpret(och, argument);
+                                interpret_ordered(och, argument, ch);
                 }
         }
 
@@ -2128,9 +2138,18 @@ void do_split(CHAR_DATA *ch, char *argument)
         char buf[MAX_STRING_LENGTH];
         char arg[MAX_INPUT_LENGTH];
         int members;
-        int amount;
-        int share;
-        int extra;
+        int64_t amount;
+        int64_t share;
+        int64_t extra;
+        char *end;
+        CHAR_DATA after_split;
+        struct split_balance
+        {
+                CHAR_DATA *member;
+                COIN_DATA coins;
+        } *balances;
+        int planned;
+        int i;
 
         one_argument(argument, arg);
 
@@ -2140,9 +2159,10 @@ void do_split(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        amount = atoi(arg);
+        errno = 0;
+        amount = strtoll(arg, &end, 10);
 
-        if (amount < 0)
+        if (errno == ERANGE || end == arg || *end != '\0' || amount < 0)
         {
                 send_to_char("Your group wouldn't like that.\n\r", ch);
                 return;
@@ -2185,27 +2205,63 @@ void do_split(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        coins_from_char(amount, ch);
-        coins_to_char(share + extra, ch, COINS_ADD);
-
-        sprintf(buf, "You split %d coppers worth of coins.  Your share is %d coins.\n\r",
-                amount, share + extra);
-        send_to_char(buf, ch);
-
-        sprintf(buf, "$n splits %d coppers worth of coins.  Your share is %d coins.",
-                amount, share);
-
+        /* Stage the complete split so a later member cannot lose earlier shares. */
+        if ((size_t)members > SIZE_MAX / sizeof(*balances)
+        ||  !(balances = malloc((size_t)members * sizeof(*balances))))
+        {
+                send_to_char("Just keep it all.\n\r", ch);
+                return;
+        }
+        planned = 0;
         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
         {
-                if (gch->deleted)
+                if (gch->deleted || !is_same_group(gch, ch))
                         continue;
-                if (gch != ch && is_same_group(gch, ch))
+
+                after_split = *gch;
+                if ((gch == ch && !coins_from_char(amount, &after_split))
+                ||  !coins_to_char(gch == ch ? share + extra : share,
+                                   &after_split, COINS_ADD))
                 {
-                        act(buf, ch, NULL, gch, TO_VICT);
-                        coins_to_char(share, gch, COINS_ADD);
+                        send_to_char(gch == ch
+                            ? "You cannot carry that many coins.\n\r"
+                            : "They cannot carry that many coins.\n\r", ch);
+                        free(balances);
+                        return;
                 }
+                balances[planned].member = gch;
+                balances[planned].coins.plat = after_split.plat;
+                balances[planned].coins.gold = after_split.gold;
+                balances[planned].coins.silver = after_split.silver;
+                balances[planned].coins.copper = after_split.copper;
+                planned++;
         }
 
+        /* No callbacks occur between the completed plans and their commit. */
+        for (i = 0; i < planned; i++)
+        {
+                gch = balances[i].member;
+                gch->plat = balances[i].coins.plat;
+                gch->gold = balances[i].coins.gold;
+                gch->silver = balances[i].coins.silver;
+                gch->copper = balances[i].coins.copper;
+                calc_coin_weight(gch);
+        }
+
+        sprintf(buf, "You split %lld coppers worth of coins.  Your share is %lld coins.\n\r",
+                (long long)amount, (long long)(share + extra));
+        send_to_char(buf, ch);
+
+        sprintf(buf, "$n splits %lld coppers worth of coins.  Your share is %lld coins.",
+                (long long)amount, (long long)share);
+
+        for (i = 0; i < planned; i++)
+        {
+                gch = balances[i].member;
+                if (gch != ch)
+                        act(buf, ch, NULL, gch, TO_VICT);
+        }
+        free(balances);
         return;
 }
 
@@ -2215,7 +2271,7 @@ void do_gtell(CHAR_DATA *ch, char *argument)
         char buf[MAX_STRING_LENGTH];
         int position;
 
-        if (!IS_NPC(ch) && IS_SET(ch->act, PLR_SILENCE))
+        if (is_silenced(ch))
         {
                 send_to_char("You are mute. Sssh.\n\r", ch);
                 return;

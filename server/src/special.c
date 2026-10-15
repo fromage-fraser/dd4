@@ -2555,7 +2555,8 @@ bool spec_poison( CHAR_DATA *ch )
 bool spec_thief( CHAR_DATA *ch )
 {
         CHAR_DATA *victim;
-        int        gold;
+        int64_t    gold;
+        CHAR_DATA before_victim;
 
         if ( ch->position != POS_STANDING )
                 return FALSE;
@@ -2579,8 +2580,19 @@ bool spec_thief( CHAR_DATA *ch )
                 else
                 {
                         gold = ( total_coins_char(victim) * number_range( 1, 20 ) ) / 100;
-                        coins_to_char(  (7 * gold / 8) ,ch, COINS_ADD);
-                        coins_from_char(gold, victim);
+                        before_victim = *victim;
+                        if (!can_receive_coins(7 * gold / 8, ch)
+                        ||  !coins_from_char(gold, victim))
+                                return FALSE;
+                        if (!coins_to_char(7 * gold / 8, ch, COINS_ADD))
+                        {
+                                victim->plat = before_victim.plat;
+                                victim->gold = before_victim.gold;
+                                victim->silver = before_victim.silver;
+                                victim->copper = before_victim.copper;
+                                calc_coin_weight(victim);
+                                return FALSE;
+                        }
 
                         return TRUE;
                 }

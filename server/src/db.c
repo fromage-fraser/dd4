@@ -5214,6 +5214,10 @@ void free_char(CHAR_DATA *ch)
         OBJ_DATA *obj_next;
         AFFECT_DATA *paf;
 
+        clear_rescue_retaliation(ch);
+
+        unequip_all_for_removal(ch);
+
         for (obj = ch->carrying; obj; obj = obj_next)
         {
                 obj_next = obj->next_content;

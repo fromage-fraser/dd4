@@ -3294,18 +3294,20 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
         CHAR_DATA *victim;
         CHAR_DATA *guardian_mob;
         SHOP_DATA *store;
-        COIN_DATA  coins;
         char       buf [ MAX_INPUT_LENGTH ];
         char       target [ MAX_INPUT_LENGTH  ];
         int        percent;
         int        chance;
         int        amount_gained;
-        int        victims_coins;
+        int64_t    victims_coins;
         int        special_event;
         int        index;
         int        number_of_guards;
 
         if (IS_NPC(extortionist))
+                return;
+
+        if (!extortionist->in_room)
                 return;
 
         store = NULL;
@@ -3392,16 +3394,18 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
 
                 if( percent <= chance)
                 {
+                        amount_gained = 1 + (( chance + number_range( 1, 400)) * 5);
+                        if (!reward_coins(extortionist, 0, 0, 0, amount_gained))
+                                return;
+
                         act("You muscle on up to $N, wondering what monetary value they put on their safety.",
                             extortionist, NULL, victim, TO_CHAR);
                         act("$n muscle's on up to $N, you wonder what they could be doing.",
                             extortionist, NULL, victim, TO_NOTVICT);
-                        amount_gained = 1 + (( chance + number_range( 1, 400)) * 5);
                         sprintf(buf, "They grudgingly part with %d copper coins for their continued peace of mind.\n\r", amount_gained);
                         send_to_char(buf, extortionist);
                         act("$N gives $n some copper in exchange for their continued peace of mind.",
                             extortionist, NULL, victim, TO_NOTVICT);
-                        extortionist->copper += amount_gained;
 
                         if( amount_gained > 2000)
                         {
@@ -3484,35 +3488,22 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
                         act("of money to remain safe.", victim, NULL, extortionist, TO_VICT);
 
                         amount_gained = (75 + percent + chance) * 5;
-                        victims_coins = extortionist->copper + extortionist->silver * 10
-                                + extortionist->gold * 100 + extortionist->plat * 1000;
+                        victims_coins = total_coins_char(extortionist);
+
+                        if (!coins_from_char(UMIN((int64_t)amount_gained, victims_coins),
+                                             extortionist))
+                                return;
 
                         if( amount_gained > victims_coins)
                         {
                                 send_to_char("You part with all your coins!!!\n", extortionist);
-                                extortionist->copper = 0;
-                                extortionist->silver = 0;
-                                extortionist->gold   = 0;
-                                extortionist->plat   = 0;
                         }
                         else
                         {
-                                /* subtract the amount lost from the characters total, then convert back to coins */
-                                victims_coins -= amount_gained;
-                                coins.plat   = 0 + div( victims_coins, 1000).quot;
-                                victims_coins -= coins.plat * 1000;
-                                coins.gold   = 0 + div( victims_coins, 100).quot;
-                                victims_coins -= coins.gold * 100;
-                                coins.silver = 0 + div( victims_coins, 10).quot;
-                                coins.copper = 0 + div( victims_coins, 10).rem;
                                 sprintf(buf, "You part with %d coins.\n", amount_gained);
                                 send_to_char(buf, extortionist);
 
                                 send_to_char("A small price to pay for your peace of mind, wouldn't you agree?\n", extortionist);
-                                extortionist->copper = coins.copper;
-                                extortionist->silver = coins.silver;
-                                extortionist->gold   = coins.gold;
-                                extortionist->plat   = coins.plat;
                         }
                 }
 

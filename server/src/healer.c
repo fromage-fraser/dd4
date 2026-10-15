@@ -123,14 +123,19 @@ void do_heal(CHAR_DATA *ch, char *argument)
                                 }
                         }
 
-                        if ((spell_list[i].price * 100) > total_coins_char(ch))
+                        if ((int64_t)spell_list[i].price * 100 > total_coins_char(ch))
                         {
                                 act("$C says 'You do not have enough money for my services.'",
                                     ch, NULL, mob, TO_CHAR);
                                 return;
                         }
 
-                        coins_from_char(spell_list[i].price * 100, ch);
+                        if (!coins_from_char((int64_t)spell_list[i].price * 100, ch))
+                        {
+                                act("$C says 'You do not have enough money for my services.'",
+                                    ch, NULL, mob, TO_CHAR);
+                                return;
+                        }
                         /* coins_to_char(spell_list[i].price * 100, mob, COINS_ADD); */
                         WAIT_STATE(ch, PULSE_VIOLENCE);
 

@@ -1867,7 +1867,7 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                         i = buf2;
                         break;
                 case 'g':
-                        sprintf(buf2, "%d", total_coins_char(ch));
+                        sprintf(buf2, "%lld", (long long)total_coins_char(ch));
                         i = buf2;
                         break;
                 case 'h':

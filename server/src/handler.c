@@ -1568,6 +1568,7 @@ void char_from_room( CHAR_DATA *ch )
 {
         OBJ_DATA *obj;
 
+        clear_rescue_retaliation(ch);
         clear_fall_source(ch);
 
         if ( !ch->in_room )
@@ -2149,6 +2150,25 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
 
 
 /*
+ * Bulk removal must clean every equipment affect without dropping another
+ * inventory item into a room list while the caller is transferring gear.
+ * Normal unequip cleanup still runs; no weapon remains worn afterwards.
+ */
+void unequip_all_for_removal(CHAR_DATA *ch)
+{
+        OBJ_DATA *obj;
+
+        affect_update_depth++;
+        for (obj = ch->carrying; obj; obj = obj->next_content)
+        {
+                if (!obj->deleted && obj->wear_loc != WEAR_NONE)
+                        unequip_char(ch, obj);
+        }
+        affect_update_depth--;
+}
+
+
+/*
  * Count occurrences of an obj in a list.
  */
 int count_obj_list( OBJ_INDEX_DATA *pObjIndex, OBJ_DATA *list )
@@ -2418,6 +2438,11 @@ void extract_obj( OBJ_DATA *obj )
                 return;
         }
 
+        /* Auction references must end before this object can be recycled. */
+        if (auction && auction->item == obj
+            && !cancel_auction("the item is no longer available", FALSE, NULL))
+                return;
+
         if ( obj->in_room )
                 obj_from_room( obj );
 
@@ -2473,6 +2498,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
         OBJ_DATA  *obj_next;
         extern bool delete_char;
 
+        clear_rescue_retaliation(ch);
         invalidate_fall_source(ch);
 
         if ( !ch->in_room )
@@ -2480,6 +2506,12 @@ void extract_char( CHAR_DATA *ch, bool fPull )
                 bug( "Extract_char: NULL.", 0 );
                 return;
         }
+
+        /* Full removal needs refunds before the original room is lost. */
+        if (fPull && auction && auction->item
+            && (auction->buyer == ch || auction->seller == ch)
+            && !cancel_auction("a participant is leaving", TRUE, ch))
+                return;
 
         /* Extraction must not leave links to this character behind. */
         if (ch->inside || is_affected(ch, gsn_swallow))
@@ -2526,6 +2558,8 @@ void extract_char( CHAR_DATA *ch, bool fPull )
         /* Prevent reporting of removal of perm affect items to active players */
         char_from_room (ch);
         char_to_room (ch, get_room_index(ROOM_VNUM_LIMBO));
+
+        unequip_all_for_removal(ch);
 
         for ( obj = ch->carrying; obj; obj = obj_next )
         {
@@ -3701,23 +3735,28 @@ OBJSET_INDEX_DATA *get_objset( char *argument )
 OBJ_DATA *create_money( int plat, int gold, int silver, int copper )
 {
         OBJ_DATA *obj;
+        int64_t coin_count = (int64_t)plat + gold + silver + copper;
 
-        if ( (plat + gold + silver + copper) <= 0 )
+        if (plat < 0 || gold < 0 || silver < 0 || copper < 0
+        ||  coin_count <= 0)
         {
-                bug( "Create_money: zero or negative money %d.", (plat + gold + silver + copper) );
+                bug("Create_money: zero or negative money.", 0);
+                plat = gold = silver = 0;
                 copper = 1;
+                coin_count = 1;
         }
 
-        if ( (plat + gold + silver + copper) == 1 )
+        if (coin_count == 1)
                 obj = create_object( get_obj_index( OBJ_VNUM_MONEY_ONE  ), 0,"common", CREATED_NO_RANDOMISER );
         else
                 obj = create_object( get_obj_index( OBJ_VNUM_MONEY_SOME ), 0,"common", CREATED_NO_RANDOMISER);
 
-        obj->value[0]           = copper;
-        obj->value[1]           = silver;
-        obj->value[2]           = gold;
-        obj->value[3]           = plat;
-        obj->weight = plat + gold + silver + copper;
+        obj->value[0] = copper;
+        obj->value[1] = silver;
+        obj->value[2] = gold;
+        obj->value[3] = plat;
+        /* Preserve every coin; only the int weight needs a bounded result. */
+        obj->weight = coin_count > INT_MAX ? INT_MAX : (int)coin_count;
 
         return obj;
 }
@@ -3772,9 +3811,8 @@ int get_container_count( OBJ_DATA *obj)
  */
 int get_obj_weight( OBJ_DATA *obj )
 {
-        int weight;
+        int64_t weight = obj->weight;
 
-        weight = obj->weight;
         for ( obj = obj->contains; obj; obj = obj->next_content )
         {
                 if ( obj->deleted )
@@ -3782,7 +3820,12 @@ int get_obj_weight( OBJ_DATA *obj )
                 weight += get_obj_weight( obj );
         }
 
-        return weight;
+        /* Heavy money must not wrap a containing corpse into negative weight. */
+        if (weight > INT_MAX)
+                return INT_MAX;
+        if (weight < INT_MIN)
+                return INT_MIN;
+        return (int)weight;
 }
 
 
@@ -5315,38 +5358,51 @@ int get_int_penalty (CHAR_DATA *ch)
 */
 int advatoi( const char *s )
 {
-    int number		= 0;
-    int multiplier	= 0;
+    int number = 0;
+    int multiplier = 0;
+    int digit;
 
-    /*
-     * as long as the current character is a digit add to current number.
-     */
-    while ( isdigit( s[0] ) )
-        number = ( number * 10 ) + ( *s++ - '0' );
-
-    switch (UPPER(s[0]))
-    {
-        case 'K'  : number *= ( multiplier = 1000 );      ++s; break;
-        case 'M'  : number *= ( multiplier = 1000000 );   ++s; break;
-        case '\0' : break;
-        default   : return 0; /* not k nor m nor NULL - return 0! */
-    }
-
-    /* if any digits follow k/m, add those too */
-    while ( isdigit( s[0] ) && ( multiplier > 1 ) )
-    {
-        /* the further we get to right, the less the digit 'worth' */
-        multiplier /= 10;
-        number = number + ( ( *s++ - '0' ) * multiplier );
-    }
-
-    /* return 0 if non-digit character was found, other than NULL */
-    if ( s[0] != '\0' && !isdigit( s[0] ) )
+    if (!s)
         return 0;
 
-    /* anything left is likely extra digits (ie: 14k4443  -> 3 is extra) */
+    /* Reject values outside the existing int result before arithmetic. */
+    while (isdigit((unsigned char)*s))
+    {
+        digit = *s++ - '0';
+        if (number > (INT_MAX - digit) / 10)
+            return 0;
+        number = number * 10 + digit;
+    }
 
-    return number;
+    switch (UPPER(*s))
+    {
+        case 'K': multiplier = 1000; ++s; break;
+        case 'M': multiplier = 1000000; ++s; break;
+        case '\0': break;
+        default: return 0;
+    }
+
+    if (multiplier)
+    {
+        if (number > INT_MAX / multiplier)
+            return 0;
+        number *= multiplier;
+    }
+
+    while (isdigit((unsigned char)*s) && multiplier > 1)
+    {
+        multiplier /= 10;
+        digit = (*s++ - '0') * multiplier;
+        if (number > INT_MAX - digit)
+            return 0;
+        number += digit;
+    }
+
+    /* Extra suffix digits retain their documented ignored precision. */
+    while (isdigit((unsigned char)*s))
+        ++s;
+
+    return *s == '\0' ? number : 0;
 }
 
 
