@@ -7086,9 +7086,9 @@ E.g.    rf  safe healing no_mob
 ----
 
 `no_undead` is a permanent room setting, not the temporary Ward Against Undead
-spell. This first slice checks ordinary exit travel (including following,
-hunting and fleeing), mobile resets and Animate Dead. Riders cannot bring an
-undead NPC mount through an ordinary exit into the room.
+spell. It checks ordinary exit travel (including following, hunting and
+fleeing), mobile resets, Animate Dead, Summon, Teleport and portal entry.
+An undead NPC mount blocks the whole mounted pair on checked travel paths.
 
 Player vampires can enter and leave normally. While they stay here, the room
 burns them for 30-60 HP each game tick instead of their usual HP regeneration.
@@ -7100,9 +7100,9 @@ Creatures already inside are not removed. Controlled undead are still undead,
 so undead NPC servants do not get an exception to the entry rule. A blocked
 animation leaves its corpse untouched.
 
-Teleportation, summoning, recall, portals, gravity, scripted placement and
-immortal loading or transfer are not connected to this rule yet. Do not rely on
-this first slice as a complete entry barrier; those paths are the next step.
+Other magical travel (including recall, Astral Vortex, Banish and Mass Teleport),
+gravity, scripted placement and immortal loading or transfer are not checked
+yet. This is not a complete entry barrier.
 
 *`ed` — Extra description*
 
@@ -7788,4 +7788,5 @@ ch  18
 ps  85
 pb  120
 ----
+
 

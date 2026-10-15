@@ -1113,7 +1113,7 @@ void do_get(CHAR_DATA *ch, char *argument)
                         {
                                 obj_next = obj->next_content;
                                 /* detect curse prevents autolooting of cursed and noremove/nodrop items */
-                                if (IS_AFFECTED(ch, AFF_DETECT_CURSE) && obj_is_cursed(obj))                               
+                                if (IS_AFFECTED(ch, AFF_DETECT_CURSE) && obj_is_cursed(obj))
                                 {
                                         send_to_char("{WYou are reluctant to acquire a cursed item.{x\n\r", ch);
                                         continue;
@@ -3505,6 +3505,12 @@ void do_enter(CHAR_DATA *ch, char *argument)
         if (!room)
         {
                 send_to_char("You are completely lost.\n\r", ch);
+                return;
+        }
+
+        if (!undead_can_travel_to_room(ch, room))
+        {
+                send_to_char("That room will not let you through.\n\r", ch);
                 return;
         }
 
