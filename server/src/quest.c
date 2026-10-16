@@ -185,12 +185,35 @@ bool chance(int num)
         return number_range(1,100) <= num;
 }
 
+/* Only the live token created for this assignment can complete it. */
+OBJ_DATA *get_quest_object(CHAR_DATA *ch)
+{
+        OBJ_DATA *obj;
+
+        if (!ch || IS_NPC(ch) || !ch->pcdata
+            || !IS_SET(ch->act, PLR_QUESTOR)
+            || ch->pcdata->countdown <= 0 || ch->pcdata->questobj <= 0
+            || ch->pcdata->quest_target_id == 0)
+                return NULL;
+
+        for (obj = ch->carrying; obj; obj = obj->next_content)
+        {
+                if (!obj->deleted && obj->pIndexData
+                    && obj->carried_by == ch
+                    && obj->target_id == ch->pcdata->quest_target_id
+                    && obj->pIndexData->vnum == ch->pcdata->questobj)
+                        return obj;
+        }
+
+        return NULL;
+}
+
 /* The main quest function */
 
 void do_quest (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *questman;
-        OBJ_DATA *obj=NULL, *obj_next;
+        OBJ_DATA *obj=NULL;
         OBJ_INDEX_DATA *questinfoobj;
         MOB_INDEX_DATA *questinfo;
         char buf [MAX_STRING_LENGTH];
@@ -286,6 +309,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                 ch->pcdata->countdown = 0;
                 ch->pcdata->questmob = 0;
                 ch->pcdata->questobj = 0;
+                ch->pcdata->quest_target_id = 0;
                 ch->pcdata->questroom = NULL;
                 ch->pcdata->questarea = NULL;
                 ch->pcdata->nextquest = QUEST_ABORT_DELAY;
@@ -540,6 +564,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                 ch->pcdata->countdown = 0;
                                 ch->pcdata->questmob = 0;
                                 ch->pcdata->questobj = 0;
+                                ch->pcdata->quest_target_id = 0;
                                 ch->pcdata->questroom = NULL;
                                 ch->pcdata->questarea = NULL;
                                 ch->pcdata->nextquest = QUEST_MAX_DELAY;
@@ -551,20 +576,9 @@ void do_quest (CHAR_DATA *ch, char *argument)
                         }
                         else if (ch->pcdata->questobj > 0 && ch->pcdata->countdown > 0)
                         {
-                                bool obj_found = FALSE;
+                                obj = get_quest_object(ch);
 
-                                for (obj = ch->carrying; obj != NULL; obj= obj_next)
-                                {
-                                        obj_next = obj->next_content;
-
-                                        if (obj != NULL && obj->pIndexData->vnum == ch->pcdata->questobj)
-                                        {
-                                                obj_found = TRUE;
-                                                break;
-                                        }
-                                }
-
-                                if (obj_found)
+                                if (obj)
                                 {
                                         int reward, pointreward, pracreward;
 
@@ -614,6 +628,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                         ch->pcdata->countdown = 0;
                                         ch->pcdata->questmob = 0;
                                         ch->pcdata->questobj = 0;
+                                        ch->pcdata->quest_target_id = 0;
                                         ch->pcdata->questroom = NULL;
                                         ch->pcdata->questarea = NULL;
                                         ch->pcdata->nextquest = QUEST_MAX_DELAY;
@@ -659,6 +674,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
         long mcounter;
         int area_quest_level, level_diff, mob_vnum, upper_limit;
 
+        ch->pcdata->quest_target_id = 0;
         area_quest_level = UMIN(ch->level, LEVEL_HERO);
 
         for (mcounter = 0; mcounter < 100; mcounter ++)
@@ -828,6 +844,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
 
                 /* remember where we put it so do_ostat/mpoload can find it if needed */
                 ch->pcdata->questobj  = questitem->pIndexData->vnum;
+                ch->pcdata->quest_target_id = questitem->target_id;
                 ch->pcdata->questroom = room;
                 ch->pcdata->questarea = room->area;
 
@@ -872,6 +889,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                 /* NB: uses the earlier-found 'room' tied to the chosen victim/area */
                 obj_to_room(questitem, room);
                 ch->pcdata->questobj  = questitem->pIndexData->vnum;
+                ch->pcdata->quest_target_id = questitem->target_id;
                 ch->pcdata->questroom = room;
                 ch->pcdata->questarea = room->area;
 
@@ -1208,6 +1226,7 @@ void quest_update ()
                                 ch->pcdata->countdown = 0;
                                 ch->pcdata->questmob = 0;
                                 ch->pcdata->questobj = 0;
+                                ch->pcdata->quest_target_id = 0;
                                 ch->pcdata->questroom = NULL;
                                 ch->pcdata->questarea = NULL;
                         }

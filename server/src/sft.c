@@ -2076,15 +2076,7 @@ void do_morph_hydra (CHAR_DATA *ch, bool to_form)
                 if (ch->pcdata->learned[gsn_form_hydra] > 85)
                         send_to_char("You can now breathe acid blasts!\n\r",ch);
         }
-        else
-        {
-                teeth = get_obj_wear(ch, "teeth");
-                if (teeth)
-                {
-                        unequip_char(ch, teeth);
-                        extract_obj(teeth);
-                }
-        }
+        /* form_equipment_update removes the old form's body parts. */
 }
 
 

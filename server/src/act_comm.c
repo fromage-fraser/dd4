@@ -1692,12 +1692,17 @@ void add_follower(CHAR_DATA *ch, CHAR_DATA *master)
 void stop_follower(CHAR_DATA *ch)
 {
         CHAR_DATA *gch;
+        CHAR_DATA *master;
 
         if (!ch->master)
         {
                 bug("Stop_follower: null master.", 0);
                 return;
         }
+
+        /* Spell cleanup can re-enter follower cleanup. Detach first. */
+        master = ch->master;
+        ch->master = NULL;
 
         if (IS_AFFECTED(ch, AFF_CHARM))
         {
@@ -1709,11 +1714,9 @@ void stop_follower(CHAR_DATA *ch)
         if (IS_NPC(ch) && ch->rider)
                 strip_mount(ch->rider);
 
-        if (can_see(ch->master, ch))
-                act("$n stops following you.", ch, NULL, ch->master, TO_VICT);
-        act("You stop following $N.", ch, NULL, ch->master, TO_CHAR);
-
-        ch->master = NULL;
+        if (can_see(master, ch))
+                act("$n stops following you.", ch, NULL, master, TO_VICT);
+        act("You stop following $N.", ch, NULL, master, TO_CHAR);
         ch->leader = NULL;
 
         if (!IS_NPC(ch))

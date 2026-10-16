@@ -2094,6 +2094,7 @@ const int *spell_groups[MAX_GROUPS] =
         &gsn_group_advanced_heal,
         &gsn_group_divine,
         &gsn_group_alteration,
+        &gsn_group_illusion,
         &gsn_group_enchant,
         &gsn_group_summoning,
         &gsn_group_mana,

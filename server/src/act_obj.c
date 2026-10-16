@@ -5442,7 +5442,7 @@ void do_smoke(CHAR_DATA *ch, char *argument)
 
         /* apply thirst */
 
-        if (ch->level < LEVEL_HERO)
+        if (!IS_NPC(ch) && ch->level < LEVEL_HERO)
         {
                 ch->pcdata->condition[COND_THIRST] -= (long long)pipe->value[2] * base_thirst_inc / 100;
         }
@@ -5723,6 +5723,10 @@ void do_steal(CHAR_DATA *ch, char *argument)
         char arg1[MAX_INPUT_LENGTH];
         char arg2[MAX_INPUT_LENGTH];
         int percent;
+
+        /* STEAL is a player skill, including when followers receive orders. */
+        if (IS_NPC(ch))
+                return;
 
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);
@@ -7041,7 +7045,6 @@ void do_bladethirst(CHAR_DATA *ch, char *argument)
 void do_donate(CHAR_DATA *ch, char *argument)
 {
         ROOM_INDEX_DATA *pRoomIndex;
-        ROOM_INDEX_DATA *was_in;
         char arg[MAX_INPUT_LENGTH];
         OBJ_DATA *obj;
         OBJ_DATA *obj_next;
@@ -7113,12 +7116,8 @@ void do_donate(CHAR_DATA *ch, char *argument)
                 act("$n donates $p.", ch, obj, NULL, TO_ROOM);
                 act("You donate $p.", ch, obj, NULL, TO_CHAR);
 
-                was_in = ch->in_room;
-                char_from_room(ch);
-                char_to_room(ch, pRoomIndex);
-                act("$p appears suddenly before falling to the floor!", ch, obj, NULL, TO_ROOM);
-                char_from_room(ch);
-                char_to_room(ch, was_in);
+                act_at_room("$p appears suddenly before falling to the floor!",
+                            ch, obj, NULL, TO_ROOM, pRoomIndex);
         }
         else
         {
@@ -7174,13 +7173,8 @@ void do_donate(CHAR_DATA *ch, char *argument)
                                 act("$n donates $p.", ch, obj, NULL, TO_ROOM);
                                 act("You donate $p.", ch, obj, NULL, TO_CHAR);
 
-                                was_in = ch->in_room;
-                                char_from_room(ch);
-                                char_to_room(ch, pRoomIndex);
-                                act("$p appears suddenly before falling to the floor!", ch, obj,
-                                    NULL, TO_ROOM);
-                                char_from_room(ch);
-                                char_to_room(ch, was_in);
+                                act_at_room("$p appears suddenly before falling to the floor!",
+                                            ch, obj, NULL, TO_ROOM, pRoomIndex);
                         }
                 }
 

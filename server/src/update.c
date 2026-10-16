@@ -2875,7 +2875,8 @@ void aggr_update()
 
                                 in_room = ch->in_room;
 
-                                if (ch->in_room->exit[5])
+                                /* Unresolved exits cannot provide a safe landing room. */
+                                if (in_room->exit[5] && in_room->exit[5]->to_room)
                                 {
                                         to_room = in_room->exit[5]->to_room;
                                         /* Can we fall into it tho? headache coming */
@@ -3595,7 +3596,9 @@ void form_equipment_update(CHAR_DATA *ch)
                         {
                                 unequip_char(ch, obj);
                                 extract_obj(obj);
-                                rem_morph_list(ch, iter); /* Shade added April 2022 */
+                                /* Keep saved gear until the destination can wear it. */
+                                if (form_wear_table[ch->form].can_wear[jter])
+                                        rem_morph_list(ch, iter);
                         }
 
                         else if (!form_wear_table[ch->form].can_wear[jter])
@@ -4044,7 +4047,6 @@ static void gmcp_update_quest(DESCRIPTOR_DATA *d)
         AREA_DATA       *questarea;
         MOB_INDEX_DATA  *mob_index;
         OBJ_INDEX_DATA  *obj_index;
-        OBJ_DATA        *carried;
         const char      *status;
         const char      *type;
         const char      *giver_name;
@@ -4137,21 +4139,8 @@ static void gmcp_update_quest(DESCRIPTOR_DATA *d)
                 if (obj_index && obj_index->short_descr)
                         target_name = obj_index->short_descr;
 
-                /* Mirror do_quest complete: only top-level carried objects count. */
-                for (carried = ch->carrying;
-                     carried;
-                     carried = carried->next_content)
-                {
-                        if (carried->deleted || !carried->pIndexData)
-                                continue;
-
-                        if (carried->pIndexData->vnum
-                        ==  object_vnum)
-                        {
-                                complete = 1;
-                                break;
-                        }
-                }
+                if (get_quest_object(ch))
+                        complete = 1;
         }
 
         if (active)

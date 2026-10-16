@@ -3420,7 +3420,9 @@ void stop_fighting(CHAR_DATA *ch, bool fBoth)
                         fch->rescue_retaliation = NULL;
                         fch->fighting = NULL;
                         fch->fear_aura_checked = FALSE;
-                        fch->position = POS_STANDING;
+                        /* Ending combat must not wake a sleeping character. */
+                        if (fch->position == POS_FIGHTING)
+                                fch->position = POS_STANDING;
 
                         if (is_affected(fch, gsn_berserk))
                                 affect_strip(fch, gsn_berserk);
@@ -9970,12 +9972,47 @@ void do_hurl(CHAR_DATA *ch, char *argument)
         }
 }
 
+static bool ranged_attacker_alive(CHAR_DATA *ch, int killed)
+{
+        return !ch->deleted && ch->in_room && ch->position != POS_DEAD
+            && (IS_NPC(ch) || ch->pcdata->killed == killed);
+}
+
+static void restore_shoot_equipment(CHAR_DATA *ch, OBJ_DATA *obj,
+                                    OBJ_DATA *objWield, OBJ_DATA *objShield,
+                                    OBJ_DATA *objDual, int killed)
+{
+        /* Death can move the shooter and put the saved equipment in a corpse. */
+        if (!ranged_attacker_alive(ch, killed))
+                return;
+
+        if (!obj->deleted && obj->carried_by == ch
+        &&  get_eq_char(ch, WEAR_WIELD) == obj)
+        {
+                unequip_char(ch, obj);
+                if (!get_eq_char(ch, WEAR_RANGED_WEAPON))
+                        equip_char(ch, obj, WEAR_RANGED_WEAPON);
+        }
+
+        if (objWield && !objWield->deleted && objWield->carried_by == ch
+        &&  objWield->wear_loc == WEAR_NONE && !get_eq_char(ch, WEAR_WIELD))
+                equip_char(ch, objWield, WEAR_WIELD);
+
+        if (objShield && !objShield->deleted && objShield->carried_by == ch
+        &&  objShield->wear_loc == WEAR_NONE && !get_eq_char(ch, WEAR_SHIELD))
+                equip_char(ch, objShield, WEAR_SHIELD);
+
+        if (objDual && !objDual->deleted && objDual->carried_by == ch
+        &&  objDual->wear_loc == WEAR_NONE && !get_eq_char(ch, WEAR_DUAL))
+                equip_char(ch, objDual, WEAR_DUAL);
+}
+
 void do_shoot(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj, *objWield, *objShield, *objDual;
         CHAR_DATA *victim;
         char arg[MAX_INPUT_LENGTH];
-        int num, i;
+        int num, i, killed;
 
         /* Made this available to NPCs --Owl 29/3/24 */
 
@@ -10036,6 +10073,8 @@ void do_shoot(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        killed = IS_NPC(ch) ? 0 : ch->pcdata->killed;
+
         /* Remove weapons and shield, equip bow */
         objWield = get_eq_char(ch, WEAR_WIELD);
         if (objWield)
@@ -10059,7 +10098,8 @@ void do_shoot(CHAR_DATA *ch, char *argument)
                 {
                         one_hit(ch, victim, gsn_shoot, FALSE);
 
-                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                        if (!ranged_attacker_alive(ch, killed) || victim->deleted
+                        ||  victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                 break;
                 }
         }
@@ -10085,7 +10125,8 @@ void do_shoot(CHAR_DATA *ch, char *argument)
                 {
                         one_hit(ch, victim, gsn_shoot, FALSE);
 
-                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                        if (!ranged_attacker_alive(ch, killed) || victim->deleted
+                        ||  victim->position == POS_DEAD || ch->in_room != victim->in_room)
                                 break;
                 }
         }
@@ -10094,27 +10135,14 @@ void do_shoot(CHAR_DATA *ch, char *argument)
                 damage(ch, victim, 0, gsn_shoot, FALSE);
         }
 
-        /*  Double check bow is still being held  */
-        if (get_eq_char(ch, WEAR_WIELD))
-        {
-                unequip_char(ch, obj);
-                equip_char(ch, obj, WEAR_RANGED_WEAPON);
-        }
-
-        if (objWield)
-                equip_char(ch, objWield, WEAR_WIELD);
-
-        if (objShield)
-                equip_char(ch, objShield, WEAR_SHIELD);
-
-        if (objDual)
-                equip_char(ch, objDual, WEAR_DUAL);
+        restore_shoot_equipment(ch, obj, objWield, objShield, objDual, killed);
 }
 
 void do_snap_shot(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj, *objWield, *objShield, *objDual;
         CHAR_DATA *victim;
+        int killed;
 
         if (IS_NPC(ch))
                 return;
@@ -10138,6 +10166,7 @@ void do_snap_shot(CHAR_DATA *ch, char *argument)
         }
 
         victim = ch->fighting;
+        killed = ch->pcdata->killed;
 
         obj = get_eq_char(ch, WEAR_RANGED_WEAPON);
 
@@ -10175,21 +10204,7 @@ void do_snap_shot(CHAR_DATA *ch, char *argument)
                 damage(ch, victim, 0, gsn_snap_shot, FALSE);
         }
 
-        /*  Double check bow is still being held  */
-        if (get_eq_char(ch, WEAR_WIELD))
-        {
-                unequip_char(ch, obj);
-                equip_char(ch, obj, WEAR_RANGED_WEAPON);
-        }
-
-        if (objWield)
-                equip_char(ch, objWield, WEAR_WIELD);
-
-        if (objShield)
-                equip_char(ch, objShield, WEAR_SHIELD);
-
-        if (objDual)
-                equip_char(ch, objDual, WEAR_DUAL);
+        restore_shoot_equipment(ch, obj, objWield, objShield, objDual, killed);
 }
 
 void do_thrust(CHAR_DATA *ch, char *argument)

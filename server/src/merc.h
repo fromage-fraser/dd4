@@ -423,7 +423,7 @@ bool has_tranquility(CHAR_DATA *ch);
 #define MAX_PRE_REQ 1601        /* Five more protection prerequisites. */
 #define MAX_SPELL_GROUP 480     /* Includes Regenerate in Advanced Healing. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
-#define MAX_GROUPS 61            /* +1 for runecaster - Brutus Aug 2022 */
+#define MAX_GROUPS 62            /* Includes the Illusion group boundary. */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
 #define MAX_VAMPIRE_GAG 25       /* 26 - 1 so vamps get morph again for bat form | ugly vampire/werewolf hack */
 
@@ -3209,6 +3209,7 @@ struct pc_data
         int nextquest;
         int countdown;
         int questobj;
+        uint64_t quest_target_id; /* Runtime identity of this assignment token. */
         int questmob;
         ROOM_INDEX_DATA *questroom;
         AREA_DATA *questarea;
@@ -5471,6 +5472,8 @@ void send_paragraph_to_char(char *text, CHAR_DATA *ch, unsigned int indent);
 void ansi_color args((const char *txt, CHAR_DATA *ch));
 void show_string args((DESCRIPTOR_DATA * d, char *input));
 void act args((const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type));
+void act_at_room(const char *format, CHAR_DATA *ch, const void *arg1,
+                 const void *arg2, int type, ROOM_INDEX_DATA *room);
 void act_move(const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type);
 void bit_explode(CHAR_DATA *ch, char *buf, unsigned long int n);
 void colourconv_8bit args((char *buffer, const char *txt, CHAR_DATA *ch));
@@ -5932,6 +5935,7 @@ bool is_cursed(CHAR_DATA *ch);
 int scale_pipe(int limit_level, int load_level, int base_value, bool higher_bad);
 
 /* quest.c */
+OBJ_DATA *get_quest_object(CHAR_DATA *ch);
 bool mob_is_quest_target(CHAR_DATA *ch);
 void add_hoard_hint(ROOM_INDEX_DATA *room);
 void remove_hoard_hint(ROOM_INDEX_DATA *room);

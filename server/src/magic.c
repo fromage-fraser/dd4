@@ -6280,7 +6280,9 @@ void spell_poison(int sn, int level, CHAR_DATA *ch, void *vo)
 
         for (paf = victim->affected; paf; paf = paf->next)
         {
-                if (paf->type == sn)
+                if (!paf->deleted
+                &&  paf->type == sn
+                &&  paf->source_type == AFFECT_SOURCE_NONE)
                 {
                         af.duration = level / 10;
                         if (paf->modifier <= -20)
@@ -9439,7 +9441,7 @@ void spell_wither(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         OBJ_DATA *obj = (OBJ_DATA *)vo;
-        int sp_slot, i, mana;
+        int sp_slot, spells, i, mana;
         char buf[MAX_STRING_LENGTH];
 
         if (skill_table[sn].spell_fun == spell_null)
@@ -9448,14 +9450,18 @@ void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        /* counting the number of spells contained within */
-        for (sp_slot = i = 1; i < 4; i++)
+        /* Sparse spell slots must preserve every existing enchantment. */
+        sp_slot = 0;
+        spells = 0;
+        for (i = 1; i < 4; i++)
         {
                 if (obj->value[i] != -1)
-                        sp_slot++;
+                        spells++;
+                else if (sp_slot == 0)
+                        sp_slot = i;
         }
 
-        if (sp_slot > 3)
+        if (sp_slot == 0)
         {
                 act("$p cannot contain any more spells.", ch, obj, NULL, TO_CHAR);
                 return;
@@ -9485,10 +9491,10 @@ void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
         /* Making it successively harder to pack more spells into potions or
          scrolls - JH */
 
-        switch (sp_slot)
+        switch (spells + 1)
         {
         default:
-                bug("sp_slot has more than %d spells.", sp_slot);
+                bug("sp_slot has more than %d spells.", spells + 1);
                 return;
 
         case 1:
@@ -9527,12 +9533,14 @@ void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
         free_string(obj->short_descr);
         sprintf(buf, "a %s of ", item_type_name(obj));
 
-        for (i = 1; i <= sp_slot; i++)
+        spells = 0;
+        for (i = 1; i < 4; i++)
         {
                 if (obj->value[i] != -1)
                 {
+                        if (spells++ > 0)
+                                strcat(buf, ", ");
                         strcat(buf, skill_table[obj->value[i]].name);
-                        (i != sp_slot) ? strcat(buf, ", ") : strcat(buf, "");
                 }
         }
 
@@ -12138,7 +12146,9 @@ void spell_nausea(int sn, int level, CHAR_DATA *ch, void *vo)
 
         for (paf = victim->affected; paf; paf = paf->next)
         {
-                if (paf->type == sn)
+                if (!paf->deleted
+                &&  paf->type == sn
+                &&  paf->source_type == AFFECT_SOURCE_NONE)
                 {
                         af.duration = number_range(2, (2 + (level / 10)));
                         if (paf->modifier <= -30)
