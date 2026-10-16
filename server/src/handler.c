@@ -1231,6 +1231,8 @@ void affect_to_char(CHAR_DATA *ch, AFFECT_DATA *paf)
  */
 void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
 {
+        bool was_charmed;
+
         if ( !ch->affected )
         {
                 bug( "Affect_remove: no affect.", 0 );
@@ -1240,9 +1242,14 @@ void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
         if (paf->deleted)
                 return;
 
+        was_charmed = IS_AFFECTED(ch, AFF_CHARM) != 0;
         affect_modify( ch, paf, FALSE, NULL );
 
         paf->deleted = TRUE;
+
+        /* Control ends only when its final charm provider is gone. */
+        if (was_charmed && !IS_AFFECTED(ch, AFF_CHARM) && ch->master)
+                stop_follower(ch);
 
         /* The inside link belongs only to the ordinary swallow affects. */
         if (paf->type == gsn_swallow
@@ -1402,8 +1409,12 @@ bool affect_bit_has_raw_source(CHAR_DATA *ch, unsigned long int bit)
  */
 bool affect_strip_raw_bit(CHAR_DATA *ch, unsigned long int bit)
 {
+        bool was_charmed;
+
         if (!ch || !bit)
                 return FALSE;
+
+        was_charmed = IS_AFFECTED(ch, AFF_CHARM) != 0;
 
         if (IS_NPC(ch))
         {
@@ -1425,7 +1436,10 @@ bool affect_strip_raw_bit(CHAR_DATA *ch, unsigned long int bit)
                     bit);
         }
 
-        return IS_AFFECTED(ch, bit);
+        if (was_charmed && !IS_AFFECTED(ch, AFF_CHARM) && ch->master)
+                stop_follower(ch);
+
+        return IS_AFFECTED(ch, bit) != 0;
 }
 
 /*

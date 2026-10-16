@@ -5792,6 +5792,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                 affect_free = affect_free->next;
         }
 
+        /* Recycled affects must not add flags or retain a source. */
+        memset(paf, 0, sizeof(*paf));
         paf->type           = gsn_imbue;
         paf->duration       = -1;
         paf->location       = modifier;
@@ -5816,6 +5818,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                         paf = affect_free;
                         affect_free = affect_free->next;
                 }
+                /* Recycled affects must not add flags or retain a source. */
+                memset(paf, 0, sizeof(*paf));
                 paf->type           = gsn_imbue;
                 paf->duration       = -1;
                 paf->location       = modifier;
@@ -5840,6 +5844,8 @@ void do_imbue (CHAR_DATA *ch, char *argument)
                         paf = affect_free;
                         affect_free = affect_free->next;
                 }
+                /* Recycled affects must not add flags or retain a source. */
+                memset(paf, 0, sizeof(*paf));
                 paf->type           = gsn_imbue;
                 paf->duration       = -1;
                 paf->location       = modifier;
@@ -6040,7 +6046,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
         /*if (str_cmp(arg1, "all") && str_prefix("all.", arg1)) */
         if (str_prefix("all.", arg1))
         {
-                if (!(module = get_obj_list(ch, arg1, turret->contains )) && (arg2[0] == '\0' ))
+                if (!(module = get_obj_list(ch, arg1, turret->contains )))
                 {
                         send_to_char("That module is not in your turret.\n\r", ch);
                         return;

@@ -1416,6 +1416,12 @@ void do_climb(CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch))
                 return;
 
+        if (ch->mount)
+        {
+                send_to_char("You must dismount before you can climb.\n\r", ch);
+                return;
+        }
+
         if (arg[0] == '\0')
         {
                 send_to_char("Climb what?\n\r", ch);

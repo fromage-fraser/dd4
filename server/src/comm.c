@@ -2892,6 +2892,7 @@ void nanny(DESCRIPTOR_DATA *d, char *argument)
                         }
                 }
 
+                ch->pcdata->quest_target_id = 0;
                 if (IS_SET(ch->act, PLR_QUESTOR))
                 {
                         REMOVE_BIT(ch->act, PLR_QUESTOR);
@@ -3948,6 +3949,15 @@ void ansi_color(const char *txt, CHAR_DATA *ch)
  */
 void act(const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, int type)
 {
+        if (!format || format[0] == '\0')
+                return;
+        act_at_room(format, ch, arg1, arg2, type, ch->in_room);
+}
+
+/* Remote messages must not move their actor or alter room-entry state. */
+void act_at_room(const char *format, CHAR_DATA *ch, const void *arg1,
+                 const void *arg2, int type, ROOM_INDEX_DATA *room)
+{
         OBJ_DATA *obj1 = (OBJ_DATA *)arg1;
         OBJ_DATA *obj2 = (OBJ_DATA *)arg2;
         CHAR_DATA *to;
@@ -3976,7 +3986,7 @@ void act(const char *format, CHAR_DATA *ch, const void *arg1, const void *arg2, 
         if (ch->deleted)
                 return;
 
-        to = ch->in_room->people;
+        to = room->people;
         if (type == TO_VICT)
         {
                 if (!vch)

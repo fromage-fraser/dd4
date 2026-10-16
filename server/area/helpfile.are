@@ -835,6 +835,22 @@ and undead objects on the ground, carried or worn.
 
 {WOctober 2026{x
 - Resist Toxin now protects against poison in food, drinks and fountains.
+- Ending combat preserves sleeping and resting posture during RECALL.
+- You must dismount before using CLIMB.
+- BREW and SCRIBE preserve spells in sparse potion and scroll slots.
+- Illusion teachers use their own knowledge when teaching Ventriloquate.
+- TRIGGER safely rejects modules that are missing from your turret.
+- SNAPSHOT and SHOOT do not restore equipment after the shooter dies.
+- DONATE no longer moves you or replenishes your underwater air.
+- Poison and Nausea reapply correctly after their earlier effects end.
+- Losing the final charm effect releases the affected follower's control.
+- Leaving Hydra form preserves ordinary equipment named teeth.
+- Saved weapons wait for a form that can wield them before being restored.
+- Falling safely handles exits with no destination.
+- Ordered pets can SMOKE without requiring player thirst data.
+- Only players can use STEAL; ordered creatures cannot use this command.
+- Retrieval quests require the token created for the current assignment.
+- IMBUE bonuses no longer inherit status flags from recycled affects.
 - RESCUE follows PvP protections and KILLER rules. Redirected opponents
   may retaliate lawfully against that rescuer while the fight continues.
 - BANISH moves rider and mount together, checking both travellers. Either
@@ -1702,6 +1718,7 @@ Syntax: climb <<object or direction>
 
 Climb over an obstacle that blocks your way.  If you do not have the CLIMB
 skill, then you will need some climbing gear for any chance of success.
+You must dismount before climbing.
 ~
 
 0 'CHAIN LIGHTNING'~
@@ -3621,6 +3638,7 @@ Syntax: steal coins    <<character>
 Syntax: steal <<object> <<character>
 
 STEAL attempts to steal coins, or an object, from a character.
+Only player characters can use the STEAL command.
 
 There are penalties for using STEAL on other players, see HELP RULES.
 ~
