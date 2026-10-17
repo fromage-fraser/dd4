@@ -1172,6 +1172,12 @@ blocking unrelated directions.
 - MPAT now checks NO_UNDEAD before running a command in another room.
 - MLOAD now checks NO_UNDEAD before creating a mobile.
 - Immortal TRANSFER checks NO_UNDEAD before changing the target's state.
+- Hoard quests now avoid areas marked NO_QUEST.
+- Room-wide curse and hex traps now affect each intended victim.
+- Offensive item spells now respect protected targets.
+- Donating a container now marks all its contents as donated.
+- Prone attackers no longer prevent their targets from avoiding ordinary hits.
+- BOT REMOVE now removes the selected bot and safely updates the roster.
 
 ~
 

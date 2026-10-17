@@ -7042,6 +7042,15 @@ void do_bladethirst(CHAR_DATA *ch, char *argument)
         obj->affected = paf;
 }
 
+static void mark_donated_recursive(OBJ_DATA *obj)
+{
+        OBJ_DATA *content;
+
+        SET_BIT(obj->extra_flags, ITEM_DONATED);
+        for (content = obj->contains; content; content = content->next_content)
+                mark_donated_recursive(content);
+}
+
 void do_donate(CHAR_DATA *ch, char *argument)
 {
         ROOM_INDEX_DATA *pRoomIndex;
@@ -7111,7 +7120,7 @@ void do_donate(CHAR_DATA *ch, char *argument)
 
                 obj_from_char(obj);
                 obj_to_room(obj, pRoomIndex);
-                SET_BIT(obj->extra_flags, ITEM_DONATED);
+                mark_donated_recursive(obj);
 
                 act("$n donates $p.", ch, obj, NULL, TO_ROOM);
                 act("You donate $p.", ch, obj, NULL, TO_CHAR);
@@ -7169,7 +7178,7 @@ void do_donate(CHAR_DATA *ch, char *argument)
                                 found = TRUE;
                                 obj_from_char(obj);
                                 obj_to_room(obj, pRoomIndex);
-                                SET_BIT(obj->extra_flags, ITEM_DONATED);
+                                mark_donated_recursive(obj);
                                 act("$n donates $p.", ch, obj, NULL, TO_ROOM);
                                 act("You donate $p.", ch, obj, NULL, TO_CHAR);
 

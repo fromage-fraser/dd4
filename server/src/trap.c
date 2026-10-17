@@ -921,7 +921,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         spell_curse(gsn_curse, ch->level, ch, ch);
                 } else {
                         for (wch = ch->in_room->people; wch; wch = wch->next_in_room)
-                                spell_curse(gsn_curse, ch->level, wch, ch);
+                                spell_curse(gsn_curse, ch->level, wch, wch);
                 }
                 break;
 
@@ -930,7 +930,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         spell_hex(gsn_hex, ch->level, ch, ch);
                 } else {
                         for (wch = ch->in_room->people; wch; wch = wch->next_in_room)
-                                spell_hex(gsn_hex, ch->level, wch, ch);
+                                spell_hex(gsn_hex, ch->level, wch, wch);
                 }
                 break;
 
