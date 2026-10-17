@@ -3927,6 +3927,47 @@ bool undead_can_travel_to_room(const CHAR_DATA *ch,
         return TRUE;
 }
 
+/*
+ * Check the riding links before choosing or entering a destination.
+ */
+bool mounted_travel_ready(CHAR_DATA *ch)
+{
+        CHAR_DATA *mount;
+        CHAR_DATA *rch;
+
+        if (!ch || ch->deleted || !ch->in_room)
+                return FALSE;
+
+        if (ch->rider)
+        {
+                send_to_char("You cannot travel while someone is riding you.\n\r", ch);
+                return FALSE;
+        }
+
+        if (ch->mount || is_affected(ch, gsn_mount))
+        {
+                mount = ch->mount;
+
+                for (rch = ch->in_room->people; rch;
+                     rch = rch->next_in_room)
+                {
+                        if (rch == mount)
+                                break;
+                }
+
+                if (!rch || rch->deleted
+                ||  mount->in_room != ch->in_room
+                ||  mount->rider != ch
+                ||  !is_affected(ch, gsn_mount))
+                {
+                        send_to_char("Your mount is not ready to travel with you.\n\r", ch);
+                        return FALSE;
+                }
+        }
+
+        return TRUE;
+}
+
 bool undead_can_spawn_in_room(const MOB_INDEX_DATA *index,
                               const ROOM_INDEX_DATA *room)
 {

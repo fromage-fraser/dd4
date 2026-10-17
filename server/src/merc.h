@@ -5659,6 +5659,7 @@ bool undead_can_enter_room args((const CHAR_DATA *ch,
                                 const ROOM_INDEX_DATA *room));
 bool undead_can_travel_to_room args((const CHAR_DATA *ch,
                                     const ROOM_INDEX_DATA *room));
+bool mounted_travel_ready args((CHAR_DATA *ch));
 bool undead_can_spawn_in_room args((const MOB_INDEX_DATA *index,
                                    const ROOM_INDEX_DATA *room));
 bool can_see args((CHAR_DATA * ch, CHAR_DATA *victim));

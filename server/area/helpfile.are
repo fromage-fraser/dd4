@@ -1156,6 +1156,8 @@ blocking unrelated directions.
 - Fixed Transport prayer losing its destination when targeting the caster's 
   mount.
 - Fixed weather ambience continuing to play when its effective volume rounds down to zero.
+- Pattern travel and the Transport prayer now check NO_UNDEAD and NO_MOUNT.
+- Refused Pattern Return trips keep their saved destination and travel mana.
 
 ~
 
@@ -1163,9 +1165,10 @@ blocking unrelated directions.
 NO_UNDEAD is a permanent room flag, not a spell you cast.
 
 Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
-portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport or
-the ARENA command. Mobile resets and Animate Dead cannot create them
-here either. Undead mounts and commanded servants have no exception.
+portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
+the ARENA command, Pattern travel or the deity Transport prayer.
+Mobile resets and Animate Dead cannot create them here either.
+Undead mounts and commanded servants have no exception.
 A blocked animation leaves its corpse untouched.
 
 Recall leaves blocked followers behind. An undead NPC mount stops
@@ -1183,6 +1186,10 @@ anyone, and fails if no suitable room is found.
 The ARENA command chooses from arrival rooms that permit the traveller
 and mount. If none can, the trip is refused before entry is announced.
 
+Pattern travel and the deity Transport prayer check both rider and mount.
+NO_MOUNT rooms also refuse mounted travel on these two paths. A refused
+Pattern trip uses no travel mana and keeps any saved return pattern.
+
 Player vampires can enter and leave normally, but the room burns them
 for 30-60 HP each game tick instead of their usual HP regeneration.
 The burn cannot take them below 1 HP.
@@ -1192,8 +1199,8 @@ sunlight does not add another burn, and crossing an exit does not
 cause extra damage.
 
 Creatures already inside are not removed. Tournament-start transfers,
-Pattern travel, gravity, scripted placement and immortal loading or
-transfer are not checked yet.
+gravity, other deity travel, scripted placement and immortal loading
+or transfer are not checked yet.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
@@ -7636,11 +7643,16 @@ PATTERN lists all the available fixed patterns.
 
 PATTERN <<number> transports the caster to their chosen destination.
 
-PATTERN SET creates a temporary pattern at the casters current location.
+PATTERN SET creates a temporary pattern at the caster's current location.
 
-PATTERN RETURN returns the caster to their created temporary location.  The
-act of returning also destroys the temporary pattern point.
+PATTERN RETURN returns the caster to their temporary pattern and removes it
+after a successful trip.
 
+Your mount comes with you; other followers stay behind. NO_UNDEAD rooms
+refuse undead NPC mounts, and NO_MOUNT rooms refuse mounted travel.
+
+A refused trip costs no travel mana. A refused PATTERN RETURN also keeps
+your saved pattern.
 ~
 
 -1 RANDOM ATTRIBUTES STRENGTH INTELLIGENCE WISDOM DEXTERITY CONSTITUTION~
