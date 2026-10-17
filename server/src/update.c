@@ -2756,6 +2756,22 @@ void obj_update()
 }
 
 /*
+ * Gravity already dismounts riders before entering NO_MOUNT rooms.
+ * Check just the rider then; otherwise check the whole mounted pair.
+ */
+static bool gravity_destination_allowed(CHAR_DATA *ch,
+                                        ROOM_INDEX_DATA *room)
+{
+        if (!room || !mounted_travel_ready(ch))
+                return FALSE;
+
+        if (ch->mount && IS_SET(room->room_flags, ROOM_NO_MOUNT))
+                return undead_can_enter_room(ch, room);
+
+        return undead_can_travel_to_room(ch, room);
+}
+
+/*
  * Aggress.
  *
  * for each mortal PC
@@ -2897,6 +2913,13 @@ void aggr_update()
                                         }
 
                                         if (to_room->area->low_level == -4 && to_room->area->high_level == -4 && !IS_NPC(ch) && !ch->clan && !IS_SET(ch->status, PLR_RONIN) && ch->level <= LEVEL_HERO)
+                                        {
+                                                clear_fall_source(ch);
+                                                continue;
+                                        }
+
+                                        /* Check entry before a fall or forced dismount changes anything. */
+                                        if (!gravity_destination_allowed(ch, to_room))
                                         {
                                                 clear_fall_source(ch);
                                                 continue;

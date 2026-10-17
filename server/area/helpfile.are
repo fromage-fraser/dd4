@@ -851,6 +851,22 @@ and undead objects on the ground, carried or worn.
 - Only players can use STEAL; ordered creatures cannot use this command.
 - Retrieval quests require the token created for the current assignment.
 - IMBUE bonuses no longer inherit status flags from recycled affects.
+- Ending combat preserves sleeping and resting posture during RECALL.
+- You must dismount before using CLIMB.
+- BREW and SCRIBE preserve spells in sparse potion and scroll slots.
+- Illusion teachers use their own knowledge when teaching Ventriloquate.
+- TRIGGER safely rejects modules that are missing from your turret.
+- SNAPSHOT and SHOOT do not restore equipment after the shooter dies.
+- DONATE no longer moves you or replenishes your underwater air.
+- Poison and Nausea reapply correctly after their earlier effects end.
+- Losing the final charm effect releases the affected follower's control.
+- Leaving Hydra form preserves ordinary equipment named teeth.
+- Saved weapons wait for a form that can wield them before being restored.
+- Falling safely handles exits with no destination.
+- Ordered pets can SMOKE without requiring player thirst data.
+- Only players can use STEAL; ordered creatures cannot use this command.
+- Retrieval quests require the token created for the current assignment.
+- IMBUE bonuses no longer inherit status flags from recycled affects.
 - RESCUE follows PvP protections and KILLER rules. Redirected opponents
   may retaliate lawfully against that rescuer while the fight continues.
 - BANISH moves rider and mount together, checking both travellers. Either
@@ -1160,10 +1176,13 @@ blocking unrelated directions.
 NO_UNDEAD is a permanent room flag, not a spell you cast.
 
 Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
-portals, Recall, clan Home, Astral Vortex or Banish. Mobile resets
-and Animate Dead cannot create them here either. Undead mounts and
-commanded servants have no exception. A blocked animation leaves
-its corpse untouched.
+portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
+the ARENA command, Pattern travel, the deity Transport and Chaos prayers,
+tournament-start transfers, gravity, MPTRANSFER, MPGOTO, MPAT or
+immortal TRANSFER. Mobile resets, Animate Dead, MPMLOAD and MLOAD
+cannot create them here either.
+Undead mounts and commanded servants have no exception.
+A blocked animation leaves its corpse untouched.
 
 Recall leaves blocked followers behind. An undead NPC mount stops
 its rider's whole Recall or Home attempt instead. Word of Recall
@@ -1171,6 +1190,59 @@ uses the same checks. Clan Home does not bring other followers.
 
 Astral Vortex takes the caster's mount along. Banish keeps a mounted
 pair together, whether it targets the rider or the mount.
+
+Mass Teleport takes the caster and every player in the room, not
+just group members. Their mounts travel with them; other NPC followers
+stay behind. It finds one room that can take everyone before moving
+anyone, and fails if no suitable room is found.
+
+The ARENA command chooses from arrival rooms that permit the traveller
+and mount. If none can, the trip is refused before entry is announced.
+
+Pattern travel and the deity Transport prayer check both rider and mount.
+NO_MOUNT rooms also refuse mounted travel on these two paths. A refused
+Pattern trip uses no travel mana and keeps any saved return pattern.
+
+Chaos prayer teleportation checks each target and mount together and limits
+its search for an allowed room. If the search fails, neither moves.
+
+Rescue checks its sanctuary before ending combat or dismounting the player.
+It leaves the mount behind, so an undead mount does not block Rescue.
+
+Tournament starts check every travelling pair before anyone moves.
+Random starts choose an allowed room for each entrant. SAMEROOM uses
+one room that can take all selected entrants. If the required arrival
+rooms cannot be found, the tournament is cancelled without transfers.
+
+Gravity checks the rider and mount before a joint fall into NO_UNDEAD.
+Its existing NO_MOUNT rule still dismounts the rider before the fall,
+so that case checks the rider alone. NPC followers use normal movement
+checks and cannot use the fall to bypass NO_UNDEAD.
+
+MPMLOAD checks the resolved mobile template before creating anything.
+MPTRANSFER checks every selected traveller, including ALL and GROUP,
+before moving anyone. Riders and mounts travel together even when the
+mount is the named target. If any traveller is barred or a riding link
+is broken, the whole request is refused. NO_MOUNT is also checked when
+entering another room. Same-room refreshes are not new entry.
+
+MPGOTO uses the same entry and riding-link checks for the mobile and its
+riding partner. The pair stays together even when the mobile is the mount.
+A refused trip leaves both in place and does not end combat. Other
+followers stay behind.
+
+MPAT temporarily moves only the mobile to run its command. It checks
+that mobile before entering another room; riders and mounts stay behind.
+A refused command is not run. A surviving mobile can still return to
+its starting room, even if that room has NO_UNDEAD. Same-room MPAT
+remains allowed.
+
+MLOAD checks the resolved mobile template before creating anything.
+Immortal TRANSFER checks only the target, because its rider or mount
+stays behind. A refused transfer leaves combat, riding links and
+tournament status alone. Same-room transfers remain allowed.
+TRANSFER ALL keeps its existing selection and checks each target
+separately; blocked targets stay behind while eligible targets move.
 
 Player vampires can enter and leave normally, but the room burns them
 for 30-60 HP each game tick instead of their usual HP regeneration.
@@ -1180,9 +1252,8 @@ It works indoors, at night, underwater and in mist form. Being in
 sunlight does not add another burn, and crossing an exit does not
 cause extra damage.
 
-Creatures already inside are not removed. Arena travel, Mass Teleport,
-gravity, scripted placement and immortal loading or transfer are not
-checked yet.
+Creatures already inside are not removed. Immortal GOTO and AT, plus
+other scripted placement, are not checked yet.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
@@ -1721,6 +1792,7 @@ Syntax: climb <<object or direction>
 
 Climb over an obstacle that blocks your way.  If you do not have the CLIMB
 skill, then you will need some climbing gear for any chance of success.
+You must dismount before climbing.
 You must dismount before climbing.
 ~
 
@@ -2454,6 +2526,10 @@ By typing this command, you are transported into the Arena of Death. The
 Arena is a place where players can come and attempt to kill each other
 without the fear of getting a KILLER flag or any other penalties for dying
 that they might normally get (loss of experience, fame, etc).
+
+Your mount comes with you. NO_UNDEAD rooms reject undead NPC mounts;
+NO_MOUNT rooms reject mounted travellers. The command fails if no
+suitable arrival room is available.
 
 The ARENA can also be accessed by heading west from the Midgaard healer.
 Note that the only way out is by death or by recalling.
@@ -3642,6 +3718,7 @@ Syntax: steal <<object> <<character>
 
 STEAL attempts to steal coins, or an object, from a character.
 Only player characters can use the STEAL command.
+Only player characters can use the STEAL command.
 
 There are penalties for using STEAL on other players, see HELP RULES.
 ~
@@ -3868,6 +3945,8 @@ Syntax: mload <<vnum>
 Syntax: oload <<vnum> <<level> <<copies>
 
 MLOAD loads a mobile given its vnum (virtual number).
+NO_UNDEAD rooms refuse undead mobiles before creating them, using the
+mobile template's resolved inherited and overridden flags.
 
 OLOAD loads (optional) number of copies of an object at (optional) level
 given its (required) vnum.
@@ -3929,6 +4008,12 @@ Syntax: transfer all         <<location>
 
 TRANSFER transfers the target character, or ALL player characters,
 to your current location (default) or to a specified location.
+
+When entering another room, NO_UNDEAD refuses undead NPCs before combat,
+riding links or tournament status are changed. Player vampires can still
+be transferred. Only the target moves; its rider or mount stays behind,
+with the usual dismounting. Same-room transfers remain allowed.
+ALL handles each target separately, leaving blocked targets behind.
 ~
 
 103 USERS~
@@ -7621,11 +7706,16 @@ PATTERN lists all the available fixed patterns.
 
 PATTERN <<number> transports the caster to their chosen destination.
 
-PATTERN SET creates a temporary pattern at the casters current location.
+PATTERN SET creates a temporary pattern at the caster's current location.
 
-PATTERN RETURN returns the caster to their created temporary location.  The
-act of returning also destroys the temporary pattern point.
+PATTERN RETURN returns the caster to their temporary pattern and removes it
+after a successful trip.
 
+Your mount comes with you; other followers stay behind. NO_UNDEAD rooms
+refuse undead NPC mounts, and NO_MOUNT rooms refuse mounted travel.
+
+A refused trip costs no travel mana. A refused PATTERN RETURN also keeps
+your saved pattern.
 ~
 
 -1 RANDOM ATTRIBUTES STRENGTH INTELLIGENCE WISDOM DEXTERITY CONSTITUTION~
@@ -8482,6 +8572,14 @@ Use START to begin the tournament: there is a countdown shown to the
 players and then they are all automatically transferred to the arena.
 Players must be awake, not fighting and standing at the Temple of Midgaard
 (recall square, 3001) else they will not be transferred.
+
+Your mount comes with you. NO_UNDEAD arrival rooms reject undead NPC
+mounts, and NO_MOUNT rooms reject mounted pairs. Broken riding links
+make an entrant unready.
+
+All arrival rooms are chosen before anyone moves. SAMEROOM needs one
+room that can take every selected entrant and mount. If the required
+rooms cannot be found, the tournament is cancelled without transfers.
 
 Tournaments are automatically closed when one player remains in the arena
 or all are disqualified.  CANCEL the tournament to unlock the Arena, else

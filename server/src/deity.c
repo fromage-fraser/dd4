@@ -3017,37 +3017,56 @@ void prayer_protection (CHAR_DATA *ch)
 
 void prayer_rescue (CHAR_DATA *ch)
 {
-        if (!allow_deity_command (ch))
+        ROOM_INDEX_DATA *room;
+
+        if (!ch || ch->deleted || !ch->in_room)
                 return;
 
-        /*
-         * Fighting
-         */
+        if (!allow_deity_command(ch))
+                return;
+
+        /* Find sanctuary before ending combat or leaving a mount behind. */
+        room = get_room_index(ROOM_VNUM_TEMPLE);
+        if (!undead_can_enter_room(ch, room))
+        {
+                patron_message("I cannot find a place to rescue you to.", ch);
+                ch->pcdata->deity_timer = 0;
+                return;
+        }
+
+        if (!mounted_travel_ready(ch))
+        {
+                ch->pcdata->deity_timer = 0;
+                return;
+        }
 
         if (ch->fighting
-            && get_deity_stature(ch->pcdata->deity_patron) == DEITY_STATURE_WEAK
-            && !number_bits(2))
+        &&  get_deity_stature(ch->pcdata->deity_patron) == DEITY_STATURE_WEAK
+        &&  !number_bits(2))
         {
                 patron_message("I'm too weak to rescue you!", ch);
                 ch->pcdata->deity_timer = 20;
                 return;
         }
 
-        /*
-         * Escape
-         */
-
         if (ch->fighting)
                 stop_fighting(ch, TRUE);
 
+        /* Rescue still leaves the mount here; only the player travels. */
         if (ch->mount)
                 strip_mount(ch);
 
         act("{W$c is surrounded by holy light and disappears!{x", ch, NULL, NULL, TO_ROOM);
         send_to_char("{WYou are surrounded by holy light!{x\n\r\n\r", ch);
 
+        GMCPSetArrival(ch->desc,
+                       ch->in_room->vnum,
+                       room->vnum,
+                       -1,
+                       "prayer_rescue");
+
         char_from_room(ch);
-        char_to_room(ch, get_room_index(ROOM_VNUM_TEMPLE));
+        char_to_room(ch, room);
         act("{W$c appears in a flash of holy light!{x", ch, NULL, NULL, TO_ROOM);
 
         do_look(ch, "");
@@ -3187,6 +3206,9 @@ void prayer_plague (CHAR_DATA *ch)
 
 void prayer_chaos_ruin_food_drink (OBJ_DATA *obj)
 {
+        if (!obj)
+                return;
+
         if (obj->next_content)
                 prayer_chaos_ruin_food_drink(obj->next_content);
 
@@ -3202,6 +3224,9 @@ void prayer_chaos_ruin_food_drink (OBJ_DATA *obj)
 
 void prayer_chaos_ruin_potions_pills (OBJ_DATA *obj)
 {
+        if (!obj)
+                return;
+
         if (obj->next_content)
                 prayer_chaos_ruin_potions_pills(obj->next_content);
 
@@ -3224,20 +3249,92 @@ void prayer_chaos_ruin_potions_pills (OBJ_DATA *obj)
 }
 
 
+/*
+ * Chaos picks a room for each target, keeping their mount with them.
+ */
+static void prayer_chaos_teleport(CHAR_DATA *victim)
+{
+        ROOM_INDEX_DATA *room = NULL;
+        CHAR_DATA *mount;
+        int attempts;
+
+        if (!mounted_travel_ready(victim))
+                return;
+
+        mount = victim->mount;
+
+        for (attempts = 0; attempts < 10000; attempts++)
+        {
+                room = get_room_index(number_range(0, 65535));
+
+                if (!room
+                ||  IS_SET(room->room_flags, ROOM_PRIVATE)
+                ||  IS_SET(room->room_flags, ROOM_NO_RECALL)
+                ||  IS_SET(room->room_flags, ROOM_PLAYER_KILLER)
+                ||  IS_SET(room->room_flags, ROOM_SOLITARY)
+                ||  !undead_can_travel_to_room(victim, room)
+                ||  (mount && IS_SET(room->room_flags, ROOM_NO_MOUNT)))
+                        continue;
+
+                break;
+        }
+
+        if (attempts == 10000)
+        {
+                send_to_char("The chaotic pull fades before it can take you anywhere.\n\r", victim);
+                return;
+        }
+
+        stop_fighting(victim, TRUE);
+        if (mount)
+                stop_fighting(mount, TRUE);
+
+        act("$n disappears in a flash of light!", victim, NULL, NULL, TO_ROOM);
+        if (mount)
+                act_move("$n disappears in a flash of light!", mount, NULL, NULL, TO_ROOM);
+
+        GMCPSetArrival(victim->desc,
+                       victim->in_room->vnum,
+                       room->vnum,
+                       -1,
+                       "prayer_chaos");
+
+        char_from_room(victim);
+        char_to_room(victim, room);
+
+        if (mount)
+        {
+                char_from_room(mount);
+                char_to_room(mount, room);
+                act_move("$n appears in a flash of light!", mount, NULL, NULL, TO_ROOM);
+        }
+
+        act("$n appears in a flash of light!", victim, NULL, NULL, TO_ROOM);
+        send_to_char("\n\r", victim);
+        do_look(victim, "");
+}
+
+
 void prayer_chaos (CHAR_DATA *ch)
 {
         int type = number_bits(2);
         CHAR_DATA *victim;
         DESCRIPTOR_DATA *d;
-        ROOM_INDEX_DATA *room;
 
-        if (!allow_deity_command (ch))
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
+
+        if (!allow_deity_command(ch))
                 return;
 
         for (d = descriptor_list; d; d = d->next)
         {
-                if (!(victim = d->character)
-                    || d->connected != CON_PLAYING)
+                if (d->connected != CON_PLAYING
+                ||  !(victim = d->character)
+                ||  victim->deleted
+                ||  IS_NPC(victim)
+                ||  !victim->pcdata
+                ||  !victim->in_room)
                 {
                         continue;
                 }
@@ -3266,42 +3363,7 @@ void prayer_chaos (CHAR_DATA *ch)
                         break;
 
                     case 1:
-
-                        /*
-                         * Teleport
-                         */
-
-
-                        while (1)
-                        {
-                                room = get_room_index(number_range(0, 65535));
-
-                                if (room
-                                    && !IS_SET(room->room_flags, ROOM_PRIVATE)
-                                    && !IS_SET(room->room_flags, ROOM_NO_RECALL)
-                                    && !IS_SET(room->room_flags, ROOM_PLAYER_KILLER)
-                                    && !IS_SET(room->room_flags, ROOM_SOLITARY))
-                                        break;
-                        }
-
-                        if (victim->fighting)
-                                stop_fighting(victim, TRUE);
-
-                        act("$n disappears in a flash of light!",
-                            victim, NULL, NULL, TO_ROOM);
-
-                        char_from_room(victim);
-                        char_to_room(victim, room);
-
-                        if (victim->mount)
-                        {
-                                char_from_room(victim->mount);
-                                char_to_room(victim->mount, room);
-                        }
-
-                        send_to_char("\n\r", victim);
-                        do_look(victim, "");
-
+                        prayer_chaos_teleport(victim);
                         break;
 
                     case 2:
@@ -3348,17 +3410,20 @@ void prayer_chaos (CHAR_DATA *ch)
 void prayer_transport (CHAR_DATA *ch, char *text)
 {
         CHAR_DATA *victim;
+        CHAR_DATA *mount;
         ROOM_INDEX_DATA *room;
         char arg[MAX_INPUT_LENGTH];
 
-        if (!allow_deity_command (ch))
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
+
+        if (!allow_deity_command(ch))
                 return;
 
         one_argument(text, arg);
 
         if (arg[0] == '\0')
         {
-
                 patron_message("Who do you want me to transport you to?", ch);
                 ch->pcdata->deity_timer = 0;
                 return;
@@ -3373,7 +3438,6 @@ void prayer_transport (CHAR_DATA *ch, char *text)
 
         if (!(victim = get_char_world(ch, arg)) || !victim->in_room)
         {
-
                 patron_message("I cannot find anyone by that name.", ch);
                 ch->pcdata->deity_timer = 0;
                 return;
@@ -3386,13 +3450,30 @@ void prayer_transport (CHAR_DATA *ch, char *text)
                 return;
         }
 
+        /* Keep the destination even if the target is our own mount. */
         room = victim->in_room;
 
         if (IS_SET(room->room_flags, ROOM_NO_RECALL)
-            || IS_SET(room->room_flags, ROOM_PLAYER_KILLER)
-            || IS_SET(room->room_flags, ROOM_SOLITARY))
+        ||  IS_SET(room->room_flags, ROOM_PLAYER_KILLER)
+        ||  IS_SET(room->room_flags, ROOM_SOLITARY))
         {
                 patron_message("I am unable to transport you to them.", ch);
+                ch->pcdata->deity_timer = 0;
+                return;
+        }
+
+        if (!mounted_travel_ready(ch))
+        {
+                ch->pcdata->deity_timer = 0;
+                return;
+        }
+
+        mount = ch->mount;
+
+        if (!undead_can_travel_to_room(ch, room)
+        ||  (mount && IS_SET(room->room_flags, ROOM_NO_MOUNT)))
+        {
+                patron_message("I cannot take you and your mount into that room.", ch);
                 ch->pcdata->deity_timer = 0;
                 return;
         }
@@ -3401,11 +3482,24 @@ void prayer_transport (CHAR_DATA *ch, char *text)
 
         act("{C$c disappears in a flash of holy light!{x",
             ch, NULL, NULL, TO_ROOM);
+        if (mount)
+                act("{W$c disappears in a flash of holy light!{x", mount, NULL, NULL, TO_ROOM);
+
+        stop_fighting(ch, TRUE);
+        if (mount)
+                stop_fighting(mount, TRUE);
+
+        GMCPSetArrival(ch->desc,
+                       ch->in_room->vnum,
+                       room->vnum,
+                       -1,
+                       "prayer_transport");
 
         char_from_room(ch);
         char_to_room(ch, room);
+        char_to_room(ch, room);
 
-        if (ch->mount)
+        if (mount)
         {
                 act ("{W$c disappears in a flash of holy light!{x", ch->mount, NULL, NULL, TO_ROOM);
                 char_from_room(ch->mount);
@@ -3413,14 +3507,12 @@ void prayer_transport (CHAR_DATA *ch, char *text)
         }
 
         act("{C$c appears in a flash of holy light!{x", ch, NULL, NULL, TO_ROOM);
-
-        if (ch->mount)
-                act("{C$c appears in a flash of holy light!{x", ch->mount, NULL, NULL, TO_ROOM);
+        if (mount)
+                act("{C$c appears in a flash of holy light!{x", mount, NULL, NULL, TO_ROOM);
 
         send_to_char("\n\r", ch);
         do_look(ch, "");
 }
-
 
 void prayer_passage (CHAR_DATA *ch)
 {
