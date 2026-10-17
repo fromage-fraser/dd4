@@ -11458,42 +11458,145 @@ void spell_transport(int sn, int level, CHAR_DATA *ch, void *vo)
         return;
 }
 
+/*
+ * Keep the spell's existing scope: the caster and every player here.
+ */
+static bool mass_teleport_traveller(CHAR_DATA *caster, CHAR_DATA *traveller)
+{
+        return traveller && !traveller->deleted
+            && (traveller == caster || !IS_NPC(traveller));
+}
+
 void spell_mass_teleport(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *vch;
         CHAR_DATA *vch_next;
-        ROOM_INDEX_DATA *pRoomIndex;
+        CHAR_DATA *mount;
+        CHAR_DATA *rch;
+        ROOM_INDEX_DATA *source;
+        ROOM_INDEX_DATA *destination = NULL;
+        bool caster_found = FALSE;
+        int attempts;
 
-        for (;;)
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
+
+        source = ch->in_room;
+
+        /* Check every riding arrangement before choosing a destination. */
+        for (vch = source->people; vch; vch = vch->next_in_room)
         {
-                pRoomIndex = get_room_index(number_range(0, 65535));
-                if (pRoomIndex && !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE) && !IS_SET(pRoomIndex->room_flags, ROOM_NO_RECALL) && !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) && pRoomIndex->area == ch->in_room->area)
+                if (!mass_teleport_traveller(ch, vch))
+                        continue;
+
+                if (vch == ch)
+                        caster_found = TRUE;
+
+                if (vch->rider)
+                        goto bad_mount;
+
+                if (!vch->mount && !is_affected(vch, gsn_mount))
+                        continue;
+
+                mount = vch->mount;
+
+                for (rch = source->people; rch; rch = rch->next_in_room)
+                {
+                        if (rch == mount)
+                                break;
+                }
+
+                if (!rch || rch->deleted
+                ||  IS_NPC(vch) || !IS_NPC(mount)
+                ||  mount->in_room != source
+                ||  mount->rider != vch
+                ||  !is_affected(vch, gsn_mount))
+                        goto bad_mount;
+        }
+
+        if (!caster_found)
+                return;
+
+        /* Find one room that can take everyone who will travel. */
+        for (attempts = 0; attempts < 10000; attempts++)
+        {
+                destination = get_room_index(number_range(0, 65535));
+
+                if (!destination
+                ||  IS_SET(destination->room_flags, ROOM_PRIVATE)
+                ||  IS_SET(destination->room_flags, ROOM_NO_RECALL)
+                ||  IS_SET(destination->room_flags, ROOM_SOLITARY)
+                ||  destination->area != source->area)
+                        continue;
+
+                for (vch = source->people; vch; vch = vch->next_in_room)
+                {
+                        if (!mass_teleport_traveller(ch, vch))
+                                continue;
+
+                        if (!undead_can_travel_to_room(vch, destination)
+                        ||  (vch->mount
+                             && IS_SET(destination->room_flags, ROOM_NO_MOUNT)))
+                                break;
+                }
+
+                if (!vch)
                         break;
         }
 
-        for (vch = ch->in_room->people; vch; vch = vch_next)
+        if (attempts == 10000)
         {
+                send_to_char("The spell cannot find a room that can take everyone.\n\r", ch);
+                return;
+        }
+
+        for (vch = source->people; vch; vch = vch_next)
+        {
+                /*
+                 * Find the next actual traveller now. A mount may leave
+                 * this list with its rider during the move below.
+                 */
                 vch_next = vch->next_in_room;
+                while (vch_next && !mass_teleport_traveller(ch, vch_next))
+                        vch_next = vch_next->next_in_room;
 
-                if (vch->deleted)
+                if (!mass_teleport_traveller(ch, vch))
                         continue;
 
-                if (ch == vch)
-                        continue;
-
-                if (IS_NPC(vch))
-                        continue;
+                mount = vch->mount;
 
                 act("$n slowly dissolves into thin air.", vch, NULL, NULL, TO_ROOM);
+                if (mount)
+                        act_move("$n slowly dissolves into thin air.", mount, NULL, NULL, TO_ROOM);
+
+                stop_fighting(vch, TRUE);
+                if (mount)
+                        stop_fighting(mount, TRUE);
+
+                GMCPSetArrival(vch->desc,
+                               vch->in_room->vnum,
+                               destination->vnum,
+                               -1,
+                               "mass_teleport");
+
                 char_from_room(vch);
-                char_to_room(vch, pRoomIndex);
+                char_to_room(vch, destination);
+
+                if (mount)
+                {
+                        char_from_room(mount);
+                        char_to_room(mount, destination);
+                        act_move("$n slowly fades into existence.", mount, NULL, NULL, TO_ROOM);
+                }
+
                 act("$n slowly fades into existence.", vch, NULL, NULL, TO_ROOM);
                 do_look(vch, "auto");
         }
 
-        char_from_room(ch);
-        char_to_room(ch, pRoomIndex);
-        do_look(ch, "auto");
+        return;
+
+bad_mount:
+        send_to_char("One of the mounts is not ready to travel.\n\r", ch);
         return;
 }
 

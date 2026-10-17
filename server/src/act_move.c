@@ -2839,15 +2839,14 @@ void do_kiai(CHAR_DATA *ch, char *argument)
 }
 
 /*
- * Recall and clan Home use the same checks before anyone moves.
+ * Check the riding links before choosing or entering a destination.
  */
-static bool recall_destination_allowed(CHAR_DATA *ch,
-                                       ROOM_INDEX_DATA *location)
+static bool mounted_travel_ready(CHAR_DATA *ch)
 {
         CHAR_DATA *mount;
         CHAR_DATA *rch;
 
-        if (!ch || ch->deleted || !ch->in_room || !location)
+        if (!ch || ch->deleted || !ch->in_room)
                 return FALSE;
 
         if (ch->rider)
@@ -2856,7 +2855,6 @@ static bool recall_destination_allowed(CHAR_DATA *ch,
                 return FALSE;
         }
 
-        /* Make sure the mount is really here and still paired with its rider. */
         if (ch->mount || is_affected(ch, gsn_mount))
         {
                 mount = ch->mount;
@@ -2878,6 +2876,18 @@ static bool recall_destination_allowed(CHAR_DATA *ch,
                 }
         }
 
+        return TRUE;
+}
+
+/*
+ * Recall and clan Home have already chosen their destination.
+ */
+static bool recall_destination_allowed(CHAR_DATA *ch,
+                                       ROOM_INDEX_DATA *location)
+{
+        if (!location || !mounted_travel_ready(ch))
+                return FALSE;
+
         if (!undead_can_travel_to_room(ch, location))
         {
                 send_to_char("That room will not let you through.\n\r", ch);
@@ -2886,7 +2896,6 @@ static bool recall_destination_allowed(CHAR_DATA *ch,
 
         return TRUE;
 }
-
 void do_recall(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
@@ -3297,10 +3306,14 @@ void do_home(CHAR_DATA *ch, char *argument)
 
 void do_arena(CHAR_DATA *ch, char *argument)
 {
-        ROOM_INDEX_DATA *location;
+        ROOM_INDEX_DATA *location = NULL;
+        ROOM_INDEX_DATA *candidate;
+        CHAR_DATA *mount;
         char buf[MAX_STRING_LENGTH];
+        int vnum;
+        int choices = 0;
 
-        if (IS_NPC(ch))
+        if (!ch || ch->deleted || !ch->in_room || IS_NPC(ch))
                 return;
 
         if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
@@ -3315,16 +3328,15 @@ void do_arena(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        act("$n screams out to be portalled to the Arena!", ch, NULL, NULL, TO_ROOM);
-        location = get_room_index(ROOM_VNUM_ARENA + number_range(5, 35));
-
         if (IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER))
         {
                 send_to_char("You are already in the Arena.\n\r", ch);
                 return;
         }
 
-        if (IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL) || IS_AFFECTED(ch, AFF_CURSE) || IS_AFFECTED(ch, AFF_NO_RECALL))
+        if (IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
+        ||  IS_AFFECTED(ch, AFF_CURSE)
+        ||  IS_AFFECTED(ch, AFF_NO_RECALL))
         {
                 send_to_char("Your cries fall upon deaf ears.\n\r", ch);
                 return;
@@ -3336,20 +3348,59 @@ void do_arena(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (!mounted_travel_ready(ch))
+                return;
+
+        mount = ch->mount;
+
+        /* Pick fairly from the existing arrival rooms that can take us. */
+        for (vnum = ROOM_VNUM_ARENA + 5;
+             vnum <= ROOM_VNUM_ARENA + 35; vnum++)
+        {
+                candidate = get_room_index(vnum);
+
+                if (!candidate
+                ||  !undead_can_travel_to_room(ch, candidate)
+                ||  (mount && IS_SET(candidate->room_flags, ROOM_NO_MOUNT)))
+                        continue;
+
+                choices++;
+                if (number_range(1, choices) == 1)
+                        location = candidate;
+        }
+
+        if (!location)
+        {
+                send_to_char("There is no suitable Arena arrival room.\n\r", ch);
+                return;
+        }
+
+        act("$n screams out to be portalled to the Arena!", ch, NULL, NULL, TO_ROOM);
         act("A giant hand reaches from out of the heavens and drags $n away!",
             ch, NULL, NULL, TO_ROOM);
         send_to_char("\n\r{RA giant hand grabs you and places you in the Arena!{x\n\r\n\r", ch);
 
+        stop_fighting(ch, TRUE);
+        if (mount)
+                stop_fighting(mount, TRUE);
+
         sprintf(buf, "*** %s has entered the ARENA! ***", ch->name);
         tournament_message(buf, ch);
+
+        GMCPSetArrival(ch->desc,
+                       ch->in_room->vnum,
+                       location->vnum,
+                       -1,
+                       "arena");
+
         char_from_room(ch);
         char_to_room(ch, location);
 
-        if (ch->mount)
+        if (mount)
         {
-                char_from_room(ch->mount);
-                char_to_room(ch->mount, location);
-                act_move("$n appears suddenly.", ch->mount, NULL, NULL, TO_ROOM);
+                char_from_room(mount);
+                char_to_room(mount, location);
+                act_move("$n appears suddenly.", mount, NULL, NULL, TO_ROOM);
         }
 
         act("A giant hand places $n in the room!", ch, NULL, NULL, TO_ROOM);

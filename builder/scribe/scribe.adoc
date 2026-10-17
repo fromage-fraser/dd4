@@ -7088,8 +7088,8 @@ E.g.    rf  safe healing no_mob
 `no_undead` is a permanent room setting, not the temporary Ward Against Undead
 spell. It checks ordinary exit travel (including following, hunting and
 fleeing), mobile resets, Animate Dead, Summon, Teleport, portal entry,
-Recall, clan Home, Astral Vortex and Banish. An undead NPC mount blocks the
-whole mounted pair on checked travel paths.
+Recall, clan Home, Astral Vortex, Banish, Mass Teleport and the `ARENA` command.
+An undead NPC mount blocks the whole mounted pair on checked travel paths.
 
 Recall leaves blocked followers behind instead of cancelling their master's
 trip. The player's own mount is checked with its rider and moves only once.
@@ -7098,6 +7098,14 @@ Word of Recall uses the same checks. Clan Home does not bring other followers.
 Astral Vortex takes the caster's mount along. Banish keeps a mounted pair
 together, whether it targets the rider or the mount. Both check the whole
 travelling pair before moving anyone.
+
+Mass Teleport still takes the caster and every player in the room, not just
+group members. Their mounts travel with them; other NPC followers stay behind.
+It finds one room that can take everyone before moving anyone, and fails if
+no suitable room is found.
+
+The `ARENA` command chooses from arrival rooms that permit the traveller and
+mount, and refuses the trip if there are none.
 
 Player vampires can enter and leave normally. While they stay here, the room
 burns them for 30-60 HP each game tick instead of their usual HP regeneration.
@@ -7109,8 +7117,9 @@ Creatures already inside are not removed. Controlled undead are still undead,
 so undead NPC servants do not get an exception to the entry rule. A blocked
 animation leaves its corpse untouched.
 
-Arena travel, Mass Teleport, gravity, scripted placement and immortal loading
-or transfer are not checked yet. This is not a complete entry barrier.
+Tournament-start transfers, Pattern travel, gravity, scripted placement and
+immortal loading or transfer are not checked yet. This is not a complete
+entry barrier.
 
 *`ed` — Extra description*
 
