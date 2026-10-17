@@ -3497,13 +3497,11 @@ void prayer_transport (CHAR_DATA *ch, char *text)
 
         char_from_room(ch);
         char_to_room(ch, room);
-        char_to_room(ch, room);
 
         if (mount)
         {
-                act ("{W$c disappears in a flash of holy light!{x", ch->mount, NULL, NULL, TO_ROOM);
-                char_from_room(ch->mount);
-                char_to_room(ch->mount, room);
+                char_from_room(mount);
+                char_to_room(mount, room);
         }
 
         act("{C$c appears in a flash of holy light!{x", ch, NULL, NULL, TO_ROOM);
