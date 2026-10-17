@@ -2902,9 +2902,9 @@ ROOM_NO_UNDEAD is a permanent room flag, separate from the planned Ward
 Against Undead spell. It checks ordinary exit travel, mobile resets,
 Animate Dead, Summon, Teleport, portal entry, Recall, clan Home,
 Astral Vortex, Banish, Mass Teleport, the ARENA command, Pattern travel
-and the deity Transport prayer. Undead NPC mounts and servants have no
-exception. An undead NPC mount blocks the whole mounted pair on checked
-travel paths.
+and the deity Transport and Chaos prayers. Undead NPC mounts and servants
+have no exception. An undead NPC mount blocks the whole mounted pair when
+both are travelling.
 
 Recall leaves blocked followers behind instead of cancelling their
 master's trip. The player's own mount is checked with its rider and
@@ -2923,6 +2923,12 @@ Pattern travel and the deity Transport prayer check both rider and mount.
 NO_MOUNT rooms also refuse mounted travel on these two paths. A refused
 Pattern trip uses no travel mana and keeps any saved return pattern.
 
+Chaos prayer teleportation checks each target and mount together and limits
+its search for an allowed room. If the search fails, neither moves.
+
+Rescue checks its sanctuary before ending combat or dismounting the player.
+It leaves the mount behind, so an undead mount does not block Rescue.
+
 Player vampires can enter and leave normally. The room burns them for
 30-60 HP each game tick instead of their usual HP regeneration, without
 taking them below 1 HP. This works indoors, at night, underwater and in
@@ -2930,8 +2936,8 @@ mist form. Sunlight does not add another burn, and crossing an exit does
 not cause an extra burn.
 
 Creatures already inside are not removed. Tournament-start transfers,
-gravity, other deity travel, scripted placement and immortal loading
-or transfer are not checked yet, so this is not a complete entry barrier.
+gravity, scripted placement and immortal loading or transfer are not
+checked yet, so this is not a complete entry barrier.
 
 The 'sector-type' identifies the type of terrain.  This primarily affects
 movement cost through the room, but may have various other effects--for example,
