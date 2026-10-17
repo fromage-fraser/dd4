@@ -7089,8 +7089,9 @@ E.g.    rf  safe healing no_mob
 spell. It checks ordinary exit travel (including following, hunting and
 fleeing), mobile resets, Animate Dead, Summon, Teleport, portal entry,
 Recall, clan Home, Astral Vortex, Banish, Mass Teleport, the `ARENA` command,
-Pattern travel and the deity Transport and Chaos prayers. An undead NPC
-mount blocks the whole mounted pair when both are travelling.
+Pattern travel, the deity Transport and Chaos prayers, and tournament-start
+transfers. An undead NPC mount blocks the whole mounted pair when both
+are travelling.
 
 Recall leaves blocked followers behind instead of cancelling their master's
 trip. The player's own mount is checked with its rider and moves only once.
@@ -7118,6 +7119,11 @@ its search for an allowed room. If the search fails, neither moves.
 Rescue checks its sanctuary before ending combat or dismounting the player.
 It leaves the mount behind, so an undead mount does not block Rescue.
 
+Tournament starts check every travelling pair before anyone moves.
+Random starts choose an allowed room for each entrant. `sameroom` uses
+one room that can take all selected entrants. If the required arrival
+rooms cannot be found, the tournament is cancelled without transfers.
+
 Player vampires can enter and leave normally. While they stay here, the room
 burns them for 30-60 HP each game tick instead of their usual HP regeneration.
 Like sunlight, this burn cannot take them below 1 HP. It still works indoors,
@@ -7128,8 +7134,8 @@ Creatures already inside are not removed. Controlled undead are still undead,
 so undead NPC servants do not get an exception to the entry rule. A blocked
 animation leaves its corpse untouched.
 
-Tournament-start transfers, gravity, scripted placement and immortal loading
-or transfer are not checked yet. This is not a complete entry barrier.
+Gravity, scripted placement and immortal loading or transfer are not checked
+yet. This is not a complete entry barrier.
 
 *`ed` — Extra description*
 

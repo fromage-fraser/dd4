@@ -800,8 +800,6 @@ void do_tournament_countdown ()
         
         if (tournament_countdown == 1)
         {
-                tournament_message("The tournament has begun!", tournament_host);
-                send_to_char("The tournament has begun!\n\r", tournament_host);
                 tournament_countdown = 0;
                 transfer_entrants();
         }
@@ -817,114 +815,246 @@ void do_tournament_countdown ()
 }
 
 
-void transfer_entrants ()
+/*
+ * Check the live world list before using a stored entrant pointer.
+ */
+static bool tournament_traveller_is_live(CHAR_DATA *ch)
 {
-        CHAR_DATA *ch;
-        ROOM_INDEX_DATA *assembly_room;
-        ROOM_INDEX_DATA *start_room = NULL;
-        int h, i, j;
-        
-        assembly_room = get_room_index(TOURNAMENT_ASSEMBLY_VNUM);
-        
-        for (i = 0; i < 1000; i++) 
+        CHAR_DATA *live;
+
+        for (live = char_list; live; live = live->next)
         {
-                start_room = get_room_index(ROOM_VNUM_ARENA + number_range(5, 35));
-                if (start_room)
-                        break;
-        }
-        
-        if (!start_room) 
-        {
-                send_to_char("Couldn't find a transfer room!\n\r", tournament_host);
-                tournament_init();
-                return;
-        }
-        
-        if (!assembly_room) 
-        {
-                tournament_init();
-                send_to_char("Start room vnum invalid!\n\r", tournament_host);
+                if (live == ch)
+                        return !live->deleted && live->in_room;
         }
 
-        for (h = 0; h < tournament_team_count; h++)
+        return FALSE;
+}
+
+static char *tournament_transfer_problem(CHAR_DATA *ch,
+                                         ROOM_INDEX_DATA *assembly_room)
+{
+        if (!IS_NPC(ch))
         {
-                for (i = 0; i < tournament_entrant_count[h]; i++)
+                if (!ch->desc || ch->desc->connected != CON_PLAYING)
+                        return "not ready";
+
+                if (ch->in_room != assembly_room)
+                        return "not at assembly point";
+
+                if (ch->fighting || ch->position != POS_STANDING)
+                        return "not standing ready";
+
+                if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+                        return "not in correct form";
+        }
+        else if (!ch->pIndexData || ch->pIndexData->vnum != BOT_VNUM)
+                return "bad bot";
+
+        if (!mounted_travel_ready(ch))
+                return "mount not ready";
+
+        return NULL;
+}
+
+/*
+ * For SAMEROOM, every selected traveller must fit. Random starts pass
+ * just one traveller at a time, so each can use their own allowed room.
+ */
+static ROOM_INDEX_DATA *tournament_arrival_room(CHAR_DATA **travellers,
+                                               int count)
+{
+        ROOM_INDEX_DATA *chosen = NULL;
+        ROOM_INDEX_DATA *candidate;
+        int vnum;
+        int i;
+        int choices = 0;
+
+        if (!travellers || count < 1)
+                return NULL;
+
+        for (vnum = ROOM_VNUM_ARENA + 5;
+             vnum <= ROOM_VNUM_ARENA + 35; vnum++)
+        {
+                candidate = get_room_index(vnum);
+                if (!candidate)
+                        continue;
+
+                for (i = 0; i < count; i++)
                 {
-                        if (tournament_type == TOURNAMENT_TYPE_TAG)
-                                i = number_range(0, tournament_entrant_count[h]-1);
-                        
-                        ch = tournament_entrants[h][i].ch;
-                        
-                        if (!IS_NPC(ch))
-                        {
-                                if (!ch->desc || ch->desc->connected != CON_PLAYING)
-                                {
-                                        disqualify_tournament_entrant(ch, "not ready");
-                                        continue;
-                                }
-                        
-                                if (ch->in_room != assembly_room)
-                                {
-                                        disqualify_tournament_entrant(ch, "not at assembly point");
-                                        continue;
-                                }
-                        
-                                if (ch->fighting || ch->position != POS_STANDING)
-                                {
-                                        disqualify_tournament_entrant(ch, "not standing ready");
-                                        continue;
-                                }
-                        
-                                if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
-                                {
-                                        disqualify_tournament_entrant(ch, "not in correct form");
-                                        continue;
-                                }
-                        
-                                ch->pcdata->tailing = 0;
-                        }
-                        
-                        else if (ch->pIndexData->vnum != BOT_VNUM)
-                        {
-                                disqualify_tournament_entrant(ch, "bad bot");
-                                continue;
-                        }
-                                                            
-                        act("$n disappears into thin air!", ch, NULL, NULL, TO_ROOM);
-                        char_from_room(ch);
-                        char_to_room(ch, start_room);
-                        act("$n appears in the room.", ch, NULL, NULL, TO_ROOM);
-                        
-                        if (ch->mount)
-                        {
-                                char_from_room(ch->mount);
-                                char_to_room(ch->mount, start_room);
-                        }
-                
-                        send_to_char("\n\r", ch);
-                        do_look(ch, "");
-                        
-                        if (!IS_SET(tournament_options, TOURNAMENT_OPTION_SAMEROOM))
-                        {
-                                for (j = 0; j < 1000; j++)
-                                {
-                                        start_room = get_room_index(ROOM_VNUM_ARENA + number_range(5, 35));
-                                        
-                                        if (start_room)
-                                                break;
-                                }
-                                
-                                if (!start_room)
-                                {
-                                        send_to_char("Couldn't find a transfer room!\n\r", tournament_host);
-                                        tournament_init();
-                                        return;
-                                }
-                        }
-                        
-                        if (tournament_type == TOURNAMENT_TYPE_TAG)
+                        if (!undead_can_travel_to_room(travellers[i], candidate)
+                        ||  (travellers[i]->mount
+                             && IS_SET(candidate->room_flags, ROOM_NO_MOUNT)))
                                 break;
                 }
+
+                if (i != count)
+                        continue;
+
+                choices++;
+                if (number_range(1, choices) == 1)
+                        chosen = candidate;
+        }
+
+        return chosen;
+}
+
+static void cancel_tournament_transfer(char *reason)
+{
+        if (tournament_traveller_is_live(tournament_host))
+        {
+                send_to_char(reason, tournament_host);
+                tournament_message("The tournament has been cancelled before transfer.",
+                                   tournament_host);
+        }
+
+        tournament_init();
+}
+
+void transfer_entrants ()
+{
+        CHAR_DATA *travellers[TOURNAMENT_MAX_TEAMS * TOURNAMENT_MAX_ENTRANTS];
+        ROOM_INDEX_DATA *destinations[TOURNAMENT_MAX_TEAMS * TOURNAMENT_MAX_ENTRANTS];
+        ROOM_INDEX_DATA *assembly_room;
+        ROOM_INDEX_DATA *shared_room;
+        CHAR_DATA *ch;
+        CHAR_DATA *mount;
+        char *problem;
+        int h;
+        int i;
+        int count = 0;
+        int tag_choice;
+        int ready;
+
+        if (!tournament_traveller_is_live(tournament_host))
+        {
+                cancel_tournament_transfer("The host is no longer available; nobody was transferred.\n\r");
+                return;
+        }
+
+        assembly_room = get_room_index(TOURNAMENT_ASSEMBLY_VNUM);
+        if (!assembly_room)
+        {
+                cancel_tournament_transfer("The assembly room is missing; nobody was transferred.\n\r");
+                return;
+        }
+
+        /* Check the roster before choosing rooms or moving anyone. */
+        for (h = 0; h < tournament_team_count; h++)
+        {
+                tag_choice = -1;
+                ready = 0;
+
+                for (i = 0; i < tournament_entrant_count[h]; i++)
+                {
+                        ch = tournament_entrants[h][i].ch;
+                        if (!tournament_traveller_is_live(ch))
+                        {
+                                cancel_tournament_transfer("An entrant is no longer available; nobody was transferred.\n\r");
+                                return;
+                        }
+
+                        if (tournament_entrants[h][i].status != TOURNAMENT_ENTRANT_ALIVE)
+                                continue;
+
+                        problem = tournament_transfer_problem(ch, assembly_room);
+                        if (problem)
+                        {
+                                disqualify_tournament_entrant(ch, problem);
+                                continue;
+                        }
+
+                        ready++;
+
+                        if (tournament_type == TOURNAMENT_TYPE_TAG)
+                        {
+                                /* The existing tag-start path takes one ready entrant. */
+                                if (number_range(1, ready) == 1)
+                                        tag_choice = i;
+                        }
+                        else
+                                travellers[count++] = ch;
+                }
+
+                tournament_team_alive[h] = ready > 0;
+
+                if (tag_choice >= 0)
+                        travellers[count++] = tournament_entrants[h][tag_choice].ch;
+        }
+
+        if (!count)
+        {
+                cancel_tournament_transfer("No entrants are ready; nobody was transferred.\n\r");
+                return;
+        }
+
+        if (IS_SET(tournament_options, TOURNAMENT_OPTION_SAMEROOM))
+        {
+                shared_room = tournament_arrival_room(travellers, count);
+                if (!shared_room)
+                {
+                        cancel_tournament_transfer("No arrival room can take all entrants and mounts; nobody was transferred.\n\r");
+                        return;
+                }
+
+                for (i = 0; i < count; i++)
+                        destinations[i] = shared_room;
+        }
+        else
+        {
+                for (i = 0; i < count; i++)
+                {
+                        destinations[i] = tournament_arrival_room(&travellers[i], 1);
+                        if (!destinations[i])
+                        {
+                                cancel_tournament_transfer("An entrant and mount have no suitable arrival room; nobody was transferred.\n\r");
+                                return;
+                        }
+                }
+        }
+
+        /* Only announce the start once every destination is ready. */
+        if (tournament_traveller_is_live(tournament_host))
+        {
+                tournament_message("The tournament has begun!", tournament_host);
+                send_to_char("The tournament has begun!\n\r", tournament_host);
+        }
+
+        for (i = 0; i < count; i++)
+        {
+                ch = travellers[i];
+                mount = ch->mount;
+
+                if (!IS_NPC(ch))
+                        ch->pcdata->tailing = 0;
+
+                stop_fighting(ch, TRUE);
+                if (mount)
+                        stop_fighting(mount, TRUE);
+
+                act("$n disappears into thin air!", ch, NULL, NULL, TO_ROOM);
+                if (mount)
+                        act_move("$n disappears into thin air!", mount, NULL, NULL, TO_ROOM);
+
+                GMCPSetArrival(ch->desc,
+                               ch->in_room->vnum,
+                               destinations[i]->vnum,
+                               -1,
+                               "tournament");
+
+                char_from_room(ch);
+                char_to_room(ch, destinations[i]);
+
+                if (mount)
+                {
+                        char_from_room(mount);
+                        char_to_room(mount, destinations[i]);
+                        act_move("$n appears in the room.", mount, NULL, NULL, TO_ROOM);
+                }
+
+                act("$n appears in the room.", ch, NULL, NULL, TO_ROOM);
+                send_to_char("\n\r", ch);
+                do_look(ch, "");
         }
 }
 
