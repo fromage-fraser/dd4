@@ -1150,6 +1150,9 @@ blocking unrelated directions.
 - Recall leaves blocked followers behind and no longer moves mounts twice.
 - NO_UNDEAD now also checks Astral Vortex and Banish.
 - Astral Vortex keeps riders with their mounts; Banish limits room searches.
+- Fixed Transport prayer losing its destination when targeting the caster's 
+  mount.
+- Fixed weather ambience continuing to play when its effective volume rounds down to zero.
 
 ~
 
