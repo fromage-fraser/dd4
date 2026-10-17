@@ -401,6 +401,9 @@ void do_mpmload( CHAR_DATA *ch, char *argument )
     MOB_INDEX_DATA *pMobIndex;
     CHAR_DATA      *victim;
 
+    if (!ch || ch->deleted || !ch->in_room)
+        return;
+
     if ( !IS_NPC( ch ) || ch->desc != NULL )
     {
         send_to_char( "Huh?\n\r", ch );
@@ -423,6 +426,12 @@ void do_mpmload( CHAR_DATA *ch, char *argument )
     if ( ( pMobIndex = get_mob_index( atoi( arg ) ) ) == NULL )
     {
         bug( "Mpmload - Bad mob vnum: vnum %d.", ch->pIndexData->vnum );
+        return;
+    }
+
+    if (!undead_can_spawn_in_room(pMobIndex, ch->in_room))
+    {
+        bug("Mpmload - Room bars undead mobile %d.", pMobIndex->vnum);
         return;
     }
 
@@ -667,6 +676,103 @@ void do_mpat( CHAR_DATA *ch, char *argument )
 }
 
 /*
+ * Keep the selected travellers separate from the room list while we move them.
+ */
+typedef struct mptransfer_entry MPTRANSFER_ENTRY;
+
+struct mptransfer_entry
+{
+        CHAR_DATA *character;
+        MPTRANSFER_ENTRY *next;
+};
+
+static void mptransfer_free_plan(MPTRANSFER_ENTRY *plan)
+{
+        MPTRANSFER_ENTRY *next;
+
+        while (plan)
+        {
+                next = plan->next;
+                free_mem(plan, sizeof(*plan));
+                plan = next;
+        }
+}
+
+static bool mptransfer_add_traveller(MPTRANSFER_ENTRY **plan,
+                                     CHAR_DATA *traveller)
+{
+        MPTRANSFER_ENTRY *entry;
+        MPTRANSFER_ENTRY *last = NULL;
+
+        for (entry = *plan; entry; entry = entry->next)
+        {
+                if (entry->character == traveller)
+                        return TRUE;
+                last = entry;
+        }
+
+        entry = alloc_mem(sizeof(*entry));
+        if (!entry)
+                return FALSE;
+
+        entry->character = traveller;
+        entry->next = NULL;
+
+        if (last)
+                last->next = entry;
+        else
+                *plan = entry;
+
+        return TRUE;
+}
+
+/*
+ * A named mount brings its rider too. Check the pair before adding either.
+ */
+static bool mptransfer_collect_pair(MPTRANSFER_ENTRY **plan,
+                                     CHAR_DATA *traveller,
+                                     ROOM_INDEX_DATA *source,
+                                     ROOM_INDEX_DATA *location)
+{
+        CHAR_DATA *rider;
+
+        if (!traveller || traveller->deleted || traveller->in_room != source)
+                return FALSE;
+
+        rider = traveller;
+        if (traveller->rider)
+        {
+                for (rider = source->people; rider; rider = rider->next_in_room)
+                {
+                        if (rider == traveller->rider)
+                                break;
+                }
+
+                if (!rider || rider->deleted || rider->mount != traveller)
+                        return FALSE;
+        }
+
+        if (rider->in_room != source || !mounted_travel_ready(rider))
+                return FALSE;
+
+        /* A mount cannot also be riding another mount. */
+        if (rider->mount && rider->mount->mount)
+                return FALSE;
+
+        /* Refreshing the current room is not a new entry. */
+        if (location != source
+        &&  (!undead_can_travel_to_room(rider, location)
+             || (rider->mount && IS_SET(location->room_flags, ROOM_NO_MOUNT))))
+                return FALSE;
+
+        if (!mptransfer_add_traveller(plan, rider))
+                return FALSE;
+
+        return !rider->mount
+            || mptransfer_add_traveller(plan, rider->mount);
+}
+
+/*
  * lets the mobile transfer people.  the 'all' argument transfers
  * everyone in the current room to the specified location
  *
@@ -683,9 +789,15 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
         char arg2[ MAX_INPUT_LENGTH ];
         char arg3[ MAX_INPUT_LENGTH ];
         ROOM_INDEX_DATA *location;
-        CHAR_DATA *victim, *vch, *vnext;
+        CHAR_DATA *victim, *vch;
+        ROOM_INDEX_DATA *source;
+        MPTRANSFER_ENTRY *plan = NULL;
+        MPTRANSFER_ENTRY *entry;
         bool all = FALSE, group = FALSE;
         char buf [MAX_STRING_LENGTH];
+
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
 
         if (!IS_NPC(ch) || ch->desc != NULL )
         {
@@ -764,10 +876,11 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
                 }
         }
 
-        for (vch = victim->in_room->people; vch; vch = vnext)
-        {
-                vnext = vch->next_in_room;
+        source = victim->in_room;
 
+        /* Finish selecting and checking everyone before the first move. */
+        for (vch = source->people; vch; vch = vch->next_in_room)
+        {
                 if (vch->deleted)
                         continue;
 
@@ -778,19 +891,39 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
                         && (is_same_group(vch, victim)
                             || is_group_members_mount(vch, victim))))
                 {
-                        if (vch->fighting)
-                                stop_fighting (vch, TRUE);
-
-                        GMCPSetArrival(victim->desc,
-                            victim->in_room->vnum,
-                            location->vnum,
-                            -1,
-                            "forced");
-
-                        char_from_room (vch);
-                        char_to_room (vch, location);
+                        if (!mptransfer_collect_pair(&plan, vch, source, location))
+                        {
+                                mptransfer_free_plan(plan);
+                                bug("Mptransfer - Traveller or mount cannot enter: vnum %d.",
+                                    ch->pIndexData->vnum);
+                                return;
+                        }
                 }
         }
+
+        if (!plan)
+        {
+                bug("Mptransfer - No travellers found: vnum %d.",
+                    ch->pIndexData->vnum);
+                return;
+        }
+
+        for (entry = plan; entry; entry = entry->next)
+        {
+                vch = entry->character;
+                stop_fighting(vch, TRUE);
+
+                GMCPSetArrival(vch->desc,
+                               vch->in_room->vnum,
+                               location->vnum,
+                               -1,
+                               "forced");
+
+                char_from_room(vch);
+                char_to_room(vch, location);
+        }
+
+        mptransfer_free_plan(plan);
 }
 
 

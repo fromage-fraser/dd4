@@ -7087,7 +7087,8 @@ E.g.    rf  safe healing no_mob
 
 `no_undead` is a permanent room setting, not the temporary Ward Against Undead
 spell. It checks ordinary exit travel (including following, hunting and
-fleeing), mobile resets, Animate Dead, Summon, Teleport, portal entry,
+fleeing), mobile resets, Animate Dead, MPMLOAD, MPTRANSFER, Summon, Teleport,
+portal entry,
 Recall, clan Home, Astral Vortex, Banish, Mass Teleport, the `ARENA` command,
 Pattern travel, the deity Transport and Chaos prayers, tournament-start
 transfers and gravity. An undead NPC mount blocks the whole mounted pair
@@ -7129,6 +7130,13 @@ Its existing `NO_MOUNT` rule still dismounts the rider before the fall,
 so that case checks the rider alone. NPC followers use normal movement
 checks and cannot use the fall to bypass NO_UNDEAD.
 
+`MPMLOAD` checks the resolved mobile template before creating anything.
+`MPTRANSFER` checks every selected traveller, including `all` and `group`,
+before moving anyone. Riders and mounts travel together even when the
+mount is the named target. If any traveller is barred or a riding link
+is broken, the whole request is refused. `NO_MOUNT` is also checked when
+entering another room. Same-room refreshes are not new entry.
+
 Player vampires can enter and leave normally. While they stay here, the room
 burns them for 30-60 HP each game tick instead of their usual HP regeneration.
 Like sunlight, this burn cannot take them below 1 HP. It still works indoors,
@@ -7139,8 +7147,8 @@ Creatures already inside are not removed. Controlled undead are still undead,
 so undead NPC servants do not get an exception to the entry rule. A blocked
 animation leaves its corpse untouched.
 
-Scripted placement and immortal loading or transfer are not checked yet.
-This is not a complete entry barrier.
+`MPGOTO`, `MPAT`, other scripted placement and immortal loading or transfer
+are not checked yet. This is not a complete entry barrier.
 
 *`ed` — Extra description*
 
