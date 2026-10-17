@@ -3984,6 +3984,12 @@ void do_shadow_form(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (ch->mount)
+        {
+                send_to_char("You can't enter shadow form while mounted.\n\r", ch);
+                return;
+        }
+
         if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
                 return;
 

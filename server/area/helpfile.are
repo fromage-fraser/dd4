@@ -1178,6 +1178,8 @@ blocking unrelated directions.
 - Donating a container now marks all its contents as donated.
 - Prone attackers no longer prevent their targets from avoiding ordinary hits.
 - BOT REMOVE now removes the selected bot and safely updates the roster.
+- Shadow Form now requires you to dismount first.
+- Being detected while tailing now clears the tail without blocking STEAL.
 
 ~
 
