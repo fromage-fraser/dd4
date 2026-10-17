@@ -1167,6 +1167,8 @@ blocking unrelated directions.
 - MPMLOAD now checks NO_UNDEAD before creating a mobile.
 - MPTRANSFER checks all selected riders and mounts before moving anyone.
 - Fixed MPTRANSFER group-mount selection and per-traveller arrival data.
+- MPGOTO now checks NO_UNDEAD and NO_MOUNT and keeps riding pairs together.
+- MPTRANSFER now rejects one-sided rider or mount links.
 
 ~
 
@@ -1176,7 +1178,7 @@ NO_UNDEAD is a permanent room flag, not a spell you cast.
 Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
 portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
 the ARENA command, Pattern travel, the deity Transport and Chaos prayers,
-tournament-start transfers, gravity or MPTRANSFER.
+tournament-start transfers, gravity, MPTRANSFER or MPGOTO.
 Mobile resets, Animate Dead and MPMLOAD cannot create them here either.
 Undead mounts and commanded servants have no exception.
 A blocked animation leaves its corpse untouched.
@@ -1223,6 +1225,11 @@ mount is the named target. If any traveller is barred or a riding link
 is broken, the whole request is refused. NO_MOUNT is also checked when
 entering another room. Same-room refreshes are not new entry.
 
+MPGOTO uses the same entry and riding-link checks for the mobile and its
+riding partner. The pair stays together even when the mobile is the mount.
+A refused trip leaves both in place and does not end combat. Other
+followers stay behind.
+
 Player vampires can enter and leave normally, but the room burns them
 for 30-60 HP each game tick instead of their usual HP regeneration.
 The burn cannot take them below 1 HP.
@@ -1231,8 +1238,8 @@ It works indoors, at night, underwater and in mist form. Being in
 sunlight does not add another burn, and crossing an exit does not
 cause extra damage.
 
-Creatures already inside are not removed. MPGOTO, MPAT, other scripted
-placement and immortal loading or transfer are not checked yet.
+Creatures already inside are not removed. MPAT, other scripted placement
+and immortal loading or transfer are not checked yet.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
