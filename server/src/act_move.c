@@ -2839,47 +2839,6 @@ void do_kiai(CHAR_DATA *ch, char *argument)
 }
 
 /*
- * Check the riding links before choosing or entering a destination.
- */
-static bool mounted_travel_ready(CHAR_DATA *ch)
-{
-        CHAR_DATA *mount;
-        CHAR_DATA *rch;
-
-        if (!ch || ch->deleted || !ch->in_room)
-                return FALSE;
-
-        if (ch->rider)
-        {
-                send_to_char("You cannot travel while someone is riding you.\n\r", ch);
-                return FALSE;
-        }
-
-        if (ch->mount || is_affected(ch, gsn_mount))
-        {
-                mount = ch->mount;
-
-                for (rch = ch->in_room->people; rch;
-                     rch = rch->next_in_room)
-                {
-                        if (rch == mount)
-                                break;
-                }
-
-                if (!rch || rch->deleted
-                ||  mount->in_room != ch->in_room
-                ||  mount->rider != ch
-                ||  !is_affected(ch, gsn_mount))
-                {
-                        send_to_char("Your mount is not ready to travel with you.\n\r", ch);
-                        return FALSE;
-                }
-        }
-
-        return TRUE;
-}
-
-/*
  * Recall and clan Home have already chosen their destination.
  */
 static bool recall_destination_allowed(CHAR_DATA *ch,
@@ -4220,12 +4179,13 @@ void do_pattern(CHAR_DATA *ch, char *argument)
         char arg[MAX_INPUT_LENGTH];
         int place, i, target;
         ROOM_INDEX_DATA *location;
+        CHAR_DATA *mount;
         OBJ_DATA *pobj;
         OBJ_DATA *pobj_next;
         char buf[MAX_STRING_LENGTH];
         char tmp[MAX_STRING_LENGTH];
 
-        if (IS_NPC(ch))
+        if (!ch || ch->deleted || !ch->in_room || IS_NPC(ch))
                 return;
 
         if (!CAN_DO(ch, gsn_pattern))
@@ -4332,6 +4292,23 @@ void do_pattern(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (!mounted_travel_ready(ch))
+                return;
+
+        mount = ch->mount;
+
+        if (!undead_can_travel_to_room(ch, location))
+        {
+                send_to_char("That pattern will not let you through.\n\r", ch);
+                return;
+        }
+
+        if (mount && IS_SET(location->room_flags, ROOM_NO_MOUNT))
+        {
+                send_to_char("Your mount cannot enter there.\n\r", ch);
+                return;
+        }
+
         if (ch->mana < 100)
         {
                 send_to_char("You cannot gather enough mana to create a pattern.\n\r", ch);
@@ -4341,14 +4318,26 @@ void do_pattern(CHAR_DATA *ch, char *argument)
         act("{Y$c steps into a mystic pattern and is gone.{x", ch, NULL, NULL, TO_ROOM);
         send_to_char("{YYou create a mystic pattern and step into it...{x\n\r\n\r", ch);
 
+        if (mount)
+                act("$n steps into a mystic pattern and is gone.", mount, NULL, NULL, TO_ROOM);
+
+        stop_fighting(ch, TRUE);
+        if (mount)
+                stop_fighting(mount, TRUE);
+
+        GMCPSetArrival(ch->desc,
+                       ch->in_room->vnum,
+                       location->vnum,
+                       -1,
+                       "pattern");
+
         char_from_room(ch);
         char_to_room(ch, location);
 
-        if (ch->mount)
+        if (mount)
         {
-                act("$n steps into a mystic pattern and is gone.", ch->mount, NULL, NULL, TO_ROOM);
-                char_from_room(ch->mount);
-                char_to_room(ch->mount, location);
+                char_from_room(mount);
+                char_to_room(mount, location);
         }
 
         do_look(ch, "auto");
