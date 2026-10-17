@@ -947,7 +947,22 @@ void update_weather_for_char( CHAR_DATA *ch )
     /* Apply player's ambient slider */
     vol = media_apply_volume(vol, ch, "environment", "ambient");
     if (vol <= 0)
+    {
+        if (p->MediaWeatherActive || p->MediaWeatherName)
+        {
+            GMCP_Media_Stop(ch->desc,
+                "\"key\":\"" KEY_WEATHER "\","
+                "\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
+        }
+
+        if (p->MediaWeatherName)
+            free_string(p->MediaWeatherName);
+
+        p->MediaWeatherName   = NULL;
+        p->MediaWeatherVol    = 0;
+        p->MediaWeatherActive = FALSE;
         return;
+    }
 
     /* If changed or inactive, (re)play */
     if (!p->MediaWeatherActive
@@ -1597,7 +1612,14 @@ static bool media_heartbeat_weather(CHAR_DATA *ch)
                                     "ambient");
 
         if (volume <= 0)
+        {
+                if (proto->MediaWeatherActive
+                ||  proto->MediaWeatherName
+                ||  proto->MediaWeatherVol != 0)
+                        update_weather_for_char(ch);
+
                 return FALSE;
+        }
 
         if (!proto->MediaWeatherActive
         ||  !proto->MediaWeatherName

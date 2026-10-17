@@ -1153,6 +1153,10 @@ blocking unrelated directions.
 - ARENA now chooses an arrival room that permits the traveller and mount.
 - Mass Teleport checks NO_UNDEAD for all travellers, brings mounts,
   and limits destination searches.
+- Fixed Transport prayer losing its destination when targeting the caster's 
+  mount.
+- Fixed weather ambience continuing to play when its effective volume rounds down to zero.
+
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~
