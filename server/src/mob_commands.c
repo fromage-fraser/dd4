@@ -584,12 +584,145 @@ void do_mppurge( CHAR_DATA *ch, char *argument )
 }
 
 
-/* lets the mobile goto any location it wishes that is not private */
+/*
+ * Build a travel plan before moving anyone or ending combat.
+ */
+typedef struct mptravel_entry MPTRAVEL_ENTRY;
+
+struct mptravel_entry
+{
+        CHAR_DATA *character;
+        MPTRAVEL_ENTRY *next;
+};
+
+static void mptravel_free_plan(MPTRAVEL_ENTRY *plan)
+{
+        MPTRAVEL_ENTRY *next;
+
+        while (plan)
+        {
+                next = plan->next;
+                free_mem(plan, sizeof(*plan));
+                plan = next;
+        }
+}
+
+static bool mptravel_add_traveller(MPTRAVEL_ENTRY **plan,
+                                     CHAR_DATA *traveller)
+{
+        MPTRAVEL_ENTRY *entry;
+        MPTRAVEL_ENTRY *last = NULL;
+
+        for (entry = *plan; entry; entry = entry->next)
+        {
+                if (entry->character == traveller)
+                        return TRUE;
+                last = entry;
+        }
+
+        entry = alloc_mem(sizeof(*entry));
+        if (!entry)
+                return FALSE;
+
+        entry->character = traveller;
+        entry->next = NULL;
+
+        if (last)
+                last->next = entry;
+        else
+                *plan = entry;
+
+        return TRUE;
+}
+
+/*
+ * Make sure this traveller is here and incoming riding links agree.
+ */
+static bool mptravel_links_match(CHAR_DATA *traveller,
+                                  ROOM_INDEX_DATA *source)
+{
+        CHAR_DATA *rch;
+        bool found = FALSE;
+
+        for (rch = source->people; rch; rch = rch->next_in_room)
+        {
+                if (rch->deleted)
+                        continue;
+
+                if (rch == traveller)
+                        found = TRUE;
+
+                if ((rch->mount == traveller && traveller->rider != rch)
+                ||  (rch->rider == traveller && traveller->mount != rch))
+                        return FALSE;
+        }
+
+        return found;
+}
+
+/*
+ * A mount brings its rider too. Check the pair before adding either.
+ */
+static bool mptravel_collect_pair(MPTRAVEL_ENTRY **plan,
+                                     CHAR_DATA *traveller,
+                                     ROOM_INDEX_DATA *source,
+                                     ROOM_INDEX_DATA *location)
+{
+        CHAR_DATA *rider;
+
+        if (!traveller || traveller->deleted || traveller->in_room != source)
+                return FALSE;
+
+        rider = traveller;
+        if (traveller->rider)
+        {
+                for (rider = source->people; rider; rider = rider->next_in_room)
+                {
+                        if (rider == traveller->rider)
+                                break;
+                }
+
+                if (!rider || rider->deleted || rider->mount != traveller)
+                        return FALSE;
+        }
+
+        if (rider->in_room != source || !mounted_travel_ready(rider))
+                return FALSE;
+
+        /* A mount cannot also be riding another mount. */
+        if (rider->mount && rider->mount->mount)
+                return FALSE;
+
+        /* A missing back-link must not make a mounted character look alone. */
+        if (!mptravel_links_match(rider, source)
+        ||  (rider->mount && !mptravel_links_match(rider->mount, source)))
+                return FALSE;
+
+        /* Refreshing the current room is not a new entry. */
+        if (location != source
+        &&  (!undead_can_travel_to_room(rider, location)
+             || (rider->mount && IS_SET(location->room_flags, ROOM_NO_MOUNT))))
+                return FALSE;
+
+        if (!mptravel_add_traveller(plan, rider))
+                return FALSE;
+
+        return !rider->mount
+            || mptravel_add_traveller(plan, rider->mount);
+}
+
+/* Move the mobile and its riding partner after checking the whole pair. */
 
 void do_mpgoto( CHAR_DATA *ch, char *argument )
 {
     char             arg[ MAX_INPUT_LENGTH ];
     ROOM_INDEX_DATA *location;
+    MPTRAVEL_ENTRY  *plan = NULL;
+    MPTRAVEL_ENTRY  *entry;
+    CHAR_DATA       *traveller;
+
+    if (!ch || ch->deleted || !ch->in_room)
+        return;
 
     if ( !IS_NPC( ch ) || ch->desc != NULL )
     {
@@ -597,10 +730,8 @@ void do_mpgoto( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if (IS_AFFECTED(ch,AFF_CHARM) ){
+    if (IS_AFFECTED(ch, AFF_CHARM))
         return;
-    }
-
 
     one_argument( argument, arg );
     if ( arg[0] == '\0' )
@@ -615,12 +746,31 @@ void do_mpgoto( CHAR_DATA *ch, char *argument )
         return;
     }
 
-    if ( ch->fighting != NULL )
-        stop_fighting( ch, TRUE );
+    /* A refused trip leaves the pair and their combat alone. */
+    if (!mptravel_collect_pair(&plan, ch, ch->in_room, location))
+    {
+        mptravel_free_plan(plan);
+        bug("Mpgoto - Mobile or riding partner cannot enter: vnum %d.",
+            ch->pIndexData->vnum);
+        return;
+    }
 
-    char_from_room( ch );
-    char_to_room( ch, location );
+    for (entry = plan; entry; entry = entry->next)
+    {
+        traveller = entry->character;
+        stop_fighting(traveller, TRUE);
 
+        GMCPSetArrival(traveller->desc,
+                       traveller->in_room->vnum,
+                       location->vnum,
+                       -1,
+                       "forced");
+
+        char_from_room(traveller);
+        char_to_room(traveller, location);
+    }
+
+    mptravel_free_plan(plan);
     return;
 }
 
@@ -676,103 +826,6 @@ void do_mpat( CHAR_DATA *ch, char *argument )
 }
 
 /*
- * Keep the selected travellers separate from the room list while we move them.
- */
-typedef struct mptransfer_entry MPTRANSFER_ENTRY;
-
-struct mptransfer_entry
-{
-        CHAR_DATA *character;
-        MPTRANSFER_ENTRY *next;
-};
-
-static void mptransfer_free_plan(MPTRANSFER_ENTRY *plan)
-{
-        MPTRANSFER_ENTRY *next;
-
-        while (plan)
-        {
-                next = plan->next;
-                free_mem(plan, sizeof(*plan));
-                plan = next;
-        }
-}
-
-static bool mptransfer_add_traveller(MPTRANSFER_ENTRY **plan,
-                                     CHAR_DATA *traveller)
-{
-        MPTRANSFER_ENTRY *entry;
-        MPTRANSFER_ENTRY *last = NULL;
-
-        for (entry = *plan; entry; entry = entry->next)
-        {
-                if (entry->character == traveller)
-                        return TRUE;
-                last = entry;
-        }
-
-        entry = alloc_mem(sizeof(*entry));
-        if (!entry)
-                return FALSE;
-
-        entry->character = traveller;
-        entry->next = NULL;
-
-        if (last)
-                last->next = entry;
-        else
-                *plan = entry;
-
-        return TRUE;
-}
-
-/*
- * A named mount brings its rider too. Check the pair before adding either.
- */
-static bool mptransfer_collect_pair(MPTRANSFER_ENTRY **plan,
-                                     CHAR_DATA *traveller,
-                                     ROOM_INDEX_DATA *source,
-                                     ROOM_INDEX_DATA *location)
-{
-        CHAR_DATA *rider;
-
-        if (!traveller || traveller->deleted || traveller->in_room != source)
-                return FALSE;
-
-        rider = traveller;
-        if (traveller->rider)
-        {
-                for (rider = source->people; rider; rider = rider->next_in_room)
-                {
-                        if (rider == traveller->rider)
-                                break;
-                }
-
-                if (!rider || rider->deleted || rider->mount != traveller)
-                        return FALSE;
-        }
-
-        if (rider->in_room != source || !mounted_travel_ready(rider))
-                return FALSE;
-
-        /* A mount cannot also be riding another mount. */
-        if (rider->mount && rider->mount->mount)
-                return FALSE;
-
-        /* Refreshing the current room is not a new entry. */
-        if (location != source
-        &&  (!undead_can_travel_to_room(rider, location)
-             || (rider->mount && IS_SET(location->room_flags, ROOM_NO_MOUNT))))
-                return FALSE;
-
-        if (!mptransfer_add_traveller(plan, rider))
-                return FALSE;
-
-        return !rider->mount
-            || mptransfer_add_traveller(plan, rider->mount);
-}
-
-/*
  * lets the mobile transfer people.  the 'all' argument transfers
  * everyone in the current room to the specified location
  *
@@ -791,8 +844,8 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
         ROOM_INDEX_DATA *location;
         CHAR_DATA *victim, *vch;
         ROOM_INDEX_DATA *source;
-        MPTRANSFER_ENTRY *plan = NULL;
-        MPTRANSFER_ENTRY *entry;
+        MPTRAVEL_ENTRY *plan = NULL;
+        MPTRAVEL_ENTRY *entry;
         bool all = FALSE, group = FALSE;
         char buf [MAX_STRING_LENGTH];
 
@@ -891,9 +944,9 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
                         && (is_same_group(vch, victim)
                             || is_group_members_mount(vch, victim))))
                 {
-                        if (!mptransfer_collect_pair(&plan, vch, source, location))
+                        if (!mptravel_collect_pair(&plan, vch, source, location))
                         {
-                                mptransfer_free_plan(plan);
+                                mptravel_free_plan(plan);
                                 bug("Mptransfer - Traveller or mount cannot enter: vnum %d.",
                                     ch->pIndexData->vnum);
                                 return;
@@ -923,7 +976,7 @@ void do_mptransfer (CHAR_DATA *ch, char *argument)
                 char_to_room(vch, location);
         }
 
-        mptransfer_free_plan(plan);
+        mptravel_free_plan(plan);
 }
 
 

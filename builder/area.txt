@@ -2900,11 +2900,10 @@ ROOM_ flags:
 
 ROOM_NO_UNDEAD is a permanent room flag, separate from the planned Ward
 Against Undead spell. It checks ordinary exit travel, mobile resets,
-Animate Dead, MPMLOAD, MPTRANSFER, Summon, Teleport, portal entry,
-Recall, clan Home,
-Astral Vortex, Banish, Mass Teleport, the ARENA command, Pattern travel,
-the deity Transport and Chaos prayers, tournament-start transfers
-and gravity.
+Animate Dead, MPMLOAD, MPTRANSFER, MPGOTO, Summon, Teleport, portal
+entry, Recall, clan Home, Astral Vortex, Banish, Mass Teleport, the
+ARENA command, Pattern travel, the deity Transport and Chaos prayers,
+tournament-start transfers and gravity.
 Undead NPC mounts and servants have no exception. An undead NPC mount
 blocks the whole mounted pair when both are travelling.
 
@@ -2948,15 +2947,20 @@ mount is the named target. If any traveller is barred or a riding link
 is broken, the whole request is refused. NO_MOUNT is also checked when
 entering another room. Same-room refreshes are not new entry.
 
+MPGOTO uses the same entry and riding-link checks for the mobile and its
+riding partner. The pair stays together even when the mobile is the mount.
+A refused trip leaves both in place and does not end combat. Other
+followers stay behind.
+
 Player vampires can enter and leave normally. The room burns them for
 30-60 HP each game tick instead of their usual HP regeneration, without
 taking them below 1 HP. This works indoors, at night, underwater and in
 mist form. Sunlight does not add another burn, and crossing an exit does
 not cause an extra burn.
 
-Creatures already inside are not removed. MPGOTO, MPAT, other scripted
-placement and immortal loading or transfer are not checked yet, so this
-is not a complete entry barrier.
+Creatures already inside are not removed. MPAT, other scripted placement
+and immortal loading or transfer are not checked yet, so this is not a
+complete entry barrier.
 
 The 'sector-type' identifies the type of terrain.  This primarily affects
 movement cost through the room, but may have various other effects--for example,
