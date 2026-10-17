@@ -1170,6 +1170,8 @@ blocking unrelated directions.
 - MPGOTO now checks NO_UNDEAD and NO_MOUNT and keeps riding pairs together.
 - MPTRANSFER now rejects one-sided rider or mount links.
 - MPAT now checks NO_UNDEAD before running a command in another room.
+- MLOAD now checks NO_UNDEAD before creating a mobile.
+- Immortal TRANSFER checks NO_UNDEAD before changing the target's state.
 
 ~
 
@@ -1179,8 +1181,9 @@ NO_UNDEAD is a permanent room flag, not a spell you cast.
 Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
 portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
 the ARENA command, Pattern travel, the deity Transport and Chaos prayers,
-tournament-start transfers, gravity, MPTRANSFER, MPGOTO or MPAT.
-Mobile resets, Animate Dead and MPMLOAD cannot create them here either.
+tournament-start transfers, gravity, MPTRANSFER, MPGOTO, MPAT or
+immortal TRANSFER. Mobile resets, Animate Dead, MPMLOAD and MLOAD
+cannot create them here either.
 Undead mounts and commanded servants have no exception.
 A blocked animation leaves its corpse untouched.
 
@@ -1237,6 +1240,13 @@ A refused command is not run. A surviving mobile can still return to
 its starting room, even if that room has NO_UNDEAD. Same-room MPAT
 remains allowed.
 
+MLOAD checks the resolved mobile template before creating anything.
+Immortal TRANSFER checks only the target, because its rider or mount
+stays behind. A refused transfer leaves combat, riding links and
+tournament status alone. Same-room transfers remain allowed.
+TRANSFER ALL keeps its existing selection and checks each target
+separately; blocked targets stay behind while eligible targets move.
+
 Player vampires can enter and leave normally, but the room burns them
 for 30-60 HP each game tick instead of their usual HP regeneration.
 The burn cannot take them below 1 HP.
@@ -1245,8 +1255,8 @@ It works indoors, at night, underwater and in mist form. Being in
 sunlight does not add another burn, and crossing an exit does not
 cause extra damage.
 
-Creatures already inside are not removed. Other scripted placement and
-immortal loading or transfer are not checked yet.
+Creatures already inside are not removed. Immortal GOTO and AT, plus
+other scripted placement, are not checked yet.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
@@ -3936,6 +3946,8 @@ Syntax: mload <<vnum>
 Syntax: oload <<vnum> <<level> <<copies>
 
 MLOAD loads a mobile given its vnum (virtual number).
+NO_UNDEAD rooms refuse undead mobiles before creating them, using the
+mobile template's resolved inherited and overridden flags.
 
 OLOAD loads (optional) number of copies of an object at (optional) level
 given its (required) vnum.
@@ -3997,6 +4009,12 @@ Syntax: transfer all         <<location>
 
 TRANSFER transfers the target character, or ALL player characters,
 to your current location (default) or to a specified location.
+
+When entering another room, NO_UNDEAD refuses undead NPCs before combat,
+riding links or tournament status are changed. Player vampires can still
+be transferred. Only the target moves; its rider or mount stays behind,
+with the usual dismounting. Same-room transfers remain allowed.
+ALL handles each target separately, leaving blocked targets behind.
 ~
 
 103 USERS~

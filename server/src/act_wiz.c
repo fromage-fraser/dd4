@@ -619,6 +619,14 @@ void do_transfer(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /* Only the target moves; its rider or mount stays behind. */
+        if (location != victim->in_room
+        &&  !undead_can_enter_room(victim, location))
+        {
+                send_to_char("That room bars undead. No transfer was made.\n\r", ch);
+                return;
+        }
+
         if (victim->fighting)
                 stop_fighting(victim, TRUE);
 
@@ -4512,6 +4520,12 @@ void do_mload(CHAR_DATA *ch, char *argument)
         if (!authorized(rch, gsn_mload))
                 return;
 
+        if (!ch->in_room)
+        {
+                send_to_char("You need to be in a room to load a mobile.\n\r", ch);
+                return;
+        }
+
         one_argument(argument, arg);
 
         if (arg[0] == '\0' || !is_number(arg))
@@ -4523,6 +4537,12 @@ void do_mload(CHAR_DATA *ch, char *argument)
         if (!(pMobIndex = get_mob_index(atoi(arg))))
         {
                 send_to_char("No mob has that vnum.\n\r", ch);
+                return;
+        }
+
+        if (!undead_can_spawn_in_room(pMobIndex, ch->in_room))
+        {
+                send_to_char("This room bars undead. No mobile was loaded.\n\r", ch);
                 return;
         }
 

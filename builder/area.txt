@@ -2900,10 +2900,10 @@ ROOM_ flags:
 
 ROOM_NO_UNDEAD is a permanent room flag, separate from the planned Ward
 Against Undead spell. It checks ordinary exit travel, mobile resets,
-Animate Dead, MPMLOAD, MPTRANSFER, MPGOTO, MPAT, Summon, Teleport,
-portal entry, Recall, clan Home, Astral Vortex, Banish, Mass Teleport, the
-ARENA command, Pattern travel, the deity Transport and Chaos prayers,
-tournament-start transfers and gravity.
+Animate Dead, MPMLOAD, MLOAD, MPTRANSFER, MPGOTO, MPAT, immortal TRANSFER,
+Summon, Teleport, portal entry, Recall, clan Home, Astral Vortex, Banish,
+Mass Teleport, the ARENA command, Pattern travel, the deity Transport
+and Chaos prayers, tournament-start transfers and gravity.
 Undead NPC mounts and servants have no exception. An undead NPC mount
 blocks the whole mounted pair when both are travelling.
 
@@ -2958,15 +2958,22 @@ A refused command is not run. A surviving mobile can still return to
 its starting room, even if that room has NO_UNDEAD. Same-room MPAT
 remains allowed.
 
+MLOAD checks the resolved mobile template before creating anything.
+Immortal TRANSFER checks only the target, because its rider or mount
+stays behind. A refused transfer leaves combat, riding links and
+tournament status alone. Same-room transfers remain allowed.
+TRANSFER ALL keeps its existing selection and checks each target
+separately; blocked targets stay behind while eligible targets move.
+
 Player vampires can enter and leave normally. The room burns them for
 30-60 HP each game tick instead of their usual HP regeneration, without
 taking them below 1 HP. This works indoors, at night, underwater and in
 mist form. Sunlight does not add another burn, and crossing an exit does
 not cause an extra burn.
 
-Creatures already inside are not removed. Other scripted placement and
-immortal loading or transfer are not checked yet, so this is not a
-complete entry barrier.
+Creatures already inside are not removed. Immortal GOTO and AT, plus
+other scripted placement, are not checked yet, so this is not a complete
+entry barrier.
 
 The 'sector-type' identifies the type of terrain.  This primarily affects
 movement cost through the room, but may have various other effects--for example,
