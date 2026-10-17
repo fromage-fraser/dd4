@@ -1164,6 +1164,9 @@ blocking unrelated directions.
 - Tournament starts now check NO_UNDEAD and NO_MOUNT for mounted pairs.
 - Tournament starts choose all arrival rooms before moving entrants.
 - Gravity now checks NO_UNDEAD before falling or forcing a dismount.
+- MPMLOAD now checks NO_UNDEAD before creating a mobile.
+- MPTRANSFER checks all selected riders and mounts before moving anyone.
+- Fixed MPTRANSFER group-mount selection and per-traveller arrival data.
 
 ~
 
@@ -1173,8 +1176,8 @@ NO_UNDEAD is a permanent room flag, not a spell you cast.
 Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
 portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
 the ARENA command, Pattern travel, the deity Transport and Chaos prayers,
-tournament-start transfers or gravity.
-Mobile resets and Animate Dead cannot create them here either.
+tournament-start transfers, gravity or MPTRANSFER.
+Mobile resets, Animate Dead and MPMLOAD cannot create them here either.
 Undead mounts and commanded servants have no exception.
 A blocked animation leaves its corpse untouched.
 
@@ -1213,6 +1216,13 @@ Its existing NO_MOUNT rule still dismounts the rider before the fall,
 so that case checks the rider alone. NPC followers use normal movement
 checks and cannot use the fall to bypass NO_UNDEAD.
 
+MPMLOAD checks the resolved mobile template before creating anything.
+MPTRANSFER checks every selected traveller, including ALL and GROUP,
+before moving anyone. Riders and mounts travel together even when the
+mount is the named target. If any traveller is barred or a riding link
+is broken, the whole request is refused. NO_MOUNT is also checked when
+entering another room. Same-room refreshes are not new entry.
+
 Player vampires can enter and leave normally, but the room burns them
 for 30-60 HP each game tick instead of their usual HP regeneration.
 The burn cannot take them below 1 HP.
@@ -1221,8 +1231,8 @@ It works indoors, at night, underwater and in mist form. Being in
 sunlight does not add another burn, and crossing an exit does not
 cause extra damage.
 
-Creatures already inside are not removed. Scripted placement and
-immortal loading or transfer are not checked yet.
+Creatures already inside are not removed. MPGOTO, MPAT, other scripted
+placement and immortal loading or transfer are not checked yet.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
