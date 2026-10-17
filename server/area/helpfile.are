@@ -1150,6 +1150,9 @@ blocking unrelated directions.
 - Recall leaves blocked followers behind and no longer moves mounts twice.
 - NO_UNDEAD now also checks Astral Vortex and Banish.
 - Astral Vortex keeps riders with their mounts; Banish limits room searches.
+- ARENA now chooses an arrival room that permits the traveller and mount.
+- Mass Teleport checks NO_UNDEAD for all travellers, brings mounts,
+  and limits destination searches.
 - Fixed Transport prayer losing its destination when targeting the caster's 
   mount.
 - Fixed weather ambience continuing to play when its effective volume rounds down to zero.
@@ -1160,10 +1163,10 @@ blocking unrelated directions.
 NO_UNDEAD is a permanent room flag, not a spell you cast.
 
 Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
-portals, Recall, clan Home, Astral Vortex or Banish. Mobile resets
-and Animate Dead cannot create them here either. Undead mounts and
-commanded servants have no exception. A blocked animation leaves
-its corpse untouched.
+portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport or
+the ARENA command. Mobile resets and Animate Dead cannot create them
+here either. Undead mounts and commanded servants have no exception.
+A blocked animation leaves its corpse untouched.
 
 Recall leaves blocked followers behind. An undead NPC mount stops
 its rider's whole Recall or Home attempt instead. Word of Recall
@@ -1171,6 +1174,14 @@ uses the same checks. Clan Home does not bring other followers.
 
 Astral Vortex takes the caster's mount along. Banish keeps a mounted
 pair together, whether it targets the rider or the mount.
+
+Mass Teleport takes the caster and every player in the room, not
+just group members. Their mounts travel with them; other NPC followers
+stay behind. It finds one room that can take everyone before moving
+anyone, and fails if no suitable room is found.
+
+The ARENA command chooses from arrival rooms that permit the traveller
+and mount. If none can, the trip is refused before entry is announced.
 
 Player vampires can enter and leave normally, but the room burns them
 for 30-60 HP each game tick instead of their usual HP regeneration.
@@ -1180,9 +1191,9 @@ It works indoors, at night, underwater and in mist form. Being in
 sunlight does not add another burn, and crossing an exit does not
 cause extra damage.
 
-Creatures already inside are not removed. Arena travel, Mass Teleport,
-gravity, scripted placement and immortal loading or transfer are not
-checked yet.
+Creatures already inside are not removed. Tournament-start transfers,
+Pattern travel, gravity, scripted placement and immortal loading or
+transfer are not checked yet.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
@@ -2454,6 +2465,10 @@ By typing this command, you are transported into the Arena of Death. The
 Arena is a place where players can come and attempt to kill each other
 without the fear of getting a KILLER flag or any other penalties for dying
 that they might normally get (loss of experience, fame, etc).
+
+Your mount comes with you. NO_UNDEAD rooms reject undead NPC mounts;
+NO_MOUNT rooms reject mounted travellers. The command fails if no
+suitable arrival room is available.
 
 The ARENA can also be accessed by heading west from the Midgaard healer.
 Note that the only way out is by death or by recalling.
