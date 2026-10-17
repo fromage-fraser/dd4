@@ -2900,8 +2900,8 @@ ROOM_ flags:
 
 ROOM_NO_UNDEAD is a permanent room flag, separate from the planned Ward
 Against Undead spell. It checks ordinary exit travel, mobile resets,
-Animate Dead, MPMLOAD, MPTRANSFER, MPGOTO, Summon, Teleport, portal
-entry, Recall, clan Home, Astral Vortex, Banish, Mass Teleport, the
+Animate Dead, MPMLOAD, MPTRANSFER, MPGOTO, MPAT, Summon, Teleport,
+portal entry, Recall, clan Home, Astral Vortex, Banish, Mass Teleport, the
 ARENA command, Pattern travel, the deity Transport and Chaos prayers,
 tournament-start transfers and gravity.
 Undead NPC mounts and servants have no exception. An undead NPC mount
@@ -2952,14 +2952,20 @@ riding partner. The pair stays together even when the mobile is the mount.
 A refused trip leaves both in place and does not end combat. Other
 followers stay behind.
 
+MPAT temporarily moves only the mobile to run its command. It checks
+that mobile before entering another room; riders and mounts stay behind.
+A refused command is not run. A surviving mobile can still return to
+its starting room, even if that room has NO_UNDEAD. Same-room MPAT
+remains allowed.
+
 Player vampires can enter and leave normally. The room burns them for
 30-60 HP each game tick instead of their usual HP regeneration, without
 taking them below 1 HP. This works indoors, at night, underwater and in
 mist form. Sunlight does not add another burn, and crossing an exit does
 not cause an extra burn.
 
-Creatures already inside are not removed. MPAT, other scripted placement
-and immortal loading or transfer are not checked yet, so this is not a
+Creatures already inside are not removed. Other scripted placement and
+immortal loading or transfer are not checked yet, so this is not a
 complete entry barrier.
 
 The 'sector-type' identifies the type of terrain.  This primarily affects

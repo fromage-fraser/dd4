@@ -774,7 +774,7 @@ void do_mpgoto( CHAR_DATA *ch, char *argument )
     return;
 }
 
-/* lets the mobile do a command at another location. Very useful */
+/* Let the mobile run a command elsewhere, then bring it back. */
 
 void do_mpat( CHAR_DATA *ch, char *argument )
 {
@@ -782,6 +782,9 @@ void do_mpat( CHAR_DATA *ch, char *argument )
     ROOM_INDEX_DATA *location;
     ROOM_INDEX_DATA *original;
     CHAR_DATA       *wch;
+
+    if (!ch || ch->deleted || !ch->in_room)
+        return;
 
     if ( !IS_NPC( ch ) || ch->desc != NULL )
     {
@@ -804,19 +807,26 @@ void do_mpat( CHAR_DATA *ch, char *argument )
     }
 
     original = ch->in_room;
+
+    /* Only the mobile visits; its rider or mount stays behind. */
+    if (location != original && !undead_can_enter_room(ch, location))
+    {
+        bug("Mpat - Room bars undead mobile: vnum %d.",
+            ch->pIndexData->vnum);
+        return;
+    }
+
     char_from_room( ch );
     char_to_room( ch, location );
     interpret( ch, argument );
 
-    /*
-     * See if 'ch' still exists before continuing!
-     * Handles 'at XXXX quit' case.
-     */
+    /* The command may have removed the mobile, so find it again first. */
     for ( wch = char_list; wch != NULL; wch = wch->next )
     {
         if ( wch == ch && !wch->deleted && wch->in_room )
         {
             char_from_room( ch );
+            /* Returning to the starting room is not a new entry. */
             char_to_room( ch, original );
             break;
         }
