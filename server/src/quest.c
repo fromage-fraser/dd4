@@ -801,6 +801,7 @@ void generate_quest(CHAR_DATA *ch, CHAR_DATA *questman)
                 }
                 while( !room
                     ||  room->area == ch->in_room->area
+                    ||  IS_SET(room->area->area_flags, AREA_FLAG_NO_QUEST)
                     ||  (ch->level <= LEVEL_HERO
                          && (ch->level < room->area->low_enforced
                              || ch->level > room->area->high_enforced))

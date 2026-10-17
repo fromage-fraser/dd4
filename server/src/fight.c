@@ -2057,13 +2057,13 @@ static void damage_internal(CHAR_DATA *ch,
                         dam = 0;
 
                 /* check for disarm, trip, parry, dodge and shield block et al. */
-                /* Cant disarm OR trip OR use magic items */
-                if (dt >= TYPE_HIT && victim->position > POS_SLEEPING && ch->position > POS_SLEEPING && !IS_AFFECTED(ch, AFF_PRONE) && !IS_AFFECTED(victim, AFF_DAZED))
+                /* Attacker prone restrictions apply to mob actions, not victim defenses. */
+                if (dt >= TYPE_HIT && victim->position > POS_SLEEPING && ch->position > POS_SLEEPING && !IS_AFFECTED(victim, AFF_DAZED))
                 {
                         int leveldiff = ch->level - victim->level;
 
                         /* mob: disarm */
-                        if (IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && number_percent() < (leveldiff < -5 ? ch->level / 2 : UMAX(10, leveldiff)) && dam == 0 && resistance_result != RES_RESULT_IMMUNE)
+                        if (IS_NPC(ch) && !IS_AFFECTED(ch, AFF_PRONE) && get_eq_char(ch, WEAR_WIELD) && number_percent() < (leveldiff < -5 ? ch->level / 2 : UMAX(10, leveldiff)) && dam == 0 && resistance_result != RES_RESULT_IMMUNE)
                         {
                                 if (!IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
                                 {

@@ -255,7 +255,10 @@ void do_bot_status (CHAR_DATA *ch)
                 id = bot_status_table[i].id;
                 dead = FALSE;
 
-                if (bot_status_table[i].status == BOT_STATUS_DEAD)
+                if (bot_status_table[i].status == BOT_STATUS_DEAD
+                    || !bot_status_table[i].ch
+                    || bot_status_table[i].ch->deleted
+                    || !bot_status_table[i].ch->in_room)
                         dead = TRUE;
 
                 sprintf(buf, "%3d %-12s %2d %5d %5d %4d %6d ",
@@ -267,7 +270,10 @@ void do_bot_status (CHAR_DATA *ch)
                         dead ? 0 : bot_status_table[i].desperation,
                         dead ? 0 : bot_status_table[i].ch->hit);
 
-                if (bot_status_table[i].status == BOT_STATUS_WAITING)
+                if (dead && bot_status_table[i].status != BOT_STATUS_DEAD)
+                        strcat(buf, "unavailable");
+
+                else if (bot_status_table[i].status == BOT_STATUS_WAITING)
                         strcat(buf, "waiting");
 
                 else if (bot_status_table[i].status == BOT_STATUS_ALIVE)
@@ -639,6 +645,7 @@ void do_bot_remove (CHAR_DATA *ch, char *argument)
 
         char buf [MAX_STRING_LENGTH];
         char bot_name [MAX_INPUT_LENGTH];
+        CHAR_DATA *bot;
         int i, j;
         int bot_id = -1;
 
@@ -692,13 +699,16 @@ void do_bot_remove (CHAR_DATA *ch, char *argument)
                 {
                         log_bot(i, "removed from tournament");
 
-                        remove_from_tournament(bot_status_table[i].ch);
+                        bot = bot_status_table[i].ch;
+                        remove_from_tournament(bot);
 
                         for (j = i; j < bot_entry_count-1; j++)
                                 bot_status_table[j] = bot_status_table[j+1];
 
-                        extract_char(bot_status_table[j].ch, TRUE);
                         bot_entry_count--;
+                        memset(&bot_status_table[bot_entry_count], 0,
+                               sizeof(bot_status_table[bot_entry_count]));
+                        extract_char(bot, TRUE);
 
                         sprintf(buf, "%s has been removed from the tournament.",
                                 bot_template_table[bot_id].name);

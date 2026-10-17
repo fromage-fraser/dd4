@@ -1321,6 +1321,8 @@ void obj_cast_spell(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DAT
                         send_to_char("You can't do that.\n\r", ch);
                         return;
                 }
+                if (victim != ch && is_safe(ch, victim))
+                        return;
                 vo = (void *)victim;
                 break;
 
