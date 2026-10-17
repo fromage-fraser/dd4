@@ -1163,6 +1163,7 @@ blocking unrelated directions.
 - Fixed Chaos prayer item effects crashing on empty inventories.
 - Tournament starts now check NO_UNDEAD and NO_MOUNT for mounted pairs.
 - Tournament starts choose all arrival rooms before moving entrants.
+- Gravity now checks NO_UNDEAD before falling or forcing a dismount.
 
 ~
 
@@ -1172,7 +1173,7 @@ NO_UNDEAD is a permanent room flag, not a spell you cast.
 Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
 portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
 the ARENA command, Pattern travel, the deity Transport and Chaos prayers,
-or tournament-start transfers.
+tournament-start transfers or gravity.
 Mobile resets and Animate Dead cannot create them here either.
 Undead mounts and commanded servants have no exception.
 A blocked animation leaves its corpse untouched.
@@ -1207,6 +1208,11 @@ Random starts choose an allowed room for each entrant. SAMEROOM uses
 one room that can take all selected entrants. If the required arrival
 rooms cannot be found, the tournament is cancelled without transfers.
 
+Gravity checks the rider and mount before a joint fall into NO_UNDEAD.
+Its existing NO_MOUNT rule still dismounts the rider before the fall,
+so that case checks the rider alone. NPC followers use normal movement
+checks and cannot use the fall to bypass NO_UNDEAD.
+
 Player vampires can enter and leave normally, but the room burns them
 for 30-60 HP each game tick instead of their usual HP regeneration.
 The burn cannot take them below 1 HP.
@@ -1215,8 +1221,8 @@ It works indoors, at night, underwater and in mist form. Being in
 sunlight does not add another burn, and crossing an exit does not
 cause extra damage.
 
-Creatures already inside are not removed. Gravity, scripted placement
-and immortal loading or transfer are not checked yet.
+Creatures already inside are not removed. Scripted placement and
+immortal loading or transfer are not checked yet.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~

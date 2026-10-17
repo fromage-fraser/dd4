@@ -2902,7 +2902,8 @@ ROOM_NO_UNDEAD is a permanent room flag, separate from the planned Ward
 Against Undead spell. It checks ordinary exit travel, mobile resets,
 Animate Dead, Summon, Teleport, portal entry, Recall, clan Home,
 Astral Vortex, Banish, Mass Teleport, the ARENA command, Pattern travel,
-the deity Transport and Chaos prayers, and tournament-start transfers.
+the deity Transport and Chaos prayers, tournament-start transfers
+and gravity.
 Undead NPC mounts and servants have no exception. An undead NPC mount
 blocks the whole mounted pair when both are travelling.
 
@@ -2934,15 +2935,20 @@ Random starts choose an allowed room for each entrant. SAMEROOM uses
 one room that can take all selected entrants. If the required arrival
 rooms cannot be found, the tournament is cancelled without transfers.
 
+Gravity checks the rider and mount before a joint fall into NO_UNDEAD.
+Its existing NO_MOUNT rule still dismounts the rider before the fall,
+so that case checks the rider alone. NPC followers use normal movement
+checks and cannot use the fall to bypass NO_UNDEAD.
+
 Player vampires can enter and leave normally. The room burns them for
 30-60 HP each game tick instead of their usual HP regeneration, without
 taking them below 1 HP. This works indoors, at night, underwater and in
 mist form. Sunlight does not add another burn, and crossing an exit does
 not cause an extra burn.
 
-Creatures already inside are not removed. Gravity, scripted placement
-and immortal loading or transfer are not checked yet, so this is not
-a complete entry barrier.
+Creatures already inside are not removed. Scripted placement and immortal
+loading or transfer are not checked yet, so this is not a complete entry
+barrier.
 
 The 'sector-type' identifies the type of terrain.  This primarily affects
 movement cost through the room, but may have various other effects--for example,
