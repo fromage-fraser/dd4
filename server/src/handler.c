@@ -4086,7 +4086,10 @@ bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
                                 chance = 5;
 
                         if (number_percent() < chance )
-                                victim->pcdata->tailing[0] = '\0';
+                        {
+                                free_string(victim->pcdata->tailing);
+                                victim->pcdata->tailing = NULL;
+                        }
                         else
                                 return FALSE;
                 }
