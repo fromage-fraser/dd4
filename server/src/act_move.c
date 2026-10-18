@@ -1422,6 +1422,12 @@ void do_climb(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(ch, AFF_HOLD))
+        {
+                send_to_char("You cannot move!\n\r", ch);
+                return;
+        }
+
         if (arg[0] == '\0')
         {
                 send_to_char("Climb what?\n\r", ch);
@@ -1458,7 +1464,7 @@ void do_climb(CHAR_DATA *ch, char *argument)
                 act("You examine the $d, and decide how best to tackle it.",
                     ch, NULL, pexit->keyword, TO_CHAR);
 
-                if (cobj)
+                if (cobj && ch->pcdata->learned[gsn_climb] < 50)
                 {
                         if (number_percent() > 50)
                         {
@@ -3491,6 +3497,13 @@ void do_change(CHAR_DATA *ch, char *argument)
 
         ch->pcdata->choose_subclass = TRUE;
         ch->pcdata->learned[LAST_BASE_CLASS_INDEX + ch->sub_class] = 30;
+
+        if (ch->sub_class == SUB_CLASS_VAMPIRE)
+        {
+                ch->pcdata->condition[COND_DRUNK] = 0;
+                ch->pcdata->condition[COND_FULL] = MAX_FOOD - 10;
+                ch->pcdata->condition[COND_THIRST] = MAX_DRINK;
+        }
 
         if (ch->sub_class == SUB_CLASS_VAMPIRE || ch->sub_class == SUB_CLASS_WEREWOLF)
         {

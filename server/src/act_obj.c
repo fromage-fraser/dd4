@@ -3668,6 +3668,7 @@ void do_eat(CHAR_DATA *ch, char *argument)
                 }
 
                 if (!IS_NPC(ch) && ch->level < LEVEL_HERO
+                    && ch->sub_class != SUB_CLASS_VAMPIRE
                     && ch->pcdata->condition[COND_FULL] > (MAX_FOOD - 5))
                 {
                         send_to_char("You are too full to eat more.\n\r", ch);

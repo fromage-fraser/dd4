@@ -815,6 +815,13 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
                 fclose(vp);
         }
 
+        if (ch->sub_class == SUB_CLASS_VAMPIRE)
+        {
+                ch->pcdata->condition[COND_DRUNK] = 0;
+                ch->pcdata->condition[COND_FULL] = MAX_FOOD - 10;
+                ch->pcdata->condition[COND_THIRST] = MAX_DRINK;
+        }
+
         fpReserve = fopen(NULL_FILE, "r");
         return found;
 }
