@@ -1181,6 +1181,12 @@ blocking unrelated directions.
 - Shadow Form now requires you to dismount first.
 - Being detected while tailing now clears the tail without blocking STEAL.
 - Sunray no longer blinds creatures without eyes.
+- Vampires clear mortal conditions on conversion/login and ignore food-based
+  regeneration and eating restrictions.
+- Charmed or ridden summons now leave when their master is absent and combat ends.
+- Corrected reversed buy/sell rates for five City of Thieves merchants.
+- Held characters can no longer bypass their restraint with CLIMB.
+- Climbing gear no longer reduces a trained climber's chance of success.
 
 ~
 

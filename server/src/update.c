@@ -1231,7 +1231,7 @@ int hit_gain(CHAR_DATA *ch)
         if (ch->form == FORM_DEMON)
                 gain += gain * ch->pcdata->learned[gsn_form_demon] / 100;
 
-        if (ch->level < LEVEL_HERO)
+        if (ch->level < LEVEL_HERO && ch->sub_class != SUB_CLASS_VAMPIRE)
         {
                 if (ch->pcdata->condition[COND_FULL] <= 0)
                         gain /= 2;
@@ -1496,7 +1496,7 @@ int mana_gain(CHAR_DATA *ch)
                 break;
         }
 
-        if (ch->level < LEVEL_HERO)
+        if (ch->level < LEVEL_HERO && ch->sub_class != SUB_CLASS_VAMPIRE)
         {
                 if (ch->pcdata->condition[COND_FULL] <= 0)
                         gain /= 2;
@@ -1615,7 +1615,7 @@ int move_gain(CHAR_DATA *ch)
                 break;
         }
 
-        if (ch->level < LEVEL_HERO)
+        if (ch->level < LEVEL_HERO && ch->sub_class != SUB_CLASS_VAMPIRE)
         {
                 if (ch->pcdata->condition[COND_FULL] <= 0)
                         gain /= 2;
@@ -1868,24 +1868,27 @@ void mobile_update(void)
                 if (ch->deleted)
                         continue;
 
-                if (!IS_NPC(ch) || !ch->in_room || ch->mount || ch->rider || IS_AFFECTED(ch, AFF_CHARM))
+                if (!IS_NPC(ch) || !ch->in_room)
                         continue;
 
                 /*
                  * Some summoned mobs should disappear when their master is absent.
-                 * Also take care of tournament Bots.
                  * Gezhp
                  */
+                if (IS_SET(ch->act, ACT_DIE_IF_MASTER_GONE) && (!ch->master || ch->master->in_room != ch->in_room) && !ch->fighting)
+                {
+                        send_to_char("With your master gone, you go too.\n\r", ch);
+                        act("$c shimmers and disappears from view.", ch, NULL, NULL, TO_ROOM);
+                        extract_char(ch, TRUE);
+                        continue;
+                }
+
+                if (ch->mount || ch->rider || IS_AFFECTED(ch, AFF_CHARM))
+                        continue;
+
+                /* Take care of swallowed mobs and tournament Bots. */
                 if (IS_NPC(ch))
                 {
-                        if (IS_SET(ch->act, ACT_DIE_IF_MASTER_GONE) && (!ch->master || ch->master->in_room != ch->in_room) && !ch->fighting)
-                        {
-                                send_to_char("With your master gone, you go too.\n\r", ch);
-                                act("$c shimmers and disappears from view.", ch, NULL, NULL, TO_ROOM);
-                                extract_char(ch, TRUE);
-                                continue;
-                        }
-
                         if (IS_AFFECTED(ch, AFF_SWALLOWED) && (!ch->inside || ch->inside->in_room != ch->in_room))
                         {
                                 strip_swallow(ch);
@@ -2380,7 +2383,8 @@ void char_update(void)
 
                         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
                         {
-                                if (!IS_NPC(gch) && is_same_group(gch, ch) && is_affected(gch, gsn_song_of_sustenance))
+                                if (ch->sub_class != SUB_CLASS_VAMPIRE
+                                &&  !IS_NPC(gch) && is_same_group(gch, ch) && is_affected(gch, gsn_song_of_sustenance))
                                 {
                                         send_to_char("{BThe song of sustenance restores you.\n\r{x", ch);
                                         ch->pcdata->condition[COND_FULL] =
