@@ -10193,7 +10193,8 @@ void spell_sunray(int sn, int level, CHAR_DATA *ch, void *vo)
                         if (!IS_NPC(vch) && is_safe(ch, vch))
                                 continue;
 
-                        if (!(vch == ch || IS_AFFECTED(vch, AFF_BLIND) || saves_spell(ch, level, vch) || is_same_group(vch, ch)))
+                        if (!(vch == ch || IS_AFFECTED(vch, AFF_BLIND) || saves_spell(ch, level, vch) || is_same_group(vch, ch))
+                            && (!IS_NPC(vch) || HAS_EYES(vch)))
                         {
                                 af.type = gsn_blindness;
                                 af.duration = 1 + level;
