@@ -1197,6 +1197,10 @@ blocking unrelated directions.
 - Immortal GOTO now checks NO_UNDEAD and NO_MOUNT before moving a pair.
 - Fixed GOTO moving its mount twice and leaving the mount in combat.
 - Immortal AT now checks NO_UNDEAD and leaves removed characters alone.
+- SMELT now accepts only armour and bladed weapons.
+- Testris now supplies birch rods for 750 copper.
+- Ordinary combat hits now play their impact sound once.
+- Sleeping players no longer join fights automatically.
 
 ~
 

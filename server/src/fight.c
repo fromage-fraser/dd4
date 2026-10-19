@@ -203,6 +203,9 @@ void violence_update(void)
                         continue;
                 }
 
+                if (!IS_NPC(ch) && !IS_AWAKE(ch))
+                        continue;
+
                 if (IS_AFFECTED(ch, AFF_BLIND) || (IS_NPC(ch) && ch->pIndexData->pShop) || (IS_NPC(ch) && ch->rider))
                         continue;
 
@@ -4702,16 +4705,6 @@ void dam_message(CHAR_DATA *ch,
 
         if ( dt == TYPE_HIT )
         {
-                if ( dt == gsn_shoot )
-                        sound_combat_hit_sfx( ch, victim, dam, TYPE_BOW_HIT );
-                else if ( dt >= TYPE_HIT )
-                        sound_combat_hit_sfx( ch, victim, dam, dt );
-        }
-
-        if ( dt == TYPE_HIT )
-        {
-                sound_combat_hit_sfx( ch, victim, dam, dt );
-
                 /* Combat gagging level 2 now gags 'misses' -- Owl */
 
                 if (((ch->gag == 2) && (dam > 0)))
