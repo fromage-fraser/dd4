@@ -7088,11 +7088,11 @@ E.g.    rf  safe healing no_mob
 `no_undead` is a permanent room setting, not the temporary Ward Against Undead
 spell. It checks ordinary exit travel (including following, hunting and
 fleeing), mobile resets, Animate Dead, MPMLOAD, MLOAD, MPTRANSFER, MPGOTO,
-MPAT, immortal TRANSFER, Summon, Teleport, portal entry, Recall, clan Home,
-Astral Vortex, Banish, Mass Teleport, the `ARENA` command, Pattern travel,
-the deity Transport and Chaos prayers, tournament-start transfers and
-gravity. An undead NPC mount blocks the whole mounted pair when both
-are travelling.
+MPAT, immortal TRANSFER, GOTO and AT, Summon, Teleport, portal entry,
+Recall, clan Home, Astral Vortex, Banish, Mass Teleport, the `ARENA` command,
+Pattern travel, the deity Transport and Chaos prayers, tournament-start
+transfers and gravity. An undead NPC mount blocks the whole mounted pair
+when both are travelling.
 
 Recall leaves blocked followers behind instead of cancelling their master's
 trip. The player's own mount is checked with its rider and moves only once.
@@ -7155,6 +7155,18 @@ tournament status alone. Same-room transfers remain allowed.
 `TRANSFER all` keeps its existing selection and checks each target
 separately; blocked targets stay behind while eligible targets move.
 
+Immortal `GOTO` checks the traveller and mount before ending combat or
+announcing departure. Both move once, or neither moves. `NO_MOUNT` also
+refuses a mounted arrival. Riding links must agree, and an occupied
+mount cannot call `GOTO` on its own. Other followers stay behind.
+Same-room `GOTO` still checks the links but is not new entry.
+
+Immortal `AT` checks only the visiting character, like `MPAT`. A refused
+command is not run; riders and mounts stay behind. A surviving visitor
+returns to the original room even if it has `NO_UNDEAD`. Same-room `AT`
+is not new entry, but the usual private-room check still applies.
+A removed character is not brought back.
+
 Player vampires can enter and leave normally. While they stay here, the room
 burns them for 30-60 HP each game tick instead of their usual HP regeneration.
 Like sunlight, this burn cannot take them below 1 HP. It still works indoors,
@@ -7165,8 +7177,8 @@ Creatures already inside are not removed. Controlled undead are still undead,
 so undead NPC servants do not get an exception to the entry rule. A blocked
 animation leaves its corpse untouched.
 
-Immortal `GOTO` and `AT`, plus other scripted placement, are not checked
-yet. This is not a complete entry barrier.
+Other scripted placement still needs checking, so this is not a complete
+entry barrier.
 
 *`ed` — Extra description*
 

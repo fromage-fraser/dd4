@@ -673,6 +673,9 @@ void do_at(CHAR_DATA *ch, char *argument)
         ROOM_INDEX_DATA *original;
         char arg[MAX_INPUT_LENGTH];
 
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
+
         rch = get_char(ch);
 
         if (!authorized(rch, gsn_at))
@@ -699,26 +702,64 @@ void do_at(CHAR_DATA *ch, char *argument)
         }
 
         original = ch->in_room;
+
+        /* Only the caller visits; its rider or mount stays behind. */
+        if (location != original && !undead_can_enter_room(ch, location))
+        {
+                send_to_char("That room bars undead. The command was not run.\n\r", ch);
+                return;
+        }
+
         char_from_room(ch);
         char_to_room(ch, location);
         interpret(ch, argument);
 
+        /* A command can remove its caller, so find a live character first. */
         for (wch = char_list; wch; wch = wch->next)
         {
-                if (wch == ch)
+                if (wch == ch && !wch->deleted && wch->in_room)
                 {
                         char_from_room(ch);
+                        /* Returning to the starting room is not a new entry. */
                         char_to_room(ch, original);
                         break;
                 }
         }
 }
 
+/* Check both sides of the riding links before GOTO moves anyone. */
+static bool goto_riding_links_match(CHAR_DATA *traveller,
+                                    ROOM_INDEX_DATA *source)
+{
+        CHAR_DATA *rch;
+        bool found = FALSE;
+
+        for (rch = source->people; rch; rch = rch->next_in_room)
+        {
+                if (rch->deleted)
+                        continue;
+
+                if (rch == traveller)
+                        found = TRUE;
+
+                if ((rch->mount == traveller && traveller->rider != rch)
+                ||  (rch->rider == traveller && traveller->mount != rch))
+                        return FALSE;
+        }
+
+        return found;
+}
+
 void do_goto(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *rch;
+        CHAR_DATA *mount;
         ROOM_INDEX_DATA *location;
+        ROOM_INDEX_DATA *source;
         char arg[MAX_INPUT_LENGTH];
+
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
 
         rch = get_char(ch);
 
@@ -738,8 +779,40 @@ void do_goto(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (ch->fighting)
-                stop_fighting(ch, TRUE);
+        if (!mounted_travel_ready(ch))
+                return;
+
+        source = ch->in_room;
+        mount = ch->mount;
+
+        if (!goto_riding_links_match(ch, source)
+        ||  (mount && (!goto_riding_links_match(mount, source)
+                      || mount->mount)))
+        {
+                send_to_char("Your riding links are not ready for travel.\n\r", ch);
+                return;
+        }
+
+        /* Refreshing the current room is not a new entry. */
+        if (location != source)
+        {
+                if (!undead_can_travel_to_room(ch, location))
+                {
+                        send_to_char("That room bars undead. No one was moved.\n\r", ch);
+                        return;
+                }
+
+                if (mount && IS_SET(location->room_flags, ROOM_NO_MOUNT))
+                {
+                        send_to_char("You cannot take a mount into that room.\n\r", ch);
+                        return;
+                }
+        }
+
+        /* The checks passed; now end combat before announcing the trip. */
+        stop_fighting(ch, TRUE);
+        if (mount)
+                stop_fighting(mount, TRUE);
 
         if (!IS_SET(ch->act, PLR_WIZINVIS))
         {
@@ -750,22 +823,31 @@ void do_goto(CHAR_DATA *ch, char *argument)
                     TO_ROOM);
         }
 
-        /*  Don't forget your mount!  Gezhp  */
-        if (ch->mount)
-        {
-                act("$n vanishes before your eyes.", ch->mount, NULL, ch, TO_NOTVICT);
-                char_from_room(ch->mount);
-                char_to_room(ch->mount, location);
-        }
+        if (mount)
+                act("$n vanishes before your eyes.", mount, NULL, ch, TO_NOTVICT);
 
         GMCPSetArrival(ch->desc,
-                       ch->in_room->vnum,
+                       source->vnum,
                        location->vnum,
                        -1,
                        "immortal");
 
+        if (mount)
+                GMCPSetArrival(mount->desc,
+                               source->vnum,
+                               location->vnum,
+                               -1,
+                               "immortal");
+
+        /* Move each traveller once, after the departure messages. */
         char_from_room(ch);
         char_to_room(ch, location);
+
+        if (mount)
+        {
+                char_from_room(mount);
+                char_to_room(mount, location);
+        }
 
         if (!IS_SET(ch->act, PLR_WIZINVIS))
         {
@@ -776,12 +858,8 @@ void do_goto(CHAR_DATA *ch, char *argument)
                     TO_ROOM);
         }
 
-        if (ch->mount)
-        {
-                act("$n appears out of thin air.", ch->mount, NULL, ch, TO_NOTVICT);
-                char_from_room(ch->mount);
-                char_to_room(ch->mount, location);
-        }
+        if (mount)
+                act("$n appears out of thin air.", mount, NULL, ch, TO_NOTVICT);
 
         do_look(ch, "auto");
         return;
