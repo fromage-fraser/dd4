@@ -1952,6 +1952,27 @@ bool check_equip_alignment(CHAR_DATA *ch, OBJ_DATA *obj)
 
 
 /*
+ * An alignment change can invalidate equipment already being worn.
+ * Restart after a drop: losing strength can also drop another weapon.
+ */
+void check_worn_alignment(CHAR_DATA *ch)
+{
+        OBJ_DATA *obj, *obj_next;
+
+        for (obj = ch->carrying; obj; obj = obj_next)
+        {
+                obj_next = obj->next_content;
+
+                if (obj->deleted || obj->wear_loc == WEAR_NONE)
+                        continue;
+
+                if (!check_equip_alignment(ch, obj))
+                        obj_next = ch->carrying;
+        }
+}
+
+
+/*
  * Equip a char with an obj.
  */
 void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
@@ -4163,13 +4184,11 @@ bool can_see_obj( CHAR_DATA *ch, OBJ_DATA *obj )
         if ( obj->item_type == ITEM_LIGHT && obj->value[2] != 0 )
                 return TRUE;
 
-        if ( room_is_dark( ch->in_room ) && ch->sub_class == SUB_CLASS_VAMPIRE)
-                return TRUE;
-
         if (!IS_NPC(ch) && is_affected(ch, gsn_song_of_revelation))
                 return TRUE;
 
-        if ( room_is_dark( ch->in_room ) && !IS_AFFECTED( ch, AFF_INFRARED ) && !is_affected(ch, gsn_clairvoyance))
+        if ( room_is_dark( ch->in_room ) && ch->sub_class != SUB_CLASS_VAMPIRE
+            && !IS_AFFECTED( ch, AFF_INFRARED ) && !is_affected(ch, gsn_clairvoyance))
                 return FALSE;
 
         if ( IS_SET( obj->extra_flags, ITEM_INVIS )

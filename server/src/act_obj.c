@@ -1683,6 +1683,9 @@ void do_lodge(CHAR_DATA *ch, char *argument)
 
                         if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name)) && can_see_obj(ch, obj) && obj->wear_loc == WEAR_NONE && can_drop_obj(ch, obj) && (ch->level + VAULT_LEVEL_BUFFER) >= obj->level && (!obj->deleted) && ((get_obj_number(obj) + ch->pcdata->vault_number) <= can_vault_n(ch)) && ((get_obj_weight(obj) + ch->pcdata->vault_weight) <= can_vault_w(ch)))
                         {
+                                if (max_obj_in_obj_level(obj) > ch->level + VAULT_LEVEL_BUFFER)
+                                        continue;
+
                                 found = TRUE;
                                 obj_from_char(obj);
                                 obj_to_charvault(obj, ch);
@@ -1726,6 +1729,9 @@ void do_lodge(CHAR_DATA *ch, char *argument)
 
                         if ((arg1[3] == '\0' || is_name(&arg1[4], obj->name)) && can_see_obj(ch, obj) && obj->wear_loc == WEAR_NONE && can_drop_obj(ch, obj) && (!obj->deleted) && (ch->level + VAULT_LEVEL_BUFFER) >= obj->level && ((get_obj_weight(obj) + get_obj_weight(container)) <= container->value[0]) && ((get_obj_weight(obj) + ch->pcdata->vault_weight) <= can_vault_w(ch)))
                         {
+                                if (max_obj_in_obj_level(obj) > ch->level + VAULT_LEVEL_BUFFER)
+                                        continue;
+
                                 if (IS_SET(container->wear_flags, ITEM_WEAR_POUCH)
                                     && obj->item_type != ITEM_POTION
                                     && obj->item_type != ITEM_PILL
@@ -5724,6 +5730,7 @@ void do_steal(CHAR_DATA *ch, char *argument)
         char arg1[MAX_INPUT_LENGTH];
         char arg2[MAX_INPUT_LENGTH];
         int percent;
+        int chance;
 
         /* STEAL is a player skill, including when followers receive orders. */
         if (IS_NPC(ch))
@@ -5796,11 +5803,12 @@ void do_steal(CHAR_DATA *ch, char *argument)
 
         WAIT_STATE(ch, skill_table[gsn_steal].beats);
         percent = number_percent() + (IS_AWAKE(victim) ? 5 : -50);
+        chance = ch->pcdata->learned[gsn_steal];
 
         if (IS_AFFECTED(ch, AFF_ARM_TRAUMA))
-                percent /= 2;
+                chance /= 2;
 
-        if (ch->level + 15 < victim->level || victim->position == POS_FIGHTING || (percent > ch->pcdata->learned[gsn_steal]))
+        if (ch->level + 15 < victim->level || victim->position == POS_FIGHTING || percent > chance)
         {
                 /*
                  * Failure.
