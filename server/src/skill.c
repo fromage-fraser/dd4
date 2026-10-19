@@ -4684,6 +4684,12 @@ void do_smelt (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (obj->item_type != ITEM_ARMOR && obj->item_type != ITEM_WEAPON)
+        {
+                send_to_char("You can only smelt armour or bladed weapons.\n\r", ch);
+                return;
+        }
+
         if (IS_SET(obj->extra_flags, ITEM_NODROP))
         {
                 send_to_char("You can't let go of it!\n\r", ch);

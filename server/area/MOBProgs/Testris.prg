@@ -106,7 +106,7 @@ endif
 	mptransfer $n 27346
 	mpgoto 27346
 	mpforce $n look
-	mpoload 27361 30
+	mpoload 27362 30
 	say Thrash your enemies with absolute assurance of quality!
 	give birch $n
 	say Your humble servant, as always.
