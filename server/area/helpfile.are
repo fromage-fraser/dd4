@@ -1194,6 +1194,9 @@ blocking unrelated directions.
 - Arm trauma now reduces STEAL skill instead of improving its roll.
 - Vampire dark vision no longer bypasses invisible-item detection.
 - Simplified the dissolving death message.
+- Immortal GOTO now checks NO_UNDEAD and NO_MOUNT before moving a pair.
+- Fixed GOTO moving its mount twice and leaving the mount in combat.
+- Immortal AT now checks NO_UNDEAD and leaves removed characters alone.
 
 ~
 
@@ -1203,9 +1206,9 @@ NO_UNDEAD is a permanent room flag, not a spell you cast.
 Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
 portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
 the ARENA command, Pattern travel, the deity Transport and Chaos prayers,
-tournament-start transfers, gravity, MPTRANSFER, MPGOTO, MPAT or
-immortal TRANSFER. Mobile resets, Animate Dead, MPMLOAD and MLOAD
-cannot create them here either.
+tournament-start transfers, gravity, MPTRANSFER, MPGOTO, MPAT and
+immortal TRANSFER, GOTO and AT. Mobile resets, Animate Dead, MPMLOAD
+and MLOAD cannot create them here either.
 Undead mounts and commanded servants have no exception.
 A blocked animation leaves its corpse untouched.
 
@@ -1269,6 +1272,18 @@ tournament status alone. Same-room transfers remain allowed.
 TRANSFER ALL keeps its existing selection and checks each target
 separately; blocked targets stay behind while eligible targets move.
 
+Immortal GOTO checks the traveller and mount before ending combat or
+announcing departure. Both move once, or neither moves. NO_MOUNT also
+refuses a mounted arrival. Riding links must agree, and an occupied
+mount cannot call GOTO on its own. Other followers stay behind.
+Same-room GOTO still checks the links but is not new entry.
+
+Immortal AT checks only the visiting character, like MPAT. A refused
+command is not run; riders and mounts stay behind. A surviving visitor
+returns to the original room even if it has NO_UNDEAD. Same-room AT
+is not new entry, but the usual private-room check still applies.
+A removed character is not brought back.
+
 Player vampires can enter and leave normally, but the room burns them
 for 30-60 HP each game tick instead of their usual HP regeneration.
 The burn cannot take them below 1 HP.
@@ -1277,8 +1292,8 @@ It works indoors, at night, underwater and in mist form. Being in
 sunlight does not add another burn, and crossing an exit does not
 cause extra damage.
 
-Creatures already inside are not removed. Immortal GOTO and AT, plus
-other scripted placement, are not checked yet.
+Creatures already inside are not removed. Other scripted placement
+still needs checking, so this is not a complete entry barrier.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
@@ -4171,13 +4186,18 @@ RETURN returns you to your original body.
 101 AT~
 Syntax: at <<location> <<command>
 
-AT executes the given command (which may have arguments) at the given
-location.  The location may be specified as a vnum, as the name of a
-mobile, or as the name of an object.
+AT runs a command at another location, then returns you to your starting
+room if your character still exists and has a room. The destination can
+be a room vnum, a mobile name or an object name.
 
-AT works by temporarily moving you to that location, executing the
-command, and then moving you back (if the command didn't change your
-location).  Thus, AT will not work to private locations.
+Only you visit; your rider or mount stays behind. NO_UNDEAD refuses an
+undead NPC body before moving it or running the command. Player vampires
+can still visit. Returning to your starting room is allowed, including
+a NO_UNDEAD room.
+
+AT still refuses private destinations, even for a same-room command.
+If the command moves you elsewhere, AT still brings you back unless
+your character was removed or no longer has a room.
 ~
 
 101 CANDO 'CAN DO'~
@@ -4209,12 +4229,21 @@ arguments, these reset the messages to their defaults.
 101 GOTO~
 Syntax: goto <<location>
 
-GOTO takes you to a location.  The location may be specified as a vnum,
-as the name of a mobile, or as the name of an object.
+GOTO takes you and your mount to a location specified as a room vnum,
+a mobile name or an object name. Other followers stay behind.
 
-You may not GOTO a room if it is PRIVATE and has two (or more) characters
-already present, or if it is SOLITARY and has one (or more) characters
-already present.
+Before a new entry it checks NO_UNDEAD for both travellers and refuses
+mounted arrivals into NO_MOUNT. Player vampires are allowed, but an
+undead NPC mount can still block their trip. A refused trip leaves
+combat and location unchanged. An allowed trip ends combat for both
+travellers and moves each once.
+
+The rider and mount must still be together and correctly linked.
+An occupied mount cannot call GOTO on its own; use the rider or
+dismount first. Same-room GOTO still checks the riding links but
+does not count as new entry.
+
+GOTO keeps its existing override of PRIVATE and SOLITARY rooms.
 ~
 
 101 WIZINVIS~
