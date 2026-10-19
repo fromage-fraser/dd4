@@ -5579,6 +5579,7 @@ int get_wield_limit_after_removals(CHAR_DATA *ch, OBJ_DATA *const *removed,
 int preview_wield_removal(CHAR_DATA *ch, OBJ_DATA *obj,
                           OBJ_DATA **removed, int removed_count);
 bool check_equip_alignment(CHAR_DATA *ch, OBJ_DATA *obj);
+void check_worn_alignment(CHAR_DATA *ch);
 int get_curr_int args((CHAR_DATA * ch));
 int get_curr_wis args((CHAR_DATA * ch));
 int get_curr_dex args((CHAR_DATA * ch));

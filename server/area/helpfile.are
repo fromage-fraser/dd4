@@ -1187,6 +1187,13 @@ blocking unrelated directions.
 - Corrected reversed buy/sell rates for five City of Thieves merchants.
 - Held characters can no longer bypass their restraint with CLIMB.
 - Climbing gear no longer reduces a trained climber's chance of success.
+- Item Transport now requires a recipient before looking up its target.
+- Dark Ritual and Energy Drain now recheck worn anti-alignment equipment.
+- Bulk LODGE now checks the levels of nested contents.
+- JOUST no longer restores weapons after death or loss of ownership.
+- Arm trauma now reduces STEAL skill instead of improving its roll.
+- Vampire dark vision no longer bypasses invisible-item detection.
+- Simplified the dissolving death message.
 
 ~
 

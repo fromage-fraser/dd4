@@ -3899,7 +3899,7 @@ void death_cry(CHAR_DATA *ch)
         if ((!IS_INORGANIC(ch) && !IS_SET(ch->act, ACT_OBJECT)) || (!IS_NPC(ch)))
         {
                 if (!MAKES_CORPSE(ch))
-                        strcpy(msg, "$c's form withers and dissolves into nothing.");
+                        strcpy(msg, "$c withers and dissolves into nothing.");
                 else if (IS_HUGE(ch))
                         strcpy(msg, "$c’s huge body convulses and falls still… DEAD.");
                 else
@@ -6680,6 +6680,7 @@ void do_joust(CHAR_DATA *ch, char *argument)
         OBJ_DATA *wobj, *first_weapon, *second_weapon;
         CHAR_DATA *victim;
         char arg[MAX_INPUT_LENGTH];
+        int killed;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_joust))
         {
@@ -6777,6 +6778,8 @@ void do_joust(CHAR_DATA *ch, char *argument)
         check_killer(ch, victim);
         WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
 
+        killed = IS_NPC(ch) ? 0 : ch->pcdata->killed;
+
         first_weapon = get_eq_char(ch, WEAR_WIELD);
         if (first_weapon)
                 unequip_char(ch, first_weapon);
@@ -6796,17 +6799,25 @@ void do_joust(CHAR_DATA *ch, char *argument)
         else
                 damage(ch, victim, 0, gsn_joust, FALSE);
 
-        /*  Double check lance is still equipped  */
-        if (get_eq_char(ch, WEAR_WIELD))
+        /* Death can move the jouster and put the saved equipment in a corpse. */
+        if (ch->deleted || !ch->in_room || ch->position == POS_DEAD
+        ||  (!IS_NPC(ch) && ch->pcdata->killed != killed))
+                return;
+
+        if (!wobj->deleted && wobj->carried_by == ch
+        &&  get_eq_char(ch, WEAR_WIELD) == wobj)
         {
                 unequip_char(ch, wobj);
-                equip_char(ch, wobj, WEAR_RANGED_WEAPON);
+                if (!get_eq_char(ch, WEAR_RANGED_WEAPON))
+                        equip_char(ch, wobj, WEAR_RANGED_WEAPON);
         }
 
-        if (first_weapon)
+        if (first_weapon && !first_weapon->deleted && first_weapon->carried_by == ch
+        &&  first_weapon->wear_loc == WEAR_NONE && !get_eq_char(ch, WEAR_WIELD))
                 equip_char(ch, first_weapon, WEAR_WIELD);
 
-        if (second_weapon)
+        if (second_weapon && !second_weapon->deleted && second_weapon->carried_by == ch
+        &&  second_weapon->wear_loc == WEAR_NONE && !get_eq_char(ch, WEAR_DUAL))
                 equip_char(ch, second_weapon, WEAR_DUAL);
 }
 

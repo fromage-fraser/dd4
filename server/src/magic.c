@@ -4460,6 +4460,7 @@ void spell_energy_drain(int sn, int level, CHAR_DATA *ch, void *vo)
         send_to_char("{RYou drain life force from your victim!\n\r{x", ch);
 
         ch->alignment = UMAX(-1000, ch->alignment - 200);
+        check_worn_alignment(ch);
         if (victim->level <= 2)
         {
                 dam = 2 * ch->hit + 1;
@@ -6014,6 +6015,7 @@ void spell_dark_ritual(int sn, int level, CHAR_DATA *ch, void *vo)
 
         extract_obj(obj);
         ch->alignment = UMAX(-1000, ch->alignment - ch->level * 2);
+        check_worn_alignment(ch);
 
         act("You make a ritual sacrifice to $D and their favour fills you with ecstasy!\n\r",
             ch, NULL, NULL, TO_CHAR);
@@ -11420,6 +11422,12 @@ void spell_transport(int sn, int level, CHAR_DATA *ch, void *vo)
         char arg3[MAX_INPUT_LENGTH];
 
         target_name = one_argument(target_name, arg3);
+
+        if (is_only_whitespace(target_name))
+        {
+                send_to_char("To whom do you wish to transport it?\n\r", ch);
+                return;
+        }
 
         if ((!(victim = get_char_world(ch, target_name))) || (!IS_NPC(ch) && ch->fighting) || IS_SET(victim->in_room->room_flags, ROOM_SOLITARY) || victim->level >= level + 3 || victim == ch)
         {
