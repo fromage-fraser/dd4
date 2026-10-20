@@ -5555,6 +5555,14 @@ void raw_kill(CHAR_DATA *ch, CHAR_DATA *victim, bool corpse);
 void death_cry args((CHAR_DATA * ch));
 void show_death_parts args((CHAR_DATA *viewer, CHAR_DATA *subject));
 bool one_hit args((CHAR_DATA * ch, CHAR_DATA *victim, int dt, bool haste));
+bool aggravated_bite_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste);
+void damage_with_aggravated_component(CHAR_DATA *ch, CHAR_DATA *victim,
+                                      int dam, int dt, bool poison,
+                                      int chance, int percent, int cap);
+int aggravated_healing_limit(const CHAR_DATA *ch);
+int heal_hit_points(CHAR_DATA *ch, int amount);
+int repair_aggravated_damage(CHAR_DATA *ch, int amount);
+int mark_aggravated_damage(CHAR_DATA *victim, int amount);
 void death_penalty args((CHAR_DATA * ch, CHAR_DATA *victim));
 void check_player_death args((CHAR_DATA * opponent, CHAR_DATA *victim));
 bool in_pkill_range args((CHAR_DATA * ch, CHAR_DATA *victim));
@@ -5816,7 +5824,7 @@ const char *mob_special_name args((SPEC_FUN *special));
 bool is_ghoul_paralysis args((const AFFECT_DATA *paf));
 void update_ghoul_paralysis args((void));
 void ghoul_touch_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
-void mummy_rot_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim));
+void mummy_rot_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, int actual_damage));
 void dracolich_paralysis_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool is_stench_exposure args((const AFFECT_DATA *paf));
 void clear_stench_exposure args((CHAR_DATA *ch, bool notify));

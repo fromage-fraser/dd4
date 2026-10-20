@@ -1212,7 +1212,26 @@ blocking unrelated directions.
 - NO_UNDEAD now checks single-target and room-wide teleport traps.
 - Teleport traps keep riding pairs together and limit their room search.
 - Room-wide teleport traps no longer run damage handling at the destination.
+- Regenerate and Song of Rejuvenation now repair aggravated damage.
+- Natural healing and Lend Health now respect aggravated wounds.
+- Vampire SUCK, WOLFBITE, Wither and selected undead attacks can leave
+  bounded aggravated wounds; rot adds these only when first applied.
 
+~
+
+0 'AGGRAVATED DAMAGE' 'AGGRO DAM'~
+Aggravated damage lowers the ceiling for ordinary healing and natural HP
+recovery.  Your maximum HP statistic does not change.  Natural recovery
+repairs your level divided by eight aggravated HP each game tick, rounded
+down.  Regenerate and Song of Rejuvenation can also repair these wounds;
+Lend Health cannot.  The deity Healing prayer removes them completely.
+
+Vampire SUCK, WOLFBITE and Wither can leave part of their actual damage as
+aggravated wounds without extra immediate HP loss.  A new mummy-rot
+infection leaves up to one aggravated HP per 20 attacker levels (minimum
+one, maximum five), bounded by the triggering hit's actual HP damage.
+Fleshrot uses the same limit on its initial hit.  Later rot ticks add none.
+See HELP REGENERATE, REJUVENATION, SUCK, WOLFBITE, WITHER and ENERGY DRAIN.
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~
@@ -4449,6 +4468,9 @@ This spell will heal major non-fatal trauma that has been done to a player or
 mobile, for example serious brain injury, missing eyes or arms, a severed tail,
 etc.
 
+It also repairs aggravated damage equal to the caster's level (at least one
+hit point).  This raises the healing ceiling without adding current HP.
+
 Only true Clerics (not Templars or Druids) can learn this spell.  You must
 reach character level 80 and master Complete Healing at 100 percent.
 An Advanced Healing teacher must also be skilled enough to train you.
@@ -4573,6 +4595,10 @@ Syntax: cast 'energy drain' <<victim>
 
 This powerful spell saps the life force of your enemy.  It is an extremely
 evil spell, and hence has evil effects on the caster.
+When used by a wight, wraith or spectre, two percent of the normal damaging
+hit becomes aggravated damage, rounded down and capped at five HP.  Hits
+below 50 HP add none.  The separate HP-halving, experience and mana effects
+are unchanged; ordinary casters gain no aggravated component.
 ~
 
 0 'FAERIE FIRE'~
@@ -5275,6 +5301,9 @@ Syntax: cast 'lend health' <<character>
 
 A psionicist can LEND HEALTH to a companion in need, but only at his or
 her own expense.  That's what friends are for, right?
+The transfer cannot heal beyond the recipient's aggravated-damage ceiling
+and does not repair aggravated wounds.  Only HP actually restored is taken
+from the donor, who must have at least 100 HP left after the transfer.
 ~
 
 0 'PROJECT FORCE'~
@@ -6687,6 +6716,9 @@ Syntax: wolfbite <<target>
 A tiger's BITE or the werewolf's WOLFBITE is a feared attack. Let a TIGER
 or WOLF sink its powerful jaws into anything, and the reason will become
 obvious.
+
+WOLFBITE has a 20 percent chance to leave 10 percent of its actual HP damage
+as aggravated damage, rounded down.  This adds no extra immediate damage.
 ~
 
 0 SWOOP~
@@ -6739,6 +6771,9 @@ This Vampire skill attempts to suck the blood from a victim.  A Vampire who
 is full with blood will have a stronger suck than one craving blood.
 A successful attack will cause damage to the victim, while also increasing
 the blood points of the Vampire.
+A damaging SUCK has a 20 percent chance to leave 10 percent of its actual HP
+damage as aggravated damage, rounded down, without extra immediate damage.
+The vampire and master vampire creature attacks use the same rule.
 ~
 
 0 FEED~
@@ -7749,6 +7784,8 @@ This self-only spell enhances a druid's defence by encasing them in bark.
 Syntax: cast wither <<target>
 
 Using this spell a caster drains the life force of their enemy.
+Five percent of the actual HP damage, after saves and defenses, remains as
+aggravated damage (rounded down), without extra immediate damage.
 ~
 
 0 LUNGE 'DOUBLE LUNGE'~
@@ -8054,6 +8091,9 @@ Many travel-weary bards have found themselves in need of a healer after an
 ambush, and yet been a long way from a temple.  Because of this, a group
 of enterprising bards composed a song which, when sung, gradually restores
 the health and mana of the singer and nearby group members.
+Each tick with a positive HP song bonus also repairs aggravated damage equal
+to one tenth of that bonus, rounded down with a minimum of one HP.  This
+repair happens before the normal healing and does not itself add current HP.
 ~
 
 0 'SONG OF FLIGHT'~
@@ -8756,6 +8796,10 @@ a horrible rotting curse on them.  Their flesh will begin to peel from their
 bones, inflicting terrible damage over time unless they quickly remediate their
 condition via application of standard treatments for poison and toxins, or ones
 that stabilise magically-altered body states.
+When the curse first takes hold, its initial damaging hit also leaves up to
+one aggravated HP per 20 caster levels, with a minimum of one and a maximum
+of five.  This cannot exceed that hit's actual HP damage; later rot ticks
+add no aggravated damage.
 ~
 
 0 REVIEW~

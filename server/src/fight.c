@@ -58,6 +58,8 @@ static bool blessed_weapon_vs_undead
         args((OBJ_DATA *weapon, CHAR_DATA *victim));
 static int blessed_weapon_damage_bonus
         args((int dam, OBJ_DATA *weapon, CHAR_DATA *victim));
+static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
+                             bool haste, bool aggravated_bite);
 static void group_gain_internal
         args((CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called,
               bool solo, bool survivors_only));
@@ -69,7 +71,10 @@ static void damage_internal args((CHAR_DATA *ch,
                                   unsigned long int res_types,
                                   bool natural_contact,
                                   bool physical_contact,
-                                  bool forced_fall));
+                                  bool forced_fall,
+                                  int aggravated_chance,
+                                  int aggravated_percent,
+                                  int aggravated_cap));
 
 /*
  * Death blurb
@@ -999,7 +1004,8 @@ void damage_from_object(CHAR_DATA *ch, CHAR_DATA *victim,
 
         damage_internal(
             ch, victim, dam, dt, poison,
-            object_attack_resistance_types(dt, source), FALSE, TRUE, FALSE);
+            object_attack_resistance_types(dt, source), FALSE, TRUE, FALSE,
+            0, 0, 0);
 }
 
 /*
@@ -1057,6 +1063,18 @@ static int object_effect_threshold(CHAR_DATA *ch, CHAR_DATA *victim,
  *  Attack with primary and/or secondary weapon.
  */
 bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
+{
+        return one_hit_internal(ch, victim, dt, haste, FALSE);
+}
+
+/* Explicit bite callers opt in; legacy bloodsuckers keep their own effect. */
+bool aggravated_bite_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
+{
+        return one_hit_internal(ch, victim, dt, haste, TRUE);
+}
+
+static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
+                             bool haste, bool aggravated_bite)
 {
         OBJ_DATA *wield;
         char buf[MAX_STRING_LENGTH];
@@ -1249,7 +1267,7 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                                 damage_internal(
                                     ch, victim, 0, dt, poison,
                                     ordinary_attack_resistance_types(dt, wield),
-                                    FALSE, TRUE, FALSE);
+                                    FALSE, TRUE, FALSE, 0, 0, 0);
                         }
                         else
                         {
@@ -1485,7 +1503,7 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
                             poison,
                             ordinary_attack_resistance_types(dt, wield),
                             !wield && IS_NPC(ch),
-                            TRUE, FALSE);
+                            TRUE, FALSE, 0, 0, 0);
                 }
                 else if (dt == gsn_smash)
                 {
@@ -1519,6 +1537,11 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
 
                         damage_from_object(
                             ch, victim, dam, dt, poison, source);
+                }
+                else if (aggravated_bite)
+                {
+                        damage_with_aggravated_component(
+                            ch, victim, dam, dt, poison, 20, 10, 0);
                 }
                 else
                 {
@@ -1666,7 +1689,27 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
                 res_types = skill_table[dt].res_type;
         }
 
-        damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE, FALSE);
+        damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE,
+                        FALSE, 0, 0, 0);
+}
+
+/* Classify part of this event's defended HP loss; never subtract HP twice. */
+void damage_with_aggravated_component(CHAR_DATA *ch, CHAR_DATA *victim,
+                                      int dam, int dt, bool poison,
+                                      int chance, int percent, int cap)
+{
+        unsigned long int res_types = 0;
+
+        if (!ch || !victim || ch->deleted || victim->deleted
+        ||  !ch->in_room || ch->in_room != victim->in_room
+        ||  ch->position == POS_DEAD || victim->position == POS_DEAD)
+                return;
+
+        if (dt >= 0 && dt < MAX_SKILL)
+                res_types = skill_table[dt].res_type;
+
+        damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE,
+                        FALSE, chance, percent, cap);
 }
 
 /*
@@ -1693,7 +1736,8 @@ void damage_with_resistance_types(
             res_types & RES_VALID_MASK,
             FALSE,
             FALSE,
-            FALSE);
+            FALSE,
+            0, 0, 0);
 }
 
 /* Runtime-only, monotonically allocated identities survive no extraction. */
@@ -1762,7 +1806,7 @@ bool forced_fall_damage(CHAR_DATA *ch, int dam)
 
         deaths = IS_NPC(ch) ? 0 : ch->pcdata->killed;
         damage_internal(causer, ch, UMAX(0, dam), TYPE_UNDEFINED, FALSE, 0,
-                        FALSE, FALSE, TRUE);
+                        FALSE, FALSE, TRUE, 0, 0, 0);
         return !ch->deleted && ch->in_room && ch->position != POS_DEAD
             && (IS_NPC(ch) || ch->pcdata->killed == deaths);
 }
@@ -1819,7 +1863,10 @@ static void damage_internal(CHAR_DATA *ch,
                             unsigned long int res_types,
                             bool natural_contact,
                             bool physical_contact,
-                            bool forced_fall)
+                            bool forced_fall,
+                            int aggravated_chance,
+                            int aggravated_percent,
+                            int aggravated_cap)
 {
         CHAR_DATA *fighter;
         CHAR_DATA *opponent;
@@ -1833,6 +1880,8 @@ static void damage_internal(CHAR_DATA *ch,
         resistance_result = RES_RESULT_NORMAL;
         bool dracolich_contact = FALSE;
         int cold_bonus;
+        int hit_before;
+        int actual_damage;
 
         if (!forced_fall && victim != ch && ordered_attack_is_safe(ch, victim))
                 return;
@@ -2297,12 +2346,30 @@ static void damage_internal(CHAR_DATA *ch,
                 dam += dam / 3;
 
         /* hurt the victim, and inform the victim of his new state */
+        hit_before = victim->hit;
         victim->hit -= dam;
 
         /* immortality.  imms can be nuked by higher imms :) */
         if (!IS_NPC(victim) && victim->level >= LEVEL_IMMORTAL && victim->hit < 1)
                 if (IS_NPC(ch) || (!IS_NPC(ch) && (ch->level <= victim->level)))
                         victim->hit = 1;
+
+        actual_damage = (int)UMIN((long long)UMAX(0, dam),
+            UMAX(0LL, (long long)hit_before - victim->hit));
+
+        if (actual_damage > 0 && victim->hit > 0
+        &&  aggravated_chance > 0 && aggravated_percent > 0
+        &&  aggravated_cap >= 0)
+        {
+                int amount = (int)((long long)actual_damage
+                    * UMIN(100, aggravated_percent) / 100);
+
+                if (aggravated_cap > 0)
+                        amount = UMIN(amount, aggravated_cap);
+                if (amount > 0 && (aggravated_chance >= 100
+                    || number_percent() <= aggravated_chance))
+                        mark_aggravated_damage(victim, amount);
+        }
 
         /* this is for exp (damage bonus) */
         if ((ch != victim) && IS_NPC(victim) && (!IS_NPC(ch) && (ch->level - victim->level < 6)) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
@@ -2319,7 +2386,7 @@ static void damage_internal(CHAR_DATA *ch,
         if (natural_contact && dam > 0)
         {
                 ghoul_touch_after_hit(ch, victim, dt);
-                mummy_rot_after_hit(ch, victim);
+                mummy_rot_after_hit(ch, victim, actual_damage);
 
                 if (dracolich_contact)
                         dracolich_paralysis_after_hit(ch, victim);
@@ -11046,6 +11113,66 @@ void reset_char_stats(CHAR_DATA *ch)
 
         if (ch->sub_class == SUB_CLASS_VAMPIRE)
                 ch->rage = ch->max_rage;
+}
+
+/* The healing ceiling retains at least one HP, even for legacy scar totals. */
+int aggravated_healing_limit(const CHAR_DATA *ch)
+{
+        if (!ch)
+                return 0;
+        return (int)UMAX(1LL,
+            (long long)ch->max_hit - UMAX(0, ch->aggro_dam));
+}
+
+static bool can_restore_hit_points(CHAR_DATA *ch)
+{
+        return ch && !ch->deleted && ch->in_room
+            && ch->position != POS_DEAD
+            && !(IS_NPC(ch) && IS_SET(ch->act, ACT_NO_HEAL));
+}
+
+/* Positive healing never lowers HP that is already above the ceiling. */
+int heal_hit_points(CHAR_DATA *ch, int amount)
+{
+        int healed;
+        long long room;
+
+        if (amount <= 0 || !can_restore_hit_points(ch))
+                return 0;
+        room = (long long)aggravated_healing_limit(ch) - ch->hit;
+        healed = (int)UMIN((long long)amount, UMAX(0LL, room));
+        ch->hit += healed;
+        return healed;
+}
+
+/* Repair raises the healing ceiling, without granting extra current HP. */
+int repair_aggravated_damage(CHAR_DATA *ch, int amount)
+{
+        int repaired;
+
+        if (amount <= 0 || !can_restore_hit_points(ch))
+                return 0;
+        repaired = UMIN(amount, UMAX(0, ch->aggro_dam));
+        ch->aggro_dam -= repaired;
+        return repaired;
+}
+
+/* New components classify existing damage and retain at least one healable HP. */
+int mark_aggravated_damage(CHAR_DATA *victim, int amount)
+{
+        long long current;
+        long long limit;
+        int marked;
+
+        if (!victim || victim->deleted || !victim->in_room
+        ||  victim->position == POS_DEAD || victim->hit <= 0 || amount <= 0)
+                return 0;
+        current = UMAX(0, victim->aggro_dam);
+        limit = UMAX(0LL, (long long)victim->max_hit - 1);
+        marked = (int)UMIN((long long)amount, UMAX(0LL, limit - current));
+        if (marked > 0)
+                victim->aggro_dam = (int)(current + marked);
+        return marked;
 }
 
 /*

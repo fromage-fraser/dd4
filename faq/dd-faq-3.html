@@ -301,10 +301,24 @@
 	from combat by typing <font color="#009933"><strong>FLEE</strong></font>, no matter what your wimpy is set at or
 	however many hit points you have.
 </font></p>
-<p><font color="#000000">'Aggravated damage' or 'aggro dam' is inflicted by certain special attacks,
-	e.g. the bite of some vampires. Aggro dam cannot be healed back by spells or
-	normal sleeping, and your maximum hits are lowered by the corresponding amount.
-	Aggrovated damage heals slowly over time.
+<p><font color="#000000">'Aggravated damage' or 'aggro dam' lowers the ceiling for ordinary healing
+	and natural HP recovery, including sleeping. Your maximum HP statistic does not
+	change. Natural recovery repairs your level divided by eight aggravated HP per
+	game tick, rounded down. Regenerate repairs one aggravated HP per caster level;
+	Song of Rejuvenation repairs one tenth of its normal HP bonus each tick
+	(rounded down, with a minimum of one when the bonus is positive). These repairs
+	raise the healing ceiling without adding current HP. Lend Health respects the
+	ceiling and cannot repair aggravated wounds. The deity Healing prayer still
+	removes all aggravated damage.
+</font></p>
+<p><font color="#000000">Vampire SUCK and WOLFBITE have a 20% chance to mark 10% of actual HP damage
+	as aggravated; Wither marks 5%. These amounts round down and do not deal extra
+	immediate HP damage. A new mummy-rot infection or successful Fleshrot application
+	marks at most one HP per 20 caster levels (minimum one, maximum five), bounded
+	by the initial hit's actual damage. Later rot ticks add none. Energy Drain from
+	wights, wraiths and spectres marks 2% of its normal damage portion, rounded down
+	and capped at five; its separate HP-halving, experience and mana effects are
+	unchanged. Existing Bloodsucker and Turn effects retain their previous rules.
 </font></p>
 <hr><a name="20"></a><p><font face="Tahoma, Ariel, Helvetica" color="#000099" size="3">[3.20]&nbsp;&nbsp;<strong>How do I know what an item does, or figure out what eq to use?</strong></font></p>
 <p><font color="#000000">
