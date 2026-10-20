@@ -937,9 +937,28 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
             case TRAP_DAM_SPIRIT:
                 {
                     CHAR_DATA *spirit;
+                    MOB_INDEX_DATA *index;
+
+                    if (ch->deleted || !ch->in_room)
+                            return;
+
+                    index = get_mob_index(MOB_VNUM_SPIRIT);
+                    if (!index)
+                    {
+                            bug("Trapdamage: missing spirit mobile %d.", MOB_VNUM_SPIRIT);
+                            break;
+                    }
+
+                    /* The trap still uses a charge, even if the spirit is barred. */
+                    if (!undead_can_spawn_in_room(index, ch->in_room))
+                    {
+                            send_to_char("The room bars undead, so the spirit cannot appear.\n\r", ch);
+                            break;
+                    }
+
                     act("{CA furious spirit guardian materialises from thin air!{x", ch, NULL, NULL, TO_ROOM);
                     act("{CA furious spirit guardian materialises from thin air!{x", ch, NULL, NULL, TO_CHAR);
-                    spirit = create_mobile(get_mob_index(MOB_VNUM_SPIRIT));
+                    spirit = create_mobile(index);
                     spirit->level = URANGE(1, ch->level, LEVEL_HERO - 1);
                     spirit->max_hit = spirit->level * 10 + number_range(20, 100);
                     spirit->hit = spirit->max_hit;

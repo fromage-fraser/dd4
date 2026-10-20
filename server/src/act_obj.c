@@ -6116,6 +6116,12 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                if (!undead_can_spawn_in_room(pet->pIndexData, ch->in_room))
+                {
+                        send_to_char("This room bars undead, so you cannot buy that pet here.\n\r", ch);
+                        return;
+                }
+
                 if (!coins_from_char((int64_t)10 * pet->level * pet->level, ch))
                 {
                         send_to_char("You can't afford it.\n\r", ch);

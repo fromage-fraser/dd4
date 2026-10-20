@@ -979,6 +979,7 @@ bool spec_cast_undead( CHAR_DATA *ch )
 bool spec_executioner( CHAR_DATA *ch )
 {
         CHAR_DATA *victim;
+        MOB_INDEX_DATA *guard_index;
         char      *crime;
         char       buf [ MAX_STRING_LENGTH ];
 
@@ -1011,15 +1012,27 @@ bool spec_executioner( CHAR_DATA *ch )
         {
                 sprintf( buf, "%s is a %s!  PROTECT THE INNOCENT!  MORE BLOOOOD!!!",
                         victim->name, crime );
+                do_shout( ch, buf );
         }
 
-        do_shout( ch, buf );
         multi_hit( ch, victim, TYPE_UNDEFINED );
 
-        char_to_room( create_mobile( get_mob_index( MOB_VNUM_CITYGUARD ) ),
-                     ch->in_room );
-        char_to_room( create_mobile( get_mob_index( MOB_VNUM_CITYGUARD ) ),
-                     ch->in_room );
+        /* Check the executioner's current room after the fight. */
+        if (ch->deleted || !ch->in_room)
+                return TRUE;
+
+        guard_index = get_mob_index(MOB_VNUM_CITYGUARD);
+        if (!guard_index)
+        {
+                bug("Spec_executioner: missing cityguard mobile %d.", MOB_VNUM_CITYGUARD);
+                return TRUE;
+        }
+
+        if (!undead_can_spawn_in_room(guard_index, ch->in_room))
+                return TRUE;
+
+        char_to_room(create_mobile(guard_index), ch->in_room);
+        char_to_room(create_mobile(guard_index), ch->in_room);
 
         return TRUE;
 }

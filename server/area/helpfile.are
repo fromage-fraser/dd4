@@ -1204,6 +1204,10 @@ blocking unrelated directions.
 - FOLLOW can no longer bypass temporary summon limits.
 - NO_UNDEAD now checks Gate, Summon Familiar, Summon Demon and Summon Avatar.
 - Missing summoning templates now fail cleanly without creating a mobile.
+- NO_UNDEAD now checks pet purchases, spirit traps and guard reinforcements.
+- Refused pet purchases keep coins and the buyer's pet allowance.
+- Missing spirit and cityguard templates now fail cleanly.
+- Executioners no longer shout an uninitialised message when unable to speak.
 
 ~
 
@@ -1215,8 +1219,9 @@ portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
 the ARENA command, Pattern travel, the deity Transport and Chaos prayers,
 tournament-start transfers, gravity, MPTRANSFER, MPGOTO, MPAT and
 immortal TRANSFER, GOTO and AT. Mobile resets, Animate Dead, MPMLOAD,
-MLOAD, Gate, Summon Familiar, Summon Demon and Summon Avatar cannot
-create undead NPCs here either.
+MLOAD, Gate, Summon Familiar, Summon Demon, Summon Avatar, pet purchases,
+spirit guardian traps and cityguard reinforcements cannot create undead
+NPCs here either.
 Undead mounts and commanded servants have no exception.
 A blocked animation leaves its corpse untouched.
 
@@ -1300,6 +1305,16 @@ creates no creature or follower. A refused Summon Avatar does not redirect
 the fight.
 Gate can still speak its invocation before the room refuses the summon.
 Existing spell limits, bonuses, casting costs and restrictions are unchanged.
+
+Pet shops check the purchased pet's template before taking coins or using
+the buyer's pet allowance. A refused purchase leaves the stock pet alone.
+
+Spirit guardian traps check the spirit template before it appears or attacks.
+The trap still triggers and uses a charge; its other handling is unchanged.
+Extort raids and executioners check the cityguard template before creating
+reinforcements. Only those guards are refused, not the event or its attack.
+Living pets, spirits and guards remain allowed. Missing spirit or guard
+templates are logged and skipped instead of reaching the mobile factory.
 
 Player vampires can enter and leave normally, but the room burns them
 for 30-60 HP each game tick instead of their usual HP regeneration.
@@ -2126,6 +2141,10 @@ type: 'BUY 3.DAGGER'.
 You can buy pets from a pet shop.  You may buy one more pet each time you
 advance in level.  Your pet-buying opportunities do not accumulate; use
 them or lose them.  This policy prevents wholesale abuse of pets.
+
+A shop in a NO_UNDEAD room cannot sell you an undead pet. A refused
+purchase takes no coins and does not use your pet allowance. Living pets
+are still allowed. See HELP NO_UNDEAD.
 
 You are responsible for the actions of your pets.  Conversely, if you attack
 someone else's pet, you will be penalized as if you attacked them.  It is
@@ -7889,6 +7908,9 @@ Syntax: extort <<target>
 This skill is used by a thug to get "protection" money from shopkeepers
 and the like.  There is some risk associated with this skill if the
 shopkeeper is more powerful than the thug.
+
+NO_UNDEAD rooms refuse undead cityguard reinforcements, but the extortion
+event and any shopkeeper attack still happen. Living guards are allowed.
 ~
 
 0 'QP LEVEL'~
