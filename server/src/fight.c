@@ -37,6 +37,8 @@ bool check_dodge args((CHAR_DATA * ch, CHAR_DATA *victim));
 bool check_acrobatics args((CHAR_DATA * ch, CHAR_DATA *victim));
 bool check_aura_of_fear args((CHAR_DATA * ch, CHAR_DATA *victim));
 void check_killer args((CHAR_DATA * ch, CHAR_DATA *victim));
+static bool is_safe_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool notify);
+static bool ordered_attack_is_safe(CHAR_DATA *ch, CHAR_DATA *victim);
 bool check_parry args((CHAR_DATA * ch, CHAR_DATA *victim));
 void dam_message args((CHAR_DATA * ch, CHAR_DATA *victim, int dam, int dt, bool poison, bool crit, RESISTANCE_RESULT resistance_result));
 bool check_shield_block args((CHAR_DATA * ch, CHAR_DATA *victim));
@@ -412,6 +414,9 @@ void violence_update(void)
 void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 {
         int chance;
+
+        if (ordered_attack_is_safe(ch, victim))
+                return;
 
         if (!IS_NPC(ch))
                 ch->pcdata->rounds++;
@@ -1066,6 +1071,9 @@ bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
         int count;
         bool poison;
         bool hit = FALSE;
+
+        if (ordered_attack_is_safe(ch, victim))
+                return FALSE;
 
         for (weapon_pos = WEAR_WIELD, count = 0;
              count < 2;
@@ -1825,6 +1833,9 @@ static void damage_internal(CHAR_DATA *ch,
         resistance_result = RES_RESULT_NORMAL;
         bool dracolich_contact = FALSE;
         int cold_bonus;
+
+        if (!forced_fall && victim != ch && ordered_attack_is_safe(ch, victim))
+                return;
 
         if (victim->position == POS_DEAD)
                 return;
@@ -2646,6 +2657,28 @@ void chat_killer(CHAR_DATA *ch, CHAR_DATA *victim)
  */
 bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim)
 {
+        return is_safe_internal(ch, victim, TRUE);
+}
+
+/* Shared attack paths recheck orders without repeating PvP announcements. */
+static bool ordered_attack_is_safe(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        CHAR_DATA *player;
+
+        return get_ordered_player(ch, &player)
+            && is_safe_internal(ch, victim, FALSE);
+}
+
+static bool is_safe_internal(CHAR_DATA *ch, CHAR_DATA *victim, bool notify)
+{
+        CHAR_DATA *player;
+        bool ordered = get_ordered_player(ch, &player);
+
+        /* Lost or remote authority must not fall back to NPC permissions. */
+        if (ordered && (!player || !victim || victim->deleted
+            || !victim->in_room || player->in_room != ch->in_room))
+                return TRUE;
+
         if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
         {
                 send_to_char("You can't attack them in your current form.\n\r", ch);
@@ -2657,6 +2690,9 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim)
                 send_to_char("You can't attack them in their current form.\n\r", ch);
                 return TRUE;
         }
+
+        if (ordered)
+                return is_safe_internal(player, victim, notify);
 
         if (IS_NPC(victim) && victim->rider)
         {
@@ -2682,19 +2718,22 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (IS_SET(victim->status, PLR_KILLER))
         {
-                chat_killer(ch, victim);
+                if (notify)
+                        chat_killer(ch, victim);
                 return FALSE;
         }
 
         if (IS_SET(victim->in_room->room_flags, ROOM_PLAYER_KILLER))
         {
-                chat_killer(ch, victim);
+                if (notify)
+                        chat_killer(ch, victim);
                 return FALSE;
         }
 
         if (victim->in_room->area->low_level == -4 && victim->in_room->area->high_level == -4 && victim->level > 50 && ch->level > 50)
         {
-                chat_killer(ch, victim);
+                if (notify)
+                        chat_killer(ch, victim);
                 return FALSE;
         }
 
@@ -2710,7 +2749,8 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim)
                 return TRUE;
         }
 
-        chat_killer(ch, victim);
+        if (notify)
+                chat_killer(ch, victim);
         return FALSE;
 }
 
@@ -2719,6 +2759,27 @@ bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim)
  */
 void check_killer(CHAR_DATA *ch, CHAR_DATA *victim)
 {
+        CHAR_DATA *player;
+
+        if (get_ordered_player(ch, &player))
+        {
+                if (!player || !victim || victim->deleted || !victim->in_room
+                ||  player->in_room != ch->in_room)
+                        return;
+
+                /* An existing aggressor may be resisted through a follower. */
+                if (victim->fighting == ch || victim->fighting == player)
+                        return;
+
+                if (ch->rescue_retaliation == victim && ch->fighting == victim
+                &&  ch->in_room == victim->in_room
+                &&  ch->position != POS_DEAD && victim->position != POS_DEAD)
+                        return;
+
+                check_killer(player, victim);
+                return;
+        }
+
         /*
          * A rescue redirects this opponent involuntarily. Only that exact
          * ongoing fight permits retaliation against the voluntary rescuer.
@@ -6402,8 +6463,10 @@ void do_backstab(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
         CHAR_DATA *victim;
+        CHAR_DATA *order_player;
         char arg[MAX_INPUT_LENGTH];
         int assas_chance;
+        bool player_order;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_backstab) && ch->form != FORM_SCORPION)
         {
@@ -6411,7 +6474,9 @@ void do_backstab(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        WAIT_STATE(ch, 2); /* Not too much spam thanks */
+        player_order = get_ordered_player(ch, &order_player);
+        if (!player_order)
+                WAIT_STATE(ch, 2); /* Not too much spam thanks */
 
         one_argument(argument, arg);
 
@@ -6462,6 +6527,9 @@ void do_backstab(CHAR_DATA *ch, char *argument)
 
         if (is_safe(ch, victim))
                 return;
+
+        if (player_order)
+                WAIT_STATE(ch, 2);
 
         if (victim->hit < victim->max_hit && IS_NPC(victim) && !IS_SET(victim->act, ACT_OBJECT) && victim->pIndexData->vnum != BOT_VNUM)
         {

@@ -5734,6 +5734,8 @@ void hunt_victim args((CHAR_DATA * ch));
 void interpret args((CHAR_DATA * ch, char *argument));
 void interpret_ordered args((CHAR_DATA * ch, char *argument,
                             CHAR_DATA * issuer));
+bool get_ordered_player args((CHAR_DATA *actor, CHAR_DATA **player));
+void invalidate_order_context args((CHAR_DATA *ch));
 bool is_number args((char *arg));
 int number_argument args((char *argument, char *arg));
 char *one_argument args((char *argument, char *arg_first));

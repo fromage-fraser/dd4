@@ -37,6 +37,16 @@ char last_function[MAX_STRING_LENGTH];
 bool fLogAll = FALSE;
 static bool player_order_active = FALSE;
 
+typedef struct order_context ORDER_CONTEXT;
+struct order_context
+{
+        ORDER_CONTEXT *previous;
+        CHAR_DATA *actor;
+        CHAR_DATA *player;
+        bool player_order;
+};
+static ORDER_CONTEXT *order_context = NULL;
+
 /*
  * Command logging types.
  */
@@ -2706,17 +2716,75 @@ const struct social_type social_table[] =
         {"",
          NULL, NULL, NULL, NULL, NULL, NULL, NULL}};
 
-/*
- * Player orders retain their permissions through recursive command execution.
- * Autonomous NPC programs do not enter this context.
- */
+/* Do not dereference an order's saved pointers before finding them live. */
+static CHAR_DATA *live_order_character(CHAR_DATA *candidate)
+{
+        CHAR_DATA *ch;
+
+        for (ch = char_list; ch; ch = ch->next)
+        {
+                if (ch == candidate)
+                        return !ch->deleted && ch->in_room
+                            && ch->position != POS_DEAD ? ch : NULL;
+        }
+
+        return NULL;
+}
+
+/* TRUE with no player means the order lost its authority; fail closed. */
+bool get_ordered_player(CHAR_DATA *actor, CHAR_DATA **player)
+{
+        CHAR_DATA *owner;
+
+        *player = NULL;
+        if (!order_context || !order_context->player_order
+        ||  order_context->actor != actor)
+                return FALSE;
+
+        owner = live_order_character(order_context->player);
+        if (live_order_character(actor) && owner
+        &&  !IS_NPC(owner) && owner->pcdata)
+                *player = owner;
+
+        return TRUE;
+}
+
+/* Extraction can recycle a character's address before an order unwinds. */
+void invalidate_order_context(CHAR_DATA *ch)
+{
+        ORDER_CONTEXT *context;
+
+        for (context = order_context; context; context = context->previous)
+        {
+                if (context->player == ch || context->actor == ch)
+                        context->player = NULL;
+        }
+}
+
+/* Player identity follows nested orders, but not another NPC's reactions. */
 void interpret_ordered(CHAR_DATA *ch, char *argument, CHAR_DATA *issuer)
 {
+        ORDER_CONTEXT context;
         bool previous = player_order_active;
+        bool inherited;
 
-        player_order_active = previous || !IS_NPC(issuer)
+        issuer = live_order_character(issuer);
+        if (!issuer || !live_order_character(ch))
+                return;
+
+        context.previous = order_context;
+        context.actor = ch;
+        inherited = order_context && order_context->player_order
+                && order_context->actor == issuer;
+        context.player_order = inherited || !IS_NPC(issuer)
                 || (issuer->desc && issuer->desc->original);
+        context.player = inherited ? order_context->player
+                : !IS_NPC(issuer) ? issuer
+                : issuer->desc ? issuer->desc->original : NULL;
+        order_context = &context;
+        player_order_active = previous || context.player_order;
         interpret(ch, argument);
+        order_context = context.previous;
         player_order_active = previous;
 }
 
