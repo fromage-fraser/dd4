@@ -1209,6 +1209,9 @@ blocking unrelated directions.
 - Missing spirit and cityguard templates now fail cleanly.
 - Executioners no longer shout an uninitialised message when unable to speak.
 - Ordered attacks now use the issuing player's PvP permissions and KILLER rules.
+- NO_UNDEAD now checks single-target and room-wide teleport traps.
+- Teleport traps keep riding pairs together and limit their room search.
+- Room-wide teleport traps no longer run damage handling at the destination.
 
 ~
 
@@ -1218,7 +1221,7 @@ NO_UNDEAD is a permanent room flag, not a spell you cast.
 Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
 portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
 the ARENA command, Pattern travel, the deity Transport and Chaos prayers,
-tournament-start transfers, gravity, MPTRANSFER, MPGOTO, MPAT and
+tournament-start transfers, gravity, teleport traps, MPTRANSFER, MPGOTO, MPAT and
 immortal TRANSFER, GOTO and AT. Mobile resets, Animate Dead, MPMLOAD,
 MLOAD, Gate, Summon Familiar, Summon Demon, Summon Avatar, pet purchases,
 spirit guardian traps and cityguard reinforcements cannot create undead
@@ -1316,6 +1319,19 @@ Extort raids and executioners check the cityguard template before creating
 reinforcements. Only those guards are refused, not the event or its attack.
 Living pets, spirits and guards remain allowed. Missing spirit or guard
 templates are logged and skipped instead of reaching the mobile factory.
+
+Teleport traps choose a destination for each traveller or riding pair.
+A rider and mount travel together, even when the mount set off the trap.
+Room-wide traps collect the original travellers first and process each pair
+once. A failed trip does not cancel the other targets.
+
+The existing NO_RECALL and player-combat restrictions apply to both halves.
+Private and solitary destinations remain excluded. Mounted pairs also stay out
+of NO_MOUNT destinations. Same-room refreshes are not new entry.
+The search stops after 10,000 tries per trip. Failure leaves that traveller
+or pair in place without ending combat. The trap still uses a charge.
+Successful travel clears combat links. Teleport traps do not run damage or
+invisibility-reveal handling in the triggering character's destination.
 
 Player vampires can enter and leave normally, but the room burns them
 for 30-60 HP each game tick instead of their usual HP regeneration.

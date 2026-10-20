@@ -2905,7 +2905,7 @@ pet purchases, spirit guardian traps, cityguard reinforcements,
 MPMLOAD, MLOAD, MPTRANSFER, MPGOTO, MPAT, immortal TRANSFER, GOTO and AT,
 Summon, Teleport, portal entry, Recall, clan Home, Astral Vortex, Banish,
 Mass Teleport, the ARENA command, Pattern travel, the deity Transport
-and Chaos prayers, tournament-start transfers and gravity.
+and Chaos prayers, tournament-start transfers, gravity and teleport traps.
 Undead NPC mounts and servants have no exception. An undead NPC mount
 blocks the whole mounted pair when both are travelling.
 
@@ -2997,6 +2997,19 @@ Extort raids and executioners check the cityguard template before creating
 reinforcements. Only those guards are refused, not the event or its attack.
 Living pets, spirits and guards remain allowed. Missing spirit or guard
 templates are logged and skipped instead of reaching the mobile factory.
+
+Teleport traps choose a destination for each traveller or riding pair.
+A rider and mount travel together, even when the mount set off the trap.
+Room-wide traps collect the original travellers first and process each pair
+once. A failed trip does not cancel the other targets.
+
+The existing NO_RECALL and player-combat restrictions apply to both halves.
+Private and solitary destinations remain excluded. Mounted pairs also stay out
+of NO_MOUNT destinations. Same-room refreshes are not new entry.
+The search stops after 10,000 tries per trip. Failure leaves that traveller
+or pair in place without ending combat. The trap still uses a charge.
+Successful travel clears combat links. Teleport traps do not run damage or
+invisibility-reveal handling in the triggering character's destination.
 
 Player vampires can enter and leave normally. The room burns them for
 30-60 HP each game tick instead of their usual HP regeneration, without
