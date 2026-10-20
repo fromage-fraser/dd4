@@ -7087,12 +7087,13 @@ E.g.    rf  safe healing no_mob
 
 `no_undead` is a permanent room setting, not the temporary Ward Against Undead
 spell. It checks ordinary exit travel (including following, hunting and
-fleeing), mobile resets, Animate Dead, MPMLOAD, MLOAD, MPTRANSFER, MPGOTO,
-MPAT, immortal TRANSFER, GOTO and AT, Summon, Teleport, portal entry,
-Recall, clan Home, Astral Vortex, Banish, Mass Teleport, the `ARENA` command,
-Pattern travel, the deity Transport and Chaos prayers, tournament-start
-transfers and gravity. An undead NPC mount blocks the whole mounted pair
-when both are travelling.
+fleeing), mobile resets, Animate Dead, Gate, Summon Familiar, Summon Demon,
+Summon Avatar, pet purchases, spirit guardian traps, cityguard reinforcements,
+MPMLOAD, MLOAD, MPTRANSFER, MPGOTO, MPAT, immortal TRANSFER,
+GOTO and AT, Summon, Teleport, portal entry, Recall, clan Home, Astral Vortex,
+Banish, Mass Teleport, the `ARENA` command, Pattern travel, the deity Transport
+and Chaos prayers, tournament-start transfers and gravity. An undead NPC
+mount blocks the whole mounted pair when both are travelling.
 
 Recall leaves blocked followers behind instead of cancelling their master's
 trip. The player's own mount is checked with its rider and moves only once.
@@ -7166,6 +7167,25 @@ command is not run; riders and mounts stay behind. A surviving visitor
 returns to the original room even if it has `NO_UNDEAD`. Same-room `AT`
 is not new entry, but the usual private-room check still applies.
 A removed character is not brought back.
+
+Gate, Summon Familiar, Summon Demon and Summon Avatar check the chosen
+mobile template before creating anything. `NO_UNDEAD` refuses only
+creatures whose resolved template is undead, including inheritance and
+individual flag overrides. Living summons remain allowed. A refusal
+creates no creature or follower. A refused Summon Avatar does not redirect
+the fight.
+Gate can still speak its invocation before the room refuses the summon.
+Existing spell limits, bonuses, casting costs and restrictions are unchanged.
+
+Pet shops check the purchased pet's template before taking coins or using
+the buyer's pet allowance. A refused purchase leaves the stock pet alone.
+
+Spirit guardian traps check the spirit template before it appears or attacks.
+The trap still triggers and uses a charge; its other handling is unchanged.
+Extort raids and executioners check the cityguard template before creating
+reinforcements. Only those guards are refused, not the event or its attack.
+Living pets, spirits and guards remain allowed. Missing spirit or guard
+templates are logged and skipped instead of reaching the mobile factory.
 
 Player vampires can enter and leave normally. While they stay here, the room
 burns them for 30-60 HP each game tick instead of their usual HP regeneration.
