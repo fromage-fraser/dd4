@@ -617,9 +617,128 @@ static void sleep_trap_victim(CHAR_DATA *ch, int level, bool room_trap)
 }
 
 
+/*
+ * A teleport trap moves one traveller or riding pair at a time.
+ */
+static void teleport_trap_victim(CHAR_DATA *victim, bool room_trap)
+{
+        CHAR_DATA *companion = NULL;
+        CHAR_DATA *mount = NULL;
+        CHAR_DATA *rider = NULL;
+        CHAR_DATA *rch;
+        ROOM_INDEX_DATA *source;
+        ROOM_INDEX_DATA *destination = NULL;
+        bool pair_ready = FALSE;
+        int attempts;
+        const char *failure = room_trap
+                ? "Wow, that was close... a trap was set off and malfunctioned!\n\r"
+                : "Wow, that was close... you set off a trap and it malfunctioned!\n\r";
+
+        if (!victim || victim->deleted || !victim->in_room
+        ||  victim->position == POS_DEAD)
+                return;
+
+        source = victim->in_room;
+
+        /* A mount can set off the trap too. Take its rider along. */
+        if (victim->rider || victim->mount || is_affected(victim, gsn_mount))
+        {
+                if (victim->rider)
+                {
+                        mount = victim;
+                        rider = victim->rider;
+                        companion = rider;
+                }
+                else
+                {
+                        rider = victim;
+                        mount = victim->mount;
+                        companion = mount;
+                }
+
+                /* Find the partner before following a possibly stale link. */
+                for (rch = source->people; rch; rch = rch->next_in_room)
+                {
+                        if (rch == companion)
+                                break;
+                }
+
+                if (!rch || rch->deleted || rch->position == POS_DEAD
+                ||  companion == victim || companion->in_room != source
+                ||  !IS_NPC(mount) || IS_NPC(rider)
+                ||  rider->mount != mount || mount->rider != rider
+                ||  mount->mount || rider->rider
+                ||  !is_affected(rider, gsn_mount))
+                        goto failed;
+
+                pair_ready = TRUE;
+        }
+
+        if (IS_SET(source->room_flags, ROOM_NO_RECALL)
+        ||  (!IS_NPC(victim) && victim->fighting)
+        ||  (companion && !IS_NPC(companion) && companion->fighting))
+                goto failed;
+
+        /* Keep the old destination rules, but give the search a limit. */
+        for (attempts = 0; attempts < 10000; attempts++)
+        {
+                destination = get_room_index(number_range(0, 65535));
+
+                if (!destination
+                ||  IS_SET(destination->room_flags, ROOM_PRIVATE)
+                ||  IS_SET(destination->room_flags, ROOM_SOLITARY))
+                        continue;
+
+                /* A same-room refresh is not a new arrival. */
+                if (destination != source
+                &&  (!undead_can_travel_to_room(victim, destination)
+                     || (mount
+                         && IS_SET(destination->room_flags, ROOM_NO_MOUNT))))
+                        continue;
+
+                break;
+        }
+
+        if (attempts == 10000)
+                goto failed;
+
+        act("$n slowly fades out of existence.", victim, NULL, NULL, TO_ROOM);
+        if (companion)
+                act("$n slowly fades out of existence.", companion, NULL, NULL, TO_ROOM);
+
+        stop_fighting(victim, TRUE);
+        if (companion)
+                stop_fighting(companion, TRUE);
+
+        GMCPSetArrival(victim->desc, source->vnum, destination->vnum, -1, "forced");
+        if (companion)
+                GMCPSetArrival(companion->desc, source->vnum, destination->vnum, -1, "forced");
+
+        char_from_room(victim);
+        char_to_room(victim, destination);
+        if (companion)
+        {
+                char_from_room(companion);
+                char_to_room(companion, destination);
+        }
+
+        act("$n slowly fades into existence.", victim, NULL, NULL, TO_ROOM);
+        if (companion)
+                act("$n slowly fades into existence.", companion, NULL, NULL, TO_ROOM);
+
+        do_look(victim, "auto");
+        if (companion)
+                do_look(companion, "auto");
+        return;
+
+failed:
+        send_to_char(failure, victim);
+        if (pair_ready)
+                send_to_char(failure, companion);
+}
+
 void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 {
-        ROOM_INDEX_DATA *pRoomIndex;
         AFFECT_DATA af;
         CHAR_DATA *wch;
         int dam = 0;
@@ -762,95 +881,64 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                 break;
 
             case TRAP_DAM_TELEPORT:
-                if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM) ) {
-                        if ( ch->in_room == NULL
-                            ||   IS_SET(ch->in_room->room_flags, ROOM_NO_RECALL)
-                            || ( !IS_NPC(ch) && ch->fighting != NULL ) ) {
-                                send_to_char( "Wow, that was close... you set off a trap and it malfunctioned!\n\r", ch );
-                                return;
-                        }
-
-                        for ( ; ; ) {
-                                pRoomIndex = get_room_index( number_range( 0, 65535 ) );
-                                if ( pRoomIndex != NULL )
-                                        if ( !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
-                                            &&   !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY) )
-                                                break;
-                        }
-
-                        act( "$n slowly fades out of existence.", ch, NULL, NULL, TO_ROOM );
-                        GMCPSetArrival(ch->desc,
-                                ch->in_room->vnum,
-                                pRoomIndex->vnum,
-                                -1,
-                                "forced");
-                        char_from_room( ch );
-                        char_to_room( ch, pRoomIndex );
-                        act( "$n slowly fades into existence.", ch, NULL, NULL, TO_ROOM );
-                        do_look( ch, "auto" );
+                if (ch->deleted || !ch->in_room)
                         return;
-                }
+
+                if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM))
+                        teleport_trap_victim(ch, FALSE);
                 else
                 {
-                        CHAR_DATA *wch_next;
-
-                        for (wch = ch->in_room->people;
-                             wch != NULL;
-                             wch = wch_next)
+                        struct teleport_target
                         {
-                                wch_next = wch->next_in_room;
+                                CHAR_DATA *ch;
+                                struct teleport_target *next;
+                                int deaths;
+                        };
+                        struct teleport_target *targets = NULL;
+                        struct teleport_target **tail = &targets;
+                        struct teleport_target *entry;
+                        ROOM_INDEX_DATA *source = ch->in_room;
 
-                                if (wch->in_room == NULL
-                                ||  IS_SET(wch->in_room->room_flags, ROOM_NO_RECALL)
-                                || (!IS_NPC(wch) && wch->fighting != NULL))
-                                {
-                                        send_to_char(
-                                                "Wow, that was close... a trap was set off and malfunctioned!\n\r",
-                                                wch);
+                        /*
+                         * Save the original targets before anyone moves.
+                         * Riders take their mounts, so do not queue them twice.
+                         */
+                        for (wch = source->people; wch; wch = wch->next_in_room)
+                        {
+                                if (wch->deleted || wch->position == POS_DEAD
+                                ||  wch->rider)
                                         continue;
-                                }
 
-                                for (;;)
-                                {
-                                        pRoomIndex = get_room_index(
-                                                number_range(0, 65535));
+                                entry = alloc_mem(sizeof(*entry));
+                                entry->ch = wch;
+                                entry->deaths = IS_NPC(wch)
+                                        ? 0 : wch->pcdata->killed;
+                                entry->next = NULL;
+                                *tail = entry;
+                                tail = &entry->next;
+                        }
 
-                                        if (pRoomIndex != NULL
-                                        && !IS_SET(pRoomIndex->room_flags, ROOM_PRIVATE)
-                                        && !IS_SET(pRoomIndex->room_flags, ROOM_SOLITARY))
-                                        {
-                                                break;
-                                        }
-                                }
+                        while (targets)
+                        {
+                                int deaths;
 
-                                act(
-                                        "$n slowly fades out of existence.",
-                                        wch,
-                                        NULL,
-                                        NULL,
-                                        TO_ROOM);
+                                entry = targets;
+                                targets = entry->next;
+                                wch = entry->ch;
+                                deaths = entry->deaths;
+                                free_mem(entry, sizeof(*entry));
 
-                                GMCPSetArrival(
-                                        wch->desc,
-                                        wch->in_room->vnum,
-                                        pRoomIndex->vnum,
-                                        -1,
-                                        "forced");
+                                if (wch->deleted || wch->in_room != source
+                                ||  wch->position == POS_DEAD
+                                || (!IS_NPC(wch)
+                                    && wch->pcdata->killed != deaths))
+                                        continue;
 
-                                char_from_room(wch);
-                                char_to_room(wch, pRoomIndex);
-
-                                act(
-                                        "$n slowly fades into existence.",
-                                        wch,
-                                        NULL,
-                                        NULL,
-                                        TO_ROOM);
-
-                                do_look(wch, "auto");
+                                teleport_trap_victim(wch, TRUE);
                         }
                 }
-                break;
+                /* Do not run damage handling in the trigger's new room. */
+                return;
 
             case TRAP_DAM_FIRE:
                 if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM) ) {
