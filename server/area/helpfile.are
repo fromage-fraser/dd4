@@ -1208,6 +1208,7 @@ blocking unrelated directions.
 - Refused pet purchases keep coins and the buyer's pet allowance.
 - Missing spirit and cityguard templates now fail cleanly.
 - Executioners no longer shout an uninitialised message when unable to speak.
+- Ordered attacks now use the issuing player's PvP permissions and KILLER rules.
 
 ~
 

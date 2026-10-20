@@ -2548,6 +2548,8 @@ void extract_char( CHAR_DATA *ch, bool fPull )
             && !cancel_auction("a participant is leaving", TRUE, ch))
                 return;
 
+        invalidate_order_context(ch);
+
         /* Extraction must not leave links to this character behind. */
         if (ch->inside || is_affected(ch, gsn_swallow))
                 strip_swallow(ch);
