@@ -1469,7 +1469,7 @@ bool spec_mummy(CHAR_DATA *ch)
  * mummy-rot contact capability. The separate 25-percent roll controls
  * whether a qualifying contact attempts transmission.
  */
-void mummy_rot_after_hit(CHAR_DATA *ch, CHAR_DATA *victim)
+void mummy_rot_after_hit(CHAR_DATA *ch, CHAR_DATA *victim, int actual_damage)
 {
         AFFECT_DATA af;
         int mummy_weight;
@@ -1477,6 +1477,7 @@ void mummy_rot_after_hit(CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (!ch
         ||  !victim
+        ||  actual_damage <= 0
         ||  ch == victim
         ||  !IS_NPC(ch)
         ||  ch->deleted
@@ -1555,6 +1556,10 @@ void mummy_rot_after_hit(CHAR_DATA *ch, CHAR_DATA *victim)
         af.modifier = -2;
         af.bitvector = 0;
         affect_to_char(victim, &af);
+
+        /* One bounded scar when rot takes hold; later ticks add none. */
+        mark_aggravated_damage(
+            victim, UMIN(actual_damage, UMIN(5, UMAX(1, ch->level / 20))));
 
         act(
             "{dBlack decay spreads beneath $N's skin where you touched $M.{x",
@@ -3554,7 +3559,7 @@ static bool vampire_suck_attack(CHAR_DATA *ch, CHAR_DATA *victim)
         hit_before = victim->hit;
         deaths_before = IS_NPC(victim) ? 0 : victim->pcdata->killed;
 
-        if (!one_hit(ch, victim, gsn_suck, FALSE))
+        if (!aggravated_bite_hit(ch, victim, gsn_suck, FALSE))
                 return TRUE;
 
         if (!victim->deleted

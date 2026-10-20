@@ -2958,6 +2958,7 @@ void spell_regenerate(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int old_affect_count = spell_support_affect_count(victim);
         unsigned long int old_affected_by = victim->affected_by;
+        int repaired;
 
         if (IS_NPC(victim))
         {
@@ -2974,6 +2975,10 @@ void spell_regenerate(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 send_to_char("Ok.\n\r", ch);
         }
+
+        repaired = repair_aggravated_damage(victim, UMAX(1, level));
+        if (repaired > 0)
+                send_to_char("Your deeper wounds begin to regenerate.\n\r", victim);
 
         if (IS_AFFECTED(victim, AFF_EYE_TRAUMA))
         {
@@ -3130,7 +3135,8 @@ void spell_regenerate(int sn, int level, CHAR_DATA *ch, void *vo)
                     TO_ROOM);
         }
 
-        if (spell_support_affect_count(victim) < old_affect_count
+        if (repaired > 0
+        ||  spell_support_affect_count(victim) < old_affect_count
         ||  (old_affected_by & ~victim->affected_by) != 0)
         {
                 credit_group_support(ch, victim);
@@ -4474,7 +4480,17 @@ void spell_energy_drain(int sn, int level, CHAR_DATA *ch, void *vo)
                 victim->edrain = 5;
         }
 
-        damage(ch, victim, dam, sn, FALSE);
+        if (IS_NPC(ch)
+        &&  (mob_has_special(ch, spec_lookup("spec_wight"))
+          || mob_has_special(ch, spec_lookup("spec_wraith"))
+          || mob_has_special(ch, spec_lookup("spec_spectre"))))
+        {
+                /* A small share of the normal hit, not another HP loss. */
+                damage_with_aggravated_component(
+                    ch, victim, dam, sn, FALSE, 100, 2, 5);
+        }
+        else
+                damage(ch, victim, dam, sn, FALSE);
         return;
 }
 
@@ -9030,7 +9046,8 @@ void spell_lend_health(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        hpch = UMIN(100, victim->max_hit - victim->hit);
+        hpch = (int)UMIN(100,
+            (long long)aggravated_healing_limit(victim) - victim->hit);
 
         if (hpch < 1)
         {
@@ -9038,13 +9055,18 @@ void spell_lend_health(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (ch->hit - hpch < 100)
+        if ((long long)ch->hit - hpch < 100)
         {
                 send_to_char("You aren't healthy enough yourself!\n\r", ch);
                 return;
         }
 
-        victim->hit += hpch;
+        hpch = heal_hit_points(victim, hpch);
+        if (hpch < 1)
+        {
+                act("Nice thought, but $N doesn't need healing.", ch, NULL, victim, TO_CHAR);
+                return;
+        }
         ch->hit -= hpch;
         update_pos(victim);
         update_pos(ch);
@@ -9493,7 +9515,8 @@ void spell_wither(int sn, int level, CHAR_DATA *ch, void *vo)
                 act("$c drains $N's life essence away!", ch, NULL, victim, TO_NOTVICT);
         }
 
-        damage(ch, victim, dam, sn, FALSE);
+        damage_with_aggravated_component(
+            ch, victim, dam, sn, FALSE, 100, 5, 0);
 }
 
 void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -12795,7 +12818,9 @@ void spell_fleshrot(int sn, int level, CHAR_DATA *ch, void *vo)
         act("<49>Malodorous ropes of putrid smoke stream from $n's hands!<0>", ch, NULL, NULL, TO_ROOM);
         act("You inflict a hideous disease upon $N!", ch, NULL, victim, TO_CHAR);
         send_to_char("<107>Your flesh begins to crack and blister!<0>\n\r", victim);
-        damage(ch, victim, number_range(1, ch->level / 2), gsn_fleshrot, FALSE);
+        damage_with_aggravated_component(
+            ch, victim, number_range(1, ch->level / 2), gsn_fleshrot,
+            FALSE, 100, 100, UMIN(5, UMAX(1, level / 20)));
 
         if (add_blind)
         {

@@ -1527,7 +1527,9 @@ void do_wolfbite (CHAR_DATA *ch, char *argument)
         if (number_percent() < ch->pcdata->learned[gsn_wolfbite])
         {
                 arena_commentary("$n bites $N.", ch, victim);
-                damage(ch, victim, number_range(ch->level*3, ch->level*5), gsn_wolfbite, FALSE);
+                damage_with_aggravated_component(ch, victim,
+                    number_range(ch->level*3, ch->level*5), gsn_wolfbite,
+                    FALSE, 20, 10, 0);
         }
         else
                 damage (ch, victim, 0, gsn_wolfbite, FALSE);

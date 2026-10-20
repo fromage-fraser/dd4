@@ -27,6 +27,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <limits.h>
 #include "merc.h"
 #include "webgate.h"
 #include "sound.h"
@@ -1180,6 +1181,18 @@ void gain_exp(CHAR_DATA *ch, int gain)
         }
 }
 
+/* Positive regeneration cannot cross the aggravated healing ceiling. */
+static int capped_hit_gain(CHAR_DATA *ch, int gain)
+{
+        long long room;
+
+        if (gain <= 0)
+                return gain;
+
+        room = (long long)aggravated_healing_limit(ch) - ch->hit;
+        return (int)UMIN((long long)gain, UMAX(0LL, room));
+}
+
 int hit_gain(CHAR_DATA *ch)
 {
         CHAR_DATA *gch;
@@ -1210,7 +1223,7 @@ int hit_gain(CHAR_DATA *ch)
                         gain = 0;
                 }
 
-                return UMIN(gain, ch->max_hit - ch->hit);
+                return capped_hit_gain(ch, gain);
         }
 
         gain = UMAX(5, ch->level / 2);
@@ -1423,8 +1436,12 @@ int hit_gain(CHAR_DATA *ch)
 
         if (is_affected(ch, gsn_song_of_rejuvenation))
         {
-                amt = (ch->pcdata->learned[gsn_song_of_rejuvenation]) * ch->level / 100;
-                gain += amt;
+                amt = (int)UMIN((long long)INT_MAX,
+                    (long long)UMAX(0, ch->pcdata->learned[gsn_song_of_rejuvenation])
+                    * UMAX(0, ch->level) / 100);
+                if (amt > 0)
+                        repair_aggravated_damage(ch, UMAX(1, amt / 10));
+                gain = (int)UMIN((long long)INT_MAX, (long long)gain + amt);
                 send_to_char("{YYour song fills you with warmth; you feel rejuvenated.\n\r{x", ch);
 
                 for (gch = char_list; gch; gch = gch->next)
@@ -1435,15 +1452,17 @@ int hit_gain(CHAR_DATA *ch)
                         if (ch == gch)
                                 continue;
 
-                        if ((is_same_group(gch, ch)) && (ch->in_room == gch->in_room))
+                        if ((is_same_group(gch, ch)) && (ch->in_room == gch->in_room)
+                        &&  !(IS_NPC(gch) && IS_SET(gch->act, ACT_NO_HEAL)))
                         {
-                                if (gch->hit < gch->max_hit)
+                                int repaired = amt > 0
+                                    ? repair_aggravated_damage(gch, UMAX(1, amt / 10)) : 0;
+                                int healed = heal_hit_points(gch, amt);
+
+                                if (healed > 0 || repaired > 0)
                                 {
                                         act("{Y$N's song fills you with warmth; you feel rejuvenated.{x", gch, NULL, ch,
                                             TO_CHAR);
-                                        gch->hit += amt;
-                                        if (gch->hit > gch->max_hit)
-                                                gch->hit = gch->max_hit;
                                         update_pos(gch);
                                 }
                         }
@@ -1458,15 +1477,7 @@ int hit_gain(CHAR_DATA *ch)
         if (IS_AFFECTED(ch, AFF_HEART_TRAUMA))
                 gain /= 2;
 
-        if (ch->hit > ch->max_hit)
-        {
-                if (gain >= 0)
-                        return 0;
-                else
-                        return gain;
-        }
-
-        return UMIN(gain, ch->max_hit - ch->hit);
+        return capped_hit_gain(ch, gain);
 }
 
 int mana_gain(CHAR_DATA *ch)
@@ -2307,7 +2318,10 @@ void char_update(void)
                                     UMAX(0, ch->hit - 1));
                         }
 
-                        ch->hit += hit_change;
+                        if (hit_change > 0)
+                                heal_hit_points(ch, hit_change);
+                        else
+                                ch->hit += hit_change;
 
                         if (ch->aggro_dam > 0)
                                 ch->aggro_dam -= UMIN(ch->level / 8, ch->aggro_dam);
