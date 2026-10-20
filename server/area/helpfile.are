@@ -1201,6 +1201,7 @@ blocking unrelated directions.
 - Testris now supplies birch rods for 750 copper.
 - Ordinary combat hits now play their impact sound once.
 - Sleeping players no longer join fights automatically.
+- FOLLOW can no longer bypass temporary summon limits.
 
 ~
 

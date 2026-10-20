@@ -1644,6 +1644,16 @@ void do_follow(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /* Keep temporary summons tied to their master while in use. */
+        if (IS_NPC(ch) && ch->master
+        &&  IS_SET(ch->act, ACT_DIE_IF_MASTER_GONE)
+        &&  victim != ch->master
+        &&  (victim != ch || ch->fighting))
+        {
+                act("But you'd rather follow $N!", ch, NULL, ch->master, TO_CHAR);
+                return;
+        }
+
         if (victim == ch)
         {
                 if (!ch->master)
