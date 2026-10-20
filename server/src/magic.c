@@ -4745,6 +4745,33 @@ void spell_fly(int sn, int level, CHAR_DATA *ch, void *vo)
         return;
 }
 
+/*
+ * Check the finished template before a summoning spell creates anything.
+ */
+static MOB_INDEX_DATA *summon_template_for_room(CHAR_DATA *ch, int mob_vnum)
+{
+        MOB_INDEX_DATA *index;
+
+        if (!ch || ch->deleted || !ch->in_room)
+                return NULL;
+
+        index = get_mob_index(mob_vnum);
+        if (!index)
+        {
+                bug("Summoning: missing mobile vnum %d.", mob_vnum);
+                send_to_char("The summoning fails; no creature appears.\n\r", ch);
+                return NULL;
+        }
+
+        if (!undead_can_spawn_in_room(index, ch->in_room))
+        {
+                send_to_char("The room's ward prevents the summoning.\n\r", ch);
+                return NULL;
+        }
+
+        return index;
+}
+
 void spell_gate(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA     *gch;
@@ -4754,7 +4781,7 @@ void spell_gate(int sn, int level, CHAR_DATA *ch, void *vo)
         int            npccount = 0;
         int            pccount = 0;
 
-        if (!ch || !ch->in_room)
+        if (!ch || ch->deleted || !ch->in_room)
                 return;
 
         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
@@ -4801,13 +4828,10 @@ void spell_gate(int sn, int level, CHAR_DATA *ch, void *vo)
                 break;
         }
 
-        pMobIndex = get_mob_index(mob_vnum);
-
+        /* The spoken call can run a mob program, so check the current room. */
+        pMobIndex = summon_template_for_room(ch, mob_vnum);
         if (!pMobIndex)
-        {
-                bug("Spell_gate: missing mobile vnum %d.", mob_vnum);
                 return;
-        }
 
         mob = create_mobile(pMobIndex);
 
@@ -7003,10 +7027,15 @@ void spell_summon(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_summon_familiar(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        MOB_INDEX_DATA *index;
+        int mob_vnum;
         char buf[MAX_STRING_LENGTH];
         bool in_sc_room;
         int obj_spellcraft_bonus;
         int mod_room_bonus;
+
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
 
         in_sc_room = FALSE;
         obj_spellcraft_bonus = get_spellcraft_obj_bonus(ch);
@@ -7030,16 +7059,22 @@ void spell_summon_familiar(int sn, int level, CHAR_DATA *ch, void *vo)
         }
 
         if (ch->level < 25)
-                victim = (create_mobile(get_mob_index(MOB_VNUM_PONY)));
+                mob_vnum = MOB_VNUM_PONY;
 
         else if (ch->level < 50)
-                victim = (create_mobile(get_mob_index(MOB_VNUM_HORSE)));
+                mob_vnum = MOB_VNUM_HORSE;
 
         else if (ch->level < 75)
-                victim = (create_mobile(get_mob_index(MOB_VNUM_PEGASUS)));
+                mob_vnum = MOB_VNUM_PEGASUS;
 
         else
-                victim = (create_mobile(get_mob_index(MOB_VNUM_SILVER)));
+                mob_vnum = MOB_VNUM_SILVER;
+
+        index = summon_template_for_room(ch, mob_vnum);
+        if (!index)
+                return;
+
+        victim = create_mobile(index);
 
         if (in_sc_room)
                 send_to_char("{MThe use of spellcrafting reagents increases the hardiness of your familiar!\n\r{x", ch);
@@ -7060,11 +7095,16 @@ void spell_summon_familiar(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_summon_demon(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *mob;
+        MOB_INDEX_DATA *index;
+        int mob_vnum;
         char buf[MAX_STRING_LENGTH];
         int count;
         bool in_sc_room;
         int obj_spellcraft_bonus;
         int mod_room_bonus;
+
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
 
         in_sc_room = FALSE;
         obj_spellcraft_bonus = get_spellcraft_obj_bonus(ch);
@@ -7099,12 +7139,19 @@ void spell_summon_demon(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
+        mob_vnum = (ch->class == CLASS_SHAPE_SHIFTER)
+                 ? MOB_VNUM_LESSER : MOB_VNUM_DEMON;
+        index = summon_template_for_room(ch, mob_vnum);
+        if (!index)
+                return;
+
+        mob = create_mobile(index);
+
         if (in_sc_room)
                 send_to_char("{MThe use of spellcrafting resources increases the power of your demon!\n\r{x", ch);
 
         if (ch->class == CLASS_SHAPE_SHIFTER)
         {
-                mob = create_mobile(get_mob_index(MOB_VNUM_LESSER));
                 mob->level = (in_sc_room) ? ((ch->level * mod_room_bonus) / 100) - 10 : ch->level - 10;
                 if (mob->level > ch->level)
                         mob->level = ch->level;
@@ -7113,7 +7160,6 @@ void spell_summon_demon(int sn, int level, CHAR_DATA *ch, void *vo)
         }
         else
         {
-                mob = create_mobile(get_mob_index(MOB_VNUM_DEMON));
                 mob->level = (in_sc_room) ? ((ch->level * mod_room_bonus) / 100) - 10 : ch->level - 10;
                 if (mob->level > ch->level)
                         mob->level = ch->level;
@@ -7138,8 +7184,12 @@ void spell_summon_avatar(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         CHAR_DATA *target = (CHAR_DATA *)vo;
         CHAR_DATA *rch;
+        MOB_INDEX_DATA *index;
         int count;
         char buf[MAX_STRING_LENGTH];
+
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
 
         if (!ch->fighting)
         {
@@ -7170,8 +7220,12 @@ void spell_summon_avatar(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
+        index = summon_template_for_room(ch, MOB_VNUM_WOLF);
+        if (!index)
+                return;
+
         target = ch->fighting;
-        victim = (create_mobile(get_mob_index(MOB_VNUM_WOLF)));
+        victim = create_mobile(index);
         char_to_room(victim, ch->in_room);
 
         sprintf(buf, "You call to your brethren to aid you in battle, a %s enters the fray.\n\r",

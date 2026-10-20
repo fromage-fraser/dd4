@@ -2900,10 +2900,11 @@ ROOM_ flags:
 
 ROOM_NO_UNDEAD is a permanent room flag, separate from the planned Ward
 Against Undead spell. It checks ordinary exit travel, mobile resets,
-Animate Dead, MPMLOAD, MLOAD, MPTRANSFER, MPGOTO, MPAT, immortal TRANSFER,
-GOTO and AT, Summon, Teleport, portal entry, Recall, clan Home, Astral
-Vortex, Banish, Mass Teleport, the ARENA command, Pattern travel, the
-deity Transport and Chaos prayers, tournament-start transfers and gravity.
+Animate Dead, Gate, Summon Familiar, Summon Demon, Summon Avatar,
+MPMLOAD, MLOAD, MPTRANSFER, MPGOTO, MPAT, immortal TRANSFER, GOTO and AT,
+Summon, Teleport, portal entry, Recall, clan Home, Astral Vortex, Banish,
+Mass Teleport, the ARENA command, Pattern travel, the deity Transport
+and Chaos prayers, tournament-start transfers and gravity.
 Undead NPC mounts and servants have no exception. An undead NPC mount
 blocks the whole mounted pair when both are travelling.
 
@@ -2976,6 +2977,15 @@ command is not run; riders and mounts stay behind. A surviving visitor
 returns to the original room even if it has NO_UNDEAD. Same-room AT
 is not new entry, but the usual private-room check still applies.
 A removed character is not brought back.
+
+Gate, Summon Familiar, Summon Demon and Summon Avatar check the chosen
+mobile template before creating anything. NO_UNDEAD refuses only
+creatures whose resolved template is undead, including inheritance and
+individual flag overrides. Living summons remain allowed. A refusal
+creates no creature or follower. A refused Summon Avatar does not redirect
+the fight.
+Gate can still speak its invocation before the room refuses the summon.
+Existing spell limits, bonuses, casting costs and restrictions are unchanged.
 
 Player vampires can enter and leave normally. The room burns them for
 30-60 HP each game tick instead of their usual HP regeneration, without
