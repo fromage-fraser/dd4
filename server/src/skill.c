@@ -3293,6 +3293,7 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
 {
         CHAR_DATA *victim;
         CHAR_DATA *guardian_mob;
+        MOB_INDEX_DATA *guard_index;
         SHOP_DATA *store;
         char       buf [ MAX_INPUT_LENGTH ];
         char       target [ MAX_INPUT_LENGTH  ];
@@ -3529,17 +3530,44 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
                         act("\n\rRAID!!\n\r", extortionist, NULL, victim, TO_ROOM);
                         send_to_char("You've been set up!\n\r", extortionist);
                         multi_hit( victim, extortionist, TYPE_UNDEFINED);
+
+                        /* The fight may have removed us or changed rooms. */
+                        if (extortionist->deleted || !extortionist->in_room)
+                                break;
+
+                        guard_index = get_mob_index(MOB_VNUM_CITYGUARD);
+                        if (!guard_index)
+                        {
+                                bug("Do_extort: missing cityguard mobile %d.", MOB_VNUM_CITYGUARD);
+                                break;
+                        }
+
+                        if (!undead_can_spawn_in_room(guard_index, extortionist->in_room))
+                                break;
+
                         for( index = 1; index <= number_of_guards; index++ )
                         {
-                                char_to_room( create_mobile( get_mob_index( MOB_VNUM_CITYGUARD ) ),
-                                             extortionist->in_room );
+                                char_to_room(create_mobile(guard_index),
+                                             extortionist->in_room);
                         }
                         break;
 
                     case 6 :
                         send_to_char("Damn, here comes the law, better look innocent.\n\r", extortionist);
-                        char_to_room( create_mobile( get_mob_index( MOB_VNUM_CITYGUARD ) ),
-                                     extortionist->in_room );
+                        if (extortionist->deleted || !extortionist->in_room)
+                                break;
+
+                        guard_index = get_mob_index(MOB_VNUM_CITYGUARD);
+                        if (!guard_index)
+                        {
+                                bug("Do_extort: missing cityguard mobile %d.", MOB_VNUM_CITYGUARD);
+                                break;
+                        }
+
+                        if (!undead_can_spawn_in_room(guard_index, extortionist->in_room))
+                                break;
+
+                        char_to_room(create_mobile(guard_index), extortionist->in_room);
                         break;
 
                 default :
