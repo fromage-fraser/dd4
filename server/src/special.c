@@ -3999,8 +3999,6 @@ bool spec_bloodsucker( CHAR_DATA *ch )
  */
 bool spec_spectral_minion (CHAR_DATA* ch)
 {
-        int destination;
-
         const int rooms [40] =
         {
                 30655, 30670, 30671, 30672, 30673, 30674, 30675, 30676, 30679, 30680,
@@ -4009,9 +4007,19 @@ bool spec_spectral_minion (CHAR_DATA* ch)
                 30767, 30770, 30771, 30773, 30775, 30777, 30779, 30783, 30784, 30769
         };
 
+        ROOM_INDEX_DATA *allowed[sizeof rooms / sizeof rooms[0]];
+        ROOM_INDEX_DATA *destination;
+        ROOM_INDEX_DATA *candidate;
+        int allowed_count = 0;
+        int i;
         static int timer = 5;
 
-        if (!IS_NPC(ch) || ch->fighting || !IS_AWAKE(ch))
+        if (!ch || ch->deleted || !ch->in_room
+        ||  !IS_NPC(ch) || ch->fighting || !IS_AWAKE(ch))
+                return FALSE;
+
+        /* Wait rather than pulling a riding arrangement apart. */
+        if (ch->rider || ch->mount || is_affected(ch, gsn_mount))
                 return FALSE;
 
         if (--timer > 0)
@@ -4019,18 +4027,29 @@ bool spec_spectral_minion (CHAR_DATA* ch)
 
         timer = 5;
 
-        while (1)
+        /* Check the fixed list once, then choose among the usable rooms. */
+        for (i = 0; i < (int)(sizeof rooms / sizeof rooms[0]); i++)
         {
-                destination = rooms [number_range (0, 39)];
+                candidate = get_room_index(rooms[i]);
 
-                if (destination != ch->in_room->vnum)
-                        break;
+                if (!candidate || candidate == ch->in_room
+                ||  !undead_can_enter_room(ch, candidate))
+                        continue;
+
+                allowed[allowed_count++] = candidate;
         }
+
+        if (allowed_count == 0)
+                return FALSE;
+
+        destination = allowed[number_range(0, allowed_count - 1)];
 
         act ("{wA spectral figure shimmers and disappears before your eyes.{x",
              ch, NULL, NULL, TO_ROOM);
+        GMCPSetArrival(ch->desc, ch->in_room->vnum,
+                       destination->vnum, -1, "forced");
         char_from_room (ch);
-        char_to_room (ch, get_room_index(destination));
+        char_to_room (ch, destination);
         act ("{wA spectral figure materialises before you and issues a blood-chilling shriek.{x",
              ch, NULL, NULL, TO_ROOM);
 
