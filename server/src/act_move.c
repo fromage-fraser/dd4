@@ -847,6 +847,12 @@ static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
 
                         else if (fch->master == ch)
                         {
+                                if (IS_AFFECTED(fch, AFF_DAZED))
+                                {
+                                        send_to_char("You see STARS. You are dazed.\n\r", fch);
+                                        continue;
+                                }
+
                                 /* Match the interpreter's revealing-command cleanup.
                                  * An attempted follow reveals even if movement fails;
                                  * Chameleon form and independently owned Hide survive.
@@ -1471,7 +1477,8 @@ void do_climb(CHAR_DATA *ch, char *argument)
                                 act("You misjudge completely the $d, and tumble down.",
                                     ch, NULL, pexit->keyword, TO_CHAR);
                                 ch->position = POS_RESTING;
-                                damage(ch, ch, ch->level / 2, gsn_climb, FALSE);
+                                if (!is_noncorporeal_player(ch))
+                                        damage(ch, ch, ch->level / 2, gsn_climb, FALSE);
                                 update_pos(ch);
                                 return;
                         }
@@ -1483,7 +1490,8 @@ void do_climb(CHAR_DATA *ch, char *argument)
                         act("You begin to climb the $d but lose your footing and fall!", ch, NULL, pexit->keyword, TO_CHAR);
                         act("$n tries to scale the $d, but looses his footing.", ch,
                             NULL, pexit->keyword, TO_ROOM);
-                        damage(ch, ch, ch->level / 2, gsn_climb, FALSE);
+                        if (!is_noncorporeal_player(ch))
+                                damage(ch, ch, ch->level / 2, gsn_climb, FALSE);
                         ch->position = POS_RESTING;
                         update_pos(ch);
                         return;
@@ -2412,7 +2420,8 @@ void do_sleep(CHAR_DATA *ch, char *argument)
                             ch, NULL, ch->mount, TO_NOTVICT);
                         act("$n falls asleep - and off your back.",
                             ch, NULL, ch->mount, TO_VICT);
-                        damage(ch, ch, number_range(10, ch->mount->level), TYPE_UNDEFINED, FALSE);
+                        if (!is_noncorporeal_player(ch))
+                                damage(ch, ch, number_range(10, ch->mount->level), TYPE_UNDEFINED, FALSE);
                         if (ch->mount)
                         {
                                 strip_mount(ch);
@@ -2497,6 +2506,13 @@ void do_mist_walk(CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch))
                 return;
+
+        /* Entry must not escape combat, including incoming-only attacks. */
+        if (is_in_combat(ch))
+        {
+                send_to_char("You cannot become non-corporeal while fighting.\n\r", ch);
+                return;
+        }
 
         if (ch->form == FORM_BAT)
         {
@@ -2940,7 +2956,7 @@ void do_recall(CHAR_DATA *ch, char *argument)
                         if (pobj->deleted)
                                 continue;
 
-                        if (IS_SET(pobj->extra_flags, ITEM_CURSED))
+                        if (obj_contains_cursed_item(pobj))
                         {
                                 sprintf(buf, "The gods will not assist carriers of cursed items.\n\r");
                                 send_to_char(buf, ch);
@@ -3198,7 +3214,7 @@ void do_home(CHAR_DATA *ch, char *argument)
                 if (pobj->deleted)
                         continue;
 
-                if (IS_SET(pobj->extra_flags, ITEM_CURSED))
+                if (obj_contains_cursed_item(pobj))
                 {
                         send_to_char("The gods will not assist carriers of cursed items.\n\r", ch);
                         return;
@@ -4226,7 +4242,7 @@ void do_pattern(CHAR_DATA *ch, char *argument)
                 if (pobj->deleted)
                         continue;
 
-                if (IS_SET(pobj->extra_flags, ITEM_CURSED))
+                if (obj_contains_cursed_item(pobj))
                 {
                         send_to_char("You are carrying a cursed item that prevents magical travel.\n\r", ch);
                         return;

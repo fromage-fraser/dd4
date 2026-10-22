@@ -601,6 +601,7 @@ void game_loop_unix(int control, int wizPort)
         while (!merc_down)
         {
                 DESCRIPTOR_DATA *d;
+                CHAR_DATA *ch;
                 fd_set in_set;
                 fd_set out_set;
                 fd_set exc_set;
@@ -690,6 +691,14 @@ void game_loop_unix(int control, int wizPort)
                                 d->outtop = 0;
                                 close_socket(d);
                         }
+                }
+
+                /* Descriptorless followers recover at the same pulse rate. */
+                for (ch = char_list; ch; ch = ch->next)
+                {
+                        if (!ch->deleted && IS_NPC(ch) && !ch->desc
+                        &&  ch->wait > 0)
+                                --ch->wait;
                 }
 
                 /*

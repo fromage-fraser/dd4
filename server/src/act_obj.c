@@ -3565,11 +3565,20 @@ void do_enter(CHAR_DATA *ch, char *argument)
                 save_char_obj(ch);
 }
 
+/* A consumed spell may kill and respawn its user without deleting them. */
+static bool consumable_user_alive(CHAR_DATA *ch, int killed)
+{
+        return !ch->deleted && ch->in_room && ch->position != POS_DEAD
+            && (IS_NPC(ch) || ch->pcdata->killed == killed);
+}
+
 void do_eat(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
         OBJ_DATA *pouch;
         char arg[MAX_INPUT_LENGTH];
+        int killed;
+        int slot;
 
         one_argument(argument, arg);
 
@@ -3690,6 +3699,7 @@ void do_eat(CHAR_DATA *ch, char *argument)
 
         act("You eat $p.", ch, obj, NULL, TO_CHAR);
         act("$n eats $p.", ch, obj, NULL, TO_ROOM);
+        killed = IS_NPC(ch) ? 0 : ch->pcdata->killed;
 
         switch (obj->item_type)
         {
@@ -3731,18 +3741,25 @@ void do_eat(CHAR_DATA *ch, char *argument)
                         act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
                 else
                 {
-                        obj_cast_spell(obj->value[1], obj->value[0], ch, ch, NULL);
-                        obj_cast_spell(obj->value[2], obj->value[0], ch, ch, NULL);
-                        obj_cast_spell(obj->value[3], obj->value[0], ch, ch, NULL);
+                        for (slot = 1; slot <= 3; slot++)
+                        {
+                                if (obj->deleted || !consumable_user_alive(ch, killed))
+                                        break;
+                                obj_cast_spell(obj->value[slot], obj->value[0], ch, ch, NULL);
+                        }
                 }
-                media_play_consume_sfx_room(ch->in_room, CONSUME_ACT_PILL, ch);
+                if (consumable_user_alive(ch, killed))
+                        media_play_consume_sfx_room(ch->in_room, CONSUME_ACT_PILL, ch);
                 break;
         }
 
-        if (ch->fighting)
+        if (consumable_user_alive(ch, killed) && ch->fighting)
                 WAIT_STATE(ch, PULSE_VIOLENCE / 2);
 
-        extract_obj(obj);
+        if (!obj->deleted)
+                extract_obj(obj);
+        if (!consumable_user_alive(ch, killed))
+                return;
         /* After eating, notify web clients of inventory and equipment update */
         if (!IS_NPC(ch) && ch->desc)
         {
@@ -5010,6 +5027,8 @@ void do_quaff(CHAR_DATA *ch, char *argument)
         OBJ_DATA *obj;
         OBJ_DATA *pouch;
         char arg[MAX_INPUT_LENGTH];
+        int killed;
+        int slot;
 
         one_argument(argument, arg);
 
@@ -5093,21 +5112,26 @@ void do_quaff(CHAR_DATA *ch, char *argument)
         act("You quaff $p.", ch, obj, NULL, TO_CHAR);
         act("$n quaffs $p.", ch, obj, NULL, TO_ROOM);
         media_play_consume_sfx_room(ch->in_room, CONSUME_ACT_QUAFF, ch);
+        killed = IS_NPC(ch) ? 0 : ch->pcdata->killed;
 
         if (obj->level > ch->level)
                 act("$p is too high level for you.", ch, obj, NULL, TO_CHAR);
         else
         {
                 obj->level = obj->value[0];
-                obj_cast_spell(obj->value[1], obj->level, ch, ch, NULL);
-                obj_cast_spell(obj->value[2], obj->level, ch, ch, NULL);
-                obj_cast_spell(obj->value[3], obj->level, ch, ch, NULL);
+                for (slot = 1; slot <= 3; slot++)
+                {
+                        if (obj->deleted || !consumable_user_alive(ch, killed))
+                                break;
+                        obj_cast_spell(obj->value[slot], obj->level, ch, ch, NULL);
+                }
         }
 
-        if (ch->fighting)
+        if (consumable_user_alive(ch, killed) && ch->fighting)
                 WAIT_STATE(ch, PULSE_VIOLENCE / 2);
 
-        extract_obj(obj);
+        if (!obj->deleted)
+                extract_obj(obj);
         return;
 }
 
@@ -5722,6 +5746,44 @@ void do_zap(CHAR_DATA *ch, char *argument)
         return;
 }
 
+/* Keep carried-only numbering, using the thief's sight rather than the owner's. */
+static OBJ_DATA *get_steal_obj(CHAR_DATA *ch, CHAR_DATA *victim, char *argument)
+{
+        OBJ_DATA *obj;
+        char arg[MAX_INPUT_LENGTH];
+        int number;
+        int count = 0;
+        uint64_t target_id;
+
+        if (parse_target_id(argument, &target_id))
+        {
+                for (obj = victim->carrying; obj; obj = obj->next_content)
+                {
+                        if (obj->deleted || obj->wear_loc != WEAR_NONE
+                        ||  obj->target_id != target_id)
+                                continue;
+
+                        return can_see_obj(ch, obj) ? obj : NULL;
+                }
+
+                return NULL;
+        }
+
+        number = number_argument(argument, arg);
+
+        for (obj = victim->carrying; obj; obj = obj->next_content)
+        {
+                if (!obj->deleted && obj->wear_loc == WEAR_NONE
+                &&  can_see_obj(ch, obj) && is_name(arg, obj->name))
+                {
+                        if (++count == number)
+                                return obj;
+                }
+        }
+
+        return NULL;
+}
+
 void do_steal(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
@@ -5902,7 +5964,7 @@ void do_steal(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!(obj = get_obj_carry(victim, arg1)))
+        if (!(obj = get_steal_obj(ch, victim, arg1)))
         {
                 send_to_char("You can't find it.\n\r", ch);
                 return;
@@ -7325,9 +7387,11 @@ void do_brew(CHAR_DATA *ch, char *argument)
         if (in_sc_room)
                 send_to_char("{MYour brew's strength will be increased by the use of spellcrafting resources!{x\n\r", ch);
 
+        if (!spell_imprint(sn, ch->level, ch, obj))
+                return;
+
         obj->level = ch->level;
         obj->value[0] = (in_sc_room) ? (ch->level / 2 * mod_room_bonus) / 100 : ch->level / 2;
-        spell_imprint(sn, ch->level, ch, obj);
 
         if (skill_table[sn].target == TAR_CHAR_SELF)
         {
@@ -7411,9 +7475,11 @@ void do_scribe(CHAR_DATA *ch, char *argument)
         if (in_sc_room)
                 send_to_char("{MYour scroll's power will be increased by the use of spellcrafting resources!{x\n\r", ch);
 
+        if (!spell_imprint(sn, ch->level, ch, obj))
+                return;
+
         obj->level = ch->level;
         obj->value[0] = (in_sc_room) ? (ch->level / 2 * mod_room_bonus) / 100 : ch->level / 2;
-        spell_imprint(sn, ch->level, ch, obj);
 
         if (skill_table[sn].target == TAR_CHAR_SELF)
         {

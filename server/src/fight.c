@@ -46,6 +46,7 @@ void death_cry args((CHAR_DATA * ch));
 void group_gain args((CHAR_DATA * ch, CHAR_DATA *victim, bool mob_called));
 int xp_compute args((CHAR_DATA * gch, CHAR_DATA *victim));
 void make_corpse args((CHAR_DATA * ch));
+static OBJ_DATA *disarm_weapon args((CHAR_DATA *victim));
 void disarm args((CHAR_DATA * ch, CHAR_DATA *victim));
 void trip args((CHAR_DATA * ch, CHAR_DATA *victim));
 void use_magical_item args((CHAR_DATA * ch));
@@ -86,6 +87,32 @@ const char *purgatory_message =
     "and strange whispers are heard from all directions.\n\r\n\r"
     "After an age, your head clears.  You stand bewildered in the hazy\n\r"
     "gloom of the Underworld...\n\r\n\r";
+
+bool is_noncorporeal_player(CHAR_DATA *ch)
+{
+        return ch && !IS_NPC(ch) && IS_AFFECTED(ch, AFF_NON_CORPOREAL);
+}
+
+/* Incoming attacks count even before the target has chosen an opponent. */
+bool is_in_combat(CHAR_DATA *ch)
+{
+        CHAR_DATA *fch;
+
+        if (!ch || ch->deleted || !ch->in_room || ch->position == POS_DEAD)
+                return FALSE;
+
+        for (fch = char_list; fch; fch = fch->next)
+        {
+                if (fch == ch || fch->deleted || fch->in_room != ch->in_room
+                ||  fch->position == POS_DEAD)
+                        continue;
+
+                if (fch == ch->fighting || fch->fighting == ch)
+                        return TRUE;
+        }
+
+        return FALSE;
+}
 
 /*
  * Control the fights going on.
@@ -194,8 +221,23 @@ void violence_update(void)
                 if (!ch->in_room || ch->deleted)
                         continue;
 
+                if (is_noncorporeal_player(ch))
+                {
+                        if (ch->fighting || ch->position == POS_FIGHTING
+                        ||  is_in_combat(ch))
+                                stop_fighting(ch, TRUE);
+                        continue;
+                }
+
                 if ((victim = ch->fighting))
                 {
+                        if (victim->deleted || !victim->in_room
+                        ||  is_noncorporeal_player(victim))
+                        {
+                                stop_fighting(ch, FALSE);
+                                continue;
+                        }
+
                         if (IS_AWAKE(ch) && ch->in_room == victim->in_room)
                                 multi_hit(ch, victim, TYPE_UNDEFINED);
                         else
@@ -226,7 +268,11 @@ void violence_update(void)
 
                 for (rch = ch->in_room->people; rch; rch = rch->next_in_room)
                 {
-                        if (rch->deleted || !IS_AWAKE(rch) || (rch == ch) || !(victim = rch->fighting))
+                        if (rch->deleted || !IS_AWAKE(rch) || (rch == ch)
+                        ||  is_noncorporeal_player(rch)
+                        ||  !(victim = rch->fighting)
+                        ||  victim->deleted || !victim->in_room
+                        ||  is_noncorporeal_player(victim))
                                 continue;
 
                         if (IS_NPC(ch) && ch->fighting == NULL && IS_AWAKE(ch) && ch->hunting != NULL)
@@ -328,7 +374,7 @@ void violence_update(void)
                              vch;
                              vch = vch->next_in_room)
                         {
-                                if (vch->deleted)
+                                if (vch->deleted || is_noncorporeal_player(vch))
                                         continue;
 
                                 if (can_see(ch, vch)
@@ -419,6 +465,9 @@ void violence_update(void)
 void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 {
         int chance;
+
+        if (is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
+                return;
 
         if (ordered_attack_is_safe(ch, victim))
                 return;
@@ -1090,6 +1139,9 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
         bool poison;
         bool hit = FALSE;
 
+        if (is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
+                return FALSE;
+
         if (ordered_attack_is_safe(ch, victim))
                 return FALSE;
 
@@ -1097,6 +1149,9 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
              count < 2;
              weapon_pos = WEAR_DUAL, count++)
         {
+
+                if (is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
+                        break;
 
                 /* For ACT_NO_FIGHT mobs -- Owl 3/2/24 */
 
@@ -1569,6 +1624,7 @@ void check_group_bonus(CHAR_DATA *ch, CHAR_DATA *victim)
         ||  IS_NPC(ch) || !ch->pcdata || !ch->in_room
         ||  ch == victim
         ||  ch->position == POS_DEAD || victim->position == POS_DEAD
+        ||  is_noncorporeal_player(ch) || is_noncorporeal_player(victim)
         ||  is_same_group(ch, victim))
                 return;
 
@@ -1579,7 +1635,7 @@ void check_group_bonus(CHAR_DATA *ch, CHAR_DATA *victim)
                 if (ch == vch)
                         continue;
 
-                if (vch->deleted)
+                if (vch->deleted || is_noncorporeal_player(vch))
                         continue;
 
                 if (IS_NPC(vch))
@@ -1792,6 +1848,10 @@ bool forced_fall_damage(CHAR_DATA *ch, int dam)
 
         source = ch->fall_source_id;
         clear_fall_source(ch);
+        /* A phased player has no physical impact, including a credited fall. */
+        if (is_noncorporeal_player(ch))
+                return TRUE;
+
         if (source)
                 for (vch = char_list; vch; vch = vch->next)
                         if (vch->fall_credit_id == source && vch != ch
@@ -1883,6 +1943,10 @@ static void damage_internal(CHAR_DATA *ch,
         int hit_before;
         int actual_damage;
 
+        if (!forced_fall && victim != ch
+        &&  (is_noncorporeal_player(ch) || is_noncorporeal_player(victim)))
+                return;
+
         if (!forced_fall && victim != ch && ordered_attack_is_safe(ch, victim))
                 return;
 
@@ -1946,7 +2010,8 @@ static void damage_internal(CHAR_DATA *ch,
                         dam += cold_bonus;
         }
 
-        if ((!forced_fall || ch != victim) && !IS_NPC(ch))
+        if ((!forced_fall || ch != victim) && !IS_NPC(ch)
+        &&  !is_noncorporeal_player(ch))
                 ch->pcdata->dam_per_fight += dam;
 
         if (!forced_fall && !IS_NPC(ch) && (ch->position == POS_STANDING) && IS_AFFECTED(ch, AFF_BONUS_INITIATE))
@@ -1979,7 +2044,7 @@ static void damage_internal(CHAR_DATA *ch,
                         /*
                          * If victim is charmed, ch might attack victim's master
                          */
-                        if (IS_NPC(ch) && IS_NPC(victim) && IS_AFFECTED(victim, AFF_CHARM) && victim->master && victim->master->in_room == ch->in_room && number_bits(3) == 0 && !ch->mount)
+                        if (IS_NPC(ch) && IS_NPC(victim) && IS_AFFECTED(victim, AFF_CHARM) && victim->master && !victim->master->deleted && !is_noncorporeal_player(victim->master) && victim->master->in_room == ch->in_room && number_bits(3) == 0 && !ch->mount)
                         {
                                 change_fighting(ch, victim->master);
                                 return;
@@ -2372,7 +2437,8 @@ static void damage_internal(CHAR_DATA *ch,
         }
 
         /* this is for exp (damage bonus) */
-        if ((ch != victim) && IS_NPC(victim) && (!IS_NPC(ch) && (ch->level - victim->level < 6)) && (!IS_SET(victim->act, ACT_UNKILLABLE)))
+        if ((ch != victim) && IS_NPC(victim) && (!IS_NPC(ch) && (ch->level - victim->level < 6))
+        &&  !is_noncorporeal_player(ch) && !IS_SET(victim->act, ACT_UNKILLABLE))
                 ch->pcdata->dam_bonus += dam;
 
         if (is_affected(victim, gsn_berserk) && (victim->position <= POS_STUNNED))
@@ -3419,6 +3485,9 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
         bool transition;
         bool was_active;
 
+        if (is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
+                return;
+
         if (ch->fighting)
         {
                 bug("Set_fighting: already fighting", 0);
@@ -3607,6 +3676,9 @@ void clear_rescue_retaliation(CHAR_DATA *ch)
 void change_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         bool transition = ch->combat_stealth_transition;
+
+        if (is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
+                return;
 
         ch->combat_stealth_transition = TRUE;
         stop_fighting(ch, FALSE);
@@ -4262,9 +4334,13 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim,
         npc_members = 0;
         pc_members = 0;
 
+        /* Phased players stay grouped without changing combat reward shares. */
         for (gch = solo ? ch : room->people; gch;
              gch = solo ? NULL : gch->next_in_room)
         {
+                if (is_noncorporeal_player(gch))
+                        continue;
+
                 if (survivors_only && (gch->deleted || gch->in_room != room))
                         continue;
 
@@ -4299,7 +4375,7 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim,
                 }
         }
 
-        if (survivors_only && (members == 0 || tlevel <= 0))
+        if (members == 0 || tlevel <= 0)
                 return;
 
         for (gch = solo ? ch : room->people; gch;
@@ -4309,6 +4385,9 @@ static void group_gain_internal(CHAR_DATA *ch, CHAR_DATA *victim,
                 OBJ_DATA *obj_next;
                 total_xp = 0;
                 total_message = 0;
+
+                if (is_noncorporeal_player(gch))
+                        continue;
 
                 if (survivors_only
                     && (gch->deleted || gch->position == POS_DEAD
@@ -4940,6 +5019,14 @@ void dam_message(CHAR_DATA *ch,
         return;
 }
 
+/* Keep offhand-first selection and item protections on the same weapon. */
+static OBJ_DATA *disarm_weapon(CHAR_DATA *victim)
+{
+        OBJ_DATA *obj = get_eq_char(victim, WEAR_DUAL);
+
+        return obj ? obj : get_eq_char(victim, WEAR_WIELD);
+}
+
 /*
  * Disarm a creature.
  * Caller must check for successful attack.
@@ -4949,7 +5036,7 @@ void disarm(CHAR_DATA *ch, CHAR_DATA *victim)
         OBJ_DATA *obj;
         int chance;
 
-        if (!(obj = get_eq_char(victim, WEAR_WIELD)))
+        if (!(obj = disarm_weapon(victim)))
                 return;
 
         if (!check_blind(ch))
@@ -5004,8 +5091,6 @@ void disarm(CHAR_DATA *ch, CHAR_DATA *victim)
         act("$n {GDISARMS{x $N!", ch, NULL, victim, TO_NOTVICT);
         arena_commentary("$n disarms $N.", ch, victim);
 
-        if (get_eq_char(victim, WEAR_DUAL))
-                obj = get_eq_char(victim, WEAR_DUAL);
         obj_from_char(obj);
 
         if (IS_NPC(victim))
@@ -7189,7 +7274,7 @@ void do_flee(CHAR_DATA *ch, char *argument)
                                 check_fame_table(ch);
                         }
 
-                        if (ch->pcdata->dam_bonus > 0)
+                        if (!is_noncorporeal_player(ch) && ch->pcdata->dam_bonus > 0)
                         {
                                 if (ch->level < LEVEL_HERO)
                                 {
@@ -7222,6 +7307,12 @@ void do_bomb(CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch) && !mob_has_special(ch, spec_lookup("spec_superwimpy")))
                 return;
+
+        if (!IS_NPC(ch) && !CAN_DO(ch, gsn_bomb))
+        {
+                send_to_char("You don't know how to do that.\n\r", ch);
+                return;
+        }
 
         if (ch->flee_attempt)
                 return;
@@ -7384,6 +7475,12 @@ void do_rescue(CHAR_DATA *ch, char *argument)
 
         char arg[MAX_INPUT_LENGTH];
 
+        if (is_noncorporeal_player(ch))
+        {
+                send_to_char("Not in your current form.\n\r", ch);
+                return;
+        }
+
         if (IS_NPC(ch) && (ch->master))
         {
                 /*
@@ -7440,7 +7537,7 @@ void do_rescue(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!(victim->fighting))
+        if (is_noncorporeal_player(victim) || !(victim->fighting))
         {
                 send_to_char("That person is not fighting right now.\n\r", ch);
                 return;
@@ -7469,7 +7566,7 @@ void do_rescue(CHAR_DATA *ch, char *argument)
                 if (ch == vch)
                         continue;
 
-                if (vch->deleted)
+                if (vch->deleted || is_noncorporeal_player(vch))
                         continue;
 
                 if (vch->fighting == victim)
@@ -7507,7 +7604,7 @@ void do_rescue(CHAR_DATA *ch, char *argument)
         if (!IS_NPC(ch) && !IS_NPC(vch))
                 vch->rescue_retaliation = ch;
 
-        if (!IS_NPC(ch))
+        if (!IS_NPC(ch) && !is_noncorporeal_player(ch))
                 ch->pcdata->group_support_bonus += 1;
 }
 
@@ -9250,7 +9347,7 @@ void do_disarm(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        obj = get_eq_char(victim, WEAR_WIELD);
+        obj = disarm_weapon(victim);
 
         if (!obj)
         {

@@ -2772,6 +2772,10 @@ void interpret_ordered(CHAR_DATA *ch, char *argument, CHAR_DATA *issuer)
         if (!issuer || !live_order_character(ch))
                 return;
 
+        /* Orders must not bypass the follower's recovery time. */
+        if (IS_NPC(ch) && ch->wait > 0)
+                return;
+
         context.previous = order_context;
         context.actor = ch;
         inherited = order_context && order_context->player_order
