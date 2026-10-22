@@ -1954,7 +1954,7 @@ void pray_for_release (CHAR_DATA* ch)
         REMOVE_BIT (ch->pcdata->deity_flags, DEITY_PFLAG_RELEASE_ATTEMPT);
 
         for (next = 0; next < NUMBER_DEITIES; next++)
-                update_player_favour (ch, patron);
+                update_player_favour (ch, next);
 
         sprintf (buf, "Deity %d (%s) has released %s from service",
                  patron,

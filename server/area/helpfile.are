@@ -1218,6 +1218,26 @@ blocking unrelated directions.
   bounded aggravated wounds; rot adds these only when first applied.
 - The Bastion spectral minion now respects NO_UNDEAD when teleporting.
 - Missing minion destinations are skipped, and ridden minions stay put.
+- DISARM now checks and removes the same weapon, including offhand-only weapons.
+- Bastion spectral minions now keep separate teleport countdowns.
+- BOMB now requires the skill and a form that can use it.
+- Acid breath corrosion now reduces worn armour protection correctly.
+- Dazed followers no longer move automatically after their leader.
+- Ordered followers now respect recovery waits, which also expire without a link.
+- STEAL now finds carried items using the thief's sight.
+- Confusion no longer moves sleepers who cannot wake.
+- Morphing now finishes gear and strength changes before checking weapon weight.
+- Silenced players can no longer speak through ordered pets.
+- EAT and QUAFF stop casting further spells after the consumer dies.
+- Fleshrot no longer adds eye damage after a lethal hit.
+- Cursed items inside bags now block magical travel and can be detected.
+- GMCP room descriptions now respect blindness, sleep and darkness.
+- Room-wide teleport traps retain each traveller's original combat restriction.
+- Failed BREW and SCRIBE no longer change existing potency or ownership.
+- Non-corporeal players stay grouped but sit out combat and combat experience.
+- Phasing cannot begin during combat; returning to corporeal form remains allowed.
+- Phased players are protected from falls, drowning and physical trap impacts.
+- Patron release now refreshes eligibility for every deity.
 
 ~
 

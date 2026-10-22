@@ -52,6 +52,8 @@ static bool credit_group_support(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         if (!ch || !victim || ch->deleted || victim->deleted
         ||  IS_NPC(ch) || !ch->pcdata || ch == victim
+        ||  is_noncorporeal_player(ch)
+        ||  is_noncorporeal_player(victim)
         ||  !is_same_group(ch, victim))
         {
                 return FALSE;
@@ -1573,6 +1575,8 @@ void spell_armor(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 send_to_char("They are now protected.\n\r", ch);
                 if (!IS_NPC(ch)
+                &&  !is_noncorporeal_player(ch)
+                &&  !is_noncorporeal_player(victim)
                 &&  is_same_group(ch, victim))
                 {
                         ch->pcdata->group_support_bonus += 1;
@@ -1601,7 +1605,7 @@ void spell_astral_vortex(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (pobj->deleted)
                         continue;
 
-                if (IS_SET(pobj->extra_flags, ITEM_CURSED))
+                if (obj_contains_cursed_item(pobj))
                 {
                         send_to_char("You are carrying a cursed item that prevents magical travel.\n\r", ch);
                         return;
@@ -1724,6 +1728,8 @@ void spell_bless(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 send_to_char("They are surrounded by righteousness.\n\r", ch);
                 if (!IS_NPC(ch)
+                &&  !is_noncorporeal_player(ch)
+                &&  !is_noncorporeal_player(victim)
                 &&  is_same_group(ch, victim))
                 {
                         ch->pcdata->group_support_bonus += 1;
@@ -2439,6 +2445,8 @@ void spell_cure_critical(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 send_to_char("Ok.\n\r", ch);
                 if (!IS_NPC(ch)
+                &&  !is_noncorporeal_player(ch)
+                &&  !is_noncorporeal_player(victim)
                 &&  is_same_group(ch, victim)
                 &&  (victim->hit > old_hit
                 ||   (was_confused && !IS_AFFECTED(victim, AFF_CONFUSION))))
@@ -2545,6 +2553,8 @@ void spell_cure_light(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 send_to_char("Ok.\n\r", ch);
                 if (!IS_NPC(ch)
+                &&  !is_noncorporeal_player(ch)
+                &&  !is_noncorporeal_player(victim)
                 &&  is_same_group(ch, victim)
                 &&  victim->hit > old_hit)
                 {
@@ -2942,6 +2952,8 @@ void spell_cure_serious(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 send_to_char("Ok.\n\r", ch);
                 if (!IS_NPC(ch)
+                &&  !is_noncorporeal_player(ch)
+                &&  !is_noncorporeal_player(victim)
                 &&  is_same_group(ch, victim)
                 &&  victim->hit > old_hit)
                 {
@@ -5054,6 +5066,8 @@ void spell_heal(int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char("Ok.\n\r", ch);
 
                 if (!IS_NPC(ch)
+                &&  !is_noncorporeal_player(ch)
+                &&  !is_noncorporeal_player(victim)
                 &&  is_same_group(ch, victim)
                 &&  (victim->hit > old_hit
                 ||   (was_confused && !IS_AFFECTED(victim, AFF_CONFUSION))))
@@ -5201,6 +5215,8 @@ void spell_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 send_to_char("Ok.\n\r", ch);
                 if (!IS_NPC(ch)
+                &&  !is_noncorporeal_player(ch)
+                &&  !is_noncorporeal_player(victim)
                 &&  is_same_group(ch, victim)
                 &&  (victim->hit > old_hit
                 ||   (was_confused && !IS_AFFECTED(victim, AFF_CONFUSION))))
@@ -6538,7 +6554,7 @@ static void spell_mass_alignment_protection(CHAR_DATA *ch,
 
                 added_protection = TRUE;
 
-                if (gch != ch)
+                if (gch != ch && !is_noncorporeal_player(gch))
                         support_recipient = gch;
         }
 
@@ -6688,6 +6704,8 @@ void spell_refresh(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 send_to_char("Ok.\n\r", ch);
                 if (!IS_NPC(ch)
+                &&  !is_noncorporeal_player(ch)
+                &&  !is_noncorporeal_player(victim)
                 &&  victim->move > old_move
                 &&  is_same_group(ch, victim))
                 {
@@ -6819,6 +6837,8 @@ void spell_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
         act("<15>$c is surrounded by a white aura.<0>", victim, NULL, NULL, TO_ROOM);
 
         if (!IS_NPC(ch)
+        &&  !is_noncorporeal_player(ch)
+        &&  !is_noncorporeal_player(victim)
         &&  ch != victim
         &&  is_same_group(ch, victim))
         {
@@ -6897,6 +6917,8 @@ void spell_shield(int sn, int level, CHAR_DATA *ch, void *vo)
         act("$n is surrounded by a force shield.", victim, NULL, NULL, TO_ROOM);
 
         if (!IS_NPC(ch)
+        &&  !is_noncorporeal_player(ch)
+        &&  !is_noncorporeal_player(victim)
         &&  ch != victim
         &&  is_same_group(ch, victim))
         {
@@ -7278,7 +7300,7 @@ void spell_teleport(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (pobj->deleted)
                         continue;
 
-                if (IS_SET(pobj->extra_flags, ITEM_CURSED))
+                if (obj_contains_cursed_item(pobj))
                 {
                         send_to_char("You are carrying a cursed item that prevents magical travel.\n\r", ch);
                         return;
@@ -7451,7 +7473,7 @@ void spell_banish(int sn, int level, CHAR_DATA *ch, void *vo)
                 for (obj = traveller->carrying; obj; obj = obj->next_content)
                 {
                         if (!obj->deleted
-                        &&  IS_SET(obj->extra_flags, ITEM_CURSED))
+                        &&  obj_contains_cursed_item(obj))
                                 goto failed;
                 }
 
@@ -7663,12 +7685,12 @@ void spell_acid_breath(int sn, int level, CHAR_DATA *ch, void *vo)
                                         act("{Y$p is pitted and etched!{x",
                                             victim, obj_lose, NULL, TO_CHAR);
                                         if ((iWear = obj_lose->wear_loc) != WEAR_NONE)
-                                                victim->armor -= apply_ac(obj_lose, iWear);
+                                                victim->armor += apply_ac(obj_lose, iWear);
                                         obj_lose->value[0] -= 1;
                                         obj_lose->cost = 0;
 
                                         if (iWear != WEAR_NONE)
-                                                victim->armor += apply_ac(obj_lose, iWear);
+                                                victim->armor -= apply_ac(obj_lose, iWear);
                                 }
                                 break;
 
@@ -9519,7 +9541,7 @@ void spell_wither(int sn, int level, CHAR_DATA *ch, void *vo)
             ch, victim, dam, sn, FALSE, 100, 5, 0);
 }
 
-void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
+bool spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         OBJ_DATA *obj = (OBJ_DATA *)vo;
         int sp_slot, spells, i, mana;
@@ -9528,7 +9550,7 @@ void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
         if (skill_table[sn].spell_fun == spell_null)
         {
                 send_to_char("That is not a spell.\n\r", ch);
-                return;
+                return FALSE;
         }
 
         /* Sparse spell slots must preserve every existing enchantment. */
@@ -9545,7 +9567,7 @@ void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
         if (sp_slot == 0)
         {
                 act("$p cannot contain any more spells.", ch, obj, NULL, TO_CHAR);
-                return;
+                return FALSE;
         }
 
         /* scribe/brew costs 4 times the normal mana required to cast the spell */
@@ -9555,14 +9577,14 @@ void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
         if (!IS_NPC(ch) && ch->mana < mana)
         {
                 send_to_char("You don't have enough mana.\n\r", ch);
-                return;
+                return FALSE;
         }
 
         if (number_percent() > ch->pcdata->learned[sn])
         {
                 send_to_char("You lost your concentration.\n\r", ch);
                 ch->mana -= mana / 2;
-                return;
+                return FALSE;
         }
 
         /* executing the imprinting process */
@@ -9576,7 +9598,7 @@ void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
         {
         default:
                 bug("sp_slot has more than %d spells.", spells + 1);
-                return;
+                return FALSE;
 
         case 1:
                 if (number_percent() > 80)
@@ -9584,7 +9606,7 @@ void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
                         sprintf(buf, "The magic enchantment has failed --- the %s vanishes.\n\r", item_type_name(obj));
                         send_to_char(buf, ch);
                         extract_obj(obj);
-                        return;
+                        return FALSE;
                 }
                 break;
 
@@ -9594,7 +9616,7 @@ void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
                         sprintf(buf, "The magic enchantment has failed --- the %s vanishes.\n\r", item_type_name(obj));
                         send_to_char(buf, ch);
                         extract_obj(obj);
-                        return;
+                        return FALSE;
                 }
                 break;
 
@@ -9604,7 +9626,7 @@ void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
                         sprintf(buf, "The magic enchantment has failed --- the %s vanishes.\n\r", item_type_name(obj));
                         send_to_char(buf, ch);
                         extract_obj(obj);
-                        return;
+                        return FALSE;
                 }
                 break;
         }
@@ -9637,7 +9659,7 @@ void spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
         sprintf(buf, "You have imbued the %s with a new spell.\n\r", item_type_name(obj));
         send_to_char(buf, ch);
 
-        return;
+        return TRUE;
 }
 
 void OLD_spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -9752,7 +9774,8 @@ void spell_prayer(int sn, int level, CHAR_DATA *ch, void *vo)
                         af.modifier = -level / 6;
                         affect_to_char(gch, &af);
 
-                        if (gch != ch && !gch->deleted)
+                        if (gch != ch && !gch->deleted
+                        &&  !is_noncorporeal_player(gch))
                                 support_recipient = gch;
 
                         send_to_char("You feel _very_ righteous.\n\r", gch);
@@ -9865,7 +9888,8 @@ void spell_mass_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
                 af.bitvector = AFF_SANCTUARY;
                 affect_to_char(gch, &af);
 
-                if (gch != ch && !gch->deleted)
+                if (gch != ch && !gch->deleted
+                &&  !is_noncorporeal_player(gch))
                         support_recipient = gch;
 
                 send_to_char("<15>You are surrounded by a white aura.<0>\n\r", gch);
@@ -9936,6 +9960,7 @@ void spell_mass_heal(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if (gch != ch
                 &&  !gch->deleted
+                &&  !is_noncorporeal_player(gch)
                 &&  (gch->hit > old_hit
                 ||   (was_confused && !IS_AFFECTED(gch, AFF_CONFUSION))))
                 {
@@ -10013,6 +10038,7 @@ void spell_mass_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if (gch != ch
                 &&  !gch->deleted
+                &&  !is_noncorporeal_player(gch)
                 &&  (gch->hit > old_hit
                 ||   (was_confused && !IS_AFFECTED(gch, AFF_CONFUSION))))
                 {
@@ -11121,6 +11147,12 @@ void spell_astral_sidestep(int sn, int level, CHAR_DATA *ch, void *vo)
         if (is_affected(ch, gsn_astral_sidestep))
                 return;
 
+        if (is_in_combat(ch))
+        {
+                send_to_char("You cannot become non-corporeal while fighting.\n\r", ch);
+                return;
+        }
+
         af.type = sn;
         af.duration = number_fuzzy(level / 10);
         af.location = APPLY_NONE;
@@ -11238,6 +11270,8 @@ void spell_haste(int sn, int level, CHAR_DATA *ch, void *vo)
                     victim);
 
                 if (!IS_NPC(ch)
+                &&  !is_noncorporeal_player(ch)
+                &&  !is_noncorporeal_player(victim)
                 &&  ch != victim
                 &&  !is_affected(victim, gsn_slow)
                 &&  !IS_AFFECTED(victim, AFF_SLOW)
@@ -11268,6 +11302,8 @@ void spell_haste(int sn, int level, CHAR_DATA *ch, void *vo)
             victim);
 
         if (!IS_NPC(ch)
+        &&  !is_noncorporeal_player(ch)
+        &&  !is_noncorporeal_player(victim)
         &&  ch != victim
         &&  is_same_group(ch, victim))
         {
@@ -12733,6 +12769,7 @@ void spell_fleshrot(int sn, int level, CHAR_DATA *ch, void *vo)
         int blind_chance;
         int blind_ceiling;
         int dot_dam;
+        int killed;
 
         bool add_blind = FALSE;
         int duration = (number_fuzzy(level) / 5);
@@ -12818,9 +12855,15 @@ void spell_fleshrot(int sn, int level, CHAR_DATA *ch, void *vo)
         act("<49>Malodorous ropes of putrid smoke stream from $n's hands!<0>", ch, NULL, NULL, TO_ROOM);
         act("You inflict a hideous disease upon $N!", ch, NULL, victim, TO_CHAR);
         send_to_char("<107>Your flesh begins to crack and blister!<0>\n\r", victim);
+        killed = IS_NPC(victim) ? 0 : victim->pcdata->killed;
         damage_with_aggravated_component(
             ch, victim, number_range(1, ch->level / 2), gsn_fleshrot,
             FALSE, 100, 100, UMIN(5, UMAX(1, level / 20)));
+
+        /* Death must not carry eye damage into a player's new life. */
+        if (victim->deleted || !victim->in_room || victim->position == POS_DEAD
+        ||  (!IS_NPC(victim) && victim->pcdata->killed != killed))
+                return;
 
         if (add_blind)
         {

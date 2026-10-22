@@ -3921,7 +3921,7 @@ bool is_cursed(CHAR_DATA *ch)
                 if (pobj->deleted)
                         continue;
 
-                if ( IS_SET(pobj->extra_flags, ITEM_CURSED) )
+                if (obj_contains_cursed_item(pobj))
                 {
                         return TRUE;
                 }

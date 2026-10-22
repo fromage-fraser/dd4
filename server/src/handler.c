@@ -932,6 +932,19 @@ static void check_weapon_weight(CHAR_DATA *ch, OBJ_DATA *weapon)
 }
 
 
+/* Keep transient strength changes from dropping gear during a whole morph. */
+void begin_form_equipment_update(void)
+{
+        affect_update_depth++;
+}
+
+void end_form_equipment_update(CHAR_DATA *ch)
+{
+        affect_update_depth--;
+        check_weapon_weight(ch, NULL);
+}
+
+
 /*
  * Apply or remove an affect to a character.
  */
@@ -1214,6 +1227,11 @@ void affect_to_char_source(CHAR_DATA *ch, AFFECT_DATA *paf,
         ch->affected = paf_new;
 
         affect_modify_source(ch, paf_new, TRUE, NULL, source_type, source_id);
+
+        /* Phasing ends combat references while preserving group membership. */
+        if ((paf_new->bitvector & AFF_NON_CORPOREAL)
+        &&  is_noncorporeal_player(ch))
+                stop_fighting(ch, TRUE);
 }
 
 
@@ -5485,6 +5503,26 @@ int advatoi( const char *s )
 }
 
 
+/* Magical travel and carried-curse detection follow ITEM_CURSED into bags. */
+bool obj_contains_cursed_item(const OBJ_DATA *obj)
+{
+        const OBJ_DATA *content;
+
+        if (!obj || obj->deleted)
+                return FALSE;
+
+        if (IS_OBJ_STAT(obj, ITEM_CURSED))
+                return TRUE;
+
+        for (content = obj->contains; content; content = content->next_content)
+        {
+                if (obj_contains_cursed_item(content))
+                        return TRUE;
+        }
+
+        return FALSE;
+}
+
 /* Detect cursed flags and curse spells only in type-specific spell slots. */
 bool obj_is_cursed(const OBJ_DATA *obj)
 {
@@ -5493,7 +5531,7 @@ bool obj_is_cursed(const OBJ_DATA *obj)
 
         if (IS_OBJ_STAT(obj, ITEM_NODROP)
         ||  IS_OBJ_STAT(obj, ITEM_NOREMOVE)
-        ||  IS_OBJ_STAT(obj, ITEM_CURSED))
+        ||  obj_contains_cursed_item(obj))
                 return TRUE;
 
         switch (obj->item_type)

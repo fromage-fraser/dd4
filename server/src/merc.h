@@ -2972,6 +2972,7 @@ struct char_data
         time_t save_time;
         time_t last_note;
         int timer;
+        int spectral_minion_timer; /* Eligible special calls until teleport. */
         int wait;
         int hit;
         int max_hit;
@@ -5289,7 +5290,7 @@ DECLARE_SPELL_FUN(spell_resist_acid);
 DECLARE_SPELL_FUN(spell_hells_fire);
 DECLARE_SPELL_FUN(spell_chaos_blast);
 DECLARE_SPELL_FUN(spell_detect_curse);
-DECLARE_SPELL_FUN(spell_imprint);
+bool spell_imprint args((int sn, int level, CHAR_DATA *ch, void *vo));
 DECLARE_SPELL_FUN(spell_slow);
 DECLARE_SPELL_FUN(spell_stabilise);
 DECLARE_SPELL_FUN(spell_steam_breath);
@@ -5548,6 +5549,8 @@ void invalidate_fall_source args((CHAR_DATA *ch));
 bool forced_fall_damage args((CHAR_DATA *ch, int dam));
 void update_pos args((CHAR_DATA * victim));
 void set_fighting args((CHAR_DATA * ch, CHAR_DATA *victim));
+bool is_in_combat args((CHAR_DATA *ch));
+bool is_noncorporeal_player args((CHAR_DATA *ch));
 void stop_fighting args((CHAR_DATA * ch, bool fBoth));
 void change_fighting args((CHAR_DATA *ch, CHAR_DATA *victim));
 void clear_rescue_retaliation args((CHAR_DATA *ch));
@@ -5893,6 +5896,8 @@ bool refund_auction_bid args((void));
 bool cancel_auction args((const char *reason, bool return_item,
                          CHAR_DATA *leaving));
 void form_equipment_update(CHAR_DATA *ch);
+void begin_form_equipment_update(void);
+void end_form_equipment_update(CHAR_DATA *ch);
 int check_stat_advance(CHAR_DATA *ch, int stat);
 bool check_questpoints_allow_level_gain(CHAR_DATA *ch, bool verbose);
 void recharge_bonuses(CHAR_DATA *ch);
@@ -5943,6 +5948,7 @@ bool is_piercing_weapon(OBJ_DATA *obj);
 bool is_carving_weapon(OBJ_DATA *obj);
 bool is_magnetic(OBJ_DATA *obj);
 bool obj_is_cursed(const OBJ_DATA *obj);
+bool obj_contains_cursed_item(const OBJ_DATA *obj);
 bool is_cursed(CHAR_DATA *ch);
 int scale_pipe(int limit_level, int load_level, int base_value, bool higher_bad);
 

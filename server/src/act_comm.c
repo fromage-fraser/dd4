@@ -71,8 +71,14 @@ static CHAR_DATA *comm_identity(CHAR_DATA *ch)
 
 bool is_silenced(CHAR_DATA *ch)
 {
-        CHAR_DATA *identity = comm_identity(ch);
+        CHAR_DATA *identity;
 
+        /* Ordered speech also retains the responsible player's restrictions. */
+        if (get_ordered_player(ch, &identity)
+        &&  (!identity || IS_SET(identity->act, PLR_SILENCE)))
+                return TRUE;
+
+        identity = comm_identity(ch);
         return identity && !IS_NPC(identity)
                 && IS_SET(identity->act, PLR_SILENCE);
 }
@@ -513,11 +519,6 @@ void talk_channel(CHAR_DATA *ch, char *argument, int channel, const char *verb)
         {
                 sprintf(buf, "You can't %s.\n\r", verb);
                 send_to_char(buf, ch);
-                return;
-        }
-
-        if (IS_NPC(ch) && ch->master && !IS_NPC(ch->master) && IS_SET(ch->master->act, PLR_SILENCE))
-        {
                 return;
         }
 

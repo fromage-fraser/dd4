@@ -2487,10 +2487,13 @@ void char_update(void)
                                         send_to_char("Your mind swirls in a fog of confusion.\n\r", ch);
                                         do_wake(ch, "");
                                 }
-                                send_to_char("You stumble about clumsily.\n\r\n\r", ch);
-                                act("$c staggers about in confusion.", ch, NULL, NULL, TO_ROOM);
-                                move_char(ch, door);
-                                act("$c looks very confused and uncertain.", ch, NULL, NULL, TO_ROOM);
+                                if (IS_AWAKE(ch))
+                                {
+                                        send_to_char("You stumble about clumsily.\n\r\n\r", ch);
+                                        act("$c staggers about in confusion.", ch, NULL, NULL, TO_ROOM);
+                                        move_char(ch, door);
+                                        act("$c looks very confused and uncertain.", ch, NULL, NULL, TO_ROOM);
+                                }
 
                                 /*if (ch->position < POS_STANDING)
                                         continue;*/
@@ -2599,7 +2602,7 @@ void char_update(void)
                         }
 
                         /* Drowning? */
-                        if (!IS_NPC(ch) && ch->level <= LEVEL_HERO && ch->position > POS_INCAP && ch->form != FORM_SNAKE && ch->form != FORM_HYDRA && ch->form != FORM_DEMON && ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG && ch->sub_class != SUB_CLASS_VAMPIRE && !is_affected(ch, gsn_mist_walk) && !is_affected(ch, gsn_astral_sidestep) && ((ch->in_room->sector_type == SECT_UNDERWATER) || (ch->in_room->sector_type == SECT_UNDERWATER_GROUND)) && !is_affected(ch, gsn_breathe_water))
+                        if (!IS_NPC(ch) && !is_noncorporeal_player(ch) && ch->level <= LEVEL_HERO && ch->position > POS_INCAP && ch->form != FORM_SNAKE && ch->form != FORM_HYDRA && ch->form != FORM_DEMON && ch->race != RACE_SAHUAGIN && ch->race != RACE_GRUNG && ch->sub_class != SUB_CLASS_VAMPIRE && !is_affected(ch, gsn_mist_walk) && !is_affected(ch, gsn_astral_sidestep) && ((ch->in_room->sector_type == SECT_UNDERWATER) || (ch->in_room->sector_type == SECT_UNDERWATER_GROUND)) && !is_affected(ch, gsn_breathe_water))
                         {
                                 if (--ch->pcdata->air_supply > 0)
                                 {
@@ -4492,9 +4495,19 @@ void gmcp_update(void)
                         UpdateGMCPString(d, GMCP_ROOM_SECT_TXT, sector_name( d->character->in_room->sector_type ));
                         char room_desc_flat [ MAX_STRING_LENGTH ];
 
-                        gmcp_flatten_text( room_desc_flat,
-                                           d->character->in_room->description,
-                                           MAX_STRING_LENGTH );
+                        /* Room descriptions follow LOOK's visual restrictions. */
+                        room_desc_flat[0] = '\0';
+                        if (d->character->position > POS_SLEEPING
+                        &&  !IS_AFFECTED(d->character, AFF_BLIND)
+                        &&  (IS_SET(d->character->act, PLR_HOLYLIGHT)
+                            || d->character->sub_class == SUB_CLASS_VAMPIRE
+                            || d->character->form == FORM_FLY
+                            || !room_is_dark(room)))
+                        {
+                                gmcp_flatten_text( room_desc_flat,
+                                                   room->description,
+                                                   MAX_STRING_LENGTH );
+                        }
 
                         UpdateGMCPString( d, GMCP_ROOM_DESC, room_desc_flat );
                         UpdateGMCPNumber(d, GMCP_ROOM_FLAGS, d->character->in_room->room_flags);

@@ -4012,7 +4012,6 @@ bool spec_spectral_minion (CHAR_DATA* ch)
         ROOM_INDEX_DATA *candidate;
         int allowed_count = 0;
         int i;
-        static int timer = 5;
 
         if (!ch || ch->deleted || !ch->in_room
         ||  !IS_NPC(ch) || ch->fighting || !IS_AWAKE(ch))
@@ -4022,10 +4021,10 @@ bool spec_spectral_minion (CHAR_DATA* ch)
         if (ch->rider || ch->mount || is_affected(ch, gsn_mount))
                 return FALSE;
 
-        if (--timer > 0)
+        if (--ch->spectral_minion_timer > 0)
                 return FALSE;
 
-        timer = 5;
+        ch->spectral_minion_timer = 5;
 
         /* Check the fixed list once, then choose among the usable rooms. */
         for (i = 0; i < (int)(sizeof rooms / sizeof rooms[0]); i++)

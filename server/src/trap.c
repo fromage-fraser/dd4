@@ -620,7 +620,8 @@ static void sleep_trap_victim(CHAR_DATA *ch, int level, bool room_trap)
 /*
  * A teleport trap moves one traveller or riding pair at a time.
  */
-static void teleport_trap_victim(CHAR_DATA *victim, bool room_trap)
+static void teleport_trap_victim(CHAR_DATA *victim, bool room_trap,
+                                 bool combat_blocked)
 {
         CHAR_DATA *companion = NULL;
         CHAR_DATA *mount = NULL;
@@ -675,6 +676,7 @@ static void teleport_trap_victim(CHAR_DATA *victim, bool room_trap)
         }
 
         if (IS_SET(source->room_flags, ROOM_NO_RECALL)
+        ||  combat_blocked
         ||  (!IS_NPC(victim) && victim->fighting)
         ||  (companion && !IS_NPC(companion) && companion->fighting))
                 goto failed;
@@ -742,6 +744,9 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
         AFFECT_DATA af;
         CHAR_DATA *wch;
         int dam = 0;
+        bool physical_damage = obj->trap_dam == TRAP_DAM_BLUNT
+                || obj->trap_dam == TRAP_DAM_PIERCE
+                || obj->trap_dam == TRAP_DAM_SLASH;
 
         if (obj->trap_charge <= 0)
                 return;
@@ -885,7 +890,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         return;
 
                 if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM))
-                        teleport_trap_victim(ch, FALSE);
+                        teleport_trap_victim(ch, FALSE, FALSE);
                 else
                 {
                         struct teleport_target
@@ -893,6 +898,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 CHAR_DATA *ch;
                                 struct teleport_target *next;
                                 int deaths;
+                                bool combat_blocked;
                         };
                         struct teleport_target *targets = NULL;
                         struct teleport_target **tail = &targets;
@@ -905,6 +911,8 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                          */
                         for (wch = source->people; wch; wch = wch->next_in_room)
                         {
+                                CHAR_DATA *partner;
+
                                 if (wch->deleted || wch->position == POS_DEAD
                                 ||  wch->rider)
                                         continue;
@@ -913,6 +921,22 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 entry->ch = wch;
                                 entry->deaths = IS_NPC(wch)
                                         ? 0 : wch->pcdata->killed;
+                                /* Earlier departures must not enable a fighting pair. */
+                                entry->combat_blocked = !IS_NPC(wch)
+                                        && wch->fighting;
+                                if (wch->mount || wch->rider)
+                                {
+                                        for (partner = source->people; partner;
+                                             partner = partner->next_in_room)
+                                        {
+                                                if ((partner == wch->mount
+                                                     || partner == wch->rider)
+                                                &&  !partner->deleted
+                                                &&  !IS_NPC(partner)
+                                                &&  partner->fighting)
+                                                        entry->combat_blocked = TRUE;
+                                        }
+                                }
                                 entry->next = NULL;
                                 *tail = entry;
                                 tail = &entry->next;
@@ -921,11 +945,13 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         while (targets)
                         {
                                 int deaths;
+                                bool combat_blocked;
 
                                 entry = targets;
                                 targets = entry->next;
                                 wch = entry->ch;
                                 deaths = entry->deaths;
+                                combat_blocked = entry->combat_blocked;
                                 free_mem(entry, sizeof(*entry));
 
                                 if (wch->deleted || wch->in_room != source
@@ -934,7 +960,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                     && wch->pcdata->killed != deaths))
                                         continue;
 
-                                teleport_trap_victim(wch, TRUE);
+                                teleport_trap_victim(wch, TRUE, combat_blocked);
                         }
                 }
                 /* Do not run damage handling in the trigger's new room. */
@@ -1053,10 +1079,8 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                     spirit->damroll = spirit->level / 2;
                     spirit->hitroll = spirit->level / 2;
                     spirit->alignment = -1000;
-                    spirit->fighting = ch;
                     char_to_room(spirit, ch->in_room);
-                    refresh_combat_gear_stealth(spirit);
-                    refresh_combat_gear_stealth(ch);
+                    set_fighting(spirit, ch);
                     multi_hit(spirit, ch, TYPE_UNDEFINED);
                 }
                 break;
@@ -1103,6 +1127,11 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 
         if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM)) {
                 if ( ch->position == POS_DEAD )
+                        return;
+
+                /* Phased players cannot be struck by physical trap weapons. */
+                if (physical_damage && !IS_NPC(ch)
+                &&  IS_AFFECTED(ch, AFF_NON_CORPOREAL))
                         return;
 
                 /*
@@ -1215,6 +1244,10 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         wch_next = wch->next_in_room;
 
                         if (wch->deleted || wch->position == POS_DEAD)
+                                continue;
+
+                        if (physical_damage && !IS_NPC(wch)
+                        &&  IS_AFFECTED(wch, AFF_NON_CORPOREAL))
                                 continue;
 
                         /* Start fresh for each victim. */
