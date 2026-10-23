@@ -15,6 +15,9 @@
 {&gsn_protect_vs_undead,        &gsn_knight_base,       60,     PRE_KNIGHT},
 {&gsn_protect_vs_undead,        &gsn_protect_vs_evil,   60,     PRE_KNIGHT},
 
+{&gsn_ward_against_undead,      &gsn_knight_base,       70,     PRE_KNIGHT},
+{&gsn_ward_against_undead,      &gsn_protect_vs_undead, 60,     PRE_KNIGHT},
+
 /* **** HEALING **** */
 
 {&gsn_cure_light,               &gsn_group_healing,     30,     PRE_KNIGHT},

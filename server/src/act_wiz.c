@@ -1321,6 +1321,10 @@ void do_rstat(CHAR_DATA *ch, char *argument)
                 strcat(buf1, "Room flags: {Rnone {x[{W0{x]\n\r");
         }
 
+        sprintf(buf, "Temporary undead ward: {W%d{x game ticks remaining.\n\r",
+                UMAX(0, location->undead_ward_ticks));
+        strcat(buf1, buf);
+
         sprintf(buf,
                 "Description:\n\r  {C%s{x",
                 location->description);

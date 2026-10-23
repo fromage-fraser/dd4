@@ -139,6 +139,10 @@
 {&gsn_protect_vs_undead,        &gsn_cleric_base,       30,     PRE_CLERIC},
 {&gsn_protect_vs_undead,        &gsn_protect_vs_evil,   60,     PRE_CLERIC},
 
+{&gsn_ward_against_undead,      &gsn_group_protection,  75,     PRE_CLERIC},
+{&gsn_ward_against_undead,      &gsn_cleric_base,       30,     PRE_CLERIC},
+{&gsn_ward_against_undead,      &gsn_protect_vs_undead, 60,     PRE_CLERIC},
+
 {&gsn_sanctuary,                &gsn_group_protection,  45,     PRE_CLERIC},
 {&gsn_sanctuary,                &gsn_protection,        40,     PRE_CLERIC},
 

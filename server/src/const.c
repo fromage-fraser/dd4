@@ -2351,6 +2351,7 @@ struct spell_group_struct spell_group_table[MAX_SPELL_GROUP] =
         {&gsn_mass_protect_vs_evil, 0},
         {&gsn_mass_protect_vs_good, 0},
         {&gsn_protect_vs_undead, 0},
+        {&gsn_ward_against_undead, 0},
         {&gsn_armor, 0},
         {&gsn_sanctuary, 0},
         {&gsn_shield, 0},
@@ -5684,6 +5685,11 @@ const struct skill_type skill_table[MAX_SKILL] =
          RES_MAGIC | RES_HOLY,
          spell_protect_vs_undead, 30, 12,
          "", "<37>Your ward against the undead fades.<0>"},
+
+        {"ward against undead", &gsn_ward_against_undead,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_HOLY,
+         spell_ward_against_undead, 50, 24,
+         "", ""},
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
