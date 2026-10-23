@@ -25,6 +25,16 @@ struct healer_spell
         int price;
 };
 
+/* Don't sell a vampire one of the cures that would burn them. */
+static bool healer_service_harms_undead(
+        CHAR_DATA *ch, const struct healer_spell *service)
+{
+        return IS_UNDEAD(ch)
+            && (!str_cmp(service->spell_name, "cure light")
+             || !str_cmp(service->spell_name, "cure serious")
+             || !str_cmp(service->spell_name, "cure critical"));
+}
+
 void do_heal(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *mob;
@@ -84,12 +94,19 @@ void do_heal(CHAR_DATA *ch, char *argument)
                 send_to_char("\n\r{WThe following spells are available from the healer:{x\n\r\n\r", ch);
                 for (i = 0; i < NUMBER_SPELLS; i++)
                 {
+                        if (healer_service_harms_undead(ch, &spell_list[i]))
+                                continue;
+
                         sprintf(buf, " {W%-13s{x {w%-22s {Y%5d gold{x\n\r",
                                 spell_list[i].keyword,
                                 spell_list[i].spell_name,
                                 spell_list[i].price);
                         send_to_char(buf, ch);
                 }
+                if (IS_UNDEAD(ch))
+                        send_to_char(
+                            "\n\rThe healer leaves out the three Cure spells, "
+                            "which would burn you.\n\r", ch);
                 send_to_char("\n\rType '{WHEAL <<spell>{x' to receive healing.\n\r", ch);
 
                 /* Send healer services to web client */
@@ -107,6 +124,13 @@ void do_heal(CHAR_DATA *ch, char *argument)
         {
                 if (is_name(arg, spell_list[i].keyword))
                 {
+                        if (healer_service_harms_undead(ch, &spell_list[i]))
+                        {
+                                act("$N says 'That cure would burn you, not heal you.'",
+                                    ch, NULL, mob, TO_CHAR);
+                                return;
+                        }
+
                         /* Validate the service before taking payment. */
                         sn = -1;
                         if (str_cmp(spell_list[i].keyword, "mana"))

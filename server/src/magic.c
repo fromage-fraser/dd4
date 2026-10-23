@@ -1318,6 +1318,17 @@ void obj_cast_spell(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DAT
                 if (!victim)
                         victim = ch;
 
+                /* A cure item must not bypass the ban on player attacks. */
+                if (victim != ch && !IS_NPC(ch) && !IS_NPC(victim)
+                &&  IS_UNDEAD(victim)
+                &&  (skill_table[sn].spell_fun == spell_cure_light
+                  || skill_table[sn].spell_fun == spell_cure_serious
+                  || skill_table[sn].spell_fun == spell_cure_critical))
+                {
+                        send_to_char("You can't do that.\n\r", ch);
+                        return;
+                }
+
                 if (!IS_NPC(ch) && !IS_NPC(victim) && victim->level > 10 && abs(ch->level - victim->level) > 10 && ch->level < LEVEL_HERO + 1)
                 {
                         send_to_char("The gods prevent your magic from affecting them.\n\r", ch);
@@ -2295,6 +2306,44 @@ void spell_cure_blindness(int sn, int level, CHAR_DATA *ch, void *vo)
         return;
 }
 
+/*
+ * Cures restore living flesh, but their positive energy burns undead.
+ * Returning TRUE means the undead path has handled the spell.
+ */
+static bool cure_wounds_harms_undead(
+        int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, int amount)
+{
+        if (!IS_UNDEAD(victim))
+                return FALSE;
+
+        if (!ch || ch->deleted || victim->deleted
+        ||  !ch->in_room || ch->in_room != victim->in_room
+        ||  ch->position == POS_DEAD || victim->position == POS_DEAD
+        ||  is_noncorporeal_player(ch)
+        ||  is_noncorporeal_player(victim))
+                return TRUE;
+
+        if (ch != victim)
+        {
+                if (IS_AFFECTED(ch, AFF_CHARM) && ch->master == victim)
+                {
+                        send_to_char(
+                            "You can't attack your own master.\n\r", ch);
+                        return TRUE;
+                }
+
+                if (is_safe(ch, victim))
+                        return TRUE;
+        }
+
+        amount = UMAX(0, amount);
+        if (saves_spell(ch, level, victim))
+                amount /= 2;
+
+        damage(ch, victim, amount, sn, FALSE);
+        return TRUE;
+}
+
 void spell_cure_critical(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         char wound[100];
@@ -2309,6 +2358,9 @@ void spell_cure_critical(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (heal > 75)
                 heal = 75;
+
+        if (cure_wounds_harms_undead(sn, level, ch, victim, heal))
+                return;
 
         if (IS_NPC(victim))
         {
@@ -2455,6 +2507,12 @@ void spell_cure_light(int sn, int level, CHAR_DATA *ch, void *vo)
 
         heal = 4 + dice(1, 8) + level / 2;
 
+        if (heal > 35)
+                heal = 35;
+
+        if (cure_wounds_harms_undead(sn, level, ch, victim, heal))
+                return;
+
         if (IS_NPC(victim))
         {
                 if (IS_SET(victim->act, ACT_NO_HEAL))
@@ -2462,9 +2520,6 @@ void spell_cure_light(int sn, int level, CHAR_DATA *ch, void *vo)
                         return;
                 }
         }
-
-        if (heal > 35)
-                heal = 35;
 
         if (victim->hit > victim->max_hit)
                 return;
@@ -2857,6 +2912,9 @@ void spell_cure_serious(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (heal > 50)
                 heal = 50;
+
+        if (cure_wounds_harms_undead(sn, level, ch, victim, heal))
+                return;
 
         if (IS_NPC(victim))
         {
