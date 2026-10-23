@@ -347,10 +347,12 @@ void do_soar(CHAR_DATA* ch, char* argument)
         char arg [ MAX_INPUT_LENGTH ];
         int place, i, target;
         ROOM_INDEX_DATA *location;
+        CHAR_DATA *mount = NULL;
+        bool return_trip = FALSE;
         char buf[MAX_STRING_LENGTH];
         char tmp[MAX_STRING_LENGTH];
 
-        if( IS_NPC( ch ) )
+        if (!ch || ch->deleted || !ch->in_room || IS_NPC(ch))
                 return;
 
         if( ch->class != CLASS_SHAPE_SHIFTER
@@ -384,6 +386,8 @@ void do_soar(CHAR_DATA* ch, char* argument)
                         {
                                 place = soar_list[i].destination;
                                 location = get_room_index(place);
+                                if (!location)
+                                        continue;
                                 sprintf(tmp, "%d. %s\n", i, location->name);
                                 strcat(buf, tmp);
                         }
@@ -463,7 +467,7 @@ void do_soar(CHAR_DATA* ch, char* argument)
                         if (ch->pcdata->soar)
                         {
                                 location = get_room_index(ch->pcdata->soar);
-                                ch->pcdata->soar = 0;
+                                return_trip = TRUE;
                         }
                         else
                         {
@@ -489,6 +493,12 @@ void do_soar(CHAR_DATA* ch, char* argument)
                 }
 
                 location = get_room_index(soar_list[target].destination);
+        }
+
+        if (!location)
+        {
+                send_to_char("That soar destination is no longer available.\n\r", ch);
+                return;
         }
 
         if ( IS_SET( ch->in_room->room_flags, ROOM_INDOORS )
@@ -522,40 +532,68 @@ void do_soar(CHAR_DATA* ch, char* argument)
                 return;
         }
 
-        if ( ch->mount )
+        if (!mounted_travel_ready(ch))
+                return;
+
+        mount = ch->mount;
+
+        if (mount && IS_SET(location->room_flags, ROOM_NO_MOUNT))
         {
-                act ("{yYou pick up $N in your talons.\n\r{x", ch, NULL, ch->mount, TO_CHAR);
-                act ("{y$C picks up $n in $S talons.{x\n\r", ch->mount, NULL, ch, TO_NOTVICT);
+                send_to_char("You cannot carry your mount into that room.\n\r", ch);
+                return;
+        }
+
+        if (!undead_can_travel_to_room(ch, location))
+        {
+                send_to_char("That room will not let you and your mount through.\n\r", ch);
+                return;
+        }
+
+        /* The trip is allowed. Leave any combat links behind. */
+        stop_fighting(ch, TRUE);
+        if (mount)
+                stop_fighting(mount, TRUE);
+
+        if ( mount )
+        {
+                act ("{yYou pick up $N in your talons.\n\r{x", ch, NULL, mount, TO_CHAR);
+                act ("{y$C picks up $n in $S talons.{x\n\r", mount, NULL, ch, TO_NOTVICT);
         }
 
         act ("{y$c soars into the sky and quickly vanishes from your sight.{x", ch, NULL, NULL, TO_ROOM);
         send_to_char("{yYou fly into the air and soar through the skies...{x\n\r\n\r", ch);
 
+        GMCPSetArrival(ch->desc, ch->in_room->vnum,
+                       location->vnum, -1, "soar");
+        if (mount)
+                GMCPSetArrival(mount->desc, mount->in_room->vnum,
+                               location->vnum, -1, "soar");
+
         char_from_room(ch);
         char_to_room(ch, location);
 
-        if (ch->mount)
+        if (mount)
         {
-                char_from_room(ch->mount);
-                char_to_room(ch->mount, location);
+                char_from_room(mount);
+                char_to_room(mount, location);
         }
 
-        if ( ch->mount
+        if ( mount
         && ( ch->in_room->sector_type == SECT_WATER_SWIM
         ||   ch->in_room->sector_type == SECT_WATER_NOSWIM
         ||   ch->in_room->sector_type == SECT_SWAMP ) )
         {
-                act ("{yYou release $N from your talons and $E splashes down into the water.\n\r{x", ch, NULL, ch->mount, TO_CHAR);
-                act ("{y$N releases $n from $S talons and $e splashes down into the water.\n\r{x", ch->mount, NULL, ch, TO_NOTVICT);
+                act ("{yYou release $N from your talons and $E splashes down into the water.\n\r{x", ch, NULL, mount, TO_CHAR);
+                act ("{y$N releases $n from $S talons and $e splashes down into the water.\n\r{x", mount, NULL, ch, TO_NOTVICT);
         }
 
-        if ( ch->mount
+        if ( mount
         &&   ch->in_room->sector_type != SECT_WATER_SWIM
         &&   ch->in_room->sector_type != SECT_WATER_NOSWIM
         &&   ch->in_room->sector_type != SECT_SWAMP )
         {
-                act ("{yYou release $N from your talons and $E tumbles to the ground.\n\r{x", ch, NULL, ch->mount, TO_CHAR);
-                act ("{y$N releases $n from $S talons and $e tumbles to the ground.\n\r{x", ch->mount, NULL, ch, TO_NOTVICT);
+                act ("{yYou release $N from your talons and $E tumbles to the ground.\n\r{x", ch, NULL, mount, TO_CHAR);
+                act ("{y$N releases $n from $S talons and $e tumbles to the ground.\n\r{x", mount, NULL, ch, TO_NOTVICT);
         }
 
         if ( ch->in_room->sector_type == SECT_WATER_SWIM
@@ -570,6 +608,10 @@ void do_soar(CHAR_DATA* ch, char* argument)
         }
 
         do_look(ch, "auto");
+
+        /* Forget a return location only after actually reaching it. */
+        if (return_trip)
+                ch->pcdata->soar = 0;
 
         ch->move -= 25;
         WAIT_STATE(ch, 2 * PULSE_VIOLENCE);

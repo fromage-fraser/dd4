@@ -1238,6 +1238,9 @@ blocking unrelated directions.
 - Phasing cannot begin during combat; returning to corporeal form remains allowed.
 - Phased players are protected from falls, drowning and physical trap impacts.
 - Patron release now refreshes eligibility for every deity.
+- SOAR checks carried mounts against NO_UNDEAD and NO_MOUNT.
+- Refused SOAR RETURN keeps its saved destination and movement points.
+- Missing SOAR destinations now fail cleanly.
 
 ~
 
@@ -1261,7 +1264,7 @@ NO_UNDEAD is a permanent room flag, not a spell you cast.
 
 Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
 portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
-the ARENA command, Pattern travel, the deity Transport and Chaos prayers,
+the ARENA command, Pattern travel, SOAR, the deity Transport and Chaos prayers,
 tournament-start transfers, gravity, teleport traps, the Bastion spectral-minion
 teleport, MPTRANSFER, MPGOTO, MPAT and immortal TRANSFER, GOTO and AT.
 Mobile resets, Animate Dead, MPMLOAD,
@@ -1374,6 +1377,15 @@ The search stops after 10,000 tries per trip. Failure leaves that traveller
 or pair in place without ending combat. The trap still uses a charge.
 Successful travel clears combat links. Teleport traps do not run damage or
 invisibility-reveal handling in the triggering character's destination.
+
+Numbered SOAR trips and SOAR RETURN check the carried mount before take-off.
+NO_UNDEAD blocks an undead NPC mount; NO_MOUNT blocks any carried mount.
+The riding links must agree, and both travellers must be in the same room.
+If the trip is refused, neither moves, combat links and movement points stay
+as they were, and the saved return location is kept. Missing destinations
+are skipped in the list and cannot be flown to. Successful flights still
+cost 25 movement points, and memorising still costs 50. SOAR can still cross
+NO_RECALL when its other requirements are met. It brings no other followers.
 
 The Bastion-only spec_spectral_minion teleport checks its fixed destination
 list before moving. It skips missing rooms, its current room and rooms that
@@ -7855,6 +7867,15 @@ SOAR RETURN allows the shifter to travel to their memorised location
 (assuming their current location is outdoors).  After returning once, the
 not-terribly-bright hawk form of the shifter will forget the destination,
 and it will have to be re-memorised to return there again.
+
+SOAR takes your mount along, but the riding links must still be valid and
+both of you must be in the same room. NO_UNDEAD blocks an undead NPC mount;
+NO_MOUNT blocks any carried mount. If the trip is refused, neither of you
+moves, you keep your movement points, and your return location is not lost.
+Missing destinations are skipped in the list and cannot be flown to.
+
+Memorising still costs 50 movement points; a flight still costs 25.
+SOAR can still cross NO_RECALL when its other requirements are met.
 
 ~
 
