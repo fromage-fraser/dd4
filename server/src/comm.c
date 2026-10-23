@@ -1607,11 +1607,6 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                         continue;
                 }
                 ++str;
-                if (*str == '\0')
-                {
-                        *point++ = '%';
-                        break;
-                }
 
                 switch (*str)
                 {

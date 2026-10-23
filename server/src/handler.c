@@ -5427,23 +5427,6 @@ int mana_cost (CHAR_DATA *ch, int sn)
 }
 
 
-int direct_cast_mana_cost(CHAR_DATA *ch, int sn)
-{
-        if (ch->level >= LEVEL_IMMORTAL)
-                return 1;
-
-        if (IS_NPC(ch))
-                return 0;
-
-        /* Keep the racial direct-cast discount separate from crafting costs. */
-        if (ch->race == RACE_TIEFLING
-            && !str_cmp(skill_table[sn].name, "abyssal hand"))
-                return 25;
-
-        return mana_cost(ch, sn);
-}
-
-
 int get_phys_penalty (CHAR_DATA *ch)
 {
         return (30 - ((get_curr_str(ch) + get_curr_dex(ch) + (get_curr_int(ch) * 2)) / 4));

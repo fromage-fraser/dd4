@@ -7584,6 +7584,7 @@ void do_rename(CHAR_DATA *ch, char *argument)
         char arg1[MAX_INPUT_LENGTH];
         char arg2[MAX_INPUT_LENGTH];
         char arg3[MAX_INPUT_LENGTH];
+        char arg4[MAX_INPUT_LENGTH];
 
         rch = get_char(ch);
 
@@ -7607,6 +7608,12 @@ void do_rename(CHAR_DATA *ch, char *argument)
         if (!(obj = get_obj_carry(ch, arg1)))
         {
                 send_to_char("You dont have that item.\n\r", ch);
+                return;
+        }
+
+        if (!(obj = get_obj_world(ch, arg1)))
+        {
+                send_to_char("Nothing like that in hell, earth, or heaven.\n\r", ch);
                 return;
         }
 
@@ -7659,8 +7666,9 @@ void do_rename(CHAR_DATA *ch, char *argument)
                 EXTRA_DESCR_DATA *ed;
 
                 argument = one_argument(argument, arg3);
+                argument = one_argument(argument, arg4);
 
-                if (arg3[0] == '\0' || argument[0] == '\0')
+                if (arg4[0] == '\0')
                 {
                         send_to_char("Syntax: rename <<object> ed <<keyword> <<value>\n\r", ch);
                         return;

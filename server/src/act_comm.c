@@ -2373,13 +2373,8 @@ void talk_auction(char *argument)
 
                 if (d->connected == CON_PLAYING && !original->silent_mode && !IS_SET(original->deaf, CHANNEL_AUCTION))
                 {
-                        int colour_index = get_colour_index_by_code(original->colors[COLOR_AUCTION]);
-
-                        if (colour_index < 0 || colour_index >= MAX_8BIT_COLORS)
-                                colour_index = 0;
-
                         sprintf(buf, "%sAUCTION: $t$R",
-                                color_table_8bit[colour_index].act_code);
+                                color_table_8bit[original->colors[COLOR_AUCTION]].act_code);
 
                         act(buf, original, argument, NULL, TO_CHAR);
 
