@@ -2848,12 +2848,12 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"cure critical", &gsn_cure_critical,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, RES_MAGIC | RES_HOLY,
          spell_cure_critical, 20, 12,
-         "", "!Cure Critical!"},
+         "positive energy", "!Cure Critical!"},
 
         {"cure light", &gsn_cure_light,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, RES_MAGIC | RES_HOLY,
          spell_cure_light, 10, 12,
-         "", "!Cure Light!"},
+         "positive energy", "!Cure Light!"},
 
         {"cure poison", &gsn_cure_poison,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
@@ -2863,7 +2863,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"cure serious", &gsn_cure_serious,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, RES_MAGIC | RES_HOLY,
          spell_cure_serious, 15, 12,
-         "", "!Cure Serious!"},
+         "positive energy", "!Cure Serious!"},
 
         {"curse", &gsn_curse,
          TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_CURSE | RES_MAGIC,

@@ -488,6 +488,8 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 return TRUE;
 
             case 3:
+                if (IS_UNDEAD(victim))
+                    return FALSE;
                 act( "$n utters the word 'Nixmas'.",    ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure light" ), "cast" ); }
                 spell_cure_light( skill_lookup( "cure light" ), ch->level, ch, victim );
@@ -506,6 +508,8 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 return TRUE;
 
             case 6:
+                if (IS_UNDEAD(victim))
+                    return FALSE;
                 act("$n says the word 'Tnemrot'.",ch,NULL,NULL,TO_ROOM);
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure serious" ), "cast" ); }
                 spell_cure_serious( skill_lookup( "cure serious" ), ch->level, ch, victim );
@@ -582,6 +586,8 @@ bool spec_cast_hooker(CHAR_DATA *ch)
                 return TRUE;
 
             case 6:
+                if (IS_UNDEAD(victim))
+                    return FALSE;
                 if ( CAN_SPEAK(ch) ) { act("$n says, 'Hey baby, want a date?'", ch, NULL, NULL, TO_ROOM); }
                 spell_cure_serious(skill_lookup("cure serious"), ch->level, ch, victim);
                 return TRUE;

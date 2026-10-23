@@ -1247,6 +1247,8 @@ blocking unrelated directions.
 - Wards drive idle undead through legal exits and burn undead left inside.
 - Temporary wards burn player vampires without stacking ward or sunlight burns.
 - Ward Against Undead is teachable through Protective Magiks; updated skill lists.
+- Cure Light, Serious and Critical now burn undead instead of healing them.
+- Healers and friendly NPCs avoid using those three cures on undead.
 
 ~
 
@@ -4531,6 +4533,22 @@ Syntax: cast 'complete healing'
 These spells cure damage on the target character.  The higher-level spells
 heal more damage.  The psionicist disciplines, like many other skills, are
 limited to the psionicist alone.
+
+Cure Light, Cure Serious and Cure Critical use positive energy. They heal
+the living, but burn undead, including player vampires. Their normal healing
+amount becomes base damage, halved on a successful spell save, then handled
+by the usual magical/holy resistances and combat defences. This can kill.
+An undead target does not get healing, confusion removal or support credit.
+
+These three cures also burn undead when used from magical items, including
+potions you drink yourself. Attacking someone else still checks the normal
+combat protections; cure items cannot bypass the ban on player attacks.
+An NPC's NO_HEAL flag stops healing, not this damage. Invulnerability and
+damage immunity still work normally.
+
+Healers leave these cures off an undead customer's list and refuse them
+before taking payment. Friendly NPCs do not choose them for undead players.
+Other healing spells keep their existing effects for now.
 ~
 
 0 'REGENERATE'~
@@ -6192,6 +6210,9 @@ Spells in curative magiks include:
 These spheres represent the ability to heal either yourself or a group
 member of ones wounds.  The advanced group gives access to very powerful
 restorative spells and group spells.
+
+Cure Light, Cure Serious and Cure Critical burn undead instead of healing
+them. See HELP CURE LIGHT before trying to heal a vampire.
 
 Spells in healing magiks include:
     cure light wounds
