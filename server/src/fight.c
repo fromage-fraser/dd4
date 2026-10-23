@@ -7082,6 +7082,68 @@ void do_berserk(CHAR_DATA *ch, char *argument)
         send_to_char("You shake off the madness.\n\r", ch);
 }
 
+/*
+ * Ordinary movement usually brings the mount along. A script can take over
+ * that move, so check the final room before bringing anyone left behind.
+ */
+static void escape_rejoin_partner(CHAR_DATA *ch, ROOM_INDEX_DATA *source)
+{
+        CHAR_DATA *rider;
+        CHAR_DATA *mount;
+        CHAR_DATA *partner;
+        CHAR_DATA *wch;
+
+        if (!ch || ch->deleted || !ch->in_room || !source)
+                return;
+
+        if (ch->mount && !ch->rider)
+        {
+                rider = ch;
+                mount = ch->mount;
+                partner = mount;
+        }
+        else if (ch->rider && !ch->mount)
+        {
+                rider = ch->rider;
+                mount = ch;
+                partner = rider;
+        }
+        else
+                return;
+
+        /* Find the partner before trusting a link left across a script. */
+        for (wch = char_list; wch; wch = wch->next)
+        {
+                if (wch == partner)
+                        break;
+        }
+
+        if (!wch || wch->deleted || !wch->in_room
+        ||  rider->mount != mount || mount->rider != rider
+        ||  !is_affected(rider, gsn_mount))
+                return;
+
+        /* Staying together in the same room is not a new entry. */
+        if (partner->in_room == ch->in_room)
+                return;
+
+        if (partner->in_room == source
+        &&  !IS_SET(ch->in_room->room_flags, ROOM_NO_MOUNT)
+        &&  undead_can_enter_room(partner, ch->in_room))
+        {
+                stop_fighting(partner, TRUE);
+                GMCPSetArrival(partner->desc, source->vnum,
+                               ch->in_room->vnum, -1, "forced");
+                char_from_room(partner);
+                char_to_room(partner, ch->in_room);
+                return;
+        }
+
+        /* Leave script moves alone, and don't pull anyone into a barred room. */
+        strip_mount(rider);
+        send_to_char("You have been separated from your mount.\n\r", rider);
+}
+
 void do_flee(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
@@ -7180,6 +7242,13 @@ void do_flee(CHAR_DATA *ch, char *argument)
                         continue;
                 }
 
+                /* Check both travellers before an escape attempt changes anything. */
+                if (pexit->to_room != was_in
+                &&  (((ch->mount || ch->rider)
+                      && IS_SET(pexit->to_room->room_flags, ROOM_NO_MOUNT))
+                     || !undead_can_travel_to_room(ch, pexit->to_room)))
+                        continue;
+
                 /* Make it harder for mobs to flee; Gez 2000 */
                 if (IS_NPC(ch) && number_bits(1) && str_cmp("Fear", argument))
                         break;
@@ -7203,19 +7272,7 @@ void do_flee(CHAR_DATA *ch, char *argument)
                         continue;
                 }
 
-                if (ch->mount && ch->mount->in_room == was_in)
-                {
-                        stop_fighting(ch->mount, TRUE);
-                        char_from_room(ch->mount);
-                        char_to_room(ch->mount, ch->in_room);
-                }
-
-                if (ch->rider && ch->rider->in_room == was_in)
-                {
-                        stop_fighting(ch->rider, TRUE);
-                        char_from_room(ch->rider);
-                        char_to_room(ch->rider, ch->in_room);
-                }
+                escape_rejoin_partner(ch, was_in);
 
                 ch->in_room = was_in;
                 act("$n has fled!", ch, NULL, NULL, TO_ROOM);
@@ -7390,6 +7447,13 @@ void do_bomb(CHAR_DATA *ch, char *argument)
                         continue;
                 }
 
+                /* Check both travellers before an escape attempt changes anything. */
+                if (pexit->to_room != was_in
+                &&  (((ch->mount || ch->rider)
+                      && IS_SET(pexit->to_room->room_flags, ROOM_NO_MOUNT))
+                     || !undead_can_travel_to_room(ch, pexit->to_room)))
+                        continue;
+
                 if (IS_AFFECTED(ch, AFF_HOLD))
                 {
                         act("$n breaks free from $s prison!", ch, NULL, victim, TO_ROOM);
@@ -7443,19 +7507,7 @@ void do_bomb(CHAR_DATA *ch, char *argument)
                 arena_commentary("$c drops a smoke bomb and escapes!", ch, ch);
                 ch->in_room = now_in;
 
-                if (ch->mount && ch->mount->in_room == was_in)
-                {
-                        stop_fighting(ch->mount, TRUE);
-                        char_from_room(ch->mount);
-                        char_to_room(ch->mount, ch->in_room);
-                }
-
-                if (ch->rider && ch->rider->in_room == was_in)
-                {
-                        stop_fighting(ch->rider, TRUE);
-                        char_from_room(ch->rider);
-                        char_to_room(ch->rider, ch->in_room);
-                }
+                escape_rejoin_partner(ch, was_in);
 
                 ch->in_room = now_in;
                 WAIT_STATE(ch, PULSE_VIOLENCE);
