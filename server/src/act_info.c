@@ -1608,18 +1608,18 @@ void do_look(CHAR_DATA *ch, char *argument)
                                 }
                                 return;
                         }
-                }
 
-                if (is_name(arg1, obj->name))
-                {
-                        send_to_char(obj->description, ch);
-                        send_to_char("\n\r", ch);
-                        if (obj->identified)
+                        if (is_name(arg1, obj->name))
                         {
-                                spell_identify(1, 1, ch, obj);
-                        }
+                                send_to_char(obj->description, ch);
+                                send_to_char("\n\r", ch);
+                                if (obj->identified)
+                                {
+                                        spell_identify(1, 1, ch, obj);
+                                }
 
-                        return;
+                                return;
+                        }
                 }
         }
 
@@ -2180,6 +2180,7 @@ void do_score(CHAR_DATA *ch, char *argument)
         char buf[MAX_STRING_LENGTH];
         char buf1[MAX_STRING_LENGTH];
         extern char *size_names[];
+        int qp;
 
         /*
          *  Experience bar.  `full_length' is length of bar in chars;
@@ -2516,18 +2517,14 @@ void do_score(CHAR_DATA *ch, char *argument)
         if (ch->level == 40 && ch->clan)
                 strcat(buf1, "\n\r{WThis is the last level that you can use the default Midgaard recall.{x\n\r");
 
-        /* Quest point message hack */
-        if (ch->level == 29 && ch->pcdata->totalqp < 1)
-                strcat(buf1, "\n\r{RYou need at least 1 quest point before you can reach level 30.{x\n\r");
-
-        if (ch->level == 49 && ch->pcdata->totalqp < 200)
-                strcat(buf1, "\n\r{RYou need at least 200 quest point before you can reach level 50.{x\n\r");
-
-        if (ch->level == 69 && ch->pcdata->totalqp < 500)
-                strcat(buf1, "\n\r{RYou need at least 500 total quest points before you can reach level 70.{x\n\r");
-
-        if (ch->level == 99 && ch->pcdata->totalqp < 1000)
-                strcat(buf1, "\n\r{RYou need at least 1000 total quest points before you can reach level 100.{x\n\r");
+        qp = questpoints_required_for_advance(ch->level);
+        if (qp > 0 && ch->pcdata->totalqp < qp)
+        {
+                sprintf(buf,
+                        "\n\r{RYou need at least %d total quest point%s before you can reach level %d.{x\n\r",
+                        qp, (qp == 1) ? "" : "s", ch->level + 1);
+                strcat(buf1, buf);
+        }
 
         send_to_char(buf1, ch);
 }
@@ -3961,20 +3958,26 @@ void do_title(CHAR_DATA *ch, char *argument)
          */
         len = strlen(argument);
 
-        for (i = 0, k = 0; i < len && k < MAX_TITLE_LENGTH; i++, k++)
+        for (i = 0, k = 0; i < len && k < MAX_TITLE_LENGTH; i++)
         {
                 if (argument[i] == '~')
                         continue;
 
                 if (argument[i] == '{' && (argument[i + 1] == '/' || argument[i + 1] == '*' || argument[i + 1] == '{' || argument[i + 1] == '\0' || argument[i + 1] == '\\'))
                 {
+                        if (k + 1 >= MAX_TITLE_LENGTH)
+                                break;
                         tidy[k++] = '{';
                 }
 
                 else if (argument[i] == '}')
+                {
+                        if (k + 1 >= MAX_TITLE_LENGTH)
+                                break;
                         tidy[k++] = '}';
+                }
 
-                tidy[k] = argument[i];
+                tidy[k++] = argument[i];
         }
 
         tidy[k] = '\0';
@@ -5635,12 +5638,12 @@ void do_spells(CHAR_DATA *ch, char *argument)
                         if (!page++)
                         {
                                 sprintf(foo, "%25s: %3d mana", skill_table[sn].name,
-                                        mana_cost(ch, sn));
+                                        direct_cast_mana_cost(ch, sn));
                         }
                         else
                         {
                                 sprintf(foo, "    %25s: %3d mana\n\r", skill_table[sn].name,
-                                        mana_cost(ch, sn));
+                                        direct_cast_mana_cost(ch, sn));
                                 page = 0;
                         }
 

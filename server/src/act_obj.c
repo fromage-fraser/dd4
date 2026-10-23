@@ -6424,7 +6424,7 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         send_to_char(buf, ch);
                 }
 
-                else if (ch->pcdata->fame < 900)
+                else if (discount < 50)
                 {
                         sprintf(buf, "You receive a %2d%% off for you Heroic deeds!!\n\r",
                                 discount);
