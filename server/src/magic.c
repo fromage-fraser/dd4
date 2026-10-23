@@ -889,21 +889,7 @@ void do_cast(CHAR_DATA *ch, char *argument)
         }
 
         /* mana calc */
-        mana = 0;
-        mana = mana_cost(ch, sn);
-
-        /* Hack for Tieflings to have abyssal hand as a (useful) race skill -- Owl 3/4/22 */
-        if (((str_cmp(skill_table[sn].name, "abyssal hand")) == 0) && ch->race == RACE_TIEFLING)
-        {
-                mana = 25;
-        }
-
-        /*if (ch->level >= LEVEL_IMMORTAL || IS_NPC(ch))*/
-        if (IS_NPC(ch))
-                mana = 0;
-
-        if (ch->level >= LEVEL_IMMORTAL)
-                mana = 1;
+        mana = direct_cast_mana_cost(ch, sn);
 
         /*
          * Locate targets.
