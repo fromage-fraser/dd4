@@ -3895,7 +3895,7 @@ void recharge_bonuses(CHAR_DATA *ch)
         send_to_char("<45>You feel refreshed and your bonus actions are fully recharged.\r\n<0>", ch);
 }
 
-static int questpoints_required_for_advance(int level)
+int questpoints_required_for_advance(int level)
 {
         switch (level)
         {

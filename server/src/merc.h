@@ -5717,6 +5717,7 @@ int form_skill_allow args((CHAR_DATA * ch, int sn));
 int advatoi args((const char *s));
 void generate_stats(CHAR_DATA *ch);
 int mana_cost(CHAR_DATA *ch, int sn);
+int direct_cast_mana_cost(CHAR_DATA *ch, int sn);
 int get_phys_penalty(CHAR_DATA *ch);
 int get_int_penalty(CHAR_DATA *ch);
 bool is_partof_set(char *argument);
@@ -5900,6 +5901,7 @@ void begin_form_equipment_update(void);
 void end_form_equipment_update(CHAR_DATA *ch);
 int check_stat_advance(CHAR_DATA *ch, int stat);
 bool check_questpoints_allow_level_gain(CHAR_DATA *ch, bool verbose);
+int questpoints_required_for_advance(int level);
 void recharge_bonuses(CHAR_DATA *ch);
 
 /* trap.c */
