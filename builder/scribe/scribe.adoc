@@ -7091,8 +7091,8 @@ fleeing), mobile resets, Animate Dead, Gate, Summon Familiar, Summon Demon,
 Summon Avatar, pet purchases, spirit guardian traps, cityguard reinforcements,
 MPMLOAD, MLOAD, MPTRANSFER, MPGOTO, MPAT, immortal TRANSFER,
 GOTO and AT, Summon, Teleport, portal entry, Recall, clan Home, Astral Vortex,
-Banish, Mass Teleport, the `ARENA` command, Pattern travel, the deity Transport
-and Chaos prayers, tournament-start transfers, gravity, teleport traps
+Banish, Mass Teleport, the `ARENA` command, Pattern travel, SOAR, the deity
+Transport and Chaos prayers, tournament-start transfers, gravity, teleport traps
 and the Bastion spectral-minion teleport.
 An undead NPC mount blocks the whole mounted pair when both are travelling.
 
@@ -7200,6 +7200,15 @@ The search stops after 10,000 tries per trip. Failure leaves that traveller
 or pair in place without ending combat. The trap still uses a charge.
 Successful travel clears combat links. Teleport traps do not run damage or
 invisibility-reveal handling in the triggering character's destination.
+
+Numbered SOAR trips and `SOAR RETURN` check the carried mount before take-off.
+`NO_UNDEAD` blocks an undead NPC mount; `NO_MOUNT` blocks any carried mount.
+The riding links must agree, and both travellers must be in the same room.
+If the trip is refused, neither moves, combat links and movement points stay
+as they were, and the saved return location is kept. Missing destinations
+are skipped in the list and cannot be flown to. Successful flights still
+cost 25 movement points, and memorising still costs 50. SOAR can still cross
+`NO_RECALL` when its other requirements are met. It brings no other followers.
 
 The Bastion-only `spec_spectral_minion` teleport checks its fixed destination
 list before moving. It skips missing rooms, its current room and rooms that
