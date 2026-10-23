@@ -419,9 +419,9 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 630           /* Includes Protection vs Undead. */
-#define MAX_PRE_REQ 1601        /* Five more protection prerequisites. */
-#define MAX_SPELL_GROUP 480     /* Includes Regenerate in Advanced Healing. */
+#define MAX_SKILL 631           /* Includes Ward Against Undead. */
+#define MAX_PRE_REQ 1606        /* Includes the room ward prerequisites. */
+#define MAX_SPELL_GROUP 481     /* Includes Ward Against Undead in Protection. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 62            /* Includes the Illusion group boundary. */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
@@ -3488,6 +3488,7 @@ struct room_index_data
         char *description;
         int vnum;
         unsigned long int room_flags;
+        int undead_ward_ticks; /* Temporary room magic, never a saved builder flag. */
         int light;
         int sector_type;
          /*
@@ -3550,6 +3551,8 @@ struct skill_type
 #define ALIGNMENT_PROTECTION_SAVE_BONUS 8
 #define ALIGNMENT_PROTECTION_DURATION 24
 #define UNDEAD_PROTECTION_DURATION 24
+#define UNDEAD_ROOM_WARD_BASE_DURATION 12
+#define UNDEAD_ROOM_WARD_LEVEL_STEP 10
 #define UNDEAD_PROTECTION_MINDLESS_BONUS 5
 #define UNDEAD_PROTECTION_RARE_PENALTY 5
 #define UNDEAD_PROTECTION_ELITE_PENALTY 10
@@ -4468,6 +4471,7 @@ extern int gsn_protect_vs_good;
 extern int gsn_mass_protect_vs_evil;
 extern int gsn_mass_protect_vs_good;
 extern int gsn_protect_vs_undead;
+extern int gsn_ward_against_undead;
 /*
  *  Deity gsns
  */
@@ -5324,6 +5328,7 @@ DECLARE_SPELL_FUN(spell_protect_vs_good);
 DECLARE_SPELL_FUN(spell_mass_protect_vs_evil);
 DECLARE_SPELL_FUN(spell_mass_protect_vs_good);
 DECLARE_SPELL_FUN(spell_protect_vs_undead);
+DECLARE_SPELL_FUN(spell_ward_against_undead);
 
 #define MOB_VNUM_SKELETON 85
 #define MOB_VNUM_GHOUL 86
@@ -5666,6 +5671,8 @@ int race_lookup args((const char *name));
 int class_lookup args((const char *name));
 bool room_is_dark args((ROOM_INDEX_DATA * pRoomIndex));
 bool room_is_private args((ROOM_INDEX_DATA * pRoomIndex));
+bool room_has_undead_ward args((const ROOM_INDEX_DATA *room));
+bool undead_ward_repel_mobile args((CHAR_DATA *ch));
 bool room_blocks_undead args((const ROOM_INDEX_DATA *room));
 bool undead_can_enter_room args((const CHAR_DATA *ch,
                                 const ROOM_INDEX_DATA *room));

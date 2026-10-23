@@ -2898,7 +2898,7 @@ ROOM_ flags:
     ROOM_NO_DROP            BIT_63      Cannot drop items in room
 
 
-ROOM_NO_UNDEAD is a permanent room flag, separate from the planned Ward
+ROOM_NO_UNDEAD is a permanent room flag, separate from the temporary Ward
 Against Undead spell. It checks ordinary exit travel, mobile resets,
 Animate Dead, Gate, Summon Familiar, Summon Demon, Summon Avatar,
 pet purchases, spirit guardian traps, cityguard reinforcements,
@@ -2909,6 +2909,34 @@ Transport and Chaos prayers, tournament-start transfers, gravity, teleport traps
 and the Bastion spectral-minion teleport.
 Undead NPC mounts and servants have no exception. An undead NPC mount
 blocks the whole mounted pair when both are travelling.
+
+Ward Against Undead is temporary room magic, not a builder flag. It uses
+the same NPC entry and creation checks as NO_UNDEAD on the paths listed
+here. Idle undead NPCs already inside try to leave by ordinary exits when
+the spell is cast, on mobile updates and before their game-tick burn.
+
+The ward does not override movement restrictions or teleport anyone.
+Sentinels, objects, sleeping, held, dazed or swallowed creatures, recovering
+mobs, mounted pairs and creatures fighting or being attacked stay put.
+Charm still keeps a servant with a nearby master. Area limits, doors, walls,
+private-room capacity, NO_MOB and other undead barriers still apply. Each
+direction is tried at most once. Slowed mobs keep their usual 25% movement
+chance per attempt. An impossible escape leaves the mob here.
+
+Undead NPCs left inside, including fighting ones, and player vampires burn
+for 30-60 HP each game tick instead of HP regeneration, without going below
+1 HP. Living creatures are unaffected. Player vampires can still enter and
+leave normally, and are not ejected. Temporary and permanent wards share
+one burn, which also replaces sunlight damage rather than adding to it.
+
+The duration is 12 ticks plus one tick per ten caster levels. Recasting keeps
+the longer of the remaining time and the new duration, never adding them.
+It also retries eligible idle undead. The timer runs in empty rooms and
+does not depend on the caster staying online. LOOK shows an active ward;
+RSTAT reports the remaining ticks. Expiry and server restart remove only
+the temporary ward. The permanent NO_UNDEAD flag is untouched.
+Ordinary Dispel Magic does not target room wards in this first version.
+There is no new Scribe keyword or saved area-file field for this spell.
 
 Recall leaves blocked followers behind instead of cancelling their
 master's trip. The player's own mount is checked with its rider and
@@ -3043,8 +3071,10 @@ taking them below 1 HP. This works indoors, at night, underwater and in
 mist form. Sunlight does not add another burn, and crossing an exit does
 not cause an extra burn.
 
-Creatures already inside are not removed. Other scripted placement
-still needs checking, so this is not a complete entry barrier.
+The permanent flag alone does not remove creatures already inside.
+A temporary Ward Against Undead can drive idle undead NPCs out and burns
+those left inside. Other scripted placement still needs checking, so this
+is not a complete entry barrier.
 
 The 'sector-type' identifies the type of terrain.  This primarily affects
 movement cost through the room, but may have various other effects--for example,
@@ -3804,9 +3834,9 @@ and pills. Make sure the spell's targeting suits the item.
     thought shield              transport
     ultrablast                  unholy word
     ventriloquate               vitalize
-    ward rune                   weaken
-    wither                      word of recall
-    wrath of god
+    ward against undead         ward rune
+    weaken                      wither
+    word of recall              wrath of god
 
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)

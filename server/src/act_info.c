@@ -1417,6 +1417,9 @@ void do_look(CHAR_DATA *ch, char *argument)
 
                 ansi_color(NTEXT, ch);
 
+                if (room_has_undead_ward(ch->in_room))
+                        send_to_char("A ward against undead surrounds this room.\n\r", ch);
+
                 /* Insert "crafting room" messages here. --Owl 4/5/22 */
                 if (!IS_NPC(ch) && can_craft(ch) && IS_SET(ch->in_room->room_flags, ROOM_CRAFT))
                 {

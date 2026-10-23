@@ -36,6 +36,7 @@
  */
 extern bool merc_down;
 extern const int movement_loss[SECT_MAX];
+extern ROOM_INDEX_DATA *room_index_hash[MAX_KEY_HASH];
 
 /*
  * Globals
@@ -1324,7 +1325,7 @@ int hit_gain(CHAR_DATA *ch)
          * The room ward burns in char_update, so don't charge sunlight twice.
          */
         if (ch->sub_class == SUB_CLASS_VAMPIRE
-        &&  !IS_SET(ch->in_room->room_flags, ROOM_NO_UNDEAD)
+        &&  !room_blocks_undead(ch->in_room)
         &&  IS_OUTSIDE(ch)
         &&  !IS_SET(ch->in_room->room_flags, ROOM_DARK)
         &&  ch->in_room->sector_type != SECT_UNDERWATER
@@ -1894,6 +1895,9 @@ void mobile_update(void)
                         continue;
                 }
 
+                if (undead_ward_repel_mobile(ch))
+                        continue;
+
                 if (ch->mount || ch->rider || IS_AFFECTED(ch, AFF_CHARM))
                         continue;
 
@@ -2275,6 +2279,14 @@ void char_update(void)
                 if (ch->deleted)
                         continue;
 
+                /* Give idle undead a legal way out before this tick's ward burn. */
+                if (IS_NPC(ch))
+                {
+                        undead_ward_repel_mobile(ch);
+                        if (ch->deleted || !ch->in_room)
+                                continue;
+                }
+
                 if (ch->backstab > 0)
                         ch->backstab--;
 
@@ -2297,24 +2309,26 @@ void char_update(void)
                         if (ch->deleted)
                                 continue;
 
-                        if (!IS_NPC(ch)
-                        &&  ch->sub_class == SUB_CLASS_VAMPIRE
+                        if (IS_UNDEAD(ch)
                         &&  ch->in_room
-                        &&  IS_SET(ch->in_room->room_flags, ROOM_NO_UNDEAD))
+                        &&  ((!IS_NPC(ch) && room_blocks_undead(ch->in_room))
+                             || (IS_NPC(ch) && room_has_undead_ward(ch->in_room))))
                         {
+                                int ward_burn = number_range(30, 60);
+
                                 send_to_char(
-                                    "The room's ward burns your undead flesh!\n\r",
+                                    "The room's ward burns you!\n\r",
                                     ch);
                                 act(
-                                    "$n's skin burns in the room's ward!",
+                                    "$n burns in the room's ward!",
                                     ch, NULL, NULL, TO_ROOM);
 
                                 /*
                                  * Replace this tick's healing with a sunlight-sized
-                                 * burn. It cannot kill or heal an injured vampire.
+                                 * burn. It cannot kill or heal an injured undead creature.
                                  */
                                 hit_change = -UMIN(
-                                    number_range(30, 60),
+                                    ward_burn,
                                     UMAX(0, ch->hit - 1));
                         }
 
@@ -3480,6 +3494,37 @@ void list_update()
 }
 
 /*
+ * Room wards keep ticking even when nobody is here. They do not touch the
+ * builder's permanent flags, so expiry cannot undo NO_UNDEAD.
+ */
+static void undead_room_ward_update(void)
+{
+        ROOM_INDEX_DATA *room;
+        CHAR_DATA *rch;
+        int iHash;
+
+        for (iHash = 0; iHash < MAX_KEY_HASH; iHash++)
+        {
+                for (room = room_index_hash[iHash]; room; room = room->next)
+                {
+                        if (room->undead_ward_ticks <= 0)
+                                continue;
+
+                        if (--room->undead_ward_ticks > 0)
+                                continue;
+
+                        for (rch = room->people; rch; rch = rch->next_in_room)
+                        {
+                                if (!rch->deleted && rch->in_room == room)
+                                        send_to_char(
+                                            "The ward against undead fades from the room.\n\r",
+                                            rch);
+                        }
+                }
+        }
+}
+
+/*
  * Handle all kinds of updates.
  * Called once per pulse from game loop.
  * Random times to defeat tick-timing clients and players.
@@ -3534,6 +3579,8 @@ void update_handler()
                 weather_update();
                 sprintf(last_function, "update_hander: calling char_update");
                 char_update();
+                sprintf(last_function, "update_hander: calling undead_room_ward_update");
+                undead_room_ward_update();
                 sprintf(last_function, "update_hander: calling obj_update");
                 obj_update();
                 sprintf(last_function, "update_hander: calling list_update");

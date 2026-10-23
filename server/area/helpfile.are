@@ -1243,6 +1243,10 @@ blocking unrelated directions.
 - Missing SOAR destinations now fail cleanly.
 - FLEE and BOMB check NO_UNDEAD and NO_MOUNT for the whole riding pair.
 - Escape reunions no longer bypass barred rooms or undo script transfers.
+- Added level-scaled Ward Against Undead, separate from the permanent room flag.
+- Wards drive idle undead through legal exits and burn undead left inside.
+- Temporary wards burn player vampires without stacking ward or sunlight burns.
+- Ward Against Undead is teachable through Protective Magiks; updated skill lists.
 
 ~
 
@@ -1263,6 +1267,9 @@ See HELP REGENERATE, REJUVENATION, SUCK, WOLFBITE, WITHER and ENERGY DRAIN.
 
 0 'NO UNDEAD' NO_UNDEAD~
 NO_UNDEAD is a permanent room flag, not a spell you cast.
+The temporary Ward Against Undead uses the same NPC barrier checks, but
+has its own timer and can drive idle undead NPCs out. Both burn player
+vampires; having both does not add a second burn. See HELP WARDUNDEAD.
 
 Undead NPCs cannot enter through ordinary exits (including FLEE and BOMB),
 Summon, Teleport, portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
@@ -1413,8 +1420,10 @@ It works indoors, at night, underwater and in mist form. Being in
 sunlight does not add another burn, and crossing an exit does not
 cause extra damage.
 
-Creatures already inside are not removed. Other scripted placement
-still needs checking, so this is not a complete entry barrier.
+The permanent flag alone does not remove creatures already inside.
+A temporary Ward Against Undead can drive idle undead NPCs out and burns
+those left inside. Other scripted placement still needs checking, so this
+is not a complete entry barrier.
 ~
 
 0 INNATE 'INNATE RESISTANCES' 'RACIAL RESISTANCES'~
@@ -4840,6 +4849,54 @@ Clerics learn this spell early. Knights gain access later. Cleric
 subclasses retain it through their early Cleric training.
 ~
 
+0 'WARD AGAINST UNDEAD' WARDUNDEAD~
+Syntax: cast 'ward against undead'
+
+This puts a temporary barrier around your current room. It lasts 12 ticks
+plus one tick per ten caster levels: 15 ticks at level 30, 19 at level 70,
+and 22 at level 100. It uses the same NPC entry and creation checks as the
+permanent NO_UNDEAD room flag, on the paths covered by that rule.
+
+Undead NPCs, including servants and mounts, cannot enter or be created here.
+A blocked undead mount stops its travelling pair. Idle undead already here
+try to leave immediately, on mobile updates, and before their game-tick burn.
+They use ordinary exits, not teleportation, and try each direction once.
+
+The ward does not override movement restrictions. Sentinels, objects,
+sleeping, held, dazed or swallowed creatures, recovering mobs, and mounted
+or ridden creatures are not forced to move. Neither are creatures fighting
+or being attacked. Charm still keeps a servant with a nearby master.
+Area limits, doors, walls, private-room capacity, NO_MOB and other undead
+barriers still apply. Slowed mobs keep their usual 25% movement chance per
+attempt. If no legal exit works, the creature stays.
+
+Undead NPCs left inside, including fighting ones, and player vampires lose
+30-60 HP each game tick instead of their usual HP regeneration. The burn
+cannot kill them or take them below 1 HP. It works indoors, at night,
+underwater and in mist form. It does not stack with sunlight or the permanent
+NO_UNDEAD burn. Living creatures are unaffected. Player vampires can still
+enter and leave normally, and are not ejected.
+
+Recasting keeps whichever is longer: the current remaining time or your
+new cast's duration. It never adds durations or shortens a stronger ward.
+A recast also tries to move eligible idle undead, even if the timer did not
+increase. Normal casting costs and recovery apply; minimum mana is 50.
+
+The timer runs even in empty rooms and does not depend on the caster staying
+online. LOOK shows the ward, and RSTAT shows its remaining ticks. The ward
+ends on expiry or server restart. Ordinary Dispel Magic does not target room
+wards in this first version.
+
+Clerics can learn it through Protective Magiks at 75%, after learning
+Protection vs Undead to 60%. It is part of the early cleric path retained
+by Templars and Druids. Knights can learn it from level 70 with Protection
+vs Undead at 60%. A teacher of Protective Magiks can teach it.
+
+This does not set, clear or save the permanent NO_UNDEAD room flag. If that
+flag is also present, its barrier and vampire burn remain after this spell
+expires. See HELP NO_UNDEAD and HELP PROTECTION VS UNDEAD.
+~
+
 0 'PROTECTION VS UNDEAD' PROTECTUNDEAD~
 Syntax: cast 'protection vs undead' <<target>
 
@@ -6067,6 +6124,7 @@ Spells in protective magiks include:
     mass protection vs evil
     mass protection vs good
     protection vs undead
+    ward against undead
     sanctuary
     stone skin
 ~
@@ -6962,6 +7020,7 @@ invis                   teleport                knock
 create spring           control weather         detect curse
 sense wisdom            turn undead             detect undead
 protection vs evil      mass protection vs evil protection vs undead
+ward against undead
 
 True clerics (those that don't change to templars or druids) may also
 learn these skills above level 30:
@@ -7251,7 +7310,7 @@ create water            dual                    disarm
 joust                   second spell            destrier
 flamestrike             cure poison             enhanced critical
 target                  turn undead             detect undead
-protection vs evil      protection vs undead
+protection vs evil      protection vs undead    ward against undead
 ~
 
 -1 'SMARTIAL ARTIST'~
@@ -7271,6 +7330,9 @@ target                  enhanced critical       tenketsu
 -1 SDRUID~
 {W
 Druid skills and spells{x
+
+Inherited cleric spells, including Ward Against Undead, are listed under
+HELP SCLERIC.
 
 barkskin                wither                  moonray
 sunray                  third spell             scribe
@@ -7341,6 +7403,9 @@ resist lightning        protection vs good      mass protection vs good
 -1 STEMPLAR~
 {W
 Templar skills and spells{x
+
+Inherited cleric spells, including Ward Against Undead, are listed under
+HELP SCLERIC.
 
 rescue                  parry                   third attack
 bash door               fast healing            grip

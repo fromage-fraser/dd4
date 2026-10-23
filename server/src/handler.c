@@ -3918,10 +3918,89 @@ bool room_is_dark( ROOM_INDEX_DATA *pRoomIndex )
 /*
  * Keep the room rule in one place so other entry paths can use it.
  */
+bool room_has_undead_ward(const ROOM_INDEX_DATA *room)
+{
+        return room && room->undead_ward_ticks > 0;
+}
+
 bool room_blocks_undead(const ROOM_INDEX_DATA *room)
 {
         return room
-            && IS_SET(room->room_flags, ROOM_NO_UNDEAD);
+            && (IS_SET(room->room_flags, ROOM_NO_UNDEAD)
+                || room_has_undead_ward(room));
+}
+
+/* The ward cannot make an idle mobile ignore its normal movement limits. */
+static bool undead_ward_mobile_can_leave(CHAR_DATA *ch)
+{
+        if (!ch || ch->deleted || !IS_NPC(ch) || !IS_UNDEAD(ch)
+        ||  !ch->in_room || !room_has_undead_ward(ch->in_room)
+        ||  ch->position != POS_STANDING || ch->wait > 0
+        ||  ch->fighting || is_in_combat(ch)
+        ||  IS_SET(ch->act, ACT_SENTINEL | ACT_OBJECT)
+        ||  IS_AFFECTED(ch, AFF_HOLD | AFF_DAZED | AFF_SWALLOWED)
+        ||  is_affected(ch, gsn_coil)
+        ||  ch->mount || ch->rider || is_affected(ch, gsn_mount))
+                return FALSE;
+
+        if (IS_AFFECTED(ch, AFF_CHARM)
+        &&  ch->master && ch->master->in_room == ch->in_room)
+                return FALSE;
+
+        return TRUE;
+}
+
+bool undead_ward_repel_mobile(CHAR_DATA *ch)
+{
+        ROOM_INDEX_DATA *source;
+        ROOM_INDEX_DATA *destination;
+        EXIT_DATA *pexit;
+        int first;
+        int attempt;
+        int door;
+
+        if (!undead_ward_mobile_can_leave(ch))
+                return FALSE;
+
+        if (IS_AFFECTED(ch, AFF_SLOW) && number_percent() > 25)
+                return FALSE;
+
+        source = ch->in_room;
+        first = number_range(0, 5);
+
+        /* Try each direction once, without teleporting or breaking riding links. */
+        for (attempt = 0; attempt < 6; attempt++)
+        {
+                door = (first + attempt) % 6;
+                pexit = source->exit[door];
+
+                if (!pexit || !(destination = pexit->to_room)
+                ||  destination == source
+                ||  IS_SET(destination->room_flags, ROOM_NO_MOB)
+                ||  (IS_SET(ch->act, ACT_STAY_AREA)
+                     && destination->area != source->area)
+                ||  room_is_private(destination)
+                ||  !undead_can_travel_to_room(ch, destination))
+                        continue;
+
+                if (IS_SET(pexit->exit_info, EX_CLOSED)
+                &&  (IS_SET(pexit->exit_info, EX_PASSPROOF)
+                     || !IS_AFFECTED(ch, AFF_PASS_DOOR | AFF_NON_CORPOREAL)))
+                        continue;
+
+                if (IS_SET(pexit->exit_info, EX_WALL)
+                &&  !IS_AFFECTED(ch, AFF_FLYING))
+                        continue;
+
+                /* Let ordinary movement enforce its remaining checks and scripts. */
+                move_char(ch, door);
+
+                if (ch->deleted || ch->in_room != source
+                ||  !undead_ward_mobile_can_leave(ch))
+                        return TRUE;
+        }
+
+        return FALSE;
 }
 
 bool undead_can_enter_room(const CHAR_DATA *ch,

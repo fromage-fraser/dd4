@@ -724,6 +724,7 @@ int gsn_protect_vs_good;
 int gsn_mass_protect_vs_evil;
 int gsn_mass_protect_vs_good;
 int gsn_protect_vs_undead;
+int gsn_ward_against_undead;
 
 /*
  *  Spell groups
@@ -3035,6 +3036,7 @@ void load_rooms(FILE *fp)
                 pRoomIndex->people = NULL;
                 pRoomIndex->contents = NULL;
                 pRoomIndex->extra_descr = NULL;
+                pRoomIndex->undead_ward_ticks = 0;
                 pRoomIndex->area = area_last;
                 pRoomIndex->vnum = vnum;
 

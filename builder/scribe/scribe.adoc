@@ -7096,6 +7096,34 @@ Transport and Chaos prayers, tournament-start transfers, gravity, teleport traps
 and the Bastion spectral-minion teleport.
 An undead NPC mount blocks the whole mounted pair when both are travelling.
 
+Ward Against Undead is temporary room magic, not a builder flag. It uses
+the same NPC entry and creation checks as `NO_UNDEAD` on the paths listed
+here. Idle undead NPCs already inside try to leave by ordinary exits when
+the spell is cast, on mobile updates and before their game-tick burn.
+
+The ward does not override movement restrictions or teleport anyone.
+Sentinels, objects, sleeping, held, dazed or swallowed creatures, recovering
+mobs, mounted pairs and creatures fighting or being attacked stay put.
+Charm still keeps a servant with a nearby master. Area limits, doors, walls,
+private-room capacity, `NO_MOB` and other undead barriers still apply. Each
+direction is tried at most once. Slowed mobs keep their usual 25% movement
+chance per attempt. An impossible escape leaves the mob here.
+
+Undead NPCs left inside, including fighting ones, and player vampires burn
+for 30-60 HP each game tick instead of HP regeneration, without going below
+1 HP. Living creatures are unaffected. Player vampires can still enter and
+leave normally, and are not ejected. Temporary and permanent wards share
+one burn, which also replaces sunlight damage rather than adding to it.
+
+The duration is 12 ticks plus one tick per ten caster levels. Recasting keeps
+the longer of the remaining time and the new duration, never adding them.
+It also retries eligible idle undead. The timer runs in empty rooms and
+does not depend on the caster staying online. `LOOK` shows an active ward;
+`RSTAT` reports the remaining ticks. Expiry and server restart remove only
+the temporary ward. The permanent `NO_UNDEAD` flag is untouched.
+Ordinary Dispel Magic does not target room wards in this first version.
+There is no new Scribe keyword or saved area-file field for this spell.
+
 Recall leaves blocked followers behind instead of cancelling their master's
 trip. The player's own mount is checked with its rider and moves only once.
 Word of Recall uses the same checks. Clan Home does not bring other followers.
@@ -7232,8 +7260,9 @@ Like sunlight, this burn cannot take them below 1 HP. It still works indoors,
 at night, underwater or in mist form, and does not add a second sunlight burn
 if the room is also sunny. There is no extra burn just for crossing an exit.
 
-Creatures already inside are not removed. Controlled undead are still undead,
-so undead NPC servants do not get an exception to the entry rule. A blocked
+The permanent flag alone does not remove creatures already inside. A temporary
+Ward Against Undead can drive idle undead NPCs out and burns those left inside.
+Controlled undead are still undead, so servants have no entry-rule exception. A blocked
 animation leaves its corpse untouched.
 
 Other scripted placement still needs checking, so this is not a complete

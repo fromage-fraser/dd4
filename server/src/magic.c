@@ -6641,6 +6641,56 @@ void spell_protect_vs_undead(int sn, int level,
                 send_to_char("Your ward settles around them.\n\r", ch);
 }
 
+void spell_ward_against_undead(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        ROOM_INDEX_DATA *room;
+        CHAR_DATA *wch;
+        CHAR_DATA *wch_next;
+        int duration;
+
+        (void)sn;
+        (void)level;
+        (void)vo;
+
+        if (!ch || ch->deleted || !ch->in_room)
+                return;
+
+        room = ch->in_room;
+        duration = UNDEAD_ROOM_WARD_BASE_DURATION
+                 + URANGE(1, ch->level, MAX_LEVEL) / UNDEAD_ROOM_WARD_LEVEL_STEP;
+
+        if (room->undead_ward_ticks >= duration)
+        {
+                send_to_char("The room's ward already lasts at least that long.\n\r", ch);
+        }
+        else
+        {
+                if (room_has_undead_ward(room))
+                {
+                        send_to_char("You renew the room's ward against undead.\n\r", ch);
+                        act("$n renews the room's ward against undead.",
+                            ch, NULL, NULL, TO_ROOM);
+                }
+                else
+                {
+                        send_to_char("You settle a ward against undead over the room.\n\r", ch);
+                        act("$n settles a ward against undead over the room.",
+                            ch, NULL, NULL, TO_ROOM);
+                }
+
+                /* Keep the longer remaining ward; never add durations or change flags. */
+                room->undead_ward_ticks = duration;
+        }
+
+        /* Room movement can rearrange people, so walk the global character list. */
+        for (wch = char_list; wch; wch = wch_next)
+        {
+                wch_next = wch->next;
+                if (!wch->deleted && wch->in_room == room)
+                        undead_ward_repel_mobile(wch);
+        }
+}
+
 void spell_protection(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
