@@ -1241,6 +1241,8 @@ blocking unrelated directions.
 - SOAR checks carried mounts against NO_UNDEAD and NO_MOUNT.
 - Refused SOAR RETURN keeps its saved destination and movement points.
 - Missing SOAR destinations now fail cleanly.
+- FLEE and BOMB check NO_UNDEAD and NO_MOUNT for the whole riding pair.
+- Escape reunions no longer bypass barred rooms or undo script transfers.
 
 ~
 
@@ -1262,8 +1264,8 @@ See HELP REGENERATE, REJUVENATION, SUCK, WOLFBITE, WITHER and ENERGY DRAIN.
 0 'NO UNDEAD' NO_UNDEAD~
 NO_UNDEAD is a permanent room flag, not a spell you cast.
 
-Undead NPCs cannot enter through ordinary exits, Summon, Teleport,
-portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
+Undead NPCs cannot enter through ordinary exits (including FLEE and BOMB),
+Summon, Teleport, portals, Recall, clan Home, Astral Vortex, Banish, Mass Teleport,
 the ARENA command, Pattern travel, SOAR, the deity Transport and Chaos prayers,
 tournament-start transfers, gravity, teleport traps, the Bastion spectral-minion
 teleport, MPTRANSFER, MPGOTO, MPAT and immortal TRANSFER, GOTO and AT.
@@ -1377,6 +1379,15 @@ The search stops after 10,000 tries per trip. Failure leaves that traveller
 or pair in place without ending combat. The trap still uses a charge.
 Successful travel clears combat links. Teleport traps do not run damage or
 invisibility-reveal handling in the triggering character's destination.
+
+FLEE and BOMB check both rider and mount before trying an exit. NO_UNDEAD
+bars an undead NPC in either role, and NO_MOUNT bars the mounted pair even
+when the mount is the one escaping. If no exit works, the fight stays active.
+If movement leaves a partner behind, the follow-up move checks the final
+room too. Only a live partner with matching riding links can rejoin from
+the starting room. A valid pair that cannot rejoin is dismounted instead;
+someone moved elsewhere by a script is not pulled back. A pair already
+together in a room is left alone.
 
 Numbered SOAR trips and SOAR RETURN check the carried mount before take-off.
 NO_UNDEAD blocks an undead NPC mount; NO_MOUNT blocks any carried mount.
@@ -2373,6 +2384,11 @@ Syntax: bomb
 
 Thieves are good at escaping from dangerous situations and can drop smoke bombs to cause enough
 confusion to escape from combat.
+
+BOMB checks the whole riding pair before trying an exit. NO_UNDEAD bars an
+undead NPC mount, and NO_MOUNT bars mounted escape. If no exit works, you
+stay in combat. If a later transfer separates you and your mount, a barred
+reunion leaves you dismounted rather than pulling the mount through.
 ~
 
 
@@ -3564,6 +3580,12 @@ Once you start a fight, you can't just walk away from it.  If the fight is
 not going well, you can attempt to FLEE, or another character can RESCUE
 you.  (You can also RECALL, but this is less likely to work, and costs
 more experience points.)
+
+FLEE checks both halves of a riding pair before trying an exit, even when
+the mount is the one fleeing. NO_UNDEAD bars undead NPCs; NO_MOUNT bars the
+pair. If no exit works, combat stays active. If a later transfer separates
+the pair, a barred reunion leaves the rider dismounted instead of pulling
+the missing partner through.
 
 If you lose your link during a fight, then your character will keep
 fighting, and will attempt to RECALL from time to time.  Your chances of

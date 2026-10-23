@@ -3012,6 +3012,15 @@ or pair in place without ending combat. The trap still uses a charge.
 Successful travel clears combat links. Teleport traps do not run damage or
 invisibility-reveal handling in the triggering character's destination.
 
+FLEE and BOMB check both rider and mount before trying an exit. NO_UNDEAD
+bars an undead NPC in either role, and NO_MOUNT bars the mounted pair even
+when the mount is the one escaping. If no exit works, the fight stays active.
+If movement leaves a partner behind, the follow-up move checks the final
+room too. Only a live partner with matching riding links can rejoin from
+the starting room. A valid pair that cannot rejoin is dismounted instead;
+someone moved elsewhere by a script is not pulled back. A pair already
+together in a room is left alone.
+
 Numbered SOAR trips and SOAR RETURN check the carried mount before take-off.
 NO_UNDEAD blocks an undead NPC mount; NO_MOUNT blocks any carried mount.
 The riding links must agree, and both travellers must be in the same room.
