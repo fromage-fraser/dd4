@@ -1259,6 +1259,7 @@ blocking unrelated directions.
 - Complete Healing now burns undead NPCs for 600 base damage.
 - Death Field now leaves undead untouched, without damaging or healing them.
 - Holy Word's double-damage bonus now covers undead of any alignment, once.
+- Dispel Evil now affects undead of any alignment, including player vampires.
 
 ~
 
@@ -4707,7 +4708,14 @@ This spell detects the presence of poison in food or drink.
 0 'DISPEL EVIL'~
 Syntax: cast 'dispel evil' <<victim>
 
-This spell invokes the wrath of God on an evil victim, inflicting damage.
+Call upon your god to strike an evil or undead target. Undead NPCs and
+player vampires can be harmed regardless of alignment; being good or
+neutral does not protect them. Living good and neutral targets keep their
+usual protection from this spell.
+
+Evil player casters are still refused. The damage formula is unchanged,
+and a successful spell save still halves it before normal magical/holy
+resistances and combat protections. This is an attack, not healing.
 ~
 
 0 'DISPEL MAGIC'~
