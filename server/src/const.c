@@ -4035,7 +4035,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"complete healing", &gsn_complete_healing,
          TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_complete_healing, 100, 1,
-         "", "!Complete Healing!"},
+         "positive energy", "!Complete Healing!"},
 
         {"control flames", &gsn_control_flames,
          TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_FIRE | RES_PSYCHIC,

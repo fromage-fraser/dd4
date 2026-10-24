@@ -2340,6 +2340,7 @@ bool restorative_spell_harms_undead(int sn, CHAR_DATA *victim)
             || spell == spell_power_heal
             || spell == spell_mass_heal
             || spell == spell_mass_power_heal
+            || spell == spell_complete_healing
             || spell == spell_regenerate;
 }
 
@@ -8509,6 +8510,10 @@ void spell_complete_healing(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int old_hit = victim->hit;
         bool was_confused = IS_AFFECTED(victim, AFF_CONFUSION) != 0;
+
+        /* Twice Power Heal's base damage; living healing stays as it was. */
+        if (positive_healing_harms_undead(sn, level, ch, victim, 600))
+                return;
 
         if (victim == ch->fighting)
                 return;

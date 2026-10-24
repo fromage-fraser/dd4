@@ -1256,6 +1256,7 @@ blocking unrelated directions.
 - Regenerate burns undead NPCs; player vampires keep its full repairs.
 - Mass Heal and Mass Power Heal now burn undead NPCs, including grouped servants.
 - Mass healing respects NO_HEAL and safely handles deaths and room changes.
+- Complete Healing now burns undead NPCs for 600 base damage.
 
 ~
 
@@ -4571,7 +4572,14 @@ Mass Heal and Mass Power Heal also burn grouped undead NPCs, including pets
 and servants, instead of healing them. Their base damage is 100 and 300,
 respectively, halved on a successful save before normal combat defences.
 Living NPCs marked NO_HEAL receive no healing or confusion cure.
-Complete Healing still has its existing NPC behavior.
+
+Complete Healing is still self-only. Living casters keep its normal healing;
+player vampires keep the 75% rule above. Undead NPCs take 600 base damage
+instead, twice Power Heal's base damage, even when already at full health
+or marked NO_HEAL. A successful spell save halves it before normal
+magical/holy resistances and combat defences. This can kill. Undead NPCs get
+no healing, confusion cure or other restorative benefits, even when the
+damage is blocked or resisted.
 ~
 
 0 'REGENERATE'~
