@@ -2303,12 +2303,33 @@ void spell_cure_blindness(int sn, int level, CHAR_DATA *ch, void *vo)
         return;
 }
 
+/* Keep the player-vampire exception separate from undead NPC traits. */
+static bool is_player_vampire(CHAR_DATA *victim)
+{
+        return victim && !IS_NPC(victim)
+            && victim->sub_class == SUB_CLASS_VAMPIRE;
+}
+
+/* Holy HP healing is one quarter weaker for player vampires. */
+static long long holy_healing_amount(
+        int sn, CHAR_DATA *victim, long long amount)
+{
+        if (!is_player_vampire(victim) || amount <= 0
+        ||  sn < 0 || sn >= MAX_SKILL
+        ||  !IS_SET(skill_table[sn].res_type, RES_HOLY))
+                return amount;
+
+        /* Round down, but let a positive heal restore at least one HP. */
+        return UMAX(1, (amount / 4) * 3 + (amount % 4) * 3 / 4);
+}
+
 /* Keep spell items and helpful NPCs in step with these healing spells. */
 bool restorative_spell_harms_undead(int sn, CHAR_DATA *victim)
 {
         SPELL_FUN *spell;
 
-        if (!IS_UNDEAD(victim) || sn < 0 || sn >= MAX_SKILL)
+        if (!IS_UNDEAD(victim) || is_player_vampire(victim)
+        ||  sn < 0 || sn >= MAX_SKILL)
                 return FALSE;
 
         spell = skill_table[sn].spell_fun;
@@ -2316,7 +2337,8 @@ bool restorative_spell_harms_undead(int sn, CHAR_DATA *victim)
             || spell == spell_cure_serious
             || spell == spell_cure_critical
             || spell == spell_heal
-            || spell == spell_power_heal;
+            || spell == spell_power_heal
+            || spell == spell_regenerate;
 }
 
 /*
@@ -2326,7 +2348,7 @@ bool restorative_spell_harms_undead(int sn, CHAR_DATA *victim)
 static bool positive_healing_harms_undead(
         int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, int amount)
 {
-        if (!IS_UNDEAD(victim))
+        if (!IS_UNDEAD(victim) || is_player_vampire(victim))
                 return FALSE;
 
         if (!ch || ch->deleted || victim->deleted
@@ -2371,6 +2393,8 @@ void spell_cure_critical(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (heal > 75)
                 heal = 75;
+
+        heal = (int)holy_healing_amount(sn, victim, heal);
 
         if (positive_healing_harms_undead(sn, level, ch, victim, heal))
                 return;
@@ -2522,6 +2546,8 @@ void spell_cure_light(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (heal > 35)
                 heal = 35;
+
+        heal = (int)holy_healing_amount(sn, victim, heal);
 
         if (positive_healing_harms_undead(sn, level, ch, victim, heal))
                 return;
@@ -2926,6 +2952,8 @@ void spell_cure_serious(int sn, int level, CHAR_DATA *ch, void *vo)
         if (heal > 50)
                 heal = 50;
 
+        heal = (int)holy_healing_amount(sn, victim, heal);
+
         if (positive_healing_harms_undead(sn, level, ch, victim, heal))
                 return;
 
@@ -3028,6 +3056,10 @@ void spell_regenerate(int sn, int level, CHAR_DATA *ch, void *vo)
         int old_affect_count = spell_support_affect_count(victim);
         unsigned long int old_affected_by = victim->affected_by;
         int repaired;
+
+        if (positive_healing_harms_undead(
+                sn, level, ch, victim, UMAX(1, level)))
+                return;
 
         if (IS_NPC(victim))
         {
@@ -5002,10 +5034,11 @@ void spell_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         int percent;
 
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int heal = (int)holy_healing_amount(sn, victim, 100);
         int old_hit = victim->hit;
         bool was_confused = IS_AFFECTED(victim, AFF_CONFUSION) != 0;
 
-        if (positive_healing_harms_undead(sn, level, ch, victim, 100))
+        if (positive_healing_harms_undead(sn, level, ch, victim, heal))
                 return;
 
         if (IS_NPC(victim))
@@ -5024,7 +5057,7 @@ void spell_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 victim->hit =
                     UMIN(
-                        (long long)victim->hit + 100,
+                        (long long)victim->hit + heal,
                         (long long)victim->max_hit - victim->aggro_dam);
         }
 
@@ -5151,10 +5184,11 @@ void spell_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         int percent;
 
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int heal = (int)holy_healing_amount(sn, victim, 300);
         int old_hit = victim->hit;
         bool was_confused = IS_AFFECTED(victim, AFF_CONFUSION) != 0;
 
-        if (positive_healing_harms_undead(sn, level, ch, victim, 300))
+        if (positive_healing_harms_undead(sn, level, ch, victim, heal))
                 return;
 
         if (IS_NPC(victim))
@@ -5173,7 +5207,7 @@ void spell_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 victim->hit =
                     UMIN(
-                        (long long)victim->hit + 300,
+                        (long long)victim->hit + heal,
                         (long long)victim->max_hit - victim->aggro_dam);
         }
 
@@ -8488,7 +8522,11 @@ void spell_complete_healing(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
         {
-                victim->hit = (long long)victim->max_hit - victim->aggro_dam;
+                long long missing = (long long)victim->max_hit
+                                  - victim->aggro_dam - victim->hit;
+
+                victim->hit = (long long)victim->hit
+                            + holy_healing_amount(sn, victim, missing);
         }
 
         update_pos(victim);
@@ -8535,14 +8573,28 @@ void spell_complete_healing(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        send_to_char(
-            "Ahhhhhh... you are completely healed!\n\r",
-            victim);
+        if (is_player_vampire(victim))
+        {
+                send_to_char(
+                    "The holy magic restores some of your strength.\n\r",
+                    victim);
 
-        arena_commentary(
-            "$n is completely healed.",
-            ch,
-            ch);
+                arena_commentary(
+                    "$n recovers some strength.",
+                    ch,
+                    ch);
+        }
+        else
+        {
+                send_to_char(
+                    "Ahhhhhh... you are completely healed!\n\r",
+                    victim);
+
+                arena_commentary(
+                    "$n is completely healed.",
+                    ch,
+                    ch);
+        }
 
         ch->edrain = 0;
         ch->backstab = 0;
@@ -10033,7 +10085,8 @@ void spell_mass_heal(int sn, int level, CHAR_DATA *ch, void *vo)
                 {
                         gch->hit =
                             UMIN(
-                                (long long)gch->hit + 100,
+                                (long long)gch->hit
+                                    + holy_healing_amount(sn, gch, 100),
                                 gch->max_hit - gch->aggro_dam);
                 }
 
@@ -10111,7 +10164,8 @@ void spell_mass_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
                 {
                         gch->hit =
                             UMIN(
-                                (long long)gch->hit + 300,
+                                (long long)gch->hit
+                                    + holy_healing_amount(sn, gch, 300),
                                 gch->max_hit - gch->aggro_dam);
                 }
 

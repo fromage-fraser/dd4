@@ -1251,6 +1251,9 @@ blocking unrelated directions.
 - Healers and friendly NPCs avoid using those three cures on undead.
 - Heal and Power Heal now burn undead; healers refuse those services too.
 - Helpful NPCs and self-healing specials avoid harmful positive healing.
+- Holy HP-healing spells now heal player vampires at 75% strength.
+- Healers, items and friendly NPCs follow the same vampire healing rule.
+- Regenerate burns undead NPCs; player vampires keep its full repairs.
 
 ~
 
@@ -1258,8 +1261,10 @@ blocking unrelated directions.
 Aggravated damage lowers the ceiling for ordinary healing and natural HP
 recovery.  Your maximum HP statistic does not change.  Natural recovery
 repairs your level divided by eight aggravated HP each game tick, rounded
-down.  Regenerate and Song of Rejuvenation can also repair these wounds;
-Lend Health cannot.  The deity Healing prayer removes them completely.
+down. Song of Rejuvenation can also repair these wounds. Regenerate does
+so for living targets and player vampires, but burns undead NPCs instead.
+Lend Health cannot repair them. The deity Healing prayer removes them
+completely.
 
 Vampire SUCK, WOLFBITE and Wither can leave part of their actual damage as
 aggravated wounds without extra immediate HP loss.  A new mummy-rot
@@ -4537,36 +4542,62 @@ heal more damage.  The psionicist disciplines, like many other skills, are
 limited to the psionicist alone.
 
 Cure Light, Cure Serious, Cure Critical, Heal and Power Heal use positive
-energy. They heal the living, but burn undead, including player vampires.
-The Cure spells use their normal healing amount as base damage. Heal uses
-100 and Power Heal uses 300, even against a full-health undead target.
-A successful spell save halves this damage, then the usual magical/holy
-resistances and combat defences apply. This can kill. An undead target gets
-no healing, confusion removal or healing support credit.
+energy. Living targets get their normal healing. Player vampires get 75% of
+the usual HP restoration, rounded down, with at least one HP from a positive
+heal. Apply the reduction before the normal maximum-HP and aggravated-wound
+ceiling. Confusion removal and other status cures are not reduced.
 
-All five spells also burn undead when used from magical items, including
-potions and healing herbs you consume yourself. Attacking someone else still
-checks normal combat protections; healing items cannot bypass the ban on
-player attacks. An NPC's NO_HEAL flag stops healing, not this damage.
-Invulnerability and damage immunity still work normally.
+The same 75% rule applies to Mass Heal, Mass Power Heal and Complete Healing.
+Heal restores up to 75 HP and Power Heal up to 225. Complete Healing restores
+75% of the missing HP that can still be healed, not 75% of maximum HP.
+Regenerate is a separate exception: player vampires get its full trauma and
+aggravated-wound repairs. Psychic Healing, Runic Mend and Lend Health are not
+holy HP-healing spells and are unchanged. Natural recovery is unchanged too.
 
-Healers leave these spells off an undead customer's list and refuse them
-before taking payment. Helpful NPCs avoid them for undead recipients, and
-self-healing specials skip them if the caster is undead.
-Complete Healing, Psychic Healing, the mass healing spells and Regenerate
-keep their existing effects for now.
+Undead NPCs, including vampire NPCs, still take damage from the three Cure
+spells, Heal and Power Heal. Their normal healing amounts become base damage:
+100 for Heal and 300 for Power Heal. A successful spell save halves it, then
+normal magical/holy resistances and combat defences apply. This can kill.
+These targets get no healing, confusion removal or healing support credit.
+
+Magical items and healer services follow the same recipient rules. Healers
+and helpful NPCs can heal player vampires normally at the reduced strength.
+A healer keeps the usual price. Harmful services are still refused for
+undead NPCs before payment. Offensive use keeps normal combat protections.
+
+Complete Healing and the mass healing spells still have their existing NPC
+behavior; this update changes their HP restoration only for player vampires.
 ~
 
 0 'REGENERATE'~
 
 Syntax: cast regenerate <<character>
 
-This spell will heal major non-fatal trauma that has been done to a player or
-mobile, for example serious brain injury, missing eyes or arms, a severed tail,
-etc.
+For living targets and player vampires, this spell repairs major non-fatal
+trauma: injured eyes, brain injuries, damaged limbs, a severed tail and similar
+wounds.
 
-It also repairs aggravated damage equal to the caster's level (at least one
-hit point).  This raises the healing ceiling without adding current HP.
+It also repairs aggravated damage equal to the spell's level (at least one
+hit point). This raises the healing ceiling without adding current HP.
+
+Player vampires are an exception to Regenerate's positive-energy rule.
+They get the normal repairs, including when someone else casts it or it
+comes from a healer, potion or other magical item. The 25% reduction to holy
+HP healing does not reduce Regenerate's repairs.
+
+Other undead, including vampire NPCs, take damage instead. The base damage
+is the spell's level, with a minimum of one, halved on a successful spell
+save. Normal magical/holy resistances and combat defences then apply. This
+can kill, even at full health. It repairs none of their trauma or aggravated
+wounds and gives no healing support credit.
+
+Magical items follow the same rule. Offensive use still checks normal combat
+protections. An NPC's NO_HEAL flag does not stop this damage; invulnerability
+and damage immunity still work normally.
+
+Healers and helpful NPCs can offer Regenerate to player vampires normally.
+They still avoid offering it to other undead. A healer refuses a harmful
+Regenerate before taking payment.
 
 Only true Clerics (not Templars or Druids) can learn this spell.  You must
 reach character level 80 and master Complete Healing at 100 percent.
@@ -6217,8 +6248,10 @@ These spheres represent the ability to heal either yourself or a group
 member of ones wounds.  The advanced group gives access to very powerful
 restorative spells and group spells.
 
-The three Cure spells, Heal and Power Heal burn undead instead of healing
-them. See HELP CURE LIGHT before trying to heal a vampire.
+The three Cure spells, Heal and Power Heal heal player vampires at 75%
+strength, but still burn undead NPCs. Mass Heal, Mass Power Heal and Complete
+Healing also restore 75% HP to player vampires. Regenerate remains fully
+effective on them. See HELP CURE LIGHT and HELP REGENERATE.
 
 Spells in healing magiks include:
     cure light wounds
@@ -7826,14 +7859,18 @@ opponents suffer twice the damage that non-good opponents suffer.
 Syntax: cast 'mass heal'
 
 This spell is similar to heal, except it affects the caster's entire group.
-Unlike the single-target Heal, it still heals undead.
+Player vampires receive up to 75 HP instead of 100. Other group members
+keep their existing healing. This spell has not yet been converted to damage
+undead NPCs.
 ~
 
 0 'MASS POWER HEAL'~
 Syntax: cast 'mass power heal'
 
 This spell is similar to power heal, except it affects the caster's entire
-group. Unlike the single-target Power Heal, it still heals undead.
+group. Player vampires receive up to 225 HP instead of 300. Other group
+members keep their existing healing. This spell has not yet been converted
+to damage undead NPCs.
 ~
 
 0 TAIL STALK~

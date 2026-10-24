@@ -25,7 +25,7 @@ struct healer_spell
         int price;
 };
 
-/* Don't sell a vampire a healing spell that would burn them. */
+/* Don't sell a healing spell that would harm its customer. */
 static bool healer_service_harms_undead(
         CHAR_DATA *ch, const struct healer_spell *service)
 {
@@ -39,6 +39,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
         char arg[MAX_INPUT_LENGTH];
         char buf[MAX_STRING_LENGTH];
         int i, sn;
+        bool omitted_service = FALSE;
 
         const int NUMBER_SPELLS = 14;
         const struct healer_spell spell_list[14] =
@@ -93,7 +94,10 @@ void do_heal(CHAR_DATA *ch, char *argument)
                 for (i = 0; i < NUMBER_SPELLS; i++)
                 {
                         if (healer_service_harms_undead(ch, &spell_list[i]))
+                        {
+                                omitted_service = TRUE;
                                 continue;
+                        }
 
                         sprintf(buf, " {W%-13s{x {w%-22s {Y%5d gold{x\n\r",
                                 spell_list[i].keyword,
@@ -101,10 +105,15 @@ void do_heal(CHAR_DATA *ch, char *argument)
                                 spell_list[i].price);
                         send_to_char(buf, ch);
                 }
-                if (IS_UNDEAD(ch))
+                if (omitted_service)
                         send_to_char(
                             "\n\rThe healer leaves out healing spells "
                             "that would burn you.\n\r", ch);
+                if (!IS_NPC(ch) && ch->sub_class == SUB_CLASS_VAMPIRE)
+                        send_to_char(
+                            "\n\rHoly HP healing restores 75% of its usual "
+                            "amount for vampire players. Regenerate is "
+                            "unchanged.\n\r", ch);
                 send_to_char("\n\rType '{WHEAL <<spell>{x' to receive healing.\n\r", ch);
 
                 /* Send healer services to web client */
