@@ -1254,6 +1254,8 @@ blocking unrelated directions.
 - Holy HP-healing spells now heal player vampires at 75% strength.
 - Healers, items and friendly NPCs follow the same vampire healing rule.
 - Regenerate burns undead NPCs; player vampires keep its full repairs.
+- Mass Heal and Mass Power Heal now burn undead NPCs, including grouped servants.
+- Mass healing respects NO_HEAL and safely handles deaths and room changes.
 
 ~
 
@@ -4565,8 +4567,11 @@ and helpful NPCs can heal player vampires normally at the reduced strength.
 A healer keeps the usual price. Harmful services are still refused for
 undead NPCs before payment. Offensive use keeps normal combat protections.
 
-Complete Healing and the mass healing spells still have their existing NPC
-behavior; this update changes their HP restoration only for player vampires.
+Mass Heal and Mass Power Heal also burn grouped undead NPCs, including pets
+and servants, instead of healing them. Their base damage is 100 and 300,
+respectively, halved on a successful save before normal combat defences.
+Living NPCs marked NO_HEAL receive no healing or confusion cure.
+Complete Healing still has its existing NPC behavior.
 ~
 
 0 'REGENERATE'~
@@ -7858,19 +7863,36 @@ opponents suffer twice the damage that non-good opponents suffer.
 0 'MASS HEAL'~
 Syntax: cast 'mass heal'
 
-This spell is similar to heal, except it affects the caster's entire group.
-Player vampires receive up to 75 HP instead of 100. Other group members
-keep their existing healing. This spell has not yet been converted to damage
-undead NPCs.
+This spell affects group members in the caster's room. Living recipients
+receive up to 100 HP; player vampires receive up to 75. The usual maximum-HP
+and aggravated-wound ceiling still applies. Confusion is cleared normally.
+Living NPCs marked NO_HEAL receive neither benefit.
+
+Undead NPCs take 100 base positive-energy damage instead, even if they are
+grouped pets or servants. A successful spell save halves it, then normal
+magical/holy resistances and combat defences apply. This can kill. They get
+no healing or confusion cure, even if the damage is blocked or resisted.
+Normal combat protections still apply.
+
+The spell earns at most one support bonus, and only for helping another
+group member. Targets must still be in the room and group when reached.
+New arrivals do not join this cast. If the caster has died or is no longer
+in the room, remaining effects stop.
 ~
 
 0 'MASS POWER HEAL'~
 Syntax: cast 'mass power heal'
 
-This spell is similar to power heal, except it affects the caster's entire
-group. Player vampires receive up to 225 HP instead of 300. Other group
-members keep their existing healing. This spell has not yet been converted
-to damage undead NPCs.
+This works like Mass Heal, but restores up to 300 HP to living recipients
+and up to 225 HP to player vampires, within the usual healing ceiling.
+Confusion is cleared normally. Living NPCs marked NO_HEAL receive neither
+benefit.
+
+Undead NPCs take 300 base positive-energy damage instead, including grouped
+pets and servants. A successful save halves it before normal magical/holy
+resistances and combat defences. This can kill. They get no healing or
+confusion cure, even if the damage is blocked or resisted. The same combat
+protections, group checks and one-support-bonus limit as Mass Heal apply.
 ~
 
 0 TAIL STALK~
