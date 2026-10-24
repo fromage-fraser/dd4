@@ -4536,6 +4536,86 @@ int item_name_type( char *name )
 
 }
 
+/* Undead is not a body plan: a fleshy vampire still has organic tissue. */
+bool has_organic_body(CHAR_DATA *ch)
+{
+        return ch && !IS_INORGANIC(ch)
+            && !(IS_NPC(ch) && IS_SET(ch->act, ACT_OBJECT));
+}
+
+/* These checks govern new poison applications, not automatic cures. */
+bool can_be_poisoned(CHAR_DATA *ch)
+{
+        return ch && !ch->deleted && ch->in_room
+            && ch->position != POS_DEAD && has_organic_body(ch)
+            && !IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+            && get_resistance_result(ch, RES_POISON) != RES_RESULT_IMMUNE;
+}
+
+int action_deaths(CHAR_DATA *ch)
+{
+        return ch && !IS_NPC(ch) && ch->pcdata ? ch->pcdata->killed : 0;
+}
+
+/* A player may die and respawn without changing their character pointer. */
+bool action_character_alive(CHAR_DATA *ch, int deaths)
+{
+        return ch && !ch->deleted && ch->in_room && ch->position != POS_DEAD
+            && (IS_NPC(ch) || (ch->pcdata && ch->pcdata->killed == deaths));
+}
+
+bool action_character_in_room(CHAR_DATA *ch, ROOM_INDEX_DATA *room, int deaths)
+{
+        return room && action_character_alive(ch, deaths) && ch->in_room == room;
+}
+
+/* Keep room order, even when an earlier effect removes a later target. */
+ACTION_ROOM_TARGET *action_room_snapshot(ROOM_INDEX_DATA *room, size_t *count)
+{
+        ACTION_ROOM_TARGET *targets;
+        CHAR_DATA *ch;
+        size_t size = 0;
+        size_t i = 0;
+
+        if (!count)
+                return NULL;
+        *count = 0;
+        if (!room)
+                return NULL;
+
+        for (ch = room->people; ch; ch = ch->next_in_room)
+        {
+                if (!action_character_in_room(ch, room, action_deaths(ch)))
+                        continue;
+                if (size == (size_t)-1 / sizeof(*targets))
+                {
+                        bug("Action_room_snapshot: too many targets.", 0);
+                        return NULL;
+                }
+                size++;
+        }
+
+        if (!size)
+                return NULL;
+        targets = calloc(size, sizeof(*targets));
+        if (!targets)
+        {
+                bug("Action_room_snapshot: could not allocate targets.", 0);
+                return NULL;
+        }
+
+        for (ch = room->people; ch; ch = ch->next_in_room)
+        {
+                if (!action_character_in_room(ch, room, action_deaths(ch)))
+                        continue;
+                targets[i].character = ch;
+                targets[i].deaths = action_deaths(ch);
+                i++;
+        }
+        *count = size;
+        return targets;
+}
+
 /*
  * Mindlessness is an explicit trait.
  * Do not infer it from undead status, anatomy or intelligence.

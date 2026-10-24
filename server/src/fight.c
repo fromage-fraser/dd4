@@ -1253,7 +1253,8 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                         else if (!wield && IS_NPC(ch))
                                 dt = mob_natural_attack_type(ch);
 
-                        if (wield && IS_SET(wield->extra_flags, ITEM_POISONED))
+                        if (wield && IS_SET(wield->extra_flags, ITEM_POISONED)
+                        &&  can_be_poisoned(victim))
                                 poison = TRUE;
                 }
 
@@ -1394,6 +1395,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                 dam += GET_DAMROLL(ch);
 
                 if (wield && IS_SET(wield->extra_flags, ITEM_POISONED)
+                &&  can_be_poisoned(victim)
                 &&  (IS_NPC(victim)
                 ||   (number_percent() > victim->pcdata->learned[gsn_resist_toxin]
                 &&    !is_affected(victim, gsn_bonus_exotic))))
@@ -2468,6 +2470,7 @@ static void damage_internal(CHAR_DATA *ch,
         if (dam > 0
         &&  dt > TYPE_HIT
         &&  poison
+        &&  can_be_poisoned(victim)
         &&  !saves_resistance_effect(
                  ch,
                  ch->level,
@@ -10710,6 +10713,13 @@ void do_bubble_jet(CHAR_DATA *ch, char *argument)
         int          dam;
         int          duration;
         bool         immune;
+        ROOM_INDEX_DATA *room;
+        int deaths = action_deaths(ch);
+        int victim_deaths;
+
+        if (!action_character_alive(ch, deaths))
+                return;
+        room = ch->in_room;
 
         if (!IS_NPC(ch) && !CAN_DO(ch, gsn_bubble_jet))
         {
@@ -10742,6 +10752,9 @@ void do_bubble_jet(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        victim_deaths = action_deaths(victim);
+        if (!action_character_in_room(victim, room, victim_deaths))
+                return;
         if (victim == ch || is_safe(ch, victim))
                 return;
 
@@ -10779,16 +10792,15 @@ void do_bubble_jet(CHAR_DATA *ch, char *argument)
          * Immunity additionally prevents the secondary disorientation.
          */
         if (immune
-        ||  victim->deleted
-        ||  victim->position == POS_DEAD
-        ||  ch->in_room != victim->in_room)
+        ||  !action_character_in_room(ch, room, deaths)
+        ||  !action_character_in_room(victim, room, victim_deaths))
         {
                 return;
         }
 
         duration = number_range(1, 3);
 
-        if (!is_affected(victim, gsn_nausea))
+        if (can_be_poisoned(victim) && !is_affected(victim, gsn_nausea))
         {
                 af.type      = gsn_nausea;
                 af.duration  = duration;
