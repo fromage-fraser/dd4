@@ -4391,13 +4391,14 @@ void spell_dispel_evil(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (IS_GOOD(victim))
+        /* Good or neutral alignment does not shelter an undead target. */
+        if (IS_GOOD(victim) && !IS_UNDEAD(victim))
         {
                 act("God protects $N.", ch, NULL, victim, TO_ROOM);
                 return;
         }
 
-        if (IS_NEUTRAL(victim))
+        if (IS_NEUTRAL(victim) && !IS_UNDEAD(victim))
         {
                 act("$N does not seem to be affected.", ch, NULL, victim, TO_CHAR);
                 return;
