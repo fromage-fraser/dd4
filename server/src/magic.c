@@ -10080,7 +10080,7 @@ void spell_mass_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
 }
 
 /* A death trigger may move or kill the caster, even back into this room. */
-static bool mass_healing_caster_ready(
+static bool room_spell_caster_ready(
         CHAR_DATA *ch,
         ROOM_INDEX_DATA *room,
         int deaths)
@@ -10159,7 +10159,7 @@ static void mass_positive_healing(
                 bool was_confused;
                 long long ceiling;
 
-                if (!mass_healing_caster_ready(ch, room, deaths))
+                if (!room_spell_caster_ready(ch, room, deaths))
                         break;
 
                 gch = targets[i].character;
@@ -10201,7 +10201,7 @@ static void mass_positive_healing(
                 send_to_char(message, gch);
         }
 
-        if (mass_healing_caster_ready(ch, room, deaths))
+        if (room_spell_caster_ready(ch, room, deaths))
         {
                 send_to_char("Ok.\n\r", ch);
 
@@ -10435,9 +10435,19 @@ void spell_moonray(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_sunray(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *vch;
+        ROOM_INDEX_DATA *room;
+        int deaths;
         int dam;
         int racedam;
         AFFECT_DATA af;
+
+        if (!ch || ch->deleted || !ch->in_room
+        ||  ch->position == POS_DEAD
+        ||  (!IS_NPC(ch) && !ch->pcdata))
+                return;
+
+        room = ch->in_room;
+        deaths = IS_NPC(ch) ? 0 : ch->pcdata->killed;
 
         if (!IS_OUTSIDE(ch) || (ch->in_room->sector_type == SECT_UNDERWATER) || (ch->in_room->sector_type == SECT_UNDERWATER_GROUND))
         {
@@ -10470,10 +10480,13 @@ void spell_sunray(int sn, int level, CHAR_DATA *ch, void *vo)
 
         for (vch = char_list; vch; vch = vch->next)
         {
+                if (!room_spell_caster_ready(ch, room, deaths))
+                        break;
+
                 if (vch->deleted || !vch->in_room)
                         continue;
 
-                if (vch->in_room == ch->in_room)
+                if (vch->in_room == room)
                 {
                         if (!IS_NPC(vch) && is_safe(ch, vch))
                                 continue;
@@ -10496,7 +10509,8 @@ void spell_sunray(int sn, int level, CHAR_DATA *ch, void *vo)
 
                         if ((vch != ch) && !is_same_group(vch, ch))
                         {
-                                if (vch->race == RACE_ILLITHID)
+                                /* Use the strongest sunlight bonus once, not once per trait. */
+                                if (IS_UNDEAD(vch) || vch->race == RACE_ILLITHID)
                                 {
                                         racedam = (dam * 2);
                                         damage(ch, vch, saves_spell(ch, level, vch) ? racedam / 2 : racedam, sn, FALSE);
@@ -10522,7 +10536,7 @@ void spell_sunray(int sn, int level, CHAR_DATA *ch, void *vo)
                         continue;
                 }
 
-                if (vch->in_room->area == ch->in_room->area && IS_OUTSIDE(vch) && (vch->in_room->sector_type != SECT_UNDERWATER) && (vch->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_AWAKE(vch) && !IS_SET(vch->in_room->room_flags, ROOM_NO_WEATHER))
+                if (vch->in_room->area == room->area && IS_OUTSIDE(vch) && (vch->in_room->sector_type != SECT_UNDERWATER) && (vch->in_room->sector_type != SECT_UNDERWATER_GROUND) && IS_AWAKE(vch) && !IS_SET(vch->in_room->room_flags, ROOM_NO_WEATHER))
                         send_to_char("The sun pulses violently in the sky.\n\r", vch);
         }
 }
