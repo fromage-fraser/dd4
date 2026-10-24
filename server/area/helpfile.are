@@ -1249,6 +1249,8 @@ blocking unrelated directions.
 - Ward Against Undead is teachable through Protective Magiks; updated skill lists.
 - Cure Light, Serious and Critical now burn undead instead of healing them.
 - Healers and friendly NPCs avoid using those three cures on undead.
+- Heal and Power Heal now burn undead; healers refuse those services too.
+- Helpful NPCs and self-healing specials avoid harmful positive healing.
 
 ~
 
@@ -4534,21 +4536,25 @@ These spells cure damage on the target character.  The higher-level spells
 heal more damage.  The psionicist disciplines, like many other skills, are
 limited to the psionicist alone.
 
-Cure Light, Cure Serious and Cure Critical use positive energy. They heal
-the living, but burn undead, including player vampires. Their normal healing
-amount becomes base damage, halved on a successful spell save, then handled
-by the usual magical/holy resistances and combat defences. This can kill.
-An undead target does not get healing, confusion removal or support credit.
+Cure Light, Cure Serious, Cure Critical, Heal and Power Heal use positive
+energy. They heal the living, but burn undead, including player vampires.
+The Cure spells use their normal healing amount as base damage. Heal uses
+100 and Power Heal uses 300, even against a full-health undead target.
+A successful spell save halves this damage, then the usual magical/holy
+resistances and combat defences apply. This can kill. An undead target gets
+no healing, confusion removal or healing support credit.
 
-These three cures also burn undead when used from magical items, including
-potions you drink yourself. Attacking someone else still checks the normal
-combat protections; cure items cannot bypass the ban on player attacks.
-An NPC's NO_HEAL flag stops healing, not this damage. Invulnerability and
-damage immunity still work normally.
+All five spells also burn undead when used from magical items, including
+potions and healing herbs you consume yourself. Attacking someone else still
+checks normal combat protections; healing items cannot bypass the ban on
+player attacks. An NPC's NO_HEAL flag stops healing, not this damage.
+Invulnerability and damage immunity still work normally.
 
-Healers leave these cures off an undead customer's list and refuse them
-before taking payment. Friendly NPCs do not choose them for undead players.
-Other healing spells keep their existing effects for now.
+Healers leave these spells off an undead customer's list and refuse them
+before taking payment. Helpful NPCs avoid them for undead recipients, and
+self-healing specials skip them if the caster is undead.
+Complete Healing, Psychic Healing, the mass healing spells and Regenerate
+keep their existing effects for now.
 ~
 
 0 'REGENERATE'~
@@ -6211,7 +6217,7 @@ These spheres represent the ability to heal either yourself or a group
 member of ones wounds.  The advanced group gives access to very powerful
 restorative spells and group spells.
 
-Cure Light, Cure Serious and Cure Critical burn undead instead of healing
+The three Cure spells, Heal and Power Heal burn undead instead of healing
 them. See HELP CURE LIGHT before trying to heal a vampire.
 
 Spells in healing magiks include:
@@ -7820,13 +7826,14 @@ opponents suffer twice the damage that non-good opponents suffer.
 Syntax: cast 'mass heal'
 
 This spell is similar to heal, except it affects the caster's entire group.
+Unlike the single-target Heal, it still heals undead.
 ~
 
 0 'MASS POWER HEAL'~
 Syntax: cast 'mass power heal'
 
 This spell is similar to power heal, except it affects the caster's entire
-group.
+group. Unlike the single-target Power Heal, it still heals undead.
 ~
 
 0 TAIL STALK~

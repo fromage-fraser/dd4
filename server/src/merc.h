@@ -5766,6 +5766,7 @@ bool wiz_do args((CHAR_DATA * ch, char *command));
 int skill_lookup args((const char *name));
 bool saves_spell args((CHAR_DATA *source, int level,
                        CHAR_DATA *victim));
+bool restorative_spell_harms_undead args((int sn, CHAR_DATA *victim));
 bool saves_resistance_effect args((CHAR_DATA *source, int level,
                                    CHAR_DATA *victim,
                                    unsigned long int res_types));
