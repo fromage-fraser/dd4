@@ -5264,7 +5264,8 @@ void do_brandish(CHAR_DATA *ch, char *argument)
                         if (vch->deleted)
                                 continue;
 
-                        switch (skill_table[sn].target)
+                        switch (spell_restores_undead(sn, vch)
+                            ? TAR_CHAR_DEFENSIVE : skill_table[sn].target)
                         {
                         default:
                                 bug("Do_brandish: bad target for sn %d.", sn);

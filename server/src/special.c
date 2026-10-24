@@ -732,6 +732,9 @@ bool spec_cast_mage( CHAR_DATA *ch )
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
 
+        if (spell_restores_undead(sn, victim))
+                return FALSE;
+
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
 
         return TRUE;
@@ -920,6 +923,9 @@ bool spec_cast_water_sprite( CHAR_DATA *ch )
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
 
+        if (!target_self && spell_restores_undead(sn, victim))
+                return FALSE;
+
         if (target_self)
                 act ("$c concentrates intensely.", ch, NULL, NULL, TO_ROOM);
         else
@@ -975,6 +981,9 @@ bool spec_cast_undead( CHAR_DATA *ch )
         }
 
         if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        if (spell_restores_undead(sn, victim))
                 return FALSE;
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
@@ -1751,6 +1760,9 @@ bool spec_death_knight(CHAR_DATA *ch)
                 return FALSE;
         }
 
+        if (spell_restores_undead(sn, victim))
+                return FALSE;
+
         (*skill_table[sn].spell_fun)(
             sn,
             ch->level,
@@ -1801,7 +1813,7 @@ bool spec_lich(CHAR_DATA *ch)
         if (!IS_AFFECTED(victim, AFF_CURSE))
                 spells[count++] = "curse";
 
-        if (ch->level >= 6)
+        if (ch->level >= 6 && !spell_restores_undead(gsn_chill_touch, victim))
                 spells[count++] = "chill touch";
 
         if (ch->level >= 9
@@ -1828,6 +1840,9 @@ bool spec_lich(CHAR_DATA *ch)
         {
                 return FALSE;
         }
+
+        if (spell_restores_undead(sn, victim))
+                return FALSE;
 
         (*skill_table[sn].spell_fun)(
             sn,
@@ -4365,6 +4380,9 @@ bool spec_demon( CHAR_DATA *ch )
         }
 
         if ( ( sn = skill_lookup( spell ) ) < 0 )
+                return FALSE;
+
+        if (spell_restores_undead(sn, victim))
                 return FALSE;
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
