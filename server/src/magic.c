@@ -8678,6 +8678,10 @@ void spell_death_field(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 vch_next = vch->next_in_room;
 
+                /* Undead sit this one out; the fog neither hurts nor heals them. */
+                if (IS_UNDEAD(vch))
+                        continue;
+
                 if (vch == ch->mount || is_group_members_mount(vch, ch) || is_same_group(vch, ch))
                         continue;
 
