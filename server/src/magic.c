@@ -1511,7 +1511,8 @@ void spell_holy_word(int sn, int level, CHAR_DATA *ch, void *vo)
         if (IS_EVIL(ch))
                 dam /= 2;
 
-        if (IS_EVIL(victim))
+        /* Evil and undead share one bonus, even when both apply. */
+        if (IS_EVIL(victim) || IS_UNDEAD(victim))
                 dam *= 2;
 
         if (spell_attack_number == 1 && (ch != victim))

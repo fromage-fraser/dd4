@@ -1258,6 +1258,7 @@ blocking unrelated directions.
 - Mass healing respects NO_HEAL and safely handles deaths and room changes.
 - Complete Healing now burns undead NPCs for 600 base damage.
 - Death Field now leaves undead untouched, without damaging or healing them.
+- Holy Word's double-damage bonus now covers undead of any alignment, once.
 
 ~
 
@@ -6801,9 +6802,14 @@ This form allows you to FLY.
 0 'HOLY WORD'~
 Syntax: cast 'holy word' <<victim>
 
-A powerful clerical attack spell in which the cleric, using the power of
-their religion, inflicts pain upon their enemy.  Evil opponents suffer
-twice the damage that non-evil enemies do.
+Call upon your god to smite your opponent. Evil targets and undead targets
+suffer twice the normal damage, including player vampires of any alignment.
+This is one shared bonus: being both evil and undead does not double it
+again.
+
+The usual spell save still halves the damage, and an evil caster's word
+remains weaker. Normal magical/holy resistances and combat protections
+still apply. This is an attack, not one of the holy healing spells.
 ~
 
 0 'CAT FORM'~
