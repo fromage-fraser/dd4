@@ -1260,6 +1260,8 @@ blocking unrelated directions.
 - Death Field now leaves undead untouched, without damaging or healing them.
 - Holy Word's double-damage bonus now covers undead of any alignment, once.
 - Dispel Evil now affects undead of any alignment, including player vampires.
+- Sunray now doubles damage against undead, without stacking racial bonuses.
+- Sunray stops if its caster dies or leaves the casting room.
 
 ~
 
@@ -1647,8 +1649,20 @@ level and more damaged an item is, the more it will cost to repair.
 Syntax: cast moonray
 Syntax: cast sunray
 
-These two druid spells call upon the elements to blast their opponents.  You
+These two druid spells call upon the elements to blast their opponents. You
 need to be outside and in the presence of the moon or sun.
+
+Sunray deals double its weather-adjusted base damage to undead NPCs and
+player vampires of any alignment, before the usual damage save and combat
+defences. This is the same strongest sunlight bonus used for illithids;
+it does not stack with another racial sunlight bonus. Living targets keep
+their existing racial modifiers. The damage types remain fire, energy and
+magic.
+
+Sunray still needs suitable daylight and weather, with the usual immortal
+exceptions. Its group checks, player-combat protections and blinding rules
+are unchanged; eyeless mobs are not blinded. Remaining effects stop if the
+caster dies or is no longer in the casting room. Moonray is unchanged.
 ~
 
 0 'FURY OF NATURE'~
