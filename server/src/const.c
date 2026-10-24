@@ -2995,7 +2995,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"heal", &gsn_heal,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, RES_MAGIC | RES_HOLY,
          spell_heal, 50, 12,
-         "", "!Heal!"},
+         "positive energy", "!Heal!"},
 
         {"knock", &gsn_knock,
          TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
@@ -3005,7 +3005,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"power heal", &gsn_power_heal,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, RES_MAGIC | RES_HOLY,
          spell_power_heal, 75, 24,
-         "", "!Power Heal!"},
+         "positive energy", "!Power Heal!"},
 
         {"identify", &gsn_identify,
          TYPE_INT, TAR_OBJ_INV, POS_STANDING, RES_MAGIC,

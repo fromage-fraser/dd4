@@ -1318,12 +1318,9 @@ void obj_cast_spell(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DAT
                 if (!victim)
                         victim = ch;
 
-                /* A cure item must not bypass the ban on player attacks. */
+                /* Healing items must not bypass the ban on player attacks. */
                 if (victim != ch && !IS_NPC(ch) && !IS_NPC(victim)
-                &&  IS_UNDEAD(victim)
-                &&  (skill_table[sn].spell_fun == spell_cure_light
-                  || skill_table[sn].spell_fun == spell_cure_serious
-                  || skill_table[sn].spell_fun == spell_cure_critical))
+                &&  restorative_spell_harms_undead(sn, victim))
                 {
                         send_to_char("You can't do that.\n\r", ch);
                         return;
@@ -2306,11 +2303,27 @@ void spell_cure_blindness(int sn, int level, CHAR_DATA *ch, void *vo)
         return;
 }
 
+/* Keep spell items and helpful NPCs in step with these healing spells. */
+bool restorative_spell_harms_undead(int sn, CHAR_DATA *victim)
+{
+        SPELL_FUN *spell;
+
+        if (!IS_UNDEAD(victim) || sn < 0 || sn >= MAX_SKILL)
+                return FALSE;
+
+        spell = skill_table[sn].spell_fun;
+        return spell == spell_cure_light
+            || spell == spell_cure_serious
+            || spell == spell_cure_critical
+            || spell == spell_heal
+            || spell == spell_power_heal;
+}
+
 /*
- * Cures restore living flesh, but their positive energy burns undead.
+ * Positive healing restores the living, but burns undead.
  * Returning TRUE means the undead path has handled the spell.
  */
-static bool cure_wounds_harms_undead(
+static bool positive_healing_harms_undead(
         int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, int amount)
 {
         if (!IS_UNDEAD(victim))
@@ -2359,7 +2372,7 @@ void spell_cure_critical(int sn, int level, CHAR_DATA *ch, void *vo)
         if (heal > 75)
                 heal = 75;
 
-        if (cure_wounds_harms_undead(sn, level, ch, victim, heal))
+        if (positive_healing_harms_undead(sn, level, ch, victim, heal))
                 return;
 
         if (IS_NPC(victim))
@@ -2510,7 +2523,7 @@ void spell_cure_light(int sn, int level, CHAR_DATA *ch, void *vo)
         if (heal > 35)
                 heal = 35;
 
-        if (cure_wounds_harms_undead(sn, level, ch, victim, heal))
+        if (positive_healing_harms_undead(sn, level, ch, victim, heal))
                 return;
 
         if (IS_NPC(victim))
@@ -2913,7 +2926,7 @@ void spell_cure_serious(int sn, int level, CHAR_DATA *ch, void *vo)
         if (heal > 50)
                 heal = 50;
 
-        if (cure_wounds_harms_undead(sn, level, ch, victim, heal))
+        if (positive_healing_harms_undead(sn, level, ch, victim, heal))
                 return;
 
         if (IS_NPC(victim))
@@ -4992,6 +5005,9 @@ void spell_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         int old_hit = victim->hit;
         bool was_confused = IS_AFFECTED(victim, AFF_CONFUSION) != 0;
 
+        if (positive_healing_harms_undead(sn, level, ch, victim, 100))
+                return;
+
         if (IS_NPC(victim))
         {
                 if (IS_SET(victim->act, ACT_NO_HEAL))
@@ -5137,6 +5153,9 @@ void spell_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int old_hit = victim->hit;
         bool was_confused = IS_AFFECTED(victim, AFF_CONFUSION) != 0;
+
+        if (positive_healing_harms_undead(sn, level, ch, victim, 300))
+                return;
 
         if (IS_NPC(victim))
         {

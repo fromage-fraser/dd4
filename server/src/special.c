@@ -3078,6 +3078,8 @@ bool spec_grail (CHAR_DATA *ch)
                 switch( random )
                 {
                     case 0:
+                        if (restorative_spell_harms_undead(gsn_heal, victim))
+                            return FALSE;
                         act("$c tells you, 'Fear me, for I am the cruellest of this realm...'",
                             ch, NULL, NULL, TO_ROOM );
                         spell_heal( skill_lookup( "heal" ), ch->level, ch, victim );
@@ -3214,6 +3216,8 @@ bool spec_bounty (CHAR_DATA *ch)
                 switch( number_bits( 3 ) )
                 {
                     case 0:
+                        if (restorative_spell_harms_undead(gsn_heal, victim))
+                            return FALSE;
                         act("$c tells you 'Fear me, for I am the cruelest of this realm...'",
                             ch, NULL, NULL, TO_ROOM );
                         spell_heal( skill_lookup( "heal" ), ch->level, ch, victim );
@@ -3302,6 +3306,8 @@ bool spec_cast_orb( CHAR_DATA *ch )
                 return TRUE;
 
             case 2:
+                if (restorative_spell_harms_undead(gsn_heal, victim))
+                    return FALSE;
                 act( "$n pulses briefly.",   ch, NULL, NULL, TO_ROOM );
                 spell_heal( skill_lookup( "heal" ),
                            ch->level, ch, victim );
@@ -4171,6 +4177,9 @@ bool spec_sahuagin (CHAR_DATA *ch)
 
                     case 2:
                     case 3:
+                        if (restorative_spell_harms_undead(gsn_heal, ch))
+                                return FALSE;
+
                         if (ch->hit >= ch->max_hit)
                                 return FALSE;
 
@@ -4601,6 +4610,9 @@ bool spec_kappa( CHAR_DATA *ch )
                         return TRUE;
 
                     case  9:
+                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                                return FALSE;
+
                         min_level = 25;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"You think you can hurt ME?"); }
                         spell = "power heal";
@@ -5142,6 +5154,9 @@ bool spec_sahuagin_baron (CHAR_DATA *ch)
                         return TRUE;
 
                     case  9:
+                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                                return FALSE;
+
                         min_level = 25;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"Fool! I cannot be hurt!"); }
                         spell = "power heal";
@@ -5149,6 +5164,9 @@ bool spec_sahuagin_baron (CHAR_DATA *ch)
                         break;
 
                     case  10:
+                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                                return FALSE;
+
                         min_level = 25;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"Fool! I cannot be hurt!"); }
                         spell = "power heal";
@@ -5220,6 +5238,9 @@ bool spec_sahuagin_prince (CHAR_DATA *ch)
                 switch ( number_range (0, 11) )
                 {
                     case  0:
+                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                                return FALSE;
+
                         min_level = 25;
                         spell = "power heal";
                         target_self = TRUE;
@@ -5274,6 +5295,9 @@ bool spec_sahuagin_prince (CHAR_DATA *ch)
                         return TRUE;
 
                     case  9:
+                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                                return FALSE;
+
                         min_level = 25;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"Fool! I am invulnerable!"); }
                         spell = "power heal";
@@ -5281,6 +5305,9 @@ bool spec_sahuagin_prince (CHAR_DATA *ch)
                         break;
 
                     case  10:
+                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                                return FALSE;
+
                         min_level = 25;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"You cannot harm me!"); }
                         spell = "power heal";
@@ -6106,6 +6133,9 @@ bool spec_blue_grung (CHAR_DATA *ch)
                         break;
 
                     case  7:
+                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                                return FALSE;
+
                         min_level = 30;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"Wux geou ti levnim ve!"); }
                         spell = "power heal";
@@ -6113,6 +6143,9 @@ bool spec_blue_grung (CHAR_DATA *ch)
                         break;
 
                     case  8:
+                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                                return FALSE;
+
                         min_level = 30;
                         if ( CAN_SPEAK(ch) ) { sprintf(buf,"Wux geou ti levnim ve!"); }
                         spell = "power heal";

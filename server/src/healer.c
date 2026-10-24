@@ -25,14 +25,12 @@ struct healer_spell
         int price;
 };
 
-/* Don't sell a vampire one of the cures that would burn them. */
+/* Don't sell a vampire a healing spell that would burn them. */
 static bool healer_service_harms_undead(
         CHAR_DATA *ch, const struct healer_spell *service)
 {
-        return IS_UNDEAD(ch)
-            && (!str_cmp(service->spell_name, "cure light")
-             || !str_cmp(service->spell_name, "cure serious")
-             || !str_cmp(service->spell_name, "cure critical"));
+        return restorative_spell_harms_undead(
+            skill_lookup(service->spell_name), ch);
 }
 
 void do_heal(CHAR_DATA *ch, char *argument)
@@ -105,8 +103,8 @@ void do_heal(CHAR_DATA *ch, char *argument)
                 }
                 if (IS_UNDEAD(ch))
                         send_to_char(
-                            "\n\rThe healer leaves out the three Cure spells, "
-                            "which would burn you.\n\r", ch);
+                            "\n\rThe healer leaves out healing spells "
+                            "that would burn you.\n\r", ch);
                 send_to_char("\n\rType '{WHEAL <<spell>{x' to receive healing.\n\r", ch);
 
                 /* Send healer services to web client */
@@ -126,7 +124,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
                 {
                         if (healer_service_harms_undead(ch, &spell_list[i]))
                         {
-                                act("$N says 'That cure would burn you, not heal you.'",
+                                act("$N says 'That spell would burn you, not heal you.'",
                                     ch, NULL, mob, TO_CHAR);
                                 return;
                         }
