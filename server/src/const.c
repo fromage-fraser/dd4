@@ -5512,7 +5512,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"regenerate", &gsn_regenerate,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_regenerate, 75, 24,
-         "", "!Regenerate!"},
+         "positive energy", "!Regenerate!"},
 
         {"eye trauma", &gsn_eye_trauma,
          TYPE_STR, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_PIERCE | RES_NONMAGIC,

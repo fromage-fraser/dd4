@@ -488,7 +488,7 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 return TRUE;
 
             case 3:
-                if (IS_UNDEAD(victim))
+                if (restorative_spell_harms_undead(gsn_cure_light, victim))
                     return FALSE;
                 act( "$n utters the word 'Nixmas'.",    ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure light" ), "cast" ); }
@@ -508,7 +508,7 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 return TRUE;
 
             case 6:
-                if (IS_UNDEAD(victim))
+                if (restorative_spell_harms_undead(gsn_cure_serious, victim))
                     return FALSE;
                 act("$n says the word 'Tnemrot'.",ch,NULL,NULL,TO_ROOM);
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure serious" ), "cast" ); }
@@ -522,6 +522,8 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 return TRUE;
 
             case 8:
+                if (restorative_spell_harms_undead(gsn_regenerate, victim))
+                    return FALSE;
                 if (number_percent() < 20)
                 {
                     act("$n utters the word 'Sifircas'.", ch, NULL, NULL, TO_ROOM );
@@ -586,7 +588,7 @@ bool spec_cast_hooker(CHAR_DATA *ch)
                 return TRUE;
 
             case 6:
-                if (IS_UNDEAD(victim))
+                if (restorative_spell_harms_undead(gsn_cure_serious, victim))
                     return FALSE;
                 if ( CAN_SPEAK(ch) ) { act("$n says, 'Hey baby, want a date?'", ch, NULL, NULL, TO_ROOM); }
                 spell_cure_serious(skill_lookup("cure serious"), ch->level, ch, victim);
@@ -3133,6 +3135,8 @@ bool spec_grail (CHAR_DATA *ch)
                         return TRUE;
 
                     case 7:
+                        if (restorative_spell_harms_undead(gsn_regenerate, victim))
+                            return FALSE;
                         act("$c says 'Be restored, stranger, and of good cheer...'",
                             ch, NULL, NULL, TO_ROOM );
                         spell_regenerate( skill_lookup( "regenerate" ), ch->level, ch, victim );
@@ -3343,6 +3347,8 @@ bool spec_cast_orb( CHAR_DATA *ch )
                 return TRUE;
 
             case 8:
+                if (restorative_spell_harms_undead(gsn_regenerate, victim))
+                    return FALSE;
                 if (number_percent() < 20)
                 {
                     act("$n pulses briefly.", ch, NULL, NULL, TO_ROOM );
