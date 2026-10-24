@@ -2338,6 +2338,8 @@ bool restorative_spell_harms_undead(int sn, CHAR_DATA *victim)
             || spell == spell_cure_critical
             || spell == spell_heal
             || spell == spell_power_heal
+            || spell == spell_mass_heal
+            || spell == spell_mass_power_heal
             || spell == spell_regenerate;
 }
 
@@ -10066,28 +10068,111 @@ void spell_mass_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
         credit_group_support(ch, support_recipient);
 }
 
-void spell_mass_heal(int sn, int level, CHAR_DATA *ch, void *vo)
+/* A death trigger may move or kill the caster, even back into this room. */
+static bool mass_healing_caster_ready(
+        CHAR_DATA *ch,
+        ROOM_INDEX_DATA *room,
+        int deaths)
 {
-        CHAR_DATA *gch;
-        CHAR_DATA *support_recipient = NULL;
-        int old_hit;
-        bool was_confused;
+        return ch && !ch->deleted && ch->position != POS_DEAD
+            && ch->in_room == room
+            && (IS_NPC(ch)
+            ||  (ch->pcdata && ch->pcdata->killed == deaths));
+}
 
-        for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
+/* Keep a snapshot so a dying group member cannot break the room walk. */
+static void mass_positive_healing(
+        int sn,
+        int level,
+        CHAR_DATA *ch,
+        int amount,
+        const char *message)
+{
+        struct mass_healing_target
         {
-                if (!is_same_group(gch, ch))
+                CHAR_DATA *character;
+                bool helped;
+        };
+        struct mass_healing_target *targets;
+        ROOM_INDEX_DATA *room;
+        CHAR_DATA *gch;
+        size_t count = 0;
+        size_t i;
+        int deaths;
+
+        if (!ch || ch->deleted || !ch->in_room
+        ||  ch->position == POS_DEAD
+        ||  (!IS_NPC(ch) && !ch->pcdata))
+                return;
+
+        room = ch->in_room;
+        deaths = IS_NPC(ch) ? 0 : ch->pcdata->killed;
+
+        for (gch = room->people; gch; gch = gch->next_in_room)
+        {
+                if (gch->deleted || gch->position == POS_DEAD
+                ||  !is_same_group(gch, ch))
+                        continue;
+
+                if (count == (size_t)-1 / sizeof(*targets))
+                {
+                        bug("Mass_positive_healing: too many targets.", 0);
+                        send_to_char("You cannot gather the healing energy.\n\r", ch);
+                        return;
+                }
+                count++;
+        }
+
+        if (!count)
+                return;
+
+        targets = calloc(count, sizeof(*targets));
+        if (!targets)
+        {
+                bug("Mass_positive_healing: could not allocate targets.", 0);
+                send_to_char("You cannot gather the healing energy.\n\r", ch);
+                return;
+        }
+
+        i = 0;
+        for (gch = room->people; gch; gch = gch->next_in_room)
+        {
+                if (!gch->deleted && gch->position != POS_DEAD
+                &&  is_same_group(gch, ch))
+                        targets[i++].character = gch;
+        }
+
+        for (i = 0; i < count; i++)
+        {
+                int old_hit;
+                bool was_confused;
+                long long ceiling;
+
+                if (!mass_healing_caster_ready(ch, room, deaths))
+                        break;
+
+                gch = targets[i].character;
+                if (gch->deleted || gch->position == POS_DEAD
+                ||  gch->in_room != room || !is_same_group(gch, ch))
+                        continue;
+
+                /* Undead NPCs burn instead, including our own servants. */
+                if (positive_healing_harms_undead(
+                        sn, level, ch, gch, amount))
+                        continue;
+
+                if (IS_NPC(gch) && IS_SET(gch->act, ACT_NO_HEAL))
                         continue;
 
                 old_hit = gch->hit;
                 was_confused = IS_AFFECTED(gch, AFF_CONFUSION) != 0;
-
-                if (gch->hit < gch->max_hit - gch->aggro_dam)
+                ceiling = (long long)gch->max_hit - gch->aggro_dam;
+                if (gch->hit < ceiling)
                 {
-                        gch->hit =
-                            UMIN(
-                                (long long)gch->hit
-                                    + holy_healing_amount(sn, gch, 100),
-                                gch->max_hit - gch->aggro_dam);
+                        gch->hit = UMIN(
+                            (long long)gch->hit
+                                + holy_healing_amount(sn, gch, amount),
+                            ceiling);
                 }
 
                 update_pos(gch);
@@ -10095,131 +10180,48 @@ void spell_mass_heal(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (IS_AFFECTED(gch, AFF_CONFUSION)
                 &&  is_affected(gch, gsn_confusion))
                 {
-                        affect_strip_raw_bit(
-                            gch,
-                            AFF_CONFUSION);
-
-                        affect_strip(
-                            gch,
-                            gsn_confusion);
-
-                        send_to_char(
-                            "You feel less confused.\n\r",
-                            gch);
+                        affect_strip_raw_bit(gch, AFF_CONFUSION);
+                        affect_strip(gch, gsn_confusion);
+                        send_to_char("You feel less confused.\n\r", gch);
                 }
 
-                if (IS_AFFECTED(gch, AFF_CONFUSION)
-                &&  is_affected(gch, gsn_confusion))
-                {
-                        affect_strip_raw_bit(
-                            gch,
-                            AFF_CONFUSION);
-
-                        affect_strip(
-                            gch,
-                            gsn_confusion);
-
-                        send_to_char(
-                            "You feel less confused.\n\r",
-                            gch);
-                }
-
-                if (gch != ch
-                &&  !gch->deleted
-                &&  !is_noncorporeal_player(gch)
-                &&  (gch->hit > old_hit
-                ||   (was_confused && !IS_AFFECTED(gch, AFF_CONFUSION))))
-                {
-                        support_recipient = gch;
-                }
-
-                send_to_char(
-                    "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng "
-                    "<227>fi<228>ll<229>s y<228>ou<227>r b<226>od"
-                    "<220>y.<0>\n\r",
-                    gch);
+                targets[i].helped = gch->hit > old_hit
+                    || (was_confused && !IS_AFFECTED(gch, AFF_CONFUSION));
+                send_to_char(message, gch);
         }
 
-        send_to_char("Ok.\n\r", ch);
+        if (mass_healing_caster_ready(ch, room, deaths))
+        {
+                send_to_char("Ok.\n\r", ch);
 
-        credit_group_support(ch, support_recipient);
+                /* One useful cast earns one bonus, never one per recipient. */
+                for (i = 0; i < count; i++)
+                {
+                        gch = targets[i].character;
+                        if (targets[i].helped && !gch->deleted
+                        &&  gch->position != POS_DEAD && gch->in_room == room
+                        &&  credit_group_support(ch, gch))
+                                break;
+                }
+        }
+
+        free(targets);
+}
+
+void spell_mass_heal(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        mass_positive_healing(
+            sn, level, ch, 100,
+            "<229>A w<228>ar<227>m f<226>ee<220>li<226>ng "
+            "<227>fi<228>ll<229>s y<228>ou<227>r b<226>od"
+            "<220>y.<0>\n\r");
 }
 
 void spell_mass_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
 {
-        CHAR_DATA *gch;
-        CHAR_DATA *support_recipient = NULL;
-        int old_hit;
-        bool was_confused;
-
-        for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
-        {
-                if (!is_same_group(gch, ch))
-                        continue;
-
-                old_hit = gch->hit;
-                was_confused = IS_AFFECTED(gch, AFF_CONFUSION) != 0;
-
-                if (gch->hit < gch->max_hit - gch->aggro_dam)
-                {
-                        gch->hit =
-                            UMIN(
-                                (long long)gch->hit
-                                    + holy_healing_amount(sn, gch, 300),
-                                gch->max_hit - gch->aggro_dam);
-                }
-
-                update_pos(gch);
-
-                if (IS_AFFECTED(gch, AFF_CONFUSION)
-                &&  is_affected(gch, gsn_confusion))
-                {
-                        affect_strip_raw_bit(
-                            gch,
-                            AFF_CONFUSION);
-
-                        affect_strip(
-                            gch,
-                            gsn_confusion);
-
-                        send_to_char(
-                            "You feel less confused.\n\r",
-                            gch);
-                }
-
-                if (IS_AFFECTED(gch, AFF_CONFUSION)
-                &&  is_affected(gch, gsn_confusion))
-                {
-                        affect_strip_raw_bit(
-                            gch,
-                            AFF_CONFUSION);
-
-                        affect_strip(
-                            gch,
-                            gsn_confusion);
-
-                        send_to_char(
-                            "You feel less confused.\n\r",
-                            gch);
-                }
-
-                if (gch != ch
-                &&  !gch->deleted
-                &&  !is_noncorporeal_player(gch)
-                &&  (gch->hit > old_hit
-                ||   (was_confused && !IS_AFFECTED(gch, AFF_CONFUSION))))
-                {
-                        support_recipient = gch;
-                }
-
-                send_to_char(
-                    "A pulse of energy surges through your body.\n\r",
-                    gch);
-        }
-
-        send_to_char("Ok.\n\r", ch);
-
-        credit_group_support(ch, support_recipient);
+        mass_positive_healing(
+            sn, level, ch, 300,
+            "A pulse of energy surges through your body.\n\r");
 }
 
 void spell_bless_weapon(int sn, int level, CHAR_DATA *ch, void *vo)

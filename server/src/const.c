@@ -4260,12 +4260,12 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"mass heal", &gsn_mass_heal,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_mass_heal, 150, 20,
-         "", "!Mass Heal!"},
+         "positive energy", "!Mass Heal!"},
 
         {"mass power heal", &gsn_mass_power_heal,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_mass_power_heal, 300, 32,
-         "", "!Mass Power Heal!"},
+         "positive energy", "!Mass Power Heal!"},
 
         {"mass sanctuary", &gsn_mass_sanctuary,
          TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_HOLY,
