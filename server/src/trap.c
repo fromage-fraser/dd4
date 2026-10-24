@@ -744,7 +744,14 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
         AFFECT_DATA af;
         CHAR_DATA *wch;
         int dam = 0;
-        bool physical_damage = obj->trap_dam == TRAP_DAM_BLUNT
+        int deaths = action_deaths(ch);
+        ROOM_INDEX_DATA *room;
+        bool physical_damage;
+
+        if (!obj || obj->deleted || !action_character_alive(ch, deaths))
+                return;
+        room = ch->in_room;
+        physical_damage = obj->trap_dam == TRAP_DAM_BLUNT
                 || obj->trap_dam == TRAP_DAM_PIERCE
                 || obj->trap_dam == TRAP_DAM_SLASH;
 
@@ -810,8 +817,8 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                 return;
 
             case TRAP_DAM_POISON:
-                if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM) ) {
-                        if ( IS_AFFECTED(ch, AFF_SLEEP) )
+                if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM)) {
+                        if (IS_AFFECTED(ch, AFF_SLEEP) || !can_be_poisoned(ch))
                                 return;
 
                         af.type      = gsn_poison;
@@ -819,17 +826,27 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         af.location  = APPLY_STR;
                         af.modifier  = -4;
                         af.bitvector = AFF_POISON;
-                        affect_join( ch, &af );
+                        affect_join(ch, &af);
 
-                        if ( IS_AWAKE(ch) ) {
-                                send_to_char( "You are struck by a small dart... your blood begins to burn!\n\r", ch );
-                                act( "$n is struck by a small dart!", ch, NULL, NULL, TO_ROOM );
+                        if (IS_AWAKE(ch)) {
+                                send_to_char("You are struck by a small dart... your blood begins to burn!\n\r", ch);
+                                act("$n is struck by a small dart!", ch, NULL, NULL, TO_ROOM);
                         }
                 }
                 else {
-                        for (wch = ch->in_room->people; wch != NULL; wch = wch->next_in_room) {
+                        ACTION_ROOM_TARGET *targets;
+                        size_t count;
+                        size_t i;
 
-                                if ( IS_AFFECTED(wch, AFF_POISON) )
+                        targets = action_room_snapshot(room, &count);
+                        if (!targets)
+                                return;
+                        for (i = 0; i < count; i++) {
+                                if (obj->deleted)
+                                        break;
+                                wch = targets[i].character;
+                                if (!action_character_in_room(wch, room, targets[i].deaths)
+                                ||  !can_be_poisoned(wch) || IS_AFFECTED(wch, AFF_POISON))
                                         continue;
 
                                 af.type      = gsn_poison;
@@ -837,13 +854,14 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 af.location  = APPLY_STR;
                                 af.modifier  = -4;
                                 af.bitvector = AFF_POISON;
-                                affect_join( wch, &af );
+                                affect_join(wch, &af);
 
-                                if ( IS_AWAKE(wch) ) {
-                                        send_to_char( "You are struck by a small dart... your blood begins to burn!\n\r", ch );
-                                        act( "$n is struck by a small dart!", ch, NULL, NULL, TO_ROOM );
+                                if (IS_AWAKE(wch)) {
+                                        send_to_char("You are struck by a small dart... your blood begins to burn!\n\r", wch);
+                                        act("$n is struck by a small dart!", wch, NULL, NULL, TO_ROOM);
                                 }
                         }
+                        free(targets);
                 }
                 break;
 
@@ -1086,6 +1104,9 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                 break;
         }
 
+        if (obj->deleted || !action_character_in_room(ch, room, deaths))
+                return;
+
         if (obj->trap_dam == TRAP_DAM_BLUNT) {
                 if (!IS_SET(obj->trap_eff, TRAP_EFF_ROOM) ) {
                         act("$n sets off a trap and is hit by a blunt object!", ch, obj, NULL, TO_ROOM);
@@ -1240,8 +1261,10 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                 const int base_dam = dam;
 
                 for (wch = ch->in_room->people; wch; wch = wch_next) {
-
                         wch_next = wch->next_in_room;
+
+                        if (obj->trap_dam == TRAP_DAM_POISON && !can_be_poisoned(wch))
+                                continue;
 
                         if (wch->deleted || wch->position == POS_DEAD)
                                 continue;

@@ -804,6 +804,13 @@ void do_cast(CHAR_DATA *ch, char *argument)
         int sn;
         int drunk_random;
         bool undead_healing = FALSE;
+        ROOM_INDEX_DATA *cast_room;
+        int caster_deaths = action_deaths(ch);
+        int victim_deaths;
+
+        if (!action_character_alive(ch, caster_deaths))
+                return;
+        cast_room = ch->in_room;
 
         if (IS_AFFECTED(ch, AFF_DAZED))
         {
@@ -1065,6 +1072,8 @@ void do_cast(CHAR_DATA *ch, char *argument)
                 break;
         }
 
+        victim_deaths = action_deaths(victim);
+
         if (ch->mana < mana && ch->level < LEVEL_IMMORTAL)
         {
                 send_to_char("You don't have enough mana.\n\r", ch);
@@ -1086,6 +1095,8 @@ void do_cast(CHAR_DATA *ch, char *argument)
                 else
                         send_to_char("You fail to correctly recite the spell!\n\r", ch);
 
+                if (!action_character_alive(ch, caster_deaths))
+                        return;
                 ch->mana -= mana / 2;
         }
 
@@ -1141,11 +1152,15 @@ void do_cast(CHAR_DATA *ch, char *argument)
                 }
 
                 (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
+                if (!action_character_alive(ch, caster_deaths))
+                        return;
                 sound_spell_sfx( ch, sn, "cast" );
 
                 if (!undead_healing && skill_table[sn].target == TAR_CHAR_OFFENSIVE)
                 {
-                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room || ch->position < POS_FIGHTING)
+                        if (!action_character_in_room(ch, cast_room, caster_deaths)
+                        ||  !action_character_in_room(victim, cast_room, victim_deaths)
+                        ||  ch->position < POS_FIGHTING)
                                 return;
 
                         /* check for AFF_BONUS_ATTACK */
@@ -1159,10 +1174,10 @@ void do_cast(CHAR_DATA *ch, char *argument)
                                 /* sound_spell_sfx( ch, sn, "cast" ); */
                                 (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
-                                if (ch->fighting != victim)
-                                        return;
-
-                                if (victim->position == POS_DEAD || ch->in_room != victim->in_room || ch->position < POS_FIGHTING)
+                                if (ch->fighting != victim
+                                ||  !action_character_in_room(ch, cast_room, caster_deaths)
+                                ||  !action_character_in_room(victim, cast_room, victim_deaths)
+                                ||  ch->position < POS_FIGHTING)
                                         return;
                         }
 
@@ -1201,10 +1216,10 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         /* sound_spell_sfx( ch, sn, "cast" ); */
                         (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
-                        if (ch->fighting != victim)
-                                return;
-
-                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room || ch->position < POS_FIGHTING)
+                        if (ch->fighting != victim
+                        ||  !action_character_in_room(ch, cast_room, caster_deaths)
+                        ||  !action_character_in_room(victim, cast_room, victim_deaths)
+                        ||  ch->position < POS_FIGHTING)
                                 return;
 
                         /* 3rd spell  - must have succeeded in second spell to have a
@@ -1243,10 +1258,10 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         /* sound_spell_sfx( ch, sn, "cast" ); */
                         (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
-                        if (ch->fighting != victim)
-                                return;
-
-                        if (victim->position == POS_DEAD || ch->in_room != victim->in_room || ch->position < POS_FIGHTING)
+                        if (ch->fighting != victim
+                        ||  !action_character_in_room(ch, cast_room, caster_deaths)
+                        ||  !action_character_in_room(victim, cast_room, victim_deaths)
+                        ||  ch->position < POS_FIGHTING)
                                 return;
 
                         /* 4th spell  - must have succeeded in third spell to have a
@@ -1285,12 +1300,17 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         /* sound_spell_sfx( ch, sn, "cast" ); */
                         (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
 
-                        if (ch->fighting != victim)
+                        if (ch->fighting != victim
+                        ||  !action_character_in_room(ch, cast_room, caster_deaths)
+                        ||  !action_character_in_room(victim, cast_room, victim_deaths))
                                 return;
                 }
         } /* End successful cast */
 
-        if (!undead_healing && skill_table[sn].target == TAR_CHAR_OFFENSIVE && victim->master != ch && victim != ch && IS_AWAKE(victim) && !victim->fighting)
+        if (!undead_healing && skill_table[sn].target == TAR_CHAR_OFFENSIVE
+        &&  action_character_in_room(ch, cast_room, caster_deaths)
+        &&  action_character_in_room(victim, cast_room, victim_deaths)
+        &&  victim->master != ch && victim != ch && IS_AWAKE(victim) && !victim->fighting)
         {
                 multi_hit(victim, ch, TYPE_UNDEFINED);
         }
@@ -1303,6 +1323,14 @@ void obj_cast_spell(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DAT
 {
         void *vo;
         bool undead_healing = FALSE;
+        CHAR_DATA *effect_target = NULL;
+        ROOM_INDEX_DATA *cast_room;
+        int caster_deaths = action_deaths(ch);
+        int victim_deaths;
+
+        if (!action_character_alive(ch, caster_deaths))
+                return;
+        cast_room = ch->in_room;
 
         if (sn <= 0)
                 return;
@@ -1387,11 +1415,33 @@ void obj_cast_spell(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DAT
                 break;
         }
 
+        switch (skill_table[sn].target)
+        {
+        case TAR_CHAR_OFFENSIVE:
+        case TAR_CHAR_OFFENSIVE_SINGLE:
+        case TAR_CHAR_DEFENSIVE:
+                effect_target = victim;
+                break;
+        case TAR_CHAR_SELF:
+                effect_target = ch;
+                break;
+        default:
+                break;
+        }
+        victim_deaths = action_deaths(effect_target);
+        if (effect_target && !action_character_alive(effect_target, victim_deaths))
+                return;
+
         target_name = "";
         (*skill_table[sn].spell_fun)(sn, level, ch, vo);
+        if (!action_character_alive(ch, caster_deaths))
+                return;
         sound_spell_sfx_delay( ch, sn, "cast", 15 );
 
-        if (!undead_healing && skill_table[sn].target == TAR_CHAR_OFFENSIVE && victim->master != ch && ch != victim)
+        if (!undead_healing && skill_table[sn].target == TAR_CHAR_OFFENSIVE
+        &&  action_character_in_room(ch, cast_room, caster_deaths)
+        &&  action_character_in_room(victim, cast_room, victim_deaths)
+        &&  victim->master != ch && ch != victim)
         {
                 CHAR_DATA *vch;
 
@@ -6450,9 +6500,9 @@ void spell_poison(int sn, int level, CHAR_DATA *ch, void *vo)
         if (is_affected(victim, gsn_prayer_plague))
                 return;
 
-        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        if (!can_be_poisoned(victim))
         {
-                send_to_char("You can't poison an object.\n\r", ch);
+                send_to_char("Their body cannot be poisoned.\n\r", ch);
                 return;
         }
 
@@ -8167,15 +8217,30 @@ void spell_frost_breath(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_gas_breath(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *vch;
-        CHAR_DATA *vch_next;
+        ACTION_ROOM_TARGET *targets;
+        ROOM_INDEX_DATA *room;
+        size_t count;
+        size_t i;
+        int deaths = action_deaths(ch);
         int dam;
         int hpch;
 
-        for (vch = ch->in_room->people; vch; vch = vch_next)
-        {
-                vch_next = vch->next_in_room;
+        if (!action_character_alive(ch, deaths))
+                return;
+        room = ch->in_room;
 
-                if (vch->deleted)
+        targets = action_room_snapshot(room, &count);
+        if (!targets)
+                return;
+        for (i = 0; i < count; i++)
+        {
+                if (!action_character_in_room(ch, room, deaths))
+                        break;
+                vch = targets[i].character;
+                if (!action_character_in_room(vch, room, targets[i].deaths))
+                        continue;
+
+                if (!can_be_poisoned(vch))
                         continue;
 
                 if (!mob_interacts_players(vch))
@@ -8197,10 +8262,14 @@ void spell_gas_breath(int sn, int level, CHAR_DATA *ch, void *vo)
                         else
                                 spell_nausea(gsn_nausea, level, ch, vch);
 
+                        if (!action_character_in_room(ch, room, deaths)
+                        ||  !action_character_in_room(vch, room, targets[i].deaths))
+                                continue;
                         damage(ch, vch, dam, sn, FALSE);
                 }
         }
 
+        free(targets);
         return;
 }
 
@@ -8737,9 +8806,17 @@ void spell_create_sound(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_death_field(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *vch;
-        CHAR_DATA *vch_next;
+        ACTION_ROOM_TARGET *targets;
+        ROOM_INDEX_DATA *room;
+        size_t count;
+        size_t i;
+        int deaths = action_deaths(ch);
         int dam;
         int hpch;
+
+        if (!action_character_alive(ch, deaths))
+                return;
+        room = ch->in_room;
 
         if (!IS_EVIL(ch))
         {
@@ -8750,9 +8827,16 @@ void spell_death_field(int sn, int level, CHAR_DATA *ch, void *vo)
         send_to_char("A black fog emanates from you!\n\r", ch);
         act("A black fog emanates from $n!", ch, NULL, ch, TO_ROOM);
 
-        for (vch = ch->in_room->people; vch; vch = vch_next)
+        targets = action_room_snapshot(room, &count);
+        if (!targets)
+                return;
+        for (i = 0; i < count; i++)
         {
-                vch_next = vch->next_in_room;
+                if (!action_character_in_room(ch, room, deaths))
+                        break;
+                vch = targets[i].character;
+                if (!action_character_in_room(vch, room, targets[i].deaths))
+                        continue;
 
                 /* Undead sit this one out; the fog neither hurts nor heals them. */
                 if (IS_UNDEAD(vch))
@@ -8781,6 +8865,7 @@ void spell_death_field(int sn, int level, CHAR_DATA *ch, void *vo)
                         damage(ch, vch, dam, sn, FALSE);
                 }
         }
+        free(targets);
 }
 
 void spell_decay(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -10153,18 +10238,6 @@ void spell_mass_sanctuary(int sn, int level, CHAR_DATA *ch, void *vo)
         credit_group_support(ch, support_recipient);
 }
 
-/* A death trigger may move or kill the caster, even back into this room. */
-static bool room_spell_caster_ready(
-        CHAR_DATA *ch,
-        ROOM_INDEX_DATA *room,
-        int deaths)
-{
-        return ch && !ch->deleted && ch->position != POS_DEAD
-            && ch->in_room == room
-            && (IS_NPC(ch)
-            ||  (ch->pcdata && ch->pcdata->killed == deaths));
-}
-
 /* Keep a snapshot so a dying group member cannot break the room walk. */
 static void mass_positive_healing(
         int sn,
@@ -10233,7 +10306,7 @@ static void mass_positive_healing(
                 bool was_confused;
                 long long ceiling;
 
-                if (!room_spell_caster_ready(ch, room, deaths))
+                if (!action_character_in_room(ch, room, deaths))
                         break;
 
                 gch = targets[i].character;
@@ -10275,7 +10348,7 @@ static void mass_positive_healing(
                 send_to_char(message, gch);
         }
 
-        if (room_spell_caster_ready(ch, room, deaths))
+        if (action_character_in_room(ch, room, deaths))
         {
                 send_to_char("Ok.\n\r", ch);
 
@@ -10554,7 +10627,7 @@ void spell_sunray(int sn, int level, CHAR_DATA *ch, void *vo)
 
         for (vch = char_list; vch; vch = vch->next)
         {
-                if (!room_spell_caster_ready(ch, room, deaths))
+                if (!action_character_in_room(ch, room, deaths))
                         break;
 
                 if (vch->deleted || !vch->in_room)
@@ -12615,9 +12688,9 @@ void spell_nausea(int sn, int level, CHAR_DATA *ch, void *vo)
         if (is_affected(victim, gsn_prayer_plague))
                 return;
 
-        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        if (!can_be_poisoned(victim))
         {
-                send_to_char("You can't nauseate an object.\n\r", ch);
+                send_to_char("Their body cannot be affected by that toxin.\n\r", ch);
                 return;
         }
 
@@ -12629,6 +12702,12 @@ void spell_nausea(int sn, int level, CHAR_DATA *ch, void *vo)
                         send_to_char("<46>Yo<47>u r<48>es<49>is<48>t t<47>he <46>wa<47>ve <48>of <49>na<48>us<47>ea <46>th<47>re<48>at<49>en<48>in<47>g t<46>o o<47>ve<48>rw<49>he<48>lm <47>yo<46>u.<0>\n\r", victim);
                 }
 
+                return;
+        }
+
+        if (saves_resistance_effect(ch, level, victim, skill_table[sn].res_type))
+        {
+                send_to_char("Your nausea is resisted.\n\r", ch);
                 return;
         }
 
@@ -13038,9 +13117,15 @@ void spell_fleshrot(int sn, int level, CHAR_DATA *ch, void *vo)
         int blind_ceiling;
         int dot_dam;
         int killed;
+        int caster_deaths = action_deaths(ch);
+        ROOM_INDEX_DATA *room = ch ? ch->in_room : NULL;
 
         bool add_blind = FALSE;
         int duration = (number_fuzzy(level) / 5);
+        if (!action_character_in_room(ch, room, caster_deaths)
+        ||  !action_character_in_room(victim, room, action_deaths(victim))
+        ||  is_noncorporeal_player(victim))
+                return;
         blind_chance = number_range(1, 100);
 
         if (!IS_NPC(ch))
@@ -13057,7 +13142,7 @@ void spell_fleshrot(int sn, int level, CHAR_DATA *ch, void *vo)
                 add_blind = TRUE;
         }
 
-        if (IS_NPC(victim) && (IS_SET(victim->act, ACT_OBJECT) || IS_INORGANIC(victim)))
+        if (!has_organic_body(victim))
         {
                 send_to_char("Your target has no flesh to rot.\n\r", ch);
                 return;
@@ -13091,7 +13176,7 @@ void spell_fleshrot(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (saves_spell(ch, level, victim))
+        if (saves_resistance_effect(ch, level, victim, skill_table[sn].res_type))
         {
                 if (ch != victim)
                 {
@@ -13123,14 +13208,14 @@ void spell_fleshrot(int sn, int level, CHAR_DATA *ch, void *vo)
         act("<49>Malodorous ropes of putrid smoke stream from $n's hands!<0>", ch, NULL, NULL, TO_ROOM);
         act("You inflict a hideous disease upon $N!", ch, NULL, victim, TO_CHAR);
         send_to_char("<107>Your flesh begins to crack and blister!<0>\n\r", victim);
-        killed = IS_NPC(victim) ? 0 : victim->pcdata->killed;
+        killed = action_deaths(victim);
         damage_with_aggravated_component(
             ch, victim, number_range(1, ch->level / 2), gsn_fleshrot,
             FALSE, 100, 100, UMIN(5, UMAX(1, level / 20)));
 
         /* Death must not carry eye damage into a player's new life. */
-        if (victim->deleted || !victim->in_room || victim->position == POS_DEAD
-        ||  (!IS_NPC(victim) && victim->pcdata->killed != killed))
+        if (!action_character_in_room(ch, room, caster_deaths)
+        ||  !action_character_in_room(victim, room, killed))
                 return;
 
         if (add_blind)
@@ -13178,8 +13263,16 @@ static void spell_sonic_blast_victim(int sn, int level, CHAR_DATA *ch, CHAR_DATA
         int          confusion_duration;
         int          dot_duration;
         int          dot_dam;
+        ROOM_INDEX_DATA *room;
+        int caster_deaths;
+        int victim_deaths;
 
-        if ( !victim )
+        room = ch ? ch->in_room : NULL;
+        caster_deaths = action_deaths(ch);
+        victim_deaths = action_deaths(victim);
+        if (!action_character_in_room(ch, room, caster_deaths)
+        ||  !action_character_in_room(victim, room, victim_deaths)
+        ||  is_noncorporeal_player(victim))
                 return;
 
         dam = dice(level, 3);
@@ -13206,24 +13299,19 @@ static void spell_sonic_blast_victim(int sn, int level, CHAR_DATA *ch, CHAR_DATA
          */
         if (saved
         ||  immune
-        ||  victim->deleted
-        ||  victim->position == POS_DEAD)
+        ||  !action_character_in_room(ch, room, caster_deaths)
+        ||  !action_character_in_room(victim, room, victim_deaths))
         {
                 return;
         }
 
-        can_affect = TRUE;
-
-        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
-                can_affect = FALSE;
-
-        if (IS_NPC(victim) && IS_INORGANIC(victim))
-                can_affect = FALSE;
+        can_affect = has_organic_body(victim);
 
         if ( !can_affect )
                 return;
 
-        if ( !is_affected(victim, gsn_nausea)
+        if ( can_be_poisoned(victim)
+        &&   !is_affected(victim, gsn_nausea)
         &&   !is_affected(victim, gsn_prayer_plague) )
         {
                 af.type      = gsn_nausea;
@@ -13282,12 +13370,17 @@ static void spell_sonic_blast_victim(int sn, int level, CHAR_DATA *ch, CHAR_DATA
 void spell_sonic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim;
-        CHAR_DATA *victim_next;
+        ACTION_ROOM_TARGET *targets;
+        ROOM_INDEX_DATA *room;
+        size_t count;
+        size_t i;
+        int deaths = action_deaths(ch);
 
         (void)vo;
 
-        if (!ch || !ch->in_room)
+        if (!action_character_alive(ch, deaths))
                 return;
+        room = ch->in_room;
 
         if (spell_attack_number == 1)
         {
@@ -13297,11 +13390,16 @@ void spell_sonic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
                     ch, NULL, NULL, TO_CHAR);
         }
 
-        for (victim = ch->in_room->people;
-             victim;
-             victim = victim_next)
+        targets = action_room_snapshot(room, &count);
+        if (!targets)
+                return;
+        for (i = 0; i < count; i++)
         {
-                victim_next = victim->next_in_room;
+                if (!action_character_in_room(ch, room, deaths))
+                        break;
+                victim = targets[i].character;
+                if (!action_character_in_room(victim, room, targets[i].deaths))
+                        continue;
 
                 if (victim == ch)
                         continue;
@@ -13314,6 +13412,7 @@ void spell_sonic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 spell_sonic_blast_victim(sn, level, ch, victim);
         }
+        free(targets);
 }
 /*
  * Detect the undead nature of an already-visible character.

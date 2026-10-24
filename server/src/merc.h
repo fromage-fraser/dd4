@@ -173,6 +173,14 @@ typedef struct pc_data PC_DATA;
 typedef struct reset_data RESET_DATA;
 typedef struct objset_index_data OBJSET_INDEX_DATA;
 typedef struct room_index_data ROOM_INDEX_DATA;
+
+typedef struct action_room_target ACTION_ROOM_TARGET;
+struct action_room_target
+{
+        CHAR_DATA *character;
+        int deaths;
+};
+
 typedef struct shop_data SHOP_DATA;
 typedef struct time_info_data TIME_INFO_DATA;
 typedef struct weather_data WEATHER_DATA;
@@ -5690,6 +5698,12 @@ char *item_type_name args((OBJ_DATA * obj));
 int item_name_type args((char *name));
 char *affect_loc_name args((int location));
 char *affect_loc_name args((int location));
+bool has_organic_body(CHAR_DATA *ch);
+bool can_be_poisoned(CHAR_DATA *ch);
+int action_deaths(CHAR_DATA *ch);
+bool action_character_alive(CHAR_DATA *ch, int deaths);
+bool action_character_in_room(CHAR_DATA *ch, ROOM_INDEX_DATA *room, int deaths);
+ACTION_ROOM_TARGET *action_room_snapshot(ROOM_INDEX_DATA *room, size_t *count);
 bool is_mindless args((CHAR_DATA *ch));
 bool reject_mindless_target args((CHAR_DATA *ch, CHAR_DATA *victim));
 char *affect_bit_name args((unsigned long int vector));

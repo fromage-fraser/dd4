@@ -2744,6 +2744,9 @@ static void holy_water_drink_effect(CHAR_DATA *ch, int liquid)
  */
 static bool resists_ingested_poison(CHAR_DATA *ch)
 {
+        if (!can_be_poisoned(ch))
+                return TRUE;
+
         if (IS_NPC(ch))
                 return FALSE;
 
@@ -3052,22 +3055,7 @@ void do_drink(CHAR_DATA *ch, char *argument)
  */
 static bool liquid_splash_poison_target(CHAR_DATA *victim)
 {
-        if (!victim || victim->deleted
-        ||  victim->hit <= 0
-        ||  victim->position == POS_DEAD)
-                return FALSE;
-
-        if (IS_AFFECTED(victim, AFF_NON_CORPOREAL))
-                return FALSE;
-
-        if (IS_INORGANIC(victim))
-                return FALSE;
-
-        if (IS_NPC(victim)
-        &&  IS_SET(victim->act, ACT_OBJECT))
-                return FALSE;
-
-        return TRUE;
+        return victim && victim->hit > 0 && can_be_poisoned(victim);
 }
 
 /*
@@ -5135,6 +5123,39 @@ void do_quaff(CHAR_DATA *ch, char *argument)
         return;
 }
 
+/* A scroll must not keep working on an object that left its caster's reach. */
+static bool spell_object_present(CHAR_DATA *ch, OBJ_DATA *obj)
+{
+        OBJ_DATA *slow = obj;
+        OBJ_DATA *fast = obj;
+
+        if (!ch || !ch->in_room || !obj)
+                return FALSE;
+
+        /* Bad container links must not turn a range check into an endless loop. */
+        while (fast && fast->in_obj)
+        {
+                slow = slow->in_obj;
+                fast = fast->in_obj->in_obj;
+                if (fast && slow == fast)
+                        return FALSE;
+        }
+
+        for (; obj; obj = obj->in_obj)
+        {
+                if (obj->deleted)
+                        return FALSE;
+                if (obj->in_obj)
+                        continue;
+                if (obj->carried_by)
+                        return action_character_alive(obj->carried_by,
+                                   action_deaths(obj->carried_by))
+                            && obj->carried_by->in_room == ch->in_room;
+                return obj->in_room == ch->in_room;
+        }
+        return FALSE;
+}
+
 void do_recite(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *scroll;
@@ -5142,6 +5163,12 @@ void do_recite(CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         char arg1[MAX_INPUT_LENGTH];
         char arg2[MAX_INPUT_LENGTH];
+        int deaths = action_deaths(ch);
+        int victim_deaths;
+        int slot;
+
+        if (!action_character_alive(ch, deaths))
+                return;
 
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);
@@ -5172,6 +5199,8 @@ void do_recite(CHAR_DATA *ch, char *argument)
                 }
         }
 
+        victim_deaths = action_deaths(victim);
+
         if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
         {
                 send_to_char("You can't remember how to do that.\n\r", ch);
@@ -5186,12 +5215,21 @@ void do_recite(CHAR_DATA *ch, char *argument)
         else
         {
                 scroll->level = scroll->value[0];
-                obj_cast_spell(scroll->value[1], scroll->level, ch, victim, obj);
-                obj_cast_spell(scroll->value[2], scroll->level, ch, victim, obj);
-                obj_cast_spell(scroll->value[3], scroll->level, ch, victim, obj);
+                for (slot = 1; slot <= 3; slot++)
+                {
+                        if (scroll->deleted || !action_character_alive(ch, deaths))
+                                break;
+                        if (victim && (!action_character_alive(victim, victim_deaths)
+                            || victim->in_room != ch->in_room))
+                                break;
+                        if (obj && !spell_object_present(ch, obj))
+                                break;
+                        obj_cast_spell(scroll->value[slot], scroll->level, ch, victim, obj);
+                }
         }
 
-        extract_obj(scroll);
+        if (!scroll->deleted)
+                extract_obj(scroll);
         return;
 }
 
@@ -5201,6 +5239,15 @@ void do_brandish(CHAR_DATA *ch, char *argument)
         CHAR_DATA *vch;
         int sn;
         int eff_class = 0;
+        int deaths = action_deaths(ch);
+        ROOM_INDEX_DATA *room;
+        ACTION_ROOM_TARGET *targets;
+        size_t count;
+        size_t i;
+
+        if (!action_character_alive(ch, deaths))
+                return;
+        room = ch->in_room;
 
         if (!IS_NPC(ch))
         {
@@ -5252,16 +5299,19 @@ void do_brandish(CHAR_DATA *ch, char *argument)
 
         if (staff->value[2] > 0)
         {
-                CHAR_DATA *vch_next;
+                targets = action_room_snapshot(room, &count);
+                if (!targets)
+                        return;
 
                 act("You brandish $p.", ch, staff, NULL, TO_CHAR);
                 act("$n brandishes $p.", ch, staff, NULL, TO_ROOM);
 
-                for (vch = ch->in_room->people; vch; vch = vch_next)
+                for (i = 0; i < count; i++)
                 {
-                        vch_next = vch->next_in_room;
-
-                        if (vch->deleted)
+                        if (staff->deleted || !action_character_in_room(ch, room, deaths))
+                                break;
+                        vch = targets[i].character;
+                        if (!action_character_in_room(vch, room, targets[i].deaths))
                                 continue;
 
                         switch (spell_restores_undead(sn, vch)
@@ -5269,6 +5319,7 @@ void do_brandish(CHAR_DATA *ch, char *argument)
                         {
                         default:
                                 bug("Do_brandish: bad target for sn %d.", sn);
+                                free(targets);
                                 return;
 
                         case TAR_IGNORE:
@@ -5302,12 +5353,16 @@ void do_brandish(CHAR_DATA *ch, char *argument)
 
                         obj_cast_spell(staff->value[3], staff->value[0], ch, vch, NULL);
                 }
+                free(targets);
         }
 
-        if (--staff->value[2] <= 0)
+        if (!staff->deleted && --staff->value[2] <= 0)
         {
-                act("$p blazes bright and is gone.", ch, staff, NULL, TO_CHAR);
-                act("$p blazes bright and is gone.", ch, staff, NULL, TO_ROOM);
+                if (action_character_alive(ch, deaths) && staff->carried_by == ch)
+                {
+                        act("$p blazes bright and is gone.", ch, staff, NULL, TO_CHAR);
+                        act("$p blazes bright and is gone.", ch, staff, NULL, TO_ROOM);
+                }
                 extract_obj(staff);
         }
 
@@ -5648,6 +5703,10 @@ void do_zap(CHAR_DATA *ch, char *argument)
         CHAR_DATA *victim;
         char arg[MAX_INPUT_LENGTH];
         int eff_class = 0;
+        int deaths = action_deaths(ch);
+
+        if (!action_character_alive(ch, deaths))
+                return;
 
         if (!IS_NPC(ch))
         {
@@ -5737,10 +5796,13 @@ void do_zap(CHAR_DATA *ch, char *argument)
                 obj_cast_spell(wand->value[3], wand->value[0], ch, victim, obj);
         }
 
-        if (--wand->value[2] <= 0)
+        if (!wand->deleted && --wand->value[2] <= 0)
         {
-                act("Your $p explodes into fragments.", ch, wand, NULL, TO_CHAR);
-                act("$n's $p explodes into fragments.", ch, wand, NULL, TO_ROOM);
+                if (action_character_alive(ch, deaths) && wand->carried_by == ch)
+                {
+                        act("Your $p explodes into fragments.", ch, wand, NULL, TO_CHAR);
+                        act("$n's $p explodes into fragments.", ch, wand, NULL, TO_ROOM);
+                }
                 extract_obj(wand);
         }
 

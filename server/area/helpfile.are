@@ -1264,6 +1264,10 @@ blocking unrelated directions.
 - Sunray stops if its caster dies or leaves the casting room.
 - Chill Touch now restores undead, including player vampires, without attacking.
 - Chill Touch items and NPC specials recognise its undead healing effect.
+- Biological attacks now share body and poison-immunity checks across routes.
+- Nausea and Fleshrot now use resistance-aware saves consistently.
+- Room spells, spell chains and magic items safely handle deaths and removals.
+- Room poison traps now notify each affected victim correctly.
 
 ~
 
@@ -9678,6 +9682,25 @@ damage for that hit. High INTELLIGENCE will improve this stat.
 
 This stat will provide a chance to obtain an additional hit any time you attack.
 This applies for 2nd, 3rd, 4th etc attacks. High DEXTERITY will improve this stat.
+~
+
+0 'POISON PHYSIOLOGY' 'BIOLOGICAL EFFECTS'~
+Poison and nausea need a body they can affect. Inorganic bodies and object
+mobiles cannot receive these new effects. Poison immunity and phasing
+also prevent new poison applications from spells, gas breath, weapon
+coatings, traps and poisoned food or drink.
+
+Undead is not a blanket exemption. An organic vampire can still be
+poisoned; an inorganic skeleton cannot. Being mindless is not, by itself,
+poison immunity either. Existing toxin skills and spell resistances still
+apply to eligible targets.
+
+Fleshrot also needs organic tissue and now uses the normal resistance-aware
+save. Nausea uses that same resistance-aware saving system. Damage and
+duration values have not been retuned.
+
+These are application checks, not free cures. Changing body or form does
+not automatically remove an effect that was already present.
 ~
 
 0 $~
