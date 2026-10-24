@@ -1262,6 +1262,8 @@ blocking unrelated directions.
 - Dispel Evil now affects undead of any alignment, including player vampires.
 - Sunray now doubles damage against undead, without stacking racial bonuses.
 - Sunray stops if its caster dies or leaves the casting room.
+- Chill Touch now restores undead, including player vampires, without attacking.
+- Chill Touch items and NPC specials recognise its undead healing effect.
 
 ~
 
@@ -4503,8 +4505,26 @@ This spell changes the sex of the victim (temporarily).
 0 'CHILL TOUCH'~
 Syntax: cast 'chill touch' <<victim>
 
-This spell inflicts damage on the victim and also reduces the victim's
-strength by one.
+Chill Touch keeps its usual cold attack against living targets. It can
+also lower their strength by two when they fail the resistance check.
+
+Undead NPCs and player vampires instead recover 10-20 HP plus the casting
+level, within the normal maximum-HP and aggravated-wound ceiling. They take
+no damage or new strength penalty. This is not holy healing, so player
+vampires receive the full amount. No spell save or cold resistance reduces
+the restoration. NO_HEAL mobs cannot regain HP, and phased players cannot
+receive it. It does not repair aggravated wounds or remove existing affects.
+
+On undead this is helpful magic: it does not start a fight, even when the
+cast fails or restores no HP. It does not trigger offensive bonus or extra
+spell attacks. Existing fights are not ended. Normal casting costs and
+helpful player-to-player level limits still apply. Name yourself explicitly
+to heal yourself; without a target, casting still defaults to your opponent.
+
+Items follow the same rule. A staff uses its usual defensive targeting
+rules for undead recipients and its normal offensive rules for living ones.
+Offensive NPC specials and combat wand use avoid healing their enemies.
+Helping another group member earns support credit only when HP is restored.
 ~
 
 0 'CONTINUAL LIGHT'~

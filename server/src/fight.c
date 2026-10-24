@@ -9850,6 +9850,10 @@ void use_magical_item(CHAR_DATA *ch)
                         if (cobj->value[3] < 0 || cobj->value[3] >= MAX_SKILL)
                                 break;
 
+                        /* A combat wand should not restore the opponent's HP. */
+                        if (spell_restores_undead(cobj->value[3], ch->fighting))
+                                break;
+
                         /*
                          * Hack: dispel_magic is not defined as an offensive spell,
                          * so mob targets itself.  We want it to target its
