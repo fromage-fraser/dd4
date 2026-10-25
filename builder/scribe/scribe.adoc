@@ -699,6 +699,74 @@ changing that individual mask to `0` retains the inherited restrictions.
 Do not put the final expanded flags back into `act`, `aff`, or `bf` on export.
 Doing so can cancel the very defaults the editor intended to preserve.
 
+
+[[scribe-biological-properties]]
+===== Blood, pain and soul restrictions
+
+Use these additional body flags through `bf`:
+
+[cols="<2,<2,<2,<4",options="header"]
+|===
+| Scribe word | C flag | Decimal bit | Effect
+| `bloodless` | `BODY_BLOODLESS` | 70368744177664 | No usable blood for feeding or explicit blood loss.
+| `analgic` | `BODY_ANALGIC` | 140737488355328 | Insensible to pain; Inflict Pain cannot hurt this target.
+| `soulless` | `BODY_SOULLESS` | 281474976710656 | No soul for Spiritwrack or a later corpse harvest.
+|===
+
+These are extra reasons to reject an effect. An explicit flag takes
+precedence, but leaving it unset does not promise that the effect works.
+Inorganic bodies and object mobiles still cannot supply usable blood.
+Inflict Pain still rejects mindless targets, and ordinary object mobiles
+cannot experience pain. Object mobiles also remain unsuitable soul targets.
+All existing saves, resistance, form and combat restrictions still apply.
+
+Undead status alone supplies none of these three answers. Inorganic does
+not mean soulless or analgic: ghosts and liches can still have souls and
+experience psychic pain. Bloodlessness does not grant poison immunity or general protection from
+trauma, crushing injury or every ongoing-damage effect.
+
+The usual XOR rules apply. A new flag in an individual mask adds it when
+absent from the inherited template, or cancels it when already inherited.
+Cancelling a flag does not cancel an independent fallback restriction:
+removing `bloodless` from an inorganic skeleton still leaves it without
+usable blood; removing `analgic` while retaining `aff mindless` still
+leaves Inflict Pain ineffective. Positive PART flags do not cancel these
+three explicit restrictions.
+
+Skeletons and zombies inherit all three flags. Do not repeat them on an
+ordinary skeleton or zombie. Their soul and pain restrictions are separate
+from `act undead` and `aff mindless`. To make a zombie responsive to pain,
+for example, cancel both relevant inherited restrictions:
+
+[source,text]
+----
+archetype zombie
+aff mindless
+bf analgic
+----
+
+To make a skeleton ensouled, cancel `bf soulless`; undead classification
+and mindlessness can remain. Use `mstat` to check both the raw body flags
+and the effective blood/pain/soul answers.
+
+Corpses and remains snapshot the effective blood and soul answers at death,
+including answers inferred without an explicit body flag. The object-extra
+markers are `ex bloodless` (`ITEM_BLOODLESS`, 1099511627776) and
+`ex soulless` (`ITEM_SOULLESS`, 2199023255552). They survive normal object
+save/load and can also be set on authored corpse objects. They are
+independent of `ex undead`, and grant no benefit to a wearer or carrier.
+
+FEED still accepts only fresh NPC corpses with usable living essence.
+Undead provenance or a bloodless marker prevents feeding. STEAL SOUL still
+accepts only NPC corpses, but rejects a soulless marker. An ensouled undead
+NPC corpse can supply a soul even though its blood cannot nourish a vampire.
+Neither spell can use player corpses or loose body parts. Successful use
+still consumes its corpse.
+
+These flags are body properties, not natural attack parts. They are accepted
+in `bf`, not `atk`. They do not add a spell, skill, resistance bit or
+new area record. The final migration of existing mobiles remains separate.
+
 [[scribe-template-selection]]
 ===== Selecting a creature archetype
 
@@ -820,7 +888,7 @@ see <<scribe-animated-skeleton,Animated skeleton servant>>.
 | Resistances | `RES_PIERCE`, `RES_SLASH`, `RES_DARK`; combined mask `262240`.
 | Vulnerabilities | `RES_BLUNT`, `RES_HOLY`; combined mask `131088`.
 | Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`; combined mask `1792`.
-| Body restrictions | `BODY_NO_EYES`, `BODY_NO_HEART`, `BODY_NO_SPEECH`, `BODY_INORGANIC`.
+| Body restrictions | `BODY_NO_EYES`, `BODY_NO_HEART`, `BODY_NO_SPEECH`, `BODY_INORGANIC`, `BODY_BLOODLESS`, `BODY_ANALGIC`, `BODY_SOULLESS`.
 | Retained positive anatomy | Head, arms, two legs, hands, feet and fingers.
 | Removed positive anatomy | Heart, brains, guts, ear and eye.
 | Attack parts | Zero. No automatic claw/bite attack and no generated body-part weapon.
@@ -840,7 +908,7 @@ No blanket `RES_MAGIC`, `RES_NONMAGIC` or `RES_PSYCHIC` immunity is added.
 
 The skeleton's body-form input is an XOR mask over `humanoid`, not its final
 body mask. It contains the five existing positive organ bits in order to
-cancel them, and four previously absent BODY flags in order to add them.
+cancel them, and seven previously absent BODY flags in order to add them.
 Do not add retained head, arm, leg, hand, foot or finger bits to that XOR
 mask: doing so would remove the inherited bits.
 
@@ -864,7 +932,8 @@ make the creature an `ACT_OBJECT`.
 
 The skeleton is not `ACT_OBJECT`, so normal corpse creation uses
 `ITEM_CORPSE_NPC`, not `ITEM_REMAINS`. Its undead provenance adds
-`ITEM_UNDEAD`. It does not have `BODY_NO_CORPSE`; normal loot handling is
+`ITEM_UNDEAD`, plus `ITEM_BLOODLESS` and `ITEM_SOULLESS` from its effective
+properties. It does not have `BODY_NO_CORPSE`; normal loot handling is
 preserved. Inorganic physiology changes applicable death descriptions and
 makes random death-generated parts `ITEM_TRASH` and inedible. Such parts
 retain undead provenance. Their appearance is random, not guaranteed on
@@ -1001,7 +1070,7 @@ expanding the template's flags.
 | Body species | `humanoid`.
 | Classification | `ACT_UNDEAD`.
 | Mindlessness | `AFF_MINDLESS`.
-| Body restrictions | `BODY_NO_SPEECH` only. `BODY_INORGANIC` is not supplied.
+| Body restrictions | `BODY_NO_SPEECH`, `BODY_BLOODLESS`, `BODY_ANALGIC`, `BODY_SOULLESS`. `BODY_INORGANIC` is not supplied.
 | Positive anatomy | Head, arms, two legs, heart, brains, guts, hands, feet, fingers, ear and eye. No inherited organs are cancelled. No tail is declared.
 | Resistance | `RES_DARK`; mask `262144`.
 | Vulnerability | `RES_HOLY`; mask `131072`.
@@ -1023,11 +1092,11 @@ An ordinary zombie receives no automatic aggression, sentinel, no-quest or
 no-experience flag. Add those as individual choices when appropriate.
 It receives no automatic paralysis or blanket psychic immunity.
 
-The effective body mask is `66884640`. `mstat` displays:
+The effective body mask is `492581276128288`. `mstat` displays:
 
 [source,text]
 ----
-no_speech head arms two_legs heart brains guts hands feet fingers ear eye
+no_speech head arms two_legs heart brains guts hands feet fingers ear eye bloodless analgic soulless
 ----
 
 Its death-part candidates are head, heart, arm, leg, brain, bundle of
@@ -1051,8 +1120,10 @@ aff mindless
 bf no_speech
 ----
 
-This retains undead classification, organic physical anatomy
-and the resistance package. It does not itself add a special function.
+This retains undead classification, organic physical anatomy, bloodlessness,
+ANALGIC and SOULLESS, and the resistance package. Cancelling mindlessness
+alone does not make an ANALGIC zombie feel pain. It does not add a special
+function.
 
 A mobile is not converted by its name or description. Select the archetype
 explicitly. Animate Dead uses its existing configured servant prototypes;
@@ -2470,6 +2541,9 @@ no_corpse   does not produce a corpse: body disappears
 huge    enormous in size
 inorganic   not made of flesh and blood
 has_tail    has a tail
+bloodless   cannot supply usable blood
+analgic     insensible to pain
+soulless    has no soul available to soul effects
 E.g.    bf  no_arms no_speech
 bf  no_heart inorganic no_speech huge
 ----
@@ -6427,6 +6501,8 @@ rune    item has had a rune inscribed on it (runesmith)
 pure    item is not randomised at all by server
 steady  item is only weakly randomised by server
 fickle  item will have its randomness (or lack thereof)     randomly determined
+bloodless   corpse/remains have no usable blood; see the biological properties section
+soulless    corpse/remains have no soul to harvest; see the biological properties section
 cursed  item is cursed; mobs with det_curse will attack holder
 ----
 

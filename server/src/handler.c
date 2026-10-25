@@ -4621,6 +4621,60 @@ bool has_organic_body(CHAR_DATA *ch)
             && !(IS_NPC(ch) && IS_SET(ch->act, ACT_OBJECT));
 }
 
+/* Explicit restrictions add to the older body and object tests. */
+bool has_blood(CHAR_DATA *ch)
+{
+        return has_organic_body(ch)
+            && !IS_SET(ch->body_form, BODY_BLOODLESS);
+}
+
+bool can_experience_pain(CHAR_DATA *ch)
+{
+        return ch && !IS_SET(ch->body_form, BODY_ANALGIC)
+            && !is_mindless(ch)
+            && !(IS_NPC(ch) && IS_SET(ch->act, ACT_OBJECT));
+}
+
+bool has_soul(CHAR_DATA *ch)
+{
+        return ch && !IS_SET(ch->body_form, BODY_SOULLESS)
+            && !(IS_NPC(ch) && IS_SET(ch->act, ACT_OBJECT));
+}
+
+/* Freeze the effective result before death removes forms or equipment. */
+void set_corpse_provenance(OBJ_DATA *corpse, CHAR_DATA *ch)
+{
+        if (!corpse || !ch)
+                return;
+        if (IS_UNDEAD(ch))
+                SET_BIT(corpse->extra_flags, ITEM_UNDEAD);
+        if (!has_blood(ch))
+                SET_BIT(corpse->extra_flags, ITEM_BLOODLESS);
+        if (!has_soul(ch))
+                SET_BIT(corpse->extra_flags, ITEM_SOULLESS);
+}
+
+/* A player vampire supplies blood from its own pool, not from thin air. */
+int gain_feeding_blood(CHAR_DATA *ch, CHAR_DATA *victim, int amount)
+{
+        int gain;
+
+        if (!ch || !victim || ch == victim || amount <= 0
+        ||  !has_blood(victim))
+                return 0;
+        gain = (int)UMIN((long long)amount,
+                        UMAX(0LL, (long long)ch->max_rage - ch->rage));
+        if (!IS_NPC(victim) && victim->sub_class == SUB_CLASS_VAMPIRE)
+                gain = UMIN(gain, UMAX(0, victim->rage));
+        if (gain <= 0)
+                return 0;
+        ch->rage += gain;
+        if (!IS_NPC(victim) && victim->sub_class == SUB_CLASS_VAMPIRE)
+                victim->rage -= gain;
+        return gain;
+}
+
+
 /* These checks govern new poison applications, not automatic cures. */
 bool can_be_poisoned(CHAR_DATA *ch)
 {
@@ -4954,6 +5008,9 @@ char* body_form_name (unsigned long int vector)
                 case BODY_NO_CORPSE:        return "no_corpse";
                 case BODY_HUGE:             return "huge";
                 case BODY_INORGANIC:        return "inorganic";
+                case BODY_BLOODLESS:        return "bloodless";
+                case BODY_ANALGIC:          return "analgic";
+                case BODY_SOULLESS:         return "soulless";
                 case BODY_HAS_TAIL:         return "has_tail";
 
                 case PART_HEAD:                 return "head";
@@ -5419,6 +5476,8 @@ char *extra_bit_name (unsigned long int extra_flags)
             case ITEM_ANTI_SHAPE_SHIFTER:   return "anti_shifter";
             case ITEM_BOW:                  return "bow";
             case ITEM_UNDEAD:               return "undead";
+            case ITEM_BLOODLESS:            return "bloodless";
+            case ITEM_SOULLESS:             return "soulless";
             case ITEM_COLD_IRON:            return "cold_iron";
             case ITEM_SILVER:               return "silver";
             case ITEM_ANTI_SMITHY:          return "anti_smithy";

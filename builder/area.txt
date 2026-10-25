@@ -510,6 +510,48 @@ The following bit values are used to specify mob form:
         BODY_HUGE         128   Massive size
         BODY_INORGANIC    256   Not made of living tissue
         BODY_HAS_TAIL     512   Has a tail
+        BODY_BLOODLESS    BIT_46  No usable blood
+        BODY_ANALGIC      BIT_47  Insensible to pain
+        BODY_SOULLESS     BIT_48  No soul to torment or harvest
+
+
+Blood, pain and soul properties
+------------------------------
+
+Additional body_form bits:
+
+    BODY_BLOODLESS  BIT_46   70368744177664
+    BODY_ANALGIC    BIT_47   140737488355328
+    BODY_SOULLESS   BIT_48   281474976710656
+
+Scribe names these bf bloodless, bf analgic and bf soulless.
+ANALGIC means insensible to pain. These are restrictions, not positive
+body parts, resistance categories or natural attack parts.
+
+A set flag forces its restriction. An absent flag still allows the existing
+tests to reject the target. Inorganic bodies and object mobiles cannot
+supply blood; mindless targets still resist Inflict Pain; ordinary object
+mobiles cannot feel pain or supply a soul. Existing resistance, saving,
+form and combat checks keep applying. Do not infer soullessness or ANALGIC
+from undead or inorganic status alone.
+
+Skeleton and zombie templates add all three body flags. Individual masks
+still use XOR: repeating a supplied flag removes it. Removing one flag does
+not remove other causes of ineligibility. For example, an inorganic
+skeleton stays bloodless after cancelling BODY_BLOODLESS; a mindless zombie
+still rejects Inflict Pain after cancelling BODY_ANALGIC.
+
+The new corpse/remains markers are ITEM_BLOODLESS (BIT_40) and ITEM_SOULLESS
+(BIT_41). Creation records the effective answer, including inferred traits.
+Normal 64-bit ExtraFlags save/load preserves them. FEED rejects bloodless
+or undead NPC corpses; STEAL SOUL rejects soulless NPC corpses. Player
+corpses and loose body parts remain unsuitable. Neither marker affects
+an unrelated object's wearer or carrier.
+
+Use mstat's effective blood/pain/soul row alongside its raw flags.
+These additions do not add a new area record or convert existing mobiles
+to species types. That content migration remains a later task.
+
 
 Example:
         #101
@@ -2061,6 +2103,8 @@ Extra ITEM_ flags:
     ITEM_DONOT_RANDOMISE            BIT_37
     ITEM_WEAK_RANDOMISE             BIT_38
     ITEM_FICKLE                     BIT_39
+    ITEM_BLOODLESS                  BIT_40
+    ITEM_SOULLESS                   BIT_41
     ITEM_CURSED                     BIT_61
 
 * Note if a weapon, armour, or light has this flag and is being worn, value[0]

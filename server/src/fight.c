@@ -3756,11 +3756,8 @@ void make_corpse(CHAR_DATA *ch)
                 corpse->name = str_dup(buf);
         }
 
-        /*
-         * Preserve undead provenance on corpses and remains.
-         */
-        if (IS_UNDEAD(ch))
-                SET_BIT(corpse->extra_flags, ITEM_UNDEAD);
+        /* Keep effective blood and soul restrictions on the remains too. */
+        set_corpse_provenance(corpse, ch);
 
         sprintf(buf, corpse->short_descr, name);
         free_string(corpse->short_descr);
@@ -4126,7 +4123,7 @@ void death_cry(CHAR_DATA *ch)
         switch (number_bits(4))
         {
         case 0:
-                if (!IS_INORGANIC(ch) && MAKES_CORPSE(ch))
+                if (has_blood(ch) && MAKES_CORPSE(ch))
                         strcpy(msg, "$c collapses, blood leaking from many horrible wounds.");
                 break;
 
@@ -4136,7 +4133,7 @@ void death_cry(CHAR_DATA *ch)
                 break;
 
         case 2:
-                if (!IS_INORGANIC(ch) && MAKES_CORPSE(ch))
+                if (has_blood(ch) && MAKES_CORPSE(ch))
                         strcpy(msg, "$c's hot blood splatters your body.");
                 break;
 

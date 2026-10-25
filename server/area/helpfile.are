@@ -1272,6 +1272,11 @@ blocking unrelated directions.
 - Bless and targeted Prayer weaken undead; group Prayer skips undead allies.
 - Curse and Hex strengthen undead and reduce recall movement costs.
 - Undead Curse/Hex bonuses use the stronger value and expire cleanly.
+- BLOODLESS, ANALGIC and SOULLESS supplement existing creature checks.
+- Corpses preserve blood and soul restrictions; feeding and soul spells use them.
+- SUCK handles eligible NPCs safely and grants blood only after real damage.
+- Scribe, builder guidance and mstat recognise the new properties.
+- Identify and Lore reveal bloodless and soulless item markers.
 
 ~
 
@@ -2612,8 +2617,10 @@ opponent.
 0 SPIRITWRACK~
 Syntax: cast spiritwrack <<target>
 
-Summon a horde of demons to plague your victim's soul, making them perform
-poorly during battle.
+Summon spirits to torment your victim's soul and weaken them in battle.
+A SOULLESS target cannot be affected. Object mobiles remain unsuitable even
+without that flag. Undead, inorganic and mindless do not automatically mean
+soulless. All normal saves and resistances still apply.
 ~
 
 
@@ -5574,6 +5581,11 @@ Syntax: cast  ultrablast     <<character>
 With these skills, a psionicist can telepathically cause damage to the
 neural synapses of his or her victim.  The devotions are listed in
 increasing order of damage inflicted.
+
+Inflict Pain also fails against ANALGIC targets, meaning insensible to pain.
+Its existing mindlessness restriction still applies without that flag, and
+ordinary object mobiles cannot feel pain. Normal psychic resistance still
+applies. Being undead or inorganic alone does not make a target ANALGIC.
 ~
 
 0 'LEND HEALTH'~
@@ -6667,10 +6679,14 @@ manifestation by a powerful demonic entity.
 0 'STEAL SOUL'~
 Syntax: cast 'steal soul' <<corpse>
 
-Once an Infernalist successfully vanquishes their foe, they may attempt to
-capture the soul of the freshly slain.  Of course, this requires a fresh
-victims corpse.  If successful, the Infernalist uses the soul to revitalise
-themselves.
+Draw a soul from a fresh NPC corpse to restore up to 100 HP, within your
+normal maximum-HP and aggravated-wound ceiling. It does not repair wounds
+or bypass NPC NO_HEAL. A successful harvest still consumes the corpse.
+
+A SOULLESS corpse cannot supply a soul. The effective soul restriction is
+recorded at death and survives normal object saving. Undead provenance alone
+does not reject a corpse: an ensouled undead NPC can still supply a soul.
+Player corpses, remains and loose body parts are not eligible.
 ~
 
 0 'INFERNAL FURY'~
@@ -7058,13 +7074,21 @@ it will let the player concentrate on the enemy that is most dangerous.
 0 SUCK~
 Syntax: suck <<target>
 
-This Vampire skill attempts to suck the blood from a victim.  A Vampire who
-is full with blood will have a stronger suck than one craving blood.
-A successful attack will cause damage to the victim, while also increasing
-the blood points of the Vampire.
+Attempt to draw blood from an opponent. Existing blood-dependent attack
+strength is unchanged. Only a bite that actually reduces the target's HP
+can restore blood: gain up to two points, capped by your remaining capacity.
+Feeding on a vampire player transfers those points from their available
+blood pool. A miss or zero-damage bite provides no blood.
+
+BLOODLESS, inorganic and object targets cannot supply blood. Existing form,
+safety and combat restrictions still apply; an unset BLOODLESS flag is not
+a promise that feeding will work. Existing eligible NPC users use a
+90-percent skill chance without reading player skill data.
+
 A damaging SUCK has a 20 percent chance to leave 10 percent of its actual HP
 damage as aggravated damage, rounded down, without extra immediate damage.
-The vampire and master vampire creature attacks use the same rule.
+The vampire and master vampire creature attacks use the same rule and keep
+their existing blood-loss rules against vampire players.
 ~
 
 0 FEED~
@@ -7074,7 +7098,9 @@ Once an enemy has been slain, the vampire can feed on the victim's fresh
 corpse, drawing nourishment from the remaining life force in its blood.
 
 Blood from an undead corpse does not contain that living essence and cannot
-sustain a vampire.
+sustain a vampire. BLOODLESS corpses are unsuitable too, including corpses
+marked from inorganic or object physiology at death. Normal feeding still
+restores up to five blood points and consumes the fresh NPC corpse.
 
 Vampires automatically gain this skill.
 ~
@@ -8733,6 +8759,15 @@ merc.h):
         BODY_HUGE         128   Massive size
         BODY_INORGANIC    256   Not made of living tissue
         BODY_HAS_TAIL     512   Has a tail
+        BODY_BLOODLESS  BIT_46  No usable blood
+        BODY_ANALGIC    BIT_47  Insensible to pain
+        BODY_SOULLESS   BIT_48  No soul for the affected soul mechanics
+
+Scribe accepts bf bloodless, bf analgic and bf soulless. These explicit
+restrictions supplement the older tests; removing a flag does not guarantee
+that an effect can work. Skeletons and zombies inherit all three, so normal
+individuals should not repeat them in their XOR masks. Mstat shows the raw
+flags and the effective blood, pain and soul answers.
 
 You may need to manually edit your finished area files to set body_form
 values correctly.  The 'gold' field occurs immediately after the
@@ -9752,6 +9787,28 @@ duration values have not been retuned.
 
 These are application checks, not free cures. Changing body or form does
 not automatically remove an effect that was already present.
+~
+
+0 BLOODLESS ANALGIC SOULLESS~
+BLOODLESS means the creature cannot supply usable blood.
+ANALGIC means insensible to pain.
+SOULLESS means it has no soul available to the relevant soul effects.
+
+These body flags add restrictions. Their absence does not bypass older
+tests: inorganic bodies and objects still cannot supply blood, Inflict Pain
+still rejects mindlessness, and objects remain unsuitable soul targets.
+Undead classification alone does not decide blood, pain or soul eligibility.
+
+Identify and Lore reveal the bloodless and soulless markers on objects.
+ANALGIC is a creature body property, shown by MSTAT rather than item flags.
+
+The same answers apply to NPCs and players when those body properties are
+present. Vampire players normally have blood, can feel pain and retain souls;
+they keep their existing hunger, thirst and drowning exceptions.
+
+For builders: use Scribe's bf field. Skeleton and zombie templates inherit
+all three flags. Repeating an inherited flag in an individual mask removes
+that flag through XOR, but independent restrictions can still apply.
 ~
 
 0 $~

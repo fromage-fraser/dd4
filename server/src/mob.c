@@ -204,7 +204,8 @@ const struct mob_type mob_table[MAX_MOB] =
                  * Do not repeat the retained head/arm/leg/hand/foot bits.
                  */
                 BODY_NO_EYES | BODY_NO_HEART | BODY_NO_SPEECH
-                    | BODY_INORGANIC
+                    | BODY_INORGANIC | BODY_BLOODLESS
+                    | BODY_ANALGIC | BODY_SOULLESS
                     | PART_HEART | PART_BRAINS | PART_GUTS
                     | PART_EAR | PART_EYE,
 
@@ -239,7 +240,7 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 /* Undead classification and explicit mindlessness. */
                 ACT_UNDEAD, AFF_MINDLESS,
-                BODY_NO_SPEECH,
+                BODY_NO_SPEECH | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS,
 
                 /* No additional natural attack parts. */
                 0,
