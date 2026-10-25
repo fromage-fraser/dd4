@@ -1,5 +1,41 @@
 #HELPS
 
+0 'WEREWOLF DEFENCES' 'WEREWOLF DEFENSES'~
+Werewolf instincts give player werewolves these automatic bonuses:
+
+ Fear                         +15 percentage points to resist
+ Life and strength drain      +10 percentage points to resist
+ Charm and hypnotic control   +10 percentage points to resist
+
+The bonus works in normal, wolf and direwolf forms. There is nothing to
+learn, activate or pay for, and it does not vary with rage or moon phase.
+Your level and current form's stats still affect the normal calculation.
+
+Fear includes the Fear spell, banshee wails, mobile fear auras, a player
+vampire's Aura of Fear, targeted Howl, and item-induced battle terror.
+Drain includes Energy Drain, the wight/wraith/spectre drain attacks and
+Psychic Drain, Weaken, Steal Strength, Wither and Chant of Enfeeblement.
+Control includes vampire gaze and Transfix.
+
+Existing saves gain the bonus before their usual limits. Where an ability
+uses an attacker success roll, the bonus lowers that chance instead.
+There is still one resistance roll. Existing very low chances and
+immunities are preserved; these bonuses do not grant immunity.
+
+The bonus stacks with racial traits, equipment and protective spells
+where those already apply. An effect matching more than one category
+gets only the strongest werewolf bonus. It works against living and
+undead sources alike.
+
+If an effect lands, its normal strength and duration remain. Ordinary
+damage, bites, blood extraction and aggravated wounds are unchanged.
+Silver still hurts werewolves more in every form.
+
+Charm Person still cannot target players, and Domination remains
+disabled. Ordinary wolves, wolf-form shapeshifters and NPCs receive none
+of these player-subclass bonuses.
+~
+
 0 'HOLY SYMBOL' 'HOLY SYMBOLS' 'HOLY FOCUS'~
 A holy symbol helps a living wearer resist undead magic. Wear it around
 your neck, or hold it while turning undead.
@@ -1351,6 +1387,9 @@ blocking unrelated directions.
 
 - Holy symbols and priest supplies/services added; Saul offers undead mending.
 - Automatic support casters skip spells that would harm undead recipients.
+
+- Werewolves gain fear, drain and control defences in every form.
+- Saves and existing success rolls apply one bonus; silver weakness remains.
 ~
 
 0 'AGGRAVATED DAMAGE' 'AGGRO DAM'~
@@ -4909,6 +4948,9 @@ moves the caster's alignment 200 points towards evil.
 You may restore yourself or another undead target. This is helpful magic,
 so it does not start combat or trigger offensive extra casts. Existing
 combat continues. Normal helpful-casting level limits still apply.
+
+Werewolf players gain 10 percentage points on the existing drain save.
+If the drain succeeds, its normal effects remain.
 ~
 
 0 'FAERIE FIRE'~
@@ -5339,6 +5381,9 @@ incoming attacks.  The skill is automatic once practised.
 This skill allows a vampire to frighten their opponent during combat,
 preventing them from attacking.  The use of this skill is automatic once
 practised.
+
+Werewolf attackers are 15 percentage points less likely to be deterred,
+subject to the normal low-chance limits.
 ~
 
 0 'ENHANCED DAMAGE' 'ENHANCED HIT'~
@@ -5683,6 +5728,8 @@ Syntax: cast 'psychic drain' <<character>
 
 With this discipline, a psionicist can drain the strength of an opponent.
 The skill becomes more effective as the psionicist gains experience.
+
+Werewolf players gain 10 percentage points on the existing save.
 ~
 
 0 'SHARE STRENGTH'~
@@ -6791,6 +6838,8 @@ Syntax: cast fear <<victim>
 One who is fearful, invariably flees. That is the theory behind this
 spell.  It will invoke great fear in the eyes of the victim, causing them
 to flee from battle.
+
+Werewolf players gain 15 percentage points on the existing fear save.
 ~
 
 0 DETER~
@@ -7125,6 +7174,9 @@ Syntax: howl <<target>
 
 The blood-curdling HOWL of the wolf can terrify, reducing victims to
 quivering wrecks incapable of action.
+
+A werewolf target lowers the howl's success chance by 15 percentage
+points, subject to the normal low-chance limits.
 ~
 
 0 'RESIST TOXIN'~
@@ -7447,6 +7499,9 @@ swim                    enhanced swiftness      target
 resist cold             quicken
 
 {Y*{x The skill 'dodge' is only available in normal form.
+
+Werewolves also gain innate supernatural defences without practising a
+skill. See HELP WEREWOLF DEFENCES for their fear, drain and control bonuses.
 ~
 
 -1 SVAMPIRE~
@@ -8215,6 +8270,9 @@ Syntax: cast wither <<target>
 Using this spell a caster drains the life force of their enemy.
 Five percent of the actual HP damage, after saves and defenses, remains as
 aggravated damage (rounded down), without extra immediate damage.
+
+Werewolf players gain 10 percentage points on the existing save to
+lessen this life-draining spell.
 ~
 
 0 LUNGE 'DOUBLE LUNGE'~
@@ -8444,6 +8502,9 @@ A werewolf is half-man, half-wolf.  Werewolves must kill to survive and
 will go BERSERK until they have satisfied their bloodlust.  Werewolves are
 hard to kill, being able to RESIST TOXIN, and they have a sixth sense for
 danger.
+
+Their instincts also protect them against fear, supernatural drain and
+hypnotic control in every form. See HELP WEREWOLF DEFENCES.
 ~
 
 -1 INFERNALIST~
@@ -8494,6 +8555,9 @@ Syntax: transfix <<target>
 
 With this skill the character attempts to transfix their victim by gazing
 into their eyes and overriding their will.
+
+A werewolf target lowers the success chance by 10 percentage points,
+subject to the normal low-chance limits.
 ~
 
 0 SING SONGS~
@@ -8623,6 +8687,9 @@ Syntax: chant enfeeblement
 
 Used during combat, this chant makes the victim feel incompetent and
 unable to battle with the bard who is chanting it.
+
+Werewolf players gain 10 percentage points on the existing save.
+The separate chant-skill success roll is unchanged.
 ~
 
 0 'CHANT OF PAIN' PAIN~

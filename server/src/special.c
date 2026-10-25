@@ -1647,11 +1647,12 @@ bool spec_banshee(CHAR_DATA *ch)
             "You let out a terrible wail!",
             ch, NULL, NULL, TO_CHAR);
 
-        if (saves_resistance_effect(
+        if (saves_supernatural_effect(
                 ch,
                 ch->level,
                 victim,
-                RES_SONIC | RES_PSYCHIC))
+                RES_SONIC | RES_PSYCHIC,
+                SUPERNATURAL_FEAR))
         {
                 act(
                     "You withstand $n's terrible wail.",
@@ -2195,11 +2196,12 @@ void update_fear_auras(void)
                 /* Do not demand another save if fleeing proves impossible. */
                 victim->fear_aura_checked = TRUE;
 
-                if (saves_resistance_effect(
+                if (saves_supernatural_effect(
                         source,
                         UMIN(MAX_LEVEL, source->level + 1),
                         victim,
-                        RES_MAGIC | RES_PSYCHIC))
+                        RES_MAGIC | RES_PSYCHIC,
+                        SUPERNATURAL_FEAR))
                 {
                         act("You stand firm against the dread of $n.",
                             source, NULL, victim, TO_VICT);

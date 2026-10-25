@@ -1577,6 +1577,48 @@ Existing NPC-only resistance handling and XOR authoring remain unchanged.
 See the Scribe manual's "Named weapon and shield contacts" section for
 source selection, chance conventions and exclusions.
 
+
+==Werewolf supernatural defences
+
+Player werewolves have fixed innate effect defences in every form:
+    fear                  +15 percentage points
+    life/strength drain   +10 percentage points
+    charm/control         +10 percentage points
+
+These are bonuses to the existing resistance roll, not general RES_*
+damage flags. There is no new skill, spell, teacher, item or Scribe field.
+Racial traits, equipment and protective spells still apply where they
+already did. Only the strongest matching werewolf bonus applies to one
+effect. The attacker's species is irrelevant.
+
+Fear covers the Fear spell, banshee wails, ACT_FEAR_AURA, the player
+Aura of Fear skill, targeted Howl and the battle-terror item effect.
+RES_DRAIN and RES_CHARM identify drain and control effects in existing
+resistance-aware saves. This includes Energy Drain, Psychic Drain and
+vampire gaze. Wither keeps its existing partial-damage save and gains
+the drain bonus there. Chant of Enfeeblement adds it to its existing
+save without changing the separate chant-skill roll. Transfix uses its
+existing success roll.
+
+Spell saves add the bonus before the normal limits. Howl and Transfix
+lower the attack threshold after existing category adjustments, retaining
+a threshold of at least 5 unless it was already lower. Aura of Fear
+retains at least 2, or an already lower threshold. A zero immunity result
+stays zero. No defence adds another resistance roll or increases an
+attacker's chance. Existing effect strength, duration and PvP rules remain.
+
+These bonuses do not create resistance to all psychic effects or ordinary
+damage. Bites, blood extraction, physical hits and aggravated wounds are
+unchanged. Silver vulnerability stays in every form, and existing berserk
+flee restrictions remain. Charm Person still excludes player targets;
+Domination remains disabled.
+
+The profile follows SUB_CLASS_WEREWOLF immediately. Ordinary wolves,
+wolf-form shapeshifters, and NPCs gain none of these player bonuses.
+MSTAT shows the three bonuses separately from broad resistance masks.
+Bulk NPC species conversion and the permanent NO_UNDEAD room audit
+remain final content tasks.
+
 ==Innate player resistances and vulnerabilities
 
 The shared resistance resolver also handles selected innate PC traits:

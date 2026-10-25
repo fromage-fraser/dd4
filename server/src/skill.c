@@ -3820,7 +3820,8 @@ void do_chant(CHAR_DATA *ch, char *arg)
                 chance = URANGE( 5, ch->pcdata->learned[gsn_chant_of_enfeeblement],95 );
 
                 if( is_affected( victim, gsn_chant_of_enfeeblement )
-                   || saves_spell( ch, ch->level, victim ) || number_percent() > chance )
+                   || saves_supernatural_effect(
+                       ch, ch->level, victim, 0, SUPERNATURAL_DRAIN ) || number_percent() > chance )
                 {
                         send_to_char( "Your chant of enfeeblement has no effect.\n\r", ch );
                         sound_spell_sfx_delay( ch, gsn_chant_of_enfeeblement, "wearoff", 2 );

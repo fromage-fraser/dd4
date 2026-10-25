@@ -40,6 +40,8 @@ void say_spell(CHAR_DATA *ch, int sn);
 bool is_safe(CHAR_DATA *ch, CHAR_DATA *victim);
 bool skill_cannot_be_dispelled(int sn);
 bool is_only_whitespace(const char *str);
+static bool saves_spell_with_bonus(CHAR_DATA *source, int level,
+                                  CHAR_DATA *victim, int bonus);
 static bool spell_status_already_present(
         CHAR_DATA *ch,
         CHAR_DATA *victim,
@@ -788,11 +790,15 @@ int apply_resistance_to_damage(CHAR_DATA *victim, int dam,
  * Resistance and vulnerability modify the effective casting level rather than
  * creating a second independent saving throw.
  */
-bool saves_resistance_effect(CHAR_DATA *source,
-                             int level,
-                             CHAR_DATA *victim,
-                             unsigned long int res_types)
+bool saves_supernatural_effect(CHAR_DATA *source, int level,
+                                CHAR_DATA *victim, unsigned long int res_types,
+                                int effect_types)
 {
+        if (res_types & RES_DRAIN)
+                effect_types |= SUPERNATURAL_DRAIN;
+        if (res_types & RES_CHARM)
+                effect_types |= SUPERNATURAL_CONTROL;
+
         switch (get_resistance_result(victim, res_types))
         {
         case RES_RESULT_IMMUNE:
@@ -815,7 +821,15 @@ bool saves_resistance_effect(CHAR_DATA *source,
                 break;
         }
 
-        return saves_spell(source, level, victim);
+        return saves_spell_with_bonus(
+            source, level, victim,
+            supernatural_defence_bonus(victim, effect_types));
+}
+
+bool saves_resistance_effect(CHAR_DATA *source, int level,
+                             CHAR_DATA *victim, unsigned long int res_types)
+{
+        return saves_supernatural_effect(source, level, victim, res_types, 0);
 }
 
 /*
@@ -957,7 +971,35 @@ bool undead_protection_blocks_aggression(CHAR_DATA *mob,
  * Compute a saving throw.
  * Negative applies make saving throw better.
  */
-bool saves_spell(CHAR_DATA *source, int level, CHAR_DATA *victim)
+/* These are werewolf instincts, so changing form does not switch them off. */
+int supernatural_defence_bonus(CHAR_DATA *victim, int effect_types)
+{
+        if (!victim || IS_NPC(victim)
+        ||  victim->sub_class != SUB_CLASS_WEREWOLF)
+                return 0;
+
+        /* An effect gets the strongest matching bonus, never their sum. */
+        if (effect_types & SUPERNATURAL_FEAR)
+                return 15;
+        if (effect_types & (SUPERNATURAL_DRAIN | SUPERNATURAL_CONTROL))
+                return 10;
+        return 0;
+}
+
+/* Lower an existing attack threshold without adding another roll. */
+int supernatural_defence_threshold(CHAR_DATA *victim, int threshold,
+                                   int minimum, int effect_types)
+{
+        int bonus = supernatural_defence_bonus(victim, effect_types);
+
+        /* Leave immunity and any already lower threshold alone. */
+        if (bonus == 0 || threshold <= minimum)
+                return threshold;
+        return UMAX(minimum, threshold - bonus);
+}
+
+static bool saves_spell_with_bonus(CHAR_DATA *source, int level,
+                                  CHAR_DATA *victim, int bonus)
 {
         int base = get_curr_wis(victim) + get_curr_int(victim);
         int save;
@@ -983,10 +1025,15 @@ bool saves_spell(CHAR_DATA *source, int level, CHAR_DATA *victim)
         if (alignment_protection_applies(source, victim))
                 save -= ALIGNMENT_PROTECTION_SAVE_BONUS;
 
-        save += holy_focus_save_bonus(victim, source);
+        save += holy_focus_save_bonus(victim, source) + bonus;
         save = URANGE(5, save, 95);
 
         return number_percent() < save;
+}
+
+bool saves_spell(CHAR_DATA *source, int level, CHAR_DATA *victim)
+{
+        return saves_spell_with_bonus(source, level, victim, 0);
 }
 /*
  * The kludgy global is for spells who want more stuff from command line.
@@ -10143,7 +10190,8 @@ void spell_wither(int sn, int level, CHAR_DATA *ch, void *vo)
         dam = dice(level, 8);
         dam += level;
 
-        if (saves_spell(ch, level, victim))
+        if (saves_supernatural_effect(
+                ch, level, victim, 0, SUPERNATURAL_DRAIN))
                 dam /= 1.5;
 
         if (spell_attack_number == 1 && (ch != victim))
@@ -11744,11 +11792,12 @@ void spell_fear(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (saves_resistance_effect(
+        if (saves_supernatural_effect(
                 ch,
                 level,
                 victim,
-                skill_table[sn].res_type))
+                skill_table[sn].res_type,
+                SUPERNATURAL_FEAR))
         {
                 send_to_char(
                     "You failed.\n\r",

@@ -2213,6 +2213,15 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                 send_to_char("none", ch);
                         send_to_char(")\n\r", ch);
                 }
+                if (supernatural_defence_bonus(victim, SUPERNATURAL_FEAR) > 0)
+                {
+                        snprintf(buf, sizeof(buf),
+                            "Supernatural defences: fear +%d, drain +%d, control +%d points\n\r",
+                            supernatural_defence_bonus(victim, SUPERNATURAL_FEAR),
+                            supernatural_defence_bonus(victim, SUPERNATURAL_DRAIN),
+                            supernatural_defence_bonus(victim, SUPERNATURAL_CONTROL));
+                        send_to_char(buf, ch);
+                }
                 send_to_char(
                     "Innate immunities: none\n\r"
                     "Existing skill, equipment and spell defences "
