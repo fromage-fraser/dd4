@@ -26,10 +26,10 @@ A new stack restarts progress towards the next recovery; attacks blocked
 by the shared stack limit do not. Offline recovery uses the ordinary rate.
 Stacks, progress and the shared protection survive saving and reboots.
 
-Vitalize clears all stacks and their timers before restoring your resources.
+Restoration clears all stacks and their timers without refilling HP, mana
+or movement. Vitalize clears them before restoring your resources.
 Actual death also clears Drained. Other healing, Complete Healing,
 Regenerate, Remove Curse and Dispel Magic do not remove the condition.
-A separate Restoration spell remains later work.
 
 Living PCs and eligible NPCs use the same rules. Undead, including vampire
 players, and NPC objects cannot gain stacks. Drain immunity still applies.
@@ -37,6 +37,33 @@ Werewolves keep their +10-point resistance bonus. Other weakening spells,
 blood extraction and ordinary physical damage keep their own mechanics.
 
 SCORE, AFFECTS and MSTAT show the stack count, penalties and recovery state.
+~
+
+0 RESTORATION~
+Syntax: cast 'restoration' <<target>
+
+Restoration clears every Drained stack and its recovery and stack timers.
+Your normal HP and mana ceilings, hitroll and damroll return immediately.
+Current HP, mana and movement stay as they are. It does not repair
+aggravated wounds, cure other conditions or protect against another drain.
+
+Clerics, Templars and Druids need 75% Curative Magiks and 75% Heal.
+Knights need 95% Healing Magiks and 90% Heal instead. These are practice
+percentages, not character levels. Teachers can offer the spell through
+either Healing Magiks or Curative Magiks.
+
+The base mana cost is 50. You can cast it on yourself or someone in the
+room, including during combat, with one combat round of casting lag.
+Normal casting, target and practice restrictions still apply.
+
+Priests offering extra healer services provide HEAL RESTORATION for
+40 gold. They check that you are Drained before taking payment.
+Living PCs and eligible NPCs can benefit. Undead, including vampire PCs,
+cannot become Drained, so the spell has nothing to remove from them.
+
+Vitalize is the healer-only alternative: it clears Drained and also fills
+HP, mana and movement for 150 gold. Aggravated wounds still limit its HP.
+See HELP DRAINED, HELP VITALIZE and HELP HEALER.
 ~
 
 0 'WEREWOLF DEFENCES' 'WEREWOLF DEFENSES'~
@@ -106,14 +133,18 @@ Syntax: heal refill <carried drink container>
 HEAL lists the services available from the healers in your room.
 Ordinary healer services and prices remain. Some priests also offer:
 
+ restoration  Clear Drained                   40 gold
  detect       Detect Undead                    5 gold
  protection   Protection vs Evil              10 gold
  ward         Protection vs Undead            20 gold
  blessweapon  Bless Weapon           100 + 5 * weapon level gold
  refill       Holy water              8 gold / 15 missing units
 
-The priest uses the existing protective spells and their normal durations.
-An already active copy is refused before payment.
+Restoration removes Drained without refilling HP, mana or movement.
+If you are not Drained, you are not charged. See HELP RESTORATION.
+
+The protective spells keep their normal durations. An already active
+copy is refused before payment.
 
 Bless Weapon is the existing permanent enchantment, including its mana
 and saving-throw bonuses. Carry an unworn, unblessed weapon without
@@ -1434,6 +1465,9 @@ blocking unrelated directions.
 - Wither's Drained effect replaces its aggravated-damage component.
 - Drained survives relogging; Vitalize clears it before restoring resources.
 - Healing, prompts and combat rolls respect the temporary ceilings/penalties.
+
+- Restoration clears Drained; cleric paths and Knights can learn it.
+- Priests offer Restoration for 40 gold; Vitalize now costs 150 gold.
 ~
 
 0 'AGGRAVATED DAMAGE' 'AGGRO DAM'~
@@ -1711,9 +1745,10 @@ The DD Team
 0 VITALIZE VITALISE~
 This healer-only spell clears Drained and its timers, then fully restores
 your HP, mana and movement. Existing aggravated wounds still limit HP.
-The normal healer service costs 120 gold.
+The normal healer service costs 150 gold.
 
-Other healing spells do not clear Drained. See HELP DRAINED.
+Restoration also clears Drained, but does not refill your resources.
+Other healing spells do not clear it. See HELP DRAINED and HELP RESTORATION.
 ~
 
 101 ZONE ZONES~
@@ -6525,6 +6560,7 @@ Spells in curative magiks include:
     cure poison
     cure blindness
     remove curse
+    restoration
 ~
 
 0 'HEALING MAGIKS' 'ADVANCED HEALING MAGIKS'~
@@ -6542,6 +6578,7 @@ Spells in healing magiks include:
     cure light wounds
     cure serious wounds
     heal
+    restoration (Knights use this learning path)
 ~
 0 'PRISMATIC SPRAY'~
 Syntax: cast 'prismatic spray' <<target>
@@ -7389,7 +7426,7 @@ invis                   teleport                knock
 create spring           control weather         detect curse
 sense wisdom            turn undead             detect undead
 protection vs evil      mass protection vs evil protection vs undead
-ward against undead
+ward against undead     restoration
 
 True clerics (those that don't change to templars or druids) may also
 learn these skills above level 30:
@@ -7683,6 +7720,7 @@ joust                   second spell            destrier
 flamestrike             cure poison             enhanced critical
 target                  turn undead             detect undead
 protection vs evil      protection vs undead    ward against undead
+restoration
 ~
 
 -1 'SMARTIAL ARTIST'~
@@ -7703,8 +7741,8 @@ target                  enhanced critical       tenketsu
 {W
 Druid skills and spells{x
 
-Inherited cleric spells, including Ward Against Undead, are listed under
-HELP SCLERIC.
+Inherited cleric spells, including Ward Against Undead and Restoration,
+are listed under HELP SCLERIC.
 
 barkskin                wither                  moonray
 sunray                  third spell             scribe
@@ -7776,8 +7814,8 @@ resist lightning        protection vs good      mass protection vs good
 {W
 Templar skills and spells{x
 
-Inherited cleric spells, including Ward Against Undead, are listed under
-HELP SCLERIC.
+Inherited cleric spells, including Ward Against Undead and Restoration,
+are listed under HELP SCLERIC.
 
 rescue                  parry                   third attack
 bash door               fast healing            grip

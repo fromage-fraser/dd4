@@ -4083,6 +4083,11 @@ int has_groups(CHAR_DATA *ch, int sn)
                         learned[iter] = ch->pcdata->learned[iter];
         }
 
+        /* Restoration can be learned or taught through either school. */
+        if (sn == gsn_restoration)
+                return UMAX(learned[gsn_group_healing],
+                            learned[gsn_group_curative]);
+
         min = 797;
         jter = 0;
 

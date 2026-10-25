@@ -8947,6 +8947,31 @@ void spell_recharge_mana(int sn, int level, CHAR_DATA *ch, void *vo)
         return;
 }
 
+void spell_restoration(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+
+        if (!ch || ch->deleted || !victim || victim->deleted)
+                return;
+        if (drained_stack_count(victim) == 0)
+        {
+                send_to_char("There is no drained life force to restore.\n\r", ch);
+                return;
+        }
+
+        /* The ceilings return, but current HP, mana and movement stay put. */
+        clear_drained_condition(victim);
+        send_to_char("Your life force feels whole again.\n\r", victim);
+        if (ch != victim)
+        {
+                act("You restore $N's life force.", ch, NULL, victim, TO_CHAR);
+                act("$N looks more like $S old self.", ch, NULL, victim, TO_NOTVICT);
+                credit_group_support(ch, victim);
+        }
+        else
+                act("$n looks more like $s old self.", ch, NULL, NULL, TO_ROOM);
+}
+
 void spell_vitalize(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
