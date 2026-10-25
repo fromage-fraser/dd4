@@ -5782,6 +5782,10 @@ bool saves_spell args((CHAR_DATA *source, int level,
                        CHAR_DATA *victim));
 bool restorative_spell_harms_undead args((int sn, CHAR_DATA *victim));
 bool spell_restores_undead args((int sn, CHAR_DATA *victim));
+bool spell_benefits_undead(int sn, CHAR_DATA *victim);
+bool spell_afflicts_undead(int sn, CHAR_DATA *ch, CHAR_DATA *victim);
+bool try_undead_support_spell(int sn, CHAR_DATA *ch);
+int recall_move_cost(CHAR_DATA *ch);
 bool saves_resistance_effect args((CHAR_DATA *source, int level,
                                    CHAR_DATA *victim,
                                    unsigned long int res_types));

@@ -2758,7 +2758,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"bless", &gsn_bless,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_bless, 5, 1,
-         "", "<136>You feel less righteous.<0>"},
+         "", "The blessing fades."},
 
         {"blindness", &gsn_blindness,
          TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_MAGIC,
@@ -2868,7 +2868,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"curse", &gsn_curse,
          TYPE_INT, TAR_CHAR_OFFENSIVE, POS_FIGHTING, RES_CURSE | RES_MAGIC,
          spell_curse, 20, 12,
-         "<199>c<200>u<201>r<200>s<199>e<0>", "The curse wears off."},
+         "<199>c<200>u<201>r<200>s<199>e<0>", "The curse's magic fades."},
 
         {"detect good", &gsn_detect_good,
          TYPE_INT, TAR_CHAR_SELF, POS_STANDING, RES_MAGIC | RES_HOLY,
@@ -4220,7 +4220,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"hex", &gsn_hex,
          TYPE_INT, TAR_CHAR_OFFENSIVE_SINGLE, POS_FIGHTING, RES_CURSE | RES_MAGIC | RES_DARK,
          spell_hex, 30, 12,
-         "hex", "You are no longer hexed."},
+         "hex", "The hex fades."},
 
         {"animate dead", &gsn_animate_dead,
          TYPE_INT, TAR_OBJ_ROOM, POS_STANDING, RES_MAGIC | RES_DARK,
@@ -4250,7 +4250,7 @@ const struct skill_type skill_table[MAX_SKILL] =
         {"prayer", &gsn_prayer,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_prayer, 50, 12,
-         "", "You feel your prayer cease."},
+         "", "The prayer fades."},
 
         {"frenzy", &gsn_frenzy,
          TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC | RES_HOLY,

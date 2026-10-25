@@ -1268,6 +1268,10 @@ blocking unrelated directions.
 - Nausea and Fleshrot now use resistance-aware saves consistently.
 - Room spells, spell chains and magic items safely handle deaths and removals.
 - Room poison traps now notify each affected victim correctly.
+- Energy Drain and Unholy Word now restore undead without hostile casting.
+- Bless and targeted Prayer weaken undead; group Prayer skips undead allies.
+- Curse and Hex strengthen undead and reduce recall movement costs.
+- Undead Curse/Hex bonuses use the stronger value and expire cleanly.
 
 ~
 
@@ -3897,6 +3901,10 @@ fleeing), and you will have a chance of failing (again, more than for
 fleeing).  RECALL costs half of your movement points.  RECALL doesn't work
 in certain God-forsaken rooms.  Characters afflicted by a curse will not
 recall at all.
+
+Undead with a beneficial Curse pay 25% less movement for recall; Hex gives
+50% off. Only the stronger discount applies, until its spell ends. These
+boons do not grant permission to recall through any other restriction.
 ~
 
 0 'SHADOW FORM'~
@@ -4455,14 +4463,24 @@ This spell decreases (improves) the armor class of the target character.
 0 BLESS PRAYER~
 Syntax: cast bless <<character>
 Syntax: cast prayer
+Syntax: cast prayer <<undead target>
 
-BLESS renders the target worthy of favour in the eyes of their god,
-and improves their performance in combat.
+Bless and Prayer keep their usual benefits for living recipients.
 
-PRAYER is similar to a group bless, and its effects are much more
-powerful.
+Bless weakens undead instead: -1 hitroll and +1 spell-save penalty, lasting
+the casting level divided by 8. It does not stop recall.
 
-See 'HELP PRAY' for information on how to pray to DEITIES.
+Ordinary group Prayer skips undead allies, including vampire players.
+Deliberately target another undead creature to weaken that target alone:
+hitroll and damroll fall by level/6, armour class worsens by level/2, and
+spell and breath saves each worsen by level/6, lasting level/6.
+
+Round these divisions down, with a minimum of one. Harmful effects allow
+the normal resistance-aware save and obey combat restrictions. NPCs and
+vampire players receive the same penalties. Healers and friendly blessing
+specials will not accidentally bless an undead customer.
+
+See 'HELP PRAY' for information on praying to deities.
 ~
 
 0 BLINDNESS~
@@ -4666,18 +4684,30 @@ victim.  It also sobers up an intoxicated player.
 ~
 
 0 CURSE HEX~
-Syntax: cast 'curse' <<target>
-Syntax: cast 'hex' <<target>
+Syntax: cast curse <<target>
+Syntax: cast hex <<target>
 
-CURSE leaves your victim unclean in the eyes of their god, weakening their
-performance in combat and making them unable to RECALL.
+Against living targets, Curse and Hex still weaken combat performance and
+block recall. Carrying cursed objects can also provoke some peaceful mobs.
 
-HEX is a far more powerful version of the curse spell.  Anyone affected
-by this awful spell will be truly doomed!
+Against undead NPCs and player vampires these spells grant boons instead.
+Curse improves hitroll and spell saves by level/8, lasting 6 + level.
+Hex improves hitroll and damroll by level/6, armour class by level/2, and
+spell and breath saves by level/6, lasting level/6. Divisions round down,
+with a minimum of one.
 
-Additionally, characters who are cursed by such spells or who carry cursed
-objects with them may find that some usually-peaceful mobiles become
-aggressive towards them.
+The beneficial versions allow no save, do not start combat, and do not
+carry the recall-blocking curse flag. They keep their own spell identities.
+Overlapping Curse/Hex stat bonuses use the stronger value; they do not
+add together. When one ends, the remaining spell still supplies its bonus.
+
+Curse reduces recall's movement cost by 25%; Hex reduces it by 50%.
+Only the stronger reduction applies, and it ends with the spell. Movement
+charges round up. These boons do not bypass room, item or combat travel
+restrictions, and they do not remove existing harmful effects. NPC
+followers already recall with their master without a movement charge.
+
+The usual helpful-casting level limits apply when assisting another player.
 ~
 
 0 'DETECT EVIL'~
@@ -4780,14 +4810,25 @@ causes the weapon to be aligned with the alignment with the caster.
 ~
 
 0 'ENERGY DRAIN'~
-Syntax: cast 'energy drain' <<victim>
+Syntax: cast 'energy drain' <<target>
 
-This powerful spell saps the life force of your enemy.  It is an extremely
-evil spell, and hence has evil effects on the caster.
-When used by a wight, wraith or spectre, two percent of the normal damaging
-hit becomes aggravated damage, rounded down and capped at five HP.  Hits
-below 50 HP add none.  The separate HP-halving, experience and mana effects
-are unchanged; ordinary casters gain no aggravated component.
+Against living targets this spell still drains life force, experience and
+mana, and applies its usual drain condition. Successful draining is evil.
+Wights, wraiths and spectres still make two percent of the normal damaging
+hit aggravated, rounded down and capped at five HP; hits below 50 add none.
+
+Against undead, including player vampires, it instead restores 3 times the
+casting level plus 30 HP. There is no save or resistance reduction, and
+vampires receive the full amount. It neither drains nor restores mana, XP
+or blood, and it neither applies nor removes the drain condition.
+
+Restoration respects maximum HP, aggravated-wound limits and NPC NO_HEAL.
+It does not repair aggravated wounds. Successfully restoring HP still
+moves the caster's alignment 200 points towards evil.
+
+You may restore yourself or another undead target. This is helpful magic,
+so it does not start combat or trigger offensive extra casts. Existing
+combat continues. Normal helpful-casting level limits still apply.
 ~
 
 0 'FAERIE FIRE'~
@@ -7919,8 +7960,18 @@ shapeshifter IS in their 'normal state'.
 0 'UNHOLY WORD'~
 Syntax: cast 'unholy word' <<target>
 
-Call upon your god to deal painful damage to your opponent.  Good
-opponents suffer twice the damage that non-good opponents suffer.
+Against living targets, call upon your god to deal painful damage. Good
+opponents take twice the usual damage. Good casters have half strength.
+
+Against undead NPCs and player vampires, restore 2 HP per casting level
+instead. A good caster restores half that amount. The target's alignment
+does not increase healing. There is no save or resistance reduction, and
+player vampires receive the full amount.
+
+Normal maximum-HP and aggravated-wound healing limits apply, as does NPC
+NO_HEAL. Mana, blood and drain conditions are unchanged. This helpful
+version does not start a fight or trigger offensive extra casts, and it
+uses the usual helpful-casting level limits.
 ~
 
 0 'MASS HEAL'~

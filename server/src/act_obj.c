@@ -5314,8 +5314,13 @@ void do_brandish(CHAR_DATA *ch, char *argument)
                         if (!action_character_in_room(vch, room, targets[i].deaths))
                                 continue;
 
-                        switch (spell_restores_undead(sn, vch)
-                            ? TAR_CHAR_DEFENSIVE : skill_table[sn].target)
+                        /* A Prayer staff invokes the group prayer once. */
+                        if (skill_table[sn].spell_fun == spell_prayer && vch != ch)
+                                continue;
+                        switch (spell_benefits_undead(sn, vch)
+                            ? TAR_CHAR_DEFENSIVE
+                            : spell_afflicts_undead(sn, ch, vch)
+                                ? TAR_CHAR_OFFENSIVE_SINGLE : skill_table[sn].target)
                         {
                         default:
                                 bug("Do_brandish: bad target for sn %d.", sn);

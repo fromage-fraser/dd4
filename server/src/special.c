@@ -475,6 +475,8 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 return TRUE;
 
             case 1:
+                if (IS_UNDEAD(victim))
+                    return FALSE;
                 act( "$n utters the word 'Lwo'.",    ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "bless" ), "cast" ); }
                 spell_bless( skill_lookup( "bless" ), ch->level, ch, victim );
@@ -562,6 +564,8 @@ bool spec_cast_hooker(CHAR_DATA *ch)
                 return TRUE;
 
             case 1:
+                if (IS_UNDEAD(victim))
+                    return FALSE;
                 act("$n spanks you on your bottom. OUCH!", ch, NULL, NULL, TO_ROOM);
                 spell_bless(skill_lookup("bless"), ch->level, ch, victim);
                 return TRUE;
@@ -651,6 +655,10 @@ bool spec_cast_cleric( CHAR_DATA *ch )
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
 
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
+
+
         sound_spell_sfx( ch, sn, "cast" );
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
 
@@ -732,8 +740,8 @@ bool spec_cast_mage( CHAR_DATA *ch )
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
 
-        if (spell_restores_undead(sn, victim))
-                return FALSE;
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
 
@@ -923,8 +931,8 @@ bool spec_cast_water_sprite( CHAR_DATA *ch )
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
 
-        if (!target_self && spell_restores_undead(sn, victim))
-                return FALSE;
+        if (!target_self && spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
 
         if (target_self)
                 act ("$c concentrates intensely.", ch, NULL, NULL, TO_ROOM);
@@ -983,8 +991,8 @@ bool spec_cast_undead( CHAR_DATA *ch )
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
 
-        if (spell_restores_undead(sn, victim))
-                return FALSE;
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
 
@@ -1760,8 +1768,8 @@ bool spec_death_knight(CHAR_DATA *ch)
                 return FALSE;
         }
 
-        if (spell_restores_undead(sn, victim))
-                return FALSE;
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
 
         (*skill_table[sn].spell_fun)(
             sn,
@@ -1841,8 +1849,8 @@ bool spec_lich(CHAR_DATA *ch)
                 return FALSE;
         }
 
-        if (spell_restores_undead(sn, victim))
-                return FALSE;
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
 
         (*skill_table[sn].spell_fun)(
             sn,
@@ -2720,6 +2728,10 @@ bool spec_cast_psionicist( CHAR_DATA *ch )
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
 
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
+
+
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
 
         return TRUE;
@@ -2832,6 +2844,10 @@ bool spec_aboleth( CHAR_DATA *ch )
 
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
+
+        if (!target_self && spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
+
 
         do_say(ch,buf);
 
@@ -3782,6 +3798,10 @@ bool spec_cast_archmage (CHAR_DATA *ch)
         if (!sn)
                 return FALSE;
 
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
+
+
         do_say(ch,buf);
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
@@ -3861,6 +3881,10 @@ bool spec_cast_priestess (CHAR_DATA *ch)
 
         if ((sn = skill_lookup(spell)) < 0)
                 return FALSE;
+
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
+
 
         do_say(ch,buf);
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
@@ -4382,8 +4406,8 @@ bool spec_demon( CHAR_DATA *ch )
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
 
-        if (spell_restores_undead(sn, victim))
-                return FALSE;
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
 
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
 
@@ -4469,6 +4493,10 @@ bool spec_cast_electric (CHAR_DATA *ch)
 
         if (!sn)
                 return FALSE;
+
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
+
 
         do_say(ch,buf);
 
@@ -4814,6 +4842,10 @@ bool spec_laghathti( CHAR_DATA *ch )
 
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
+
+        if (!target_self && spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
+
 
         if (target_self)
                 act ("$c strokes $mself with $s hideous tentacles.", ch, NULL, NULL, TO_ROOM);
@@ -5693,6 +5725,10 @@ bool spec_sahuagin_cleric (CHAR_DATA *ch)
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
 
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
+
+
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
 
         return TRUE;
@@ -5767,6 +5803,10 @@ bool spec_sahuagin_high_cleric (CHAR_DATA *ch)
 
         if ((sn = skill_lookup(spell)) < 0)
                 return FALSE;
+
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
+
 
         do_say(ch,buf);
         (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
@@ -6081,6 +6121,10 @@ bool spec_red_grung (CHAR_DATA *ch)
 
         if (!sn)
                 return FALSE;
+
+        if (spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
+
 
         do_say(ch,buf);
 
@@ -6636,6 +6680,10 @@ bool spec_gold_grung (CHAR_DATA *ch)
 
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
+
+        if (!target_self && spell_benefits_undead(sn, victim))
+                return try_undead_support_spell(sn, ch);
+
 
         do_say(ch,buf);
 

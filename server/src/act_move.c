@@ -3048,7 +3048,7 @@ void do_recall(CHAR_DATA *ch, char *argument)
 
                 arena_commentary("$n has recalled to safety.", ch, NULL);
 
-                ch->move /= 2;
+                ch->move -= recall_move_cost(ch);
                 act_move("$n disappears.", ch, NULL, NULL, TO_ROOM);
                 GMCPSetArrival(ch->desc,
                        ch->in_room->vnum,
