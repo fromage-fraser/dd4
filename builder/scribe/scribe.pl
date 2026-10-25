@@ -101,6 +101,8 @@ my %mob_act = (
         blink              => 536870912,
         undead             => 1073741824,
         fear_aura          => 2147483648,
+        priest_services    => '4294967296',
+        undead_healing     => '8589934592',
         unkillable         => 9223372036854775808,
 );
 
@@ -353,6 +355,7 @@ my %obj_ex = (
         fickle       => 549755813888,
         bloodless    => '1099511627776',
         soulless     => '2199023255552',
+        holy_focus   => '4398046511104',
         cursed       => 2305843009213693952,
 );
 
