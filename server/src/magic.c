@@ -5836,8 +5836,8 @@ void spell_identify(int sn, int level, CHAR_DATA *ch, void *vo)
                 "is made wholly or partly of cold iron",
                 "is made wholly or partly of silver", "?",
                 "?", "?", "?",
-                "?", "?", "?",
-                "?", "?", "?",
+                "?", "?", "contains no usable blood",
+                "contains no harvestable soul", "?", "?",
                 "?", "?", "?",
                 "?", "?", "?",
                 "?", "?", "?",
@@ -9627,6 +9627,11 @@ void spell_inflict_pain(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (reject_mindless_target(ch, victim))
                 return;
+        if (!can_experience_pain(victim))
+        {
+                send_to_char("They are insensible to pain.\n\r", ch);
+                return;
+        }
 
         damage(ch, victim, dice(2, 10) + level / 2, sn, FALSE);
         return;
@@ -9998,9 +10003,9 @@ void spell_spiritwrack(int sn, int level, CHAR_DATA *ch, void *vo)
         if (is_affected(victim, sn))
                 return;
 
-        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        if (!has_soul(victim))
         {
-                send_to_char("Objects cannot be tormented by spirits.\n\r", ch);
+                send_to_char("There is no soul there for the spirits to torment.\n\r", ch);
                 return;
         }
 
@@ -11587,21 +11592,26 @@ void spell_steal_soul(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         OBJ_DATA *corpse = (OBJ_DATA *)vo;
 
+        if (!corpse || corpse->deleted || !action_character_alive(ch, action_deaths(ch)))
+                return;
         if (corpse->item_type != ITEM_CORPSE_NPC)
         {
                 send_to_char("You can only do that on fresh corpses.\n\r", ch);
                 return;
         }
-
-        send_to_char("You leech the soul from the corpse; you feel revitalised!\n\r", ch);
-        act("$n sucks the soul from $p.", ch, corpse, NULL, TO_ROOM);
-
-        if (ch->hit < ch->max_hit - ch->aggro_dam)
+        if (IS_SET(corpse->extra_flags, ITEM_SOULLESS))
         {
-                ch->hit = UMIN(ch->hit + 100, ch->max_hit - ch->aggro_dam);
-                update_pos(ch);
+                send_to_char("There is no soul in those remains to steal.\n\r", ch);
+                return;
         }
 
+        send_to_char("You leech the soul from the corpse.\n\r", ch);
+        act("$n sucks the soul from $p.", ch, corpse, NULL, TO_ROOM);
+        if (heal_hit_points(ch, 100) > 0)
+        {
+                update_pos(ch);
+                send_to_char("You feel revitalised!\n\r", ch);
+        }
         extract_obj(corpse);
 }
 

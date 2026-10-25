@@ -2683,6 +2683,11 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                         }
                         strcat(buf1, "{x\n\r");
                 }
+                sprintf(buf, "Effective biology: blood %s, pain %s, soul %s.\n\r",
+                        has_blood(victim) ? "yes" : "no",
+                        can_experience_pain(victim) ? "yes" : "no",
+                        has_soul(victim) ? "yes" : "no");
+                strcat(buf1, buf);
                 if (victim->attack_parts)
                 {
                         sprintf(buf, "Attack parts (num): {W");

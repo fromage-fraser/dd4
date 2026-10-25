@@ -2104,10 +2104,10 @@ void do_feed (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_SET(corpse->extra_flags, ITEM_UNDEAD))
+        if (IS_SET(corpse->extra_flags, ITEM_UNDEAD | ITEM_BLOODLESS))
         {
                 send_to_char(
-                    "The blood in that corpse carries no living essence "
+                    "That corpse has no usable blood or living essence "
                     "to nourish you.\n\r",
                     ch);
                 return;
@@ -2208,6 +2208,15 @@ void do_suck (CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
         char       arg [ MAX_INPUT_LENGTH ];
+        int chance;
+        int hit_before;
+        int deaths_before;
+        int caster_deaths = action_deaths(ch);
+        ROOM_INDEX_DATA *room;
+
+        if (!action_character_alive(ch, caster_deaths))
+                return;
+        room = ch->in_room;
 
         if (IS_NPC(ch)
         && !mob_has_special(ch, spec_lookup("spec_laghathti"))
@@ -2245,13 +2254,8 @@ void do_suck (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
-        {
-                send_to_char("You can't suck blood from an object.\n\r", ch);
-                return;
-        }
-
-        if (IS_NPC(victim) && IS_INORGANIC(victim))
+        if (!action_character_in_room(victim, room, action_deaths(victim))
+        ||  !has_blood(victim))
         {
                 send_to_char("They have no blood for you to suck!\n\r", ch);
                 return;
@@ -2262,13 +2266,24 @@ void do_suck (CHAR_DATA *ch, char *argument)
 
         send_to_char("You attempt to suck some {Rblood{x from your opponent.\n\r", ch);
 
-        if (number_percent () < ch->pcdata->learned[gsn_suck])
+        chance = IS_NPC(ch) ? 90 : ch->pcdata->learned[gsn_suck];
+        /* Keep the existing strict PC skill roll; NPCs succeed on 1-90. */
+        if (IS_NPC(ch) ? number_percent() <= chance : number_percent() < chance)
         {
                 arena_commentary("$n sucks blood from $N's neck.", ch, victim);
                 WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
+                hit_before = victim->hit;
+                deaths_before = action_deaths(victim);
                 aggravated_bite_hit(ch, victim, gsn_suck, FALSE);
-                ch->rage += 2;
-                ch->rage = UMIN(ch->rage, ch->max_rage);
+
+                if (!action_character_in_room(ch, room, caster_deaths)
+                ||  victim->hit >= hit_before
+                ||  (!IS_NPC(victim)
+                    && !action_character_in_room(victim, room, deaths_before))
+                ||  (!victim->deleted && victim->in_room != room))
+                        return;
+                if (gain_feeding_blood(ch, victim, 2) <= 0)
+                        return;
 
                 if (ch->rage > (ch->max_rage * 3 / 4))
                         send_to_char("You feel the power of {Rfresh blood{x surge through your body!\n\r", ch);

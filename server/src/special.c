@@ -3592,8 +3592,7 @@ static bool vampire_suck_attack(CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
         }
 
-        if ((IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
-        ||  (IS_NPC(victim) && IS_INORGANIC(victim)))
+        if (!has_blood(victim))
         {
                 return FALSE;
         }
@@ -4012,8 +4011,8 @@ bool spec_bloodsucker( CHAR_DATA *ch )
         int hit_before;
         int deaths_before;
 
-        if (!( victim = ch->fighting )
-            || number_percent() < 50 )
+        if (!(victim = ch->fighting)
+        ||  !has_blood(victim) || number_percent() < 50)
                 return FALSE;
 
         act( "You lunge at $N's neck!", ch, NULL, victim, TO_CHAR    );

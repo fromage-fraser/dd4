@@ -179,6 +179,9 @@ my %mob_bf = (
         huge      => 128,
         inorganic => 256,
         has_tail  => 512,
+        bloodless => '70368744177664',
+        analgic   => '140737488355328',
+        soulless  => '281474976710656',
 
         head          => '1024',
         many_heads    => '2048',
@@ -348,6 +351,8 @@ my %obj_ex = (
         pure         => 137438953472,
         steady       => 274877906944,
         fickle       => 549755813888,
+        bloodless    => '1099511627776',
+        soulless     => '2199023255552',
         cursed       => 2305843009213693952,
 );
 

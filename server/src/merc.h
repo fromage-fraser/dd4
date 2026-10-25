@@ -983,6 +983,9 @@ struct descriptor_data
 #define PART_FORELEGS BIT_43
 #define PART_FEATHERS BIT_44
 #define PART_HUSK_SHELL BIT_45
+#define BODY_BLOODLESS BIT_46      /* Cannot supply usable blood */
+#define BODY_ANALGIC BIT_47        /* Insensible to pain */
+#define BODY_SOULLESS BIT_48       /* Has no soul available to these effects */
 
 /*
  * Existing PART_* flags designated for natural combat features.
@@ -2375,6 +2378,8 @@ extern WANTED_DATA *wanted_list_last;
 #define ITEM_DONOT_RANDOMISE BIT_37 /* Create item exactly as in area file, also prevents some general number fuzziness */
 #define ITEM_WEAK_RANDOMISE BIT_38  /* Item applies randomised gently by random_qnd() */
 #define ITEM_FICKLE BIT_39          /* Item randomly not-randomised, randomised, or weakly randomised */
+#define ITEM_BLOODLESS BIT_40       /* Corpse/remains contain no usable blood */
+#define ITEM_SOULLESS BIT_41        /* Corpse/remains have no soul to harvest */
 #define ITEM_CURSED BIT_61          /* carrier attacked by mobs with DETECT_CURSE, magic travel nonfunctional if carried */
 
 /*
@@ -5699,6 +5704,11 @@ int item_name_type args((char *name));
 char *affect_loc_name args((int location));
 char *affect_loc_name args((int location));
 bool has_organic_body(CHAR_DATA *ch);
+bool has_blood(CHAR_DATA *ch);
+bool can_experience_pain(CHAR_DATA *ch);
+bool has_soul(CHAR_DATA *ch);
+void set_corpse_provenance(OBJ_DATA *corpse, CHAR_DATA *ch);
+int gain_feeding_blood(CHAR_DATA *ch, CHAR_DATA *victim, int amount);
 bool can_be_poisoned(CHAR_DATA *ch);
 int action_deaths(CHAR_DATA *ch);
 bool action_character_alive(CHAR_DATA *ch, int deaths);
