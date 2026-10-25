@@ -48,6 +48,7 @@ _AsciiDoc documentation update: 25 October 2026._
 ** <<scribe-weighted-specials,Three weighted special functions>>
 ** <<scribe-resistance-flags,Resistance categories and behaviour>>
 ** <<scribe-pc-innate-resistances,Innate player resistances and vulnerabilities>>
+*** <<scribe-werewolf-defences,Werewolf supernatural defences>>
 ** <<scribe-mental-status,Transfix, Howl and Confusion>>
 ** <<scribe-tenketsu,Tenketsu: post-hit paralysis>>
 ** <<scribe-template-xp,Archetype XP adjustments>>
@@ -4732,7 +4733,7 @@ No profile supplies immunity.
 | Troll | None. | `fire`, `acid`.
 | Illithid | `psychic` | None.
 | Duergar | `paralysis` | None.
-| Werewolf subclass | None. | `silver`, in every form.
+| Werewolf subclass | No broad resistance mask; see <<scribe-werewolf-defences,effect bonuses>>. | `silver`, in every form.
 | Vampire subclass | None. | `silver`, in every form.
 | Shapeshifter class currently in demon form | None. | `silver`, while in that form.
 |===
@@ -4799,12 +4800,62 @@ attacker explicitly applies the innate fire response once, after the existing
 Resist Heat adjustment. The NPC retaliation path and remaining Fireshield
 processing are unchanged.
 
+
+[[scribe-werewolf-defences]]
+====== Werewolf supernatural defences
+
+Player werewolves also have fixed bonuses against particular effects:
+
+[cols="<2,<2,<4",options="header"]
+|===
+| Effect | Bonus | Current examples
+| Fear | +15 percentage points | Fear, banshee wails, mobile fear auras, player Aura of Fear, Howl and item-induced battle terror.
+| Life or strength drain | +10 percentage points | Energy Drain, wight/wraith/spectre drains, Psychic Drain, Weaken, Steal Strength, Wither and Chant of Enfeeblement.
+| Charm or control | +10 percentage points | Hypnotic vampire gaze and Transfix.
+|===
+
+These follow the player subclass in normal, wolf and direwolf forms,
+without practice, activation, payment, moon-phase or rage requirements.
+Current form stats and level still affect the underlying calculations.
+The source can be living or undead.
+
+These are effect bonuses, not broad resistance flags. They give no
+general psychic or physical damage resistance. They stack with racial
+traits and applicable equipment and spell protection, including a holy
+focus where it already helps. An effect matching several contexts gets
+the highest werewolf bonus once.
+
+The spell-save path adds the bonus before its normal limits. Drain and
+control are recognised from the existing RES_DRAIN and RES_CHARM masks.
+Fear paths supply an explicit fear context, so other psychic spells do
+not accidentally gain the fear bonus.
+
+Howl and Transfix subtract the bonus from the existing success threshold
+after category resistance or vulnerability. Their lower threshold is 5
+unless it was already lower. Player Aura of Fear instead retains 2, or
+an already lower value. Immune targets keep a zero threshold. The
+werewolf adjustment never raises the attacker's chance. Each path keeps
+its existing resistance roll, and landed effects keep their full
+duration, penalties and other consequences.
+
+Ordinary bites, blood extraction and aggravated damage are unchanged.
+Silver vulnerability remains in every form. Existing berserk restrictions
+on fleeing remain. Charm Person still rejects players and Domination
+remains disabled.
+
+No Scribe keyword, saved flag, spell-list entry or player-file migration
+is needed. MSTAT displays these bonuses separately from the existing
+resistance masks. An NPC does not gain the player bonuses from its name,
+wolf shape, race value or subclass field. Actual NPC species conversion
+and the permanent NO_UNDEAD room audit remain the final content tasks.
+
 ====== Category boundaries and existing mechanics
 
 `paralysis` is not every effect using `AFF_HOLD`: a trap or binding does not
 become paralysis merely because it prevents movement. Likewise, `psychic`
 is not every spell, and sleep resistance is not immunity to normal sleep.
-No additional fire/cold/poison/holy/drain traits have been added.
+No additional broad fire/cold/poison/holy/drain resistance masks have been
+added. The werewolf effect bonuses above are separate from those masks.
 
 Existing PC resistance skills, item bonuses, buffs, target restrictions and
 legacy creature-specific exceptions remain separate. This stage does not

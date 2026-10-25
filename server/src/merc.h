@@ -3562,6 +3562,11 @@ struct skill_type
  * saves_spell() changes its result by four percentage points per level.
  */
 #define RESISTANCE_SAVE_LEVEL_SHIFT 5
+
+/* Effect contexts, not saved flags or broad damage resistances. */
+#define SUPERNATURAL_FEAR 1
+#define SUPERNATURAL_DRAIN 2
+#define SUPERNATURAL_CONTROL 4
 #define ALIGNMENT_PROTECTION_HIT_BONUS 2
 #define ALIGNMENT_PROTECTION_DEFENCE_BONUS 2
 #define ALIGNMENT_PROTECTION_SAVE_BONUS 8
@@ -5807,6 +5812,12 @@ int recall_move_cost(CHAR_DATA *ch);
 bool saves_resistance_effect args((CHAR_DATA *source, int level,
                                    CHAR_DATA *victim,
                                    unsigned long int res_types));
+bool saves_supernatural_effect(CHAR_DATA *source, int level,
+                                CHAR_DATA *victim, unsigned long int res_types,
+                                int effect_types);
+int supernatural_defence_bonus(CHAR_DATA *victim, int effect_types);
+int supernatural_defence_threshold(CHAR_DATA *victim, int threshold,
+                                   int minimum, int effect_types);
 unsigned long int pc_innate_resists args((CHAR_DATA *ch));
 unsigned long int pc_innate_vulnerabilities args((CHAR_DATA *ch));
 RESISTANCE_RESULT get_resistance_result args((CHAR_DATA * victim, unsigned long int res_types));

@@ -2686,7 +2686,8 @@ static void damage_internal(CHAR_DATA *ch,
 
         /* wimp out? */
 
-        if (has_ego_item_effect(victim, EGO_ITEM_BATTLE_TERROR) && !saves_spell(NULL, victim->level, victim) && (victim->level > LEVEL_HERO || !victim->wait) && !number_bits(3))
+        if (has_ego_item_effect(victim, EGO_ITEM_BATTLE_TERROR) && !saves_supernatural_effect(
+                NULL, victim->level, victim, 0, SUPERNATURAL_FEAR) && (victim->level > LEVEL_HERO || !victim->wait) && !number_bits(3))
         {
                 act("$c's eyes fill with terror!", victim, NULL, NULL, TO_ROOM);
 
@@ -3394,6 +3395,9 @@ bool check_aura_of_fear(CHAR_DATA *ch, CHAR_DATA *victim)
 
         if (chance > 66)
                 chance = 66;
+
+        chance = supernatural_defence_threshold(
+            ch, chance, 2, SUPERNATURAL_FEAR);
 
         if (number_percent() >= chance)
                 return FALSE;
@@ -8243,6 +8247,8 @@ void do_transfix(CHAR_DATA *ch, char *argument)
                 skill_table[gsn_transfix].res_type),
             chance,
             95);
+        chance = supernatural_defence_threshold(
+            victim, chance, 5, SUPERNATURAL_CONTROL);
 
         if (number_percent() < chance)
         {
@@ -8361,6 +8367,8 @@ void do_howl(CHAR_DATA *ch, char *argument)
                 skill_table[gsn_howl].res_type),
             chance,
             95);
+        chance = supernatural_defence_threshold(
+            victim, chance, 5, SUPERNATURAL_FEAR);
 
         act("{W::HoooOOOOOooowwwwlll::{x", ch, NULL, NULL, TO_ROOM);
 
