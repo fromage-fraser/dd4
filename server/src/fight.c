@@ -8534,7 +8534,8 @@ static void turn_undead_chances(CHAR_DATA *ch, CHAR_DATA *victim,
          * At full skill, equal-level undead have a 50% turn chance.
          * Each level of difference moves that chance by four points.
          */
-        turn_base = 50 + 4 * level_gap - rank_penalty;
+        turn_base = 50 + 4 * level_gap - rank_penalty
+                  + holy_focus_turn_bonus(ch);
         turn_base = URANGE(0, turn_base,
                            level_gap > 10 ? 99 : 95);
         *turn_chance = turn_base * learned / 100;

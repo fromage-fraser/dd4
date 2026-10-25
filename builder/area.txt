@@ -518,6 +518,76 @@ The following bit values are used to specify mob form:
 Blood, pain and soul properties
 ------------------------------
 
+
+Holy symbols and priest services
+-------------------------------
+
+ACT_PRIEST_SERVICES is BIT_32 (4294967296), and ACT_UNDEAD_HEALER is
+BIT_33 (8589934592). In Scribe, use act healer priest_services or
+act healer undead_healing. Both capabilities can be given to one mobile.
+Neither capability supplies the base healer flag. Existing mobiles keep
+their ordinary healer menu until a builder adds a capability.
+
+Priest services add:
+    heal detect                 Detect Undead, 5 gold
+    heal protection             Protection vs Evil, 10 gold
+    heal ward                   Protection vs Undead, 20 gold
+    heal blessweapon <weapon>   100 + 5 * the weapon's current level, in gold
+    heal refill <container>     8 gold per 15 missing liquid units, rounded up
+
+Bless Weapon uses the existing permanent spell and all its item checks.
+The weapon must be carried, unworn, unblessed and free of existing affects.
+It also receives the spell's normal mana and saving-throw affects. Casting
+level is the lower of customer and priest level, bounded to normal levels.
+The price uses the weapon level before the spell changes it.
+
+Refills accept an empty clean drink container, or a partially full one
+holding clean holy water. They fill its remaining capacity. Mixed or
+poisoned liquid is refused. A full container is refused before payment.
+A 15-unit refill costs 8 gold; 30 units cost 16 gold.
+
+Undead healing adds heal mend (100 HP, 15 gold) and heal greatermend
+(300 HP, 35 gold). Vampire players receive the full restoration. These
+services do not restore blood, mana, aggravated damage or lost levels.
+The normal HP ceiling and ACT_NO_HEAL still apply. Living customers and
+undead with no healable HP missing are refused before payment. Neither
+service changes alignment.
+
+Midgaard's healer (mobile 3012, room 3054) now offers priest services and
+sells wooden holy symbols (object 3395) and holy-water vials (object 3396).
+His shop is open all day. Base list prices are 25 and 10 gold; normal
+shop discounts and customer restrictions still apply. A full vial holds
+15 liquid units, enough for three normal splashes. Saul (mobile 9540,
+room 9547 in the Vampire Catacombs) offers undead mending. These changes
+do not convert either mobile to a new species or change any room flags.
+
+ITEM_HOLY_FOCUS is BIT_42 (4398046511104), named ex holy_focus in Scribe.
+A living creature gets a bonus only from a focus equipped at either neck
+slot or in the hold slot. A cursed focus contributes nothing. Carrying a
+spare does nothing, and multiple equipped foci use only the best bonus.
+Undead and noncorporeal players receive no focus bonus; carrying a symbol
+does not burn them.
+
+A neck focus adds 5 points to the turning base; a held focus adds 10.
+The learned skill percentage scales that base as before. At full skill,
+ordinary equal-level undead go from 50% to 55% worn or 60% held. The bonus
+works with both Turn Undead and Chant of Turning. Existing chance caps,
+level limits, PvP rules and destruction chances are unchanged.
+
+Either position also adds 5 points to an existing spell saving throw
+against an undead source. It stacks with existing spell protections,
+then uses the normal save limits. It adds no new saving throw, immunity,
+general combat stats or physical damage reduction. ITEM_BLESS alone does
+not make a weapon or another object a holy focus.
+
+The normal 64-bit object and mobile flag fields carry these properties.
+Identify and Lore describe holy_focus; OSTAT and MSTAT name the new flags.
+The automatic adept, orb, hooker, Grail and bounty support routines and
+paid healer services share the harmful-help check. They skip hostile
+Bless on undead while keeping vampire holy healing at 75% and Regenerate
+normal. Sleeping targets can still receive helpful spells. Intentional
+offensive casting is unchanged. No new learnable skill or spell is added.
+
 Additional body_form bits:
 
     BODY_BLOODLESS  BIT_46   70368744177664

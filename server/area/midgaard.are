@@ -160,11 +160,11 @@ cackle
 ~
 The Healer~
 A healer stands here lending a hand to adventurers.
-The Healer says Type 'heal' to see what I offer.
+The Healer says Type 'heal' for services, or 'list' for holy supplies.
 ~
 Although retired from adventuring, The healer has made a comeback.
 ~
-2|64|4096|8192|32768|16777216 8|128|8388608|16777216 1000 S
+2|64|4096|8192|32768|16777216|4294967296 8|128|8388608|16777216 1000 S
 40 -10 -20 1r1+29999 2d4+30
 0 0
 8 8 1
@@ -2422,6 +2422,32 @@ A partially-unearthed pile of coins is here.~
 500~ 1~ 80~ 80~
 1 10000 7500
 
+#3395
+holy symbol wooden~
+a wooden holy symbol~
+A small wooden holy symbol lies here.~
+~
+8 137438953472|4398046511104 134234117
+0~ 0~ 0~ 0~
+1 2500 1
+E
+holy symbol wooden~
+A simple wooden emblem hangs from a cord. You can wear it around your
+neck or hold it when you call on divine power.
+~
+#3396
+holy water vial~
+a vial of holy water~
+A small vial of clear holy water lies here.~
+~
+17 137438953472 1
+15~ 15~ 16~ 0~
+1 1000 1
+E
+holy water vial~
+The stopper keeps this holy water clean. A full vial holds enough for
+three normal splashes. A priest can refill it when it runs low.
+~
 #0
 
 
@@ -5507,6 +5533,8 @@ O 1 3394 1 3141                       hoard
 P 1 3136 1 3394                       20 coins on Penny Lane in hoard
 *
 M 1 3012 1 3054         Healer in temple altar
+G 1 3395 100                 holy symbols for sale
+G 1 3396 100                 holy-water vials for sale
 *
 M 1 3150 1 3150      The Psionicist's Guildmaster
 *
@@ -5549,6 +5577,7 @@ S
 
 
 #SHOPS
+3012 0 0 0 0 0 0 0 0 23                                  ; The Healer's holy supplies
 3000 2 3 4 10 0 105 15 0 23                             ; The Wizard
 3001 0 0 0 0 0 110 100 0 23                             ; The Baker
 3002 1 8 13 15 19 150 40 0 23                           ; The Grocer

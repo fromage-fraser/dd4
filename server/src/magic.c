@@ -64,7 +64,7 @@ static bool credit_group_support(CHAR_DATA *ch, CHAR_DATA *victim)
 }
 
 /* Dark restoration uses the same wound ceiling as every other HP heal. */
-static void restore_undead_energy(
+int restore_undead_energy(
         CHAR_DATA *ch, CHAR_DATA *victim, int amount, bool shifts_alignment)
 {
         int healed;
@@ -75,14 +75,14 @@ static void restore_undead_energy(
         ||  !action_character_in_room(victim, ch->in_room,
                                      action_deaths(victim))
         ||  is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
-                return;
+                return 0;
 
         healed = heal_hit_points(victim, amount);
         if (healed <= 0)
         {
                 send_to_char("The dark energy cannot restore any more of your strength.\n\r",
                              victim);
-                return;
+                return 0;
         }
 
         update_pos(victim);
@@ -96,6 +96,7 @@ static void restore_undead_energy(
                 ch->alignment = UMAX(-1000, ch->alignment - 200);
                 check_worn_alignment(ch);
         }
+        return healed;
 }
 
 /* The recall discount expires with the rest of the spell's own affects. */
@@ -216,6 +217,16 @@ bool spell_afflicts_undead(int sn, CHAR_DATA *ch, CHAR_DATA *victim)
                 return FALSE;
         return skill_table[sn].spell_fun == spell_bless
             || (skill_table[sn].spell_fun == spell_prayer && victim != ch);
+}
+
+
+/* Automatic helpers and paid healers should never turn help into an attack. */
+bool helpful_spell_harms_target(int sn, CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        if (!victim || sn < 0 || sn >= MAX_SKILL)
+                return TRUE;
+        return restorative_spell_harms_undead(sn, victim)
+            || spell_afflicts_undead(sn, ch, victim);
 }
 
 /* A combat caster can help itself or an ally instead of restoring its foe. */
@@ -972,6 +983,7 @@ bool saves_spell(CHAR_DATA *source, int level, CHAR_DATA *victim)
         if (alignment_protection_applies(source, victim))
                 save -= ALIGNMENT_PROTECTION_SAVE_BONUS;
 
+        save += holy_focus_save_bonus(victim, source);
         save = URANGE(5, save, 95);
 
         return number_percent() < save;
@@ -5837,7 +5849,7 @@ void spell_identify(int sn, int level, CHAR_DATA *ch, void *vo)
                 "is made wholly or partly of silver", "?",
                 "?", "?", "?",
                 "?", "?", "contains no usable blood",
-                "contains no harvestable soul", "?", "?",
+                "contains no harvestable soul", "serves as a holy focus", "?",
                 "?", "?", "?",
                 "?", "?", "?",
                 "?", "?", "?",

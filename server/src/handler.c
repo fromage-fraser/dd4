@@ -4910,6 +4910,38 @@ char* affect_bit_name_nice (unsigned long int vector)
         return "some unknown effect";
 }
 
+
+/* A worn symbol helps; holding one gives turning a little more force. */
+int holy_focus_turn_bonus(CHAR_DATA *ch)
+{
+        const int slots[] = {WEAR_NECK_1, WEAR_NECK_2, WEAR_HOLD};
+        OBJ_DATA *obj;
+        int i, bonus = 0;
+
+        if (!ch || ch->deleted || IS_UNDEAD(ch)
+        ||  is_noncorporeal_player(ch))
+                return 0;
+
+        for (i = 0; i < (int)(sizeof(slots) / sizeof(slots[0])); i++)
+        {
+                obj = get_eq_char(ch, slots[i]);
+                if (!obj || obj->deleted
+                ||  !IS_OBJ_STAT(obj, ITEM_HOLY_FOCUS)
+                ||  IS_OBJ_STAT(obj, ITEM_CURSED))
+                        continue;
+                bonus = UMAX(bonus, slots[i] == WEAR_HOLD ? 10 : 5);
+        }
+
+        return bonus;
+}
+
+int holy_focus_save_bonus(CHAR_DATA *ch, CHAR_DATA *source)
+{
+        if (!source || source->deleted || source == ch || !IS_UNDEAD(source))
+                return 0;
+        return holy_focus_turn_bonus(ch) > 0 ? 5 : 0;
+}
+
 /*
  * Return ascii name of player act bit vectors. Used by mstat. --Owl 21/3/22
  */
@@ -4968,6 +5000,8 @@ char *act_bit_name (unsigned long int vector)
         if ( vector & ACT_REGENERATOR           ) return "regenerator";
         if ( vector & ACT_NOCHARM               ) return "no_charm";
         if ( vector & ACT_IS_HEALER             ) return "healer";
+        if ( vector & ACT_PRIEST_SERVICES       ) return "priest_services";
+        if ( vector & ACT_UNDEAD_HEALER         ) return "undead_healing";
         if ( vector & ACT_IS_FAMOUS             ) return "famous";
         if ( vector & ACT_LOSE_FAME             ) return "lose_fame";
         if ( vector & ACT_WIZINVIS_MOB          ) return "wizinvis";
@@ -5478,6 +5512,7 @@ char *extra_bit_name (unsigned long int extra_flags)
             case ITEM_UNDEAD:               return "undead";
             case ITEM_BLOODLESS:            return "bloodless";
             case ITEM_SOULLESS:             return "soulless";
+            case ITEM_HOLY_FOCUS:           return "holy_focus";
             case ITEM_COLD_IRON:            return "cold_iron";
             case ITEM_SILVER:               return "silver";
             case ITEM_ANTI_SMITHY:          return "anti_smithy";

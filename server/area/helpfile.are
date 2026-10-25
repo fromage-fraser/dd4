@@ -1,5 +1,74 @@
 #HELPS
 
+0 'HOLY SYMBOL' 'HOLY SYMBOLS' 'HOLY FOCUS'~
+A holy symbol helps a living wearer resist undead magic. Wear it around
+your neck, or hold it while turning undead.
+
+A neck symbol adds 5 points to the turning base; holding it adds 10.
+Your learned skill percentage still scales that base. At full skill,
+an ordinary equal-level undead target changes from 50% to 55% worn or
+60% held. Turn Undead and Chant of Turning both benefit. Existing
+limits and destruction chances remain.
+
+Either position also adds 5 points to existing spell saving throws
+against undead sources, alongside your other spell protections.
+
+Only your best equipped symbol contributes. Spares, cursed symbols and
+symbols in other slots give nothing. Undead receive no bonus, and simply
+carrying a symbol does not burn a vampire. A blessed weapon does not
+automatically count as a holy symbol.
+
+Midgaard's healer sells a wooden symbol for a base price of 25 gold.
+Normal shop discounts and restrictions still apply.
+~
+
+0 'HEALER' 'PRIEST SERVICES' 'UNDEAD MENDING'~
+Syntax: heal
+Syntax: heal <service>
+Syntax: heal blessweapon <carried weapon>
+Syntax: heal refill <carried drink container>
+
+HEAL lists the services available from the healers in your room.
+Ordinary healer services and prices remain. Some priests also offer:
+
+ detect       Detect Undead                    5 gold
+ protection   Protection vs Evil              10 gold
+ ward         Protection vs Undead            20 gold
+ blessweapon  Bless Weapon           100 + 5 * weapon level gold
+ refill       Holy water              8 gold / 15 missing units
+
+The priest uses the existing protective spells and their normal durations.
+An already active copy is refused before payment.
+
+Bless Weapon is the existing permanent enchantment, including its mana
+and saving-throw bonuses. Carry an unworn, unblessed weapon without
+existing affects. Casting level is the lower of your level and the
+priest's. The price uses the weapon's level before it is blessed.
+
+Refills accept an empty clean container or top up clean holy water.
+They fill the remaining capacity, rounding the price up to whole gold.
+A 15-unit refill costs 8 gold; 30 units cost 16. Mixed or poisoned liquid
+and full containers are refused before payment.
+
+Some dark healers also offer:
+ mend         Restore up to 100 undead HP      15 gold
+ greatermend  Restore up to 300 undead HP      35 gold
+
+Vampire players receive the full dark restoration. Normal HP and
+aggravated-wound limits still apply. These services restore no blood or
+mana, repair no aggravated damage, and do not change alignment. You are
+not charged if there is no healable HP missing.
+
+Midgaard's healer offers priest services and sells holy symbols and
+holy-water vials through LIST and BUY. Base prices are 25 and 10 gold.
+A full vial holds enough for three normal splashes; see HELP SPLASH.
+Saul in the Vampire Catacombs offers undead mending.
+
+Healers refuse spells that would harm their customer. Vampire holy HP
+healing still restores 75% of its usual amount; Regenerate works normally.
+Reputation restrictions still apply. You cannot buy services in combat.
+~
+
 0 'TURN UNDEAD'~
 Syntax: turn
 
@@ -37,6 +106,7 @@ alone. Ridden or riding undead are not included yet.
 Repelling a servant does not break its master's control.
 
 Clerics learn this skill early; Knights gain it later.
+A holy symbol can improve your chances; see HELP HOLY SYMBOL.
 ~
 
 0 'DETECT UNDEAD'~
@@ -1278,6 +1348,9 @@ blocking unrelated directions.
 - Scribe, builder guidance and mstat recognise the new properties.
 - Identify and Lore reveal bloodless and soulless item markers.
 
+
+- Holy symbols and priest supplies/services added; Saul offers undead mending.
+- Automatic support casters skip spells that would harm undead recipients.
 ~
 
 0 'AGGRAVATED DAMAGE' 'AGGRO DAM'~

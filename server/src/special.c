@@ -475,7 +475,7 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 return TRUE;
 
             case 1:
-                if (IS_UNDEAD(victim))
+                if (helpful_spell_harms_target(gsn_bless, ch, victim))
                     return FALSE;
                 act( "$n utters the word 'Lwo'.",    ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "bless" ), "cast" ); }
@@ -490,7 +490,7 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 return TRUE;
 
             case 3:
-                if (restorative_spell_harms_undead(gsn_cure_light, victim))
+                if (helpful_spell_harms_target(gsn_cure_light, ch, victim))
                     return FALSE;
                 act( "$n utters the word 'Nixmas'.",    ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure light" ), "cast" ); }
@@ -510,7 +510,7 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 return TRUE;
 
             case 6:
-                if (restorative_spell_harms_undead(gsn_cure_serious, victim))
+                if (helpful_spell_harms_target(gsn_cure_serious, ch, victim))
                     return FALSE;
                 act("$n says the word 'Tnemrot'.",ch,NULL,NULL,TO_ROOM);
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure serious" ), "cast" ); }
@@ -524,7 +524,7 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 return TRUE;
 
             case 8:
-                if (restorative_spell_harms_undead(gsn_regenerate, victim))
+                if (helpful_spell_harms_target(gsn_regenerate, ch, victim))
                     return FALSE;
                 if (number_percent() < 20)
                 {
@@ -564,7 +564,7 @@ bool spec_cast_hooker(CHAR_DATA *ch)
                 return TRUE;
 
             case 1:
-                if (IS_UNDEAD(victim))
+                if (helpful_spell_harms_target(gsn_bless, ch, victim))
                     return FALSE;
                 act("$n spanks you on your bottom. OUCH!", ch, NULL, NULL, TO_ROOM);
                 spell_bless(skill_lookup("bless"), ch->level, ch, victim);
@@ -592,7 +592,7 @@ bool spec_cast_hooker(CHAR_DATA *ch)
                 return TRUE;
 
             case 6:
-                if (restorative_spell_harms_undead(gsn_cure_serious, victim))
+                if (helpful_spell_harms_target(gsn_cure_serious, ch, victim))
                     return FALSE;
                 if ( CAN_SPEAK(ch) ) { act("$n says, 'Hey baby, want a date?'", ch, NULL, NULL, TO_ROOM); }
                 spell_cure_serious(skill_lookup("cure serious"), ch->level, ch, victim);
@@ -3111,7 +3111,7 @@ bool spec_grail (CHAR_DATA *ch)
                 switch( random )
                 {
                     case 0:
-                        if (restorative_spell_harms_undead(gsn_heal, victim))
+                        if (helpful_spell_harms_target(gsn_heal, ch, victim))
                             return FALSE;
                         act("$c tells you, 'Fear me, for I am the cruellest of this realm...'",
                             ch, NULL, NULL, TO_ROOM );
@@ -3133,6 +3133,8 @@ bool spec_grail (CHAR_DATA *ch)
                         return TRUE;
 
                     case 3:
+                        if (helpful_spell_harms_target(gsn_bless, ch, victim))
+                            return FALSE;
                         act("$c tells you 'May you walk with the gods, and fear them...'",
                             ch, NULL, NULL, TO_ROOM );
                         spell_bless( skill_lookup( "bless" ), ch->level, ch, victim );
@@ -3166,7 +3168,7 @@ bool spec_grail (CHAR_DATA *ch)
                         return TRUE;
 
                     case 7:
-                        if (restorative_spell_harms_undead(gsn_regenerate, victim))
+                        if (helpful_spell_harms_target(gsn_regenerate, ch, victim))
                             return FALSE;
                         act("$c says 'Be restored, stranger, and of good cheer...'",
                             ch, NULL, NULL, TO_ROOM );
@@ -3251,7 +3253,7 @@ bool spec_bounty (CHAR_DATA *ch)
                 switch( number_bits( 3 ) )
                 {
                     case 0:
-                        if (restorative_spell_harms_undead(gsn_heal, victim))
+                        if (helpful_spell_harms_target(gsn_heal, ch, victim))
                             return FALSE;
                         act("$c tells you 'Fear me, for I am the cruelest of this realm...'",
                             ch, NULL, NULL, TO_ROOM );
@@ -3273,6 +3275,8 @@ bool spec_bounty (CHAR_DATA *ch)
                         return TRUE;
 
                     case 3:
+                        if (helpful_spell_harms_target(gsn_bless, ch, victim))
+                            return FALSE;
                         act("$c tells you 'May you walk with the gods, and fear them...'",
                             ch, NULL, NULL, TO_ROOM );
                         spell_bless( skill_lookup( "bless" ), ch->level, ch, victim );
@@ -3336,12 +3340,14 @@ bool spec_cast_orb( CHAR_DATA *ch )
                 return TRUE;
 
             case 1:
+                if (helpful_spell_harms_target(gsn_bless, ch, victim))
+                    return FALSE;
                 act( "$n pulses briefly.",    ch, NULL, NULL, TO_ROOM );
                 spell_bless( skill_lookup( "bless" ), ch->level, ch, victim );
                 return TRUE;
 
             case 2:
-                if (restorative_spell_harms_undead(gsn_heal, victim))
+                if (helpful_spell_harms_target(gsn_heal, ch, victim))
                     return FALSE;
                 act( "$n pulses briefly.",   ch, NULL, NULL, TO_ROOM );
                 spell_heal( skill_lookup( "heal" ),
@@ -3378,7 +3384,7 @@ bool spec_cast_orb( CHAR_DATA *ch )
                 return TRUE;
 
             case 8:
-                if (restorative_spell_harms_undead(gsn_regenerate, victim))
+                if (helpful_spell_harms_target(gsn_regenerate, ch, victim))
                     return FALSE;
                 if (number_percent() < 20)
                 {
@@ -4221,7 +4227,7 @@ bool spec_sahuagin (CHAR_DATA *ch)
 
                     case 2:
                     case 3:
-                        if (restorative_spell_harms_undead(gsn_heal, ch))
+                        if (helpful_spell_harms_target(gsn_heal, ch, ch))
                                 return FALSE;
 
                         if (ch->hit >= ch->max_hit)
@@ -4661,7 +4667,7 @@ bool spec_kappa( CHAR_DATA *ch )
                         return TRUE;
 
                     case  9:
-                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                        if (helpful_spell_harms_target(gsn_power_heal, ch, ch))
                                 return FALSE;
 
                         min_level = 25;
@@ -5209,7 +5215,7 @@ bool spec_sahuagin_baron (CHAR_DATA *ch)
                         return TRUE;
 
                     case  9:
-                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                        if (helpful_spell_harms_target(gsn_power_heal, ch, ch))
                                 return FALSE;
 
                         min_level = 25;
@@ -5219,7 +5225,7 @@ bool spec_sahuagin_baron (CHAR_DATA *ch)
                         break;
 
                     case  10:
-                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                        if (helpful_spell_harms_target(gsn_power_heal, ch, ch))
                                 return FALSE;
 
                         min_level = 25;
@@ -5293,7 +5299,7 @@ bool spec_sahuagin_prince (CHAR_DATA *ch)
                 switch ( number_range (0, 11) )
                 {
                     case  0:
-                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                        if (helpful_spell_harms_target(gsn_power_heal, ch, ch))
                                 return FALSE;
 
                         min_level = 25;
@@ -5350,7 +5356,7 @@ bool spec_sahuagin_prince (CHAR_DATA *ch)
                         return TRUE;
 
                     case  9:
-                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                        if (helpful_spell_harms_target(gsn_power_heal, ch, ch))
                                 return FALSE;
 
                         min_level = 25;
@@ -5360,7 +5366,7 @@ bool spec_sahuagin_prince (CHAR_DATA *ch)
                         break;
 
                     case  10:
-                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                        if (helpful_spell_harms_target(gsn_power_heal, ch, ch))
                                 return FALSE;
 
                         min_level = 25;
@@ -6200,7 +6206,7 @@ bool spec_blue_grung (CHAR_DATA *ch)
                         break;
 
                     case  7:
-                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                        if (helpful_spell_harms_target(gsn_power_heal, ch, ch))
                                 return FALSE;
 
                         min_level = 30;
@@ -6210,7 +6216,7 @@ bool spec_blue_grung (CHAR_DATA *ch)
                         break;
 
                     case  8:
-                        if (restorative_spell_harms_undead(gsn_power_heal, ch))
+                        if (helpful_spell_harms_target(gsn_power_heal, ch, ch))
                                 return FALSE;
 
                         min_level = 30;

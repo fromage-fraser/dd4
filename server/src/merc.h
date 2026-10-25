@@ -2023,6 +2023,8 @@ extern WANTED_DATA *wanted_list_last;
 #define ACT_BLINK BIT_29              /* Mob access to the "blink" ability -- Owl */
 #define ACT_UNDEAD BIT_30             /* Mob is undead; various implications */
 #define ACT_FEAR_AURA BIT_31          /* Frightens visible opponents in combat */
+#define ACT_PRIEST_SERVICES BIT_32    /* Extra holy services through HEAL */
+#define ACT_UNDEAD_HEALER BIT_33      /* Undead mending through HEAL */
 #define ACT_UNKILLABLE BIT_63         /* Can't be killed. 'slay' still works. - Owl */
 
 /*
@@ -2380,6 +2382,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ITEM_FICKLE BIT_39          /* Item randomly not-randomised, randomised, or weakly randomised */
 #define ITEM_BLOODLESS BIT_40       /* Corpse/remains contain no usable blood */
 #define ITEM_SOULLESS BIT_41        /* Corpse/remains have no soul to harvest */
+#define ITEM_HOLY_FOCUS BIT_42      /* Equipped holy symbol; one contributes at a time */
 #define ITEM_CURSED BIT_61          /* carrier attacked by mobs with DETECT_CURSE, magic travel nonfunctional if carried */
 
 /*
@@ -5582,6 +5585,8 @@ void damage_with_aggravated_component(CHAR_DATA *ch, CHAR_DATA *victim,
                                       int chance, int percent, int cap);
 int aggravated_healing_limit(const CHAR_DATA *ch);
 int heal_hit_points(CHAR_DATA *ch, int amount);
+int holy_focus_turn_bonus(CHAR_DATA *ch);
+int holy_focus_save_bonus(CHAR_DATA *ch, CHAR_DATA *source);
 int repair_aggravated_damage(CHAR_DATA *ch, int amount);
 int mark_aggravated_damage(CHAR_DATA *victim, int amount);
 void death_penalty args((CHAR_DATA * ch, CHAR_DATA *victim));
@@ -5794,6 +5799,9 @@ bool restorative_spell_harms_undead args((int sn, CHAR_DATA *victim));
 bool spell_restores_undead args((int sn, CHAR_DATA *victim));
 bool spell_benefits_undead(int sn, CHAR_DATA *victim);
 bool spell_afflicts_undead(int sn, CHAR_DATA *ch, CHAR_DATA *victim);
+bool helpful_spell_harms_target(int sn, CHAR_DATA *ch, CHAR_DATA *victim);
+int restore_undead_energy(CHAR_DATA *ch, CHAR_DATA *victim, int amount,
+                          bool shifts_alignment);
 bool try_undead_support_spell(int sn, CHAR_DATA *ch);
 int recall_move_cost(CHAR_DATA *ch);
 bool saves_resistance_effect args((CHAR_DATA *source, int level,

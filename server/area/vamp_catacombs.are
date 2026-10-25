@@ -988,7 +988,7 @@ true zealot, Saul pounds the pulpit as he delivers his religious polemic, exhort
 vampires everywhere to act in a spirit of moderation and humility when taking
 life and consuming blood.
 ~
-2|64|4096|8192|32768 8|32|128|512|2048|8192|524288|16777216 -1000 S
+2|64|4096|8192|32768|8589934592 8|32|128|512|2048|8192|524288|16777216 -1000 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1

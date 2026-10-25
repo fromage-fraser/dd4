@@ -7,7 +7,7 @@
 
 _Original manual: version 1.3.w, July 2025._
 
-_AsciiDoc documentation update: 23 September 2026._
+_AsciiDoc documentation update: 25 October 2026._
 
 === Contents
 
@@ -54,6 +54,7 @@ _AsciiDoc documentation update: 23 September 2026._
 ** <<scribe-ghost-phase,Ghost phase: initial defaults and live state>>
 ** <<scribe-ghost-contact,Ghost phase: weapon and shield contact>>
 ** <<scribe-mobile-diagnostics,Validation, mstat and live editing>>
+** <<scribe-priest-services,Holy symbols and priest services>>
 * <<scribe-objects,9. Objects>>
 ** <<scribe-weapon-resistance,Ordinary weapon resistance categories>>
 ** <<scribe-cold-iron,Cold iron>>
@@ -2622,6 +2623,8 @@ objectlike  for mobs you want to behave like destructible
 blink    Access to the "blink" ability (defensive)
 undead         Marks mobile as undead
 fear_aura      Frightens opponents who can see this mobile in combat
+priest_services  Extra holy services; also needs healer
+undead_healing   Undead mending services; also needs healer
 unkillable  will not die, no matter how much damage is
     done to it
 
@@ -2636,6 +2639,85 @@ makes that opponent try to flee. The aura does not use a special turn and
 does not require an undead archetype. As with other inherited act flags,
 `act fear_aura` on an archetype that already has it cancels it for that
 individual mobile.
+
+
+==== Holy symbols and priest services [[scribe-priest-services]]
+
+Use the ordinary shop records for holy supplies and the healer menu for
+services. A priest can have either role or both. These are not new special
+functions, so the mobile can keep its existing automatic behaviour.
+
+[source,text]
+----
+act healer priest_services
+act healer undead_healing
+ex holy_focus
+----
+
+The first two lines are mobile fields; the last is an object field.
+You can put both service flags on one healer. A service flag without
+'healer' does not enable the HEAL command.
+
+[cols="<2,<2,<2,<4",options="header"]
+|===
+| Scribe word | C flag | Decimal bit | Effect
+| priest_services | ACT_PRIEST_SERVICES | 4294967296 | Extra holy services on an existing healer.
+| undead_healing | ACT_UNDEAD_HEALER | 8589934592 | Undead mending on an existing healer.
+| holy_focus | ITEM_HOLY_FOCUS | 4398046511104 | Holy-symbol bonuses while equipped.
+|===
+
+Priests offer 'heal detect' (5 gold), 'heal protection' (10 gold) and
+'heal ward' (20 gold), using the existing Detect Undead, Protection vs
+Evil and Protection vs Undead spells. Their normal durations and effects
+remain. Already active copies are refused before payment.
+
+'heal blessweapon <weapon>' costs 100 plus five times the weapon's current
+level, in gold. It uses the existing permanent Bless Weapon spell, including
+its mana and saving-throw affects and item eligibility checks. The item must
+be carried and unworn. Casting level is the lower of customer and priest
+level. The price is worked out before the spell changes the item level.
+
+'heal refill <container>' fills an empty clean drink container or tops up
+clean holy water. It costs 8 gold per 15 missing liquid units, rounded up.
+Poisoned or mixed liquid and already full containers are refused before
+payment. A 30-unit refill costs 16 gold.
+
+Undead healers offer 'heal mend' (100 HP for 15 gold) and
+'heal greatermend' (300 HP for 35 gold). Vampire players receive the full
+amount. The normal HP ceiling, aggravated wounds and 'no_heal' still
+apply. These services do not restore blood or mana, repair aggravated
+damage, or change alignment. Living customers and customers without
+healable missing HP are refused before payment.
+
+Midgaard's healer (3012 in room 3054) provides priest services and sells
+holy symbols (3395, 25 gold) and holy-water vials (3396, 10 gold), all day.
+These are base list prices; normal shop discounts still apply. The vial
+holds 15 liquid units, enough for three normal splashes. Saul (9540 in
+room 9547 in the Vampire Catacombs) provides undead mending.
+
+A 'holy_focus' object contributes only from a neck slot or the hold slot.
+Give a symbol the corresponding wear flags. A neck symbol adds 5 points
+to the turning base, or 10 when held. The learned skill percentage still
+scales that base. At full skill, an ordinary equal-level target changes
+from 50% to 55% worn or 60% held. Turn Undead and Chant of Turning both
+benefit. All existing caps, level limits, boss and PvP rules remain, and
+the symbol does not increase destruction chances.
+
+Either position also adds 5 points to existing spell saving throws against
+undead sources, before the normal limits. This stacks with existing spell
+protection. It grants no new save, immunity or physical damage reduction.
+A cursed symbol gives no bonus. Only the best equipped symbol contributes;
+spares and other equipment slots give nothing. Undead and noncorporeal
+players receive no bonus, and carrying a symbol does not burn them.
+A blessed weapon does not automatically count as a holy focus.
+
+Identify and Lore describe 'holy_focus', OSTAT names the object flag and
+MSTAT names both service flags. The ordinary 64-bit flag fields save them;
+no new area record is needed. Automatic support specials skip spells
+that would harm their recipient, including Bless on undead, while useful
+healing still reaches sleeping vampires. Vampire holy healing stays at
+75%, and Regenerate works normally. Deliberate offensive spells keep their
+existing behaviour. No learnable spell or skill is added here.
 
 *`aff` — Affect flags*
 
@@ -6503,6 +6585,7 @@ steady  item is only weakly randomised by server
 fickle  item will have its randomness (or lack thereof)     randomly determined
 bloodless   corpse/remains have no usable blood; see the biological properties section
 soulless    corpse/remains have no soul to harvest; see the biological properties section
+holy_focus  Equipped holy symbol; see the priest services section
 cursed  item is cursed; mobs with det_curse will attack holder
 ----
 
