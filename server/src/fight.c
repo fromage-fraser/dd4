@@ -8582,6 +8582,7 @@ void turn_undead(CHAR_DATA *ch, int sn, int learned)
         int turn_chance;
         int destroy_chance;
         int roll;
+        int caster_deaths;
         bool found = FALSE;
 
         if (!ch
@@ -8595,6 +8596,9 @@ void turn_undead(CHAR_DATA *ch, int sn, int learned)
         }
 
         room = ch->in_room;
+        caster_deaths = action_deaths(ch);
+        if (!action_character_in_room(ch, room, caster_deaths))
+                return;
 
         if (IS_SET(room->room_flags, ROOM_SAFE)
         ||  IS_SET(room->area->area_flags, AREA_FLAG_SAFE))
@@ -8652,7 +8656,8 @@ void turn_undead(CHAR_DATA *ch, int sn, int learned)
 
                 victim_next = victim->next_in_room;
 
-                if (ch->deleted || ch->in_room != room)
+                /* A death program can kill us and send us back to this room. */
+                if (!action_character_in_room(ch, room, caster_deaths))
                         break;
 
                 if (!turn_undead_target_allowed(ch, victim)

@@ -3645,6 +3645,7 @@ static bool vampire_gaze(CHAR_DATA *ch, CHAR_DATA *victim)
         if ((IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
         ||  is_mindless(victim)
         ||  IS_AFFECTED(ch, AFF_BLIND)
+        ||  (IS_NPC(ch) && !HAS_EYES(ch))
         ||  IS_AFFECTED(victim, AFF_BLIND)
         ||  (IS_NPC(victim) && !HAS_EYES(victim)))
         {

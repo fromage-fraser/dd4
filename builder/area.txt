@@ -1276,12 +1276,21 @@ contact rules are connected. Spell-phase handling, automatic
 materialisation and active ghost abilities remain unfinished.
 AFF_NON_CORPOREAL is not assigned or changed.
 
-Do not convert existing world ghosts or Animate Dead servant
-prototypes to this unfinished template yet.
+Do not convert existing world ghosts to the unfinished phased template
+yet. Animate Dead uses dedicated ghost servant 87 with MobGhostPhase none,
+which opts out of phase contacts and uses ordinary resistance rules.
 
 Scribe selects it with "archetype ghost". Individual flag fields remain
 XOR overrides. Repeating an inherited flag cancels it. Cancelling
 ACT_UNDEAD does not automatically change the separate body properties.
+
+Animate Dead selects skeleton 85 below level 35, ghoul 86 at levels 35-44,
+and ghost 87 at level 45 and above. The ghost prototype selects the ghost
+archetype and sets MobGhostPhase none. All three servants have no-XP and
+no-quest flags; the spell supplies their existing HP/level scaling and
+master/charm control. The ghost keeps its ordinary nonmagical immunity,
+inorganic body and no-corpse handling without opting into phase contacts.
+The old guardian vampire 3404 and existing world mobs are unchanged.
 
 See the Scribe manual's "Ghost archetype: permanent physiology" section.
 
@@ -1381,8 +1390,8 @@ rules otherwise retain their existing scope after the contact gate.
 Generic damage callers, spell-phase rules, unconverted projectiles,
 Target/trauma and other bespoke effects are not automatically covered.
 Existing mask-based effects still use their declared categories.
-The ghost is not yet ready for conversion of production world mobs
-or Animate Dead servants.
+The phased ghost is not yet ready for conversion of production world mobs.
+Animate Dead's dedicated ghost servant uses MobGhostPhase none instead.
 
 There is no automatic transition, timer, new special or player phasing.
 Visibility, movement, normal death and reward handling remain separate.
