@@ -1468,6 +1468,10 @@ blocking unrelated directions.
 
 - Restoration clears Drained; cleric paths and Knights can learn it.
 - Priests offer Restoration for 40 gold; Vitalize now costs 150 gold.
+
+- High-level Animate Dead now raises a dedicated ghost servant.
+- Turning stops if the caster dies during a triggered action.
+- Eyeless vampire mobiles cannot use their hypnotic gaze.
 ~
 
 0 'AGGRAVATED DAMAGE' 'AGGRO DAM'~
@@ -2839,6 +2843,9 @@ of the damage inflicted upon by your opponents will be removed.
 Syntax: cast 'animate dead' <<corpse>
 
 Reanimate a fresh NPC corpse and bind the new servant to your service.
+Below level 35 you raise a skeleton; levels 35-44 raise a ghoul; level 45
+and above raise a ghost. All three are undead servants using their own
+archetypes. The ghost uses normal resistance rules, with phase set to none.
 The corpse is consumed only after the servant has been created.
 
 Player corpses, remains and loose body parts cannot be animated.

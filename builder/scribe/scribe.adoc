@@ -1042,8 +1042,8 @@ the required servant has been created successfully.
 
 A normally killed servant leaves the corpse and loose parts dictated by its
 inherited anatomy, with undead provenance. There is no automatic area reset
-for this servant. Higher-level Animate Dead results use their separately
-configured mobile prototypes.
+for this servant. Levels 35-44 use the dedicated ghoul servant (86);
+level 45 and above use the <<scribe-animated-ghost,ghost servant (87)>>.
 
 ====== Inspection and editor support
 
@@ -1830,8 +1830,10 @@ its special choices make a `gsn_suck` bite using the normal combat damage
 pipeline. When the bite actually lowers a Vampire player’s hit points, it also
 removes 10% of their current blood pool.
 
-One quarter of its special choices attempt a hypnotic gaze. Mindless, blind,
-eyeless and object targets cannot be caught by it. The target resists with
+One quarter of its special choices attempt a hypnotic gaze. A blind or
+eyeless vampire cannot use it. Mindless, blind, eyeless and object targets
+cannot be caught by it. Invisible combatants remain eligible.
+The target resists with
 `RES_CHARM | RES_PSYCHIC`; failure costs the victim two combat pulses of
 action. The remaining quarter does nothing special and leaves normal combat
 to continue.
@@ -1987,8 +1989,9 @@ because of their names. Existing living dragons are unchanged too.
 archetype ghost
 ----
 
-WARNING: This remains an unfinished development template. Do not convert
-existing world ghosts or Animate Dead servant prototypes to it yet.
+The phased version remains a development template. Existing world ghosts
+await the final content audit. The dedicated Animate Dead ghost described
+below uses `ghostphase none` and ordinary resistance rules.
 
 The archetype supplies undead classification and permanent body properties.
 The separate <<scribe-ghost-phase,Ghost phase: initial defaults and live state>>
@@ -2066,7 +2069,33 @@ behaviour. This stage neither assigns it to ghosts nor changes its users.
 The sections below provide inherited initial settings, immortal live
 control and supported weapon/shield defences. No player materialisation
 command, fear, aging, possession or compulsory special is introduced.
-Existing world mobiles and Animate Dead prototypes remain unchanged.
+Existing world mobiles remain unchanged. Animate Dead uses the dedicated
+unphased ghost servant described below.
+
+[[scribe-animated-ghost]]
+====== Animated ghost servant
+
+Mobile 87 is the dedicated ghost servant for Animate Dead casters at level
+45 and above. The spell no longer borrows the unrelated guardian vampire
+at mobile 3404. Its equivalent Scribe settings are:
+
+[source,text]
+----
+archetype ghost
+act no_quest no_experience
+ghostphase none
+----
+
+The servant inherits undead classification, inorganic physiology, no
+biological corpse and immunity to ordinary nonmagical attacks. It keeps
+the ghost's mind and normal sensory capabilities. Its explicit `none`
+phase uses ordinary resistance rules rather than the unfinished phase
+contacts. It has no compulsory special function.
+
+The spell supplies the same level/HP scaling and master/charm control as
+the other animated servants. No-XP/no-quest flags survive loss of control.
+The ghost's inherited no-corpse handling still drops equipment normally.
+Existing world ghosts and the original guardian vampire are unchanged.
 
 [[scribe-ghost-phase]]
 ===== Ghost phase: initial defaults and live state
@@ -2074,7 +2103,8 @@ Existing world mobiles and Animate Dead prototypes remain unchanged.
 WARNING: Phase configuration now affects the explicitly supported
 weapon/shield contacts. It does not yet govern every spell, projectile,
 status effect or direct resource change. The development ghost template
-must not replace production ghosts or Animate Dead servants yet.
+must not replace production world ghosts yet. Animate Dead's dedicated
+ghost uses `none`, which opts out of these phase contacts.
 Phase alone does not change visibility or permit passage through walls.
 
 `CHAR_DATA.ghost_phase` remains a per-instance enumeration. It is not an
@@ -2249,8 +2279,9 @@ passing them does not establish coverage of every spell or status rider.
 ===== Ghost phase: weapon and shield contact
 
 WARNING: This is an incremental physical-contact integration, not a complete
-AD&D ghost or a general planar system. Keep production world ghosts and
-Animate Dead servants unchanged until the remaining effect paths are covered.
+AD&D ghost or a general planar system. Keep production world ghosts
+unchanged until the remaining effect paths are covered. Animate Dead's
+dedicated ghost opts out with phase `none`.
 The contact matrix and its combination rules below are explicit DD4 rules.
 
 ====== Scope and source identity

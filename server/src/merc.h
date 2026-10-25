@@ -5364,7 +5364,7 @@ DECLARE_SPELL_FUN(spell_ward_against_undead);
 
 #define MOB_VNUM_SKELETON 85
 #define MOB_VNUM_GHOUL 86
-#define MOB_VNUM_GHOST 3404
+#define MOB_VNUM_GHOST 87
 #define MOB_VNUM_SPIRIT 83
 
 /*
