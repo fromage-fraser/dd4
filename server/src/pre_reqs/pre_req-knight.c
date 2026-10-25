@@ -38,6 +38,10 @@
 {&gsn_cure_poison,              &gsn_group_healing,     90,     PRE_KNIGHT},
 {&gsn_cure_poison,              &gsn_knight_base,       30,     PRE_KNIGHT},
 
+{&gsn_restoration,              &gsn_group_healing,     95,     PRE_KNIGHT},
+{&gsn_restoration,              &gsn_heal,              90,     PRE_KNIGHT},
+{&gsn_restoration,              &gsn_knight_base,       30,     PRE_KNIGHT},
+
 /* **** CONJURATION **** */
 
 {&gsn_create_water,             &gsn_group_conjuration, 30,     PRE_KNIGHT},

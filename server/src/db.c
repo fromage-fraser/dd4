@@ -690,6 +690,7 @@ int gsn_freedom;
 int gsn_fleshrot;
 int gsn_target;
 int gsn_regenerate;
+int gsn_restoration;
 int gsn_eye_trauma;
 int gsn_head_trauma;
 int gsn_arm_trauma;

@@ -529,11 +529,16 @@ Neither capability supplies the base healer flag. Existing mobiles keep
 their ordinary healer menu until a builder adds a capability.
 
 Priest services add:
+    heal restoration            Clear Drained without refilling resources, 40 gold
     heal detect                 Detect Undead, 5 gold
     heal protection             Protection vs Evil, 10 gold
     heal ward                   Protection vs Undead, 20 gold
     heal blessweapon <weapon>   100 + 5 * the weapon's current level, in gold
     heal refill <container>     8 gold per 15 missing liquid units, rounded up
+
+Restoration is refused before payment when there is no Drained condition.
+It does not restore current HP, mana or movement. Vitalize remains the
+ordinary 150-gold service that clears Drained and fills those resources.
 
 Bless Weapon uses the existing permanent spell and all its item checks.
 The weapon must be carried, unworn, unblessed and free of existing affects.
@@ -1607,10 +1612,23 @@ resets progress; a refused stack does not. Current HP/mana are clamped
 only when above the effective ceilings, and recovering a stack never
 refills them. The condition itself never kills or heals.
 
-Vitalize clears the condition and both timers before its existing full
-restore. Its 120-gold healer price is unchanged. Death clears the
-condition too. Other heals, Complete Healing, Regenerate and ordinary
-dispels do not clear it. Restoration is not introduced by this patch.
+Restoration clears every stack and both timers without refilling current
+HP, mana or movement. Vitalize does the same before its full restore;
+its healer price is 150 gold. Death also clears the condition.
+Other heals, Complete Healing, Regenerate and ordinary dispels leave it.
+
+Restoration is a 50-base-mana defensive spell with one combat round of lag,
+usable on yourself or someone in the room, including during combat. Normal
+casting restrictions still apply. Clerics, Templars and Druids need 75%
+Curative Magiks and 75% Heal; Knights need 95% Healing Magiks and 90% Heal.
+These are practice percentages. A teacher can offer it through either
+Healing Magiks or Curative Magiks, or teach restoration explicitly.
+
+ACT_IS_HEALER mobiles with ACT_PRIEST_SERVICES offer 'heal restoration'
+for 40 gold, checking for Drained before charging. No new special function
+or area flag is needed. It does not heal aggravated wounds or other
+conditions and grants no protection against another drain. Undead cannot
+become Drained, so Restoration has nothing to remove from them.
 
 A player save may contain:
     Drained <stacks> <recovery-credit> <cooldown-seconds> <saved-UTC-seconds>
@@ -4024,24 +4042,25 @@ and pills. Make sure the spell's targeting suits the item.
     rend rune                   resist acid
     resist cold                 resist heat
     resist lightning            resist magic
-    sanctuary                   sense traps
-    sense wisdom                share strength
-    shield                      shocking grasp
-    sleep                       slow
-    sonic blast                 spiritwrack
-    stab rune                   stabilise
-    starve                      steal soul
-    steal strength              steam breath
-    stone skin                  summon
-    summon avatar               summon demon
-    summon familiar             sunray
-    synaptic blast              teleport
-    thought shield              transport
-    ultrablast                  unholy word
-    ventriloquate               vitalize
-    ward against undead         ward rune
-    weaken                      wither
-    word of recall              wrath of god
+    restoration                 sanctuary
+    sense traps                 sense wisdom
+    share strength              shield
+    shocking grasp              sleep
+    slow                        sonic blast
+    spiritwrack                 stab rune
+    stabilise                   starve
+    steal soul                  steal strength
+    steam breath                stone skin
+    summon                      summon avatar
+    summon demon                summon familiar
+    sunray                      synaptic blast
+    teleport                    thought shield
+    transport                   ultrablast
+    unholy word                 ventriloquate
+    vitalize                    ward against undead
+    ward rune                   weaken
+    wither                      word of recall
+    wrath of god
 
 If you have any questions about area writing, please contact any of the
 immortals on the DD4 Discord server at https://discord.gg/aGzmAWmXYb (preferred)

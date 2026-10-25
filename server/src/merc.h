@@ -427,9 +427,9 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 631           /* Includes Ward Against Undead. */
-#define MAX_PRE_REQ 1606        /* Includes the room ward prerequisites. */
-#define MAX_SPELL_GROUP 481     /* Includes Ward Against Undead in Protection. */
+#define MAX_SKILL 632           /* Includes Restoration. */
+#define MAX_PRE_REQ 1612        /* Includes both Restoration learning paths. */
+#define MAX_SPELL_GROUP 483     /* Restoration belongs to Healing and Curative. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
 #define MAX_GROUPS 62            /* Includes the Illusion group boundary. */
 #define MAX_FORM_SKILL 74        /* 73 + 1 for 'swallow' | for form skill table */
@@ -4468,6 +4468,7 @@ extern int gsn_freedom;
 extern int gsn_fleshrot;
 extern int gsn_target;
 extern int gsn_regenerate;
+extern int gsn_restoration;
 extern int gsn_eye_trauma;
 extern int gsn_head_trauma;
 extern int gsn_arm_trauma;
@@ -5348,6 +5349,7 @@ DECLARE_SPELL_FUN(spell_confusion);
 DECLARE_SPELL_FUN(spell_freedom);
 DECLARE_SPELL_FUN(spell_fleshrot);
 DECLARE_SPELL_FUN(spell_regenerate);
+DECLARE_SPELL_FUN(spell_restoration);
 DECLARE_SPELL_FUN(spell_release);
 DECLARE_SPELL_FUN(spell_clairvoyance);
 DECLARE_SPELL_FUN(spell_sense_wisdom);

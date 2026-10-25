@@ -90,6 +90,10 @@
 {&gsn_remove_curse,             &gsn_group_curative,    50,     PRE_CLERIC},
 {&gsn_remove_curse,             &gsn_curse,             30,     PRE_CLERIC},
 
+{&gsn_restoration,              &gsn_group_curative,    75,     PRE_CLERIC},
+{&gsn_restoration,              &gsn_heal,              75,     PRE_CLERIC},
+{&gsn_restoration,              &gsn_cleric_base,       30,     PRE_CLERIC},
+
 {&gsn_blindness,                &gsn_group_disease,     20,     PRE_CLERIC},
 {&gsn_poison,                   &gsn_group_disease,     35,     PRE_CLERIC},
 {&gsn_curse,                    &gsn_group_disease,     50,     PRE_CLERIC},

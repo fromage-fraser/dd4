@@ -53,7 +53,8 @@ static const struct healer_spell healer_services[] =
         {"refresh", "refresh", 1, 0, HEALER_SPELL, 0},
         {"bless", "bless", 10, 0, HEALER_SPELL, 0},
         {"mana", "restore mana", 40, 0, HEALER_MANA, 100},
-        {"vitalize", "vitalize", 120, 0, HEALER_SPELL, 0},
+        {"vitalize", "vitalize", 150, 0, HEALER_SPELL, 0},
+        {"restoration", "restoration", 40, ACT_PRIEST_SERVICES, HEALER_SPELL, 0},
         {"detect", "detect undead", 5, ACT_PRIEST_SERVICES, HEALER_SPELL, 0},
         {"protection", "protection vs evil", 10, ACT_PRIEST_SERVICES, HEALER_SPELL, 0},
         {"ward", "protection vs undead", 20, ACT_PRIEST_SERVICES, HEALER_SPELL, 0},
@@ -257,6 +258,14 @@ void do_heal(CHAR_DATA *ch, char *argument)
                 if (!healer_can_mend_undead(ch))
                 {
                         send_to_char("The dark energy cannot restore any more of your strength.\n\r", ch);
+                        return;
+                }
+        }
+        else if (service->kind == HEALER_SPELL && sn == gsn_restoration)
+        {
+                if (drained_stack_count(ch) == 0)
+                {
+                        send_to_char("Your life force does not need restoring.\n\r", ch);
                         return;
                 }
         }

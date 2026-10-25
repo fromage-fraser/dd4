@@ -2665,7 +2665,11 @@ You can put both service flags on one healer. A service flag without
 | holy_focus | ITEM_HOLY_FOCUS | 4398046511104 | Holy-symbol bonuses while equipped.
 |===
 
-Priests offer 'heal detect' (5 gold), 'heal protection' (10 gold) and
+Priests offer 'heal restoration' (40 gold) to clear Drained without
+refilling HP, mana or movement. They check for Drained before charging.
+Ordinary reputation, combat and payment restrictions still apply.
+
+They also offer 'heal detect' (5 gold), 'heal protection' (10 gold) and
 'heal ward' (20 gold), using the existing Detect Undead, Protection vs
 Evil and Protection vs Undead spells. Their normal durations and effects
 remain. Already active copies are refused before payment.
@@ -4835,10 +4839,31 @@ Applying a stack only trims current HP/mana when above the new ceilings.
 It never heals or kills; attack damage can still kill normally. Removing
 stacks raises the ceilings without filling either resource bar.
 
-Vitalize clears all stacks and timers before its full restore. The
-existing 120-gold healer service supplies it. Actual death also clears
-Drained. Other healing, Complete Healing, Regenerate, Remove Curse and
-Dispel Magic leave it in place. A separate Restoration spell is later work.
+Restoration clears all stacks and timers without refilling current HP,
+mana or movement. It restores the normal ceilings and combat modifiers,
+but does not repair aggravated wounds, cure other conditions or prevent
+another drain. Vitalize clears Drained before its full restore, still
+respecting aggravated wounds. Its healer price is 150 gold.
+Actual death also clears Drained. Other healing, Complete Healing,
+Regenerate, Remove Curse and Dispel Magic leave it in place.
+
+Restoration costs 50 base mana and has one combat round of casting lag.
+It targets yourself or someone in the room and can be cast during combat,
+subject to the ordinary casting and target restrictions. Clerics, Templars
+and Druids need 75% Curative Magiks and 75% Heal. Knights need 95% Healing
+Magiks and 90% Heal instead. These are practice percentages, not levels.
+
+Teachers can supply Restoration through either Healing Magiks or Curative
+Magiks; having both is not required. Existing teachers of either school
+pick up the spell automatically. A teacher can also list it directly:
+
+[source,text]
+----
+te 100 restoration
+----
+
+The existing 'te' field accepts the spell name, so scribe.pl needs no new
+keyword. Normal student prerequisites and teacher limits still apply.
 
 Undead, including vampire players, and NPC objects cannot gain stacks.
 Existing drain immunity and casting restrictions remain. Werewolves keep

@@ -2317,6 +2317,7 @@ struct spell_group_struct spell_group_table[MAX_SPELL_GROUP] =
         {&gsn_cure_serious, 0},
         {&gsn_cure_critical, 0},
         {&gsn_heal, 0},
+        {&gsn_restoration, 0},
 
         {&gsn_group_harmful, 0},
         {&gsn_cause_light, 0},
@@ -2329,6 +2330,7 @@ struct spell_group_struct spell_group_table[MAX_SPELL_GROUP] =
         {&gsn_cure_blindness, 0},
         {&gsn_cure_poison, 0},
         {&gsn_remove_curse, 0},
+        {&gsn_restoration, 0},
 
         {&gsn_group_disease, 0},
         {&gsn_blindness, 0},
@@ -5690,6 +5692,11 @@ const struct skill_type skill_table[MAX_SKILL] =
          TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC | RES_HOLY,
          spell_ward_against_undead, 50, 24,
          "", ""},
+
+        {"restoration", &gsn_restoration,
+         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_FIGHTING, RES_MAGIC | RES_HOLY,
+         spell_restoration, 50, PULSE_VIOLENCE,
+         "", "!Restoration!"},
 
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
