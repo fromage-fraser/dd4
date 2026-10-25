@@ -29,8 +29,9 @@ struct healer_spell
 static bool healer_service_harms_undead(
         CHAR_DATA *ch, const struct healer_spell *service)
 {
-        return restorative_spell_harms_undead(
-            skill_lookup(service->spell_name), ch);
+        int sn = skill_lookup(service->spell_name);
+        return restorative_spell_harms_undead(sn, ch)
+            || spell_afflicts_undead(sn, NULL, ch);
 }
 
 void do_heal(CHAR_DATA *ch, char *argument)
@@ -107,8 +108,8 @@ void do_heal(CHAR_DATA *ch, char *argument)
                 }
                 if (omitted_service)
                         send_to_char(
-                            "\n\rThe healer leaves out healing spells "
-                            "that would burn you.\n\r", ch);
+                            "\n\rThe healer leaves out spells "
+                            "that would harm you.\n\r", ch);
                 if (!IS_NPC(ch) && ch->sub_class == SUB_CLASS_VAMPIRE)
                         send_to_char(
                             "\n\rHoly HP healing restores 75% of its usual "
@@ -133,7 +134,7 @@ void do_heal(CHAR_DATA *ch, char *argument)
                 {
                         if (healer_service_harms_undead(ch, &spell_list[i]))
                         {
-                                act("$N says 'That spell would burn you, not heal you.'",
+                                act("$N says 'That spell would harm you.'",
                                     ch, NULL, mob, TO_CHAR);
                                 return;
                         }

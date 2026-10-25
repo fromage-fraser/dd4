@@ -9853,8 +9853,8 @@ void use_magical_item(CHAR_DATA *ch)
                         if (cobj->value[3] < 0 || cobj->value[3] >= MAX_SKILL)
                                 break;
 
-                        /* A combat wand should not restore the opponent's HP. */
-                        if (spell_restores_undead(cobj->value[3], ch->fighting))
+                        /* A combat wand must not heal or strengthen the opponent. */
+                        if (spell_benefits_undead(cobj->value[3], ch->fighting))
                                 break;
 
                         /*

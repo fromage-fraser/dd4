@@ -945,6 +945,83 @@ void end_form_equipment_update(CHAR_DATA *ch)
 }
 
 
+/* Only the strongest Curse/Hex boon supplies each overlapping stat bonus. */
+static bool is_undead_boon_stat(const AFFECT_DATA *paf)
+{
+        SPELL_FUN *spell;
+
+        if (!paf || paf->type < 0 || paf->type >= MAX_SKILL
+        ||  paf->source_type != AFFECT_SOURCE_NONE)
+                return FALSE;
+        spell = skill_table[paf->type].spell_fun;
+        if (spell != spell_curse && spell != spell_hex)
+                return FALSE;
+        switch (paf->location)
+        {
+        case APPLY_HITROLL:
+        case APPLY_DAMROLL:
+                return paf->modifier > 0;
+        case APPLY_AC:
+        case APPLY_SAVING_SPELL:
+        case APPLY_SAVING_BREATH:
+                return paf->modifier < 0;
+        default:
+                return FALSE;
+        }
+}
+
+static int undead_boon_stat_delta(CHAR_DATA *ch, const AFFECT_DATA *paf)
+{
+        AFFECT_DATA *other;
+        long long strongest = 0;
+        long long amount;
+
+        if (!is_undead_boon_stat(paf))
+                return paf->modifier;
+        for (other = ch->affected; other; other = other->next)
+        {
+                if (other == paf || other->deleted
+                ||  other->location != paf->location
+                ||  !is_undead_boon_stat(other))
+                        continue;
+                amount = other->modifier < 0
+                    ? -(long long)other->modifier : other->modifier;
+                strongest = UMAX(strongest, amount);
+        }
+        amount = paf->modifier < 0 ? -(long long)paf->modifier : paf->modifier;
+        amount = UMAX(0, amount - strongest);
+        return (int)(paf->modifier < 0 ? -amount : amount);
+}
+
+/* Discount the movement cost, not recall's room, item or combat restrictions. */
+int recall_move_cost(CHAR_DATA *ch)
+{
+        AFFECT_DATA *paf;
+        int cost;
+        int reduction = 0;
+        SPELL_FUN *spell;
+
+        if (!ch)
+                return 0;
+        cost = ch->move - ch->move / 2;
+        if (cost <= 0 || !IS_UNDEAD(ch))
+                return cost;
+        for (paf = ch->affected; paf; paf = paf->next)
+        {
+                if (paf->deleted || paf->source_type != AFFECT_SOURCE_NONE
+                ||  paf->location != APPLY_NONE || paf->modifier <= 0
+                ||  paf->type < 0 || paf->type >= MAX_SKILL)
+                        continue;
+                spell = skill_table[paf->type].spell_fun;
+                if (spell == spell_curse && paf->modifier == 25)
+                        reduction = UMAX(reduction, 25);
+                else if (spell == spell_hex && paf->modifier == 50)
+                        reduction = UMAX(reduction, 50);
+        }
+        /* Round the charge up so a small positive cost does not disappear. */
+        return (int)(((long long)cost * (100 - reduction) + 99) / 100);
+}
+
 /*
  * Apply or remove an affect to a character.
  */
@@ -957,7 +1034,8 @@ static void affect_modify_source(CHAR_DATA *ch, AFFECT_DATA *paf,
         int mod;
 
         affect_update_depth++;
-        mod = paf->modifier;
+        mod = source_type == AFFECT_SOURCE_NONE
+            ? undead_boon_stat_delta(ch, paf) : paf->modifier;
 
         if ( fAdd )
         {

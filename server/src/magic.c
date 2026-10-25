@@ -63,6 +63,200 @@ static bool credit_group_support(CHAR_DATA *ch, CHAR_DATA *victim)
         return TRUE;
 }
 
+/* Dark restoration uses the same wound ceiling as every other HP heal. */
+static void restore_undead_energy(
+        CHAR_DATA *ch, CHAR_DATA *victim, int amount, bool shifts_alignment)
+{
+        int healed;
+
+        if (!IS_UNDEAD(victim)
+        ||  !action_character_in_room(ch, ch ? ch->in_room : NULL,
+                                     action_deaths(ch))
+        ||  !action_character_in_room(victim, ch->in_room,
+                                     action_deaths(victim))
+        ||  is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
+                return;
+
+        healed = heal_hit_points(victim, amount);
+        if (healed <= 0)
+        {
+                send_to_char("The dark energy cannot restore any more of your strength.\n\r",
+                             victim);
+                return;
+        }
+
+        update_pos(victim);
+        credit_group_support(ch, victim);
+        send_to_char("The dark energy restores some of your strength.\n\r", victim);
+        if (ch != victim)
+                act("Your dark magic restores some of $N's strength.",
+                    ch, NULL, victim, TO_CHAR);
+        if (shifts_alignment)
+        {
+                ch->alignment = UMAX(-1000, ch->alignment - 200);
+                check_worn_alignment(ch);
+        }
+}
+
+/* The recall discount expires with the rest of the spell's own affects. */
+static void give_undead_boon(
+        int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, bool hex)
+{
+        AFFECT_DATA af;
+        int bonus = UMAX(1, level / (hex ? 6 : 8));
+
+        if (!action_character_in_room(ch, ch ? ch->in_room : NULL,
+                                     action_deaths(ch))
+        ||  !action_character_in_room(victim, ch->in_room,
+                                     action_deaths(victim))
+        ||  is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
+                return;
+        if (is_affected(victim, sn))
+        {
+                send_to_char("That magic is already affecting them.\n\r", ch);
+                return;
+        }
+
+        memset(&af, 0, sizeof(af));
+        af.type = sn;
+        af.duration = hex ? UMAX(1, level / 6) : 6 + level;
+        af.location = APPLY_HITROLL;
+        af.modifier = bonus;
+        affect_to_char(victim, &af);
+        if (hex)
+        {
+                af.location = APPLY_DAMROLL;
+                affect_to_char(victim, &af);
+                af.location = APPLY_AC;
+                af.modifier = -UMAX(1, level / 2);
+                affect_to_char(victim, &af);
+                af.location = APPLY_SAVING_BREATH;
+                af.modifier = -bonus;
+                affect_to_char(victim, &af);
+        }
+        af.location = APPLY_SAVING_SPELL;
+        af.modifier = -bonus;
+        affect_to_char(victim, &af);
+
+        /* This ordinary affect expires with the rest of the boon. */
+        af.location = APPLY_NONE;
+        af.modifier = hex ? 50 : 25;
+        affect_to_char(victim, &af);
+        credit_group_support(ch, victim);
+        send_to_char("Dark power strengthens you and eases the strain of recall.\n\r",
+                     victim);
+        if (ch != victim)
+                act("Your dark magic strengthens $N.", ch, NULL, victim, TO_CHAR);
+}
+
+/* Holy penalties do not carry a dark curse's recall-blocking flag. */
+static void afflict_undead_with_holy_magic(
+        int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, bool prayer)
+{
+        AFFECT_DATA af;
+        int penalty = prayer ? UMAX(1, level / 6) : 1;
+
+        if (!action_character_in_room(ch, ch ? ch->in_room : NULL,
+                                     action_deaths(ch))
+        ||  !action_character_in_room(victim, ch->in_room,
+                                     action_deaths(victim))
+        ||  is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
+                return;
+        if (ch == victim || (IS_AFFECTED(ch, AFF_CHARM) && ch->master == victim)
+        ||  is_safe(ch, victim))
+                return;
+        if (is_affected(victim, sn))
+                return;
+        if (saves_resistance_effect(ch, level, victim, skill_table[sn].res_type))
+        {
+                send_to_char("The holy power fails to take hold.\n\r", ch);
+                return;
+        }
+
+        memset(&af, 0, sizeof(af));
+        af.type = sn;
+        af.duration = UMAX(1, level / (prayer ? 6 : 8));
+        af.location = APPLY_HITROLL;
+        af.modifier = -penalty;
+        affect_to_char(victim, &af);
+        if (prayer)
+        {
+                af.location = APPLY_DAMROLL;
+                affect_to_char(victim, &af);
+                af.location = APPLY_AC;
+                af.modifier = UMAX(1, level / 2);
+                affect_to_char(victim, &af);
+                af.location = APPLY_SAVING_BREATH;
+                af.modifier = penalty;
+                affect_to_char(victim, &af);
+        }
+        af.location = APPLY_SAVING_SPELL;
+        af.modifier = penalty;
+        affect_to_char(victim, &af);
+        send_to_char("The holy power weighs painfully upon your undead body.\n\r",
+                     victim);
+        if (ch != victim)
+                act("Your holy magic weakens $N.", ch, NULL, victim, TO_CHAR);
+}
+
+bool spell_benefits_undead(int sn, CHAR_DATA *victim)
+{
+        SPELL_FUN *spell;
+
+        if (!IS_UNDEAD(victim) || sn < 0 || sn >= MAX_SKILL)
+                return FALSE;
+        spell = skill_table[sn].spell_fun;
+        return spell_restores_undead(sn, victim)
+            || spell == spell_curse || spell == spell_hex;
+}
+
+bool spell_afflicts_undead(int sn, CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        if (!IS_UNDEAD(victim) || sn < 0 || sn >= MAX_SKILL)
+                return FALSE;
+        return skill_table[sn].spell_fun == spell_bless
+            || (skill_table[sn].spell_fun == spell_prayer && victim != ch);
+}
+
+/* A combat caster can help itself or an ally instead of restoring its foe. */
+bool try_undead_support_spell(int sn, CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        int pass;
+
+        if (!ch || !IS_NPC(ch) || !action_character_alive(ch, 0))
+                return FALSE;
+        for (pass = 0; pass < 2; pass++)
+        {
+                for (victim = pass ? ch->in_room->people : ch; victim;
+                     victim = pass ? victim->next_in_room : NULL)
+                {
+                        if (!action_character_in_room(victim, ch->in_room,
+                                                      action_deaths(victim))
+                        ||  !spell_benefits_undead(sn, victim)
+                        ||  is_noncorporeal_player(victim)
+                        ||  victim == ch->fighting || victim->fighting == ch
+                        ||  (victim != ch && !is_same_group(ch, victim)))
+                                continue;
+                        if (spell_restores_undead(sn, victim))
+                        {
+                                if ((IS_NPC(victim) && IS_SET(victim->act, ACT_NO_HEAL))
+                                ||  victim->hit >= aggravated_healing_limit(victim))
+                                        continue;
+                        }
+                        else if (is_affected(victim, sn))
+                                continue;
+
+                        sound_spell_sfx(ch, sn, "cast");
+                        (*skill_table[sn].spell_fun)(
+                            sn, URANGE(1, ch->level, MAX_LEVEL), ch, victim);
+                        return TRUE;
+                }
+        }
+        return FALSE;
+}
+
+
 /*
  * Lookup a skill by name.
  */
@@ -803,7 +997,8 @@ void do_cast(CHAR_DATA *ch, char *argument)
         int mana;
         int sn;
         int drunk_random;
-        bool undead_healing = FALSE;
+        bool undead_helpful = FALSE;
+        bool undead_harmful = FALSE;
         ROOM_INDEX_DATA *cast_room;
         int caster_deaths = action_deaths(ch);
         int victim_deaths;
@@ -937,8 +1132,8 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         }
                 }
 
-                undead_healing = spell_restores_undead(sn, victim);
-                if (undead_healing)
+                undead_helpful = spell_benefits_undead(sn, victim);
+                if (undead_helpful)
                 {
                         /* Use the usual player-to-player limits for helpful magic. */
                         if (!IS_NPC(victim) && !IS_NPC(ch) && victim->level > 10
@@ -983,36 +1178,49 @@ void do_cast(CHAR_DATA *ch, char *argument)
 
         case TAR_CHAR_DEFENSIVE:
                 if (arg2[0] == '\0')
-                {
                         victim = ch;
-                }
-                else
+                else if (!(victim = get_char_room(ch, arg2)))
                 {
-                        if (!(victim = get_char_room(ch, arg2)))
-                        {
-                                send_to_char("They aren't here.\n\r", ch);
-                                return;
-                        }
-
-                        if (!IS_NPC(victim) && !IS_NPC(ch) && victim->level > 10 && (abs(ch->level - victim->level) > 10) && (ch->level < LEVEL_HERO + 1))
-                        {
-                                send_to_char("The gods prevent you casting a spell on them.\n\r", ch);
-                                return;
-                        }
-
-                        if (IS_AFFECTED(victim, AFF_NON_CORPOREAL))
-                        {
-                                send_to_char("Not in their current form.\n\r", ch);
-                                return;
-                        }
+                        send_to_char("They aren't here.\n\r", ch);
+                        return;
                 }
 
+                undead_harmful = spell_afflicts_undead(sn, ch, victim);
+                if (undead_harmful)
+                {
+                        if (ch == victim
+                        ||  (IS_AFFECTED(ch, AFF_CHARM) && ch->master == victim))
+                        {
+                                send_to_char("You can't use that magic on them.\n\r", ch);
+                                return;
+                        }
+                        if (is_safe(ch, victim))
+                                return;
+                        if (IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER))
+                        {
+                                sprintf(buf, "$n casts %s at $N.", skill_table[sn].name);
+                                arena_commentary(buf, ch, victim);
+                        }
+                }
+                else if (arg2[0] != '\0' && !IS_NPC(victim) && !IS_NPC(ch)
+                &&  victim->level > 10 && abs(ch->level - victim->level) > 10
+                &&  ch->level < LEVEL_HERO + 1)
+                {
+                        send_to_char("The gods prevent you casting a spell on them.\n\r", ch);
+                        return;
+                }
+
+                if (arg2[0] != '\0' && IS_AFFECTED(victim, AFF_NON_CORPOREAL))
+                {
+                        send_to_char("Not in their current form.\n\r", ch);
+                        return;
+                }
                 if (ch == victim && self_cast_already_affected(ch, sn))
                 {
                         sprintf(buf, "<193>You are already affected by '%s'.<0>\n\r",
                                 skill_table[sn].name);
                         send_to_char(buf, ch);
-                        sound_spell_sfx_delay( ch, sn, "wearoff", 2 );
+                        sound_spell_sfx_delay(ch, sn, "wearoff", 2);
                         return;
                 }
 
@@ -1089,8 +1297,9 @@ void do_cast(CHAR_DATA *ch, char *argument)
 
         if (!IS_NPC(ch) && ch->level <= LEVEL_HERO && number_percent() > (65 + (ch->pcdata->learned[sn] / 3)) && ((sn = skill_lookup(arg1)) >= 0) && ch->pcdata->learned[sn] > 0)
         {
-                if (!undead_healing && (skill_table[sn].target == TAR_CHAR_OFFENSIVE
-                ||  skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE))
+                if (!undead_helpful && (skill_table[sn].target == TAR_CHAR_OFFENSIVE
+                ||  skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE
+                ||  undead_harmful))
                         damage(ch, victim, 0, sn, FALSE);
                 else
                         send_to_char("You fail to correctly recite the spell!\n\r", ch);
@@ -1118,9 +1327,10 @@ void do_cast(CHAR_DATA *ch, char *argument)
                  * offensive casting. Resolve the spell's complete resistance
                  * mask once rather than checking each bit independently.
                  */
-                if (!undead_healing
+                if (!undead_helpful
                 &&  (skill_table[sn].target == TAR_CHAR_OFFENSIVE
-                ||   skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE)
+                ||   skill_table[sn].target == TAR_CHAR_OFFENSIVE_SINGLE
+                ||   undead_harmful)
                 &&  get_resistance_result(victim, skill_table[sn].res_type)
                     == RES_RESULT_IMMUNE)
                 {
@@ -1156,7 +1366,8 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         return;
                 sound_spell_sfx( ch, sn, "cast" );
 
-                if (!undead_healing && skill_table[sn].target == TAR_CHAR_OFFENSIVE)
+                if (!undead_helpful && !undead_harmful
+                &&  skill_table[sn].target == TAR_CHAR_OFFENSIVE)
                 {
                         if (!action_character_in_room(ch, cast_room, caster_deaths)
                         ||  !action_character_in_room(victim, cast_room, victim_deaths)
@@ -1307,7 +1518,8 @@ void do_cast(CHAR_DATA *ch, char *argument)
                 }
         } /* End successful cast */
 
-        if (!undead_healing && skill_table[sn].target == TAR_CHAR_OFFENSIVE
+        if (!undead_helpful
+        &&  (skill_table[sn].target == TAR_CHAR_OFFENSIVE || undead_harmful)
         &&  action_character_in_room(ch, cast_room, caster_deaths)
         &&  action_character_in_room(victim, cast_room, victim_deaths)
         &&  victim->master != ch && victim != ch && IS_AWAKE(victim) && !victim->fighting)
@@ -1322,7 +1534,8 @@ void do_cast(CHAR_DATA *ch, char *argument)
 void obj_cast_spell(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj)
 {
         void *vo;
-        bool undead_healing = FALSE;
+        bool undead_helpful = FALSE;
+        bool undead_harmful = FALSE;
         CHAR_DATA *effect_target = NULL;
         ROOM_INDEX_DATA *cast_room;
         int caster_deaths = action_deaths(ch);
@@ -1356,8 +1569,8 @@ void obj_cast_spell(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DAT
                 if (!victim)
                         victim = ch->fighting;
 
-                undead_healing = spell_restores_undead(sn, victim);
-                if (undead_healing)
+                undead_helpful = spell_benefits_undead(sn, victim);
+                if (undead_helpful)
                 {
                         if (!IS_NPC(ch) && !IS_NPC(victim) && victim->level > 10
                         &&  abs(ch->level - victim->level) > 10
@@ -1383,21 +1596,36 @@ void obj_cast_spell(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DAT
         case TAR_CHAR_DEFENSIVE:
                 if (!victim)
                         victim = ch;
-
-                /* Healing items must not bypass the ban on player attacks. */
-                if (victim != ch && !IS_NPC(ch) && !IS_NPC(victim)
-                &&  restorative_spell_harms_undead(sn, victim))
+                undead_harmful = spell_afflicts_undead(sn, ch, victim);
+                if (undead_harmful)
                 {
-                        send_to_char("You can't do that.\n\r", ch);
-                        return;
+                        if (victim == ch
+                        ||  (IS_AFFECTED(ch, AFF_CHARM) && ch->master == victim)
+                        ||  (!IS_NPC(ch) && !IS_NPC(victim)))
+                        {
+                                send_to_char("You can't do that.\n\r", ch);
+                                return;
+                        }
+                        if (is_safe(ch, victim))
+                                return;
                 }
-
-                if (!IS_NPC(ch) && !IS_NPC(victim) && victim->level > 10 && abs(ch->level - victim->level) > 10 && ch->level < LEVEL_HERO + 1)
+                else
                 {
-                        send_to_char("The gods prevent your magic from affecting them.\n\r", ch);
-                        return;
+                        /* Healing items must not bypass the ban on player attacks. */
+                        if (victim != ch && !IS_NPC(ch) && !IS_NPC(victim)
+                        &&  restorative_spell_harms_undead(sn, victim))
+                        {
+                                send_to_char("You can't do that.\n\r", ch);
+                                return;
+                        }
+                        if (!IS_NPC(ch) && !IS_NPC(victim) && victim->level > 10
+                        &&  abs(ch->level - victim->level) > 10
+                        &&  ch->level < LEVEL_HERO + 1)
+                        {
+                                send_to_char("The gods prevent your magic from affecting them.\n\r", ch);
+                                return;
+                        }
                 }
-
                 vo = (void *)victim;
                 break;
 
@@ -1438,7 +1666,8 @@ void obj_cast_spell(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DAT
                 return;
         sound_spell_sfx_delay( ch, sn, "cast", 15 );
 
-        if (!undead_healing && skill_table[sn].target == TAR_CHAR_OFFENSIVE
+        if (!undead_helpful
+        &&  (skill_table[sn].target == TAR_CHAR_OFFENSIVE || undead_harmful)
         &&  action_character_in_room(ch, cast_room, caster_deaths)
         &&  action_character_in_room(victim, cast_room, victim_deaths)
         &&  victim->master != ch && ch != victim)
@@ -1617,6 +1846,16 @@ void spell_unholy_word(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int dam;
 
+        if (IS_UNDEAD(victim))
+        {
+                level = URANGE(1, level, MAX_LEVEL);
+                dam = 2 * level;
+                if (IS_GOOD(ch))
+                        dam /= 2;
+                restore_undead_energy(ch, victim, dam, FALSE);
+                return;
+        }
+
         dam = dice(level, 4);
         dam += level;
 
@@ -1792,6 +2031,13 @@ void spell_bless(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
+
+        if (IS_UNDEAD(victim))
+        {
+                afflict_undead_with_holy_magic(
+                    sn, URANGE(1, level, MAX_LEVEL), ch, victim, FALSE);
+                return;
+        }
 
         if (victim->position == POS_FIGHTING || is_affected(victim, sn))
                 return;
@@ -2425,7 +2671,9 @@ void spell_cure_blindness(int sn, int level, CHAR_DATA *ch, void *vo)
 bool spell_restores_undead(int sn, CHAR_DATA *victim)
 {
         return IS_UNDEAD(victim) && sn >= 0 && sn < MAX_SKILL
-            && skill_table[sn].spell_fun == spell_chill_touch;
+            && (skill_table[sn].spell_fun == spell_chill_touch
+             || skill_table[sn].spell_fun == spell_energy_drain
+             || skill_table[sn].spell_fun == spell_unholy_word);
 }
 
 /* Keep the player-vampire exception separate from undead NPC traits. */
@@ -3378,6 +3626,12 @@ void spell_curse(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
+
+        if (IS_UNDEAD(victim))
+        {
+                give_undead_boon(sn, URANGE(1, level, MAX_LEVEL), ch, victim, FALSE);
+                return;
+        }
 
         if (IS_AFFECTED(victim, AFF_CURSE)
         ||  saves_resistance_effect(
@@ -4675,6 +4929,13 @@ void spell_energy_drain(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         int dam;
+
+        if (IS_UNDEAD(victim))
+        {
+                level = URANGE(1, level, MAX_LEVEL);
+                restore_undead_energy(ch, victim, 3 * level + 30, TRUE);
+                return;
+        }
 
         if (saves_resistance_effect(
                 ch,
@@ -10067,6 +10328,7 @@ void spell_prayer(int sn, int level, CHAR_DATA *ch, void *vo)
         CHAR_DATA *gch;
         CHAR_DATA *support_recipient = NULL;
         AFFECT_DATA af;
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
 
         if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
         {
@@ -10074,8 +10336,17 @@ void spell_prayer(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
+        if (victim && victim != ch && IS_UNDEAD(victim))
+        {
+                afflict_undead_with_holy_magic(
+                    sn, URANGE(1, level, MAX_LEVEL), ch, victim, TRUE);
+                return;
+        }
+
         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)
         {
+                if (gch->deleted || IS_UNDEAD(gch))
+                        continue;
                 if (is_affected(gch, gsn_prayer))
                         continue;
 
@@ -10956,6 +11227,12 @@ void spell_hex(int sn, int level, CHAR_DATA *ch, void *vo)
 
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         AFFECT_DATA af;
+
+        if (IS_UNDEAD(victim))
+        {
+                give_undead_boon(sn, URANGE(1, level, MAX_LEVEL), ch, victim, TRUE);
+                return;
+        }
 
         if (is_affected(victim, sn))
         {
