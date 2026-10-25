@@ -1093,7 +1093,7 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                     spirit = create_mobile(index);
                     spirit->level = URANGE(1, ch->level, LEVEL_HERO - 1);
                     spirit->max_hit = spirit->level * 10 + number_range(20, 100);
-                    spirit->hit = spirit->max_hit;
+                    spirit->hit = effective_max_hit(spirit);
                     spirit->damroll = spirit->level / 2;
                     spirit->hitroll = spirit->level / 2;
                     spirit->alignment = -1000;
@@ -1234,9 +1234,9 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                         break;
 
                     default:
-                        if ( dam > ch->max_hit / 4 )
+                        if ( dam > effective_max_hit(ch) / 4 )
                                 send_to_char( "{WThat really did HURT!{x\n\r", ch );
-                        if ( ch->hit < ch->max_hit / 4 )
+                        if ( ch->hit < effective_max_hit(ch) / 4 )
                                 send_to_char( "{WYou sure are {x{RBLEEDING!{x\n\r", ch );
                         break;
                 }
@@ -1359,9 +1359,9 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 break;
 
                             default:
-                                if ( dam > wch->max_hit / 4 )
+                                if ( dam > effective_max_hit(wch) / 4 )
                                         send_to_char( "{WThat really did HURT!{x\n\r", wch );
-                                if ( wch->hit < wch->max_hit / 4 )
+                                if ( wch->hit < effective_max_hit(wch) / 4 )
                                         send_to_char( "{WYou sure are {x{RBLEEDING!{x\n\r", wch );
                                 break;
                         }

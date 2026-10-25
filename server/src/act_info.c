@@ -919,8 +919,8 @@ void show_char_to_char_1(CHAR_DATA *victim, CHAR_DATA *ch)
         else
                 act("You see nothing special about $M.", ch, NULL, victim, TO_CHAR);
 
-        if (victim->max_hit > 0)
-                percent = (100 * victim->hit) / victim->max_hit;
+        if (effective_max_hit(victim) > 0)
+                percent = (100 * victim->hit) / effective_max_hit(victim);
         else
                 percent = -1;
 
@@ -2530,6 +2530,7 @@ void do_score(CHAR_DATA *ch, char *argument)
         }
 
         send_to_char(buf1, ch);
+        show_drained_condition(ch, ch);
 }
 
 void do_fixmoney(CHAR_DATA *ch, char *argument)
@@ -2710,8 +2711,9 @@ void do_affects(CHAR_DATA *ch, char *argument)
 
         if (printed)
                 send_to_char(buf1, ch);
-        else
+        else if (drained_stack_count(ch) == 0)
                 send_to_char("You are not affected in any way.\n\r", ch);
+        show_drained_condition(ch, ch);
 
         return;
 }
@@ -4041,10 +4043,10 @@ void do_report(CHAR_DATA *ch, char *argument)
                 return;
 
         sprintf(stats, "{%c%d{x/%d hits, {%c%d{x/%d mana, {%c%d{x/%d move",
-                (ch->hit < (ch->max_hit - ch->aggro_dam) / 10) ? 'R' : 'G',
-                ch->hit, ch->max_hit - ch->aggro_dam,
-                (ch->mana < ch->max_mana / 10) ? 'R' : 'C',
-                ch->mana, ch->max_mana,
+                (ch->hit < (aggravated_healing_limit(ch)) / 10) ? 'R' : 'G',
+                ch->hit, aggravated_healing_limit(ch),
+                (ch->mana < effective_max_mana(ch) / 10) ? 'R' : 'C',
+                ch->mana, effective_max_mana(ch),
                 (ch->move < ch->max_move / 10) ? 'R' : 'Y',
                 ch->move, ch->max_move);
 
@@ -4930,7 +4932,7 @@ void do_wimpy(CHAR_DATA *ch, char *argument)
         one_argument(argument, arg);
 
         if (arg[0] == '\0')
-                wimpy = ch->max_hit / 5;
+                wimpy = effective_max_hit(ch) / 5;
         else
                 wimpy = atoi(arg);
 
@@ -4940,7 +4942,7 @@ void do_wimpy(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (wimpy > ch->max_hit / 5)
+        if (wimpy > effective_max_hit(ch) / 5)
         {
                 send_to_char("Such cowardice ill becomes you.\n\r", ch);
                 return;
@@ -6202,9 +6204,9 @@ void print_player_status(CHAR_DATA *ch, char *buf)
                 get_curr_str(ch),
                 ch->pcdata->perm_str,
                 check_stat_advance(ch, APPLY_STR) ? ' ' : '+',
-                ch->hit < (ch->max_hit - ch->aggro_dam) / 10 ? 'R' : 'G',
+                ch->hit < (aggravated_healing_limit(ch)) / 10 ? 'R' : 'G',
                 ch->hit,
-                ch->max_hit - ch->aggro_dam);
+                aggravated_healing_limit(ch));
         strcpy(buf, tmp);
 
         if (ch->level >= 15)
@@ -6248,8 +6250,8 @@ void print_player_status(CHAR_DATA *ch, char *buf)
         sprintf(tmp, "Dex: {C%2d{x ({c%2d{x)%c     Mana:      {%c%4d{x/{C%4d{x",
                 get_curr_dex(ch), ch->pcdata->perm_dex,
                 check_stat_advance(ch, APPLY_DEX) ? ' ' : '+',
-                ch->mana < ch->max_mana / 10 ? 'R' : 'C',
-                ch->mana, ch->max_mana);
+                ch->mana < effective_max_mana(ch) / 10 ? 'R' : 'C',
+                ch->mana, effective_max_mana(ch));
         strcat(buf, tmp);
 
         if (ch->class == CLASS_SHAPE_SHIFTER)

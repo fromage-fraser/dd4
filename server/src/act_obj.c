@@ -2720,7 +2720,7 @@ static void holy_water_drink_effect(CHAR_DATA *ch, int liquid)
         if (liquid != LIQ_HOLY_WATER || !IS_UNDEAD(ch))
                 return;
 
-        dam = UMAX(10, ch->max_hit / 4);
+        dam = UMAX(10, effective_max_hit(ch) / 4);
 
         send_to_char(
             "{WThe holy water burns through your undead essence!{x\n\r",
@@ -3255,7 +3255,7 @@ static void liquid_splash_effect(
                 dam = UMAX(
                     10,
                     UMIN(
-                        victim->max_hit / 8,
+                        effective_max_hit(victim) / 8,
                         UMAX(10, ch->level * 4)));
 
                 send_to_char(

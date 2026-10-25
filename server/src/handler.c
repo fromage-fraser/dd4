@@ -4911,6 +4911,166 @@ char* affect_bit_name_nice (unsigned long int vector)
 }
 
 
+
+/* Keep the condition separate from permanent stats and ordinary spell affects. */
+int drained_stack_count(const CHAR_DATA *ch)
+{
+        if (!ch || ch->deleted || IS_UNDEAD(ch)
+        ||  (IS_NPC(ch) && IS_SET(ch->act, ACT_OBJECT)))
+                return 0;
+        return URANGE(0, ch->drained_stacks, DRAINED_MAX_STACKS);
+}
+
+int drained_stat_penalty(const CHAR_DATA *ch)
+{
+        return drained_stack_count(ch) * DRAINED_ROLL_PER_STACK;
+}
+
+int effective_max_hit(const CHAR_DATA *ch)
+{
+        int stacks = drained_stack_count(ch);
+
+        if (!ch)
+                return 0;
+        if (stacks == 0)
+                return ch->max_hit;
+        return (int)UMAX(1LL, (long long)ch->max_hit
+            * (100 - stacks * DRAINED_PERCENT_PER_STACK) / 100);
+}
+
+int effective_max_mana(const CHAR_DATA *ch)
+{
+        int stacks = drained_stack_count(ch);
+
+        if (!ch)
+                return 0;
+        if (stacks == 0)
+                return ch->max_mana;
+        return (int)UMAX(0LL, (long long)ch->max_mana
+            * (100 - stacks * DRAINED_PERCENT_PER_STACK) / 100);
+}
+
+void clear_drained_condition(CHAR_DATA *ch)
+{
+        if (!ch)
+                return;
+        ch->drained_stacks = 0;
+        ch->drained_recovery = 0;
+        ch->drained_updated = current_time;
+        ch->drained_next_stack = 0;
+}
+
+/* Losing a ceiling never heals or kills; ordinary attack damage can still kill. */
+void clamp_drained_resources(CHAR_DATA *ch)
+{
+        if (drained_stack_count(ch) == 0)
+                return;
+        if (ch->hit > aggravated_healing_limit(ch))
+                ch->hit = aggravated_healing_limit(ch);
+        if (ch->mana > effective_max_mana(ch))
+                ch->mana = effective_max_mana(ch);
+}
+
+void update_drained_condition(CHAR_DATA *ch, time_t now, bool offline)
+{
+        long long elapsed;
+        int earned, recovered, before;
+
+        if (!ch || ch->deleted)
+                return;
+        if (drained_stack_count(ch) == 0)
+        {
+                clear_drained_condition(ch);
+                ch->drained_updated = now;
+                return;
+        }
+
+        ch->drained_stacks = drained_stack_count(ch);
+        ch->drained_recovery = URANGE(
+            0, ch->drained_recovery, DRAINED_RECOVERY_SECONDS - 1);
+        if (ch->drained_updated <= 0 || ch->drained_updated > now)
+                ch->drained_updated = now;
+        elapsed = (long long)now - (long long)ch->drained_updated;
+        ch->drained_updated = now;
+
+        if (!offline && ch->fighting)
+                elapsed = 0;
+        /* No condition can need more credit than all five stacks together. */
+        elapsed = UMIN(elapsed,
+            (long long)DRAINED_RECOVERY_SECONDS * DRAINED_MAX_STACKS);
+        earned = (int)elapsed;
+        if (!offline && (ch->position == POS_RESTING
+                      || ch->position == POS_SLEEPING))
+                earned *= 2;
+
+        before = ch->drained_stacks;
+        earned += ch->drained_recovery;
+        recovered = UMIN(before, earned / DRAINED_RECOVERY_SECONDS);
+        ch->drained_stacks -= recovered;
+        ch->drained_recovery = ch->drained_stacks > 0
+            ? earned % DRAINED_RECOVERY_SECONDS : 0;
+        if (recovered > 0 && !offline)
+        {
+                if (ch->drained_stacks == 0)
+                        send_to_char("Your life force feels whole again.\n\r", ch);
+                else
+                        send_to_char("Some of your drained strength returns.\n\r", ch);
+        }
+        /* A lower stack count raises ceilings without refilling either bar. */
+        clamp_drained_resources(ch);
+}
+
+bool add_drained_stack(CHAR_DATA *ch)
+{
+        if (!ch || ch->deleted || !ch->in_room || ch->position == POS_DEAD
+        ||  ch->hit <= 0 || IS_UNDEAD(ch) || is_noncorporeal_player(ch)
+        ||  (IS_NPC(ch) && IS_SET(ch->act, ACT_OBJECT))
+        ||  get_resistance_result(ch, RES_DRAIN) == RES_RESULT_IMMUNE)
+                return FALSE;
+
+        update_drained_condition(ch, current_time, FALSE);
+        if (ch->drained_stacks >= DRAINED_MAX_STACKS
+        ||  ch->drained_next_stack > current_time)
+                return FALSE;
+
+        ch->drained_stacks++;
+        ch->drained_recovery = 0;
+        ch->drained_updated = current_time;
+        ch->drained_next_stack = current_time + DRAINED_STACK_COOLDOWN;
+        clamp_drained_resources(ch);
+        send_to_char("Your life force weakens. You feel Drained.\n\r", ch);
+        return TRUE;
+}
+
+void show_drained_condition(CHAR_DATA *viewer, CHAR_DATA *victim)
+{
+        char buf[MAX_STRING_LENGTH];
+        int stacks = drained_stack_count(victim);
+        int seconds, rate;
+
+        if (stacks == 0)
+                return;
+        snprintf(buf, sizeof(buf),
+            "{WDrained:{x %d/%d stacks; HP/mana ceilings -%d%%, hitroll/damroll -%d.\n\r",
+            stacks, DRAINED_MAX_STACKS,
+            stacks * DRAINED_PERCENT_PER_STACK, drained_stat_penalty(victim));
+        send_to_char(buf, viewer);
+        if (victim->fighting)
+                send_to_char("Recovery is paused while fighting.\n\r", viewer);
+        else
+        {
+                rate = victim->position == POS_RESTING
+                    || victim->position == POS_SLEEPING ? 2 : 1;
+                seconds = (DRAINED_RECOVERY_SECONDS
+                    - URANGE(0, victim->drained_recovery,
+                             DRAINED_RECOVERY_SECONDS - 1) + rate - 1) / rate;
+                snprintf(buf, sizeof(buf),
+                    "Next stack recovers in about %d seconds at the current rate.\n\r",
+                    seconds);
+                send_to_char(buf, viewer);
+        }
+}
+
 /* A worn symbol helps; holding one gives turning a little more force. */
 int holy_focus_turn_bonus(CHAR_DATA *ch)
 {

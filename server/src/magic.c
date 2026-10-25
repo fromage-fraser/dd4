@@ -2840,15 +2840,15 @@ void spell_cure_critical(int sn, int level, CHAR_DATA *ch, void *vo)
                         return;
         }
 
-        if (victim->hit > victim->max_hit)
+        if (victim->hit > effective_max_hit(victim))
                 return;
 
-        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        if (victim->hit < aggravated_healing_limit(victim))
         {
                 victim->hit =
                     UMIN(
                         (long long)victim->hit + heal,
-                        (long long)victim->max_hit - victim->aggro_dam);
+                        aggravated_healing_limit(victim));
         }
 
         update_pos(victim);
@@ -2890,8 +2890,8 @@ void spell_cure_critical(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (ch != victim)
         {
-                if (victim->max_hit > 0)
-                        percent = victim->hit * 100 / victim->max_hit;
+                if (effective_max_hit(victim) > 0)
+                        percent = victim->hit * 100 / effective_max_hit(victim);
                 else
                         percent = -1;
 
@@ -2995,22 +2995,22 @@ void spell_cure_light(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        if (victim->hit > victim->max_hit)
+        if (victim->hit > effective_max_hit(victim))
                 return;
 
-        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        if (victim->hit < aggravated_healing_limit(victim))
         {
                 victim->hit =
                     UMIN(
                         (long long)victim->hit + heal,
-                        (long long)victim->max_hit - victim->aggro_dam);
+                        aggravated_healing_limit(victim));
         }
         update_pos(victim);
 
         if (ch != victim)
         {
-                if (victim->max_hit > 0)
-                        percent = victim->hit * 100 / victim->max_hit;
+                if (effective_max_hit(victim) > 0)
+                        percent = victim->hit * 100 / effective_max_hit(victim);
                 else
                         percent = -1;
 
@@ -3087,9 +3087,9 @@ void spell_cure_mana(int sn, int level, CHAR_DATA *ch, void *vo)
 
         restore = dice(4, 8);
 
-        if (victim->mana < victim->max_mana)
+        if (victim->mana < effective_max_mana(victim))
         {
-                victim->mana = UMIN(victim->mana + restore, victim->max_mana);
+                victim->mana = UMIN(victim->mana + restore, effective_max_mana(victim));
                 update_pos(victim);
         }
 
@@ -3400,22 +3400,22 @@ void spell_cure_serious(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        if (victim->hit > victim->max_hit)
+        if (victim->hit > effective_max_hit(victim))
                 return;
 
-        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        if (victim->hit < aggravated_healing_limit(victim))
         {
                 victim->hit =
                     UMIN(
                         (long long)victim->hit + heal,
-                        (long long)victim->max_hit - victim->aggro_dam);
+                        aggravated_healing_limit(victim));
         }
         update_pos(victim);
 
         if (ch != victim)
         {
-                if (victim->max_hit > 0)
-                        percent = victim->hit * 100 / victim->max_hit;
+                if (effective_max_hit(victim) > 0)
+                        percent = victim->hit * 100 / effective_max_hit(victim);
                 else
                         percent = -1;
 
@@ -4987,6 +4987,8 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_energy_drain(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        ROOM_INDEX_DATA *room;
+        int source_deaths, victim_deaths;
         int dam;
 
         if (IS_UNDEAD(victim))
@@ -4996,51 +4998,44 @@ void spell_energy_drain(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
+        if (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        {
+                send_to_char("Objects have no life force to drain.\n\r", ch);
+                return;
+        }
         if (saves_resistance_effect(
-                ch,
-                level,
-                victim,
-                skill_table[sn].res_type)
-        ||  victim->edrain)
+                ch, level, victim, skill_table[sn].res_type))
         {
                 damage(ch, victim, 0, sn, FALSE);
                 return;
         }
 
-        if (IS_NPC(victim) && (IS_SET(victim->act, ACT_OBJECT)))
-        {
-                send_to_char("Objects have no life force to drain.\n\r", ch);
-                return;
-        }
-
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        victim_deaths = action_deaths(victim);
         send_to_char("{RYou drain life force from your victim!\n\r{x", ch);
-
         ch->alignment = UMAX(-1000, ch->alignment - 200);
         check_worn_alignment(ch);
-        if (victim->level <= 2)
-        {
-                dam = 2 * ch->hit + 1;
-        }
-        else
-        {
-                gain_exp(victim, 0 - number_range(level / 2, 3 * level / 2));
-                victim->mana /= 2;
-                victim->hit /= 2;
-                dam = level / 2;
-                victim->edrain = 5;
-        }
+        if (!action_character_in_room(ch, room, source_deaths)
+        ||  !action_character_in_room(victim, room, victim_deaths))
+                return;
 
+        dam = UMAX(1, level / 2);
         if (IS_NPC(ch)
         &&  (mob_has_special(ch, spec_lookup("spec_wight"))
           || mob_has_special(ch, spec_lookup("spec_wraith"))
           || mob_has_special(ch, spec_lookup("spec_spectre"))))
         {
-                /* A small share of the normal hit, not another HP loss. */
+                /* Keep the existing small scar component on these creatures. */
                 damage_with_aggravated_component(
                     ch, victim, dam, sn, FALSE, 100, 2, 5);
         }
         else
                 damage(ch, victim, dam, sn, FALSE);
+
+        if (action_character_in_room(ch, room, source_deaths)
+        &&  action_character_in_room(victim, room, victim_deaths))
+                add_drained_stack(victim);
         return;
 }
 
@@ -5409,7 +5404,7 @@ void spell_gate(int sn, int level, CHAR_DATA *ch, void *vo)
         mob->max_hit = mob->level * 8
                      + number_range(mob->level * mob->level / 4,
                                     mob->level * mob->level);
-        mob->hit = mob->max_hit;
+        mob->hit = effective_max_hit(mob);
 
         char_to_room(mob, ch->in_room);
         return;
@@ -5499,15 +5494,15 @@ void spell_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim == ch->fighting)
                 return;
 
-        if (victim->hit > victim->max_hit)
+        if (victim->hit > effective_max_hit(victim))
                 return;
 
-        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        if (victim->hit < aggravated_healing_limit(victim))
         {
                 victim->hit =
                     UMIN(
                         (long long)victim->hit + heal,
-                        (long long)victim->max_hit - victim->aggro_dam);
+                        aggravated_healing_limit(victim));
         }
 
         update_pos(victim);
@@ -5546,8 +5541,8 @@ void spell_heal(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (ch != victim)
         {
-                if (victim->max_hit > 0)
-                        percent = victim->hit * 100 / victim->max_hit;
+                if (effective_max_hit(victim) > 0)
+                        percent = victim->hit * 100 / effective_max_hit(victim);
                 else
                         percent = -1;
 
@@ -5649,15 +5644,15 @@ void spell_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim == ch->fighting)
                 return;
 
-        if (victim->hit > victim->max_hit)
+        if (victim->hit > effective_max_hit(victim))
                 return;
 
-        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        if (victim->hit < aggravated_healing_limit(victim))
         {
                 victim->hit =
                     UMIN(
                         (long long)victim->hit + heal,
-                        (long long)victim->max_hit - victim->aggro_dam);
+                        aggravated_healing_limit(victim));
         }
 
         update_pos(victim);
@@ -5696,8 +5691,8 @@ void spell_power_heal(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (ch != victim)
         {
-                if (victim->max_hit > 0)
-                        percent = victim->hit * 100 / victim->max_hit;
+                if (effective_max_hit(victim) > 0)
+                        percent = victim->hit * 100 / effective_max_hit(victim);
                 else
                         percent = -1;
 
@@ -7714,7 +7709,7 @@ void spell_summon_familiar(int sn, int level, CHAR_DATA *ch, void *vo)
                 send_to_char("{MThe use of spellcrafting reagents increases the hardiness of your familiar!\n\r{x", ch);
 
         victim->max_hit = (in_sc_room) ? (victim->max_hit * mod_room_bonus) / 100 : victim->max_hit;
-        victim->hit = victim->max_hit;
+        victim->hit = effective_max_hit(victim);
 
         sprintf(buf, "You raise your hands and the form of %s appears before you.\n\r",
                 victim->short_descr);
@@ -7790,7 +7785,7 @@ void spell_summon_demon(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (mob->level > ch->level)
                         mob->level = ch->level;
                 mob->max_hit = (in_sc_room) ? ((mob->level * mod_room_bonus) / 100) * 10 + number_range(mob->level * mob->level / 4, (mob->level * ((mob->level * mod_room_bonus) / 100))) : mob->level * 10 + number_range(mob->level * mob->level / 4, mob->level * mob->level);
-                mob->hit = mob->max_hit;
+                mob->hit = effective_max_hit(mob);
         }
         else
         {
@@ -7798,7 +7793,7 @@ void spell_summon_demon(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (mob->level > ch->level)
                         mob->level = ch->level;
                 mob->max_hit = (in_sc_room) ? ((mob->level * mod_room_bonus) / 100) * 8 + number_range(mob->level * mob->level / 4, (mob->level * ((mob->level * mod_room_bonus) / 100))) : mob->level * 8 + number_range(mob->level * mob->level / 4, mob->level * mob->level);
-                mob->hit = mob->max_hit;
+                mob->hit = effective_max_hit(mob);
         }
 
         sprintf(buf, "You outline a pentagram before you and the form of %s rises "
@@ -8943,7 +8938,7 @@ void spell_recharge_mana(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
 
-        victim->mana = victim->max_mana - victim->aggro_dam;
+        victim->mana = effective_max_mana(victim) - victim->aggro_dam;
         update_pos(victim);
 
         if (ch != victim)
@@ -8959,10 +8954,14 @@ void spell_vitalize(int sn, int level, CHAR_DATA *ch, void *vo)
         if (!IS_NPC(ch))
                 return;
 
-        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
-                victim->hit = (long long)victim->max_hit - victim->aggro_dam;
-        if (victim->mana < victim->max_mana)
-                victim->mana = victim->max_mana;
+        if (drained_stack_count(victim) > 0)
+                send_to_char("Your life force feels whole again.\n\r", victim);
+        clear_drained_condition(victim);
+
+        if (victim->hit < aggravated_healing_limit(victim))
+                victim->hit = aggravated_healing_limit(victim);
+        if (victim->mana < effective_max_mana(victim))
+                victim->mana = effective_max_mana(victim);
         if (victim->move < victim->max_move)
                 victim->move = victim->max_move;
 
@@ -8983,7 +8982,7 @@ void spell_complete_healing(int sn, int level, CHAR_DATA *ch, void *vo)
         if (victim == ch->fighting)
                 return;
 
-        if (victim->hit > victim->max_hit)
+        if (victim->hit > effective_max_hit(victim))
                 return;
 
         if (IS_NPC(victim))
@@ -8992,10 +8991,9 @@ void spell_complete_healing(int sn, int level, CHAR_DATA *ch, void *vo)
                         return;
         }
 
-        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        if (victim->hit < aggravated_healing_limit(victim))
         {
-                long long missing = (long long)victim->max_hit
-                                  - victim->aggro_dam - victim->hit;
+                long long missing = (long long)aggravated_healing_limit(victim) - victim->hit;
 
                 victim->hit = (long long)victim->hit
                             + holy_healing_amount(sn, victim, missing);
@@ -9068,7 +9066,6 @@ void spell_complete_healing(int sn, int level, CHAR_DATA *ch, void *vo)
                     ch);
         }
 
-        ch->edrain = 0;
         ch->backstab = 0;
 }
 
@@ -9910,15 +9907,15 @@ void spell_psychic_healing(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        if (victim->hit > victim->max_hit)
+        if (victim->hit > effective_max_hit(victim))
                 return;
 
-        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        if (victim->hit < aggravated_healing_limit(victim))
         {
                 victim->hit =
                     UMIN(
                         (long long)victim->hit + heal,
-                        (long long)victim->max_hit - victim->aggro_dam);
+                        aggravated_healing_limit(victim));
         }
         update_pos(victim);
 
@@ -10184,24 +10181,31 @@ void spell_feeblemind(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_wither(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
+        ROOM_INDEX_DATA *room = ch->in_room;
+        int source_deaths = action_deaths(ch);
+        int victim_deaths = action_deaths(victim);
         int dam;
+        bool resisted;
 
-        /* 2-9 level - Shade */
         dam = dice(level, 8);
         dam += level;
-
-        if (saves_supernatural_effect(
-                ch, level, victim, 0, SUPERNATURAL_DRAIN))
+        resisted = saves_supernatural_effect(
+            ch, level, victim, 0, SUPERNATURAL_DRAIN);
+        if (resisted)
                 dam /= 1.5;
 
-        if (spell_attack_number == 1 && (ch != victim))
+        if (spell_attack_number == 1 && ch != victim)
         {
                 act("You drain the life essence from your victim!", ch, NULL, NULL, TO_CHAR);
                 act("$c drains $N's life essence away!", ch, NULL, victim, TO_NOTVICT);
         }
 
-        damage_with_aggravated_component(
-            ch, victim, dam, sn, FALSE, 100, 5, 0);
+        /* Drained replaces this spell's former aggravated-damage component. */
+        damage(ch, victim, dam, sn, FALSE);
+        if (!resisted
+        &&  action_character_in_room(ch, room, source_deaths)
+        &&  action_character_in_room(victim, room, victim_deaths))
+                add_drained_stack(victim);
 }
 
 bool spell_imprint(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -10660,7 +10664,7 @@ static void mass_positive_healing(
 
                 old_hit = gch->hit;
                 was_confused = IS_AFFECTED(gch, AFF_CONFUSION) != 0;
-                ceiling = (long long)gch->max_hit - gch->aggro_dam;
+                ceiling = aggravated_healing_limit(gch);
                 if (gch->hit < ceiling)
                 {
                         gch->hit = UMIN(
@@ -11446,7 +11450,7 @@ void spell_animate_dead(int sn, int level, CHAR_DATA *ch, void *vo)
         victim->max_hit = victim->level * 8
             + number_range(victim->level * victim->level / 4,
                            victim->level * victim->level);
-        victim->hit = victim->max_hit;
+        victim->hit = effective_max_hit(victim);
 
         /* These are servants, not a source of farmable rewards. */
         SET_BIT(victim->act, ACT_NO_EXPERIENCE);
@@ -12610,7 +12614,7 @@ void spell_chaos_blast(int sn, int level, CHAR_DATA *ch, void *vo)
         double fuzz_value;
         int flip = number_bits(1);
 
-        if (victim->hit < victim->max_hit && IS_NPC(victim) && victim->pIndexData->vnum != BOT_VNUM)
+        if (victim->hit < effective_max_hit(victim) && IS_NPC(victim) && victim->pIndexData->vnum != BOT_VNUM)
         {
                 act("<15>$C is too alert for you to unleash <242>c<251>h<242>a<251>o<242>s<0> <15>energy on $m!<0>",
                     ch, NULL, victim, TO_CHAR);
@@ -12720,15 +12724,15 @@ void spell_runic_mend(int sn, int level, CHAR_DATA *ch, void *vo)
         if (heal > 75)
                 heal = 75;
 
-        if (victim->hit > victim->max_hit)
+        if (victim->hit > effective_max_hit(victim))
                 return;
 
-        if (victim->hit < (long long)victim->max_hit - victim->aggro_dam)
+        if (victim->hit < aggravated_healing_limit(victim))
         {
                 victim->hit =
                     UMIN(
                         (long long)victim->hit + heal,
-                        (long long)victim->max_hit - victim->aggro_dam);
+                        aggravated_healing_limit(victim));
         }
         update_pos(victim);
 
@@ -13507,7 +13511,7 @@ void spell_fleshrot(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (victim->hit < victim->max_hit && IS_NPC(victim) && victim->pIndexData->vnum != BOT_VNUM)
+        if (victim->hit < effective_max_hit(victim) && IS_NPC(victim) && victim->pIndexData->vnum != BOT_VNUM)
         {
                 send_to_char("Your target must be in good health for your spell to be effective.\n\r", ch);
                 return;

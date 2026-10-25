@@ -4125,7 +4125,7 @@ void do_bash(CHAR_DATA *ch, char *argument)
                         send_to_char("You don't think that you'll ever be able to break through.\n\r", ch);
                         act("WHAAAAM!!!  $n bashes against the $d, but it holds strong.",
                             ch, NULL, pexit->keyword, TO_ROOM);
-                        damage(ch, ch, (ch->max_hit / 5), gsn_bash, FALSE);
+                        damage(ch, ch, (effective_max_hit(ch) / 5), gsn_bash, FALSE);
                         return;
                 }
 
@@ -4148,7 +4148,7 @@ void do_bash(CHAR_DATA *ch, char *argument)
                         act("Crash!  You bashed open the $d!", ch, NULL, pexit->keyword, TO_CHAR);
                         act("$n bashes open the $d!", ch, NULL, pexit->keyword, TO_ROOM);
 
-                        damage(ch, ch, (ch->max_hit / 20), gsn_bash, FALSE);
+                        damage(ch, ch, (effective_max_hit(ch) / 20), gsn_bash, FALSE);
 
                         /* Bash through the other side */
                         if ((to_room = pexit->to_room) && (pexit_rev = to_room->exit[directions[door].reverse]) && pexit_rev->to_room == in_room)
@@ -4184,7 +4184,7 @@ void do_bash(CHAR_DATA *ch, char *argument)
                             ch, NULL, pexit->keyword, TO_CHAR);
                         act("$n bashes against the $d, but it holds strong.",
                             ch, NULL, pexit->keyword, TO_ROOM);
-                        damage(ch, ch, (ch->max_hit / 10), gsn_bash, FALSE);
+                        damage(ch, ch, (effective_max_hit(ch) / 10), gsn_bash, FALSE);
                 }
         }
         else

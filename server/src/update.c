@@ -1492,7 +1492,7 @@ int mana_gain(CHAR_DATA *ch)
         if (IS_NPC(ch))
         {
                 gain = ch->level * 3 / 2;
-                return UMIN(gain, ch->max_mana - ch->mana);
+                return UMIN(gain, effective_max_mana(ch) - ch->mana);
         }
 
         gain = UMAX(5, ch->level);
@@ -1586,20 +1586,20 @@ int mana_gain(CHAR_DATA *ch)
 
                         if (is_same_group(gch, ch) && ch->in_room == gch->in_room)
                         {
-                                if (gch->mana < gch->max_mana)
+                                if (gch->mana < effective_max_mana(gch))
                                 {
                                         gch->mana += amt;
-                                        if (gch->mana > gch->max_mana)
-                                                gch->mana = gch->max_mana;
+                                        if (gch->mana > effective_max_mana(gch))
+                                                gch->mana = effective_max_mana(gch);
                                 }
                         }
                 }
         }
 
-        if (ch->mana > ch->max_mana)
+        if (ch->mana > effective_max_mana(ch))
                 return 0;
 
-        return UMIN(gain, ch->max_mana - ch->mana);
+        return UMIN(gain, effective_max_mana(ch) - ch->mana);
 }
 
 int move_gain(CHAR_DATA *ch)
@@ -2001,7 +2001,7 @@ void mobile_update(void)
                 /*
                  * Flee
                  */
-                if (ch->hit < (ch->max_hit / 2) && !IS_SET(ch->act, ACT_SENTINEL) && (door = number_bits(3)) <= 5 && (pexit = ch->in_room->exit[door]) && pexit->to_room && !IS_SET(ch->act, ACT_DIE_IF_MASTER_GONE) && (!IS_SET(ch->act, ACT_STAY_AREA) || pexit->to_room->area == ch->in_room->area) && !IS_SET(pexit->exit_info, EX_CLOSED) && !IS_SET(pexit->to_room->room_flags, ROOM_NO_MOB))
+                if (ch->hit < (effective_max_hit(ch) / 2) && !IS_SET(ch->act, ACT_SENTINEL) && (door = number_bits(3)) <= 5 && (pexit = ch->in_room->exit[door]) && pexit->to_room && !IS_SET(ch->act, ACT_DIE_IF_MASTER_GONE) && (!IS_SET(ch->act, ACT_STAY_AREA) || pexit->to_room->area == ch->in_room->area) && !IS_SET(pexit->exit_info, EX_CLOSED) && !IS_SET(pexit->to_room->room_flags, ROOM_NO_MOB))
                 {
                         move_char(ch, door);
                 }
@@ -2290,8 +2290,6 @@ void char_update(void)
                 if (ch->backstab > 0)
                         ch->backstab--;
 
-                if (ch->edrain > 0)
-                        ch->edrain--;
 
                 /*
                  * Find dude with oldest save time.
@@ -3218,7 +3216,7 @@ void aggr_update()
                         if (!victim)
                                 continue;
 
-                        if (CAN_SPEAK(mch) && (cursed_utterance == 1) && (mch->hit == mch->max_hit))
+                        if (CAN_SPEAK(mch) && (cursed_utterance == 1) && (mch->hit == effective_max_hit(mch)))
                         {
                                 cursed_utterance = 0;
                                 tmp = number_percent();
@@ -3537,6 +3535,7 @@ void update_handler()
         static int pulse_point;
         static int pulse_state; /* for prone and dazed state initially - Brutus */
         static int pulse_msdp;  /* <--- GCMP */
+        static int pulse_drained;
         static int json_tick = 0;
 
         sprintf(last_function, "entering update_hander");
@@ -3596,6 +3595,15 @@ void update_handler()
                 json_write_areas();
                 json_write_changes("helpfile.are", "../api/changes.json");
                 json_tick = 0;
+        }
+
+        if (--pulse_drained <= 0)
+        {
+                CHAR_DATA *wch;
+
+                pulse_drained = PULSE_PER_SECOND;
+                for (wch = char_list; wch; wch = wch->next)
+                        update_drained_condition(wch, current_time, FALSE);
         }
 
         if (--pulse_msdp <= 0)
@@ -4018,7 +4026,7 @@ void msdp_update(void)
                                     MSDPSetNumber( d, eMSDP_EXPERIENCE_TNL, TBD );
                         */
                         MSDPSetNumber(d, eMSDP_HEALTH, d->character->hit);
-                        MSDPSetNumber(d, eMSDP_HEALTH_MAX, d->character->max_hit);
+                        MSDPSetNumber(d, eMSDP_HEALTH_MAX, effective_max_hit(d->character));
                         MSDPSetNumber(d, eMSDP_LEVEL, d->character->level);
                         /*
                                     MSDPSetString( d, eMSDP_RACE, TBD );
@@ -4026,7 +4034,7 @@ void msdp_update(void)
                         MSDPSetString(d, eMSDP_CLASS, class_table[d->character->class].who_name);
                         MSDPSetString(d, eMSDP_SUBCLASS, sub_class_table[d->character->sub_class].who_name);
                         MSDPSetNumber(d, eMSDP_MANA, d->character->mana);
-                        MSDPSetNumber(d, eMSDP_MANA_MAX, d->character->max_mana);
+                        MSDPSetNumber(d, eMSDP_MANA_MAX, effective_max_mana(d->character));
                         MSDPSetNumber(d, eMSDP_WIMPY, d->character->wimpy);
                         /* MSDPSetNumber( d, eMSDP_PRACTICE, d->character->practice ); */
                         MSDPSetNumber(d, eMSDP_MONEY, d->character->gold);
@@ -4052,7 +4060,7 @@ void msdp_update(void)
                         /* This would be better moved elsewhere */
                         if (pOpponent != NULL)
                         {
-                                int hit_points = (pOpponent->hit * 100) / pOpponent->max_hit;
+                                int hit_points = (pOpponent->hit * 100) / effective_max_hit(pOpponent);
                                 MSDPSetNumber(d, eMSDP_OPPONENT_HEALTH, hit_points);
                                 MSDPSetNumber(d, eMSDP_OPPONENT_HEALTH_MAX, 100);
                                 MSDPSetNumber(d, eMSDP_OPPONENT_LEVEL, pOpponent->level);
@@ -4332,8 +4340,8 @@ void gmcp_update(void)
                         UpdateGMCPNumber(d, GMCP_HP, d->character->hit);
                         UpdateGMCPNumber(d, GMCP_MANA, d->character->mana);
                         UpdateGMCPNumber(d, GMCP_MOVE, d->character->move);
-                        UpdateGMCPNumber(d, GMCP_MAX_HP, d->character->max_hit);
-                        UpdateGMCPNumber(d, GMCP_MAX_MANA, d->character->max_mana);
+                        UpdateGMCPNumber(d, GMCP_MAX_HP, effective_max_hit(d->character));
+                        UpdateGMCPNumber(d, GMCP_MAX_MANA, effective_max_mana(d->character));
                         UpdateGMCPNumber(d, GMCP_MAX_MOVE, d->character->max_move);
                         UpdateGMCPNumber(d, GMCP_POSITION, d->character->position);
                         UpdateGMCPString(
@@ -4672,7 +4680,7 @@ void gmcp_update(void)
                                                                 (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
                                                                 enemy->level,
                                                                 enemy->hit,
-                                                                enemy->max_hit,
+                                                                effective_max_hit(enemy),
                                                                 (IS_NPC(enemy) ? enemy->pIndexData->vnum : 0),
                                                                 (IS_NPC(enemy) ? enemy_long_desc : ""),
                                                                 (IS_NPC(enemy) ? enemy_look_desc : ""));
@@ -4683,7 +4691,7 @@ void gmcp_update(void)
                                                                 (IS_NPC(enemy) ? enemy->short_descr : enemy->name),
                                                                 enemy->level,
                                                                 enemy->hit,
-                                                                enemy->max_hit,
+                                                                effective_max_hit(enemy),
                                                                 (IS_NPC(enemy) ? enemy->pIndexData->vnum : 0),
                                                                 (IS_NPC(enemy) ? enemy_long_desc : ""),
                                                                 (IS_NPC(enemy) ? enemy_look_desc : ""));
@@ -4691,10 +4699,10 @@ void gmcp_update(void)
                                                 }
 #else
                                                 if (buf[0] == '\0')
-                                                        sprintf(buf, "[ {{ \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }", enemy->name, enemy->level, enemy->hit, enemy->max_hit);
+                                                        sprintf(buf, "[ {{ \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }", enemy->name, enemy->level, enemy->hit, effective_max_hit(enemy));
                                                 else
                                                 {
-                                                        sprintf(buf2, ", {{ \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }", enemy->name, enemy->level, enemy->hit, enemy->max_hit);
+                                                        sprintf(buf2, ", {{ \"name\": \"%s\", \"level\": \"%d\", \"hp\": \"%d\", \"maxhp\": \"%d\" }", enemy->name, enemy->level, enemy->hit, effective_max_hit(enemy));
                                                         strcat(buf, buf2);
                                                 }
 #endif

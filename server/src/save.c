@@ -179,6 +179,40 @@ void save_char_obj (CHAR_DATA *ch)
 /*
  * Write the char.
  */
+
+static void fwrite_drained_condition(CHAR_DATA *ch, FILE *fp)
+{
+        int remaining;
+
+        update_drained_condition(ch, current_time, FALSE);
+        if (drained_stack_count(ch) == 0)
+                return;
+        remaining = ch->drained_next_stack > current_time
+            ? (int)UMIN((long long)DRAINED_STACK_COOLDOWN,
+                (long long)ch->drained_next_stack - (long long)current_time) : 0;
+        fprintf(fp, "Drained     %d %d %d %lld\n",
+            drained_stack_count(ch), ch->drained_recovery,
+            remaining, (long long)current_time);
+}
+
+static void fread_drained_condition(CHAR_DATA *ch, FILE *fp)
+{
+        int stat;
+        long long stacks = fread_number64(fp, &stat);
+        long long recovery = fread_number64(fp, &stat);
+        long long cooldown = fread_number64(fp, &stat);
+        long long saved = fread_number64(fp, &stat);
+
+        ch->drained_stacks = (int)URANGE(0LL, stacks, DRAINED_MAX_STACKS);
+        ch->drained_recovery = (int)URANGE(
+            0LL, recovery, DRAINED_RECOVERY_SECONDS - 1);
+        cooldown = URANGE(0LL, cooldown, DRAINED_STACK_COOLDOWN);
+        if (saved <= 0 || saved > (long long)current_time)
+                saved = (long long)current_time;
+        ch->drained_updated = (time_t)saved;
+        ch->drained_next_stack = (time_t)(saved + cooldown);
+}
+
 void fwrite_char (CHAR_DATA *ch, FILE *fp)
 {
         AFFECT_DATA *paf;
@@ -188,6 +222,7 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
                 return;
 
         fprintf(fp, "#PLAYER\n");
+        fwrite_drained_condition(ch, fp);
         fprintf(fp, "Nm          %s~\n", ch->name);
         fprintf(fp, "ShtDsc      %s~\n", ch->short_descr);
         fprintf(fp, "LngDsc      %s~\n", ch->long_descr);
@@ -612,7 +647,6 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
         ch->act = PLR_BLANK | PLR_COMBINE | PLR_PROMPT;
         ch->gag = 0;
         ch->backstab = 0;
-        ch->edrain = 0;
         ch->silent_mode = 0;
         ch->pcdata->allow_look = 0;
         ch->pcdata->level_xp_loss = 0;
@@ -822,6 +856,8 @@ bool load_char_obj (DESCRIPTOR_DATA *d, char *name)
                 ch->pcdata->condition[COND_THIRST] = MAX_DRINK;
         }
 
+        /* Equipment and form data are ready before applying offline recovery. */
+        update_drained_condition(ch, current_time, TRUE);
         fpReserve = fopen(NULL_FILE, "r");
         return found;
 }
@@ -1022,6 +1058,12 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'D':
+                        if (!str_cmp(word, "Drained"))
+                        {
+                                fread_drained_condition(ch, fp);
+                                fMatch = TRUE;
+                                break;
+                        }
                         KEY("Dam", ch->damroll, fread_number( fp, &stat ));
                         KEY("DamageMit", ch->damage_mitigation, fread_number( fp, &stat ));
                         KEY("DamangeEnh", ch->damage_enhancement, fread_number( fp, &stat));
@@ -1382,7 +1424,6 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
          *  Init some variables that aren't saved
          */
         ch->backstab = 0;
-        ch->edrain = 0;
         ch->tournament_team = -1;
         ch->pcdata->suicide_code = 0;
 

@@ -735,12 +735,10 @@ While fighting and able to act, spec_wight has a 20 percent chance at each
 special-function opportunity to attempt Energy Drain against the current
 opponent.
 
-The existing Energy Drain implementation remains authoritative. Its
-RES_DRAIN | RES_MAGIC resistance categories, save behaviour, edrain cooldown
-and existing resource/XP effects are reused rather than duplicated.
-
-A victim with an active edrain timer is not drained again. spec_wight also
-does not use the living-target drain against an IS_UNDEAD() opponent.
+The shared Energy Drain implementation remains authoritative. It uses
+RES_DRAIN | RES_MAGIC, its normal save, a small damaging hit and Drained.
+The target's 30-second protection limits new stacks, not ordinary damage.
+spec_wight does not use this attack against an IS_UNDEAD() opponent.
 
 The archetype XP adjustment remains zero. spec_wight receives the normal
 +10 percentage-point special-function XP weighting.
@@ -802,7 +800,7 @@ opportunity; it does not also attempt life drain.
 
 While fighting in semi_material, spec_wraith reuses the existing spec_wight
 Energy Drain behaviour, including its 20 percent attempt chance,
-RES_DRAIN | RES_MAGIC handling, save behaviour and edrain cooldown.
+RES_DRAIN | RES_MAGIC handling, save behaviour and shared Drained stacks.
 
 An explicit ghostphase none disables the automatic phase transitions without
 disabling life drain or removing RES_NONMAGIC.
@@ -875,11 +873,9 @@ opportunity to attempt Energy Drain. Wraiths retain their existing 20 percent
 chance.
 
 The Energy Drain implementation itself remains shared and authoritative.
-RES_DRAIN | RES_MAGIC resistance, saving behaviour, the edrain cooldown and
-existing resource/XP consequences are unchanged.
-
-A victim with an active edrain timer is not drained again. IS_UNDEAD()
-targets are not subjected to this living-target drain.
+RES_DRAIN | RES_MAGIC resistance, the normal save, damage and shared
+Drained condition apply. The shared 30-second protection limits stacks
+while ordinary damage can continue. IS_UNDEAD() targets are left alone.
 
 An explicit ghostphase none disables automatic spectre phase transitions
 without disabling life drain or removing RES_NONMAGIC.
@@ -1577,6 +1573,59 @@ Existing NPC-only resistance handling and XOR authoring remain unchanged.
 See the Scribe manual's "Named weapon and shield contacts" section for
 source selection, chance conventions and exclusions.
 
+
+
+==Drained condition
+
+Drained is a live condition, not an NPC archetype, broad RES_* flag or
+ordinary spell affect. No new Scribe field or area spell name is added.
+
+Each of up to five stacks subtracts 5% of the undrained HP/mana maxima and
+2 hitroll/damroll. Current equipment and form still contribute to those
+undrained maxima. Permanent max_hit, max_mana, hitroll, damroll, level and XP
+are not rewritten. Existing aggravated wounds apply after the effective
+HP maximum is calculated. Mana has no extra Drained regeneration penalty.
+
+Energy Drain and unresisted Wither resolve damage first, then add a stack
+only if the source and target are still alive in the original room. All
+player, item and NPC casting routes share the target's 30-real-second
+stack protection and five-stack cap. That protection does not block
+ordinary damage or restart the recovery timer when a stack is refused.
+Existing drain immunity, PvP checks and target restrictions still apply.
+
+Energy Drain replaces HP/mana halving and XP loss with its normal small
+damage hit and Drained. Its level-one/two instant-kill branch is removed.
+The wight/wraith/spectre specials retain their existing two-percent
+aggravated share. Wither keeps its base damage and partial-damage save,
+but Drained replaces its former five-percent aggravated component.
+Undead Energy Drain restoration is unchanged and applies no condition.
+
+A stack takes 180 seconds of recovery credit to remove. Out-of-combat
+activity earns one per second, resting/sleeping earns two, and combat
+earns none. Offline time earns the ordinary rate. A newly gained stack
+resets progress; a refused stack does not. Current HP/mana are clamped
+only when above the effective ceilings, and recovering a stack never
+refills them. The condition itself never kills or heals.
+
+Vitalize clears the condition and both timers before its existing full
+restore. Its 120-gold healer price is unchanged. Death clears the
+condition too. Other heals, Complete Healing, Regenerate and ordinary
+dispels do not clear it. Restoration is not introduced by this patch.
+
+A player save may contain:
+    Drained <stacks> <recovery-credit> <cooldown-seconds> <saved-UTC-seconds>
+
+Old saves without the record start undrained. The ordinary saved HP/mana
+maxima remain undrained, preventing permanent losses on reload. Offline
+recovery is applied after equipment has loaded; the shared cooldown also
+continues through logout. NPC conditions last for the current instance.
+SCORE, AFFECTS and MSTAT show the live state, while prompts, healing,
+regeneration, group displays and protocol maxima use the effective caps.
+
+Weaken, Psychic Drain, Steal Strength, Chant of Enfeeblement, Suck, Feed,
+Steal Soul, Starve, Parch and Death Field retain their existing effects.
+Their RES_DRAIN category alone does not opt them into this condition.
+No mobs are converted to species and no room flags are changed here.
 
 ==Werewolf supernatural defences
 

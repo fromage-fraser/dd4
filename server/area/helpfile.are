@@ -1,5 +1,44 @@
 #HELPS
 
+0 DRAINED 'DRAIN CONDITION'~
+Drained is a temporary loss of life force. Each stack lowers your effective
+maximum HP and mana by 5%, and your hitroll and damroll by 2. The limit is
+five stacks: 25% lower HP/mana ceilings and -10 hitroll/damroll.
+
+Percentages add against your undrained maxima, including current equipment
+and form. Permanent stats, level, XP, saving throws and regeneration rates
+are unchanged. Aggravated wounds still limit healing after the drained
+HP ceiling is worked out.
+
+Energy Drain and an unresisted Wither can add one stack after their damage.
+All casters, mobile specials and spell items share the same target's limit:
+at most one new stack every 30 real seconds. Attacks can still deal their
+normal damage during that interval. At five stacks, another attack does
+not restart recovery.
+
+Applying a stack only trims current HP/mana if they exceed the new ceilings.
+The condition cannot kill or heal you. Recovering stacks raises the ceilings
+without refilling either resource.
+
+Out of combat, recover one stack every three real minutes. Resting or
+sleeping doubles that rate to one every 90 seconds. Combat pauses progress.
+A new stack restarts progress towards the next recovery; attacks blocked
+by the shared stack limit do not. Offline recovery uses the ordinary rate.
+Stacks, progress and the shared protection survive saving and reboots.
+
+Vitalize clears all stacks and their timers before restoring your resources.
+Actual death also clears Drained. Other healing, Complete Healing,
+Regenerate, Remove Curse and Dispel Magic do not remove the condition.
+A separate Restoration spell remains later work.
+
+Living PCs and eligible NPCs use the same rules. Undead, including vampire
+players, and NPC objects cannot gain stacks. Drain immunity still applies.
+Werewolves keep their +10-point resistance bonus. Other weakening spells,
+blood extraction and ordinary physical damage keep their own mechanics.
+
+SCORE, AFFECTS and MSTAT show the stack count, penalties and recovery state.
+~
+
 0 'WEREWOLF DEFENCES' 'WEREWOLF DEFENSES'~
 Werewolf instincts give player werewolves these automatic bonuses:
 
@@ -1390,6 +1429,11 @@ blocking unrelated directions.
 
 - Werewolves gain fear, drain and control defences in every form.
 - Saves and existing success rolls apply one bonus; silver weakness remains.
+
+- Energy Drain and Wither now apply bounded, recoverable Drained stacks.
+- Wither's Drained effect replaces its aggravated-damage component.
+- Drained survives relogging; Vitalize clears it before restoring resources.
+- Healing, prompts and combat rolls respect the temporary ceilings/penalties.
 ~
 
 0 'AGGRAVATED DAMAGE' 'AGGRO DAM'~
@@ -1401,12 +1445,13 @@ so for living targets and player vampires, but burns undead NPCs instead.
 Lend Health cannot repair them. The deity Healing prayer removes them
 completely.
 
-Vampire SUCK, WOLFBITE and Wither can leave part of their actual damage as
+Vampire SUCK and WOLFBITE can leave part of their actual damage as
 aggravated wounds without extra immediate HP loss.  A new mummy-rot
 infection leaves up to one aggravated HP per 20 attacker levels (minimum
 one, maximum five), bounded by the triggering hit's actual HP damage.
 Fleshrot uses the same limit on its initial hit.  Later rot ticks add none.
-See HELP REGENERATE, REJUVENATION, SUCK, WOLFBITE, WITHER and ENERGY DRAIN.
+Wither now applies Drained instead of aggravated wounds.
+See HELP REGENERATE, REJUVENATION, SUCK, WOLFBITE, DRAINED and ENERGY DRAIN.
 ~
 
 0 'NO UNDEAD' NO_UNDEAD~
@@ -1664,8 +1709,11 @@ The DD Team
 ~
 
 0 VITALIZE VITALISE~
+This healer-only spell clears Drained and its timers, then fully restores
+your HP, mana and movement. Existing aggravated wounds still limit HP.
+The normal healer service costs 120 gold.
 
-This healer-only spell fully restores your hitpoints, mana, and movement.
+Other healing spells do not clear Drained. See HELP DRAINED.
 ~
 
 101 ZONE ZONES~
@@ -4929,28 +4977,29 @@ causes the weapon to be aligned with the alignment with the caster.
 ~
 
 0 'ENERGY DRAIN'~
-Syntax: cast 'energy drain' <<target>
+Syntax: cast 'energy drain' <target>
 
-Against living targets this spell still drains life force, experience and
-mana, and applies its usual drain condition. Successful draining is evil.
-Wights, wraiths and spectres still make two percent of the normal damaging
-hit aggravated, rounded down and capped at five HP; hits below 50 add none.
+Against a living target, a failed resistance save causes a small damaging
+hit and can add one Drained stack. Damage is half the casting level, with
+a minimum of one, before the usual damage processing. It no longer halves
+current HP/mana, removes XP or instantly kills level-one/two targets.
+A successful drain still shifts the caster's alignment towards evil.
 
-Against undead, including player vampires, it instead restores 3 times the
-casting level plus 30 HP. There is no save or resistance reduction, and
-vampires receive the full amount. It neither drains nor restores mana, XP
-or blood, and it neither applies nor removes the drain condition.
+Drained stacks are shared with Wither and all other users of Energy Drain,
+including mobile specials and items. The five-stack cap and 30-second
+protection limit stacks, not the spell's ordinary damage. See HELP DRAINED.
 
-Restoration respects maximum HP, aggravated-wound limits and NPC NO_HEAL.
-It does not repair aggravated wounds. Successfully restoring HP still
-moves the caster's alignment 200 points towards evil.
+Wights, wraiths and spectres retain their existing small aggravated share:
+two percent of the normal damaging hit, rounded down and capped at five HP.
 
-You may restore yourself or another undead target. This is helpful magic,
-so it does not start combat or trigger offensive extra casts. Existing
-combat continues. Normal helpful-casting level limits still apply.
+Against undead, including player vampires, Energy Drain still restores
+three times the casting level plus 30 HP. There is no save or resistance
+reduction, and vampires receive the full amount. This does not restore
+blood, mana or XP, remove Drained, or repair aggravated wounds. Maximum HP,
+aggravated-wound ceilings and NPC NO_HEAL still apply.
 
-Werewolf players gain 10 percentage points on the existing drain save.
-If the drain succeeds, its normal effects remain.
+Undead restoration remains helpful magic and does not start a new fight.
+Werewolf players gain 10 percentage points on the living-target save.
 ~
 
 0 'FAERIE FIRE'~
@@ -8265,14 +8314,18 @@ This self-only spell enhances a druid's defence by encasing them in bark.
 ~
 
 0 WITHER~
-Syntax: cast wither <<target>
+Syntax: cast wither <target>
 
-Using this spell a caster drains the life force of their enemy.
-Five percent of the actual HP damage, after saves and defenses, remains as
-aggravated damage (rounded down), without extra immediate damage.
+Wither tears at a victim's life essence. Its normal damage remains, and
+the existing save still reduces that damage. Werewolf players gain
+10 percentage points on that save.
 
-Werewolf players gain 10 percentage points on the existing save to
-lessen this life-draining spell.
+A failed save can also add one Drained stack after damage, subject to
+the shared five-stack cap and 30-second protection. Wither now uses
+Drained in place of its former aggravated-damage component. It creates
+no aggravated wounds. An attack during stack protection can still hurt.
+
+Undead and objects cannot gain Drained stacks. See HELP DRAINED.
 ~
 
 0 LUNGE 'DOUBLE LUNGE'~

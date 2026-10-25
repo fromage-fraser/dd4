@@ -298,8 +298,8 @@ void do_heal(CHAR_DATA *ch, char *argument)
                 restore_undead_energy(mob, ch, service->amount, FALSE);
         else if (service->kind == HEALER_MANA)
         {
-                if (ch->mana < ch->max_mana)
-                        ch->mana = UMIN((long long)ch->mana + service->amount, ch->max_mana);
+                if (ch->mana < effective_max_mana(ch))
+                        ch->mana = UMIN((long long)ch->mana + service->amount, effective_max_mana(ch));
                 sound_spell_sfx(ch, 0, "cast");
                 send_to_char("A warm glow passes through you.\n\r", ch);
         }
