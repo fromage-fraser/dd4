@@ -2476,6 +2476,12 @@ extern WANTED_DATA *wanted_list_last;
 #define APPLY_AGE 9
 #define APPLY_HEIGHT 10
 #define APPLY_WEIGHT 11
+#define DRAINED_MAX_STACKS 5
+#define DRAINED_PERCENT_PER_STACK 5
+#define DRAINED_ROLL_PER_STACK 2
+#define DRAINED_STACK_COOLDOWN 30
+#define DRAINED_RECOVERY_SECONDS 180
+
 #define APPLY_MANA 12
 #define APPLY_HIT 13
 #define APPLY_MOVE 14
@@ -3081,7 +3087,10 @@ struct char_data
         int form;
         int gag;
         int backstab;
-        int edrain;
+        int drained_stacks;
+        int drained_recovery; /* Ordinary-rate seconds earned towards the next stack. */
+        time_t drained_updated;
+        time_t drained_next_stack;
         unsigned long int body_form;
 
         /*
@@ -4550,8 +4559,8 @@ extern int gsn_prayer_plague;
 #define IS_RESTING(ch) (ch->position == POS_RESTING)
 #define IS_AWAKE(ch) (ch->position > POS_SLEEPING)
 #define GET_AC(ch) ((ch)->armor + (IS_AWAKE(ch) ? dex_app[get_curr_dex(ch)].defensive : 0))
-#define GET_HITROLL(ch) ((ch)->hitroll + str_app[get_curr_str(ch)].tohit)
-#define GET_DAMROLL(ch) ((ch)->damroll + str_app[get_curr_str(ch)].todam)
+#define GET_HITROLL(ch) ((ch)->hitroll + str_app[get_curr_str(ch)].tohit - drained_stat_penalty(ch))
+#define GET_DAMROLL(ch) ((ch)->damroll + str_app[get_curr_str(ch)].todam - drained_stat_penalty(ch))
 #define GET_CRIT(ch) ((ch)->pcdata->learned[gsn_enhanced_critical] ? (ch)->crit + int_app[get_curr_int(ch)].tocrit + ((ch)->pcdata->learned[gsn_enhanced_critical] / 4) : (ch)->crit + int_app[get_curr_int(ch)].tocrit)
 #define GET_SWIFT(ch) ((ch)->pcdata->learned[gsn_enhanced_swiftness] ? (ch)->swiftness + dex_app[get_curr_dex(ch)].toswift + ((ch)->pcdata->learned[gsn_enhanced_swiftness] / 4) : (ch)->swiftness + dex_app[get_curr_dex(ch)].toswift)
 #define IS_OUTSIDE(ch) (!IS_SET(ch->in_room->room_flags, ROOM_INDOORS) && ch->in_room->sector_type != SECT_INSIDE)
@@ -5588,6 +5597,15 @@ bool aggravated_bite_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste);
 void damage_with_aggravated_component(CHAR_DATA *ch, CHAR_DATA *victim,
                                       int dam, int dt, bool poison,
                                       int chance, int percent, int cap);
+int drained_stack_count(const CHAR_DATA *ch);
+int drained_stat_penalty(const CHAR_DATA *ch);
+int effective_max_hit(const CHAR_DATA *ch);
+int effective_max_mana(const CHAR_DATA *ch);
+void clear_drained_condition(CHAR_DATA *ch);
+void clamp_drained_resources(CHAR_DATA *ch);
+void update_drained_condition(CHAR_DATA *ch, time_t now, bool offline);
+bool add_drained_stack(CHAR_DATA *ch);
+void show_drained_condition(CHAR_DATA *viewer, CHAR_DATA *victim);
 int aggravated_healing_limit(const CHAR_DATA *ch);
 int heal_hit_points(CHAR_DATA *ch, int amount);
 int holy_focus_turn_bonus(CHAR_DATA *ch);

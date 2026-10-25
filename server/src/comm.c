@@ -1463,8 +1463,8 @@ bool process_output(DESCRIPTOR_DATA *d, bool fPrompt)
                                 char wound[100];
                                 char buf[MAX_STRING_LENGTH];
 
-                                if (victim->max_hit > 0)
-                                        percent = victim->hit * 100 / victim->max_hit;
+                                if (effective_max_hit(victim) > 0)
+                                        percent = victim->hit * 100 / effective_max_hit(victim);
                                 else
                                         percent = -1;
 
@@ -1689,7 +1689,7 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                         i = buf2;
                         break;
                 case 'H':
-                        sprintf(buf2, "%d", ch->max_hit);
+                        sprintf(buf2, "%d", effective_max_hit(ch));
                         i = buf2;
                         break;
                 case 'L':
@@ -1704,7 +1704,7 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                 }
                 break;
                 case 'M':
-                        sprintf(buf2, "%d", ch->max_mana);
+                        sprintf(buf2, "%d", effective_max_mana(ch));
                         i = buf2;
                         break;
                 case 'N':
@@ -2801,7 +2801,7 @@ void nanny(DESCRIPTOR_DATA *d, char *argument)
                          */
 
                         ch->max_hit = 50;
-                        ch->hit = ch->max_hit;
+                        ch->hit = effective_max_hit(ch);
 
                         ch->pcdata->str_prac = 2;
                         ch->pcdata->int_prac = 2;
@@ -2812,7 +2812,7 @@ void nanny(DESCRIPTOR_DATA *d, char *argument)
                                 ch->max_mana = 150;
                         }
 
-                        ch->mana = ch->max_mana;
+                        ch->mana = effective_max_mana(ch);
                         ch->move = ch->max_move;
 
                         set_title(ch, " is a newbie");

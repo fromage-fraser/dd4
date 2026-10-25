@@ -2174,6 +2174,7 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                 send_to_char("They aren't here.\n\r", ch);
                 return;
         }
+        show_drained_condition(ch, victim);
         if (!IS_NPC(victim))
         {
                 unsigned long int masks[2];
@@ -2274,8 +2275,8 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                         get_curr_con(victim));
                 strcat(buf1, buf);
                 sprintf(buf, "Hp: {G%d{x/{g%d{x  Mana: {C%d{x/{c%d{x  Mv: {Y%d{x/{y%d{x  Wait: {C%d{x\n\r",
-                        victim->hit, victim->max_hit,
-                        victim->mana, victim->max_mana,
+                        victim->hit, effective_max_hit(victim),
+                        victim->mana, effective_max_mana(victim),
                         victim->move, victim->max_move,
                         victim->wait);
                 strcat(buf1, buf);
@@ -2542,8 +2543,8 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                                                                                      : "neutral");
                 strcat(buf1, buf);
                 sprintf(buf, "Hp: {G%d{x/{g%d{x  Mana: {C%d{x/{c%d{x  Mv: {Y%d{x/{y%d{x  Wait: {C%d{x\n\r",
-                        victim->hit, victim->max_hit,
-                        victim->mana, victim->max_mana,
+                        victim->hit, effective_max_hit(victim),
+                        victim->mana, effective_max_mana(victim),
                         victim->move, victim->max_move,
                         victim->wait);
                 strcat(buf1, buf);
@@ -3190,7 +3191,7 @@ static void mstat_hp_modifier_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             victim->spawn_base_hit,
             victim->spawn_hp_mod,
             victim->spawn_max_hit,
-            victim->hit, victim->max_hit,
+            victim->hit, effective_max_hit(victim),
             MOB_SPAWN_HP_LIMIT);
         send_to_char(buf, ch);
 }
@@ -4925,8 +4926,8 @@ void do_advance(CHAR_DATA *ch, char *argument)
                 victim->max_move = 100;
                 victim->pcdata->str_prac = 0;
                 victim->pcdata->int_prac = 0;
-                victim->hit = victim->max_hit;
-                victim->mana = victim->max_mana;
+                victim->hit = effective_max_hit(victim);
+                victim->mana = effective_max_mana(victim);
                 victim->move = victim->max_move;
 
                 for (sn = 0; sn < MAX_SKILL; sn++)
@@ -5155,11 +5156,11 @@ void do_restore(CHAR_DATA *ch, char *argument)
 
                         victim->aggro_dam = 0;
 
-                        if (victim->hit < victim->max_hit)
-                                victim->hit = victim->max_hit;
+                        if (victim->hit < effective_max_hit(victim))
+                                victim->hit = effective_max_hit(victim);
 
-                        if (victim->mana < victim->max_mana)
-                                victim->mana = victim->max_mana;
+                        if (victim->mana < effective_max_mana(victim))
+                                victim->mana = effective_max_mana(victim);
 
                         victim->move = victim->max_move;
                         victim->pcdata->condition[COND_FULL] = (MAX_FOOD - 10);
@@ -5194,11 +5195,11 @@ void do_restore(CHAR_DATA *ch, char *argument)
 
                         victim->aggro_dam = 0;
 
-                        if (victim->hit < victim->max_hit)
-                                victim->hit = victim->max_hit;
+                        if (victim->hit < effective_max_hit(victim))
+                                victim->hit = effective_max_hit(victim);
 
-                        if (victim->mana < victim->max_mana)
-                                victim->mana = victim->max_mana;
+                        if (victim->mana < effective_max_mana(victim))
+                                victim->mana = effective_max_mana(victim);
 
                         victim->move = victim->max_move;
                         victim->pcdata->condition[COND_FULL] = MAX_FOOD;
@@ -5218,11 +5219,11 @@ void do_restore(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (victim->hit < victim->max_hit)
-                        victim->hit = victim->max_hit;
+                if (victim->hit < effective_max_hit(victim))
+                        victim->hit = effective_max_hit(victim);
 
-                if (victim->mana < victim->max_mana)
-                        victim->mana = victim->max_mana;
+                if (victim->mana < effective_max_mana(victim))
+                        victim->mana = effective_max_mana(victim);
 
                 victim->aggro_dam = 0;
                 victim->move = victim->max_move;

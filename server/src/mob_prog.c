@@ -495,12 +495,12 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
     {
       switch ( arg[1] )  /* arg should be "$*" so just get the letter */
         {
-        case 'i': lhsvl = mob->hit / mob->max_hit;
+        case 'i': lhsvl = mob->hit / effective_max_hit(mob);
                   rhsvl = atoi( val );
                   return mprog_veval( lhsvl, opr, rhsvl );
         case 'n': if ( actor )
                   {
-                    lhsvl = actor->hit / actor->max_hit;
+                    lhsvl = actor->hit / effective_max_hit(actor);
                     rhsvl = atoi( val );
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
@@ -508,7 +508,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return FALSE;
         case 't': if ( vict )
                   {
-                    lhsvl = vict->hit / vict->max_hit;
+                    lhsvl = vict->hit / effective_max_hit(vict);
                     rhsvl = atoi( val );
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
@@ -516,7 +516,7 @@ bool mprog_do_ifchck( char *ifchck, CHAR_DATA *mob, CHAR_DATA *actor,
                     return FALSE;
         case 'r': if ( rndm )
                   {
-                    lhsvl = rndm->hit / rndm->max_hit;
+                    lhsvl = rndm->hit / effective_max_hit(rndm);
                     rhsvl = atoi( val );
                     return mprog_veval( lhsvl, opr, rhsvl );
                   }
@@ -2259,7 +2259,7 @@ void mprog_hitprcnt_trigger( CHAR_DATA *mob, CHAR_DATA *ch)
      && ( mob->pIndexData->progtypes & HITPRCNT_PROG ) )
    for ( mprg = mob->pIndexData->mobprogs; mprg != NULL; mprg = mprg->next )
      if ( ( mprg->type & HITPRCNT_PROG )
-         && ( ( 100*mob->hit / mob->max_hit ) < atoi( mprg->arglist ) ) )
+         && ( ( 100*mob->hit / effective_max_hit(mob) ) < atoi( mprg->arglist ) ) )
        {
          mprog_driver( mprg->comlist, mob, ch, NULL, NULL );
          break;

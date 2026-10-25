@@ -2616,9 +2616,9 @@ static void damage_internal(CHAR_DATA *ch,
                 default:
                         if (!IS_NPC(fighter) && fighter->gag > 1)
                                 break;
-                        if ((dam > fighter->max_hit / 4) && fighter == victim)
+                        if ((dam > effective_max_hit(fighter) / 4) && fighter == victim)
                                 send_to_char("<15>That really did HURT!<0>\n\r", fighter);
-                        if ((fighter->hit < fighter->max_hit / 4) && fighter == victim)
+                        if ((fighter->hit < effective_max_hit(fighter) / 4) && fighter == victim)
                                 send_to_char("<15>You sure are <0><160>BLEEDING!<0>\n\r", fighter);
 
                 } /* Close switch */
@@ -2705,7 +2705,7 @@ static void damage_internal(CHAR_DATA *ch,
                 return;
         }
 
-        if (IS_NPC(victim) && dam > 0 && !victim->rider && victim->wait == 0 && IS_SET(victim->act, ACT_WIMPY) && number_bits(1) == 0 && (victim->hit < victim->max_hit / 2 || (IS_AFFECTED(victim, AFF_CHARM) && victim->master && victim->master->in_room != victim->in_room)))
+        if (IS_NPC(victim) && dam > 0 && !victim->rider && victim->wait == 0 && IS_SET(victim->act, ACT_WIMPY) && number_bits(1) == 0 && (victim->hit < effective_max_hit(victim) / 2 || (IS_AFFECTED(victim, AFF_CHARM) && victim->master && victim->master->in_room != victim->in_room)))
         {
                 do_flee(victim, "");
         }
@@ -4227,6 +4227,7 @@ void raw_kill(CHAR_DATA *ch, CHAR_DATA *victim, bool corpse)
         AFFECT_DATA *paf;
         int prayer_count = 0;
 
+        clear_drained_condition(victim);
         stop_fighting(victim, TRUE);
 
         /* if the victim has been swallowed and the ch makes no corpse, strip
@@ -5553,7 +5554,7 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 /* Small chance of decapitation */
 
-                                if (!(IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE)) && (victim->hit <= (victim->max_hit / 5)) && ((!IS_NPC(ch) && (number_percent() < ((ch->pcdata->learned[gsn_target] / 50) + 1))) || (IS_NPC(ch) && (number_percent() < (ch->level / 50)))))
+                                if (!(IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE)) && (victim->hit <= (effective_max_hit(victim) / 5)) && ((!IS_NPC(ch) && (number_percent() < ((ch->pcdata->learned[gsn_target] / 50) + 1))) || (IS_NPC(ch) && (number_percent() < (ch->level / 50)))))
                                 {
                                         act("{BYou strike $N's head perfectly and it DETACHES!!{x", ch, NULL, victim, TO_CHAR);
                                         act("{B$c's vicious head strike causes $N's head to separate from $S body and fly away!{x",
@@ -5594,7 +5595,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                                 obj_to_room(obj, ch->in_room);
                                         }
 
-                                        damage(ch, victim, victim->max_hit / 2, gsn_decapitate, FALSE);
+                                        damage(ch, victim, effective_max_hit(victim) / 2, gsn_decapitate, FALSE);
                                         return;
                                 }
 
@@ -6066,7 +6067,7 @@ void do_target(CHAR_DATA *ch, char *argument)
 
                                 /* Small chance of decapitation */
 
-                                if (!(IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE)) && (victim->hit <= (victim->max_hit / 5)) && ((!IS_NPC(ch) && (number_percent() < ((ch->pcdata->learned[gsn_target] / 50) + 1))) || (IS_NPC(ch) && (number_percent() < (ch->level / 50)))))
+                                if (!(IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE)) && (victim->hit <= (effective_max_hit(victim) / 5)) && ((!IS_NPC(ch) && (number_percent() < ((ch->pcdata->learned[gsn_target] / 50) + 1))) || (IS_NPC(ch) && (number_percent() < (ch->level / 50)))))
                                 {
                                         act("{BYou strike $N's head perfectly and it DETACHES!!{x", ch, NULL, victim, TO_CHAR);
                                         act("{B$c's vicious head strike causes $N's head to separate from $S body and fly away!{x",
@@ -6107,7 +6108,7 @@ void do_target(CHAR_DATA *ch, char *argument)
                                                 obj_to_room(obj, ch->in_room);
                                         }
 
-                                        damage(ch, victim, victim->max_hit / 2, gsn_decapitate, FALSE);
+                                        damage(ch, victim, effective_max_hit(victim) / 2, gsn_decapitate, FALSE);
                                         return;
                                 }
 
@@ -6582,7 +6583,7 @@ void do_dive(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ((victim->hit < victim->max_hit) && IS_NPC(victim) && !IS_SET(victim->act, ACT_OBJECT))
+        if ((victim->hit < effective_max_hit(victim)) && IS_NPC(victim) && !IS_SET(victim->act, ACT_OBJECT))
         {
                 send_to_char("They seem too alert for you to successfully surprise them.\n\r", ch);
                 return;
@@ -6687,7 +6688,7 @@ void do_backstab(CHAR_DATA *ch, char *argument)
         if (player_order)
                 WAIT_STATE(ch, 2);
 
-        if (victim->hit < victim->max_hit && IS_NPC(victim) && !IS_SET(victim->act, ACT_OBJECT) && victim->pIndexData->vnum != BOT_VNUM)
+        if (victim->hit < effective_max_hit(victim) && IS_NPC(victim) && !IS_SET(victim->act, ACT_OBJECT) && victim->pIndexData->vnum != BOT_VNUM)
         {
                 act("$C is hurt and suspicious... you can't sneak up on $m.",
                     ch, NULL, victim, TO_CHAR);
@@ -6842,7 +6843,7 @@ void do_lunge(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ((victim->hit < victim->max_hit) && (IS_NPC(victim)))
+        if ((victim->hit < effective_max_hit(victim)) && (IS_NPC(victim)))
         {
                 act("$N is hurt and suspicious... you can't sneak up on $m.",
                     ch, NULL, victim, TO_CHAR);
@@ -6953,7 +6954,7 @@ void do_joust(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ((victim->hit < victim->max_hit) && IS_NPC(victim) && !IS_SET(victim->act, ACT_OBJECT))
+        if ((victim->hit < effective_max_hit(victim)) && IS_NPC(victim) && !IS_SET(victim->act, ACT_OBJECT))
         {
                 send_to_char("They won't fall for that twice!\n\r", ch);
                 return;
@@ -8989,7 +8990,7 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (victim->hit > victim->max_hit / 5)
+        if (victim->hit > effective_max_hit(victim) / 5)
         {
                 act("$N's reflexes are still too good.", ch, NULL, victim, TO_CHAR);
                 return;
@@ -9057,7 +9058,7 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
                 }
 
                 damage_from_object(
-                    ch, victim, victim->max_hit / 2,
+                    ch, victim, effective_max_hit(victim) / 2,
                     gsn_decapitate, FALSE, wobj);
                 return;
         }
@@ -9114,7 +9115,7 @@ void do_snap_neck(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (victim->hit > victim->max_hit / 5)
+        if (victim->hit > effective_max_hit(victim) / 5)
         {
                 act("$N's reflexes are still too good.", ch, NULL, victim, TO_CHAR);
                 return;
@@ -9147,7 +9148,7 @@ void do_snap_neck(CHAR_DATA *ch, char *argument)
                 act("$n violently twists your head!!", ch, NULL, victim, TO_VICT);
                 arena_commentary("$n snaps $N's neck.", ch, victim);
 
-                damage(ch, victim, victim->max_hit / 2, gsn_snap_neck, FALSE);
+                damage(ch, victim, effective_max_hit(victim) / 2, gsn_snap_neck, FALSE);
                 return;
         }
         else
@@ -11292,7 +11293,7 @@ int aggravated_healing_limit(const CHAR_DATA *ch)
         if (!ch)
                 return 0;
         return (int)UMAX(1LL,
-            (long long)ch->max_hit - UMAX(0, ch->aggro_dam));
+            (long long)effective_max_hit(ch) - UMAX(0, ch->aggro_dam));
 }
 
 static bool can_restore_hit_points(CHAR_DATA *ch)

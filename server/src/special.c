@@ -1135,7 +1135,7 @@ bool spec_ghast(CHAR_DATA *ch)
  * Shared living-target Energy Drain behaviour for undead specials.
  *
  * The existing Energy Drain spell remains authoritative for RES_DRAIN |
- * RES_MAGIC resistance, saves, edrain timing and resource/XP effects.
+ * RES_MAGIC resistance, saves, damage and shared Drained condition.
  */
 #define WIGHT_DRAIN_CHANCE 20
 #define SPECTRE_DRAIN_CHANCE 30
@@ -1177,13 +1177,10 @@ static bool undead_energy_drain_special(
         }
 
         /*
-         * This is the existing living-target form of Energy Drain.
-         * Undead restoration through negative energy remains separate work.
+         * These specials attack living foes. Direct Energy Drain casts
+         * still restore undead rather than applying this condition.
          */
         if (IS_UNDEAD(victim))
-                return FALSE;
-
-        if (victim->edrain > 0)
                 return FALSE;
 
         if (number_percent() > chance)
@@ -4232,7 +4229,7 @@ bool spec_sahuagin (CHAR_DATA *ch)
                         if (helpful_spell_harms_target(gsn_heal, ch, ch))
                                 return FALSE;
 
-                        if (ch->hit >= ch->max_hit)
+                        if (ch->hit >= effective_max_hit(ch))
                                 return FALSE;
 
                         spell = "heal";
@@ -4342,7 +4339,7 @@ bool spec_evil_evil_gezhp (CHAR_DATA *ch)
                 }
 
                 else if (sn_complete_heal >= 0
-                         && ch->hit < ch->max_hit * 3 / 4)
+                         && ch->hit < effective_max_hit(ch) * 3 / 4)
                 {
                         do_say(ch, "I cannot be defeated!");
                         (*skill_table[sn_complete_heal].spell_fun)

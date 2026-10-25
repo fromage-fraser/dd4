@@ -600,7 +600,7 @@ CHAR_DATA* create_bot (int id, int level)
         if (IS_SET(bot_template_table[id].bot_flags, BOT_FLAG_HEALTH_BONUS))
                 bot->max_hit *= 1.33;
 
-        bot->hit = bot->max_hit;
+        bot->hit = effective_max_hit(bot);
         bot->hitroll = level * 1.2;
         bot->damroll = level * 1.2;
 
@@ -834,7 +834,7 @@ void bot_think (int num)
                 /* Do we want to flee? */
                 if (!IS_SET(tournament_options, TOURNAMENT_OPTION_NOFLEE)
                     && IS_SET(bot_template_table[id].bot_flags, BOT_FLAG_WIMPY)
-                    && bot->hit < bot->max_hit * 0.25
+                    && bot->hit < effective_max_hit(bot) * 0.25
                     && !number_bits(2))
                 {
                         old_room = bot->in_room;
@@ -1253,7 +1253,7 @@ bool bot_consider_target (int num, CHAR_DATA *victim)
 
                 /* Check whether we're too wimpy to want to attack */
                 if (victim->level >= bot->level
-                    && bot->hit < bot->max_hit / 2
+                    && bot->hit < effective_max_hit(bot) / 2
                     && IS_SET(bot_template_table[id].bot_flags, BOT_FLAG_WIMPY))
                     return FALSE;
 
@@ -1309,13 +1309,13 @@ CHAR_DATA* bot_choose_target (int num)
                         score = 0;
 
                         /* Nice if target is hurt */
-                        if (target->hit < target->max_hit * 0.1)
+                        if (target->hit < effective_max_hit(target) * 0.1)
                                 score += 4;
 
-                        else if (target->hit < target->max_hit * 0.25)
+                        else if (target->hit < effective_max_hit(target) * 0.25)
                                 score += 2;
 
-                        else if (target->hit < target->max_hit * 0.5)
+                        else if (target->hit < effective_max_hit(target) * 0.5)
                                 score += 1;
 
                         /* Good if victim isn't fighting */

@@ -939,7 +939,7 @@ void do_strangle (CHAR_DATA *ch, char *argument)
 
         base_damage = number_range (2 * ch->level, 5 * ch->level);
 
-        if (victim->hit > (victim->max_hit / 2)
+        if (victim->hit > (effective_max_hit(victim) / 2)
         && !mob_has_special(ch, spec_lookup("spec_laghathti"))
         && !mob_has_special(ch, spec_lookup("spec_uzollru")))
         {
@@ -953,19 +953,19 @@ void do_strangle (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (victim->hit < (victim->max_hit / 10))
+        if (victim->hit < (effective_max_hit(victim) / 10))
         {
                 damage(ch, victim, base_damage * 3, gsn_strangle, FALSE);
                 return;
         }
 
-        if (victim->hit < (victim->max_hit / 4))
+        if (victim->hit < (effective_max_hit(victim) / 4))
         {
                 damage(ch, victim, base_damage * 2, gsn_strangle, FALSE);
                 return;
         }
 
-        if (victim->hit < (victim->max_hit / 3))
+        if (victim->hit < (effective_max_hit(victim) / 3))
         {
                 damage(ch, victim, base_damage * 1.5, gsn_strangle, FALSE);
                 return;

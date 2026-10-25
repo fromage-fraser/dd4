@@ -3093,10 +3093,10 @@ void prayer_healing (CHAR_DATA *ch)
          */
 
         ch->aggro_dam = 0;
-        ch->hit = UMAX(ch->hit, ch->max_hit);
-        ch->mana = UMAX(ch->mana, ch->max_mana);
+        ch->hit = UMAX(ch->hit, effective_max_hit(ch));
+        ch->mana = UMAX(ch->mana, effective_max_mana(ch));
         ch->move = UMAX(ch->move, ch->max_move);
-        ch->edrain = 0;
+
         ch->backstab = 0;
 
         /*
