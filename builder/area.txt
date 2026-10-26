@@ -740,8 +740,9 @@ the dwarf still inherits infravision and its ordinary resistance flags.
 
 Creature family is the final mob_type.family identity field. Old templates
 retain NONE until reviewed. Minimal humanoid target entries now exist for
-orc, half_orc, goblin, hobgoblin, ogre, troll, ogre_mage, giant and titan.
+orc, half_orc, hobgoblin, ogre, troll, ogre_mage, giant and titan.
 Their full traits are unfinished; they supply identity and anatomy only.
+Goblin and human now have the reviewed defaults described below.
 No existing mobs are automatically converted by their names.
 
 Player Dwarves receive the same melee training benefits. Player Orcs,
@@ -754,6 +755,44 @@ teen cancel training; its caretaker and servant use regeneration. The
 servant's unused practice marker becomes NO_QUEST, the thief loses the
 accidental tinker flag, and guests/maids lose pass-door. Equipment, teacher
 declarations, games and room flags retain their existing definitions.
+
+Goblin and human archetypes
+---------------------------
+
+    < goblin~ common~
+    < human~ common~
+
+Both inherit the normal living, speaking humanoid body. Goblins add
+PART_FANGS as anatomy, AFF_INFRARED and ACT_SUNLIGHT_SENSITIVE. The empty
+natural attack mask does not supply an automatic bite. Goblin defaults are
+height 120, weight 30 and CHAR_SIZE_SMALL metadata. Human defaults are
+175, 75 and CHAR_SIZE_MEDIUM. Height/weight use the descriptive cm/kg
+convention; these fields do not change equipment fitting or combat size.
+Language remains unspecified. Neither supplies a default active special,
+resistance, vulnerability or immunity. All combat and XP modifiers are zero.
+
+ACT_SUNLIGHT_SENSITIVE is BIT_36 (68719476736), named sunlight_sensitive in
+Scribe. It gives an NPC -1 effective attack hitroll in clear daytime outside:
+SUN_LIGHT and SKY_CLOUDLESS, outside an indoors/inside, underwater, DARK or
+NO_WEATHER room. It applies to ordinary melee and Shoot. Snap Shot remains
+player-only and is unaffected by this NPC trait. The trait does
+not change stored hitroll, cause damage or restrict movement. The trait is
+available to any NPC; player ACT bits never grant it.
+
+Individual ACT fields use XOR. Include this bit in a goblin's individual
+mask to cancel its inherited sunlight sensitivity; include it on an ordinary
+human to add the trait. Infravision and anatomy inherit independently.
+MSTAT shows the effective trait and its current attack hitroll adjustment.
+
+Goblin Caves 20002-20016 now use goblin, while 20000, 20001 and 20017 use
+human. The wizard's existing role gains spec_cast_mage through SPECIALS;
+it is not part of the human archetype. Keep individual protection and all
+other existing encounter flags and equipment separate from racial defaults.
+No matching Scribe source exists for this area.
+
+Player Goblin abilities and sunlight rules are unchanged. The human family
+also recognises the Human player race without adding a racial ability.
+The goblin's disease/construction traits are deferred for later review.
 
 The wight archetype is an intelligent corporeal undead humanoid:
 

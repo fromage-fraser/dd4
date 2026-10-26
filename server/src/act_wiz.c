@@ -2181,6 +2181,11 @@ void do_mstat(CHAR_DATA *ch, char *argument)
             creature_has_training(victim, ACT_GOBLINOID_TRAINING) ? "yes" : "no",
             creature_has_training(victim, ACT_GIANT_DEFENCE) ? "yes" : "no");
         send_to_char(buf, ch);
+        snprintf(buf, sizeof(buf),
+            "Sunlight sensitive: %s. Current hitroll adjustment: %d.\n\r",
+            creature_is_sunlight_sensitive(victim) ? "yes" : "no",
+            -creature_sunlight_hit_penalty(victim));
+        send_to_char(buf, ch);
         if (!IS_NPC(victim))
         {
                 unsigned long int masks[2];

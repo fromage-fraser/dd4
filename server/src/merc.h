@@ -2027,6 +2027,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ACT_UNDEAD_HEALER BIT_33      /* Undead mending through HEAL */
 #define ACT_GOBLINOID_TRAINING BIT_34 /* Melee practice against goblinoids */
 #define ACT_GIANT_DEFENCE BIT_35      /* Melee defence against giant kin */
+#define ACT_SUNLIGHT_SENSITIVE BIT_36 /* Bright sunlight makes aiming harder */
 #define ACT_UNKILLABLE BIT_63         /* Can't be killed. 'slay' still works. - Owl */
 
 /*
@@ -3641,7 +3642,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 27
+#define MAX_MOB 28
 #define MAX_SPECIES 5
 #define MAX_RANK 6
 
@@ -3729,6 +3730,7 @@ typedef enum creature_family
         CREATURE_FAMILY_OGRE_MAGE,
         CREATURE_FAMILY_GIANT,
         CREATURE_FAMILY_TITAN,
+        CREATURE_FAMILY_HUMAN,
         CREATURE_FAMILY_MAX
 } CREATURE_FAMILY;
 
@@ -5881,6 +5883,8 @@ CREATURE_FAMILY creature_family args((CHAR_DATA *ch));
 const char *creature_family_name args((CREATURE_FAMILY family));
 bool creature_has_training args((CHAR_DATA *ch, unsigned long int trait));
 int creature_melee_hit_bonus args((CHAR_DATA *attacker, CHAR_DATA *victim));
+bool creature_is_sunlight_sensitive args((CHAR_DATA *ch));
+int creature_sunlight_hit_penalty args((CHAR_DATA *ch));
 const char *ghost_phase_name args((GHOST_PHASE phase));
 bool parse_ghost_phase args((const char *text, GHOST_PHASE *phase));
 bool set_ghost_phase args((CHAR_DATA *ch, GHOST_PHASE phase));
