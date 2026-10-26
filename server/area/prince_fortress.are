@@ -2580,7 +2580,7 @@ Inside the chapel, you immediately feel a lot more comfortable and secure.
 You can enter the confessional box to the south, explore the church to the
 east, or exit to the north.
 ~
-0 1|8 0
+0 1|8|4194304 0
 D0
 ~
 ~
@@ -2601,7 +2601,7 @@ someone else beat you to it, and is quite annoyed that their confession has
 been interrupted.  There is a little window in the east wall, and the door is
 to the north.
 ~
-0 1|8 0
+0 1|8|4194304 0
 D0
 ~
 ~
@@ -2617,7 +2617,7 @@ You approach the altar reverentially, and your heart thrills to the sound of
 choir boys singing your favourite hymn.  You kneel and say a quick prayer,
 and catch sight of a small door marked "Private" to the south.
 ~
-0 1|8 0
+0 1|8|4194304 0
 D2
 ~
 ~
@@ -2637,7 +2637,7 @@ You enter open the private door and wander on in.  There is a Priest taking
 a confession sitting by a small window in the west wall.  The exit is back
 north.
 ~
-0 1|8 0
+0 1|8|4194304 0
 D0
 ~
 ~

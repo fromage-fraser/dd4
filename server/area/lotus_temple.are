@@ -4049,7 +4049,7 @@ monks chanting. The chanting seems to almost have a life of its own as it
 can be felt even through the hard granite below you. There are red candles
 and incense burners along the wall and on small pedestals around the room.
 ~
-0 8 0
+0 8|4194304 0
 D0
 You can't see much through the haze of incense smoke.
 ~
@@ -4081,7 +4081,7 @@ monks chanting. The chanting seems to almost have a life of its own as it
 can be felt even through the hard granite below you. There are red candles
 and incense burners along the wall and on small pedestals around the room.
 ~
-0 8 0
+0 8|4194304 0
 D0
 You can't see much through the haze of incense smoke.
 ~
@@ -4099,7 +4099,7 @@ Before you stands a giant golden statue of a buddha. This is the Buddha
 of Contentment. Many red candles surround the statue's base and all around
 the floor. Many offerings of oranges and rice cakes sit in front of the statue.
 ~
-0 8 0
+0 8|4194304 0
 D0
 You can't see much through the haze of incense smoke.
 ~
@@ -4118,7 +4118,7 @@ of Wisdom. Many monks come here to pray for enlightenment to a problem
 or a decision. Many red candles surround the statue's base and all around
 the floor. Many offerings of oranges and rice cakes sit in front of the statue.
 ~
-0 8 0
+0 8|4194304 0
 D0
 You can't see much through the haze of incense smoke.
 ~
@@ -4145,7 +4145,7 @@ and a deep monotone buzz. Any individual voice almost undistinguishable
 from the others.Many red candles surround the statue's base and all around
 the floor. Many offerings of oranges and rice cakes sit in front of the statue.
 ~
-0 8 0
+0 8|4194304 0
 D1
 You can't see much through the haze of incense smoke.
 ~
@@ -4167,7 +4167,7 @@ monks chanting. The chanting seems to almost have a life of its own as it
 can be felt even through the hard granite below you. There are red candles
 and incense burners along the wall and on small pedestals around the room.
 ~
-0 8 0
+0 8|4194304 0
 D2
 You can't see much through the haze of incense smoke.
 ~
@@ -4371,7 +4371,7 @@ the day of the Dragon Boat festival, on that day he relaxes and spends his
 day in the steaming pool.
 There are exits in all directions.
 ~
-0 8 0
+0 8|4194304 0
 D0
 You see a shrine in the room to the north.
 ~
@@ -4431,7 +4431,7 @@ the exception of a large shrine, decorated with golden buddhas and many
 offerings.
 There are exits to the south and west.
 ~
-0 8 0
+0 8|4194304 0
 D2
 ~
 ~
@@ -4960,7 +4960,7 @@ S
 This is the 36th Chamber of the White Lotus Clan. It is the ultimate test of
 one's abilities. If you survive you will surely be blessed by Buddha...
 ~
-0 4|8|512 0
+0 4|8|512|4194304 0
 S
 #0
 

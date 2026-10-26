@@ -1770,7 +1770,7 @@ roof are all made of ceramic, making this place reflect the sun well.
     The greenery around the temple itself makes this place a great blend of
 nature and man's works of art.
 ~
-53 136|1024 1
+53 136|1024|4194304 1
 D0
 A side street leads to the northern half of the city.
 ~
@@ -2051,7 +2051,7 @@ can feel a strange sensation of contentedness and relief seeping through You,
 as if great burdens have been lifted from Your shoulders. From here, friendly-
 looking paths lead east and south.
 ~
-53 0 3
+53 0|4194304 3
 D1
 The path wind its way through the tall trees, disappearing out of sight.
 ~
@@ -2069,7 +2069,7 @@ The holy grove~
 feel unusually happy here, as if great burdens have been lifted from Your
 shoulders. From here, pleasant-looking paths lead east, west and south.
 ~
-53 0 3
+53 0|4194304 3
 D1
 The path wind its way through the tall trees, towards a clearing faintly seen.
 ~
@@ -2120,7 +2120,7 @@ shoulders. From here, pleasant-looking paths lead east, north and south. To
 the west, through the trees, You can see the road to Midgaard's construction
 site.
 ~
-53 4 3
+53 4|4194304 3
 D1
 The path wind its way through the tall trees, towards a clearing faintly seen.
 ~
@@ -2153,7 +2153,7 @@ leaving You calm and invigorate, ready for the world. Paths lead into the
 holy grove to the east, north and west, while to the south a wide, sunny field
 slopes down to a sparkling lake.
 ~
-53 0 3
+53 0|4194304 3
 D0
 The path wind its way north, disappearing through the tall trees.
 ~
@@ -2183,7 +2183,7 @@ can feel a strange sensation of joy and calm seeping through You, as if great
 burdens have been lifted from Your shoulders. To the south, You glimpse an open
 area through the trees, while paths lead away north and west.
 ~
-53 0 3
+53 0|4194304 3
 D0
 The path wind its way through the tall trees, disappearing out of sight.
 ~
@@ -2218,7 +2218,7 @@ field, sloping gently down towards a bright, glittering lake. Somehow, here
 you feel an inexplicable happiness, as if the world's troubles no longer
 really matter to you.
 ~
-53 0 3
+53 0|4194304 3
 D0
 The path leading north is soon lost out of sight amongst the ancient oaks and
 poplars.
@@ -2457,7 +2457,7 @@ picturing Gods, Giants and peasants.
 mound upon which the temple is built and ends on the temple square below.
    You notice that this building is quite new.  A small plaque is on this wall.
 ~
-53 4|8|1024 0
+53 4|8|1024|4194304 0
 D0
 At the northern end of the temple hall is a statue and a huge altar.
 ~
@@ -2634,7 +2634,7 @@ By the Temple Altar~
 A huge altar made from white polished marble is standing in front of you and
 behind it is a ten foot tall sitting statue of Odin, the King of the Gods.
 ~
-53 8|1024 0
+53 8|1024|4194304 0
 D2
 You see the southern end of the temple.
 ~

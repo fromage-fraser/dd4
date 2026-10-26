@@ -715,7 +715,7 @@ A small grove of birches grow seem to grow from solid rock.  You hear
 birds singing but try as you might you cant see any.  A strange glow
 emanates from a place somewhere to the southeast in the grove.
 ~
-20 520 3
+20 520|4194304 3
 D3
 ~
 ~
@@ -732,7 +732,7 @@ You hear other small animals scampering through the light undergrowth
 yet you see nothing. The grove continues south, east and west. An out of
 place passage way for some reason heads north.
 ~
-20 520 3
+20 520|4194304 3
 D3
 ~
 ~
@@ -755,7 +755,7 @@ The holy grove~
 The grove continues west and south.  The glow is roughly to the south
 somewhere.
 ~
-20 520 3
+20 520|4194304 3
 D3
 ~
 ~
@@ -805,7 +805,7 @@ Grand Templar's room~
 All the items in this room look ancient yet strangely very powerful and
 rich.  There is an aura of great holiness about the room.
 ~
-20 8 0
+20 8|4194304 0
 D3
 ~
 ~
@@ -832,7 +832,7 @@ The holy grove~
 The grove continues north and east.  To the east a strange humming can
 barely be heard.
 ~
-20 520 3
+20 520|4194304 3
 D1
 ~
 ~
@@ -849,7 +849,7 @@ it's just the strange humming and glowing from a clearing to the south
 drowning out everything else. There is a sort of magical forcefield door
 to the south.
 ~
-20 520 3
+20 520|4194304 3
 D3
 ~
 ~
@@ -924,7 +924,7 @@ the stone of the Excalibur.  The strange humming glowing makes it
 difficult to see if the Excalibur is there or not. Might want to take a
 closer look if possible.
 ~
-20 520 3
+20 520|4194304 3
 D0
 a glowing forcefield with a small circular hole in it.
 ~

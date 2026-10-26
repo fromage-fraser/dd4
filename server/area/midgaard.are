@@ -2495,7 +2495,7 @@ the wall, just above the altar which is set against the western wall.  A well
 in the middle of the floor leads down into darkness.  Vile smells waft from
 the depths.
 ~
-0 4|8|1024 0
+0 4|8|1024|4194304 0
 D1
 You see your favorite place, the bar of divination.
 ~
@@ -2513,7 +2513,7 @@ Cleric's Bar~
 The bar is one of the finest in the land, lucky it is members only.  Fine
 furniture is set all around the room.  A small sign is hanging on the wall.
 ~
-0 4|8|1024 0
+0 4|8|1024|4194304 0
 D2
 You see the entrance.
 ~
@@ -2540,7 +2540,7 @@ The entrance hall is a small modest room, reflecting the true nature of
 the Clerics.  The exit leads east to the temple square.  A small entrance to
 the bar is in the northern wall.
 ~
-0 8|1024 0
+0 8|1024|4194304 0
 D0
 You see the bar, richly decorated with really stylish furniture.
 ~

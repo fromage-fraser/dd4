@@ -2031,7 +2031,7 @@ After a short climb you come to the citadel itself. The light here is nearly
 blinding and because of this you can barely make out the... guard you guess it
 must be.
 ~
-0 8192|262144 5
+0 8192|262144|4194304 5
 D 4
 ~
 ~
@@ -2047,7 +2047,7 @@ Inside the Citadel~
 The light makes it hard to see any detail of this place, but it seems to be
 simple yet grand in a way that's hard to describe.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 0
 ~
 ~
@@ -2064,7 +2064,7 @@ The room is splendid in its glory and elegant in its simplicity. It appears to
 be used to house the rare beings who are granted the privilege of witnessing
 the Light.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 1
 ~
 ~
@@ -2082,7 +2082,7 @@ your heart. You suddenly feel as if you are a rare occurrence in this place, a
 being walking among the Light. The hallway ends in a dazzling stairway that
 leads upwards.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 2
 ~
 ~
@@ -2107,7 +2107,7 @@ The room is splendid in its glory and elegant in its simplicity. It appears to
 be used to house the rare beings who are granted the privilege of witnessing
 the Light.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 3
 ~
 ~
@@ -2124,7 +2124,7 @@ As you step into this room you are blinded by the light as it pours in through
 the window, completely obliterating your vision. It is insanely bright and the
 burning is worse than in the rest of the place.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 1
 ~
 ~
@@ -2136,7 +2136,7 @@ Upper hallway~
 The hallway pulses with the brilliant light and leads to more strange and
 beautiful rooms in each direction.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 0
 ~
 ~
@@ -2161,7 +2161,7 @@ As you step into this room you are blinded by the light as it pours in through
 the window, completely obliterating your vision. It is insanely bright and the
 burning is worse than in the rest of the place.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 3
 ~
 ~
@@ -2173,7 +2173,7 @@ Bend~
 The hallway bends here and leads onwards towards a sense of power and pure
 righteousness.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 0
 ~
 ~
@@ -2189,7 +2189,7 @@ Upper hallway in the Citadel~
 The hallway runs east and west from this point. You feel the sense of
 dread and wonder increase as you gaze down each direction...
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 2
 ~
 ~
@@ -2209,7 +2209,7 @@ Bend~
 The hallway bends to the north here and as you make the turn you are struck
 with the sudden feeling of...power.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 0
 ~
 ~
@@ -2225,7 +2225,7 @@ Entrance to the throne~
 The door to the east seems to be radiating light! After a moment you realize
 that the light is in fact coming from behind the door.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 2
 ~
 ~
@@ -2246,7 +2246,7 @@ Seat of Power~
 The very fabric of reality seems to be ablaze. The pure light courses
 throughout the room and what feels like into your very soul.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 0
 ~
 ~
@@ -2266,7 +2266,7 @@ Entrance to throne~
 The door to the west seems to be radiating light! After a moment you realize
 that the light is in fact coming from behind the door.
 ~
-0 8192|262144 0
+0 8192|262144|4194304 0
 D 2
 ~
 ~

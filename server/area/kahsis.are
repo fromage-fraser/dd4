@@ -1780,7 +1780,7 @@ with more writing.  The air becomes charged with static as the seal glows then
 fades, and you feel a distant rumbling.  Ornate doors lead west and east from
 here; they appear to be covered with paintings and decorations.
 ~
-0 1|8 0
+0 1|8|4194304 0
 D0
 A gigantic door covers most of the north wall.
 ~

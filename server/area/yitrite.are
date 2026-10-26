@@ -1175,7 +1175,7 @@ waterfall roars to the west, forming a crystal clear pool.  The
 feeling of calm and peace that washes over you is wonderful, and
 you never want to have to leave here.
 ~
-0 1|8 2
+0 1|8|4194304 2
 D1
 ~
 ~
@@ -1665,7 +1665,7 @@ Humble furnishings decorate the room.  And though it appears as if
 Bjorn has not used his bed in ages, the rug before the small altar
 has two worn places from many days of prayer.
 ~
-0 1|8 0
+0 1|8|4194304 0
 D1
 ~
 ~

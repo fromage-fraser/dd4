@@ -5647,7 +5647,7 @@ of a githzerai seems to be kneeling to a statue of Silence.
 
 To the North lies an entrance to a house, east the street goes onwards
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D0
 A door blocks the way into the home
 ~
@@ -5693,7 +5693,7 @@ rest of the city.  To the side of the street stands a statue of a weird alien.
 
 The street continues east and west, to the north is a door to a home
 ~
-0 1|8 1
+0 1|8|4194304 1
 D0
 A doorway to a house
 ~
@@ -5731,7 +5731,7 @@ you presume are mystic symbols of some sort.
 The street of the gods continues east and west, north is the entrance to a
 home.  South Sunset goes on.
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D0
 A private home
 ~
@@ -5783,7 +5783,7 @@ statue of a martial artist.
 The street of the gods goes east and west, north is the gathering place.  To
 the south is the entrance to the darkened root.
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D0
 The gathering place
 ~
@@ -5838,7 +5838,7 @@ street is a statue of a monkey.
 East and west the street of the gods continues, north is gathering place To
 the south is the entrance to the Sparkling Jewel
 ~
-0 1|8 1
+0 1|8|4194304 1
 D0
 The gathering place
 ~
@@ -5882,7 +5882,7 @@ you.
 East and west the street continues, south is the Dented Shield, north is
 Dragonhoard Bank
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D0
 Dragonhoard Bank, Underdark Branch
 ~
@@ -5915,7 +5915,7 @@ this beauty into your soul.
 The street of the gods goes east and west, south is the Cracked Sword, north
 is the Puffer's Emporium.
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D0
 The Puffer's Emporium
 ~
@@ -5946,7 +5946,7 @@ down, left and right.  The ground seems to be rising up to your face.
 
 The street of the gods continues east and west, south is the Glowing Hand
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D1
 The street of the gods
 ~
@@ -5973,7 +5973,7 @@ symbols.
 The street goes on east and west.  To the north is the entrance to the slave
 market, and south is Jasper avenue
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D0
 A door blocks your entry to the slave's market
 ~
@@ -6025,7 +6025,7 @@ lie holy symbols of Farside, RoX's playground.
 East and west the street continues, north is the slave's square and south is
 the entrance to Shadow's Shadow (a tavern)
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D0
 The slave's square
 ~
@@ -6082,7 +6082,7 @@ symbols.
 
 The street goes on east and west, and to north is the gathering place.
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D0
 The gathering place
 ~
@@ -6117,7 +6117,7 @@ defend themselves from their enemies and unite for a common goal.
 
 The street goes on east and west.
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D1
 The street of the gods
 ~
@@ -6139,7 +6139,7 @@ there lies a huge black obsidian ball.
 
 The street goes on east and west.
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D1
 The street of the Gods~
 ~
@@ -6166,7 +6166,7 @@ Garth's love for the day lit world, maybe this space provides the access?
 
 The street continues west and south
 ~
-0 1|8 1
+0 1|8|4194304 1
 D2
 The street of the gods
 ~
@@ -6188,7 +6188,7 @@ showing their devotion.
 The street continues south and north.  To the east is the entrance to the
 guardian prisons.
 ~
-0 1|8|8192 1
+0 1|8|8192|4194304 1
 D0
 The street of the gods
 ~
@@ -6221,7 +6221,7 @@ the gods have come to accept the street.
 
 To the south is the road of shadows, north the street continues
 ~
-0 8|8192 1
+0 8|8192|4194304 1
 D0
 The street of the gods
 ~

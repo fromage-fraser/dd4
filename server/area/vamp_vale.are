@@ -3803,7 +3803,7 @@ containing all manner of herb and poultice line the shelves about the walls.
 The gloom and despondancy that penetrates the forest seems not to have an
 effect here, and you feel that for now, at least, it may be safe to rest.
 ~
-0 4|8|1024|65536 0
+0 4|8|1024|65536|4194304 0
 D1
 ~
 ~
@@ -4048,7 +4048,7 @@ You have stumbled into Morc the tree-dweller's home. Here he escapes the dangers
 of the forest far below and spends his hours in quiet meditation and study under
 the stars and sunlight. An aura of peace and holiness lies about this place.
 ~
-0 4|8|1024|8192 0
+0 4|8|1024|8192|4194304 0
 D5
 ~
 hole~
@@ -4624,7 +4624,7 @@ Morc's Haven~
 You stand inside a circle of light. A feeling of calm and peace lies on this
 room and you feel all your worldly troubles melt away.
 ~
-0 4|1024|16384 9
+0 4|1024|16384|4194304 9
 S
 #0
 

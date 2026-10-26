@@ -323,7 +323,7 @@ can feel a strange sensation of contentedness and relief seeping through You,
 as if great burdens have been lifted from Your shoulders. From here, friendly-
 looking paths lead east and south.
 ~
-89 0 3
+89 0|4194304 3
 D1
 The path wind its way through the tall trees, disappearing out of sight.
 ~
@@ -341,7 +341,7 @@ The holy grove~
 feel unusually happy here, as if great burdens have been lifted from Your
 shoulders. From here, pleasant-looking paths lead east, west and south.
 ~
-89 0 3
+89 0|4194304 3
 D1
 The path wind its way through the tall trees, towards a clearing faintly seen.
 ~
@@ -396,7 +396,7 @@ feel calm and relaxed here, as if great burdens have been lifted from Your
 shoulders. From here, pleasant-looking paths lead east, north and south. To
 the west, through the trees, You can see the road to Midgaard.
 ~
-89 4 3
+89 4|4194304 3
 D1
 The path wind its way through the tall trees, towards a clearing faintly seen.
 ~
@@ -429,7 +429,7 @@ leaving You calm and invigorated, ready for the world. Paths lead into the
 holy grove to the east, north and west, while to the south a wide, sunny field
 slopes down to a sparkling lake.
 ~
-89 0 3
+89 0|4194304 3
 D0
 The path wind its way north, disappearing through the tall trees.
 ~
@@ -459,7 +459,7 @@ can feel a strange sensation of joy and calm seeping through You, as if great
 burdens have been lifted from Your shoulders. To the south, You glimpse an open
 area through the trees, while paths lead away north and west.
 ~
-89 0 3
+89 0|4194304 3
 D0
 The path wind its way through the tall trees, disappearing out of sight.
 ~
@@ -492,7 +492,7 @@ field, sloping gently down towards a bright, glittering lake. Somehow, here
 you feel an inexplicable happiness, as if the world's troubles no longer
 really matter to you.
 ~
-89 0 3
+89 0|4194304 3
 D0
 The path leading north is soon lost out of sight amongst the ancient oaks and
 poplars.
