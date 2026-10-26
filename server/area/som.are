@@ -255,7 +255,7 @@ turned up, and their faces looking skyward, calling a heavenly plea for all
 eternity. You notice a dais further on, and a door east.  Along the walls,
 torches are evenly placed, except for one.
 ~
-0 8 0
+0 8|4194304 0
 D 0
 You see a dais to the north.
 ~
@@ -285,7 +285,7 @@ from some very rich wood. You notice a side table here, with some assorted
 foods. Tapestries line the wall here, showing monsters and legendary beasts
 that SOM has slayed in the past.
 ~
-0 8 0
+0 8|4194304 0
 D 3
 There is a door to the west.
 ~
@@ -322,7 +322,7 @@ your feet shows a scene of night, with a full moon high in its sky, and
 shadows among a few trees - The Shadows of Midnight. You notice an out of
 color step on the dais.
 ~
-0 8 0
+0 8|4194304 0
 D 0
 ~
 dais~

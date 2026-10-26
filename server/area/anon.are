@@ -3189,7 +3189,7 @@ wooden furniture to the carefully polished bronze fittings on the doors
 and windows, everything is in order. You may proceed east to the Cleric
 bar, or west to the Guildmaster himself.
 ~
-0 8|1024 0
+0 8|1024|4194304 0
 D0
 Outside the Cleric Guild
 ~
@@ -3214,7 +3214,7 @@ faith that may visit, or students of other faiths that have an interest
 in Cleric magic. If you are not sure what to do, try looking at the
 Guildmaster.
 ~
-0 8|1024 0
+0 8|1024|4194304 0
 D1
 Inside the Cleric Guild
 ~
@@ -3228,7 +3228,7 @@ converse, drink and basically relax, free from the worries of the outside
 world for a short time. Polished oak tables are ringed by wooden stools,
 a few of which are currently filled.
 ~
-0 8|1024 0
+0 8|1024|4194304 0
 D3
 Inside the Cleric Guild
 ~

@@ -2483,7 +2483,7 @@ gold columns reach the twelve foot ceiling of this vast chamber.  Servants in
 golden livery wander this place, making even the raggiest messenger boy look
 richer than you are.  Exits lead to the anterooms in the cardinal directions.
 ~
-6 8|1024 0
+6 8|1024|4194304 0
 D0
 ~
 ~
@@ -2507,7 +2507,7 @@ The Anteroom to the Temple of Ofcol~
 floor, and servants in golden livery pass you by peaceably.  The temple is to
 the south, and to the north is a hallway.  A stairways leads up.
 ~
-6 8 0
+6 8|4194304 0
 D0
 ~
 ~
@@ -2527,7 +2527,7 @@ The Anteroom to the Temple of Ofcol~
 floor, and servants in golden livery pass you by peaceably.  The temple is to
 the east, and to the west is a hallway.  A stairways leads up.
 ~
-6 8 0
+6 8|4194304 0
 D1
 ~
 ~
@@ -2547,7 +2547,7 @@ The Anteroom to the Temple of Ofcol~
 floor, and servants in golden livery pass you by peaceably.  The temple is to
 the west, and to the east is a hallway.  A stairways leads up.
 ~
-6 8 0
+6 8|4194304 0
 D1
 ~
 ~
@@ -2567,7 +2567,7 @@ The Anteroom to the Temple of Ofcol~
 floor, and servants in golden livery pass you by peaceably.  The temple is to
 the north, and to the south is a hallway.  A stairways leads up.
 ~
-6 8 0
+6 8|4194304 0
 D0
 ~
 ~
@@ -2846,7 +2846,7 @@ are mounted on the walls of this meeting hall.  Surrounding a solid gold table
 are four sons of the Keeper of the Golden Citadel.  They smile at you and ask
 you to join them in lunch.  Exits lead to the cardinal directions.
 ~
-6 8 0
+6 8|4194304 0
 D0
 ~
 ~
@@ -2955,7 +2955,7 @@ cardinal directions to the anterooms.
 
 There is a mystical pattern drawn on the ground here.
 ~
-6 8|1024 0
+6 8|1024|4194304 0
 D0
 ~
 ~

@@ -1175,7 +1175,7 @@ This is the church of the city of Thoran. The bell tower hangs to one side,
 its sweet tones silenced. Flickering light shines through holes burned
 through the roof shingles. To the west you see Syrus Road.
 ~
-0 8 0
+0 8|4194304 0
 D3
 ~
 ~
@@ -1493,7 +1493,7 @@ floor in jumbled disarray, coated with centuries of dust. To the north
 you see the audience hall, to the west you see the carriage house and up
 you see the high tower stairs.
 ~
-0 8 0
+0 8|4194304 0
 D0
 ~
 ~
@@ -1595,7 +1595,7 @@ This long balcony room overlooks a vst rubble-strewn room. Two large, ornate
 thrones stand in the middle of the balcony that is covered with dust. To the
 south you see the audience hall.
 ~
-0 8 0
+0 8|4194304 0
 D2
 ~
 ~

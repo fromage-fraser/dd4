@@ -802,7 +802,7 @@ evil and makes for a holy balance that is Neutrality.  It seems some
 music lover has set up residence here, judging by all the instruments
 and sheet music floating here.
 ~
-0 8|512 0
+0 8|512|4194304 0
 D0
 You see the chamber wall dilate open for you, leading to the tunnel beyond.
 ~

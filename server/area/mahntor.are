@@ -2977,7 +2977,7 @@ Idols to the gods of good fill the room. White furniture and decorations give
 the room a holy appearance. It is evident that some being of supreme goodness
 lives here. A white door leads east.
 ~
-23 8 0
+23 8|4194304 0
 D1
 ~
 white~
@@ -3313,7 +3313,7 @@ You enter a temple of sorts. A small altar is here and relics of many
 religions lie around. It is evident that this is the room of a studying cleric.
 A yellow door leads west.
 ~
-23 8 0
+23 8|4194304 0
 D3
 ~
 yellow~

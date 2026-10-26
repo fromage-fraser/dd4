@@ -413,7 +413,7 @@ can be seen to the north. Looking to your right you see an old oak tree from
 which the bodies of men, women, children and an ox hang. High in the air
 above, you notice the dark shapes of ravens moving around in circles silently.
 ~
-0 8192 4
+0 8192|4194304 4
 D0
 Two large wooden doors covered in runes lead into the wooden hall.~
 door~
@@ -507,7 +507,7 @@ You are standing before a large stone statue of Odin the Allfather. There is a
 large seat on each side of it, both covered in the hides of wolves and other
 wild animals.
 ~
-0 8192 0
+0 8192|4194304 0
 D1
 ~
 ~
@@ -574,7 +574,7 @@ standing about the walls. There seems to be one statue representing each of
 the greater gods of the Aesir, there is even a statue of Hel, the goddess of
 death.
 ~
-0 8|8192 0
+0 8|8192|4194304 0
 D3
 ~
 ~

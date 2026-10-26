@@ -1201,7 +1201,7 @@ occupants of this area must avoid this room for some reason.  Some words are
 inscribed next to the shrine.  The exit is to the north.  A strange portal is
 to the west.
 ~
-38 12 0
+38 12|4194304 0
 D0
 ~
 door~
@@ -1232,7 +1232,7 @@ divine light illuminates this room.  To the west, you see the rest of this
 estate, and to the east, you see a small room with a shrine through a hazy
 portal.
 ~
-38 8 0
+38 8|4194304 0
 D1
 You see the small room with the shrine.~
 ~

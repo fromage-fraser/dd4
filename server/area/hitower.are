@@ -4646,7 +4646,7 @@ are a milky white colour, and glow with a warm luminescence, as does the
 floor. A feeling of goodness permeates the area, and you feel unworthy to
 tread upon these sacred floors.
 ~
-14 8 0
+14 8|4194304 0
 D1
 ~
 ~
@@ -4664,7 +4664,7 @@ floor. A feeling of goodness permeates the area, and you feel unworthy to
 tread upon these sacred floors.
   A huge set of double doors in finely worked ivory can be seen to the west.
 ~
-14 8 0
+14 8|4194304 0
 D1
 ~
 ~
@@ -4681,7 +4681,7 @@ of light cannot be seen. It is almost as if the room itself exudes a warm
 glow of goodness. A larger chamber can be seen to the west, but you do not
 feel worthy to pass into it.
 ~
-14 8 0
+14 8|4194304 0
 D1
 ~
 door ivory~
@@ -4699,7 +4699,7 @@ flame is in the center of the room, seeming to feed off of darkness and
 cleansing the room of any evil. You feel a slight tug at your being as the
 flame flickers towards you.
 ~
-14 0 0
+14 0|4194304 0
 D0
 ~
 ~
@@ -4884,7 +4884,7 @@ altar. Many icons to lesser deities line the room, but it is obvious by one
 glance at the symbols on the altar, that this room was designed for the
 worship of Mystra, the goddess of magic.
 ~
-14 8 0
+14 8|4194304 0
 D1
 ~
 door secret~

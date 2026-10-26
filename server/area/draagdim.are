@@ -3786,7 +3786,7 @@ You are standing in a brightly lit chamber lined on each side with
 statues of dead kings. To the north you see a pedestal with a glowing
 sword resting upon it.
 ~
-0 8 0
+0 8|4194304 0
 D 0
 ~
 ~
@@ -3803,7 +3803,7 @@ You are standing before a pedestal with a glowing sword resting upon
 it. The room here is not so brightly lit and you see movements in the
 shadows.
 ~
-0 8 0
+0 8|4194304 0
 D 2
 ~
 ~

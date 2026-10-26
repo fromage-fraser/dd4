@@ -3610,7 +3610,7 @@ Several candles and incense are lit around the icon.  Chanting
 from the temple is muffled by cushions and curtains lining the
 room.
 ~
-0 8 1
+0 8|4194304 1
 D1
 The alcove is a small room off the main temple.
 ~
@@ -3626,7 +3626,7 @@ platinum inlay.  The walls and roof are all made of ceramic, making this
 place reflect the sun well.  An arched passageway leads deeper into the
 complex.
 ~
-0 4|8|1024 1
+0 4|8|1024|4194304 1
 D0
 The public gardens surround the temple.
 ~
@@ -5267,7 +5267,7 @@ white ceilings and an off-white colour on the walls.  A small box
 for placing money for the up keep of this shrine is set into the wall.
 To the north this passage widens out into a hall.
 ~
-0 8|8192 1
+0 8|8192|4194304 1
 D0
 ~
 ~
@@ -5284,7 +5284,7 @@ far end with candles lit.  The hall has seating in two rows one on
 your left and one on your right.  There is room to walk three abreast
 down the centre but only one wide on the outside.
 ~
-0 8|8192 1
+0 8|8192|4194304 1
 D0
 ~
 ~
@@ -5310,7 +5310,7 @@ spend time praying and worshipping here.  The seating is made of the
 highest quality wood with the finest workmanship.  Gold fittings adorn
 the walls.
 ~
-0 8|8192 1
+0 8|8192|4194304 1
 D0
 A crackling noise can be heard south.
 ~
@@ -5328,7 +5328,7 @@ spend time praying and worshipping here.  The seating is made of the
 highest quality wood with the finest workmanship.  Gold fittings adorn
 the walls.
 ~
-0 8|8192 1
+0 8|8192|4194304 1
 D0
 ~
 ~
@@ -5344,7 +5344,7 @@ You stand at the front of the hall, making you presence known.  The
 altar is quite plainly seen from here and you have a good view from
 here of what goes on.  The Shrine attendants keep this place spotless.
 ~
-0 8|8192 1
+0 8|8192|4194304 1
 D0
 ~
 ~
@@ -5365,7 +5365,7 @@ You are on the altar, as this is holy ground where you stand you can
 feel the goodness and warm feelings here.  A sturdy podium has been
 constructed of Oak and is inlaid with fine gold and silver.
 ~
-0 8|1024|8192 1
+0 8|1024|8192|4194304 1
 D0
 ~
 panel~
@@ -5387,7 +5387,7 @@ Before you is the altar upon which the High Priest gives his sermons.
 Stairs lead up to the altar from here, although usually the only
 person to go there is the High Priest himself.
 ~
-0 8|8192 1
+0 8|8192|4194304 1
 D0
 ~
 ~
@@ -5411,7 +5411,7 @@ You stand at the front of the hall, making you presence known.  The
 altar is quite plainly seen from here and you have a good view from
 here of what goes on.  The Shrine attendants keep this place spotless.
 ~
-0 8|8192 1
+0 8|8192|4194304 1
 D0
 ~
 ~

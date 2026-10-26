@@ -2857,7 +2857,7 @@ anything, with two small cots arranged near an altar bearing a chalice and
 a ewer. A tapestry hangs on one wall, depicting knights receiving blessings
 from the priestess of Anon.
 ~
-0 8 0
+0 8|4194304 0
 D4
 ~
 ~
@@ -2967,7 +2967,7 @@ In this room, generous priests and priestesses of Anon give up their time
 to tend to the illnesses of the city guards. They will tend to others'
 injuries as well, for a fee. Such is the way of Anon.
 ~
-0 8 0
+0 8|4194304 0
 D4
 ~
 ~
@@ -2984,7 +2984,7 @@ Gods. The sun is caught by a reflecting crystal so that it shines directly
 onto the altar at all times during the day. The effect is quite splendid.
 You feel totally at ease in this place.
 ~
-0 1024 0
+0 1024|4194304 0
 D5
 ~
 ~
