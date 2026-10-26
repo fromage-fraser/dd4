@@ -157,7 +157,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 NULL, NULL, NULL,
                 0,                        /* XP adjustment: percentage points */
                 MOB_SPECIAL_CHANCES_INHERIT,
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
 
         {
@@ -172,7 +173,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_fido", "spec_poison", NULL,
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
 
         {
@@ -188,7 +190,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_breath_fire", "spec_breath_frost", "spec_poison",
                 5,
                 { 60, 30, 10 },
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
         {
                 "skeleton", "humanoid", "icon1", "icon2",
@@ -232,7 +235,8 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 /* Empty names resolve to a valid empty 0/0/0 set. */
                 MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
 
         {
@@ -261,7 +265,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "",
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
         {
                 "ghoul", "humanoid", "icon1", "icon2",
@@ -295,7 +300,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* No separate archetype XP adjustment. */
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
 
         {
@@ -330,7 +336,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* No separate archetype XP adjustment. */
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
 
         {
@@ -385,7 +392,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* No additional archetype XP adjustment. */
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
-                GHOST_PHASE_SEMI_MATERIAL
+                GHOST_PHASE_SEMI_MATERIAL,
+                CREATURE_FAMILY_NONE
         },
         {
                 "wight", "humanoid", "icon1", "icon2",
@@ -437,7 +445,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_SPECIAL_CHANCES_AUTO,
 
                 /* Corporeal; inherit the humanoid phase default of none. */
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
         {
                 "wraith", "humanoid", "icon1", "icon2",
@@ -496,7 +505,8 @@ const struct mob_type mob_table[MAX_MOB] =
                  * Start semi-material so the existing magic/silver contact
                  * rules are usable before automatic phasing is introduced.
                  */
-                GHOST_PHASE_SEMI_MATERIAL
+                GHOST_PHASE_SEMI_MATERIAL,
+                CREATURE_FAMILY_NONE
         },
         {
                 "spectre", "humanoid", "icon1", "icon2",
@@ -552,7 +562,8 @@ const struct mob_type mob_table[MAX_MOB] =
                  * Begin semi-material so the existing physical-contact
                  * rules remain usable before spec_spectre is introduced.
                  */
-                GHOST_PHASE_SEMI_MATERIAL
+                GHOST_PHASE_SEMI_MATERIAL,
+                CREATURE_FAMILY_NONE
         },
         {
                 "mummy", "humanoid", "icon1", "icon2",
@@ -605,7 +616,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_SPECIAL_CHANCES_AUTO,
 
                 /* Corporeal; inherit humanoid ghost phase of none. */
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
         {
                 "banshee", "humanoid", "icon1", "icon2",
@@ -631,7 +643,8 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
-                GHOST_PHASE_SEMI_MATERIAL
+                GHOST_PHASE_SEMI_MATERIAL,
+                CREATURE_FAMILY_NONE
         },
         {
                 "death_knight", "humanoid", "icon1", "icon2",
@@ -656,7 +669,8 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
         {
                 "vampire", "humanoid", "icon1", "icon2",
@@ -682,7 +696,8 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
         {
                 "lich", "humanoid", "icon1", "icon2",
@@ -709,7 +724,8 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
         },
         {
                 "dracolich", "dragon", "icon1", "icon2",
@@ -735,9 +751,246 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET
+                MOB_TEMPLATE_UNSET,
+                CREATURE_FAMILY_NONE
+        },
+
+        /* These target identities will gain their full traits as areas are reviewed. */
+        {
+                "dwarf", "humanoid", "icon1", "icon2",
+                ACT_GOBLINOID_TRAINING | ACT_GIANT_DEFENCE, AFF_INFRARED,
+                0, 0,
+                RES_MAGIC | RES_POISON, 0, 0,
+                0, 0, 0, 0,
+                130, 70,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                10,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_DWARF
+        },
+        {
+                "orc", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_ORC
+        },
+        {
+                "half_orc", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_HALF_ORC
+        },
+        {
+                "goblin", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_GOBLIN
+        },
+        {
+                "hobgoblin", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_HOBGOBLIN
+        },
+        {
+                "ogre", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_OGRE
+        },
+        {
+                "troll", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_TROLL
+        },
+        {
+                "ogre_mage", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_OGRE_MAGE
+        },
+        {
+                "giant", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_GIANT
+        },
+        {
+                "titan", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_TITAN
         }
 };
+
+/* Unconverted NPCs stay unclassified; names are not a species test. */
+CREATURE_FAMILY creature_family(CHAR_DATA *ch)
+{
+        int archetype;
+
+        if (!ch)
+                return CREATURE_FAMILY_NONE;
+
+        if (IS_NPC(ch))
+        {
+                if (!ch->mobspec || ch->mobspec[0] == '\0')
+                        return CREATURE_FAMILY_NONE;
+                archetype = mob_lookup(ch->mobspec);
+                if (archetype < 0 || archetype >= MAX_MOB)
+                        return CREATURE_FAMILY_NONE;
+                return mob_table[archetype].family;
+        }
+
+        switch (ch->race)
+        {
+        case RACE_DWARF:     return CREATURE_FAMILY_DWARF;
+        case RACE_ORC:       return CREATURE_FAMILY_ORC;
+        case RACE_GOBLIN:    return CREATURE_FAMILY_GOBLIN;
+        case RACE_HOBGOBLIN: return CREATURE_FAMILY_HOBGOBLIN;
+        case RACE_OGRE:      return CREATURE_FAMILY_OGRE;
+        case RACE_TROLL:     return CREATURE_FAMILY_TROLL;
+        case RACE_GIANT:     return CREATURE_FAMILY_GIANT;
+        default:            return CREATURE_FAMILY_NONE;
+        }
+}
+
+const char *creature_family_name(CREATURE_FAMILY family)
+{
+        switch (family)
+        {
+        case CREATURE_FAMILY_NONE: return "none";
+        case CREATURE_FAMILY_DWARF: return "dwarf";
+        case CREATURE_FAMILY_ORC: return "orc";
+        case CREATURE_FAMILY_HALF_ORC: return "half_orc";
+        case CREATURE_FAMILY_GOBLIN: return "goblin";
+        case CREATURE_FAMILY_HOBGOBLIN: return "hobgoblin";
+        case CREATURE_FAMILY_OGRE: return "ogre";
+        case CREATURE_FAMILY_TROLL: return "troll";
+        case CREATURE_FAMILY_OGRE_MAGE: return "ogre_mage";
+        case CREATURE_FAMILY_GIANT: return "giant";
+        case CREATURE_FAMILY_TITAN: return "titan";
+        default: return "invalid";
+        }
+}
+
+/* Player ACT bits are player settings, so never read them as NPC traits. */
+bool creature_has_training(CHAR_DATA *ch, unsigned long int trait)
+{
+        if (!ch || (trait != ACT_GOBLINOID_TRAINING
+                 && trait != ACT_GIANT_DEFENCE))
+                return FALSE;
+
+        if (IS_NPC(ch))
+                return IS_SET(ch->act, trait) != 0;
+
+        return ch->race == RACE_DWARF;
+}
+
+/* Return one adjustment for this melee contact, without changing either actor. */
+int creature_melee_hit_bonus(CHAR_DATA *attacker, CHAR_DATA *victim)
+{
+        CREATURE_FAMILY attacker_family;
+        CREATURE_FAMILY victim_family;
+        int bonus = 0;
+
+        if (!attacker || !victim)
+                return 0;
+
+        attacker_family = creature_family(attacker);
+        victim_family = creature_family(victim);
+
+        if (creature_has_training(attacker, ACT_GOBLINOID_TRAINING)
+        &&  (victim_family == CREATURE_FAMILY_ORC
+          || victim_family == CREATURE_FAMILY_HALF_ORC
+          || victim_family == CREATURE_FAMILY_GOBLIN
+          || victim_family == CREATURE_FAMILY_HOBGOBLIN))
+                bonus++;
+
+        if (creature_has_training(victim, ACT_GIANT_DEFENCE)
+        &&  (attacker_family == CREATURE_FAMILY_OGRE
+          || attacker_family == CREATURE_FAMILY_TROLL
+          || attacker_family == CREATURE_FAMILY_OGRE_MAGE
+          || attacker_family == CREATURE_FAMILY_GIANT
+          || attacker_family == CREATURE_FAMILY_TITAN))
+                bonus -= 4;
+
+        return bonus;
+}
 
 /*
  * Names for the live ghost-phase state. Unknown values remain visible
@@ -2311,6 +2564,15 @@ int validate_mob_template_tables(void)
                             "references unknown body species '%s'.",
                             mob_table[mob_type].name,
                             mob_table[mob_type].species);
+                        log_string(buf);
+                        issues++;
+                }
+
+                if ((unsigned int)mob_table[mob_type].family >= CREATURE_FAMILY_MAX)
+                {
+                        snprintf(buf, sizeof(buf),
+                            "[MOB TEMPLATE] Archetype '%s' has an invalid creature family.",
+                            mob_table[mob_type].name);
                         log_string(buf);
                         issues++;
                 }

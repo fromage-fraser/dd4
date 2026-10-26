@@ -1,5 +1,27 @@
 #HELPS
 
+0 'DWARVEN TRAINING' 'DWARF TRAINING' 'DWARVEN COMBAT'~
+Dwarven combat training gives two automatic melee benefits:
+
+ +1 effective hitroll against Orcs, Half-Orcs, Goblins and Hobgoblins.
+ Ogres, Trolls, Ogre Magi, Giants and Titans take -4 effective hitroll
+ when making a melee attack against the trained dwarf.
+
+These affect the existing attack roll. They do not add damage or change
+your displayed hitroll or armour. Shoot and Snap Shot gain no benefit.
+
+Player Dwarves have this training. Mobile archetypes can also inherit it;
+an individual mobile can have either benefit removed. Creature identity
+comes from player race or a converted mobile's archetype, never its name.
+Older mobiles gain family identities as their areas are converted.
+
+Converted dwarf mobiles also resist magic and poison through the ordinary
+resistance rules. Their NPC resistance package is separate from existing
+player race resistance rules. MSTAT shows a mobile's actual inherited
+properties and training.
+~
+
+
 0 DRAINED 'DRAIN CONDITION'~
 Drained is a temporary loss of life force. Each stack lowers your effective
 maximum HP and mana by 5%, and your hitroll and damroll by 2. The limit is
@@ -1472,6 +1494,10 @@ blocking unrelated directions.
 - High-level Animate Dead now raises a dedicated ghost servant.
 - Turning stops if the caster dies during a triggered action.
 - Eyeless vampire mobiles cannot use their hypnotic gaze.
+
+- Dwarven Homestead gains dwarf archetypes; old mob flags corrected.
+- Dwarven melee training recognises converted creatures and player races.
+
 ~
 
 0 'AGGRAVATED DAMAGE' 'AGGRO DAM'~

@@ -59,6 +59,16 @@ my %mob_archetype = map { $_ => 1 } qw/
         vampire
         lich
         dracolich
+        dwarf
+        orc
+        half_orc
+        goblin
+        hobgoblin
+        ogre
+        troll
+        ogre_mage
+        giant
+        titan
 /;
 
 my %mob_act = (
@@ -101,6 +111,8 @@ my %mob_act = (
         blink              => 536870912,
         undead             => 1073741824,
         fear_aura          => 2147483648,
+        goblinoid_training => '17179869184',
+        giant_defence      => '34359738368',
         priest_services    => '4294967296',
         undead_healing     => '8589934592',
         unkillable         => 9223372036854775808,
