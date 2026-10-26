@@ -3418,6 +3418,11 @@ static void mstat_dimension_layers(CHAR_DATA *ch, CHAR_DATA *victim)
             index->height, victim->height);
 
         mstat_dimension_group(
+            ch, "Length layers",
+            inherited.length, index->area_length,
+            index->length, victim->length);
+
+        mstat_dimension_group(
             ch, "Weight layers",
             inherited.weight, index->area_weight,
             index->weight, victim->weight);
@@ -6162,7 +6167,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
                              "  copper age rage spec act crit swiftness bonus\n\r"
                              "  max_bonus slept steel titanium adamantite\n\r"
                              "  electrum starmetal resists vulnerabilities \n\r"
-                             "  immunes attack_parts dammod height weight size\n\r"
+                             "  immunes attack_parts dammod height length weight size\n\r"
                              "  language mindless(on/off) stench(on/off)\n\r"
                              "  ghostphase(none/ethereal/semi_material)\n\r"
                              "String being one of:\n\r"
@@ -6384,6 +6389,7 @@ void do_mset(CHAR_DATA *ch, char *argument)
 
         /* Absolute live NPC metadata; this does not re-resolve inheritance. */
         if (!str_cmp(arg2, "height")
+        ||  !str_cmp(arg2, "length")
         ||  !str_cmp(arg2, "weight")
         ||  !str_cmp(arg2, "size"))
         {
@@ -6411,6 +6417,8 @@ void do_mset(CHAR_DATA *ch, char *argument)
 
                 if (!str_cmp(arg2, "height"))
                         victim->height = dimension;
+                else if (!str_cmp(arg2, "length"))
+                        victim->length = dimension;
                 else if (!str_cmp(arg2, "weight"))
                         victim->weight = dimension;
                 else

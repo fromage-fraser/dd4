@@ -70,6 +70,8 @@ my %mob_archetype = map { $_ => 1 } qw/
         giant
         titan
         human
+        giant_lizard
+        giant_pit_viper
 /;
 
 my %mob_act = (
@@ -781,7 +783,7 @@ while (1) {
                     \%mob, $field, $data,
                     'sp sp2 sp3 spchance vn nm sh lo lv act aff bf sx al rnk archetype res vuln imm atk '
                     . 'hpmod dammod critmod swiftmod '
-                    . 'height weight size language ghostphase');
+                    . 'height length weight size language ghostphase');
             print "    line $line: mob: unknown field '$field'\n";
         }
 
@@ -1431,7 +1433,7 @@ foreach (0 .. $#mobs) {
 
     # Optional absolute metadata. Omission means inherit, not zero.
 
-    foreach my $field (qw/height weight size language/) {
+    foreach my $field (qw/height length weight size language/) {
         next unless exists $mob{$field};
 
         if ($msg = &get_mob_nonnegative_scalar(\%mob, $field)) {
@@ -3240,6 +3242,9 @@ if (@mobs) {
 
         print AREA "MobHeight $mob{'height'}\n"
                 if exists $mob{'height'};
+
+        print AREA "MobLength $mob{'length'}\n"
+                if exists $mob{'length'};
 
         print AREA "MobWeight $mob{'weight'}\n"
                 if exists $mob{'weight'};

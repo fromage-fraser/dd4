@@ -1517,6 +1517,9 @@ blocking unrelated directions.
 - Goblin Caves gains goblin/human archetypes; its wizard now casts.
 - Goblins gain infravision and a shared sunlight-sensitive mob trait.
 
+- Dwarven Kingdom gains creature archetypes and corrected legacy flags.
+- Reptile anatomy and descriptive mobile length added; doctor now assists.
+
 ~
 
 0 'AGGRAVATED DAMAGE' 'AGGRO DAM'~

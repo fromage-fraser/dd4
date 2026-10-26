@@ -23,6 +23,7 @@ _AsciiDoc documentation update: 26 October 2026._
 ** <<scribe-template-selection,Selecting a creature archetype>>
 ** <<scribe-dwarf-archetype,Dwarves and creature families>>
 ** <<scribe-goblin-human-archetypes,Goblins, humans and sunlight sensitivity>>
+** <<scribe-kingdom-reptiles,Dwarven Kingdom, reptiles and body length>>
 ** <<scribe-zombie-archetype,Zombie archetype>>
 ** <<scribe-ghoul-archetype,Ghoul archetype>>
 ** <<scribe-ghast-archetype,Ghast archetype>>
@@ -583,6 +584,9 @@ Mobiles are the creatures that populate your area. They are defined in the `#MOB
 | `height`
 | Raw height value replacing the inherited value
 | nonnegative integer or `inherit`
+| `length`
+| Descriptive body length in centimetres, replacing the inherited value
+| nonnegative integer or `inherit`
 | `weight`
 | Raw weight value replacing the inherited value
 | nonnegative integer or `inherit`
@@ -794,6 +798,8 @@ Accepted archetype names are:
 | `dwarf` | Living humanoid with infravision, magic/poison resistance and optional melee training.
 | `goblin` | Living humanoid with small fangs, infravision and sunlight sensitivity.
 | `human` | Ordinary living humanoid with neutral modifiers.
+| `giant_lizard` | Living four-legged reptile with a natural bite and descriptive length 457.
+| `giant_pit_viper` | Living limbless reptile with heat sight, a natural bite, poison special and descriptive length 366.
 | `orc`, `half_orc`, `hobgoblin`, `ogre`, `troll`, `ogre_mage`, `giant`, `titan` | Humanoid placeholders with creature-family identity. Their full creature traits await review.
 | `goat` | Existing goat archetype, based on `farm_mammal`.
 | `fire_elemental` | Existing fire-elemental test archetype, based on `elemental`.
@@ -892,8 +898,8 @@ the raw metadata interface does not enforce units or affect gameplay size.
 Earlier development templates retain their unreviewed raw values. Size and
 language metadata are unspecified. Speech still follows body-form flags.
 
-Creature family is identity stored in the final `mob_type.family` field,
-after `initial_ghost_phase`. It is not a flag mask or individual area-tail
+Creature family is identity stored in `mob_type.family`, after
+`initial_ghost_phase`. The optional length scalar follows it. It is not a flag mask or individual area-tail
 field. Other archetypes can share a family when variants are introduced.
 Old unreviewed archetypes have `CREATURE_FAMILY_NONE`.
 
@@ -998,6 +1004,63 @@ Snap Shot remains a player-only action, so this NPC trait does not affect it.
 The goblin package uses the AD&D second-edition Monstrous Manual as its
 reference. Disease resilience and underground construction recognition
 remain recorded for later review when suitable shared mechanics exist.
+
+[[scribe-kingdom-reptiles]]
+===== Dwarven Kingdom, reptiles and body length
+
+Two new body species describe ordinary living reptiles. `quadrupedal_reptile`
+has a head, four legs, feet, tail, scales and normal organs. It has no
+humanoid arms or speech. `serpentine_reptile` has a head, tail, scales and
+normal organs, with no arms, legs or speech. Both have a real heart, brain
+and guts; blood, pain, soul and corpse rules work normally. Their numeric
+modifiers are neutral and they supply no active special or natural attack.
+
+`giant_lizard` refines the four-legged body with teeth/fangs and an ordinary
+natural bite. Its length is 457 cm, its size metadata is large, and unknown
+height/weight remain unspecified. It has no default special, resistance or
+extra claw/tail attack. Dwarven Kingdom's lizard retains its individual
+detect-invisibility. A reusable jaw-grip mechanic remains a later review.
+
+`giant_pit_viper` refines the limbless body with fangs, an ordinary natural
+bite, infrared heat sight and `spec_poison`. Length is 366 cm and size
+metadata is medium. It uses normal DD4 poison; it has no default resistance
+or immunity. Both reptile archetypes have zero HP, damage, critical,
+swiftness and XP adjustments. The viper interpretation was agreed for this
+area's otherwise unspecified giant snake.
+
+`length` writes `MobLength` in an area's optional mobile tail. It is an
+absolute descriptive scalar in centimetres. Omission or `inherit` keeps the
+archetype/body default; explicit zero replaces it with zero. Invalid negative
+or overflowing values are rejected using the existing dimension rules.
+The server resolves body species, archetype, individual, prototype and live
+length just like height. Existing templates explicitly leave it unspecified.
+It does not change equipment fitting, damage, reach, carrying or movement.
+
+[source,text]
+----
+archetype giant_lizard
+length 500
+----
+
+This gives that individual a descriptive length of 500 cm. `mstat` shows
+the inherited, individual, prototype and live length layers. `mset <mobile>
+length <number>` changes only live NPC metadata, as with height and weight.
+
+Dwarven Kingdom 6500-6517 now use reviewed creature defaults. Twelve old
+ACT bit-2048 values are removed; the older Merc file carried those values
+without a regeneration implementation. Adult dwarves inherit the approved
+dwarf package, including the son, daughter and peon: their text does not
+establish childhood. The mazekeeper is a dwarf and the man in waiting human.
+The doctor's `spec_cast_adept` is an individual role special.
+
+Wraith 6502 reuses the existing wraith archetype and phase/drain behaviour.
+Its individual mask keeps no-speech and its senses, adding infrared for the
+wine cellar. The inherited no-corpse bit is not repeated and cancelled.
+The existing green-key drop remains part of its encounter. The giant keeps
+its unspecified giant family, individual height 244 cm and +10% ordinary
+attack damage. The viper remains stationary/aggressive but is now neutral.
+Existing shops, stock, other equipment, room flags, exits and resets retain
+their roles. This area has no matching tracked Scribe source.
 
 [[scribe-skeleton-pilot-plan]]
 ===== Skeleton reference archetype
