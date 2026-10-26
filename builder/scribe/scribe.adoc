@@ -22,6 +22,7 @@ _AsciiDoc documentation update: 26 October 2026._
 ** <<scribe-mobile-inheritance,Body species, archetypes and XOR overrides>>
 ** <<scribe-template-selection,Selecting a creature archetype>>
 ** <<scribe-dwarf-archetype,Dwarves and creature families>>
+** <<scribe-goblin-human-archetypes,Goblins, humans and sunlight sensitivity>>
 ** <<scribe-zombie-archetype,Zombie archetype>>
 ** <<scribe-ghoul-archetype,Ghoul archetype>>
 ** <<scribe-ghast-archetype,Ghast archetype>>
@@ -791,7 +792,9 @@ Accepted archetype names are:
 | Name | Meaning
 | `reserved` | Existing neutral placeholder archetype; no meaningful creature defaults.
 | `dwarf` | Living humanoid with infravision, magic/poison resistance and optional melee training.
-| `orc`, `half_orc`, `goblin`, `hobgoblin`, `ogre`, `troll`, `ogre_mage`, `giant`, `titan` | Humanoid placeholders with creature-family identity. Their full creature traits await review.
+| `goblin` | Living humanoid with small fangs, infravision and sunlight sensitivity.
+| `human` | Ordinary living humanoid with neutral modifiers.
+| `orc`, `half_orc`, `hobgoblin`, `ogre`, `troll`, `ogre_mage`, `giant`, `titan` | Humanoid placeholders with creature-family identity. Their full creature traits await review.
 | `goat` | Existing goat archetype, based on `farm_mammal`.
 | `fire_elemental` | Existing fire-elemental test archetype, based on `elemental`.
 | `skeleton` | Skeletal humanoid archetype.
@@ -868,7 +871,6 @@ It does not import an archetype previously added only to an output `.are`
 file. Record any such manual selection in the source before regeneration.
 
 
-[[scribe-skeleton-pilot-plan]]
 [[scribe-dwarf-archetype]]
 ===== Dwarves and creature families
 
@@ -895,8 +897,8 @@ after `initial_ghost_phase`. It is not a flag mask or individual area-tail
 field. Other archetypes can share a family when variants are introduced.
 Old unreviewed archetypes have `CREATURE_FAMILY_NONE`.
 
-The new target archetypes are deliberately small placeholders: `orc`,
-`half_orc`, `goblin`, `hobgoblin`, `ogre`, `troll`, `ogre_mage`, `giant` and
+The remaining target archetypes are deliberately small placeholders: `orc`,
+`half_orc`, `hobgoblin`, `ogre`, `troll`, `ogre_mage`, `giant` and
 `titan`. They currently supply ordinary humanoid anatomy and family identity,
 with neutral modifiers and no special abilities. Selecting `troll`, for
 example, does not yet grant regeneration. Review their full traits before
@@ -939,6 +941,65 @@ tinker services. The servant retains NO_QUEST instead of an inactive
 practice marker. Guests and maids lose pass-door. Existing equipment,
 teaching, gambling and other individual abilities retain their roles.
 
+[[scribe-goblin-human-archetypes]]
+===== Goblins, humans and sunlight sensitivity
+
+`archetype goblin` now selects the reviewed living humanoid goblin. It adds
+small fangs as body anatomy, `infrared` and `sunlight_sensitive`. It has no
+default active special, resistance, vulnerability or immunity. Its HP,
+damage, critical, swiftness and XP adjustments are zero. Its descriptive
+defaults are height 120, weight 30 and small size metadata. As with dwarves,
+centimetres and kilograms are an authoring convention; these fields do not
+change equipment fitting or combat size rules.
+
+The fangs are body parts. The natural attack mask stays empty, so this
+archetype does not gain an automatic bite or an additional attack.
+
+`sunlight_sensitive` is BIT_36 (68719476736). Any NPC can inherit or receive
+it. Bright sunlight gives -1 effective hitroll to ordinary melee and ranged
+attack rolls, including Shoot. Stored hitroll is unchanged.
+The trait does not cause burning, blindness or a movement restriction.
+
+For this rule, bright sunlight means `SUN_LIGHT` with `SKY_CLOUDLESS` in an
+outside room. Inside sectors, `indoors`, underwater sectors, `dark` and
+`no_weather` rooms provide shelter. Dawn, dusk, night, cloud, rain and storms
+do not trigger it. Torches, magical light and holy damage are separate.
+
+On a goblin, the following source cancels the inherited sunlight trait:
+
+[source,text]
+----
+archetype goblin
+act sunlight_sensitive
+----
+
+Include its other individual ACT flags on that same line. The goblin still
+inherits its infravision and anatomy. On a human or other archetype without
+the trait, the same ACT word enables it. No creature-name test is involved.
+`mstat` shows both the effective trait and its current hitroll adjustment.
+
+`archetype human` is an ordinary living humanoid with human family identity.
+It adds no racial flag, resistance, natural attack or active special. All
+numeric combat and XP modifiers are zero. Descriptive defaults are height
+175, weight 75 and medium size metadata. Both archetypes leave language
+metadata unspecified and retain speech through ordinary anatomy.
+
+Goblin Caves vnums 20002-20016 select `goblin`; 20000, 20001 and 20017 select
+`human`. The wizard's `spec_cast_mage` is an individual SPECIALS entry,
+separate from the human defaults. Existing levels, alignments, protection,
+sanctuary, patrols, equipment and key/door progression keep their roles.
+
+These are NPC defaults. Player Goblin abilities and sunlight rules are
+unchanged. Human player race identity is recognised by the family display;
+this grants no new ability. Dwarf training already recognises both the
+Goblin player race and converted goblin mobiles.
+Snap Shot remains a player-only action, so this NPC trait does not affect it.
+
+The goblin package uses the AD&D second-edition Monstrous Manual as its
+reference. Disease resilience and underground construction recognition
+remain recorded for later review when suitable shared mechanics exist.
+
+[[scribe-skeleton-pilot-plan]]
 ===== Skeleton reference archetype
 
 
@@ -2730,6 +2791,7 @@ priest_services  Extra holy services; also needs healer
 undead_healing   Undead mending services; also needs healer
 goblinoid_training  +1 melee hitroll against orcs, half-orcs, goblins and hobgoblins
 giant_defence   Giant kin take a -4 melee hitroll penalty against this mobile
+sunlight_sensitive  -1 attack hitroll in bright natural sunlight
 unkillable  will not die, no matter how much damage is
     done to it
 

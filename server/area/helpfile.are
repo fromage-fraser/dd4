@@ -1,5 +1,21 @@
 #HELPS
 
+0 'SUNLIGHT SENSITIVITY' 'SUNLIGHT SENSITIVE'~
+Some creatures find bright sunlight uncomfortable to fight in. A mobile
+with sunlight sensitivity takes -1 effective hitroll on ordinary melee
+and ranged attacks in clear daytime outside.
+
+Clouds, dawn, dusk and night avoid the penalty. Indoor and underwater
+locations, and rooms marked DARK or NO_WEATHER, provide shelter. Torches
+and magical light do not trigger it. This does not burn the creature or
+change its displayed hitroll.
+
+The converted Goblin Caves goblins have this trait and infravision.
+Other mobiles can also have it. Existing player Goblin racial abilities
+and sunlight rules are unchanged.
+~
+
+
 0 'DWARVEN TRAINING' 'DWARF TRAINING' 'DWARVEN COMBAT'~
 Dwarven combat training gives two automatic melee benefits:
 
@@ -1497,6 +1513,9 @@ blocking unrelated directions.
 
 - Dwarven Homestead gains dwarf archetypes; old mob flags corrected.
 - Dwarven melee training recognises converted creatures and player races.
+
+- Goblin Caves gains goblin/human archetypes; its wizard now casts.
+- Goblins gain infravision and a shared sunlight-sensitive mob trait.
 
 ~
 

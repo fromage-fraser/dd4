@@ -69,6 +69,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         ogre_mage
         giant
         titan
+        human
 /;
 
 my %mob_act = (
@@ -113,6 +114,7 @@ my %mob_act = (
         fear_aura          => 2147483648,
         goblinoid_training => '17179869184',
         giant_defence      => '34359738368',
+        sunlight_sensitive => '68719476736',
         priest_services    => '4294967296',
         undead_healing     => '8589934592',
         unkillable         => 9223372036854775808,

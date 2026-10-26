@@ -1287,6 +1287,9 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                 if (melee_attack)
                         thac0 -= creature_melee_hit_bonus(ch, victim);
 
+                /* Sunlight also makes ranged attacks harder to aim. */
+                thac0 += creature_sunlight_hit_penalty(ch);
+
                 victim_ac = UMAX(-15, GET_AC(victim) / 10);
 
                 if (GET_AC(victim) < -150)

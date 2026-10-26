@@ -755,7 +755,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 CREATURE_FAMILY_NONE
         },
 
-        /* These target identities will gain their full traits as areas are reviewed. */
+        /* Reviewed creatures and the remaining target-family placeholders. */
         {
                 "dwarf", "humanoid", "icon1", "icon2",
                 ACT_GOBLINOID_TRAINING | ACT_GIANT_DEFENCE, AFF_INFRARED,
@@ -800,12 +800,12 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "goblin", "humanoid", "icon1", "icon2",
-                0, 0,
-                0, 0,
+                ACT_SUNLIGHT_SENSITIVE, AFF_INFRARED,
+                PART_FANGS, 0,
                 0, 0, 0,
                 0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                120, 30,
+                CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "",
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
@@ -895,6 +895,20 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_TITAN
+        },
+        {
+                "human", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                175, 75,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_HUMAN
         }
 };
 
@@ -918,6 +932,7 @@ CREATURE_FAMILY creature_family(CHAR_DATA *ch)
 
         switch (ch->race)
         {
+        case RACE_HUMAN:     return CREATURE_FAMILY_HUMAN;
         case RACE_DWARF:     return CREATURE_FAMILY_DWARF;
         case RACE_ORC:       return CREATURE_FAMILY_ORC;
         case RACE_GOBLIN:    return CREATURE_FAMILY_GOBLIN;
@@ -944,6 +959,7 @@ const char *creature_family_name(CREATURE_FAMILY family)
         case CREATURE_FAMILY_OGRE_MAGE: return "ogre_mage";
         case CREATURE_FAMILY_GIANT: return "giant";
         case CREATURE_FAMILY_TITAN: return "titan";
+        case CREATURE_FAMILY_HUMAN: return "human";
         default: return "invalid";
         }
 }
@@ -990,6 +1006,33 @@ int creature_melee_hit_bonus(CHAR_DATA *attacker, CHAR_DATA *victim)
                 bonus -= 4;
 
         return bonus;
+}
+
+/* Any NPC can inherit this trait; player ACT bits have other meanings. */
+bool creature_is_sunlight_sensitive(CHAR_DATA *ch)
+{
+        return ch && IS_NPC(ch)
+            && IS_SET(ch->act, ACT_SUNLIGHT_SENSITIVE) != 0;
+}
+
+/* Apply the small aiming penalty only where bright natural sunlight reaches. */
+int creature_sunlight_hit_penalty(CHAR_DATA *ch)
+{
+        ROOM_INDEX_DATA *room;
+
+        if (!creature_is_sunlight_sensitive(ch) || !ch->in_room)
+                return 0;
+
+        room = ch->in_room;
+        if (!IS_OUTSIDE(ch)
+        ||  room->sector_type == SECT_UNDERWATER
+        ||  room->sector_type == SECT_UNDERWATER_GROUND
+        ||  IS_SET(room->room_flags, ROOM_DARK | ROOM_NO_WEATHER)
+        ||  weather_info.sunlight != SUN_LIGHT
+        ||  weather_info.sky != SKY_CLOUDLESS)
+                return 0;
+
+        return 1;
 }
 
 /*

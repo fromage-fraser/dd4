@@ -14,6 +14,7 @@ The Sentry to the Goblin Caves tells you, 'Abandon all hope ye who enter here'
 19 3 0 10d10+100 10d10+100
 0 900
 0 0 1
+< human~ common~
 
 #20001
 wizard~
@@ -28,6 +29,7 @@ take the easy way out and leave..
 10 3 0 10d9+50 10d9+70
 0 900
 0 0 1
+< human~ common~
 
 #20002
 goblin~
@@ -40,6 +42,7 @@ You have never in your life seen anything so ugly!!!
 10 3 40 2d7+1 2d7+5
 0 900
 0 0 1
+< goblin~ common~
 
 #20003
 goblin~
@@ -52,6 +55,7 @@ You have never in your life seen anything so ugly!!!
 10 3 40 2d7+1 2d7+5
 0 900
 0 0 1
+< goblin~ common~
 
 #20004
 goblin~
@@ -64,6 +68,7 @@ You have never in your life seen anything so ugly!!!
 10 3 40 2d7+1 2d7+5
 0 900
 0 0 1
+< goblin~ common~
 
 #20005
 goblin~
@@ -76,6 +81,7 @@ You have never in your life seen anything so ugly!!!
 10 3 40 2d7+1 2d7+5
 0 900
 0 0 1
+< goblin~ common~
 
 #20006
 goblin~
@@ -88,6 +94,7 @@ You have never in your life seen anything so ugly!!!
 10 3 40 2d7+1 2d7+5
 0 900
 0 0 1
+< goblin~ common~
 
 #20007
 goblin~
@@ -100,6 +107,7 @@ You have never in your life seen anything so ugly!!!
 10 3 40 2d7+1 2d7+5
 0 900
 0 0 1
+< goblin~ common~
 
 #20008
 goblin~
@@ -112,6 +120,7 @@ You have never in your life seen anything so ugly!!!
 10 3 40 2d7+1 2d7+5
 0 900
 0 0 1
+< goblin~ common~
 
 #20009
 goblin~
@@ -124,6 +133,7 @@ You have never in your life seen anything so ugly!!!
 12 3 20 3d11+5 3d17+9
 0 900
 0 0 1
+< goblin~ common~
 
 #20010
 goblin~
@@ -136,6 +146,7 @@ You have never in your life seen anything so ugly!!!
 12 3 20 3d11+5 3d17+9
 0 900
 0 0 1
+< goblin~ common~
 
 #20011
 goblin~
@@ -148,6 +159,7 @@ You have never in your life seen anything so ugly!!!
 13 3 20 3d11+5 3d17+9
 0 900
 0 0 1
+< goblin~ common~
 
 #20012
 goblin~
@@ -160,6 +172,7 @@ You have never in your life seen anything so ugly!!!
 13 3 20 3d11+5 3d17+9
 0 900
 0 0 1
+< goblin~ common~
 
 #20013
 goblin~
@@ -172,6 +185,7 @@ You have never in your life seen anything so ugly!!!
 13 3 0 6d9+11 6d9+15
 0 900
 0 0 1
+< goblin~ common~
 
 #20014
 goblin~
@@ -184,6 +198,7 @@ You have never in your life seen anything so ugly!!!
 13 3 0 6d9+11 6d9+15
 0 900
 0 0 1
+< goblin~ common~
 
 #20015
 goblin king~
@@ -196,6 +211,7 @@ As you bow toward this king you end up falling over in a fit of laughter.
 23 3 40 9b17+11 9d17+15
 0 900
 0 0 1
+< goblin~ common~
 
 #20016
 goblin captain~
@@ -208,6 +224,7 @@ The Captain of the Goblin Guard appears to be drunk...
 17 3 40 2r7+1 2d7+5
 0 900
 0 0 1
+< goblin~ common~
 
 #20017
 captive creature~
@@ -222,6 +239,7 @@ leads to the king.  This door is .....'.  The poor creature faints.
 1 3 40 2d7+1 2d7+5
 0 900
 0 0 1
+< human~ common~
 
 #0
 
@@ -924,6 +942,7 @@ G 1 20003 100
 S
 
 #SPECIALS
+M 20001 spec_cast_mage
 S
 
 
