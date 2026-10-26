@@ -2841,7 +2841,7 @@ void do_morph (CHAR_DATA *ch, char *argument)
         }
 
         /* Gear and form strength must settle before enforcing weapon weight. */
-        begin_form_equipment_update();
+        begin_equipment_update();
 
         /* Fix Shade - did in prod direct might not work */
         ch->form = form;
@@ -3023,7 +3023,7 @@ void do_morph (CHAR_DATA *ch, char *argument)
 
         }
 
-        end_form_equipment_update(ch);
+        end_equipment_update(ch);
         refresh_combat_gear_stealth(ch);
 }
 

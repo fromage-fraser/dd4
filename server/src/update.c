@@ -3116,6 +3116,7 @@ void aggr_update()
                 for (mch = ch->in_room->people; mch; mch = mch->next_in_room)
                 {
                         int count;
+                        bool curse_aggression = FALSE;
 
                         /* Trauma stuff */
                         if (IS_AFFECTED(mch, AFF_EYE_TRAUMA))
@@ -3137,11 +3138,12 @@ void aggr_update()
 
                         if ((IS_AFFECTED(mch, AFF_DETECT_CURSE) && is_cursed(ch)) && (mch != ch) && (IS_NPC(mch) && !IS_NPC(ch)) && (ch->level < LEVEL_IMMORTAL))
                         {
+                                curse_aggression = TRUE;
                                 cursed_utterance = 1;
                                 goto fightloop;
                         }
 
-                        if (!IS_NPC(mch) || !IS_SET(mch->act, ACT_AGGRESSIVE) || !can_see(mch, ch) || !IS_AWAKE(mch) || mch->fighting || (IS_AFFECTED(ch, AFF_DETER) && !IS_SET(mch->act, ACT_CLAN_GUARD)) || IS_SET(mch->in_room->room_flags, ROOM_SAFE) || IS_SET(mch->in_room->area->area_flags, AREA_FLAG_SAFE) || IS_AFFECTED(mch, AFF_CHARM) || IS_AFFECTED(ch, AFF_NON_CORPOREAL) || (IS_SET(mch->act, ACT_WIMPY) && IS_AWAKE(ch)) || has_tranquility(ch) || ch->level > LEVEL_HERO || mch->rider || mch->deleted || (ch->level > mch->level + 10))
+                        if (!IS_NPC(mch) || !IS_SET(mch->act, ACT_AGGRESSIVE) || !can_see(mch, ch) || !IS_AWAKE(mch) || mch->fighting || (IS_AFFECTED(ch, AFF_DETER) && !IS_SET(mch->act, ACT_CLAN_GUARD)) || IS_SET(mch->in_room->room_flags, ROOM_SAFE) || IS_SET(mch->in_room->area->area_flags, AREA_FLAG_SAFE) || IS_AFFECTED(mch, AFF_CHARM) || IS_AFFECTED(ch, AFF_NON_CORPOREAL) || (IS_SET(mch->act, ACT_WIMPY) && IS_AWAKE(ch)) || ch->level > LEVEL_HERO || mch->rider || mch->deleted || (ch->level > mch->level + 10))
                                 continue;
 
                 fightloop:
@@ -3214,6 +3216,11 @@ void aggr_update()
                         }
 
                         if (!victim)
+                                continue;
+
+                        /* Roll once for the final target, after leader redirection.
+                         * Curse hunters retain their existing song bypass. */
+                        if (!curse_aggression && has_tranquility(victim))
                                 continue;
 
                         if (CAN_SPEAK(mch) && (cursed_utterance == 1) && (mch->hit == effective_max_hit(mch)))

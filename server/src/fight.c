@@ -10293,6 +10293,9 @@ static void restore_shoot_equipment(CHAR_DATA *ch, OBJ_DATA *obj,
         if (!ranged_attacker_alive(ch, killed))
                 return;
 
+        /* Restored slots may supply strength needed by each other. */
+        begin_equipment_update();
+
         if (!obj->deleted && obj->carried_by == ch
         &&  get_eq_char(ch, WEAR_WIELD) == obj)
         {
@@ -10312,6 +10315,8 @@ static void restore_shoot_equipment(CHAR_DATA *ch, OBJ_DATA *obj,
         if (objDual && !objDual->deleted && objDual->carried_by == ch
         &&  objDual->wear_loc == WEAR_NONE && !get_eq_char(ch, WEAR_DUAL))
                 equip_char(ch, objDual, WEAR_DUAL);
+
+        end_equipment_update(ch);
 }
 
 void do_shoot(CHAR_DATA *ch, char *argument)
@@ -10382,20 +10387,21 @@ void do_shoot(CHAR_DATA *ch, char *argument)
 
         killed = IS_NPC(ch) ? 0 : ch->pcdata->killed;
 
-        /* Remove weapons and shield, equip bow */
+        /* Preserve every slot before transient strength changes can drop gear. */
         objWield = get_eq_char(ch, WEAR_WIELD);
+        objShield = get_eq_char(ch, WEAR_SHIELD);
+        objDual = get_eq_char(ch, WEAR_DUAL);
+
+        begin_equipment_update();
         if (objWield)
                 unequip_char(ch, objWield);
-
-        objShield = get_eq_char(ch, WEAR_SHIELD);
         if (objShield)
                 unequip_char(ch, objShield);
-
-        objDual = get_eq_char(ch, WEAR_DUAL);
         if (objDual)
                 unequip_char(ch, objDual);
-
         equip_char(ch, obj, WEAR_WIELD);
+        /* Combat callbacks must see normal weight enforcement. */
+        end_equipment_update(ch);
         WAIT_STATE(ch, PULSE_VIOLENCE);
         send_to_char("{WYou take aim and let loose!{x\n\r", ch);
 
@@ -10483,20 +10489,21 @@ void do_snap_shot(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        /* Remove weapons and shield, equip bow */
+        /* Preserve every slot before transient strength changes can drop gear. */
         objWield = get_eq_char(ch, WEAR_WIELD);
+        objShield = get_eq_char(ch, WEAR_SHIELD);
+        objDual = get_eq_char(ch, WEAR_DUAL);
+
+        begin_equipment_update();
         if (objWield)
                 unequip_char(ch, objWield);
-
-        objShield = get_eq_char(ch, WEAR_SHIELD);
         if (objShield)
                 unequip_char(ch, objShield);
-
-        objDual = get_eq_char(ch, WEAR_DUAL);
         if (objDual)
                 unequip_char(ch, objDual);
-
         equip_char(ch, obj, WEAR_WIELD);
+        /* Combat callbacks must see normal weight enforcement. */
+        end_equipment_update(ch);
         WAIT_STATE(ch, 2 * PULSE_VIOLENCE); /* change of equipment, we'll make the wait state count regardless of hit */
 
         send_to_char("{WYou quickly grab your bow and fire off a shot!{x\n\r", ch);

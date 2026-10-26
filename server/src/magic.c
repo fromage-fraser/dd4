@@ -10211,7 +10211,11 @@ void spell_wither(int sn, int level, CHAR_DATA *ch, void *vo)
         int victim_deaths = action_deaths(victim);
         int dam;
         bool resisted;
+        bool immune;
 
+        /* Item and special casts must respect the same immunity as CAST. */
+        immune = get_resistance_result(victim, skill_table[sn].res_type)
+            == RES_RESULT_IMMUNE;
         dam = dice(level, 8);
         dam += level;
         resisted = saves_supernatural_effect(
@@ -10227,7 +10231,7 @@ void spell_wither(int sn, int level, CHAR_DATA *ch, void *vo)
 
         /* Drained replaces this spell's former aggravated-damage component. */
         damage(ch, victim, dam, sn, FALSE);
-        if (!resisted
+        if (!resisted && !immune
         &&  action_character_in_room(ch, room, source_deaths)
         &&  action_character_in_room(victim, room, victim_deaths))
                 add_drained_stack(victim);

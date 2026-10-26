@@ -3085,248 +3085,14 @@ void send_to_char (const char *txt, CHAR_DATA *ch)
 */
 void send_to_char(const char *txt, CHAR_DATA *ch)
 {
-        const char *point;
-        char *point2;
         char buf[MAX_STRING_LENGTH * 4];
-        int skip = 0;
-        char cur_code[3];
-        int cd_count = 2;
-        int cv_int;
-        char open_token;
-        char close_token;
 
-        /* If you change these tokens, you should change the color_table_8bit act_codes as well */
-        open_token = '<';
-        close_token = '>';
+        if (txt == NULL || ch == NULL || ch->desc == NULL)
+                return;
 
-        buf[0] = '\0';
-        point2 = buf;
-
-        if (txt && ch->desc)
-        {
-                if (IS_SET(ch->act, PLR_ANSI))
-                {
-                        for (point = txt; *point; point++)
-                        {
-                                if (*point == '{')
-                                {
-                                        point++;
-                                        skip = colour(*point, ch, point2);
-                                        while (skip-- > 0)
-                                                ++point2;
-                                        continue;
-                                }
-
-                                if (*point == '}')
-                                {
-                                        point++;
-                                        skip = bgcolour(*point, ch, point2);
-                                        while (skip-- > 0)
-                                                ++point2;
-                                        continue;
-                                }
-
-                                if (*point == open_token)
-                                {
-                                        point++;
-
-                                        if (*point == open_token)
-                                        {
-
-                                                *point2 = *point;
-                                                *++point2 = '\0';
-                                                continue;
-                                        }
-
-                                        if (isdigit(*point))
-                                        {
-                                                if (cd_count < 0)
-                                                        continue;
-
-                                                cur_code[cd_count] = *point;
-                                                cd_count--;
-                                                point++;
-
-                                                if (isdigit(*point))
-                                                {
-                                                        if (cd_count < 0)
-                                                                continue;
-
-                                                        cur_code[cd_count] = *point;
-                                                        cd_count--;
-                                                        point++;
-
-                                                        if (isdigit(*point))
-                                                        {
-                                                                if (cd_count < 0)
-                                                                        continue;
-
-                                                                cur_code[cd_count] = *point;
-                                                                cd_count--;
-                                                                point++;
-                                                        }
-                                                }
-                                        }
-                                        else
-                                        {
-                                                cur_code[0] = '\0';
-                                                cur_code[1] = '\0';
-                                                cur_code[2] = '\0';
-                                                cd_count = 2;
-                                                continue;
-                                        }
-
-                                        if (*point == close_token)
-                                        {
-
-                                                reverse_char_array(cur_code, 3);
-
-                                                cv_int = atoi(cur_code);
-
-                                                skip = colour_8bit(cv_int, ch, point2);
-
-                                                cur_code[0] = '\0';
-                                                cur_code[1] = '\0';
-                                                cur_code[2] = '\0';
-                                                cd_count = 2;
-
-                                                while (skip-- > 0)
-                                                        ++point2;
-
-                                                continue;
-                                        }
-                                        else
-                                        {
-
-                                                cur_code[0] = '\0';
-                                                cur_code[1] = '\0';
-                                                cur_code[2] = '\0';
-                                                cd_count = 2;
-
-                                                continue;
-                                        }
-                                }
-
-                                *point2 = *point;
-                                *++point2 = '\0';
-                        }
-                        *point2 = '\0';
-                        page_to_char(buf, ch);
-                }
-                else
-                {
-
-                        cur_code[0] = '\0';
-                        cur_code[1] = '\0';
-                        cur_code[2] = '\0';
-                        cd_count = 2;
-
-                        for (point = txt; *point; point++)
-                        {
-                                if (*point == '{')
-                                {
-                                        point++;
-                                        if (*point == '{')
-                                        {
-                                                *point2 = *point;
-                                                *++point2 = '\0';
-                                        }
-                                        continue;
-                                }
-
-                                if (*point == '}')
-                                {
-                                        point++;
-                                        if (*point == '}')
-                                        {
-                                                *point2 = *point;
-                                                *++point2 = '\0';
-                                        }
-                                        continue;
-                                }
-
-                                if (*point == open_token)
-                                {
-                                        point++;
-
-                                        if (*point == open_token)
-                                        {
-
-                                                *point2 = *point;
-                                                *++point2 = '\0';
-                                                continue;
-                                        }
-
-                                        if (isdigit(*point))
-                                        {
-                                                if (cd_count < 0)
-                                                        continue;
-
-                                                cur_code[cd_count] = *point;
-                                                cd_count--;
-                                                point++;
-
-                                                if (isdigit(*point))
-                                                {
-                                                        if (cd_count < 0)
-                                                                continue;
-
-                                                        cur_code[cd_count] = *point;
-                                                        cd_count--;
-                                                        point++;
-
-                                                        if (isdigit(*point))
-                                                        {
-                                                                if (cd_count < 0)
-                                                                        continue;
-
-                                                                cur_code[cd_count] = *point;
-                                                                cd_count--;
-                                                                point++;
-                                                        }
-                                                }
-                                        }
-                                        else
-                                        {
-                                                cur_code[0] = '\0';
-                                                cur_code[1] = '\0';
-                                                cur_code[2] = '\0';
-                                                cd_count = 2;
-                                                continue;
-                                        }
-
-                                        if (*point == close_token)
-                                        {
-                                                reverse_char_array(cur_code, 3);
-                                                cv_int = atoi(cur_code);
-                                                strip_colour_8bit(cv_int, ch, point2);
-
-                                                cur_code[0] = '\0';
-                                                cur_code[1] = '\0';
-                                                cur_code[2] = '\0';
-                                                cd_count = 2;
-
-                                                continue;
-                                        }
-                                        else
-                                        {
-                                                cur_code[0] = '\0';
-                                                cur_code[1] = '\0';
-                                                cur_code[2] = '\0';
-                                                cd_count = 2;
-
-                                                continue;
-                                        }
-                                }
-
-                                *point2 = *point;
-                                *++point2 = '\0';
-                        }
-                        *point2 = '\0';
-                        page_to_char(buf, ch);
-                }
-        }
-        return;
+        /* Bound colour expansion while preserving paging and literal escapes. */
+        colourconv_8bit_sized(buf, sizeof(buf), txt, ch, TRUE);
+        page_to_char(buf, ch);
 }
 
 /*
@@ -4820,8 +4586,7 @@ void assert_directory_exists(const char *path)
  * Convert DD4's standard brace colour codes and numerical
  * 8-bit colour codes into ANSI escape sequences.
  *
- * buffer must point to an array containing at least
- * MAX_STRING_LENGTH bytes.
+ * capacity includes the terminating NUL byte; output is truncated safely.
  */
 static void colourconv_8bit_sized(char *buffer, size_t capacity,
                                 const char *txt, CHAR_DATA *ch,
@@ -4988,10 +4753,8 @@ static void colourconv_8bit_sized(char *buffer, size_t capacity,
 
                                 /*
                                  * Validate the code before reading its
-                                 * ANSI sequence. The old colour_8bit()
-                                 * helper leaves its local code buffer
-                                 * uninitialised when no matching entry
-                                 * exists.
+                                 * ANSI sequence. Unknown codes remain literal
+                                 * text instead of being silently discarded.
                                  */
                                 for (i = 0; i < MAX_8BIT_COLORS; i++)
                                 {
@@ -5382,9 +5145,12 @@ void strip_colour_8bit(int icode, CHAR_DATA *ch, char *string)
 
 int colour_8bit(int icode, CHAR_DATA *ch, char *string)
 {
-        char code[20];
+        char code[20] = "";
         char *p = '\0';
         int i;
+
+        /* Unknown codes must not expose uninitialised stack contents. */
+        string[0] = '\0';
 
         if (IS_NPC(ch))
                 return 0;

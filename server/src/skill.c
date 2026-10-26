@@ -3922,9 +3922,8 @@ bool is_cursed(CHAR_DATA *ch)
         OBJ_DATA *pobj;
         OBJ_DATA *pobj_next;
 
-        if ( is_affected( ch, gsn_curse )
-        ||   is_affected( ch, gsn_hex )
-        ||   is_affected( ch, gsn_prayer_weaken )
+        /* Harmful Curse/Hex set AFF_CURSE; undead boons only share their names. */
+        if ( is_affected( ch, gsn_prayer_weaken )
         ||   IS_AFFECTED( ch, AFF_CURSE ) )
         {
                 return TRUE;

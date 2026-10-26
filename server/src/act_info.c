@@ -707,7 +707,7 @@ void show_char_to_char_0(CHAR_DATA *victim, CHAR_DATA *ch)
         if ((IS_NPC(victim) && IS_SET(victim->act, ACT_PRACTICE)) && (is_affected(ch, gsn_sense_wisdom)))
                 strcat(buf, "<75>(T)<0> ");
 
-        if (IS_AFFECTED(ch, AFF_DETECT_CURSE) && (is_affected(victim, gsn_prayer_weaken) || is_affected(victim, gsn_hex) || is_affected(victim, gsn_curse) || IS_AFFECTED(victim, AFF_CURSE) || is_cursed(victim)))
+        if (IS_AFFECTED(ch, AFF_DETECT_CURSE) && is_cursed(victim))
                 strcat(buf, "<19>(Cursed)<0> ");
 
         if (IS_GOOD(victim) && !IS_SET(victim->act, ACT_OBJECT) && (IS_AFFECTED(ch, AFF_DETECT_GOOD) || is_affected(ch, gsn_song_of_revelation)))
