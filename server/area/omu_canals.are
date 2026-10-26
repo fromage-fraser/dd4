@@ -336,7 +336,10 @@ manifests a gaze that is both penetrating and calm.
     c 'blindness' $n
 ~
 >fight_prog 5~
+if isnpc($n)
+or subclass($n) != 12
     c 'curse' $n
+endif
 ~
 >fight_prog 5~
     c 'slow' $n
@@ -367,10 +370,16 @@ manifests a gaze that is both penetrating and calm.
     c 'feeblemind' $n
 ~
 >fight_prog 5~
+if isnpc($n)
+or subclass($n) != 12
     c 'curse' $n
+endif
 ~
 >fight_prog 5~
+if isnpc($n)
+or subclass($n) != 12
     c 'chill touch' $n
+endif
 ~
 >fight_prog 5~
     c 'paralysis' $n

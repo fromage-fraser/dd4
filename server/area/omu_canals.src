@@ -1680,7 +1680,10 @@ mp  fight_prog 5
     c 'blindness' $n
 ~
 mp  fight_prog 5
+if isnpc($n)
+or subclass($n) != 12
     c 'curse' $n
+endif
 ~
 mp  fight_prog 5
     c 'slow' $n
@@ -1714,10 +1717,16 @@ mp  fight_prog 5
     c 'feeblemind' $n
 ~
 mp  fight_prog 5
+if isnpc($n)
+or subclass($n) != 12
     c 'curse' $n
+endif
 ~
 mp  fight_prog 5
+if isnpc($n)
+or subclass($n) != 12
     c 'chill touch' $n
+endif
 ~
 mp  fight_prog 5
     c 'paralysis' $n

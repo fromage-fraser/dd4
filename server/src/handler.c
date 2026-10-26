@@ -932,13 +932,16 @@ static void check_weapon_weight(CHAR_DATA *ch, OBJ_DATA *weapon)
 }
 
 
-/* Keep transient strength changes from dropping gear during a whole morph. */
-void begin_form_equipment_update(void)
+/*
+ * Keep transient strength changes from dropping gear during equipment swaps.
+ * Finish the swap before invoking combat callbacks.
+ */
+void begin_equipment_update(void)
 {
         affect_update_depth++;
 }
 
-void end_form_equipment_update(CHAR_DATA *ch)
+void end_equipment_update(CHAR_DATA *ch)
 {
         affect_update_depth--;
         check_weapon_weight(ch, NULL);

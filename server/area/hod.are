@@ -523,7 +523,10 @@ endif
 endif
 ~
 >fight_prog 40~
+if isnpc($n)
+or subclass($n) != 12
 cast 'energy drain' $n
+endif
 ~
 >death_prog 100~
 mpecho The {dshadow{x dissolves into {yshafts{x!!
@@ -636,7 +639,10 @@ The Hex mob is here.
 0 0 1
 >all_greet_prog 10~
 mpecho Some kind of dust passes over you.
+if isnpc($n)
+or subclass($n) != 12
 cast hex $n
+endif
 ~
 |
 

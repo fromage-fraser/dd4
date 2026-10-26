@@ -466,7 +466,10 @@ tear you apart, so why are you stopping to look at him? RUN!
    cast 'dispel magic' $n
 ~
 >fight_prog 20~
+if isnpc($n)
+or subclass($n) != 12
    cast 'energy drain' $n
+endif
 ~
 >fight_prog 30~
    cast 'prismatic spray' $n

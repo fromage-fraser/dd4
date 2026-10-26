@@ -5973,8 +5973,8 @@ bool refund_auction_bid args((void));
 bool cancel_auction args((const char *reason, bool return_item,
                          CHAR_DATA *leaving));
 void form_equipment_update(CHAR_DATA *ch);
-void begin_form_equipment_update(void);
-void end_form_equipment_update(CHAR_DATA *ch);
+void begin_equipment_update(void);
+void end_equipment_update(CHAR_DATA *ch);
 int check_stat_advance(CHAR_DATA *ch, int stat);
 bool check_questpoints_allow_level_gain(CHAR_DATA *ch, bool verbose);
 int questpoints_required_for_advance(int level);
