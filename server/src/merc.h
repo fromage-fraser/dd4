@@ -2875,11 +2875,13 @@ struct mob_index_data
          * MOB_TEMPLATE_UNSET means inherit; zero is explicit.
          */
         int area_height;
+        int area_length;
         int area_weight;
         int area_size;
 
         /* Effective prototype dimension data. */
         int height;
+        int length;
         int weight;
         int size;
 
@@ -3031,6 +3033,7 @@ struct char_data
          * These fields do not yet drive physical gameplay calculations.
          */
         int height;
+        int length;
         int weight;
         int size;
 
@@ -3642,8 +3645,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 28
-#define MAX_SPECIES 5
+#define MAX_MOB 30
+#define MAX_SPECIES 7
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -3706,6 +3709,8 @@ struct mob_template_data
          */
         int spec_chance[MOB_SPECIAL_SLOTS];
         int initial_ghost_phase;
+
+        int length; /* Descriptive body length; inherits when unspecified. */
 };
 
 /*
@@ -3777,6 +3782,8 @@ struct mob_type
         int initial_ghost_phase;
 
         CREATURE_FAMILY family;
+
+        int length; /* Descriptive body length; inherits when unspecified. */
 };
 
 /*
@@ -3817,6 +3824,8 @@ struct species_type
          */
         int spec_chance[MOB_SPECIAL_SLOTS];
         int initial_ghost_phase;
+
+        int length; /* Descriptive body length; inherits when unspecified. */
 };
 
 struct rank

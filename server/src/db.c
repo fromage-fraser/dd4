@@ -2236,6 +2236,7 @@ void load_mobiles(FILE *fp)
                 pMobIndex->area_crit_mod = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_haste_mod = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_height = MOB_TEMPLATE_UNSET;
+                pMobIndex->area_length = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_weight = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_size = MOB_TEMPLATE_UNSET;
                 pMobIndex->area_language = MOB_TEMPLATE_UNSET;
@@ -2426,6 +2427,12 @@ void load_mobiles(FILE *fp)
                                 pMobIndex->area_height =
                                     read_mob_dimension(
                                         fp, pMobIndex, "MobHeight");
+                        }
+                        else if (!str_cmp(word, "MobLength"))
+                        {
+                                pMobIndex->area_length =
+                                    read_mob_dimension(
+                                        fp, pMobIndex, "MobLength");
                         }
                         else if (!str_cmp(word, "MobWeight"))
                         {
@@ -4567,6 +4574,7 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         mob->dam_mod = pMobIndex->dam_mod;
 
         mob->height = pMobIndex->height;
+        mob->length = pMobIndex->length;
         mob->weight = pMobIndex->weight;
         mob->size = pMobIndex->size;
         mob->language = pMobIndex->language;

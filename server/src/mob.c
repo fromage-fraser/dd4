@@ -54,7 +54,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT,
-                GHOST_PHASE_NONE
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -71,7 +72,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT,
-                GHOST_PHASE_NONE
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -87,7 +89,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT,
-                GHOST_PHASE_NONE
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -103,7 +106,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT,
-                GHOST_PHASE_NONE
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "dragon",
@@ -125,7 +129,45 @@ const struct species_type species_table[MAX_SPECIES] =
 
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT,
-                GHOST_PHASE_NONE
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "quadrupedal_reptile",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_4_LEGS | PART_HEART | PART_BRAINS
+                    | PART_GUTS | PART_FEET | PART_EAR | PART_EYE
+                    | PART_TAIL | PART_SCALES,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "serpentine_reptile",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_HEART | PART_BRAINS | PART_GUTS
+                    | PART_EYE | PART_TAIL | PART_SCALES,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -158,7 +200,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,                        /* XP adjustment: percentage points */
                 MOB_SPECIAL_CHANCES_INHERIT,
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -174,7 +217,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -191,7 +235,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 5,
                 { 60, 30, 10 },
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "skeleton", "humanoid", "icon1", "icon2",
@@ -236,7 +281,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* Empty names resolve to a valid empty 0/0/0 set. */
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -266,7 +312,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "ghoul", "humanoid", "icon1", "icon2",
@@ -301,7 +348,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -337,7 +385,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
 
         {
@@ -393,7 +442,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_SEMI_MATERIAL,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "wight", "humanoid", "icon1", "icon2",
@@ -446,7 +496,8 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 /* Corporeal; inherit the humanoid phase default of none. */
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "wraith", "humanoid", "icon1", "icon2",
@@ -506,7 +557,8 @@ const struct mob_type mob_table[MAX_MOB] =
                  * rules are usable before automatic phasing is introduced.
                  */
                 GHOST_PHASE_SEMI_MATERIAL,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "spectre", "humanoid", "icon1", "icon2",
@@ -563,7 +615,8 @@ const struct mob_type mob_table[MAX_MOB] =
                  * rules remain usable before spec_spectre is introduced.
                  */
                 GHOST_PHASE_SEMI_MATERIAL,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "mummy", "humanoid", "icon1", "icon2",
@@ -617,7 +670,8 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 /* Corporeal; inherit humanoid ghost phase of none. */
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "banshee", "humanoid", "icon1", "icon2",
@@ -644,7 +698,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_SEMI_MATERIAL,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "death_knight", "humanoid", "icon1", "icon2",
@@ -670,7 +725,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "vampire", "humanoid", "icon1", "icon2",
@@ -697,7 +753,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "lich", "humanoid", "icon1", "icon2",
@@ -725,7 +782,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "dracolich", "dragon", "icon1", "icon2",
@@ -752,7 +810,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         },
 
         /* Reviewed creatures and the remaining target-family placeholders. */
@@ -768,7 +827,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 10,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
-                CREATURE_FAMILY_DWARF
+                CREATURE_FAMILY_DWARF,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "orc", "humanoid", "icon1", "icon2",
@@ -782,7 +842,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
-                CREATURE_FAMILY_ORC
+                CREATURE_FAMILY_ORC,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "half_orc", "humanoid", "icon1", "icon2",
@@ -796,7 +857,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
-                CREATURE_FAMILY_HALF_ORC
+                CREATURE_FAMILY_HALF_ORC,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "goblin", "humanoid", "icon1", "icon2",
@@ -810,7 +872,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
-                CREATURE_FAMILY_GOBLIN
+                CREATURE_FAMILY_GOBLIN,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "hobgoblin", "humanoid", "icon1", "icon2",
@@ -824,7 +887,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
-                CREATURE_FAMILY_HOBGOBLIN
+                CREATURE_FAMILY_HOBGOBLIN,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "ogre", "humanoid", "icon1", "icon2",
@@ -838,7 +902,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
-                CREATURE_FAMILY_OGRE
+                CREATURE_FAMILY_OGRE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "troll", "humanoid", "icon1", "icon2",
@@ -852,7 +917,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
-                CREATURE_FAMILY_TROLL
+                CREATURE_FAMILY_TROLL,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "ogre_mage", "humanoid", "icon1", "icon2",
@@ -866,7 +932,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
-                CREATURE_FAMILY_OGRE_MAGE
+                CREATURE_FAMILY_OGRE_MAGE,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "giant", "humanoid", "icon1", "icon2",
@@ -880,7 +947,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
-                CREATURE_FAMILY_GIANT
+                CREATURE_FAMILY_GIANT,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "titan", "humanoid", "icon1", "icon2",
@@ -894,7 +962,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
-                CREATURE_FAMILY_TITAN
+                CREATURE_FAMILY_TITAN,
+                MOB_TEMPLATE_UNSET
         },
         {
                 "human", "humanoid", "icon1", "icon2",
@@ -908,7 +977,40 @@ const struct mob_type mob_table[MAX_MOB] =
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE,
-                CREATURE_FAMILY_HUMAN
+                CREATURE_FAMILY_HUMAN,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "giant_lizard", "quadrupedal_reptile", "icon1", "icon2",
+                0, 0,
+                PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                457
+        },
+
+        {
+                "giant_pit_viper", "serpentine_reptile", "icon1", "icon2",
+                0, AFF_INFRARED,
+                PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_poison", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                366
         }
 };
 
@@ -1323,6 +1425,11 @@ bool resolve_mob_template(int mob_type,
                 body_species->height,
                 archetype->height);
 
+        resolved->length =
+            resolve_template_scalar(
+                body_species->length,
+                archetype->length);
+
         resolved->weight =
             resolve_template_scalar(
                 body_species->weight,
@@ -1602,6 +1709,9 @@ int validate_mob_dimensions(void)
                     "height", species_table[sn].height);
                 issues += validate_mob_dimension_value(
                     "Body species", species_table[sn].species,
+                    "length", species_table[sn].length);
+                issues += validate_mob_dimension_value(
+                    "Body species", species_table[sn].species,
                     "weight", species_table[sn].weight);
                 issues += validate_mob_dimension_value(
                     "Body species", species_table[sn].species,
@@ -1613,6 +1723,9 @@ int validate_mob_dimensions(void)
                 issues += validate_mob_dimension_value(
                     "Creature archetype", mob_table[sn].name,
                     "height", mob_table[sn].height);
+                issues += validate_mob_dimension_value(
+                    "Creature archetype", mob_table[sn].name,
+                    "length", mob_table[sn].length);
                 issues += validate_mob_dimension_value(
                     "Creature archetype", mob_table[sn].name,
                     "weight", mob_table[sn].weight);
@@ -2293,6 +2406,11 @@ void initialise_mob_index_flags(MOB_INDEX_DATA *index)
             resolve_template_scalar(
                 inherited.height,
                 index->area_height);
+
+        index->length =
+            resolve_template_scalar(
+                inherited.length,
+                index->area_length);
 
         index->weight =
             resolve_template_scalar(
