@@ -2175,6 +2175,12 @@ void do_mstat(CHAR_DATA *ch, char *argument)
                 return;
         }
         show_drained_condition(ch, victim);
+        snprintf(buf, sizeof(buf),
+            "Creature family: {W%s{x. Goblinoid training: %s. Giant defence: %s.\n\r",
+            creature_family_name(creature_family(victim)),
+            creature_has_training(victim, ACT_GOBLINOID_TRAINING) ? "yes" : "no",
+            creature_has_training(victim, ACT_GIANT_DEFENCE) ? "yes" : "no");
+        send_to_char(buf, ch);
         if (!IS_NPC(victim))
         {
                 unsigned long int masks[2];

@@ -1138,6 +1138,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
         int count;
         bool poison;
         bool hit = FALSE;
+        bool melee_attack = dt != gsn_shoot && dt != gsn_snap_shot;
 
         if (is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
                 return FALSE;
@@ -1282,6 +1283,9 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                  */
                 if (blessed_weapon_vs_undead(wield, victim))
                         thac0 -= 2;
+
+                if (melee_attack)
+                        thac0 -= creature_melee_hit_bonus(ch, victim);
 
                 victim_ac = UMAX(-15, GET_AC(victim) / 10);
 

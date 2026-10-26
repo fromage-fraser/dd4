@@ -715,6 +715,46 @@ Use mstat to inspect template, individual, prototype and live values.
 
 Consult mob.c or the Scribe manual for individual archetypes.
 
+Dwarf archetype and creature families
+------------------------------------
+
+    < dwarf~ common~
+
+The dwarf inherits a normal living humanoid body, AFF_INFRARED,
+ACT_GOBLINOID_TRAINING and ACT_GIANT_DEFENCE, plus RES_MAGIC | RES_POISON.
+It has no default active special, immunity or vulnerability. Its HP, damage,
+critical and swiftness modifiers are zero; its XP adjustment is +10 points.
+The descriptive height/weight defaults are 130/70, using centimetres and
+kilograms for these converted dwarf entries. Raw metadata does not control
+gameplay size; size and language codes remain unspecified.
+
+Training uses ordinary melee rolls: +1 hitroll against orcs, half-orcs,
+goblins and hobgoblins; ogres, trolls, ogre magi, giants and titans take -4
+hitroll against a defender with giant defence. Shoot and Snap Shot are
+excluded. Neither actor's stored hitroll or AC is changed.
+
+The ACT bits are BIT_34 (17179869184) for goblinoid_training and BIT_35
+(34359738368) for giant_defence. Individual masks use XOR as usual. Include
+both bits in a dwarf's individual ACT field to cancel both trained benefits;
+the dwarf still inherits infravision and its ordinary resistance flags.
+
+Creature family is the final mob_type.family identity field. Old templates
+retain NONE until reviewed. Minimal humanoid target entries now exist for
+orc, half_orc, goblin, hobgoblin, ogre, troll, ogre_mage, giant and titan.
+Their full traits are unfinished; they supply identity and anatomy only.
+No existing mobs are automatically converted by their names.
+
+Player Dwarves receive the same melee training benefits. Player Orcs,
+Goblins, Hobgoblins, Ogres, Trolls and Giants count as those opponent
+families. This does not import NPC resistance packages into player races.
+MSTAT shows the effective family and both training abilities.
+
+Dwarven Homestead 20500-20519 is the first area conversion. Its child and
+teen cancel training; its caretaker and servant use regeneration. The
+servant's unused practice marker becomes NO_QUEST, the thief loses the
+accidental tinker flag, and guests/maids lose pass-door. Equipment, teacher
+declarations, games and room flags retain their existing definitions.
+
 The wight archetype is an intelligent corporeal undead humanoid:
 
     < wight~ common~

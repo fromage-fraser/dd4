@@ -760,12 +760,12 @@ else
 endif
 ~
 >fight_prog 7~
-if affspell  ($n)  == 21
-	break
+if affspell ($n) == 21
+    break
 endif
 if isnpc($n)
 or subclass($n) != 12
-	c 'chill touch' $n
+    c 'chill touch' $n
 endif
 ~
 |
@@ -794,12 +794,12 @@ else
 endif
 ~
 >fight_prog 6~
-if affspell  ($n)  == 21
-	break
+if affspell ($n) == 21
+    break
 endif
 if isnpc($n)
 or subclass($n) != 12
-	c 'chill touch' $n
+    c 'chill touch' $n
 endif
 ~
 |
@@ -1025,7 +1025,7 @@ mpecho Something happens.
 >fight_prog 3~
 if isnpc($n)
 or subclass($n) != 12
-c hex $n
+    c hex $n
 endif
 ~
 >death_prog 100~

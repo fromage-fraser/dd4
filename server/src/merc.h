@@ -2025,6 +2025,8 @@ extern WANTED_DATA *wanted_list_last;
 #define ACT_FEAR_AURA BIT_31          /* Frightens visible opponents in combat */
 #define ACT_PRIEST_SERVICES BIT_32    /* Extra holy services through HEAL */
 #define ACT_UNDEAD_HEALER BIT_33      /* Undead mending through HEAL */
+#define ACT_GOBLINOID_TRAINING BIT_34 /* Melee practice against goblinoids */
+#define ACT_GIANT_DEFENCE BIT_35      /* Melee defence against giant kin */
 #define ACT_UNKILLABLE BIT_63         /* Can't be killed. 'slay' still works. - Owl */
 
 /*
@@ -3639,7 +3641,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 17
+#define MAX_MOB 27
 #define MAX_SPECIES 5
 #define MAX_RANK 6
 
@@ -3713,6 +3715,23 @@ struct mob_template_data
  * NULL special names inherit; an empty string explicitly clears an inherited
  * special.
  */
+/* Creature identity is separate from anatomy and combat training. */
+typedef enum creature_family
+{
+        CREATURE_FAMILY_NONE,
+        CREATURE_FAMILY_DWARF,
+        CREATURE_FAMILY_ORC,
+        CREATURE_FAMILY_HALF_ORC,
+        CREATURE_FAMILY_GOBLIN,
+        CREATURE_FAMILY_HOBGOBLIN,
+        CREATURE_FAMILY_OGRE,
+        CREATURE_FAMILY_TROLL,
+        CREATURE_FAMILY_OGRE_MAGE,
+        CREATURE_FAMILY_GIANT,
+        CREATURE_FAMILY_TITAN,
+        CREATURE_FAMILY_MAX
+} CREATURE_FAMILY;
+
 struct mob_type
 {
         char *name;
@@ -3754,6 +3773,8 @@ struct mob_type
          */
         int spec_chance[MOB_SPECIAL_SLOTS];
         int initial_ghost_phase;
+
+        CREATURE_FAMILY family;
 };
 
 /*
@@ -5856,6 +5877,10 @@ bool undead_protection_blocks_aggression args((CHAR_DATA *mob,
 
 /* mob.c */
 int species_lookup args((const char *name));
+CREATURE_FAMILY creature_family args((CHAR_DATA *ch));
+const char *creature_family_name args((CREATURE_FAMILY family));
+bool creature_has_training args((CHAR_DATA *ch, unsigned long int trait));
+int creature_melee_hit_bonus args((CHAR_DATA *attacker, CHAR_DATA *victim));
 const char *ghost_phase_name args((GHOST_PHASE phase));
 bool parse_ghost_phase args((const char *text, GHOST_PHASE *phase));
 bool set_ghost_phase args((CHAR_DATA *ch, GHOST_PHASE phase));

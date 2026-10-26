@@ -21,6 +21,7 @@ _AsciiDoc documentation update: 26 October 2026._
 * <<scribe-mobiles,8. Mobiles>>
 ** <<scribe-mobile-inheritance,Body species, archetypes and XOR overrides>>
 ** <<scribe-template-selection,Selecting a creature archetype>>
+** <<scribe-dwarf-archetype,Dwarves and creature families>>
 ** <<scribe-zombie-archetype,Zombie archetype>>
 ** <<scribe-ghoul-archetype,Ghoul archetype>>
 ** <<scribe-ghast-archetype,Ghast archetype>>
@@ -789,6 +790,8 @@ Accepted archetype names are:
 |===
 | Name | Meaning
 | `reserved` | Existing neutral placeholder archetype; no meaningful creature defaults.
+| `dwarf` | Living humanoid with infravision, magic/poison resistance and optional melee training.
+| `orc`, `half_orc`, `goblin`, `hobgoblin`, `ogre`, `troll`, `ogre_mage`, `giant`, `titan` | Humanoid placeholders with creature-family identity. Their full creature traits await review.
 | `goat` | Existing goat archetype, based on `farm_mammal`.
 | `fire_elemental` | Existing fire-elemental test archetype, based on `elemental`.
 | `skeleton` | Skeletal humanoid archetype.
@@ -866,6 +869,76 @@ file. Record any such manual selection in the source before regeneration.
 
 
 [[scribe-skeleton-pilot-plan]]
+[[scribe-dwarf-archetype]]
+===== Dwarves and creature families
+
+`archetype dwarf` selects an ordinary living humanoid. It inherits the
+humanoid organs and limbs, can speak, and has normal blood, pain, soul and
+corpse interactions. It adds `infrared`, `goblinoid_training` and
+`giant_defence`, plus `res magic poison`. It supplies no active special,
+immunity or vulnerability. HP, damage, critical and swiftness adjustments
+are zero. Its XP adjustment adds 10 percentage points.
+
+The resistance flags use the ordinary DD4 rules, including matching damage
+reduction and typed effect saves. A magical poison receives one resistance
+result. This is not a separate customised saving-throw bonus. These NPC
+resistance defaults do not replace player race resistance rules.
+
+The default descriptive dimensions are height 130 and weight 70. Converted
+dwarf entries use centimetres and kilograms as an authoring convention;
+the raw metadata interface does not enforce units or affect gameplay size.
+Earlier development templates retain their unreviewed raw values. Size and
+language metadata are unspecified. Speech still follows body-form flags.
+
+Creature family is identity stored in the final `mob_type.family` field,
+after `initial_ghost_phase`. It is not a flag mask or individual area-tail
+field. Other archetypes can share a family when variants are introduced.
+Old unreviewed archetypes have `CREATURE_FAMILY_NONE`.
+
+The new target archetypes are deliberately small placeholders: `orc`,
+`half_orc`, `goblin`, `hobgoblin`, `ogre`, `troll`, `ogre_mage`, `giant` and
+`titan`. They currently supply ordinary humanoid anatomy and family identity,
+with neutral modifiers and no special abilities. Selecting `troll`, for
+example, does not yet grant regeneration. Review their full traits before
+using them to convert an area.
+
+`goblinoid_training` gives +1 effective hitroll against the orc, half-orc,
+goblin and hobgoblin families. `giant_defence` gives ogres, trolls, ogre magi,
+giants and titans -4 effective hitroll against the trained defender. Both
+use the existing melee attack roll; they do not alter stored hitroll or AC,
+add damage, or add another random roll. Shoot and Snap Shot do not use them.
+
+NPC training comes from the effective ACT flags, so any appropriate mobile
+can use or cancel it. On a dwarf, the following source cancels both inherited
+training traits while retaining infravision and resistance:
+
+[source,text]
+----
+archetype dwarf
+act goblinoid_training giant_defence
+----
+
+Add the mobile's other individual ACT flags on that same line. Omitting
+these two words inherits its training. `goblinoid_training` is BIT_34
+(17179869184); `giant_defence` is BIT_35 (34359738368).
+
+Player Dwarves receive the two matching melee training benefits. Existing
+player Orc, Goblin, Hobgoblin, Ogre, Troll and Giant race identities also
+participate in opponent matching. Player ACT bits are never interpreted as
+NPC training flags. Other race families await their own review. Unconverted
+NPCs are not classified by name, keywords, race defaults or special function.
+
+`mstat` shows creature family and the two effective training abilities.
+Individual XOR cancellations remain visible in its existing ACT layers.
+
+Dwarven Homestead vnums 20500-20519 now select `dwarf`. The child and teen
+cancel both training flags. The caretaker and servant use `regenerator`
+instead of the old non-corporeal bit; this translates the likely original
+ROM regeneration meaning. The thief's old thief-class bit no longer grants
+tinker services. The servant retains NO_QUEST instead of an inactive
+practice marker. Guests and maids lose pass-door. Existing equipment,
+teaching, gambling and other individual abilities retain their roles.
+
 ===== Skeleton reference archetype
 
 
@@ -2655,6 +2728,8 @@ undead         Marks mobile as undead
 fear_aura      Frightens opponents who can see this mobile in combat
 priest_services  Extra holy services; also needs healer
 undead_healing   Undead mending services; also needs healer
+goblinoid_training  +1 melee hitroll against orcs, half-orcs, goblins and hobgoblins
+giant_defence   Giant kin take a -4 melee hitroll penalty against this mobile
 unkillable  will not die, no matter how much damage is
     done to it
 
