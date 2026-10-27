@@ -131,7 +131,7 @@ A templar officer tells you "Better move along evil one!"
 13 8 2 13d13+130 1d6+8
 0 7000
 8 8 1
-< human~ common~
+< human~ rare~
 #2011
 zombie mage~
 zombie~
@@ -180,7 +180,7 @@ to kill you to get a fresh corpse!
 15 8 -5 15d15+150 1d8+8
 0 15000
 8 8 1
-< human~ common~
+< human~ elite~
 #2015
 grand templar leader~
 the grand templar~
@@ -193,7 +193,7 @@ of an eye he seems stern again.
 16 5 -5 16d16+160 1d8+12
 0 20000
 8 8 1
-< human~ common~
+< human~ elite~
 #2016
 prism dragon prismdragon~
 the prism dragon~
@@ -205,7 +205,7 @@ The spray of coloured light bouncing off his scales is almost blinding.
 20 0 -5 20d20+200 6d3+14
 0 30000
 8 8 1
-< prism_dragon~ common~
+< prism_dragon~ boss~
 #2017
 darken dark beast darkenbeast~
 The DarkenBeast~
@@ -217,7 +217,7 @@ You see nothing more than the sense of darkness and evil.
 24 -2 -12 24d24+240 3d7+7
 0 80000
 8 8 0
-< darkenbeast~ common~
+< darkenbeast~ boss~
 #0
 
 

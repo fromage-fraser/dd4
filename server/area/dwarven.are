@@ -114,7 +114,7 @@ The mine leader is very big and very strong.
 21 0 -8 5d3+400 3d9+3
 0 52000
 8 8 1
-< dwarf~ common~
+< dwarf~ rare~
 #6509
 dwarf doctor~
 the dwarven doctor~
@@ -204,7 +204,7 @@ He looks VERY tough.
 29 0 -9 25r29+290 4d8+15
 0 200000
 8 8 1
-< dwarf~ common~
+< dwarf~ elite~
 #6517
 snake~
 the giant snake~
