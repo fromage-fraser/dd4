@@ -1,5 +1,25 @@
 #HELPS
 
+0 ECHOLOCATION~
+Some creatures locate nearby physical creatures through sound. Darkness
+and ordinary visual blindness do not stop this sense. It cannot locate
+administrator-hidden or nonphysical creatures, see into other rooms or
+reveal object details. The converted Catacombs bats have this trait.
+~
+
+0 'NATURAL ARMOUR' 'NATURAL ARMOR'~
+Some creature archetypes have innate armour that improves their effective
+armour class without worn equipment. The Prism Dragon and DarkenBeast in
+the Dwarven Catacombs have this defence. MSTAT lists its value and source.
+~
+
+0 'STRENGTH DRAIN' 'SHADOW TOUCH'~
+A shadow can steal strength with a damaging natural melee touch. Each
+successful drain takes one Strength, up to three, for four ticks. Further
+successes refresh the duration. Drain resistance applies. Restoration and
+Vitalize remove it. This differs from Drained and causes no permanent loss.
+~
+
 0 'SUNLIGHT SENSITIVITY' 'SUNLIGHT SENSITIVE'~
 Some creatures find bright sunlight uncomfortable to fight in. A mobile
 with sunlight sensitivity takes -1 effective hitroll on ordinary melee
@@ -83,7 +103,8 @@ Syntax: cast 'restoration' <<target>
 Restoration clears every Drained stack and its recovery and stack timers.
 Your normal HP and mana ceilings, hitroll and damroll return immediately.
 Current HP, mana and movement stay as they are. It does not repair
-aggravated wounds, cure other conditions or protect against another drain.
+aggravated wounds or protect against another drain. It also removes the
+separate strength drain caused by a shadow's touch.
 
 Clerics, Templars and Druids need 75% Curative Magiks and 75% Heal.
 Knights need 95% Healing Magiks and 90% Heal instead. These are practice
@@ -95,7 +116,7 @@ room, including during combat, with one combat round of casting lag.
 Normal casting, target and practice restrictions still apply.
 
 Priests offering extra healer services provide HEAL RESTORATION for
-40 gold. They check that you are Drained before taking payment.
+40 gold. They check for Drained or shadow strength drain before taking payment.
 Living PCs and eligible NPCs can benefit. Undead, including vampire PCs,
 cannot become Drained, so the spell has nothing to remove from them.
 
@@ -178,8 +199,8 @@ Ordinary healer services and prices remain. Some priests also offer:
  blessweapon  Bless Weapon           100 + 5 * weapon level gold
  refill       Holy water              8 gold / 15 missing units
 
-Restoration removes Drained without refilling HP, mana or movement.
-If you are not Drained, you are not charged. See HELP RESTORATION.
+Restoration removes Drained and shadow strength drain without refilling
+HP, mana or movement. If neither is present, you are not charged. See HELP RESTORATION.
 
 The protective spells keep their normal durations. An already active
 copy is refused before payment.
@@ -1521,6 +1542,8 @@ blocking unrelated directions.
 - Reptile anatomy and descriptive mobile length added; doctor now assists.
 
 - Creature traits replace racial ACT bonuses; MSTAT shows strengths and origins.
+- Dwarven Catacombs gains creature archetypes and corrected anatomy/loot.
+- Echolocation, natural armour and curable shadow strength drain added.
 
 ~
 
@@ -1797,7 +1820,8 @@ The DD Team
 ~
 
 0 VITALIZE VITALISE~
-This healer-only spell clears Drained and its timers, then fully restores
+This healer-only spell clears Drained, its timers and shadow strength
+drain, then fully restores
 your HP, mana and movement. Existing aggravated wounds still limit HP.
 The normal healer service costs 150 gold.
 

@@ -8953,7 +8953,8 @@ void spell_restoration(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (!ch || ch->deleted || !victim || victim->deleted)
                 return;
-        if (drained_stack_count(victim) == 0)
+        if (drained_stack_count(victim) == 0
+        && !is_affected(victim, gsn_strength_drain))
         {
                 send_to_char("There is no drained life force to restore.\n\r", ch);
                 return;
@@ -8961,6 +8962,7 @@ void spell_restoration(int sn, int level, CHAR_DATA *ch, void *vo)
 
         /* The ceilings return, but current HP, mana and movement stay put. */
         clear_drained_condition(victim);
+        clear_strength_drain(victim);
         send_to_char("Your life force feels whole again.\n\r", victim);
         if (ch != victim)
         {
@@ -8982,6 +8984,7 @@ void spell_vitalize(int sn, int level, CHAR_DATA *ch, void *vo)
         if (drained_stack_count(victim) > 0)
                 send_to_char("Your life force feels whole again.\n\r", victim);
         clear_drained_condition(victim);
+        clear_strength_drain(victim);
 
         if (victim->hit < aggravated_healing_limit(victim))
                 victim->hit = aggravated_healing_limit(victim);

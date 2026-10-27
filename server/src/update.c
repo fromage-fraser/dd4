@@ -2441,6 +2441,16 @@ void char_update(void)
                         if (paf->duration < 0)
                                 continue;
 
+                        /* This bounded drain expires on its fourth tick. */
+                        if (paf->type == gsn_strength_drain && paf->duration > 0)
+                        {
+                                if (--paf->duration == 0)
+                                {
+                                        send_to_char("Your stolen strength returns.\n\r", ch);
+                                        affect_remove(ch, paf);
+                                }
+                                continue;
+                        }
                         if (paf->duration > 0)
                                 paf->duration--;
                         else

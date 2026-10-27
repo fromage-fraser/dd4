@@ -263,9 +263,10 @@ void do_heal(CHAR_DATA *ch, char *argument)
         }
         else if (service->kind == HEALER_SPELL && sn == gsn_restoration)
         {
-                if (drained_stack_count(ch) == 0)
+                if (drained_stack_count(ch) == 0
+                && !is_affected(ch, gsn_strength_drain))
                 {
-                        send_to_char("Your life force does not need restoring.\n\r", ch);
+                        send_to_char("You have no drained life force or strength to restore.\n\r", ch);
                         return;
                 }
         }

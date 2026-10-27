@@ -2462,6 +2462,7 @@ static void damage_internal(CHAR_DATA *ch,
         {
                 ghoul_touch_after_hit(ch, victim, dt);
                 mummy_rot_after_hit(ch, victim, actual_damage);
+                strength_drain_after_hit(ch, victim, dt, actual_damage);
 
                 if (dracolich_contact)
                         dracolich_paralysis_after_hit(ch, victim);

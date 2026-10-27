@@ -46,6 +46,7 @@ void wear_obj           args( ( CHAR_DATA *ch, OBJ_DATA *obj, bool fReplace ) );
  */
 
 DECLARE_SPEC_FUN( spec_breath_any           );
+DECLARE_SPEC_FUN( spec_prism_flash          );
 DECLARE_SPEC_FUN( spec_breath_acid          );
 DECLARE_SPEC_FUN( spec_breath_fire          );
 DECLARE_SPEC_FUN( spec_breath_frost         );
@@ -127,6 +128,7 @@ DECLARE_SPEC_FUN( spec_gold_grung           );
 SPEC_FUN *spec_lookup (const char *name )
 {
         if (!str_cmp(name, "spec_breath_any"))           return spec_breath_any;
+        if (!str_cmp(name, "spec_prism_flash"))          return spec_prism_flash;
         if (!str_cmp(name, "spec_breath_acid"))          return spec_breath_acid;
         if (!str_cmp(name, "spec_breath_fire"))          return spec_breath_fire;
         if (!str_cmp(name, "spec_breath_frost"))         return spec_breath_frost;
@@ -214,6 +216,7 @@ const char *mob_special_name(SPEC_FUN *special)
                 return "none";
 
         if (special == spec_breath_any) return "spec_breath_any";
+        if (special == spec_prism_flash) return "spec_prism_flash";
         if (special == spec_breath_acid) return "spec_breath_acid";
         if (special == spec_breath_fire) return "spec_breath_fire";
         if (special == spec_breath_frost) return "spec_breath_frost";
@@ -376,6 +379,28 @@ bool dragon( CHAR_DATA *ch, char *spell_name )
 /*
  * Special procedures for mobiles.
  */
+/* A single flash replaces that opportunity's breath attack. */
+bool spec_prism_flash(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        int sn;
+        if (!ch || !IS_NPC(ch) || ch->deleted || !ch->in_room
+        || !IS_AWAKE(ch) || ch->position == POS_DEAD || ch->wait > 0
+        || IS_AFFECTED(ch, AFF_CHARM | AFF_HOLD | AFF_DAZED))
+                return FALSE;
+        victim = ch->fighting;
+        if (!victim || victim->deleted || victim->hit <= 0
+        || victim->position == POS_DEAD || victim->in_room != ch->in_room
+        || !can_see(ch, victim))
+                return FALSE;
+        sn = skill_lookup("colour spray");
+        if (sn < 0)
+                return FALSE;
+        act("Prismatic light bursts from $n's scales!", ch, NULL, victim, TO_ROOM);
+        (*skill_table[sn].spell_fun)(sn, ch->level, ch, victim);
+        return TRUE;
+}
+
 bool spec_breath_any( CHAR_DATA *ch )
 {
         switch ( number_bits( 3 ) )

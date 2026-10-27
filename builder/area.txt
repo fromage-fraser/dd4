@@ -3962,6 +3962,7 @@ The following special functions are available for mobiles; their names generally
 give you some idea of their effects:
 
     spec_breath_any
+    spec_prism_flash
     spec_breath_acid
     spec_breath_fire
     spec_breath_frost
@@ -4319,3 +4320,72 @@ There is no other limit on area sizes or memory usage.
 
 We decided to use a fixed size because it simplifies our job.  It also allows
 significant performance improvements.
+
+Passive creature additions for Dwarven Catacombs
+----------------------------------------------
+The new archetypes are bat, animated_mist, mysterious_being, shadow,
+vampire_bat_form, prism_dragon and darkenbeast. Select them through the existing
+archetype field. No individual trait fields or new area syntax are added.
+
+The mysterious_being species has no anatomical parts, speech or corpse and
+is inorganic. Negative body restrictions prevent the normal anatomy helpers
+from assuming a head, eyes, arms, legs or heart. This says nothing about a
+mind, soul or undead nature. Animated mist uses this body with flight,
+sanctuary, sneak and pass-door. Bat and vampire bat forms use winged_mammal;
+DarkenBeast uses winged_reptile. Both winged bodies have two hind legs,
+wings and living organs, with no usable arms/hands or speech. Vampire forms
+share one set of vampire defaults. The bat form adds flight, fangs and bite.
+
+Echolocation is an internal trait for the two bat archetypes. It locates
+same-room corporeal creatures despite darkness or ordinary visual blindness.
+It does not reveal administrator-hidden or nonphysical creatures, distant
+rooms or object details. Existing channel mute/silence settings are not
+physical deafness. No player race or form gains this trait automatically.
+
+Shadow is intelligent undead with no ordinary organs, blood or corpse. It
+has cold/poison/sleep/charm/hold/drain/nonmagic immunity, dark resistance and
+holy vulnerability. It keeps a shadowy humanoid outline, sneak, pass-door,
+detection and muteness. It does not inherit wraith phase cycling or a silver
+exception. Its strength_drain_touch trait has a 25% chance after actual
+damaging natural melee to attempt -1 Strength through RES_DRAIN rules. The
+new condition caps at -3 and lasts four ticks, refreshed by another success.
+It grants no extra attack or permanent stat/level loss. Restoration and
+Vitalize remove this condition as well as the existing Drained condition.
+The conditions remain separate. Strength drain is an internal condition,
+not a player-learnable skill or a castable spell.
+
+Natural armour is an internal signed AC adjustment, included in GET_AC and
+shown by MSTAT's trait display. Prism dragon and DarkenBeast receive -20 AC.
+It is not a new area scalar or a change to stored armour. Their other scalar
+HP/damage/critical/swiftness and separate XP adjustments stay neutral.
+
+Prism dragon uses the existing dragon body, flight and ordinary natural
+attacks. It can speak. Its special distribution is 75% spec_breath_any and
+25% spec_prism_flash, with no boss slot. The flash casts existing Colour
+Spray at its current opponent using the dragon's level. Only one special
+runs per opportunity; breath opportunities therefore receive a smaller
+share. Special XP uses the existing weighted calculation.
+
+DarkenBeast is a living transformed animal with wings, claws and fangs,
+charm immunity, medium metadata and descriptive length 120 cm. It retains
+a corpse and uses the existing -1 natural-sunlight accuracy trait. This
+named boss does not revert to an unspecified original animal in daylight.
+Poison is an individual area special, not a racial default. Height and
+weight remain unspecified. This is DD4's agreed adaptation of the AD&D
+second-edition creature; prism dragon is this area's own creature.
+
+Catacombs 2006 retains its blank descriptions and aggression without old
+gold-derived HUGE/tail flags. Officer 2010 regains normal human anatomy.
+Skeleton 2007 no longer uses legacy undead casting; wraith 2009 and vampire
+2013 inherit their native specials. Zombie mage 2011 cancels AFF_MINDLESS
+through its existing AFF XOR field and retains its mage special. Human
+grand templar 2015 has an individual cleric combat special; no shop or
+healer service is added. The other human roles keep existing behaviour.
+
+Anatomically inappropriate equipment becomes carried loot on the mist,
+shadow, vampire bat, prism dragon and DarkenBeast. All loot remains
+obtainable, but worn-item bonuses no longer apply. Natural armour partly
+replaces the two bosses' former equipment defence; it is not an exact
+reproduction of random item bonuses. Every room, exit and room flag stays
+unchanged, including the seven approved NO_UNDEAD rooms. No matching
+Catacombs Scribe source exists in the repository.

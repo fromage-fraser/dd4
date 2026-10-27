@@ -427,7 +427,7 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 632           /* Includes Restoration. */
+#define MAX_SKILL 633           /* Includes the internal strength-drain condition. */
 #define MAX_PRE_REQ 1612        /* Includes both Restoration learning paths. */
 #define MAX_SPELL_GROUP 483     /* Restoration belongs to Healing and Curative. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
@@ -3643,8 +3643,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 31
-#define MAX_SPECIES 7
+#define MAX_MOB 38
+#define MAX_SPECIES 10
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -4525,6 +4525,7 @@ extern int gsn_bubble_jet;
 extern int gsn_banish;
 extern int gsn_stench;
 extern int gsn_mummy_rot;
+extern int gsn_strength_drain;
 extern int gsn_turn_undead;
 extern int gsn_chant_of_turning;
 extern int gsn_protect_vs_evil;
@@ -4589,7 +4590,7 @@ extern int gsn_prayer_plague;
 #define IS_EVILandNEUTRAL(ch) (ch->alignment < 0)
 #define IS_RESTING(ch) (ch->position == POS_RESTING)
 #define IS_AWAKE(ch) (ch->position > POS_SLEEPING)
-#define GET_AC(ch) ((ch)->armor + (IS_AWAKE(ch) ? dex_app[get_curr_dex(ch)].defensive : 0))
+#define GET_AC(ch) ((ch)->armor + creature_natural_armour(ch) + (IS_AWAKE(ch) ? dex_app[get_curr_dex(ch)].defensive : 0))
 #define GET_HITROLL(ch) ((ch)->hitroll + str_app[get_curr_str(ch)].tohit - drained_stat_penalty(ch))
 #define GET_DAMROLL(ch) ((ch)->damroll + str_app[get_curr_str(ch)].todam - drained_stat_penalty(ch))
 #define GET_CRIT(ch) ((ch)->pcdata->learned[gsn_enhanced_critical] ? (ch)->crit + int_app[get_curr_int(ch)].tocrit + ((ch)->pcdata->learned[gsn_enhanced_critical] / 4) : (ch)->crit + int_app[get_curr_int(ch)].tocrit)
@@ -5894,10 +5895,18 @@ typedef enum creature_trait
         CREATURE_TRAIT_GOBLINOID_TRAINING,
         CREATURE_TRAIT_GIANT_DEFENCE,
         CREATURE_TRAIT_SUNLIGHT_SENSITIVE,
+        CREATURE_TRAIT_ECHOLOCATION,
+        CREATURE_TRAIT_STRENGTH_DRAIN_TOUCH,
+        CREATURE_TRAIT_NATURAL_ARMOUR,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 int validate_creature_traits args((void));
 int creature_trait_value args((CHAR_DATA *ch, CREATURE_TRAIT id));
+int creature_natural_armour args((CHAR_DATA *ch));
+bool creature_echo_locates args((CHAR_DATA *ch, CHAR_DATA *victim));
+bool clear_strength_drain args((CHAR_DATA *ch));
+void strength_drain_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim,
+                                  int dt, int actual_damage));
 void show_creature_traits args((CHAR_DATA *viewer, CHAR_DATA *victim));
 int creature_melee_hit_bonus args((CHAR_DATA *attacker, CHAR_DATA *victim));
 bool creature_is_sunlight_sensitive args((CHAR_DATA *ch));
