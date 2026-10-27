@@ -221,6 +221,24 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "bipedal_construct",
+                0, 0,
+                BODY_NO_HEART | BODY_INORGANIC
+                    | PART_HEAD | PART_ARMS | PART_2_LEGS | PART_HANDS
+                    | PART_FEET | PART_FINGERS | PART_EAR | PART_EYE,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -262,6 +280,24 @@ const struct species_type species_table[MAX_SPECIES] =
                 0, \
                 MOB_SPECIAL_CHANCES_AUTO, \
                 MOB_TEMPLATE_UNSET, \
+                CREATURE_FAMILY_NONE, \
+                MOB_TEMPLATE_UNSET \
+        }
+
+/* These toys share their enchantment; their materials can differ. */
+#define ANIMATED_TOY_ARCHETYPE(name, weakness, body_weight) \
+        { \
+                name, "bipedal_construct", "icon1", "icon2", \
+                0, AFF_MINDLESS, \
+                BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_BLOODLESS \
+                    | BODY_ANALGIC | BODY_SOULLESS, 0, \
+                0, weakness, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN, \
+                0, 0, 0, 0, \
+                30, body_weight, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET, \
+                "", "", "", \
+                0, \
+                MOB_SPECIAL_CHANCES_AUTO, \
+                GHOST_PHASE_NONE, \
                 CREATURE_FAMILY_NONE, \
                 MOB_TEMPLATE_UNSET \
         }
@@ -1161,12 +1197,16 @@ const struct mob_type mob_table[MAX_MOB] =
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE,
                 120
-        }
+        },
+
+        ANIMATED_TOY_ARCHETYPE("animated_soft_toy", RES_FIRE, 1),
+        ANIMATED_TOY_ARCHETYPE("animated_toy_soldier", 0, 2)
 
 };
 
 #undef DWARF_ARCHETYPE
 #undef VAMPIRE_ARCHETYPE
+#undef ANIMATED_TOY_ARCHETYPE
 
 /* Unconverted NPCs stay unclassified; names are not a species test. */
 CREATURE_FAMILY creature_family(CHAR_DATA *ch)

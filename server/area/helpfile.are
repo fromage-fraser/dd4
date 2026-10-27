@@ -1,5 +1,13 @@
 #HELPS
 
+0 'ANIMATED TOYS' 'ENCHANTED TOYS'~
+The Day Care's animated dolls, stuffed bears and toy soldiers are simple
+enchantments. They have no blood or soul, do not feel pain and cannot be
+poisoned, slept, charmed or drained. Soft toys take extra fire damage.
+Other weapons and magic work normally. Their mischief includes picking
+pockets, so watch your coins. Destroyed toys drop their belongings.
+~
+
 0 ECHOLOCATION~
 Some creatures locate nearby physical creatures through sound. Darkness
 and ordinary visual blindness do not stop this sense. It cannot locate
@@ -1544,6 +1552,7 @@ blocking unrelated directions.
 - Creature traits replace racial ACT bonuses; MSTAT shows strengths and origins.
 - Dwarven Catacombs gains creature archetypes and corrected anatomy/loot.
 - Echolocation, natural armour and curable shadow strength drain added.
+- Dwarven Day Care gains dwarf and animated-toy archetypes.
 
 ~
 
