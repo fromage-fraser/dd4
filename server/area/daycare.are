@@ -108,7 +108,7 @@ You suddenly think that you had better flee.
 8 9 2 3d10+100 3d5+2
 0 2000
 8 8 1
-< dwarf~ common~
+< dwarf~ rare~
 MobHeight 140
 MobWeight 100
 #6608

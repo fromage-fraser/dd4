@@ -211,7 +211,7 @@ As you bow toward this king you end up falling over in a fit of laughter.
 23 3 40 9b17+11 9d17+15
 0 900
 0 0 1
-< goblin~ common~
+< goblin~ boss~
 
 #20016
 goblin captain~
@@ -224,7 +224,7 @@ The Captain of the Goblin Guard appears to be drunk...
 17 3 40 2r7+1 2d7+5
 0 900
 0 0 1
-< goblin~ common~
+< goblin~ rare~
 
 #20017
 captive creature~
