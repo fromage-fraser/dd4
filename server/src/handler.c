@@ -81,7 +81,16 @@ static int get_curr_str_modified(CHAR_DATA *ch, int modifier)
         int max;
 
         if (IS_NPC(ch))
-                return 13;
+        {
+                AFFECT_DATA *paf;
+                int drain = 0;
+                /* NPC stats stay at their old defaults except for this timed drain. */
+                for (paf = ch->affected; paf; paf = paf->next)
+                        if (!paf->deleted && gsn_strength_drain >= 0
+                        && paf->type == gsn_strength_drain && paf->location == APPLY_STR)
+                                drain = UMAX(drain, -paf->modifier);
+                return 13 - URANGE(0, drain, 3);
+        }
 
         max = 25 + race_table[ch->race].str_bonus +  class_table[ch->class].class_stats[0];
         return URANGE(3, ch->pcdata->perm_str + ch->pcdata->mod_str + modifier, max);
@@ -4229,6 +4238,7 @@ bool can_see_mist (CHAR_DATA *ch, CHAR_DATA *victim)
 bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
 {
         int chance;
+        bool echo = creature_echo_locates(ch, victim);
 
         if (victim->deleted)
                 return FALSE;
@@ -4249,10 +4259,10 @@ bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
             && ch->in_room != victim->in_room)
                 return FALSE;
 
-        if (IS_AFFECTED(ch, AFF_BLIND))
+        if (IS_AFFECTED(ch, AFF_BLIND) && !echo)
                 return FALSE;
 
-        if (IS_AFFECTED(ch, AFF_EYE_TRAUMA))
+        if (IS_AFFECTED(ch, AFF_EYE_TRAUMA) && !echo)
                 return FALSE;
 
         if (IS_NPC(victim) && IS_SET(victim->act, ACT_WIZINVIS_MOB))
@@ -4317,21 +4327,21 @@ bool can_see (CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_NPC(ch)
             && !IS_NPC(victim)
             && IS_AFFECTED(victim, AFF_SNEAK)
-            && !IS_AFFECTED(ch, AFF_DETECT_SNEAK)
+            && !IS_AFFECTED(ch, AFF_DETECT_SNEAK) && !echo
             && number_percent() < (50 + (victim->level - ch->level) * 5))
                 return FALSE;
 
-        if (IS_AFFECTED(victim, AFF_INVISIBLE) && !IS_AFFECTED(ch, AFF_DETECT_INVIS))
+        if (IS_AFFECTED(victim, AFF_INVISIBLE) && !IS_AFFECTED(ch, AFF_DETECT_INVIS) && !echo)
                 return FALSE;
 
-        if (IS_AFFECTED(victim, AFF_HIDE) && !IS_AFFECTED(ch, AFF_DETECT_HIDDEN))
+        if (IS_AFFECTED(victim, AFF_HIDE) && !IS_AFFECTED(ch, AFF_DETECT_HIDDEN) && !echo)
                 return FALSE;
 
         if (room_is_dark(ch->in_room)
             && (ch->sub_class == SUB_CLASS_VAMPIRE || ch->form == FORM_FLY))
                 return TRUE;
 
-        if (room_is_dark(ch->in_room) && !IS_AFFECTED(ch, AFF_INFRARED) && !is_affected(ch, gsn_clairvoyance))
+        if (room_is_dark(ch->in_room) && !IS_AFFECTED(ch, AFF_INFRARED) && !is_affected(ch, gsn_clairvoyance) && !echo)
                 return FALSE;
 
         if (victim->position == POS_DEAD)

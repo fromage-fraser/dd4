@@ -168,6 +168,59 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "mysterious_being",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS
+                    | BODY_NO_HEART | BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_INORGANIC,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "winged_mammal",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_2_LEGS | PART_HEART | PART_BRAINS
+                    | PART_GUTS | PART_FEET | PART_EAR | PART_EYE | PART_WINGS,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "winged_reptile",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_2_LEGS | PART_HEART | PART_BRAINS
+                    | PART_GUTS | PART_FEET | PART_EAR | PART_EYE | PART_WINGS | PART_SCALES,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -190,6 +243,26 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_AUTO, \
                 GHOST_PHASE_NONE, \
                 CREATURE_FAMILY_DWARF, \
+                MOB_TEMPLATE_UNSET \
+        }
+
+/* Both forms use the same vampire physiology, defences and active ability. */
+#define VAMPIRE_ARCHETYPE(name, body_species, senses, anatomy, attacks, body_size) \
+        { \
+                name, body_species, "icon1", "icon2", \
+                ACT_UNDEAD | ACT_REGENERATOR, senses, \
+                anatomy, attacks, \
+                RES_COLD | RES_ELECTRICITY | RES_DARK | RES_PSYCHIC, \
+                RES_SILVER | RES_HOLY | RES_WATER, \
+                RES_POISON | RES_SLEEP | RES_CHARM | RES_CURSE | RES_NONMAGIC, \
+                0, 0, 0, 0, \
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, \
+                body_size, MOB_TEMPLATE_UNSET, \
+                "spec_vampire", "", "", \
+                0, \
+                MOB_SPECIAL_CHANCES_AUTO, \
+                MOB_TEMPLATE_UNSET, \
+                CREATURE_FAMILY_NONE, \
                 MOB_TEMPLATE_UNSET \
         }
 
@@ -746,34 +819,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 CREATURE_FAMILY_NONE,
                 MOB_TEMPLATE_UNSET
         },
-        {
-                "vampire", "humanoid", "icon1", "icon2",
-
-                /* Physical, intelligent undead with fast regeneration. */
-                ACT_UNDEAD | ACT_REGENERATOR, 0,
-
-                0,
-                0,
-
-                RES_COLD | RES_ELECTRICITY | RES_DARK | RES_PSYCHIC,
-                RES_SILVER | RES_HOLY | RES_WATER,
-                RES_POISON | RES_SLEEP | RES_CHARM | RES_CURSE
-                    | RES_NONMAGIC,
-
-                0, 0, 0, 0,
-
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-
-                /* Blood-draining bite and hypnotic gaze. */
-                "spec_vampire", "", "",
-
-                0,
-                MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE,
-                MOB_TEMPLATE_UNSET
-        },
+        VAMPIRE_ARCHETYPE("vampire", "humanoid", 0, 0, 0, MOB_TEMPLATE_UNSET),
         {
                 "lich", "humanoid", "icon1", "icon2",
 
@@ -1016,10 +1062,111 @@ const struct mob_type mob_table[MAX_MOB] =
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE,
                 366
+        },
+
+        {
+                "bat", "winged_mammal", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "animated_mist", "mysterious_being", "icon1", "icon2",
+                0, AFF_SANCTUARY | AFF_SNEAK | AFF_PASS_DOOR | AFF_FLYING,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "mysterious_being", "mysterious_being", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "shadow", "humanoid", "icon1", "icon2",
+                ACT_UNDEAD, AFF_NON_CORPOREAL | AFF_INFRARED | AFF_SNEAK | AFF_PASS_DOOR | AFF_DETECT_HIDDEN,
+                BODY_NO_HEART | BODY_NO_CORPSE | BODY_NO_SPEECH | BODY_INORGANIC
+                    | PART_HEART | PART_BRAINS | PART_GUTS, 0,
+                RES_DARK, RES_HOLY, RES_COLD | RES_POISON | RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN | RES_NONMAGIC,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        VAMPIRE_ARCHETYPE("vampire_bat_form", "winged_mammal", AFF_FLYING, PART_FANGS, PART_FANGS, CHAR_SIZE_SMALL),
+
+        {
+                "prism_dragon", "dragon", "icon1", "icon2",
+                0, AFF_FLYING,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_any", "spec_prism_flash", "",
+                0,
+                {75, 25, 0},
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "darkenbeast", "winged_reptile", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_FANGS | PART_CLAWS, PART_FANGS | PART_CLAWS,
+                0, 0, RES_CHARM,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                120
         }
+
 };
 
 #undef DWARF_ARCHETYPE
+#undef VAMPIRE_ARCHETYPE
 
 /* Unconverted NPCs stay unclassified; names are not a species test. */
 CREATURE_FAMILY creature_family(CHAR_DATA *ch)
@@ -1078,7 +1225,10 @@ typedef enum creature_trait_effect
 {
         TRAIT_ATTACKER_MELEE,
         TRAIT_DEFENDER_MELEE,
-        TRAIT_SUNLIGHT_ACCURACY
+        TRAIT_SUNLIGHT_ACCURACY,
+        TRAIT_ECHOLOCATION,
+        TRAIT_STRENGTH_DRAIN_TOUCH,
+        TRAIT_NATURAL_ARMOUR
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -1136,7 +1286,10 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
 {
         {"goblinoid_training", TRAIT_ATTACKER_MELEE, trait_goblinoids},
         {"giant_defence", TRAIT_DEFENDER_MELEE, trait_giant_kin},
-        {"sunlight_sensitive", TRAIT_SUNLIGHT_ACCURACY, NULL}
+        {"sunlight_sensitive", TRAIT_SUNLIGHT_ACCURACY, NULL},
+        {"echolocation", TRAIT_ECHOLOCATION, NULL},
+        {"strength_drain_touch", TRAIT_STRENGTH_DRAIN_TOUCH, NULL},
+        {"natural_armour", TRAIT_NATURAL_ARMOUR, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
@@ -1154,6 +1307,24 @@ static const CREATURE_TRAIT_CHANGE goblin_trait_changes[] =
         {CREATURE_TRAIT_SUNLIGHT_SENSITIVE, -1}
 };
 
+static const CREATURE_TRAIT_CHANGE bat_trait_changes[] =
+{
+        {CREATURE_TRAIT_ECHOLOCATION, 1}
+};
+static const CREATURE_TRAIT_CHANGE shadow_trait_changes[] =
+{
+        {CREATURE_TRAIT_STRENGTH_DRAIN_TOUCH, 1}
+};
+static const CREATURE_TRAIT_CHANGE prism_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
+};
+static const CREATURE_TRAIT_CHANGE darkenbeast_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20},
+        {CREATURE_TRAIT_SUNLIGHT_SENSITIVE, -1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -1165,6 +1336,11 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"dwarf_untrained", "dwarf", untrained_dwarf_trait_changes,
             TRAIT_ITEMS(untrained_dwarf_trait_changes)},
         {"goblin", NULL, goblin_trait_changes, TRAIT_ITEMS(goblin_trait_changes)},
+        {"bat", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
+        {"vampire_bat_form", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
+        {"shadow", NULL, shadow_trait_changes, TRAIT_ITEMS(shadow_trait_changes)},
+        {"prism_dragon", NULL, prism_trait_changes, TRAIT_ITEMS(prism_trait_changes)},
+        {"darkenbeast", NULL, darkenbeast_trait_changes, TRAIT_ITEMS(darkenbeast_trait_changes)},
         {NULL, NULL, NULL, 0}
 };
 
@@ -1370,7 +1546,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_SUNLIGHT_ACCURACY)
+                || creature_trait_definitions[i].effect > TRAIT_NATURAL_ARMOUR)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name
@@ -1378,7 +1554,8 @@ int validate_creature_traits(void)
                                      creature_trait_definitions[j].name))
                                 issues++;
                 target = creature_trait_definitions[i].targets;
-                if (!target && creature_trait_definitions[i].effect != TRAIT_SUNLIGHT_ACCURACY)
+                if (!target && (creature_trait_definitions[i].effect == TRAIT_ATTACKER_MELEE
+                            || creature_trait_definitions[i].effect == TRAIT_DEFENDER_MELEE))
                         issues++;
                 if (target)
                         for (; *target != CREATURE_FAMILY_NONE; target++)
@@ -1530,6 +1707,77 @@ void show_creature_traits(CHAR_DATA *viewer, CHAR_DATA *victim)
         }
         if (!any)
                 send_to_char("  None.\n\r", viewer);
+}
+
+int creature_natural_armour(CHAR_DATA *ch)
+{
+        return creature_trait_value(ch, CREATURE_TRAIT_NATURAL_ARMOUR);
+}
+
+/* Sonar locates a nearby physical creature; it does not provide distant sight. */
+bool creature_echo_locates(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        if (!ch || !victim || ch->deleted || victim->deleted
+        || !ch->in_room || ch->in_room != victim->in_room || !IS_AWAKE(ch)
+        || !HAS_HEAD(ch) || !(ch->body_form & PART_EAR)
+        || creature_trait_value(ch, CREATURE_TRAIT_ECHOLOCATION) <= 0)
+                return FALSE;
+        if ((IS_NPC(victim) && IS_SET(victim->act, ACT_WIZINVIS_MOB))
+        || (!IS_NPC(victim) && IS_SET(victim->act, PLR_WIZINVIS)
+            && get_trust(ch) < get_trust(victim)))
+                return FALSE;
+        if (is_noncorporeal_player(victim)
+        || IS_AFFECTED(victim, AFF_NON_CORPOREAL)
+        || (IS_NPC(victim) && victim->ghost_phase != GHOST_PHASE_NONE))
+                return FALSE;
+        /* The existing deaf/channel and silence settings are communication controls. */
+        return TRUE;
+}
+
+bool clear_strength_drain(CHAR_DATA *ch)
+{
+        if (!ch || gsn_strength_drain < 0 || gsn_strength_drain >= MAX_SKILL
+        || !is_affected(ch, gsn_strength_drain))
+                return FALSE;
+        affect_strip(ch, gsn_strength_drain);
+        send_to_char("Your stolen strength returns.\n\r", ch);
+        return TRUE;
+}
+
+/* Called only after a weaponless NPC has actually removed HP by melee contact. */
+void strength_drain_after_hit(CHAR_DATA *ch, CHAR_DATA *victim,
+    int dt, int actual_damage)
+{
+        AFFECT_DATA af, *paf;
+        int strength, penalty = 0;
+        if (!ch || !victim || ch == victim || !IS_NPC(ch)
+        || ch->deleted || victim->deleted || !ch->in_room
+        || ch->in_room != victim->in_room || ch->hit <= 0 || victim->hit <= 0
+        || ch->position == POS_DEAD || victim->position == POS_DEAD
+        || actual_damage <= 0 || dt < TYPE_HIT
+        || gsn_strength_drain < 0 || gsn_strength_drain >= MAX_SKILL
+        || IS_UNDEAD(victim) || IS_INORGANIC(victim)
+        || is_noncorporeal_player(victim)
+        || (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT)))
+                return;
+        strength = creature_trait_value(ch, CREATURE_TRAIT_STRENGTH_DRAIN_TOUCH);
+        if (strength <= 0 || number_percent() > 25
+        || saves_resistance_effect(ch, ch->level, victim, RES_DRAIN))
+                return;
+        for (paf = victim->affected; paf; paf = paf->next)
+                if (!paf->deleted && paf->type == gsn_strength_drain
+                && paf->location == APPLY_STR)
+                        penalty = UMAX(penalty, -paf->modifier);
+        penalty = UMIN(3, penalty + strength);
+        affect_strip(victim, gsn_strength_drain);
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_strength_drain;
+        af.duration = 4;
+        af.location = APPLY_STR;
+        af.modifier = -penalty;
+        affect_to_char(victim, &af);
+        act("$n's touch steals some of your strength!", ch, NULL, victim, TO_VICT);
+        act("Your touch steals some of $N's strength.", ch, NULL, victim, TO_CHAR);
 }
 
 #undef TRAIT_ITEMS
@@ -4088,6 +4336,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_warrior", 10 },
                 { "spec_wight", 10 },
                 { "spec_wraith", 10 },
+                { "spec_prism_flash", 10 },
                 { "spec_sahuagin_infantry", 10 },
                 { "spec_sahuagin_cavalry", 10 },
                 { "spec_sahuagin_cleric", 10 },

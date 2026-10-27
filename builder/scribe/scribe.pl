@@ -73,6 +73,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         human
         giant_lizard
         giant_pit_viper
+        bat animated_mist mysterious_being shadow vampire_bat_form prism_dragon darkenbeast
 /;
 
 my %mob_act = (
@@ -300,7 +301,7 @@ foreach my $bit (values %mob_attack_parts) {
 
 my @mob_spec = qw/
 
-    spec_breath_any	        spec_cast_druid	        spec_warrior	          spec_aboleth
+    spec_breath_any	        spec_prism_flash spec_cast_druid	        spec_warrior	          spec_aboleth
     spec_breath_acid	    spec_cast_water_sprite	spec_vampire	          spec_laghathti
     spec_breath_fire	    spec_cast_psionicist	spec_cast_archmage	      spec_superwimpy
     spec_breath_frost	    spec_cast_undead	    spec_cast_priestess	      spec_uzollru

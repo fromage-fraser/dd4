@@ -8,12 +8,13 @@ bat~
 a bat~
 A bat flaps wildly at you!
 ~
-Your typical smelly, blind flying mammal.
+A small, sharp-eared flying mammal, alert to movement around it.
 ~
 34 32 0 S
 5 18 5 5d5+50 2d3+3
-36 500
+0 500
 8 8 0
+< bat~ common~
 #2002
 page templar~
 a templar page~
@@ -25,6 +26,9 @@ He has lost his family and everything of his former life.
 7 14 4 7d7+70 1d9+4
 0 1500
 8 8 1
+< human~ common~
+MobHeight 160
+MobWeight 50
 #2003
 spelunker explorer~
 a spelunker~
@@ -39,6 +43,7 @@ probably won't last long.
 8 13 4 8d8+80 2d5+1
 0 2000
 8 8 1
+< human~ common~
 #2004
 gravedigger digger robber graverobber~
 a graverobber~
@@ -51,6 +56,7 @@ They seem like little more than zombie servants themselves.
 9 12 3 9d9+90 2d6+1
 0 2000
 8 8 1
+< human~ common~
 #2005
 mist swirling~
 some mist~
@@ -58,10 +64,11 @@ Some mist swirls about you here ... it seems ALIVE!
 ~
 In fact it IS alive in a magical sort of sense.
 ~
-0 128|32768|1048576 0 S
+0 0 0 S
 10 10 6 10d10+100 2d6+4
-511 2500
+0 2500
 8 8 0
+< animated_mist~ common~
 #2006
 it~
 It~
@@ -69,8 +76,9 @@ It~
 ~
 32 0 0 S
 10 10 2 10d10+100 3d3+6
-1000 3000
+0 3000
 8 8 0
+< mysterious_being~ common~
 #2007
 skeleton skeletal soldier~
 a skeleton~
@@ -81,8 +89,9 @@ continues for him in his charmed state.
 ~
 36 0 -290 S
 11 10 4 11d11+110 2d8+1
-16|32|256 4000
+0 4000
 8 8 1
+< skeleton~ common~
 #2008
 templar~
 a templar~
@@ -98,6 +107,7 @@ A templar tells you, "You must die for your sin!"
 12 9 3 12d12+120 1d4+8
 0 5000
 8 8 1
+< human~ common~
 #2009
 wraith~
 a mysterious wraith~
@@ -107,8 +117,9 @@ Hard to tell much about the mysterious form even upon further inspection.
 ~
 36 32|1048576 0 S
 12 9 2 12d12+120 2d7+1
-96 5000
+32 5000
 8 8 1
+< wraith~ common~
 #2010
 officer templar~
 the templar officer~
@@ -118,8 +129,9 @@ A templar officer tells you "Better move along evil one!"
 ~
 32 8 700 S
 13 8 2 13d13+130 1d6+8
-600 7000
+0 7000
 8 8 1
+< human~ common~
 #2011
 zombie mage~
 zombie~
@@ -127,10 +139,11 @@ A blank-faced zombie mage joins the battle.
 ~
 He seems to lack real interest in what he is doing.
 ~
-36 0 -100 S
+36 562949953421312 -100 S
 13 8 5 13d13+130 1d4+8
-32 9000
+0 9000
 8 8 1
+< zombie~ common~
 #2012
 shadow shadows~
 the shadow~
@@ -138,10 +151,11 @@ Eerie shadows fill the room.
 ~
 Looks vaguely you-shaped.
 ~
-0 32|32768|1048576 0 S
+0 0 0 S
 14 6 1 14d14+140 2d9+1
-96 10900
+0 10900
 8 8 0
+< shadow~ common~
 #2013
 bat vampire~
 The vampire~
@@ -151,8 +165,9 @@ A rather LARGE "bat" ...
 ~
 34 32 -100 S
 15 6 5 15d15+150 1d10+7
-36 17000
+0 17000
 8 8 1
+< vampire_bat_form~ common~
 #2014
 necromancer necro cleric~
 the evil necromancer~
@@ -165,6 +180,7 @@ to kill you to get a fresh corpse!
 15 8 -5 15d15+150 1d8+8
 0 15000
 8 8 1
+< human~ common~
 #2015
 grand templar leader~
 the grand templar~
@@ -177,6 +193,7 @@ of an eye he seems stern again.
 16 5 -5 16d16+160 1d8+12
 0 20000
 8 8 1
+< human~ common~
 #2016
 prism dragon prismdragon~
 the prism dragon~
@@ -186,8 +203,9 @@ The spray of coloured light bouncing off his scales is almost blinding.
 ~
 34 40 -303 S
 20 0 -5 20d20+200 6d3+14
-32 30000
+0 30000
 8 8 1
+< prism_dragon~ common~
 #2017
 darken dark beast darkenbeast~
 The DarkenBeast~
@@ -196,9 +214,10 @@ You hear and smell the presence of the darkenbeast.
 You see nothing more than the sense of darkness and evil.
 ~
 34 0 -1000 S
-24 -2 -12 24b24+240 3d7+7
-96 80000
+24 -2 -12 24d24+240 3d7+7
+0 80000
 8 8 0
+< darkenbeast~ common~
 #0
 
 
@@ -1593,7 +1612,7 @@ M 0 2001 6 2052   \* loads bat *\
 M 0 2001 6 2052   \* loads bat *\
 M 0 2001 6 2052   \* loads bat *\
 M 0 2013 1 2052   \* loads vampire *\
-E 1 2004 9 16     \* equips neutralizer (wielded) *\
+G 1 2004 9 \* gives neutralizer (carried loot) *\
 M 0 2001 6 2052   \* loads bat *\
 M 0 2001 6 2052   \* loads bat *\
 M 0 2001 6 2052   \* loads bat *\
@@ -1672,7 +1691,7 @@ M 0 2011 4 2053   \* loads zombie *\
 M 0 2011 4 2037   \* loads zombie *\
 M 0 2011 4 2036   \* loads zombie *\
 M 0 2012 2 2026   \* loads shadows *\
-E 1 2014 25 12     \* equips shadow cloak (about) *\
+G 1 2014 25 \* gives shadow cloak (carried loot) *\
 M 0 2014 1 2055   \* loads necromancer *\
 E 1 2011 9 11     \* equips shield of defense (shield) *\
 M 0 2015 1 2025   \* loads grand templar *\
@@ -1680,32 +1699,32 @@ E 1 2010 9 3      \* equips white cape (neck) *\
 E 1 2001 9 0     \* equips glowing key (light) *\
 E 1 2008 9 17     \* equips holy water (hold) *\
 M 0 2016 1 2050   \* loads prism dragon *\
-E 1 2012 9 5     \* equips dragonscale shield (body) *\
-E 1 2013 9 17     \* equips prism wand (hold) *\
+G 1 2012 9 \* gives dragonscale shield (carried loot) *\
+G 1 2013 9 \* gives prism wand (carried loot) *\
 M 0 2017 1 2030   \* loads darkenbeast *\
-E 1 2003 9 2      \* equips onyx ring (finger_L) *\
-E 1 2002 9 5      \* equips granite platemail (body) *\
-E 1 2006 9 17     \* equips crown (hold) *\
+G 1 2003 9 \* gives onyx ring (carried loot) *\
+G 1 2002 9 \* gives granite platemail (carried loot) *\
+G 1 2006 9 \* gives crown (carried loot) *\
 O 0 2007 1 2032   \* loads stone *\
 P 1 2005 9 2007   \* puts the excalibur in the stone *\
 M 0 2005 9 2033  \* loads mist *\
-E 1 2015 35 17    \* loads misty potion (hold) *\
+G 1 2015 35 \* gives misty potion (carried loot) *\
 M 0 2005 9 2040  \* loads mist *\
-E 1 2015 35 17    \* loads misty potion (hold) *\
+G 1 2015 35 \* gives misty potion (carried loot) *\
 M 0 2005 9 2040  \* loads mist *\
-E 1 2015 35 17    \* loads misty potion (hold) *\
+G 1 2015 35 \* gives misty potion (carried loot) *\
 M 0 2005 9 2041  \* loads mist *\
-E 1 2015 35 17    \* loads misty potion (hold) *\
+G 1 2015 35 \* gives misty potion (carried loot) *\
 M 0 2005 9 2041  \* loads mist *\
-E 1 2015 35 17    \* loads misty potion (hold) *\
+G 1 2015 35 \* gives misty potion (carried loot) *\
 M 0 2005 9 2042  \* loads mist *\
-E 1 2015 35 17    \* loads misty potion (hold) *\
+G 1 2015 35 \* gives misty potion (carried loot) *\
 M 0 2005 9 2043  \* loads mist *\
-E 1 2015 35 17    \* loads misty potion (hold) *\
+G 1 2015 35 \* gives misty potion (carried loot) *\
 M 0 2005 9 2043  \* loads mist *\
-E 1 2015 35 17    \* loads misty potion (hold) *\
+G 1 2015 35 \* gives misty potion (carried loot) *\
 M 0 2005 9 2043  \* loads mist *\
-E 1 2015 35 17    \* loads misty potion (hold) *\
+G 1 2015 35 \* gives misty potion (carried loot) *\
 D 0 2028 2 2      \* closes and locks entrance to sacred place *\
 D 0 2032 0 2      \* closes and locks exit from sacred place *\
 D 0 2001 4 1     \* closes exit from north entrance *\
@@ -1715,12 +1734,9 @@ S
 
 
 #SPECIALS
-M  2007 spec_cast_undead
-M  2009 spec_cast_undead
 M  2011 spec_cast_mage
-M  2013 spec_cast_undead
 M  2014 spec_cast_undead
-M  2016 spec_breath_any
+M  2015 spec_cast_cleric
 M  2017 spec_poison
 S
 

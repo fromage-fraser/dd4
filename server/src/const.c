@@ -5698,6 +5698,12 @@ const struct skill_type skill_table[MAX_SKILL] =
          spell_restoration, 50, PULSE_VIOLENCE,
          "", "!Restoration!"},
 
+        /* An internal timed condition, not a player-learnable skill. */
+        {"strength drain", &gsn_strength_drain,
+         TYPE_NULL, TAR_IGNORE, POS_DEAD, RES_DRAIN,
+         spell_null, 0, 0,
+         "strength-draining touch", "Your stolen strength returns."},
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
