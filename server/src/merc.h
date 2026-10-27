@@ -2025,9 +2025,7 @@ extern WANTED_DATA *wanted_list_last;
 #define ACT_FEAR_AURA BIT_31          /* Frightens visible opponents in combat */
 #define ACT_PRIEST_SERVICES BIT_32    /* Extra holy services through HEAL */
 #define ACT_UNDEAD_HEALER BIT_33      /* Undead mending through HEAL */
-#define ACT_GOBLINOID_TRAINING BIT_34 /* Melee practice against goblinoids */
-#define ACT_GIANT_DEFENCE BIT_35      /* Melee defence against giant kin */
-#define ACT_SUNLIGHT_SENSITIVE BIT_36 /* Bright sunlight makes aiming harder */
+/* ACT bits 34-36 are retired creature traits; keep these positions reserved. */
 #define ACT_UNKILLABLE BIT_63         /* Can't be killed. 'slay' still works. - Owl */
 
 /*
@@ -3645,7 +3643,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 30
+#define MAX_MOB 31
 #define MAX_SPECIES 7
 #define MAX_RANK 6
 
@@ -5890,7 +5888,17 @@ bool undead_protection_blocks_aggression args((CHAR_DATA *mob,
 int species_lookup args((const char *name));
 CREATURE_FAMILY creature_family args((CHAR_DATA *ch));
 const char *creature_family_name args((CREATURE_FAMILY family));
-bool creature_has_training args((CHAR_DATA *ch, unsigned long int trait));
+/* These are registry IDs, not bits in an ACT word. */
+typedef enum creature_trait
+{
+        CREATURE_TRAIT_GOBLINOID_TRAINING,
+        CREATURE_TRAIT_GIANT_DEFENCE,
+        CREATURE_TRAIT_SUNLIGHT_SENSITIVE,
+        CREATURE_TRAIT_COUNT
+} CREATURE_TRAIT;
+int validate_creature_traits args((void));
+int creature_trait_value args((CHAR_DATA *ch, CREATURE_TRAIT id));
+void show_creature_traits args((CHAR_DATA *viewer, CHAR_DATA *victim));
 int creature_melee_hit_bonus args((CHAR_DATA *attacker, CHAR_DATA *victim));
 bool creature_is_sunlight_sensitive args((CHAR_DATA *ch));
 int creature_sunlight_hit_penalty args((CHAR_DATA *ch));

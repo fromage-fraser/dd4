@@ -26,9 +26,9 @@ Dwarven combat training gives two automatic melee benefits:
 These affect the existing attack roll. They do not add damage or change
 your displayed hitroll or armour. Shoot and Snap Shot gain no benefit.
 
-Player Dwarves have this training. Mobile archetypes can also inherit it;
-an individual mobile can have either benefit removed. Creature identity
-comes from player race or a converted mobile's archetype, never its name.
+Player Dwarves have this training. Mobile species and archetypes define
+their training in code; an untrained dwarf variant omits both benefits.
+Creature identity comes from player race or a converted mobile's archetype, never its name.
 Older mobiles gain family identities as their areas are converted.
 
 Converted dwarf mobiles also resist magic and poison through the ordinary
@@ -1519,6 +1519,8 @@ blocking unrelated directions.
 
 - Dwarven Kingdom gains creature archetypes and corrected legacy flags.
 - Reptile anatomy and descriptive mobile length added; doctor now assists.
+
+- Creature traits replace racial ACT bonuses; MSTAT shows strengths and origins.
 
 ~
 

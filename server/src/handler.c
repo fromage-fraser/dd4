@@ -5184,9 +5184,6 @@ char *act_bit_name (unsigned long int vector)
         if ( vector & ACT_BLINK                 ) return "can_blink";
         if ( vector & ACT_UNDEAD                ) return "undead";
         if ( vector & ACT_FEAR_AURA             ) return "fear_aura";
-        if ( vector & ACT_GOBLINOID_TRAINING    ) return "goblinoid_training";
-        if ( vector & ACT_GIANT_DEFENCE         ) return "giant_defence";
-        if ( vector & ACT_SUNLIGHT_SENSITIVE    ) return "sunlight_sensitive";
 
         return "none";
 }

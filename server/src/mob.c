@@ -175,6 +175,24 @@ const struct species_type species_table[MAX_SPECIES] =
 /*
  * Specific creature archetypes.
  */
+/* Both dwarf variants share these defaults; training lives in trait profiles. */
+#define DWARF_ARCHETYPE(name) \
+        { \
+                name, "humanoid", "icon1", "icon2", \
+                0, AFF_INFRARED, \
+                0, 0, \
+                RES_MAGIC | RES_POISON, 0, 0, \
+                0, 0, 0, 0, \
+                130, 70, \
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, \
+                "", "", "", \
+                10, \
+                MOB_SPECIAL_CHANCES_AUTO, \
+                GHOST_PHASE_NONE, \
+                CREATURE_FAMILY_DWARF, \
+                MOB_TEMPLATE_UNSET \
+        }
+
 const struct mob_type mob_table[MAX_MOB] =
 {
         /*
@@ -815,21 +833,8 @@ const struct mob_type mob_table[MAX_MOB] =
         },
 
         /* Reviewed creatures and the remaining target-family placeholders. */
-        {
-                "dwarf", "humanoid", "icon1", "icon2",
-                ACT_GOBLINOID_TRAINING | ACT_GIANT_DEFENCE, AFF_INFRARED,
-                0, 0,
-                RES_MAGIC | RES_POISON, 0, 0,
-                0, 0, 0, 0,
-                130, 70,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                "", "", "",
-                10,
-                MOB_SPECIAL_CHANCES_AUTO,
-                GHOST_PHASE_NONE,
-                CREATURE_FAMILY_DWARF,
-                MOB_TEMPLATE_UNSET
-        },
+        DWARF_ARCHETYPE("dwarf"),
+        DWARF_ARCHETYPE("dwarf_untrained"),
         {
                 "orc", "humanoid", "icon1", "icon2",
                 0, 0,
@@ -862,7 +867,7 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "goblin", "humanoid", "icon1", "icon2",
-                ACT_SUNLIGHT_SENSITIVE, AFF_INFRARED,
+                0, AFF_INFRARED,
                 PART_FANGS, 0,
                 0, 0, 0,
                 0, 0, 0, 0,
@@ -1014,6 +1019,8 @@ const struct mob_type mob_table[MAX_MOB] =
         }
 };
 
+#undef DWARF_ARCHETYPE
+
 /* Unconverted NPCs stay unclassified; names are not a species test. */
 CREATURE_FAMILY creature_family(CHAR_DATA *ch)
 {
@@ -1066,76 +1073,467 @@ const char *creature_family_name(CREATURE_FAMILY family)
         }
 }
 
-/* Player ACT bits are player settings, so never read them as NPC traits. */
-bool creature_has_training(CHAR_DATA *ch, unsigned long int trait)
+/* Passive creature traits live in code, alongside species and archetypes. */
+typedef enum creature_trait_effect
 {
-        if (!ch || (trait != ACT_GOBLINOID_TRAINING
-                 && trait != ACT_GIANT_DEFENCE))
-                return FALSE;
+        TRAIT_ATTACKER_MELEE,
+        TRAIT_DEFENDER_MELEE,
+        TRAIT_SUNLIGHT_ACCURACY
+} CREATURE_TRAIT_EFFECT;
 
-        if (IS_NPC(ch))
-                return IS_SET(ch->act, trait) != 0;
+typedef struct creature_trait_definition
+{
+        const char *name;
+        CREATURE_TRAIT_EFFECT effect;
+        const CREATURE_FAMILY *targets;
+} CREATURE_TRAIT_DEFINITION;
 
-        return ch->race == RACE_DWARF;
+typedef struct creature_trait_change
+{
+        CREATURE_TRAIT id;
+        int value; /* Zero explicitly removes an inherited trait. */
+} CREATURE_TRAIT_CHANGE;
+
+typedef struct creature_trait_profile
+{
+        const char *name;
+        const char *parent; /* Optional trait parent, within the same species. */
+        const CREATURE_TRAIT_CHANGE *changes;
+        size_t count;
+} CREATURE_TRAIT_PROFILE;
+
+typedef struct creature_trait_value
+{
+        CREATURE_TRAIT id;
+        int value;
+        const char *source;
+        bool from_species;
+} CREATURE_TRAIT_VALUE;
+
+typedef struct creature_trait_set
+{
+        CREATURE_TRAIT_VALUE *entries;
+        size_t count;
+} CREATURE_TRAIT_SET;
+
+#define TRAIT_ITEMS(list) (sizeof(list) / sizeof((list)[0]))
+
+static const CREATURE_FAMILY trait_goblinoids[] =
+{
+        CREATURE_FAMILY_ORC, CREATURE_FAMILY_HALF_ORC,
+        CREATURE_FAMILY_GOBLIN, CREATURE_FAMILY_HOBGOBLIN,
+        CREATURE_FAMILY_NONE
+};
+static const CREATURE_FAMILY trait_giant_kin[] =
+{
+        CREATURE_FAMILY_OGRE, CREATURE_FAMILY_TROLL,
+        CREATURE_FAMILY_OGRE_MAGE, CREATURE_FAMILY_GIANT,
+        CREATURE_FAMILY_TITAN, CREATURE_FAMILY_NONE
+};
+
+/* IDs index this registry; they are never shifted into a flag word. */
+static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
+{
+        {"goblinoid_training", TRAIT_ATTACKER_MELEE, trait_goblinoids},
+        {"giant_defence", TRAIT_DEFENDER_MELEE, trait_giant_kin},
+        {"sunlight_sensitive", TRAIT_SUNLIGHT_ACCURACY, NULL}
+};
+
+static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
+{
+        {CREATURE_TRAIT_GOBLINOID_TRAINING, 1},
+        {CREATURE_TRAIT_GIANT_DEFENCE, -4}
+};
+static const CREATURE_TRAIT_CHANGE untrained_dwarf_trait_changes[] =
+{
+        {CREATURE_TRAIT_GOBLINOID_TRAINING, 0},
+        {CREATURE_TRAIT_GIANT_DEFENCE, 0}
+};
+static const CREATURE_TRAIT_CHANGE goblin_trait_changes[] =
+{
+        {CREATURE_TRAIT_SUNLIGHT_SENSITIVE, -1}
+};
+
+/* Add body defaults here when a reviewed species needs them. */
+static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
+{
+        {NULL, NULL, NULL, 0}
+};
+static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
+{
+        {"dwarf", NULL, dwarf_trait_changes, TRAIT_ITEMS(dwarf_trait_changes)},
+        {"dwarf_untrained", "dwarf", untrained_dwarf_trait_changes,
+            TRAIT_ITEMS(untrained_dwarf_trait_changes)},
+        {"goblin", NULL, goblin_trait_changes, TRAIT_ITEMS(goblin_trait_changes)},
+        {NULL, NULL, NULL, 0}
+};
+
+/* Player races opt into particular traits, not whole NPC packages. */
+static const struct player_creature_trait
+{
+        int race;
+        const char *archetype;
+        CREATURE_TRAIT id;
+} player_creature_traits[] =
+{
+        {RACE_DWARF, "dwarf", CREATURE_TRAIT_GOBLINOID_TRAINING},
+        {RACE_DWARF, "dwarf", CREATURE_TRAIT_GIANT_DEFENCE}
+};
+
+static CREATURE_TRAIT_SET resolved_creature_traits[MAX_MOB];
+static int creature_trait_build_state[MAX_MOB];
+static bool creature_traits_ready;
+
+static const CREATURE_TRAIT_PROFILE *find_trait_profile(
+    const CREATURE_TRAIT_PROFILE *profiles, const char *name)
+{
+        for (; profiles->name; profiles++)
+                if (!str_cmp(profiles->name, name))
+                        return profiles;
+        return NULL;
 }
 
-/* Return one adjustment for this melee contact, without changing either actor. */
+static const CREATURE_TRAIT_VALUE *find_trait_value(
+    const CREATURE_TRAIT_SET *set, CREATURE_TRAIT id)
+{
+        size_t i;
+        for (i = 0; i < set->count; i++)
+                if (set->entries[i].id == id)
+                        return &set->entries[i];
+        return NULL;
+}
+
+static bool apply_trait_profile(CREATURE_TRAIT_SET *set,
+    const CREATURE_TRAIT_PROFILE *profile, bool from_species)
+{
+        size_t i, slot;
+        CREATURE_TRAIT_VALUE *grown;
+        if (!profile)
+                return TRUE;
+        for (i = 0; i < profile->count; i++)
+        {
+                for (slot = 0; slot < set->count; slot++)
+                        if (set->entries[slot].id == profile->changes[i].id)
+                                break;
+                if (slot == set->count)
+                {
+                        grown = realloc(set->entries,
+                            (set->count + 1) * sizeof(*grown));
+                        if (!grown)
+                                return FALSE;
+                        set->entries = grown;
+                        set->count++;
+                }
+                set->entries[slot].id = profile->changes[i].id;
+                set->entries[slot].value = profile->changes[i].value;
+                set->entries[slot].source = profile->name;
+                set->entries[slot].from_species = from_species;
+        }
+        return TRUE;
+}
+
+static bool build_creature_traits(int sn)
+{
+        const CREATURE_TRAIT_PROFILE *profile;
+        CREATURE_TRAIT_SET *set = &resolved_creature_traits[sn];
+        const CREATURE_TRAIT_SET *parent_set;
+        int parent;
+        char buf[MAX_STRING_LENGTH];
+        if (creature_trait_build_state[sn] == 2)
+                return TRUE;
+        if (creature_trait_build_state[sn] == 3)
+                return FALSE;
+        if (creature_trait_build_state[sn] == 1)
+        {
+                snprintf(buf, sizeof(buf),
+                    "[CREATURE TRAITS] Cyclic trait inheritance at archetype '%s'.",
+                    mob_table[sn].name);
+                log_string(buf);
+                creature_trait_build_state[sn] = 3;
+                return FALSE;
+        }
+        creature_trait_build_state[sn] = 1;
+        profile = find_trait_profile(archetype_trait_profiles, mob_table[sn].name);
+        if (profile && profile->parent)
+        {
+                parent = mob_lookup(profile->parent);
+                if (parent < 0 || parent >= MAX_MOB
+                || str_cmp(mob_table[parent].species, mob_table[sn].species))
+                {
+                        snprintf(buf, sizeof(buf),
+                            "[CREATURE TRAITS] Archetype '%s' needs trait parent '%s' "
+                            "in the same body species.", mob_table[sn].name, profile->parent);
+                        log_string(buf);
+                        creature_trait_build_state[sn] = 3;
+                        return FALSE;
+                }
+                if (!build_creature_traits(parent))
+                {
+                        creature_trait_build_state[sn] = 3;
+                        return FALSE;
+                }
+                parent_set = &resolved_creature_traits[parent];
+                if (parent_set->count)
+                {
+                        set->entries = malloc(parent_set->count * sizeof(*set->entries));
+                        if (!set->entries)
+                        {
+                                creature_trait_build_state[sn] = 3;
+                                return FALSE;
+                        }
+                        memcpy(set->entries, parent_set->entries,
+                            parent_set->count * sizeof(*set->entries));
+                        set->count = parent_set->count;
+                }
+        }
+        else if (!apply_trait_profile(set,
+            find_trait_profile(species_trait_profiles, mob_table[sn].species), TRUE))
+        {
+                creature_trait_build_state[sn] = 3;
+                return FALSE;
+        }
+        if (!apply_trait_profile(set, profile, FALSE))
+        {
+                creature_trait_build_state[sn] = 3;
+                return FALSE;
+        }
+        creature_trait_build_state[sn] = 2;
+        return TRUE;
+}
+
+static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
+    bool species)
+{
+        const CREATURE_TRAIT_PROFILE *profile, *other;
+        size_t i, j;
+        int index, issues = 0;
+        char buf[MAX_STRING_LENGTH];
+        for (profile = profiles; profile->name; profile++)
+        {
+                index = species ? species_lookup(profile->name)
+                                : mob_lookup(profile->name);
+                if (index < 0 || (species ? index >= MAX_SPECIES : index >= MAX_MOB))
+                        issues++;
+                if (species && profile->parent)
+                        issues++;
+                if (profile->count && !profile->changes)
+                {
+                        issues++;
+                        continue;
+                }
+                for (other = profiles; other < profile; other++)
+                        if (!str_cmp(other->name, profile->name))
+                                issues++;
+                for (i = 0; i < profile->count; i++)
+                {
+                        if (profile->changes[i].id < 0
+                        || profile->changes[i].id >= CREATURE_TRAIT_COUNT
+                        || profile->changes[i].value < -100
+                        || profile->changes[i].value > 100)
+                                issues++;
+                        for (j = 0; j < i; j++)
+                                if (profile->changes[j].id == profile->changes[i].id)
+                                        issues++;
+                }
+        }
+        if (issues)
+        {
+                snprintf(buf, sizeof(buf),
+                    "[CREATURE TRAITS] Invalid %s profiles: %d issue(s).",
+                    species ? "species" : "archetype", issues);
+                log_string(buf);
+        }
+        return issues;
+}
+
+int validate_creature_traits(void)
+{
+        size_t i, j;
+        int sn, issues = 0;
+        const CREATURE_FAMILY *target;
+        creature_traits_ready = FALSE;
+        for (sn = 0; sn < MAX_MOB; sn++)
+        {
+                free(resolved_creature_traits[sn].entries);
+                memset(&resolved_creature_traits[sn], 0,
+                    sizeof(resolved_creature_traits[sn]));
+                creature_trait_build_state[sn] = 0;
+        }
+        if (TRAIT_ITEMS(creature_trait_definitions) != CREATURE_TRAIT_COUNT)
+                issues++;
+        for (i = 0; i < TRAIT_ITEMS(creature_trait_definitions); i++)
+        {
+                if (!creature_trait_definitions[i].name
+                || !creature_trait_definitions[i].name[0])
+                {
+                        issues++;
+                        continue;
+                }
+                if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
+                || creature_trait_definitions[i].effect > TRAIT_SUNLIGHT_ACCURACY)
+                        issues++;
+                for (j = 0; j < i; j++)
+                        if (creature_trait_definitions[j].name
+                        && !str_cmp(creature_trait_definitions[i].name,
+                                     creature_trait_definitions[j].name))
+                                issues++;
+                target = creature_trait_definitions[i].targets;
+                if (!target && creature_trait_definitions[i].effect != TRAIT_SUNLIGHT_ACCURACY)
+                        issues++;
+                if (target)
+                        for (; *target != CREATURE_FAMILY_NONE; target++)
+                                if (*target < CREATURE_FAMILY_NONE || *target >= CREATURE_FAMILY_MAX)
+                                        issues++;
+        }
+        issues += validate_trait_profiles(species_trait_profiles, TRUE);
+        issues += validate_trait_profiles(archetype_trait_profiles, FALSE);
+        for (i = 0; i < TRAIT_ITEMS(player_creature_traits); i++)
+        {
+                sn = mob_lookup(player_creature_traits[i].archetype);
+                if (sn < 0 || sn >= MAX_MOB
+                || player_creature_traits[i].race < 0
+                || player_creature_traits[i].race >= MAX_RACE
+                || player_creature_traits[i].id < 0
+                || player_creature_traits[i].id >= CREATURE_TRAIT_COUNT)
+                        issues++;
+                for (j = 0; j < i; j++)
+                        if (player_creature_traits[i].race == player_creature_traits[j].race
+                        && player_creature_traits[i].id == player_creature_traits[j].id)
+                                issues++;
+        }
+        if (!issues)
+                for (sn = 0; sn < MAX_MOB; sn++)
+                        if (!build_creature_traits(sn))
+                                issues++;
+        if (issues)
+                bug("[CREATURE TRAITS] Validation failed: %d issue(s).", issues);
+        else
+        {
+                creature_traits_ready = TRUE;
+                log_string("[CREATURE TRAITS] Validation complete: no issues found.");
+        }
+        return issues;
+}
+
+static const CREATURE_TRAIT_VALUE *creature_trait_entry(CHAR_DATA *ch,
+    CREATURE_TRAIT id)
+{
+        size_t i;
+        int sn = -1;
+        if (!ch || id < 0 || id >= CREATURE_TRAIT_COUNT)
+                return NULL;
+        if (!creature_traits_ready && validate_creature_traits() != 0)
+                return NULL;
+        if (IS_NPC(ch))
+        {
+                if (ch->mobspec && ch->mobspec[0])
+                        sn = mob_lookup(ch->mobspec);
+        }
+        else
+        {
+                for (i = 0; i < TRAIT_ITEMS(player_creature_traits); i++)
+                        if (ch->race == player_creature_traits[i].race
+                        && id == player_creature_traits[i].id)
+                        {
+                                sn = mob_lookup(player_creature_traits[i].archetype);
+                                break;
+                        }
+        }
+        if (sn < 0 || sn >= MAX_MOB)
+                return NULL;
+        return find_trait_value(&resolved_creature_traits[sn], id);
+}
+
+int creature_trait_value(CHAR_DATA *ch, CREATURE_TRAIT id)
+{
+        const CREATURE_TRAIT_VALUE *entry = creature_trait_entry(ch, id);
+        return entry ? entry->value : 0;
+}
+
+static bool trait_targets_family(const CREATURE_TRAIT_DEFINITION *trait,
+    CREATURE_FAMILY family)
+{
+        const CREATURE_FAMILY *target;
+        if (family == CREATURE_FAMILY_NONE || !trait->targets)
+                return FALSE;
+        for (target = trait->targets; *target != CREATURE_FAMILY_NONE; target++)
+                if (*target == family)
+                        return TRUE;
+        return FALSE;
+}
+
 int creature_melee_hit_bonus(CHAR_DATA *attacker, CHAR_DATA *victim)
 {
-        CREATURE_FAMILY attacker_family;
-        CREATURE_FAMILY victim_family;
-        int bonus = 0;
-
+        int id, bonus = 0;
+        CREATURE_FAMILY attacker_family, victim_family;
         if (!attacker || !victim)
                 return 0;
-
         attacker_family = creature_family(attacker);
         victim_family = creature_family(victim);
-
-        if (creature_has_training(attacker, ACT_GOBLINOID_TRAINING)
-        &&  (victim_family == CREATURE_FAMILY_ORC
-          || victim_family == CREATURE_FAMILY_HALF_ORC
-          || victim_family == CREATURE_FAMILY_GOBLIN
-          || victim_family == CREATURE_FAMILY_HOBGOBLIN))
-                bonus++;
-
-        if (creature_has_training(victim, ACT_GIANT_DEFENCE)
-        &&  (attacker_family == CREATURE_FAMILY_OGRE
-          || attacker_family == CREATURE_FAMILY_TROLL
-          || attacker_family == CREATURE_FAMILY_OGRE_MAGE
-          || attacker_family == CREATURE_FAMILY_GIANT
-          || attacker_family == CREATURE_FAMILY_TITAN))
-                bonus -= 4;
-
+        for (id = 0; id < CREATURE_TRAIT_COUNT; id++)
+        {
+                if (creature_trait_definitions[id].effect == TRAIT_ATTACKER_MELEE
+                && trait_targets_family(&creature_trait_definitions[id], victim_family))
+                        bonus += creature_trait_value(attacker, id);
+                if (creature_trait_definitions[id].effect == TRAIT_DEFENDER_MELEE
+                && trait_targets_family(&creature_trait_definitions[id], attacker_family))
+                        bonus += creature_trait_value(victim, id);
+        }
         return bonus;
 }
 
-/* Any NPC can inherit this trait; player ACT bits have other meanings. */
 bool creature_is_sunlight_sensitive(CHAR_DATA *ch)
 {
-        return ch && IS_NPC(ch)
-            && IS_SET(ch->act, ACT_SUNLIGHT_SENSITIVE) != 0;
+        return creature_trait_value(ch, CREATURE_TRAIT_SUNLIGHT_SENSITIVE) != 0;
 }
 
-/* Apply the small aiming penalty only where bright natural sunlight reaches. */
+/* Keep the existing weather, shelter and ranged-attack rules. */
 int creature_sunlight_hit_penalty(CHAR_DATA *ch)
 {
         ROOM_INDEX_DATA *room;
-
-        if (!creature_is_sunlight_sensitive(ch) || !ch->in_room)
+        int id, penalty = 0;
+        if (!ch || !ch->in_room)
                 return 0;
-
         room = ch->in_room;
         if (!IS_OUTSIDE(ch)
-        ||  room->sector_type == SECT_UNDERWATER
-        ||  room->sector_type == SECT_UNDERWATER_GROUND
-        ||  IS_SET(room->room_flags, ROOM_DARK | ROOM_NO_WEATHER)
-        ||  weather_info.sunlight != SUN_LIGHT
-        ||  weather_info.sky != SKY_CLOUDLESS)
+        || room->sector_type == SECT_UNDERWATER
+        || room->sector_type == SECT_UNDERWATER_GROUND
+        || IS_SET(room->room_flags, ROOM_DARK | ROOM_NO_WEATHER)
+        || weather_info.sunlight != SUN_LIGHT
+        || weather_info.sky != SKY_CLOUDLESS)
                 return 0;
-
-        return 1;
+        for (id = 0; id < CREATURE_TRAIT_COUNT; id++)
+                if (creature_trait_definitions[id].effect == TRAIT_SUNLIGHT_ACCURACY)
+                        penalty -= creature_trait_value(ch, id);
+        return penalty;
 }
+
+void show_creature_traits(CHAR_DATA *viewer, CHAR_DATA *victim)
+{
+        int id;
+        bool any = FALSE;
+        const CREATURE_TRAIT_VALUE *entry;
+        char buf[MAX_STRING_LENGTH];
+        send_to_char("Creature traits (species/archetype definitions):\n\r", viewer);
+        for (id = 0; id < CREATURE_TRAIT_COUNT; id++)
+        {
+                entry = creature_trait_entry(victim, id);
+                if (!entry)
+                        continue;
+                any = TRUE;
+                snprintf(buf, sizeof(buf), "  %s: %+d%s; %s %s%s.\n\r",
+                    creature_trait_definitions[id].name, entry->value,
+                    entry->value == 0 ? " (disabled)" : "",
+                    entry->from_species ? "species" : "archetype", entry->source,
+                    IS_NPC(victim) ? "" : "; approved player racial trait");
+                send_to_char(buf, viewer);
+        }
+        if (!any)
+                send_to_char("  None.\n\r", viewer);
+}
+
+#undef TRAIT_ITEMS
+
 
 /*
  * Names for the live ghost-phase state. Unknown values remain visible

@@ -10,11 +10,11 @@ A small dwarf eyes you with curiosity.
 The dwarven child looks at you with baby blue eyes, and trails his eyes down
 your body in awe of your equipment.
 ~
-51539607622 8200 750 S
+70 8200 750 S
 1 0 0 2d6+10 1d4+0
 0 0
 8 8 1
-< dwarf~ common~
+< dwarf_untrained~ common~
 MobHeight 90
 MobWeight 20
 #20501
@@ -25,11 +25,11 @@ A dwarven teen eyes you warily.
 The dwarf is only a teen, yet he looks at you with an air of snobbiness, as
 though he thinks that he is better than you.
 ~
-51539607618 8200 500 S
+66 8200 500 S
 5 0 0 2d6+75 1d6+20
 0 0
 8 8 1
-< dwarf~ common~
+< dwarf_untrained~ common~
 MobHeight 115
 MobWeight 45
 #20502
