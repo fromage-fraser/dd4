@@ -8570,3 +8570,38 @@ replaces the two bosses' former equipment defence; it is not an exact
 reproduction of random item bonuses. Every room, exit and room flag stays
 unchanged, including the seven approved NO_UNDEAD rooms. No matching
 Catacombs Scribe source exists in the repository.
+
+[[scribe-daycare-creatures]]
+==== Dwarven Day Care creatures
+Use animated_soft_toy for simple enchanted cloth or stuffed toys, and
+animated_toy_soldier for an animated soldier of unspecified material.
+Both use the bipedal_construct body: a head, eyes, ears, two arms with
+usable hands and fingers, two legs and feet, but no heart, brain or guts.
+The inorganic flag describes their nonliving material in DD4. This body
+alone does not make every future construct mindless or soulless.
+
+These two toy archetypes add mindlessness and bloodless, analgic, soulless,
+speechless physiology. They are immune to poison, sleep, charm and drain.
+Soft toys are vulnerable to fire; the soldier has no material weakness.
+Ordinary weapons and other magic still work. They have no natural attacks,
+active special, armour bonus or HP/damage/critical/swiftness/XP adjustment.
+Both have small size metadata and height 30 cm. Soft toys weigh 1 kg and
+soldiers 2 kg. These dimensions are descriptive estimates.
+
+The toys do not leave flesh corpses or severed body parts. Their carried
+items and coins fall to the room through the existing corpseless rules.
+Do not give them ACT_OBJECT: moving enchanted toys are ordinary mobiles.
+Their individual area specials can still make them pick pockets. Theft
+is not a racial default, and the toy gun remains a melee bayonet weapon.
+
+Day Care reuses dwarf_untrained for youth 6600 and brat 6608, and dwarf
+for nanny 6606 and guard 6607. The nanny keeps her combat-cleric special;
+she is not an adept or healer service. The final room's dragon is a child
+in a Halloween mask. The old doll keeps ring 6601, part of the Dwarven and
+Goblin Alliance set. Rooms, flags, objects, resets and loot stay as they are.
+No matching Day Care source exists in the repository.
+
+These are DD4's modest animated toys, informed by the AD&D second-edition
+doll/stuffed-animal construct precedent. They do not use the powerful
+Ravenloft doll golem's magic protection. Use the existing archetype field;
+there are no new area fields, Scribe commands or player abilities.
