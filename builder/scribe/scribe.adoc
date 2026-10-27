@@ -882,8 +882,8 @@ file. Record any such manual selection in the source before regeneration.
 
 `archetype dwarf` selects an ordinary living humanoid. It inherits the
 humanoid organs and limbs, can speak, and has normal blood, pain, soul and
-corpse interactions. It adds `infrared`, `goblinoid_training` and
-`giant_defence`, plus `res magic poison`. It supplies no active special,
+corpse interactions. It adds `infrared` and `res magic poison`, with the
+internal `goblinoid_training` and `giant_defence` traits. It supplies no active special,
 immunity or vulnerability. HP, damage, critical and swiftness adjustments
 are zero. Its XP adjustment adds 10 percentage points.
 
@@ -916,19 +916,19 @@ giants and titans -4 effective hitroll against the trained defender. Both
 use the existing melee attack roll; they do not alter stored hitroll or AC,
 add damage, or add another random roll. Shoot and Snap Shot do not use them.
 
-NPC training comes from the effective ACT flags, so any appropriate mobile
-can use or cancel it. On a dwarf, the following source cancels both inherited
-training traits while retaining infravision and resistance:
+Training comes from the species and archetype definitions in server code.
+It consumes no ACT bits. There are no individual trait fields in Scribe or
+the area format. To select the reusable dwarf variant without either trained
+combat benefit, use the existing archetype field:
 
 [source,text]
 ----
-archetype dwarf
-act goblinoid_training giant_defence
+archetype dwarf_untrained
 ----
 
-Add the mobile's other individual ACT flags on that same line. Omitting
-these two words inherits its training. `goblinoid_training` is BIT_34
-(17179869184); `giant_defence` is BIT_35 (34359738368).
+This variant shares the ordinary dwarf defaults, including infravision,
+resistance and XP. Its internal trait profile inherits `dwarf` and explicitly
+removes both training benefits. It remains in the dwarf creature family.
 
 Player Dwarves receive the two matching melee training benefits. Existing
 player Orc, Goblin, Hobgoblin, Ogre, Troll and Giant race identities also
@@ -936,16 +936,48 @@ participate in opponent matching. Player ACT bits are never interpreted as
 NPC training flags. Other race families await their own review. Unconverted
 NPCs are not classified by name, keywords, race defaults or special function.
 
-`mstat` shows creature family and the two effective training abilities.
-Individual XOR cancellations remain visible in its existing ACT layers.
+`mstat` shows creature family, each resolved trait's signed strength, and
+the species or archetype that supplied it. Explicitly removed traits appear
+as disabled. ACT layers continue to describe ordinary flags only.
 
-Dwarven Homestead vnums 20500-20519 now select `dwarf`. The child and teen
-cancel both training flags. The caretaker and servant use `regenerator`
+Dwarven Homestead vnums 20500 and 20501 select `dwarf_untrained`; the other
+eighteen select `dwarf`. The child and teen retain their individual dimensions.
+The caretaker and servant use `regenerator`
 instead of the old non-corporeal bit; this translates the likely original
 ROM regeneration meaning. The thief's old thief-class bit no longer grants
 tinker services. The servant retains NO_QUEST instead of an inactive
 practice marker. Guests and maids lose pass-door. Existing equipment,
 teaching, gambling and other individual abilities retain their roles.
+
+[[scribe-creature-traits]]
+===== Passive creature traits
+
+Passive traits are defined in `mob.c`. The registry describes each trait's
+effect and target families; internal profiles supply its signed strength.
+Profiles belong to body species and creature archetypes. They add no Scribe
+commands, area fields or individual trait masks, and have no 64-bit limit.
+
+The server resolves species defaults followed by archetype changes at boot.
+An archetype may share another archetype's trait profile within the same
+species. An omitted trait inherits, a new value replaces the earlier value,
+and zero explicitly disables it. The same trait never stacks with itself.
+Different trait IDs contribute their signed adjustments when their effect
+and target conditions match. Author those combinations deliberately.
+
+Target groups are lists of creature families, not flag masks. Melee training
+uses the existing melee check; sunlight accuracy uses the existing weather
+and shelter checks. The sparse resolved lists are shared by NPCs using an
+archetype. Traits do not occupy active special-function slots.
+
+Startup checks registry IDs, names, values, profile references, duplicate
+entries and inheritance cycles. Current strengths must be from -100 to 100.
+`mstat` lists resolved values and their origin, including disabled traits.
+Existing area flag masks retain their usual XOR rules independently.
+
+Player races opt into named traits explicitly. Currently only the two dwarf
+training traits are shared this way. NPC anatomy, resistance and sunlight
+defaults are not imported wholesale into player races. ACT bits 34-36 are
+retired and reserved; they no longer grant or cancel these traits.
 
 [[scribe-goblin-human-archetypes]]
 ===== Goblins, humans and sunlight sensitivity
@@ -961,8 +993,8 @@ change equipment fitting or combat size rules.
 The fangs are body parts. The natural attack mask stays empty, so this
 archetype does not gain an automatic bite or an additional attack.
 
-`sunlight_sensitive` is BIT_36 (68719476736). Any NPC can inherit or receive
-it. Bright sunlight gives -1 effective hitroll to ordinary melee and ranged
+`sunlight_sensitive` is an internal creature trait. Bright sunlight gives
+-1 effective hitroll to ordinary melee and ranged
 attack rolls, including Shoot. Stored hitroll is unchanged.
 The trait does not cause burning, blindness or a movement restriction.
 
@@ -971,18 +1003,10 @@ outside room. Inside sectors, `indoors`, underwater sectors, `dark` and
 `no_weather` rooms provide shelter. Dawn, dusk, night, cloud, rain and storms
 do not trigger it. Torches, magical light and holy damage are separate.
 
-On a goblin, the following source cancels the inherited sunlight trait:
-
-[source,text]
-----
-archetype goblin
-act sunlight_sensitive
-----
-
-Include its other individual ACT flags on that same line. The goblin still
-inherits its infravision and anatomy. On a human or other archetype without
-the trait, the same ACT word enables it. No creature-name test is involved.
-`mstat` shows both the effective trait and its current hitroll adjustment.
+A different sunlight policy requires a suitable archetype defined in code.
+There is no `act sunlight_sensitive` setting or individual trait override.
+Infravision and anatomy still follow their existing flag rules. `mstat` shows
+the inherited trait, its source and the current hitroll adjustment.
 
 `archetype human` is an ordinary living humanoid with human family identity.
 It adds no racial flag, resistance, natural attack or active special. All
@@ -2852,9 +2876,6 @@ undead         Marks mobile as undead
 fear_aura      Frightens opponents who can see this mobile in combat
 priest_services  Extra holy services; also needs healer
 undead_healing   Undead mending services; also needs healer
-goblinoid_training  +1 melee hitroll against orcs, half-orcs, goblins and hobgoblins
-giant_defence   Giant kin take a -4 melee hitroll penalty against this mobile
-sunlight_sensitive  -1 attack hitroll in bright natural sunlight
 unkillable  will not die, no matter how much damage is
     done to it
 

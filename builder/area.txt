@@ -720,8 +720,9 @@ Dwarf archetype and creature families
 
     < dwarf~ common~
 
-The dwarf inherits a normal living humanoid body, AFF_INFRARED,
-ACT_GOBLINOID_TRAINING and ACT_GIANT_DEFENCE, plus RES_MAGIC | RES_POISON.
+The dwarf inherits a normal living humanoid body, AFF_INFRARED and
+RES_MAGIC | RES_POISON. Its internal traits grant goblinoid training and
+giant defence without consuming ACT bits.
 It has no default active special, immunity or vulnerability. Its HP, damage,
 critical and swiftness modifiers are zero; its XP adjustment is +10 points.
 The descriptive height/weight defaults are 130/70, using centimetres and
@@ -733,10 +734,15 @@ goblins and hobgoblins; ogres, trolls, ogre magi, giants and titans take -4
 hitroll against a defender with giant defence. Shoot and Snap Shot are
 excluded. Neither actor's stored hitroll or AC is changed.
 
-The ACT bits are BIT_34 (17179869184) for goblinoid_training and BIT_35
-(34359738368) for giant_defence. Individual masks use XOR as usual. Include
-both bits in a dwarf's individual ACT field to cancel both trained benefits;
-the dwarf still inherits infravision and its ordinary resistance flags.
+Use the existing archetype selection for a dwarf without either training
+benefit:
+
+    < dwarf_untrained~ common~
+
+This variant shares all ordinary dwarf defaults and dwarf family identity.
+Its internal trait profile disables both trained benefits. There are no new
+area fields or individual trait overrides. ACT bits 34-36 are retired and
+reserved. Ordinary flag masks retain their existing XOR rules.
 
 Creature family is mob_type.family; the optional length scalar follows it. Old templates
 retain NONE until reviewed. Minimal humanoid target entries now exist for
@@ -751,7 +757,7 @@ families. This does not import NPC resistance packages into player races.
 MSTAT shows the effective family and both training abilities.
 
 Dwarven Homestead 20500-20519 is the first area conversion. Its child and
-teen cancel training; its caretaker and servant use regeneration. The
+teen use dwarf_untrained; its caretaker and servant use regeneration. The
 servant's unused practice marker becomes NO_QUEST, the thief loses the
 accidental tinker flag, and guests/maids lose pass-door. Equipment, teacher
 declarations, games and room flags retain their existing definitions.
@@ -763,7 +769,7 @@ Goblin and human archetypes
     < human~ common~
 
 Both inherit the normal living, speaking humanoid body. Goblins add
-PART_FANGS as anatomy, AFF_INFRARED and ACT_SUNLIGHT_SENSITIVE. The empty
+PART_FANGS as anatomy, AFF_INFRARED and the internal sunlight_sensitive trait. The empty
 natural attack mask does not supply an automatic bite. Goblin defaults are
 height 120, weight 30 and CHAR_SIZE_SMALL metadata. Human defaults are
 175, 75 and CHAR_SIZE_MEDIUM. Height/weight use the descriptive cm/kg
@@ -771,18 +777,28 @@ convention; these fields do not change equipment fitting or combat size.
 Language remains unspecified. Neither supplies a default active special,
 resistance, vulnerability or immunity. All combat and XP modifiers are zero.
 
-ACT_SUNLIGHT_SENSITIVE is BIT_36 (68719476736), named sunlight_sensitive in
-Scribe. It gives an NPC -1 effective attack hitroll in clear daytime outside:
+The sunlight_sensitive trait gives an NPC -1 effective attack hitroll in
+clear daytime outside:
 SUN_LIGHT and SKY_CLOUDLESS, outside an indoors/inside, underwater, DARK or
 NO_WEATHER room. It applies to ordinary melee and Shoot. Snap Shot remains
 player-only and is unaffected by this NPC trait. The trait does
 not change stored hitroll, cause damage or restrict movement. The trait is
 available to any NPC; player ACT bits never grant it.
 
-Individual ACT fields use XOR. Include this bit in a goblin's individual
-mask to cancel its inherited sunlight sensitivity; include it on an ordinary
-human to add the trait. Infravision and anatomy inherit independently.
-MSTAT shows the effective trait and its current attack hitroll adjustment.
+A different sunlight policy needs an appropriate archetype defined in code.
+Traits belong only to species and archetypes; no area field adds, cancels or
+adjusts one. Infravision and anatomy inherit independently. MSTAT shows the
+effective trait, signed strength, source and current hitroll adjustment.
+
+Passive trait definitions and sparse resolved lists live in mob.c. Trait IDs
+are registry indexes, not flag positions. Species defaults precede archetype
+changes; archetypes may share a trait parent within the same species. An
+omitted trait inherits, a supplied strength replaces it, and zero disables
+it. A repeated trait does not stack with itself. Different trait IDs can
+contribute to the same roll when their rules match. Target-family groups
+are lists, so neither traits nor target groups have a 64-bit ceiling.
+Startup validates profiles and inheritance. Current strengths are -100 to
+100. Active special functions keep their existing slots and selection.
 
 Goblin Caves 20002-20016 now use goblin, while 20000, 20001 and 20017 use
 human. The wizard's existing role gains spec_cast_mage through SPECIALS;

@@ -1038,6 +1038,9 @@ void boot_db(void)
         {
                 validate_mob_template_tables();
 
+                if (validate_creature_traits() != 0)
+                        exit(1);
+
                 if (validate_mob_ghost_phases() != 0)
                         exit(1);
 
