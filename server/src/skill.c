@@ -531,6 +531,9 @@ void do_gouge (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_AFFECTED(victim, AFF_BLIND) && is_safe(ch, victim))
+                return;
+
         if (IS_AFFECTED(victim, AFF_BLIND))
         {
                 send_to_char("They are blind already!\n\r",ch);
@@ -2046,8 +2049,8 @@ void do_push (CHAR_DATA *ch, char *argument)
         chance += race_bonus;
 
         if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA)
-        ||   IS_AFFECTED(ch, AFF_LEG_TRAUMA
-        ||   IS_AFFECTED(ch, AFF_TORSO_TRAUMA)))
+        ||   IS_AFFECTED(ch, AFF_LEG_TRAUMA)
+        ||   IS_AFFECTED(ch, AFF_TORSO_TRAUMA))
         {
                 chance = ( chance / 2 );
         }

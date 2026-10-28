@@ -2868,6 +2868,11 @@ void interpret(CHAR_DATA *ch, char *argument)
                 }
         }
 
+        /* Keep sensitive arguments out of diagnostics and command snooping. */
+        if (found && cmd_table[cmd].log == LOG_NEVER)
+                snprintf(logline, sizeof(logline), "%s [arguments redacted]",
+                         cmd_table[cmd].name);
+
         /* MobProg privileges are reserved for autonomous script execution. */
         if (found && player_order_active
         &&  !str_prefix("mp", cmd_table[cmd].name))
