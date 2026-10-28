@@ -1356,6 +1356,13 @@ mean the body part is assumed to be undisarmable.
 `6` - tail +
 `7` - torso/central mass +
 
+A tail-mounted stinger can use an ordinary ITEM_BODY_PART weapon with
+value[0] = 6 and the sting attack verb. It belongs to the existing tail
+region; it does not need a new targeting category. Tail trauma disables
+attached tail weapons even when the targeting strike did not disarm them.
+Regenerate can restore their use while they remain attached; it does not
+recreate a physically disarmed body-part object.
+
 == Check if an NPC is possessed/switched-into [[check-if-switched]]
 
 Switching into or possessing an NPC changes their `ch->desc` to `NULL`, therefore +
