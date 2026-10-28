@@ -5452,7 +5452,10 @@ void do_smoke(CHAR_DATA *ch, char *argument)
         }
 
         if (smokeable->level > ch->level)
+        {
                 act("You're not ready to try smoking $p just yet.", ch, smokeable, NULL, TO_CHAR);
+                return;
+        }
         else
         {
                 act("You pack your pipe and smoke some {W$p{x.", ch, smokeable, NULL, TO_CHAR);

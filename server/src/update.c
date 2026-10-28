@@ -3228,6 +3228,12 @@ void aggr_update()
                         if (!victim)
                                 continue;
 
+                        /* Check deterrence after random selection and leader redirection. */
+                        if (!curse_aggression
+                        &&  IS_AFFECTED(victim, AFF_DETER)
+                        &&  !IS_SET(mch->act, ACT_CLAN_GUARD))
+                                continue;
+
                         /* Roll once for the final target, after leader redirection.
                          * Curse hunters retain their existing song bypass. */
                         if (!curse_aggression && has_tranquility(victim))
