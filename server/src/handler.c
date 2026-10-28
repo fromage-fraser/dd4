@@ -2035,6 +2035,27 @@ OBJ_DATA *get_eq_char( CHAR_DATA *ch, int iWear )
         return NULL;
 }
 
+/* Tail body weapons keep their equipment slot while an injury disables them. */
+bool bodypart_weapon_usable(CHAR_DATA *ch, OBJ_DATA *obj)
+{
+        if (!ch || !obj || obj->deleted)
+                return FALSE;
+        return obj->item_type != ITEM_WEAPON
+            || !IS_OBJ_STAT(obj, ITEM_BODY_PART)
+            || obj->value[0] != 6
+            || !IS_AFFECTED(ch, AFF_TAIL_TRAUMA);
+}
+
+/* Keep inventory/equipment lookups separate from offensive eligibility. */
+OBJ_DATA *get_attack_weapon(CHAR_DATA *ch, int iWear)
+{
+        OBJ_DATA *obj;
+        if (!ch)
+                return NULL;
+        obj = get_eq_char(ch, iWear);
+        return bodypart_weapon_usable(ch, obj) ? obj : NULL;
+}
+
 
 /*
  * Reject incompatible equipment before a replacement removes existing gear.

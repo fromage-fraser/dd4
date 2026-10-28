@@ -2180,6 +2180,7 @@ extern WANTED_DATA *wanted_list_last;
 #define OBJ_VNUM_REMAINS 571
 #define OBJ_VNUM_DIRT_PILE 581
 #define OBJ_VNUM_GENERIC_BODY_PART 593
+#define OBJ_VNUM_WYVERN_STINGER 594
 
 #define OBJ_VNUM_MUSHROOM 20
 #define OBJ_VNUM_LIGHT_BALL 21
@@ -3643,7 +3644,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 40
+#define MAX_MOB 41
 #define MAX_SPECIES 11
 #define MAX_RANK 6
 
@@ -5708,6 +5709,8 @@ void obj_from_charvault args((OBJ_DATA * obj));
 int max_obj_in_obj_level args((OBJ_DATA * obj));
 int apply_ac args((OBJ_DATA * obj, int iWear));
 OD *get_eq_char args((CHAR_DATA * ch, int iWear));
+bool bodypart_weapon_usable args((CHAR_DATA *ch, OBJ_DATA *obj));
+OBJ_DATA *get_attack_weapon args((CHAR_DATA *ch, int iWear));
 void equip_char args((CHAR_DATA * ch, OBJ_DATA *obj, int iWear));
 void form_equip_char(CHAR_DATA *ch, OBJ_DATA *obj, int iWear);
 void unequip_char args((CHAR_DATA * ch, OBJ_DATA *obj));

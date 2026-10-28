@@ -16,8 +16,9 @@ APPEAR to be very hungry ... yet.
 ~
 65 8 -200 S
 8 10 1 8d8+80 2d6+1
-36 3575
+0 3575
 8 8 0
+< wyvern~ common~
 #3501
 goblin mountain~
 the goblin~
@@ -25,10 +26,11 @@ A mountain goblin is wandering about, mumbling to himself.
 ~
 You see before you a small and twisted creature with knotted muscles.
 ~
-608 0 -500 S
+96 0 -500 S
 6 15 6 4d4+60 1d8+4
 0 800
 8 8 1
+< goblin~ common~
 #3502
 boy small~
 the small boy~
@@ -37,10 +39,13 @@ A small boy sits here, licking his wounds.
 The poor boy has numerous cuts and scratches, but appears to be all right.
 He is apparently the only survivor of the ambush.
 ~
-146 0 500 S
+130 0 500 S
 4 17 6 1d12+47 1d8+0
 0 600
 5 5 1
+< human~ common~
+MobHeight 120
+MobWeight 25
 #3503
 innkeeper~
 the Innkeeper~
@@ -54,6 +59,7 @@ place that is used to be in days past.
 10 8 1 1d12+200 2d8+1
 0 7000
 8 8 1
+< human~ common~
 #3504
 bard~
 the bard~
@@ -66,12 +72,13 @@ has been sitting here quite a while, drinking himself into oblivion.
 8 13 3 1d12+110 2d6+0
 0 3750
 6 6 1
+< human~ common~
 & 25 'teacher base'
 & 85 'musicianship'
 #3505
 horseman dark~
 the dark horseman~
-A dark horseman is here, mounted on his black steed.
+A dark horseman lurks here, watching the trail.
 ~
 The man is obviously an outlaw, and has no qualms about slashing you into
 little bits.
@@ -80,6 +87,7 @@ little bits.
 8 12 4 1d12+97 1d5+7
 0 4000
 8 8 1
+< human~ common~
 #3506
 goblin lieutenant~
 the goblin lieutenant~
@@ -88,10 +96,11 @@ A goblin lieutenant stands here, attempting to get his men in order.
 The goblin lieutenant is rather angry, and looking for one of his men to
 beat up upon, but maybe you will do just fine ...
 ~
-608 0 -600 S
+96 0 -600 S
 7 15 3 1d12+100 2d5+1
 0 2000
 8 8 1
+< goblin~ rare~
 #3507
 goblin leader~
 the goblin leader~
@@ -100,10 +109,11 @@ The goblin leader surveys the room.
 The leader doesn't look too happy that you have found him here.  He grabs
 for his shortsword and lunges for your neck.
 ~
-614 8 -900 S
+102 8 -900 S
 9 10 1 1d12+120 2d5+3
 0 8000
 8 8 1
+< goblin~ elite~
 #0
 
 
@@ -1053,7 +1063,9 @@ S
 
 #RESETS
 M 0 3500 2 3521       Load Wyvern at Carnage  * This area written for *
+E 1 594 100 16      Equip the wyvern's native tail stinger
 M 0 3500 2 3521            Wyvern at Carnage  *   Copper II by ?      *
+E 1 594 100 16      Equip the wyvern's native tail stinger
 M 0 3501 8 3512       Load Goblin in forest   * Heavy Modificatios    *
 M 0 3501 8 3512            Goblin in forest   *   by VampLestat       *
 M 0 3501 8 3509            Goblin in forest   *   for Merc Mud        *
@@ -1075,7 +1087,6 @@ S
 
 
 #SPECIALS
-M  3500 spec_poison
 S
 
 

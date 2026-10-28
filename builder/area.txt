@@ -4424,3 +4424,37 @@ These are DD4's modest animated toys, informed by the AD&D second-edition
 doll/stuffed-animal construct precedent. They do not use the powerful
 Ravenloft doll golem's magic protection. Use the existing archetype field;
 there are no new area fields, Scribe commands or player abilities.
+
+Miden'nir creatures and tail body weapons
+----------------------------------------
+The wyvern archetype uses winged_reptile, with flight, a tail, fangs and
+anatomical talons. It is living, huge, speechless and armless, with large
+size metadata and descriptive length 1,070 cm. Its natural_armour trait is
+-20 AC. Height/weight are unspecified; HP/damage/critical/swiftness remain
+neutral. The +5 XP adjustment replaces the former poison-special allowance.
+
+The stinger is object 594: a poisoned ITEM_BODY_PART weapon that players
+cannot pick up. ITEM_DONOT_RANDOMISE prevents random affixes; the engine's
+usual level-based weapon damage still applies. Weapon value[0] is 6 (tail),
+and value[3] is 16 (sting). Existing target tail, disarming and Regenerate
+rules apply. No new body-part flag, target region or trauma is added.
+Tail trauma makes an attached tail weapon unusable even if it stays worn.
+Ordinary NPC combat then falls back to usable natural attacks; the wyvern
+bites. Explicit weapon skills cannot use the injured part. Equipment stays
+in place so healing the trauma can make an attached weapon usable again.
+Curing trauma does not recreate a physically disarmed weapon.
+
+The stinger follows existing weapon and poisoned-weapon damage rules:
+NPC weapon damage gains its existing 50% base bonus, and eligible poisoned
+contact can gain the existing 25% bonus. Poison uses its ordinary saves,
+immunities, toxin defences and short, capped condition. Do not also assign
+spec_poison; that would add a second poison route. No extra attack, separate
+Venom trait or instant-death effect is supplied. The existing scorpion-form
+stinger remains a piercing/backstab weapon with the same tail category.
+
+Miden'nir reuses goblin for 3501/3506/3507 and human for the other people.
+The lieutenant is rare, the leader elite, and the others common. The boy is
+120 cm/25 kg. Legacy trainer/no-quest bits and the boy's unused bit are
+removed. The bard still teaches teacher base 25 and musicianship 85; the
+horsemen keep their coins and are described on foot. All room flags and
+existing reset placements/caps are preserved. No matching source exists.

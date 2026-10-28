@@ -1200,7 +1200,23 @@ const struct mob_type mob_table[MAX_MOB] =
         },
 
         ANIMATED_TOY_ARCHETYPE("animated_soft_toy", RES_FIRE, 1),
-        ANIMATED_TOY_ARCHETYPE("animated_toy_soldier", 0, 2)
+        ANIMATED_TOY_ARCHETYPE("animated_toy_soldier", 0, 2),
+
+        {
+                "wyvern", "winged_reptile", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_HUGE | PART_TAIL | PART_FANGS | PART_CLAWS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                5, /* Keep the old poison special's XP allowance. */
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                1070
+        }
 
 };
 
@@ -1355,7 +1371,7 @@ static const CREATURE_TRAIT_CHANGE shadow_trait_changes[] =
 {
         {CREATURE_TRAIT_STRENGTH_DRAIN_TOUCH, 1}
 };
-static const CREATURE_TRAIT_CHANGE prism_trait_changes[] =
+static const CREATURE_TRAIT_CHANGE scaled_armour_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
 };
@@ -1379,8 +1395,9 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"bat", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
         {"vampire_bat_form", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
         {"shadow", NULL, shadow_trait_changes, TRAIT_ITEMS(shadow_trait_changes)},
-        {"prism_dragon", NULL, prism_trait_changes, TRAIT_ITEMS(prism_trait_changes)},
+        {"prism_dragon", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
         {"darkenbeast", NULL, darkenbeast_trait_changes, TRAIT_ITEMS(darkenbeast_trait_changes)},
+        {"wyvern", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
         {NULL, NULL, NULL, 0}
 };
 

@@ -693,11 +693,11 @@ void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
 
         /* for counterbalance - adds another attack.*/
 
-        if (!IS_NPC(ch) && get_eq_char(ch, WEAR_WIELD) && ch->pcdata->learned[gsn_counterbalance] > 0 && !IS_AFFECTED(ch, AFF_PRONE))
+        if (!IS_NPC(ch) && get_attack_weapon(ch, WEAR_WIELD) && ch->pcdata->learned[gsn_counterbalance] > 0 && !IS_AFFECTED(ch, AFF_PRONE))
         {
                 OBJ_DATA *wield;
                 AFFECT_DATA *paf;
-                wield = get_eq_char(ch, WEAR_WIELD);
+                wield = get_attack_weapon(ch, WEAR_WIELD);
                 for (paf = wield->affected; paf; paf = paf->next)
                 {
                         if (paf->location == APPLY_BALANCE)
@@ -1042,6 +1042,8 @@ bool object_attack_is_immune(CHAR_DATA *ch, CHAR_DATA *victim,
 void damage_from_object(CHAR_DATA *ch, CHAR_DATA *victim,
                         int dam, int dt, bool poison, OBJ_DATA *source)
 {
+        if (source && !bodypart_weapon_usable(ch, source))
+                return;
         if (!ch || !victim || ch->deleted || victim->deleted
         ||  !ch->in_room || ch->in_room != victim->in_room
         ||  ch->position == POS_DEAD || victim->position == POS_DEAD
@@ -1190,7 +1192,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                                 break;
 
                         /* Do we get another attack? */
-                        if (!get_eq_char(ch, WEAR_DUAL))
+                        if (!get_attack_weapon(ch, WEAR_DUAL))
                         {
                                 if (IS_NPC(ch))
                                         break;
@@ -1243,7 +1245,17 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                  * Explicit primary skill/attack identifiers are unchanged.
                  */
                 poison = FALSE;
-                wield = get_eq_char(ch, weapon_pos);
+                wield = get_attack_weapon(ch, weapon_pos);
+
+                if (!wield && get_eq_char(ch, weapon_pos))
+                {
+                        /* An injured body weapon cannot power an explicit skill. */
+                        if (!IS_NPC(ch)
+                        || (dt != TYPE_UNDEFINED && dt < TYPE_HIT))
+                                continue;
+                        /* Ordinary NPC attacks can use another natural part. */
+                        dt = TYPE_UNDEFINED;
+                }
 
                 if (dt == TYPE_UNDEFINED || weapon_pos == WEAR_DUAL)
                 {
@@ -2200,7 +2212,7 @@ static void damage_internal(CHAR_DATA *ch,
                         int leveldiff = ch->level - victim->level;
 
                         /* mob: disarm */
-                        if (IS_NPC(ch) && !IS_AFFECTED(ch, AFF_PRONE) && get_eq_char(ch, WEAR_WIELD) && number_percent() < (leveldiff < -5 ? ch->level / 2 : UMAX(10, leveldiff)) && dam == 0 && resistance_result != RES_RESULT_IMMUNE)
+                        if (IS_NPC(ch) && !IS_AFFECTED(ch, AFF_PRONE) && get_attack_weapon(ch, WEAR_WIELD) && number_percent() < (leveldiff < -5 ? ch->level / 2 : UMAX(10, leveldiff)) && dam == 0 && resistance_result != RES_RESULT_IMMUNE)
                         {
                                 if (!IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
                                 {
@@ -2384,11 +2396,11 @@ static void damage_internal(CHAR_DATA *ch,
         &&  dam > 0
         &&  !IS_NPC(ch)
         &&  ch->pcdata->learned[gsn_serrate] > 0
-        &&  get_eq_char(ch, WEAR_WIELD)
+        &&  get_attack_weapon(ch, WEAR_WIELD)
         &&  dt != gsn_serrate)
         {
                 OBJ_DATA *wield2;
-                wield2 = get_eq_char(ch, WEAR_WIELD);
+                wield2 = get_attack_weapon(ch, WEAR_WIELD);
 
                 if (IS_SET(wield2->ego_flags, EGO_ITEM_SERRATED))
                 {
@@ -5070,7 +5082,7 @@ void disarm(CHAR_DATA *ch, CHAR_DATA *victim)
                 return;
         }
 
-        if (!get_eq_char(ch, WEAR_WIELD) && number_bits(1) == 0)
+        if (!get_attack_weapon(ch, WEAR_WIELD) && number_bits(1) == 0)
                 return;
 
         if (!IS_NPC(victim) && CAN_DO(victim, gsn_grip))
@@ -5355,7 +5367,7 @@ void do_circle(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!(obj = get_eq_char(ch, WEAR_WIELD)) || !is_piercing_weapon(obj))
+        if (!(obj = get_attack_weapon(ch, WEAR_WIELD)) || !is_piercing_weapon(obj))
         {
                 send_to_char("You need to wield a piecing weapon to successfully circle.\n\r", ch);
                 return;
@@ -6678,7 +6690,7 @@ void do_backstab(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!(obj = get_eq_char(ch, WEAR_WIELD)) || !is_piercing_weapon(obj))
+        if (!(obj = get_attack_weapon(ch, WEAR_WIELD)) || !is_piercing_weapon(obj))
         {
                 send_to_char("You need to wield a piercing or stabbing weapon.\n\r", ch);
                 return;
@@ -8925,14 +8937,14 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
          * Prefer a valid primary vorpal; otherwise use the off-hand vorpal.
          * Keep this pointer for both the chance and damage calculations.
          */
-        wobj = get_eq_char(ch, WEAR_WIELD);
+        wobj = get_attack_weapon(ch, WEAR_WIELD);
 
         if (!wobj
         ||  wobj->deleted
         ||  wobj->item_type != ITEM_WEAPON
         ||  !IS_OBJ_STAT(wobj, ITEM_VORPAL))
         {
-                wobj = get_eq_char(ch, WEAR_DUAL);
+                wobj = get_attack_weapon(ch, WEAR_DUAL);
         }
 
         if (!wobj
@@ -9207,10 +9219,10 @@ void do_stun(CHAR_DATA *ch, char *argument)
          * Prefer a qualifying primary weapon; otherwise use the off-hand.
          * Keep the actual selected object for resistance classification.
          */
-        obj = get_eq_char(ch, WEAR_WIELD);
+        obj = get_attack_weapon(ch, WEAR_WIELD);
 
         if (!obj || obj->deleted || !is_blunt_weapon(obj))
-                obj = get_eq_char(ch, WEAR_DUAL);
+                obj = get_attack_weapon(ch, WEAR_DUAL);
 
         if (!obj || obj->deleted || !is_blunt_weapon(obj))
         {
@@ -9391,7 +9403,7 @@ void do_disarm(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (!get_eq_char(ch, WEAR_WIELD))
+        if (!get_attack_weapon(ch, WEAR_WIELD))
         {
                 send_to_char("You must wield a weapon to disarm.\n\r", ch);
                 return;
@@ -10568,7 +10580,7 @@ void do_thrust(CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
-        if (!(obj = get_eq_char(ch, WEAR_WIELD)) || !is_piercing_weapon(obj))
+        if (!(obj = get_attack_weapon(ch, WEAR_WIELD)) || !is_piercing_weapon(obj))
         {
                 send_to_char("You can't use that weapon to thrust.\n\r", ch);
                 return;
