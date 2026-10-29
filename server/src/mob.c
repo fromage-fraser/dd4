@@ -390,14 +390,15 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* Resistance, vulnerability and immunity XOR masks. */
                 RES_PIERCE | RES_SLASH | RES_DARK,
                 RES_BLUNT | RES_HOLY,
-                RES_POISON | RES_SLEEP | RES_DRAIN,
+                RES_POISON | RES_SLEEP | RES_DRAIN
+                    | RES_COLD | RES_HOLD | RES_PARALYSIS,
 
                 /* Neutral HP, damage, critical and swiftness adjustments. */
                 0, 0, 0, 0,
 
-                /* Preserve unspecified humanoid dimension/language data. */
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                /* Descriptive centimetres/kilograms; language stays inherited. */
+                175, 12,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                 /* No compulsory inherited special in any slot. */
                 "", "", "",
@@ -425,14 +426,15 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* Resistance, vulnerability and immunity XOR masks. */
                 RES_DARK,
                 RES_HOLY,
-                RES_POISON | RES_SLEEP | RES_DRAIN,
+                RES_POISON | RES_SLEEP | RES_DRAIN
+                    | RES_COLD | RES_HOLD | RES_PARALYSIS,
 
                 /* Neutral HP, damage, critical and swiftness adjustments. */
                 0, 0, 0, 0,
 
-                /* Inherit dimensions and language. */
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                /* Descriptive centimetres/kilograms; language stays inherited. */
+                175, 65,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                 /* No compulsory special functions or extra XP. */
                 "", "", "",
@@ -448,8 +450,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* Undead, but capable of thought and speech. */
                 ACT_UNDEAD, 0,
 
-                /* Retain humanoid anatomy and add the elongated tongue. */
-                PART_LONG_TONGUE,
+                /* Keep the humanoid body and add its tongue, claws and fangs. */
+                PART_LONG_TONGUE | PART_CLAWS | PART_FANGS,
 
                 /* Existing natural claw and bite attacks. */
                 PART_CLAWS | PART_FANGS,
@@ -464,9 +466,9 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* Keep DD4's ordinary level-scaled combat defaults. */
                 0, 0, 0, 0,
 
-                /* Inherit dimensions and language metadata. */
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                /* Descriptive centimetres/kilograms; language stays inherited. */
+                175, 65,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                 /* Feeding and natural-contact paralysis. */
                 "spec_ghoul", "", "",
@@ -485,8 +487,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* Undead, with thought and speech retained. */
                 ACT_UNDEAD, AFF_STENCH,
 
-                /* Organic humanoid anatomy with an elongated tongue. */
-                PART_LONG_TONGUE,
+                /* The ghast shares the ghoul's tongue, claws and fangs. */
+                PART_LONG_TONGUE | PART_CLAWS | PART_FANGS,
 
                 /* Existing natural claw and bite attacks. */
                 PART_CLAWS | PART_FANGS,
@@ -501,9 +503,9 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* Preserve ordinary DD4 level-scaled combat defaults. */
                 0, 0, 0, 0,
 
-                /* Inherit dimension and language metadata. */
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                /* Descriptive centimetres/kilograms; language stays inherited. */
+                175, 65,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                                 /* Idle feeding and stronger contact paralysis. */
                 "spec_ghast", "", "",
