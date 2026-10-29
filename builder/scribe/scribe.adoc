@@ -1111,13 +1111,13 @@ see <<scribe-animated-skeleton,Animated skeleton servant>>.
 | Mindlessness | `AFF_MINDLESS`; see <<scribe-mobile-mindlessness,Mindlessness>>.
 | Resistances | `RES_PIERCE`, `RES_SLASH`, `RES_DARK`; combined mask `262240`.
 | Vulnerabilities | `RES_BLUNT`, `RES_HOLY`; combined mask `131088`.
-| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`; combined mask `1792`.
+| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`, `RES_COLD`, `RES_HOLD`, `RES_PARALYSIS`; combined mask `38658`.
 | Body restrictions | `BODY_NO_EYES`, `BODY_NO_HEART`, `BODY_NO_SPEECH`, `BODY_INORGANIC`, `BODY_BLOODLESS`, `BODY_ANALGIC`, `BODY_SOULLESS`.
 | Retained positive anatomy | Head, arms, two legs, hands, feet and fingers.
 | Removed positive anatomy | Heart, brains, guts, ear and eye.
 | Attack parts | Zero. No automatic claw/bite attack and no generated body-part weapon.
 | Numeric combat modifiers | Explicit zero HP/damage/critical/swiftness adjustments. Existing level/rank generation and base scores still apply.
-| Dimensions and language | Inherit the humanoid values, currently unspecified zero. No invented measurement units or language names.
+| Dimensions and language | Height 175 cm, weight 12 kg, medium size; language inherits the humanoid default.
 | Special functions | Three explicitly cleared names with an auto policy, resolving to an empty `0/0/0` set.
 | Archetype XP | Zero additional percentage points.
 | Other ACT properties | No mandatory aggression, sentinel, no-charm, objectlike, no-corpse or invulnerability property.
@@ -1298,23 +1298,23 @@ expanding the template's flags.
 | Positive anatomy | Head, arms, two legs, heart, brains, guts, hands, feet, fingers, ear and eye. No inherited organs are cancelled. No tail is declared.
 | Resistance | `RES_DARK`; mask `262144`.
 | Vulnerability | `RES_HOLY`; mask `131072`.
-| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`; mask `1792`.
+| Immunities | `RES_POISON`, `RES_SLEEP`, `RES_DRAIN`, `RES_COLD`, `RES_HOLD`, `RES_PARALYSIS`; mask `38658`.
 | Physical damage | No archetype resistance, vulnerability or immunity to blunt, piercing, slashing or nonmagical attacks.
 | Other balance defaults | Zero HP, damage, critical, swiftness and additional XP adjustments. No automatic Slow affect or additional fire weakness.
 | Attack parts and specials | No additional natural attack parts and no compulsory special. The three cleared names resolve to an empty `0/0/0` set.
-| Dimensions and language | Inherit humanoid defaults, currently unspecified zero.
+| Dimensions and language | Height 175 cm, weight 65 kg, medium size; language inherits the humanoid default.
 |===
 
 The zombie does not receive `BODY_INORGANIC`. Undead classification and
 mindlessness are separate from that body flag: routines using
 `IS_INORGANIC()` treat this default zombie as organic. Its explicit poison,
-sleep and drain immunities still apply. A retained brain is an anatomical
+sleep, drain, cold, hold and paralysis immunities still apply. A retained brain is an anatomical
 part; `AFF_MINDLESS` separately determines whether supported mental effects
 can influence it. The retained heart remains present for `HAS_HEART()` checks.
 
 An ordinary zombie receives no automatic aggression, sentinel, no-quest or
 no-experience flag. Add those as individual choices when appropriate.
-It receives no automatic paralysis or blanket psychic immunity.
+Its hold/paralysis immunity is physiological; it receives no blanket psychic immunity.
 
 The effective body mask is `492581276128288`. `mstat` displays:
 
@@ -1372,7 +1372,7 @@ an exact number of attacks.
 | Body species | `humanoid`.
 | Classification | `ACT_UNDEAD`.
 | Mind and speech | No inherited `AFF_MINDLESS` or `BODY_NO_SPEECH`.
-| Anatomy | Organic humanoid anatomy plus `PART_LONG_TONGUE`; body mask `133993472`.
+| Anatomy | Organic humanoid anatomy plus `PART_LONG_TONGUE`, `PART_CLAWS` and `PART_FANGS`; body mask `25903797248`.
 | Natural attacks | `PART_CLAWS` and `PART_FANGS`; attack-part mask `25769803776`.
 | Resistance and vulnerability | Neither is supplied by the archetype.
 | Immunities | `RES_SLEEP` and `RES_CHARM`; mask `3072`.
@@ -1380,7 +1380,7 @@ an exact number of attacks.
 | Combat scalars | Zero HP, damage, critical and swiftness adjustments.
 | Special set | `spec_ghoul` in slot 1; other slots empty; auto resolves to `100/0/0`.
 | XP | Zero additional archetype adjustment. The default special contributes +10 percentage points through the existing special-XP calculation.
-| Dimensions and language | Inherit humanoid defaults, currently unspecified zero.
+| Dimensions and language | Height 175 cm, weight 65 kg, medium size; language inherits the humanoid default.
 |===
 
 The death-part list includes the inherited humanoid parts, a long tongue,
@@ -1489,7 +1489,7 @@ alignment or copy a tabletop hit-dice, armour-class or attack-count value.
 | Classification | `ACT_UNDEAD`.
 | Passive stench | `AFF_STENCH`; see <<scribe-mobile-stench,Carrion stench>>. Independent of special-function selection.
 | Mind and speech | No inherited `AFF_MINDLESS` or `BODY_NO_SPEECH`.
-| Anatomy | Organic humanoid anatomy plus `PART_LONG_TONGUE`; body mask `133993472`.
+| Anatomy | Organic humanoid anatomy plus `PART_LONG_TONGUE`, `PART_CLAWS` and `PART_FANGS`; body mask `25903797248`.
 | Natural attacks | `PART_CLAWS` and `PART_FANGS`; attack-part mask `25769803776`.
 | Resistance | None supplied by the archetype.
 | Vulnerability | `RES_COLD_IRON`; mask `4194304`. Uses the ordinary resistance resolver, including its non-stacking +50% vulnerability adjustment.
@@ -1497,7 +1497,7 @@ alignment or copy a tabletop hit-dice, armour-class or attack-count value.
 | Combat scalars | Zero HP, damage, critical and swiftness adjustments.
 | Special set | `spec_ghast` in slot 1; other slots empty; auto resolves to `100/0/0`.
 | XP | Zero additional archetype adjustment; the default special contributes +10 percentage points through the existing calculation.
-| Dimensions and language | Inherit humanoid defaults, currently unspecified zero.
+| Dimensions and language | Height 175 cm, weight 65 kg, medium size; language inherits the humanoid default.
 |===
 
 `spec_ghast` uses the same idle feeding conditions and NPC-corpse handling
@@ -4413,8 +4413,9 @@ _Default: omitted; inherit the resolved body-species/archetype value_
 ===== Meaning and limits of this data layer
 
 These are absolute metadata values, not modifiers, percentages or bitmasks.
-The existing template values are preserved exactly. The reviewed legacy table
-initialisers do not specify measurement units or a categorical size scale:
+Reviewed creatures use descriptive centimetres for height and kilograms for
+weight, with the existing small/medium/large size constants. Older entries
+still retain their historical raw values; for example:
 
 [cols="<2,<1,<1,<1",options="header"]
 |===
@@ -4423,8 +4424,9 @@ initialisers do not specify measurement units or a categorical size scale:
 | `fire_elemental` | 2 | 20 | 3
 |===
 
-No centimetre, metre, pound or kilogram unit is assigned to these values.
-`size` is not a tiny/small/medium/large enumeration; 100 is a valid raw value.
+Do not reinterpret or convert those older numbers automatically. The interface
+still accepts raw nonnegative integers, including legacy size 100; it does not
+validate every entry against the converted creatures' size convention.
 
 For this metadata interface, zero means that no numeric dimension is
 specified. It does not create a zero-sized or massless creature. An explicit
@@ -8640,3 +8642,38 @@ The lieutenant is rare, the leader elite, and the others common. The boy is
 removed. The bard still teaches teacher base 25 and musicianship 85; the
 horsemen keep their coins and are described on foot. All room flags and
 existing reset placements/caps are preserved. No matching source exists.
+
+[[scribe-graveyard-creatures]]
+==== Graveyard creatures
+
+Graveyard uses human for Henry 3600, zombie for 3601/3605, ghoul for 3602,
+and skeleton for 3603/3604. All stay common rank. The ordinary undead have
+no individual casting special. Ghoul feeding and claw/bite paralysis come
+from its archetype; do not repeat a legacy spec_cast_undead assignment,
+which would replace the inherited special set. Deliberate caster roles,
+such as the Catacombs zombie mage 2011, keep their individual special.
+
+Skeletons and zombies are immune to cold, hold and paralysis as well as
+poison, sleep and drain. Their other DD4 resistances and weaknesses stay
+as they are. Ghouls and ghasts retain their different sleep/charm immunity
+and gain the anatomical claw/fang bits their attacks already use.
+
+These four archetypes have descriptive medium size and height 175 cm.
+Skeleton weight is 12 kg; zombie, ghoul and ghast weight is 65 kg. These
+weights are DD4 estimates. Individual dimensions replace the defaults:
+
+    MobHeight 185
+    MobWeight 95
+
+Those are Henry's values. In a Scribe $mob block, write height 185 and
+weight 95. The existing exporter writes the optional fields above; no new
+source command or area keyword is needed. Omission or inherit keeps the
+template value; explicit zero clears that dimension. These are descriptive
+metadata and do not change combat, carrying capacity or corpse weight.
+
+Keep individual infrared and encounter flags. Do not repeat inherited
+body restrictions in XOR masks: the Graveyard skeletons use raw body 0,
+and zombie 3601 no longer repeats no_speech. The tomb 3643 scenery reset
+uses dusty-skeleton object 3610; the shed retains its wheelbarrow 3603.
+Rooms, flags, doors, original mobile resets and other loot are preserved.
+There is no matching Graveyard source file in the repository.

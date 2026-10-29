@@ -16,6 +16,9 @@ sorrow and depression.  He is haunted by a memory of a lost paradise.
 4 15 8 1d12+48 1d6+1
 0 800
 6 6 1
+< human~ common~
+MobHeight 185
+MobWeight 95
 #3601
 zombie~
 the rotting zombie~
@@ -25,8 +28,9 @@ Maggots crawl all over its decaying body.
 ~
 34 512 -750 S
 4 16 5 2d6+60 1d8+2
-32 800
+0 800
 8 8 1
+< zombie~ common~
 #3602
 ghoul~
 the ghastly ghoul~
@@ -39,6 +43,7 @@ resemble claws.  Its eyes are a dark yellow colour and glare hungrily at you.
 6 15 4 2d6+72 1d10+2
 0 1500
 8 8 1
+< ghoul~ common~
 #3603
 skeleton~
 a dusty skeleton~
@@ -49,8 +54,9 @@ time.
 ~
 34 512 -750 S
 3 17 7 1d12+36 1d6+2
-16|32|256 600
+0 600
 8 8 1
+< skeleton~ common~
 #3604
 skeleton~
 a dusty skeleton~
@@ -61,8 +67,9 @@ time.
 ~
 32 512 -750 S
 3 17 7 1d12+36 1d6+2
-16|32|256 600
+0 600
 8 8 1
+< skeleton~ common~
 #3605
 zombie~
 the rotting zombie~
@@ -74,6 +81,7 @@ Maggots crawl all over its decaying body.
 4 16 5 2d6+60 1d8+2
 0 800
 8 8 1
+< zombie~ common~
 #0
 
 
@@ -882,7 +890,7 @@ D 0 3641 4 1          Close Tomb 3641 from inside
 O 0 3610 13 3641        Skeleton
 D 0 3642 5 1          Close Tomb 3643 from outside
 D 0 3643 4 1          Close Tomb 3643 from inside
-O 0 3603 5 3643        Skeleton
+O 0 3610 5 3643        Skeleton
 D 0 3644 5 1          Close Tomb 3645 from outside
 D 0 3645 4 1          Close Tomb 3645 from inside
 M 0 3601 1 3645         Zombie
@@ -909,11 +917,6 @@ S
 
 
 #SPECIALS
-M  3601 spec_cast_undead
-M  3602 spec_cast_undead
-M  3603 spec_cast_undead
-M  3604 spec_cast_undead
-M  3605 spec_cast_undead
 S
 
 

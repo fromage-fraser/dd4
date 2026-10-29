@@ -4458,3 +4458,38 @@ The lieutenant is rare, the leader elite, and the others common. The boy is
 removed. The bard still teaches teacher base 25 and musicianship 85; the
 horsemen keep their coins and are described on foot. All room flags and
 existing reset placements/caps are preserved. No matching source exists.
+
+Graveyard creatures
+-------------------
+
+Graveyard uses human for Henry 3600, zombie for 3601/3605, ghoul for 3602,
+and skeleton for 3603/3604. All stay common rank. The ordinary undead have
+no individual casting special. Ghoul feeding and claw/bite paralysis come
+from its archetype; do not repeat a legacy spec_cast_undead assignment,
+which would replace the inherited special set. Deliberate caster roles,
+such as the Catacombs zombie mage 2011, keep their individual special.
+
+Skeletons and zombies are immune to cold, hold and paralysis as well as
+poison, sleep and drain. Their other DD4 resistances and weaknesses stay
+as they are. Ghouls and ghasts retain their different sleep/charm immunity
+and gain the anatomical claw/fang bits their attacks already use.
+
+These four archetypes have descriptive medium size and height 175 cm.
+Skeleton weight is 12 kg; zombie, ghoul and ghast weight is 65 kg. These
+weights are DD4 estimates. Individual dimensions replace the defaults:
+
+    MobHeight 185
+    MobWeight 95
+
+Those are Henry's values. In a Scribe $mob block, write height 185 and
+weight 95. The existing exporter writes the optional fields above; no new
+source command or area keyword is needed. Omission or inherit keeps the
+template value; explicit zero clears that dimension. These are descriptive
+metadata and do not change combat, carrying capacity or corpse weight.
+
+Keep individual infrared and encounter flags. Do not repeat inherited
+body restrictions in XOR masks: the Graveyard skeletons use raw body 0,
+and zombie 3601 no longer repeats no_speech. The tomb 3643 scenery reset
+uses dusty-skeleton object 3610; the shed retains its wheelbarrow 3603.
+Rooms, flags, doors, original mobile resets and other loot are preserved.
+There is no matching Graveyard source file in the repository.
