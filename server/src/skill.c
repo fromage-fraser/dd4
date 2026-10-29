@@ -3809,6 +3809,12 @@ void do_chant(CHAR_DATA *ch, char *arg)
 
         else if( is_name( arg, "enfeeblement" ) )
         {
+                if( ch->pcdata->learned[gsn_chant_of_enfeeblement] <= 0 )
+                {
+                        send_to_char( "You don't know that chant.\n\r", ch );
+                        return;
+                }
+
                 victim = ch->fighting;
 
                 if( !victim )
@@ -3858,6 +3864,12 @@ void do_chant(CHAR_DATA *ch, char *arg)
 
         else if( is_name( arg, "pain" ) )
         {
+                if( ch->pcdata->learned[gsn_chant_of_pain] <= 0 )
+                {
+                        send_to_char( "You don't know that chant.\n\r", ch );
+                        return;
+                }
+
                 victim = ch->fighting;
 
                 if( !victim )
@@ -4218,7 +4230,9 @@ void do_gather (CHAR_DATA *ch, char *arg)
                 }
         }
 
-        if( herb_type < 0 )
+        if( herb_type < 0
+           || ch->pcdata->learned[ gsn_gather_herbs ]
+              < herb_table[ herb_type ].min_skill )
         {
                 if( random )
                         send_to_char( "You are unable to find any useful herbs.\n\r", ch );
