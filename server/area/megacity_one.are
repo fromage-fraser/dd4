@@ -15,6 +15,9 @@ vandalism repairs.
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 180
+MobWeight 60
 #8001
 punk~
 a punk~
@@ -27,6 +30,7 @@ fashionable of all gangs -- the Grunge Mongers.
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #8002
 Futsie~
 a Futsie~
@@ -40,6 +44,7 @@ Justice Department.
 62 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #8003
 Citi-Def Militiaman~
 a Citi-Def Militiaman~
@@ -52,6 +57,7 @@ and undersupervised.
 61 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #8004
 dunk~
 a dunk~
@@ -63,6 +69,7 @@ He blends into the crowd as his hand travels into another citizen's pocket.
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #8005
 tap~
 a tap~
@@ -75,6 +82,7 @@ looking you over for a possible business transaction.
 59 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #8006
 rookie judge~
 a rookie judge~
@@ -88,6 +96,7 @@ you though.
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #8007
 Wallaby Gleep~
 Wallaby Gleep~
@@ -100,6 +109,8 @@ unintelligent and unimaginative, but looks can be deceiving.
 67 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
+MobWeight 100
 #8008
 Pinkerton Throt~
 Pinkerton Throt~
@@ -113,6 +124,8 @@ eyes is the mention of money.
 70 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
+MobWeight 60
 #8009
 Ernie Ramirez~
 Ernie Ramirez~
@@ -126,6 +139,7 @@ Gleep.
 69 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #8010
 Judge Eckersely~
 Judge Eckersely~
@@ -138,6 +152,7 @@ of the Downtown Quadrant.
 75 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ elite~
 #8011
 Judge Sara Beddows~
 Judge Beddows~
@@ -150,7 +165,8 @@ to enforce the LAW.
 64 8|32 500 S
 70 0 0 0d0+0 0d0+0
 0 0
-8 8 1
+8 8 2
+< human~ common~
 #8012
 bite fighter~
 a bite fighter~
@@ -160,8 +176,10 @@ A bite fighter is here with sharpened teeth and a bad attitude.
 ~
 2|32 0 -400 S
 65 0 0 0d0+0 0d0+0
-0 0
+17179869184 0
 8 8 1
+< human~ common~
+MobAttackParts 17179869184
 #0
 
 
@@ -951,7 +969,7 @@ M 0 8010 1 8007			Eckersley
 E 0 8011 40 16			club
 G 0 8003 20 0			lawgiver
 *
-M 0 8011 1 8009			Beggers
+M 0 8011 1 8009			Beddows
 E 0 8011 40 16			club
 G 0 8003 20 0			lawgiver
 *
