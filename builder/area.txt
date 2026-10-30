@@ -4334,7 +4334,8 @@ mind, soul or undead nature. Animated mist uses this body with flight,
 sanctuary, sneak and pass-door. Bat and vampire bat forms use winged_mammal;
 DarkenBeast uses winged_reptile. Both winged bodies have two hind legs,
 wings and living organs, with no usable arms/hands or speech. Vampire forms
-share one set of vampire defaults. The bat form adds flight, fangs and bite.
+share one set of vampire defaults. The large-bat form adds flight, fangs and
+bite, with length 91 cm, estimated weight 10 kg and medium size.
 
 Echolocation is an internal trait for the two bat archetypes. It locates
 same-room corporeal creatures despite darkness or ordinary visual blindness.
@@ -4359,9 +4360,10 @@ shown by MSTAT's trait display. Prism dragon and DarkenBeast receive -20 AC.
 It is not a new area scalar or a change to stored armour. Their other scalar
 HP/damage/critical/swiftness and separate XP adjustments stay neutral.
 
-Prism dragon uses the existing dragon body, flight and ordinary natural
-attacks. It can speak. Its special distribution is 75% spec_breath_any and
-25% spec_prism_flash, with no boss slot. The flash casts existing Colour
+Prism dragon adds BODY_HUGE to the existing dragon body and keeps flight,
+ordinary natural attacks and speech. Its shoulder height is 300 cm, length
+1200 cm and estimated weight 3000 kg. Its special distribution is
+75% spec_breath_any and 25% spec_prism_flash, with no boss slot. The flash casts existing Colour
 Spray at its current opponent using the dragon's level. Only one special
 runs per opportunity; breath opportunities therefore receive a smaller
 share. Special XP uses the existing weighted calculation.
@@ -4493,3 +4495,31 @@ and zombie 3601 no longer repeats no_speech. The tomb 3643 scenery reset
 uses dusty-skeleton object 3610; the shed retains its wheelbarrow 3603.
 Rooms, flags, doors, original mobile resets and other loot are preserved.
 There is no matching Graveyard source file in the repository.
+
+Creature dimension refinements
+-----------------------------
+
+The Dwarven Kingdom storekeeper 6503 keeps the normal dwarf height and
+uses MobWeight 95 for his rotund build. Mine leader 6508 uses MobHeight 140
+and MobWeight 100. These are individual replacements, not additions.
+
+The vampire_bat_form archetype is the second-edition large-bat form:
+length 91 cm, estimated weight 10 kg and medium size. Its height remains
+unspecified. The sourcebook gives a three-foot body and a five-to-six-foot
+wingspan but no weight; the 10 kg value is a DD4 estimate. Wingspan is only
+a descriptive reference, with no new field. Existing vampire physiology,
+defences, echolocation, natural bite and active special are preserved.
+
+Prism Dragon defaults are shoulder height 300 cm, snout-to-tail length
+1200 cm, estimated weight 3000 kg and large size. Those measurements fit
+its large cavern but are not exact numbers supplied by the area author.
+The archetype adds BODY_HUGE to its inherited dragon body. Ordinary huge
+creature checks now apply, including restrictions on backstabbing,
+stunning, grappling, headbutting and swallowing it. The flag is separate
+from dimension metadata.
+
+Height, length and weight remain whole-number descriptive values.
+Fractional weights are not supported. No units were changed, and these
+measurements do not introduce new weight-based combat or carrying rules.
+Only the explicit HUGE body flag changes physical eligibility here.
+Humanoid vampire and ordinary bat defaults stay as they were.
