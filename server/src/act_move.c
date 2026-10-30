@@ -3908,6 +3908,8 @@ void do_warcry(CHAR_DATA *ch, char *argument)
         && !mob_has_special(ch, spec_lookup("spec_green_grung"))
         && !mob_has_special(ch, spec_lookup("spec_blue_grung"))
         && !mob_has_special(ch, spec_lookup("spec_purple_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_orange_grung"))
+        && !mob_has_special(ch, spec_lookup("spec_gold_grung"))
         && !mob_has_special(ch, spec_lookup("spec_sahuagin_baron"))
         && !mob_has_special(ch, spec_lookup("spec_sahuagin_prince")))
                 return;
