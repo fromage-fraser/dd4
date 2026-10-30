@@ -909,7 +909,7 @@ void do_strangle (CHAR_DATA *ch, char *argument)
                 return;
 
         if ( !IS_NPC( ch)
-        && !CAN_DO(ch, gsn_constrict))
+        && !CAN_DO(ch, gsn_strangle))
         {
                 send_to_char("Huh?\n\r", ch);
                 return;
