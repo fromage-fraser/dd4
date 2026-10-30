@@ -265,7 +265,7 @@ const struct species_type species_table[MAX_SPECIES] =
         }
 
 /* Both forms use the same vampire physiology, defences and active ability. */
-#define VAMPIRE_ARCHETYPE(name, body_species, senses, anatomy, attacks, body_size) \
+#define VAMPIRE_ARCHETYPE(name, body_species, senses, anatomy, attacks, body_size, body_weight, body_length) \
         { \
                 name, body_species, "icon1", "icon2", \
                 ACT_UNDEAD | ACT_REGENERATOR, senses, \
@@ -274,14 +274,14 @@ const struct species_type species_table[MAX_SPECIES] =
                 RES_SILVER | RES_HOLY | RES_WATER, \
                 RES_POISON | RES_SLEEP | RES_CHARM | RES_CURSE | RES_NONMAGIC, \
                 0, 0, 0, 0, \
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, \
+                MOB_TEMPLATE_UNSET, body_weight, \
                 body_size, MOB_TEMPLATE_UNSET, \
                 "spec_vampire", "", "", \
                 0, \
                 MOB_SPECIAL_CHANCES_AUTO, \
                 MOB_TEMPLATE_UNSET, \
                 CREATURE_FAMILY_NONE, \
-                MOB_TEMPLATE_UNSET \
+                body_length \
         }
 
 /* These toys share their enchantment; their materials can differ. */
@@ -857,7 +857,8 @@ const struct mob_type mob_table[MAX_MOB] =
                 CREATURE_FAMILY_NONE,
                 MOB_TEMPLATE_UNSET
         },
-        VAMPIRE_ARCHETYPE("vampire", "humanoid", 0, 0, 0, MOB_TEMPLATE_UNSET),
+        VAMPIRE_ARCHETYPE("vampire", "humanoid", 0, 0, 0,
+            MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET),
         {
                 "lich", "humanoid", "icon1", "icon2",
 
@@ -1167,22 +1168,24 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET
         },
 
-        VAMPIRE_ARCHETYPE("vampire_bat_form", "winged_mammal", AFF_FLYING, PART_FANGS, PART_FANGS, CHAR_SIZE_SMALL),
+        /* The large-bat form has a three-foot body; 10 kg is our estimate. */
+        VAMPIRE_ARCHETYPE("vampire_bat_form", "winged_mammal", AFF_FLYING,
+            PART_FANGS, PART_FANGS, CHAR_SIZE_MEDIUM, 10, 91),
 
         {
                 "prism_dragon", "dragon", "icon1", "icon2",
                 0, AFF_FLYING,
-                0, 0,
+                BODY_HUGE, 0,
                 0, 0, 0,
                 0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                300, 3000, /* Shoulder height in cm and estimated weight in kg. */
                 CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_breath_any", "spec_prism_flash", "",
                 0,
                 {75, 25, 0},
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE,
-                MOB_TEMPLATE_UNSET
+                1200 /* Snout to tail tip in cm. */
         },
 
         {

@@ -51,6 +51,7 @@ The storekeeper is very rotund, but looks like a sharp guy.
 0 80000
 8 8 1
 < dwarf~ common~
+MobWeight 95
 #6504
 baker~
 the baker~
@@ -115,6 +116,8 @@ The mine leader is very big and very strong.
 0 52000
 8 8 1
 < dwarf~ rare~
+MobHeight 140
+MobWeight 100
 #6509
 dwarf doctor~
 the dwarven doctor~
