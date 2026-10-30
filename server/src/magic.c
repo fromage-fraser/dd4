@@ -715,7 +715,11 @@ RESISTANCE_RESULT get_contact_resistance_result(
                  */
                 if (target_phase == GHOST_PHASE_NONE)
                 {
-                        if (material_vulnerability)
+                        /* Some corporeal creatures admit silver without taking bonus damage. */
+                        if (material_vulnerability
+                        || ((res_types & RES_SILVER)
+                         && creature_trait_value(victim,
+                                CREATURE_TRAIT_SILVER_BYPASSES_NONMAGIC) > 0))
                                 res_types &= ~(unsigned long int)RES_NONMAGIC;
                 }
                 else if (attacker_phase != GHOST_PHASE_NONE)

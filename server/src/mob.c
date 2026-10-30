@@ -116,7 +116,8 @@ const struct species_type species_table[MAX_SPECIES] =
                 BODY_NO_ARMS
                     | PART_HEAD | PART_4_LEGS | PART_HEART
                     | PART_BRAINS | PART_GUTS | PART_EAR | PART_EYE
-                    | PART_WINGS | PART_TAIL | PART_SCALES,
+                    | PART_WINGS | PART_TAIL | PART_SCALES
+                    | PART_CLAWS | PART_FANGS,
 
                 PART_CLAWS | PART_FANGS | PART_TAILATTACK,
 
@@ -265,7 +266,7 @@ const struct species_type species_table[MAX_SPECIES] =
         }
 
 /* Both forms use the same vampire physiology, defences and active ability. */
-#define VAMPIRE_ARCHETYPE(name, body_species, senses, anatomy, attacks, body_size, body_weight, body_length) \
+#define VAMPIRE_ARCHETYPE(name, body_species, senses, anatomy, attacks, body_size, body_height, body_weight, body_length) \
         { \
                 name, body_species, "icon1", "icon2", \
                 ACT_UNDEAD | ACT_REGENERATOR, senses, \
@@ -274,7 +275,7 @@ const struct species_type species_table[MAX_SPECIES] =
                 RES_SILVER | RES_HOLY | RES_WATER, \
                 RES_POISON | RES_SLEEP | RES_CHARM | RES_CURSE | RES_NONMAGIC, \
                 0, 0, 0, 0, \
-                MOB_TEMPLATE_UNSET, body_weight, \
+                body_height, body_weight, \
                 body_size, MOB_TEMPLATE_UNSET, \
                 "spec_vampire", "", "", \
                 0, \
@@ -299,6 +300,22 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_AUTO, \
                 GHOST_PHASE_NONE, \
                 CREATURE_FAMILY_NONE, \
+                MOB_TEMPLATE_UNSET \
+        }
+
+/* Both sizes keep the same ordinary zombie physiology. */
+#define ZOMBIE_ARCHETYPE(name, anatomy, body_height, body_weight, body_size, family) \
+        { \
+                name, "humanoid", "icon1", "icon2", \
+                ACT_UNDEAD, AFF_MINDLESS, \
+                BODY_NO_SPEECH | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS | anatomy, \
+                0, \
+                RES_DARK, RES_HOLY, \
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_COLD | RES_HOLD | RES_PARALYSIS, \
+                0, 0, 0, 0, \
+                body_height, body_weight, body_size, MOB_TEMPLATE_UNSET, \
+                "", "", "", \
+                0, MOB_SPECIAL_CHANCES_AUTO, MOB_TEMPLATE_UNSET, family, \
                 MOB_TEMPLATE_UNSET \
         }
 
@@ -413,37 +430,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET
         },
 
-        {
-                "zombie", "humanoid", "icon1", "icon2",
-
-                /* Undead classification and explicit mindlessness. */
-                ACT_UNDEAD, AFF_MINDLESS,
-                BODY_NO_SPEECH | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS,
-
-                /* No additional natural attack parts. */
-                0,
-
-                /* Resistance, vulnerability and immunity XOR masks. */
-                RES_DARK,
-                RES_HOLY,
-                RES_POISON | RES_SLEEP | RES_DRAIN
-                    | RES_COLD | RES_HOLD | RES_PARALYSIS,
-
-                /* Neutral HP, damage, critical and swiftness adjustments. */
-                0, 0, 0, 0,
-
-                /* Descriptive centimetres/kilograms; language stays inherited. */
-                175, 65,
-                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
-
-                /* No compulsory special functions or extra XP. */
-                "", "", "",
-                0,
-                MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE,
-                MOB_TEMPLATE_UNSET
-        },
+        ZOMBIE_ARCHETYPE("zombie", 0, 175, 65, CHAR_SIZE_MEDIUM, CREATURE_FAMILY_NONE),
         {
                 "ghoul", "humanoid", "icon1", "icon2",
 
@@ -560,9 +547,9 @@ const struct mob_type mob_table[MAX_MOB] =
                 /* Neutral HP, damage, critical and swiftness adjustments. */
                 0, 0, 0, 0,
 
-                /* Inherit dimensions and language metadata. */
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                /* Use a human-sized outline; spirit weight stays unspecified. */
+                175, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                 /* No active ghost behaviour in this stage. */
                 "", "", "",
@@ -586,11 +573,11 @@ const struct mob_type mob_table[MAX_MOB] =
                  */
                 ACT_UNDEAD, 0,
 
-                /* Retain the inherited humanoid body unchanged. */
-                0,
+                /* The mummified hands have real claws. */
+                PART_CLAWS,
 
-                /* No additional natural attack parts. */
-                0,
+                /* Use natural claws; life drain remains a separate special. */
+                PART_CLAWS,
 
                 /*
                  * Corporeal undead baseline:
@@ -603,14 +590,15 @@ const struct mob_type mob_table[MAX_MOB] =
                  * Dead tissue is immune to poison and sleep, and a wight
                  * cannot itself be life-drained.
                  */
-                RES_POISON | RES_SLEEP | RES_DRAIN,
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_COLD | RES_CHARM
+                    | RES_HOLD | RES_PARALYSIS | RES_NONMAGIC,
 
                 /* Ordinary DD4 HP, damage, critical and swiftness values. */
                 0, 0, 0, 0,
 
-                /* Inherit humanoid dimensions and language. */
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                /* A lean human-sized body; language stays inherited. */
+                175, 60,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                 /*
                  * Dedicated wight life drain. This is deliberately narrower
@@ -661,14 +649,15 @@ const struct mob_type mob_table[MAX_MOB] =
                  */
                 RES_DARK,
                 RES_HOLY,
-                RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC,
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC
+                    | RES_COLD | RES_CHARM | RES_HOLD | RES_PARALYSIS,
 
                 /* Ordinary DD4 HP, damage, critical and swiftness values. */
                 0, 0, 0, 0,
 
-                /* Retain humanoid dimension/language metadata. */
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                /* A human-sized outline, with no assumed spirit weight. */
+                175, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                 /*
                  * Dedicated life-drain and live phase behaviour.
@@ -815,12 +804,13 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 RES_DARK,
                 RES_HOLY,
-                RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC,
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC
+                    | RES_COLD | RES_ELECTRICITY | RES_CHARM | RES_HOLD,
 
                 0, 0, 0, 0,
 
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                175, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                 "spec_banshee", "", "",
 
@@ -858,7 +848,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET
         },
         VAMPIRE_ARCHETYPE("vampire", "humanoid", 0, 0, 0,
-            MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET),
+            CHAR_SIZE_MEDIUM, 175, 75, MOB_TEMPLATE_UNSET),
         {
                 "lich", "humanoid", "icon1", "icon2",
 
@@ -891,9 +881,9 @@ const struct mob_type mob_table[MAX_MOB] =
         {
                 "dracolich", "dragon", "icon1", "icon2",
 
-                ACT_UNDEAD | ACT_FEAR_AURA, 0,
+                ACT_UNDEAD | ACT_FEAR_AURA, AFF_FLYING,
 
-                BODY_NO_HEART | BODY_NO_EYES | BODY_INORGANIC
+                BODY_HUGE | BODY_NO_HEART | BODY_NO_EYES | BODY_INORGANIC
                     | PART_HEART | PART_BRAINS | PART_GUTS | PART_EYE,
                 0,
 
@@ -906,12 +896,12 @@ const struct mob_type mob_table[MAX_MOB] =
                 0, 0, 0, 0,
 
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
 
-                "spec_dracolich", "", "",
+                "spec_dracolich", "spec_breath_any", "",
 
                 0,
-                MOB_SPECIAL_CHANCES_AUTO,
+                {70, 30, 0},
                 MOB_TEMPLATE_UNSET,
                 CREATURE_FAMILY_NONE,
                 MOB_TEMPLATE_UNSET
@@ -1159,7 +1149,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 RES_DARK, RES_HOLY, RES_COLD | RES_POISON | RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN | RES_NONMAGIC,
                 0, 0, 0, 0,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "",
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
@@ -1170,7 +1160,7 @@ const struct mob_type mob_table[MAX_MOB] =
 
         /* The large-bat form has a three-foot body; 10 kg is our estimate. */
         VAMPIRE_ARCHETYPE("vampire_bat_form", "winged_mammal", AFF_FLYING,
-            PART_FANGS, PART_FANGS, CHAR_SIZE_MEDIUM, 10, 91),
+            PART_FANGS, PART_FANGS, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET, 10, 91),
 
         {
                 "prism_dragon", "dragon", "icon1", "icon2",
@@ -1221,13 +1211,17 @@ const struct mob_type mob_table[MAX_MOB] =
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE,
                 1070
-        }
+        },
+
+        ZOMBIE_ARCHETYPE("giant_zombie", BODY_HUGE, 450, 700,
+            CHAR_SIZE_LARGE, CREATURE_FAMILY_GIANT)
 
 };
 
 #undef DWARF_ARCHETYPE
 #undef VAMPIRE_ARCHETYPE
 #undef ANIMATED_TOY_ARCHETYPE
+#undef ZOMBIE_ARCHETYPE
 
 /* Unconverted NPCs stay unclassified; names are not a species test. */
 CREATURE_FAMILY creature_family(CHAR_DATA *ch)
@@ -1289,7 +1283,8 @@ typedef enum creature_trait_effect
         TRAIT_SUNLIGHT_ACCURACY,
         TRAIT_ECHOLOCATION,
         TRAIT_STRENGTH_DRAIN_TOUCH,
-        TRAIT_NATURAL_ARMOUR
+        TRAIT_NATURAL_ARMOUR,
+        TRAIT_SILVER_CONTACT
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -1350,7 +1345,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"sunlight_sensitive", TRAIT_SUNLIGHT_ACCURACY, NULL},
         {"echolocation", TRAIT_ECHOLOCATION, NULL},
         {"strength_drain_touch", TRAIT_STRENGTH_DRAIN_TOUCH, NULL},
-        {"natural_armour", TRAIT_NATURAL_ARMOUR, NULL}
+        {"natural_armour", TRAIT_NATURAL_ARMOUR, NULL},
+        {"silver_bypasses_nonmagic", TRAIT_SILVER_CONTACT, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
@@ -1386,6 +1382,15 @@ static const CREATURE_TRAIT_CHANGE darkenbeast_trait_changes[] =
         {CREATURE_TRAIT_SUNLIGHT_SENSITIVE, -1}
 };
 
+static const CREATURE_TRAIT_CHANGE wight_trait_changes[] =
+{
+        {CREATURE_TRAIT_SILVER_BYPASSES_NONMAGIC, 1}
+};
+static const CREATURE_TRAIT_CHANGE dracolich_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -40}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -1403,6 +1408,8 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"prism_dragon", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
         {"darkenbeast", NULL, darkenbeast_trait_changes, TRAIT_ITEMS(darkenbeast_trait_changes)},
         {"wyvern", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
+        {"wight", NULL, wight_trait_changes, TRAIT_ITEMS(wight_trait_changes)},
+        {"dracolich", NULL, dracolich_trait_changes, TRAIT_ITEMS(dracolich_trait_changes)},
         {NULL, NULL, NULL, 0}
 };
 
@@ -1608,7 +1615,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_NATURAL_ARMOUR)
+                || creature_trait_definitions[i].effect > TRAIT_SILVER_CONTACT)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name

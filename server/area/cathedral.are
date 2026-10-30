@@ -17,6 +17,9 @@ looks to be quite strong.
 56 5 3 5d11+650 8d2+7
 0 0
 8 8 1
+< human~ common~
+MobHeight 180
+MobWeight 100
 #4301
 ghoul corpse-like being~
 the ghoul~
@@ -28,8 +31,9 @@ see strange little white movements underneath it.
 ~
 2|4|64 8|128 700 S
 48 13 5 2d10+90 1d12+4
-32 0
+0 0
 8 8 0
+< ghoul~ common~
 #4302
 ghoul corpse-like being~
 the ghoul~
@@ -43,6 +47,7 @@ see strange little white movements underneath it.
 48 13 5 2d10+90 1d12+4
 0 0
 8 8 0
+< ghoul~ common~
 #4303
 esmerelda priestess woman~
 Esmerelda the priestess~
@@ -58,6 +63,7 @@ before her advancing ever so slowly, maybe you can try to save her!
 57 4 -1 2d12+700 3d6+3
 0 0
 8 8 2
+< human~ rare~
 #4304
 priest man~
 the man~
@@ -71,6 +77,7 @@ before him.
 53 8 1 5d10+450 3d5+1
 0 0
 8 8 1
+< human~ common~
 #4305
 wyrenthoth dracolich dragon undead~
 Wyrenthoth~
@@ -85,14 +92,18 @@ happens that this large collection of bones serves to form what looks to
 be a dragon, although the odd bone or two seems to be out of place.  It
 does appear that Wyrenthoth is a dracolich.
 ~
-2|64|128 8|128 900 S
+2|64 8|128 900 S
 87 0 -7 2d12+1100 4d9+7
-16|32|256 0
+0 0
 8 8 0
+< dracolich~ boss~
+MobHeight 400
+MobWeight 2000
+MobLength 1600
 #4306
 vampire erich man~
 Erich~
-A pale white man dressed in a black stands before you.
+A pale man dressed in black stands before you.
 ~
 The man before you is dressed in all black except for his cape which
 has a red satin lining.  He has dark hair and cold green eyes that
@@ -102,14 +113,15 @@ infest this cathedral.
 ~
 2|4|32 8|128 -1000 S
 79 2 0 6r15+750 3d6+8
-96 0
+64 0
 8 8 1
+< vampire~ boss~
 #4307
 giant zombie~
 the giant zombie~
-A rather large zombie is lumbering about here, quite aimlessly.
+A huge zombie looms here, swaying aimlessly.
 ~
-The zombie giant seems to be wandering around crushing those who
+The zombie giant towers over the crypt, ready to crush those who
 oppose the... it.  It is an enormous mass of rotting flesh and
 filth that smells, to put it bluntly, really bad.
 ~
@@ -117,6 +129,7 @@ filth that smells, to put it bluntly, really bad.
 85 0 -5 50d15+5000 3d8+12
 0 0
 8 8 0
+< giant_zombie~ rare~
 #4308
 skeleton human~
 the human skeleton~
@@ -128,8 +141,9 @@ you realize that it seems to be looking for someone in particular.
 ~
 2|64 8 600 S
 66 15 8 2d10+80 2d5+3
-304 0
+0 0
 8 8 0
+< skeleton~ common~
 #4309
 zombie corpse~
 the zombie~
@@ -144,6 +158,7 @@ mind (not that its mind could probably handle any more than that).
 67 15 5 4d12+100 2d5+2
 0 0
 8 8 0
+< zombie~ common~
 #4310
 shadow~
 the shadow~
@@ -155,8 +170,9 @@ put it mildly.
 ~
 2|64 8|128 -800 S
 68 13 3 4d8+100 2d5+3
-96 0
+0 0
 8 8 0
+< shadow~ common~
 #4311
 wight~
 the wight~
@@ -171,8 +187,9 @@ eyes.
 ~
 2|64 8|128 -900 S
 68 13 3 4d8+100 2d5+3
-96 0
+0 0
 8 8 0
+< wight~ common~
 #4312
 wraith~
 the wraith~
@@ -184,8 +201,9 @@ the air.
 ~
 2|64 8|128|1048576 -800 S
 68 13 3 4d8+100 2d5+3
-96 0
+32 0
 8 8 0
+< wraith~ common~
 #4313
 banshee form humanoid mother superior~
 the banshee~
@@ -200,6 +218,7 @@ it appears to be the soul of the cathedral's Mother Superior.
 75 6 0 10d10+100 2d6+6
 0 0
 8 8 2
+< banshee~ rare~
 #4314
 ghost abbott~
 the ghost of the Abbott~
@@ -212,8 +231,9 @@ looks up at you, smiles sadly, and then continues his song.
 ~
 2|64 8|128 750 S
 73 9 1 3d10+120 2d6+4
-96 0
+0 0
 8 8 1
+< ghost~ common~
 #0
 
 
@@ -505,6 +525,14 @@ knife bone~
 This long knife has a long curved blade with a bone handle.  The blade is
 very plain, but looks surprisingly sharp.
 ~
+#4318
+mace obsidian~
+an obsidian mace~
+An obsidian mace lies here.~
+~
+5 137438953472 1|8192
+0~ 2~ 4~ 7~
+5 120 0
 #0
 
 
@@ -1911,9 +1939,11 @@ O 1 4306 1 4311        Dark Potion
 O 1 4307 1 4311        Ivory Staff
 O 1 4308 1 4311        Coins
 M 1 4304 2 4308        Evil Priest
+E 1 4318 2 16                 Obsidian Mace
 M 1 4304 2 4310        Evil Priest
+E 1 4318 2 16                 Obsidian Mace
 M 1 4305 1 4349        Wyrenthoth
-E 1 4310 1 17                  Gold Key
+G 1 4310 1                     Gold Key
 M 1 4306 1 4341        Erich The Vampiric Fellow
 E 1 4309 2 16                  Rune Sword
 E 1 4311 1 17                  Blood Key
@@ -1983,6 +2013,8 @@ S
 
 
 #SPECIALS
-M  4306 spec_vampire            Erich
+M  4303 spec_cast_cleric        Esmerelda
+M  4304 spec_cast_cleric        Evil Priest
+M  4306 spec_mast_vampire       Erich
 S
 #$
