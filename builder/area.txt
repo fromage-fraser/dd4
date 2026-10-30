@@ -4589,3 +4589,40 @@ The corporeal wight has ordinary remains. Preserve all original room flags,
 doors, keys, reset placements and loot. Princess Evalynn's tomb 4348 stays
 NO_UNDEAD, with its coffin/corpse/Holy Avenger chain intact. There is no
 matching Cathedral Scribe source in the repository.
+
+Mega-City One humans
+--------------------
+
+All thirteen Mega-City One definitions use humanoid/human. Ordinary defaults
+are height 175 cm, weight 75 kg and medium size. Individual replacements
+give juve 8000 height 180 cm/weight 60 kg, Gleep 8007 weight 100 kg and
+Throt 8008 weight 60 kg. Gleep and Throt inherit the ordinary human height.
+These dimensions remain descriptive whole-number values.
+
+Gleep 8007 and Throt 8008 are rare; Senior Judge Eckersely 8010 is elite.
+The other characters stay common. Rank applies to normal generated HP
+and existing loot generation: rare doubles base HP, elite multiplies it
+by five. These choices describe the individual encounters, not human races.
+Their authored levels, alignments and combat scalars stay as they were.
+
+Keep spec_cast_judge on 8003, 8006, 8010 and 8011, and spec_thief on 8004.
+These are deliberate individual roles. The neutral human archetype does
+not replace their science-fiction weapon behaviour or pickpocketing.
+Keep individual detection, infrared, sanctuary and cowardice where authored.
+
+Bite fighter 8012 has sharpened teeth. Its body XOR mask adds PART_FANGS,
+decimal 17179869184, and MobAttackParts uses the same mask. In Scribe,
+write bf fangs and atk fangs in the human mob block. Existing
+natural-attack selection then uses a piercing bite at the ordinary attack
+rate and damage scaling. Existing head anatomy checks apply. This uses
+the existing per-mob fields; no new archetype, trait or command is needed.
+
+Judge Beddows 8011 is female, matching her description and existing portrait
+8011_judge_beddows.png. Her name and picture stay the same. She remains a
+living human, as do the other characters; her clone origin and the Futsie's
+mental-state description do not replace their ordinary human physiology.
+
+Preserve all original mobile placements, equipment, guns, special functions,
+doors, room flags and the safe/vault/Vibroblade chain. There is no matching
+Mega-City One Scribe source in the repository. Keep future source records
+consistent with these individual replacements and inherited human defaults.
