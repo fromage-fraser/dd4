@@ -3379,7 +3379,8 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
         if (store
         ||  IS_SET(victim->pIndexData->act, ACT_BANKER)
         ||  IS_SET(victim->pIndexData->act, ACT_IS_HEALER)
-        ||  (victim->pIndexData->pGame->game_fun != 0)
+        ||  (victim->pIndexData->pGame
+             && victim->pIndexData->pGame->game_fun != 0)
         ||  mob_has_special(victim, spec_lookup("spec_cast_hooker"))
         ||  mob_has_special(victim, spec_lookup("spec_thief")))
         {

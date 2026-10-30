@@ -3150,7 +3150,9 @@ void prayer_plague (CHAR_DATA *ch)
         for (d = descriptor_list; d; d = d->next)
         {
                 if (!d->character
-                    || d->connected != CON_PLAYING)
+                    || d->connected != CON_PLAYING
+                    || IS_NPC(d->character)
+                    || !d->character->pcdata)
                 {
                         continue;
                 }
