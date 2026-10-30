@@ -8707,3 +8707,69 @@ Fractional weights are not supported. No units were changed, and these
 measurements do not introduce new weight-based combat or carrying rules.
 Only the explicit HUGE body flag changes physical eligibility here.
 Humanoid vampire and ordinary bat defaults stay as they were.
+
+[[scribe-abandoned-cathedral-creatures]]
+==== Abandoned Cathedral creatures
+
+Cathedral uses existing human, ghoul, dracolich, vampire, skeleton, zombie,
+shadow, wight, wraith, banshee and ghost archetypes. The new giant_zombie
+shares the ordinary zombie physiology, adds HUGE and giant-family matching,
+and has descriptive height 450 cm, weight 700 kg and large size. Dwarf
+defences against giants apply. Its combat scalars and special slots are neutral.
+
+Erich 4306 keeps vampire anatomy and defences but has an individual
+spec_mast_vampire assignment, replacing the inherited ordinary special.
+He can speak and still leaves no corpse; his original equipment remains loot.
+Esmerelda 4303 and priests 4304 have individual spec_cast_cleric assignments.
+The priests wield ordinary obsidian maces 4318, with base 2d4/pound before
+normal NPC level scaling and weapon bonuses. DONOT_RANDOMISE prevents new
+affixes; it does not remove the existing level scaling. Existing evil
+alignments, aggression and sanctuary are preserved.
+
+Wyrenthoth 4305 and Erich are boss rank. Esmerelda, giant zombie 4307 and
+Mother Superior 4313 are rare; the other creatures stay common. Rank affects
+normal generated HP and existing loot generation: rare doubles base HP,
+boss multiplies it by seven. These are individual encounter choices.
+Isaac 4300 has individual height 180 cm and weight 100 kg. His deafness is
+descriptive; the character channel-muting field is not a hearing mechanic.
+
+Wights have anatomical/natural claws and immunity to cold, charm, hold,
+paralysis and ordinary weapons, alongside their earlier defences. Silver
+weapons bypass only their ordinary-weapon barrier and deal normal damage;
+magical weapons also work normally. The internal silver_bypasses_nonmagic
+trait supplies this rule. It lives only in species/archetype code and is
+shown by MSTAT; there is no area field, individual override or new ACT bit.
+It does not add silver vulnerability. Wraith silver-phase resistance and
+vampire silver vulnerability continue to use their existing rules.
+
+Wraiths add cold/charm/hold/paralysis immunity. Banshees add
+cold/electricity/charm/hold immunity and keep the existing DD4 fear wail.
+Wights use 175 cm/60 kg/medium; humanoid vampires use 175 cm/75 kg/medium.
+Wraiths, ghosts and banshees have apparent height 175 cm and medium size,
+with weight unspecified. Shadows have medium outlines and unknown numeric
+dimensions. The large vampire bat keeps length 91 cm, weight 10 kg, medium
+size and unspecified height. All weights are whole kilograms.
+
+The dragon species now includes the claw/fang body parts its natural-attack
+mask already named. This adds no extra attack or damage multiplier.
+Dracoliches add flight, HUGE, large size and natural_armour -40. They select
+spec_dracolich 70 percent or spec_breath_any 30 percent, one callback per
+opportunity. Breath selection reduces gaze/spell opportunities; the separate
+general fear aura still applies. Mixed breath is our DD4 choice where the
+former dragon colour is unknown. This keeps the established DD4 gaze and
+spell rules rather than adding a second special on the same opportunity.
+
+Shared dracolich measurements remain unspecified because the original
+dragon varies. Wyrenthoth has individual shoulder height 400 cm, body length
+1600 cm and estimated skeletal weight 2000 kg. His wimpy flag is removed;
+sentinel and stay-area remain. His gold key becomes carried loot under
+dragon anatomy. Dimensions and armour scaling are DD4 estimates informed
+by the area and second-edition creature entries.
+
+Keep individual body masks deliberate. Cathedral skeleton/shadow/dracolich
+records omit inherited restriction duplicates. The wraith stays mute and
+inherits no_corpse; the singing Abbott can speak and inherits no_corpse.
+The corporeal wight has ordinary remains. Preserve all original room flags,
+doors, keys, reset placements and loot. Princess Evalynn's tomb 4348 stays
+NO_UNDEAD, with its coffin/corpse/Holy Avenger chain intact. There is no
+matching Cathedral Scribe source in the repository.

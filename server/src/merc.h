@@ -3644,7 +3644,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 41
+#define MAX_MOB 42
 #define MAX_SPECIES 11
 #define MAX_RANK 6
 
@@ -5901,6 +5901,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_ECHOLOCATION,
         CREATURE_TRAIT_STRENGTH_DRAIN_TOUCH,
         CREATURE_TRAIT_NATURAL_ARMOUR,
+        CREATURE_TRAIT_SILVER_BYPASSES_NONMAGIC,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 int validate_creature_traits args((void));
