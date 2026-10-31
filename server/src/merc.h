@@ -3644,7 +3644,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 45
+#define MAX_MOB 47
 #define MAX_SPECIES 13
 #define MAX_RANK 6
 
@@ -3736,6 +3736,7 @@ typedef enum creature_family
         CREATURE_FAMILY_TITAN,
         CREATURE_FAMILY_HUMAN,
         CREATURE_FAMILY_ELF,
+        CREATURE_FAMILY_LIZARDMAN,
         CREATURE_FAMILY_MAX
 } CREATURE_FAMILY;
 
