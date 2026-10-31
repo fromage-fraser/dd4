@@ -14,6 +14,7 @@ beard is encrusted with cracked rock and dust from the tunnel walls.
 47 13 3 1d10+150 1d8+0
 0 1600
 8 8 1
+< dwarf~ common~
 #4701
 dwarf~
 the small dwarf~
@@ -27,6 +28,7 @@ of the mines.
 45 18 5 1d12+60 1d8+0
 0 900
 8 8 1
+< dwarf~ common~
 #4702
 dwarf guard~
 the dwarf guard~
@@ -40,6 +42,7 @@ dwarf is of no use to anyone but him, but provides adequate defense.
 50 10 0 1d12+170 1d8+6
 0 3500
 8 8 1
+< dwarf~ common~
 #4703
 dwarf yentle~
 Yentle the dwarf~
@@ -53,6 +56,7 @@ of failure at growing rocks.
 50 11 2 10d10+100 2d6+1
 0 9000
 6 6 1
+< dwarf~ common~
 #4704
 juargan dwarf king~
 Juargan the Dwarven King~
@@ -67,6 +71,8 @@ too much for him.
 67 -1 -10 27b27+270 3d6+9
 0 90000
 6 6 1
+< dwarf~ boss~
+MobWeight 100
 #4705
 duergar dwarf~
 the duergar dwarf~
@@ -80,10 +86,11 @@ enemies with them.
 58 13 3 2d10+150 2d4+0
 0 2900
 8 8 1
+< duergar~ common~
 #4706
 grimdale king dwarf~
 Grimdale, the ancient king~
-A ancient and partially-decayed dwarf lies here, ever so silent.
+An ancient and partially-decayed dwarf lies here, ever so silent.
 ~
   The ancient king of the dwarves lies here.  Forgotten over the past decades
 his once cherished body has fallen into utter decay.  His once cheery face has
@@ -93,19 +100,24 @@ turned into a crude scowl as you can feel that his soul is not at ease.
 67 -1 -10 27r27+270 2d10+9
 0 100000
 8 8 1
+< wight~ elite~
+MobHeight 130
+MobWeight 50
+MobSize 0
 #4707
 rock worm dreaded~
 The dreaded rock worm~
 The dreaded rock worm has blasted through the rock wall, its jaws open wide!
 ~
-  The jaws of this strange beast are large enough to fit at lease two dwarves
-into.  Judging by the size you can see that is has been eating quite a few too
+  The jaws of this strange beast are large enough to fit at least two dwarves
+into.  Judging by the size you can see that it has been eating quite a few too
 many dwarves as its body is at least five feet in diameter.
 ~
 2|32 8 0 S
 60 10 5 4d10+250 3d4+6
-4|8|32|128 28000
+0 28000
 8 8 0
+< rock_worm~ rare~
 #4708
 spirit dwarf~
 a dwarven spirit~
@@ -115,10 +127,13 @@ A small dwarven spirit is at unrest here.
 The soul of some unfortunate dwarf now has to fly aimlessly through this chamber
 of eternal pain.
 ~
-2|32 168 -999 S
+2|32 168|524288 -999 S
 55 6 1 5d10+150 2d6+3
-64|256 28000
+0 28000
 8 8 0
+< ghost~ common~
+MobHeight 130
+MobSize 0
 #0
 
 

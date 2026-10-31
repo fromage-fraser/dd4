@@ -8196,7 +8196,9 @@ void spell_ventriloquate(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 /* if ( !is_name( speaker, vch->name ) ) */
                 if (vch != ch)
-                        send_to_char(saves_spell(ch, level, vch) ? buf2 : buf1, vch);
+                        send_to_char(
+                            (creature_trait_value(vch, CREATURE_TRAIT_ILLUSION_IMMUNITY) > 0
+                             || saves_spell(ch, level, vch)) ? buf2 : buf1, vch);
                 else
                         send_to_char(buf1, ch);
         }

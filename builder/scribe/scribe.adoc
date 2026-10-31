@@ -798,6 +798,8 @@ Accepted archetype names are:
 | `dwarf` | Living humanoid with infravision, magic/poison resistance and optional melee training.
 | `goblin` | Living humanoid with small fangs, infravision and sunlight sensitivity.
 | `human` | Ordinary living humanoid with neutral modifiers.
+| `duergar` | Living gray dwarf with dwarf training, infrared, Sneak, magic resistance, poison/hold/paralysis immunity, sunlight accuracy -2, illusion recognition and idle self-invisibility; enlargement is a recorded follow-up.
+| `rock_worm` | Huge living limbless invertebrate with a natural bite and reusable Swallow special; defaults 150 cm thickness, estimated 800 cm length and 8000 kg, Large.
 | `lizard` | Small four-legged reptile with scales, claws, tail and a natural bite; defaults height 8 cm, weight 1 kg and total length 46 cm.
 | `lizardman` | Living humanoid reptile with scales, tail, claws and fangs; ordinary claw/bite contacts and natural armour -10; defaults 200 cm, 100 kg and medium size.
 | `dwarf_untrained` | The ordinary dwarf body and defences, with both trained melee benefits explicitly disabled.
@@ -3148,6 +3150,8 @@ spec_demon    demon/infernal spells [combat]
 spec_cast_electric     electricity-based attacks [combat]
 spec_small_whale    flukeslaps [combat]
 spec_large_whale    flukeslaps and swallows [combat]
+spec_duergar       ordinary self-invisibility on eligible idle opportunities
+spec_swallow       occasional Swallow against the current opponent [combat]
 spec_kappa  kappa skills/spells [combat]
 spec_aboleth    aboleth skills/spells [combat]
 spec_laghathti  laghathti skills/spells [combat]
@@ -9132,3 +9136,85 @@ Keep all seven shop inventories, prices and hours, all 77 rooms and their
 flags/exits/doors, all 36 objects, area no_quest and the other reset/gear
 records. No aggression, passivity, sentinel, wimpy, source level, alignment
 or sex changes are intended. There is no matching Freeport Scribe source.
+
+[[scribe-juargan-creatures]]
+==== Kingdom of Juargan creatures
+
+Juargan uses dwarf for 4700-4704, duergar for 4705, wight for Grimdale 4706,
+rock_worm for 4707 and ghost for the three spirits 4708. Keep all authored
+levels, alignments, sexes, positions and behaviour flags. The miners and
+watchful dwarves are adults. Ordinary dwarves use the established anatomy,
+defences and training; small stature does not mean untrained childhood.
+
+Juargan 4704 is boss, Grimdale 4706 elite and the rock worm 4707 rare. The
+other six definitions remain common. Rank follows their encounter roles;
+the old HP dice letters do not select ranks. Normal rank HP applies once.
+Juargan's muscular build uses height 130 cm and weight 100 kg. Grimdale has
+height 130, weight 50 and small size. The spirits have a 130 cm outline,
+small size and unknown mass. They keep their conscious, suffering souls,
+Sanctuary and detection affects; their description also calls for flight.
+
+Duergar is a humanoid with dwarf family and inherited dwarf training.
+Defaults are height 120 cm, weight 55 kg and small size. It has infrared,
+Sneak, magic resistance and immunity to poison, hold and paralysis. Its
+sunlight_sensitive trait is -2 under the existing sheltered/daylight rules.
+This does not add the tabletop daylight Dexterity or opponent-save changes.
+The local colony's hostility and strange behaviour stay in the area; they
+are not personality or alignment defaults for every gray dwarf.
+
+The code-only illusion_immunity trait recognises Ventriloquate's deception
+without an ordinary saving throw. Future genuinely illusory effects should
+consult the same trait. DD4 Colour Spray remains an energy attack, including
+the separate breath route. Faerie Fog and invisibility keep their usual
+rules. A spell's learning group alone does not establish an illusory effect.
+No ACT or RES bit, player package or individual trait field was added.
+
+spec_duergar tries ordinary self-Invisibility on one in eight eligible idle
+opportunities. The creature must be awake, free to act, not charmed, held or
+dazed, not fighting and not already invisible. The ordinary spell duration,
+dispelling and revelation through attacking still apply. It does not keep
+refreshing invisibility in combat. Its default single slot is 100 percent.
+The archetype adds 5 XP percentage points and this special adds the normal
+10, making the approved total +15 rather than counting the power twice.
+Other HP, damage, critical and haste modifiers are neutral.
+
+The second-edition Monstrous Manual's Duergar entry informed this profile.
+Do not use the adjacent Derro's 30-percent magic resistance for Duergar.
+Exact dimensions, XP and DD4 effects are adaptations. True enlargement and
+shrinking remain an explicit required follow-up: the current height/weight
+affect cases do nothing, and a shared temporary-size mechanic must come
+first. Retrofit duergar when it is implemented.
+
+limbless_invertebrate supplies a living head, eyes, heart, brains and guts,
+with no arms, legs or speech. rock_worm adds fangs and HUGE, with an ordinary
+piercing natural bite at the existing attack rate. It uses Large size,
+150 cm body thickness, estimated 800 cm length and estimated 8000 kg mass.
+Only the roughly five-foot thickness is stated by the area. There is no
+automatic venom, tail sting, stone armour or rock-crossing movement power.
+Its neutral archetype XP and spec_swallow's +10 give a total +10 adjustment.
+
+spec_swallow is reusable by other suitable creatures. It tries the existing
+Swallow skill on 15 percent of eligible combat opportunities, against the
+current opponent, with at most one swallowed victim. Normal safety, injury,
+status, success, wait, escape, expiry and removal rules remain. An awake,
+free-to-act creature needs a working head and an undamaged mouth. Its default
+single slot is 100 percent; the 15-percent attempt rate belongs to the power.
+
+Swallow refuses HUGE targets, for both players and mobiles. Large size
+alone is allowed. The skill no longer reads the attacker's race or compares
+against an unrelated size value. This applies to manual Swallow and the
+existing whale special too. The new special adds no whale flukeslap or talk.
+
+Clear raw body 172 to 0 on worm 4707: the new profile already supplies no
+arms, no legs, no speech and HUGE. Clear raw body 320 to 0 on spirits 4708:
+the ghost profile already supplies inorganic physiology and no corpse.
+Keeping those duplicate masks would XOR the intended properties away.
+
+Keep all 44 original inhabitants, 16 carried items and wear slots, 78 room
+flags/exits/doors, 11 objects and every reset/cap/placement. Both royal guards
+keep their actual armour; do not create new loot from the other descriptions.
+The king retains key 4700, Grimdale retains axe 4706, and the tomb's staff,
+shield and coins remain in their original containers/rooms. Digger 4710's
+I reset loads room 4707, not mobile 4707. There is no matching Juargan source,
+shop, teacher or previous special record. Grimdale and the spirits inherit
+undead classification; their tomb already permits undead.

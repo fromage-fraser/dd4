@@ -275,6 +275,23 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "limbless_invertebrate",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_EYE | PART_HEART | PART_BRAINS | PART_GUTS,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1330,6 +1347,36 @@ const struct mob_type mob_table[MAX_MOB] =
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_LIZARDMAN,
                 MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "duergar", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED | AFF_SNEAK,
+                0, 0,
+                RES_MAGIC, 0, RES_POISON | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                120, 55, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_duergar", "", "",
+                5, /* With the special's +10, the whole profile adds +15 XP. */
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_DWARF,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "rock_worm", "limbless_invertebrate", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                150, 8000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_swallow", "", "",
+                0, /* Swallow supplies the profile's +10 XP. */
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                800
         }
 
 };
@@ -1404,7 +1451,8 @@ typedef enum creature_trait_effect
         TRAIT_NATURAL_ARMOUR,
         TRAIT_SILVER_CONTACT,
         TRAIT_STATUS_RESISTANCE_PERCENT,
-        TRAIT_GHOUL_TOUCH_IMMUNITY
+        TRAIT_GHOUL_TOUCH_IMMUNITY,
+        TRAIT_ILLUSION_IMMUNITY
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -1469,13 +1517,19 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"silver_bypasses_nonmagic", TRAIT_SILVER_CONTACT, NULL},
         {"sleep_resistance_pct", TRAIT_STATUS_RESISTANCE_PERCENT, NULL},
         {"charm_resistance_pct", TRAIT_STATUS_RESISTANCE_PERCENT, NULL},
-        {"ghoul_touch_immunity", TRAIT_GHOUL_TOUCH_IMMUNITY, NULL}
+        {"ghoul_touch_immunity", TRAIT_GHOUL_TOUCH_IMMUNITY, NULL},
+        {"illusion_immunity", TRAIT_ILLUSION_IMMUNITY, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
 {
         {CREATURE_TRAIT_GOBLINOID_TRAINING, 1},
         {CREATURE_TRAIT_GIANT_DEFENCE, -4}
+};
+static const CREATURE_TRAIT_CHANGE duergar_trait_changes[] =
+{
+        {CREATURE_TRAIT_SUNLIGHT_SENSITIVE, -2},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
 };
 static const CREATURE_TRAIT_CHANGE untrained_dwarf_trait_changes[] =
 {
@@ -1533,6 +1587,7 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
         {"dwarf", NULL, dwarf_trait_changes, TRAIT_ITEMS(dwarf_trait_changes)},
+        {"duergar", "dwarf", duergar_trait_changes, TRAIT_ITEMS(duergar_trait_changes)},
         {"dwarf_untrained", "dwarf", untrained_dwarf_trait_changes,
             TRAIT_ITEMS(untrained_dwarf_trait_changes)},
         {"goblin", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
@@ -1721,7 +1776,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                 if (effect == TRAIT_STATUS_RESISTANCE_PERCENT
                                 && profile->changes[i].value < 0)
                                         issues++;
-                                if (effect == TRAIT_GHOUL_TOUCH_IMMUNITY
+                                if ((effect == TRAIT_GHOUL_TOUCH_IMMUNITY
+                                    || effect == TRAIT_ILLUSION_IMMUNITY)
                                 && (profile->changes[i].value < 0
                                     || profile->changes[i].value > 1))
                                         issues++;
@@ -1765,7 +1821,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_GHOUL_TOUCH_IMMUNITY)
+                || creature_trait_definitions[i].effect > TRAIT_ILLUSION_IMMUNITY)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name
@@ -4574,6 +4630,8 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
 
                 { "spec_small_whale", 10 },
                 { "spec_large_whale", 10 },
+                { "spec_duergar", 10 },
+                { "spec_swallow", 10 },
                 { "spec_kappa", 10 },
                 { "spec_laghathti", 10 },
                 { "spec_uzollru", 10 },
