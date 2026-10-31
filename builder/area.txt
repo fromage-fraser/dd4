@@ -4811,3 +4811,51 @@ Explicit male pronouns correct sex to male for 20300/20302/20314/20318/20324.
 The portraits were checked; no artwork change is needed. All other sexes
 stay. Five small mob spelling/grammar corrections and the executioner's
 willing-service clarification change no behaviour or room descriptions.
+
+Smugglers Ship humans and crew
+-----------------------------
+
+Smugglers Ship uses the existing humanoid/human profile for all twenty
+mobiles, 17500-17519. Human defaults are height 175 cm, weight 75 kg and
+medium size, with ordinary living anatomy and neutral racial combat/XP
+modifiers. No new species, archetype, trait or authoring command is needed.
+Leave all individual ACT, AFF and body masks as authored. Raw body zero
+inherits the human's normal organs and limbs without cancelling any parts.
+
+The captain 17502 keeps boss, Egor 17505 keeps rare and Punjak 17519 keeps
+elite. Harvey 17506 and the senior officers Arnold 17513 and Arthur 17514
+are rare. Everyone else stays common. The new rare ranks double generated
+HP and use the usual rank loot rules; authored levels stay unchanged.
+
+Individual descriptive height/weight replacements, in whole cm/kg, are:
+17500 165/85, 17502 185/85, 17504 185/105, 17506 185/110,
+17509 180/100, 17512 198/115 and 17514 175/65. These are estimates based on
+the short stocky lookout, tall captain, big cook, muscular bosun/helmsman,
+very tall bodyguard and lean second officer. Other humans inherit 175/75.
+All remain medium, including the bodyguard; none gains HUGE. In Scribe,
+use height and weight only for the individual replacements.
+
+The Crew 17508 is one combined encounter representing many human men.
+Keep its authored level 100, common rank, neutral sex and existing buffs.
+Its dimensions describe a representative fighter. Keep the original single
+mobile and its existing encounter strength. The concubine is human too;
+her flattering divine-presence prose supplies no new divine physiology.
+One-eye retains his remaining useful eye, hiding and detection. The resting
+pirate keeps his authored standing position despite the hammock wording.
+
+Keep all four individual specials: captain spec_warrior, concubine and
+Punjak spec_cast_archmage, Arthur spec_cast_psionicist. These are deliberate
+roles and are not supplied by human. Existing aggression, passivity,
+sentinel/stay-area settings, magical advantages and equipment all remain.
+
+The original 21 mobile-reset rows produce 20 initial inhabitants and
+83 carried items. A second 17503 row is skipped by its existing cap of one.
+Further resets fill the existing caps to 30 inhabitants, including three
+wandering crewmen: one 17503 and two 17517. The author's notes now describe
+those caps and Arthur's existing psionic powers accurately. No reset cap,
+location, wear slot, door, room flag or room description changes.
+
+Preserve all 55 rooms and 60 objects, the diary/floorboard/cache-key chains
+and area XP setting 115. Room 17543 uses a valid inline vnum/name header;
+include it when counting rooms. Objects 17510/17511 also equip a mobile in
+Sahuagin Market and stay unchanged. There is no matching Scribe source.

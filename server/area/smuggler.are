@@ -18,8 +18,8 @@ on these. The purpose of these hints is to get the players to board the ship
 from behind by climbing up the anchor rather than foolishly boarding from in
 front where they will be seen by the pirates.
 
-The wandering mobs are there to make sleeping on the ship a little more risky
-but there are only 4 of them.~
+The wandering mobs are there to make sleeping on the ship a little more risky.
+The current reset caps allow up to three of them.~
 
 100 smuggler_cast~
 The names and numbers of all the mobs in this area is as follows. Note that
@@ -35,7 +35,7 @@ Serge the helmsman
 Rolf the cook
 Arnold a senior crewman
 Arthur a senior crewman
-Wandering crewmen (4)
+Wandering crewmen (up to 3 with the current reset caps)
 Sleeping crewmen (3)
 Sailors (4)
 Bucaneers (2)
@@ -46,7 +46,7 @@ Bodyguard
 There are only 4 mobs that wander - and you'll never guess which ones ;-) The
 rest are all meant to be in their respective places to tie in with the room
 description. All are armed which makes the area dangerous in that respect but
-only Punjak and the concubine have spells.
+Punjak and the concubine cast magic; Arthur uses psionic powers.
 
 ~
 
@@ -69,6 +69,9 @@ he has lost.
 38 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 165
+MobWeight 85
 #17501
 gambler man~
 A gambler~
@@ -81,6 +84,7 @@ stacking the cards would be something that he would consider below him.
 32 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #17502
 captain snake-eyes~
 Captain Snake-eyes~
@@ -95,7 +99,9 @@ he is a bastard or poor nobleman.
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ boss~
+< human~ boss~
+MobHeight 185
+MobWeight 85
 #17503
 pirate~
 A Wandering Crewman~
@@ -109,6 +115,7 @@ his sabre. He is ready for action in whatever form it takes.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #17504
 cook rolf man~
 Rolf the Cook~
@@ -121,6 +128,9 @@ probably cramping his style a bit too much.
 38 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 185
+MobWeight 105
 #17505
 Egor mate~
 Egor the Mate~
@@ -134,7 +144,7 @@ deal with you should you prove troublesome.
 42 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ rare~
+< human~ rare~
 #17506
 Harvey Bosun~
 Harvey the Bosun~
@@ -148,6 +158,9 @@ he is used to trouble.
 38 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
+MobHeight 185
+MobWeight 110
 #17507
 smuggler~
 A smuggler~
@@ -160,6 +173,7 @@ not paying attention!
 36 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #17508
 crew~
 The Crew~
@@ -174,6 +188,7 @@ would be a good idea in later life to not attack the crew all at once....
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< human~ common~
 #17509
 serge helmsman~
 Serge the Helmsman~
@@ -187,6 +202,9 @@ muscles flexing as he moves.
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 180
+MobWeight 100
 #17510
 pirate~
 Resting pirate~
@@ -198,6 +216,7 @@ The pirate looks tired and none too clean.
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #17511
 concubine woman~
 The Captain's Concubine~
@@ -210,10 +229,11 @@ face, how dare you come into her divine presence.
 42 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #17512
 bodyguard~
 Concubine's Bodyguard~
-The concubines bodyguard waits calmly here.
+The concubine's bodyguard waits calmly here.
 ~
 The bodyguard is a large man, well over 6 feet tall with rippling muscles. He
 looks back at you calmly even as he whistles his blade toward you.
@@ -222,6 +242,9 @@ looks back at you calmly even as he whistles his blade toward you.
 38 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 198
+MobWeight 115
 #17513
 Arnold pirate~
 Arnold the 1st Officer~
@@ -235,6 +258,7 @@ indicate that the sabre at his hip has had a fair amount of use.
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
 #17514
 Arthur pirate~
 Arthur the 2nd Officer~
@@ -249,19 +273,22 @@ that makes other crewmen obey his orders.
 41 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
+MobWeight 65
 #17515
 sailor~
 A sailor~
 The sailor is carefully loading the longboat here.
 ~
 The sailor looks bored and not particularly bright. The easy way he
-maintains his balance in the stormy conditions suggest a life spent at
+maintains his balance in the stormy conditions suggests a life spent at
 sea.
 ~
 2|64 0 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #17516
 sailor~
 A sailor~
@@ -275,6 +302,7 @@ guess he has spent most of his life at sea.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #17517
 Crewman~
 A Wandering Crewman~
@@ -286,6 +314,7 @@ He looks bored with life in general and seems to want to take it out on you.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #17518
 buccaneer~
 A Buccaneer~
@@ -298,6 +327,7 @@ experienced eye.
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #17519
 Punjak~
 Punjak the Mage~
@@ -310,7 +340,7 @@ his presence.
 43 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ elite~
+< human~ elite~
 
 #0
 
