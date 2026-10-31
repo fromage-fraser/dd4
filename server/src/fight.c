@@ -7019,14 +7019,17 @@ void do_joust(CHAR_DATA *ch, char *argument)
         killed = IS_NPC(ch) ? 0 : ch->pcdata->killed;
 
         first_weapon = get_eq_char(ch, WEAR_WIELD);
+        second_weapon = get_eq_char(ch, WEAR_DUAL);
+
+        begin_equipment_update();
         if (first_weapon)
                 unequip_char(ch, first_weapon);
 
-        second_weapon = get_eq_char(ch, WEAR_DUAL);
         if (second_weapon)
                 unequip_char(ch, second_weapon);
 
         equip_char(ch, wobj, WEAR_WIELD);
+        end_equipment_update(ch);
 
         if ((!IS_AWAKE(victim) || IS_NPC(ch) || number_percent() < ch->pcdata->learned[gsn_joust]) && victim->backstab == 0)
         {
@@ -7041,6 +7044,8 @@ void do_joust(CHAR_DATA *ch, char *argument)
         if (ch->deleted || !ch->in_room || ch->position == POS_DEAD
         ||  (!IS_NPC(ch) && ch->pcdata->killed != killed))
                 return;
+
+        begin_equipment_update();
 
         if (!wobj->deleted && wobj->carried_by == ch
         &&  get_eq_char(ch, WEAR_WIELD) == wobj)
@@ -7057,6 +7062,8 @@ void do_joust(CHAR_DATA *ch, char *argument)
         if (second_weapon && !second_weapon->deleted && second_weapon->carried_by == ch
         &&  second_weapon->wear_loc == WEAR_NONE && !get_eq_char(ch, WEAR_DUAL))
                 equip_char(ch, second_weapon, WEAR_DUAL);
+
+        end_equipment_update(ch);
 }
 
 void do_berserk(CHAR_DATA *ch, char *argument)
