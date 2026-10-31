@@ -10972,13 +10972,8 @@ void do_swallow(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (IS_NPC(victim) && IS_HUGE(victim))
-        {
-                act("You can't swallow $N, $E is much too large!", ch, NULL, victim, TO_CHAR);
-                return;
-        }
-
-        if (!IS_NPC(victim) && (race_table[ch->race].size == 3))
+        /* Large targets fit; HUGE targets do not, whether players or mobs. */
+        if (IS_HUGE(victim))
         {
                 act("You can't swallow $N, $E is much too large!", ch, NULL, victim, TO_CHAR);
                 return;

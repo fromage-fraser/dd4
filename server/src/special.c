@@ -100,6 +100,8 @@ DECLARE_SPEC_FUN( spec_demon                );
 DECLARE_SPEC_FUN( spec_cast_electric        );
 DECLARE_SPEC_FUN( spec_small_whale          );
 DECLARE_SPEC_FUN( spec_large_whale          );
+DECLARE_SPEC_FUN( spec_swallow );
+DECLARE_SPEC_FUN( spec_duergar );
 DECLARE_SPEC_FUN( spec_kappa                );
 DECLARE_SPEC_FUN( spec_aboleth              );
 DECLARE_SPEC_FUN( spec_laghathti            );
@@ -182,6 +184,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_cast_electric"))        return spec_cast_electric;
         if (!str_cmp(name, "spec_small_whale"))          return spec_small_whale;
         if (!str_cmp(name, "spec_large_whale"))          return spec_large_whale;
+        if (!str_cmp(name, "spec_swallow")) return spec_swallow;
+        if (!str_cmp(name, "spec_duergar")) return spec_duergar;
         if (!str_cmp(name, "spec_kappa"))                return spec_kappa;
         if (!str_cmp(name, "spec_aboleth"))              return spec_aboleth;
         if (!str_cmp(name, "spec_laghathti"))            return spec_laghathti;
@@ -270,6 +274,8 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_cast_electric) return "spec_cast_electric";
         if (special == spec_small_whale) return "spec_small_whale";
         if (special == spec_large_whale) return "spec_large_whale";
+        if (special == spec_swallow) return "spec_swallow";
+        if (special == spec_duergar) return "spec_duergar";
         if (special == spec_kappa) return "spec_kappa";
         if (special == spec_aboleth) return "spec_aboleth";
         if (special == spec_laghathti) return "spec_laghathti";
@@ -4570,6 +4576,62 @@ bool spec_small_whale( CHAR_DATA *ch )
         }
 
         return FALSE;
+}
+
+/* These native powers need an awake creature that can take an action. */
+static bool native_power_ready(CHAR_DATA *ch)
+{
+        return ch && IS_NPC(ch) && !ch->deleted && ch->in_room
+            && IS_AWAKE(ch) && ch->wait <= 0
+            && !IS_AFFECTED(ch, AFF_CHARM)
+            && !IS_AFFECTED(ch, AFF_HOLD)
+            && !IS_AFFECTED(ch, AFF_DAZED);
+}
+
+bool spec_duergar(CHAR_DATA *ch)
+{
+        int sn;
+
+        if (!native_power_ready(ch) || ch->fighting
+        ||  IS_AFFECTED(ch, AFF_INVISIBLE) || number_bits(3) != 0)
+                return FALSE;
+
+        sn = gsn_invis;
+        if (sn < 0 || sn >= MAX_SKILL || !skill_table[sn].spell_fun)
+                return FALSE;
+
+        (*skill_table[sn].spell_fun)(sn, ch->level, ch, ch);
+        return IS_AFFECTED(ch, AFF_INVISIBLE) != 0;
+}
+
+/* Any suitable creature can use this without inheriting a whale's attacks. */
+bool spec_swallow(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        CHAR_DATA *inside;
+
+        if (!native_power_ready(ch) || !HAS_HEAD(ch)
+        ||  IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+                return FALSE;
+
+        victim = ch->fighting;
+        if (!victim || victim->deleted || victim->in_room != ch->in_room
+        ||  victim->hit <= 0 || victim->position == POS_DEAD
+        ||  IS_HUGE(victim) || victim->inside
+        ||  IS_AFFECTED(victim, AFF_SWALLOWED))
+                return FALSE;
+
+        /* Let the current meal go before trying to swallow someone else. */
+        for (inside = char_list; inside; inside = inside->next)
+                if (!inside->deleted && inside->inside == ch)
+                        return FALSE;
+
+        if (number_percent() > 15)
+                return FALSE;
+
+        /* An empty argument keeps the skill on this exact fighting target. */
+        do_swallow(ch, "");
+        return TRUE;
 }
 
 bool spec_large_whale( CHAR_DATA *ch )
