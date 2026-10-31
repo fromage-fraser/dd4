@@ -1497,14 +1497,14 @@ void do_lodge(CHAR_DATA *ch, char *argument)
         bool found;
         int maxlevel;
 
-        argument = one_argument(argument, arg1);
-        argument = one_argument(argument, arg2);
-        container = get_obj_vaulted(ch, arg2);
-
-        if (IS_NPC(ch))
+        if (IS_NPC(ch) || !ch->pcdata)
         {
                 return;
         }
+
+        argument = one_argument(argument, arg1);
+        argument = one_argument(argument, arg2);
+        container = get_obj_vaulted(ch, arg2);
 
         if (!IS_SET(ch->in_room->room_flags, ROOM_VAULT))
         {
@@ -7764,6 +7764,12 @@ void do_auction(CHAR_DATA *ch, char *argument)
         {
                 int min_reserve = UMAX(obj->level / 10, 1);
                 int reserve = min_reserve;
+
+                if (!can_drop_obj(ch, obj))
+                {
+                        send_to_char("You can't let go of it.\n\r", ch);
+                        return;
+                }
 
                 if (obj->item_type != ITEM_WEAPON && obj->item_type != ITEM_ARMOR && obj->item_type != ITEM_STAFF && obj->item_type != ITEM_LIGHT && obj->item_type != ITEM_WAND && obj->item_type != ITEM_TREASURE && obj->item_type != ITEM_FURNITURE && obj->item_type != ITEM_CONTAINER && obj->item_type != ITEM_DRINK_CON && obj->item_type != ITEM_SCROLL && obj->item_type != ITEM_POTION && obj->item_type != ITEM_PAINT && obj->item_type != ITEM_PILL && obj->item_type != ITEM_INSTRUMENT && obj->item_type != ITEM_SMOKEABLE && obj->item_type != ITEM_PIPE && obj->item_type != ITEM_COMBAT_PULSE && obj->item_type != ITEM_DEFENSIVE_PULSE)
                 {

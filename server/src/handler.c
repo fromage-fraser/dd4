@@ -3187,11 +3187,11 @@ OBJ_DATA *get_obj_vaulted(CHAR_DATA *ch, char *argument)
         int count;
         uint64_t target_id;
 
+        if (IS_NPC(ch) || !ch->pcdata)
+                return NULL;
+
         if (parse_target_id(argument, &target_id))
         {
-                if (!ch->pcdata)
-                        return NULL;
-
                 for (obj = ch->pcdata->vault;
                      obj;
                      obj = obj->next_content)
