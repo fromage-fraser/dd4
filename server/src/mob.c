@@ -240,6 +240,24 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "quadrupedal_mammal",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_4_LEGS | PART_FORELEGS | PART_HEART
+                    | PART_BRAINS | PART_GUTS | PART_FEET | PART_EAR | PART_EYE,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1214,7 +1232,22 @@ const struct mob_type mob_table[MAX_MOB] =
         },
 
         ZOMBIE_ARCHETYPE("giant_zombie", BODY_HUGE, 450, 700,
-            CHAR_SIZE_LARGE, CREATURE_FAMILY_GIANT)
+            CHAR_SIZE_LARGE, CREATURE_FAMILY_GIANT),
+
+        {
+                "dog", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                50, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                90
+        }
 
 };
 

@@ -798,6 +798,7 @@ Accepted archetype names are:
 | `dwarf` | Living humanoid with infravision, magic/poison resistance and optional melee training.
 | `goblin` | Living humanoid with small fangs, infravision and sunlight sensitivity.
 | `human` | Ordinary living humanoid with neutral modifiers.
+| `dog` | Living four-legged mammal with paws, tail, anatomical claws and a natural piercing bite; defaults 50 cm shoulder height, 25 kg, length 90 cm and small size.
 | `giant_lizard` | Living four-legged reptile with a natural bite and descriptive length 457.
 | `giant_pit_viper` | Living limbless reptile with heat sight, a natural bite, poison special and descriptive length 366.
 | `orc`, `half_orc`, `hobgoblin`, `ogre`, `troll`, `ogre_mage`, `giant`, `titan` | Humanoid placeholders with creature-family identity. Their full creature traits await review.
@@ -8810,3 +8811,51 @@ Preserve all original mobile placements, equipment, guns, special functions,
 doors, room flags and the safe/vault/Vibroblade chain. There is no matching
 Mega-City One Scribe source in the repository. Keep future source records
 consistent with these individual replacements and inherited human defaults.
+
+[[scribe-dangerous-neighborhood-humans-dogs]]
+==== Dangerous Neighborhood humans and dogs
+
+The Ogres and Trolls are human street gangs. All seven human definitions
+2101-2107 use humanoid/human, including the gang-associated woman 2105.
+They inherit ordinary human anatomy, height 175 cm, weight 75 kg and
+medium size. Bruiser 2104 replaces height with 198 cm and weight with
+111 kg, matching the description's 6 ft 6 in and 245 lb. He stays medium.
+
+The shared gang-leader definition 2103 is elite, so both hideout leaders
+receive the usual five-times generated HP and existing rank loot effects.
+The other definitions stay common, including the five recurring bruisers.
+Keep authored levels, alignment, equipment and ordinary combat scalars.
+The unused ACT value 16 is removed from 2101, 2102 and 2105; all their
+other behaviour remains. The vandal keeps sneak and the bruiser keeps
+detect-invisible. No gang or patrolman special is added.
+
+The new quadrupedal_mammal body has a head, four legs and forelegs, ordinary
+organs, feet, ears and eyes. It has no arms or speech and no default natural
+attack. The dog archetype adds a tail, paws, claws and fangs, using only
+the fangs for an ordinary piercing bite. Claws and tail are anatomy here,
+not extra attacks. Normal head and trauma checks still apply. Dogs are
+living organic creatures with blood, souls, pain and ordinary corpses;
+they are not mindless. No special, extra resistance or combat bonus is added.
+The existing provisional farm_mammal and its goat users are unchanged.
+
+Dog defaults are shoulder height 50 cm, weight 25 kg, length 90 cm and
+small size. Pitbull 2108 replaces weight with 30 kg and keeps its existing
+hide, detect-invisible, aggression, sentinel and stay-area flags. Detection
+is an individual advantage, not a magical sense shared by all dogs.
+Rabid anticipation does not add a disease attack. The AD&D second-edition
+Monstrous Manual Dog entry informs the ordinary bite and compact size;
+the exact metric dimensions are DD4 estimates and remain descriptive.
+
+In Scribe, use archetype dog and, for this pitbull, weight 30. Leave bf
+and atk omitted to inherit the body and bite. In an area record this is
+< dog~ common~ followed by MobWeight 30. Its raw body XOR mask is zero:
+keeping the old value 36 would cancel inherited no-arms and no-speech.
+The server and Scribe companion name list both recognise dog. A body
+species name such as quadrupedal_mammal is not an archetype selection.
+
+The eight corrected room descriptions follow the existing residents:
+2102, 2116, 2124 and 2126 say Ogre; 2148, 2160, 2163 and 2166 say Troll.
+The Dracolich idol, dragon-themed street names, troll-crest ring, all room
+flags, doors, reset locations/caps and original equipment stay as they were.
+There is no matching Dangerous Neighborhood Scribe source. Its existing
+portraits are outside this conversion and remain unchanged.

@@ -10,10 +10,11 @@ A member of the Ogres wanders about here.
 ~
 He's lived a life of violence ever since he was little.
 ~
-84 0 -100 S
+68 0 -100 S
 5 15 5 5d5+50 1d5+5
 0 600
 8 8 1
+< human~ common~
 #2102
 troll gang member~
 a gang member~
@@ -21,10 +22,11 @@ A member of the Trolls wanders about here.
 ~
 He wants to rid the world of every last Ogre gang member.
 ~
-84 0 +100 S
+68 0 +100 S
 5 15 5 5d5+50 1d7+5
 0 700
 8 8 1
+< human~ common~
 #2103
 gang leader~
 the gang leader~
@@ -36,6 +38,7 @@ He's risen to be leader through brute force and cunning leadership.
 13 8 2 13d13+130 1d10+12
 0 10000
 8 8 1
+< human~ elite~
 #2104
 bruiser~
 a bruiser~
@@ -47,6 +50,9 @@ He's 6'6" 245 pounds and enough muscle to bash your head in.
 10 9 -1 10d10+100 1d6+10
 0 4500
 8 8 1
+< human~ common~
+MobHeight 198
+MobWeight 111
 #2105
 doll~
 a doll~
@@ -54,10 +60,11 @@ A gang doll looks naughty and nice.
 ~
 She's a beauty (ok in RELATIVE terms) but you better not touch!
 ~
-212 0 0 S
+196 0 0 S
 7 8 3 7d7+70 1d6+4
 0 1500
 8 8 2
+< human~ common~
 #2106
 patrolman patrol man~
 a patrolman~
@@ -69,6 +76,7 @@ He'd rather be at the local pub then out here with these nasty kids.
 8 13 4 8d8+80 1d6+8
 0 2000
 8 8 1
+< human~ common~
 #2107
 vandal~
 a vandal~
@@ -80,6 +88,7 @@ He has a wary eye and a fine hand for art.
 10 10 1 10d10+100 1d6+6
 0 3800
 8 8 1
+< human~ common~
 #2108
 dog pit bull pitbull~
 a pitbull~
@@ -90,8 +99,10 @@ His fangs are blood-stained from hearty meals of ... steak?!
 ~
 98 65536|8 -100 S
 5 10 2 5d5+50 1d6+3
-36 700
+0 700
 8 8 1
+< dog~ common~
+MobWeight 30
 #0
 
 
@@ -272,7 +283,7 @@ D1
 S
 #2102
 Beginning of White Dragon Boulevard~
-This section of town has been overrun by the Troll gang.  Even the
+This section of town has been overrun by the Ogre gang.  Even the
 police stay out of here for fear of being brutalized.  This was once
 a nice lower-middleclass neighborhood, but know the gangs run the
 streets.  All the shops and homes have been boarded up and abandoned.
@@ -530,7 +541,7 @@ S
 Dracolich Plaza~
 They began construction of a pleasant plaza here.  You wouldn't have
 known it though if i hadn't told you.  It has been renamed in honor
-of the Dragon gang's idol, the Dracolich.  It has become sort of a
+of the Ogre gang's idol, the Dracolich.  It has become sort of a
 training ground.  There is a short cut to the east and an overgrown
 lot of land to the north.
 ~
@@ -670,7 +681,7 @@ S
 Old Abandoned Warehouse~
 Once the center of a lucrative storage business, it has fallen to
 disrepair like everything else.  It is now the hideout of the
-Dragon gang.  The gang leader runs his reign of terror from here.
+Ogre gang.  The gang leader runs his reign of terror from here.
 There is a wooden door barely on the hinges to the east.
 ~
 21 9 1
@@ -700,7 +711,7 @@ wooden door west~
 S
 #2126
 Yellow Dragon Road~
-Yellow Dragon Road is the southern boundary of Troll Territory.  The
+Yellow Dragon Road is the southern boundary of Ogre Territory.  The
 road extends east.  You enter "no-man's land" to the south.
 ~
 21 0 1
@@ -1129,7 +1140,7 @@ S
 A small ruined chapel~
 This was a small temple built to honor the minor gods and goddesses.
 It is now desecrated by graffiti and vandalism.  Perhaps its worst
-defilement is that it is the hangout of the Ogre gang.  There is a street to
+defilement is that it is the hangout of the Troll gang.  There is a street to
 the east through a rusty metal door.
 ~
 21 9 1
@@ -1348,7 +1359,7 @@ One patch of graffiti actually looks readable:
             This section has been designed for levels 5 through 10
             If you are above level 10 please don't expect much.
             If you are below level 5 enter at your own risk.
-In another spot it says "now entering Ogre territory..."
+In another spot it says "now entering Troll territory..."
 A major road lies to the east.
 ~
 21 5 1
@@ -1397,7 +1408,7 @@ S
 #2163
 Achilles Avenue~
 The Avenue Runs north and south.  You sense you are deep within
-Ogre gang territory, and a chill goes up your spine.
+Troll gang territory, and a chill goes up your spine.
 ~
 21 0 1
 D0
@@ -1444,7 +1455,7 @@ D2
 S
 #2166
 Solomon Street~
-This street forms the southern boundary of Ogre territory.  The
+This street forms the southern boundary of Troll territory.  The
 street extends far to the east.  There is also a pathway between
 buildings which leads to another street to the north.
 ~
