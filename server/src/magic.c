@@ -798,12 +798,18 @@ bool saves_supernatural_effect(CHAR_DATA *source, int level,
                                 CHAR_DATA *victim, unsigned long int res_types,
                                 int effect_types)
 {
+        RESISTANCE_RESULT resistance = get_resistance_result(victim, res_types);
         if (res_types & RES_DRAIN)
                 effect_types |= SUPERNATURAL_DRAIN;
         if (res_types & RES_CHARM)
                 effect_types |= SUPERNATURAL_CONTROL;
 
-        switch (get_resistance_result(victim, res_types))
+        if (resistance == RES_RESULT_IMMUNE)
+                return TRUE;
+        if (creature_resists_status(victim, res_types))
+                return TRUE;
+
+        switch (resistance)
         {
         case RES_RESULT_IMMUNE:
                 return TRUE;
@@ -9433,7 +9439,7 @@ void spell_domination(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if (IS_AFFECTED(victim, AFF_CHARM) || IS_SET(victim->act, ACT_NOCHARM) || IS_AFFECTED(ch, AFF_CHARM) || level < victim->level || ch->mount == victim || victim->rider || IS_SET(victim->act, ACT_BANKER) || IS_SET(victim->act, ACT_CLAN_GUARD) || !mob_interacts_players(victim) || mob_is_quest_target(victim) || saves_spell(ch, level, victim))
+        if (IS_AFFECTED(victim, AFF_CHARM) || IS_SET(victim->act, ACT_NOCHARM) || IS_AFFECTED(ch, AFF_CHARM) || level < victim->level || ch->mount == victim || victim->rider || IS_SET(victim->act, ACT_BANKER) || IS_SET(victim->act, ACT_CLAN_GUARD) || !mob_interacts_players(victim) || mob_is_quest_target(victim) || saves_resistance_effect(ch, level, victim, skill_table[sn].res_type))
         {
                 send_to_char("Your domination failed.\n\r", ch);
                 return;

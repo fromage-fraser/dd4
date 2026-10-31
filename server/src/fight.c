@@ -8271,7 +8271,8 @@ void do_transfix(CHAR_DATA *ch, char *argument)
         chance = supernatural_defence_threshold(
             victim, chance, 5, SUPERNATURAL_CONTROL);
 
-        if (number_percent() < chance)
+        if (!creature_resists_status(victim, skill_table[gsn_transfix].res_type)
+        && number_percent() < chance)
         {
                 act("You {Mtransfix{x $N with the power of your gaze!",
                     ch, NULL, victim, TO_CHAR);

@@ -10,10 +10,14 @@ The goblin guard is here guarding something.
 The goblin guard looks very strong, and very fierce.  He is about six
 feet tall, and extremely muscular.
 ~
-64 4|512 -1000 S
+64 4 -1000 S
 50 1 0 50d10+4500 5d8+19
 0 0
-8 8 0
+8 8 1
+< goblin~ common~
+MobHeight 183
+MobWeight 100
+MobSize 1
 #20301
 goblin visitor~
 The goblin visitor~
@@ -22,10 +26,11 @@ The goblin visitor is sitting here playing cards.
 The goblin visitor is just sitting here playing cards, but looks up in
 surprise as you enter the room.
 ~
-2|64 4|512 -1000 S
+2|64 4 -1000 S
 42 5 0 25d10+2250 3d12+14
 0 0
 8 8 0
+< goblin~ common~
 #20302
 goblin child~
 The goblin child~
@@ -34,10 +39,13 @@ The goblin child is sitting here playing with his pretend sword.
 The goblin child is small, but looks surprisingly strong for his age.
 His wooden sword also looks very strong for a child to be playing with.
 ~
-2|64 4|512 0 S
+2|64 4 0 S
 40 0 0 15d10+1850 4d8+13
 0 0
-8 8 0
+8 8 1
+< goblin~ common~
+MobHeight 80
+MobWeight 18
 #20303
 bathing guard~
 The guard~
@@ -46,22 +54,27 @@ There is a guard here bathing himself.
 The guard is bathing himself, and he doesn't look too pleased about
 your intrusion.
 ~
-2|64 4|512 -1000 S
+2|64 4 -1000 S
 50 10 0 50d10+4500 5d8+19
 0 0
 8 8 1
+< goblin~ common~
+MobHeight 183
+MobWeight 100
+MobSize 1
 #20304
 ballroom dancer woman~
 The dancer~
 There is a woman here dancing away.
 ~
-She is wearing a beautiful hoop dress and seems to be and excellent
+She is wearing a beautiful hoop dress and seems to be an excellent
 dancer.
 ~
-2|64 4|512 -100 S
+2|64 4 -100 S
 42 5 0 25d10+2250 3d12+14
 0 0
 8 8 2
+< goblin~ common~
 #20305
 ballroom dancer man~
 The dancer~
@@ -70,22 +83,25 @@ There is a man here dancing.
 He is wearing a nice suit and looks pretty strong...strong enough to
 beat you up!
 ~
-2|64 4|512 -100 S
+2|64 4 -100 S
 42 5 0 25d10+2250 3d12+14
 0 0
 8 8 1
+< goblin~ common~
 #20306
 goblin cook~
 The cook~
-There is a mighty cook standing here preparing and elegant dish.
+There is a mighty cook standing here preparing an elegant dish.
 ~
 The cook is a short ugly goblin, but he seems to enjoy what he is doing here at
 the fortress.
 ~
-2|64 4|512 -200 S
+2|64 4 -200 S
 47 1 0 25d10+3500 6d6+17
 0 0
 8 8 1
+< goblin~ common~
+MobHeight 110
 #20307
 diner goblin~
 The goblin~
@@ -95,22 +111,24 @@ The goblin is sitting here eating something that looks faintly familiar,
 but smells really good.  You suddenly realise that it is eating one of
 your kind!
 ~
-2|64 4|512 -400 S
+2|64 4 -400 S
 42 2 0 25d10+2250 3d12+14
 0 0
 8 8 1
+< goblin~ common~
 #20308
 cook assistant~
 The assistant~
-The cooks assistant is here assisting the cook.
+The cook's assistant is here assisting the cook.
 ~
 The assistant looks almost as nasty as the cook himself but you can tell
 that he hasn't been worked as badly as the cook.
 ~
-2|64 4|512 -200 S
+2|64 4 -200 S
 45 7 0 25d10+3000 8d4+16
 0 0
 8 8 1
+< goblin~ common~
 #20309
 goblin servant~
 The goblin servant~
@@ -119,10 +137,11 @@ A goblin servant is here waiting to be called upon.
 The goblin looks extremely tired and overworked, but such is the brutality
 of goblin royalty.
 ~
-64 4|512 -200 S
+64 4 -200 S
 47 5 0 25d10+3500 6d6+17
 0 0
 8 8 0
+< goblin~ common~
 #20310
 servant cook goblin~
 The cook~
@@ -131,10 +150,11 @@ The servant's cook is here preparing a meal.
 The cook looks very dirty, and just by looking you can tell that whatever
 meal is being prepared will be disgusting.
 ~
-2|64 4|512 -200 S
+2|64 4 -200 S
 45 1 0 25d10+3000 8d4+16
 0 0
 8 8 0
+< goblin~ common~
 #20311
 bathing goblin servant~
 The goblin~
@@ -143,10 +163,11 @@ A goblin servant is here bathing himself.
 The goblin is bathing himself to the best of his ability, which you notice
 is not a very well learned ability.
 ~
-2|64 4|512 -300 S
+2|64 4 -300 S
 47 5 0 25d10+3500 6d6+17
 0 0
 8 8 1
+< goblin~ common~
 #20312
 orc trophy~
 The trophy~
@@ -157,8 +178,9 @@ alive...
 ~
 2|64 4|512 -1000 S
 52 5 0 50d10+5500 6d7+2
-1|2|4|8|16|32|256 0
+0 0
 8 8 0
+< preserved_head~ common~
 #20313
 bathing elite guard~
 The guard~
@@ -167,10 +189,14 @@ There is an elite goblin guard here bathing himself.
 The guard is bathing himself and really does not appreciate you barging in
 like you did.
 ~
-2|64 4|512 -1000 S
+2|64 4 -1000 S
 55 10 0 50d10+7000 10d4+5
 0 0
 8 8 1
+< goblin~ elite~
+MobHeight 200
+MobWeight 120
+MobSize 1
 #20314
 elite goblin guard~
 The elite guard~
@@ -179,10 +205,14 @@ There is an elite goblin guard standing here waiting to kill you.
 The guard is huge!  He is pure muscle, and is wearing the most exquisite
 armour you have ever seen.
 ~
-64 4|512 -1000 S
+64 4 -1000 S
 55 2 0 50e10+7000 10d4+23
 0 0
-8 8 0
+8 8 1
+< goblin~ elite~
+MobHeight 200
+MobWeight 120
+MobSize 1
 #20315
 watch goblin guard~
 The guard~
@@ -191,10 +221,11 @@ There is a watch guard standing here watching you intently.
 The guard seems very alert, and is staring at you from underneath his
 helmet.
 ~
-2|32|64 4|512 -1000 S
+2|32|64 4 -1000 S
 30 1 0 50d10+4500 5d8+19
 0 0
 8 8 1
+< goblin~ common~
 #20316
 goblin scientist~
 The scientist~
@@ -203,10 +234,11 @@ There is a goblin here performing many scientific experiments.
 The goblin is wearing a white lab coat which makes it easily identified
 as a scientist.
 ~
-2|64 4|512 -1000 S
+2|64 4 -1000 S
 50 2 0 50d10+4500 5d8+19
 0 0
 8 8 0
+< goblin~ common~
 #20317
 goblin healer~
 The healer~
@@ -214,10 +246,11 @@ There is a healer here, casting spells at all those in the room.
 ~
 The healer looks almighty, almost godly, as she casts her spells.
 ~
-2|64|67108864 4|512 -1000 S
+2|64|67108864 4 -1000 S
 60 500 0 100d50+100 100d100+100
 0 0
 8 8 2
+< goblin~ common~
 #20318
 goblin war planner~
 The war planner~
@@ -226,10 +259,11 @@ There is a goblin here planning wars.
 The goblin is wearing a military outfit and has many medals of war upon
 his uniform.
 ~
-2|64 4|512 -1000 S
+2|64 4 -1000 S
 56 10 0 50d10+7500 10d4+24
 0 0
-8 8 0
+8 8 1
+< goblin~ rare~
 #20319
 bard~
 The bard~
@@ -238,10 +272,13 @@ There is a bard here playing music.
 The bard is very small and frail looking, though he has an evil gleam in
 his eye.
 ~
-2|64 4|512 -1000 S
+2|64 4 -1000 S
 55 5 0 50d10+4500 5d8+19
 0 0
 8 8 1
+< goblin~ common~
+MobHeight 100
+MobWeight 20
 #20320
 jester court~
 The jester~
@@ -250,22 +287,24 @@ The court jester is here performing his many antics.
 The Jester looks rather strange, almost insane.  He has penetrating blue
 eyes, and strange, bright red coloured hair.
 ~
-2|64 4|512 -1000 S
+2|64 4 -1000 S
 55 5 0 50d10+4500 5d8+19
 0 0
 8 8 1
+< goblin~ common~
 #20321
 deformity~
 The deformity~
 There is an awful deformity standing here grossing you out.
 ~
-The deformity looks as though it used to be a human, but now it's body
+The deformity looks as though it used to be a human, but now its body
 has been ravaged by some evil thing.
 ~
 2|64 4|512 -1000 S
 56 3 0 50r10+7500 10d4+24
 0 0
 8 8 0
+< human~ common~
 #20322
 king~
 The King~
@@ -275,10 +314,12 @@ The King of the goblins looks to be more powerful than any other goblin you
 have ever encountered.  His muscles look like steel, his body like concrete,
 and he has the stern look of a mighty king on his face.
 ~
-2|64 4|512 -1000 S
+2|64 4 -1000 S
 60 10 0 50b10+9500 8d6+28
 0 0
 8 8 1
+< goblin~ boss~
+MobWeight 50
 #20323
 queen~
 The Queen~
@@ -287,14 +328,15 @@ The Queen of the goblins is sitting here on her beautiful throne.
 The Queen of the goblins is almost beautiful!  If it wasn't for her
 distinct goblin features, you might have thought she is beautiful.
 ~
-2|64 4|512 -1000 S
+2|64 4 -1000 S
 60 10 0 50r10+9500 8d6+28
 0 0
 8 8 2
+< goblin~ elite~
 #20324
 tortured soul~
 The tortured soul~
-There is tortured soul here waiting to get his revenge.
+There is a tortured soul here waiting to get his revenge.
 ~
 The tortured soul is almost transparent, and is extremely dark in
 appearance.
@@ -302,7 +344,8 @@ appearance.
 2|64 4|256|512 500 S
 57 15 0 50d10+8000 6d8+24
 0 0
-8 8 0
+8 8 1
+< ghost~ common~
 #20325
 orc prisoner~
 The prisoner~
@@ -311,10 +354,12 @@ There is an orcish prisoner here waiting to die.
 The prisoner has been here for years...it is a miracle he hasn't died of
 some horrible disease already.
 ~
-2|64 4|256|512 -1000 S
+2|64 4|256 -1000 S
 50 5 0 50d10+4500 5d8+19
 0 0
 8 8 1
+< orc~ common~
+MobWeight 65
 #20326
 human prisoner~
 The prisoner~
@@ -327,6 +372,8 @@ some horrible disease already.
 50 5 0 50d10+4500 5d8+19
 0 0
 8 8 1
+< human~ common~
+MobWeight 60
 #20327
 dwarf prisoner~
 The prisoner~
@@ -335,10 +382,12 @@ There is a dwarven prisoner here waiting to die.
 The prisoner has been here for years...it is a miracle he hasn't died of
 some horrible disease already.
 ~
-2|64 4|256|512 -1000 S
+2|64 4|256 -1000 S
 50 5 0 50d10+4500 5d8+19
 0 0
 8 8 1
+< dwarf~ common~
+MobWeight 55
 #20328
 elf prisoner~
 The prisoner~
@@ -347,23 +396,28 @@ There is an elven prisoner here waiting to die.
 The prisoner has been here for years...it is a miracle he hasn't died of
 some horrible disease already.
 ~
-2|64 4|256|512 -1000 S
+2|64 4|256 -1000 S
 50 5 0 50d10+4500 5d8+19
 0 0
 8 8 1
+< elf~ common~
+MobWeight 40
 #20329
 executioner~
 The executioner~
 The executioner stands here, awaiting his next victim.
 ~
-The executioner is the only human to live in this castle, also the only
-human to offer his services to the goblin kingdom.  He is about six feet
+The executioner is the only human here who serves the goblin kingdom
+by choice.  He is about six feet
 tall, and looks to be pure muscle, perhaps weighing three hundred pounds.
 ~
 2 8|32 -1000 S
 58 5 0 50r10+8000 6d8+24
 0 0
 8 8 1
+< human~ rare~
+MobHeight 183
+MobWeight 136
 #20330
 jailer goblin~
 The goblin jailer~
@@ -379,6 +433,8 @@ of toilet training.
 52 5 0 50d10+8000 6d8+24
 0 0
 8 8 1
+< goblin~ common~
+MobWeight 45
 #20331
 goblin assassin~
 the goblin assassin~
@@ -392,6 +448,7 @@ permanent solution to the trespassing.
 50 2 0 50d10+7000 10d4+23
 0 0
 8 8 0
+< goblin~ common~
 #0
 
 
