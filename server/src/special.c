@@ -80,6 +80,7 @@ DECLARE_SPEC_FUN( spec_dracolich            );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
+DECLARE_SPEC_FUN( spec_poison_palm          );
 DECLARE_SPEC_FUN( spec_repairman            );
 DECLARE_SPEC_FUN( spec_thief                );
 DECLARE_SPEC_FUN( spec_bounty               );
@@ -164,6 +165,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_dracolich"))            return spec_dracolich;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
+        if (!str_cmp(name, "spec_poison_palm"))          return spec_poison_palm;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
         if (!str_cmp(name, "spec_thief"))                return spec_thief;
         if (!str_cmp(name, "spec_bounty"))               return spec_bounty;
@@ -254,6 +256,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
         if (special == spec_poison) return "spec_poison";
+        if (special == spec_poison_palm) return "spec_poison_palm";
         if (special == spec_repairman) return "spec_repairman";
         if (special == spec_thief) return "spec_thief";
         if (special == spec_bounty) return "spec_bounty";
@@ -2607,9 +2610,15 @@ bool spec_janitor( CHAR_DATA *ch )
 }
 
 
-bool spec_poison( CHAR_DATA *ch )
+static bool poison_contact_special(CHAR_DATA *ch, bool palm)
 {
         CHAR_DATA *victim;
+
+        if (!ch || !ch->in_room)
+                return FALSE;
+
+        if (palm && (!HAS_ARMS(ch) || IS_AFFECTED(ch, AFF_ARM_TRAUMA)))
+                return FALSE;
 
         for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
         {
@@ -2623,13 +2632,33 @@ bool spec_poison( CHAR_DATA *ch )
         if (!victim)
                 return FALSE;
 
-        act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
-        act( "$n bites you!", ch, NULL, victim, TO_VICT    );
-        act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
+        if (palm)
+        {
+                act("You strike $N with your poisoned palm!", ch, NULL, victim, TO_CHAR);
+                act("$n strikes you with a poisoned palm!", ch, NULL, victim, TO_VICT);
+                act("$n strikes $N with a poisoned palm!", ch, NULL, victim, TO_NOTVICT);
+        }
+        else
+        {
+                act("You bite $N!", ch, NULL, victim, TO_CHAR);
+                act("$n bites you!", ch, NULL, victim, TO_VICT);
+                act("$n bites $N!", ch, NULL, victim, TO_NOTVICT);
+        }
         spell_poison(gsn_venom, ch->level, ch, victim);
         return TRUE;
 }
 
+
+bool spec_poison(CHAR_DATA *ch)
+{
+        return poison_contact_special(ch, FALSE);
+}
+
+
+bool spec_poison_palm(CHAR_DATA *ch)
+{
+        return poison_contact_special(ch, TRUE);
+}
 
 
 bool spec_thief( CHAR_DATA *ch )
