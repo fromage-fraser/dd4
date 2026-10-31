@@ -4674,3 +4674,61 @@ The Dracolich idol, dragon-themed street names, troll-crest ring, all room
 flags, doors, reset locations/caps and original equipment stay as they were.
 There is no matching Dangerous Neighborhood Scribe source. Its existing
 portraits are outside this conversion and remain unchanged.
+
+The Foundry goblins and animals
+------------------------------
+
+The Foundry uses the existing goblin archetype for 102-110, dog for 101
+and giant_lizard for the local Pit Beast 111. No new species or archetype
+is needed. All original aggression, wimpy, scavenger, sentinel and movement
+settings stay as authored. Treat these as deliberate encounter choices:
+read how the flags work together before changing them during a conversion.
+In particular, aggressive plus wimpy skips awake players when choosing an
+aggression target; the fearful slaves and starving dogs keep that behaviour.
+
+Goblins inherit infravision, anatomical fangs and the existing sunlight
+accuracy trait. They can now see normally in the dark tunnels; this is
+a real encounter improvement. The established inside/dark/weather checks
+shield the lair from sunlight penalties. Dwarf training recognises them as
+goblins. Keep ordinary living physiology and neutral racial combat/XP
+scalars. Hoobuk's albinism does not remove infravision or add another penalty.
+
+Ushog 102 is elite and Uburz 103 rare; the Pit Beast retains its existing
+rare rank. The others stay common. Rank affects normal generated HP and
+existing loot rules: elite multiplies HP by five, rare by two. Keep source
+levels, alignment, equipment, the area XP modifier 125 and its ambience.
+
+Whole-number individual height/weight replacements, in cm/kg, are:
+101 weight 15; 102 height 110/weight 35; 103 height 140/weight 40;
+104 weight 35; 107 weight 50; 109 height 100/weight 20. Other goblins
+inherit height 120/weight 30; the dog inherits height 50 and length 90.
+Goblins and dog remain small. These descriptive estimates reflect the
+short captain, tall deputy, solid soldier, obese feeder, small slave and
+explicitly starving dog. They add no damage or starvation penalty.
+
+Shargook 108 has no teeth or external ears. Her body XOR toggles off
+PART_FANGS and PART_EAR, decimal 17196646400, while retaining ordinary
+speech, hearing and other anatomy. In Scribe use bf fangs ear. Goblin
+defaults include those parts, so the individual mask removes them here.
+Ushog still has one usable eye; keep sight. Lobuk remains a female humanoid
+with hands and a wielded rock despite running on all fours. Her mental-state
+description does not make her mindless or unable to speak.
+
+Pit Beast 111 is a compact local lizard variant: height 35, weight 25,
+length 150 and medium size. These replace the ordinary giant-lizard length
+457 and large size. In Scribe use height 35, weight 25, length 150 and
+size 1. It keeps the individual spec_poison, which is not supplied by the
+giant_lizard archetype. This does not make other giant lizards venomous.
+
+The shared giant_lizard body now has anatomical claws, alongside its fangs,
+scales and tail. Its natural attack list remains fangs only: an ordinary
+piercing bite. Claws add no extra attack or damage bonus. Dwarven Kingdom
+lizard 6505 inherits that anatomy correction and keeps its existing
+dimensions, rank, stats, equipment and behaviour.
+
+The Foundry retains all original inhabitants, reset caps/locations, gear,
+objects, room flags, exits and doors. The unreset crafting test objects
+111/112 remain. Only the agreed spelling and room grammar corrections
+change descriptive text. There is no matching Scribe source in the repo.
+Keep future source records consistent with these inherited defaults and
+individual replacements.

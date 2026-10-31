@@ -21,12 +21,14 @@ This wild-eyed and starving mongrel patrols the piles of rubbish.
 1 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dog~ common~
+MobWeight 15
 #102
 Ushog goblin captain~
 Ushog~
 Ushog, the Goblin Captain, rummages through some trash.
 ~
-Although short and stooped, Ushog is strong and quite viscious.  He
+Although short and stooped, Ushog is strong and quite vicious.  He
 runs his troop of goblins with an intelligent combination of unprovoked
 beating of his subordinates and ruthless killing of everyone else.
 Ushog bares his yellow fangs at you, glaring at you out of one eye: his
@@ -36,6 +38,9 @@ other one has long before been poked out.
 5 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ elite~
+MobHeight 110
+MobWeight 35
 #103
 uburz goblin soldier~
 Uburz~
@@ -50,18 +55,23 @@ grunting.
 4 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ rare~
+MobHeight 140
+MobWeight 40
 #104
 olog goblin soldier~
 Olog~
 Olog, the Goblin Soldier, crouches in the muck.
 ~
 Olog is a solid goblin warrior with a particularly nasty streak.
-She doesn't hesistate to attack anything within range.
+She doesn't hesitate to attack anything within range.
 ~
 1|32 0 -200 S
 2 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< goblin~ common~
+MobWeight 35
 #105
 golgog goblin soldier~
 Golgog~
@@ -75,6 +85,7 @@ he's scavenged from the surface.
 2 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #106
 lobuk goblin~
 Lobuk~
@@ -87,6 +98,7 @@ skin, Lobuk desperately screams and growls at your approach.
 3 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< goblin~ common~
 #107
 oshu goblin soldier~
 Oshu~
@@ -100,6 +112,8 @@ tune to herself.
 3 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< goblin~ common~
+MobWeight 50
 #108
 shargook goblin slave~
 Shargook~
@@ -112,8 +126,9 @@ eyes you fearfully and scowls.
 ~
 1|32|128 0 -150 S
 2 0 0 0d0+0 0d0+0
-0 0
+17196646400 0
 8 8 2
+< goblin~ common~
 #109
 garshgob goblin slave~
 Garshgob~
@@ -125,6 +140,9 @@ Small and wretched looking, Garshgob lumbers about the troop's lair.
 1 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
+MobHeight 100
+MobWeight 20
 #110
 hoobuk goblin slave~
 Hoobuk~
@@ -138,12 +156,13 @@ albino.  Recent bruising and nasty cuts show clearly on his body.
 1 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #111
 pit beast~
 the Pit Beast~
 The Pit Beast scrambles through the quagmire of the pit.
 ~
-Resembling a short crocodile, this viscious reptile is kept starved
+Resembling a short crocodile, this vicious reptile is kept starved
 and violent at the bottom of the goblins' pit.  The beast is covered
 in slimy, dark blue scales, its gaping maw filled with countless
 yellow fangs.
@@ -152,7 +171,11 @@ yellow fangs.
 3 0 0 0d0+0 0d0+0
 0 0
 8 8 0
-< reserved~ rare~
+< giant_lizard~ rare~
+MobHeight 35
+MobWeight 25
+MobLength 150
+MobSize 1
 
 #0
 
@@ -378,7 +401,7 @@ into the building.
      Hammered further up the northern wall is a faded wooden sign.
 You can clear away the largest pieces of rubble and worm yourself
 through the crumbling wall to the north, or head back south to leave
-this despressing, deserted slum.
+this depressing, deserted slum.
 ~
 0 0 1
 D0
@@ -488,7 +511,7 @@ through the surface in many places.  A cool breeze blows through here,
 as the walls of the well have been excavated: archways have been more
 or less smashed through the brickwork in every direction.
      You can head in any direction through the holes in the well;
-climbing back up the would be impossible.
+climbing back up the well would be impossible.
 ~
 0 1|4 0
 D0
@@ -515,7 +538,7 @@ S
 #108
 Muddy Tunnel~
 A mud-filled tunnel burrows through the rock.  The ceiling is low with
-dirty water seeping through many large cracks.  Strange metalic groans
+dirty water seeping through many large cracks.  Strange metallic groans
 and sliding stone can be heard in the distance, and the atmosphere is
 quite uncomfortable.
      The muddy tunnel heads roughly north, and returns to the bottom of
@@ -606,7 +629,7 @@ door reinforced wooden~
 S
 #112
 Ushog's Quarters~
-This crampt cave serves as living quarters for Ushog, captain of
+This cramped cave serves as living quarters for Ushog, captain of
 the goblin troop that inhabits these cellars.  Half of the floor is
 covered in dirty straw, with half-full bottles and bowls of food
 pushed against the wall.  Horrible rags and ripped garments have been
@@ -821,7 +844,7 @@ S
 The Pit~
 You leap into the pit, which is about six feet deep in the centre.
 The floor is submerged in about a foot of muddy water, full of soggy
-vegetation and more recently dumped leaves scraps of meat.  Small
+vegetation and more recently dumped leaves and scraps of meat.  Small
 bones poke from the mire; animal skulls stare stupidly up at you.
      It wouldn't be too difficult to wade to the edge of the pit and
 clamber back up to floor level.
