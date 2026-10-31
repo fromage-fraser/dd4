@@ -5046,6 +5046,12 @@ void do_construct( CHAR_DATA *ch, char *arg )
                         return;
                 }
 
+                if (IS_SET(obj->ego_flags, EGO_ITEM_CHAINED))
+                {
+                        send_to_char("That object already has a chain attached.\n\r", ch);
+                        return;
+                }
+
                 if ((!strcmp(blueprint_list[i].blueprint_name, "weaponchain") && number_percent() > ch->pcdata->learned[gsn_weaponchain]) )
                 {
                         send_to_char("You heat the forge and ready your materials.\n\r", ch);
