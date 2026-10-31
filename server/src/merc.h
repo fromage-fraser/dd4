@@ -3644,8 +3644,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 42
-#define MAX_SPECIES 11
+#define MAX_MOB 43
+#define MAX_SPECIES 12
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
