@@ -217,11 +217,19 @@ void do_traplist(CHAR_DATA *ch, char *argument)
                         sprintf( buf, "{g%s{x carried by {W%s{x\n\r",
                                 obj->short_descr, PERS(in_obj->carried_by, ch) );
                 }
-                else {
+                else if ( in_obj->vaulted_by != NULL ) {
+                        sprintf( buf, "{g%s{x in {W%s's vault{x\n\r",
+                                obj->short_descr, PERS(in_obj->vaulted_by, ch) );
+                }
+                else if ( in_obj->in_room != NULL ) {
                         sprintf( buf, "{g%s{x in {W%s [{R%d{x{W]{x\n\r",
                                 obj->short_descr,
-                                in_obj->in_room == NULL ? "somewhere" : in_obj->in_room->name,
+                                in_obj->in_room->name,
                                 in_obj->in_room->vnum);
+                }
+                else {
+                        sprintf( buf, "{g%s{x in {Wsomewhere{x\n\r",
+                                obj->short_descr );
                 }
 
                 buf[0] = UPPER(buf[0]);
