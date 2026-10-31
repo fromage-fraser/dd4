@@ -1377,6 +1377,61 @@ const struct mob_type mob_table[MAX_MOB] =
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE,
                 800
+        },
+
+        /* The mirror gives the reflection a mind, but no living organs. */
+        {
+                "manifested_double", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_NO_HEART | BODY_INORGANIC | BODY_NO_CORPSE
+                    | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS
+                    | PART_HEART | PART_BRAINS | PART_GUTS,
+                0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "wooden_automaton", "bipedal_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_BLOODLESS
+                    | BODY_ANALGIC | BODY_SOULLESS,
+                0,
+                0, RES_FIRE, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                175, 50, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        /* This is an active guardian, rather than an undead monk. */
+        {
+                "animated_relic", "bipedal_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_BLOODLESS
+                    | BODY_ANALGIC | BODY_SOULLESS,
+                0,
+                0, 0, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                175, 45, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -4620,6 +4675,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_cast_orb", 0 },
 
                 { "spec_poison", 5 },
+                { "spec_poison_palm", 5 },
                 { "spec_bloodsucker", 5 },
                 { "spec_superwimpy", 5 },
                 { "spec_spectral_minion", 5 },

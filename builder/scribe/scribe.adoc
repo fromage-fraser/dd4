@@ -798,6 +798,9 @@ Accepted archetype names are:
 | `dwarf` | Living humanoid with infravision, magic/poison resistance and optional melee training.
 | `goblin` | Living humanoid with small fangs, infravision and sunlight sensitivity.
 | `human` | Ordinary living humanoid with neutral modifiers.
+| `manifested_double` | Conscious humanoid-shaped magical reflection; no living organs, blood, soul, pain or corpse. Medium; height and mass are unspecified.
+| `wooden_automaton` | Mindless bipedal machinery with no speech, blood, soul, pain or corpse; poison/sleep/charm/drain immunity and fire vulnerability. Defaults 175 cm, 50 kg, Medium.
+| `animated_relic` | Mindless non-undead guardian made from preserved remains; the same empty-shell physiology and immunities, without the wood profile's fire vulnerability. Defaults 175 cm, 45 kg, Medium.
 | `duergar` | Living gray dwarf with dwarf training, infrared, Sneak, magic resistance, poison/hold/paralysis immunity, sunlight accuracy -2, illusion recognition and idle self-invisibility; enlargement is a recorded follow-up.
 | `rock_worm` | Huge living limbless invertebrate with a natural bite and reusable Swallow special; defaults 150 cm thickness, estimated 800 cm length and 8000 kg, Large.
 | `lizard` | Small four-legged reptile with scales, claws, tail and a natural bite; defaults height 8 cm, weight 1 kg and total length 46 cm.
@@ -3152,6 +3155,7 @@ spec_small_whale    flukeslaps [combat]
 spec_large_whale    flukeslaps and swallows [combat]
 spec_duergar       ordinary self-invisibility on eligible idle opportunities
 spec_swallow       occasional Swallow against the current opponent [combat]
+spec_poison_palm   poisoned palm; the bite special's chance and venom, requiring usable arms [combat]
 spec_kappa  kappa skills/spells [combat]
 spec_aboleth    aboleth skills/spells [combat]
 spec_laghathti  laghathti skills/spells [combat]
@@ -9218,3 +9222,53 @@ shield and coins remain in their original containers/rooms. Digger 4710's
 I reset loads room 4707, not mobile 4707. There is no matching Juargan source,
 shop, teacher or previous special record. Grimdale and the spirits inherit
 undead classification; their tomb already permits undead.
+
+[[scribe-shaolin-creatures]]
+==== Shaolin Temple creatures
+Shaolin's ordinary people use human. The child is 110 cm, 20 kg and Small;
+the strong Abbot weighs 85 kg. The mirror's inner demon uses manifested_double:
+it can think and speak, but has no living organs, blood, soul, pain or corpse.
+Its height and mass stay unknown. This profile does not copy a player's stats
+or grant ghost movement or weapon immunity.
+
+The wooden man uses wooden_automaton (175 cm, 50 kg, Medium). It is mindless,
+cannot speak, and has no fresh corpse, blood, soul or pain. It is immune to
+poison, sleep, charm and drain, and vulnerable to fire. Its ordinary unarmed
+attacks stay blunt. Its old raw body mask is zero so XOR does not cancel the
+construct's inherited no-heart, inorganic and no-speech properties.
+
+Jinshen uses animated_relic (175 cm, 45 kg, Medium). This active guardian is
+not undead or scenery. It has the same empty-shell physiology and immunities,
+without fire vulnerability. Its sword and individual breath special remain;
+defeating it drops its original equipment without creating a new corpse.
+Both construct profiles keep arms and senses for equipment and targeting.
+All three new profiles have neutral combat scalars and no default special.
+
+The inner demon, Wuhua, Master of Books, Drunken Master and Master Trainer
+are rare; Luohan is elite; the Abbot is boss. Jinshen keeps its existing elite
+rank. Everyone else stays common.
+Rank is encounter design, rather than a species bonus or an HP letter.
+The Abbot keeps his base 28 teaching and every existing lesson, including
+Artist base 30. All authored behaviour, senses, levels and sexes remain.
+Legacy position columns stay as written; they do not set a spawn posture.
+
+spec_poison_palm shares the ordinary poisonous bite's target selection,
+one-in-four draw per eligible attacker, venom spell, saves and +5 special XP.
+It uses palm messages and needs arms without arm trauma; Regenerate can mend
+that trauma normally. Existing spec_poison and spec_kungfu_poison keep their
+own behaviour. The nun keeps her actual cleric special; the earlier poison
+row was overwritten and is removed. Other individual casting, breath and
+thief roles remain unchanged. These profiles add no player abilities.
+
+Both guard resets keep their original room. The first keeps cap 1 and the
+second rises to cap 2, so both guards load and the second receives the prison
+keys in the original reset order. Keeping the first cap at 1 also restores a
+key carrier when just that guard dies while the other survives.
+The duplicate ordinary-monk row keeps cap 1. Jinshen carries Shelizi 20105,
+not an extra bronze key; Luohan keeps the real bronze key. Boom's container
+20137 keeps locked/pickproof and also becomes closeable/closed (flags 15).
+The Abbot wears Jiasha on ABOUT (12), holds the ceremonial staff at HOLD (17),
+and the warrior wears his garters on LEGS (7). The staff stays a held armour
+item. The candle-shaped workshop key and the nun's hair key stay intact.
+Room flags, doors, other objects and resets remain, including warded 20119.
+There is no matching Scribe source for this area.
