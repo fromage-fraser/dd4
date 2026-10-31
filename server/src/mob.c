@@ -1082,7 +1082,7 @@ const struct mob_type mob_table[MAX_MOB] =
         {
                 "giant_lizard", "quadrupedal_reptile", "icon1", "icon2",
                 0, 0,
-                PART_FANGS, PART_FANGS,
+                PART_FANGS | PART_CLAWS, PART_FANGS,
                 0, 0, 0,
                 0, 0, 0, 0,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
