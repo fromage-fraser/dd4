@@ -42,6 +42,7 @@ void talk_channel args((CHAR_DATA * ch, char *argument, int channel, const char 
 
 static CHAR_DATA *comm_identity(CHAR_DATA *ch);
 static CHAR_DATA *comm_body(CHAR_DATA *ch);
+static bool quit_char(CHAR_DATA *ch);
 static void deliver_tell(CHAR_DATA *ch, CHAR_DATA *speaker,
                          CHAR_DATA *victim, CHAR_DATA *body,
                          char *argument, bool show_afk);
@@ -1455,7 +1456,8 @@ void do_delete(CHAR_DATA *ch, char *argument)
 #else
                         sprintf(strsave, "%s%s", PLAYER_DIR, capitalize(ch->name));
 #endif
-                        do_quit(ch, "");
+                        if (!quit_char(ch))
+                                return;
                         sprintf(buf, "rm %s", strsave);
                         sprintf(buf, "rm %s.vault", strsave);
                         system(buf);
@@ -1490,6 +1492,12 @@ void do_qui(CHAR_DATA *ch, char *argument)
 
 void do_quit(CHAR_DATA *ch, char *argument)
 {
+        quit_char(ch);
+}
+
+/* Report logout success without accessing the character after extraction. */
+static bool quit_char(CHAR_DATA *ch)
+{
         DESCRIPTOR_DATA *d;
         char buf[MAX_STRING_LENGTH];
         OBJ_DATA *pobj;
@@ -1498,19 +1506,25 @@ void do_quit(CHAR_DATA *ch, char *argument)
         if (IS_NPC(ch))
         {
                 send_to_char("Wimping out eh?  Mobs can't quit!\n\r", ch);
-                return;
+                return FALSE;
+        }
+
+        if (!ch->in_room)
+        {
+                bug("Extract_char: NULL.", 0);
+                return FALSE;
         }
 
         if (ch->position == POS_FIGHTING)
         {
                 send_to_char("No way! You are fighting.\n\r", ch);
-                return;
+                return FALSE;
         }
 
         if (ch->position < POS_STUNNED)
         {
                 send_to_char("You're not DEAD yet... lie still!\n\r", ch);
-                return;
+                return FALSE;
         }
 
         /* Tournaments */
@@ -1519,7 +1533,7 @@ void do_quit(CHAR_DATA *ch, char *argument)
                 if (tournament_status == TOURNAMENT_STATUS_RUNNING && is_still_alive_in_tournament(ch))
                 {
                         send_to_char("You can't quit from a tournament!  Recall to leave.\n\r", ch);
-                        return;
+                        return FALSE;
                 }
                 else if (tournament_status != TOURNAMENT_STATUS_FINISHED)
                         remove_from_tournament(ch);
@@ -1538,12 +1552,12 @@ void do_quit(CHAR_DATA *ch, char *argument)
                 if (ch == auction->buyer)
                 {
                         send_to_char("Wait until you have bought the item on auction.\n\r", ch);
-                        return;
+                        return FALSE;
                 }
                 else if (ch == auction->seller)
                 {
                         send_to_char("Wait until you have sold the item on auction.\n\r", ch);
-                        return;
+                        return FALSE;
                 }
         }
 
@@ -1601,7 +1615,7 @@ void do_quit(CHAR_DATA *ch, char *argument)
         if (d)
                 close_socket(d);
 
-        return;
+        return TRUE;
 }
 
 void do_save(CHAR_DATA *ch, char *argument)
