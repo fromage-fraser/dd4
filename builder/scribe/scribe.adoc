@@ -798,6 +798,8 @@ Accepted archetype names are:
 | `dwarf` | Living humanoid with infravision, magic/poison resistance and optional melee training.
 | `goblin` | Living humanoid with small fangs, infravision and sunlight sensitivity.
 | `human` | Ordinary living humanoid with neutral modifiers.
+| `lizard` | Small four-legged reptile with scales, claws, tail and a natural bite; defaults height 8 cm, weight 1 kg and total length 46 cm.
+| `lizardman` | Living humanoid reptile with scales, tail, claws and fangs; ordinary claw/bite contacts and natural armour -10; defaults 200 cm, 100 kg and medium size.
 | `dwarf_untrained` | The ordinary dwarf body and defences, with both trained melee benefits explicitly disabled.
 | `bat` | Flying mammal with echolocation and a natural bite.
 | `animated_mist` | Bodiless, inorganic mist with sanctuary, sneak, pass door and flight.
@@ -9058,3 +9060,75 @@ Preserve all 55 rooms and 60 objects, the diary/floorboard/cache-key chains
 and area XP setting 115. Room 17543 uses a valid inline vnum/name header;
 include it when counting rooms. Objects 17510/17511 also equip a mobile in
 Sahuagin Market and stay unchanged. There is no matching Scribe source.
+
+[[scribe-freeport-reptiles-citizens]]
+==== Freeport reptiles and citizens
+
+Freeport uses human for thirty mobiles, dwarf for Raedner 29118, lizard
+for 29101-29103 and lizardman for Stathog 29134. Human and dwarf retain
+their approved defaults. Both new archetypes use existing body species;
+no new body part, area field or individual trait override is needed.
+
+The lizard archetype uses quadrupedal_reptile, with anatomical claws and
+fangs and a fang-only natural bite. It is small, height 8 cm, weight 1 kg
+and total length 46 cm. The length reflects the area's eighteen inches;
+height and whole-number mass are estimates. Keep neutral combat/XP
+modifiers and ordinary living organs. It adds no special or resistance.
+Freeport's three colours keep their individual hiding and timid behaviour.
+Their existing tongue pills still provide Sanctuary, Poison and Curse
+when consumed. Those loot effects do not add venomous bites or spells.
+
+The lizardman archetype uses humanoid, adding scales, a nonprehensile tail,
+claws and fangs. Ordinary unarmed contacts can use claws or fangs at the
+existing DD4 attack rate. The internal natural_armour trait supplies -10
+armour; MSTAT shows its lizardman origin. Default dimensions are height
+200 cm, weight 100 kg and medium size. Other combat/XP modifiers remain
+neutral, with no default special or racial resistance package. Creature
+family lizardman is internal identity, not an ACT bit or area field.
+
+These are DD4 adaptations informed by the second-edition Monstrous Manual.
+Its Lizard Man entry supports the scaled humanoid anatomy, ordinary natural
+weapons and adult proportions. The exact armour bonus and dimensions are
+our estimates. The Lizard entry concerns giant varieties; it does not give
+statistics for Freeport's small local animals. Existing NPC water movement
+already handles these creatures. Keep its current rules; do not use the
+removable swimming stance as permanent anatomy. Player packages stay as
+they are. The earlier giant_lizard archetype is unchanged.
+
+Stathog retains his exceptional knowledge, personality, protected flags,
+teacher base 70, every lesson and individual spec_cast_psionicist. His
+height 210 and weight 95 replace the lizardman defaults. He remains common,
+with medium size; his profession does not make him a boss or a primitive
+tribal creature. No intelligence or alignment restriction is inherited.
+
+The laughing child 29109 uses human with height 110, weight 20 and size 0
+(small). Apprentice boy 29112 uses height 140 and weight 40, keeping medium
+size. Other humans inherit 175/75/medium and Raedner 130/70/small. Use
+Scribe height, weight and size for these existing individual replacements.
+
+Mourning 29132 is boss, Oglethorpe 29131 elite, and Blacksail 29130,
+Mayor Friendly 29126 and Whitecap 29125 rare. Other mobiles stay common,
+including the high-level shops and teacher. Rank affects generated HP
+once and uses its normal reward rules; authored levels stay unchanged.
+Keep the three individual spec_poison routines and Stathog's psionics.
+They are deliberate roles, not defaults supplied by the new archetypes.
+
+Clear raw body 36 to 0 on the three lizards. The body species already
+supplies no arms and no speech; copying 36 would XOR those restrictions
+off. Other inherited anatomy remains available for targeting and trauma.
+All ordinary natural-attack injury checks still apply.
+
+The reset labelled Admiral Blacksail now loads 29130 in room 29172,
+with its existing cap of one, cape, signet and devil weed. It previously
+named a scruffy pirate whose cap was already full, so Blacksail never
+appeared. Preserve the two ordinary pirates and all other placements/caps.
+Ceres 29121 loses only the unused practice bit; his working healer and
+fame flags remain. Whitecap loses only wiz-invisibility and keeps his
+sentinel/lose-fame flags, making his public conversation available.
+Raedner and Samantha keep their existing services; their unsupported
+repair/identify offer sentences are removed. Heralt remains the tinker.
+
+Keep all seven shop inventories, prices and hours, all 77 rooms and their
+flags/exits/doors, all 36 objects, area no_quest and the other reset/gear
+records. No aggression, passivity, sentinel, wimpy, source level, alignment
+or sex changes are intended. There is no matching Freeport Scribe source.

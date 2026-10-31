@@ -77,6 +77,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         animated_soft_toy animated_toy_soldier
         wyvern giant_zombie dog
         elf preserved_head
+        lizard lizardman
 /;
 
 my %mob_act = (

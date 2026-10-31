@@ -1298,6 +1298,38 @@ const struct mob_type mob_table[MAX_MOB] =
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+
+        /* Colour-specific tongue loot stays in the individual area resets. */
+        {
+                "lizard", "quadrupedal_reptile", "icon1", "icon2",
+                0, 0,
+                PART_FANGS | PART_CLAWS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                8, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                46
+        },
+
+        {
+                "lizardman", "humanoid", "icon1", "icon2",
+                0, 0,
+                PART_TAIL | PART_SCALES | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                200, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_LIZARDMAN,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1356,6 +1388,7 @@ const char *creature_family_name(CREATURE_FAMILY family)
         case CREATURE_FAMILY_TITAN: return "titan";
         case CREATURE_FAMILY_HUMAN: return "human";
         case CREATURE_FAMILY_ELF: return "elf";
+        case CREATURE_FAMILY_LIZARDMAN: return "lizardman";
         default: return "invalid";
         }
 }
@@ -1473,6 +1506,10 @@ static const CREATURE_TRAIT_CHANGE scaled_armour_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
 };
+static const CREATURE_TRAIT_CHANGE lizardman_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
+};
 static const CREATURE_TRAIT_CHANGE darkenbeast_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -20},
@@ -1507,6 +1544,7 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"prism_dragon", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
         {"darkenbeast", NULL, darkenbeast_trait_changes, TRAIT_ITEMS(darkenbeast_trait_changes)},
         {"wyvern", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
+        {"lizardman", NULL, lizardman_trait_changes, TRAIT_ITEMS(lizardman_trait_changes)},
         {"wight", NULL, wight_trait_changes, TRAIT_ITEMS(wight_trait_changes)},
         {"dracolich", NULL, dracolich_trait_changes, TRAIT_ITEMS(dracolich_trait_changes)},
         {NULL, NULL, NULL, 0}

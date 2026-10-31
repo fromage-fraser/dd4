@@ -34,8 +34,9 @@ is very quick, and has sharp pointy teeth.
 ~
 128 65536 0 S
 8 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< lizard~ common~
 #29102
 lizard red-tongued~
 the red-tongued lizard~
@@ -46,8 +47,9 @@ is very quick, and has sharp pointy teeth.
 ~
 128 65536 0 S
 8 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< lizard~ common~
 #29103
 lizard green-tongued~
 the green-tongued lizard~
@@ -58,8 +60,9 @@ is very quick, and has sharp pointy teeth.
 ~
 128 65536 0 S
 8 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< lizard~ common~
 #29104
 watchman man old sailor~
 the watchman of Widow's Cape~
@@ -73,6 +76,7 @@ at night, but when he reported it, nobody seemed to care.
 12 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29105
 fisherman man~
 the fisherman~
@@ -86,6 +90,7 @@ jetty rocks.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29106
 longshoreman worker dock man~
 the longshoreman~
@@ -98,6 +103,7 @@ a rope to lift the heavy crate.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29107
 harbormaster man~
 the harbormaster~
@@ -110,6 +116,7 @@ any crap from you. Give him his list or go to the brig.
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29108
 citizen freeport~
 the citizen of Freeport~
@@ -121,6 +128,7 @@ The citizen is dressed in light cotton clothing and sandals.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29109
 child laughing~
 the laughing child~
@@ -132,6 +140,10 @@ The child is dressed in a white cotton shirt.
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
+MobHeight 110
+MobWeight 20
+MobSize 0
 #29110
 wife sailor's~
 the sailor's wife~
@@ -145,6 +157,7 @@ and has hair bleached blond by the sun and the sea.
 9 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #29111
 shipbuilder master~
 the master shipbuilder~
@@ -159,6 +172,7 @@ cargo storage, but excellent raiding speed.
 99 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29112
 apprentice shipbuilder~
 the apprentice shipbuilder~
@@ -171,6 +185,9 @@ grey smock.
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 140
+MobWeight 40
 #29113
 overseer warehouse~
 the warehouse overseer~
@@ -184,6 +201,7 @@ crates bound for destinations around the world.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29114
 patrolman harbor~
 the harbor patrolman~
@@ -196,6 +214,7 @@ though, and looks like he is in no mood for your crap.
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29115
 teamster~
 the teamster~
@@ -207,6 +226,7 @@ The teamster drives his single mule with a long whip and foul language.
 12 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29116
 lefty~
 Lefty, owner of the Sunken Pirate~
@@ -220,6 +240,7 @@ had sold out Freeport to the pirates.
 99 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29117
 anwar~
 Anwar, proprietor of the Emporium~
@@ -234,6 +255,7 @@ fenced goods, Anwar clams up.
 99 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29118
 raedner dwarf dwarven smith~
 Raedner the dwarven smith~
@@ -241,13 +263,13 @@ A dwarven smith hammers on a suit of plate armor here.
 ~
 Raedner gladly accepts a pull from your ale skin. As he wipes his brow,
 he begins a story about how he thinks the last election was rigged, since
-nobody he had talked to voted for Mayor Friendly. He offers to repair your
-armor.
+nobody he had talked to voted for Mayor Friendly.
 ~
 2|32768 0 700 S
 99 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
 #29119
 samantha~
 Samantha, witch of the Mystic Eye~
@@ -255,13 +277,13 @@ Samantha, witch of the Mystic Eye displays her ample goods for you.
 ~
 Samantha bats her eyes at you with no shame at all. She propositions you
 for some indecent activity. You accept to pump her for more information.
-She lets slip that Lord Mourning was seen recently in her shop. She offers
-to identify anything you may have.
+She lets slip that Lord Mourning was seen recently in her shop.
 ~
 2|32768 0 -700 S
 99 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #29120
 apprentice merchant~
 the apprentice merchant~
@@ -274,6 +296,7 @@ wears a simple yellow smock.
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29121
 ceres merchant~
 Ceres, merchant of the 3rd chair~
@@ -283,10 +306,11 @@ You strike up a conversation with Ceres. He tells you that he was recently
 threatened by Oglethorpe (1st chair) when he brought up the subject of
 missing records of the guild.
 ~
-2|1024|8192|16384 0 400 S
+2|8192|16384 0 400 S
 46 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29122
 elken banker~
 Elken, banker of Freeport~
@@ -300,6 +324,7 @@ talk to a teller, who in turn leaves the bank in a hurry.
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29124
 cadet young~
 the young cadet~
@@ -315,6 +340,7 @@ the final race.
 14 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29125
 whitecap old salt~
 Whitecap, 8th Admiral of Freeport~
@@ -326,10 +352,11 @@ sea. He also tells you of how recently he has grown concerned for the
 first admiral of Freeport, Blacksail, who has acquired an addiction to
 devil weed.
 ~
-2|32768|65536 0 900 S
+2|32768 0 900 S
 49 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
 #29126
 mayor friendly~
 Mayor Friendly~
@@ -343,6 +370,7 @@ at a white marble statue.
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
 #29127
 midge innkeeper~
 Midge, the innkeeper of the Crew's Quarters~
@@ -357,6 +385,7 @@ just last month had a week stay by a very rich visitor named Lord Vulture.
 99 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #29128
 sailor scruffy pirate~
 the scruffy pirate~
@@ -368,6 +397,7 @@ The sailor reeks of rum and the sea.
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29129
 guard stoic pirate~
 the pirate guard~
@@ -380,6 +410,7 @@ precision.
 46 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29130
 blacksail admiral~
 Admiral Blacksail~
@@ -394,6 +425,7 @@ whim.
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
 #29131
 oglethorpe master merchant~
 Oglethorpe, 1st Master Merchant of Freeport~
@@ -408,13 +440,14 @@ torture. With that, he laughs and eats a blue lizard tongue.
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ elite~
 #29132
 mourning lord~
 Lord Mourning~
 Lord Mourning, the secret 6th Pirate Lord laughs at you!
 ~
 Bah! Who are you to threaten me? I was sinking navies when you were a mere
-strapling on your mother's teat! I will destroy you! And if not me, then
+stripling on your mother's teat! I will destroy you! And if not me, then
 someone else, for every one of us you kill, 2 more sprout up to take my
 place! With that Lord Mourning draws his saber and eats a blue lizard
 tongue.
@@ -423,6 +456,7 @@ tongue.
 53 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ boss~
 #29133
 sailor drunken~
 the drunken sailor~
@@ -437,6 +471,7 @@ the meat he had for lunch.
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 
 #29134
 stathog lizardman illuminatus~
@@ -453,6 +488,7 @@ him.
 90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lizardman~ common~
 & 70 'teacher base'
 & 110 'weaponsmithing'
 & 110 'armoursmithing'
@@ -547,6 +583,8 @@ him.
 & 110 'resistance magiks'
 & 110 'awe'
 & 110 'quicken'
+MobHeight 210
+MobWeight 95
 
 #29135
 heralt tinker~
@@ -563,6 +601,7 @@ have on you.
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 
 #29136
 grindle greytooth man~
@@ -579,6 +618,7 @@ warmly.
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #0
 
 
@@ -2552,7 +2592,7 @@ M 1 29129 2 29169           stoic guard
 E 1 29125 0 14 wrist guard
 E 1 29126 0 16 long sword
 E 1 29127 0 6  helm
-M 1 29128 1 29172           Admiral Blacksail
+M 1 29130 1 29172           Admiral Blacksail
 E 1 29129 0 12 Admirals cape
 E 1 29130 0 2  Admiral's signet
 G 1 29128 0    Devils weed
