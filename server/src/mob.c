@@ -258,6 +258,23 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "head_only",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_HEART
+                    | PART_HEAD | PART_EYE | PART_EAR,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -930,12 +947,12 @@ const struct mob_type mob_table[MAX_MOB] =
         DWARF_ARCHETYPE("dwarf_untrained"),
         {
                 "orc", "humanoid", "icon1", "icon2",
-                0, 0,
-                0, 0,
+                0, AFF_INFRARED,
+                PART_FANGS, 0,
                 0, 0, 0,
                 0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                175, 85,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "",
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
@@ -1247,6 +1264,40 @@ const struct mob_type mob_table[MAX_MOB] =
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE,
                 90
+        },
+
+
+        {
+                "elf", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                150, 45, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_ELF,
+                MOB_TEMPLATE_UNSET
+        },
+
+        /* The trophy can bite back, but has no living body to sustain. */
+        {
+                "preserved_head", "head_only", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_INORGANIC
+                    | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS | PART_FANGS,
+                PART_FANGS,
+                0, 0, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                30, 5, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1304,6 +1355,7 @@ const char *creature_family_name(CREATURE_FAMILY family)
         case CREATURE_FAMILY_GIANT: return "giant";
         case CREATURE_FAMILY_TITAN: return "titan";
         case CREATURE_FAMILY_HUMAN: return "human";
+        case CREATURE_FAMILY_ELF: return "elf";
         default: return "invalid";
         }
 }
@@ -1317,7 +1369,9 @@ typedef enum creature_trait_effect
         TRAIT_ECHOLOCATION,
         TRAIT_STRENGTH_DRAIN_TOUCH,
         TRAIT_NATURAL_ARMOUR,
-        TRAIT_SILVER_CONTACT
+        TRAIT_SILVER_CONTACT,
+        TRAIT_STATUS_RESISTANCE_PERCENT,
+        TRAIT_GHOUL_TOUCH_IMMUNITY
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -1379,7 +1433,10 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"echolocation", TRAIT_ECHOLOCATION, NULL},
         {"strength_drain_touch", TRAIT_STRENGTH_DRAIN_TOUCH, NULL},
         {"natural_armour", TRAIT_NATURAL_ARMOUR, NULL},
-        {"silver_bypasses_nonmagic", TRAIT_SILVER_CONTACT, NULL}
+        {"silver_bypasses_nonmagic", TRAIT_SILVER_CONTACT, NULL},
+        {"sleep_resistance_pct", TRAIT_STATUS_RESISTANCE_PERCENT, NULL},
+        {"charm_resistance_pct", TRAIT_STATUS_RESISTANCE_PERCENT, NULL},
+        {"ghoul_touch_immunity", TRAIT_GHOUL_TOUCH_IMMUNITY, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
@@ -1392,9 +1449,16 @@ static const CREATURE_TRAIT_CHANGE untrained_dwarf_trait_changes[] =
         {CREATURE_TRAIT_GOBLINOID_TRAINING, 0},
         {CREATURE_TRAIT_GIANT_DEFENCE, 0}
 };
-static const CREATURE_TRAIT_CHANGE goblin_trait_changes[] =
+static const CREATURE_TRAIT_CHANGE sunlight_trait_changes[] =
 {
         {CREATURE_TRAIT_SUNLIGHT_SENSITIVE, -1}
+};
+
+static const CREATURE_TRAIT_CHANGE elf_trait_changes[] =
+{
+        {CREATURE_TRAIT_SLEEP_RESISTANCE_PERCENT, 90},
+        {CREATURE_TRAIT_CHARM_RESISTANCE_PERCENT, 90},
+        {CREATURE_TRAIT_GHOUL_TOUCH_IMMUNITY, 1}
 };
 
 static const CREATURE_TRAIT_CHANGE bat_trait_changes[] =
@@ -1434,7 +1498,9 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"dwarf", NULL, dwarf_trait_changes, TRAIT_ITEMS(dwarf_trait_changes)},
         {"dwarf_untrained", "dwarf", untrained_dwarf_trait_changes,
             TRAIT_ITEMS(untrained_dwarf_trait_changes)},
-        {"goblin", NULL, goblin_trait_changes, TRAIT_ITEMS(goblin_trait_changes)},
+        {"goblin", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
+        {"orc", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
+        {"elf", NULL, elf_trait_changes, TRAIT_ITEMS(elf_trait_changes)},
         {"bat", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
         {"vampire_bat_form", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
         {"shadow", NULL, shadow_trait_changes, TRAIT_ITEMS(shadow_trait_changes)},
@@ -1609,6 +1675,19 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                         || profile->changes[i].value < -100
                         || profile->changes[i].value > 100)
                                 issues++;
+                        if (profile->changes[i].id >= 0
+                        && profile->changes[i].id < CREATURE_TRAIT_COUNT)
+                        {
+                                CREATURE_TRAIT_EFFECT effect =
+                                    creature_trait_definitions[profile->changes[i].id].effect;
+                                if (effect == TRAIT_STATUS_RESISTANCE_PERCENT
+                                && profile->changes[i].value < 0)
+                                        issues++;
+                                if (effect == TRAIT_GHOUL_TOUCH_IMMUNITY
+                                && (profile->changes[i].value < 0
+                                    || profile->changes[i].value > 1))
+                                        issues++;
+                        }
                         for (j = 0; j < i; j++)
                                 if (profile->changes[j].id == profile->changes[i].id)
                                         issues++;
@@ -1648,7 +1727,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_SILVER_CONTACT)
+                || creature_trait_definitions[i].effect > TRAIT_GHOUL_TOUCH_IMMUNITY)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name
@@ -1729,6 +1808,24 @@ int creature_trait_value(CHAR_DATA *ch, CREATURE_TRAIT id)
         return entry ? entry->value : 0;
 }
 
+/* A mixed sleep/charm effect gets one roll at the stronger percentage. */
+int creature_status_resistance_percent(CHAR_DATA *ch, unsigned long int res_types)
+{
+        int chance = 0;
+        if (res_types & RES_SLEEP)
+                chance = creature_trait_value(ch, CREATURE_TRAIT_SLEEP_RESISTANCE_PERCENT);
+        if (res_types & RES_CHARM)
+                chance = UMAX(chance,
+                    creature_trait_value(ch, CREATURE_TRAIT_CHARM_RESISTANCE_PERCENT));
+        return URANGE(0, chance, 100);
+}
+
+bool creature_resists_status(CHAR_DATA *ch, unsigned long int res_types)
+{
+        int chance = creature_status_resistance_percent(ch, res_types);
+        return chance > 0 && number_percent() <= chance;
+}
+
 static bool trait_targets_family(const CREATURE_TRAIT_DEFINITION *trait,
     CREATURE_FAMILY family)
 {
@@ -1800,11 +1897,18 @@ void show_creature_traits(CHAR_DATA *viewer, CHAR_DATA *victim)
                 if (!entry)
                         continue;
                 any = TRUE;
-                snprintf(buf, sizeof(buf), "  %s: %+d%s; %s %s%s.\n\r",
-                    creature_trait_definitions[id].name, entry->value,
-                    entry->value == 0 ? " (disabled)" : "",
-                    entry->from_species ? "species" : "archetype", entry->source,
-                    IS_NPC(victim) ? "" : "; approved player racial trait");
+                if (creature_trait_definitions[id].effect == TRAIT_STATUS_RESISTANCE_PERCENT)
+                        snprintf(buf, sizeof(buf), "  %s: %d%%%s; %s %s%s.\n\r",
+                            creature_trait_definitions[id].name, entry->value,
+                            entry->value == 0 ? " (disabled)" : "",
+                            entry->from_species ? "species" : "archetype", entry->source,
+                            IS_NPC(victim) ? "" : "; approved player racial trait");
+                else
+                        snprintf(buf, sizeof(buf), "  %s: %+d%s; %s %s%s.\n\r",
+                            creature_trait_definitions[id].name, entry->value,
+                            entry->value == 0 ? " (disabled)" : "",
+                            entry->from_species ? "species" : "archetype", entry->source,
+                            IS_NPC(victim) ? "" : "; approved player racial trait");
                 send_to_char(buf, viewer);
         }
         if (!any)

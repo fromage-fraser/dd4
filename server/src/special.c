@@ -2379,7 +2379,8 @@ void ghoul_touch_after_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
         if (!ghast_touch
         &&  (victim->race == RACE_ELF
              || victim->race == RACE_WILD_ELF
-             || victim->race == RACE_DROW))
+             || victim->race == RACE_DROW
+             || creature_trait_value(victim, CREATURE_TRAIT_GHOUL_TOUCH_IMMUNITY) > 0))
         {
                 return;
         }

@@ -745,10 +745,11 @@ area fields or individual trait overrides. ACT bits 34-36 are retired and
 reserved. Ordinary flag masks retain their existing XOR rules.
 
 Creature family is mob_type.family; the optional length scalar follows it. Old templates
-retain NONE until reviewed. Minimal humanoid target entries now exist for
-orc, half_orc, hobgoblin, ogre, troll, ogre_mage, giant and titan.
+retain NONE until reviewed. Minimal humanoid target entries remain for
+half_orc, hobgoblin, ogre, troll, ogre_mage, giant and titan.
 Their full traits are unfinished; they supply identity and anatomy only.
-Goblin and human now have the reviewed defaults described below.
+Goblin, human and orc now have the reviewed defaults described below.
+The new elf profile has its approved defences, with further traits deferred.
 No existing mobs are automatically converted by their names.
 
 Player Dwarves receive the same melee training benefits. Player Orcs,
@@ -4732,3 +4733,81 @@ objects, room flags, exits and doors. The unreset crafting test objects
 change descriptive text. There is no matching Scribe source in the repo.
 Keep future source records consistent with these inherited defaults and
 individual replacements.
+
+Fortress of Goblins, orcs, elves and preserved heads
+-------------------------------------------------
+
+The Fortress converts all 32 mobiles, 20300-20331. Most are goblins, with
+human, dwarf, orc, elf, ghost and preserved_head exceptions. Every original
+aggression, wimpy, sentinel, movement and NO_FIGHT/NOCHARM setting stays.
+Keep the authored levels, alignments, equipment, two individual specials,
+reset caps, rooms, doors and loot. The original caps produce 64 inhabitants,
+not one mobile for each of the 68 reset rows. There is no matching source.
+
+Rank comes from the encounter role. The king 20322 is boss; bath guards
+20313/20314 and queen 20323 are elite; planner 20318 and executioner 20329
+are rare. All others are common, including the deformity 20321. The old HP
+letters are not rank markers. Rank HP multipliers apply once as usual.
+
+The orc archetype now has infravision, anatomical fangs, height 175 cm,
+weight 85 kg and medium size. Fangs do not add an automatic bite. It shares
+the goblin's existing -1 sunlight accuracy trait and shelter/weather rules.
+It adds no aggression, alignment, special or racial combat/XP multiplier.
+The other target-family placeholders remain provisional.
+
+The new elf archetype uses humanoid anatomy, infravision, height 150 cm,
+weight 45 kg and medium size, with neutral combat/XP modifiers. Its internal
+sleep_resistance_pct and charm_resistance_pct traits are each 90 percent.
+A failed percentage roll still gets the normal saving throw or success
+test. An effect carrying both types gets one roll at the higher percentage.
+These are separate from ordinary RES_SLEEP/RES_CHARM flags; do not add those
+flags to repeat the racial bonus. Charm, Sleep, vampire gaze and Transfix
+use the shared protection. Domination remains disabled; its dormant save
+path now uses the same categories if the spell is restored later.
+Ordinary ghoul paralysis cannot
+affect this elf; ghast touch still can. This is not general paralysis immunity.
+MSTAT shows all three traits and their archetype origin. Player elf and orc
+packages stay unchanged; NPC family elf does not assign a player race.
+
+Elf sword/bow training is deliberately deferred until the first armed elf
+review. Woodland stealth and construction/secret-door recognition wait for
+the first relevant free-living elf review. Add these shared mechanics then
+and retrofit this captive. Do not treat the current profile as final.
+
+The new head_only species supplies head, eyes and ears, with no arms, legs,
+heart or other working organs. preserved_head adds inorganic, bloodless,
+soulless, analgic and mindless properties, no speech and no fresh corpse.
+It is immune to poison, sleep, charm and drain, and can make one ordinary
+fang bite through the existing natural-attack rules. It has no new special,
+extra attack, ACT_OBJECT or NO_FIGHT. The mounted trophy 20312 keeps its
+passive, sentinel, stay-area behaviour and can retaliate normally.
+Its old body XOR 319 is cleared so it inherits its head and eyes correctly.
+Use height 30, weight 5 and small size for this preserved head.
+
+The willing executioner 20329 and the captive human 20326 are human. The
+mutant 20321 also keeps its human origin and individual spec_breath_gas.
+The dwarf captive 20327 inherits dwarf resistances and training. Good spirit
+20324 uses the existing semi-material ghost and keeps alignment +500 and
+its individual detection/faerie-fire effects, without new active powers.
+Healer 20317 keeps NO_FIGHT and spec_cast_adept; no paid service is added.
+
+Whole-number individual replacements (height cm, weight kg) are:
+20300/20303 183/100, 20302 80/18, 20306 110/30, 20313/20314 200/120,
+20319 100/20, 20322 120/50, 20325 175/65, 20326 175/60,
+20327 130/55, 20328 150/40, 20329 183/136 and 20330 120/45.
+Tall guards 20300/20303/20313/20314 are medium; other goblins stay small.
+Other goblins inherit 120/30, ordinary humans 175/75 and the ghost 175/0.
+Dimensions remain descriptive; a large goblin does not gain the HUGE flag.
+Use Scribe height/weight/size for the corresponding individual replacements.
+
+Infrared needs careful XOR handling. Most goblins now use raw AFF 4 instead
+of 4|512, leaving resolved faerie fire plus inherited infrared unchanged.
+Orc/dwarf/elf prisoners use 4|256 instead of 4|256|512 for the same reason.
+The human captive keeps its individual infrared; the jailer and assassin
+gain goblin infrared while retaining every existing stealth/detection bit.
+The ghost's raw 772 is unchanged. Do not copy resolved flags into raw XORs.
+
+Explicit male pronouns correct sex to male for 20300/20302/20314/20318/20324.
+The portraits were checked; no artwork change is needed. All other sexes
+stay. Five small mob spelling/grammar corrections and the executioner's
+willing-service clarification change no behaviour or room descriptions.

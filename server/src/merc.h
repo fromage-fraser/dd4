@@ -3644,8 +3644,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 43
-#define MAX_SPECIES 12
+#define MAX_MOB 45
+#define MAX_SPECIES 13
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -3735,6 +3735,7 @@ typedef enum creature_family
         CREATURE_FAMILY_GIANT,
         CREATURE_FAMILY_TITAN,
         CREATURE_FAMILY_HUMAN,
+        CREATURE_FAMILY_ELF,
         CREATURE_FAMILY_MAX
 } CREATURE_FAMILY;
 
@@ -5902,10 +5903,15 @@ typedef enum creature_trait
         CREATURE_TRAIT_STRENGTH_DRAIN_TOUCH,
         CREATURE_TRAIT_NATURAL_ARMOUR,
         CREATURE_TRAIT_SILVER_BYPASSES_NONMAGIC,
+        CREATURE_TRAIT_SLEEP_RESISTANCE_PERCENT,
+        CREATURE_TRAIT_CHARM_RESISTANCE_PERCENT,
+        CREATURE_TRAIT_GHOUL_TOUCH_IMMUNITY,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 int validate_creature_traits args((void));
 int creature_trait_value args((CHAR_DATA *ch, CREATURE_TRAIT id));
+int creature_status_resistance_percent args((CHAR_DATA *ch, unsigned long int res_types));
+bool creature_resists_status args((CHAR_DATA *ch, unsigned long int res_types));
 int creature_natural_armour args((CHAR_DATA *ch));
 bool creature_echo_locates args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool clear_strength_drain args((CHAR_DATA *ch));
