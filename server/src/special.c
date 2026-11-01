@@ -2253,10 +2253,10 @@ void update_fear_auras(void)
 }
 
 /*
- * A distinct form of the existing paralysis affect. Its duration is
+ * Ghoul and lich touches share this short paralysis affect. Its duration is
  * counted by violence_update(), not by the hourly affect update.
  */
-bool is_ghoul_paralysis(const AFFECT_DATA *paf)
+bool is_contact_paralysis(const AFFECT_DATA *paf)
 {
         return paf && !paf->deleted
             && paf->type == gsn_paralysis
@@ -2266,7 +2266,7 @@ bool is_ghoul_paralysis(const AFFECT_DATA *paf)
 }
 
 /* Called once per combat pulse, before any attacks in that pulse. */
-void update_ghoul_paralysis(void)
+void update_contact_paralysis(void)
 {
         CHAR_DATA *ch;
         AFFECT_DATA *paf;
@@ -2282,7 +2282,7 @@ void update_ghoul_paralysis(void)
                 {
                         next = paf->next;
 
-                        if (!is_ghoul_paralysis(paf))
+                        if (!is_contact_paralysis(paf))
                                 continue;
 
                         if (paf->duration > 0)

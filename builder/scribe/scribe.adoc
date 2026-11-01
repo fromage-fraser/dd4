@@ -798,6 +798,7 @@ Accepted archetype names are:
 | `dwarf` | Living humanoid with infravision, magic/poison resistance and optional melee training.
 | `goblin` | Living humanoid with small fangs, infravision and sunlight sensitivity.
 | `human` | Ordinary living humanoid with neutral modifiers.
+| `black_dragon_hatchling` | Young black dragon with flight, keen senses, acid immunity/breath and natural armour -15; defaults 60 cm shoulder height, 250 cm total length, 70 kg, Medium. Claw/bite attacks without adult tail slaps or fear.
 | `manifested_double` | Conscious humanoid-shaped magical reflection; no living organs, blood, soul, pain or corpse. Medium; height and mass are unspecified.
 | `wooden_automaton` | Mindless bipedal machinery with no speech, blood, soul, pain or corpse; poison/sleep/charm/drain immunity and fire vulnerability. Defaults 175 cm, 50 kg, Medium.
 | `animated_relic` | Mindless non-undead guardian made from preserved remains; the same empty-shell physiology and immunities, without the wood profile's fire vulnerability. Defaults 175 cm, 45 kg, Medium.
@@ -9272,3 +9273,69 @@ and the warrior wears his garters on LEGS (7). The staff stays a held armour
 item. The candle-shaped workshop key and the nun's hair key stay intact.
 Room flags, doors, other objects and resets remain, including warded 20119.
 There is no matching Scribe source for this area.
+
+[[scribe-dragon-cult-creatures]]
+==== Dragon Cult creatures
+Most cult members use human. The draconian knight is a human cult guard;
+his dragon-skull helmet does not establish a reptilian body. The priestess
+adds individual scales without extra armour or dragon powers. Bob is 183 cm
+and 65 kg, matching his six-foot lanky description. The strong fresh zombie
+uses zombie with an individual 95 kg weight. Keep every authored behaviour,
+including aggression, wimpy and sentinel, and all levels, sexes and alignments.
+
+The knight and Torturer are rare, the High Priestess elite, and the wyrmling
+and Lich Priest boss. Others stay common, including office boss Fred and the
+high-level candy seller. Rank HP applies once. All rooms, flags, exits, doors,
+objects, resets, caps, keys, equipment and candy-shop stock/prices/hours stay.
+The initial 23 inhabitants carry 29 items; full caps give 27 inhabitants
+and 36 carried items.
+There is no matching Scribe source for this area.
+
+black_dragon_hatchling reuses the dragon body and adds flight, infrared,
+Detect Invisible/Hidden and acid immunity. Defaults are shoulder height60 cm,
+total length 250 cm, weight 70 kg and Medium size, without HUGE. Normal natural
+attacks choose claws or bite at the existing rate. The anatomical tail stays,
+but the inherited tail attack is removed. The code-only natural_armour trait
+is -15. Native spec_breath_acid is 100%; remove a duplicate individual record.
+There is no older-dragon fear, magic resistance, tail slap or spell package.
+NPC water rules already permit its swimming/water breathing. Other combat
+scalars are neutral; archetype XP +10 and normal breath +10 give modifier 120.
+These DD4 measurements, armour and XP are estimates informed by the 2e hatchling.
+
+The wyrmling's individual AFF mask omits native Detect Invisible so XOR does
+not remove it. Keep its Sanctuary/Protection. Clear its individual mute bit
+to allow speech. Older black-dragon powers are for later age profiles.
+
+The shared lich profile is 175 cm, 45 kg, Medium, with infrared and immunity to
+hold/paralysis alongside its existing undead defences. It stays conscious,
+organless and inorganic, with its soul and capacity for pain. Its existing
+fear_aura works independently of special turns, using the normal visible
+opponent/save/Flee rules once per opponent per fight.
+
+The internal lich_chill_touch trait gives a 20% chance after an ordinary
+unarmed hit actually hurts a living organic target. It needs usable arms
+without arm trauma. It adds 1-10 cold damage through ordinary defences; a
+surviving target hurt by that cold then saves against paralysis. Failure
+causes 2 combat rounds of short HOLD/DAZED paralysis. Existing hold/daze or
+paralysis is never stacked/refreshed. The ghoul-only elf exemption does not
+apply. Weapons, ranged attacks, named skills, misses and zero-damage hits
+cannot trigger it. Existing paralysis cures and the shared contact timer
+recover the victim. Removing or expiring arm trauma restores the touch;
+Regenerate retains its existing harmful effect on NPC undead.
+The trait lives only on species/archetypes in code and appears in MSTAT.
+Other lich combat scalars stay neutral; its archetype XP modifier is +10.
+
+The Lich Priest uses an explicit 70% spec_lich / 30% spec_cast_cleric configuration,
+replacing four overwritten legacy rows. One routine runs per opportunity.
+Its existing weighted 15/10 special bonuses round to 14, giving modifier 124
+with the archetype bonus. Keep its individual no-corpse bit but allow speech.
+No phylactery quest or automatic undead-healing contact is introduced.
+
+Jim uses only spec_fido at 100% and stays living human, as requested. The High
+Priestess uses existing spec_cast_priestess at 100%, keeping its normal level
+limits: Curse is available at her present level, other spells unlock later.
+Its existing XP calculation is unchanged. Ordinary priests keep their
+non-casting roles. No new player skill, body part, ACT/RES bit, trait area
+field or individual trait override is added. The short-contact paralysis
+clock/display names now cover liches as well as ghouls; old ghoul/ghast
+durations, saves, elf exception and ordinary long paralysis stay unchanged.

@@ -2646,7 +2646,7 @@ void do_affects(CHAR_DATA *ch, char *argument)
                                 {
                                         strcat(buf1, " while exposed");
                                 }
-                                else if (is_ghoul_paralysis(paf))
+                                else if (is_contact_paralysis(paf))
                                 {
                                         snprintf(
                                             buf, sizeof(buf),
