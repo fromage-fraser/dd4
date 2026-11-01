@@ -904,7 +904,7 @@ const struct mob_type mob_table[MAX_MOB] =
         {
                 "lich", "humanoid", "icon1", "icon2",
 
-                ACT_UNDEAD, 0,
+                ACT_UNDEAD | ACT_FEAR_AURA, AFF_INFRARED,
 
                 /* Remove the humanoid organs; keep speech and limbs. */
                 BODY_NO_HEART | BODY_INORGANIC
@@ -914,17 +914,18 @@ const struct mob_type mob_table[MAX_MOB] =
                 RES_DARK,
                 RES_HOLY,
                 RES_POISON | RES_SLEEP | RES_DRAIN | RES_CHARM
-                    | RES_COLD | RES_ELECTRICITY | RES_NONMAGIC,
+                    | RES_COLD | RES_ELECTRICITY | RES_NONMAGIC
+                    | RES_HOLD | RES_PARALYSIS,
 
                 0, 0, 0, 0,
 
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                175, 45,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                 /* Casts at its current opponent. */
                 "spec_lich", "", "",
 
-                0,
+                10,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET,
                 CREATURE_FAMILY_NONE,
@@ -1432,6 +1433,21 @@ const struct mob_type mob_table[MAX_MOB] =
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "black_dragon_hatchling", "dragon", "icon1", "icon2",
+                0, AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                0, PART_TAILATTACK,
+                0, 0, RES_ACID,
+                0, 0, 0, 0,
+                60, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_breath_acid", "", "",
+                10,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                250
         }
 
 };
@@ -1507,7 +1523,8 @@ typedef enum creature_trait_effect
         TRAIT_SILVER_CONTACT,
         TRAIT_STATUS_RESISTANCE_PERCENT,
         TRAIT_GHOUL_TOUCH_IMMUNITY,
-        TRAIT_ILLUSION_IMMUNITY
+        TRAIT_ILLUSION_IMMUNITY,
+        TRAIT_LICH_CHILL_TOUCH
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -1573,7 +1590,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"sleep_resistance_pct", TRAIT_STATUS_RESISTANCE_PERCENT, NULL},
         {"charm_resistance_pct", TRAIT_STATUS_RESISTANCE_PERCENT, NULL},
         {"ghoul_touch_immunity", TRAIT_GHOUL_TOUCH_IMMUNITY, NULL},
-        {"illusion_immunity", TRAIT_ILLUSION_IMMUNITY, NULL}
+        {"illusion_immunity", TRAIT_ILLUSION_IMMUNITY, NULL},
+        {"lich_chill_touch", TRAIT_LICH_CHILL_TOUCH, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
@@ -1615,6 +1633,14 @@ static const CREATURE_TRAIT_CHANGE scaled_armour_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
 };
+static const CREATURE_TRAIT_CHANGE black_hatchling_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -15}
+};
+static const CREATURE_TRAIT_CHANGE lich_trait_changes[] =
+{
+        {CREATURE_TRAIT_LICH_CHILL_TOUCH, 20}
+};
 static const CREATURE_TRAIT_CHANGE lizardman_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
@@ -1655,6 +1681,9 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"darkenbeast", NULL, darkenbeast_trait_changes, TRAIT_ITEMS(darkenbeast_trait_changes)},
         {"wyvern", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
         {"lizardman", NULL, lizardman_trait_changes, TRAIT_ITEMS(lizardman_trait_changes)},
+        {"black_dragon_hatchling", NULL, black_hatchling_trait_changes,
+            TRAIT_ITEMS(black_hatchling_trait_changes)},
+        {"lich", NULL, lich_trait_changes, TRAIT_ITEMS(lich_trait_changes)},
         {"wight", NULL, wight_trait_changes, TRAIT_ITEMS(wight_trait_changes)},
         {"dracolich", NULL, dracolich_trait_changes, TRAIT_ITEMS(dracolich_trait_changes)},
         {NULL, NULL, NULL, 0}
@@ -1828,7 +1857,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                         {
                                 CREATURE_TRAIT_EFFECT effect =
                                     creature_trait_definitions[profile->changes[i].id].effect;
-                                if (effect == TRAIT_STATUS_RESISTANCE_PERCENT
+                                if ((effect == TRAIT_STATUS_RESISTANCE_PERCENT
+                                    || effect == TRAIT_LICH_CHILL_TOUCH)
                                 && profile->changes[i].value < 0)
                                         issues++;
                                 if ((effect == TRAIT_GHOUL_TOUCH_IMMUNITY
@@ -1876,7 +1906,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_ILLUSION_IMMUNITY)
+                || creature_trait_definitions[i].effect > TRAIT_LICH_CHILL_TOUCH)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name

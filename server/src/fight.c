@@ -75,7 +75,8 @@ static void damage_internal args((CHAR_DATA *ch,
                                   bool forced_fall,
                                   int aggravated_chance,
                                   int aggravated_percent,
-                                  int aggravated_cap));
+                                  int aggravated_cap,
+                                  int *damage_dealt));
 
 /*
  * Death blurb
@@ -208,7 +209,7 @@ void violence_update(void)
         sprintf(last_function, "entering violence_update");
 
         /* Update these durations once globally, including idle victims. */
-        update_ghoul_paralysis();
+        update_contact_paralysis();
 
         /* Reconcile passive room exposure before this pulse's attacks. */
         update_stench();
@@ -1056,7 +1057,7 @@ void damage_from_object(CHAR_DATA *ch, CHAR_DATA *victim,
         damage_internal(
             ch, victim, dam, dt, poison,
             object_attack_resistance_types(dt, source), FALSE, TRUE, FALSE,
-            0, 0, 0);
+            0, 0, 0, NULL);
 }
 
 /*
@@ -1141,6 +1142,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
         bool poison;
         bool hit = FALSE;
         bool melee_attack = dt != gsn_shoot && dt != gsn_snap_shot;
+        int contact_damage;
 
         if (is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
                 return FALSE;
@@ -1342,7 +1344,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                                 damage_internal(
                                     ch, victim, 0, dt, poison,
                                     ordinary_attack_resistance_types(dt, wield),
-                                    FALSE, TRUE, FALSE, 0, 0, 0);
+                                    FALSE, TRUE, FALSE, 0, 0, 0, NULL);
                         }
                         else
                         {
@@ -1579,7 +1581,12 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                             poison,
                             ordinary_attack_resistance_types(dt, wield),
                             !wield && IS_NPC(ch),
-                            TRUE, FALSE, 0, 0, 0);
+                            TRUE, FALSE, 0, 0, 0, &contact_damage);
+
+                        /* Finish the original hit before its touch can cause another death. */
+                        if (!wield && IS_NPC(ch))
+                                lich_chill_touch_after_hit(
+                                    ch, victim, dt, contact_damage);
                 }
                 else if (dt == gsn_smash)
                 {
@@ -1767,7 +1774,7 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         }
 
         damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE,
-                        FALSE, 0, 0, 0);
+                        FALSE, 0, 0, 0, NULL);
 }
 
 /* Classify part of this event's defended HP loss; never subtract HP twice. */
@@ -1786,7 +1793,7 @@ void damage_with_aggravated_component(CHAR_DATA *ch, CHAR_DATA *victim,
                 res_types = skill_table[dt].res_type;
 
         damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE,
-                        FALSE, chance, percent, cap);
+                        FALSE, chance, percent, cap, NULL);
 }
 
 /*
@@ -1814,7 +1821,7 @@ void damage_with_resistance_types(
             FALSE,
             FALSE,
             FALSE,
-            0, 0, 0);
+            0, 0, 0, NULL);
 }
 
 /* Runtime-only, monotonically allocated identities survive no extraction. */
@@ -1887,7 +1894,7 @@ bool forced_fall_damage(CHAR_DATA *ch, int dam)
 
         deaths = IS_NPC(ch) ? 0 : ch->pcdata->killed;
         damage_internal(causer, ch, UMAX(0, dam), TYPE_UNDEFINED, FALSE, 0,
-                        FALSE, FALSE, TRUE, 0, 0, 0);
+                        FALSE, FALSE, TRUE, 0, 0, 0, NULL);
         return !ch->deleted && ch->in_room && ch->position != POS_DEAD
             && (IS_NPC(ch) || ch->pcdata->killed == deaths);
 }
@@ -1947,7 +1954,8 @@ static void damage_internal(CHAR_DATA *ch,
                             bool forced_fall,
                             int aggravated_chance,
                             int aggravated_percent,
-                            int aggravated_cap)
+                            int aggravated_cap,
+                            int *damage_dealt)
 {
         CHAR_DATA *fighter;
         CHAR_DATA *opponent;
@@ -1963,6 +1971,9 @@ static void damage_internal(CHAR_DATA *ch,
         int cold_bonus;
         int hit_before;
         int actual_damage;
+
+        if (damage_dealt)
+                *damage_dealt = 0;
 
         if (!forced_fall && victim != ch
         &&  (is_noncorporeal_player(ch) || is_noncorporeal_player(victim)))
@@ -2443,6 +2454,9 @@ static void damage_internal(CHAR_DATA *ch,
         actual_damage = (int)UMIN((long long)UMAX(0, dam),
             UMAX(0LL, (long long)hit_before - victim->hit));
 
+        if (damage_dealt)
+                *damage_dealt = actual_damage;
+
         if (actual_damage > 0 && victim->hit > 0
         &&  aggravated_chance > 0 && aggravated_percent > 0
         &&  aggravated_cap >= 0)
@@ -2737,6 +2751,58 @@ static void damage_internal(CHAR_DATA *ch,
 
         tail_chain();
         return;
+}
+
+/* A cold touch follows a real unarmed hit, rather than a spell opportunity. */
+void lich_chill_touch_after_hit(CHAR_DATA *ch, CHAR_DATA *victim,
+                                int dt, int actual_damage)
+{
+        AFFECT_DATA af;
+        int chance;
+        int cold_damage;
+
+        if (!ch || !victim || ch == victim || !IS_NPC(ch)
+        ||  ch->deleted || victim->deleted || actual_damage <= 0
+        ||  dt < TYPE_HIT || !ch->in_room || ch->in_room != victim->in_room
+        ||  ch->hit <= 0 || victim->hit <= 0
+        ||  ch->position == POS_DEAD || victim->position == POS_DEAD
+        ||  !HAS_ARMS(ch) || IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+        ||  IS_UNDEAD(victim) || !has_organic_body(victim)
+        ||  (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT)))
+                return;
+
+        chance = creature_trait_value(ch, CREATURE_TRAIT_LICH_CHILL_TOUCH);
+        if (chance <= 0 || number_percent() > chance)
+                return;
+
+        damage_internal(ch, victim, number_range(1, 10), gsn_chill_touch,
+            FALSE, RES_COLD, FALSE, FALSE, FALSE, 0, 0, 0, &cold_damage);
+
+        /* Death, escape and cold immunity all end the freezing attempt here. */
+        if (cold_damage <= 0 || ch->deleted || victim->deleted
+        ||  !ch->in_room || ch->in_room != victim->in_room
+        ||  ch->hit <= 0 || victim->hit <= 0
+        ||  ch->position == POS_DEAD || victim->position == POS_DEAD
+        ||  IS_AFFECTED(victim, AFF_HOLD) || IS_AFFECTED(victim, AFF_DAZED)
+        ||  is_affected(victim, gsn_paralysis))
+                return;
+
+        if (saves_resistance_effect(ch, ch->level, victim, RES_PARALYSIS))
+        {
+                send_to_char("You resist the freezing touch.\n\r", victim);
+                return;
+        }
+
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_paralysis;
+        af.duration = 2;
+        af.location = APPLY_NONE;
+        af.modifier = 0;
+        af.bitvector = AFF_HOLD | AFF_DAZED;
+        affect_to_char(victim, &af);
+        act("$N freezes beneath your chilling touch.", ch, NULL, victim, TO_CHAR);
+        act("You freeze beneath $n's chilling touch!", ch, NULL, victim, TO_VICT);
+        act("$N freezes beneath $n's chilling touch.", ch, NULL, victim, TO_NOTVICT);
 }
 
 /*

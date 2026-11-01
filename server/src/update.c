@@ -2430,7 +2430,7 @@ void char_update(void)
                                 continue;
 
                         /* This duration is maintained on combat pulses. */
-                        if (is_ghoul_paralysis(paf))
+                        if (is_contact_paralysis(paf))
                                 continue;
 
                         /* These durations are maintained by state_update(). */

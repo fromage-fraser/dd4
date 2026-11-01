@@ -3644,7 +3644,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 52
+#define MAX_MOB 53
 #define MAX_SPECIES 14
 #define MAX_RANK 6
 
@@ -5908,6 +5908,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_CHARM_RESISTANCE_PERCENT,
         CREATURE_TRAIT_GHOUL_TOUCH_IMMUNITY,
         CREATURE_TRAIT_ILLUSION_IMMUNITY,
+        CREATURE_TRAIT_LICH_CHILL_TOUCH,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 int validate_creature_traits args((void));
@@ -5968,9 +5969,11 @@ int validate_mob_special_templates args((void));
 int mob_specials_exp_bonus args((const MOB_SPECIAL_DATA *set));
 const char *mob_special_name args((SPEC_FUN *special));
 /* Natural-contact creature effects and combat-round timing. */
-bool is_ghoul_paralysis args((const AFFECT_DATA *paf));
-void update_ghoul_paralysis args((void));
+bool is_contact_paralysis args((const AFFECT_DATA *paf));
+void update_contact_paralysis args((void));
 void ghoul_touch_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
+void lich_chill_touch_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim,
+                                    int dt, int actual_damage));
 void mummy_rot_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, int actual_damage));
 void dracolich_paralysis_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool is_stench_exposure args((const AFFECT_DATA *paf));

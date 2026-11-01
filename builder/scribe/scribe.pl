@@ -80,6 +80,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         lizard lizardman
         duergar rock_worm
         manifested_double wooden_automaton animated_relic
+        black_dragon_hatchling
 /;
 
 my %mob_act = (
