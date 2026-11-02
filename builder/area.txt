@@ -5110,7 +5110,8 @@ causes 2 combat rounds of short HOLD/DAZED paralysis. Existing hold/daze or
 paralysis is never stacked/refreshed. The ghoul-only elf exemption does not
 apply. Weapons, ranged attacks, named skills, misses and zero-damage hits
 cannot trigger it. Existing paralysis cures and the shared contact timer
-recover the victim. Removing or expiring arm trauma restores the touch;
+recover the victim. Removing arm trauma restores the touch. Targeted arm
+trauma does not expire naturally.
 Regenerate retains its existing harmful effect on NPC undead.
 The trait lives only on species/archetypes in code and appears in MSTAT.
 Other lich combat scalars stay neutral; its archetype XP modifier is +10.
@@ -5129,3 +5130,80 @@ non-casting roles. No new player skill, body part, ACT/RES bit, trait area
 field or individual trait override is added. The short-contact paralysis
 clock/display names now cover liches as well as ghouls; old ghoul/ghast
 durations, saves, elf exception and ordinary long paralysis stay unchanged.
+
+Kaladim creatures
+-----------------
+Kaladim uses existing elf, vampire, skeleton, ghost, bat and animated-soft-toy
+profiles alongside five new archetypes. The Master Elf is a vampire, as chosen
+for this area, with individual 150 cm height and 45 kg weight. He is a boss;
+the existing small dragon stays elite, and the cave beast is rare. All others
+stay common. Rank HP applies once. The child remains an ordinary living elf,
+100 cm, 15 kg and Small; parentage does not add vampirism or rank.
+
+The Master keeps his Protection, elven infrared, barbed whip and every authored
+behaviour. His explicit special configuration is 70% spec_vampire and 30%
+spec_cast_undead, preserving the vampire and necromancer roles. One routine
+runs per opportunity. The normal vampire immunities, weaknesses, regeneration,
+Suck and Gaze rules apply. His old no-heart restriction is retained; the raw
+body mask also removes the humanoid PART_HEART so it cannot override that
+restriction. He remains conscious and has blood, a soul and capacity for pain.
+The other vampires' shared template is unchanged.
+
+The skeletal elves are 150 cm and 10 kg. Keep their Curse and spear gear.
+Their unused raw Charm flag is removed; the loader already strips it, so no
+follower binding is lost or introduced. The spirit maid uses ghost, apparent
+height 150 cm, unknown mass and flight. Keep her soul, pain and ordinary ghost
+phase/contact rules. The bat has an individual 8 cm body length, unknown mass
+and height, real eyes and hind legs, flight, echolocation and normal fang bite.
+Do not round its weight up to 1 kg or add fractional weights. The teddy bear
+uses animated_soft_toy, 30 cm and 1 kg, with its ordinary fire vulnerability.
+
+young_lightning_dragon is colour-unspecified. It has flight, infrared, Detect
+Invisible/Hidden, electricity immunity, natural_armour -20 and native 100%
+spec_breath_lightning. Remove the duplicate individual special. Defaults are
+120 cm shoulder height, 550 cm total length, 400 kg and Large, without HUGE.
+Ordinary attacks choose claws/bite at the existing rate; the anatomical tail
+remains without an adult tail slap. Archetype XP adds +10 to the existing
+area/special/equipment calculation; the normal breath contribution stays +10.
+Other combat scalars are neutral. No adult fear, spell,
+magic-resistance or colour-specific package is added. Measurements, armour
+and XP are DD4 estimates informed by very-young 2e dragon proportions.
+
+limbless_construct is only a body plan: inorganic, without a physical head,
+eyes, arms, legs, heart, organs or speech. It does not decide intelligence or
+soul. animated_vase, animated_blade and animated_mirror add mindlessness,
+no corpse, bloodlessness, soullessness and insensibility to pain, plus poison,
+sleep, charm and drain immunity. They remain ordinary active encounters,
+without ACT_OBJECT or NO_FIGHT. No extra senses are added.
+
+The ceramic vase is 40 cm, 3 kg and Small. The glass mirror is 100 cm, 15 kg
+and Medium. Both use ordinary blunt contact and have blunt vulnerability.
+Keep their sentinel/non-aggressive behaviour and ability to retaliate.
+The blade is 50 cm long, 1 kg and Small, with no standing-height estimate.
+It flies without invented wings and slashes with its own body. It has no
+added material resistance or vulnerability, held duplicate weapon or new loot.
+
+The internal natural_attack_type trait supplies the blade's ordinary slash
+verb (3) when no usable natural attack part is configured. Zero leaves the
+existing hit fallback; 1-19 are ordinary attack verbs. Anatomical attack parts
+and held weapons retain precedence. This adds no attack, magical-contact
+bypass, area field, body part, ACT/RES bit or individual trait override.
+The trait is visible in MSTAT with its archetype origin. No head, heart or
+limbs are invented. Ordinary attacks can hit its central body, but TARGET
+retains its existing refusal of every inorganic NPC, including torso trauma.
+
+cave_beast uses a humanoid body shape, not a human identity or giant family.
+Defaults are 300 cm, 500 kg and Large, with the existing HUGE/mute state and
+ordinary claw/bite contacts. Keep individual Detect Invisible/Hidden. There
+is no extra attack, special, armour or resistance package. Its portrait supports
+the upright clawed/fanged anatomy; exact measurements remain estimates.
+
+Clear individual masks that would cancel inherited flight, corpse restrictions
+or construct anatomy. Restore the ordinary child's speech. All authored ACT
+behaviours, levels, sexes, alignments, remaining buffs and senses stay.
+All 31 room flags, exits, doors, all 13 objects, reset commands, caps, placements,
+equipment and loot stay. The sofa already has the correct furniture type.
+The poisoned sink and scale-cloth bonuses are unchanged. Initial population
+is 22 with 7 carried items; full caps give 34 with 11 items. Area XP remains 90.
+Two reset comments and obvious room-text typos are corrected without moving
+anything. There is no matching Scribe source and no portrait change.
