@@ -3644,8 +3644,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 53
-#define MAX_SPECIES 14
+#define MAX_MOB 58
+#define MAX_SPECIES 15
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -5909,6 +5909,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_GHOUL_TOUCH_IMMUNITY,
         CREATURE_TRAIT_ILLUSION_IMMUNITY,
         CREATURE_TRAIT_LICH_CHILL_TOUCH,
+        CREATURE_TRAIT_NATURAL_ATTACK_TYPE,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 int validate_creature_traits args((void));

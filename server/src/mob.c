@@ -292,6 +292,23 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "limbless_construct",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS
+                    | BODY_NO_HEART | BODY_NO_SPEECH | BODY_INORGANIC,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1448,6 +1465,67 @@ const struct mob_type mob_table[MAX_MOB] =
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE,
                 250
+        },
+
+        {
+                "young_lightning_dragon", "dragon", "icon1", "icon2",
+                0, AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                0, PART_TAILATTACK,
+                0, 0, RES_ELECTRICITY,
+                0, 0, 0, 0,
+                120, 400, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_lightning", "", "",
+                10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 550
+        },
+
+        {
+                "animated_vase", "limbless_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS, 0,
+                0, RES_BLUNT, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                40, 3, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "animated_blade", "limbless_construct", "icon1", "icon2",
+                0, AFF_MINDLESS | AFF_FLYING,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS, 0,
+                0, 0, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 50
+        },
+
+        {
+                "animated_mirror", "limbless_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS, 0,
+                0, RES_BLUNT, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                100, 15, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "cave_beast", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | BODY_NO_SPEECH | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                300, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1524,7 +1602,8 @@ typedef enum creature_trait_effect
         TRAIT_STATUS_RESISTANCE_PERCENT,
         TRAIT_GHOUL_TOUCH_IMMUNITY,
         TRAIT_ILLUSION_IMMUNITY,
-        TRAIT_LICH_CHILL_TOUCH
+        TRAIT_LICH_CHILL_TOUCH,
+        TRAIT_NATURAL_ATTACK_TYPE
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -1591,7 +1670,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"charm_resistance_pct", TRAIT_STATUS_RESISTANCE_PERCENT, NULL},
         {"ghoul_touch_immunity", TRAIT_GHOUL_TOUCH_IMMUNITY, NULL},
         {"illusion_immunity", TRAIT_ILLUSION_IMMUNITY, NULL},
-        {"lich_chill_touch", TRAIT_LICH_CHILL_TOUCH, NULL}
+        {"lich_chill_touch", TRAIT_LICH_CHILL_TOUCH, NULL},
+        {"natural_attack_type", TRAIT_NATURAL_ATTACK_TYPE, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
@@ -1636,6 +1716,14 @@ static const CREATURE_TRAIT_CHANGE scaled_armour_trait_changes[] =
 static const CREATURE_TRAIT_CHANGE black_hatchling_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -15}
+};
+static const CREATURE_TRAIT_CHANGE young_lightning_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
+};
+static const CREATURE_TRAIT_CHANGE animated_blade_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 3} /* slash with its own body */
 };
 static const CREATURE_TRAIT_CHANGE lich_trait_changes[] =
 {
@@ -1684,6 +1772,10 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"black_dragon_hatchling", NULL, black_hatchling_trait_changes,
             TRAIT_ITEMS(black_hatchling_trait_changes)},
         {"lich", NULL, lich_trait_changes, TRAIT_ITEMS(lich_trait_changes)},
+        {"young_lightning_dragon", NULL, young_lightning_trait_changes,
+            TRAIT_ITEMS(young_lightning_trait_changes)},
+        {"animated_blade", NULL, animated_blade_trait_changes,
+            TRAIT_ITEMS(animated_blade_trait_changes)},
         {"wight", NULL, wight_trait_changes, TRAIT_ITEMS(wight_trait_changes)},
         {"dracolich", NULL, dracolich_trait_changes, TRAIT_ITEMS(dracolich_trait_changes)},
         {NULL, NULL, NULL, 0}
@@ -1861,6 +1953,11 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_LICH_CHILL_TOUCH)
                                 && profile->changes[i].value < 0)
                                         issues++;
+                                /* Zero removes the override; 1-19 are ordinary attack verbs. */
+                                if (effect == TRAIT_NATURAL_ATTACK_TYPE
+                                && (profile->changes[i].value < 0
+                                    || profile->changes[i].value > 19))
+                                        issues++;
                                 if ((effect == TRAIT_GHOUL_TOUCH_IMMUNITY
                                     || effect == TRAIT_ILLUSION_IMMUNITY)
                                 && (profile->changes[i].value < 0
@@ -1906,7 +2003,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_LICH_CHILL_TOUCH)
+                || creature_trait_definitions[i].effect > TRAIT_NATURAL_ATTACK_TYPE)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name
@@ -3281,6 +3378,7 @@ int mob_natural_attack_type(CHAR_DATA *mob)
         size_t i;
         int count;
         int choice;
+        int native_type;
 
         parts = mob_usable_attack_parts(mob);
         count = 0;
@@ -3292,7 +3390,14 @@ int mob_natural_attack_type(CHAR_DATA *mob)
         }
 
         if (count == 0)
-                return TYPE_HIT;
+        {
+                /* An animated blade is its own weapon, without invented limbs. */
+                native_type = mob && IS_NPC(mob)
+                    ? creature_trait_value(mob, CREATURE_TRAIT_NATURAL_ATTACK_TYPE)
+                    : 0;
+                return native_type > 0 && native_type <= 19
+                    ? TYPE_HIT + native_type : TYPE_HIT;
+        }
 
         choice = count == 1 ? 1 : number_range(1, count);
 
