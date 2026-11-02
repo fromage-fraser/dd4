@@ -828,7 +828,10 @@ Accepted archetype names are:
 | `orc` | Living humanoid with infravision, anatomical fangs and sunlight sensitivity; no automatic bite.
 | `elf` | Living humanoid with infravision, 90-percent sleep/charm traits and ordinary-ghoul paralysis exemption; further training/woodland traits await review.
 | `preserved_head` | Nonliving, mindless trophy based on `head_only`, with eyes, ears, a defensive fang bite and no blood, soul, pain, speech or fresh corpse.
-| `half_orc`, `hobgoblin`, `ogre`, `troll`, `ogre_mage`, `giant`, `titan` | Humanoid placeholders with creature-family identity. Their full creature traits await review.
+| `half_orc` | Living mixed-orc humanoid with infrared and anatomical canines, without an automatic bite or sunlight penalty; defaults 175 cm, 80 kg, Medium.
+| `human_goblin` | Living human/goblin hybrid with infrared and anatomical fangs, without an automatic bite or sunlight penalty; goblin kin for dwarf training; defaults 150 cm, 50 kg, Medium.
+| `hobgoblin` | Living humanoid with infrared and no sunlight penalty; defaults 200 cm, 100 kg, Medium. Construction recognition awaits the shared mechanic.
+| `ogre`, `troll`, `ogre_mage`, `giant`, `titan` | Humanoid placeholders with creature-family identity. Their full creature traits await review.
 | `goat` | Existing goat archetype, based on `farm_mammal`.
 | `fire_elemental` | Existing fire-elemental test archetype, based on `elemental`.
 | `skeleton` | Skeletal humanoid archetype.
@@ -9422,3 +9425,61 @@ The poisoned sink and scale-cloth bonuses are unchanged. Initial population
 is 22 with 7 carried items; full caps give 34 with 11 items. Area XP remains 90.
 Two reset comments and obvious room-text typos are corrected without moving
 anything. There is no matching Scribe source and no portrait change.
+
+[[scribe-fleshmonger-creatures]]
+==== Fleshmonger's Tower creatures
+All fourteen definitions use the humanoid body and stay living. The experiments
+are crossbreeds with normal organs, blood, soul, pain and corpse rules. There is
+no new body species, anatomy flag, area field, individual trait override or
+player-race package.
+
+human_goblin supplies infrared and small anatomical fangs, without a natural
+bite, sunlight penalty, special routine, resistance or combat/XP bonus. Defaults
+are 150 cm, 50 kg and Medium. Its existing goblin-family identity allows the
+approved dwarf melee training to recognise these hybrids as goblin kin. This
+profile covers 9400, 9401, 9405 and 9406. Individual 9401 is 175 cm and 80 kg,
+matching the large guard described in his room.
+
+half_orc now supplies infrared and anatomical canines, without a natural bite,
+sunlight penalty or other racial bonus. Defaults are 175 cm, 80 kg and Medium.
+Its existing half-orc family remains. Use it for 9402, 9407 and the human/orc/
+goblin senior guard 9412. The 2e half-orc category includes several orc crosses,
+so that guard does not need a one-off archetype. He has individual 195 cm and
+110 kg measurements, with Medium size and no HUGE flag. The selective hybrid
+traits and exact weights are approved DD4 adaptations, not a full 2e stat block.
+
+hobgoblin now supplies infrared, 200 cm height, 100 kg weight and Medium size,
+with no sunlight penalty or extra combat, XP, resistance or special package.
+Its existing family remains. The book's 6.5-foot stature and ability to fight
+equally well in daylight support this profile; weight is a DD4 estimate. The
+40-percent construction/slopes/shifting-wall recognition is recorded for the
+shared construction-sense follow-up. It is not implemented by this conversion.
+Keep servant 9411's good alignment, speech and frightened/wimpy behaviour.
+
+The cook, boy, human prisoner and Fleshmonger use human. The boy has individual
+155 cm and 45 kg measurements, Medium, fitting the approved adolescent reading.
+Other humans keep 175 cm and 75 kg. Orc prisoner 9409 keeps orc defaults 175 cm,
+85 kg, Medium; goblin prisoner 9410 keeps 120 cm, 30 kg, Small. Both pure orcs
+and goblins retain their existing NPC sunlight penalty. No reduced prisoner
+weight is inferred merely from dirt or mistreatment. Dimensions remain
+descriptive, alongside the existing separate size-category rules.
+
+Senior guard 9412 is rare; the Fleshmonger keeps his explicit elite rank. All
+others stay common. Existing generated-HP rank multipliers apply once: rare2x,
+elite5x. Keep the Fleshmonger's 100% spec_cast_mage and both greet programs. His
+order to senior to scowl and attack remains the start of that guard's fight.
+Do not add aggression to other guards from hostile prose. All authored ACT
+behaviour, levels, sexes, alignments and existing detection buffs stay.
+
+Keep individual BODY_NO_SPEECH on 9406, 9407, 9409 and 9410. The hybrid prisoners
+explicitly cannot talk; the others' silence stays an individual condition.
+Do not cancel these flags as duplicate inheritance: their profiles can speak.
+
+Room 9417's downward stair keywords are corrected from stairs up stairwell to
+stairs down stairwell. Direction and destination 9400 were already correct.
+All twenty room flags, doors, exits and destinations, including toxic cells
+and the Spellcraft laboratory, stay. All fifteen objects and every reset,
+placement, cap, item and wear slot stay: the key on guard 9405, the spoon's
+scoop verb, robe/glove bonuses and servants' ABOUT-slot shirts are preserved.
+Initial population remains 20 with 37 carried items; full caps give 24 with
+46 items. No matching Scribe source or portrait changes are involved.

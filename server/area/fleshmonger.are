@@ -19,6 +19,7 @@ goblin.  He is well-armoured and intent on stopping you entering the tower.
 ~
 |
 
+< human_goblin~ common~
 #9401
 guard hybrid duty~
 the on-duty guard~
@@ -34,6 +35,9 @@ foyer, he is some sort of goblin/human hybrid.
 0 0
 0 0 1
 
+< human_goblin~ common~
+MobHeight 175
+MobWeight 80
 #9402
 guard hybrid mufti~
 the mufti guard~
@@ -48,6 +52,7 @@ about that.  He appears to be a cross between a human and an orc.
 0 0
 0 0 1
 
+< half_orc~ common~
 #9403
 cook~
 the cook~
@@ -62,6 +67,7 @@ kitchen.
 0 0
 0 0 1
 
+< human~ common~
 #9404
 boy cooks~
 the cook's boy~
@@ -76,6 +82,9 @@ ignores you too.
 0 0
 0 0 1
 
+< human~ common~
+MobHeight 155
+MobWeight 45
 #9405
 guard hybrid duty~
 the on-duty guard~
@@ -91,6 +100,7 @@ human/goblin hybrid.
 0 0
 0 0 1
 
+< human_goblin~ common~
 #9406
 prisoner hybrid~
 a hybrid prisoner~
@@ -106,6 +116,7 @@ as his guards.  He doesn't appear to be able to talk.
 32 0
 0 0 1
 
+< human_goblin~ common~
 #9407
 prisoner hybrid~
 a hybrid prisoner~
@@ -121,6 +132,7 @@ as the guards above.  He doesn't appear to be able to talk.
 32 0
 0 0 1
 
+< half_orc~ common~
 #9408
 prisoner human~
 a human prisoner~
@@ -135,6 +147,7 @@ and very dirty.  He appears to have been treated very badly.
 0 0
 0 0 1
 
+< human~ common~
 #9409
 prisoner orc~
 an orc prisoner~
@@ -149,6 +162,7 @@ appears to have been treated very badly.
 32 0
 0 0 1
 
+< orc~ common~
 #9410
 prisoner goblin~
 a goblin prisoner~
@@ -163,6 +177,7 @@ unsure if you are his saviour or executioner.
 32 0
 0 0 1
 
+< goblin~ common~
 #9411
 servant hobgoblin~
 a hobgoblin servant~
@@ -177,6 +192,7 @@ he should do about you.
 0 0
 0 0 1
 
+< hobgoblin~ common~
 #9412
 guard senior hybrid~
 the senior guard~
@@ -192,6 +208,9 @@ goblin.
 0 0
 0 0 1
 
+< half_orc~ rare~
+MobHeight 195
+MobWeight 110
 #9413
 fleshmonger mage man~
 the Fleshmonger~
@@ -211,8 +230,8 @@ he is barely recognisable as such.
     mpforce senior mpkill $n
 ~
 |
-< reserved~ elite~
 
+< human~ elite~
 #0
 
 #OBJECTS
@@ -833,7 +852,7 @@ D 5
 The stairs are made of iron, and wind further up into the tower or down into
 the tower foyer.
 ~
-stairs up stairwell~
+stairs down stairwell~
 0 -1 9400
 E
 books book shelf shelves bookshelf bookshelves table tables~

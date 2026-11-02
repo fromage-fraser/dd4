@@ -997,12 +997,12 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "half_orc", "humanoid", "icon1", "icon2",
-                0, 0,
-                0, 0,
+                0, AFF_INFRARED,
+                PART_FANGS, 0,
                 0, 0, 0,
                 0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                175, 80,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "",
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
@@ -1027,12 +1027,12 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "hobgoblin", "humanoid", "icon1", "icon2",
-                0, 0,
+                0, AFF_INFRARED,
                 0, 0,
                 0, 0, 0,
                 0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                200, 100,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "",
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
@@ -1526,6 +1526,19 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "",
                 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+
+        /* These living hybrids keep their own defaults, rather than stacking parents. */
+        {
+                "human_goblin", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED,
+                PART_FANGS, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                150, 50, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_GOBLIN, MOB_TEMPLATE_UNSET
         }
 
 };
