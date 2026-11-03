@@ -777,14 +777,15 @@ const struct mob_type mob_table[MAX_MOB] =
                  */
                 RES_DARK,
                 RES_HOLY,
-                RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC,
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC
+                    | RES_COLD | RES_CHARM | RES_HOLD | RES_PARALYSIS,
 
                 /* Ordinary DD4 HP, damage, critical and swiftness values. */
                 0, 0, 0, 0,
 
-                /* Retain humanoid dimension/language metadata. */
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                /* Human-sized spirit; its mass remains unspecified. */
+                175, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                 /*
                  * Stronger life drain plus live spectral phasing.
@@ -797,10 +798,7 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 MOB_SPECIAL_CHANCES_AUTO,
 
-                /*
-                 * Begin semi-material so the existing physical-contact
-                 * rules remain usable before spec_spectre is introduced.
-                 */
+                /* Start with the existing semi-material contact rules. */
                 GHOST_PHASE_SEMI_MATERIAL,
                 CREATURE_FAMILY_NONE,
                 MOB_TEMPLATE_UNSET
@@ -1616,7 +1614,8 @@ typedef enum creature_trait_effect
         TRAIT_GHOUL_TOUCH_IMMUNITY,
         TRAIT_ILLUSION_IMMUNITY,
         TRAIT_LICH_CHILL_TOUCH,
-        TRAIT_NATURAL_ATTACK_TYPE
+        TRAIT_NATURAL_ATTACK_TYPE,
+        TRAIT_SUNLIGHT_POWERLESS
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -1684,7 +1683,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"ghoul_touch_immunity", TRAIT_GHOUL_TOUCH_IMMUNITY, NULL},
         {"illusion_immunity", TRAIT_ILLUSION_IMMUNITY, NULL},
         {"lich_chill_touch", TRAIT_LICH_CHILL_TOUCH, NULL},
-        {"natural_attack_type", TRAIT_NATURAL_ATTACK_TYPE, NULL}
+        {"natural_attack_type", TRAIT_NATURAL_ATTACK_TYPE, NULL},
+        {"sunlight_powerless", TRAIT_SUNLIGHT_POWERLESS, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
@@ -1717,6 +1717,10 @@ static const CREATURE_TRAIT_CHANGE elf_trait_changes[] =
 static const CREATURE_TRAIT_CHANGE bat_trait_changes[] =
 {
         {CREATURE_TRAIT_ECHOLOCATION, 1}
+};
+static const CREATURE_TRAIT_CHANGE spectre_trait_changes[] =
+{
+        {CREATURE_TRAIT_SUNLIGHT_POWERLESS, 1}
 };
 static const CREATURE_TRAIT_CHANGE shadow_trait_changes[] =
 {
@@ -1778,6 +1782,7 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"bat", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
         {"vampire_bat_form", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
         {"shadow", NULL, shadow_trait_changes, TRAIT_ITEMS(shadow_trait_changes)},
+        {"spectre", NULL, spectre_trait_changes, TRAIT_ITEMS(spectre_trait_changes)},
         {"prism_dragon", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
         {"darkenbeast", NULL, darkenbeast_trait_changes, TRAIT_ITEMS(darkenbeast_trait_changes)},
         {"wyvern", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
@@ -1972,7 +1977,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || profile->changes[i].value > 19))
                                         issues++;
                                 if ((effect == TRAIT_GHOUL_TOUCH_IMMUNITY
-                                    || effect == TRAIT_ILLUSION_IMMUNITY)
+                                    || effect == TRAIT_ILLUSION_IMMUNITY
+                                    || effect == TRAIT_SUNLIGHT_POWERLESS)
                                 && (profile->changes[i].value < 0
                                     || profile->changes[i].value > 1))
                                         issues++;
@@ -2016,7 +2022,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_NATURAL_ATTACK_TYPE)
+                || creature_trait_definitions[i].effect > TRAIT_SUNLIGHT_POWERLESS)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name
@@ -2152,20 +2158,42 @@ bool creature_is_sunlight_sensitive(CHAR_DATA *ch)
         return creature_trait_value(ch, CREATURE_TRAIT_SUNLIGHT_SENSITIVE) != 0;
 }
 
-/* Keep the existing weather, shelter and ranged-attack rules. */
-int creature_sunlight_hit_penalty(CHAR_DATA *ch)
+/* Both sunlight traits use the same natural light and shelter rules. */
+static bool creature_in_direct_sunlight(CHAR_DATA *ch)
 {
         ROOM_INDEX_DATA *room;
-        int id, penalty = 0;
         if (!ch || !ch->in_room)
-                return 0;
+                return FALSE;
         room = ch->in_room;
-        if (!IS_OUTSIDE(ch)
-        || room->sector_type == SECT_UNDERWATER
-        || room->sector_type == SECT_UNDERWATER_GROUND
-        || IS_SET(room->room_flags, ROOM_DARK | ROOM_NO_WEATHER)
-        || weather_info.sunlight != SUN_LIGHT
-        || weather_info.sky != SKY_CLOUDLESS)
+        return IS_OUTSIDE(ch)
+            && room->sector_type != SECT_UNDERWATER
+            && room->sector_type != SECT_UNDERWATER_GROUND
+            && !IS_SET(room->room_flags, ROOM_DARK | ROOM_NO_WEATHER)
+            && weather_info.sunlight == SUN_LIGHT
+            && weather_info.sky == SKY_CLOUDLESS;
+}
+
+bool creature_sunlight_powerless(CHAR_DATA *ch)
+{
+        return creature_trait_value(ch, CREATURE_TRAIT_SUNLIGHT_POWERLESS) > 0
+            && creature_in_direct_sunlight(ch);
+}
+
+/* Sunlight exposes a phased spirit without changing an explicit NONE. */
+void update_creature_sunlight(CHAR_DATA *ch)
+{
+        if (creature_sunlight_powerless(ch)
+        && ch->ghost_phase == GHOST_PHASE_ETHEREAL
+        && set_ghost_phase(ch, GHOST_PHASE_SEMI_MATERIAL))
+                act("{dSunlight draws $n back into a half-material form.{x",
+                    ch, NULL, NULL, TO_ROOM);
+}
+
+/* The existing melee callers still decide whether this penalty applies. */
+int creature_sunlight_hit_penalty(CHAR_DATA *ch)
+{
+        int id, penalty = 0;
+        if (!creature_in_direct_sunlight(ch))
                 return 0;
         for (id = 0; id < CREATURE_TRAIT_COUNT; id++)
                 if (creature_trait_definitions[id].effect == TRAIT_SUNLIGHT_ACCURACY)

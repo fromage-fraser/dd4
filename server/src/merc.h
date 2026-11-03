@@ -5910,6 +5910,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_ILLUSION_IMMUNITY,
         CREATURE_TRAIT_LICH_CHILL_TOUCH,
         CREATURE_TRAIT_NATURAL_ATTACK_TYPE,
+        CREATURE_TRAIT_SUNLIGHT_POWERLESS,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 int validate_creature_traits args((void));
@@ -5925,6 +5926,8 @@ void show_creature_traits args((CHAR_DATA *viewer, CHAR_DATA *victim));
 int creature_melee_hit_bonus args((CHAR_DATA *attacker, CHAR_DATA *victim));
 bool creature_is_sunlight_sensitive args((CHAR_DATA *ch));
 int creature_sunlight_hit_penalty args((CHAR_DATA *ch));
+bool creature_sunlight_powerless args((CHAR_DATA *ch));
+void update_creature_sunlight args((CHAR_DATA *ch));
 const char *ghost_phase_name args((GHOST_PHASE phase));
 bool parse_ghost_phase args((const char *text, GHOST_PHASE *phase));
 bool set_ghost_phase args((CHAR_DATA *ch, GHOST_PHASE phase));

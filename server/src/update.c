@@ -1883,6 +1883,9 @@ void mobile_update(void)
                 if (!IS_NPC(ch) || !ch->in_room)
                         continue;
 
+                /* Changing daylight also reaches idle, held or charmed spirits. */
+                update_creature_sunlight(ch);
+
                 /*
                  * Some summoned mobs should disappear when their master is absent.
                  * Gezhp
