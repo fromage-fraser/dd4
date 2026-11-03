@@ -1380,6 +1380,11 @@ bool spec_spectre(CHAR_DATA *ch)
 {
         CHAR_DATA *victim;
 
+        update_creature_sunlight(ch);
+        /* Returning FALSE leaves ordinary movement and fleeing available. */
+        if (creature_sunlight_powerless(ch))
+                return FALSE;
+
         if (!ch
         ||  !IS_NPC(ch)
         ||  ch->deleted

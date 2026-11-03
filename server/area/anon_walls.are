@@ -16,6 +16,7 @@ of evil forces.
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #31201
 south wall guard~
 a south wall guard~
@@ -30,6 +31,7 @@ of evil forces.
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #31202
 north wall guard~
 a north wall guard~
@@ -44,10 +46,11 @@ of evil forces.
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #31203
 west wall guard~
 an west wall guard~
-An west wall guard patrols the battlements, ever alert for approaching enemies.
+A west wall guard patrols the battlements, ever alert for approaching enemies.
 ~
 These dedicated guards are among the elite of the guards of the city,
 selected for their dedication, endurance and keen eyesight. They remain
@@ -58,6 +61,7 @@ of evil forces.
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #31204
 guard captain east wall~
 the east wall guard captain~
@@ -72,6 +76,7 @@ to handle himself in battle.
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
 #31205
 guard captain south wall~
 the south wall guard captain~
@@ -86,6 +91,7 @@ to handle himself in battle.
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
 #31206
 guard captain north wall~
 the north wall guard captain~
@@ -100,6 +106,7 @@ to handle himself in battle.
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
 #31207
 guard captain west wall~
 the west wall guard captain~
@@ -114,6 +121,7 @@ to handle himself in battle.
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
 #31208
 knight~
 a knight~
@@ -127,6 +135,7 @@ chaos have severely depleted their numbers, and now very few remain.
 58 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ elite~
 #31209
 battle mage~
 an elven battle mage~
@@ -138,10 +147,11 @@ keenly as any Dwarven or Human mercenary. These few become mercenaries or
 adventurers. Some of them, such as this fellow, labor for the forces of
 good, if the price is right.
 ~
-2|64 4|8|16|32|512|8192|524288 500 S
+2|64 532540 500 S
 56 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< elf~ elite~
 #31210
 marshal~
 the marshal~
@@ -155,6 +165,7 @@ duty, ever eager to make sure order is maintained on the walls.
 62 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ boss~
 #31211
 crossbowman~
 a crossbowman~
@@ -168,6 +179,7 @@ ranks.
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #31212
 smith~
 the guard smith~
@@ -176,10 +188,11 @@ The wall guard smith grunts at you.
 This stout dwarf spends all his time repairing damaged equipment. He isn't
 one for much conversation.
 ~
-2|64 4|8|16|32|512 0 S
+2|64 60 0 S
 59 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
 #31213
 spectre~
 a vile spectre~
@@ -192,7 +205,8 @@ condemned to remain here for eternity in punishment for his sins.
 2|32|64 8|32|128|512|1024|8192|32768|524288 -1000 S
 60 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< spectre~ rare~
 #31214
 ghost~
 a ghost~
@@ -206,7 +220,8 @@ her neck. Her spirit remains here, tormented by its misery.
 2|64|128 2|4|8|32|128|512|1024|8192|32768|65536|524288 1000 S
 60 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 2
+< ghost~ common~
 #31215
 priestess~
 a priestess of Anon~
@@ -216,10 +231,11 @@ This kind woman cures the injuries and ailments of the city guards. She
 smiles at you as you enter, and bids you state your injuries so she can
 heal them.
 ~
-2|64|2048 4|8|32|128|512|8192 1000 S
+10306 4|8|32|128|512|8192 1000 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #31216
 worker~
 a burly worker~
@@ -232,18 +248,21 @@ tattoos than skin, it seems, and more hair than the average Kodiak grizzly.
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 95
 #31217
 sailor~
 a sailor~
 An old, one-eyed sailor swigs from his bottle of rum.
 ~
 This disreputable-looking fellow is a crew member from one of the scows. He
-is simply waiting till its time to go.
+is simply waiting till it's time to go.
 ~
 64 0 0 S
 7 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #31218
 dock master~
 the dock master~
@@ -255,6 +274,7 @@ The dock master is far too busy to speak to you.
 12 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #0
 
 
@@ -408,7 +428,7 @@ gauntlets mail~
 a pair of mail gauntlets~
 A pair of mail gauntlets lie here.~
 ~
-9 64|1024 1|16
+9 64|1024 1|128
 0~ 0~ 0~ 0~
 4 0 0
 A
@@ -3026,7 +3046,7 @@ S
 #RESETS
 M 1 31200 4 31272           ; east wall guard
 E 1 31200 1 16              ;   ornate longsword
-E 1 31201 1 5               ;   ornate breatplate
+E 1 31201 1 5               ;   ornate breastplate
 E 1 31202 1 14              ;   ornate bracer
 E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
@@ -3042,7 +3062,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 M 1 31200 4 31273           ; east wall guard
 E 1 31200 1 16              ;   ornate longsword
@@ -3052,7 +3072,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 *
 M 1 31201 4 31297           ; south wall guard
@@ -3063,7 +3083,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 M 1 31201 4 31302           ; south wall guard
 E 1 31200 1 16              ;   ornate longsword
@@ -3073,7 +3093,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 M 1 31201 4 31307           ; south wall guard
 E 1 31200 1 16              ;   ornate longsword
@@ -3083,7 +3103,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 *
 M 1 31202 4 31286           ; north wall guard
@@ -3094,7 +3114,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 M 1 31202 4 31291           ; north wall guard
 E 1 31200 1 16              ;   ornate longsword
@@ -3104,7 +3124,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 M 1 31202 4 31296           ; north wall guard
 E 1 31200 1 16              ;   ornate longsword
@@ -3114,7 +3134,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 *
 M 1 31203 4 31279           ; west wall guard
@@ -3125,7 +3145,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 M 1 31203 4 31276           ; west wall guard
 E 1 31200 1 16              ;   ornate longsword
@@ -3135,7 +3155,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 M 1 31203 4 31216           ; west wall guard
 E 1 31200 1 16              ;   ornate longsword
@@ -3145,7 +3165,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 *
 M 1 31204 1 31310           ; east wall captain
@@ -3156,7 +3176,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 *
 M 1 31205 1 31300           ; south wall captain
@@ -3167,7 +3187,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 *
 M 1 31206 1 31291           ; north wall captain
@@ -3178,7 +3198,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 *
 M 1 31207 1 31308           ; west wall captain
@@ -3189,7 +3209,7 @@ E 1 31202 1 15              ;   ornate bracer
 E 1 31203 1 3               ;   ornate cloak
 E 1 31204 1 6               ;   ornate helm
 E 1 31205 1 11              ;   ornate shield
-E 1 31206 1 17              ;   throwning spear
+E 1 31206 1 17              ;   throwing spear
 E 1 31207 1 1               ;   signet ring
 *
 M 1 31208 1 31309           ; Knight
@@ -3372,7 +3392,6 @@ M  31209 spec_cast_archmage an elven battle mage
 M  31210 spec_cast_judge    the marshal
 M  31211 spec_cast_judge    a crossbowman
 M  31212 spec_warrior       smithymeister!
-M  31213 spec_cast_undead   a vile spectre
 M  31214 spec_cast_adept    a ghost
 M  31215 spec_cast_adept    a priestess of Anon
 S

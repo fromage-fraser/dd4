@@ -1144,6 +1144,10 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
         bool melee_attack = dt != gsn_shoot && dt != gsn_snap_shot;
         int contact_damage;
 
+        update_creature_sunlight(ch);
+        if (creature_sunlight_powerless(ch))
+                return FALSE;
+
         if (is_noncorporeal_player(ch) || is_noncorporeal_player(victim))
                 return FALSE;
 

@@ -1767,6 +1767,8 @@ void char_to_room( CHAR_DATA *ch, ROOM_INDEX_DATA *pRoomIndex )
         ch->next_in_room        = pRoomIndex->people;
         pRoomIndex->people      = ch;
 
+        update_creature_sunlight(ch);
+
         if (!IS_NPC(ch))
         {
                 ++ch->in_room->area->nplayer;

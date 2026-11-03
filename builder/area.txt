@@ -995,6 +995,9 @@ Passive combat defaults are:
     resistance:     RES_DARK
     vulnerability:  RES_HOLY
     immunity:       RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC
+                    | RES_COLD | RES_CHARM | RES_HOLD | RES_PARALYSIS
+    dimensions:     height 175 cm, Medium; mass and length unspecified
+    internal trait: sunlight_powerless
 
 The initial ghostphase is semi_material.
 
@@ -1016,8 +1019,12 @@ while ordinary damage can continue. IS_UNDEAD() targets are left alone.
 An explicit ghostphase none disables automatic spectre phase transitions
 without disabling life drain or removing RES_NONMAGIC.
 
-Charm, hold, daze, wait state, unconsciousness and death suppress both phase
-transitions and drain attempts.
+Charm, hold, daze, wait state, unconsciousness and death suppress the
+special's voluntary phase transitions and drain attempts. Direct natural
+sunlight can still expose a held, charmed or waiting ethereal spirit.
+Sunlight stops ordinary attacks, life drain and automatic ethereal hiding;
+an explicit ghostphase none stays none. It causes no burn and does not
+prevent movement or fleeing. See Walls of Anon creatures for exposure rules.
 
 A fully ethereal spectre cannot use or be reached by the currently supported
 physical weapon/shield contacts with an unphased character, even with a
@@ -5265,3 +5272,38 @@ placement, cap, item and wear slot stay: the key on guard 9405, the spoon's
 scoop verb, robe/glove bonuses and servants' ABOUT-slot shirts are preserved.
 Initial population remains 20 with 37 carried items; full caps give 24 with
 46 items. No matching Scribe source or portrait changes are involved.
+
+Walls of Anon creatures
+----------------------
+Walls of Anon now uses the human, elf, dwarf, spectre and ghost archetypes.
+The four wall captains are rare, the knight and battle mage are elite, and
+the marshal is a boss. The vile spectre is rare; everyone else stays common.
+Rank affects encounter strength, not physical size. The burly worker has an
+individual weight of 95 kg; the one-eyed sailor still has a useful eye.
+
+Spectres are Medium spirits, 175 cm tall, with their mass left unspecified.
+They inherit cold, charm, hold and paralysis immunity alongside the existing
+poison, sleep, drain and ordinary nonmagical-contact immunities. They retain
+their minds, souls and capacity for pain, but have no organic blood or corpse.
+Their native spec_spectre supplies the existing life drain and phase behaviour.
+The Walls spectre uses that special instead of the broad undead caster.
+
+The code-only sunlight_powerless trait stops a spectre's ordinary attacks
+and native life drain in direct natural sunlight. It also prevents automatic
+ethereal hiding and draws an ethereal spectre back to semi-material form.
+An explicit phase of none stays none. Movement, fleeing and the ordinary
+incoming-damage rules still work; sunlight itself causes no damage.
+Exposure uses the same rules as sunlight sensitivity: a cloudless SUN_LIGHT
+day, outdoors, outside both underwater sectors, without dark or no_weather.
+Artificial light does not count. Shelter restores normal behaviour.
+This is a species/archetype trait in code, shown with its origin in MSTAT;
+there is no new area field, Scribe command or player racial ability.
+
+The elf and dwarf inherit infrared rather than cancelling it with duplicate
+area flags. Authored human infrared and all other individual buffs stay.
+The two spirits' sexes now match their descriptions and existing portraits.
+The priestess keeps regeneration and spec_cast_adept and also offers the
+ordinary paid HEAL menu, at the existing prices. She gains the usual healer
+quest exclusion; this does not add the separate priest services role.
+The mail gauntlets now advertise hands, matching their existing reset slot.
+All room flags, wards, original placements, limits, equipment and keys stay.
