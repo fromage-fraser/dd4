@@ -9631,3 +9631,41 @@ Insufficient gold refuses the order without an item or charge, and the chef
 returns to the kitchen after the interaction. Room rental and staff programs
 are separate and retain their behaviour. Someone keeps its WIZINVIS flag,
 level, physiology and counter placement. There is no matching Arika source.
+
+[[scribe-gypsy-camp]]
+==== Gypsy Camp people and invisible helpers
+
+The Gypsy Camp uses human for Lyanka 530, Bidshika 531 and Brishen 532.
+They keep their individual adept, clan-guard and psionicist specials, all at
+100%. These are roles, not human racial abilities. All six area mobs remain
+common; the conversion does not add a rank multiplier to clan services.
+
+The three people have ordinary living humanoid anatomy and Medium size.
+Lyanka is hunched, at 155 cm and 50 kg; tall Bidshika is 190 cm and 85 kg;
+thin Brishen is 175 cm and 60 kg. These are descriptive measurements.
+Brishen keeps identify, scavenging and his existing behaviour flags; only
+his undefined ACT bit 16 is removed. Clan headquarters already suppress the
+ordinary aggression pass. Lyanka's blessing and exit remain clan-restricted.
+Do not replace her adept role with paid healer or priest services.
+
+The three invisible support mobs 533-535 reuse script_controller. Their
+WIZINVIS, level, sentinel and NOCHARM settings remain individual. Remove the
+duplicate raw NO_QUEST bit when assigning the archetype: it is already
+inherited, and leaving it in the area mask would cancel it through XOR.
+The effective helper still has NO_QUEST and gains the profile's NO_FIGHT,
+mindless, bloodless, analgic and soulless properties. It has no physical body
+parts, speech or corpse. Do not invent dimensions for these script actors.
+
+Do not add NON_CORPOREAL just because a helper has no physical body. That
+flag is a separate phasing effect and would block its drop and close commands.
+The scripts still run through the existing event and command machinery.
+Helper 533 drops the clan crystal ball in healing room 533, retreats to 537
+and meditates. Helper 534 handles friend/foe transfers; helper 535 closes
+the tent doors. Keep those programs, their probabilities and destinations.
+
+The clan table uses rooms 534 for transfer, 530 for the guard and 533 for
+healing; clan items 530-533 also have code references. Crystal ball 534 is a
+clan object and remains part of the healing-room recovery system. Keep all
+seven programs, three specials, room flags, randomised tent exits, door
+resets, key and item placements. The death-warning form mpecho CHAT is valid.
+There is no matching Gypsy Camp Scribe source in the repository.
