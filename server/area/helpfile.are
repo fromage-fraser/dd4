@@ -1574,6 +1574,7 @@ blocking unrelated directions.
 - Convert Fleshmonger tower mobs; define hybrids and refine half-orcs/hobgoblins.
 - Convert Walls of Anon mobs; refine spectres, add paid healing and fix gauntlets.
 - Convert Arika mobs; add centaurs, domestic cats and script controllers.
+- Fix repeated Arika food orders and wine responses from overlapping speech aliases.
 
 ~
 

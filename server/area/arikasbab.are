@@ -249,7 +249,7 @@ endif
 1000 0 0 0d0+0 0d0+0
 0 0
 8 8 0
->speech_prog p menu~
+>speech_prog any menu~
 mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
 mptransfer busychef
 mpforce busychef mpoload 28349 20
@@ -258,7 +258,7 @@ mpforce busychef give menu $n
 mptransfer busychef 28347
 mpecho {WThe chef looks at you nervously before rushing back into the kitchen.{x
 ~
->speech_prog p buy wine~
+>speech_prog any wine~
 mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
 mpecho {WThe chef snatches his hat from his head and curses.{x
 mpecho {WThe chef roars, 'Where the hell is that damn waitress!'{x
@@ -267,16 +267,7 @@ mpecho {WThe chef shouts, 'I'm too busy to go down to the wine cellar right now!
 mpecho {WThe chef storms back into the kitchen.{x
 mptransfer busychef 28347
 ~
->speech_prog p wine~
-mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
-mpecho {WThe chef snatches his hat from his head and curses.{x
-mpecho {WThe chef roars, 'Where the hell is that damn waitress!'{x
-mptransfer busychef
-mpecho {WThe chef shouts, 'I'm too busy to go down to the wine cellar right now! You'll have to wait for the waitress!'{x
-mpecho {WThe chef storms back into the kitchen.{x
-mptransfer busychef 28347
-~
->speech_prog p buy skin~
+>speech_prog any skin~
 mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
 mpecho {WThe chef snatches his hat from his head and curses.{x
 mpecho {WThe chef roars, 'Where the hell is that damn waitress!'{x
@@ -294,25 +285,7 @@ mpecho {WThe chef grumbles, 'Enjoy your drink', before he rushes back into the k
 mptransfer busychef 28347
 endif
 ~
->speech_prog p skin~
-mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
-mpecho {WThe chef snatches his hat from his head and curses.{x
-mpecho {WThe chef roars, 'Where the hell is that damn waitress!'{x
-mptransfer busychef
-if goldamt($n) < 1
-mpecho {WThe chef shouts, 'I'm too bloody busy for this nonsense! Come back when you have some gold!'{x
-mpecho {WThe chef storms back into the kitchen.{x
-mptransfer busychef 28347
-break
-else
-mpforce busychef mpoload 28348 0
-mpforce busychef give skin $n
-mpforce $n give 1 gold chef
-mpecho {WThe chef grumbles, 'Enjoy your drink', before he rushes back into the kitchen.{x
-mptransfer busychef 28347
-endif
-~
->speech_prog p buy bread~
+>speech_prog any bread travel~
 mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
 mpecho {WThe chef snatches his hat from his head and curses.{x
 mpecho {WThe chef roars, 'Where the hell is that damn waitress!'{x
@@ -330,97 +303,7 @@ mpecho {WThe chef grumbles, 'Enjoy the bread', before he rushes back into the ki
 mptransfer busychef 28347
 endif
 ~
->speech_prog p bread~
-mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
-mpecho {WThe chef snatches his hat from his head and curses.{x
-mpecho {WThe chef roars, 'Where the hell is that damn waitress!'{x
-mptransfer busychef
-if goldamt($n) < 1
-mpecho {WThe chef shouts, 'I'm too bloody busy for this nonsense! Come back when you have some gold!'{x
-mpecho {WThe chef storms back into the kitchen.{x
-mptransfer busychef 28347
-break
-else
-mpforce busychef mpoload 28346 0
-mpforce busychef give bread $n
-mpforce $n give 1 gold chef
-mpecho {WThe chef grumbles, 'Enjoy the bread', before he rushes back into the kitchen.{x
-mptransfer busychef 28347
-endif
-~
->speech_prog p buy travel~
-mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
-mpecho {WThe chef snatches his hat from his head and curses.{x
-mpecho {WThe chef roars, 'Where the hell is that damn waitress!'{x
-mptransfer busychef
-if goldamt($n) < 1
-mpecho {WThe chef shouts, 'I'm too bloody busy for this nonsense! Come back when you have some gold!'{x
-mpecho {WThe chef storms back into the kitchen.{x
-mptransfer busychef 28347
-break
-else
-mpforce busychef mpoload 28346 0
-mpforce busychef give bread $n
-mpforce $n give 1 gold chef
-mpecho {WThe chef grumbles, 'Enjoy the bread', before he rushes back into the kitchen.{x
-mptransfer busychef 28347
-endif
-~
->speech_prog p travel~
-mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
-mpecho {WThe chef snatches his hat from his head and curses.{x
-mpecho {WThe chef roars, 'Where the hell is that damn waitress!'{x
-mptransfer busychef
-if goldamt($n) < 1
-mpecho {WThe chef shouts, 'I'm too bloody busy for this nonsense! Come back when you have some gold!'{x
-mpecho {WThe chef storms back into the kitchen.{x
-mptransfer busychef 28347
-break
-else
-mpforce busychef mpoload 28346 0
-mpforce busychef give bread $n
-mpforce $n give 1 gold chef
-mpecho {WThe chef grumbles, 'Enjoy the bread', before he rushes back into the kitchen.{x
-mptransfer busychef 28347
-endif
-~
->speech_prog p buy vegetable~
-mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
-mpecho {WThe chef snatches his hat from his head and curses.{x
-mpecho {WThe chef roars, 'Where the hell is that damn waitress!'{x
-mptransfer busychef
-if goldamt($n) < 2
-mpecho {WThe chef shouts, 'I'm too bloody busy for this nonsense! Come back when you have some gold!'{x
-mpecho {WThe chef storms back into the kitchen.{x
-mptransfer busychef 28347
-break
-else
-mpforce busychef mpoload 28345 0
-mpforce busychef give stew $n
-mpforce $n give 2 gold chef
-mpecho {WThe chef grumbles, 'Enjoy the stew', before he rushes back into the kitchen.{x
-mptransfer busychef 28347
-endif
-~
->speech_prog p vegetable~
-mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
-mpecho {WThe chef snatches his hat from his head and curses.{x
-mpecho {WThe chef roars, 'Where the hell is that damn waitress!'{x
-mptransfer busychef
-if goldamt($n) < 2
-mpecho {WThe chef shouts, 'I'm too bloody busy for this nonsense! Come back when you have some gold!'{x
-mpecho {WThe chef storms back into the kitchen.{x
-mptransfer busychef 28347
-break
-else
-mpforce busychef mpoload 28345 0
-mpforce busychef give stew $n
-mpforce $n give 2 gold chef
-mpecho {WThe chef grumbles, 'Enjoy the stew', before he rushes back into the kitchen.{x
-mptransfer busychef 28347
-endif
-~
->speech_prog p stew~
+>speech_prog any vegetable stew~
 mpecho {WThe chef rushes out of the kitchen and looks around in distress.{x
 mpecho {WThe chef snatches his hat from his head and curses.{x
 mpecho {WThe chef roars, 'Where the hell is that damn waitress!'{x

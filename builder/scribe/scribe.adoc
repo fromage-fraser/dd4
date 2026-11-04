@@ -3215,6 +3215,21 @@ _Multi-line text block_
 
 _Mob programs_ (_mob progs_, _mprogs_) are scripts that add special functionality to mobs. What mob progs are available and what syntax they use is not discussed here, but up to date documentation is distributed with the MUD’s source, and can be read online https://dragons-domain.org/main/building/mobprogram.txt[here].
 
+For speech aliases that should perform one action, use `speech_prog any`:
+
+[source,text]
+----
+mp speech_prog any bread travel
+mpecho The baker offers you one loaf.
+~
+----
+
+This program runs once when any listed whole word occurs, even if the speaker
+says "buy travel bread" or repeats an alias. Matching is case-insensitive.
+The `any` form applies to speech programs only. Other matching programs still
+run, so put aliases for the same action together. Existing word-list and `p`
+phrase forms keep their behaviour. See <<scribe-food-ordering,food ordering>>.
+
 A single mob prog is defined by each `mp` tag; you can have as many `mp` tags per mobile as you like. Mob progs are defined using the following format:
 
 [source, text]
@@ -9573,7 +9588,7 @@ default special or physical measurements. The controller's role comes from
 its existing inline programs; no new area fields or trait commands are used.
 The archetype does not add WIZINVIS: keep that individual flag where needed.
 Arika's Someone keeps its raw WIZINVIS, level 1000, blank keywords, short name,
-counter placement and all twelve food-ordering programs. Speech events and
+counter placement and five food-ordering triggers. Speech events and
 program commands still use the existing dispatch and actor-lookup rules.
 
 The local vampire keeps spec_mast_vampire and gains the reviewed vampire
@@ -9584,8 +9599,35 @@ cancellation. It retains a mind, soul and pain, starts semi-material and has
 the existing nonmagical-contact barrier. Its male setting now matches its
 description and existing portrait. The fat cat also clears duplicate no_speech.
 
-All original individual specials, behaviour, flight/sensing/protection buffs,
-32 programs, shop prices/hours, room flags, doors, keys and loot stay. The silk
+The other staff programs, individual specials, behaviour, flight/sensing/protection
+buffs, shop prices/hours, room flags, doors, keys and loot stay. Arika now has
+25 programs in total after combining the food aliases. The silk
 robe really is a wearable container: the purse and room key stay inside it.
 There is no matching Arika Scribe source. The complete Scribe manual and area
 guide describe these profiles; existing source/area pairs remain in step.
+
+[[scribe-food-ordering]]
+==== Speech aliases and Arika food orders
+
+Use speech_prog any followed by a list of whole-word aliases when one action
+should run once per utterance. In a Scribe mob record, for example:
+
+    mp speech_prog any bread travel
+    mpecho The baker offers you one loaf.
+    ~
+
+The generated area header is >speech_prog any bread travel~. Saying "bread",
+"travel", "buy travel bread" or "bread bread" runs that program once.
+Matching is case-insensitive and uses the existing whole-word boundaries.
+Other matching programs still run. Keep aliases for the same action together
+instead of defining overlapping programs. The new form applies only to speech;
+existing word lists and p-phrase triggers retain their behaviour.
+
+Arika's WIZINVIS food controller now has five triggers: menu, wine, waterskin,
+bread/travel and vegetable/stew. Each product order runs once, at its usual
+price: one gold for a waterskin or bread, two for stew. The menu is free; wine
+still produces the chef's refusal, once. All earlier accepted aliases remain.
+Insufficient gold refuses the order without an item or charge, and the chef
+returns to the kitchen after the interaction. Room rental and staff programs
+are separate and retain their behaviour. Someone keeps its WIZINVIS flag,
+level, physiology and counter placement. There is no matching Arika source.
