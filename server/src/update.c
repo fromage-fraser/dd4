@@ -2852,27 +2852,29 @@ void aggr_update()
 
         while ((apdtmp = mob_act_list))
         {
-                mch = mob_act_list->vo;
-                if (!mch->deleted && mch->mpactnum > 0)
-                {
-                        MPROG_ACT_LIST *tmp_act;
+                MPROG_ACT_LIST *tmp_act;
 
-                        while ((tmp_act = mch->mpact))
+                mch = apdtmp->vo;
+                /* Scripts may queue more work for this or another mob. */
+                mob_act_list = apdtmp->next;
+
+                while ((tmp_act = mch->mpact))
+                {
+                        mch->mpact = tmp_act->next;
+                        mch->mpactnum--;
+                        if (!mch->deleted)
                         {
                                 if (tmp_act->obj && tmp_act->obj->deleted)
                                         tmp_act->obj = NULL;
                                 if (tmp_act->ch && !tmp_act->ch->deleted)
                                         mprog_wordlist_check(tmp_act->buf, mch, tmp_act->ch,
                                                              tmp_act->obj, tmp_act->vo, ACT_PROG);
-                                mch->mpact = tmp_act->next;
-                                free_string(tmp_act->buf);
-                                tmp_act->buf = NULL;
-                                free_mem(tmp_act, sizeof(MPROG_ACT_LIST));
                         }
-                        mch->mpactnum = 0;
-                        mch->mpact = NULL;
+                        free_string(tmp_act->buf);
+                        tmp_act->buf = NULL;
+                        free_mem(tmp_act, sizeof(MPROG_ACT_LIST));
                 }
-                mob_act_list = apdtmp->next;
+                mch->mpactnum = 0;
                 free_mem(apdtmp, sizeof(ACT_PROG_DATA));
         }
 

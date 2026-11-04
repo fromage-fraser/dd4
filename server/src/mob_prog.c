@@ -2099,10 +2099,7 @@ void mprog_act_trigger( char *buf, CHAR_DATA * mob, CHAR_DATA * ch,
 	if ( IS_NPC( ch ) && ch->pIndexData == mob->pIndexData )
 	    return;
 	tmp_act = alloc_mem( sizeof( MPROG_ACT_LIST ) );
-	if ( mob->mpactnum > 0 )
-	    tmp_act->next = mob->mpact->next;
-	else
-	    tmp_act->next = NULL;
+	tmp_act->next = mob->mpact;
 
 	mob->mpact = tmp_act;
 	mob->mpact->buf = str_dup( buf );

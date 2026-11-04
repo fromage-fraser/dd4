@@ -3005,7 +3005,7 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
                     GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.area\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":700");
                     GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.A\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":700");
                     GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.sector.B\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":700");
-                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.weather\",\"type\":\"ambient\",\"fadeaway\":true,\"fadeout\":700");
+                    GMCP_Media_Stop(ch->desc, "\"key\":\"dd.ambient.weather\",\"type\":\"music\",\"fadeaway\":true,\"fadeout\":700");
                     media_env_refresh(ch, ch->in_room, TRUE);
 
                     /* ALSO clear our weather cache so a later toggle ON will republish */

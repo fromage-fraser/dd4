@@ -1806,6 +1806,12 @@ void do_deploy(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                if (!can_drop_obj(ch, obj))
+                {
+                        send_to_char("You can't let go of it.\n\r", ch);
+                        return;
+                }
+
                 obj_from_char(obj);
                 obj_to_room(obj, ch->in_room);
                 SET_BIT(obj->extra_flags, ITEM_DEPLOYED);
