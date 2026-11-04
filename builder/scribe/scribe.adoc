@@ -798,6 +798,9 @@ Accepted archetype names are:
 | `dwarf` | Living humanoid with infravision, magic/poison resistance and optional melee training.
 | `goblin` | Living humanoid with small fangs, infravision and sunlight sensitivity.
 | `human` | Ordinary living humanoid with neutral modifiers.
+| `centaur` | Living speaking centauroid mammal with two arms, four legs, hooves and a tail; natural armour -10, ordinary hoof attacks, +5 archetype XP; 260 cm tall, 250 cm long, 600 kg, Large without HUGE.
+| `domestic_cat` | Small living quadruped with tail, paws, claws, fangs, infrared and Sneak; ordinary claw/bite attacks; 30 cm tall, 50 cm body length, 4 kg. No default special.
+| `script_controller` | Abstract mindless script actor with no body parts, blood, soul, pain, speech or corpse; inorganic, no-quest and unable to fight. Its area supplies any required invisibility.
 | `black_dragon_hatchling` | Young black dragon with flight, keen senses, acid immunity/breath and natural armour -15; defaults 60 cm shoulder height, 250 cm total length, 70 kg, Medium. Claw/bite attacks without adult tail slaps or fear.
 | `young_lightning_dragon` | Colour-unspecified young dragon with flight, keen senses, electricity immunity, lightning breath and natural armour -20; 120 cm shoulder height, 550 cm total length, 400 kg, Large without HUGE.
 | `animated_vase` | Small mindless ceramic animation; no living organs or corpse, standard construct immunities and blunt vulnerability; 40 cm, 3 kg.
@@ -9524,3 +9527,65 @@ ordinary paid HEAL menu, at the existing prices. She gains the usual healer
 quest exclusion; this does not add the separate priest services role.
 The mail gauntlets now advertise hands, matching their existing reset slot.
 All room flags, wards, original placements, limits, equipment and keys stay.
+
+[[scribe-arika-creatures]]
+==== Arika's Bed & Breakfast creatures
+
+All thirteen definitions now select reviewed creature archetypes. The Shadow
+and Bob use human bodies; their names and mysterious presentation stay.
+The Vampire is elite, the centaur and Arika are rare, and the other ten stay
+common. The existing rank HP multiplier applies once. Chef height/weight are
+190 cm/110 kg, waitress 155/50, merchant 175/120 and the fat cat weighs 11 kg.
+Other humans use 175/75/Medium. The ghost is 175 cm/Medium with no assigned mass.
+Dimensions describe the creature; they do not add equipment-fitting rules.
+
+centauroid_mammal is a body species with one head, two arms, hands/fingers,
+four legs/forelegs/feet, ordinary organs, senses and speech. It supplies no
+default special, natural attack or racial defence. Select the centaur
+archetype, not the body species, in an area or Scribe source.
+
+centaur adds a tail and hooves, natural_armour -10, a hoof attack option and
++5 percentage points of archetype XP. Its defaults are 260 cm height, 250 cm
+body length, 600 kg and Large; it does not have HUGE. Other combat modifiers
+are zero. It has no innate resistances, magic, mountability or warrior special.
+The local centaur keeps his individual spec_warrior and original bow, lance,
+breastplate, bracers and horseshoes. A hoof attack is an ordinary unarmed
+blunt attack candidate, subject to leg trauma. Held weapons take precedence.
+It does not add two extra hoof attacks each round. The armour/XP adjustments
+and estimated mass/length are DD4 choices informed by the 2e Centaur entry.
+
+domestic_cat reuses quadrupedal_mammal and adds tail, paws, claws and fangs.
+It has ordinary slashing claw and piercing bite options, with the existing
+head and leg-trauma checks and weapon rules; these add no free attacks. Infrared follows
+DD4's existing cat-form night-sight convention, and Sneak represents quiet
+movement. It has no magical detection, elven-cat spells, innate special or
+extra combat/XP modifiers. Defaults are 30 cm tall, 50 cm body length with
+the tail additional, 4 kg and Small. Arika's overweight cat overrides only
+weight to 11 kg and keeps its individual spec_fido and random twitch script.
+Cats are living, organic, minded, soul-bearing and sensitive to pain, with
+ordinary corpses, no humanoid arms and no speech. Leave raw bf empty to inherit;
+copying an old no_speech bit would XOR that restriction back off.
+
+script_controller uses the existing mysterious_being body for an abstract
+room-script actor. It has no body parts, physical organs, blood, soul, pain,
+speech or corpse. It is inorganic, mindless, no_quest and no_fight, with no
+default special or physical measurements. The controller's role comes from
+its existing inline programs; no new area fields or trait commands are used.
+The archetype does not add WIZINVIS: keep that individual flag where needed.
+Arika's Someone keeps its raw WIZINVIS, level 1000, blank keywords, short name,
+counter placement and all twelve food-ordering programs. Speech events and
+program commands still use the existing dispatch and actor-lookup rules.
+
+The local vampire keeps spec_mast_vampire and gains the reviewed vampire
+classification, regeneration and defences. Clear its old inorganic body bit
+so it remains a corporeal, blood-bearing vampire. The apparition uses ghost:
+clear its old no_heart/no_corpse/inorganic bits to inherit them without XOR
+cancellation. It retains a mind, soul and pain, starts semi-material and has
+the existing nonmagical-contact barrier. Its male setting now matches its
+description and existing portrait. The fat cat also clears duplicate no_speech.
+
+All original individual specials, behaviour, flight/sensing/protection buffs,
+32 programs, shop prices/hours, room flags, doors, keys and loot stay. The silk
+robe really is a wearable container: the purse and room key stay inside it.
+There is no matching Arika Scribe source. The complete Scribe manual and area
+guide describe these profiles; existing source/area pairs remain in step.
