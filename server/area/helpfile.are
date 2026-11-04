@@ -1576,6 +1576,7 @@ blocking unrelated directions.
 - Convert Arika mobs; add centaurs, domestic cats and script controllers.
 - Fix repeated Arika food orders and wine responses from overlapping speech aliases.
 - Convert Gypsy Camp mobs; preserve clan services and invisible helper programs.
+- Convert Guild mobs; correct quest routing and preserve hand-in rewards.
 
 ~
 

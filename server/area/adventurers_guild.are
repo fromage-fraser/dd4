@@ -20,6 +20,9 @@ giving you the impression that she does not suffer fools gladly.
 75 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
+MobHeight 155
+MobWeight 65
 #25301
 lord kurbistraht~
 Lord Kurbistraht~
@@ -28,10 +31,13 @@ Lord Kurbistraht sits behind his large oak desk.
 This stout dwarven warrior seems very pleased to have visitors, his bright
 blue eyes sparkling as he offers you a seat.
 ~
-2|64|512|4096|32768 8|32|512|8388608 1000 S
+2|64|512|4096|32768 8|32|8388608 1000 S
 75 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< dwarf~ common~
+MobWeight 95
+MobSize 1
 #25302
 saint justinian~
 Saint Justinian~
@@ -44,6 +50,7 @@ authority.  He barely raises his head to greet you.
 75 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25303
 xiao tsu~
 Xiao Tsu~
@@ -57,6 +64,8 @@ without raising a sweat.
 75 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
+MobWeight 70
 #25304
 simons guard~
 the huge guard~
@@ -67,7 +76,7 @@ This guy is the largest mother you have ever laid eyes on....
 2|64|512 8|32|128|524288|8388608 1000 S
 250 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
 >all_greet_prog 100~
     if level($n) > 25
         say I am sorry $n but you are banished from here!
@@ -79,6 +88,10 @@ This guy is the largest mother you have ever laid eyes on....
     endif
 ~
 |
+< human~ common~
+MobHeight 230
+MobWeight 180
+MobSize 2
 #25305
 suturb~
 Suturb~
@@ -95,6 +108,7 @@ Suturb is the wise questmaster of Midgaard.
     say To ask for a quest type QUEST REQUEST.  For more information, try HELP QUEST.
 ~
 |
+< human~ common~
 #0
 
 #MOBPROGS
@@ -246,7 +260,7 @@ wall.
 ~
 0 4|8|1024 0
 D1
-The Guild Lobby lays directly ahead.
+The Guild Lobby lies directly ahead.
 ~
 ~
 0 -1 25301
@@ -277,17 +291,17 @@ woman of some authority.  A large SIGN stands in front of the desk.
 ~
 0 8|1024 0
 D0
-The Office for Junior Quests lays north.
+The Office for Junior Quests lies north.
 ~
 ~
 0 -1 25302
 D1
-The Office for Intermediate Quests lays east.
+The Office for Intermediate Quests lies east.
 ~
 ~
 0 -1 25303
 D2
-The Office for Senior Quests lays south.
+The Office for Senior Quests lies south.
 ~
 ~
 0 -1 25304
@@ -401,7 +415,7 @@ D5
 S
 #25306
 The Questmaster's Home~
-This room is very untidy and looks as if the owner of this room hasnt
+This room is very untidy and looks as if the owner of this room hasn't
 lifted a finger to do anything about it.  You see a long table with
 empty bottles of ale and half eaten loaves of bread. The smell of the
 ale and the stale bread starts to make you feel queasy and you notice a
@@ -424,8 +438,8 @@ M 1 25303 1 25304
 *
 M 1 25304 1 25305           the huge guard to the small corridor
 *
-M 1 25305 1 25306           Simon to Simons hideout
-O 1 25304 100 25306         table to Simons hideout
+M 1 25305 1 25306           Suturb to The Questmaster's Home
+O 1 25304 100 25306         table to The Questmaster's Home
 S
 
 

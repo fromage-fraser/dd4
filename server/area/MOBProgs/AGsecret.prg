@@ -11,7 +11,7 @@
         if level($n) < 26
                 say I suggest you see Lord Kurbistraht to the north
         else
-        if level($n) < 46
+        if level($n) < 55
                 say Saint Justinian will assist you, $n.
                 mpecho She points to the room directly east from here.
         else

@@ -50,7 +50,7 @@
 ~
 >speech_prog 2 two second~
         if level($n) > 25
-                say I'd better leave that mission for someone of higher level.
+                say I'd better leave that mission for someone less experienced.
         else
         if level($n) < 15
                 say You look a little inexperienced for this mission.
