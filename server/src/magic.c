@@ -654,7 +654,7 @@ RESISTANCE_RESULT get_resistance_result(
  * Resolve an explicitly identified physical contact.
  *
  * Phase reachability is separate from stored resistance masks.
- * No character, prototype, object or mask is modified here.
+ * Daylight may update a live spectral phase; stored masks stay unchanged.
  */
 RESISTANCE_RESULT get_contact_resistance_result(
     CHAR_DATA *ch, CHAR_DATA *victim, unsigned long int res_types)
@@ -667,6 +667,10 @@ RESISTANCE_RESULT get_contact_resistance_result(
 
         if (!ch || !victim || ch->deleted || victim->deleted)
                 return RES_RESULT_IMMUNE;
+
+        /* Resolve daylight before testing incoming or outgoing phase contact. */
+        update_creature_sunlight(ch);
+        update_creature_sunlight(victim);
 
         /* PC phase storage is not a player incorporeality mechanism. */
         attacker_phase = IS_NPC(ch) ? ch->ghost_phase : GHOST_PHASE_NONE;
@@ -8196,7 +8200,9 @@ void spell_ventriloquate(int sn, int level, CHAR_DATA *ch, void *vo)
         {
                 /* if ( !is_name( speaker, vch->name ) ) */
                 if (vch != ch)
-                        send_to_char(saves_spell(ch, level, vch) ? buf2 : buf1, vch);
+                        send_to_char(
+                            (creature_trait_value(vch, CREATURE_TRAIT_ILLUSION_IMMUNITY) > 0
+                             || saves_spell(ch, level, vch)) ? buf2 : buf1, vch);
                 else
                         send_to_char(buf1, ch);
         }

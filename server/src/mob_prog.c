@@ -1946,7 +1946,34 @@ void mprog_wordlist_check( char *arg, CHAR_DATA *mob, CHAR_DATA *actor,
 
         for ( i = 0; i < strlen( dupl ); i++ )
           dupl[i] = LOWER( dupl[i] );
-        if ( ( list[0] == 'p' ) && ( list[1] == ' ' ) )
+        /* Opt in when aliases should run one speech program only once. */
+        if (type == SPEECH_PROG && !strncmp(list, "any ", 4))
+          {
+            bool matched = FALSE;
+
+            list = one_argument(list + 4, word);
+            for (; word[0] != '\0' && !matched;
+                 list = one_argument(list, word))
+              {
+                /* Each alias gets the whole message to search. */
+                dupl = temp2;
+                while ((start = strstr(dupl, word)) != NULL)
+                  {
+                    end = start + strlen(word);
+                    if ((start == temp2 || *(start - 1) == ' ')
+                        && (*end == ' ' || *end == '\n'
+                            || *end == '\r' || *end == '\0'))
+                      {
+                        matched = TRUE;
+                        break;
+                      }
+                    dupl = start + 1;
+                  }
+              }
+            if (matched)
+              mprog_driver(mprg->comlist, mob, actor, obj, vo);
+          }
+        else if ( ( list[0] == 'p' ) && ( list[1] == ' ' ) )
           {
             list += 2;
             while ( ( start = strstr( dupl, list ) ) )

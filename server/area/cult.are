@@ -13,6 +13,7 @@ The Receptionist appears to be friendly.
 4 17 6 1d4+30 1d4+3
 0 400
 0 0 2
+< human~ common~
 #9801
 minor priest~
 the minor priest~
@@ -24,6 +25,7 @@ The minor priest seems preoccupied.
 12 17 6 1d4+30 1d4+3
 0 400
 0 0 1
+< human~ common~
 #9802
 robed priest~
 the robed priest~
@@ -35,6 +37,7 @@ The robed priest is not to be trifled with.
 14 17 6 1d4+30 1d4+3
 0 400
 0 0 1
+< human~ common~
 #9803
 draconian knight~
 the draconian knight~
@@ -46,6 +49,7 @@ The draconian knight's sole purpose is to kill you.
 16 17 6 1d4+30 1d4+3
 0 400
 0 0 1
+< human~ rare~
 #9804
 high priestess~
 the High Priestess~
@@ -56,8 +60,9 @@ quite beautiful if it weren't for her SCALES!
 ~
 32|64 8|16|32 -600 S
 18 17 6 1d4+30 1d4+3
-0 400
+4294967296 400
 0 0 2
+< human~ elite~
 #9805
 virgin sacrifice~
 a virgin sacrifice~
@@ -70,18 +75,20 @@ handsome warrior to save her.
 3 17 6 1d4+30 1d4+3
 0 400
 0 0 2
+< human~ common~
 #9806
 dragon wyrmling~
 The Black Dragon Wyrmling~
 The Black Dragon Wyrmling wants to feed ON YOU.
 ~
 The Black Dragon Wyrmling is the center of this obscure Dragon Cult.
-It is viciuos and has a nasty bite, so you better be ready!
+It is vicious and has a nasty bite, so you better be ready!
 ~
-2|4|32 8|128|512 -1000 S
+2|4|32 128|512 -1000 S
 23 -15 -25 37d37+370 1d4+30
-32 1000000
+0 1000000
 8 8 1
+< black_dragon_hatchling~ boss~
 #9807
 minor priest~
 the minor priest~
@@ -93,18 +100,20 @@ The minor priest seems preoccupied.
 12 17 6 1d4+30 1d4+3
 0 400
 0 0 1
+< human~ common~
 #9808
 fanatic monk~
 a fanatic monk~
 A fanatic monk is here raving about the day of great black death!
 ~
-The monk is sincere, if loony, and he has a look of terror on his
+The monk is sincere, if loony, and he has a look of terror in his
 eyes.
 ~
 0 8 0 S
 6 17 6 1d4+30 1d4+3
 0 400
 0 0 1
+< human~ common~
 #9809
 bob director~
 Bob~
@@ -113,12 +122,15 @@ Bob the PR Director greets you with the smile of a used car salesman.
 Bob is about 6 feet tall and very lanky.  He wears a cheap polyester
 suit, his hair is slicked back, and he has quite a large gap
 between his front teeth, but that doesn't stop him from talking.
-Incidently, he talks a lot.
+Incidentally, he talks a lot.
 ~
 2|64 8 -1000 S
 8 17 6 1d4+30 1d4+3
 0 400
 0 0 1
+< human~ common~
+MobHeight 183
+MobWeight 65
 #9810
 marie maid~
 Marie~
@@ -132,6 +144,7 @@ that basement... it's really terrible down there.
 5 17 6 1d4+30 1d4+3
 0 400
 0 0 2
+< human~ common~
 #9811
 gale coordinator~
 Gale~
@@ -139,26 +152,28 @@ Gale the office coordinator bustles around the office.
 ~
 Gale looks very busy, she runs around the office to make sure
 everything runs well.  She might be attractive if she weren't so
-work oriented.  The boss knows this too, thats why he put all of
+work oriented.  The boss knows this too, that's why he put all of
 the shelves that the papers go in on the ground.
 ~
 64 8 -1000 S
 9 17 6 1d4+30 1d4+3
 0 400
 0 0 2
+< human~ common~
 #9812
 fred boss~
 Fred~
 Fred the boss of the office is here smoking a cheap cigar.
 ~
 Fred is good at being boss, but there isn't much else he is good
-at at all.  He basicly sits around in his office all day, occasionally
+at at all.  He basically sits around in his office all day, occasionally
 yelling at people, and trying to look up Gale's dress.
 ~
 2|64 8 -1000 S
 10 17 6 1d4+30 1d4+3
 0 400
 0 0 1
+< human~ common~
 #9813
 torturer~
 the Torturer~
@@ -170,6 +185,7 @@ Yuck! What an ugly sight, I'm surprised you looked!
 18 17 6 1d4+30 1d4+3
 0 400
 0 0 1
+< human~ rare~
 #9814
 jim sales director~
 Jim~
@@ -182,6 +198,7 @@ costs nothing.......
 8 17 6 1d4+30 1d4+3
 0 400
 0 0 1
+< human~ common~
 #9815
 zombie~
 the Zombie~
@@ -195,20 +212,23 @@ Zombie is nothing to be laughed at.
 15 17 6 1d4+30 1d4+3
 0 400
 0 0 1
+< zombie~ common~
+MobWeight 95
 #9816
 lich priest~
 the Lich Priest~
 The Lich Priest glares at you through dead eyes.
 ~
-This is the living corpse of a once powerfull priest of the cult.  In
+This is the living corpse of a once powerful priest of the cult.  In
 his quest for power he learned the ways of the mage and made himself a
-monstrocity.  He is a creature to be reckoned with, and unless the
+monstrosity.  He is a creature to be reckoned with, and unless the
 gods are in your favor he will probably kill you.
 ~
 2|32|64 8|16|32|128 -1000 S
-34 17 6 1r4+30 1d4+3
-96 400
+34 17 6 1d4+30 1d4+3
+64 400
 0 0 1
+< lich~ boss~
 #9817
 monk old~
 An old monk~
@@ -220,6 +240,7 @@ He has rotten teeth.
 32 17 6 1d4+30 1d4+3
 0 400
 0 0 1
+< human~ common~
 #0
 
 
@@ -1519,7 +1540,7 @@ O 0 9840 1 9877     coffee
 * The Dragon Cult Temple by Sandman 1993
 * - revised 1994
 *
-* 44 rooms, 17 mobs, 25 objects
+* 47 rooms, 18 mobs, 25 objects
 *
 * for any questions email Sandman: lerner@usc.edu
 *
@@ -1535,14 +1556,12 @@ S
 
 
 #SPECIALS
-M  9804  spec_cast_mage
-M  9806  spec_breath_acid
+M  9804  spec_cast_priestess
 M  9814  spec_fido
-M  9814  spec_cast_undead
-M  9816  spec_cast_undead
-M  9816  spec_cast_mage
-M  9816  spec_cast_cleric
-M  9816  spec_fido
+N 9816 1 spec_lich
+N 9816 2 spec_cast_cleric
+N 9816 3 none
+P 9816 70 30 0
 S
 
 

@@ -995,6 +995,9 @@ Passive combat defaults are:
     resistance:     RES_DARK
     vulnerability:  RES_HOLY
     immunity:       RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC
+                    | RES_COLD | RES_CHARM | RES_HOLD | RES_PARALYSIS
+    dimensions:     height 175 cm, Medium; mass and length unspecified
+    internal trait: sunlight_powerless
 
 The initial ghostphase is semi_material.
 
@@ -1016,8 +1019,12 @@ while ordinary damage can continue. IS_UNDEAD() targets are left alone.
 An explicit ghostphase none disables automatic spectre phase transitions
 without disabling life drain or removing RES_NONMAGIC.
 
-Charm, hold, daze, wait state, unconsciousness and death suppress both phase
-transitions and drain attempts.
+Charm, hold, daze, wait state, unconsciousness and death suppress the
+special's voluntary phase transitions and drain attempts. Direct natural
+sunlight can still expose a held, charmed or waiting ethereal spirit.
+Sunlight stops ordinary attacks, life drain and automatic ethereal hiding;
+an explicit ghostphase none stays none. It causes no burn and does not
+prevent movement or fleeing. See Walls of Anon creatures for exposure rules.
 
 A fully ethereal spectre cannot use or be reached by the currently supported
 physical weapon/shield contacts with an unphased character, even with a
@@ -4931,3 +4938,496 @@ Keep all seven shop inventories, prices and hours, all 77 rooms and their
 flags/exits/doors, all 36 objects, area no_quest and the other reset/gear
 records. No aggression, passivity, sentinel, wimpy, source level, alignment
 or sex changes are intended. There is no matching Freeport Scribe source.
+
+Kingdom of Juargan creatures
+---------------------------
+
+Juargan uses dwarf for 4700-4704, duergar for 4705, wight for Grimdale 4706,
+rock_worm for 4707 and ghost for the three spirits 4708. Keep all authored
+levels, alignments, sexes, positions and behaviour flags. The miners and
+watchful dwarves are adults. Ordinary dwarves use the established anatomy,
+defences and training; small stature does not mean untrained childhood.
+
+Juargan 4704 is boss, Grimdale 4706 elite and the rock worm 4707 rare. The
+other six definitions remain common. Rank follows their encounter roles;
+the old HP dice letters do not select ranks. Normal rank HP applies once.
+Juargan's muscular build uses height 130 cm and weight 100 kg. Grimdale has
+height 130, weight 50 and small size. The spirits have a 130 cm outline,
+small size and unknown mass. They keep their conscious, suffering souls,
+Sanctuary and detection affects; their description also calls for flight.
+
+Duergar is a humanoid with dwarf family and inherited dwarf training.
+Defaults are height 120 cm, weight 55 kg and small size. It has infrared,
+Sneak, magic resistance and immunity to poison, hold and paralysis. Its
+sunlight_sensitive trait is -2 under the existing sheltered/daylight rules.
+This does not add the tabletop daylight Dexterity or opponent-save changes.
+The local colony's hostility and strange behaviour stay in the area; they
+are not personality or alignment defaults for every gray dwarf.
+
+The code-only illusion_immunity trait recognises Ventriloquate's deception
+without an ordinary saving throw. Future genuinely illusory effects should
+consult the same trait. DD4 Colour Spray remains an energy attack, including
+the separate breath route. Faerie Fog and invisibility keep their usual
+rules. A spell's learning group alone does not establish an illusory effect.
+No ACT or RES bit, player package or individual trait field was added.
+
+spec_duergar tries ordinary self-Invisibility on one in eight eligible idle
+opportunities. The creature must be awake, free to act, not charmed, held or
+dazed, not fighting and not already invisible. The ordinary spell duration,
+dispelling and revelation through attacking still apply. It does not keep
+refreshing invisibility in combat. Its default single slot is 100 percent.
+The archetype adds 5 XP percentage points and this special adds the normal
+10, making the approved total +15 rather than counting the power twice.
+Other HP, damage, critical and haste modifiers are neutral.
+
+The second-edition Monstrous Manual's Duergar entry informed this profile.
+Do not use the adjacent Derro's 30-percent magic resistance for Duergar.
+Exact dimensions, XP and DD4 effects are adaptations. True enlargement and
+shrinking remain an explicit required follow-up: the current height/weight
+affect cases do nothing, and a shared temporary-size mechanic must come
+first. Retrofit duergar when it is implemented.
+
+limbless_invertebrate supplies a living head, eyes, heart, brains and guts,
+with no arms, legs or speech. rock_worm adds fangs and HUGE, with an ordinary
+piercing natural bite at the existing attack rate. It uses Large size,
+150 cm body thickness, estimated 800 cm length and estimated 8000 kg mass.
+Only the roughly five-foot thickness is stated by the area. There is no
+automatic venom, tail sting, stone armour or rock-crossing movement power.
+Its neutral archetype XP and spec_swallow's +10 give a total +10 adjustment.
+
+spec_swallow is reusable by other suitable creatures. It tries the existing
+Swallow skill on 15 percent of eligible combat opportunities, against the
+current opponent, with at most one swallowed victim. Normal safety, injury,
+status, success, wait, escape, expiry and removal rules remain. An awake,
+free-to-act creature needs a working head and an undamaged mouth. Its default
+single slot is 100 percent; the 15-percent attempt rate belongs to the power.
+
+Swallow refuses HUGE targets, for both players and mobiles. Large size
+alone is allowed. The skill no longer reads the attacker's race or compares
+against an unrelated size value. This applies to manual Swallow and the
+existing whale special too. The new special adds no whale flukeslap or talk.
+
+Clear raw body 172 to 0 on worm 4707: the new profile already supplies no
+arms, no legs, no speech and HUGE. Clear raw body 320 to 0 on spirits 4708:
+the ghost profile already supplies inorganic physiology and no corpse.
+Keeping those duplicate masks would XOR the intended properties away.
+
+Keep all 44 original inhabitants, 16 carried items and wear slots, 78 room
+flags/exits/doors, 11 objects and every reset/cap/placement. Both royal guards
+keep their actual armour; do not create new loot from the other descriptions.
+The king retains key 4700, Grimdale retains axe 4706, and the tomb's staff,
+shield and coins remain in their original containers/rooms. Digger 4710's
+I reset loads room 4707, not mobile 4707. There is no matching Juargan source,
+shop, teacher or previous special record. Grimdale and the spirits inherit
+undead classification; their tomb already permits undead.
+
+Shaolin Temple creatures
+------------------------
+Shaolin's ordinary people use human. The child is 110 cm, 20 kg and Small;
+the strong Abbot weighs 85 kg. The mirror's inner demon uses manifested_double:
+it can think and speak, but has no living organs, blood, soul, pain or corpse.
+Its height and mass stay unknown. This profile does not copy a player's stats
+or grant ghost movement or weapon immunity.
+
+The wooden man uses wooden_automaton (175 cm, 50 kg, Medium). It is mindless,
+cannot speak, and has no fresh corpse, blood, soul or pain. It is immune to
+poison, sleep, charm and drain, and vulnerable to fire. Its ordinary unarmed
+attacks stay blunt. Its old raw body mask is zero so XOR does not cancel the
+construct's inherited no-heart, inorganic and no-speech properties.
+
+Jinshen uses animated_relic (175 cm, 45 kg, Medium). This active guardian is
+not undead or scenery. It has the same empty-shell physiology and immunities,
+without fire vulnerability. Its sword and individual breath special remain;
+defeating it drops its original equipment without creating a new corpse.
+Both construct profiles keep arms and senses for equipment and targeting.
+All three new profiles have neutral combat scalars and no default special.
+
+The inner demon, Wuhua, Master of Books, Drunken Master and Master Trainer
+are rare; Luohan is elite; the Abbot is boss. Jinshen keeps its existing elite
+rank. Everyone else stays common.
+Rank is encounter design, rather than a species bonus or an HP letter.
+The Abbot keeps his base 28 teaching and every existing lesson, including
+Artist base 30. All authored behaviour, senses, levels and sexes remain.
+Legacy position columns stay as written; they do not set a spawn posture.
+
+spec_poison_palm shares the ordinary poisonous bite's target selection,
+one-in-four draw per eligible attacker, venom spell, saves and +5 special XP.
+It uses palm messages and needs arms without arm trauma; Regenerate can mend
+that trauma normally. Existing spec_poison and spec_kungfu_poison keep their
+own behaviour. The nun keeps her actual cleric special; the earlier poison
+row was overwritten and is removed. Other individual casting, breath and
+thief roles remain unchanged. These profiles add no player abilities.
+
+Both guard resets keep their original room. The first keeps cap 1 and the
+second rises to cap 2, so both guards load and the second receives the prison
+keys in the original reset order. Keeping the first cap at 1 also restores a
+key carrier when just that guard dies while the other survives.
+The duplicate ordinary-monk row keeps cap 1. Jinshen carries Shelizi 20105,
+not an extra bronze key; Luohan keeps the real bronze key. Boom's container
+20137 keeps locked/pickproof and also becomes closeable/closed (flags 15).
+The Abbot wears Jiasha on ABOUT (12), holds the ceremonial staff at HOLD (17),
+and the warrior wears his garters on LEGS (7). The staff stays a held armour
+item. The candle-shaped workshop key and the nun's hair key stay intact.
+Room flags, doors, other objects and resets remain, including warded 20119.
+There is no matching Scribe source for this area.
+
+Dragon Cult creatures
+---------------------
+Most cult members use human. The draconian knight is a human cult guard;
+his dragon-skull helmet does not establish a reptilian body. The priestess
+adds individual scales without extra armour or dragon powers. Bob is 183 cm
+and 65 kg, matching his six-foot lanky description. The strong fresh zombie
+uses zombie with an individual 95 kg weight. Keep every authored behaviour,
+including aggression, wimpy and sentinel, and all levels, sexes and alignments.
+
+The knight and Torturer are rare, the High Priestess elite, and the wyrmling
+and Lich Priest boss. Others stay common, including office boss Fred and the
+high-level candy seller. Rank HP applies once. All rooms, flags, exits, doors,
+objects, resets, caps, keys, equipment and candy-shop stock/prices/hours stay.
+The initial 23 inhabitants carry 29 items; full caps give 27 inhabitants
+and 36 carried items.
+There is no matching Scribe source for this area.
+
+black_dragon_hatchling reuses the dragon body and adds flight, infrared,
+Detect Invisible/Hidden and acid immunity. Defaults are shoulder height60 cm,
+total length 250 cm, weight 70 kg and Medium size, without HUGE. Normal natural
+attacks choose claws or bite at the existing rate. The anatomical tail stays,
+but the inherited tail attack is removed. The code-only natural_armour trait
+is -15. Native spec_breath_acid is 100%; remove a duplicate individual record.
+There is no older-dragon fear, magic resistance, tail slap or spell package.
+NPC water rules already permit its swimming/water breathing. Other combat
+scalars are neutral; archetype XP +10 and normal breath +10 give modifier 120.
+These DD4 measurements, armour and XP are estimates informed by the 2e hatchling.
+
+The wyrmling's individual AFF mask omits native Detect Invisible so XOR does
+not remove it. Keep its Sanctuary/Protection. Clear its individual mute bit
+to allow speech. Older black-dragon powers are for later age profiles.
+
+The shared lich profile is 175 cm, 45 kg, Medium, with infrared and immunity to
+hold/paralysis alongside its existing undead defences. It stays conscious,
+organless and inorganic, with its soul and capacity for pain. Its existing
+fear_aura works independently of special turns, using the normal visible
+opponent/save/Flee rules once per opponent per fight.
+
+The internal lich_chill_touch trait gives a 20% chance after an ordinary
+unarmed hit actually hurts a living organic target. It needs usable arms
+without arm trauma. It adds 1-10 cold damage through ordinary defences; a
+surviving target hurt by that cold then saves against paralysis. Failure
+causes 2 combat rounds of short HOLD/DAZED paralysis. Existing hold/daze or
+paralysis is never stacked/refreshed. The ghoul-only elf exemption does not
+apply. Weapons, ranged attacks, named skills, misses and zero-damage hits
+cannot trigger it. Existing paralysis cures and the shared contact timer
+recover the victim. Removing arm trauma restores the touch. Targeted arm
+trauma does not expire naturally.
+Regenerate retains its existing harmful effect on NPC undead.
+The trait lives only on species/archetypes in code and appears in MSTAT.
+Other lich combat scalars stay neutral; its archetype XP modifier is +10.
+
+The Lich Priest uses an explicit 70% spec_lich / 30% spec_cast_cleric configuration,
+replacing four overwritten legacy rows. One routine runs per opportunity.
+Its existing weighted 15/10 special bonuses round to 14, giving modifier 124
+with the archetype bonus. Keep its individual no-corpse bit but allow speech.
+No phylactery quest or automatic undead-healing contact is introduced.
+
+Jim uses only spec_fido at 100% and stays living human, as requested. The High
+Priestess uses existing spec_cast_priestess at 100%, keeping its normal level
+limits: Curse is available at her present level, other spells unlock later.
+Its existing XP calculation is unchanged. Ordinary priests keep their
+non-casting roles. No new player skill, body part, ACT/RES bit, trait area
+field or individual trait override is added. The short-contact paralysis
+clock/display names now cover liches as well as ghouls; old ghoul/ghast
+durations, saves, elf exception and ordinary long paralysis stay unchanged.
+
+Kaladim creatures
+-----------------
+Kaladim uses existing elf, vampire, skeleton, ghost, bat and animated-soft-toy
+profiles alongside five new archetypes. The Master Elf is a vampire, as chosen
+for this area, with individual 150 cm height and 45 kg weight. He is a boss;
+the existing small dragon stays elite, and the cave beast is rare. All others
+stay common. Rank HP applies once. The child remains an ordinary living elf,
+100 cm, 15 kg and Small; parentage does not add vampirism or rank.
+
+The Master keeps his Protection, elven infrared, barbed whip and every authored
+behaviour. His explicit special configuration is 70% spec_vampire and 30%
+spec_cast_undead, preserving the vampire and necromancer roles. One routine
+runs per opportunity. The normal vampire immunities, weaknesses, regeneration,
+Suck and Gaze rules apply. His old no-heart restriction is retained; the raw
+body mask also removes the humanoid PART_HEART so it cannot override that
+restriction. He remains conscious and has blood, a soul and capacity for pain.
+The other vampires' shared template is unchanged.
+
+The skeletal elves are 150 cm and 10 kg. Keep their Curse and spear gear.
+Their unused raw Charm flag is removed; the loader already strips it, so no
+follower binding is lost or introduced. The spirit maid uses ghost, apparent
+height 150 cm, unknown mass and flight. Keep her soul, pain and ordinary ghost
+phase/contact rules. The bat has an individual 8 cm body length, unknown mass
+and height, real eyes and hind legs, flight, echolocation and normal fang bite.
+Do not round its weight up to 1 kg or add fractional weights. The teddy bear
+uses animated_soft_toy, 30 cm and 1 kg, with its ordinary fire vulnerability.
+
+young_lightning_dragon is colour-unspecified. It has flight, infrared, Detect
+Invisible/Hidden, electricity immunity, natural_armour -20 and native 100%
+spec_breath_lightning. Remove the duplicate individual special. Defaults are
+120 cm shoulder height, 550 cm total length, 400 kg and Large, without HUGE.
+Ordinary attacks choose claws/bite at the existing rate; the anatomical tail
+remains without an adult tail slap. Archetype XP adds +10 to the existing
+area/special/equipment calculation; the normal breath contribution stays +10.
+Other combat scalars are neutral. No adult fear, spell,
+magic-resistance or colour-specific package is added. Measurements, armour
+and XP are DD4 estimates informed by very-young 2e dragon proportions.
+
+limbless_construct is only a body plan: inorganic, without a physical head,
+eyes, arms, legs, heart, organs or speech. It does not decide intelligence or
+soul. animated_vase, animated_blade and animated_mirror add mindlessness,
+no corpse, bloodlessness, soullessness and insensibility to pain, plus poison,
+sleep, charm and drain immunity. They remain ordinary active encounters,
+without ACT_OBJECT or NO_FIGHT. No extra senses are added.
+
+The ceramic vase is 40 cm, 3 kg and Small. The glass mirror is 100 cm, 15 kg
+and Medium. Both use ordinary blunt contact and have blunt vulnerability.
+Keep their sentinel/non-aggressive behaviour and ability to retaliate.
+The blade is 50 cm long, 1 kg and Small, with no standing-height estimate.
+It flies without invented wings and slashes with its own body. It has no
+added material resistance or vulnerability, held duplicate weapon or new loot.
+
+The internal natural_attack_type trait supplies the blade's ordinary slash
+verb (3) when no usable natural attack part is configured. Zero leaves the
+existing hit fallback; 1-19 are ordinary attack verbs. Anatomical attack parts
+and held weapons retain precedence. This adds no attack, magical-contact
+bypass, area field, body part, ACT/RES bit or individual trait override.
+The trait is visible in MSTAT with its archetype origin. No head, heart or
+limbs are invented. Ordinary attacks can hit its central body, but TARGET
+retains its existing refusal of every inorganic NPC, including torso trauma.
+
+cave_beast uses a humanoid body shape, not a human identity or giant family.
+Defaults are 300 cm, 500 kg and Large, with the existing HUGE/mute state and
+ordinary claw/bite contacts. Keep individual Detect Invisible/Hidden. There
+is no extra attack, special, armour or resistance package. Its portrait supports
+the upright clawed/fanged anatomy; exact measurements remain estimates.
+
+Clear individual masks that would cancel inherited flight, corpse restrictions
+or construct anatomy. Restore the ordinary child's speech. All authored ACT
+behaviours, levels, sexes, alignments, remaining buffs and senses stay.
+All 31 room flags, exits, doors, all 13 objects, reset commands, caps, placements,
+equipment and loot stay. The sofa already has the correct furniture type.
+The poisoned sink and scale-cloth bonuses are unchanged. Initial population
+is 22 with 7 carried items; full caps give 34 with 11 items. Area XP remains 90.
+Two reset comments and obvious room-text typos are corrected without moving
+anything. There is no matching Scribe source and no portrait change.
+
+Fleshmonger's Tower creatures
+-----------------------------
+All fourteen definitions use the humanoid body and stay living. The experiments
+are crossbreeds with normal organs, blood, soul, pain and corpse rules. There is
+no new body species, anatomy flag, area field, individual trait override or
+player-race package.
+
+human_goblin supplies infrared and small anatomical fangs, without a natural
+bite, sunlight penalty, special routine, resistance or combat/XP bonus. Defaults
+are 150 cm, 50 kg and Medium. Its existing goblin-family identity allows the
+approved dwarf melee training to recognise these hybrids as goblin kin. This
+profile covers 9400, 9401, 9405 and 9406. Individual 9401 is 175 cm and 80 kg,
+matching the large guard described in his room.
+
+half_orc now supplies infrared and anatomical canines, without a natural bite,
+sunlight penalty or other racial bonus. Defaults are 175 cm, 80 kg and Medium.
+Its existing half-orc family remains. Use it for 9402, 9407 and the human/orc/
+goblin senior guard 9412. The 2e half-orc category includes several orc crosses,
+so that guard does not need a one-off archetype. He has individual 195 cm and
+110 kg measurements, with Medium size and no HUGE flag. The selective hybrid
+traits and exact weights are approved DD4 adaptations, not a full 2e stat block.
+
+hobgoblin now supplies infrared, 200 cm height, 100 kg weight and Medium size,
+with no sunlight penalty or extra combat, XP, resistance or special package.
+Its existing family remains. The book's 6.5-foot stature and ability to fight
+equally well in daylight support this profile; weight is a DD4 estimate. The
+40-percent construction/slopes/shifting-wall recognition is recorded for the
+shared construction-sense follow-up. It is not implemented by this conversion.
+Keep servant 9411's good alignment, speech and frightened/wimpy behaviour.
+
+The cook, boy, human prisoner and Fleshmonger use human. The boy has individual
+155 cm and 45 kg measurements, Medium, fitting the approved adolescent reading.
+Other humans keep 175 cm and 75 kg. Orc prisoner 9409 keeps orc defaults 175 cm,
+85 kg, Medium; goblin prisoner 9410 keeps 120 cm, 30 kg, Small. Both pure orcs
+and goblins retain their existing NPC sunlight penalty. No reduced prisoner
+weight is inferred merely from dirt or mistreatment. Dimensions remain
+descriptive, alongside the existing separate size-category rules.
+
+Senior guard 9412 is rare; the Fleshmonger keeps his explicit elite rank. All
+others stay common. Existing generated-HP rank multipliers apply once: rare2x,
+elite5x. Keep the Fleshmonger's 100% spec_cast_mage and both greet programs. His
+order to senior to scowl and attack remains the start of that guard's fight.
+Do not add aggression to other guards from hostile prose. All authored ACT
+behaviour, levels, sexes, alignments and existing detection buffs stay.
+
+Keep individual BODY_NO_SPEECH on 9406, 9407, 9409 and 9410. The hybrid prisoners
+explicitly cannot talk; the others' silence stays an individual condition.
+Do not cancel these flags as duplicate inheritance: their profiles can speak.
+
+Room 9417's downward stair keywords are corrected from stairs up stairwell to
+stairs down stairwell. Direction and destination 9400 were already correct.
+All twenty room flags, doors, exits and destinations, including toxic cells
+and the Spellcraft laboratory, stay. All fifteen objects and every reset,
+placement, cap, item and wear slot stay: the key on guard 9405, the spoon's
+scoop verb, robe/glove bonuses and servants' ABOUT-slot shirts are preserved.
+Initial population remains 20 with 37 carried items; full caps give 24 with
+46 items. No matching Scribe source or portrait changes are involved.
+
+Walls of Anon creatures
+----------------------
+Walls of Anon now uses the human, elf, dwarf, spectre and ghost archetypes.
+The four wall captains are rare, the knight and battle mage are elite, and
+the marshal is a boss. The vile spectre is rare; everyone else stays common.
+Rank affects encounter strength, not physical size. The burly worker has an
+individual weight of 95 kg; the one-eyed sailor still has a useful eye.
+
+Spectres are Medium spirits, 175 cm tall, with their mass left unspecified.
+They inherit cold, charm, hold and paralysis immunity alongside the existing
+poison, sleep, drain and ordinary nonmagical-contact immunities. They retain
+their minds, souls and capacity for pain, but have no organic blood or corpse.
+Their native spec_spectre supplies the existing life drain and phase behaviour.
+The Walls spectre uses that special instead of the broad undead caster.
+
+The code-only sunlight_powerless trait stops a spectre's ordinary attacks
+and native life drain in direct natural sunlight. It also prevents automatic
+ethereal hiding and draws an ethereal spectre back to semi-material form.
+An explicit phase of none stays none. Movement, fleeing and the ordinary
+incoming-damage rules still work; sunlight itself causes no damage.
+Exposure uses the same rules as sunlight sensitivity: a cloudless SUN_LIGHT
+day, outdoors, outside both underwater sectors, without dark or no_weather.
+Artificial light does not count. Shelter restores normal behaviour.
+This is a species/archetype trait in code, shown with its origin in MSTAT;
+there is no new area field, Scribe command or player racial ability.
+
+The elf and dwarf inherit infrared rather than cancelling it with duplicate
+area flags. Authored human infrared and all other individual buffs stay.
+The two spirits' sexes now match their descriptions and existing portraits.
+The priestess keeps regeneration and spec_cast_adept and also offers the
+ordinary paid HEAL menu, at the existing prices. She gains the usual healer
+quest exclusion; this does not add the separate priest services role.
+The mail gauntlets now advertise hands, matching their existing reset slot.
+All room flags, wards, original placements, limits, equipment and keys stay.
+
+Arika's Bed & Breakfast creatures
+--------------------------------
+All thirteen definitions now select reviewed creature archetypes. The Shadow
+and Bob use human bodies; their names and mysterious presentation stay.
+The Vampire is elite, the centaur and Arika are rare, and the other ten stay
+common. The existing rank HP multiplier applies once. Chef height/weight are
+190 cm/110 kg, waitress 155/50, merchant 175/120 and the fat cat weighs 11 kg.
+Other humans use 175/75/Medium. The ghost is 175 cm/Medium with no assigned mass.
+Dimensions describe the creature; they do not add equipment-fitting rules.
+
+centauroid_mammal is a body species with one head, two arms, hands/fingers,
+four legs/forelegs/feet, ordinary organs, senses and speech. It supplies no
+default special, natural attack or racial defence. Select the centaur
+archetype, not the body species, in an area or Scribe source.
+
+centaur adds a tail and hooves, natural_armour -10, a hoof attack option and
++5 percentage points of archetype XP. Its defaults are 260 cm height, 250 cm
+body length, 600 kg and Large; it does not have HUGE. Other combat modifiers
+are zero. It has no innate resistances, magic, mountability or warrior special.
+The local centaur keeps his individual spec_warrior and original bow, lance,
+breastplate, bracers and horseshoes. A hoof attack is an ordinary unarmed
+blunt attack candidate, subject to leg trauma. Held weapons take precedence.
+It does not add two extra hoof attacks each round. The armour/XP adjustments
+and estimated mass/length are DD4 choices informed by the 2e Centaur entry.
+
+domestic_cat reuses quadrupedal_mammal and adds tail, paws, claws and fangs.
+It has ordinary slashing claw and piercing bite options, with the existing
+head and leg-trauma checks and weapon rules; these add no free attacks. Infrared follows
+DD4's existing cat-form night-sight convention, and Sneak represents quiet
+movement. It has no magical detection, elven-cat spells, innate special or
+extra combat/XP modifiers. Defaults are 30 cm tall, 50 cm body length with
+the tail additional, 4 kg and Small. Arika's overweight cat overrides only
+weight to 11 kg and keeps its individual spec_fido and random twitch script.
+Cats are living, organic, minded, soul-bearing and sensitive to pain, with
+ordinary corpses, no humanoid arms and no speech. Leave raw bf empty to inherit;
+copying an old no_speech bit would XOR that restriction back off.
+
+script_controller uses the existing mysterious_being body for an abstract
+room-script actor. It has no body parts, physical organs, blood, soul, pain,
+speech or corpse. It is inorganic, mindless, no_quest and no_fight, with no
+default special or physical measurements. The controller's role comes from
+its existing inline programs; no new area fields or trait commands are used.
+The archetype does not add WIZINVIS: keep that individual flag where needed.
+Arika's Someone keeps its raw WIZINVIS, level 1000, blank keywords, short name,
+counter placement and five food-ordering triggers. Speech events and
+program commands still use the existing dispatch and actor-lookup rules.
+
+The local vampire keeps spec_mast_vampire and gains the reviewed vampire
+classification, regeneration and defences. Clear its old inorganic body bit
+so it remains a corporeal, blood-bearing vampire. The apparition uses ghost:
+clear its old no_heart/no_corpse/inorganic bits to inherit them without XOR
+cancellation. It retains a mind, soul and pain, starts semi-material and has
+the existing nonmagical-contact barrier. Its male setting now matches its
+description and existing portrait. The fat cat also clears duplicate no_speech.
+
+The other staff programs, individual specials, behaviour, flight/sensing/protection
+buffs, shop prices/hours, room flags, doors, keys and loot stay. Arika now has
+25 programs in total after combining the food aliases. The silk
+robe really is a wearable container: the purse and room key stay inside it.
+There is no matching Arika Scribe source. The complete Scribe manual and area
+guide describe these profiles; existing source/area pairs remain in step.
+
+Speech aliases and Arika food orders
+-----------------------------------
+Use speech_prog any followed by a list of whole-word aliases when one action
+should run once per utterance. In a Scribe mob record, for example:
+
+    mp speech_prog any bread travel
+    mpecho The baker offers you one loaf.
+    ~
+
+The generated area header is >speech_prog any bread travel~. Saying "bread",
+"travel", "buy travel bread" or "bread bread" runs that program once.
+Matching is case-insensitive and uses the existing whole-word boundaries.
+Other matching programs still run. Keep aliases for the same action together
+instead of defining overlapping programs. The new form applies only to speech;
+existing word lists and p-phrase triggers retain their behaviour.
+
+Arika's WIZINVIS food controller now has five triggers: menu, wine, waterskin,
+bread/travel and vegetable/stew. Each product order runs once, at its usual
+price: one gold for a waterskin or bread, two for stew. The menu is free; wine
+still produces the chef's refusal, once. All earlier accepted aliases remain.
+Insufficient gold refuses the order without an item or charge, and the chef
+returns to the kitchen after the interaction. Room rental and staff programs
+are separate and retain their behaviour. Someone keeps its WIZINVIS flag,
+level, physiology and counter placement. There is no matching Arika source.
+
+Gypsy Camp people and invisible helpers
+--------------------------------------
+The Gypsy Camp uses human for Lyanka 530, Bidshika 531 and Brishen 532.
+They keep their individual adept, clan-guard and psionicist specials, all at
+100%. These are roles, not human racial abilities. All six area mobs remain
+common; the conversion does not add a rank multiplier to clan services.
+
+The three people have ordinary living humanoid anatomy and Medium size.
+Lyanka is hunched, at 155 cm and 50 kg; tall Bidshika is 190 cm and 85 kg;
+thin Brishen is 175 cm and 60 kg. These are descriptive measurements.
+Brishen keeps identify, scavenging and his existing behaviour flags; only
+his undefined ACT bit 16 is removed. Clan headquarters already suppress the
+ordinary aggression pass. Lyanka's blessing and exit remain clan-restricted.
+Do not replace her adept role with paid healer or priest services.
+
+The three invisible support mobs 533-535 reuse script_controller. Their
+WIZINVIS, level, sentinel and NOCHARM settings remain individual. Remove the
+duplicate raw NO_QUEST bit when assigning the archetype: it is already
+inherited, and leaving it in the area mask would cancel it through XOR.
+The effective helper still has NO_QUEST and gains the profile's NO_FIGHT,
+mindless, bloodless, analgic and soulless properties. It has no physical body
+parts, speech or corpse. Do not invent dimensions for these script actors.
+
+Do not add NON_CORPOREAL just because a helper has no physical body. That
+flag is a separate phasing effect and would block its drop and close commands.
+The scripts still run through the existing event and command machinery.
+Helper 533 drops the clan crystal ball in healing room 533, retreats to 537
+and meditates. Helper 534 handles friend/foe transfers; helper 535 closes
+the tent doors. Keep those programs, their probabilities and destinations.
+
+The clan table uses rooms 534 for transfer, 530 for the guard and 533 for
+healing; clan items 530-533 also have code references. Crystal ball 534 is a
+clan object and remains part of the healing-room recovery system. Keep all
+seven programs, three specials, room flags, randomised tent exits, door
+resets, key and item placements. The death-warning form mpecho CHAT is valid.
+There is no matching Gypsy Camp Scribe source in the repository.

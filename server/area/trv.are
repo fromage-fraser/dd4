@@ -38,6 +38,9 @@ Two sharp looking knives are tucked into his thick leather belt.
 ~
 |
 
+< human~ common~
+MobHeight 190
+MobWeight 85
 #530
 lyanka gypsy woman~
 Lyanka the Gypsy Witch~
@@ -68,6 +71,9 @@ She sings the soft, sad songs of her displaced people.
 ~
 |
 
+< human~ common~
+MobHeight 155
+MobWeight 50
 #532
 brishen gypsy man~
 Brishen the Gypsy Loremaster~
@@ -75,13 +81,15 @@ Brishen rummages through a container of junk.
 ~
 The middle-aged and thin-bodied gypsy has extensive lore and is keen to
 examine any article you bring him.  He can barely resist rummaging through
-your backback.
+your backpack.
 ~
-2|512|4096|1048756 0 0 S
+2|512|4096|1048740 0 0 S
 100 0 0 0d0+0 0d0+0
 0 0
 0 0 1
 
+< human~ common~
+MobWeight 60
 #533
 trv wizinvis guy~
 TRV wizinvis guy~
@@ -89,7 +97,7 @@ TRV wizinvis guy will drop the healing item
 ~
 Sleepy time for me.
 ~
-2|512|4096|65536 0 0 S
+2|4096|65536 0 0 S
 500 0 0 0d0+0 0d0+0
 0 0
 0 0 0
@@ -100,6 +108,7 @@ Sleepy time for me.
 ~
 |
 
+< script_controller~ common~
 #534
 trv transfer guy~
 TRV transfer guy~
@@ -107,7 +116,7 @@ TRV transfer guy~
 ~
 {x
 ~
-2|512|4096|65536 0 0 S
+2|4096|65536 0 0 S
 500 0 0 0d0+0 0d0+0
 0 0
 0 0 0
@@ -122,6 +131,7 @@ TRV transfer guy~
 ~
 |
 
+< script_controller~ common~
 #535
 trv close door guy~
 TRV close door guy~
@@ -129,7 +139,7 @@ TRV close door guy~
 ~
 {x
 ~
-2|512|4096|65536 0 0 S
+2|4096|65536 0 0 S
 500 0 0 0d0+0 0d0+0
 0 0
 0 0 0
@@ -140,6 +150,7 @@ TRV close door guy~
     close west
 ~
 |
+< script_controller~ common~
 #0
 
 #OBJECTS
@@ -341,7 +352,7 @@ S
 #536
 Inside the Gypsy's Tent~
 This tent is used for preparing and cooking food.  A large fire has been
-made in the centre of the floor, think tendrils of grey smoke rising
+made in the centre of the floor, thin tendrils of grey smoke rising
 through vents in the roof of the tent.  Blackened pots sit perched in the
 flames, releasing rich, savoury aromas.  A small group of gypsy women tend
 the meal and talk quietly, laughing and occasionally singing.  The only

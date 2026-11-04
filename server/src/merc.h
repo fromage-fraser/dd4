@@ -3644,8 +3644,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 47
-#define MAX_SPECIES 13
+#define MAX_MOB 62
+#define MAX_SPECIES 16
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -5907,6 +5907,10 @@ typedef enum creature_trait
         CREATURE_TRAIT_SLEEP_RESISTANCE_PERCENT,
         CREATURE_TRAIT_CHARM_RESISTANCE_PERCENT,
         CREATURE_TRAIT_GHOUL_TOUCH_IMMUNITY,
+        CREATURE_TRAIT_ILLUSION_IMMUNITY,
+        CREATURE_TRAIT_LICH_CHILL_TOUCH,
+        CREATURE_TRAIT_NATURAL_ATTACK_TYPE,
+        CREATURE_TRAIT_SUNLIGHT_POWERLESS,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 int validate_creature_traits args((void));
@@ -5922,6 +5926,8 @@ void show_creature_traits args((CHAR_DATA *viewer, CHAR_DATA *victim));
 int creature_melee_hit_bonus args((CHAR_DATA *attacker, CHAR_DATA *victim));
 bool creature_is_sunlight_sensitive args((CHAR_DATA *ch));
 int creature_sunlight_hit_penalty args((CHAR_DATA *ch));
+bool creature_sunlight_powerless args((CHAR_DATA *ch));
+void update_creature_sunlight args((CHAR_DATA *ch));
 const char *ghost_phase_name args((GHOST_PHASE phase));
 bool parse_ghost_phase args((const char *text, GHOST_PHASE *phase));
 bool set_ghost_phase args((CHAR_DATA *ch, GHOST_PHASE phase));
@@ -5967,9 +5973,11 @@ int validate_mob_special_templates args((void));
 int mob_specials_exp_bonus args((const MOB_SPECIAL_DATA *set));
 const char *mob_special_name args((SPEC_FUN *special));
 /* Natural-contact creature effects and combat-round timing. */
-bool is_ghoul_paralysis args((const AFFECT_DATA *paf));
-void update_ghoul_paralysis args((void));
+bool is_contact_paralysis args((const AFFECT_DATA *paf));
+void update_contact_paralysis args((void));
 void ghoul_touch_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, int dt));
+void lich_chill_touch_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim,
+                                    int dt, int actual_damage));
 void mummy_rot_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim, int actual_damage));
 void dracolich_paralysis_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool is_stench_exposure args((const AFFECT_DATA *paf));

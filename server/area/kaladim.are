@@ -15,11 +15,11 @@ A small dragon sits here waiting for his prey.
 This dragon is not that big.  He must be very young, but
 looks to be just as deadly.
 ~
-98 8192|524288 0 S
+98 8192 0 S
 42 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 1
-< reserved~ elite~
+< young_lightning_dragon~ elite~
 #9926
 undead elf~
 an undead elf~
@@ -29,10 +29,13 @@ An evil elven mage came to their land. He destroyed everything in his path.
 He used his magical fire to burn the flesh from the elves, then resurrected
 them to protect his land.
 ~
-64 1024|262144 0 S
+64 1024 0 S
 32 0 0 0d0+0 0d0+0
-16|32|256 0
+0 0
 8 8 1
+< skeleton~ common~
+MobHeight 150
+MobWeight 10
 #9927
 master elf~
 the Master Elf~
@@ -40,10 +43,13 @@ The master elf is an evil elf that wants to drink your blood.
 ~
 The master elf has dominated all that you see before you.
 ~
-2|32|64 8192 -1000 S
+2|32|64 8704 -1000 S
 40 0 0 0d0+0 0d0+0
-16 0
+262160 0
 8 8 1
+< vampire~ boss~
+MobHeight 150
+MobWeight 45
 #9928
 Elf~
 Slave elf~
@@ -56,6 +62,7 @@ he dies of mistreatment or is killed for the Master's amusement.
 28 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< elf~ common~
 #9929
 child~
 an elf child~
@@ -66,8 +73,12 @@ He is an innocent little lad and is harmless.
 ~
 2|4|64|128 0 0 S
 25 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 1
+< elf~ common~
+MobHeight 100
+MobWeight 15
+MobSize 0
 #9930
 black bat~
 A black bat~
@@ -75,10 +86,12 @@ The bat hangs around waiting for its prey.
 ~
 The bat sleeps on its perch, but yet waits for its prey to walk by.
 ~
-2|64 524288 0 S
+2|64 0 0 S
 34 0 0 0d0+0 0d0+0
-2|4|8|32 0
+0 0
 8 8 0
+< bat~ common~
+MobLength 8
 #9931
 elf maid spirit~
 an elf maid~
@@ -86,10 +99,12 @@ The spirit of an elf maid cleans the house as if her life depended on it.
 ~
 The maid cleans and cleans and cleans, and cleans some more.
 ~
-4|64 0 400 S
+4|64 524288 400 S
 28 0 0 0d0+0 0d0+0
-64 0
+0 0
 8 8 2
+< ghost~ common~
+MobHeight 150
 #9932
 vase~
 An odd looking vase~
@@ -99,8 +114,9 @@ The vase sits on a wooden stool with red roses sticking out of the top.
 ~
 2|64 0 -350 S
 32 0 0 0d0+0 0d0+0
-1|2|4|8|16|32|256 0
+0 0
 8 8 0
+< animated_vase~ common~
 #9933
 knife~
 A large knife~
@@ -112,8 +128,9 @@ fly so that it could serve the master.
 ~
 32|64 0 0 S
 34 0 0 0d0+0 0d0+0
-1|2|4|8|16|32|256 0
+0 0
 8 8 0
+< animated_blade~ common~
 #9934
 mirror~
 A thick glass mirror~
@@ -124,8 +141,9 @@ It wants to attack you, but it is plastered to the wall.
 ~
 2|64 0 0 S
 36 0 0 0d0+0 0d0+0
-1|2|4|8|16|32|256 0
+0 0
 8 8 1
+< animated_mirror~ common~
 #9935
 small teddy bear~
 A small teddy bear~
@@ -135,8 +153,9 @@ A little elf girl once owned the bear.
 ~
 2|64 0 0 S
 27 0 0 0d0+0 0d0+0
-16|32|256 0
+0 0
 8 8 1
+< animated_soft_toy~ common~
 #9936
 beast~
 A cave beast~
@@ -144,10 +163,11 @@ A cave beast rears before you.
 ~
 The cave beast was sleeping, but now you have woken him!
 ~
-2|32|64 8|32 0 S
+2|32|64 40 0 S
 39 0 0 0d0+0 0d0+0
-32|128 0
+0 0
 8 8 1
+< cave_beast~ rare~
 #0
 
 
@@ -428,7 +448,7 @@ S
 #9934
 Stairwell~
 A huge spiral stairwell leads in two directions.  You could either
-go up to the second for or down to the basement it is your choice,
+go up to the second floor or down to the basement it is your choice,
 but your fate is already sealed.
 ~
 0 13 0
@@ -736,7 +756,7 @@ D4
 S
 #9954
 Dragons Lair~
-The lair is larger then you've ever seen, it is at least a mile long,
+The lair is larger than you've ever seen, it is at least a mile long,
 but you sense that you are coming ever so close to the dragon.
 ~
 0 9 0
@@ -791,7 +811,7 @@ E 1 9936 100 16
 *
 M 1 9926 15 9931                 Undead Elves to The Entertainment Room
 *
-M 1 9928 2 9947                 Slave elf to Dining Room
+M 1 9928 2 9947                 Slave elf to The Porch
 E 1 9934 100 14
 *
 M 1 9926 15 9936                 Undead Elves to A Hallway
@@ -830,7 +850,7 @@ M 1 9935 1 9944                 A small teddy bear to A Tiny Bedroom
 *
 M 1 9936 1 9951                 A cave beast to A Cave
 O 1 9927 100 9943                       A marble sink to The Bathroom
-O 1 9930 100 9931                       A large television to The Entertainment Room
+O 1 9930 100 9931                       A large painting to The Entertainment Room
 O 1 9929 100 9928                       A tall pillar to The ruins
 O 1 9928 100 9931                       A large couch to The Entertainment Room
 O 1 9931 100 9947                       A small checker board to The Porch
@@ -839,8 +859,10 @@ O 1 9932 100 9929                       A welcoming mat to A Shelter
 S
 
 #SPECIALS
-M 9925 spec_breath_lightning    dragon
-M 9927 spec_cast_undead         master
+N 9927 1 spec_vampire
+N 9927 2 spec_cast_undead
+N 9927 3 none
+P 9927 70 30 0
 
 S
 

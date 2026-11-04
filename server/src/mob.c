@@ -275,6 +275,58 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "limbless_invertebrate",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_EYE | PART_HEART | PART_BRAINS | PART_GUTS,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "limbless_construct",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS
+                    | BODY_NO_HEART | BODY_NO_SPEECH | BODY_INORGANIC,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        /* A humanlike upper body and a four-legged mammalian lower body. */
+        {
+                "centauroid_mammal",
+                0, 0,
+                PART_HEAD | PART_ARMS | PART_HANDS | PART_FINGERS
+                    | PART_4_LEGS | PART_FORELEGS | PART_FEET
+                    | PART_HEART | PART_BRAINS | PART_GUTS | PART_EAR | PART_EYE,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -743,14 +795,15 @@ const struct mob_type mob_table[MAX_MOB] =
                  */
                 RES_DARK,
                 RES_HOLY,
-                RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC,
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_NONMAGIC
+                    | RES_COLD | RES_CHARM | RES_HOLD | RES_PARALYSIS,
 
                 /* Ordinary DD4 HP, damage, critical and swiftness values. */
                 0, 0, 0, 0,
 
-                /* Retain humanoid dimension/language metadata. */
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                /* Human-sized spirit; its mass remains unspecified. */
+                175, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                 /*
                  * Stronger life drain plus live spectral phasing.
@@ -763,10 +816,7 @@ const struct mob_type mob_table[MAX_MOB] =
 
                 MOB_SPECIAL_CHANCES_AUTO,
 
-                /*
-                 * Begin semi-material so the existing physical-contact
-                 * rules remain usable before spec_spectre is introduced.
-                 */
+                /* Start with the existing semi-material contact rules. */
                 GHOST_PHASE_SEMI_MATERIAL,
                 CREATURE_FAMILY_NONE,
                 MOB_TEMPLATE_UNSET
@@ -887,7 +937,7 @@ const struct mob_type mob_table[MAX_MOB] =
         {
                 "lich", "humanoid", "icon1", "icon2",
 
-                ACT_UNDEAD, 0,
+                ACT_UNDEAD | ACT_FEAR_AURA, AFF_INFRARED,
 
                 /* Remove the humanoid organs; keep speech and limbs. */
                 BODY_NO_HEART | BODY_INORGANIC
@@ -897,17 +947,18 @@ const struct mob_type mob_table[MAX_MOB] =
                 RES_DARK,
                 RES_HOLY,
                 RES_POISON | RES_SLEEP | RES_DRAIN | RES_CHARM
-                    | RES_COLD | RES_ELECTRICITY | RES_NONMAGIC,
+                    | RES_COLD | RES_ELECTRICITY | RES_NONMAGIC
+                    | RES_HOLD | RES_PARALYSIS,
 
                 0, 0, 0, 0,
 
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                175, 45,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
 
                 /* Casts at its current opponent. */
                 "spec_lich", "", "",
 
-                0,
+                10,
                 MOB_SPECIAL_CHANCES_AUTO,
                 MOB_TEMPLATE_UNSET,
                 CREATURE_FAMILY_NONE,
@@ -962,12 +1013,12 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "half_orc", "humanoid", "icon1", "icon2",
-                0, 0,
-                0, 0,
+                0, AFF_INFRARED,
+                PART_FANGS, 0,
                 0, 0, 0,
                 0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                175, 80,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "",
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
@@ -992,12 +1043,12 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "hobgoblin", "humanoid", "icon1", "icon2",
-                0, 0,
+                0, AFF_INFRARED,
                 0, 0,
                 0, 0, 0,
                 0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                200, 100,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "",
                 0,
                 MOB_SPECIAL_CHANCES_AUTO,
@@ -1330,6 +1381,217 @@ const struct mob_type mob_table[MAX_MOB] =
                 GHOST_PHASE_NONE,
                 CREATURE_FAMILY_LIZARDMAN,
                 MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "duergar", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED | AFF_SNEAK,
+                0, 0,
+                RES_MAGIC, 0, RES_POISON | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                120, 55, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_duergar", "", "",
+                5, /* With the special's +10, the whole profile adds +15 XP. */
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_DWARF,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "rock_worm", "limbless_invertebrate", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                150, 8000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_swallow", "", "",
+                0, /* Swallow supplies the profile's +10 XP. */
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                800
+        },
+
+        /* The mirror gives the reflection a mind, but no living organs. */
+        {
+                "manifested_double", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_NO_HEART | BODY_INORGANIC | BODY_NO_CORPSE
+                    | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS
+                    | PART_HEART | PART_BRAINS | PART_GUTS,
+                0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "wooden_automaton", "bipedal_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_BLOODLESS
+                    | BODY_ANALGIC | BODY_SOULLESS,
+                0,
+                0, RES_FIRE, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                175, 50, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        /* This is an active guardian, rather than an undead monk. */
+        {
+                "animated_relic", "bipedal_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_BLOODLESS
+                    | BODY_ANALGIC | BODY_SOULLESS,
+                0,
+                0, 0, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                175, 45, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "black_dragon_hatchling", "dragon", "icon1", "icon2",
+                0, AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                0, PART_TAILATTACK,
+                0, 0, RES_ACID,
+                0, 0, 0, 0,
+                60, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_breath_acid", "", "",
+                10,
+                MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE,
+                250
+        },
+
+        {
+                "young_lightning_dragon", "dragon", "icon1", "icon2",
+                0, AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                0, PART_TAILATTACK,
+                0, 0, RES_ELECTRICITY,
+                0, 0, 0, 0,
+                120, 400, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_lightning", "", "",
+                10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 550
+        },
+
+        {
+                "animated_vase", "limbless_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS, 0,
+                0, RES_BLUNT, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                40, 3, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "animated_blade", "limbless_construct", "icon1", "icon2",
+                0, AFF_MINDLESS | AFF_FLYING,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS, 0,
+                0, 0, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 50
+        },
+
+        {
+                "animated_mirror", "limbless_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS, 0,
+                0, RES_BLUNT, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                100, 15, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "cave_beast", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | BODY_NO_SPEECH | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                300, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+
+        /* These living hybrids keep their own defaults, rather than stacking parents. */
+        {
+                "human_goblin", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED,
+                PART_FANGS, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                150, 50, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_GOBLIN, MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "centaur", "centauroid_mammal", "icon1", "icon2",
+                0, 0,
+                PART_TAIL | PART_HOOVES, PART_HOOVES,
+                0, 0, 0,
+                0, 0, 0, 0,
+                260, 600, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 250
+        },
+        {
+                "domestic_cat", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_INFRARED | AFF_SNEAK,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                30, 4, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 50
+        },
+        /* This invisible actor runs room scripts rather than living in the world. */
+        {
+                "script_controller", "mysterious_being", "icon1", "icon2",
+                ACT_NO_QUEST | ACT_NO_FIGHT, AFF_MINDLESS,
+                BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1404,7 +1666,11 @@ typedef enum creature_trait_effect
         TRAIT_NATURAL_ARMOUR,
         TRAIT_SILVER_CONTACT,
         TRAIT_STATUS_RESISTANCE_PERCENT,
-        TRAIT_GHOUL_TOUCH_IMMUNITY
+        TRAIT_GHOUL_TOUCH_IMMUNITY,
+        TRAIT_ILLUSION_IMMUNITY,
+        TRAIT_LICH_CHILL_TOUCH,
+        TRAIT_NATURAL_ATTACK_TYPE,
+        TRAIT_SUNLIGHT_POWERLESS
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -1469,13 +1735,22 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"silver_bypasses_nonmagic", TRAIT_SILVER_CONTACT, NULL},
         {"sleep_resistance_pct", TRAIT_STATUS_RESISTANCE_PERCENT, NULL},
         {"charm_resistance_pct", TRAIT_STATUS_RESISTANCE_PERCENT, NULL},
-        {"ghoul_touch_immunity", TRAIT_GHOUL_TOUCH_IMMUNITY, NULL}
+        {"ghoul_touch_immunity", TRAIT_GHOUL_TOUCH_IMMUNITY, NULL},
+        {"illusion_immunity", TRAIT_ILLUSION_IMMUNITY, NULL},
+        {"lich_chill_touch", TRAIT_LICH_CHILL_TOUCH, NULL},
+        {"natural_attack_type", TRAIT_NATURAL_ATTACK_TYPE, NULL},
+        {"sunlight_powerless", TRAIT_SUNLIGHT_POWERLESS, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
 {
         {CREATURE_TRAIT_GOBLINOID_TRAINING, 1},
         {CREATURE_TRAIT_GIANT_DEFENCE, -4}
+};
+static const CREATURE_TRAIT_CHANGE duergar_trait_changes[] =
+{
+        {CREATURE_TRAIT_SUNLIGHT_SENSITIVE, -2},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
 };
 static const CREATURE_TRAIT_CHANGE untrained_dwarf_trait_changes[] =
 {
@@ -1498,6 +1773,10 @@ static const CREATURE_TRAIT_CHANGE bat_trait_changes[] =
 {
         {CREATURE_TRAIT_ECHOLOCATION, 1}
 };
+static const CREATURE_TRAIT_CHANGE spectre_trait_changes[] =
+{
+        {CREATURE_TRAIT_SUNLIGHT_POWERLESS, 1}
+};
 static const CREATURE_TRAIT_CHANGE shadow_trait_changes[] =
 {
         {CREATURE_TRAIT_STRENGTH_DRAIN_TOUCH, 1}
@@ -1505,6 +1784,26 @@ static const CREATURE_TRAIT_CHANGE shadow_trait_changes[] =
 static const CREATURE_TRAIT_CHANGE scaled_armour_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
+};
+static const CREATURE_TRAIT_CHANGE black_hatchling_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -15}
+};
+static const CREATURE_TRAIT_CHANGE young_lightning_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
+};
+static const CREATURE_TRAIT_CHANGE animated_blade_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 3} /* slash with its own body */
+};
+static const CREATURE_TRAIT_CHANGE lich_trait_changes[] =
+{
+        {CREATURE_TRAIT_LICH_CHILL_TOUCH, 20}
+};
+static const CREATURE_TRAIT_CHANGE centaur_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
 };
 static const CREATURE_TRAIT_CHANGE lizardman_trait_changes[] =
 {
@@ -1533,6 +1832,7 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
         {"dwarf", NULL, dwarf_trait_changes, TRAIT_ITEMS(dwarf_trait_changes)},
+        {"duergar", "dwarf", duergar_trait_changes, TRAIT_ITEMS(duergar_trait_changes)},
         {"dwarf_untrained", "dwarf", untrained_dwarf_trait_changes,
             TRAIT_ITEMS(untrained_dwarf_trait_changes)},
         {"goblin", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
@@ -1541,10 +1841,19 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"bat", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
         {"vampire_bat_form", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
         {"shadow", NULL, shadow_trait_changes, TRAIT_ITEMS(shadow_trait_changes)},
+        {"spectre", NULL, spectre_trait_changes, TRAIT_ITEMS(spectre_trait_changes)},
         {"prism_dragon", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
         {"darkenbeast", NULL, darkenbeast_trait_changes, TRAIT_ITEMS(darkenbeast_trait_changes)},
         {"wyvern", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
         {"lizardman", NULL, lizardman_trait_changes, TRAIT_ITEMS(lizardman_trait_changes)},
+        {"centaur", NULL, centaur_trait_changes, TRAIT_ITEMS(centaur_trait_changes)},
+        {"black_dragon_hatchling", NULL, black_hatchling_trait_changes,
+            TRAIT_ITEMS(black_hatchling_trait_changes)},
+        {"lich", NULL, lich_trait_changes, TRAIT_ITEMS(lich_trait_changes)},
+        {"young_lightning_dragon", NULL, young_lightning_trait_changes,
+            TRAIT_ITEMS(young_lightning_trait_changes)},
+        {"animated_blade", NULL, animated_blade_trait_changes,
+            TRAIT_ITEMS(animated_blade_trait_changes)},
         {"wight", NULL, wight_trait_changes, TRAIT_ITEMS(wight_trait_changes)},
         {"dracolich", NULL, dracolich_trait_changes, TRAIT_ITEMS(dracolich_trait_changes)},
         {NULL, NULL, NULL, 0}
@@ -1718,10 +2027,18 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                         {
                                 CREATURE_TRAIT_EFFECT effect =
                                     creature_trait_definitions[profile->changes[i].id].effect;
-                                if (effect == TRAIT_STATUS_RESISTANCE_PERCENT
+                                if ((effect == TRAIT_STATUS_RESISTANCE_PERCENT
+                                    || effect == TRAIT_LICH_CHILL_TOUCH)
                                 && profile->changes[i].value < 0)
                                         issues++;
-                                if (effect == TRAIT_GHOUL_TOUCH_IMMUNITY
+                                /* Zero removes the override; 1-19 are ordinary attack verbs. */
+                                if (effect == TRAIT_NATURAL_ATTACK_TYPE
+                                && (profile->changes[i].value < 0
+                                    || profile->changes[i].value > 19))
+                                        issues++;
+                                if ((effect == TRAIT_GHOUL_TOUCH_IMMUNITY
+                                    || effect == TRAIT_ILLUSION_IMMUNITY
+                                    || effect == TRAIT_SUNLIGHT_POWERLESS)
                                 && (profile->changes[i].value < 0
                                     || profile->changes[i].value > 1))
                                         issues++;
@@ -1765,7 +2082,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_GHOUL_TOUCH_IMMUNITY)
+                || creature_trait_definitions[i].effect > TRAIT_SUNLIGHT_POWERLESS)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name
@@ -1901,20 +2218,42 @@ bool creature_is_sunlight_sensitive(CHAR_DATA *ch)
         return creature_trait_value(ch, CREATURE_TRAIT_SUNLIGHT_SENSITIVE) != 0;
 }
 
-/* Keep the existing weather, shelter and ranged-attack rules. */
-int creature_sunlight_hit_penalty(CHAR_DATA *ch)
+/* Both sunlight traits use the same natural light and shelter rules. */
+static bool creature_in_direct_sunlight(CHAR_DATA *ch)
 {
         ROOM_INDEX_DATA *room;
-        int id, penalty = 0;
         if (!ch || !ch->in_room)
-                return 0;
+                return FALSE;
         room = ch->in_room;
-        if (!IS_OUTSIDE(ch)
-        || room->sector_type == SECT_UNDERWATER
-        || room->sector_type == SECT_UNDERWATER_GROUND
-        || IS_SET(room->room_flags, ROOM_DARK | ROOM_NO_WEATHER)
-        || weather_info.sunlight != SUN_LIGHT
-        || weather_info.sky != SKY_CLOUDLESS)
+        return IS_OUTSIDE(ch)
+            && room->sector_type != SECT_UNDERWATER
+            && room->sector_type != SECT_UNDERWATER_GROUND
+            && !IS_SET(room->room_flags, ROOM_DARK | ROOM_NO_WEATHER)
+            && weather_info.sunlight == SUN_LIGHT
+            && weather_info.sky == SKY_CLOUDLESS;
+}
+
+bool creature_sunlight_powerless(CHAR_DATA *ch)
+{
+        return creature_trait_value(ch, CREATURE_TRAIT_SUNLIGHT_POWERLESS) > 0
+            && creature_in_direct_sunlight(ch);
+}
+
+/* Sunlight exposes a phased spirit without changing an explicit NONE. */
+void update_creature_sunlight(CHAR_DATA *ch)
+{
+        if (creature_sunlight_powerless(ch)
+        && ch->ghost_phase == GHOST_PHASE_ETHEREAL
+        && set_ghost_phase(ch, GHOST_PHASE_SEMI_MATERIAL))
+                act("{dSunlight draws $n back into a half-material form.{x",
+                    ch, NULL, NULL, TO_ROOM);
+}
+
+/* The existing melee callers still decide whether this penalty applies. */
+int creature_sunlight_hit_penalty(CHAR_DATA *ch)
+{
+        int id, penalty = 0;
+        if (!creature_in_direct_sunlight(ch))
                 return 0;
         for (id = 0; id < CREATURE_TRAIT_COUNT; id++)
                 if (creature_trait_definitions[id].effect == TRAIT_SUNLIGHT_ACCURACY)
@@ -3140,6 +3479,7 @@ int mob_natural_attack_type(CHAR_DATA *mob)
         size_t i;
         int count;
         int choice;
+        int native_type;
 
         parts = mob_usable_attack_parts(mob);
         count = 0;
@@ -3151,7 +3491,14 @@ int mob_natural_attack_type(CHAR_DATA *mob)
         }
 
         if (count == 0)
-                return TYPE_HIT;
+        {
+                /* An animated blade is its own weapon, without invented limbs. */
+                native_type = mob && IS_NPC(mob)
+                    ? creature_trait_value(mob, CREATURE_TRAIT_NATURAL_ATTACK_TYPE)
+                    : 0;
+                return native_type > 0 && native_type <= 19
+                    ? TYPE_HIT + native_type : TYPE_HIT;
+        }
 
         choice = count == 1 ? 1 : number_range(1, count);
 
@@ -4564,6 +4911,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_cast_orb", 0 },
 
                 { "spec_poison", 5 },
+                { "spec_poison_palm", 5 },
                 { "spec_bloodsucker", 5 },
                 { "spec_superwimpy", 5 },
                 { "spec_spectral_minion", 5 },
@@ -4574,6 +4922,8 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
 
                 { "spec_small_whale", 10 },
                 { "spec_large_whale", 10 },
+                { "spec_duergar", 10 },
+                { "spec_swallow", 10 },
                 { "spec_kappa", 10 },
                 { "spec_laghathti", 10 },
                 { "spec_uzollru", 10 },

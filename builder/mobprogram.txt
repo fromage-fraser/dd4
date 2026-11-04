@@ -189,6 +189,20 @@ Syntax:  speech_prog [p] <ARGUMENT>
 
     The argument is the same as for an act_prog.
 
+Syntax:  speech_prog any <KEYWORDS>
+
+    This opt-in form runs this program once if any listed whole word appears
+in the spoken text. Matching is case-insensitive. Repeated words and multiple
+aliases still produce one run. For example:
+
+    >speech_prog any bread travel~
+    mpecho The baker offers you one loaf.
+    ~
+
+    Both "bread" and "buy travel bread" run that program once. Put all aliases
+for one action in one program. Other matching programs can still run. Existing
+word-list and p-phrase forms keep their behaviour; any is speech-only.
+
 NOTE:  This is only triggered when the keyword or phrase is contained in a
     message which has been said by a PC in the same room as the mob.
     The PC restriction is not necessary, but makes infinite loops
@@ -752,7 +766,7 @@ move_prog       PERCENT chance to check movement in DIRECTION by PC
 hitprcnt_prog   PERCENT lower than mobiles hit/max_hit if mobile is fighting
 death_prog      PERCENT chance to check after mobile has been slain
 rand_prog       PERCENT chance to check whenever a PC is in the mobiles zone
-speech_prog     WORDLIST or P WORD_PHRASE to match in dialogue to mobile
+speech_prog     WORDLIST or P WORD_PHRASE; ANY KEYWORDS runs once per program
 
 variable         mobile actor victim random     object 2nd_object
 -----------------------------------------------------------------------------

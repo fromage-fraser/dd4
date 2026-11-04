@@ -1567,6 +1567,15 @@ blocking unrelated directions.
 - Convert Fortress mobs; add elf defences, orc traits and preserved heads.
 - Convert Smugglers Ship humans, ranks and dimensions; clarify crew notes.
 - Convert Freeport mobs; restore Blacksail and reveal Whitecap.
+- Convert Juargan mobs; add duergar powers and HUGE-only Swallow limits.
+- Convert Shaolin mobs; restore temple keys and correct equipment resets.
+- Convert Dragon Cult mobs; refine lich abilities and black-dragon hatchlings.
+- Convert Kaladim mobs, including its vampire master and animated household objects.
+- Convert Fleshmonger tower mobs; define hybrids and refine half-orcs/hobgoblins.
+- Convert Walls of Anon mobs; refine spectres, add paid healing and fix gauntlets.
+- Convert Arika mobs; add centaurs, domestic cats and script controllers.
+- Fix repeated Arika food orders and wine responses from overlapping speech aliases.
+- Convert Gypsy Camp mobs; preserve clan services and invisible helper programs.
 
 ~
 
@@ -8417,7 +8426,8 @@ Syntax: swallow <<target>
 
 During combat, shape shifters in dragon form may attempt to SWALLOW their
 opponents, severely impairing their combat ability for a short time.  Note
-that they may not SWALLOW very large opponents.
+that they may not SWALLOW opponents flagged HUGE. Large size alone does not
+prevent swallowing, for either players or mobiles.
 ~
 
 0 'DRAGON AURA'~

@@ -80,6 +80,7 @@ DECLARE_SPEC_FUN( spec_dracolich            );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
+DECLARE_SPEC_FUN( spec_poison_palm          );
 DECLARE_SPEC_FUN( spec_repairman            );
 DECLARE_SPEC_FUN( spec_thief                );
 DECLARE_SPEC_FUN( spec_bounty               );
@@ -100,6 +101,8 @@ DECLARE_SPEC_FUN( spec_demon                );
 DECLARE_SPEC_FUN( spec_cast_electric        );
 DECLARE_SPEC_FUN( spec_small_whale          );
 DECLARE_SPEC_FUN( spec_large_whale          );
+DECLARE_SPEC_FUN( spec_swallow );
+DECLARE_SPEC_FUN( spec_duergar );
 DECLARE_SPEC_FUN( spec_kappa                );
 DECLARE_SPEC_FUN( spec_aboleth              );
 DECLARE_SPEC_FUN( spec_laghathti            );
@@ -162,6 +165,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_dracolich"))            return spec_dracolich;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
+        if (!str_cmp(name, "spec_poison_palm"))          return spec_poison_palm;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
         if (!str_cmp(name, "spec_thief"))                return spec_thief;
         if (!str_cmp(name, "spec_bounty"))               return spec_bounty;
@@ -182,6 +186,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_cast_electric"))        return spec_cast_electric;
         if (!str_cmp(name, "spec_small_whale"))          return spec_small_whale;
         if (!str_cmp(name, "spec_large_whale"))          return spec_large_whale;
+        if (!str_cmp(name, "spec_swallow")) return spec_swallow;
+        if (!str_cmp(name, "spec_duergar")) return spec_duergar;
         if (!str_cmp(name, "spec_kappa"))                return spec_kappa;
         if (!str_cmp(name, "spec_aboleth"))              return spec_aboleth;
         if (!str_cmp(name, "spec_laghathti"))            return spec_laghathti;
@@ -250,6 +256,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
         if (special == spec_poison) return "spec_poison";
+        if (special == spec_poison_palm) return "spec_poison_palm";
         if (special == spec_repairman) return "spec_repairman";
         if (special == spec_thief) return "spec_thief";
         if (special == spec_bounty) return "spec_bounty";
@@ -270,6 +277,8 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_cast_electric) return "spec_cast_electric";
         if (special == spec_small_whale) return "spec_small_whale";
         if (special == spec_large_whale) return "spec_large_whale";
+        if (special == spec_swallow) return "spec_swallow";
+        if (special == spec_duergar) return "spec_duergar";
         if (special == spec_kappa) return "spec_kappa";
         if (special == spec_aboleth) return "spec_aboleth";
         if (special == spec_laghathti) return "spec_laghathti";
@@ -1371,6 +1380,11 @@ bool spec_spectre(CHAR_DATA *ch)
 {
         CHAR_DATA *victim;
 
+        update_creature_sunlight(ch);
+        /* Returning FALSE leaves ordinary movement and fleeing available. */
+        if (creature_sunlight_powerless(ch))
+                return FALSE;
+
         if (!ch
         ||  !IS_NPC(ch)
         ||  ch->deleted
@@ -2244,10 +2258,10 @@ void update_fear_auras(void)
 }
 
 /*
- * A distinct form of the existing paralysis affect. Its duration is
+ * Ghoul and lich touches share this short paralysis affect. Its duration is
  * counted by violence_update(), not by the hourly affect update.
  */
-bool is_ghoul_paralysis(const AFFECT_DATA *paf)
+bool is_contact_paralysis(const AFFECT_DATA *paf)
 {
         return paf && !paf->deleted
             && paf->type == gsn_paralysis
@@ -2257,7 +2271,7 @@ bool is_ghoul_paralysis(const AFFECT_DATA *paf)
 }
 
 /* Called once per combat pulse, before any attacks in that pulse. */
-void update_ghoul_paralysis(void)
+void update_contact_paralysis(void)
 {
         CHAR_DATA *ch;
         AFFECT_DATA *paf;
@@ -2273,7 +2287,7 @@ void update_ghoul_paralysis(void)
                 {
                         next = paf->next;
 
-                        if (!is_ghoul_paralysis(paf))
+                        if (!is_contact_paralysis(paf))
                                 continue;
 
                         if (paf->duration > 0)
@@ -2601,9 +2615,15 @@ bool spec_janitor( CHAR_DATA *ch )
 }
 
 
-bool spec_poison( CHAR_DATA *ch )
+static bool poison_contact_special(CHAR_DATA *ch, bool palm)
 {
         CHAR_DATA *victim;
+
+        if (!ch || !ch->in_room)
+                return FALSE;
+
+        if (palm && (!HAS_ARMS(ch) || IS_AFFECTED(ch, AFF_ARM_TRAUMA)))
+                return FALSE;
 
         for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
         {
@@ -2617,13 +2637,33 @@ bool spec_poison( CHAR_DATA *ch )
         if (!victim)
                 return FALSE;
 
-        act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
-        act( "$n bites you!", ch, NULL, victim, TO_VICT    );
-        act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
+        if (palm)
+        {
+                act("You strike $N with your poisoned palm!", ch, NULL, victim, TO_CHAR);
+                act("$n strikes you with a poisoned palm!", ch, NULL, victim, TO_VICT);
+                act("$n strikes $N with a poisoned palm!", ch, NULL, victim, TO_NOTVICT);
+        }
+        else
+        {
+                act("You bite $N!", ch, NULL, victim, TO_CHAR);
+                act("$n bites you!", ch, NULL, victim, TO_VICT);
+                act("$n bites $N!", ch, NULL, victim, TO_NOTVICT);
+        }
         spell_poison(gsn_venom, ch->level, ch, victim);
         return TRUE;
 }
 
+
+bool spec_poison(CHAR_DATA *ch)
+{
+        return poison_contact_special(ch, FALSE);
+}
+
+
+bool spec_poison_palm(CHAR_DATA *ch)
+{
+        return poison_contact_special(ch, TRUE);
+}
 
 
 bool spec_thief( CHAR_DATA *ch )
@@ -4570,6 +4610,62 @@ bool spec_small_whale( CHAR_DATA *ch )
         }
 
         return FALSE;
+}
+
+/* These native powers need an awake creature that can take an action. */
+static bool native_power_ready(CHAR_DATA *ch)
+{
+        return ch && IS_NPC(ch) && !ch->deleted && ch->in_room
+            && IS_AWAKE(ch) && ch->wait <= 0
+            && !IS_AFFECTED(ch, AFF_CHARM)
+            && !IS_AFFECTED(ch, AFF_HOLD)
+            && !IS_AFFECTED(ch, AFF_DAZED);
+}
+
+bool spec_duergar(CHAR_DATA *ch)
+{
+        int sn;
+
+        if (!native_power_ready(ch) || ch->fighting
+        ||  IS_AFFECTED(ch, AFF_INVISIBLE) || number_bits(3) != 0)
+                return FALSE;
+
+        sn = gsn_invis;
+        if (sn < 0 || sn >= MAX_SKILL || !skill_table[sn].spell_fun)
+                return FALSE;
+
+        (*skill_table[sn].spell_fun)(sn, ch->level, ch, ch);
+        return IS_AFFECTED(ch, AFF_INVISIBLE) != 0;
+}
+
+/* Any suitable creature can use this without inheriting a whale's attacks. */
+bool spec_swallow(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        CHAR_DATA *inside;
+
+        if (!native_power_ready(ch) || !HAS_HEAD(ch)
+        ||  IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+                return FALSE;
+
+        victim = ch->fighting;
+        if (!victim || victim->deleted || victim->in_room != ch->in_room
+        ||  victim->hit <= 0 || victim->position == POS_DEAD
+        ||  IS_HUGE(victim) || victim->inside
+        ||  IS_AFFECTED(victim, AFF_SWALLOWED))
+                return FALSE;
+
+        /* Let the current meal go before trying to swallow someone else. */
+        for (inside = char_list; inside; inside = inside->next)
+                if (!inside->deleted && inside->inside == ch)
+                        return FALSE;
+
+        if (number_percent() > 15)
+                return FALSE;
+
+        /* An empty argument keeps the skill on this exact fighting target. */
+        do_swallow(ch, "");
+        return TRUE;
 }
 
 bool spec_large_whale( CHAR_DATA *ch )

@@ -14,7 +14,10 @@ He is only a child, surely you will want to pick on someone your own size.
 6 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+< human~ common~
+MobHeight 110
+MobWeight 20
+MobSize 0
 #20102
 female prisoner~
 An imprisoned nun~
@@ -26,7 +29,7 @@ Judging from what is left of her clothes, she appears to be a nun.
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 2
-
+< human~ common~
 #20103
 disciple~
 A disciple~
@@ -39,7 +42,7 @@ many others, he seems quite hopeless.
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+< human~ common~
 #20104
 monk~
 A monk~
@@ -51,7 +54,7 @@ You take a step back to ensure you're out of the range of his deadly moves.
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+< human~ common~
 #20105
 monk guard~
 A monk guard~
@@ -63,7 +66,7 @@ Armed and dangerous, you don't want to mess with him.
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+< human~ common~
 #20106
 demon~
 Your own inner demon~
@@ -76,11 +79,11 @@ exactly like you. In fact, it is you!
 21 0 0 0d0+0 0d0+0
 0 0
 8 8 0
-
+< manifested_double~ rare~
 #20107
 evil monk~
 An evil monk~
-An evil monk jumps from the ceiling and took you by surprise!
+An evil monk jumps from the ceiling and takes you by surprise!
 ~
 He looks about the same with the rest of the monks here.  In fact,he looks
 more friendly than the rest.  Too bad he doesn't like your face.
@@ -89,7 +92,7 @@ more friendly than the rest.  Too bad he doesn't like your face.
 22 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+< human~ common~
 #20108
 wood wooden monk man machine~
 The wooden man~
@@ -100,9 +103,9 @@ this is one tough bugger.
 ~
 2|32 8|32|512 0 S
 18 0 0 0d0+0 0d0+0
-16|32|256 0
+0 0
 8 8 0
-
+< wooden_automaton~ common~
 #20109
 monk warrior~
 The monk warrior~
@@ -115,7 +118,7 @@ laughs in your face.
 22 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+< human~ common~
 #20110
 luohan Luohan bronze monk~
 The Luohan~
@@ -128,7 +131,7 @@ You don't want to mess with them.  Then again, do you have a choice?
 27 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+< human~ elite~
 #20111
 Wuhua wuhua monk~
 Wuhua~
@@ -141,7 +144,7 @@ claws on you.
 24 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+< human~ rare~
 #20112
 master librarian monk~
 The Master of Books~
@@ -154,33 +157,33 @@ candle to help him read better.
 27 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+< human~ rare~
 #20113
 master monk drunken~
 The Drunken Master~
 A master is resting here, looking very intoxicated.
 ~
-Hmm.. Are monks supposed to do this? You pondered as you look at this
+Hmm.. Are monks supposed to do this? You ponder as you look at this
 pathetic excuse for a human being.
 ~
 1|4|64|128 128|8192 250 S
 21 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+< human~ rare~
 #20114
 master monk trainer~
 The Master Trainer~
 A master is here doing pushups with one finger.
 ~
-Wow. What a amazing feat! Such demonstration of strength and control.
-Don't you wish you can do that.
+Wow. What an amazing feat! Such a demonstration of strength and control.
+Don't you wish you could do that?
 ~
 1|4|64|128 2|128|8192 500 S
 26 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-
+< human~ rare~
 #20115
 abbot Abbot monk~
 The Abbot of Shaolin~
@@ -193,6 +196,7 @@ figure.
 31 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ boss~
 & 28 'teacher base'
 & 85 'combat knowledge'
 & 85 'unarmed combat knowledge'
@@ -203,6 +207,7 @@ figure.
 & 85 'martial arts'
 & 85 'combination moves'
 & 30 'artist base'
+MobWeight 85
 #20116
 Jinshen jinshen~
 The Jinshen~
@@ -215,8 +220,7 @@ high monk has been perfectly preserved.
 33 0 0 0d0+0 0d0+0
 0 0
 8 8 0
-< reserved~ elite~
-
+< animated_relic~ elite~
 #20117
 guest visitor~
 The visiting guest~
@@ -228,6 +232,7 @@ Looking at his best in his fine clothing, he looks rather wealthy.
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #0
 
 
@@ -567,7 +572,7 @@ the mortal shell of Boom~
 The mortal shell of Boom sits here waiting to be preserved in gold.~
 ~
 15 1|2|32 0
-100~ 10~ 20105~ 0~
+100~ 15~ 20105~ 0~
 100 0 0
 E
 boom shell body mortal Boom~
@@ -1340,9 +1345,9 @@ O 0 20106 0 20110       bun
 O 0 20137 0 20137       shell of boom
 * abbot
 M 0 20115 1 20123
-E 0 20121 0 1024        jiasha
+E 0 20121 0 12        jiasha
 E 0 20122 0 4           fozhu
-E 0 20123 0 16384       staff
+E 0 20123 0 17       staff
 * mortal shell
 P 0 20108 0 20137       flame of mercy
 P 0 20107 0 20137       treasure
@@ -1382,7 +1387,7 @@ M 0 20105 1 20131
 E 0 20120 0 5           cane armor
 E 0 20125 0 11          cane shield
 E 0 20113 0 16          half moon knife
-M 0 20105 1 20131
+M 0 20105 2 20131
 E 0 20120 0 5
 E 0 20125 0 11
 E 0 20113 0 16
@@ -1396,14 +1401,14 @@ E 0 20117 0 17          kamasutra
 * jinshen
 M 0 20116 1 20136
 E 0 20112 0 16       dragon sabre
-G 0 20115 0             shelizi
+G 0 20105 0             shelizi
 * monk child
 M 0 20101 2 20109
 M 0 20101 2 20128
 * monk warrior
 M 0 20109 1 20111
 E 0 20120 0 5           cane armor
-E 0 20118 0 8           garters
+E 0 20118 0 7           garters
 E 0 20119 0 12          robe
 E 0 20125 0 11          cane shield
 E 0 20114 0 16          chain whip
@@ -1418,14 +1423,13 @@ S
 
 #SPECIALS
 
-M 20102 spec_poison             nun
 M 20102 spec_cast_cleric
 M 20105 spec_cast_mage          monk guard
 M 20106 spec_cast_mage          inner demon
-M 20107 spec_poison             evil monk
+M 20107 spec_poison_palm             evil monk
 M 20109 spec_cast_mage          monk warrior
 M 20110 spec_cast_mage          luohan
-M 20111 spec_poison             wuhua
+M 20111 spec_poison_palm             wuhua
 M 20112 spec_cast_cleric        master book
 M 20113 spec_cast_mage          master drunken
 M 20114 spec_cast_mage          master trainer
