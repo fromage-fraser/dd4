@@ -2594,7 +2594,7 @@ void do_morph_griffin (CHAR_DATA *ch, bool to_form)
                 /* Remove any arm trauma, griffin form doesn't have arms */
                 affect_strip(ch, gsn_arm_trauma);
 
-                if (ch->pcdata->learned[gsn_form_fly] > 10
+                if (ch->pcdata->learned[gsn_form_griffin] > 10
                 ||  ch->pcdata->learned[gsn_fly])
                 {
                         send_to_char(

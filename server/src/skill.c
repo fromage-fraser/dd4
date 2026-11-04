@@ -1069,6 +1069,9 @@ void do_combo (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (!check_blind(ch))
+                return;
+
         reset_combo_flags();
 
         while (1)
@@ -6259,14 +6262,13 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 {
                         module_next = module->next_content;
 
-                        if ((arg1[3] == '\0' || is_name(&arg1[4], module->name)))
+                        if ((can_see_obj(ch, module)
+                             || (module->in_obj
+                                 && IS_SET(
+                                         module->in_obj->wear_flags,
+                                         ITEM_WEAR_POUCH)))
+                        &&  (arg1[3] == '\0' || is_name(&arg1[4], module->name)))
                         {
-                                if (!(module = get_obj_list(ch, &arg1[4], turret->contains )))
-                                {
-                                        send_to_char("That module is not in your turret.\n\r", ch);
-                                        return;
-                                }
-
                                 if (module->item_type == ITEM_DEFENSIVE_TURRET_MODULE)
                                         return;
 

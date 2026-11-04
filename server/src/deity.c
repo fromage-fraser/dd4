@@ -1155,7 +1155,7 @@ void rank_pantheon ()
                 for (j = i + 1; j < NUMBER_DEITIES; j++)
                 {
                         if (pantheon_status_table.power[j]
-                            > pantheon_status_table.power[i])
+                            > pantheon_status_table.power[best])
                                 best = j;
                 }
 
@@ -3214,7 +3214,7 @@ void prayer_chaos_ruin_food_drink (OBJ_DATA *obj)
         if (obj->next_content)
                 prayer_chaos_ruin_food_drink(obj->next_content);
 
-        else if (obj->contains)
+        if (obj->contains)
                 prayer_chaos_ruin_food_drink(obj->contains);
 
         if (obj->item_type == ITEM_FOOD)
@@ -3232,7 +3232,7 @@ void prayer_chaos_ruin_potions_pills (OBJ_DATA *obj)
         if (obj->next_content)
                 prayer_chaos_ruin_potions_pills(obj->next_content);
 
-        else if (obj->contains)
+        if (obj->contains)
                 prayer_chaos_ruin_potions_pills(obj->contains);
 
         if (obj->item_type == ITEM_POTION)
