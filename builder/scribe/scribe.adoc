@@ -9669,3 +9669,42 @@ clan object and remains part of the healing-room recovery system. Keep all
 seven programs, three specials, room flags, randomised tent exits, door
 resets, key and item placements. The death-warning form mpecho CHAT is valid.
 There is no matching Gypsy Camp Scribe source in the repository.
+
+[[scribe-adventurers-guild]]
+==== Adventurer's Guild people and quest programs
+
+The Guild uses human for the secretary, Saint Justinian, Xiao Tsu, the huge
+guard and Suturb. Lord Kurbistraht uses the established dwarf archetype.
+All six remain common. Their existing levels, behaviour, senses, protection
+and flight buffs stay. The guard and Suturb keep spec_cast_psionicist at
+100%; the other four keep their quest-program roles without extra specials.
+
+The secretary is 155 cm and 65 kg, Kurbistraht 130 cm and 95 kg, Justinian
+175 cm and 75 kg, Xiao Tsu 175 cm and 70 kg, the guard 230 cm and 180 kg,
+and Suturb 175 cm and 75 kg. These are descriptive measurements. The guard
+is an unusually large human with Large size metadata; his body has no HUGE
+flag. The others are Medium. Kurbistraht supplies an individual Medium size
+because the shared dwarf profile leaves that metadata unspecified.
+
+Kurbistraht inherits the approved dwarf resistance, infrared, trained melee
+traits and XP adjustment. His area mask omits duplicate infrared so XOR
+keeps the inherited sense. He and the guard are male, matching their prose
+and existing portraits. Other sex settings and all portraits stay.
+
+The area is SAFE and NO_QUEST. Keep both settings and every room flag,
+exit, reset, object and reward quantity. Xiao Tsu already receives NO_QUEST
+from the area; an extra raw flag is unnecessary. Suturb keeps QUESTMASTER
+and his ordinary random-quest service. The huge guard still admits visitors
+through level 25 and returns higher-level visitors to Kurbistraht's office.
+
+There are 27 programs: two inline and 25 in AGsecret.prg, AGjunior.prg,
+AGinterm.prg and AGsenior.prg. Keep those external files with the area.
+The secretary now sends levels 26-54 to Justinian and levels 55 onward to
+Xiao Tsu. Junior routing is unchanged. The junior second-mission rejection
+now correctly refers an over-level visitor to someone less experienced.
+
+Existing mission eligibility and hand-in rules stay, including their older
+differences from the briefing ranges. All eight genuine hand-ins retain
+their rewards, including the two mithril chokers. No matching Guild Scribe
+source exists in the repository, and no parser or shared creature change
+is needed for these individual settings.
