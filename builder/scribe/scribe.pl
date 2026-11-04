@@ -83,6 +83,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         black_dragon_hatchling
         young_lightning_dragon animated_vase animated_blade animated_mirror cave_beast
         human_goblin
+        centaur domestic_cat script_controller
 /;
 
 my %mob_act = (

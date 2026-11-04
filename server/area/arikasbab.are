@@ -24,6 +24,7 @@ mpecho {wYou hear the faint scrape of steel being withdrawn from its sheath.{x
 |
 
 
+< human~ common~
 #28301
 hooded figure vampire~
 the Vampire~
@@ -35,7 +36,7 @@ noticed your arrival.
 ~
 2|32|64|512|8388608 8|32|512|8192|65536|524288|8388608 -1000 S
 75 0 0 0d0+0 0d0+0
-256 0
+0 0
 8 8 1
 >rand_prog 100~
 hide
@@ -44,6 +45,7 @@ hide
 mpecho {RIn a blur of movement a hooded figure launches itself upon you from the rafters.{x
 ~
 |
+< vampire~ elite~
 #28302
 man chef busychef~
 the Chef~
@@ -85,6 +87,9 @@ mpecho {WThe chef leaves south, dragging $n behind him.{x
 mpecho {WThe chef returns to the kitchen.{x
 ~
 |
+< human~ common~
+MobHeight 190
+MobWeight 110
 #28303
 centaur~
 a Powerful Centaur~
@@ -115,6 +120,7 @@ mpecho A powerful centaur enters from the north door.
 close north
 ~
 |
+< centaur~ rare~
 #28304
 woman waitress~
 the Waitress~
@@ -129,6 +135,9 @@ eyes. She frowns as she pushes it back from her pretty face.
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
+MobHeight 155
+MobWeight 50
 #28305
 fat merchant~
 the Fat Merchant~
@@ -147,6 +156,8 @@ mpecho $I mutters to himself, 'I really don't see how I'm going to make my money
 mpecho $I mutters to himself, 'What the hell was I thinking when I bought these?'
 ~
 |
+< human~ common~
+MobWeight 120
 #28306
 proprietor~
 the Proprietor~
@@ -231,6 +242,7 @@ mpechoaround $n {WThe proprietor tells $n to enjoy $s stay.{x
 endif
 ~
 |
+< human~ rare~
 #28307
 ~Someone~{y{x~~
 2|64|65536 8|32|512|8388608 0 S
@@ -427,6 +439,7 @@ mptransfer busychef 28347
 endif
 ~
 |
+< script_controller~ common~
 #28308
 blonde girl~
 the Pretty Blonde~
@@ -444,6 +457,7 @@ tangled around her body.
 sleep
 ~
 |
+< human~ common~
 #28309
 maid~
 the Maid~
@@ -462,6 +476,7 @@ mpechoaround $n {wThe maid screams and attacks $n with her feather duster!{x
 mpkill $n
 ~
 |
+< human~ common~
 #28310
 ghostly apparition~
 the Ghostly Apparition~
@@ -476,8 +491,9 @@ unable to cross to the other side.
 ~
 2|64|8388608 8|32|512|524288|1048576|8388608 0 S
 63 0 0 0d0+0 0d0+0
-336 0
-8 8 0
+0 0
+8 8 1
+< ghost~ common~
 #28311
 fat cat~
 the Fat Black Cat~
@@ -488,12 +504,14 @@ Its back left foot twitches now and then and paws at the air.
 ~
 2|64 0 0 S
 16 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 0
 >rand_prog 10~
 mpecho $I twitches spastically and paws at the air.
 ~
 |
+< domestic_cat~ common~
+MobWeight 11
 #28312
 bob bartender~
 Bob~
@@ -507,6 +525,7 @@ direction.
 200 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #0
 
 

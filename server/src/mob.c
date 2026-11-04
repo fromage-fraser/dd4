@@ -309,6 +309,24 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+
+        /* A humanlike upper body and a four-legged mammalian lower body. */
+        {
+                "centauroid_mammal",
+                0, 0,
+                PART_HEAD | PART_ARMS | PART_HANDS | PART_FINGERS
+                    | PART_4_LEGS | PART_FORELEGS | PART_FEET
+                    | PART_HEART | PART_BRAINS | PART_GUTS | PART_EAR | PART_EYE,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1537,6 +1555,43 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "",
                 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_GOBLIN, MOB_TEMPLATE_UNSET
+        },
+
+        {
+                "centaur", "centauroid_mammal", "icon1", "icon2",
+                0, 0,
+                PART_TAIL | PART_HOOVES, PART_HOOVES,
+                0, 0, 0,
+                0, 0, 0, 0,
+                260, 600, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 250
+        },
+        {
+                "domestic_cat", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_INFRARED | AFF_SNEAK,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                30, 4, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 50
+        },
+        /* This invisible actor runs room scripts rather than living in the world. */
+        {
+                "script_controller", "mysterious_being", "icon1", "icon2",
+                ACT_NO_QUEST | ACT_NO_FIGHT, AFF_MINDLESS,
+                BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1746,6 +1801,10 @@ static const CREATURE_TRAIT_CHANGE lich_trait_changes[] =
 {
         {CREATURE_TRAIT_LICH_CHILL_TOUCH, 20}
 };
+static const CREATURE_TRAIT_CHANGE centaur_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
+};
 static const CREATURE_TRAIT_CHANGE lizardman_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
@@ -1787,6 +1846,7 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"darkenbeast", NULL, darkenbeast_trait_changes, TRAIT_ITEMS(darkenbeast_trait_changes)},
         {"wyvern", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
         {"lizardman", NULL, lizardman_trait_changes, TRAIT_ITEMS(lizardman_trait_changes)},
+        {"centaur", NULL, centaur_trait_changes, TRAIT_ITEMS(centaur_trait_changes)},
         {"black_dragon_hatchling", NULL, black_hatchling_trait_changes,
             TRAIT_ITEMS(black_hatchling_trait_changes)},
         {"lich", NULL, lich_trait_changes, TRAIT_ITEMS(lich_trait_changes)},
