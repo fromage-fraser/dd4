@@ -59,6 +59,7 @@ never left you as you move, as if he is sizing you up.
 ~
 |
 
+< human~ common~
 #451
 acupuncturist~
 the Acupuncturist~
@@ -92,6 +93,7 @@ on that table," he says, "I'll be right with you."
 ~
 |
 
+< human~ common~
 #453
 loe wizinvis guy~
 LOE wizinvis guy~
@@ -99,7 +101,7 @@ LOE wizinvis guy drops Masamune.
 ~
 I am sleepy....zzzzZZZZzzzz.....
 ~
-2|512|4096|65536 8|32|8388608 0 S
+2|4096|65536 8|32|8388608 0 S
 500 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -110,19 +112,22 @@ I am sleepy....zzzzZZZZzzzz.....
 ~
 |
 
+< script_controller~ common~
 #452
 smith kensai~
 Kensai Smith~
 Kensai Smith works at his forge.
 ~
-This man is wearing simple leather apron and gloves.  His eyes are covered by
+This man is wearing a simple leather apron and gloves.  His eyes are covered by
 smoked lenses used in the forge. His arms and chest are massively muscled from
 working with the forge.
 ~
-2|512|4096|1048756 8|32|8388608 0 S
+2|512|4096|1048740 8|32|8388608 0 S
 100 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< human~ common~
+MobWeight 95
 #0
 
 #OBJECTS
