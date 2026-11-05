@@ -1579,6 +1579,13 @@ blocking unrelated directions.
 - Convert Guild mobs; correct quest routing and preserve hand-in rewards.
 - Convert LOE mobs; preserve clan services and Masamune delivery.
 
+{WNovember 2026{x
+
+- Hydra BREATHE stops when either combatant dies or leaves the room.
+- Bard songs stop when the held instrument is forcibly removed or dropped.
+- TRIGGER respects ownership of both turrets and their modules.
+- Successful ENGRAVE consumes the required smelted materials.
+
 ~
 
 0 'AGGRAVATED DAMAGE' 'AGGRO DAM'~

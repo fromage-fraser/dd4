@@ -3108,6 +3108,10 @@ void do_breathe (CHAR_DATA *ch, char *argument)
 
         if (ch->form == FORM_HYDRA)
         {
+                ROOM_INDEX_DATA *room = ch->in_room;
+                int caster_deaths = action_deaths(ch);
+                int victim_deaths = action_deaths(victim);
+
                 WAIT_STATE(ch, skill_table[gsn_breathe].beats);
                 act ("You breathe your fury on $N!", ch, NULL, victim, TO_CHAR);
                 act ("$n breathes at you!", ch, NULL, victim, TO_VICT);
@@ -3115,9 +3119,19 @@ void do_breathe (CHAR_DATA *ch, char *argument)
                 arena_commentary("$n breathes on $N.", ch, victim);
 
                 if (ch->pcdata->learned[gsn_form_hydra] > 50)
+                {
                         spell_colour_spray(gsn_breathe, ch->level, ch, victim);
+                        if (!action_character_in_room(ch, room, caster_deaths)
+                        ||  !action_character_in_room(victim, room, victim_deaths))
+                                return;
+                }
                 if (ch->pcdata->learned[gsn_form_hydra] > 75)
+                {
                         spell_fireball(gsn_breathe, ch->level, ch, victim);
+                        if (!action_character_in_room(ch, room, caster_deaths)
+                        ||  !action_character_in_room(victim, room, victim_deaths))
+                                return;
+                }
                 if (ch->pcdata->learned[gsn_form_hydra] > 85)
                         spell_acid_blast(gsn_breathe, ch->level, ch, victim);
                 return;
@@ -5426,6 +5440,7 @@ void do_engrave (CHAR_DATA *ch, char *argument)
 
         act ("$P glows softly as the runes form in the forge.", ch, NULL, obj, TO_CHAR);
         act ("$n skilfully engraves $P!", ch, NULL, obj, TO_ROOM);
+        smelted_to_char( cost_st, cost_ti, cost_ad, cost_el, cost_sm, ch, COINS_REPLACE);
 
         SET_BIT(obj->extra_flags, ITEM_EGO);
         SET_BIT(obj->ego_flags, EGO_ITEM_ENGRAVED);
@@ -6101,7 +6116,7 @@ void do_trigger (CHAR_DATA *ch, char *argument)
 
         for (turret = ch->in_room->contents; turret; turret = turret->next_content)
         {
-                if (turret->item_type == ITEM_TURRET)
+                if (turret->item_type == ITEM_TURRET && is_obj_owner(turret, ch))
                         break;
         }
 
@@ -6125,6 +6140,12 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                 if (!(module = get_obj_list(ch, arg1, turret->contains )))
                 {
                         send_to_char("That module is not in your turret.\n\r", ch);
+                        return;
+                }
+
+                if (!is_obj_owner(module, ch))
+                {
+                        send_to_char("That module belongs to someone else.\n\r", ch);
                         return;
                 }
 
@@ -6269,6 +6290,12 @@ void do_trigger (CHAR_DATA *ch, char *argument)
                                          ITEM_WEAR_POUCH)))
                         &&  (arg1[3] == '\0' || is_name(&arg1[4], module->name)))
                         {
+                                if (!is_obj_owner(module, ch))
+                                {
+                                        send_to_char("That module belongs to someone else.\n\r", ch);
+                                        continue;
+                                }
+
                                 if (module->item_type == ITEM_DEFENSIVE_TURRET_MODULE)
                                         return;
 
