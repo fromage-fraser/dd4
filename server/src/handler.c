@@ -2239,6 +2239,10 @@ void unequip_char( CHAR_DATA *ch, OBJ_DATA *obj )
 
         affect_update_depth++;
 
+        /* Forced removals must stop songs just like the REMOVE command. */
+        if (obj->item_type == ITEM_INSTRUMENT && obj->wear_loc == WEAR_HOLD)
+                remove_songs(ch);
+
         /* set bonus hack - Brutus Jul 2022 */
         if ( !IS_NPC(ch) && ( pObjSetIndex = objects_objset(obj->pIndexData->vnum ) ) )
         {

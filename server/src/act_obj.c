@@ -3797,9 +3797,6 @@ bool remove_obj(CHAR_DATA *ch, int iWear, bool fReplace)
         if (!obj)
                 return TRUE;
 
-        if (obj->item_type == ITEM_INSTRUMENT && obj->wear_loc == WEAR_HOLD)
-                remove_songs(ch);
-
         unequip_char(ch, obj);
         act("$n stops using $p.", ch, obj, NULL, TO_ROOM);
         act("You stop using $p.", ch, obj, NULL, TO_CHAR);
