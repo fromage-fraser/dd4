@@ -9708,3 +9708,28 @@ differences from the briefing ranges. All eight genuine hand-ins retain
 their rewards, including the two mithril chokers. No matching Guild Scribe
 source exists in the repository, and no parser or shared creature change
 is needed for these individual settings.
+
+[[scribe-loe-headquarters]]
+==== LOE Headquarters people and helper
+
+Musashi 450, the Acupuncturist 451 and Kensai Smith 452 use human. All are
+Medium and remain common. Musashi and the Acupuncturist use the human
+175 cm / 75 kg defaults; the heavily muscled smith weighs 95 kg.
+Musashi keeps spec_clan_guard and the Acupuncturist keeps spec_cast_adept,
+both at 100%. The smith keeps his one-gold identify service and existing
+behaviour flags. Only his undefined ACT bit 16 is removed.
+
+Helper 453 reuses script_controller. Keep its individual WIZINVIS, sentinel,
+NOCHARM, detection flags and level. Omit duplicate raw NO_QUEST so XOR keeps
+the inherited flag. It gains the profile's NO_FIGHT and bodyless, mindless,
+bloodless, analgic and soulless properties. Leave its dimensions unspecified.
+Do not add NON_CORPOREAL; that phasing effect would obstruct dropping items.
+
+Masamune 453 is the clan artefact carried by the helper. Its existing script
+drops it in healing room 451, retreats to the shared helper room 537 in the
+Gypsy Camp and meditates. Keep the cross-area destination and the clan's
+existing recovery system. The Acupuncturist's blessing and exit to desert
+18138 remain restricted to LOE members. No paid healing or repair service
+is added. Keep all four programs, two specials, room flags, boulder locks,
+talisman key, reset caps, equipment and clan item references. There is no
+matching LOE Scribe source in the repository.
