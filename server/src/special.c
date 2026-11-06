@@ -58,6 +58,7 @@ DECLARE_SPEC_FUN( spec_cast_hooker          );
 DECLARE_SPEC_FUN( spec_buddha               );
 DECLARE_SPEC_FUN( spec_kungfu_poison        );
 DECLARE_SPEC_FUN( spec_clan_guard           );
+DECLARE_SPEC_FUN( spec_manticore            );
 DECLARE_SPEC_FUN( spec_cast_cleric          );
 DECLARE_SPEC_FUN( spec_cast_judge           );
 DECLARE_SPEC_FUN( spec_cast_mage            );
@@ -151,6 +152,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_cast_undead"))          return spec_cast_undead;
         if (!str_cmp(name, "spec_executioner"))          return spec_executioner;
         if (!str_cmp(name, "spec_fido"))                 return spec_fido;
+        if (!str_cmp(name, "spec_manticore"))            return spec_manticore;
         if (!str_cmp(name, "spec_clan_guard"))           return spec_clan_guard;
         if (!str_cmp(name, "spec_guard"))                return spec_guard;
         if (!str_cmp(name, "spec_ghoul"))                return spec_ghoul;
@@ -252,6 +254,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_death_knight) return "spec_death_knight";
         if (special == spec_lich) return "spec_lich";
         if (special == spec_dracolich) return "spec_dracolich";
+        if (special == spec_manticore) return "spec_manticore";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
@@ -2535,14 +2538,130 @@ bool spec_guard( CHAR_DATA *ch )
 }
 
 
+/* Combat-only context keeps the four-second mobile update from firing twice. */
+static bool manticore_combat_pulse;
+
+/* Find an attached tail weapon without tying this ability to an area or vnum. */
+static OBJ_DATA *manticore_tail_weapon(CHAR_DATA *ch)
+{
+        OBJ_DATA *obj;
+
+        if (!HAS_TAIL(ch) || IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
+                return NULL;
+        for (obj = ch->carrying; obj; obj = obj->next_content)
+        {
+                if (!obj->deleted && obj->item_type == ITEM_WEAPON
+                &&  IS_OBJ_STAT(obj, ITEM_BODY_PART) && obj->value[0] == 6
+                &&  (obj->wear_loc == WEAR_WIELD || obj->wear_loc == WEAR_DUAL)
+                &&  bodypart_weapon_usable(ch, obj))
+                        return obj;
+        }
+        return NULL;
+}
+
+/* One bounded volley; all ordinary safety, resistance and death handling stays. */
+bool spec_manticore(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        ROOM_INDEX_DATA *room;
+        OBJ_DATA *tail;
+        int chance;
+        int spikes;
+        int i;
+        int killed;
+
+        if (!manticore_combat_pulse || !ch || !IS_NPC(ch)
+        ||  ch->deleted || !ch->in_room || !IS_AWAKE(ch)
+        ||  ch->manticore_volley_running
+        ||  IS_AFFECTED(ch, AFF_HOLD | AFF_DAZED))
+                return FALSE;
+        chance = creature_trait_value(ch, CREATURE_TRAIT_TAIL_SPIKE_VOLLEY);
+        victim = ch->fighting;
+        if (chance <= 0 || !victim || victim == ch || victim->deleted
+        ||  victim->position == POS_DEAD || victim->hit <= 0
+        ||  victim->in_room != ch->in_room || is_noncorporeal_player(victim)
+        ||  !(tail = manticore_tail_weapon(ch)) || is_safe(ch, victim))
+                return FALSE;
+
+        if (ch->manticore_volley_day != time_info.day
+        ||  ch->manticore_volley_month != time_info.month
+        ||  ch->manticore_volley_year != time_info.year)
+        {
+                ch->manticore_volley_day = time_info.day;
+                ch->manticore_volley_month = time_info.month;
+                ch->manticore_volley_year = time_info.year;
+                ch->manticore_volleys = 0;
+        }
+        if (ch->manticore_volleys >= 4
+        ||  number_percent() > URANGE(0, chance, 100))
+                return FALSE;
+
+        room = ch->in_room;
+        killed = IS_NPC(victim) || !victim->pcdata ? 0 : victim->pcdata->killed;
+        ch->manticore_volleys++;
+        ch->manticore_volley_running = TRUE;
+        spikes = number_range(1, 6);
+        act("$n whips $s tail and sends a spray of spikes at $N!",
+            ch, NULL, victim, TO_NOTVICT);
+        act("$n whips $s tail and sends a spray of spikes at you!",
+            ch, NULL, victim, TO_VICT);
+
+        for (i = 0; i < spikes; i++)
+        {
+                if (ch->deleted || victim->deleted || !IS_AWAKE(ch)
+                ||  victim->position == POS_DEAD || victim->hit <= 0
+                ||  ch->in_room != room || victim->in_room != room
+                ||  ch->fighting != victim
+                ||  (!IS_NPC(victim) && victim->pcdata
+                     && victim->pcdata->killed != killed)
+                ||  IS_AFFECTED(ch, AFF_HOLD | AFF_DAZED)
+                ||  manticore_tail_weapon(ch) != tail || is_safe(ch, victim))
+                        break;
+
+                /* The detached spike is physical; the tail's item magic is not. */
+                damage_from_object(ch, victim,
+                    number_range(UMAX(1, ch->level / 10),
+                                 UMAX(1, ch->level / 5)),
+                    TYPE_HIT + 11, FALSE, NULL);
+        }
+        ch->manticore_volley_running = FALSE;
+        return TRUE;
+}
+
+/* Keep combat timing separate from the weighted mobile-special scheduler. */
+void update_manticore_volleys(void)
+{
+        CHAR_DATA *ch;
+        CHAR_DATA *next;
+
+        if (manticore_combat_pulse)
+                return;
+        manticore_combat_pulse = TRUE;
+        for (ch = char_list; ch; ch = next)
+        {
+                next = ch->next;
+                if (ch->deleted || !IS_NPC(ch) || !ch->fighting
+                ||  creature_trait_value(ch, CREATURE_TRAIT_TAIL_SPIKE_VOLLEY) <= 0)
+                        continue;
+                if (mob_has_special(ch, spec_clan_guard))
+                        spec_clan_guard(ch);
+                else if (mob_has_special(ch, spec_manticore))
+                        spec_manticore(ch);
+        }
+        manticore_combat_pulse = FALSE;
+}
+
+
 bool spec_clan_guard( CHAR_DATA *ch )
 {
         CHAR_DATA *victim;
         char       buf [ MAX_STRING_LENGTH ];
         int        tmp;
 
-        if ( !IS_AWAKE( ch ) || ch->fighting )
+        if ( !IS_AWAKE( ch ) )
                 return FALSE;
+        if (ch->fighting)
+                return spec_manticore(ch);
 
         for ( victim = ch->in_room->people; victim; victim = victim->next_in_room )
         {
