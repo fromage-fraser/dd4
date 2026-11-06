@@ -8583,6 +8583,7 @@ static bool turn_undead_target_allowed(CHAR_DATA *ch, CHAR_DATA *victim)
         ||  victim == ch
         ||  victim->in_room != ch->in_room
         ||  !IS_UNDEAD(victim)
+        ||  creature_trait_value(victim, CREATURE_TRAIT_TURN_IMMUNITY) > 0
         ||  is_same_group(ch, victim)
         ||  (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT)))
         {

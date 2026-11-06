@@ -59,6 +59,7 @@ DECLARE_SPEC_FUN( spec_buddha               );
 DECLARE_SPEC_FUN( spec_kungfu_poison        );
 DECLARE_SPEC_FUN( spec_clan_guard           );
 DECLARE_SPEC_FUN( spec_manticore            );
+DECLARE_SPEC_FUN( spec_alhoon               );
 DECLARE_SPEC_FUN( spec_cast_cleric          );
 DECLARE_SPEC_FUN( spec_cast_judge           );
 DECLARE_SPEC_FUN( spec_cast_mage            );
@@ -152,6 +153,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_cast_undead"))          return spec_cast_undead;
         if (!str_cmp(name, "spec_executioner"))          return spec_executioner;
         if (!str_cmp(name, "spec_fido"))                 return spec_fido;
+        if (!str_cmp(name, "spec_alhoon"))               return spec_alhoon;
         if (!str_cmp(name, "spec_manticore"))            return spec_manticore;
         if (!str_cmp(name, "spec_clan_guard"))           return spec_clan_guard;
         if (!str_cmp(name, "spec_guard"))                return spec_guard;
@@ -254,6 +256,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_death_knight) return "spec_death_knight";
         if (special == spec_lich) return "spec_lich";
         if (special == spec_dracolich) return "spec_dracolich";
+        if (special == spec_alhoon) return "spec_alhoon";
         if (special == spec_manticore) return "spec_manticore";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
@@ -2652,6 +2655,34 @@ void update_manticore_volleys(void)
 }
 
 
+/* Keep this mental/magical mix available to any suitable creature. */
+bool spec_alhoon(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        int psionic_chance;
+
+        if (!ch || !IS_NPC(ch) || ch->deleted || !ch->in_room
+        ||  ch->hit <= 0 || !IS_AWAKE(ch) || ch->wait > 0
+        ||  !HAS_HEAD(ch) || !IS_SET(ch->body_form, PART_BRAINS)
+        ||  IS_SET(ch->act, ACT_NO_FIGHT)
+        ||  IS_AFFECTED(ch, AFF_CHARM | AFF_HOLD | AFF_DAZED
+            | AFF_HEAD_TRAUMA | AFF_NON_CORPOREAL)
+        ||  IS_SET(ch->in_room->room_flags, ROOM_CONE_OF_SILENCE))
+                return FALSE;
+
+        psionic_chance = creature_trait_value(ch, CREATURE_TRAIT_PSIONIC_CASTING_PERCENT);
+        victim = ch->fighting;
+        if (psionic_chance <= 0 || !victim || victim == ch || victim->deleted
+        ||  !victim->in_room || victim->in_room != ch->in_room
+        ||  victim->hit <= 0 || victim->position == POS_DEAD
+        ||  is_safe(ch, victim))
+                return FALSE;
+
+        if (number_percent() <= URANGE(0, psionic_chance, 100))
+                return spec_cast_psionicist(ch);
+        return spec_cast_mage(ch);
+}
+
 bool spec_clan_guard( CHAR_DATA *ch )
 {
         CHAR_DATA *victim;
@@ -2661,7 +2692,11 @@ bool spec_clan_guard( CHAR_DATA *ch )
         if ( !IS_AWAKE( ch ) )
                 return FALSE;
         if (ch->fighting)
+        {
+                if (creature_trait_value(ch, CREATURE_TRAIT_PSIONIC_CASTING_PERCENT) > 0)
+                        return spec_alhoon(ch);
                 return spec_manticore(ch);
+        }
 
         for ( victim = ch->in_room->people; victim; victim = victim->next_in_room )
         {
