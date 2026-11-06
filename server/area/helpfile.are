@@ -1581,6 +1581,9 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Convert MOC mobs; add talking bats and non-undead magical spirits.
+- Convert SOM mobs; add manticore volleys and open clan services to vampires.
+- Convert Aesir mobs; fix guard gear and remove the yard undead ward.
 - Hydra BREATHE stops when either combatant dies or leaves the room.
 - Bard songs stop when the held instrument is forcibly removed or dropped.
 - TRIGGER respects ownership of both turrets and their modules.

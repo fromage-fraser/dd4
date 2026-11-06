@@ -1592,6 +1592,60 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "",
                 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        /* Keep the speaking head and four-legged body distinct from a lion. */
+        {
+                "manticore", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_SPEECH | BODY_HUGE | PART_WINGS | PART_TAIL
+                    | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                183, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_manticore", "", "",
+                5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 457
+        },
+        /* This descriptive human variant adds wings, not celestial powers. */
+        {
+                "winged_human", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                175, 85, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_HUMAN, MOB_TEMPLATE_UNSET
+        }
+
+        ,
+        /* This small bat can talk, but still has wings instead of arms. */
+        {
+                "talking_bat", "winged_mammal", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_SPEECH | PART_FANGS | PART_CLAWS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 10
+        },
+        /* An unseen magical presence need not be a dead person's ghost. */
+        {
+                "magical_spirit", "mysterious_being", "icon1", "icon2",
+                0, AFF_INVISIBLE,
+                BODY_NO_SPEECH | BODY_ANALGIC, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1670,7 +1724,8 @@ typedef enum creature_trait_effect
         TRAIT_ILLUSION_IMMUNITY,
         TRAIT_LICH_CHILL_TOUCH,
         TRAIT_NATURAL_ATTACK_TYPE,
-        TRAIT_SUNLIGHT_POWERLESS
+        TRAIT_SUNLIGHT_POWERLESS,
+        TRAIT_COMBAT_VOLLEY_PERCENT
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -1739,7 +1794,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"illusion_immunity", TRAIT_ILLUSION_IMMUNITY, NULL},
         {"lich_chill_touch", TRAIT_LICH_CHILL_TOUCH, NULL},
         {"natural_attack_type", TRAIT_NATURAL_ATTACK_TYPE, NULL},
-        {"sunlight_powerless", TRAIT_SUNLIGHT_POWERLESS, NULL}
+        {"sunlight_powerless", TRAIT_SUNLIGHT_POWERLESS, NULL},
+        {"tail_spike_volley", TRAIT_COMBAT_VOLLEY_PERCENT, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
@@ -1801,6 +1857,11 @@ static const CREATURE_TRAIT_CHANGE lich_trait_changes[] =
 {
         {CREATURE_TRAIT_LICH_CHILL_TOUCH, 20}
 };
+static const CREATURE_TRAIT_CHANGE manticore_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -15},
+        {CREATURE_TRAIT_TAIL_SPIKE_VOLLEY, 25}
+};
 static const CREATURE_TRAIT_CHANGE centaur_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
@@ -1839,6 +1900,7 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"orc", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"elf", NULL, elf_trait_changes, TRAIT_ITEMS(elf_trait_changes)},
         {"bat", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
+        {"talking_bat", "bat", NULL, 0},
         {"vampire_bat_form", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
         {"shadow", NULL, shadow_trait_changes, TRAIT_ITEMS(shadow_trait_changes)},
         {"spectre", NULL, spectre_trait_changes, TRAIT_ITEMS(spectre_trait_changes)},
@@ -1847,6 +1909,7 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"wyvern", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
         {"lizardman", NULL, lizardman_trait_changes, TRAIT_ITEMS(lizardman_trait_changes)},
         {"centaur", NULL, centaur_trait_changes, TRAIT_ITEMS(centaur_trait_changes)},
+        {"manticore", NULL, manticore_trait_changes, TRAIT_ITEMS(manticore_trait_changes)},
         {"black_dragon_hatchling", NULL, black_hatchling_trait_changes,
             TRAIT_ITEMS(black_hatchling_trait_changes)},
         {"lich", NULL, lich_trait_changes, TRAIT_ITEMS(lich_trait_changes)},
@@ -2028,6 +2091,7 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                 CREATURE_TRAIT_EFFECT effect =
                                     creature_trait_definitions[profile->changes[i].id].effect;
                                 if ((effect == TRAIT_STATUS_RESISTANCE_PERCENT
+                                    || effect == TRAIT_COMBAT_VOLLEY_PERCENT
                                     || effect == TRAIT_LICH_CHILL_TOUCH)
                                 && profile->changes[i].value < 0)
                                         issues++;
@@ -2082,7 +2146,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_SUNLIGHT_POWERLESS)
+                || creature_trait_definitions[i].effect > TRAIT_COMBAT_VOLLEY_PERCENT)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name
@@ -2274,7 +2338,8 @@ void show_creature_traits(CHAR_DATA *viewer, CHAR_DATA *victim)
                 if (!entry)
                         continue;
                 any = TRUE;
-                if (creature_trait_definitions[id].effect == TRAIT_STATUS_RESISTANCE_PERCENT)
+                if (creature_trait_definitions[id].effect == TRAIT_STATUS_RESISTANCE_PERCENT
+                ||  creature_trait_definitions[id].effect == TRAIT_COMBAT_VOLLEY_PERCENT)
                         snprintf(buf, sizeof(buf), "  %s: %d%%%s; %s %s%s.\n\r",
                             creature_trait_definitions[id].name, entry->value,
                             entry->value == 0 ? " (disabled)" : "",
@@ -4906,6 +4971,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_cast_adept", 0 },
                 { "spec_cast_hooker", 0 },
                 { "spec_clan_guard", 0 },
+                { "spec_manticore", 0 }, /* Its archetype already adds +5 XP. */
                 { "spec_bounty", 0 },
                 { "spec_executioner", 0 },
                 { "spec_cast_orb", 0 },

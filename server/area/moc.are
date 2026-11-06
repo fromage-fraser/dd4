@@ -38,6 +38,7 @@ attempts to remove your limbs from your body.
 ~
 |
 
+< human~ common~
 #362
 cognizant bat Tab~
 A cognizant bat~
@@ -48,7 +49,7 @@ than that - totally ordinary.
 ~
 2|512|4096 8|32|2048|8388608 1000 S
 60 0 0 0d0+0 0d0+0
-4 0
+0 0
 0 0 1
 >all_greet_prog 100~
    say Nice to see you, $n. Dark in here, no?
@@ -57,6 +58,7 @@ than that - totally ordinary.
 ~
 |
 
+< talking_bat~ common~
 #363
 Dakar~
 Dakar~
@@ -64,11 +66,12 @@ Dakar seems to make a quick appraisal of your gear.
 ~
 Dakar has an extremely sharp eye and is keen on what's what and what's crap.
 ~
-2|512|4096|1048756 8|32|8388608|16777216 1000 S
+2|512|4096|1048740 8|32|8388608|16777216 1000 S
 60 0 0 0d0+0 0d0+0
 0 0
 0 0 1
 
+< human~ common~
 #364
 Kooc~
 Kooc~
@@ -82,6 +85,7 @@ eating that.
 0 0
 0 0 1
 
+< human~ common~
 #365
 magical spirit~
 a {Bmagical{X spirit~
@@ -92,7 +96,7 @@ empty air, yet you KNOW it's there.
 ~
 2|512|4096 8|32|8388608 0 S
 100 0 0 0d0+0 0d0+0
-256 0
+0 0
 0 0 2
 >all_greet_prog 100~
    mpecho You feel as if you're not alone...
@@ -114,6 +118,7 @@ empty air, yet you KNOW it's there.
 ~
 |
 
+< magical_spirit~ common~
 #366
 moe wizinvis guy~
 MOC wizinvis guy~
@@ -121,7 +126,7 @@ MOC wizinvis guy drops the Kris.
 ~
 He's wizinvis, who cares?
 ~
-2|512|4096|65536 8|32|8388608 0 S
+2|4096|65536 8|32|8388608 0 S
 500 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -131,6 +136,7 @@ He's wizinvis, who cares?
     meditate
 ~
 |
+< script_controller~ common~
 #0
 
 #OBJECTS
@@ -258,7 +264,7 @@ A
 #360
 A pitch bright cave~
 The walls of this cave have been worn smooth by many years of use. Neat
-shelves are cut into the walls and a doorway has been set into the south
+shelves are cut into the walls and a doorway has been set into the north
 wall.
 ~
 0 1|8 0

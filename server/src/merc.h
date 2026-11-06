@@ -3092,6 +3092,12 @@ struct char_data
         int form;
         int gag;
         int backstab;
+        /* NPC-only daily spike supply; these values never come from area files. */
+        int manticore_volley_day;
+        int manticore_volley_month;
+        int manticore_volley_year;
+        int manticore_volleys;
+        bool manticore_volley_running;
         int drained_stacks;
         int drained_recovery; /* Ordinary-rate seconds earned towards the next stack. */
         time_t drained_updated;
@@ -3644,7 +3650,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 62
+#define MAX_MOB 66
 #define MAX_SPECIES 16
 #define MAX_RANK 6
 
@@ -5911,6 +5917,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_LICH_CHILL_TOUCH,
         CREATURE_TRAIT_NATURAL_ATTACK_TYPE,
         CREATURE_TRAIT_SUNLIGHT_POWERLESS,
+        CREATURE_TRAIT_TAIL_SPIKE_VOLLEY,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 int validate_creature_traits args((void));
@@ -5984,6 +5991,7 @@ bool is_stench_exposure args((const AFFECT_DATA *paf));
 void clear_stench_exposure args((CHAR_DATA *ch, bool notify));
 void update_stench args((void));
 void update_fear_auras args((void));
+void update_manticore_volleys args((void));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));
