@@ -129,25 +129,26 @@ a grim expression on her face.
 2|4|64|512|4096|4194304 2|8|32|128|512|8192|32768|65536|524288 1000 S
 60 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 2
 >death_prog 100~
             mpecho CHAT Masters, I have failed you!  The Clan has been INVADED!
 ~
 |
 
+< human~ common~
 #961
 eir heid~
 Eir the Heid~
 An old woman is sitting in front of the statue.
 ~
 This old woman is dressed in animal hides and has many small bones tied to
-er long grey hair. She is singing quietly to herself in a strange tongue
+her long grey hair. She is singing quietly to herself in a strange tongue
 while she prepares some kind of foul smelling herbal concoction.
 ~
 2|64|512|4096 8|32|128|512|32768 -500 S
 100 0 0 0d0+0 0d0+0
 0 0
-8 8 1
+8 8 2
 >speech_prog bye~
          if clan($n) == aes
              say Go forth $n and MURDER!
@@ -166,6 +167,7 @@ while she prepares some kind of foul smelling herbal concoction.
          endif
 ~
 |
+< human~ common~
 #962
 AES wizinvis guy~
 the AES Wizinvis Guy~
@@ -173,7 +175,7 @@ The AES Wizinvis Guy is here.
 ~
 Please don't kill me.  I need to sort out the AES healing item.
 ~
-1|2|4|512|65536 8|32|8388608 0 S
+1|2|4|65536 8|32|8388608 0 S
 800 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -183,6 +185,7 @@ Please don't kill me.  I need to sort out the AES healing item.
    meditate
 ~
 |
+< script_controller~ common~
 #963
 cook burly~
 a burly cook~
@@ -190,13 +193,15 @@ A burly cook stands here, carving boar and pouring tankards of spring
 water.
 ~
 The burly cook looks at you grimly, before passing you a plate
-of boar and a tankard of mead.
+of boar and a tankard of spring water.
 ~
 2|64|512|4096 8|32|128|512|524288 1000 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 0
 
+< human~ common~
+MobWeight 95
 #0
 
 
@@ -402,6 +407,19 @@ A
 A
 19 15
 
+#977
+shield round wooden~
+a round wooden shield~
+A round wooden shield rests here.~
+~
+9 137438953472 512
+0~ 0~ 0~ 0~
+5 0 0
+E
+shield round~
+This round wooden shield has a reinforced rim and a sturdy handgrip.
+~
+
 #0
 
 
@@ -413,7 +431,7 @@ can be seen to the north. Looking to your right you see an old oak tree from
 which the bodies of men, women, children and an ox hang. High in the air
 above, you notice the dark shapes of ravens moving around in circles silently.
 ~
-0 8192|4194304 4
+0 8192 4
 D0
 Two large wooden doors covered in runes lead into the wooden hall.~
 door~
@@ -698,7 +716,7 @@ D 1 962 2 2         ; Inside the wooden hall. Lock South
 M 1 960 1 960           Hildveig the valkyrie to The gate.
 E 1 965 100 5
 E 1 966 100 16
-E 1 966 100 18
+E 1 977 100 11
 G 1 962 100
 *
 M 1 961 1 964           Eir the heid to Approaching the seat.

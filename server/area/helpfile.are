@@ -1581,6 +1581,7 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Convert Aesir mobs; fix guard gear and remove the yard undead ward.
 - Hydra BREATHE stops when either combatant dies or leaves the room.
 - Bard songs stop when the held instrument is forcibly removed or dropped.
 - TRIGGER respects ownership of both turrets and their modules.

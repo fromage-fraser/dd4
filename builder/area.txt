@@ -5493,3 +5493,35 @@ existing recovery system. The Acupuncturist's blessing and exit to desert
 is added. Keep all four programs, two specials, room flags, boulder locks,
 talisman key, reset caps, equipment and clan item references. There is no
 matching LOE Scribe source in the repository.
+
+Aesir Clanhall people and helper
+--------------------------------
+Hildveig 960, Eir 961 and the cook 963 use human, all Medium and common.
+Hildveig and Eir use 175 cm / 75 kg; the burly cook weighs 95 kg. Both women
+are female, matching their descriptions and portraits. Hildveig's title is
+treated as a role here; keep her individual flight, protections and senses.
+She keeps spec_clan_guard and Eir keeps spec_cast_adept, both at 100%.
+Keep Eir's evil alignment and clan-only blessing and farewell programs.
+
+Hildveig carries her existing key and wears chainmail, one spear and round
+shield 977. The shield replaces the second spear to match her description
+and portrait. It has ordinary level-scaled armour, no added modifiers and
+DONOT_RANDOMISE to keep it plain. She loses the off-hand spear's attacks.
+The spear declares +50 hitroll/+50 damroll, but its existing randomisation
+controls the spawned modifiers; do not treat those numbers as guaranteed
+live bonuses. Keep the spear unchanged. The shield has no TAKE flag.
+
+Helper 962 uses script_controller with dimensions unspecified. Keep its
+WIZINVIS, sentinel, scavenger, detection flags, level and program. Omit raw
+NO_QUEST so it stays inherited. Do not add NOCHARM or NON_CORPOREAL. The
+profile supplies NO_FIGHT and bodyless, mindless, bloodless, analgic and
+soulless properties. Its apple of Idun 963 stays a clan object; the helper
+drops it in healing room 964, retreats to shared room 537 and meditates.
+
+The yard 960 no longer has NO_UNDEAD, so Eir's farewell transport does not
+send vampire members into a burning room. Keep its other flags, and keep
+NO_UNDEAD on the sacred seat 965 and shrine 969. Clan home 963 and healing
+room 964 stay unchanged. Preserve the locked gate/key, clan item references,
+all programs and shop stock, prices and hours. The cook offers spring water,
+matching drink 971. No new services are added. No matching Scribe source
+exists for this area.
