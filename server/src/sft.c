@@ -1501,10 +1501,20 @@ void do_crush (CHAR_DATA *ch, char *argument)
         if (number_percent() < ch->pcdata->learned[gsn_crush])
         {
                 AFFECT_DATA af;
+                ROOM_INDEX_DATA *room = ch->in_room;
+                int source_deaths = action_deaths(ch);
+                int victim_deaths = action_deaths(victim);
+
                 arena_commentary("$c crushes $N in $s powerful arms.", ch, victim);
                 sound_combat_crush_sfx( ch, victim );
                 act ("$c crushes $N in $s powerful arms!\n\r", ch, NULL, victim, TO_NOTVICT);
                 damage(ch,victim,number_range(ch->level*3, ch->level*4), gsn_crush, FALSE);
+
+                /* A death or move ends this hit, including same-room respawns. */
+                if (!action_character_in_room(ch, room, source_deaths)
+                ||  !action_character_in_room(victim, room, victim_deaths))
+                        return;
+
                 af.type         = gsn_crush;
                 af.duration     = 1;
                 af.location     = APPLY_HITROLL;

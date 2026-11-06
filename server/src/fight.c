@@ -3246,7 +3246,7 @@ bool check_driver_unit(CHAR_DATA *ch, CHAR_DATA *victim)
                         act("<51>Your $p pounds the ground, unbalancing $n.<0>", ch, turret_unit, victim, TO_VICT);
 
                 if (!IS_NPC(ch) && !ch->gag)
-                        act("<87>$N's attacked is unbalanced by the $p.<0>", ch, turret_unit, victim, TO_CHAR);
+                        act("<87>Your attack is unbalanced by the $p.<0>", ch, turret_unit, victim, TO_CHAR);
 
                 if (--turret_unit->value[0] <= 0)
                 {
@@ -3702,7 +3702,7 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
 /*
  * Stop fights.
  */
-void stop_fighting(CHAR_DATA *ch, bool fBoth)
+static void stop_fighting_internal(CHAR_DATA *ch, bool fBoth, bool preserve_unarmed)
 {
         CHAR_DATA *fch;
         CHAR_DATA *old_victim = ch->fighting;
@@ -3734,7 +3734,7 @@ void stop_fighting(CHAR_DATA *ch, bool fBoth)
                          * Shade - 15.6.22 belongs here
                          */
 
-                        if (is_affected(fch, gsn_unarmed_combat))
+                        if (!preserve_unarmed && is_affected(fch, gsn_unarmed_combat))
                                 affect_strip(fch, gsn_unarmed_combat);
 
                         update_pos(fch);
@@ -3750,6 +3750,12 @@ void stop_fighting(CHAR_DATA *ch, bool fBoth)
         refresh_combat_gear_stealth(ch);
         refresh_combat_gear_stealth(old_victim);
         return;
+}
+
+/* Public combat termination always removes combat-only unarmed bonuses. */
+void stop_fighting(CHAR_DATA *ch, bool fBoth)
+{
+        stop_fighting_internal(ch, fBoth, FALSE);
 }
 
 /*
@@ -3781,7 +3787,8 @@ void change_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
                 return;
 
         ch->combat_stealth_transition = TRUE;
-        stop_fighting(ch, FALSE);
+        /* Retargeting continues this fight; keep its unarmed bonuses. */
+        stop_fighting_internal(ch, FALSE, TRUE);
         set_fighting(ch, victim);
         ch->combat_stealth_transition = transition;
         refresh_combat_gear_stealth(ch);
@@ -4201,7 +4208,7 @@ void death_cry(CHAR_DATA *ch)
                 if (!MAKES_CORPSE(ch))
                         strcpy(msg, "$c withers and dissolves into nothing.");
                 else if (IS_HUGE(ch))
-                        strcpy(msg, "$c’s huge body convulses and falls still… DEAD.");
+                        strcpy(msg, "The huge body of $n convulses and falls still… DEAD.");
                 else
                         strcpy(msg, "$c slumps before you... DEAD.");
         }
@@ -4226,12 +4233,12 @@ void death_cry(CHAR_DATA *ch)
 
         case 1:
                 if (CAN_SPEAK(ch))
-                        strcpy(msg, "You hear $n's horrible death cry.");
+                        strcpy(msg, "You hear a horrible death cry from $n.");
                 break;
 
         case 2:
                 if (has_blood(ch) && MAKES_CORPSE(ch))
-                        strcpy(msg, "$c's hot blood splatters your body.");
+                        strcpy(msg, "Hot blood from $n splatters your body.");
                 break;
 
         case 3:
@@ -4263,7 +4270,7 @@ void death_cry(CHAR_DATA *ch)
                 {
                         strcpy(
                             msg,
-                            "$c's head splits apart, revealing $s brain.");
+                            "The head of $n splits apart, revealing $s brain.");
                 }
                 break;
         }
@@ -7881,13 +7888,24 @@ void do_dirt_kick(CHAR_DATA *ch, char *argument)
         if (is_safe(ch, victim))
                 return;
 
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+
         if (number_percent() < chance)
         {
                 AFFECT_DATA af;
+                ROOM_INDEX_DATA *room = ch->in_room;
+                int source_deaths = action_deaths(ch);
+                int victim_deaths = action_deaths(victim);
 
                 arena_commentary("$n blinds $N with a dirt kick.", ch, victim);
                 act("$n is blinded by the dirt in $s eyes!", victim, NULL, NULL, TO_ROOM);
                 damage(ch, victim, number_range(5, 10), gsn_dirt, FALSE);
+
+                /* Do not blind or credit an action after either life ends. */
+                if (!action_character_in_room(ch, room, source_deaths)
+                ||  !action_character_in_room(victim, room, victim_deaths))
+                        return;
+
                 send_to_char("You can't see a thing!\n\r", victim);
 
                 af.type = gsn_dirt;
@@ -7902,8 +7920,6 @@ void do_dirt_kick(CHAR_DATA *ch, char *argument)
         }
         else
                 damage(ch, victim, 0, gsn_dirt, FALSE);
-
-        WAIT_STATE(ch, PULSE_VIOLENCE);
 }
 
 void do_kick(CHAR_DATA *ch, char *argument)

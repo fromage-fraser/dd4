@@ -448,16 +448,13 @@ void do_swim (CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        dex_mod = get_curr_dex(ch) / 10;
+
         if ( IS_AFFECTED(ch, AFF_ARM_TRAUMA)
         ||   IS_AFFECTED(ch, AFF_LEG_TRAUMA)
         ||   IS_AFFECTED(ch, AFF_TAIL_TRAUMA)
         ||   IS_AFFECTED(ch, AFF_TORSO_TRAUMA) )
-        {
-            dex_mod = (get_curr_dex(ch) / 5);
-        }
-        else {
-            dex_mod = (get_curr_dex(ch) / 10);
-        }
+                dex_mod /= 2;
 
         if ( number_percent() < ch->pcdata->learned[gsn_swim] )
         {
@@ -568,12 +565,20 @@ void do_gouge (CHAR_DATA *ch, char *argument)
 
         if (number_percent() < chance)
         {
+                ROOM_INDEX_DATA *room = ch->in_room;
+                int caster_deaths = action_deaths(ch);
+                int victim_deaths = action_deaths(victim);
+
                 act ("You deftly lunge at $N's eyes, and brutally gouge them!", ch, NULL, victim, TO_CHAR);
                 act ("$n scratches your eyes -- you see <124>red<0>!", ch, NULL, victim, TO_VICT);
                 act ("$n gouges $N's eyes!", ch, NULL, victim, TO_NOTVICT);
                 arena_commentary("$n gouges $N's eyes.", ch, victim);
 
                 damage(ch, victim, number_range(10, ch->level), gsn_gouge, FALSE);
+
+                if (!action_character_in_room(ch, room, caster_deaths)
+                ||  !action_character_in_room(victim, room, victim_deaths))
+                        return;
 
                 af.type      = gsn_gouge;
                 af.duration  = ch->level / 20;
@@ -2552,7 +2557,7 @@ void do_sharpen (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_sharpen;
         paf->duration       = -1;
         paf->location       = APPLY_DAMROLL;
-        paf->modifier       = ( in_c_room ) ? 2 + ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 2 + ch->level / 5;
+        paf->modifier       = in_c_room ? 2 + ch->level * mod_room_bonus / (5 * 100) : 2 + ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
@@ -2714,7 +2719,7 @@ void do_forge (CHAR_DATA *ch, char *argument)
         paf->type           = gsn_forge;
         paf->duration       = -1;
         paf->location       = APPLY_AC;
-        paf->modifier       = (in_c_room) ? 0 - ( ch->level / ( ( 5 * 100 ) / mod_room_bonus ) ) : 0 - ch->level / 5;
+        paf->modifier       = in_c_room ? -(ch->level * mod_room_bonus / (5 * 100)) : 0 - ch->level / 5;
         paf->bitvector      = 0;
         paf->next           = obj->affected;
         obj->affected       = paf;
@@ -3561,14 +3566,20 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
                                 number_of_guards = number_range( 2, 5);
 
                     case 5 :
+                    {
+                        ROOM_INDEX_DATA *room = extortionist->in_room;
+                        int caster_deaths = action_deaths(extortionist);
+                        int victim_deaths = action_deaths(victim);
+
                         if( number_of_guards == 0)
                                 number_of_guards = number_range( 1, 3);
                         act("\n\rRAID!!\n\r", extortionist, NULL, victim, TO_ROOM);
                         send_to_char("You've been set up!\n\r", extortionist);
                         multi_hit( victim, extortionist, TYPE_UNDEFINED);
 
-                        /* The fight may have removed us or changed rooms. */
-                        if (extortionist->deleted || !extortionist->in_room)
+                        /* Retaliation must not send guards after a respawn. */
+                        if (!action_character_in_room(extortionist, room, caster_deaths)
+                        ||  !action_character_in_room(victim, room, victim_deaths))
                                 break;
 
                         guard_index = get_mob_index(MOB_VNUM_CITYGUARD);
@@ -3578,15 +3589,15 @@ void do_extort (CHAR_DATA *extortionist, char *targetList)
                                 break;
                         }
 
-                        if (!undead_can_spawn_in_room(guard_index, extortionist->in_room))
+                        if (!undead_can_spawn_in_room(guard_index, room))
                                 break;
 
                         for( index = 1; index <= number_of_guards; index++ )
                         {
-                                char_to_room(create_mobile(guard_index),
-                                             extortionist->in_room);
+                                char_to_room(create_mobile(guard_index), room);
                         }
                         break;
+                    }
 
                     case 6 :
                         send_to_char("Damn, here comes the law, better look innocent.\n\r", extortionist);

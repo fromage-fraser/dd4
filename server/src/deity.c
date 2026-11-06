@@ -2534,6 +2534,7 @@ void prayer_locate (CHAR_DATA *ch, char *text)
 {
         CHAR_DATA *victim;
         ROOM_INDEX_DATA *room;
+        ROOM_INDEX_DATA *destination;
         char buf [MAX_STRING_LENGTH];
         char arg [MAX_INPUT_LENGTH];
 
@@ -2569,8 +2570,10 @@ void prayer_locate (CHAR_DATA *ch, char *text)
         send_to_char(buf, ch);
 
         room = ch->in_room;
+        /* victim may be ch: char_from_room clears ch->in_room. */
+        destination = victim->in_room;
         char_from_room(ch);
-        char_to_room(ch, victim->in_room);
+        char_to_room(ch, destination);
         do_look(ch, "");
         char_from_room(ch);
         char_to_room(ch, room);
