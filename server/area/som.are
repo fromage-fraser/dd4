@@ -47,6 +47,10 @@ manner.
 ~
 |
 
+< manticore~ common~
+MobHeight 210
+MobLength 550
+MobWeight 700
 #471
 myrithin knight~
 Myrithin~
@@ -78,6 +82,7 @@ blue surcoat, bordered with gold.
 ~
 |
 
+< human~ common~
 #473
 som wizinvis guy~
 SOM wizinvis guy~
@@ -85,7 +90,7 @@ SOM wizinvis guy drops Crystal Sword.
 ~
 I am sleepy....zzzzZZZZzzzz.....
 ~
-2|512|4096|65536 8|32|8388608 0 S
+2|4096|65536 8|32|8388608 0 S
 500 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -96,18 +101,22 @@ I am sleepy....zzzzZZZZzzzz.....
 ~
 |
 
+< script_controller~ common~
 #472
 wolfstar sunsoar angel~
 WolfStar SunSoar~
-WolfStar SunSoar stands magestically before you.
+WolfStar SunSoar stands majestically before you.
 ~
 WolfStar SunSoar is a large winged man with long black and silver wings.  He
-has silver straks in his long black hair.
+has silver streaks in his long black hair.
 ~
-2|512|4096|1048756 8|32|8388608 0 S
+2|512|4096|1048740 8|32|8388608 0 S
 100 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< winged_human~ common~
+MobHeight 200
+MobWeight 110
 #0
 
 #OBJECTS
@@ -125,8 +134,8 @@ barbed tail~
 a manticore's barbed tail~
 A manticore's long, barbed tail has been chopped off here.~
 ~
-5 0 0
-~ ~ ~ 3~
+5 67108864 0
+6~ ~ ~ 3~
 15 0 0
 A
 18 50
@@ -138,8 +147,8 @@ razor-sharp teeth~
 a manticore's teeth~
 A manticore's razor-sharp teeth have fallen out here.~
 ~
-5 0 0
-~ ~ ~ 10~
+5 67108864 0
+1~ ~ ~ 10~
 15 0 0
 A
 18 50
@@ -285,7 +294,7 @@ from some very rich wood. You notice a side table here, with some assorted
 foods. Tapestries line the wall here, showing monsters and legendary beasts
 that SOM has slayed in the past.
 ~
-0 8|4194304 0
+0 8 0
 D 3
 There is a door to the west.
 ~
@@ -322,7 +331,7 @@ your feet shows a scene of night, with a full moon high in its sky, and
 shadows among a few trees - The Shadows of Midnight. You notice an out of
 color step on the dais.
 ~
-0 8|4194304 0
+0 8 0
 D 0
 ~
 dais~

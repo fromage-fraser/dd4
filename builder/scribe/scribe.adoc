@@ -9766,3 +9766,62 @@ room 964 stay unchanged. Preserve the locked gate/key, clan item references,
 all programs and shop stock, prices and hours. The cook offers spring water,
 matching drink 971. No new services are added. No matching Scribe source
 exists for this area.
+
+[[scribe-som-headquarters]]
+==== SOM Headquarters creatures and people
+
+Manticore 470 uses quadrupedal_mammal / manticore, with four legs, feline
+paws and claws, fangs, wings and a spiked tail. It is a living, speaking
+creature without hands or arms. Keep its speech: the clan guard warns its
+clan over chat. Ordinary claws and bites are fallback attacks, not extra
+attacks. The shared profile is Large with HUGE, flight, natural_armour -15
+and +5 XP. Its defaults are 183 cm at the shoulder, 457 cm long and 500 kg;
+the giant guard overrides those to 210 cm, 550 cm and 700 kg. The 2e entry
+informs the anatomy and dimensions; weights and DD4 bonuses are estimates.
+
+Native weapons 471 (tail) and 472 (teeth) keep their existing wield/dual
+slots, attack verbs and randomisation. They now have BODY_PART with weapon
+value[0] 6 for the tail and 1 for the head. Keep them non-takeable. Do not
+add DONOT_RANDOMISE and accidentally activate their old +50 modifiers.
+Tail trauma disables the attached tail weapon; targeted strikes can detach
+the relevant weapon. Regenerate heals attached parts but does not recreate
+an object that was removed. DD4 retains its ordinary bite rules in flight.
+
+The reusable spec_manticore uses the code-only tail_spike_volley trait.
+It gets one 25% chance each three-second combat pulse: 1-6 physical piercing
+spikes, each doing max(1, level/10) to max(1, level/5) damage before normal
+defences. It can fire four volleys per MUD calendar day. It needs a live,
+awake combatant, a current opponent in the same room and a usable attached
+tail weapon. Hold, daze, tail trauma and detachment prevent firing. Every
+spike rechecks both creatures and stops on death, movement or retargeting.
+No poison, cross-room shots, ammunition objects or new aggression are added.
+
+Ordinary manticores inherit spec_manticore. This guard keeps its individual
+spec_clan_guard at 100%; in combat that routine delegates to the same volley.
+The combat hook makes exactly one opportunity per combat pulse, independently
+of the four-second mobile update. No other guard gains spikes: the trait is
+assigned only in the manticore profile. The +5 XP belongs to that profile;
+the special adds no second XP bonus. Day/charge counters stay in NPC memory,
+not area files. MSTAT shows the trait value and its archetype origin. Assign
+native tail equipment when using this archetype for another area.
+
+Myrithin 471 uses human, 175 cm / 75 kg, and keeps spec_cast_adept and both
+clan-only programs. WolfStar 472 uses humanoid / winged_human with wings and
+flight, normal living physiology and human family. Shared defaults are
+175 cm / 85 kg; his large build overrides them to 200 cm / 110 kg, Medium.
+The descriptive angel identity adds no celestial immunities or spellcasting.
+Clear only his unused ACT value 16; preserve aggression, wimpy, scavenging,
+identify, shop stock, 150/75 profit fields and 0-23 hours. All four mobs stay
+common, at their authored levels, sexes and neutral alignments.
+
+Helper 473 uses script_controller, with dimensions unspecified. Omit raw
+NO_QUEST so it stays inherited. Keep NOCHARM, WIZINVIS, sentinel, detection
+and its program. The Crystal Sword 473 remains a clan object: it is dropped
+in healing room 474 before the helper retreats to shared room 537 and
+meditates. Do not add NON_CORPOREAL or turn the artefact into a weapon.
+
+Remove only NO_UNDEAD from clan home 472 and healing room 474. Great Hall
+471 stays warded, so vampires still burn while walking through it. Keep all
+other room flags, exits, door states, key, reset placements/caps, programmes,
+stock and clan item references. Correct WolfStar's two spelling errors.
+There is no matching SOM Scribe source in the repository.

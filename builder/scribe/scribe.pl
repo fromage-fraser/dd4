@@ -84,6 +84,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         young_lightning_dragon animated_vase animated_blade animated_mirror cave_beast
         human_goblin
         centaur domestic_cat script_controller
+        manticore winged_human
 /;
 
 my %mob_act = (
@@ -329,7 +330,7 @@ my @mob_spec = qw/
     spec_purple_grung	    spec_orange_grung	    spec_gold_grung           spec_ghoul
     spec_ghast              spec_wight              spec_wraith               spec_spectre
     spec_mummy              spec_banshee            spec_death_knight         spec_lich
-    spec_duergar            spec_swallow            spec_poison_palm
+    spec_duergar            spec_swallow            spec_poison_palm spec_manticore
 /;
 
 my %obj_ex = (

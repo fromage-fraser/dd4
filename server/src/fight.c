@@ -217,6 +217,9 @@ void violence_update(void)
         /* Give visible opponents one chance to face a fear aura. */
         update_fear_auras();
 
+        /* Resolve bounded tail volleys once, before ordinary attacks. */
+        update_manticore_volleys();
+
         for (ch = char_list; ch; ch = ch->next)
         {
                 if (!ch->in_room || ch->deleted)
