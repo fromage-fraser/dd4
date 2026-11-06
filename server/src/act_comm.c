@@ -1387,6 +1387,8 @@ void do_pose(CHAR_DATA *ch, char *argument)
 {
         int level;
         int pose;
+        const char *to_char;
+        const char *to_room;
 
         if (IS_NPC(ch))
                 return;
@@ -1394,8 +1396,18 @@ void do_pose(CHAR_DATA *ch, char *argument)
         level = UMIN(ch->level, sizeof(pose_table) / sizeof(pose_table[0]) - 1);
         pose = number_range(0, level);
 
-        act(pose_table[pose].message[2 * ch->class + 0], ch, NULL, NULL, TO_CHAR);
-        act(pose_table[pose].message[2 * ch->class + 1], ch, NULL, NULL, TO_ROOM);
+        to_char = pose_table[pose].message[2 * ch->class + 0];
+        to_room = pose_table[pose].message[2 * ch->class + 1];
+
+        /* Ranger and Smithy have no class-specific poses in the legacy table. */
+        if (to_char == NULL || to_room == NULL)
+        {
+                to_char = "You strike a confident pose.";
+                to_room = "$n strikes a confident pose.";
+        }
+
+        act(to_char, ch, NULL, NULL, TO_CHAR);
+        act(to_room, ch, NULL, NULL, TO_ROOM);
 
         return;
 }

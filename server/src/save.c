@@ -336,6 +336,8 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
                  ch->colors[7],
                  ch->colors[8],
                  ch->colors[9]);
+        /* Keep the legacy ten-value Colors record intact. */
+        fprintf(fp, "ColorNewbie %d\n", ch->colors[COLOR_NEWBIE]);
 
         fprintf(fp, "SndCfg      %d %d %d %d %d %d %d %d\n",
                 ch->pcdata->snd_enabled,
@@ -1023,6 +1025,7 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         break;
 
                     case 'C':
+                        KEY("ColorNewbie", ch->colors[COLOR_NEWBIE], fread_number( fp, &stat ));
                         KEY("ChSub", ch->pcdata->choose_subclass, fread_number( fp, &stat ));
                         KEY("Cla", ch->class, fread_number( fp, &stat ));
                         KEY("Clan", ch->clan, fread_number( fp, &stat ));

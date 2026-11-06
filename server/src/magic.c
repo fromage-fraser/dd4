@@ -1840,6 +1840,7 @@ void spell_synaptic_blast(int sn, int level, CHAR_DATA *ch, void *vo)
         if (IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
         {
                 send_to_char("Your brain isn't working well enough to use this spell.\n\r", ch);
+                return;
         }
 
         /* dam is 5-12 per level */
@@ -4885,7 +4886,12 @@ void spell_earthquake(int sn, int level, CHAR_DATA *ch, void *vo)
                                 continue;
 
                         if (vch != ch && (IS_NPC(ch) ? !IS_NPC(vch) : IS_NPC(vch)))
+                        {
+                                if (IS_NPC(vch) && vch->rider && is_safe(ch, vch))
+                                        continue;
+
                                 damage(ch, vch, dice(level, 4) + level, sn, FALSE);
+                        }
 
                         continue;
                 }
@@ -8582,6 +8588,9 @@ void spell_gas_breath(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 if (IS_NPC(ch) ? !IS_NPC(vch) : (IS_NPC(vch) || ch->fighting == vch))
                 {
+                        if (IS_NPC(vch) && vch->rider && is_safe(ch, vch))
+                                continue;
+
                         hpch = UMAX(10, ch->hit);
                         dam = number_range(hpch / 8 + 1, hpch / 4);
 
@@ -9365,7 +9374,9 @@ void spell_disintegrate(int sn, int level, CHAR_DATA *ch, void *vo)
                 return;
         }
 
-        if ((IS_NPC(ch) || IS_NPC(victim)) && !saves_spell(ch, level, victim))
+        if ((IS_NPC(ch) || IS_NPC(victim))
+        &&  !(IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE))
+        &&  !saves_spell(ch, level, victim))
         {
                 act("You have DISINTEGRATED $N!", ch, NULL, victim, TO_CHAR);
                 act("You have been DISINTEGRATED by $n!", ch, NULL, victim, TO_VICT);

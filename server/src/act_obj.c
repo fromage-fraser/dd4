@@ -4989,6 +4989,12 @@ void do_smear(CHAR_DATA *ch, char *argument)
                 }
         }
 
+        if (!obj)
+        {
+                send_to_char("You do not have that paint on your person.\n\r", ch);
+                return;
+        }
+
         if (obj->item_type != ITEM_PAINT)
         {
                 send_to_char("You can only smear with paints and pigments.\n\r", ch);
@@ -7219,7 +7225,7 @@ void do_donate(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (arg[0] == '0')
+        if (arg[0] == '\0')
         {
                 send_to_char("Donate what?\n\r", ch);
                 return;

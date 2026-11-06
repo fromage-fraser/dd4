@@ -1585,6 +1585,21 @@ blocking unrelated directions.
 - Bard songs stop when the held instrument is forcibly removed or dropped.
 - TRIGGER respects ownership of both turrets and their modules.
 - Successful ENGRAVE consumes the required smelted materials.
+- SMEAR safely refuses missing paint for NPCs as well as players.
+- DISINTEGRATE respects unkillable creatures.
+- CRUSH, GOUGE and DIRT KICK stop follow-on effects after death or departure.
+- EXTORT cannot summon guards after the extorter dies or leaves the shop.
+- DONATE without an item asks what to donate instead of taking an item.
+- Mounted wall crossings use the mount's flight rather than the rider's.
+- SWIM halves its accuracy bonus for limb or torso trauma.
+- SHARPEN and FORGE calculate crafting bonuses before integer rounding.
+- SYNAPTIC BLAST stops when head trauma prevents its use.
+- GAS BREATH and EARTHQUAKE respect ridden mounts' player-killing protection.
+- Death cries avoid awkward plural possessives; fix Driver attack wording.
+- FOCUS keeps UNARMED COMBAT bonuses when changing opponents.
+- PRAY LOCATE safely handles looking for yourself.
+- NEWBIE channel colours persist across logout and login.
+- POSE gives Rangers and Smithies a message instead of remaining silent.
 
 ~
 

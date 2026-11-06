@@ -413,7 +413,8 @@ static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
                 }
         }
 
-        if (IS_SET(pexit->exit_info, EX_WALL) && !IS_AFFECTED(ch, AFF_FLYING))
+        if (IS_SET(pexit->exit_info, EX_WALL)
+        &&  !IS_AFFECTED(ch->mount ? ch->mount : ch, AFF_FLYING))
         {
                 act("You cannot proceed, as a $d blocks your way.",
                     ch, NULL, pexit->keyword, TO_CHAR);
