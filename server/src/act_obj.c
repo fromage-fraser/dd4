@@ -3087,7 +3087,8 @@ static bool liquid_splash_is_hostile(
         switch (liquid)
         {
         case LIQ_HOLY_WATER:
-                return IS_UNDEAD(victim);
+                return IS_UNDEAD(victim)
+                    && creature_trait_value(victim, CREATURE_TRAIT_HOLY_WATER_IMMUNITY) <= 0;
 
         default:
                 return FALSE;
@@ -3255,7 +3256,8 @@ static void liquid_splash_effect(
                  * Holy water has no special splash effect on a living
                  * target. Against undead it is explicit holy damage.
                  */
-                if (!IS_UNDEAD(victim))
+                if (!IS_UNDEAD(victim)
+                ||  creature_trait_value(victim, CREATURE_TRAIT_HOLY_WATER_IMMUNITY) > 0)
                         return;
 
                 dam = UMAX(

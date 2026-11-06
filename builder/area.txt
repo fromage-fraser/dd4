@@ -5615,3 +5615,56 @@ MOC helper (366) uses script_controller and keeps WIZINVIS plus its Kris
 delivery, retreat and meditation program. Its raw ACT mask omits NO_QUEST
 because the archetype already supplies it. All six MOC actors stay common.
 The maze, guard, shop and identify services keep their existing behaviour.
+
+Coven of Bone creatures and services
+-----------------------------------
+alhoon uses humanoid anatomy with mouth tentacles, a brain and a voice for
+its telepathic messages. It is undead and bloodless, retaining its mind,
+soul and physical remains. Defaults are 183cm/65kg/Medium. It has RES_MAGIC,
+sleep/charm immunity, natural armour -10 and +10% archetype XP. It does not
+inherit a human lich's chill touch, fear aura or other specific immunities.
+
+The internal turn_immunity and holy_water_immunity traits express those
+particular defences. They are shown by MSTAT, not saved as area flags or
+individual overrides. Holy spells and other undead rules still apply.
+psionic_casting_pct is 70 for alhoon. spec_alhoon chooses the psionicist
+routine 70% of the time and the mage routine 30% when attempting a cast.
+It requires a living local opponent, a usable head and brain, and ordinary
+combat permissions. Injuries and incapacitation can stop it.
+
+Ythguan (480) keeps spec_clan_guard at 100%. While fighting, the guard uses
+the inherited casting trait to delegate to spec_alhoon. Other guards keep
+their existing behaviour, including the manticore combat volley. Generic
+alhoon inherit spec_alhoon without needing a clan guard or a particular vnum.
+Clear Ythguan's raw infravision bit: the profile already supplies it, and a
+duplicate raw bit would cancel it through XOR.
+
+Tentacles (481) are a head-attached ITEM_BODY_PART weapon, value[0] = 1,
+with their existing suction verb and main-hand slot. They are not a heart
+weapon: category 5 means heart. Head trauma or loss of the head disables
+head-attached weapons without removing them from inventory. Regenerate
+restores an injured attached weapon's use for an eligible target; it does
+not recreate a disarmed one. Existing healing rules still apply: Regenerate
+harms undead NPCs, while player vampires keep their established exception. Psionic force (480) stays defined for compatibility, but is no longer
+equipped as a physical weapon. Keep the tentacles' existing randomisation.
+
+drow uses humanoid anatomy and the elf family. Defaults are 150cm/45kg/Medium,
+with infravision, RES_MAGIC and +5% XP. It inherits elf's 90% magical sleep
+and charm resistance and ghoul-touch immunity. Its existing sunlight trait
+applies -2 accuracy in direct sunlight, without changing its movement or
+penalising ordinary torches. This NPC profile does not change player Drow.
+Nroba (484) is an individual 145cm/35kg drow with spec_cast_mage. That role
+does not make every drow a wizard. Keep her shop and authored behaviour.
+
+Blackbane (481) uses lich and boss rank; Ythguan uses rare. Apply the normal
+rank HP multiplier once. The Anatomist (482) is human, 190cm/55kg, and keeps
+spec_cast_adept plus clan-only bless and bye. Existing healer/undead-healer
+flags add the normal HEAL menu and mend services: 15 gold for 100HP, 35 gold
+for 300HP, subject to existing limits and safety. Do not add priest services.
+Smittie (485) uses ordinary zombie; helper (483) uses script_controller.
+The helper already omits raw NO_QUEST, so keep its raw ACT list as it is.
+
+All rooms keep their flags. Home (490) and healing room (484) remain open to undead.
+The staff and chest mentioned in descriptions remain props, not new loot.
+Full drow daily innate magic/bright-light rules, tentacle grappling and brain
+extraction, and exact tabletop alhoon poison recovery remain later work.

@@ -1363,6 +1363,12 @@ attached tail weapons even when the targeting strike did not disarm them.
 Regenerate can restore their use while they remain attached; it does not
 recreate a physically disarmed body-part object.
 
+Head-attached body-part weapons use value[0] = 1. Head trauma or loss of the
+head disables their attacks while leaving inventory and equipment lookups
+intact. Regenerate can restore an injured attached weapon's use only when
+its usual target rules allow it; undead NPCs are still harmed, and player
+vampires keep their existing exception. It never recreates a disarmed part.
+
 == Check if an NPC is possessed/switched-into [[check-if-switched]]
 
 Switching into or possessing an NPC changes their `ch->desc` to `NULL`, therefore +

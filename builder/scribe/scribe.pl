@@ -86,6 +86,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         centaur domestic_cat script_controller
         manticore winged_human
         talking_bat magical_spirit
+        alhoon drow
 /;
 
 my %mob_act = (
@@ -129,6 +130,7 @@ my %mob_act = (
         undead             => 1073741824,
         fear_aura          => 2147483648,
         priest_services    => '4294967296',
+        undead_healer      => '8589934592',
         undead_healing     => '8589934592',
         unkillable         => 9223372036854775808,
 );
@@ -331,7 +333,7 @@ my @mob_spec = qw/
     spec_purple_grung	    spec_orange_grung	    spec_gold_grung           spec_ghoul
     spec_ghast              spec_wight              spec_wraith               spec_spectre
     spec_mummy              spec_banshee            spec_death_knight         spec_lich
-    spec_duergar            spec_swallow            spec_poison_palm spec_manticore
+    spec_duergar            spec_swallow            spec_poison_palm spec_manticore spec_alhoon
 /;
 
 my %obj_ex = (

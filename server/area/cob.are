@@ -12,7 +12,7 @@ $
 executed. Those who managed to practice and live did so in extreme secrecy.
 Even the cautious practitioners were eventually discovered and slain. For
 safety, the necromancers, witches, and others who learned the ways of the Dark
-Arts banned together in small groups they called covens. Although these covens
+Arts banded together in small groups they called covens. Although these covens
 did survive longer than the individuals could, a handful of spell casters
 simply could not stand up against the number of soldiers and hunters cities
 could send against them. The covens were dispersed and destroyed one by one.
@@ -72,7 +72,7 @@ hands. Its skin rots as though it were a corpse. Its ancient robes and
 garments have decayed to rags. One prominent symbol still endures the ages on
 its primary robe, however.
 ~
-2|512|4096|4194304 2|8|16|32|128|512|65536|8388608 0 S
+2|512|4096|4194304 2|8|16|32|128|65536|8388608 0 S
 60 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -81,6 +81,7 @@ mpecho CHAT Masters, I have failed you!   The Clan has been INVADED!
 ~
 |
 
+< alhoon~ rare~
 #481
 Blackbane~
 Blackbane~
@@ -94,11 +95,12 @@ you realize that several of his teeth have already been replaced with
 expensive gems. Several teeth are missing, leaving empty slots. Blackbane
 moves suddenly, scaring the hell out of you.
 ~
-2|64|1048756 8|32 0 S
+2|64|1048740 8|32 0 S
 100 0 0 0d0+0 0d0+0
 0 0
 0 0 1
 
+< lich~ boss~
 #482
 Anatomist~
 Anatomist~
@@ -109,7 +111,7 @@ his fellow coven members. He is a tall, unnaturally thin human. He heals the
 injured, and animates those who die under his care. The light color of his
 robes covers most shades of gray.
 ~
-2|64 8|32|128 0 S
+2|64|8192|8589934592 8|32|128 0 S
 100 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -130,6 +132,9 @@ endif
 ~
 |
 
+< human~ common~
+MobHeight 190
+MobWeight 55
 #483
 COB wizinvis guy~
 COB wizinvis guy~
@@ -148,6 +153,7 @@ meditate
 ~
 |
 
+< script_controller~ common~
 #484
 Nroba~
 Nroba~
@@ -164,8 +170,11 @@ little interest, then returns to her reclusive meditation.
 0 0
 0 0 2
 
+< drow~ common~
+MobHeight 145
+MobWeight 35
 #485
-smitte zombie~
+smittie smitte zombie~
 Smittie the Zombie~
 Smittie the Zombie lugs a chest around here.
 ~
@@ -177,6 +186,7 @@ encumberingly large chest rests on his back.
 35 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< zombie~ common~
 #0
 
 #OBJECTS
@@ -198,8 +208,8 @@ Tentacles~
 Tentacles~
 Tentacles.~
 ~
-5 1 8192
-~ ~ ~ 12~
+5 1|67108864 8192
+1~ ~ ~ 12~
 1 0 0
 A
 18 50
@@ -372,7 +382,7 @@ S
 
 #483
 A Narrow Tunnel~
-Upon closer inspection of the northern wall in the liches lair, you
+Upon closer inspection of the northern wall in the lich's lair, you
 discovered a narrow tunnel leading into the blackness. For some reason you
 decided to see where it led. To your dismay, you discover that the fungi and
 insects have returned now to discomfort you as you squeeze through this
@@ -427,10 +437,10 @@ S
 
 #486
 End of the Hallway~
-The musty hallway ends here, with only a door to the west. The north end of
-the hallway seems to have been sealed off by a cave-in. No light escapes from
-the cracks of the crude wooden door to the east. The stones that make up the
-western wall seem to shift slightly as you progress down the hallway.
+A cave-in seals the north end of this musty hallway. Doors lead east and
+west, while a corridor continues south. No light escapes from the cracks of
+the crude wooden door to the east. The stones that make up the western wall
+seem to shift slightly as you progress down the hallway.
 ~
 0 8 0
 D 2
@@ -477,9 +487,9 @@ S
 The Coven House~
 A furnished stone structure built into the mysterious caverns houses the
 ancient Coven of Bone. It is run-down and appears as if it could collapse at
-any moment. Most other hallways and corridors that branch off from this main
-room have collapsed, blocking the exit, excluding only one, which leads
-directly north. The ancient witch, Nroba, makes her home in this solitary
+any moment. Most passages branching from this room have collapsed. The
+surviving routes lead north into a musty corridor and east into a misty
+cavern. The ancient witch, Nroba, makes her home in this solitary
 room. The majority of her time is spent in contemplation or meditation. Rags
 upon the floor serve as a bed and the rodents and fungus growing about are a
 source of food.
@@ -553,8 +563,7 @@ D 0 489 1 1                     close east in The Library
 D 0 490 1 1                     close east in The Summoning Chamber
 D 0 491 3 1                     close west in Storage
 M 0 480 1 480                   add Ythguan the Alhoon to Through the Hidden Tunnels...
-E 0 480 0 16                        equip Psionic force (wield)
-E 0 481 0 18                        equip Tentacles (dual)
+E 0 481 0 16                        equip Tentacles (wield)
 G 0 482 0                           carry an adamantite chrysanthemum
 M 0 481 1 482                   add Blackbane to In the Lich's Lair
 M 0 482 1 484                   add Anatomist to The Anatomist's Cavern
@@ -574,6 +583,7 @@ S
 #SPECIALS
 M 480 spec_clan_guard           Ythguan the Alhoon
 M 482 spec_cast_adept           Anatomist
+M 484 spec_cast_mage            Nroba
 S
 
 #$

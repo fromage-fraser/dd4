@@ -3650,7 +3650,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 66
+#define MAX_MOB 68
 #define MAX_SPECIES 16
 #define MAX_RANK 6
 
@@ -5918,6 +5918,9 @@ typedef enum creature_trait
         CREATURE_TRAIT_NATURAL_ATTACK_TYPE,
         CREATURE_TRAIT_SUNLIGHT_POWERLESS,
         CREATURE_TRAIT_TAIL_SPIKE_VOLLEY,
+        CREATURE_TRAIT_TURN_IMMUNITY,
+        CREATURE_TRAIT_HOLY_WATER_IMMUNITY,
+        CREATURE_TRAIT_PSIONIC_CASTING_PERCENT,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 int validate_creature_traits args((void));
