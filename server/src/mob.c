@@ -1620,6 +1620,34 @@ const struct mob_type mob_table[MAX_MOB] =
                 CREATURE_FAMILY_HUMAN, MOB_TEMPLATE_UNSET
         }
 
+        ,
+        /* This small bat can talk, but still has wings instead of arms. */
+        {
+                "talking_bat", "winged_mammal", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_SPEECH | PART_FANGS | PART_CLAWS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 10
+        },
+        /* An unseen magical presence need not be a dead person's ghost. */
+        {
+                "magical_spirit", "mysterious_being", "icon1", "icon2",
+                0, AFF_INVISIBLE,
+                BODY_NO_SPEECH | BODY_ANALGIC, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        }
+
 };
 
 #undef DWARF_ARCHETYPE
@@ -1872,6 +1900,7 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"orc", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"elf", NULL, elf_trait_changes, TRAIT_ITEMS(elf_trait_changes)},
         {"bat", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
+        {"talking_bat", "bat", NULL, 0},
         {"vampire_bat_form", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
         {"shadow", NULL, shadow_trait_changes, TRAIT_ITEMS(shadow_trait_changes)},
         {"spectre", NULL, spectre_trait_changes, TRAIT_ITEMS(spectre_trait_changes)},
