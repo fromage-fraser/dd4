@@ -2471,9 +2471,13 @@ E 1 6001 10 5      shirt Equipped (BODY)
 E 1 6002 10 8      boots Equipped (FEET)
 D 0 6009 0 1     Cabin door must be closed
 M 0 309 5 6012  Rabbit 1
+E 1 313 0 16  equip rabbit teeth
 M 0 309 5 6015         2
+E 1 313 0 16  equip rabbit teeth
 M 0 309 5 6017         3
+E 1 313 0 16  equip rabbit teeth
 M 0 309 5 6019         4
+E 1 313 0 16  equip rabbit teeth
 M 0 6002 1 6022  Brown bear
 M 0 6004 1 6023  Fallow deer
 M 0 6005 2 6014  Brown fox
