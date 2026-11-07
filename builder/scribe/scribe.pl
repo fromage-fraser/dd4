@@ -90,6 +90,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         giant_worm rabbit dragon_hatchling
         faerie_dragon griffin
         cattle hill_giant stone_giant
+        troll_infant den_beast carrion_worm
 /;
 
 my %mob_act = (

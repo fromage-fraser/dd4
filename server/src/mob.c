@@ -1088,20 +1088,17 @@ const struct mob_type mob_table[MAX_MOB] =
                 CREATURE_FAMILY_OGRE,
                 MOB_TEMPLATE_UNSET
         },
+        /* Native healing is passive; the existing giant special throws rocks. */
         {
                 "troll", "humanoid", "icon1", "icon2",
-                0, 0,
-                0, 0,
+                0, AFF_INFRARED,
+                PART_CLAWS | PART_FANGS, PART_CLAWS | PART_FANGS,
                 0, 0, 0,
                 0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                "", "", "",
-                0,
-                MOB_SPECIAL_CHANCES_AUTO,
-                GHOST_PHASE_NONE,
-                CREATURE_FAMILY_TROLL,
-                MOB_TEMPLATE_UNSET
+                275, 225, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_giant", "", "",
+                10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_TROLL, MOB_TEMPLATE_UNSET
         },
         {
                 "ogre_mage", "humanoid", "icon1", "icon2",
@@ -1787,6 +1784,42 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_giant", "", "",
                 10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_GIANT, MOB_TEMPLATE_UNSET
+        },
+        /* An infant shares troll physiology but has no active rock special. */
+        {
+                "troll_infant", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED,
+                PART_CLAWS | PART_FANGS, PART_CLAWS | PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                140, 80, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_TROLL, MOB_TEMPLATE_UNSET
+        },
+        /* These furred den animals have an ordinary bite, without new senses. */
+        {
+                "den_beast", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                90, 120, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 180
+        },
+        /* XOR removes positive inherited head/eye bits as well as marking absence. */
+        {
+                "carrion_worm", "limbless_invertebrate", "icon1", "icon2",
+                0, 0,
+                PART_HEAD | PART_EYE | BODY_NO_HEAD | BODY_NO_EYES, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                10, 12, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_fido", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 150
         }
 
 };
@@ -1871,7 +1904,8 @@ typedef enum creature_trait_effect
         TRAIT_HOLY_WATER_IMMUNITY,
         TRAIT_COMBAT_CASTING_PERCENT,
         TRAIT_NATIVE_ROCK_PERCENT,
-        TRAIT_NATIVE_ROCK_QUANTITY
+        TRAIT_NATIVE_ROCK_QUANTITY,
+        TRAIT_NATIVE_REGEN_QUANTITY
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -1949,7 +1983,13 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"rock_damage_dice", TRAIT_NATIVE_ROCK_QUANTITY, NULL},
         {"rock_damage_sides", TRAIT_NATIVE_ROCK_QUANTITY, NULL},
         {"rock_daily_ammo", TRAIT_NATIVE_ROCK_QUANTITY, NULL},
-        {"rock_catch_pct", TRAIT_NATIVE_ROCK_PERCENT, NULL}
+        {"rock_catch_pct", TRAIT_NATIVE_ROCK_PERCENT, NULL},
+        {"native_regen_min_hp", TRAIT_NATIVE_REGEN_QUANTITY, NULL},
+        {"native_regen_level_divisor", TRAIT_NATIVE_REGEN_QUANTITY, NULL},
+        {"native_regen_interval", TRAIT_NATIVE_REGEN_QUANTITY, NULL},
+        {"native_regen_delay", TRAIT_NATIVE_REGEN_QUANTITY, NULL},
+        {"native_regen_suppression", TRAIT_NATIVE_REGEN_QUANTITY, NULL},
+        {"native_regen_trauma_interval", TRAIT_NATIVE_REGEN_QUANTITY, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
@@ -2049,6 +2089,29 @@ static const CREATURE_TRAIT_CHANGE stone_giant_trait_changes[] =
         {CREATURE_TRAIT_ROCK_DAILY_AMMO, 8},
         {CREATURE_TRAIT_ROCK_CATCH_PERCENT, 90}
 };
+static const CREATURE_TRAIT_CHANGE troll_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -15},
+        {CREATURE_TRAIT_ROCK_THROW_PERCENT, 15},
+        {CREATURE_TRAIT_ROCK_DAMAGE_DICE, 1},
+        {CREATURE_TRAIT_ROCK_DAMAGE_SIDES, 8},
+        {CREATURE_TRAIT_ROCK_DAILY_AMMO, 2},
+        {CREATURE_TRAIT_ROCK_CATCH_PERCENT, 0},
+        {CREATURE_TRAIT_NATIVE_REGEN_MIN_HP, 3},
+        {CREATURE_TRAIT_NATIVE_REGEN_LEVEL_DIVISOR, 5},
+        {CREATURE_TRAIT_NATIVE_REGEN_INTERVAL, 3},
+        {CREATURE_TRAIT_NATIVE_REGEN_DELAY, 9},
+        {CREATURE_TRAIT_NATIVE_REGEN_SUPPRESSION, 9},
+        {CREATURE_TRAIT_NATIVE_REGEN_TRAUMA_INTERVAL, 30}
+};
+static const CREATURE_TRAIT_CHANGE infant_troll_trait_changes[] =
+{
+        {CREATURE_TRAIT_ROCK_THROW_PERCENT, 0}
+};
+static const CREATURE_TRAIT_CHANGE den_beast_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
 static const CREATURE_TRAIT_CHANGE centaur_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
@@ -2117,6 +2180,10 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"cattle", NULL, cattle_trait_changes, TRAIT_ITEMS(cattle_trait_changes)},
         {"hill_giant", NULL, hill_giant_trait_changes, TRAIT_ITEMS(hill_giant_trait_changes)},
         {"stone_giant", NULL, stone_giant_trait_changes, TRAIT_ITEMS(stone_giant_trait_changes)},
+        {"troll", NULL, troll_trait_changes, TRAIT_ITEMS(troll_trait_changes)},
+        {"troll_infant", "troll", infant_troll_trait_changes,
+            TRAIT_ITEMS(infant_troll_trait_changes)},
+        {"den_beast", NULL, den_beast_trait_changes, TRAIT_ITEMS(den_beast_trait_changes)},
         {NULL, NULL, NULL, 0}
 };
 
@@ -2293,6 +2360,7 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_COMBAT_CASTING_PERCENT
                                     || effect == TRAIT_NATIVE_ROCK_PERCENT
                                     || effect == TRAIT_NATIVE_ROCK_QUANTITY
+                                    || effect == TRAIT_NATIVE_REGEN_QUANTITY
                                     || effect == TRAIT_LICH_CHILL_TOUCH)
                                 && profile->changes[i].value < 0)
                                         issues++;
@@ -2349,7 +2417,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_NATIVE_ROCK_QUANTITY)
+                || creature_trait_definitions[i].effect > TRAIT_NATIVE_REGEN_QUANTITY)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name
