@@ -220,6 +220,9 @@ void violence_update(void)
         /* Resolve bounded tail volleys once, before ordinary attacks. */
         update_manticore_volleys();
 
+        /* Native giant throws have one opportunity per combat pulse. */
+        update_giant_rocks();
+
         for (ch = char_list; ch; ch = ch->next)
         {
                 if (!ch->in_room || ch->deleted)

@@ -16,6 +16,7 @@ over you as you force your way through.
 0 0
 0 0 1
 
+< human~ common~
 #701
 peasant~
 a peasant~
@@ -29,6 +30,7 @@ mass of beggars stationed outside the gate.
 0 0
 0 0 1
 
+< human~ common~
 #702
 peasant~
 a peasant~
@@ -42,6 +44,7 @@ the throng of beggars and wretches amassed at the roadside.
 0 0
 0 0 2
 
+< human~ common~
 #703
 gypsy~
 a gypsy~
@@ -56,6 +59,7 @@ fist.
 0 0
 0 0 1
 
+< human~ common~
 #704
 halfgoblin half-goblin goblin~
 a half-goblin~
@@ -69,6 +73,7 @@ His mottled grey skin is covered in nasty sores.
 0 0
 0 0 1
 
+< human_goblin~ common~
 #705
 farmer~
 a farmer~
@@ -83,6 +88,7 @@ contact with the rabble lurking outside the gate.
 0 0
 0 0 1
 
+< human~ common~
 #706
 robed monk~
 a monk~
@@ -97,6 +103,7 @@ unwell and injured.
 0 0
 0 0 1
 
+< human~ common~
 #707
 farmer~
 a farmer~
@@ -110,6 +117,7 @@ his skin is brown and lined with scars.
 0 0
 0 0 1
 
+< human~ common~
 #708
 field worker peasant~
 a field worker~
@@ -123,6 +131,7 @@ diligently grubbing the earth and removing weeds and rubbish.
 0 0
 0 0 2
 
+< human~ common~
 #709
 peasant~
 a peasant~
@@ -136,6 +145,7 @@ behind his head.  He watches you casually.
 0 0
 0 0 1
 
+< human~ common~
 #710
 small spotted dog~
 a small spotted dog~
@@ -146,9 +156,13 @@ slops.
 ~
 512 0 0 S
 4 0 0 0d0+0 0d0+0
-4|32 0
+0 0
 0 0 1
 
+< dog~ common~
+MobHeight 35
+MobWeight 12
+MobLength 65
 #711
 cow~
 a cow~
@@ -159,28 +173,33 @@ to bother it as it eats mouthful after mouthful of grass.
 ~
 512 0 0 S
 12 0 0 0d0+0 0d0+0
-4|32 0
+0 0
 0 0 2
 
+< cattle~ common~
 #712
 bull~
 a bull~
 A feisty bull looks like it wants to cause trouble.
 ~
-The bull takes it job of watching the cows very seriously.  It constantly
+The bull takes its job of watching the cows very seriously.  It constantly
 snorts and stomps as you wander about.
 ~
 32|512 0 0 S
 23 0 0 0d0+0 0d0+0
-4|32 0
+0 0
 0 0 1
 
+< cattle~ common~
+MobHeight 170
+MobWeight 1000
+MobLength 280
 #713
 hill giant~
 a hill giant~
 A hill giant lurks in the vegetation.
 ~
-The hill giant is a least nine foot tall and incredibly muscular.  He has
+The hill giant is at least nine feet tall and incredibly muscular.  He has
 dirty brown skin and is covered in disgusting wiry hair.  His black eyes
 are full of hatred and rage; his maw is lined with evil yellow teeth.
 ~
@@ -189,6 +208,7 @@ are full of hatred and rage; his maw is lined with evil yellow teeth.
 0 0
 0 0 1
 
+< hill_giant~ common~
 #714
 stone giant~
 a stone giant~
@@ -203,6 +223,7 @@ to dust!
 0 0
 0 0 1
 
+< stone_giant~ common~
 #715
 hill giant priestess green robed~
 a hill giant priestess~
@@ -216,6 +237,7 @@ road to waylay travellers who stray too far east.
 50 0 0 0d0+0 0d0+0
 0 0
 0 0 2
+< hill_giant~ elite~
 #0
 
 #OBJECTS
@@ -1505,7 +1527,7 @@ S
 
 #SPECIALS
 M 703 spec_thief                a gypsy
-M 706 spec_cast_cleric          a monk
+M 706 spec_cast_cleric_helper          a monk
 M 715 spec_cast_druid           a hill giant priestess
 S
 
