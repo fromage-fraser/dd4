@@ -12,8 +12,11 @@ This rat looks like ... a rat.
 ~
 128 32768 -100 S
 1 20 10 1d1+11 1d1+2
-36 100
+0 100
 8 8 0
+< rat~ common~
+MobHeight 4
+MobLength 12
 #3802
 Snigger snake~
 Snigger~
@@ -25,21 +28,28 @@ Poisonous?  Why don't you find out?
 ~
 2 128|8192 1000 S
 40 -20 -10 40d40+999 2d40+40
-60 20000
+0 20000
 8 8 1
+< snake~ common~
+MobWeight 5
+MobLength 213
 #3803
 Sammy Sam kitten~
 Sammy~
 Sammy, Hatchet's cute flesh-clawing kitten, meows in a corner.
 ~
 Sammy is a cute little kitten, probably weighs less than 3 pounds, but she has
-claws long enough and leap high enough to jump up and claw your eyes out!  She
+long claws and can leap high enough to claw your eyes out!  She
 is currently purring and washing herself, oblivious to your presence.
 ~
 2 128|8192 1000 S
 40 -20 -10 40d40+999 2d40+40
-36 20000
+0 20000
 8 8 2
+< domestic_cat~ common~
+MobHeight 12
+MobWeight 1
+MobLength 25
 #3804
 rat~
 a rat~
@@ -49,8 +59,9 @@ This rat is about average size, with average size teeth and average size claws.
 ~
 32|64|128 32768 -200 S
 2 18 8 2d2+20 1d2+2
-36 150
+0 150
 8 8 0
+< rat~ common~
 #3805
 rat large~
 a large rat~
@@ -61,8 +72,12 @@ uses now to bite at you!
 ~
 32|64 0 -400 S
 3 17 7 3d3+33 1d3+3
-36 300
+0 300
 8 8 0
+< rat~ common~
+MobHeight 20
+MobWeight 5
+MobLength 60
 #3806
 rat were wererat~
 a wererat~
@@ -76,6 +91,7 @@ of a rat.
 4 16 6 4d4+44 1d4+4
 0 400
 8 8 0
+< wererat~ common~
 #3807
 rat were wererat guard~
 a wererat guard~
@@ -88,7 +104,8 @@ of a rat.  He seems to be guarding something.
 2|32 0 -500 S
 5 15 5 5d5+55 1d5+5
 0 400
-8 8 0
+8 8 1
+< wererat~ common~
 #3808
 rat were wererat~
 a wererat~
@@ -102,6 +119,7 @@ of a rat.  They don't notice you in their discussion.
 4 16 6 4d4+44 1d4+4
 0 400
 8 8 0
+< wererat~ common~
 #3809
 drake firedrake~
 a firedrake~
@@ -113,8 +131,9 @@ piercing tail.  It is disturbed by your intrusion.
 ~
 2|32 8 -700 S
 7 13 3 7d7+77 1d7+7
-36 1000
+0 1000
 8 8 0
+< firedrake~ rare~
 #3810
 rat were wererat leader~
 the wererat leader~
@@ -129,6 +148,9 @@ and also much bigger.
 7 13 3 7d7+77 1d7+7
 0 1000
 8 8 0
+< wererat~ elite~
+MobHeight 180
+MobWeight 90
 #3811
 rat large~
 a large rat~
@@ -139,8 +161,12 @@ uses now to bite at you!
 ~
 2|32 0 -400 S
 3 17 7 3d3+33 1d3+3
-36 300
+0 300
 8 8 0
+< rat~ common~
+MobHeight 20
+MobWeight 5
+MobLength 60
 #3812
 rat were wererat slavemaster~
 a wererat slavemaster~
@@ -155,6 +181,9 @@ looks quite deadly.
 6 14 4 6d6+66 1d6+6
 0 600
 8 8 1
+< wererat~ rare~
+MobHeight 170
+MobWeight 75
 #3813
 slave human~
 a human slave~
@@ -168,6 +197,7 @@ her escape.
 2 18 8 2d2+22 1d2+2
 0 100
 8 8 2
+< human~ common~
 #3814
 slave human~
 a human slave~
@@ -181,6 +211,7 @@ him escape.
 2 18 8 2d2+22 1d2+2
 0 100
 8 8 1
+< human~ common~
 #3815
 god mortal manifestation~
 the mortal Hatchet~
@@ -194,6 +225,9 @@ entrance, and welcomes you to join in conversation.
 40 -20 -30 40d40+444 1d40+40
 0 200000
 8 8 1
+< human~ common~
+MobHeight 185
+MobWeight 90
 #3816
 goddess mortal manifestation~
 the mortal Icaza~
@@ -205,9 +239,11 @@ smiles at you, and with an accent not too different from a Southern one, says,
 'Please join us in conversation!'
 ~
 2|512 8|128|8192 1000 S
-40 -20 -30 40e40+444 1d40+40
+40 -20 -30 40d40+444 1d40+40
 0 200000
 8 8 2
+< human~ common~
+MobHeight 180
 #3817
 ooze green~
 the green Ooze~
@@ -217,8 +253,9 @@ This ooze looks like bad stuff, almost as if it's alive.
 ~
 2|32 0 0 S
 5 15 5 5d5+55 1d5+5
-63 500
+0 500
 8 8 0
+< green_ooze~ common~
 #0
 
 
@@ -1448,17 +1485,16 @@ S
 
 
 #SPECIALS
-M 3801 spec_poison      small rat
-M 3802 spec_poison      snigger
-M 3804 spec_poison      rat
-M 3805 spec_poison      large rat
-M 3806 spec_poison      wererat
-M 3807 spec_poison      wererat guard
-M 3808 spec_poison      wererat in conference
-M 3809 spec_breath_fire firedrake
-M 3810 spec_poison      rat leader
-M 3811 spec_poison      large rat
-M 3812 spec_poison      slavemaster
+M 3801 spec_poison_bite      small rat
+M 3802 spec_poison_bite      snigger
+M 3804 spec_poison_bite      rat
+M 3805 spec_poison_bite      large rat
+M 3806 spec_poison_bite      wererat
+M 3807 spec_poison_bite      wererat guard
+M 3808 spec_poison_bite      wererat in conference
+M 3810 spec_poison_bite      rat leader
+M 3811 spec_poison_bite      large rat
+M 3812 spec_poison_bite      slavemaster
 M 3815 spec_cast_undead Hatchet
 M 3816 spec_cast_cleric Icaza
 S

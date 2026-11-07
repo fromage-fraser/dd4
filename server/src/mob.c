@@ -374,6 +374,21 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        {
+                "amorphous_organism",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS
+                    | BODY_NO_HEART | BODY_NO_SPEECH | BODY_BLOODLESS,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1951,6 +1966,40 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "",
                 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_BUGBEAR, MOB_TEMPLATE_UNSET
+        },
+        /* These profiles keep ordinary attacks separate from active powers. */
+        {
+                "snake", "serpentine_reptile", "icon1", "icon2",
+                0, 0, PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 2, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 120
+        },
+        {
+                "wererat", "humanoid", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_CLAWS | PART_FANGS, PART_FANGS,
+                0, 0, RES_NONMAGIC, 0, 0, 0, 0,
+                150, 55, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "firedrake", "dragon", "icon1", "icon2",
+                0, AFF_FLYING, BODY_NO_SPEECH, PART_CLAWS | PART_TAILATTACK,
+                RES_FIRE, 0, 0, 0, 0, 0, 0,
+                65, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_firedrake", "", "", 10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 122
+        },
+        {
+                "green_ooze", "amorphous_organism", "icon1", "icon2",
+                0, AFF_MINDLESS, 0, 0,
+                0, 0, RES_POISON | RES_SLEEP | RES_CHARM | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                30, 80, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 150
         }
 
 };
@@ -2039,7 +2088,10 @@ typedef enum creature_trait_effect
         TRAIT_COMBAT_CASTING_PERCENT,
         TRAIT_NATIVE_ROCK_PERCENT,
         TRAIT_NATIVE_ROCK_QUANTITY,
-        TRAIT_NATIVE_REGEN_QUANTITY
+        TRAIT_NATIVE_REGEN_QUANTITY,
+        TRAIT_NATIVE_BREATH_QUANTITY,
+        TRAIT_BLOOD_REACTION_QUANTITY,
+        TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -2138,7 +2190,25 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"native_regen_suppression", TRAIT_NATIVE_REGEN_QUANTITY, NULL},
         {"native_regen_trauma_interval", TRAIT_NATIVE_REGEN_QUANTITY, NULL},
         {"gnome_training", TRAIT_ATTACKER_MELEE, trait_gnome_enemies},
-        {"gnome_giant_defence", TRAIT_DEFENDER_MELEE, trait_gnome_giant_kin}
+        {"gnome_giant_defence", TRAIT_DEFENDER_MELEE, trait_gnome_giant_kin},
+        {"fire_breath_daily_casts", TRAIT_NATIVE_BREATH_QUANTITY, NULL},
+        {"burning_blood_sides", TRAIT_BLOOD_REACTION_QUANTITY, NULL}
+};
+
+static const CREATURE_TRAIT_CHANGE snake_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE wererat_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_SILVER_BYPASSES_NONMAGIC, 1}
+};
+static const CREATURE_TRAIT_CHANGE firedrake_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_FIRE_BREATH_DAILY_CASTS, 5},
+        {CREATURE_TRAIT_BURNING_BLOOD_SIDES, 2}
 };
 
 static const CREATURE_TRAIT_CHANGE gnome_trait_changes[] =
@@ -2306,6 +2376,9 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"snake", NULL, snake_trait_changes, TRAIT_ITEMS(snake_trait_changes)},
+        {"wererat", NULL, wererat_trait_changes, TRAIT_ITEMS(wererat_trait_changes)},
+        {"firedrake", NULL, firedrake_trait_changes, TRAIT_ITEMS(firedrake_trait_changes)},
         {"gnome", NULL, gnome_trait_changes, TRAIT_ITEMS(gnome_trait_changes)},
         {"gnome_untrained", "gnome", untrained_gnome_trait_changes,
             TRAIT_ITEMS(untrained_gnome_trait_changes)},
@@ -2530,6 +2603,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_NATIVE_ROCK_PERCENT
                                     || effect == TRAIT_NATIVE_ROCK_QUANTITY
                                     || effect == TRAIT_NATIVE_REGEN_QUANTITY
+                                    || effect == TRAIT_NATIVE_BREATH_QUANTITY
+                                    || effect == TRAIT_BLOOD_REACTION_QUANTITY
                                     || effect == TRAIT_LICH_CHILL_TOUCH)
                                 && profile->changes[i].value < 0)
                                         issues++;
@@ -2586,7 +2661,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_NATIVE_REGEN_QUANTITY)
+                || creature_trait_definitions[i].effect >= TRAIT_EFFECT_COUNT)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name
@@ -5421,6 +5496,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
 
                 { "spec_poison", 5 },
                 { "spec_poison_palm", 5 },
+                { "spec_poison_bite", 5 },
                 { "spec_bloodsucker", 5 },
                 { "spec_superwimpy", 5 },
                 { "spec_spectral_minion", 5 },

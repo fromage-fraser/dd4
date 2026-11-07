@@ -93,6 +93,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         troll_infant den_beast carrion_worm
         gnome gnome_untrained mouse rat fire_bat giant_hermit_crab
         kobold gnoll bugbear
+        snake wererat firedrake green_ooze
 /;
 
 my %mob_act = (
@@ -340,6 +341,7 @@ my @mob_spec = qw/
     spec_ghast              spec_wight              spec_wraith               spec_spectre
     spec_mummy              spec_banshee            spec_death_knight         spec_lich
     spec_giant             spec_cast_cleric_helper
+    spec_firedrake
     spec_poison_bite spec_breath_acid_anatomical spec_breath_fire_anatomical
     spec_faerie_dragon      spec_duergar            spec_swallow            spec_poison_palm spec_manticore spec_alhoon
 /;

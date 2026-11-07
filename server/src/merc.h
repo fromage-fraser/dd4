@@ -3109,6 +3109,10 @@ struct char_data
         time_t native_regen_next;
         time_t native_regen_updated;
         int native_regen_trauma_seconds;
+        /* Native breath charges are a daily runtime supply. */
+        int firedrake_breath_day, firedrake_breath_month, firedrake_breath_year;
+        int firedrake_breaths;
+        bool firedrake_breath_running;
         int drained_stacks;
         int drained_recovery; /* Ordinary-rate seconds earned towards the next stack. */
         time_t drained_updated;
@@ -3661,8 +3665,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 88
-#define MAX_SPECIES 19
+#define MAX_MOB 92
+#define MAX_SPECIES 20
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -5650,6 +5654,10 @@ void death_cry args((CHAR_DATA * ch));
 void show_death_parts args((CHAR_DATA *viewer, CHAR_DATA *subject));
 bool one_hit args((CHAR_DATA * ch, CHAR_DATA *victim, int dt, bool haste));
 bool aggravated_bite_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste);
+/* A feed reports blood already gained before a burning-blood reaction. */
+bool feeding_bite_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste,
+                      int amount, int *gained);
+
 void damage_with_aggravated_component(CHAR_DATA *ch, CHAR_DATA *victim,
                                       int dam, int dt, bool poison,
                                       int chance, int percent, int cap);
@@ -5948,6 +5956,8 @@ typedef enum creature_trait
         CREATURE_TRAIT_NATIVE_REGEN_TRAUMA_INTERVAL,
         CREATURE_TRAIT_GNOME_TRAINING,
         CREATURE_TRAIT_GNOME_GIANT_DEFENCE,
+        CREATURE_TRAIT_FIRE_BREATH_DAILY_CASTS,
+        CREATURE_TRAIT_BURNING_BLOOD_SIDES,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Passive native regeneration never invokes or replaces an active special. */
