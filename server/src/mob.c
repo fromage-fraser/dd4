@@ -327,6 +327,23 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE, MOB_TEMPLATE_UNSET
+        },
+        /* The archetype supplies the avian and mammalian details of a hybrid. */
+        {
+                "quadrupedal_hybrid",
+                0, 0,
+                BODY_NO_ARMS | PART_HEAD | PART_4_LEGS | PART_FORELEGS
+                    | PART_HEART | PART_BRAINS | PART_GUTS | PART_FEET
+                    | PART_EAR | PART_EYE,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1709,6 +1726,32 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "",
                 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 250
+        },
+        /* A faerie dragon keeps its bite, while its special handles its tricks. */
+        {
+                "faerie_dragon", "dragon", "icon1", "icon2",
+                0, AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                0, PART_CLAWS | PART_TAILATTACK,
+                RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                20, 2, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_faerie_dragon", "", "",
+                5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 61
+        },
+        /* A wild griffin has talons and a beak; training is an individual choice. */
+        {
+                "griffin", "quadrupedal_hybrid", "icon1", "icon2",
+                0, AFF_FLYING | AFF_DETECT_HIDDEN,
+                BODY_NO_SPEECH | PART_WINGS | PART_FEATHERS | PART_TAIL
+                    | PART_PAWS | PART_CLAWS | PART_BEAK,
+                PART_CLAWS | PART_BEAK,
+                0, 0, 0,
+                0, 0, 0, 0,
+                152, 600, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 275
         }
 
 };
@@ -1992,6 +2035,10 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"lizardman", NULL, lizardman_trait_changes, TRAIT_ITEMS(lizardman_trait_changes)},
         {"centaur", NULL, centaur_trait_changes, TRAIT_ITEMS(centaur_trait_changes)},
         {"manticore", NULL, manticore_trait_changes, TRAIT_ITEMS(manticore_trait_changes)},
+        {"faerie_dragon", NULL, black_hatchling_trait_changes,
+            TRAIT_ITEMS(black_hatchling_trait_changes)},
+        {"griffin", NULL, scaled_armour_trait_changes,
+            TRAIT_ITEMS(scaled_armour_trait_changes)},
         {"dragon_hatchling", NULL, black_hatchling_trait_changes,
             TRAIT_ITEMS(black_hatchling_trait_changes)},
         {"black_dragon_hatchling", NULL, black_hatchling_trait_changes,
@@ -5077,6 +5124,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
 
                 { "spec_small_whale", 10 },
                 { "spec_large_whale", 10 },
+                { "spec_faerie_dragon", 10 },
                 { "spec_duergar", 10 },
                 { "spec_swallow", 10 },
                 { "spec_kappa", 10 },

@@ -10017,3 +10017,57 @@ worm length and three-foot dragon height. The rabbit's keen senses and
 worm's Swallow follow the second-edition small-mammal/worm examples, adapted
 to existing DD4 rules. All other ranks stay common. Preserve room flags,
 exits, doors, ritual clues, existing loot, shop settings and reset caps.
+
+[[scribe-in-the-air]]
+==== In the Air creatures
+
+faerie_dragon uses dragon anatomy with a normal bite, wings, scales, claws
+and tail. Its claws and tail are anatomical, not extra attack choices.
+Defaults are 20 cm height, 61 cm length, 2 kg and Small size, with flight,
+infrared, detect-invisible, detect-hidden, ordinary RES_MAGIC and
+natural_armour -15. It can speak and has ordinary living organs, blood,
+soul, pain and a corpse. The local two-foot description guides its length;
+height and mass are estimates. Do not infer an age or resistance percentage
+from its multicoloured appearance or level.
+
+spec_faerie_dragon takes one active action per eligible opportunity. In
+combat, 85% delegates to the existing mage routine and 15% tries a little
+euphoric breath against the current opponent. The gas uses existing poison
+eligibility and mindless/object restrictions, followed by Confusion's one
+normal MAGIC|PSYCHIC save. It deals no direct damage, does not stack or
+refresh an existing Confusion effect, and uses its normal duration, cures,
+penalties and wandering rules. At level 5 that is two normal affect ticks,
+-2 hitroll and -1 intelligence/wisdom. The victim can still fight: this is
+our DD4 adaptation, not full tabletop pacification.
+
+While idle and visible, the special has a 1-in-8 eligible chance to cast
+ordinary self-Invisibility. It respects normal duration, dispelling and
+revelation on attack. It does not grant WIZINVIS or greater invisibility.
+Awake/action, head, brain, trauma, combat target and safety checks apply.
+Keep one inherited special; remove the old individual mage entry on 1000
+so it does not replace or duplicate the combined routine.
+
+The local fairy dragon keeps passive STAY_AREA, alignment 500, sex 0 and
+its original names and level. Raw AFF 16 keeps its individual detect-magic
+while detect-invisible comes from inheritance. Raw body 0 allows speech.
+
+quadrupedal_hybrid is an organic four-legged body for mixed creatures such
+as griffins and future hippogriffs. It supplies head, eyes, ears, brain,
+heart, guts, four legs, forelegs and feet, with no arms. Archetypes choose
+their speech restrictions, wings, outer covering and attacks.
+
+griffin adds feathered wings, feathers, beak, claws, lion tail and hind paws,
+no speech, flight, detect-hidden and natural_armour -20. Its ordinary claw
+or beak attack uses normal NPC timing, without a guaranteed triple attack.
+Defaults are 152 cm shoulder height, 275 cm length, 600 kg and Large size;
+it is not HUGE. Keep the local black/golden-maned appearance, aggression,
+STAY_AREA, alignment 300, sex 1 and authored level. Raw body 0 preserves
+inherited no-arms/no-speech instead of cancelling them. Wild griffins do
+not automatically gain mount training, horse-only hunting or player-form
+abilities. A trained individual can use the existing mountable flag later.
+
+Both ranks stay common. Racial HP/damage/critical/haste modifiers are neutral,
+with +5 racial XP each. The faerie special supplies its usual +10 special
+adjustment once. Keep every room, exit, reset placement/cap and the rose's
+Dionysus/Wendella gift text. Three fairy dragons and one griffin load first;
+ordinary refills grow them to the original caps of ten and three.
