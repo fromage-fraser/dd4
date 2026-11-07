@@ -22,6 +22,7 @@ can educate you in psionicism and witchery?
 28 0 0 0d0+0 0d0+0
 0 2000
 0 0 2
+< human~ common~
 & 15 'teacher base'
 & 75 'mental defense disciplines'
 & 75 'matter control disciplines'
@@ -33,6 +34,7 @@ can educate you in psionicism and witchery?
 & 75 'summoning magiks'
 & 75 'enchantment magiks'
 & 30 'psionic base'
+MobWeight 85
 #202
 sailor stranded~
 the sailor~
@@ -45,6 +47,7 @@ It appears that this sailor's captain has left him here on the dock.
 0 80000
 8 8 1
 
+< human~ common~
 #0
 
 #OBJECTS
@@ -52,7 +55,7 @@ It appears that this sailor's captain has left him here on the dock.
 #201
 book red~
 a red book~
-A dusty red book is laying here.~
+A dusty red book is lying here.~
 a huge red book of magic
 ~
 15 64 1|16384
@@ -181,7 +184,7 @@ Looking upstream, the river narrows and darkens.
 ~
 0 -1 203
 D3
-The appears to be an island in the middle of the river ahead.
+There appears to be an island in the middle of the river ahead.
 ~
 ~
 0 -1 205
@@ -1345,6 +1348,7 @@ S
 #SPECIALS
 *
 *
+M 201 spec_cast_psionicist       a witch
 S
 
 #$
