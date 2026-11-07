@@ -10757,3 +10757,65 @@ No matching Scribe source or new object is needed.
 The references are the AD&D second edition Monstrous Manual Mammal/Wild
 Stag and Small Mammal entries. Dimensions and the mapping to DD4's
 ordinary attack system are our adaptations.
+
+
+[[scribe-desert-of-despair]]
+==== Desert of Despair creatures
+
+Desert of Despair uses the existing humanoid/human profile for the man,
+woman and child, and serpentine_reptile/snake for both venomous snakes.
+All five are common. The king-viper name describes the creature; it does
+not give it a higher encounter rank or a giant body.
+
+The tall, strong man uses estimated 185 cm height and 85 kg, Medium.
+The woman keeps the human defaults of 175 cm/75 kg/Medium. The small child
+uses estimated 100 cm/18 kg/Small; level 3 is not being treated as his age.
+Height, weight and length are descriptive metadata. Small uses the
+existing size field and its usual rules.
+
+The king viper keeps the ordinary snake defaults: 120 cm length, 2 kg,
+Small, height unspecified. The small asp uses 60 cm length and MobWeight 0
+for unknown sub-kilogram mass, with Small size and height unspecified.
+Zero means unknown metadata; the asp is not massless. Keep whole-number
+weights and the existing units.
+
+Both snakes' old raw body 60|512 includes NO_HEART as well as no arms,
+legs or speech and the old HAS_TAIL bit. Clear that raw mask after adding
+the archetype. The inherited serpent body supplies a normal heart and
+other organs, head, eyes, scales, tail and fangs, with no arms/legs/speech.
+This restores ordinary living anatomy and keeps XOR from cancelling its
+inherited restrictions. The existing snake profile supplies a fang attack
+and natural armour -5. It adds no default venom, magical senses or
+resistances; venom remains an individual choice.
+
+Use spec_poison_bite for both authored venom specials. Its usable-head
+and fang checks keep the original target selection, poison effects and
+special XP. The man's spec_warrior remains individual. Keep all authored
+ACT/AFF masks, levels, alignments and sexes, including his Protection,
+sight and Sneak, the woman's scavenging/wimpy behaviour, the child's
+wimpy flag, and the snakes' Sneak and AGGRESSIVE/WIMPY combination.
+No new racial hostility, active special, trait or player ability is added.
+
+Keep the man's sword 18100 in WIELD16, belt 18105 in WAIST13 and boots
+18106 in FEET8. These are valid equipment slots. Keep all seven object
+definitions and every population, equipment and treasure reset. The basket
+and toy sword remain descriptive details; the unused pocket cloak and key
+do not get new resets in this conversion.
+
+Treasure chest 18103 in room 18141 keeps its unusual legacy flags8:
+LOCKED is set, but CLOSED and CLOSEABLE are not. Its contents are currently
+accessible. Preserve that access and the existing key field/reset rows.
+Key 18104 is defined but has no reset found. A working locked-chest puzzle
+would need a separate gameplay decision. Gold generation and stacking
+follow the existing engine rules.
+
+Keep all 49 room flags, exits and doors, including links to 509/450 and
+the oasis trapdoor. There are no NO_UNDEAD rooms here. The area starts
+with five inhabitants and three carried items; three refills give twenty
+inhabitants and twelve carried items. No matching Scribe source exists.
+
+Correct room 18124's "main street will tents" to "main street with tents",
+room 18125's "south is and oasis" to "south is an oasis", and the reset
+comment's "Bedoiun child" to "Bedouin child". Keep the woman's wry wording
+and cosmetics reference as authored flavour. No gender mismatch or
+portrait change is involved.

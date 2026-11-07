@@ -14,6 +14,9 @@ cloak make his features hard to determine.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 185
+MobWeight 85
 #18101
 woman bedouin~
 the woman~
@@ -27,6 +30,7 @@ wouldn't see right.
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #18102
 snake viper king~
 a snake~
@@ -36,8 +40,9 @@ This snake has a deadly bite to it; large, dark-brown markings are striped acros
 ~
 32|64|128 32768 -700 S
 10 0 0 0d0+0 0d0+0
-60|512 0
+0 0
 8 8 0
+< snake~ common~
 #18103
 bedouin child~
 a Bedouin child~
@@ -49,6 +54,10 @@ Dressed in loose robes this little child could probably beat up on most kids his
 3 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 100
+MobWeight 18
+MobSize 0
 #18104
 asp snake~
 an asp~
@@ -58,8 +67,11 @@ Small but deadly this snake could kill you with its venom easy.
 ~
 32|64|128 32768 -900 S
 7 0 0 0d0+0 0d0+0
-60|512 0
+0 0
 8 8 0
+< snake~ common~
+MobWeight 0
+MobLength 60
 #0
 
 
@@ -528,7 +540,7 @@ D2
 S
 #18124
 Bedouin camp~
-This is a Tent village basically sort of a main street will tents off to
+This is a Tent village basically sort of a main street with tents off to
 either side, all carry weapons as intruders are common here.  You check to
 make sure your wallet is still with you.
 ~
@@ -545,7 +557,7 @@ S
 #18125
 Bedouin camp~
 To the north you see a woman preparing food, the food is basic but
-nourishing, to the south is and oasis with cool running water and palm
+nourishing, to the south is an oasis with cool running water and palm
 trees hanging to provide shelter from the beating sun.
 ~
 0 0 10
@@ -940,7 +952,7 @@ E 1 18100 100 16
 *
 M 1 18101 4 18126           the woman to Bedouin camp.
 *
-M 1 18103 5 18125           a Bedoiun child to Bedouin camp.
+M 1 18103 5 18125           a Bedouin child to Bedouin camp.
 *
 M 1 18102 5 18119           a snake to Desert.
 *
@@ -950,8 +962,8 @@ S
 
 #SPECIALS
 M  18100 spec_warrior           A Bedouin man.
-M  18102 spec_poison            a snake
-M  18104 spec_poison            an asp
+M  18102 spec_poison_bite            a snake
+M  18104 spec_poison_bite            an asp
 S
 
 

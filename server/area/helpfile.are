@@ -1581,6 +1581,7 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Convert Desert of Despair mobs; restore snake anatomy and retain their venom.
 - Enchantment crafting bonuses are calculated before integer rounding.
 - SAFE separates attack restrictions from KILLER penalties; HELP SAFE updated.
 - Vault INSPECT displays drink contents instead of treating volume as flags.
