@@ -835,6 +835,9 @@ Accepted archetype names are:
 | `human_goblin` | Living human/goblin hybrid with infrared and anatomical fangs, without an automatic bite or sunlight penalty; goblin kin for dwarf training; defaults 150 cm, 50 kg, Medium.
 | `hobgoblin` | Living humanoid with infrared and no sunlight penalty; defaults 200 cm, 100 kg, Medium. Construction recognition awaits the shared mechanic.
 | `ogre`, `troll`, `ogre_mage`, `giant`, `titan` | Humanoid placeholders with creature-family identity. Their full creature traits await review.
+| `cattle` | Living quadrupedal mammal with horns/hooves, ordinary pierce/pound attacks and natural armour -5; 150 cm shoulder height, 250 cm length, 650 kg, Large without HUGE; racial XP 0.
+| `hill_giant` | Living speaking humanoid of the giant family; 490 cm, 2050 kg, Large with HUGE; natural armour -15, racial XP +5, native rock special and passive 30% rock catch.
+| `stone_giant` | Living speaking humanoid of the giant family; 550 cm, 4100 kg, Large with HUGE; natural armour -30, racial XP +10, native rock special and passive 90% rock catch.
 | `goat` | Existing goat archetype, based on `farm_mammal`.
 | `fire_elemental` | Existing fire-elemental test archetype, based on `elemental`.
 | `skeleton` | Skeletal humanoid archetype.
@@ -3123,6 +3126,8 @@ spec_cast_druid casts druid spells [combat]
 spec_cast_water_sprite  casts cleric/mage/psionic spells
     [combat]
 spec_cast_cleric    casts cleric spells [combat]
+spec_cast_cleric_helper cleric in combat, vampire-safe adept aid while idle
+spec_giant native hill/stone rock throw [combat]; passive catch is separate
 spec_cast_ghost undead ghost; appears only during
     night
 spec_cast_judge fires explosive bullets (a la Dredd)
@@ -10071,3 +10076,128 @@ with +5 racial XP each. The faerie special supplies its usual +10 special
 adjustment once. Keep every room, exit, reset placement/cap and the rose's
 Dionysus/Wendella gift text. Three fairy dragons and one griffin load first;
 ordinary refills grow them to the original caps of ten and three.
+
+[[scribe-draagdim-countryside]]
+==== Draagdim Countryside creatures
+The nine ordinary humans (700-703 and 705-709) use human, with descriptive
+175 cm height, 75 kg weight and Medium size. Half-goblin 704 uses
+human_goblin at 150 cm, 50 kg and Medium, retaining infrared, anatomical
+fangs and goblin-family matching without a free bite or the full goblin's
+sunlight penalty. Small spotted dog 710 uses dog with individual height
+35 cm, length 65 cm and weight 12 kg, still Small. Its ordinary piercing
+bite and passive behaviour stay.
+
+cattle uses quadrupedal_mammal, with ordinary living organs, four legs,
+feet, tail, horns and hooves, no arms or speech. Horns and hooves supply
+ordinary pierce/pound attack choices at the existing attack rate. They do
+not add attacks, and cattle have no fang bite. Defaults are shoulder height
+150 cm, length 250 cm, weight 650 kg and Large size, without BODY_HUGE.
+The bull (712) individually replaces these with 170 cm, 280 cm and 1000 kg;
+the cow (711) keeps the defaults. Hide supplies natural_armour -5, with
+zero racial XP adjustment and no resistance, immunity or special package.
+Keep the cow passive and the bull aggressive; there is no stampede rule.
+The legacy farm_mammal/goat body is unchanged.
+
+hill_giant and stone_giant use living, speaking humanoid anatomy and the
+giant target family, so existing dwarf giant defence applies. Both are
+Large with BODY_HUGE. Hill defaults are 490 cm height and 2050 kg;
+stone defaults are 550 cm and 4100 kg. Length is unspecified. The priestess
+(715) uses the ordinary hill dimensions. Stone giants are living flesh,
+not inorganic constructs, and gain no blanket weapon or magic immunity.
+Hill natural_armour is -15 and racial XP +5; stone natural_armour is -30
+and racial XP +10. Existing equipment armour and affects still apply.
+HP, damage, critical and swiftness modifiers remain neutral for all three
+new archetypes. Measurements are descriptive; BODY_HUGE retains its
+existing gameplay checks independently of size metadata.
+
+These armour values, weights and XP adjustments are DD4 design choices.
+Second-edition giant dimensions guide the rounded heights and masses;
+the local nine-foot/ten-foot descriptions are lower bounds. Neither rank
+nor sex changes an archetype's dimensions. Only priestess 715 is elite,
+with the existing 5x rank HP applied once; the other fifteen remain common.
+
+The giants inherit spec_giant as their one 100% special selection. Once
+per eligible combat round, it has a 15% chance to throw one native rock
+at the current visible, live opponent in the same room. It cannot open a
+fight or throw across rooms. Hill damage is max(1, level / 2) + 2d8, with
+at most four rocks per game day; stone damage is max(1, level / 2) + 3d10,
+with at most eight. Divide the level by two using integer division. The
+15% throw roll is inside the ability, not a spchance 15/85 slot split.
+
+A native rock is a physical, nonmagical crush projectile using ordinary
+contact, resistance, phase, safety and death handling. It borrows no
+magic or material from the giant's equipped weapon. The thrower must be
+awake, corporeal, able to act, have working arms and be free of hold/daze.
+Each actual throw spends one rock from its bounded daily supply, including
+when caught. Counters live only in NPC memory. No authored object is
+created, consumed, unequipped or removed from loot.
+
+Hill giants have a 30% chance and stone giants a 90% chance to catch an
+explicitly identified native rock projectile, provided the defender is
+awake, capable and has working arms. Catching negates its damage. It gives
+no inventory item or automatic return throw. It does not catch generic
+blunt damage, melee rock weapon 707, arrows or arbitrary player hurl.
+The passive catch trait is separate from active special selection.
+
+Priestess 715 keeps her individual spec_cast_druid at 100%. That replaces
+inherited active spec_giant, so she casts instead of throwing rocks. Her
+hill anatomy, armour and passive 30% catch remain. Monk 706 instead uses
+spec_cast_cleric_helper at 100%: while idle it delegates the existing
+vampire-safe adept assistance to players; in combat it delegates the old
+cleric routine with no rate dilution. Each opportunity permits one action.
+There is no weighted adept/cleric split, paid healer/priest service,
+teaching or automatic bread distribution. Other clerics stay unchanged.
+
+spec_giant carries the ordinary +10 special XP adjustment once on 713/714,
+separately from their +5/+10 racial adjustments. The thief (703), monk
+(706) and priestess (715) keep their existing special XP adjustment once;
+do not add a second rock-special bonus for the priestess's passive catch.
+
+Use the existing Scribe fields in a $mob block. For example, these are the
+bull's selection and individual dimensions, not a complete source file:
+
+    archetype cattle
+    rnk common
+    height 170
+    length 280
+    weight 1000
+
+The exporter writes < cattle~ common~, MobHeight 170, MobLength 280 and
+MobWeight 1000. Omit dimensions to inherit the profile, or use inherit;
+an explicit zero replaces a dimension with unspecified. Values remain
+whole centimetres and kilograms. Do not add units or fractional weights.
+For the dog use archetype dog, height 35, length 65 and weight 12.
+
+For the priestess, existing explicit slot syntax replaces the whole active
+set and its weights:
+
+    archetype hill_giant
+    rnk elite
+    sp spec_cast_druid
+    sp2 none
+    sp3 none
+    spchance 100 0 0
+
+For the monk use archetype human with the same slot/percentage pattern,
+but sp spec_cast_cleric_helper. A legacy singleton sp spec_cast_druid
+or sp spec_cast_cleric_helper also replaces the inherited active set.
+Ordinary hill_giant/stone_giant sources omit special fields to inherit
+spec_giant; explicitly registering its name does not require repeating it.
+Armour, racial XP, rock/catch traits and daily counters belong in the code
+profiles, not new Scribe commands, area fields, ACT flags or individual
+trait overrides. Player race mappings and skills stay unchanged.
+Use MSTAT to inspect resolved traits, their species/archetype origins and
+explicit removals, alongside the active special slots and percentages.
+The priestess should retain hill armour/catch while showing only druid
+casting. MSTAT is an inspection command, not a Scribe trait field.
+
+On dog 710 and cattle 711/712, raw body 0 inherits no-arms/no-speech;
+the old raw mask 36 would cancel those defaults through XOR. Omit bf or
+use bf none for that zero individual mask. Keep every original ACT/AFF
+mask, including NO_QUEST, WIMPY, sentinel, aggression and giant senses.
+Keep the thief's role, monk's two loaves and priestess's druid role. The
+only prose corrections are the bull's 'takes its job' and the hill giant's
+'is at least nine feet tall'. All 54 rooms, flags, exits, doors, well
+poison, twelve objects, nineteen carried items and original resets/caps
+stay. Peasant 702 remains unspawned. There are 28 initial inhabitants and
+30 after refills, with the original cow cap of four.

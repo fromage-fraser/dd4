@@ -59,8 +59,10 @@ DECLARE_SPEC_FUN( spec_buddha               );
 DECLARE_SPEC_FUN( spec_kungfu_poison        );
 DECLARE_SPEC_FUN( spec_clan_guard           );
 DECLARE_SPEC_FUN( spec_manticore            );
+DECLARE_SPEC_FUN( spec_giant                );
 DECLARE_SPEC_FUN( spec_alhoon               );
 DECLARE_SPEC_FUN( spec_cast_cleric          );
+DECLARE_SPEC_FUN( spec_cast_cleric_helper   );
 DECLARE_SPEC_FUN( spec_cast_judge           );
 DECLARE_SPEC_FUN( spec_cast_mage            );
 DECLARE_SPEC_FUN( spec_cast_druid           );
@@ -146,6 +148,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_buddha"))               return spec_buddha;
         if (!str_cmp(name, "spec_kungfu_poison"))        return spec_kungfu_poison;
         if (!str_cmp(name, "spec_cast_cleric"))          return spec_cast_cleric;
+        if (!str_cmp(name, "spec_cast_cleric_helper"))   return spec_cast_cleric_helper;
         if (!str_cmp(name, "spec_cast_judge"))           return spec_cast_judge;
         if (!str_cmp(name, "spec_cast_mage"))            return spec_cast_mage;
         if (!str_cmp(name, "spec_faerie_dragon"))        return spec_faerie_dragon;
@@ -157,6 +160,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_fido"))                 return spec_fido;
         if (!str_cmp(name, "spec_alhoon"))               return spec_alhoon;
         if (!str_cmp(name, "spec_manticore"))            return spec_manticore;
+        if (!str_cmp(name, "spec_giant"))                return spec_giant;
         if (!str_cmp(name, "spec_clan_guard"))           return spec_clan_guard;
         if (!str_cmp(name, "spec_guard"))                return spec_guard;
         if (!str_cmp(name, "spec_ghoul"))                return spec_ghoul;
@@ -240,6 +244,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_buddha) return "spec_buddha";
         if (special == spec_kungfu_poison) return "spec_kungfu_poison";
         if (special == spec_cast_cleric) return "spec_cast_cleric";
+        if (special == spec_cast_cleric_helper) return "spec_cast_cleric_helper";
         if (special == spec_cast_judge) return "spec_cast_judge";
         if (special == spec_cast_mage) return "spec_cast_mage";
         if (special == spec_faerie_dragon) return "spec_faerie_dragon";
@@ -261,6 +266,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_dracolich) return "spec_dracolich";
         if (special == spec_alhoon) return "spec_alhoon";
         if (special == spec_manticore) return "spec_manticore";
+        if (special == spec_giant) return "spec_giant";
         if (special == spec_clan_guard) return "spec_clan_guard";
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
@@ -709,6 +715,27 @@ bool spec_cast_cleric( CHAR_DATA *ch )
 }
 
 
+
+/* Assistance never replaces a combat cleric opportunity or follows a failed cast. */
+bool spec_cast_cleric_helper(CHAR_DATA *ch)
+{
+        CHAR_DATA *attacker;
+
+        if (!ch || !IS_NPC(ch) || ch->deleted || !ch->in_room
+        ||  ch->hit <= 0 || ch->position == POS_DEAD || !IS_AWAKE(ch))
+                return FALSE;
+
+        if (ch->fighting)
+                return spec_cast_cleric(ch);
+        for (attacker = ch->in_room->people; attacker;
+             attacker = attacker->next_in_room)
+        {
+                if (attacker != ch && !attacker->deleted && attacker->hit > 0
+                &&  attacker->position != POS_DEAD && attacker->fighting == ch)
+                        return spec_cast_cleric(ch);
+        }
+        return spec_cast_adept(ch);
+}
 
 bool spec_cast_judge( CHAR_DATA *ch )
 {
@@ -2657,6 +2684,128 @@ void update_manticore_volleys(void)
         manticore_combat_pulse = FALSE;
 }
 
+
+/* The ordinary mobile scheduler must not grant extra combat-round throws. */
+static bool giant_rock_combat_pulse;
+
+/* Both actions need a material body that can see and handle a physical rock. */
+static bool giant_rock_body_ready(CHAR_DATA *ch)
+{
+        if (!ch || !IS_NPC(ch) || ch->deleted || !ch->in_room
+        ||  ch->hit <= 0 || ch->position == POS_DEAD || !IS_AWAKE(ch)
+        ||  !HAS_ARMS(ch) || !HAS_HEAD(ch)
+        ||  IS_AFFECTED(ch, AFF_ARM_TRAUMA | AFF_HEAD_TRAUMA | AFF_EYE_TRAUMA
+            | AFF_BLIND | AFF_HOLD | AFF_DAZED | AFF_NON_CORPOREAL))
+                return FALSE;
+
+        update_creature_sunlight(ch);
+        return ch->ghost_phase == GHOST_PHASE_NONE;
+}
+
+/* Only the native rock path calls this; blunt damage alone is never a rock.
+ * Catching is passive: an active special override, wait or charm does not
+ * remove it. A caught rock creates no item, ammunition or automatic attack.
+ */
+bool giant_catches_rock(CHAR_DATA *thrower, CHAR_DATA *victim)
+{
+        int chance;
+
+        if (!thrower || !victim || thrower == victim || thrower->deleted
+        ||  thrower->hit <= 0 || thrower->position == POS_DEAD
+        ||  !thrower->in_room || thrower->in_room != victim->in_room
+        ||  thrower->fighting != victim || !giant_rock_body_ready(victim)
+        ||  !can_see(victim, thrower) || is_safe(thrower, victim)
+        ||  object_attack_is_immune(thrower, victim, TYPE_HIT + 8, NULL))
+                return FALSE;
+
+        chance = creature_trait_value(victim, CREATURE_TRAIT_ROCK_CATCH_PERCENT);
+        if (chance <= 0 || number_percent() > URANGE(0, chance, 100))
+                return FALSE;
+
+        act("$N catches the hurtling rock and drops it harmlessly.",
+            thrower, NULL, victim, TO_NOTVICT);
+        act("You catch the hurtling rock and drop it harmlessly.",
+            thrower, NULL, victim, TO_VICT);
+        return TRUE;
+}
+
+/* One explicit, nonmagical projectile at the current same-room opponent. */
+bool spec_giant(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        int chance;
+        int rock_dice;
+        int rock_sides;
+        int daily_ammo;
+
+        if (!giant_rock_combat_pulse || !giant_rock_body_ready(ch)
+        ||  ch->giant_rock_running || ch->wait > 0
+        ||  IS_AFFECTED(ch, AFF_CHARM) || IS_SET(ch->act, ACT_NO_FIGHT)
+        ||  !mob_has_special(ch, spec_giant))
+                return FALSE;
+
+        victim = ch->fighting;
+        if (!victim || victim == ch || victim->deleted || victim->hit <= 0
+        ||  victim->position == POS_DEAD || victim->in_room != ch->in_room
+        ||  !can_see(ch, victim) || is_safe(ch, victim))
+                return FALSE;
+
+        chance = creature_trait_value(ch, CREATURE_TRAIT_ROCK_THROW_PERCENT);
+        rock_dice = creature_trait_value(ch, CREATURE_TRAIT_ROCK_DAMAGE_DICE);
+        rock_sides = creature_trait_value(ch, CREATURE_TRAIT_ROCK_DAMAGE_SIDES);
+        daily_ammo = creature_trait_value(ch, CREATURE_TRAIT_ROCK_DAILY_AMMO);
+        if (chance <= 0 || rock_dice <= 0 || rock_sides <= 0 || daily_ammo <= 0)
+                return FALSE;
+
+        if (ch->giant_rock_day != time_info.day
+        ||  ch->giant_rock_month != time_info.month
+        ||  ch->giant_rock_year != time_info.year)
+        {
+                ch->giant_rock_day = time_info.day;
+                ch->giant_rock_month = time_info.month;
+                ch->giant_rock_year = time_info.year;
+                ch->giant_rocks_thrown = 0;
+        }
+        if (ch->giant_rocks_thrown >= URANGE(0, daily_ammo, 100)
+        ||  number_percent() > URANGE(0, chance, 100))
+                return FALSE;
+
+        /* Spend before the catch/defence path, including misses and catches. */
+        ch->giant_rocks_thrown++;
+        ch->giant_rock_running = TRUE;
+        act("$n hurls a heavy rock at $N!", ch, NULL, victim, TO_NOTVICT);
+        act("$n hurls a heavy rock at you!", ch, NULL, victim, TO_VICT);
+        if (!giant_catches_rock(ch, victim))
+                damage_from_object(ch, victim,
+                    UMAX(1, ch->level / 2)
+                        + dice(URANGE(1, rock_dice, 100), URANGE(1, rock_sides, 100)),
+                    TYPE_HIT + 8, FALSE, NULL);
+
+        /* Damage can kill, move or extract either actor; there is no follow-up.
+         * Character reclamation is deferred, so releasing this guard is safe.
+         */
+        ch->giant_rock_running = FALSE;
+        return TRUE;
+}
+
+void update_giant_rocks(void)
+{
+        CHAR_DATA *ch;
+        CHAR_DATA *next;
+
+        if (giant_rock_combat_pulse)
+                return;
+        giant_rock_combat_pulse = TRUE;
+        for (ch = char_list; ch; ch = next)
+        {
+                next = ch->next;
+                if (ch->deleted || !IS_NPC(ch) || !ch->fighting
+                ||  !mob_has_special(ch, spec_giant))
+                        continue;
+                spec_giant(ch);
+        }
+        giant_rock_combat_pulse = FALSE;
+}
 
 /* Keep this mental/magical mix available to any suitable creature. */
 bool spec_alhoon(CHAR_DATA *ch)

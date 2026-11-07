@@ -1752,6 +1752,41 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "",
                 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 275
+        },
+        /* Cattle share clean mammal anatomy without inheriting goat test data. */
+        {
+                "cattle", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0,
+                PART_TAIL | PART_HORNS | PART_HOOVES, PART_HORNS | PART_HOOVES,
+                0, 0, 0,
+                0, 0, 0, 0,
+                150, 650, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 250
+        },
+        /* Native rock supplies and catches belong to the reviewed giant types. */
+        {
+                "hill_giant", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                490, 2050, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_giant", "", "",
+                5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_GIANT, MOB_TEMPLATE_UNSET
+        },
+        {
+                "stone_giant", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                550, 4100, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_giant", "", "",
+                10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_GIANT, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1834,7 +1869,9 @@ typedef enum creature_trait_effect
         TRAIT_COMBAT_VOLLEY_PERCENT,
         TRAIT_TURN_IMMUNITY,
         TRAIT_HOLY_WATER_IMMUNITY,
-        TRAIT_COMBAT_CASTING_PERCENT
+        TRAIT_COMBAT_CASTING_PERCENT,
+        TRAIT_NATIVE_ROCK_PERCENT,
+        TRAIT_NATIVE_ROCK_QUANTITY
 } CREATURE_TRAIT_EFFECT;
 
 typedef struct creature_trait_definition
@@ -1907,7 +1944,12 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"tail_spike_volley", TRAIT_COMBAT_VOLLEY_PERCENT, NULL},
         {"turn_immunity", TRAIT_TURN_IMMUNITY, NULL},
         {"holy_water_immunity", TRAIT_HOLY_WATER_IMMUNITY, NULL},
-        {"psionic_casting_pct", TRAIT_COMBAT_CASTING_PERCENT, NULL}
+        {"psionic_casting_pct", TRAIT_COMBAT_CASTING_PERCENT, NULL},
+        {"rock_throw_pct", TRAIT_NATIVE_ROCK_PERCENT, NULL},
+        {"rock_damage_dice", TRAIT_NATIVE_ROCK_QUANTITY, NULL},
+        {"rock_damage_sides", TRAIT_NATIVE_ROCK_QUANTITY, NULL},
+        {"rock_daily_ammo", TRAIT_NATIVE_ROCK_QUANTITY, NULL},
+        {"rock_catch_pct", TRAIT_NATIVE_ROCK_PERCENT, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
@@ -1985,6 +2027,28 @@ static const CREATURE_TRAIT_CHANGE manticore_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -15},
         {CREATURE_TRAIT_TAIL_SPIKE_VOLLEY, 25}
 };
+static const CREATURE_TRAIT_CHANGE cattle_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE hill_giant_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -15},
+        {CREATURE_TRAIT_ROCK_THROW_PERCENT, 15},
+        {CREATURE_TRAIT_ROCK_DAMAGE_DICE, 2},
+        {CREATURE_TRAIT_ROCK_DAMAGE_SIDES, 8},
+        {CREATURE_TRAIT_ROCK_DAILY_AMMO, 4},
+        {CREATURE_TRAIT_ROCK_CATCH_PERCENT, 30}
+};
+static const CREATURE_TRAIT_CHANGE stone_giant_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -30},
+        {CREATURE_TRAIT_ROCK_THROW_PERCENT, 15},
+        {CREATURE_TRAIT_ROCK_DAMAGE_DICE, 3},
+        {CREATURE_TRAIT_ROCK_DAMAGE_SIDES, 10},
+        {CREATURE_TRAIT_ROCK_DAILY_AMMO, 8},
+        {CREATURE_TRAIT_ROCK_CATCH_PERCENT, 90}
+};
 static const CREATURE_TRAIT_CHANGE centaur_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
@@ -2050,6 +2114,9 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
             TRAIT_ITEMS(animated_blade_trait_changes)},
         {"wight", NULL, wight_trait_changes, TRAIT_ITEMS(wight_trait_changes)},
         {"dracolich", NULL, dracolich_trait_changes, TRAIT_ITEMS(dracolich_trait_changes)},
+        {"cattle", NULL, cattle_trait_changes, TRAIT_ITEMS(cattle_trait_changes)},
+        {"hill_giant", NULL, hill_giant_trait_changes, TRAIT_ITEMS(hill_giant_trait_changes)},
+        {"stone_giant", NULL, stone_giant_trait_changes, TRAIT_ITEMS(stone_giant_trait_changes)},
         {NULL, NULL, NULL, 0}
 };
 
@@ -2224,6 +2291,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                 if ((effect == TRAIT_STATUS_RESISTANCE_PERCENT
                                     || effect == TRAIT_COMBAT_VOLLEY_PERCENT
                                     || effect == TRAIT_COMBAT_CASTING_PERCENT
+                                    || effect == TRAIT_NATIVE_ROCK_PERCENT
+                                    || effect == TRAIT_NATIVE_ROCK_QUANTITY
                                     || effect == TRAIT_LICH_CHILL_TOUCH)
                                 && profile->changes[i].value < 0)
                                         issues++;
@@ -2280,7 +2349,7 @@ int validate_creature_traits(void)
                         continue;
                 }
                 if (creature_trait_definitions[i].effect < TRAIT_ATTACKER_MELEE
-                || creature_trait_definitions[i].effect > TRAIT_COMBAT_CASTING_PERCENT)
+                || creature_trait_definitions[i].effect > TRAIT_NATIVE_ROCK_QUANTITY)
                         issues++;
                 for (j = 0; j < i; j++)
                         if (creature_trait_definitions[j].name
@@ -2474,7 +2543,8 @@ void show_creature_traits(CHAR_DATA *viewer, CHAR_DATA *victim)
                 any = TRUE;
                 if (creature_trait_definitions[id].effect == TRAIT_STATUS_RESISTANCE_PERCENT
                 ||  creature_trait_definitions[id].effect == TRAIT_COMBAT_VOLLEY_PERCENT
-                ||  creature_trait_definitions[id].effect == TRAIT_COMBAT_CASTING_PERCENT)
+                ||  creature_trait_definitions[id].effect == TRAIT_COMBAT_CASTING_PERCENT
+                ||  creature_trait_definitions[id].effect == TRAIT_NATIVE_ROCK_PERCENT)
                         snprintf(buf, sizeof(buf), "  %s: %d%%%s; %s %s%s.\n\r",
                             creature_trait_definitions[id].name, entry->value,
                             entry->value == 0 ? " (disabled)" : "",
@@ -5125,6 +5195,8 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_small_whale", 10 },
                 { "spec_large_whale", 10 },
                 { "spec_faerie_dragon", 10 },
+                { "spec_giant", 10 },
+                { "spec_cast_cleric_helper", 10 },
                 { "spec_duergar", 10 },
                 { "spec_swallow", 10 },
                 { "spec_kappa", 10 },

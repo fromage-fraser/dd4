@@ -3098,6 +3098,12 @@ struct char_data
         int manticore_volley_year;
         int manticore_volleys;
         bool manticore_volley_running;
+        /* Native rocks are a daily runtime supply, never inventory objects. */
+        int giant_rock_day;
+        int giant_rock_month;
+        int giant_rock_year;
+        int giant_rocks_thrown;
+        bool giant_rock_running;
         int drained_stacks;
         int drained_recovery; /* Ordinary-rate seconds earned towards the next stack. */
         time_t drained_updated;
@@ -3650,7 +3656,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 73
+#define MAX_MOB 76
 #define MAX_SPECIES 17
 #define MAX_RANK 6
 
@@ -5921,6 +5927,11 @@ typedef enum creature_trait
         CREATURE_TRAIT_TURN_IMMUNITY,
         CREATURE_TRAIT_HOLY_WATER_IMMUNITY,
         CREATURE_TRAIT_PSIONIC_CASTING_PERCENT,
+        CREATURE_TRAIT_ROCK_THROW_PERCENT,
+        CREATURE_TRAIT_ROCK_DAMAGE_DICE,
+        CREATURE_TRAIT_ROCK_DAMAGE_SIDES,
+        CREATURE_TRAIT_ROCK_DAILY_AMMO,
+        CREATURE_TRAIT_ROCK_CATCH_PERCENT,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 int validate_creature_traits args((void));
@@ -5995,6 +6006,8 @@ void clear_stench_exposure args((CHAR_DATA *ch, bool notify));
 void update_stench args((void));
 void update_fear_auras args((void));
 void update_manticore_volleys args((void));
+void update_giant_rocks args((void));
+bool giant_catches_rock args((CHAR_DATA *thrower, CHAR_DATA *victim));
 
 /* mob_commands.c */
 char *mprog_type_to_name args((int type));
