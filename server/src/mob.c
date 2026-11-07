@@ -2000,6 +2000,20 @@ const struct mob_type mob_table[MAX_MOB] =
                 30, 80, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 150
+        },
+        /* The upper eye/mouth region uses ordinary head targeting. */
+        {
+                "yochlol", "amorphous_organism", "icon1", "icon2",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_SPEECH
+                    | BODY_NO_CORPSE | PART_HEAD | PART_EYE | PART_ARMS
+                    | PART_MANY_ARMS | PART_TENTACLES,
+                0,
+                RES_MAGIC | RES_COLD | RES_FIRE | RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0, 0, 0,
+                180, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 
 };

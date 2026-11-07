@@ -88,6 +88,7 @@ DECLARE_SPEC_FUN( spec_firedrake );
 DECLARE_SPEC_FUN( spec_poison_bite );
 DECLARE_SPEC_FUN( spec_breath_acid_anatomical );
 DECLARE_SPEC_FUN( spec_breath_fire_anatomical );
+DECLARE_SPEC_FUN( spec_breath_any_anatomical );
 DECLARE_SPEC_FUN( spec_poison_palm          );
 DECLARE_SPEC_FUN( spec_repairman            );
 DECLARE_SPEC_FUN( spec_thief                );
@@ -183,6 +184,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_poison_bite")) return spec_poison_bite;
         if (!str_cmp(name, "spec_breath_acid_anatomical")) return spec_breath_acid_anatomical;
         if (!str_cmp(name, "spec_breath_fire_anatomical")) return spec_breath_fire_anatomical;
+        if (!str_cmp(name, "spec_breath_any_anatomical")) return spec_breath_any_anatomical;
         if (!str_cmp(name, "spec_poison_palm"))          return spec_poison_palm;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
         if (!str_cmp(name, "spec_thief"))                return spec_thief;
@@ -283,6 +285,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_poison_bite) return "spec_poison_bite";
         if (special == spec_breath_acid_anatomical) return "spec_breath_acid_anatomical";
         if (special == spec_breath_fire_anatomical) return "spec_breath_fire_anatomical";
+        if (special == spec_breath_any_anatomical) return "spec_breath_any_anatomical";
         if (special == spec_poison_palm) return "spec_poison_palm";
         if (special == spec_repairman) return "spec_repairman";
         if (special == spec_thief) return "spec_thief";
@@ -2994,6 +2997,12 @@ bool spec_breath_acid_anatomical(CHAR_DATA *ch)
 bool spec_breath_fire_anatomical(CHAR_DATA *ch)
 {
         return usable_breath_head(ch) ? spec_breath_fire(ch) : FALSE;
+}
+
+/* This keeps the authored breath choices, without a daily charge limit. */
+bool spec_breath_any_anatomical(CHAR_DATA *ch)
+{
+        return usable_breath_head(ch) ? spec_breath_any(ch) : FALSE;
 }
 
 /* Keep the old breath selection, with a bounded native daily supply. */
