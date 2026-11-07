@@ -845,6 +845,7 @@ Accepted archetype names are:
 | snake | Living limbless reptile, fang bite and armour -5; 120 cm length/2 kg/Small, no default venom.
 | wererat | Living humanoid ratman, armour -5 and silver-or-magic defence;150 cm/55 kg/Medium; venom stays individual.
 | firedrake | Small flying dragonet, fang-only attacks, fire resistance, five breaths per MUD day and burning blood;65 cm/122 cm length/25 kg.
+| deer, stag | Living hoofed mammals; stag has antlers using PART_HORNS. Neutral modifiers; estimated Medium dimensions.
 | yochlol | Organic one-eyed demon with eight pseudopods, five resistances and no corpse; 180 cm/100 kg/Medium.
 | green_ooze | Organic bloodless/mindless blob with blunt pseudopods and status immunities;30 cm thickness/150 cm spread/80 kg/Medium.
 | gnome, gnome_untrained | Humanoid gnomes with infrared/RES_MAGIC; +1 goblin/kobold training and -4 giant-class defence, removed for the child; 105 cm, 40 kg, Small.
@@ -10686,3 +10687,73 @@ and The Drow of the Underdark's yochlol entry (TSR 9326, 1991). Dimensions,
 DD4 resistances/XP and the native-weapon mapping are our adaptations.
 The portrait should show the approved solid form; the replacement preview
 is kept separately from the repository patch.
+
+
+[[scribe-holy-grove]]
+==== Holy Grove creatures
+
+Holy Grove uses humanoid/human for its six druid definitions, the existing
+quadrupedal_mammal/rabbit for its bunny, and serpentine_reptile/snake for
+its small snake. Existing profiles and player abilities stay as they are.
+
+The two new profiles, deer and stag, use quadrupedal_mammal. Both have
+ordinary organs, blood, senses, pain and remains, with four legs, tail
+and hooves. They inherit no arms or speech. Deer is antlerless; stag adds
+antlers through the existing PART_HORNS tag. Their ordinary attacks use
+blunt hooves, or a choice of antler/pierce and hoof/blunt for stags.
+Each selection supplies one normal attack. Existing weapon precedence,
+anatomical filters and leg-trauma restrictions apply.
+
+Their armour, HP, damage, critical, haste and racial XP adjustments are
+neutral. They have no resistance, immunity, vulnerability or default
+aggression, and need no active special or new body/target/trait flag.
+Use the clean mammal body; the old farm_mammal/goat test defaults do not
+describe these animals.
+
+Deer defaults are 100 cm shoulder height, 70 kg, 160 cm length and Medium.
+Stag defaults are 130 cm, 180 kg, 210 cm and Medium. Male deer 8905 uses
+individual 110 cm/90 kg/180 cm measurements, while the explicitly large
+stag 8906 uses the full defaults. These are DD4 estimates. Choosing the
+stag profile supplies antlers; changing sex does not rewrite its body.
+
+Humans keep 175 cm/75 kg/Medium. The rabbit keeps its existing 25 cm/2 kg/
+40 cm/Small profile and Detect Hidden. The small snake uses 60 cm length,
+Small, height unspecified and MobWeight 0. Zero leaves its likely
+sub-kilogram weight unknown; it does not make the animal massless.
+All dimensions remain descriptive whole-number metadata.
+
+Hierophants 8900/8901 are elite and elders 8902/8903 rare; everyone else
+is common. Elite 5x and rare 2x HP apply once. All six authored
+spec_cast_cleric assignments stay individual, with their original herb
+distributions and equipment. Keep the hierophants' curse detection,
+Sanctuary, Protection and sight flags. Age alone does not change physique.
+
+Keep every authored ACT/AFF mask, including STAY_AREA/WIMPY throughout
+and the stag/snake AGGRESSIVE+WIMPY combination. Ordinary aggression
+usually selects sleeping targets with WIMPY; curse detection has its own
+entry path and existing gates. This conversion does not change behaviour.
+
+The snake's harmless name and not-a-cobra joke coexist with an explicit
+venom special. Keep its venom as an individual spec_poison_bite, with the
+existing usable-head/fang check and original target, chance, effects and
+special XP. The shared snake profile remains nonvenomous by default.
+
+Clear raw body 36 on deer/rabbit 8904-8907 so inherited no-arms/no-speech
+stays on through XOR. Clear snake 8908's raw 556 after inheriting its
+no-arms/no-legs/no-speech, tail, fangs and organs. Inherited PART_TAIL
+supplies the old BODY_HAS_TAIL function. Fix the female hierophant's
+ignored 20r20+180 typo to 20d20+180 without changing HP, and change the
+bunny's sentence from "you wished" to "you wish".
+
+Keep all 20 rooms and their flags, including six NO_UNDEAD rooms, all
+14 original objects and every reset/cap. The area has 14 initial
+inhabitants and 18 carried items; three refills reach 21 inhabitants
+and the same 18 items. Preserve mansion/fog rooms, area music/reset text,
+doors, jars, closets, pepper, kernels and the paper's Matrix references.
+Keep all herb effects, including mixtures of beneficial spells and poison.
+The staffs are wielded weapons and the robes are valid torso armour.
+No matching Scribe source or new object is needed.
+
+The references are the AD&D second edition Monstrous Manual Mammal/Wild
+Stag and Small Mammal entries. Dimensions and the mapping to DD4's
+ordinary attack system are our adaptations.

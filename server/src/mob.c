@@ -2014,6 +2014,24 @@ const struct mob_type mob_table[MAX_MOB] =
                 180, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        /* Deer keep clean mammal anatomy; antlers use the existing horn part. */
+        {
+                "deer", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_HOOVES, PART_HOOVES,
+                0, 0, 0, 0, 0, 0, 0,
+                100, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 160
+        },
+        {
+                "stag", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_HORNS | PART_HOOVES,
+                PART_HORNS | PART_HOOVES,
+                0, 0, 0, 0, 0, 0, 0,
+                130, 180, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 210
         }
 
 };
