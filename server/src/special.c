@@ -105,6 +105,7 @@ DECLARE_SPEC_FUN( spec_small_whale          );
 DECLARE_SPEC_FUN( spec_large_whale          );
 DECLARE_SPEC_FUN( spec_swallow );
 DECLARE_SPEC_FUN( spec_duergar );
+DECLARE_SPEC_FUN( spec_faerie_dragon );
 DECLARE_SPEC_FUN( spec_kappa                );
 DECLARE_SPEC_FUN( spec_aboleth              );
 DECLARE_SPEC_FUN( spec_laghathti            );
@@ -147,6 +148,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_cast_cleric"))          return spec_cast_cleric;
         if (!str_cmp(name, "spec_cast_judge"))           return spec_cast_judge;
         if (!str_cmp(name, "spec_cast_mage"))            return spec_cast_mage;
+        if (!str_cmp(name, "spec_faerie_dragon"))        return spec_faerie_dragon;
         if (!str_cmp(name, "spec_cast_druid"))           return spec_cast_druid;
         if (!str_cmp(name, "spec_cast_water_sprite"))    return spec_cast_water_sprite;
         if (!str_cmp(name, "spec_cast_psionicist"))      return spec_cast_psionicist;
@@ -240,6 +242,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_cast_cleric) return "spec_cast_cleric";
         if (special == spec_cast_judge) return "spec_cast_judge";
         if (special == spec_cast_mage) return "spec_cast_mage";
+        if (special == spec_faerie_dragon) return "spec_faerie_dragon";
         if (special == spec_cast_druid) return "spec_cast_druid";
         if (special == spec_cast_water_sprite) return "spec_cast_water_sprite";
         if (special == spec_cast_psionicist) return "spec_cast_psionicist";
@@ -4774,6 +4777,51 @@ static bool native_power_ready(CHAR_DATA *ch)
             && !IS_AFFECTED(ch, AFF_CHARM)
             && !IS_AFFECTED(ch, AFF_HOLD)
             && !IS_AFFECTED(ch, AFF_DAZED);
+}
+
+/* Faerie tricks use ordinary DD4 invisibility and confusion rules. */
+bool spec_faerie_dragon(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!native_power_ready(ch) || ch->hit <= 0 || !HAS_HEAD(ch)
+        ||  !(ch->body_form & PART_BRAINS)
+        ||  IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+                return FALSE;
+
+        victim = ch->fighting;
+        if (!victim)
+        {
+                /* Do not hide instead of responding to an existing attacker. */
+                if (is_in_combat(ch) || IS_AFFECTED(ch, AFF_INVISIBLE)
+                ||  number_bits(3) != 0)
+                        return FALSE;
+
+                spell_invis(gsn_invis, ch->level, ch, ch);
+                return IS_AFFECTED(ch, AFF_INVISIBLE) != 0;
+        }
+
+        if (victim == ch || victim->deleted || victim->in_room != ch->in_room
+        ||  victim->hit <= 0 || victim->position == POS_DEAD
+        ||  !can_see(ch, victim) || is_safe(ch, victim))
+                return FALSE;
+
+        if (number_percent() > 15)
+                return spec_cast_mage(ch);
+
+        if (!can_be_poisoned(victim) || is_mindless(victim)
+        ||  is_affected(victim, gsn_confusion)
+        ||  IS_AFFECTED(victim, AFF_CONFUSION))
+                return FALSE;
+
+        act("$n breathes a tiny puff of shimmering gas at $N.",
+            ch, NULL, victim, TO_NOTVICT);
+        act("$n breathes a tiny puff of shimmering gas at you.",
+            ch, NULL, victim, TO_VICT);
+
+        /* Confusion makes its own single save and handles duration and cures. */
+        spell_confusion(gsn_confusion, ch->level, ch, victim);
+        return TRUE;
 }
 
 bool spec_duergar(CHAR_DATA *ch)

@@ -11,10 +11,11 @@ A fairy dragon is fluttering around here looking for something to do...
 It's a cute little multi-coloured dragon...about 2 foot long.
 It gracefully dances around your head.
 ~
-65 24 500 S
+65 16 500 S
 5 16 5 5d5+50 2d4+1
-32 900
+0 900
 8 8 0
+< faerie_dragon~ common~
 #1001
 griffin~
 A griffin~
@@ -25,8 +26,9 @@ for the fact it is hungry and is attacking you!
 ~
 96 0 300 S
 8 14 4 1d1+104 2d5+2
-36 3750
+0 3750
 8 8 1
+< griffin~ common~
 #0
 
 
@@ -1225,7 +1227,6 @@ S
 
 
 #SPECIALS
-M  1000 spec_cast_mage
 S
 
 
