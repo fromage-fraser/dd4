@@ -5668,3 +5668,31 @@ All rooms keep their flags. Home (490) and healing room (484) remain open to und
 The staff and chest mentioned in descriptions remain props, not new loot.
 Full drow daily innate magic/bright-light rules, tentacle grappling and brain
 extraction, and exact tabletop alhoon poison recovery remain later work.
+
+The River teacher and marine supplier
+-------------------------------------
+Witch (201) and sailor (202) use human and common rank. They inherit ordinary
+living human anatomy and descriptive 175cm/75kg/Medium defaults. The witch
+has an individual MobWeight 85 because her description calls her robust.
+Her height stays inherited; age alone does not give her a stoop or a penalty.
+
+Keep the witch's PRACTICE, sentinel and NO_QUEST flags. Her individual
+spec_cast_psionicist reflects her stated expertise and acts against combat
+attackers. It adds no aggression or racial powers to other humans. Preserve
+teacher base 15, all nine discipline/magic group limits 75 and psionic base 30.
+Those two base records have different purposes. Keep her held flask (202) and
+the red book (201) on the cottage floor; the wand remains a described prop.
+
+In an area file, put the < archetype~ rank~ line before the teacher's &
+records. Optional MobWeight metadata follows the teaching list. Scribe
+already writes those fields in the loader's expected order.
+
+The sailor has no special. Keep his protection and fame flags, good alignment,
+shop 120/90, opening hours 0-23 and boat/potion buy types. Preserve canoe (203),
+breathe-water potion (204) and inflatable bladder (205) with their original stock
+resets. Selling the bladder does not require adding armour to his buy list.
+
+Both ranks stay common. Old-format HP/damage expressions are ignored by the
+current loader and are not rank markers. Keep all 47 room flags/sectors/exits,
+water/freezing/SAFE/NO_MOB settings, cottage doors, objects and reset caps. No shared
+profile, engine, parser, player skill or lesson-group changes are needed.
