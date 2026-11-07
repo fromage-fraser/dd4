@@ -6344,3 +6344,76 @@ The main references are AD&D second edition Monstrous Manual entries for
 Wererat/Lycanthrope, Dragonet/Firedrake, Snake, Small Mammal and the
 Ooze/Slime/Jelly groups. Fire-blood timing/save integration, whole-kg masses,
 DD4 armour/XP and the local green ooze are deliberate DD4 adaptations.
+
+
+Drow City creatures
+-------------------
+
+Drow City uses the existing humanoid/drow profile for ten definitions,
+and humanoid/goblin for the slave. Drow defaults remain 150 cm, 45 kg and
+Medium, with infrared, RES_MAGIC, racial XP +5 and the existing elf
+sleep, charm and ghoul defences. Their sunlight accuracy penalty stays -2.
+The goblin defaults remain 120 cm, 30 kg and Small.
+
+Keep the slave's sentinel/wimpy behaviour and sleeping description. DD4
+ignores its old position numbers, so its actual spawn position stays
+standing. This conversion preserves that behaviour.
+
+Clear guard 5110's individual infrared bit so XOR leaves inherited
+infrared on. Keep its Hide and scout 5111's Hide/Sneak. These four guards
+and scouts spawn in dark Thalos forest rooms, where the existing sunlight
+test gives no penalty. The Thalos file stays unchanged.
+
+Master 5105 is rare; weapons master 5106 and house matron 5107 are elite;
+first-house matron 5108 and yochlol 5109 are bosses. Rank HP applies once:
+rare 2x, elite 5x and boss 7x. Keep mage 5103 and clerics 5104/5108;
+house matrons 5107 now also use spec_cast_cleric. Masters keep their wands.
+
+Yochlol uses amorphous_organism. Its upper eye/mouth region supports head
+targeting, and its eight pseudopods use the existing arms, many-arms and
+tentacle tags. It has one eye, no human hands or fingers, no ordinary legs
+or heart, and no blood. It is organic, intelligent, ensouled and able to
+feel pain. Its reusable profile can speak and makes no corpse. This
+particular yochlol stays mute: raw body 96 becomes 32, keeping NO_SPEECH
+while inherited NO_CORPSE remains on after XOR.
+
+Its estimated dimensions are 180 cm, 100 kg and Medium. It has neutral
+HP, damage, critical and haste modifiers, no natural armour, and racial
+XP +10. Ordinary DD4 resistance flags cover magic, cold, fire, electricity
+and poison. Its solid form takes ordinary weapon damage.
+
+Mist describes its arrival; it fights in its solid one-eyed column form.
+Its eight pseudopods share one native magical body-part WEAPON, object
+5115, providing one normal wielded attack stream. Use arm category 3,
+pound verb 7, MAGIC, BODY_PART and DONOT_RANDOMISE, with no TAKE. Prototype
+damage values 3/4 match the old dagger. Creation still gives weapons the
+engine's level-based damage range before DONOT_RANDOMISE is checked;
+ordinary NPC attack damage is level-based too. The dagger's hit/damage
+bonuses are not copied to the native weapon.
+
+Existing arm injury, disarming and Regenerate rules apply. Regenerate
+heals an attached injured weapon; it does not recreate a disarmed object.
+Without a usable weapon the yochlol can make ordinary blunt natural
+attacks. Dagger 5113 stays unchanged as carried loot. Native body weapons
+are cleaned up at death, while the dagger drops normally.
+
+The individual spec_breath_any_anatomical keeps spec_breath_any's random
+breath distribution and a single 100% special slot. It requires a usable
+head without head trauma, like the other anatomical breath variants.
+It has no daily charge limit. Existing users of spec_breath_any keep their
+behaviour. Gas-form immunity, shapechanging, engulfment, Domination,
+Mind Blank and plane travel await shared demon/form mechanics.
+
+All 56 room flags, exits and doors, all 15 original objects, and all
+population placements and caps are preserved. The equipment reset now
+carries dagger 5113 and equips the native pseudopods. The green hat stays
+carried. Keep authored aggression/passivity, sexes, levels and alignments.
+The priestess sentence, ignored yochlol dice typo and two room typos are
+corrected. There is no matching Scribe source. Existing area fields and
+body/target flags cover the conversion.
+
+The references are the AD&D second edition Monstrous Manual drow entry
+and The Drow of the Underdark's yochlol entry (TSR 9326, 1991). Dimensions,
+DD4 resistances/XP and the native-weapon mapping are our adaptations.
+The portrait should show the approved solid form; the replacement preview
+is kept separately from the repository patch.
