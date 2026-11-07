@@ -1672,6 +1672,43 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "",
                 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_ELF, MOB_TEMPLATE_UNSET
+        },
+        /* A giant worm can swallow prey without gaining a purple worm's venom. */
+        {
+                "giant_worm", "limbless_invertebrate", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                70, 1000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_swallow", "", "",
+                0, /* The existing Swallow special supplies its XP adjustment. */
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 460
+        },
+        /* Rabbits have incisors; their attached teeth supply the ordinary bite. */
+        {
+                "rabbit", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_DETECT_HIDDEN,
+                PART_TAIL | PART_PAWS | PART_CLAWS, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                25, 2, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 40
+        },
+        /* Colour-specific powers and individual casting remain separate choices. */
+        {
+                "dragon_hatchling", "dragon", "icon1", "icon2",
+                0, AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                0, PART_TAILATTACK,
+                0, 0, 0,
+                0, 0, 0, 0,
+                91, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 250
         }
 
 };
@@ -1955,6 +1992,8 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"lizardman", NULL, lizardman_trait_changes, TRAIT_ITEMS(lizardman_trait_changes)},
         {"centaur", NULL, centaur_trait_changes, TRAIT_ITEMS(centaur_trait_changes)},
         {"manticore", NULL, manticore_trait_changes, TRAIT_ITEMS(manticore_trait_changes)},
+        {"dragon_hatchling", NULL, black_hatchling_trait_changes,
+            TRAIT_ITEMS(black_hatchling_trait_changes)},
         {"black_dragon_hatchling", NULL, black_hatchling_trait_changes,
             TRAIT_ITEMS(black_hatchling_trait_changes)},
         {"lich", NULL, lich_trait_changes, TRAIT_ITEMS(lich_trait_changes)},

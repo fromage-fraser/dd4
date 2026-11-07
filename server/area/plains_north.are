@@ -9,12 +9,15 @@ Aruncus the Druid~
 Aruncus the Druid is walking around here, searching for herbs.
 ~
 Aruncus is a tall, skinny druid with a face marked by nature.
-He seems to be in peace with himself and his surroundings.
+He seems to be at peace with himself and his surroundings.
 ~
 192 8 -500 S
 13 8 2 13d13+130 3d5+2
 0 15000
 8 8 1
+< human~ common~
+MobHeight 190
+MobWeight 65
 #301
 hermit sorbus~
 Sorbus the Hermit~
@@ -26,8 +29,9 @@ to say.
 ~
 2 0 0 S
 4 16 6 4d4+40 1d9+2
-1 400
+0 400
 6 6 1
+< human~ common~
 #303
 citizen~
 the citizen~
@@ -40,6 +44,7 @@ He wears normal, light clothing and has a forgettable face.
 6 15 6 6d6+60 2d4+2
 0 800
 8 8 1
+< human~ common~
 #304
 citizen~
 the citizen~
@@ -52,6 +57,7 @@ She wears a minimal amount of clothing and has very large... eyes.
 5 16 5 5d5+50 2d4+1
 0 600
 8 8 2
+< human~ common~
 #305
 worm Shudde-M'ell~
 Shudde-M'ell~
@@ -59,12 +65,13 @@ Shudde-M'ell the Giant worm of G'harne is guarding his treasure.
 ~
 Shudde-M'ell is about 15 ft long and is surrounded by an evil stench.
 The worm is the protector of the treasure of G'harne and has been so
-for as long anyone can remember.
+for as long as anyone can remember.
 ~
 34 8 -1000 S
 24 -2 0 24e24+240 3d8+8
-48 75000
+0 75000
 8 8 1
+< giant_worm~ boss~
 #306
 luxan shopkeeper~
 Luxan~
@@ -72,13 +79,14 @@ Luxan the Shopkeeper is here, eager to sell you anything.
 ~
 Luxan is dressed in a strange jacket.
 He looks like a mean trader from the outskirts of Midgaard.
-His life is seems to be totally occupied with trading.
+His life seems to be totally occupied with trading.
 He looks very fit and capable of protecting his goods.
 ~
 7 0 400 S
 23 0 0 1d1+30000 2d10+0
 0 80000
 8 8 1
+< human~ common~
 #308
 keeper innkeeper~
 the Innkeeper~
@@ -89,8 +97,11 @@ weirdest drinks known. He also looks very big.
 ~
 3 0 -100 S
 23 0 0 1d1+30000 2d10+1
-100 80000
+0 80000
 8 8 1
+< human~ common~
+MobHeight 195
+MobWeight 120
 #309
 rabbit~
 the cute rabbit~
@@ -100,8 +111,9 @@ It is a small, furry creature with long ears and big feet.
 ~
 64 0 0 S
 1 20 6 1d4+1 1d4+0
-32 50
+0 50
 8 8 0
+< rabbit~ common~
 #350
 dragon pet~
 the pet dragon~
@@ -111,10 +123,11 @@ Ravan's pet dragon is about 3 feet tall with small pointy teeth.
 The small wings are desperately trying to lift her from the ground,
 but so far they haven't succeeded.
 ~
-131 524424 1000 S
+131 524416 1000 S
 10 0 0 10d10+100 10d10+0
 32 30000
 8 8 2
+< dragon_hatchling~ common~
 #0
 
 
@@ -199,14 +212,14 @@ A
 #308
 staff stick druidic~
 a druidic staff~
-A staff with druidic marks have been left here.~
+A staff with druidic marks has been left here.~
 ~
 12 0 16385
 0~ 0~ 0~ 0~
 4 15 5
 E
 staff stick druidic~
-Then staff is about 5 feet long and is engraved with mythical signs and figures.
+The staff is about 5 feet long and is engraved with mythical signs and figures.
 ~
 #309
 rabbit roast wabbit~
@@ -280,6 +293,14 @@ The drawing pictures people gathered round giant stone formations,
 worshipping a giant worm-like creature. It seems they are 
 sacrificing some of their own species.
 ~
+#313
+rabbit teeth incisors~
+a rabbit's teeth~
+A rabbit's small incisor teeth lie here.~
+~
+5 67108864|137438953472 0
+1~ 0~ 0~ 10~
+0 0 0
 #0
 
 
@@ -1326,8 +1347,11 @@ G 1 310 5       give template to worm
 G 1 311 5       Give potion to worm
 *
 M 0 309 10 324  rabbits
+E 1 313 0 16  equip rabbit teeth
 M 0 309 10 318     -
+E 1 313 0 16  equip rabbit teeth
 M 0 309 10 334     -
+E 1 313 0 16  equip rabbit teeth
 *
 M 0 300 1 323  load Aruncus
 E 1 308 2 17     equip Aruncus with staff
@@ -1343,6 +1367,7 @@ S
 
 
 #SPECIALS
+M   300 spec_cast_druid
 M   350 spec_cast_mage
 S
 

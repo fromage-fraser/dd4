@@ -5721,3 +5721,52 @@ timed effect. Removing the raw bit restores ordinary spell eligibility.
 Room 287 gains DARK and uses the FOREST sector to match its description.
 Its exits stay the same, as do every other room's flags and sector. The prose
 corrections follow the existing paths and fix the repeated mist typo.
+
+Plains of the North creatures
+----------------------------
+Use human for Aruncus (300), Sorbus (301), both Ofcol citizens (303/304),
+Luxan (306) and the innkeeper (308). Aruncus is 190 cm/65 kg; the innkeeper
+is 195 cm/120 kg. The other humans inherit 175 cm/75 kg and Medium size.
+Their old headless/limbless/mute/corpseless masks are cleared where needed.
+Keep Aruncus's evil alignment and individual spec_cast_druid. Sorbus keeps
+his blood jar, both shopkeepers keep their Ofcol shops, and everyone keeps
+their authored behaviour and original equipment.
+
+giant_worm uses limbless_invertebrate. It has a head, eyes, brain, heart and
+guts, no arms/legs/speech, fangs for a normal piercing bite, and HUGE anatomy.
+Defaults are 70 cm body thickness, 460 cm length, 1000 kg and Large size.
+spec_swallow uses the existing 15% eligible combat check and permits one
+swallowed victim. Large targets are allowed; HUGE targets are refused.
+Normal safety, trauma, escape and cleanup rules apply. Shudde-M'ell (305)
+is individually boss rank, with the usual 7x HP applied once. Its guardian
+behaviour, detect-invisible and carried scroll/potion remain. The profile
+does not add venom, blood drain, fear, stone armour or special immunities.
+
+rabbit uses quadrupedal_mammal, with paws, claws, tail and ordinary living
+organs. Defaults are 25 cm height, 40 cm length, 2 kg and Small size.
+DETECT_HIDDEN represents its keen senses. Its incisors are an attached
+ITEM_BODY_PART weapon, not fangs: object 313 uses head category 1 and bite
+verb 10, without TAKE, randomisation or extra combat affects. Keep one E
+reset beside each rabbit M reset in Plains and Haon Dor. Existing head
+trauma, targeting, body-part disarming and Regenerate rules apply; lost
+teeth are not recreated by Regenerate. Normal equipped-NPC attack rules
+still apply. Do not add fleeing or aggression to these passive rabbits.
+Raw body 0 inherits no-arms/no-speech cleanly. The original global caps
+stay ten in Plains and five in Haon: five rabbits initially, rising to ten
+after repeated Plains refills in the current load order.
+
+dragon_hatchling uses dragon anatomy, with claws/bite, wings, scales and
+tail. Defaults are 91 cm height, 250 cm length, 70 kg and Medium size,
+with flight, infrared, detect-invisible, detect-hidden and natural_armour
+-15. It has no default caster, breath weapon or colour-specific immunity.
+Ravan's pet (350) keeps its individual mage, Sanctuary, no-speech and
+sentinel/WIMPY settings. Raw AFF 524416 (FLYING|SANCTUARY) cancels inherited
+flight while leaving inherited detect-invisible intact. Her description
+says she cannot yet get airborne. Keep her Ofcol reset commented out.
+The name alone does not grant ACT_PET or make her purchasable.
+
+Dimensions are descriptive estimates, guided by the stated fifteen-foot
+worm length and three-foot dragon height. The rabbit's keen senses and
+worm's Swallow follow the second-edition small-mammal/worm examples, adapted
+to existing DD4 rules. All other ranks stay common. Preserve room flags,
+exits, doors, ritual clues, existing loot, shop settings and reset caps.
