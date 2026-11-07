@@ -2046,6 +2046,8 @@ bool bodypart_weapon_usable(CHAR_DATA *ch, OBJ_DATA *obj)
                 return TRUE;
         if (obj->value[0] == 1)
                 return HAS_HEAD(ch) && !IS_AFFECTED(ch, AFF_HEAD_TRAUMA);
+        if (obj->value[0] == 3)
+                return HAS_ARMS(ch) && !IS_AFFECTED(ch, AFF_ARM_TRAUMA);
         if (obj->value[0] == 6)
                 return !IS_AFFECTED(ch, AFF_TAIL_TRAUMA);
         return TRUE;

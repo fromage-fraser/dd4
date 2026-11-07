@@ -3661,8 +3661,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 79
-#define MAX_SPECIES 17
+#define MAX_MOB 88
+#define MAX_SPECIES 19
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -3754,6 +3754,9 @@ typedef enum creature_family
         CREATURE_FAMILY_HUMAN,
         CREATURE_FAMILY_ELF,
         CREATURE_FAMILY_LIZARDMAN,
+        CREATURE_FAMILY_KOBOLD,
+        CREATURE_FAMILY_GNOLL,
+        CREATURE_FAMILY_BUGBEAR,
         CREATURE_FAMILY_MAX
 } CREATURE_FAMILY;
 
@@ -5943,6 +5946,8 @@ typedef enum creature_trait
         CREATURE_TRAIT_NATIVE_REGEN_DELAY,
         CREATURE_TRAIT_NATIVE_REGEN_SUPPRESSION,
         CREATURE_TRAIT_NATIVE_REGEN_TRAUMA_INTERVAL,
+        CREATURE_TRAIT_GNOME_TRAINING,
+        CREATURE_TRAIT_GNOME_GIANT_DEFENCE,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Passive native regeneration never invokes or replaces an active special. */

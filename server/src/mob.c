@@ -344,6 +344,36 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        {
+                "elemental_being",
+                0, 0,
+                BODY_NO_HEART | BODY_INORGANIC,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+        {
+                "crustacean",
+                0, 0,
+                BODY_NO_SPEECH | PART_HEAD | PART_EYE | PART_EYESTALKS
+                    | PART_ARMS | PART_MANY_LEGS | PART_HEART | PART_BRAINS
+                    | PART_GUTS | PART_HUSK_SHELL,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1820,6 +1850,107 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_fido", "", "",
                 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 150
+        },
+        /* Gnome Village adds reviewed bodies; the last three rows are target identities only. */
+        {
+                "gnome", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED,
+                0, 0,
+                RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                105, 40, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "gnome_untrained", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED,
+                0, 0,
+                RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                105, 40, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "mouse", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                3, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 10
+        },
+        {
+                "rat", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                8, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 20
+        },
+        {
+                "fire_bat", "elemental_being", "icon1", "icon2",
+                0, AFF_FLYING | AFF_INFRARED,
+                BODY_NO_ARMS | BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_ANALGIC
+                    | PART_HEAD | PART_EYE | PART_2_LEGS | PART_WINGS | PART_FANGS, PART_FANGS,
+                0, 0, RES_FIRE,
+                0, 0, 0, 0,
+                30, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_breath_fire_anatomical", "", "",
+                10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 61
+        },
+        {
+                "giant_hermit_crab", "crustacean", "icon1", "icon2",
+                0, 0,
+                PART_CLAWS, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                152, 350, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 250
+        },
+        {
+                "kobold", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_KOBOLD, MOB_TEMPLATE_UNSET
+        },
+        {
+                "gnoll", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_GNOLL, MOB_TEMPLATE_UNSET
+        },
+        {
+                "bugbear", "humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_BUGBEAR, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -1879,6 +2010,9 @@ const char *creature_family_name(CREATURE_FAMILY family)
         case CREATURE_FAMILY_HUMAN: return "human";
         case CREATURE_FAMILY_ELF: return "elf";
         case CREATURE_FAMILY_LIZARDMAN: return "lizardman";
+        case CREATURE_FAMILY_KOBOLD: return "kobold";
+        case CREATURE_FAMILY_GNOLL: return "gnoll";
+        case CREATURE_FAMILY_BUGBEAR: return "bugbear";
         default: return "invalid";
         }
 }
@@ -1958,6 +2092,19 @@ static const CREATURE_FAMILY trait_giant_kin[] =
         CREATURE_FAMILY_TITAN, CREATURE_FAMILY_NONE
 };
 
+static const CREATURE_FAMILY trait_gnome_enemies[] =
+{
+        CREATURE_FAMILY_GOBLIN, CREATURE_FAMILY_KOBOLD,
+        CREATURE_FAMILY_NONE
+};
+static const CREATURE_FAMILY trait_gnome_giant_kin[] =
+{
+        CREATURE_FAMILY_GNOLL, CREATURE_FAMILY_BUGBEAR,
+        CREATURE_FAMILY_OGRE, CREATURE_FAMILY_OGRE_MAGE,
+        CREATURE_FAMILY_TROLL, CREATURE_FAMILY_GIANT, CREATURE_FAMILY_TITAN,
+        CREATURE_FAMILY_NONE
+};
+
 /* IDs index this registry; they are never shifted into a flag word. */
 static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
 {
@@ -1989,7 +2136,24 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"native_regen_interval", TRAIT_NATIVE_REGEN_QUANTITY, NULL},
         {"native_regen_delay", TRAIT_NATIVE_REGEN_QUANTITY, NULL},
         {"native_regen_suppression", TRAIT_NATIVE_REGEN_QUANTITY, NULL},
-        {"native_regen_trauma_interval", TRAIT_NATIVE_REGEN_QUANTITY, NULL}
+        {"native_regen_trauma_interval", TRAIT_NATIVE_REGEN_QUANTITY, NULL},
+        {"gnome_training", TRAIT_ATTACKER_MELEE, trait_gnome_enemies},
+        {"gnome_giant_defence", TRAIT_DEFENDER_MELEE, trait_gnome_giant_kin}
+};
+
+static const CREATURE_TRAIT_CHANGE gnome_trait_changes[] =
+{
+        {CREATURE_TRAIT_GNOME_TRAINING, 1},
+        {CREATURE_TRAIT_GNOME_GIANT_DEFENCE, -4}
+};
+static const CREATURE_TRAIT_CHANGE untrained_gnome_trait_changes[] =
+{
+        {CREATURE_TRAIT_GNOME_TRAINING, 0},
+        {CREATURE_TRAIT_GNOME_GIANT_DEFENCE, 0}
+};
+static const CREATURE_TRAIT_CHANGE hermit_crab_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
 };
 
 static const CREATURE_TRAIT_CHANGE dwarf_trait_changes[] =
@@ -2142,6 +2306,11 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"gnome", NULL, gnome_trait_changes, TRAIT_ITEMS(gnome_trait_changes)},
+        {"gnome_untrained", "gnome", untrained_gnome_trait_changes,
+            TRAIT_ITEMS(untrained_gnome_trait_changes)},
+        {"giant_hermit_crab", NULL, hermit_crab_trait_changes,
+            TRAIT_ITEMS(hermit_crab_trait_changes)},
         {"dwarf", NULL, dwarf_trait_changes, TRAIT_ITEMS(dwarf_trait_changes)},
         {"duergar", "dwarf", duergar_trait_changes, TRAIT_ITEMS(duergar_trait_changes)},
         {"dwarf_untrained", "dwarf", untrained_dwarf_trait_changes,

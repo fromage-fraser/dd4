@@ -842,6 +842,11 @@ Accepted archetype names are:
 | `cattle` | Living quadrupedal mammal with horns/hooves, ordinary pierce/pound attacks and natural armour -5; 150 cm shoulder height, 250 cm length, 650 kg, Large without HUGE; racial XP 0.
 | `hill_giant` | Living speaking humanoid of the giant family; 490 cm, 2050 kg, Large with HUGE; natural armour -15, racial XP +5, native rock special and passive 30% rock catch.
 | `stone_giant` | Living speaking humanoid of the giant family; 550 cm, 4100 kg, Large with HUGE; natural armour -30, racial XP +10, native rock special and passive 90% rock catch.
+| gnome, gnome_untrained | Humanoid gnomes with infrared/RES_MAGIC; +1 goblin/kobold training and -4 giant-class defence, removed for the child; 105 cm, 40 kg, Small.
+| mouse, rat | Organic mute quadrupedal mammals with fang bites; mouse 3 cm height/10 cm length, rat 8 cm/20 cm; Small, weights unspecified.
+| fire_bat | Winged inorganic elemental with fire immunity, infrared and anatomy-checked fire breath; 30 cm height/61 cm length, Small, no corpse.
+| giant_hermit_crab | Organic crustacean with native crushing pincer and armour -20; 152 cm height/250 cm length, 350 kg, Large without HUGE.
+| kobold, gnoll, bugbear | Minimal humanoid target-family placeholders awaiting full review.
 | `goat` | Existing goat archetype, based on `farm_mammal`.
 | `fire_elemental` | Existing fire-elemental test archetype, based on `elemental`.
 | `skeleton` | Skeletal humanoid archetype.
@@ -3179,6 +3184,9 @@ spec_small_whale    flukeslaps [combat]
 spec_large_whale    flukeslaps and swallows [combat]
 spec_duergar       ordinary self-invisibility on eligible idle opportunities
 spec_swallow       occasional Swallow against the current opponent [combat]
+spec_poison_bite   ordinary poisonous bite, requiring usable head/fangs [combat]
+spec_breath_acid_anatomical   ordinary acid breath, requiring a usable head [combat]
+spec_breath_fire_anatomical   ordinary fire breath, requiring a usable head [combat]
 spec_poison_palm   poisoned palm; the bite special's chance and venom, requiring usable arms [combat]
 spec_kappa  kappa skills/spells [combat]
 spec_aboleth    aboleth skills/spells [combat]
@@ -10381,3 +10389,112 @@ There is no matching Scribe source to regenerate for this area.
 
 Illustrations should show canine-like beasts and a carrion worm without
 a distinct head, eyes or limbs.
+
+
+[[scribe-gnome-village]]
+==== Gnome Village creatures
+
+Use gnome for adult gnomes and gnome_untrained for the child. Both use
+humanoid anatomy, infrared, RES_MAGIC, racial XP +5 and descriptive
+105 cm / 40 kg / Small defaults. The child uses 70 cm / 12 kg.
+RES_POISON is not part of this package.
+
+Gnome training gives +1 melee against goblins and kobolds. Gnome giant
+defence gives the attacker -4 melee when it is a gnoll, bugbear, ogre,
+ogre mage, troll, giant or titan. These internal traits have separate
+target lists from dwarf training. The child explicitly removes both
+learned benefits while keeping its physiology. MSTAT shows values,
+sources and removals. No ACT markers, area trait fields or new player
+abilities are added. Existing matching player races can be targets.
+Kobold, gnoll and bugbear are target-family placeholders awaiting full
+creature review.
+
+Keep individual scientist mage, chief cleric and hobgoblin king mage
+specials. Occupation does not make every gnome a caster. Construction
+sensing, animal communication and magical-item malfunction await shared
+mechanics; this package does not grant blanket illusion immunity.
+
+Hobgoblins reuse infrared, 200 cm / 100 kg / Medium defaults. Bodyguard
+1518 uses 180 cm / 90 kg; king 1519 is 120 kg; cook 1526 is 140 kg.
+Trolls reuse native regeneration and bounded rock throws. Small troll
+1507 uses 210 cm / 140 kg / Medium; giant troll 1512 uses 400 cm /
+650 kg / Large with individual HUGE. Both retain authored no-speech.
+
+Mouse and rat use quadrupedal_mammal with head, organic internals, paws,
+claws, tail and fangs, but no arms or speech. Ordinary attacks select
+fangs only. Mouse defaults are 3 cm height / 10 cm body length; rat is
+8 cm / 20 cm. Whole-kg weights stay unspecified: this does not mean zero
+physical mass. Large rat 1510 uses 15 cm / 2 kg / 35 cm length; giant
+rat 1511 uses 50 cm / 25 kg / 90 cm length, matching its dog-sized prose.
+All remain Small.
+
+The three rats keep authored venom through spec_poison_bite. It requires
+usable head/fang anatomy before using existing poison chance, target
+selection, saves and physiology checks. It gives no extra ordinary
+attack and does not make every rat venomous. Disease awaits shared work.
+Black bat 1513 keeps ordinary bat flight/echolocation, individual 10 cm
+body length and authored spec_breath_acid_anatomical. This wrapper checks
+head presence and head trauma before using the existing breath routine.
+
+Fire bat uses the new elemental_being body, not the old fire_elemental
+test profile. It is inorganic, with functional head, eyes, two legs,
+wings and fangs, but no arms, speech, heart or corpse. It has flight,
+infrared, fire immunity, ordinary piercing bite and racial XP +10.
+The area's detect-invisible flag remains individual. Defaults are
+30 cm height / 61 cm body length / Small, weight unspecified.
+Its inherited spec_breath_fire_anatomical uses the ordinary breath
+chance and spell, requiring a usable head. No undead, mindless, soulless
+or nonmagic-immunity package is added. Inorganic physiology rules out
+blood; ANALGIC supplies pain insensitivity. No Fireshield,
+blood-latching, fission or planar reformation is added.
+
+Giant hermit crab uses organic crustacean anatomy: head, eyes/eyestalks,
+claw-bearing forelimbs, multiple legs, heart, brains, guts and shell,
+without speech. Forelimbs use the existing arm targeting region without
+implying human hands. Shell is anatomy; natural armour -20 is separate.
+Defaults are 152 cm height / 250 cm body length / 350 kg / Large without
+HUGE, racial XP +5. Height follows the five-foot description; mass and
+length are estimates.
+
+Native pincer 1525 is an ITEM_BODY_PART weapon: value[0] = 3 (arm),
+value[3] = 8 (crush), no TAKE or randomisation, one normal wield reset.
+Arm injury disables an attached pincer while inventory lookups still
+find it. Regenerate can restore its use while attached, but cannot
+recreate a disarmed part. There is no extra attack stream or new target
+category. This profile does not select natural claw attacks separately.
+The existing NPC wielded-weapon damage and reset XP rules still apply.
+NPC water movement already permits this amphibious crab, and NPCs are
+outside the drowning check; no temporary SWIM or new water field is needed.
+
+Chief 1505 and king 1519 are elite; giant troll 1512, fire bat 1515 and
+bodyguard 1518 are rare; all others are common. Rare gives 2x HP and
+elite 5x, once. Rank can affect generated equipment: unchanged object
+definitions do not promise identical randomised items. Guard 1516 stays
+unspawned.
+
+Clear undefined decimal ACT 16 only on child 1500 and woman 1501,
+keeping SCAVENGER. Reconcile inherited anatomy/XOR: zero old rodent,
+bat, zombie and crab masks; retain troll no-speech 32 and add HUGE 128
+only to giant troll 1512. Zombie 1514 keeps ordinary zombie physiology,
+individual 105 cm / 40 kg / Small and male sex matching prose/portrait.
+Remove its generic undead caster; the intentional Catacombs zombie
+mage remains unchanged.
+
+Carry the scientist's skiff 1514, rat's shield 1505 and large rat's staff
+1503 rather than equipping them. Keep loot while removing equipped
+benefits and corresponding reset XP. Raise the first guard 1504 reset
+limit in room 1519 from 3 to 6, matching other rows. Key 1500 opens the
+locked 1536/1537 door. The six-guard ceiling stays, but refills favour
+the key/potion/cloak guard in 1519 instead of an ordinary sword guard.
+This adds two carried items relative to the former refill arrangement.
+
+Preserve other behaviour, levels, alignment, descriptions, rooms,
+doors, flags, maze resets and existing objects. Club 1521 is also given
+to Dave the Dealer in Midgaard. Fix chief's ignored 1e12 dice typo to
+1d12 and treasurer's old goblin wording to old hobgoblin. There is no
+matching Scribe source.
+
+AD&D second edition Monstrous Manual entries for Gnome, Hobgoblin, Bat,
+Rat, Small Mammal and Giant Crustacean inform anatomy. Ranks, masses,
+DD4 armour/XP and local magical powers are adaptations. Fire bat is the
+area's elemental interpretation, not every published fire-bat ability.
