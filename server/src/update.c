@@ -1194,6 +1194,160 @@ static int capped_hit_gain(CHAR_DATA *ch, int gain)
         return (int)UMIN((long long)gain, UMAX(0LL, room));
 }
 
+/* A native injury cycle belongs to an NPC instance, not an area or ACT flag. */
+static void clear_native_regeneration(CHAR_DATA *ch)
+{
+        ch->native_regen_ready = 0;
+        ch->native_regen_next = 0;
+        ch->native_regen_updated = 0;
+        ch->native_regen_trauma_seconds = 0;
+}
+
+static bool native_regeneration_trauma(CHAR_DATA *ch)
+{
+        return IS_AFFECTED(ch, AFF_EYE_TRAUMA | AFF_HEAD_TRAUMA | AFF_ARM_TRAUMA
+            | AFF_LEG_TRAUMA | AFF_HEART_TRAUMA | AFF_TAIL_TRAUMA | AFF_TORSO_TRAUMA) != 0;
+}
+
+static void begin_native_regeneration(CHAR_DATA *ch)
+{
+        int delay = UMAX(0, creature_trait_value(ch, CREATURE_TRAIT_NATIVE_REGEN_DELAY));
+
+        ch->native_regen_ready = current_time + delay;
+        ch->native_regen_next = ch->native_regen_ready;
+        ch->native_regen_updated = current_time;
+        ch->native_regen_trauma_seconds = 0;
+}
+
+void notify_native_regeneration_damage(CHAR_DATA *victim, int actual_damage,
+                                       unsigned long int res_types)
+{
+        if (!victim || actual_damage <= 0 || !IS_NPC(victim)
+        ||  creature_trait_value(victim, CREATURE_TRAIT_NATIVE_REGEN_MIN_HP) <= 0)
+                return;
+
+        if (victim->deleted || victim->position == POS_DEAD || victim->hit <= 0)
+        {
+                clear_native_regeneration(victim);
+                return;
+        }
+
+        /* A new wound after full healing gets a new delay, even between pulses. */
+        if ((long long)victim->hit + actual_damage >= victim->max_hit
+        &&  !native_regeneration_trauma(victim))
+                clear_native_regeneration(victim);
+
+        if (victim->native_regen_next == 0)
+                begin_native_regeneration(victim);
+
+        /* Only actual fire/acid harm restarts the pause and trauma progress. */
+        if (IS_SET(res_types, RES_FIRE | RES_ACID)
+        &&  get_resistance_result(victim, res_types & (RES_FIRE | RES_ACID)) != RES_RESULT_IMMUNE)
+        {
+                int pause = UMAX(0, creature_trait_value(victim,
+                    CREATURE_TRAIT_NATIVE_REGEN_SUPPRESSION));
+                victim->native_regen_ready = current_time + pause;
+                victim->native_regen_next = victim->native_regen_ready;
+                victim->native_regen_updated = current_time;
+                victim->native_regen_trauma_seconds = 0;
+        }
+}
+
+void update_native_regeneration(void)
+{
+        CHAR_DATA *ch;
+
+        for (ch = char_list; ch; ch = ch->next)
+        {
+                time_t previous, active_seconds;
+                int gain, interval, divisor, trauma_interval;
+                bool trauma;
+
+                /* Sleep, combat and hold do not suspend living physiology. */
+                if (!IS_NPC(ch)
+                ||  creature_trait_value(ch, CREATURE_TRAIT_NATIVE_REGEN_MIN_HP) <= 0)
+                {
+                        clear_native_regeneration(ch);
+                        continue;
+                }
+                if (ch->deleted || ch->position == POS_DEAD || ch->hit <= 0)
+                {
+                        clear_native_regeneration(ch);
+                        continue;
+                }
+
+                trauma = native_regeneration_trauma(ch);
+                if (ch->hit >= ch->max_hit && !trauma)
+                {
+                        clear_native_regeneration(ch);
+                        continue;
+                }
+                if (ch->native_regen_next == 0)
+                {
+                        /* Covers already injured loaded/test NPCs without a damage call. */
+                        begin_native_regeneration(ch);
+                        continue;
+                }
+                if (current_time < ch->native_regen_updated)
+                {
+                        /* A backwards wall clock earns no healing or stored progress. */
+                        begin_native_regeneration(ch);
+                        continue;
+                }
+                if (current_time == ch->native_regen_updated)
+                        continue;
+
+                previous = ch->native_regen_updated;
+                ch->native_regen_updated = current_time;
+                if (current_time < ch->native_regen_ready)
+                        continue;
+
+                interval = UMAX(1, creature_trait_value(ch,
+                    CREATURE_TRAIT_NATIVE_REGEN_INTERVAL));
+                divisor = UMAX(1, creature_trait_value(ch,
+                    CREATURE_TRAIT_NATIVE_REGEN_LEVEL_DIVISOR));
+                gain = UMAX(creature_trait_value(ch, CREATURE_TRAIT_NATIVE_REGEN_MIN_HP),
+                    ch->level / divisor);
+                if (IS_AFFECTED(ch, AFF_POISON | AFF_PRAYER_PLAGUE))
+                        gain /= 4;
+                if (IS_AFFECTED(ch, AFF_SLOW))
+                        gain /= 2;
+                if (IS_SET(ch->act, ACT_NO_HEAL))
+                        gain = 0;
+
+                /* Only eligible elapsed seconds count; pauses and stalls bank nothing. */
+                active_seconds = current_time - UMAX(previous, ch->native_regen_ready);
+                trauma_interval = creature_trait_value(ch,
+                    CREATURE_TRAIT_NATIVE_REGEN_TRAUMA_INTERVAL);
+                if (!trauma)
+                        ch->native_regen_trauma_seconds = 0;
+                else if (gain > 0 && trauma_interval > 0)
+                {
+                        ch->native_regen_trauma_seconds += (int)UMIN(
+                            (time_t)interval, active_seconds);
+                        if (ch->native_regen_trauma_seconds >= trauma_interval)
+                        {
+                                repair_regeneration_trauma(ch, 1);
+                                ch->native_regen_trauma_seconds = 0;
+                        }
+                }
+
+                if (current_time >= ch->native_regen_next)
+                {
+                        /* One pulse now, never a loop catching up missed healing. */
+                        ch->native_regen_next = current_time + interval;
+                        gain = capped_hit_gain(ch, gain);
+                        if (gain > 0)
+                        {
+                                ch->hit += gain;
+                                update_pos(ch);
+                        }
+                }
+                if (ch->hit >= ch->max_hit && !native_regeneration_trauma(ch))
+                        clear_native_regeneration(ch);
+        }
+}
+
 int hit_gain(CHAR_DATA *ch)
 {
         CHAR_DATA *gch;
@@ -1205,6 +1359,10 @@ int hit_gain(CHAR_DATA *ch)
 
         if (IS_NPC(ch))
         {
+                /* Native physiology replaces this positive tick stream completely. */
+                if (creature_trait_value(ch, CREATURE_TRAIT_NATIVE_REGEN_MIN_HP) > 0)
+                        return 0;
+
                 gain = ch->level * 3 / 2;
 
                 if (IS_SET(ch->act, ACT_REGENERATOR))

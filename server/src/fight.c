@@ -30,6 +30,18 @@
 #include "sound.h"
 
 /*
+ * Firebrand still belongs to its original hit. Keep only the fraction that
+ * the successful proc added, so regeneration can recognise actual fire harm
+ * without creating a second attack or changing the existing weapon damage.
+ */
+typedef struct firebrand_component FIREBRAND_COMPONENT;
+struct firebrand_component
+{
+        int bonus;
+        int total;
+};
+
+/*
  * Local functions.
  */
 bool check_blink args((CHAR_DATA * ch, CHAR_DATA *victim));
@@ -64,6 +76,19 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
 static void group_gain_internal
         args((CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called,
               bool solo, bool survivors_only));
+static void damage_with_firebrand_component
+        args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
+              const FIREBRAND_COMPONENT *firebrand));
+static void damage_from_object_internal
+        args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
+              OBJ_DATA *source, const FIREBRAND_COMPONENT *firebrand));
+static void damage_with_aggravated_component_internal
+        args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
+              int chance, int percent, int cap,
+              const FIREBRAND_COMPONENT *firebrand));
+static void notify_native_hp_loss
+        args((CHAR_DATA *victim, int hit_before, int dam,
+              unsigned long int res_types));
 static void damage_internal args((CHAR_DATA *ch,
                                   CHAR_DATA *victim,
                                   int dam,
@@ -76,6 +101,7 @@ static void damage_internal args((CHAR_DATA *ch,
                                   int aggravated_chance,
                                   int aggravated_percent,
                                   int aggravated_cap,
+                                  const FIREBRAND_COMPONENT *firebrand,
                                   int *damage_dealt));
 
 /*
@@ -216,6 +242,9 @@ void violence_update(void)
 
         /* Give visible opponents one chance to face a fear aura. */
         update_fear_auras();
+
+        /* Native recovery also runs for creatures with nobody to fight. */
+        update_native_regeneration();
 
         /* Resolve bounded tail volleys once, before ordinary attacks. */
         update_manticore_volleys();
@@ -1049,6 +1078,14 @@ bool object_attack_is_immune(CHAR_DATA *ch, CHAR_DATA *victim,
 void damage_from_object(CHAR_DATA *ch, CHAR_DATA *victim,
                         int dam, int dt, bool poison, OBJ_DATA *source)
 {
+        damage_from_object_internal(ch, victim, dam, dt, poison, source, NULL);
+}
+
+static void damage_from_object_internal(CHAR_DATA *ch, CHAR_DATA *victim,
+                                       int dam, int dt, bool poison,
+                                       OBJ_DATA *source,
+                                       const FIREBRAND_COMPONENT *firebrand)
+{
         if (source && !bodypart_weapon_usable(ch, source))
                 return;
         if (!ch || !victim || ch->deleted || victim->deleted
@@ -1063,7 +1100,7 @@ void damage_from_object(CHAR_DATA *ch, CHAR_DATA *victim,
         damage_internal(
             ch, victim, dam, dt, poison,
             object_attack_resistance_types(dt, source), FALSE, TRUE, FALSE,
-            0, 0, 0, NULL);
+            0, 0, 0, firebrand, NULL);
 }
 
 /*
@@ -1149,6 +1186,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
         bool hit = FALSE;
         bool melee_attack = dt != gsn_shoot && dt != gsn_snap_shot;
         int contact_damage;
+        FIREBRAND_COMPONENT firebrand;
 
         update_creature_sunlight(ch);
         if (creature_sunlight_powerless(ch))
@@ -1354,7 +1392,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                                 damage_internal(
                                     ch, victim, 0, dt, poison,
                                     ordinary_attack_resistance_types(dt, wield),
-                                    FALSE, TRUE, FALSE, 0, 0, 0, NULL);
+                                    FALSE, TRUE, FALSE, 0, 0, 0, NULL, NULL);
                         }
                         else
                         {
@@ -1380,6 +1418,8 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                  * Calc damage.
                  */
                 hit = TRUE;
+                firebrand.bonus = 0;
+                firebrand.total = 0;
 
                 if (IS_NPC(ch))
                 {
@@ -1438,7 +1478,11 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                 {
                         chance = 21;
                         if (chance > number_percent())
+                        {
+                                firebrand.bonus = UMAX(0, dam / 3);
                                 dam += dam / 3;
+                                firebrand.total = dam;
+                        }
                 }
 
                 /* adds to the meter for smithys */
@@ -1591,7 +1635,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                             poison,
                             ordinary_attack_resistance_types(dt, wield),
                             !wield && IS_NPC(ch),
-                            TRUE, FALSE, 0, 0, 0, &contact_damage);
+                            TRUE, FALSE, 0, 0, 0, &firebrand, &contact_damage);
 
                         /* Finish the original hit before its touch can cause another death. */
                         if (!wield && IS_NPC(ch))
@@ -1600,9 +1644,9 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                 }
                 else if (dt == gsn_smash)
                 {
-                        damage_from_object(
+                        damage_from_object_internal(
                             ch, victim, dam, dt, poison,
-                            get_eq_char(ch, WEAR_SHIELD));
+                            get_eq_char(ch, WEAR_SHIELD), &firebrand);
                 }
                 else if (dt == gsn_backstab
                      ||  dt == gsn_circle
@@ -1628,17 +1672,18 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                         if (dt == gsn_backstab && ch->form == FORM_SCORPION)
                                 source = NULL;
 
-                        damage_from_object(
-                            ch, victim, dam, dt, poison, source);
+                        damage_from_object_internal(
+                            ch, victim, dam, dt, poison, source, &firebrand);
                 }
                 else if (aggravated_bite)
                 {
-                        damage_with_aggravated_component(
-                            ch, victim, dam, dt, poison, 20, 10, 0);
+                        damage_with_aggravated_component_internal(
+                            ch, victim, dam, dt, poison, 20, 10, 0, &firebrand);
                 }
                 else
                 {
-                        damage(ch, victim, dam, dt, poison);
+                        damage_with_firebrand_component(
+                            ch, victim, dam, dt, poison, &firebrand);
                 }
 
                 tail_chain();
@@ -1768,6 +1813,13 @@ void death_penalty(CHAR_DATA *ch, CHAR_DATA *victim)
 
 void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 {
+        damage_with_firebrand_component(ch, victim, dam, dt, poison, NULL);
+}
+
+static void damage_with_firebrand_component(CHAR_DATA *ch, CHAR_DATA *victim,
+                                          int dam, int dt, bool poison,
+                                          const FIREBRAND_COMPONENT *firebrand)
+{
         unsigned long int res_types;
 
         res_types = 0;
@@ -1784,13 +1836,21 @@ void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
         }
 
         damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE,
-                        FALSE, 0, 0, 0, NULL);
+                        FALSE, 0, 0, 0, firebrand, NULL);
 }
 
 /* Classify part of this event's defended HP loss; never subtract HP twice. */
 void damage_with_aggravated_component(CHAR_DATA *ch, CHAR_DATA *victim,
                                       int dam, int dt, bool poison,
                                       int chance, int percent, int cap)
+{
+        damage_with_aggravated_component_internal(
+            ch, victim, dam, dt, poison, chance, percent, cap, NULL);
+}
+
+static void damage_with_aggravated_component_internal(
+    CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
+    int chance, int percent, int cap, const FIREBRAND_COMPONENT *firebrand)
 {
         unsigned long int res_types = 0;
 
@@ -1803,7 +1863,7 @@ void damage_with_aggravated_component(CHAR_DATA *ch, CHAR_DATA *victim,
                 res_types = skill_table[dt].res_type;
 
         damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE,
-                        FALSE, chance, percent, cap, NULL);
+                        FALSE, chance, percent, cap, firebrand, NULL);
 }
 
 /*
@@ -1831,7 +1891,7 @@ void damage_with_resistance_types(
             FALSE,
             FALSE,
             FALSE,
-            0, 0, 0, NULL);
+            0, 0, 0, NULL, NULL);
 }
 
 /* Runtime-only, monotonically allocated identities survive no extraction. */
@@ -1904,7 +1964,7 @@ bool forced_fall_damage(CHAR_DATA *ch, int dam)
 
         deaths = IS_NPC(ch) ? 0 : ch->pcdata->killed;
         damage_internal(causer, ch, UMAX(0, dam), TYPE_UNDEFINED, FALSE, 0,
-                        FALSE, FALSE, TRUE, 0, 0, 0, NULL);
+                        FALSE, FALSE, TRUE, 0, 0, 0, NULL, NULL);
         return !ch->deleted && ch->in_room && ch->position != POS_DEAD
             && (IS_NPC(ch) || ch->pcdata->killed == deaths);
 }
@@ -1953,6 +2013,19 @@ static void damage_death_gain(CHAR_DATA *opponent, CHAR_DATA *fighter,
         }
 }
 
+/* These older retaliation paths subtract HP without entering damage(). */
+static void notify_native_hp_loss(CHAR_DATA *victim, int hit_before, int dam,
+                                  unsigned long int res_types)
+{
+        int actual_damage;
+
+        actual_damage = (int)UMIN((long long)UMAX(0, dam),
+            UMAX(0LL, (long long)hit_before - victim->hit));
+        if (actual_damage > 0)
+                notify_native_regeneration_damage(
+                    victim, actual_damage, res_types);
+}
+
 static void damage_internal(CHAR_DATA *ch,
                             CHAR_DATA *victim,
                             int dam,
@@ -1965,6 +2038,7 @@ static void damage_internal(CHAR_DATA *ch,
                             int aggravated_chance,
                             int aggravated_percent,
                             int aggravated_cap,
+                            const FIREBRAND_COMPONENT *firebrand,
                             int *damage_dealt)
 {
         CHAR_DATA *fighter;
@@ -1976,12 +2050,14 @@ static void damage_internal(CHAR_DATA *ch,
         int reflected_dam = 0;
         bool crit = FALSE;
         RESISTANCE_RESULT resistance_result;
-        resistance_result = RES_RESULT_NORMAL;
         bool dracolich_contact = FALSE;
         int cold_bonus;
         int hit_before;
         int actual_damage;
+        int retaliation_hit_before;
+        unsigned long int regeneration_types;
 
+        resistance_result = RES_RESULT_NORMAL;
         if (damage_dealt)
                 *damage_dealt = 0;
 
@@ -2364,6 +2440,7 @@ static void damage_internal(CHAR_DATA *ch,
                     FALSE,
                     FALSE,
                     RES_RESULT_NORMAL);
+                retaliation_hit_before = ch->hit;
                 ch->hit -= reflected_dam;
 
                 if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
@@ -2371,6 +2448,9 @@ static void damage_internal(CHAR_DATA *ch,
 
                 if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL && ch->hit < 1)
                         ch->hit = 1;
+
+                notify_native_hp_loss(
+                    ch, retaliation_hit_before, reflected_dam, res_types);
 
                 act("Your $p <316><102><562>V A P O U R I S E S<563><0> from the overload.<0>", ch, turret_unit, victim, TO_VICT);
                 obj_from_room(turret_unit);
@@ -2403,6 +2483,7 @@ static void damage_internal(CHAR_DATA *ch,
                     FALSE,
                     FALSE,
                     RES_RESULT_NORMAL);
+                retaliation_hit_before = ch->hit;
                 ch->hit -= firedam;
 
                 if (IS_NPC(ch) && IS_SET(ch->act, ACT_UNKILLABLE) && ch->hit < 1)
@@ -2410,6 +2491,9 @@ static void damage_internal(CHAR_DATA *ch,
 
                 if (!IS_NPC(ch) && ch->level >= LEVEL_IMMORTAL && ch->hit < 1)
                         ch->hit = 1;
+
+                notify_native_hp_loss(
+                    ch, retaliation_hit_before, firedam, RES_FIRE);
         }
 
         /* A terrain impact cannot apply the rider's weapon effects. */
@@ -2466,6 +2550,32 @@ static void damage_internal(CHAR_DATA *ch,
 
         if (damage_dealt)
                 *damage_dealt = actual_damage;
+
+        if (actual_damage > 0)
+        {
+                regeneration_types = res_types;
+                if (firebrand && firebrand->bonus > 0 && firebrand->total > 0)
+                {
+                        int fire_damage;
+
+                        /*
+                         * Attribute a share of this hit's actual HP loss,
+                         * rounded down. Fire immunity and Resist Heat may
+                         * remove that share for suppression only; the old
+                         * folded physical damage remains unchanged.
+                         */
+                        fire_damage = (int)((long long)actual_damage
+                            * firebrand->bonus / firebrand->total);
+                        fire_damage = apply_resistance_to_damage(
+                            victim, fire_damage, RES_FIRE);
+                        if (has_elemental_resistance(victim, gsn_resist_heat))
+                                fire_damage *= 0.8;
+                        if (fire_damage > 0)
+                                regeneration_types |= RES_FIRE;
+                }
+                notify_native_regeneration_damage(
+                    victim, actual_damage, regeneration_types);
+        }
 
         if (actual_damage > 0 && victim->hit > 0
         &&  aggravated_chance > 0 && aggravated_percent > 0
@@ -2786,7 +2896,7 @@ void lich_chill_touch_after_hit(CHAR_DATA *ch, CHAR_DATA *victim,
                 return;
 
         damage_internal(ch, victim, number_range(1, 10), gsn_chill_touch,
-            FALSE, RES_COLD, FALSE, FALSE, FALSE, 0, 0, 0, &cold_damage);
+            FALSE, RES_COLD, FALSE, FALSE, FALSE, 0, 0, 0, NULL, &cold_damage);
 
         /* Death, escape and cold immunity all end the freezing attempt here. */
         if (cold_damage <= 0 || ch->deleted || victim->deleted
@@ -11482,9 +11592,12 @@ int mark_aggravated_damage(CHAR_DATA *victim, int amount)
  */
 bool aggro_damage(CHAR_DATA *ch, CHAR_DATA *victim, int damage)
 {
+        int hit_before;
+
         if (damage < 1)
                 return FALSE;
 
+        hit_before = victim->hit;
         victim->hit -= damage;
         victim->aggro_dam += damage;
 
@@ -11497,14 +11610,17 @@ bool aggro_damage(CHAR_DATA *ch, CHAR_DATA *victim, int damage)
                         victim->aggro_dam = victim->max_hit - 1;
         }
 
+        if (victim->hit < 1
+        &&  IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE))
+        {
+                victim->hit = 1;
+                notify_native_hp_loss(victim, hit_before, damage, 0);
+                return FALSE;
+        }
+
+        notify_native_hp_loss(victim, hit_before, damage, 0);
         if (victim->hit < 1)
         {
-                if (IS_NPC(victim) && IS_SET(victim->act, ACT_UNKILLABLE))
-                {
-                        victim->hit = 1;
-                        return FALSE;
-                }
-
                 /*
                  * If a mob you're grouped with killsteals, and you're a fights-with-mobs class,
                  * you get the reward. -- Owl 26/7/22

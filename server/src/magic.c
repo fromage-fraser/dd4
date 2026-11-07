@@ -3500,6 +3500,186 @@ void spell_cure_serious(int sn, int level, CHAR_DATA *ch, void *vo)
         return;
 }
 
+/* Repair existing trauma only: no aggravated healing or inventory recreation. */
+int repair_regeneration_trauma(CHAR_DATA *victim, int max_categories)
+{
+        int repaired = 0;
+
+        if (!victim || max_categories <= 0)
+                return 0;
+
+        if (repaired < max_categories
+        &&  IS_AFFECTED(victim, AFF_EYE_TRAUMA))
+        {
+                affect_strip(victim, gsn_blindness);
+                affect_strip(victim, gsn_gouge);
+                affect_strip(victim, gsn_dirt);
+                affect_strip(victim, gsn_eye_trauma);
+
+                affect_strip_raw_bit(
+                    victim,
+                    AFF_EYE_TRAUMA);
+
+                affect_strip_raw_bit(
+                    victim,
+                    AFF_BLIND);
+
+                send_to_char(
+                    "Your eyes are miraculously healed.\n\r",
+                    victim);
+
+                act(
+                    "$n's eyes are miraculously healed.",
+                    victim,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
+                repaired++;
+        }
+
+        if (repaired < max_categories
+        &&  IS_AFFECTED(victim, AFF_HEAD_TRAUMA))
+        {
+                affect_strip(victim, gsn_head_trauma);
+
+                affect_strip_raw_bit(
+                    victim,
+                    AFF_HEAD_TRAUMA);
+
+                send_to_char(
+                    "You instantly recover from your brain injury.\n\r",
+                    victim);
+
+                act(
+                    "$n instantly recovers from $n brain injury.",
+                    victim,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
+                repaired++;
+        }
+
+        if (repaired < max_categories
+        &&  IS_AFFECTED(victim, AFF_ARM_TRAUMA))
+        {
+                affect_strip(victim, gsn_arm_trauma);
+
+                affect_strip_raw_bit(
+                    victim,
+                    AFF_ARM_TRAUMA);
+
+                send_to_char(
+                    "Your arms are restored to peak condition.\n\r",
+                    victim);
+
+                act(
+                    "$n's arms are restored to peak condition.",
+                    victim,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
+                repaired++;
+        }
+
+        if (repaired < max_categories
+        &&  IS_AFFECTED(victim, AFF_LEG_TRAUMA))
+        {
+                affect_strip(victim, gsn_leg_trauma);
+
+                affect_strip_raw_bit(
+                    victim,
+                    AFF_LEG_TRAUMA);
+
+                send_to_char(
+                    "Your legs are instantaneously renewed.\n\r",
+                    victim);
+
+                act(
+                    "$n's legs are instantaneously renewed.",
+                    victim,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
+                repaired++;
+        }
+
+        if (repaired < max_categories
+        &&  IS_AFFECTED(victim, AFF_HEART_TRAUMA))
+        {
+                affect_strip(victim, gsn_heart_trauma);
+
+                affect_strip_raw_bit(
+                    victim,
+                    AFF_HEART_TRAUMA);
+
+                affect_strip_raw_bit(
+                    victim,
+                    AFF_DOT);
+
+                send_to_char(
+                    "Your heart stops bleeding and is immediately healed.\n\r",
+                    victim);
+
+                act(
+                    "$n's heart is immediately healed.",
+                    victim,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
+                repaired++;
+        }
+
+        if (repaired < max_categories
+        &&  IS_AFFECTED(victim, AFF_TAIL_TRAUMA))
+        {
+                affect_strip(victim, gsn_tail_trauma);
+
+                affect_strip_raw_bit(
+                    victim,
+                    AFF_TAIL_TRAUMA);
+
+                send_to_char(
+                    "Your tail reclaims its full functionality.\n\r",
+                    victim);
+
+                act(
+                    "$n's tail reclaims its full functionality.",
+                    victim,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
+                repaired++;
+        }
+
+        if (repaired < max_categories
+        &&  IS_AFFECTED(victim, AFF_TORSO_TRAUMA))
+        {
+                affect_strip(victim, gsn_torso_trauma);
+
+                affect_strip_raw_bit(
+                    victim,
+                    AFF_TORSO_TRAUMA);
+
+                affect_strip_raw_bit(
+                    victim,
+                    AFF_DOT);
+
+                send_to_char(
+                    "Your grievously-wounded torso is magically repaired.\n\r",
+                    victim);
+
+                act(
+                    "$n's grievously-wounded torso is magically repaired.",
+                    victim,
+                    NULL,
+                    NULL,
+                    TO_ROOM);
+                repaired++;
+        }
+
+        return repaired;
+}
+
 void spell_regenerate(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
@@ -3531,160 +3711,7 @@ void spell_regenerate(int sn, int level, CHAR_DATA *ch, void *vo)
         if (repaired > 0)
                 send_to_char("Your deeper wounds begin to regenerate.\n\r", victim);
 
-        if (IS_AFFECTED(victim, AFF_EYE_TRAUMA))
-        {
-                affect_strip(victim, gsn_blindness);
-                affect_strip(victim, gsn_gouge);
-                affect_strip(victim, gsn_dirt);
-                affect_strip(victim, gsn_eye_trauma);
-
-                affect_strip_raw_bit(
-                    victim,
-                    AFF_EYE_TRAUMA);
-
-                affect_strip_raw_bit(
-                    victim,
-                    AFF_BLIND);
-
-                send_to_char(
-                    "Your eyes are miraculously healed.\n\r",
-                    victim);
-
-                act(
-                    "$n's eyes are miraculously healed.",
-                    victim,
-                    NULL,
-                    NULL,
-                    TO_ROOM);
-        }
-
-        if (IS_AFFECTED(victim, AFF_HEAD_TRAUMA))
-        {
-                affect_strip(victim, gsn_head_trauma);
-
-                affect_strip_raw_bit(
-                    victim,
-                    AFF_HEAD_TRAUMA);
-
-                send_to_char(
-                    "You instantly recover from your brain injury.\n\r",
-                    victim);
-
-                act(
-                    "$n instantly recovers from $n brain injury.",
-                    victim,
-                    NULL,
-                    NULL,
-                    TO_ROOM);
-        }
-
-        if (IS_AFFECTED(victim, AFF_ARM_TRAUMA))
-        {
-                affect_strip(victim, gsn_arm_trauma);
-
-                affect_strip_raw_bit(
-                    victim,
-                    AFF_ARM_TRAUMA);
-
-                send_to_char(
-                    "Your arms are restored to peak condition.\n\r",
-                    victim);
-
-                act(
-                    "$n's arms are restored to peak condition.",
-                    victim,
-                    NULL,
-                    NULL,
-                    TO_ROOM);
-        }
-
-        if (IS_AFFECTED(victim, AFF_LEG_TRAUMA))
-        {
-                affect_strip(victim, gsn_leg_trauma);
-
-                affect_strip_raw_bit(
-                    victim,
-                    AFF_LEG_TRAUMA);
-
-                send_to_char(
-                    "Your legs are instantaneously renewed.\n\r",
-                    victim);
-
-                act(
-                    "$n's legs are instantaneously renewed.",
-                    victim,
-                    NULL,
-                    NULL,
-                    TO_ROOM);
-        }
-
-        if (IS_AFFECTED(victim, AFF_HEART_TRAUMA))
-        {
-                affect_strip(victim, gsn_heart_trauma);
-
-                affect_strip_raw_bit(
-                    victim,
-                    AFF_HEART_TRAUMA);
-
-                affect_strip_raw_bit(
-                    victim,
-                    AFF_DOT);
-
-                send_to_char(
-                    "Your heart stops bleeding and is immediately healed.\n\r",
-                    victim);
-
-                act(
-                    "$n's heart is immediately healed.",
-                    victim,
-                    NULL,
-                    NULL,
-                    TO_ROOM);
-        }
-
-        if (IS_AFFECTED(victim, AFF_TAIL_TRAUMA))
-        {
-                affect_strip(victim, gsn_tail_trauma);
-
-                affect_strip_raw_bit(
-                    victim,
-                    AFF_TAIL_TRAUMA);
-
-                send_to_char(
-                    "Your tail reclaims its full functionality.\n\r",
-                    victim);
-
-                act(
-                    "$n's tail reclaims its full functionality.",
-                    victim,
-                    NULL,
-                    NULL,
-                    TO_ROOM);
-        }
-
-        if (IS_AFFECTED(victim, AFF_TORSO_TRAUMA))
-        {
-                affect_strip(victim, gsn_torso_trauma);
-
-                affect_strip_raw_bit(
-                    victim,
-                    AFF_TORSO_TRAUMA);
-
-                affect_strip_raw_bit(
-                    victim,
-                    AFF_DOT);
-
-                send_to_char(
-                    "Your grievously-wounded torso is magically repaired.\n\r",
-                    victim);
-
-                act(
-                    "$n's grievously-wounded torso is magically repaired.",
-                    victim,
-                    NULL,
-                    NULL,
-                    TO_ROOM);
-        }
+        repair_regeneration_trauma(victim, 7);
 
         if (repaired > 0
         ||  spell_support_affect_count(victim) < old_affect_count

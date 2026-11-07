@@ -834,7 +834,11 @@ Accepted archetype names are:
 | `half_orc` | Living mixed-orc humanoid with infrared and anatomical canines, without an automatic bite or sunlight penalty; defaults 175 cm, 80 kg, Medium.
 | `human_goblin` | Living human/goblin hybrid with infrared and anatomical fangs, without an automatic bite or sunlight penalty; goblin kin for dwarf training; defaults 150 cm, 50 kg, Medium.
 | `hobgoblin` | Living humanoid with infrared and no sunlight penalty; defaults 200 cm, 100 kg, Medium. Construction recognition awaits the shared mechanic.
-| `ogre`, `troll`, `ogre_mage`, `giant`, `titan` | Humanoid placeholders with creature-family identity. Their full creature traits await review.
+| `ogre`, `ogre_mage`, `giant`, `titan` | Humanoid placeholders with creature-family identity. Their full creature traits await review.
+| `troll` | Living speaking humanoid with infrared, claw/bite attacks, natural armour -15, racial XP +10, native regeneration and bounded rock throwing; 275 cm, 225 kg, Large without HUGE.
+| `troll_infant` | Speaking juvenile troll with the same native physiology but no active special or rock throw; 140 cm, 80 kg, Medium without HUGE.
+| `den_beast` | Living mute canine-like quadruped with a fang-only bite and natural armour -5; 90 cm shoulder height, 180 cm length, 120 kg, Medium.
+| `carrion_worm` | Living headless, eyeless, limbless invertebrate with ordinary blunt fallback and existing NPC-corpse eating; 10 cm thickness, 150 cm length, 12 kg, Small.
 | `cattle` | Living quadrupedal mammal with horns/hooves, ordinary pierce/pound attacks and natural armour -5; 150 cm shoulder height, 250 cm length, 650 kg, Large without HUGE; racial XP 0.
 | `hill_giant` | Living speaking humanoid of the giant family; 490 cm, 2050 kg, Large with HUGE; natural armour -15, racial XP +5, native rock special and passive 30% rock catch.
 | `stone_giant` | Living speaking humanoid of the giant family; 550 cm, 4100 kg, Large with HUGE; natural armour -30, racial XP +10, native rock special and passive 90% rock catch.
@@ -940,12 +944,10 @@ Creature family is identity stored in `mob_type.family`, after
 field. Other archetypes can share a family when variants are introduced.
 Old unreviewed archetypes have `CREATURE_FAMILY_NONE`.
 
-The remaining target archetypes are deliberately small placeholders:
-`half_orc`, `hobgoblin`, `ogre`, `troll`, `ogre_mage`, `giant` and
-`titan`. They currently supply ordinary humanoid anatomy and family identity,
-with neutral modifiers and no special abilities. Selecting `troll`, for
-example, does not yet grant regeneration. Review their full traits before
-using them to convert an area.
+The target-family entries retain their individual review status. Troll
+now has the reviewed physiology, native regeneration and rock rules in
+<<scribe-troll-den>>. The remaining ogre, ogre_mage, generic giant and
+titan entries still need full creature review before area conversion.
 
 `goblinoid_training` gives +1 effective hitroll against the orc, half-orc,
 goblin and hobgoblin families. `giant_defence` gives ogres, trolls, ogre magi,
@@ -3127,7 +3129,7 @@ spec_cast_water_sprite  casts cleric/mage/psionic spells
     [combat]
 spec_cast_cleric    casts cleric spells [combat]
 spec_cast_cleric_helper cleric in combat, vampire-safe adept aid while idle
-spec_giant native hill/stone rock throw [combat]; passive catch is separate
+spec_giant native hill/stone/troll rock throw [combat]; catch is separate
 spec_cast_ghost undead ghost; appears only during
     night
 spec_cast_judge fires explosive bullets (a la Dredd)
@@ -10201,3 +10203,181 @@ only prose corrections are the bull's 'takes its job' and the hill giant's
 poison, twelve objects, nineteen carried items and original resets/caps
 stay. Peasant 702 remains unspawned. There are 28 initial inhabitants and
 30 after refills, with the original cow cap of four.
+
+[[scribe-troll-den]]
+==== Troll Den creatures
+
+Use troll for the ordinary adults and the young troll, troll_infant for
+the speaking baby, den_beast for both furry beasts, and carrion_worm for
+the fat worm. These are creature profiles, not occupations. Troll and
+troll_infant use humanoid; den_beast uses quadrupedal_mammal; carrion_worm
+uses limbless_invertebrate. The last two bodies do not acquire troll
+physiology merely because they live in the same den.
+
+Trolls are living, speaking humanoids with infrared, claws and anatomical
+fangs. Ordinary claw/bite choices use the normal attack rate, without a
+guaranteed extra attack. Natural armour is -15 and racial XP is +10.
+HP, damage, critical and swiftness modifiers stay neutral. There is no
+general resistance, immunity or vulnerability package. Fire and acid
+interrupt regeneration; that does not add incoming damage vulnerability.
+Troll-family matching still lets a trained dwarf use giant defence.
+Keep the local fur descriptions; they do not require a separate species.
+
+Default troll dimensions are 275 cm height, 225 kg and Large, without
+BODY_HUGE. Length is unspecified. The young troll (2801) individually
+uses 210 cm, 110 kg and Medium. The baby (2803) uses troll_infant defaults
+of 140 cm, 80 kg and Medium, without HUGE. Its ordinary anatomy and native
+regeneration match troll, but its active special set is empty and its
+internal trait profile explicitly disables rock throwing.
+
+The giant troll (2804) uses 400 cm, 650 kg, Large and individual BODY_HUGE;
+the large female (2805) uses 350 cm, 450 kg, Large and individual BODY_HUGE.
+The two medium trolls (2802/2808) retain the ordinary adult defaults. The
+one-third-size line on 2802 describes bulk: 225 kg is three times the
+ordinary human default of 75 kg. It is not an exact height ratio. The
+giant's name alone does not make it a separate troll/giant hybrid.
+
+Only 2804 is elite and 2805 rare; the other seven definitions stay common.
+The existing rank HP multipliers apply once, 5x and 2x respectively.
+Rank does not set dimensions or multiply the native healing amount.
+The second-edition Troll entry guides the rounded nine-foot adult height,
+claws/bite, infrared, regeneration and occasional stones. All masses,
+individual measurements, ranks, numerical bonuses and exact DD4 timings
+are design adaptations. Dimensions remain descriptive; BODY_HUGE retains
+its separate existing gameplay checks.
+
+Native troll regeneration is passive physiology, independent of active
+special slots. While alive, idle or fighting, the troll heals
+max(3, level / 5) HP per three-second pulse, using integer division. This
+is 3 HP for the den's trolls, with no percentage-of-max-HP or rank scaling.
+The first healing begins nine seconds after the first damaging injury;
+later ordinary hits do not keep restarting that initial wait.
+
+This single native stream replaces ordinary positive NPC tick healing for
+these opted-in profiles. Do not add ACT_REGENERATOR or stack a tick bonus
+on top. Existing poison, Prayer Plague and Slow reductions, integer
+rounding, ACT_NO_HEAL and the aggravated-damage healing ceiling still
+apply. An alive troll does not need working limbs or an awake state for
+its passive repair. Player troll regeneration, vulnerabilities, skills
+and trait opt-ins remain unchanged.
+
+Actual fire or acid HP damage pauses native regeneration for nine seconds
+from the latest damaging event. Pauses refresh rather than accumulate;
+there is no banked healing. Misses, immunity and fully blocked damage do
+not pause it. This includes fire/acid spells, breaths, damage categories,
+direct Fireshield retaliation, elemental traps and actual damaging
+Firebrand fire procs. Merely carrying Firebrand, missing with it or being
+immune to its fire does not count. Ordinary external healing spells keep
+their existing rules; this pause applies to native regeneration.
+
+Every thirty seconds of active regeneration can repair at most one
+supported injury category. Fire or acid pauses and resets that injury
+recovery progress. Focused repair shares the supported Regenerate injury
+logic without repairing aggravated damage, casting the whole spell or
+recreating disarmed body-part objects. Death remains final: there is no
+postmortem revival, independent severed limb or replacement object.
+Shared climbing and food-distraction pursuit rules remain future work.
+
+Ordinary and young trolls inherit spec_giant as their one 100% active
+selection. Within that ability, each eligible combat round has a 15%
+chance to throw one native rock at the current visible, living opponent
+in the same room. Damage is max(1, level / 2) + 1d8, with integer division
+and at most two rocks per game day. Trolls have no rock catch. The infant
+cannot throw even if an author explicitly selects spec_giant: the native
+throw trait is disabled. Passive regeneration is not an active special.
+
+The existing giant ability's working-arm, awake/capable, hold/daze,
+corporeal, safety, physical-contact and death rules apply. It cannot open
+a fight or throw across rooms. Bounded ammunition is NPC memory, not an
+authored object; no item is created, consumed, unequipped or taken from
+loot. Its 15% check is inside spec_giant, not spchance 15 0 0. The ordinary
++10 special XP adjustment applies once on the five non-infant trolls,
+separately from racial +10. The infant has racial +10 without special XP.
+
+den_beast is a living canine-like quadrupedal mammal, without forcing a
+wolf, worg or hell-hound identity. It has tail, paws, anatomical claws and
+fangs, but only ordinary piercing fang-bite attacks, no arms and no speech.
+Natural armour is -5; racial XP is zero, and HP, damage, critical and
+swiftness modifiers are neutral. It adds no special, magical sense,
+elemental power or troll regeneration. Both beasts (2800/2807) use
+90 cm shoulder height, 180 cm total length, 120 kg and Medium, without
+HUGE. Keep authored detect-invisible on both and HIDE on the guardian;
+red eyes alone do not establish an additional power. Dog defaults stay.
+
+carrion_worm is a living limbless invertebrate with no distinct external
+head or eyes, no arms, legs or speech, and ordinary living organs, blood,
+pain and soul. Its profile cancels inherited PART_HEAD/PART_EYE through
+XOR and supplies BODY_NO_HEAD/BODY_NO_EYES; absence flags alone would not
+cancel the positive anatomy. It is not mindless, bloodless, analgic,
+soulless or undead. It has no fang attack, Swallow, venom, HUGE, new sense
+or troll regeneration. Ordinary blunt fallback attacks and existing NPC
+awareness/visibility rules apply. Defaults are 10 cm body thickness,
+150 cm length, 12 kg and Small. Racial XP is zero, and HP, damage,
+critical and swiftness modifiers are neutral.
+
+The worm inherits existing spec_fido at 100%. It eats genuine NPC corpses
+and spills their contents into the room, without direct HP healing.
+It ignores player corpses and scenery containers. Cadaver-container 2800
+and bed-container 2801 are scenery, so their belt and ring remain intact.
+spec_fido has zero special XP. Preserve the worm's scavenger, aggressive,
+wimpy, hide and sneak settings; it lacks STAY_AREA and can wander outside.
+Wimpy continues to prevent ordinary aggression against awake players.
+
+Use the existing Scribe fields in a $mob block. For the giant troll,
+these optional fields show its selection and individual replacements:
+
+    archetype troll
+    rnk elite
+    height 400
+    weight 650
+    size 2
+    bf huge
+
+The exporter writes < troll~ elite~, MobHeight 400, MobWeight 650 and
+MobSize 2. bf huge supplies the individual raw BODY_HUGE mask (128), not
+another size value. Medium is size 1, Large size 2 and Small size 0.
+Omit dimensions/size to inherit, or use inherit. Explicit height/length/
+weight zero means unspecified; size 0 explicitly means Small. Dimensions
+use whole centimetres and kilograms, without units or fractional values.
+For the young troll use height 210, weight 110, size 1, with bf none.
+
+For ordinary troll, troll_infant, den_beast and carrion_worm, omit special
+fields to inherit each profile's complete active set. A legacy singleton
+sp spec_giant or sp spec_fido replaces that set; it is not an extra slot.
+Existing explicit replacement syntax for the worm is:
+
+    archetype carrion_worm
+    rnk common
+    sp spec_fido
+    sp2 none
+    sp3 none
+    spchance 100 0 0
+
+For a deliberate empty active set, existing sp none, sp2 none, sp3 none
+and spchance 0 0 0 clear all slots. To explicitly inherit use sp inherit,
+sp2 inherit, sp3 inherit and spchance inherit. Do not add a special merely
+to make troll regeneration work. Armour, racial XP, native regeneration,
+injury recovery, throw eligibility and daily counters are internal code
+profile data. There are no new Scribe commands, area fields, ACT bits or
+individual trait overrides. Use MSTAT to inspect resolved traits, their
+species/archetype origins, explicit removals, dimensions and active slots.
+
+Set the individual raw body mask to zero on 2800/2807 and 2806 so it does
+not cancel inherited animal restrictions. Clear the baby's old raw 32:
+its WANNA JOIN dialogue explicitly requires speech. Omit bf or use bf none
+for a zero individual mask. Keep individual HUGE 128 only on 2804/2805.
+Correct the giant's legacy 13e13+130 dice text to 13d13+130; the loader
+discards these dice, so this does not add HP beyond the approved rank.
+
+Keep all other ACT/AFF masks, sexes, alignments, levels, fur and local
+prose, including SNEAK, SCAVENGER, aggression and the roving beast's actual
+SENTINEL. Preserve all five rooms, flags, doors, exits, ambient text and
+reset message, all six objects and original reset ordering/caps/placements.
+Bedroom 2805 remains DARK/NO_MOB/INDOORS; NO_MOB restricts wandering entry,
+not its deliberate resets. Skin 2802 stays equipped on giant 2804, belt
+2804 in cadaver-container 2800, ring 2803 in bed-container 2801 and bone
+2805 on the floor. There are 18 initial inhabitants and 33 after refills.
+There is no matching Scribe source to regenerate for this area.
+
+Illustrations should show canine-like beasts and a carrion worm without
+a distinct head, eyes or limbs.

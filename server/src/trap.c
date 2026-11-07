@@ -755,6 +755,9 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
         int deaths = action_deaths(ch);
         ROOM_INDEX_DATA *room;
         bool physical_damage;
+        unsigned long int regeneration_types = 0;
+        int hit_before;
+        int actual_damage;
 
         if (!obj || obj->deleted || !action_character_alive(ch, deaths))
                 return;
@@ -762,6 +765,10 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
         physical_damage = obj->trap_dam == TRAP_DAM_BLUNT
                 || obj->trap_dam == TRAP_DAM_PIERCE
                 || obj->trap_dam == TRAP_DAM_SLASH;
+        if (obj->trap_dam == TRAP_DAM_FIRE)
+                regeneration_types = RES_FIRE;
+        else if (obj->trap_dam == TRAP_DAM_ACID)
+                regeneration_types = RES_ACID;
 
         if (obj->trap_charge <= 0)
                 return;
@@ -1208,12 +1215,20 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 
                 trap_damage_message (ch, dam);
 
+                hit_before = ch->hit;
                 ch->hit -= dam;
 
                 if ( !IS_NPC(ch)
                     && ch->level >= LEVEL_IMMORTAL
                     && ch->hit < 1 )
                         ch->hit = 1;
+
+                /* The trap's existing defences and immortal floor run first. */
+                actual_damage = (int)UMIN((long long)UMAX(0, dam),
+                    UMAX(0LL, (long long)hit_before - ch->hit));
+                if (actual_damage > 0)
+                        notify_native_regeneration_damage(
+                            ch, actual_damage, regeneration_types);
 
                 update_pos( ch );
 
@@ -1334,11 +1349,18 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
 
                         trap_damage_message (wch, dam);
 
+                        hit_before = wch->hit;
                         wch->hit -= dam;
                         if ( !IS_NPC(wch)
                             && wch->level >= LEVEL_IMMORTAL
                             && wch->hit < 1 )
                                 wch->hit = 1;
+
+                        actual_damage = (int)UMIN((long long)UMAX(0, dam),
+                            UMAX(0LL, (long long)hit_before - wch->hit));
+                        if (actual_damage > 0)
+                                notify_native_regeneration_damage(
+                                    wch, actual_damage, regeneration_types);
 
                         update_pos( wch );
 

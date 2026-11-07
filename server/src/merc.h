@@ -3104,6 +3104,11 @@ struct char_data
         int giant_rock_year;
         int giant_rocks_thrown;
         bool giant_rock_running;
+        /* Native NPC physiology only; zero next pulse means no injury cycle. */
+        time_t native_regen_ready;
+        time_t native_regen_next;
+        time_t native_regen_updated;
+        int native_regen_trauma_seconds;
         int drained_stacks;
         int drained_recovery; /* Ordinary-rate seconds earned towards the next stack. */
         time_t drained_updated;
@@ -3656,7 +3661,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 76
+#define MAX_MOB 79
 #define MAX_SPECIES 17
 #define MAX_RANK 6
 
@@ -5932,8 +5937,20 @@ typedef enum creature_trait
         CREATURE_TRAIT_ROCK_DAMAGE_SIDES,
         CREATURE_TRAIT_ROCK_DAILY_AMMO,
         CREATURE_TRAIT_ROCK_CATCH_PERCENT,
+        CREATURE_TRAIT_NATIVE_REGEN_MIN_HP,
+        CREATURE_TRAIT_NATIVE_REGEN_LEVEL_DIVISOR,
+        CREATURE_TRAIT_NATIVE_REGEN_INTERVAL,
+        CREATURE_TRAIT_NATIVE_REGEN_DELAY,
+        CREATURE_TRAIT_NATIVE_REGEN_SUPPRESSION,
+        CREATURE_TRAIT_NATIVE_REGEN_TRAUMA_INTERVAL,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
+/* Passive native regeneration never invokes or replaces an active special. */
+void update_native_regeneration(void);
+void notify_native_regeneration_damage(CHAR_DATA *victim, int actual_damage,
+                                       unsigned long int res_types);
+/* Shared injury repair; a spell requests all categories, native healing one. */
+int repair_regeneration_trauma(CHAR_DATA *victim, int max_categories);
 int validate_creature_traits args((void));
 int creature_trait_value args((CHAR_DATA *ch, CREATURE_TRAIT id));
 int creature_status_resistance_percent args((CHAR_DATA *ch, unsigned long int res_types));
