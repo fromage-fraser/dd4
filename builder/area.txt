@@ -6236,3 +6236,111 @@ AD&D second edition Monstrous Manual entries for Gnome, Hobgoblin, Bat,
 Rat, Small Mammal and Giant Crustacean inform anatomy. Ranks, masses,
 DD4 armour/XP and local magical powers are adaptations. Fire bat is the
 area's elemental interpretation, not every published fire-bat ability.
+
+
+Rats Lair creatures
+-------------------
+
+Use rat, domestic_cat and human for the ordinary mammals and people.
+Snake, wererat, firedrake and green_ooze add the new reviewed profiles.
+These are creature identities, not occupations. Their existing area
+roles and aggression/passivity flags remain individual.
+
+Snake uses serpentine_reptile: organic head, eyes, heart, organs, tail,
+scales and fangs, with no arms, legs or speech. It has a normal fang bite
+and natural armour -5; no default venom or heat sight. Defaults are
+120 cm body length, 2 kg and Small, height unspecified. Snigger overrides
+length to 213 cm and weight to 5 kg, retaining his authored venom,
+Sanctuary and Protection. Rat venom stays individual too. Use
+spec_poison_bite for these ten authored bites; its XP contribution now
+matches the original spec_poison at +5, rather than the generic +10.
+Its target selection, chance and venom effects stay unchanged.
+
+Small rat 3801 uses 4 cm height/12 cm body length, ordinary rat 3804 uses
+8 cm/20 cm, and arm-length rats 3805/3811 use 20 cm/60 cm/5 kg.
+All are Small; tiny whole-kg weights stay unspecified. Sammy uses the
+ordinary domestic_cat profile with individual 12 cm shoulder height,
+25 cm length and 1 kg, consistent with her under-three-pound description.
+Keep the pets' authored level40, protection, Sanctuary and behaviour.
+
+Wererat uses humanoid anatomy with normal arms, hands, organs and speech,
+plus rat tail, claws and fangs. Weapons keep ordinary precedence; unarmed
+attacks use fangs. Defaults are 150 cm, 55 kg and Medium; natural armour
+-5 and racial XP +10. Leader3810 uses180cm/90kg; slavemaster3812 uses
+170cm/75kg. The guard's male description and portrait support sex male.
+
+IMM_NONMAGIC and the internal silver_bypasses_nonmagic trait implement
+the silver-or-magic weapon defence. Ordinary mundane physical attacks
+cannot hurt it; silver and magical weapons deal normal defended damage.
+Silver gains no extra vulnerability multiplier. Normal spell categories
+still apply. No new ACT bit, area field or player trait opt-in is added.
+All five existing wererat venom specials remain local overrides, not
+universal racial venom. Do not copy PC werewolf abilities. Shapechanging,
+infection, rat control and human-corpse reversion await shared mechanics.
+
+Firedrake uses dragon anatomy with flight, scales, wings, claws, tail and
+fangs, without arms or speech. Only fangs supply ordinary natural attacks.
+Keep the area's detect-invisible flag. Defaults are65cm height/122cm body
+length/25kg/Small, no HUGE, armour-10, fire resistance and racial XP+10.
+It has resistance rather than a true dragon's blanket fire immunity.
+
+The inherited spec_firedrake keeps the old fire-breath spell and target
+chance with a usable-head check. Its internal fire_breath_daily_casts
+trait supplies five successful casts per MUD day. A failed target/head/
+action check spends no charge; immunity or a successful target save does
+not refund a spell already cast. The full day/month/year controls refill,
+not the hour or an area reset. Ordinary attacks continue after exhaustion.
+Runtime counters and the re-entry guard never come from area fields.
+
+The internal burning_blood_sides trait is2: a damaging close-range cutting
+or piercing hit can splash1d2 fire. A normal fire save negates the reaction.
+Fire resistance/immunity, Resist Heat and ordinary protective reductions
+apply. Blunt, ranged, missed and zero-damage attacks do not trigger it.
+The source must still have usable blood. The reaction is applied inside
+the original damage event, so its existing death handling can settle either
+or both combatants; it does not create a recursive second attack.
+
+Successful live vampire feeding also exposes the feeder once. A failed
+bite, no defended HP loss or no actual blood gain on a metered feed gives
+no reaction. Hot blood is gained once before its burn is settled; the
+old path remains for ordinary prey. NPC vampire throat attacks use their
+existing unmetered feeding path. No Fireshield, free extra attacks,
+blood-harvesting/firebomb/coating system or corpse-chemistry system is
+added. Existing corpse FEED remains unchanged.
+
+Green ooze is a local living blob, not the tabletop Green Slime
+infestation. Its amorphous_organism body has no head, eyes, limbs, heart
+or speech, and is bloodless but organic. The archetype is mindless, which
+already supplies pain insensitivity. It is not automatically soulless,
+inorganic or undead. It has poison/sleep/charm/hold/paralysis immunity,
+ordinary blunt pseudopod attacks, ordinary remains and racial XP+5.
+It has no armour, weapon/elemental immunity, corrosion, acid proc,
+flesh conversion, division, engulfment, flight or Pass Door. Defaults are
+30cm maximum thickness/150cm spread length/80kg/Medium, all estimates.
+
+Slaves use ordinary human defaults175cm/75kg/Medium. The explicitly mortal
+manifestations also use human: Hatchet185cm/90kg, Icaza180cm/75kg, reflecting
+statuesque prose. Keep Hatchet's intentional living undead-caster special,
+Icaza's cleric special, level40, NO_QUEST and protection/sight flags.
+Their miniguns remain wand objects in HOLD with the original spell/charges.
+
+Only leader3810 is elite; firedrake3809 and slavemaster3812 are rare.
+The named pets and mortal manifestations stay common because their
+authored level40/protection already defines their strength. Rare HP is2x,
+elite5x, once; rank can also affect generated gear.
+
+Clear raw animal36, Snigger60 and ooze63 after inheritance; otherwise XOR
+can restore missing parts. Snigger's old missing-heart bit is corrected.
+Guard3807 becomes male; Icaza's ignored40e40 dice typo becomes40d40 with
+no HP effect. Sammy's broken sentence is corrected without changing intent.
+
+All43 room records/flags/doors/exits,25 existing objects,28 reset inhabitants
+and24 carried items remain. Keep wards3838/3839, keys, shrine/portal puzzle,
+scenery containers with torch/gem contents, poetry and miniguns. No matching
+Scribe source exists. No new body bits, target categories, area fields or
+individual trait overrides are needed.
+
+The main references are AD&D second edition Monstrous Manual entries for
+Wererat/Lycanthrope, Dragonet/Firedrake, Snake, Small Mammal and the
+Ooze/Slime/Jelly groups. Fire-blood timing/save integration, whole-kg masses,
+DD4 armour/XP and the local green ooze are deliberate DD4 adaptations.

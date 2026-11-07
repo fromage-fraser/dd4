@@ -41,6 +41,17 @@ struct firebrand_component
         int total;
 };
 
+/* One ordinary hit or one feed owns its blood reaction, never a nested proc. */
+typedef struct blood_contact BLOOD_CONTACT;
+struct blood_contact
+{
+        bool melee;
+        bool feeding;
+        bool processed;
+        int amount;
+        int *gained;
+};
+
 /*
  * Local functions.
  */
@@ -72,20 +83,21 @@ static bool blessed_weapon_vs_undead
 static int blessed_weapon_damage_bonus
         args((int dam, OBJ_DATA *weapon, CHAR_DATA *victim));
 static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
-                             bool haste, bool aggravated_bite);
+                             bool haste, bool aggravated_bite,
+                             int feed_amount, int *feed_gained);
 static void group_gain_internal
         args((CHAR_DATA *ch, CHAR_DATA *victim, bool mob_called,
               bool solo, bool survivors_only));
 static void damage_with_firebrand_component
         args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
-              const FIREBRAND_COMPONENT *firebrand));
+              const FIREBRAND_COMPONENT *firebrand, BLOOD_CONTACT *blood));
 static void damage_from_object_internal
         args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
-              OBJ_DATA *source, const FIREBRAND_COMPONENT *firebrand));
+              OBJ_DATA *source, const FIREBRAND_COMPONENT *firebrand, BLOOD_CONTACT *blood));
 static void damage_with_aggravated_component_internal
         args((CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
               int chance, int percent, int cap,
-              const FIREBRAND_COMPONENT *firebrand));
+              const FIREBRAND_COMPONENT *firebrand, BLOOD_CONTACT *blood));
 static void notify_native_hp_loss
         args((CHAR_DATA *victim, int hit_before, int dam,
               unsigned long int res_types));
@@ -102,7 +114,7 @@ static void damage_internal args((CHAR_DATA *ch,
                                   int aggravated_percent,
                                   int aggravated_cap,
                                   const FIREBRAND_COMPONENT *firebrand,
-                                  int *damage_dealt));
+                                  int *damage_dealt, BLOOD_CONTACT *blood));
 
 /*
  * Death blurb
@@ -1078,13 +1090,13 @@ bool object_attack_is_immune(CHAR_DATA *ch, CHAR_DATA *victim,
 void damage_from_object(CHAR_DATA *ch, CHAR_DATA *victim,
                         int dam, int dt, bool poison, OBJ_DATA *source)
 {
-        damage_from_object_internal(ch, victim, dam, dt, poison, source, NULL);
+        damage_from_object_internal(ch, victim, dam, dt, poison, source, NULL, NULL);
 }
 
 static void damage_from_object_internal(CHAR_DATA *ch, CHAR_DATA *victim,
                                        int dam, int dt, bool poison,
                                        OBJ_DATA *source,
-                                       const FIREBRAND_COMPONENT *firebrand)
+                                       const FIREBRAND_COMPONENT *firebrand, BLOOD_CONTACT *blood)
 {
         if (source && !bodypart_weapon_usable(ch, source))
                 return;
@@ -1100,7 +1112,7 @@ static void damage_from_object_internal(CHAR_DATA *ch, CHAR_DATA *victim,
         damage_internal(
             ch, victim, dam, dt, poison,
             object_attack_resistance_types(dt, source), FALSE, TRUE, FALSE,
-            0, 0, 0, firebrand, NULL);
+            0, 0, 0, firebrand, NULL, blood);
 }
 
 /*
@@ -1159,17 +1171,27 @@ static int object_effect_threshold(CHAR_DATA *ch, CHAR_DATA *victim,
  */
 bool one_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
 {
-        return one_hit_internal(ch, victim, dt, haste, FALSE);
+        return one_hit_internal(ch, victim, dt, haste, FALSE, -1, NULL);
 }
 
 /* Explicit bite callers opt in; legacy bloodsuckers keep their own effect. */
 bool aggravated_bite_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste)
 {
-        return one_hit_internal(ch, victim, dt, haste, TRUE);
+        return one_hit_internal(ch, victim, dt, haste, TRUE, -1, NULL);
+}
+
+/* Ordinary feeds keep their old path; hot blood is settled with the hit. */
+bool feeding_bite_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt, bool haste,
+                      int amount, int *gained)
+{
+        if (gained)
+                *gained = -1;
+        return one_hit_internal(ch, victim, dt, haste, TRUE, amount, gained);
 }
 
 static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
-                             bool haste, bool aggravated_bite)
+                             bool haste, bool aggravated_bite,
+                             int feed_amount, int *feed_gained)
 {
         OBJ_DATA *wield;
         char buf[MAX_STRING_LENGTH];
@@ -1187,6 +1209,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
         bool melee_attack = dt != gsn_shoot && dt != gsn_snap_shot;
         int contact_damage;
         FIREBRAND_COMPONENT firebrand;
+        BLOOD_CONTACT blood;
 
         update_creature_sunlight(ch);
         if (creature_sunlight_powerless(ch))
@@ -1197,6 +1220,13 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
 
         if (ordered_attack_is_safe(ch, victim))
                 return FALSE;
+
+        memset(&blood, 0, sizeof(blood));
+        blood.feeding = feed_amount >= 0;
+        blood.amount = feed_amount;
+        blood.gained = feed_gained;
+        blood.melee = dt != gsn_shoot && dt != gsn_snap_shot
+            && (dt != gsn_suck || blood.feeding);
 
         for (weapon_pos = WEAR_WIELD, count = 0;
              count < 2;
@@ -1392,7 +1422,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                                 damage_internal(
                                     ch, victim, 0, dt, poison,
                                     ordinary_attack_resistance_types(dt, wield),
-                                    FALSE, TRUE, FALSE, 0, 0, 0, NULL, NULL);
+                                    FALSE, TRUE, FALSE, 0, 0, 0, NULL, NULL, NULL);
                         }
                         else
                         {
@@ -1622,6 +1652,8 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                  * handling. Selected named attacks carry their actual
                  * weapon or shield source into the same damage pipeline.
                  */
+                if (!blood.feeding)
+                        blood.processed = FALSE;
                 if (dt >= TYPE_HIT)
                 {
                         dam = blessed_weapon_damage_bonus(
@@ -1635,7 +1667,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                             poison,
                             ordinary_attack_resistance_types(dt, wield),
                             !wield && IS_NPC(ch),
-                            TRUE, FALSE, 0, 0, 0, &firebrand, &contact_damage);
+                            TRUE, FALSE, 0, 0, 0, &firebrand, &contact_damage, &blood);
 
                         /* Finish the original hit before its touch can cause another death. */
                         if (!wield && IS_NPC(ch))
@@ -1646,7 +1678,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                 {
                         damage_from_object_internal(
                             ch, victim, dam, dt, poison,
-                            get_eq_char(ch, WEAR_SHIELD), &firebrand);
+                            get_eq_char(ch, WEAR_SHIELD), &firebrand, &blood);
                 }
                 else if (dt == gsn_backstab
                      ||  dt == gsn_circle
@@ -1673,17 +1705,17 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                                 source = NULL;
 
                         damage_from_object_internal(
-                            ch, victim, dam, dt, poison, source, &firebrand);
+                            ch, victim, dam, dt, poison, source, &firebrand, &blood);
                 }
                 else if (aggravated_bite)
                 {
                         damage_with_aggravated_component_internal(
-                            ch, victim, dam, dt, poison, 20, 10, 0, &firebrand);
+                            ch, victim, dam, dt, poison, 20, 10, 0, &firebrand, &blood);
                 }
                 else
                 {
                         damage_with_firebrand_component(
-                            ch, victim, dam, dt, poison, &firebrand);
+                            ch, victim, dam, dt, poison, &firebrand, &blood);
                 }
 
                 tail_chain();
@@ -1813,12 +1845,12 @@ void death_penalty(CHAR_DATA *ch, CHAR_DATA *victim)
 
 void damage(CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison)
 {
-        damage_with_firebrand_component(ch, victim, dam, dt, poison, NULL);
+        damage_with_firebrand_component(ch, victim, dam, dt, poison, NULL, NULL);
 }
 
 static void damage_with_firebrand_component(CHAR_DATA *ch, CHAR_DATA *victim,
                                           int dam, int dt, bool poison,
-                                          const FIREBRAND_COMPONENT *firebrand)
+                                          const FIREBRAND_COMPONENT *firebrand, BLOOD_CONTACT *blood)
 {
         unsigned long int res_types;
 
@@ -1836,7 +1868,7 @@ static void damage_with_firebrand_component(CHAR_DATA *ch, CHAR_DATA *victim,
         }
 
         damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE,
-                        FALSE, 0, 0, 0, firebrand, NULL);
+                        FALSE, 0, 0, 0, firebrand, NULL, blood);
 }
 
 /* Classify part of this event's defended HP loss; never subtract HP twice. */
@@ -1845,12 +1877,12 @@ void damage_with_aggravated_component(CHAR_DATA *ch, CHAR_DATA *victim,
                                       int chance, int percent, int cap)
 {
         damage_with_aggravated_component_internal(
-            ch, victim, dam, dt, poison, chance, percent, cap, NULL);
+            ch, victim, dam, dt, poison, chance, percent, cap, NULL, NULL);
 }
 
 static void damage_with_aggravated_component_internal(
     CHAR_DATA *ch, CHAR_DATA *victim, int dam, int dt, bool poison,
-    int chance, int percent, int cap, const FIREBRAND_COMPONENT *firebrand)
+    int chance, int percent, int cap, const FIREBRAND_COMPONENT *firebrand, BLOOD_CONTACT *blood)
 {
         unsigned long int res_types = 0;
 
@@ -1863,7 +1895,7 @@ static void damage_with_aggravated_component_internal(
                 res_types = skill_table[dt].res_type;
 
         damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE,
-                        FALSE, chance, percent, cap, firebrand, NULL);
+                        FALSE, chance, percent, cap, firebrand, NULL, blood);
 }
 
 /*
@@ -1891,7 +1923,7 @@ void damage_with_resistance_types(
             FALSE,
             FALSE,
             FALSE,
-            0, 0, 0, NULL, NULL);
+            0, 0, 0, NULL, NULL, NULL);
 }
 
 /* Runtime-only, monotonically allocated identities survive no extraction. */
@@ -1964,7 +1996,7 @@ bool forced_fall_damage(CHAR_DATA *ch, int dam)
 
         deaths = IS_NPC(ch) ? 0 : ch->pcdata->killed;
         damage_internal(causer, ch, UMAX(0, dam), TYPE_UNDEFINED, FALSE, 0,
-                        FALSE, FALSE, TRUE, 0, 0, 0, NULL, NULL);
+                        FALSE, FALSE, TRUE, 0, 0, 0, NULL, NULL, NULL);
         return !ch->deleted && ch->in_room && ch->position != POS_DEAD
             && (IS_NPC(ch) || ch->pcdata->killed == deaths);
 }
@@ -2026,6 +2058,75 @@ static void notify_native_hp_loss(CHAR_DATA *victim, int hit_before, int dam,
                     victim, actual_damage, res_types);
 }
 
+/* Settle the splash inline so the existing loop can handle both deaths. */
+static void burning_blood_contact(CHAR_DATA *attacker, CHAR_DATA *source,
+                                  int actual_damage, unsigned long int types,
+                                  BLOOD_CONTACT *contact)
+{
+        int sides, burn, before, gain;
+
+        if (!contact || contact->processed || !contact->melee
+        || actual_damage <= 0 || !attacker || !source || attacker == source
+        || attacker->deleted || source->deleted || attacker->hit <= 0
+        || !attacker->in_room || attacker->in_room != source->in_room
+        || !has_blood(source)
+        || (IS_NPC(attacker) && IS_SET(attacker->act, ACT_INVULNERABLE)))
+                return;
+        sides = creature_trait_value(source, CREATURE_TRAIT_BURNING_BLOOD_SIDES);
+        if (sides <= 0)
+                return;
+        if (!contact->feeding && !(types & (RES_SLASH | RES_PIERCE)))
+                return;
+        contact->processed = TRUE;
+        if (contact->feeding && contact->gained)
+        {
+                gain = gain_feeding_blood(attacker, source, contact->amount);
+                *contact->gained = gain;
+                if (gain <= 0)
+                        return;
+        }
+        if (saves_resistance_effect(source, source->level, attacker, RES_FIRE))
+                return;
+        burn = number_range(1, UMIN(sides, 100));
+        if (has_elemental_resistance(attacker, gsn_resist_heat))
+                burn = burn * 4 / 5;
+        burn = apply_resistance_to_damage(attacker, burn, RES_FIRE);
+        if (IS_AFFECTED(attacker, AFF_GLOBE))
+        {
+                if (attacker->sub_class != SUB_CLASS_INFERNALIST)
+                {
+                        if (MOD(source->alignment - attacker->alignment) > 750)
+                                burn -= attacker->level;
+                }
+                else if (source->alignment - attacker->alignment > 750)
+                        burn -= attacker->level + attacker->level / 4;
+                else if (source->alignment - attacker->alignment < -750)
+                        burn -= attacker->level - attacker->level / 4;
+        }
+        if (IS_AFFECTED(attacker, AFF_SANCTUARY))
+                burn /= 2;
+        if (!IS_NPC(attacker))
+                burn = (int)((long long)burn * (100 - attacker->damage_mitigation) / 100);
+        if (IS_AFFECTED(attacker, AFF_PROTECT)
+        && MOD(source->alignment - attacker->alignment) > 750)
+                burn -= burn / 4;
+        if (IS_AFFECTED(attacker, AFF_BATTLE_AURA))
+                burn -= burn / 6;
+        if (!IS_NPC(attacker) && IS_AFFECTED(attacker, AFF_BONUS_RESILIENCE))
+                burn -= burn / 3;
+        burn = URANGE(0, burn, MAX_DAMAGE);
+        if (burn <= 0)
+                return;
+        act("Burning blood spatters you!", source, NULL, attacker, TO_VICT);
+        act("Burning blood spatters $N!", source, NULL, attacker, TO_NOTVICT);
+        before = attacker->hit;
+        attacker->hit -= burn;
+        if ((IS_NPC(attacker) && IS_SET(attacker->act, ACT_UNKILLABLE))
+        || (!IS_NPC(attacker) && attacker->level >= LEVEL_IMMORTAL))
+                attacker->hit = UMAX(1, attacker->hit);
+        notify_native_hp_loss(attacker, before, burn, RES_FIRE);
+}
+
 static void damage_internal(CHAR_DATA *ch,
                             CHAR_DATA *victim,
                             int dam,
@@ -2039,7 +2140,7 @@ static void damage_internal(CHAR_DATA *ch,
                             int aggravated_percent,
                             int aggravated_cap,
                             const FIREBRAND_COMPONENT *firebrand,
-                            int *damage_dealt)
+                            int *damage_dealt, BLOOD_CONTACT *blood)
 {
         CHAR_DATA *fighter;
         CHAR_DATA *opponent;
@@ -2591,6 +2692,8 @@ static void damage_internal(CHAR_DATA *ch,
                         mark_aggravated_damage(victim, amount);
         }
 
+        burning_blood_contact(ch, victim, actual_damage, res_types, blood);
+
         /* this is for exp (damage bonus) */
         if ((ch != victim) && IS_NPC(victim) && (!IS_NPC(ch) && (ch->level - victim->level < 6))
         &&  !is_noncorporeal_player(ch) && !IS_SET(victim->act, ACT_UNKILLABLE))
@@ -2896,7 +2999,7 @@ void lich_chill_touch_after_hit(CHAR_DATA *ch, CHAR_DATA *victim,
                 return;
 
         damage_internal(ch, victim, number_range(1, 10), gsn_chill_touch,
-            FALSE, RES_COLD, FALSE, FALSE, FALSE, 0, 0, 0, NULL, &cold_damage);
+            FALSE, RES_COLD, FALSE, FALSE, FALSE, 0, 0, 0, NULL, &cold_damage, NULL);
 
         /* Death, escape and cold immunity all end the freezing attempt here. */
         if (cold_damage <= 0 || ch->deleted || victim->deleted

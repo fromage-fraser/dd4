@@ -84,6 +84,7 @@ DECLARE_SPEC_FUN( spec_dracolich            );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
+DECLARE_SPEC_FUN( spec_firedrake );
 DECLARE_SPEC_FUN( spec_poison_bite );
 DECLARE_SPEC_FUN( spec_breath_acid_anatomical );
 DECLARE_SPEC_FUN( spec_breath_fire_anatomical );
@@ -178,6 +179,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_dracolich"))            return spec_dracolich;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
+        if (!str_cmp(name, "spec_firedrake")) return spec_firedrake;
         if (!str_cmp(name, "spec_poison_bite")) return spec_poison_bite;
         if (!str_cmp(name, "spec_breath_acid_anatomical")) return spec_breath_acid_anatomical;
         if (!str_cmp(name, "spec_breath_fire_anatomical")) return spec_breath_fire_anatomical;
@@ -277,6 +279,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
         if (special == spec_poison) return "spec_poison";
+        if (special == spec_firedrake) return "spec_firedrake";
         if (special == spec_poison_bite) return "spec_poison_bite";
         if (special == spec_breath_acid_anatomical) return "spec_breath_acid_anatomical";
         if (special == spec_breath_fire_anatomical) return "spec_breath_fire_anatomical";
@@ -2993,6 +2996,39 @@ bool spec_breath_fire_anatomical(CHAR_DATA *ch)
         return usable_breath_head(ch) ? spec_breath_fire(ch) : FALSE;
 }
 
+/* Keep the old breath selection, with a bounded native daily supply. */
+bool spec_firedrake(CHAR_DATA *ch)
+{
+        int limit;
+        bool cast;
+
+        if (!ch || !IS_NPC(ch) || ch->deleted || !ch->in_room
+        || ch->hit <= 0 || !IS_AWAKE(ch) || ch->wait > 0
+        || ch->firedrake_breath_running || !usable_breath_head(ch))
+                return FALSE;
+        limit = creature_trait_value(ch, CREATURE_TRAIT_FIRE_BREATH_DAILY_CASTS);
+        if (limit <= 0)
+                return FALSE;
+        if (ch->firedrake_breath_day != time_info.day
+        || ch->firedrake_breath_month != time_info.month
+        || ch->firedrake_breath_year != time_info.year)
+        {
+                ch->firedrake_breath_day = time_info.day;
+                ch->firedrake_breath_month = time_info.month;
+                ch->firedrake_breath_year = time_info.year;
+                ch->firedrake_breaths = 0;
+        }
+        if (ch->firedrake_breaths >= UMIN(limit, 100))
+                return FALSE;
+        ch->firedrake_breath_running = TRUE;
+        ch->firedrake_breaths++;
+        cast = spec_breath_fire(ch);
+        if (!cast)
+                ch->firedrake_breaths--;
+        ch->firedrake_breath_running = FALSE;
+        return cast;
+}
+
 bool spec_poison_bite(CHAR_DATA *ch)
 {
         if (!usable_breath_head(ch)
@@ -4020,7 +4056,7 @@ static bool vampire_suck_attack(CHAR_DATA *ch, CHAR_DATA *victim)
         hit_before = victim->hit;
         deaths_before = IS_NPC(victim) ? 0 : victim->pcdata->killed;
 
-        if (!aggravated_bite_hit(ch, victim, gsn_suck, FALSE))
+        if (!feeding_bite_hit(ch, victim, gsn_suck, FALSE, 0, NULL))
                 return TRUE;
 
         if (!victim->deleted

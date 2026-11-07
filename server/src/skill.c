@@ -2221,6 +2221,7 @@ void do_suck (CHAR_DATA *ch, char *argument)
         char       arg [ MAX_INPUT_LENGTH ];
         int chance;
         int hit_before;
+        int hot_blood_gain = -1;
         int deaths_before;
         int caster_deaths = action_deaths(ch);
         ROOM_INDEX_DATA *room;
@@ -2285,7 +2286,7 @@ void do_suck (CHAR_DATA *ch, char *argument)
                 WAIT_STATE(ch, 2 * PULSE_VIOLENCE);
                 hit_before = victim->hit;
                 deaths_before = action_deaths(victim);
-                aggravated_bite_hit(ch, victim, gsn_suck, FALSE);
+                feeding_bite_hit(ch, victim, gsn_suck, FALSE, 2, &hot_blood_gain);
 
                 if (!action_character_in_room(ch, room, caster_deaths)
                 ||  victim->hit >= hit_before
@@ -2293,7 +2294,9 @@ void do_suck (CHAR_DATA *ch, char *argument)
                     && !action_character_in_room(victim, room, deaths_before))
                 ||  (!victim->deleted && victim->in_room != room))
                         return;
-                if (gain_feeding_blood(ch, victim, 2) <= 0)
+                if (hot_blood_gain < 0)
+                        hot_blood_gain = gain_feeding_blood(ch, victim, 2);
+                if (hot_blood_gain <= 0)
                         return;
 
                 if (ch->rage > (ch->max_rage * 3 / 4))
