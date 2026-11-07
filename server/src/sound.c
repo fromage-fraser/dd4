@@ -2806,24 +2806,7 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
     if (IS_NPC(ch))
         return;
 
-    /* Ensure sensible one-time defaults if zeroed/unset */
-    if (ch->pcdata->snd_master == 0 &&
-        ch->pcdata->snd_env    == 0 &&
-        ch->pcdata->snd_music  == 0 &&
-        ch->pcdata->snd_foley  == 0 &&
-        ch->pcdata->snd_sfx    == 0 &&
-        ch->pcdata->snd_ui     == 0 &&
-        ch->pcdata->snd_notify == 0)
-    {
-        ch->pcdata->snd_enabled = SND_DEF_ENABLED;
-        ch->pcdata->snd_master  = SND_DEF_MASTER;
-        ch->pcdata->snd_env     = SND_DEF_ENV;
-        ch->pcdata->snd_music   = SND_DEF_MUSIC;
-        ch->pcdata->snd_foley   = SND_DEF_FOLEY;
-        ch->pcdata->snd_sfx     = SND_DEF_SFX;
-        ch->pcdata->snd_ui      = SND_DEF_UI;
-        ch->pcdata->snd_notify  = SND_DEF_NOTIFY;
-    }
+        /* All-zero volumes are valid; load_char_obj already sets defaults. */
 
     argument = one_argument(argument, arg1);
     argument = one_argument(argument, arg2);

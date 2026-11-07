@@ -1348,6 +1348,36 @@ void print_smithy_data(CHAR_DATA *ch, OBJ_DATA *obj, char *buf)
         }
 }
 
+/* Shared by ordinary and vault inspection; value[1] is liquid quantity. */
+static void show_drink_contents(CHAR_DATA *ch, OBJ_DATA *obj)
+{
+        char buf[MAX_STRING_LENGTH];
+
+        if (obj->value[1] <= 0)
+        {
+                send_to_char("It is empty.\n\r", ch);
+                return;
+        }
+
+        /* Inspection must not trust liquid IDs from saved objects. */
+        if (obj->value[2] < 0 || obj->value[2] >= LIQ_MAX)
+        {
+                bug("Do_look: bad liquid number %d.", obj->value[2]);
+                send_to_char("Something is wrong with the liquid in that container.\n\r", ch);
+                return;
+        }
+
+        sprintf(buf, "It's %s full of a %s liquid.\n\r",
+                obj->value[1] < obj->value[0] / 4
+                    ? "less than"
+                : obj->value[1] < 3LL * obj->value[0] / 4
+                    ? "about"
+                    : "more than",
+                liq_table[obj->value[2]].liq_color);
+
+        send_to_char(buf, ch);
+}
+
 void do_look(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
@@ -1463,29 +1493,7 @@ void do_look(CHAR_DATA *ch, char *argument)
                         break;
 
                 case ITEM_DRINK_CON:
-                        if (obj->value[1] <= 0)
-                        {
-                                send_to_char("It is empty.\n\r", ch);
-                                break;
-                        }
-
-                        /* Inspection must not trust liquid IDs from saved objects. */
-                        if (obj->value[2] < 0 || obj->value[2] >= LIQ_MAX)
-                        {
-                                bug("Do_look: bad liquid number %d.", obj->value[2]);
-                                send_to_char("Something is wrong with the liquid in that container.\n\r", ch);
-                                break;
-                        }
-
-                        sprintf(buf, "It's %s full of a %s liquid.\n\r",
-                                obj->value[1] < obj->value[0] / 4
-                                    ? "less than"
-                                : obj->value[1] < 3LL * obj->value[0] / 4
-                                    ? "about"
-                                    : "more than",
-                                liq_table[obj->value[2]].liq_color);
-
-                        send_to_char(buf, ch);
+                        show_drink_contents(ch, obj);
                         break;
 
                 case ITEM_TURRET:
@@ -1980,6 +1988,9 @@ void do_inspect(CHAR_DATA *ch, char *argument)
         switch (obj->item_type)
         {
         case ITEM_DRINK_CON:
+                show_drink_contents(ch, obj);
+                break;
+
         case ITEM_CONTAINER:
         case ITEM_TURRET:
         case ITEM_CORPSE_NPC:
@@ -6320,43 +6331,33 @@ void print_player_status(CHAR_DATA *ch, char *buf)
         strcat(buf, "\n\r");
 }
 
-/*
- *  Check if room if safe, arena or unsafe for pkill
- *  Gez 2000
- */
+/* Report attack restrictions separately from KILLER penalties. */
 void do_safe(CHAR_DATA *ch, char *argument)
 {
         if (IS_NPC(ch) || !ch->in_room)
                 return;
 
+        if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+                send_to_char("Your non-corporeal form prevents attacks against you.\n\r", ch);
+        else if (IS_SET(ch->status, PLR_KILLER))
+                send_to_char("Your KILLER flag allows player attacks even in sanctuary and outside normal level ranges.\n\r", ch);
         else if (IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER))
-                send_to_char("You are in the Arena and may be attacked by anyone.\n\r", ch);
-
-        else if (!ch->clan && !IS_SET(ch->status, PLR_RONIN))
-        {
-                send_to_char("You are not ronin nor in a clan: you are always safe.\n\r", ch);
-
-                if (IS_SET(ch->in_room->room_flags, ROOM_SAFE) || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
-                        send_to_char("This location is always safe to everyone.\n\r", ch);
-                else
-                        send_to_char("However, this location is not normally safe for pkillers.\n\r", ch);
-        }
-
-        else if (ch->level < 15)
-        {
-                send_to_char("You are below level 15: you are always safe.\n\r", ch);
-
-                if (IS_SET(ch->in_room->room_flags, ROOM_SAFE) || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
-                        send_to_char("This location is always safe to everyone.\n\r", ch);
-                else
-                        send_to_char("However, this location is not normally safe for pkillers.\n\r", ch);
-        }
-
-        else if (IS_SET(ch->in_room->room_flags, ROOM_SAFE) || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
-                send_to_char("You are safe here.\n\r", ch);
-
+                send_to_char("You are in the Arena: player attacks are allowed regardless of level.\n\r", ch);
+        else if (ch->in_room->area->low_level == -4
+             && ch->in_room->area->high_level == -4 && ch->level > 50)
+                send_to_char("In this clan hall, players above level 50 may attack you even in sanctuary.\n\r", ch);
+        else if (IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+             || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
+                send_to_char("Sanctuary prevents ordinary mortal player attacks here.\n\r", ch);
+        else if (ch->level < 20)
+                send_to_char("Your level prevents ordinary mortal player attacks here (below level 20).\n\r", ch);
         else
-                send_to_char("You are UNSAFE here.\n\r", ch);
+                send_to_char("Players within your pkilling level range may attack you here.\n\r", ch);
+
+        if (!ch->clan && !IS_SET(ch->status, PLR_RONIN))
+                send_to_char("Being unclanned and not ronin does not prevent MURDER; it can give the attacker a KILLER flag.\n\r", ch);
+
+        send_to_char("KILLER penalties are separate from attack prevention. See HELP SAFE for exceptions.\n\r", ch);
 }
 
 /*

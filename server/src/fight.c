@@ -9236,6 +9236,7 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
 {
         CHAR_DATA *victim;
         OBJ_DATA *wobj;
+        BLOOD_CONTACT blood;
         char arg[MAX_INPUT_LENGTH];
         int chance;
         char msg[MAX_STRING_LENGTH];
@@ -9396,9 +9397,12 @@ void do_decapitate(CHAR_DATA *ch, char *argument)
                         obj_to_room(obj, ch->in_room);
                 }
 
-                damage_from_object(
+                /* A severing blade can splash blood even on a killing hit. */
+                memset(&blood, 0, sizeof(blood));
+                blood.melee = TRUE;
+                damage_from_object_internal(
                     ch, victim, effective_max_hit(victim) / 2,
-                    gsn_decapitate, FALSE, wobj);
+                    gsn_decapitate, FALSE, wobj, NULL, &blood);
                 return;
         }
         else

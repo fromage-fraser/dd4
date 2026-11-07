@@ -1581,6 +1581,12 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Enchantment crafting bonuses are calculated before integer rounding.
+- SAFE separates attack restrictions from KILLER penalties; HELP SAFE updated.
+- Vault INSPECT displays drink contents instead of treating volume as flags.
+- CREATE SOUND accepts text/object speakers without revealing its caster.
+- SCONFIG preserves all-zero volume settings and the sound on/off choice.
+- DECAPITATE makes blood contact for a firedrake's burning-blood reaction.
 - Convert Holy Grove mobs; add deer and stag profiles.
 - Convert Drow City mobs; add yochlol anatomy and native pseudopods.
 - Convert Rats Lair mobs; add silver defence, bounded fire breath and burning blood.
@@ -9385,10 +9391,22 @@ RACE_DUERGAR        25
 1 SAFE~
 Syntax: safe
 
-Checks whether you are safe or unsafe from being murdered by other players
-at your current location, or whether you are in the arena.  Characters
-that are unclanned and not ronin, or below level 15, are always safe from
-being pkilled.
+Reports the restrictions on player attacks at your current location.
+Being unclanned and not ronin does NOT prevent MURDER. An otherwise legal
+attack can proceed and give the attacker a KILLER flag instead.
+
+Normally, sanctuary rooms/areas prevent mortal player attacks, and both
+players must be at least level 20 and within pkilling level range elsewhere.
+A KILLER victim or an arena bypasses sanctuary and level restrictions.
+In a clan hall (area level range -4/-4), players above level 50 can attack
+one another even in sanctuary and outside normal level ranges. Immortal
+attackers also bypass sanctuary and level restrictions. Non-corporeal
+forms prevent attacks. NPC combat has different rules.
+
+KILLER penalties do not apply in the arena, against a KILLER or THIEF,
+or when both players are clanned/ronin. Existing KILLER attackers are
+already flagged. Retaliation has separate rules. These exceptions to
+penalties do not themselves grant permission to attack.
 
 You can use the tokens '%s' (personal safety) and '%S' (general safety) in
 your prompt: see 'HELP PROMPT'.

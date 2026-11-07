@@ -4045,7 +4045,7 @@ const struct skill_type skill_table[MAX_SKILL] =
          "tongue of flame", "!Control Flames!"},
 
         {"create sound", &gsn_create_sound,
-         TYPE_INT, TAR_CHAR_DEFENSIVE, POS_STANDING, RES_MAGIC,
+         TYPE_INT, TAR_IGNORE, POS_STANDING, RES_MAGIC,
          spell_create_sound, 5, 12,
          "", "!Create Sound!"},
 
