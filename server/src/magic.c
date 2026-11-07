@@ -1361,7 +1361,8 @@ void do_cast(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (str_cmp(skill_table[sn].name, "ventriloquate"))
+        if (str_cmp(skill_table[sn].name, "ventriloquate")
+        &&  str_cmp(skill_table[sn].name, "create sound"))
         {
                 say_spell(ch, sn);
         }
@@ -4982,7 +4983,7 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
         paf->type = sn;
         paf->duration = -1;
         paf->location = APPLY_HITROLL;
-        paf->modifier = (in_sc_room) ? (level / ((5 * 100) / mod_room_bonus)) : level / 5;
+        paf->modifier = (in_sc_room) ? ((level * mod_room_bonus) / (5 * 100)) : level / 5;
         paf->bitvector = 0;
         paf->next = obj->affected;
         obj->affected = paf;
@@ -5000,7 +5001,7 @@ void spell_enchant_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
         paf->type = sn;
         paf->duration = -1;
         paf->location = APPLY_DAMROLL;
-        paf->modifier = (in_sc_room) ? (level / ((10 * 100) / mod_room_bonus)) : level / 10;
+        paf->modifier = (in_sc_room) ? ((level * mod_room_bonus) / (10 * 100)) : level / 10;
         paf->bitvector = 0;
         paf->next = obj->affected;
         obj->affected = paf;
@@ -9185,11 +9186,17 @@ void spell_create_sound(int sn, int level, CHAR_DATA *ch, void *vo)
         char buf1[MAX_STRING_LENGTH];
         char buf2[MAX_STRING_LENGTH];
         char speaker[MAX_INPUT_LENGTH];
+        char *message;
 
-        target_name = one_argument(target_name, speaker);
+        message = one_argument(target_name, speaker);
+        if (speaker[0] == '\0' || message[0] == '\0')
+        {
+                send_to_char("Create sound requires a speaker and a message.\n\r", ch);
+                return;
+        }
 
-        sprintf(buf1, "%s says '%s'.\n\r", speaker, target_name);
-        sprintf(buf2, "Someone makes %s say '%s'.\n\r", speaker, target_name);
+        sprintf(buf1, "%s says '%s'.\n\r", speaker, message);
+        sprintf(buf2, "Someone makes %s say '%s'.\n\r", speaker, message);
         buf1[0] = UPPER(buf1[0]);
 
         for (vch = ch->in_room->people; vch; vch = vch->next_in_room)
@@ -9647,7 +9654,7 @@ void spell_enhance_armor(int sn, int level, CHAR_DATA *ch, void *vo)
         paf->location = APPLY_AC;
         paf->bitvector = 0;
         paf->next = obj->affected;
-        paf->modifier = (in_sc_room) ? -(level / ((8 * 100) / mod_room_bonus)) : -level / 8;
+        paf->modifier = (in_sc_room) ? -((level * mod_room_bonus) / (8 * 100)) : -level / 8;
 
         obj->affected = paf;
 
@@ -10872,7 +10879,7 @@ void spell_bless_weapon(int sn, int level, CHAR_DATA *ch, void *vo)
         paf->type = sn;
         paf->duration = -1;
         paf->location = APPLY_SAVING_SPELL;
-        paf->modifier = (in_sc_room) ? -(level / ((5 * 100) / mod_room_bonus)) : -level / 5;
+        paf->modifier = (in_sc_room) ? -((level * mod_room_bonus) / (5 * 100)) : -level / 5;
         paf->bitvector = 0;
         paf->next = obj->affected;
         obj->affected = paf;
