@@ -9941,3 +9941,29 @@ Both ranks stay common. Old-format HP/damage expressions are ignored by the
 current loader and are not rank markers. Keep all 47 room flags/sectors/exits,
 water/freezing/SAFE/NO_MOB settings, cottage doors, objects and reset caps. No shared
 profile, engine, parser, player skill or lesson-group changes are needed.
+
+[[scribe-gloomy-forest]]
+==== Gloomy Forest villagers
+
+The waif child (250) and starving woman (251) use human with common rank.
+Their individual measurements reflect their descriptions: 125 cm, 20 kg and
+Small for the child; 175 cm, 45 kg and Medium for the woman. These measurements
+are descriptive estimates. The existing height, weight and size fields handle
+them, and MobSize 0 explicitly means Small. Both keep ordinary living human
+anatomy, organs, blood, speech, souls and pain.
+
+Keep spec_fido at 100% on each villager. It devours NPC corpses and spills
+their contents safely onto the floor. Player corpses remain intact, and the
+special itself grants no healing or nutrition. This grim behaviour belongs
+to these starving villagers. Keep their SCAVENGER/STAY_AREA flags, wandering,
+levels, alignment, sexes, quest eligibility and six reset placements/caps.
+
+Their raw AFF list is 32768|65536: SNEAK and HIDE. Remove the unexplained
+permanent faerie-fire bit (256). In current DD4, that raw bit supplies a Pink
+Aura and blocks another faerie-fire cast. HIDE still uses its usual visibility
+checks, and the actual spell supplies its armour modifier through a separate
+timed effect. Removing the raw bit restores ordinary spell eligibility.
+
+Room 287 gains DARK and uses the FOREST sector to match its description.
+Its exits stay the same, as do every other room's flags and sector. The prose
+corrections follow the existing paths and fix the repeated mist typo.

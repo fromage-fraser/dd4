@@ -11,11 +11,15 @@ The waif child is malnourished and dark-skinned.  They look as if they have
 never in their short life seen a decent meal.  Their eyes are wide and
 frightened as they try to slip past you.
 ~
-4|64 256|32768|65536 500 S
+4|64 32768|65536 500 S
 50 0 0 0d0+0 0d0+0
 0 0
 0 0 1
 
+< human~ common~
+MobHeight 125
+MobWeight 20
+MobSize 0
 #251
 starving woman dark~
 a starving woman~
@@ -27,10 +31,12 @@ and the people all live in fear.  She explains that they are a village of
 slaves for a nearby tower, and you gather their master is very cruel, but
 cannot get any further information out of her.
 ~
-4|64 256|32768|65536 500 S
+4|64 32768|65536 500 S
 55 0 0 0d0+0 0d0+0
 0 0
 0 0 2
+< human~ common~
+MobWeight 45
 #0
 
 #ROOMS
@@ -325,7 +331,7 @@ S
 
 #262
 A path through a village~
->From here, you think you an see what has all the inhabitants of this town
+From here, you think you can see what has all the inhabitants of this town
 scared out of their wits - a huge, dark tower rises out of the forest to the
 north.  Just looking at it makes you shiver uncomfortably.  You can enter
 the forest to the north and investigate the tower further, or continue
@@ -413,9 +419,9 @@ S
 #264
 The edge of the village~
 The huts dwindle out here, and the gloom of the forest attempts to encroach
-on the relative safety of the village.  A small hunting trail leads west into
-the forest; you can also head east towards some more village huts, or north
-to the main entrance to the village.
+on the relative safety of the village. The forest closes in to the west.
+You can head east towards more village huts, or north to the western
+entrance to the village.
 ~
 0 1 3
 D 0
@@ -496,7 +502,7 @@ have a great sense of dread as you look along the path to the west, where
 you see it splits and runs north and south.  You can also enter a small
 village to the east.
 ~
-0 0 0
+0 1 3
 D 1
 You see some small village huts.
 ~
@@ -532,12 +538,11 @@ S
 
 #267
 An intersection in the misty forest~
-You stand at an intersection of three gloomy paths in this dark, misty forest.
+You stand where two gloomy paths meet in this dark, misty forest.
 To the east, you think you see the trees thin out, and glimpse some small
 huts, from which you deduce there must be a village in that direction.
-However, you cannot here any normal village sounds: no blacksmiths hammering,
-no children laughing.  You wonder why this is so.  There are also paths
-leading north and south.
+However, you cannot hear any normal village sounds: no blacksmiths hammering,
+no children laughing. You wonder why this is so. The other path leads north.
 ~
 0 1 3
 D 0
@@ -553,7 +558,7 @@ You see a dark path and possibly a small village.
 S
 
 #268
-An interseciton in the misty forest~
+An intersection in the misty forest~
 You stand at an intersection in the gloomy forest.  Tendrils of mist swirl
 about your feet.  To the south, the gloomy path continues into the forest.
 To the north, the path appears to widen into a dirt road. To the east, you
@@ -582,7 +587,7 @@ The beginning of a road~
 The trees here and to the north thin out, and you see that the path widens
 into a dirt road.  To the south, the path leads into the gloomy forest.  To
 the north, the road widens even further, and you think you can see the
-edge of the forest.  You also think you see a side path.
+edge of the forest. You also think you see a side path farther north.
 ~
 0 1|4 3
 D 0
@@ -662,9 +667,9 @@ S
 
 #273
 A small dirt road~
-The small dirt road you are on seems to peter out to the west, where the
-trees of the forest overwhelm it.  You see small swirls of mist drift
-over the path.  To the east, you see an intersection in the road.
+The small dirt road dwindles into a faint trail to the west, where the
+trees of the forest close around it. You see small swirls of mist drift
+over the path. To the east, you see an intersection in the road.
 ~
 0 1 3
 D 1
@@ -684,7 +689,7 @@ A misty forest path~
 The tiny path you are following is almost indistinguishable, and you examine
 the ground closely for the path markers.  You would not want to get lost in
 this foreboding forest.  Small tendrils of mist snake out of the trees and
-coin around your ankles, almost as if they are alive.
+coil around your ankles, almost as if they are alive.
 ~
 0 1 3
 D 2
@@ -704,7 +709,7 @@ A misty forest path~
 The tiny path you are following is almost indistinguishable, and you examine
 the ground closely for the path markers.  You would not want to get lost in
 this foreboding forest.  Small tendrils of mist snake out of the trees and
-coin around your ankles, almost as if they are alive.
+coil around your ankles, almost as if they are alive.
 ~
 0 1 3
 D 0
@@ -724,7 +729,7 @@ A misty forest path~
 The tiny path you are following is almost indistinguishable, and you examine
 the ground closely for the path markers.  You would not want to get lost in
 this foreboding forest.  Small tendrils of mist snake out of the trees and
-coin around your ankles, almost as if they are alive.
+coil around your ankles, almost as if they are alive.
 ~
 0 1 3
 D 1
@@ -744,7 +749,7 @@ A misty forest path~
 The tiny path you are following is almost indistinguishable, and you examine
 the ground closely for the path markers.  You would not want to get lost in
 this foreboding forest.  Small tendrils of mist snake out of the trees and
-coin around your ankles, almost as if they are alive.
+coil around your ankles, almost as if they are alive.
 ~
 0 1 3
 D 1
@@ -764,7 +769,7 @@ A misty forest path~
 The tiny path you are following is almost indistinguishable, and you examine
 the ground closely for the path markers.  You would not want to get lost in
 this foreboding forest.  Small tendrils of mist snake out of the trees and
-coin around your ankles, almost as if they are alive.
+coil around your ankles, almost as if they are alive.
 ~
 0 1 3
 D 2
@@ -784,7 +789,7 @@ A misty forest path~
 The tiny path you are following is almost indistinguishable, and you examine
 the ground closely for the path markers.  You would not want to get lost in
 this foreboding forest.  Small tendrils of mist snake out of the trees and
-coin around your ankles, almost as if they are alive.
+coil around your ankles, almost as if they are alive.
 ~
 0 1 3
 D 0
@@ -804,7 +809,7 @@ A misty forest path~
 The tiny path you are following is almost indistinguishable, and you examine
 the ground closely for the path markers.  You would not want to get lost in
 this foreboding forest.  Small tendrils of mist snake out of the trees and
-coin around your ankles, almost as if they are alive.
+coil around your ankles, almost as if they are alive.
 ~
 0 1 3
 D 0
@@ -824,7 +829,7 @@ A misty forest path~
 The tiny path you are following is almost indistinguishable, and you examine
 the ground closely for the path markers.  You would not want to get lost in
 this foreboding forest.  Small tendrils of mist snake out of the trees and
-coin around your ankles, almost as if they are alive.
+coil around your ankles, almost as if they are alive.
 ~
 0 1 3
 D 1
@@ -844,7 +849,7 @@ A misty forest path~
 The tiny path you are following is almost indistinguishable, and you examine
 the ground closely for the path markers.  You would not want to get lost in
 this foreboding forest.  Small tendrils of mist snake out of the trees and
-coin around your ankles, almost as if they are alive.
+coil around your ankles, almost as if they are alive.
 ~
 0 1 3
 D 1
@@ -864,7 +869,7 @@ A misty forest path~
 The tiny path you are following is almost indistinguishable, and you examine
 the ground closely for the path markers.  You would not want to get lost in
 this foreboding forest.  Small tendrils of mist snake out of the trees and
-coin around your ankles, almost as if they are alive.
+coil around your ankles, almost as if they are alive.
 ~
 0 1|4 3
 D 0
