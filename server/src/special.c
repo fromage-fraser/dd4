@@ -84,6 +84,9 @@ DECLARE_SPEC_FUN( spec_dracolich            );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
+DECLARE_SPEC_FUN( spec_poison_bite );
+DECLARE_SPEC_FUN( spec_breath_acid_anatomical );
+DECLARE_SPEC_FUN( spec_breath_fire_anatomical );
 DECLARE_SPEC_FUN( spec_poison_palm          );
 DECLARE_SPEC_FUN( spec_repairman            );
 DECLARE_SPEC_FUN( spec_thief                );
@@ -175,6 +178,9 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_dracolich"))            return spec_dracolich;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
+        if (!str_cmp(name, "spec_poison_bite")) return spec_poison_bite;
+        if (!str_cmp(name, "spec_breath_acid_anatomical")) return spec_breath_acid_anatomical;
+        if (!str_cmp(name, "spec_breath_fire_anatomical")) return spec_breath_fire_anatomical;
         if (!str_cmp(name, "spec_poison_palm"))          return spec_poison_palm;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
         if (!str_cmp(name, "spec_thief"))                return spec_thief;
@@ -271,6 +277,9 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
         if (special == spec_poison) return "spec_poison";
+        if (special == spec_poison_bite) return "spec_poison_bite";
+        if (special == spec_breath_acid_anatomical) return "spec_breath_acid_anatomical";
+        if (special == spec_breath_fire_anatomical) return "spec_breath_fire_anatomical";
         if (special == spec_poison_palm) return "spec_poison_palm";
         if (special == spec_repairman) return "spec_repairman";
         if (special == spec_thief) return "spec_thief";
@@ -2965,6 +2974,33 @@ bool spec_poison(CHAR_DATA *ch)
         return poison_contact_special(ch, FALSE);
 }
 
+
+
+/* These variants keep authored powers, but need a usable mouth. */
+static bool usable_breath_head(CHAR_DATA *ch)
+{
+        return ch && !ch->deleted && ch->in_room
+            && HAS_HEAD(ch) && !IS_AFFECTED(ch, AFF_HEAD_TRAUMA);
+}
+
+bool spec_breath_acid_anatomical(CHAR_DATA *ch)
+{
+        return usable_breath_head(ch) ? spec_breath_acid(ch) : FALSE;
+}
+
+bool spec_breath_fire_anatomical(CHAR_DATA *ch)
+{
+        return usable_breath_head(ch) ? spec_breath_fire(ch) : FALSE;
+}
+
+bool spec_poison_bite(CHAR_DATA *ch)
+{
+        if (!usable_breath_head(ch)
+        || !(ch->body_form & PART_FANGS)
+        || !(mob_usable_attack_parts(ch) & PART_FANGS))
+                return FALSE;
+        return spec_poison(ch);
+}
 
 bool spec_poison_palm(CHAR_DATA *ch)
 {

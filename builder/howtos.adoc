@@ -1363,6 +1363,11 @@ attached tail weapons even when the targeting strike did not disarm them.
 Regenerate can restore their use while they remain attached; it does not
 recreate a physically disarmed body-part object.
 
+Arm-attached body-part weapons use value[0] = 3. Missing arms or arm trauma
+disable attacks while inventory and equipment lookups stay intact.
+Regenerate can restore an injured attached weapon when its normal target
+rules allow it; it never recreates a physically disarmed part.
+
 Head-attached body-part weapons use value[0] = 1. Head trauma or loss of the
 head disables their attacks while leaving inventory and equipment lookups
 intact. Regenerate can restore an injured attached weapon's use only when

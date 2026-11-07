@@ -11,10 +11,13 @@ A gnome child is playing around here.
 The little tyke looks so innocent playing with his boomerang that you
 just want to pick him up and hug him.
 ~
-20 0 600 S
+4 0 600 S
 3 18 7 3d4+37 2d4+0
 0 400
 8 8 1
+< gnome_untrained~ common~
+MobHeight 70
+MobWeight 12
 #1501
 woman gnome~
 a gnome woman~
@@ -23,10 +26,11 @@ A gnome woman is standing here, trying to look beautiful.
 The woman is short and gnarled, but acts like a woman several times her beauty.
 She's starting to look pretty attractive to you ...
 ~
-20 0 600 S
+4 0 600 S
 5 16 5 2d6+70 1d8+0
 0 700
 8 8 2
+< gnome~ common~
 #1502
 man gnome~
 a gnome man~
@@ -39,6 +43,7 @@ same time an intelligent creature who could outsmart you.
 6 15 4 1d12+100 1d8+1
 0 900
 8 8 1
+< gnome~ common~
 #1503
 scientist gnome~
 a gnome scientist~
@@ -51,6 +56,7 @@ to make.  His hair is white, but he looks fairly strong.
 7 14 4 2d5+100 2d5+1
 0 1300
 8 8 1
+< gnome~ common~
 #1504
 guard gnome~
 a gnome guard~
@@ -63,6 +69,7 @@ he makes up for it with his weapons skill.
 8 13 3 2d6+120 3d3+2
 0 2000
 8 8 1
+< gnome~ common~
 #1505
 chief gnome~
 the chief gnome~
@@ -72,9 +79,10 @@ The Chief looks like he could whap you hard.  He looks not only powerful
 but wise and resourceful.  You better not mess with him.
 ~
 2 0 550 S
-15 6 -1 1e12+300 2d10+0
+15 6 -1 1d12+300 2d10+0
 0 15000
 8 8 1
+< gnome~ elite~
 #1507
 troll small~
 a small troll~
@@ -87,6 +95,10 @@ but with the eyes and fangs of a wild beast.
 8 12 3 2d4+105 2d5+1
 32 2000
 8 8 1
+< troll~ common~
+MobHeight 210
+MobWeight 140
+MobSize 1
 #1508
 mouse field~
 a field mouse~
@@ -96,8 +108,9 @@ The Mouse is a cute little creature.
 ~
 6 0 100 S
 1 19 9 2d4+10 1d4+0
-36 100
+0 100
 8 8 1
+< mouse~ common~
 #1509
 rat~
 a rat~
@@ -107,8 +120,9 @@ The rat is a little evil creature that deserves death.
 ~
 4 0 -200 S
 2 19 8 2d4+24 1d5+1
-36 200
+0 200
 8 8 1
+< rat~ common~
 #1510
 rat large~
 a large rat~
@@ -118,8 +132,12 @@ You have the urge to kill this vile creature.
 ~
 4 0 -200 S
 4 17 6 3d4+48 1d8+0
-36 400
+0 400
 8 8 1
+< rat~ common~
+MobHeight 15
+MobWeight 2
+MobLength 35
 #1511
 rat giant~
 a giant rat~
@@ -129,8 +147,12 @@ This rat has grown up to be the size of an average dog.
 ~
 4 0 -200 S
 6 15 4 1d12+72 1d8+1
-36 800
+0 800
 8 8 1
+< rat~ common~
+MobHeight 50
+MobWeight 25
+MobLength 90
 #1512
 troll~
 the troll~
@@ -141,8 +163,12 @@ he lifts his powerful arm to bludgeon you.
 ~
 34 0 -800 S
 14 7 0 3d5+160 2d8+1
-32 10000
+160 10000
 8 8 1
+< troll~ rare~
+MobHeight 400
+MobWeight 650
+MobSize 2
 #1513
 bat black~
 a black bat~
@@ -152,8 +178,10 @@ The bat is a grotesque little creature with large wings and fangs.
 ~
 0 0 -500 S
 5 16 5 3d4+70 1d8+0
-36 1000
+0 1000
 8 8 0
+< bat~ common~
+MobLength 10
 #1514
 zombie gnome~
 the zombie gnome~
@@ -164,8 +192,12 @@ pulled out of its resting place by some evil force.
 ~
 0 0 -700 S
 7 14 3 3d4+90 3d4+0
-32 2300
-8 8 0
+0 2300
+8 8 1
+< zombie~ common~
+MobHeight 105
+MobWeight 40
+MobSize 0
 #1515
 bat fire~
 the fire bat~
@@ -176,8 +208,9 @@ hangs from the ceiling and bites at you.
 ~
 38 8 -900 S
 12 9 2 3d4+150 3d5+0
-36 6000
+0 6000
 8 8 1
+< fire_bat~ rare~
 #1516
 guard hobgoblin~
 the hobgoblin guard~
@@ -190,6 +223,7 @@ as he attempts to brain you.
 6 15 4 1d12+102 1d8+1
 0 1000
 8 8 1
+< hobgoblin~ common~
 #1517
 soldier hobgoblin~
 the hobgoblin soldier~
@@ -202,6 +236,7 @@ of the elite guards.  He looks pissed.
 3 18 7 2d6+36 1d7+0
 0 300
 8 8 1
+< hobgoblin~ common~
 #1518
 bodyguard hobgoblin~
 the hobgoblin bodyguard~
@@ -214,6 +249,9 @@ stature.  He grins a toothy grin as he prepares to attack.
 7 14 4 1d12+85 1d7+2
 0 2000
 8 8 1
+< hobgoblin~ rare~
+MobHeight 180
+MobWeight 90
 #1519
 king hobgoblin~
 the king of the hobgoblins~
@@ -226,6 +264,8 @@ destroying the sophisticated effect he was trying to create.
 12 9 2 2d6+148 2d7+1
 0 6000
 6 8 1
+< hobgoblin~ elite~
+MobWeight 120
 #1520
 miner hobgoblin~
 a hobgoblin miner~
@@ -237,18 +277,20 @@ The miner is totally covered in dust.
 5 16 5 1d12+60 1d8+0
 0 500
 8 8 1
+< hobgoblin~ common~
 #1521
 treasurer hobgoblin~
 the treasurer~
 A treasurer is here counting out money.
 ~
-The hobgoblin treasurer is an old goblin with glasses.  It appears that he
+The hobgoblin treasurer is an old hobgoblin with glasses.  It appears that he
 can only see a couple feet in front of him.
 ~
 6 0 -200 S
 10 11 2 3d5+120 2d6+1
 0 2500
 8 8 1
+< hobgoblin~ common~
 #1522
 prisoner gnome~
 a gnome prisoner~
@@ -260,6 +302,7 @@ The prisoner is just barely alive.
 3 17 8 3d5+10 2d3+1
 0 50
 5 8 1
+< gnome~ common~
 #1523
 prisoner human~
 a human prisoner~
@@ -271,6 +314,7 @@ The prisoner is just barely alive.
 3 17 8 3d5+10 2d3+1
 0 50
 5 8 2
+< human~ common~
 #1524
 hermit crab~
 a hermit~
@@ -281,8 +325,9 @@ to wake it up.
 ~
 38 0 -10 S
 5 16 5 1d11+61 1d8+0
-1|4|16|32 600
+0 600
 8 8 1
+< giant_hermit_crab~ common~
 #1526
 cook hobgoblin~
 the cook~
@@ -295,6 +340,8 @@ in a pot.
 7 14 4 1d12+85 1d7+1
 0 900
 8 8 1
+< hobgoblin~ common~
+MobWeight 140
 #0
 
 
@@ -499,6 +546,14 @@ A potion of life healing has left here.~
 10 128 1
 32~ cure poison~ bless~ ~
 1 1 1
+#1525
+pincer hermit crab native~
+a hermit crab's pincer~
+A severed hermit crab pincer lies here.~
+~
+5 67108864|137438953472 8192
+3~ 1~ 6~ 8~
+1 0 0
 #0
 
 
@@ -2071,9 +2126,9 @@ P 1 1512 12 1511
 M 0 1503  3 1514
 *
 M 0 1503  3 1515
-E 1 1514 12 16
+G 1 1514 12
 *
-M 0 1504  3 1519
+M 0 1504  6 1519
 G 1 1500  3
 G 1 1506 10
 E 1 1507 10 3
@@ -2097,10 +2152,10 @@ E 1 1504 12 16
 D 0 1536 1 2
 *
 M 0 1509  3 1541
-E 1 1505 10 11
+G 1 1505 10
 *
 M 0 1510  3 1542
-E 1 1503 12 16
+G 1 1503 12
 *
 M 0 1511  3 1543
 *
@@ -2205,6 +2260,7 @@ M 0 1517 20 1584
 *
 M 0 1526 1 1587
 M 0 1524 1 1589
+E 1 1525 100 16
 M 0 1520 6 1590
 S
 
@@ -2213,12 +2269,10 @@ S
 #SPECIALS
 M  1503 spec_cast_mage
 M  1505 spec_cast_cleric
-M  1509 spec_poison
-M  1510 spec_poison
-M  1511 spec_poison
-M  1513 spec_breath_acid
-M  1514 spec_cast_undead
-M  1515 spec_breath_fire
+M  1509 spec_poison_bite
+M  1510 spec_poison_bite
+M  1511 spec_poison_bite
+M  1513 spec_breath_acid_anatomical
 M  1519 spec_cast_mage
 S
 
