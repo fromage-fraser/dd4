@@ -6753,3 +6753,43 @@ before. Correct room18260's "A old stony road" to "An old stony road".
 There are no NO_UNDEAD rooms. Initial population becomes10 with9 carried
 items; three refills give11 inhabitants with9 items. No matching Scribe
 source exists. This adds no player spell or skill.
+
+
+Redferne's Residence: the Grand Knight
+------------------------------------
+
+Knight 7900 uses the existing humanoid/human profile. Make him rare,
+applying the usual 2x rank HP once. Keep the human defaults of 175 cm
+and Medium size, and use an individual weight of 90 kg for his sturdy
+build. These measurements are estimates for description, not stat bonuses.
+
+Keep his level 29, male sex, good alignment 1000, stay-area, NO_QUEST,
+PRACTICE, Detect Invisible, Sanctuary and spec_cast_cleric. His lessons
+stay at teacher base 30, Riding Techniques 85 and Knowledge 85. Teacher
+base is the student's minimum level; it does not set the knight's level.
+He keeps ordinary human anatomy and physiology. His behaviour stays as
+written, with no new paladin powers or priest services. Tidy the ignored
+old HP notation from 20r10+700 to 20d10+700; rank is set separately.
+
+His old weapon reset tried to equip red dragon claw 7216. It is anti-good,
+so the good knight dropped it. Give him new local object 7900, a longsword
+of the Rose, in the same WIELD slot 16 with the same maximum of 99.
+Leave the shared claw anti-good and otherwise unchanged. The evil Sewer
+red dragon 7040 keeps its claw and its existing reset.
+
+The sword is an ordinary steel weapon with TAKE/WIELD and
+MAGIC/ANTI_EVIL/ANTI_NEUTRAL, so only good characters can equip it.
+Its prototype values are 0/4/4/3, using slash instead of claw. Copy the
+old weapon's 19/1800/900 line and +5 AC/+5 DAMROLL affects. Positive AC
+is an armour penalty. Normal NPC weapon generation and randomisation
+still apply, so these values do not promise fixed live damage. There
+are no extra powers, special metals or BODY_PART flag. It follows the
+ordinary rules for held weapons, arm injuries and disarming.
+
+Keep the eight shared armour pieces, brass key 7911, locked chest 7910
+and its money 7298/lightstick 7208, treasure 7909, water barrel 6013,
+all other resets and all 17 room records. The knight now carries ten
+items with his sword equipped, without leaving a claw on the floor.
+The ignored old gold field still gives no live gold. The described rats,
+monster pen and absent mansion owner stay scenery. There is no matching
+Scribe source and no new player spell or skill.
