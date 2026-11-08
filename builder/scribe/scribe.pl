@@ -93,7 +93,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         troll_infant den_beast carrion_worm
         gnome gnome_untrained mouse rat fire_bat giant_hermit_crab
         kobold gnoll bugbear
-        snake wererat firedrake green_ooze yochlol deer stag eel guardian_daemon
+        snake wererat firedrake green_ooze yochlol deer stag eel guardian_daemon frog
 /;
 
 my %mob_act = (
