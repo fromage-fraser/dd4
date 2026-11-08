@@ -1009,6 +1009,10 @@ int supernatural_defence_threshold(CHAR_DATA *victim, int threshold,
 {
         int bonus = supernatural_defence_bonus(victim, effect_types);
 
+        if ((effect_types & SUPERNATURAL_FEAR)
+        && creature_trait_value(victim, CREATURE_TRAIT_FEAR_IMMUNITY) > 0)
+                return 0;
+
         /* Leave immunity and any already lower threshold alone. */
         if (bonus == 0 || threshold <= minimum)
                 return threshold;
@@ -6713,8 +6717,6 @@ void spell_locate_object(int sn, int level, CHAR_DATA *ch, void *vo)
                 if (!multi_keyword_match(arg2, obj->name) || !can_see_obj(ch, obj) || obj->item_type == ITEM_CORPSE_NPC || obj->item_type == ITEM_REMAINS || IS_SET(obj->extra_flags, ITEM_BODY_PART))
                         continue;
 
-                found = TRUE;
-
                 for (in_obj = obj; in_obj->in_obj; in_obj = in_obj->in_obj)
                         ;
 
@@ -6737,10 +6739,8 @@ void spell_locate_object(int sn, int level, CHAR_DATA *ch, void *vo)
 
                 buf[0] = UPPER(buf[0]);
                 send_to_char(buf, ch);
+                found = TRUE;
         }
-
-        if (!obj)
-                return;
 
         if (!found)
                 send_to_char("Nothing like that in hell, earth, or heaven.\n\r", ch);

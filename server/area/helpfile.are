@@ -1581,6 +1581,8 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Fear immunity now blocks player Aura of Fear and targeted Howl.
+- Locate Object now reports when no visible matching object is found.
 - Convert Lea'Non mobs; add frog anatomy and field-snake venom.
 - Convert Mrinthas mobs; add eel anatomy and guardian acid/defences.
 - Convert Desert of Despair mobs; restore snake anatomy and retain their venom.
