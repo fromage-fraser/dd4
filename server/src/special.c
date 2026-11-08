@@ -107,6 +107,7 @@ DECLARE_SPEC_FUN( spec_celestial_repairman  );
 DECLARE_SPEC_FUN( spec_sahuagin             );
 DECLARE_SPEC_FUN( spec_evil_evil_gezhp      );
 DECLARE_SPEC_FUN( spec_demon                );
+DECLARE_SPEC_FUN( spec_guardian_daemon      );
 DECLARE_SPEC_FUN( spec_cast_electric        );
 DECLARE_SPEC_FUN( spec_small_whale          );
 DECLARE_SPEC_FUN( spec_large_whale          );
@@ -203,6 +204,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_sahuagin"))             return spec_sahuagin;
         if (!str_cmp(name, "spec_evil_evil_gezhp"))      return spec_evil_evil_gezhp;
         if (!str_cmp(name, "spec_demon"))                return spec_demon;
+        if (!str_cmp(name, "spec_guardian_daemon"))      return spec_guardian_daemon;
         if (!str_cmp(name, "spec_cast_electric"))        return spec_cast_electric;
         if (!str_cmp(name, "spec_small_whale"))          return spec_small_whale;
         if (!str_cmp(name, "spec_large_whale"))          return spec_large_whale;
@@ -304,6 +306,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_sahuagin) return "spec_sahuagin";
         if (special == spec_evil_evil_gezhp) return "spec_evil_evil_gezhp";
         if (special == spec_demon) return "spec_demon";
+        if (special == spec_guardian_daemon) return "spec_guardian_daemon";
         if (special == spec_cast_electric) return "spec_cast_electric";
         if (special == spec_small_whale) return "spec_small_whale";
         if (special == spec_large_whale) return "spec_large_whale";
@@ -3036,6 +3039,57 @@ bool spec_firedrake(CHAR_DATA *ch)
                 ch->firedrake_breaths--;
         ch->firedrake_breath_running = FALSE;
         return cast;
+}
+
+/* The trunk supplements the old demon caster without melting anyone's gear. */
+bool spec_guardian_daemon(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        int limit, sn, dam;
+
+        if (!ch || !IS_NPC(ch) || ch->deleted || !ch->in_room
+        || ch->hit <= 0 || !IS_AWAKE(ch) || ch->wait > 0
+        || ch->guardian_spit_running)
+                return FALSE;
+
+        limit = creature_trait_value(ch, CREATURE_TRAIT_ACID_SPIT_DAILY_CASTS);
+        if (ch->guardian_spit_day != time_info.day
+        || ch->guardian_spit_month != time_info.month
+        || ch->guardian_spit_year != time_info.year)
+        {
+                ch->guardian_spit_day = time_info.day;
+                ch->guardian_spit_month = time_info.month;
+                ch->guardian_spit_year = time_info.year;
+                ch->guardian_spits = 0;
+        }
+
+        /* A damaged trunk does not silence the guardian's other magic. */
+        if (limit <= 0 || ch->guardian_spits >= UMIN(limit, 100)
+        || !usable_breath_head(ch) || number_percent() > 20)
+                return spec_demon(ch);
+
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim->deleted || victim == ch || victim->hit <= 0)
+                        continue;
+                if (victim->fighting == ch && !number_bits(1))
+                        break;
+        }
+        if (!victim || (sn = skill_lookup("acid blast")) < 0)
+                return FALSE;
+
+        ch->guardian_spit_running = TRUE;
+        ch->guardian_spits++;
+        act("You spit hissing acid from your trunk at $N!", ch, NULL, victim, TO_CHAR);
+        act("$n spits hissing acid from $s trunk at you!", ch, NULL, victim, TO_VICT);
+        act("$n spits hissing acid from $s trunk at $N!", ch, NULL, victim, TO_NOTVICT);
+        dam = dice(ch->level, 4);
+        if (has_elemental_resistance(victim, gsn_resist_acid)
+        || saves_spell(ch, ch->level, victim))
+                dam /= 2;
+        damage_with_resistance_types(ch, victim, dam, sn, FALSE, RES_ACID);
+        ch->guardian_spit_running = FALSE;
+        return TRUE;
 }
 
 bool spec_poison_bite(CHAR_DATA *ch)

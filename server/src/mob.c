@@ -389,6 +389,23 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        /* Fins and a tail replace limbs; the ordinary organs are still there. */
+        {
+                "fish",
+                0, AFF_SWIM,
+                BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_EYE | PART_HEART | PART_BRAINS
+                    | PART_GUTS | PART_FINS | PART_TAIL,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2032,6 +2049,26 @@ const struct mob_type mob_table[MAX_MOB] =
                 130, 180, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 210
+        },
+        {
+                "eel", "fish", "icon1", "icon2",
+                0, 0, PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 5, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 150
+        },
+        /* This is the temple's acid-trunked guardian, with ordinary living anatomy. */
+        {
+                "guardian_daemon", "humanoid", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_CLAWS, PART_CLAWS,
+                RES_MAGIC | RES_NONMAGIC, 0,
+                RES_ACID | RES_CHARM | RES_HOLD | RES_SLEEP,
+                0, 0, 0, 0,
+                366, 600, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_guardian_daemon", "", "", 10,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2123,6 +2160,7 @@ typedef enum creature_trait_effect
         TRAIT_NATIVE_REGEN_QUANTITY,
         TRAIT_NATIVE_BREATH_QUANTITY,
         TRAIT_BLOOD_REACTION_QUANTITY,
+        TRAIT_FEAR_IMMUNITY,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -2224,7 +2262,16 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"gnome_training", TRAIT_ATTACKER_MELEE, trait_gnome_enemies},
         {"gnome_giant_defence", TRAIT_DEFENDER_MELEE, trait_gnome_giant_kin},
         {"fire_breath_daily_casts", TRAIT_NATIVE_BREATH_QUANTITY, NULL},
-        {"burning_blood_sides", TRAIT_BLOOD_REACTION_QUANTITY, NULL}
+        {"burning_blood_sides", TRAIT_BLOOD_REACTION_QUANTITY, NULL},
+        {"fear_immunity", TRAIT_FEAR_IMMUNITY, NULL},
+        {"acid_spit_daily_casts", TRAIT_NATIVE_BREATH_QUANTITY, NULL}
+};
+
+static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ACID_SPIT_DAILY_CASTS, 3}
 };
 
 static const CREATURE_TRAIT_CHANGE snake_trait_changes[] =
@@ -2408,6 +2455,8 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"guardian_daemon", NULL, guardian_daemon_trait_changes,
+            TRAIT_ITEMS(guardian_daemon_trait_changes)},
         {"snake", NULL, snake_trait_changes, TRAIT_ITEMS(snake_trait_changes)},
         {"wererat", NULL, wererat_trait_changes, TRAIT_ITEMS(wererat_trait_changes)},
         {"firedrake", NULL, firedrake_trait_changes, TRAIT_ITEMS(firedrake_trait_changes)},
@@ -2649,7 +2698,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_ILLUSION_IMMUNITY
                                     || effect == TRAIT_SUNLIGHT_POWERLESS
                                     || effect == TRAIT_TURN_IMMUNITY
-                                    || effect == TRAIT_HOLY_WATER_IMMUNITY)
+                                    || effect == TRAIT_HOLY_WATER_IMMUNITY
+                                    || effect == TRAIT_FEAR_IMMUNITY)
                                 && (profile->changes[i].value < 0
                                     || profile->changes[i].value > 1))
                                         issues++;
@@ -5565,6 +5615,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_lich", 15 },
                 { "spec_dracolich", 15 },
                 { "spec_demon", 15 },
+                { "spec_guardian_daemon", 15 },
                 { "spec_cast_electric", 15 },
                 { "spec_assassin", 15 },
                 { "spec_aboleth", 15 },

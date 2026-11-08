@@ -11,21 +11,26 @@ An eel-like creature with large fangs swims menacingly before you.
 ~
 2|32|64 512|16777216 0 S
 35 0 0 0d0+0 0d0+0
-60 0
+0 0
 8 8 0
+< eel~ common~
+MobWeight 20
+MobLength 300
+MobSize 1
 #13002
 soldier Guard zombie undead~
 An undead Temple Guard~
 A long dead soldier stands here.
 ~
 The rotting body of the zombie temple guard utters a low moan as it waves
-its finely-crafted spear at you threateningly.It wears a bronze
+its finely-crafted spear at you threateningly. It wears a bronze
 breastplate and appears to have superior fighting skills.
 ~
 2|64 8|512|8192 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< zombie~ common~
 #13003
 Temple Guard zombie undead~
 A wandering Temple Guard~
@@ -39,6 +44,7 @@ bronze breastplate.
 36 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< zombie~ common~
 #13004
 Temple Sergeant guard undead zombie~
 Temple Sergeant~
@@ -50,22 +56,24 @@ exception that he wields a sword and wears a helmet.
 2|64 8|32|512|8192 0 S
 37 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< zombie~ rare~
 #13005
 mackurian high undead zombie priest~
-A undead High Priest~
+An undead High Priest~
 MacKurian the High Priest gives a sermon here.
 ~
 MacKurian, although clearly undead, seems to emit an aura of goodness and
 serenity. His robes are still crisp and white as if they had merely been
 donned moments earlier.
-MacKurian says "Rest...Be at peace. Train or practice here if you wish. But
+MacKurian says "Rest...Be at peace. But
 do not harm any in the temple or there shall be trouble."
 ~
-2|64|512 8|32|128|512|8192|536870912 750 S
+2|64|512 8|32|128|512|8192|536870912|562949953421312 750 S
 100 0 0 0d0+0 0d0+0
-0 0
+32 0
 8 8 1
+< zombie~ common~
 #13006
 rat creature~
 An extremely large rat~
@@ -76,8 +84,12 @@ appear to be on its menu.
 ~
 32|64 32|32768 0 S
 35 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< rat~ common~
+MobHeight 30
+MobWeight 10
+MobLength 90
 #13007
 Shopkeeper~
 the shopkeeper~
@@ -89,19 +101,21 @@ The old shopkeeper looks back at you and asks "What can I do for you?"
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13008
 Acolyte priest zombie undead~
 An undead Temple Acolyte~
 The long-dead, Temple Acolyte wears rotting robes.
 ~
-The undead acolyte is nothing more than a skelton with skin stretched
+The undead acolyte is nothing more than a skeleton with skin stretched
 tautly over its body giving it a mummified look. Rags hang where once
 plush robes did.
 ~
-64 8|512|8192 750 S
+64 8|512|8192|562949953421312 750 S
 38 0 0 0d0+0 0d0+0
-0 0
+32 0
 8 8 0
+< zombie~ common~
 #13009
 Dane Captain guard~
 Dane the Guard Captain~
@@ -112,14 +126,14 @@ has seen a lot of action over the many years in his career.  Although
 getting a bit older, you notice that this man in no way is past his prime.
 Wisps of steam rise from his frost covered armour as he stands watching all
 that happens before him. The captain appears to be the only one of the
-entire Temple staff who has not been effected by the passage of time. You
-notice that nothing escapes the Guard Captain's gaze
+entire Temple staff who has not been affected by the passage of time. You
+notice that nothing escapes the Guard Captain's gaze.
 ~
 2|64|128 8|32|128|512|8192 1000 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ elite~
+< human~ elite~
 #13010
 Temple Guard zombie undead~
 Ready Temple Guards~
@@ -130,7 +144,8 @@ The rotting Temple Guard does not look happy with his fate.
 64 8|512|8192 0 S
 35 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< zombie~ common~
 #13011
 Temple Sergeant zombie undead~
 Ready Temple Sergeant~
@@ -141,14 +156,15 @@ The Temple Sergeant does not look happy with his fate.
 64 8|32|512|8192 0 S
 39 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< zombie~ rare~
 #13012
 Guardian Daemon demon creature~
 a Guardian Daemon~
 A huge Daemon guards this area.
 ~
 The 12 foot tall daemon looks at you with a mixture of hunger and
-amusement. It's short elephant-like trunk snuffles in your direction
+amusement. Its short elephant-like trunk snuffles in your direction
 splashing hissing, green acid as it flexes its huge arms and clicks its
 claws.
 ~
@@ -156,8 +172,8 @@ claws.
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 0
-< reserved~ elite~
 
+< guardian_daemon~ elite~
 #0
 
 
@@ -718,7 +734,7 @@ D4
 S
 #13007
 The Entranceway to the Temple~
-This short passageway takes you not only inside the structure,  but back it
+This short passageway takes you not only inside the structure,  but back in
 time as well.  Through the archway ahead you can glimpse at the
 magnificence yet to come...
 There is an ancient poster on the other wall - reminiscent of old times?
@@ -2105,7 +2121,7 @@ M 1 13011 20 13064                Ready Temple Sergeant to Temple Barracks
 E 1 13024 100 1
 E 1 13002 100 5
 E 1 13013 100 6
-E 1 13003 100 16
+E 1 13012 100 16
 *
 M 1 13009 1 13062                  the Guard Captain to Temple Altar
 E 1 13024 100 1
@@ -2151,7 +2167,7 @@ S
 
 
 #SHOPS
-13007 5 9 2 4 8 150 50 0 23               (mobile is from another zone)
+13007 5 9 2 4 8 150 50 0 23               (local temple shopkeeper)
 0
 
 
@@ -2164,7 +2180,6 @@ M  13008 spec_cast_cleric                   An undead Temple Acolyte
 M  13009 spec_cast_undead                  the Guard Captain
 M  13010 spec_guard                        Ready Temple Guards
 M  13011 spec_guard                        Ready Temple Sergeant
-M  13012 spec_demon                  a Guardian Daemon
 S
 
 
