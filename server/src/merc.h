@@ -3113,6 +3113,10 @@ struct char_data
         int firedrake_breath_day, firedrake_breath_month, firedrake_breath_year;
         int firedrake_breaths;
         bool firedrake_breath_running;
+        /* A guardian's trunk has its own daily supply. */
+        int guardian_spit_day, guardian_spit_month, guardian_spit_year;
+        int guardian_spits;
+        bool guardian_spit_running;
         int drained_stacks;
         int drained_recovery; /* Ordinary-rate seconds earned towards the next stack. */
         time_t drained_updated;
@@ -3665,8 +3669,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 95
-#define MAX_SPECIES 20
+#define MAX_MOB 97
+#define MAX_SPECIES 21
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -5958,6 +5962,8 @@ typedef enum creature_trait
         CREATURE_TRAIT_GNOME_GIANT_DEFENCE,
         CREATURE_TRAIT_FIRE_BREATH_DAILY_CASTS,
         CREATURE_TRAIT_BURNING_BLOOD_SIDES,
+        CREATURE_TRAIT_FEAR_IMMUNITY,
+        CREATURE_TRAIT_ACID_SPIT_DAILY_CASTS,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Passive native regeneration never invokes or replaces an active special. */

@@ -808,6 +808,9 @@ bool saves_supernatural_effect(CHAR_DATA *source, int level,
         if (res_types & RES_CHARM)
                 effect_types |= SUPERNATURAL_CONTROL;
 
+        if ((effect_types & SUPERNATURAL_FEAR)
+        && creature_trait_value(victim, CREATURE_TRAIT_FEAR_IMMUNITY) > 0)
+                return TRUE;
         if (resistance == RES_RESULT_IMMUNE)
                 return TRUE;
         if (creature_resists_status(victim, res_types))
@@ -11878,6 +11881,11 @@ void spell_fear(int sn, int level, CHAR_DATA *ch, void *vo)
 
         if (ch == victim)
         {
+                if (creature_trait_value(victim, CREATURE_TRAIT_FEAR_IMMUNITY) > 0)
+                {
+                        send_to_char("You remain unmoved.\n\r", ch);
+                        return;
+                }
                 send_to_char("You flee in fear from yourself!\n\r", ch);
                 do_flee(ch, "");
                 return;

@@ -3185,6 +3185,7 @@ spec_sahuagin   sahuagin-based skills/spells
 spec_evil_evil_gezhp    give to mobs you don’t want
     players messing with
 spec_demon    demon/infernal spells [combat]
+spec_guardian_daemon   demon casting with head-gated trunk acid, three spits per day [combat]
 spec_cast_electric     electricity-based attacks [combat]
 spec_small_whale    flukeslaps [combat]
 spec_large_whale    flukeslaps and swallows [combat]
@@ -10819,3 +10820,108 @@ room 18125's "south is and oasis" to "south is an oasis", and the reset
 comment's "Bedoiun child" to "Bedouin child". Keep the woman's wry wording
 and cosmetics reference as authored flavour. No gender mismatch or
 portrait change is involved.
+
+
+[[scribe-temple-of-mrinthas]]
+==== Temple of Mrinthas creatures
+
+Temple of Mrinthas uses seven humanoid/zombie definitions, human for Dane
+and the shopkeeper, and the existing quadrupedal_mammal/rat for its large
+rat. The new fish species and eel archetype describe the Fountain Beast;
+humanoid/guardian_daemon describes the acid-trunked guardian.
+
+The two sergeant definitions, 13004 and 13011, are rare. Dane 13009 and
+the guardian 13012 keep elite. Everyone else is common. MacKurian's high
+level and service role do not call for another HP multiplier. Rank applies
+to every instance of a definition, once; it is not a body-size setting.
+
+The zombie profile supplies undead physiology and its usual defences.
+Ordinary guards/sergeants remain mindless and unable to speak; their moans
+and existing spec_guard roles remain. Keep the wandering guard's authored
+aggression. MacKurian 13005 and acolyte 13008 cancel inherited AFF_MINDLESS
+and BODY_NO_SPEECH through their existing raw AFF/body XOR masks. They can
+think, speak and cast, while keeping the other zombie properties. Their
+raw body32 removes inherited NO_SPEECH; it does not make another zombie
+mute. Do not add the inherited UNDEAD bit again in a raw XOR mask.
+
+Keep MacKurian's spec_cast_adept and the acolyte's spec_cast_cleric. Both
+retain good alignment. His old ACT512 is current NO_QUEST, not a working
+trainer flag. He has no lesson list, so remove the invitation to practice
+rather than invent lessons. TRAIN selects a player's future stat training
+without requiring a trainer; PRACTICE needs an actual teacher skill list.
+His peace/rest invitation and existing safe adept healing stay.
+
+Dane remains a living human with his authored spec_cast_undead. A special
+function is a role, not a test for undead identity. Keep his elite rank,
+WIMPY/sentinel behaviour, senses and equipment. The human shopkeeper keeps
+spec_cast_mage and his existing shop: types5/9/2/4/8,150/50,hours0-23.
+
+The fish species has head/eyes/heart/brain/guts, fins and tail, no arms,
+legs or speech, and intrinsic swimming. It has normal living organic
+physiology, blood, pain, soul and remains. NPCs already bypass the
+player-only drowning check; there is no new gills flag. Eel adds fangs and
+one ordinary piercing bite. It adds no electric discharge, venom, armour,
+resistances or racial XP. Generic eel defaults are150cm body length,
+5kg,Small, with height unspecified. Fountain Beast13001 individually uses
+300cm/20kg/Medium. Clear rawbody60 to0 after inheritance, restoring its
+heart and retaining the inherited limb/speech restrictions. Keep its
+authored infrared and GLOBE: raw AFF16777216 means GLOBE, not gills.
+
+Rat13006 uses estimated30cm shoulder height,90cm body length and10kg,
+Small. Clear rawbody36 to0 after mammal inheritance. Keep spec_fido,
+DetectHidden/Sneak and aggression. No venom, shared disease mechanic or
+HUGE flag is added. Other rats keep their existing dimensions.
+
+Ordinary zombies use175cm/65kg/Medium, and humans175cm/75kg/Medium. The
+guardian's described twelve-foot height becomes366cm;600kg is an estimate.
+It is Large and has BODY_HUGE. Height/weight/length are descriptive whole
+numbers; Small/Large and HUGE retain their existing gameplay rules.
+
+guardian_daemon is an intelligent organic humanoid with ordinary organs,
+speech, blood, pain, soul and remains. Claws supply its ordinary slashing
+fallback. Natural armour is-20; it resists MAGIC/NONMAGIC, is immune to
+ACID/CHARM/HOLD/SLEEP and has the internal fear_immunity trait. Its racial
+XP adjustment is+10, with neutral HP/damage/critical/haste modifiers.
+Mundane weapons are resisted, not blocked by a new enchantment threshold.
+The local mob keeps flight, Hide/Sneak, sight, Protection and its authored
+behaviours/key. Flight alone does not add physical wings. No universal
+daemon elemental package or currently non-functional polymorph immunity
+is claimed.
+
+spec_guardian_daemon keeps the existing demon caster on80% of eligible
+opportunities. The other20% can release one trunk acid spit at a current
+opponent: dice(level,4) acid damage, ordinary spell save halves, with
+existing acid defences applying. The acid_spit_daily_casts trait supplies
+three released attacks per MUD day. A save or acid immunity still uses a
+released charge; no target, invalid selection or unusable head uses none.
+After the daily supply is spent, the old demon caster handles every
+opportunity. A damaged/missing head blocks the spit without silencing its
+independent demon casting. Calendar day/month/year changes replenish the
+supply. There is no area field or player skill for these native powers.
+
+The spit uses a typed acid-damage path, not the acid-breath spell: it does
+not melt containers, etch armour or scale damage with elite HP. MSTAT
+shows fear_immunity and acid_spit_daily_casts with their archetype origin.
+Fear spell, fear aura and banshee fear use the common supernatural save;
+the self-targeted fear case also honours the trait. Unrelated psychic
+effects do not become immune just because they use the same damage type.
+All older trait profiles and player-race opt-ins remain unchanged.
+
+The area has70rooms,37objects and no NO_UNDEAD rooms. Keep all room flags,
+doors/keys, reset placements/caps and treasure. Ready sergeant13011 in
+room13064 receives sword13012 instead of spear13003, matching the other
+sergeants. Seven rat reset rows still share maximum1; do not turn those
+rows into seven live rats. Varying officer/acolyte caps keep their old
+refill behaviour. Initial population35 carries111items; three refills
+give65inhabitants/211items.
+
+MacKurian's curse staff13030 stays in WIELD16 and fireball book13022 in
+HOLD17, with their old staff types/bonuses. The held book already uses the
+normal NPC staff-use slot; moving the other staff to HOLD would change
+his gear and combat. Preserve both resets rather than rewriting treasure.
+
+13004/13010/13011 use male sex data to match their prose. Portraits were
+checked:13004's helmet obscures his face,13010 is skeletal, and13011's
+living-man picture needs a separate undead replacement. This conversion
+does not publish artwork. Small spelling/grammar fixes and the local
+shop comment are corrected; no matching Scribe source exists.
