@@ -12,8 +12,9 @@ looks content croaking his ass off.
 ~
 64 512 0 S
 3 0 0 0d0+0 0d0+0
-36 0
-8 8 0
+0 0
+8 8 1
+< frog~ common~
 #18201
 mouse field~
 field mouse~
@@ -23,8 +24,9 @@ The field mouse is hiding here from YOU!
 ~
 2 65536 0 S
 5 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< mouse~ common~
 #18202
 mob~
 the mob~
@@ -36,6 +38,7 @@ The mob looks back at you!
 1 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #18203
 old man healer~
 an old man~
@@ -44,22 +47,24 @@ A weathered old man warms his hands by the fire.
 The man tells you 'Please sit....join me and I will help thee weary
 traveller'
 ~
-2|512|1024 0 999 S
+2|512 0 999 S
 41 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #18204
 trader~
 A roaming trader~
 A roaming trader scuttles past you.
 ~
-The roaming bandit looks as if he can fell your eyes on him, he looks
-uneasy better get ready for him I think he knows you are here...
+The roaming bandit looks as if he can feel your eyes on him. He looks
+uneasy. Better get ready for him; I think he knows you are here...
 ~
 32|64|128 512|32768 -250 S
 41 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #18205
 snake giant~
 a giant field snake~
@@ -70,8 +75,12 @@ his sleep.
 ~
 32|64|128 512|32768 0 S
 25 0 0 0d0+0 0d0+0
-60 0
+0 0
 8 8 1
+< snake~ common~
+MobWeight 10
+MobLength 300
+MobSize 1
 #18206
 beast cave cavebeast~
 the cave beast~
@@ -82,8 +91,9 @@ You think you see a sword glinting over his shoulder from a sheath behind him.
 ~
 2|64 8|32|128|8192 1000 S
 80 0 0 0d0+0 0d0+0
-0 0
+32 0
 8 8 1
+< cave_beast~ elite~
 #18207
 slave~
 the slave~
@@ -94,7 +104,9 @@ Lean and thin, almost wraithlike, this slave has a hidden strength that makes hi
 2|32|64 8|32|128|8192|32768 -1000 S
 25 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< human~ common~
+MobWeight 55
 #0
 
 
@@ -1199,7 +1211,7 @@ S
 Plains~
 Long grass is blown gently by the wind; as the breeze sweeps through it, seeds are picked up and
 drift through in the air.  The haze created by dust and small seeds impedes your vision.
-A old stony road leads north.
+An old stony road leads north.
 ~
 0 0 2
 D0
@@ -1274,7 +1286,7 @@ M 1 18204 2 18205                       A roaming bandit to Plains
 *
 M 1 18205 2 18203                       a giant field snake to In the Pit
 *
-M 1 18205 1 18203                       a giant field snake to In the Pit
+M 1 18205 2 18203                       a giant field snake to In the Pit
 *
 M 1 18201 1 18242                       field mouse to an entrance
 *
@@ -1316,6 +1328,7 @@ S
 
 #SPECIALS
 M  18203 spec_cast_adept                        an old man
+M  18205 spec_poison_bite                       a giant field snake
 M  18206 spec_warrior                           the cave beast
 S
 

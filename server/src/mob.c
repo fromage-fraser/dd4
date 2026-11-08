@@ -406,6 +406,23 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        /* A four-legged amphibian has ordinary organs, without mammal extras. */
+        {
+                "quadrupedal_amphibian",
+                0, AFF_SWIM,
+                BODY_NO_ARMS | BODY_NO_SPEECH | PART_HEAD | PART_EYE
+                    | PART_4_LEGS | PART_FORELEGS | PART_FEET
+                    | PART_HEART | PART_BRAINS | PART_GUTS,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2069,6 +2086,15 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_guardian_daemon", "", "", 10,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        /* This ordinary pond frog keeps its tongue as anatomy, not a new attack. */
+        {
+                "frog", "quadrupedal_amphibian", "icon1", "icon2",
+                0, 0, PART_LONG_TONGUE, 0,
+                0, 0, 0, 0, 0, 0, 0,
+                5, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 10
         }
 
 };

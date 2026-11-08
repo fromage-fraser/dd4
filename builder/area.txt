@@ -6655,3 +6655,101 @@ checked:13004's helmet obscures his face,13010 is skeletal, and13011's
 living-man picture needs a separate undead replacement. This conversion
 does not publish artwork. Small spelling/grammar fixes and the local
 shop comment are corrected; no matching Scribe source exists.
+
+
+Lea'Non creatures
+----------------
+
+Lea'Non uses the existing human profile for the old man, trader, slave
+and unused placeholder. The mouse, snake and cave beast reuse their
+existing archetypes. The ordinary frog introduces quadrupedal_amphibian
+and frog; this does not change any older species or archetype.
+
+The amphibian body has ordinary head, eyes, brain, heart and guts,
+four legs/forelegs/feet, no arms and no human speech. It has normal living
+organs, blood, pain, soul and remains. It has no default fur, scales,
+claws, hooves or adult tail. Frog adds the existing long-tongue part as
+anatomy, without a new tongue attack or extra attack stream. Its ordinary
+attack fallback stays neutral blunt contact. Swimming uses the existing
+AFF_SWIM state and its normal movement cleanup; there is no new permanent
+swimming provider or special amphibian movement rule.
+
+Frog defaults are estimated 5 cm height, 10 cm body length and Small,
+with whole-kilogram mass unspecified. Do not round an unknown tiny animal
+up to 1 kg. It has no racial armour, RIV, XP, Mindless, venom, Swallow,
+active croaking special or new player power. Keep this individual's
+authored infrared and stay-area behaviour; infrared is not inherited by
+every future frog. The pond's Field sector and weeds door stay as authored.
+
+The field mouse keeps 3 cm height, 10 cm body length, unknown mass and
+Small. Its ordinary fangs, living anatomy, Hide and sentinel behaviour
+stay. Clear raw body36 to0 on frog18200 and mouse18201 after inheritance:
+the inherited no-arms/no-speech properties should not be XORed off.
+
+Human defaults are 175 cm/75 kg/Medium. The slave18207 uses an individual
+55 kg estimate for his thin appearance. "Wraithlike" is a simile, not an
+undead identity. Keep his hidden strength, level, evil alignment, senses,
+Sanctuary/Protection/Sneak and aggressive sentinel behaviour. Frog18200
+and slave18207 use male sex data to match their pronouns; their portraits
+were checked. No artwork change is involved.
+
+The male level1 placeholder18202 remains a loaded human definition with
+no reset or literal load found. Do not delete it or invent a new spawn.
+The old man18203 keeps spec_cast_adept, good alignment and NO_QUEST512.
+Remove the obsolete PRACTICE1024 bit: no teacher skill list exists, and
+the flag alone supplies no lessons. His keywords do not add a new paid
+healer service. Keep his shop types5/9/8/19/1, hours0-23 and75/125 settings.
+In get_cost, profit_buy is markup added to100: these settings mean175%
+base retail and125% base purchase before other applicable rules, not75%
+retail. His current lack of reset stock stays.
+
+Keep the roaming trader's name as his apparent disguise and the bandit
+description. Preserve his AGGRESSIVE/STAY_AREA/WIMPY, infrared/Sneak and
+evil alignment. Correct "fell your eyes" to "feel your eyes" and tidy
+the sentence punctuation, without making him a passive shopkeeper.
+
+The giant field snake18205 uses snake with individual 300 cm length,
+10 kg and Medium. Its height is unspecified; the measurements are design
+estimates, not a claim that it is the named giant_pit_viper. Clear raw
+body60 to0 to restore a normal heart and inherit the serpent's absent
+arms/legs/speech, tail, scales, organs and fangs correctly. Keep infrared,
+Sneak, AGGRESSIVE/STAY_AREA/WIMPY, sex and level. Ordinary natural armour
+-5 and fang contact come from the unchanged snake profile.
+
+The description promises poisonous fangs, but this mob previously had
+no venom special. Add individual spec_poison_bite, using its established
+chance, target/save/effect rules and usable-head/fang checks. It contributes
+the ordinary +5 special XP. Do not give every snake default venom.
+
+The pit18203 describes two snakes and has two reset rows. Raise only
+the second row's maximum1 to2, matching the first row and keeping the
+total cap at two. Both snakes then appear on the first load. Keep the
+other population caps, including the one frog row's maximum2 and the
+skipped alternative underwater beast/slave rows.
+
+The cave beast18206 is the area's main treasure encounter and controls
+a subordinate. It is elite, applying 5x rank HP once; the other seven
+definitions are common. Rank does not supply body size or an age.
+Reuse cave_beast at 300 cm/500 kg/Large with BODY_HUGE and ordinary
+claw/fang fallback. It is an intelligent living humanoid, not a newly
+identified ogre, yeti or member of the giant family. No new RIV or power
+is added. Its two swords retain normal weapon precedence.
+
+This beast cancels inherited NO_SPEECH with individual raw body32,
+preserving his current spec_warrior taunts and master role. The shared
+Kaladim cave beast stays mute. Keep this individual's good alignment1000
+and passive sentinel/stay-area behaviour alongside the evil slave.
+
+All nine carried items stay: two sword18206 copies in WIELD16/DUAL18,
+wand18207 in HOLD17, both ring18208 and bracer18210 copies, gold18209 and
+pitchfork-key18203. FLOAT is19, not17. The swords stay ordinary weapons;
+no new body-part weapon or native object is created. The weapon pitchfork
+18202 and key pitchfork18203 remain distinct objects.
+
+Keep all 61 room flags, sectors, exits, doors/keys, 10 object definitions,
+shop settings, other resets and authored behaviour/level/alignment data.
+The cave's described chest remains scenery; treasure stays carried as
+before. Correct room18260's "A old stony road" to "An old stony road".
+There are no NO_UNDEAD rooms. Initial population becomes10 with9 carried
+items; three refills give11 inhabitants with9 items. No matching Scribe
+source exists. This adds no player spell or skill.
