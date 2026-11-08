@@ -13,17 +13,37 @@ white, blue and silver. He looks VERY strong, as he stands here, ready to
 help the innocent.
 ~
 64|512|1024 136 1000 S
-29 -5 -9 20r10+700 2d6+14
+29 -5 -9 20d10+700 2d6+14
 0 100000
 8 8 1
+< human~ rare~
 & 30 'teacher base'
 & 85 'riding techniques'
 & 85 'knowledge'
+MobWeight 90
 #0
 
 
 
 #OBJECTS
+#7900
+longsword sword rose~
+a longsword of the Rose~
+A polished longsword with a rose worked into its guard lies here.~
+~
+5 64|1024|2048 8193
+0~ 4~ 4~ 3~
+19 1800 900
+T
+steel~
+E
+longsword sword rose~
+The polished steel blade meets a sturdy guard worked into the shape of a rose.
+~
+A
+17 5
+A
+19 5
 #7909
 treasure coins~
 a huge treasure~
@@ -470,7 +490,7 @@ D 0 7908 3 1     Close the Larder from the inside
 D 0 7906 0 1     Close the Fridge
 D 0 7907 2 1     ------ || ------ from the inside
 M 0 7900 1 7900         The Grand Knight of Paladins
-E 1 7216 99 16          Equip sword on Knight
+E 1 7900 99 16          Equip longsword of the Rose on Knight
 E 1 7217 99 5           Equip Breast-Plate on Knight
 E 1 7218 99 7           Equip Leg-plates on Knight
 E 1 7219 99 9           Equip Gloves on Knight
