@@ -423,6 +423,40 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        /* Flight is an archetype choice; the bird body just supplies anatomy. */
+        {
+                "bird",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_SPEECH | PART_HEAD | PART_EYE
+                    | PART_2_LEGS | PART_FEET | PART_WINGS | PART_FEATHERS
+                    | PART_BEAK | PART_TAIL | PART_HEART | PART_BRAINS | PART_GUTS,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+        /* Dolphins and whales are mammals with flippers and flukes, not fish. */
+        {
+                "cetacean",
+                0, AFF_SWIM,
+                BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_EYE | PART_HEART | PART_BRAINS
+                    | PART_GUTS | PART_FINS | PART_TAIL,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2095,6 +2129,48 @@ const struct mob_type mob_table[MAX_MOB] =
                 5, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 10
+        },
+        {
+                "seagull", "bird", "icon1", "icon2",
+                0, AFF_FLYING, 0, PART_BEAK,
+                0, 0, 0, 0, 0, 0, 0,
+                25, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 45
+        },
+        /* Teeth are anatomy here; the ordinary attack uses the tail. */
+        {
+                "dolphin", "cetacean", "icon1", "icon2",
+                0, 0, PART_FANGS, PART_TAILATTACK,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_small_whale", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 180
+        },
+        /* DD4's blue whale keeps the existing swallowing special. */
+        {
+                "blue_whale", "cetacean", "icon1", "icon2",
+                0, 0, BODY_HUGE, PART_TAILATTACK,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 100000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_large_whale", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 2400
+        },
+        {
+                "hammerhead_shark", "fish", "icon1", "icon2",
+                0, 0, PART_SCALES | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "small_fish", "fish", "icon1", "icon2",
+                0, 0, PART_SCALES, 0,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 20
         }
 
 };
@@ -2474,6 +2550,19 @@ static const CREATURE_TRAIT_CHANGE dracolich_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -40}
 };
 
+static const CREATURE_TRAIT_CHANGE dolphin_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE blue_whale_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+static const CREATURE_TRAIT_CHANGE hammerhead_shark_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -2533,6 +2622,10 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"troll_infant", "troll", infant_troll_trait_changes,
             TRAIT_ITEMS(infant_troll_trait_changes)},
         {"den_beast", NULL, den_beast_trait_changes, TRAIT_ITEMS(den_beast_trait_changes)},
+        {"dolphin", NULL, dolphin_trait_changes, TRAIT_ITEMS(dolphin_trait_changes)},
+        {"blue_whale", NULL, blue_whale_trait_changes, TRAIT_ITEMS(blue_whale_trait_changes)},
+        {"hammerhead_shark", NULL, hammerhead_shark_trait_changes,
+            TRAIT_ITEMS(hammerhead_shark_trait_changes)},
         {NULL, NULL, NULL, 0}
 };
 

@@ -10,10 +10,11 @@ A young sailor is here swimming through the ocean.
 The sailor looks exhausted.
 He must have been shipwrecked, or maybe he was made to walk the plank...
 ~
-4|64 0 0 S
+4|64 67108864 0 S
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #18801
 seagull gull~
 a seagull~
@@ -22,10 +23,11 @@ A seagull swoops down towards you for a closer look.
 Duck !
 Hmm, a seagull on a mission.
 ~
-64 524288 0 S
+64 0 0 S
 15 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< seagull~ common~
 #18802
 dolphin~
 a friendly dolphin~
@@ -36,8 +38,9 @@ Perhaps there's some fish around here you could feed it.
 ~
 64 0 0 S
 20 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< dolphin~ common~
 #18803
 whale~
 a blue whale~
@@ -48,8 +51,9 @@ The blue whale blasts air from its blowhole 5 or 6 meters up into the air!
 ~
 64 0 0 S
 30 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< blue_whale~ common~
 #18804
 hammer head shark~
 a hammerhead shark~
@@ -60,8 +64,9 @@ Getting attacked by sharks is not a good idea.
 ~
 2|32|64 0 -300 S
 15 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< hammerhead_shark~ common~
 #18805
 small fish~
 a small fish~
@@ -72,8 +77,9 @@ You wonder the same thing yourself.
 ~
 2|64|128 0 100 S
 10 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< small_fish~ common~
 #18806
 dahij man~
 Dahij the prophet~
@@ -92,6 +98,7 @@ accept the quest, and it will begin."
 250 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 & 28 'teacher base'
 & 85 'mental defense disciplines'
 & 85 'matter control disciplines'
@@ -168,7 +175,7 @@ A flash of gold catches the corner of your eye.~
 #18800
 The bustling port of~
 You are sailing out to sea.
-Be wary of unpredictable weather patterns and make sure you keen an eye on the
+Be wary of unpredictable weather patterns and make sure you keep an eye on the
 sun to navigate your way over the ocean.
 The port opens up to the wide open ocean to the west.
 You can head back to the safety of Terra Firma to the east.
@@ -877,7 +884,7 @@ S
 Exploring the ocean floor~
 The ground is soft and gluggy here, making it difficult to walk so most of your
 movement is a kind of jump-swim.
-A huge crevice prevents your travel west, while to the north it gets to dark to
+A huge crevice prevents your travel west, while to the north it gets too dark to
 see.
 A sudden updraught of warm water makes it possible to head to the surface from
 here.
@@ -1095,7 +1102,7 @@ R 1 18821 4                    ; Randomize Above a hazy outline
 R 1 18828 4                     ; Randomize Out to sea
 *
 M 1 18804 1 18824           a hammerhead shark to Diving Underwater
-E 1 18802 100 6                        give head to hammerhead
+G 1 18802 100                          Keep shark head as loot
 M 1 18800 1 18811           a young sailor to Out to sea
 M 1 18801 5 18805           a seagull to Out to sea
 M 1 18801 5 18805           a seagull to Out to sea
@@ -1125,8 +1132,6 @@ S
 
 #SPECIALS
 M 18806 spec_evil_evil_gezhp           Dahij is now a bad ass
-M 18802 spec_small_whale			   a friendly dolphin
-M 18803 spec_large_whale			   a blue whale
 S
 
 #$

@@ -94,6 +94,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         gnome gnome_untrained mouse rat fire_bat giant_hermit_crab
         kobold gnoll bugbear
         snake wererat firedrake green_ooze yochlol deer stag eel guardian_daemon frog
+        seagull dolphin blue_whale hammerhead_shark small_fish
 /;
 
 my %mob_act = (

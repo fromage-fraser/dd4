@@ -11063,3 +11063,71 @@ items with his sword equipped, without leaving a claw on the floor.
 The ignored old gold field still gives no live gold. The described rats,
 monster pen and absent mansion owner stay scenery. There is no matching
 Scribe source and no new player spell or skill.
+
+
+The Sea of Deception: ordinary sea life and Dahij
+-----------------------------------------------
+
+The seven mobs in this area use common rank. Keep their authored levels,
+alignments, sexes and behaviour. A whale's size and a questmaster's high
+level do not by themselves call for a higher encounter rank.
+
+Use archetype names seagull, dolphin, blue_whale, hammerhead_shark and
+small_fish. The new body species are bird and cetacean.
+
+The sailor 18800 and Dahij 18806 use humanoid/human, at 175 cm and 75 kg,
+Medium. The sailor starts swimming, as his description says. This uses
+the existing removable swimming state; it is not permanent water breathing.
+
+The bird species has a head, eyes, two legs and feet, wings, feathers,
+beak, tail and ordinary organs. It has no arms or spoken Common. Flight
+belongs to the archetype, so the body can also serve flightless birds.
+Seagull 18801 flies and uses one ordinary piercing beak attack. It is
+25 cm tall, 45 cm long and 1 kg, Small. Its two herring resets stay in
+HOLD slot 17, representing food carried in the beak.
+
+The cetacean species is a mammal body with fins, flukes and ordinary
+organs, blood, soul, pain and remains. It has no arms, legs or spoken
+Common. Dolphin 18802 is 180 cm long and 90 kg, Medium, with natural
+armour -5. Its teeth are anatomical; its ordinary attack uses the tail.
+Blue whale 18803 is 24 m long and 100,000 kg, Large with BODY_HUGE and
+natural armour -6. It also uses one ordinary blunt tail attack.
+
+The dolphin inherits spec_small_whale and the blue whale inherits
+spec_large_whale. Their resolved special remains the same as before.
+DD4 deliberately allows the blue whale to swallow people. Keep the
+existing selection chances, damage, safety, trauma and swallowing rules,
+including the rule allowing Large targets but refusing HUGE targets.
+There is no new whale special or change to the existing functions.
+
+Hammerhead shark 18804 and small fish 18805 reuse the fish body. The
+shark is 3 m long and 200 kg, Large without BODY_HUGE. It has scales,
+fangs, one ordinary piercing bite and natural armour -4. The small fish
+is 20 cm long and Small, with scales and no special bite. Its weight is
+unspecified rather than a fraction of a kilogram. Other aquatic heights
+are also unspecified. Measurements are descriptive estimates; the
+dolphin's length and whale's broad size follow the second-edition entries.
+
+Use raw body 0 for these five animals. Repeating the old no-arm, no-leg
+or no-speech bits would cancel those inherited properties through XOR.
+The whale already inherits BODY_HUGE; do not toggle it off individually.
+Swimming uses the existing state and movement rules, with no new habitat
+or air-supply simulation. No new resistance, sonar or player powers apply.
+
+The shark head object 18802 remains loot, with its definition unchanged.
+Give it to the shark as inventory instead of equipping it in HEAD slot 6.
+This removes its helmet armour and +5 HP from the live shark. Keep the
+reset maximum of 100 and all other equipment, treasure and reset caps.
+The two small-fish rows still share a maximum of one; no extra fish spawn.
+
+Dahij keeps his questmaster role, protections, source level 250, light
+3031 and spec_evil_evil_gezhp. This special was written for him and is
+not redundant species data. Keep all 17 lessons and the quest recall to
+room 18835 for 500 points. His archetype line goes before the teacher
+list. He gains no healer or priest service.
+
+Keep all five objects, 47 room flags and sectors, exits and randomisation.
+Correct only "keen an eye" to "keep an eye" in room 18800 and "to dark"
+to "too dark" in room 18833. There is no matching Scribe source. Initial
+and refill populations stay at twelve, with four carried objects, no
+NO_UNDEAD rooms, no shops and one teacher. No player skill or spell is new.
