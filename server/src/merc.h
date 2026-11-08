@@ -3669,8 +3669,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 103
-#define MAX_SPECIES 24
+#define MAX_MOB 109
+#define MAX_SPECIES 25
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -5964,6 +5964,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_BURNING_BLOOD_SIDES,
         CREATURE_TRAIT_FEAR_IMMUNITY,
         CREATURE_TRAIT_ACID_SPIT_DAILY_CASTS,
+        CREATURE_TRAIT_BODY_WEAPON_LOOT,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Passive native regeneration never invokes or replaces an active special. */

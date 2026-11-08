@@ -457,6 +457,23 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        /* This is a living cloud, without one limb or organ to target. */
+        {
+                "insect_swarm",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS
+                    | BODY_NO_HEART | BODY_NO_SPEECH | BODY_NO_CORPSE
+                    | BODY_BLOODLESS,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2171,6 +2188,58 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 20
+        },
+        {
+                "brown_bear", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                150, 450, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_bear", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 280
+        },
+        {
+                "mosquito_swarm", "insect_swarm", "icon1", "icon2",
+                0, AFF_FLYING, 0, 0,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_poison", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "wasp_swarm", "insect_swarm", "icon1", "icon2",
+                0, AFF_FLYING, 0, 0,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_poison", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "badger", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                30, 12, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 70
+        },
+        {
+                "robin", "bird", "icon1", "icon2",
+                0, AFF_FLYING, 0, PART_BEAK,
+                0, 0, 0, 0, 0, 0, 0,
+                7, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 10
+        },
+        {
+                "lynx", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_INFRARED | AFF_SNEAK,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                55, 20, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 100
         }
 
 };
@@ -2263,6 +2332,7 @@ typedef enum creature_trait_effect
         TRAIT_NATIVE_BREATH_QUANTITY,
         TRAIT_BLOOD_REACTION_QUANTITY,
         TRAIT_FEAR_IMMUNITY,
+        TRAIT_BODY_WEAPON_LOOT,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -2366,7 +2436,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"fire_breath_daily_casts", TRAIT_NATIVE_BREATH_QUANTITY, NULL},
         {"burning_blood_sides", TRAIT_BLOOD_REACTION_QUANTITY, NULL},
         {"fear_immunity", TRAIT_FEAR_IMMUNITY, NULL},
-        {"acid_spit_daily_casts", TRAIT_NATIVE_BREATH_QUANTITY, NULL}
+        {"acid_spit_daily_casts", TRAIT_NATIVE_BREATH_QUANTITY, NULL},
+        {"body_weapon_loot", TRAIT_BODY_WEAPON_LOOT, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -2563,6 +2634,28 @@ static const CREATURE_TRAIT_CHANGE hammerhead_shark_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
 };
 
+static const CREATURE_TRAIT_CHANGE brown_bear_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_BODY_WEAPON_LOOT, 1}
+};
+static const CREATURE_TRAIT_CHANGE badger_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+static const CREATURE_TRAIT_CHANGE lynx_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE mosquito_swarm_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 10}
+};
+static const CREATURE_TRAIT_CHANGE wasp_swarm_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 16}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -2626,6 +2719,16 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"blue_whale", NULL, blue_whale_trait_changes, TRAIT_ITEMS(blue_whale_trait_changes)},
         {"hammerhead_shark", NULL, hammerhead_shark_trait_changes,
             TRAIT_ITEMS(hammerhead_shark_trait_changes)},
+        {"brown_bear", NULL, brown_bear_trait_changes,
+            TRAIT_ITEMS(brown_bear_trait_changes)},
+        {"badger", NULL, badger_trait_changes,
+            TRAIT_ITEMS(badger_trait_changes)},
+        {"lynx", NULL, lynx_trait_changes,
+            TRAIT_ITEMS(lynx_trait_changes)},
+        {"mosquito_swarm", NULL, mosquito_swarm_trait_changes,
+            TRAIT_ITEMS(mosquito_swarm_trait_changes)},
+        {"wasp_swarm", NULL, wasp_swarm_trait_changes,
+            TRAIT_ITEMS(wasp_swarm_trait_changes)},
         {NULL, NULL, NULL, 0}
 };
 
@@ -5696,6 +5799,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_cast_orb", 0 },
 
                 { "spec_poison", 5 },
+                { "spec_bear", 5 },
                 { "spec_poison_palm", 5 },
                 { "spec_poison_bite", 5 },
                 { "spec_bloodsucker", 5 },

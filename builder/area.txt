@@ -6861,3 +6861,96 @@ Correct only "keen an eye" to "keep an eye" in room 18800 and "to dark"
 to "too dark" in room 18833. There is no matching Scribe source. Initial
 and refill populations stay at twelve, with four carried objects, no
 NO_UNDEAD rooms, no shops and one teacher. No player skill or spell is new.
+
+
+Forest: woodland animals, swarms and the medicine man
+---------------------------------------------------
+
+Use rabbit for 18000, brown_bear for 18001, mosquito_swarm for 18002,
+wasp_swarm for 18003, stag for 18004, badger for 18005, robin for 18006,
+human for 18007 and lynx for 18008. The medicine man is rare, with 2x
+rank HP applied once. The other eight are common. Keep their authored
+levels, alignments, aggression, wandering and wimpy behaviour.
+
+The rabbit and stag keep their existing mammal defaults. Neither has a
+reset, so this conversion does not add them to the population. The rabbit
+becomes male to agree with "his" in the description. Keep both the rabbit's
+and robin's individual spec_breath_lightning: these are authored surprises,
+not abilities supplied to every rabbit or bird. The medicine man stays
+human, with his existing flight, Sanctuary and spec_breath_any.
+
+A brown bear uses quadrupedal_mammal, with paws, claws, fangs and a tail,
+ordinary living organs, natural armour -4, and claw/bite attack choices.
+Its default measurements are 150 cm at the shoulder, 280 cm long and
+450 kg, Large. This giant Kodiak uses individual 160 cm/330 cm/800 kg
+measurements and BODY_HUGE. These are descriptive estimates, not extra
+stat bonuses. A large body does not by itself set a higher encounter rank.
+
+The bear's inherited spec_bear has a 15% chance per combat opportunity
+to deliver a 2d6 blunt crushing hug. It needs a live opponent in the same
+room, usable forelegs and the normal ability to act. The bear takes its
+usual violence wait after a hug. The target gains no hold, stun or trauma;
+normal safety and damage defences apply. This is our adaptation of the
+second-edition bear hug and adds 5 special XP. It does not change how
+NPCs die or let a bear keep fighting below zero HP.
+
+Object 18000 remains the bear's equipped claw weapon and loot. Add
+ITEM_BODY_PART, set value[0] to 4 for the leg/foreleg region, and use
+attack verb 5, claw. Keep HUM, TAKE/WIELD, the other prototype numbers,
++3 hitroll/-10 spell-saving affects and existing level-based generation.
+Do not add DONOT_RANDOMISE or a new claw object. Keep its original reset.
+Brown bears opt into the internal body_weapon_loot trait so these existing
+claws remain loot after death or a successful body-part disarm. Detachment
+clears ITEM_BODY_PART and resets value[0] to 0: the claw is an ordinary
+held weapon then, rather than a new owner's attached limb. Its damage,
+other flags and affects stay intact. Other native body weapons keep their
+existing cleanup unless their species/archetype explicitly opts in.
+Use raw atk claws (MobAttackParts 8589934592) to cancel the inherited
+claw attack through XOR. The resolved fallback is fangs only. While attached,
+the claw weapon supplies the claw attack; after it is torn off, the bear
+can still bite without immediately regrowing a native claw attack.
+
+Leg trauma alone does not newly disable that attached claw weapon.
+The shared body-part weapon eligibility function is unchanged. Existing
+injury penalties and the separate chance to tear off a leg-region item
+still apply. Regenerate does not recreate a torn-off object. The new hug
+requires usable forelegs, so leg trauma prevents that special manoeuvre.
+
+Badger uses ordinary mammal anatomy, claw/bite attacks and natural
+armour -6, at 30 cm tall/70 cm long/12 kg, Small. Lynx uses the same basic
+body with natural armour -5, infrared, sneak and claw/bite choices, at
+55 cm/100 cm/20 kg, Small. Robin reuses bird anatomy, flight and a beak
+attack, at 7 cm tall and 10 cm long, Small. Its weight is unspecified;
+do not invent a fractional kilogram. All these animals keep ordinary
+blood, pain, soul and remains behaviour. The medicine man uses the normal
+human measurements, 175 cm and 75 kg, Medium.
+
+The new insect_swarm species represents a living cloud. It has no single
+head, eyes, arms, legs or heart to target, no speech and no coherent corpse.
+It is bloodless for feeding purposes, but remains organic and living,
+with ordinary pain and soul behaviour. It gains no blanket weapon or
+mental immunity. Both swarms are Medium; their height, length and mass
+are unspecified, and their sex is unspecified because each is a group.
+
+The archetypes supply flight and inherit existing spec_poison. The
+ordinary natural_attack_type trait gives mosquitoes bite verb 10 and
+wasps sting verb 16, one normal attack at a time without a single head
+or fang part. The poison helper uses sting wording for configured sting
+attackers; its old bite/palm wording, target selection, venom and saves
+stay as before for other creatures. Each swarm keeps the usual 5 special
+XP. No separate malaria, blood drain or swarm weapon-immunity system is
+added. Keep the existing room's malaria warning as written.
+
+Clear the old raw body 36/61 duplicates so they do not cancel inherited
+anatomy through XOR. Clear the robin/swarm raw flight duplicates so flight
+stays inherited. The Kodiak's raw BODY_HUGE is an individual addition;
+ordinary brown bears do not inherit it. Existing NPC native-attack injury
+rules stay in place, separately from the attached-weapon rule above.
+
+Keep all reset rows, caps and placements, all 55 room flags and sectors,
+exits and the door reset. The initial population stays seven, with three
+carried items; three refills give thirteen, and the eventual cap is fourteen.
+Keep the bear claws, medicine man's necklace/gold and ground toe. Keep
+short names, keywords and picture paths. Correct only the stag's "scar's",
+the lynx's "it seem", and the wasp room's plural grammar. There is no
+matching Scribe source, no shop or teacher, and no new player skill/spell.

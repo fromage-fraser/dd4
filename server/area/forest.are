@@ -12,8 +12,9 @@ The rabbit is minding his own business so should you!
 ~
 4|64|128 0 -500 S
 3 0 0 0d0+0 0d0+0
-36 0
-8 8 0
+0 0
+8 8 1
+< rabbit~ common~
 #18001
 kodiak bear~
 a Giant Kodiak bear~
@@ -23,8 +24,13 @@ The bear is not pleased to see you.
 ~
 32|64 0 0 S
 10 0 0 0d0+0 0d0+0
-36 0
+128 0
 8 8 1
+< brown_bear~ common~
+MobHeight 160
+MobWeight 800
+MobLength 330
+MobAttackParts 8589934592
 #18002
 mosquitoes mosquitos swarm~
 a swarm of mosquitoes~
@@ -32,10 +38,11 @@ A swarm of mosquitoes is hungrily looking at you.
 ~
 The mosquitoes look lean and in need of blood--YOURS!
 ~
-32|64 524288 -500 S
+32|64 0 -500 S
 10 0 0 0d0+0 0d0+0
-61 0
-8 8 1
+0 0
+8 8 0
+< mosquito_swarm~ common~
 #18003
 wasps swarm~
 a swarm of wasps~
@@ -43,21 +50,23 @@ A swarm of wasps is here attacking anything that enters here.
 ~
 The wasps look mean and those stings could really hurt.
 ~
-32|64 524288 -500 S
+32|64 0 -500 S
 10 0 0 0d0+0 0d0+0
-61 0
-8 8 1
+0 0
+8 8 0
+< wasp_swarm~ common~
 #18004
 stag~
 a stag~
 A magnificent stag stands here proud and strong.
 ~
-The stag is beautiful, a twelve pointer, he has a few scar's from many battles.
+The stag is beautiful, a twelve pointer, he has a few scars from many battles.
 ~
 64 0 500 S
 8 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< stag~ common~
 #18005
 Badger~
 the badger~
@@ -67,8 +76,9 @@ The badger looks like a fine specimen, a thick glossy coat on him.
 ~
 64 0 0 S
 5 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< badger~ common~
 #18006
 Robyn~
 A Small Robin~
@@ -76,10 +86,11 @@ A little bird flits from tree to tree getting insects for tea.
 ~
 The robin is tiny about the size of your thumb.
 ~
-64|128 524288 0 S
+64|128 0 0 S
 1 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< robin~ common~
 #18007
 man medicine~
 a medicine man~
@@ -91,17 +102,19 @@ The medicine man has a small necklace of tiny bones around his neck.
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
 #18008
 lynx~
 the lynx~
-A lean cat prances around here, it seem surprised to see you.
+A lean cat prances around here, it seems surprised to see you.
 ~
 The lynx has some scars from old battles and looks quite tough.
 ~
 64 0 800 S
 6 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< lynx~ common~
 #0
 
 
@@ -111,8 +124,8 @@ claws bears~
 a pair of bears claws~
 Two large claws lie here.~
 ~
-5 2 1|8192
-0~ 6~ 12~ 11~
+5 2|67108864 1|8192
+4~ 6~ 12~ 5~
 5 0 0
 A
 18 3
@@ -638,9 +651,9 @@ D2
 S
 #18029
 River bed~
-Uh oh, Wasp's, hundreds of them look out!!!
+Uh oh, wasps! Hundreds of them! Look out!
 
-All around you is wasp's you must have stepped on their nest better run as
+Wasps are everywhere. You must have stepped on their nest. Better run;
 they are very angry.
 ~
 0 0 4
@@ -1085,8 +1098,6 @@ S
 
 #SPECIALS
 M  18000 spec_breath_lightning          Small rabbit.
-M  18002 spec_poison                    mosquito
-M  18003 spec_poison                    a swarm of wasps
 M  18006 spec_breath_lightning          A Small Robin
 M  18007 spec_breath_any                a medicine man
 S
