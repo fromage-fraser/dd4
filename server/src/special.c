@@ -84,6 +84,7 @@ DECLARE_SPEC_FUN( spec_dracolich            );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
+DECLARE_SPEC_FUN( spec_bear                 );
 DECLARE_SPEC_FUN( spec_firedrake );
 DECLARE_SPEC_FUN( spec_poison_bite );
 DECLARE_SPEC_FUN( spec_breath_acid_anatomical );
@@ -181,6 +182,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_dracolich"))            return spec_dracolich;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
+        if (!str_cmp(name, "spec_bear"))                 return spec_bear;
         if (!str_cmp(name, "spec_firedrake")) return spec_firedrake;
         if (!str_cmp(name, "spec_poison_bite")) return spec_poison_bite;
         if (!str_cmp(name, "spec_breath_acid_anatomical")) return spec_breath_acid_anatomical;
@@ -283,6 +285,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
         if (special == spec_poison) return "spec_poison";
+        if (special == spec_bear) return "spec_bear";
         if (special == spec_firedrake) return "spec_firedrake";
         if (special == spec_poison_bite) return "spec_poison_bite";
         if (special == spec_breath_acid_anatomical) return "spec_breath_acid_anatomical";
@@ -2967,6 +2970,12 @@ static bool poison_contact_special(CHAR_DATA *ch, bool palm)
                 act("$n strikes you with a poisoned palm!", ch, NULL, victim, TO_VICT);
                 act("$n strikes $N with a poisoned palm!", ch, NULL, victim, TO_NOTVICT);
         }
+        else if (creature_trait_value(ch, CREATURE_TRAIT_NATURAL_ATTACK_TYPE) == 16)
+        {
+                act("You sting $N!", ch, NULL, victim, TO_CHAR);
+                act("$n stings you!", ch, NULL, victim, TO_VICT);
+                act("$n stings $N!", ch, NULL, victim, TO_NOTVICT);
+        }
         else
         {
                 act("You bite $N!", ch, NULL, victim, TO_CHAR);
@@ -5061,6 +5070,31 @@ static bool native_power_ready(CHAR_DATA *ch)
             && !IS_AFFECTED(ch, AFF_CHARM)
             && !IS_AFFECTED(ch, AFF_HOLD)
             && !IS_AFFECTED(ch, AFF_DAZED);
+}
+
+/* A hug is a crushing attack, not a hold or a stun. */
+bool spec_bear(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!native_power_ready(ch) || ch->hit <= 0
+        || !HAS_LEGS(ch) || !(ch->body_form & PART_FORELEGS)
+        || IS_AFFECTED(ch, AFF_LEG_TRAUMA))
+                return FALSE;
+
+        victim = ch->fighting;
+        if (!victim || victim->deleted || victim->in_room != ch->in_room
+        || victim->hit <= 0 || victim->position == POS_DEAD
+        || is_safe(ch, victim) || number_percent() > 15)
+                return FALSE;
+
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+        act("You catch $N in a crushing hug!", ch, NULL, victim, TO_CHAR);
+        act("$n catches you in a crushing hug!", ch, NULL, victim, TO_VICT);
+        act("$n catches $N in a crushing hug!", ch, NULL, victim, TO_NOTVICT);
+        damage_with_resistance_types(ch, victim, dice(2, 6),
+                                     TYPE_HIT + 8, FALSE, RES_BLUNT | RES_NONMAGIC);
+        return TRUE;
 }
 
 /* Faerie tricks use ordinary DD4 invisibility and confusion rules. */

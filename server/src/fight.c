@@ -4010,6 +4010,19 @@ void change_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
         refresh_combat_gear_stealth(ch);
 }
 
+/* Some reviewed creatures leave their attached weapons as ordinary loot. */
+static bool detach_body_weapon_loot(CHAR_DATA *ch, OBJ_DATA *obj)
+{
+        if (!IS_NPC(ch) || !IS_OBJ_STAT(obj, ITEM_BODY_PART)
+        || obj->item_type != ITEM_WEAPON || !IS_SET(obj->wear_flags, ITEM_TAKE)
+        || creature_trait_value(ch, CREATURE_TRAIT_BODY_WEAPON_LOOT) <= 0)
+                return FALSE;
+
+        REMOVE_BIT(obj->extra_flags, ITEM_BODY_PART);
+        obj->value[0] = 0; /* It is held loot now, not an attached body region. */
+        return TRUE;
+}
+
 /*
  * Make a corpse out of a character.
  */
@@ -4101,7 +4114,8 @@ void make_corpse(CHAR_DATA *ch)
                 if (IS_SET(obj->extra_flags, ITEM_INVENTORY))
                         extract_obj(obj);
 
-                else if (IS_SET(obj->extra_flags, ITEM_BODY_PART))
+                else if (IS_SET(obj->extra_flags, ITEM_BODY_PART)
+                         && !detach_body_weapon_loot(ch, obj))
                         extract_obj(obj);
 
                 else if (!IS_NPC(ch) || MAKES_CORPSE(ch))
@@ -12068,6 +12082,7 @@ bool remove_bodypart(CHAR_DATA *ch, int iWear, bool fReplace)
         if (!IS_SET(ch->in_room->room_flags, ROOM_NO_DROP))
         {
                 obj_from_char(obj);
+                detach_body_weapon_loot(ch, obj);
                 obj_to_room(obj, ch->in_room);
 
                 if (plural)
