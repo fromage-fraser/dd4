@@ -2240,6 +2240,57 @@ const struct mob_type mob_table[MAX_MOB] =
                 55, 20, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "fox", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_DETECT_HIDDEN,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                40, 7, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "wolf", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_DETECT_HIDDEN,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                80, 50, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 150
+        },
+        /* Wargs have their own simple speech; being wild does not make a mount. */
+        {
+                "warg", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_DETECT_HIDDEN,
+                BODY_NO_SPEECH | PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_FANGS, 0, 0, 0, 0, 0, 0, 0,
+                100, 120, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 210
+        },
+        /* Their sturdy saves and elusive movement use ordinary DD4 defences. */
+        {
+                "brownie", "humanoid", "icon1", "icon2",
+                0, AFF_HIDE | AFF_INVISIBLE | AFF_DETECT_HIDDEN,
+                0, 0, RES_MAGIC, 0, 0, 0, 0, 0, 0,
+                61, 9, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_brownie", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        /* This adult profile leaves younger green dragons free to differ. */
+        {
+                "adult_green_dragon", "dragon", "icon1", "icon2",
+                ACT_FEAR_AURA,
+                AFF_FLYING | AFF_SWIM | AFF_INFRARED
+                    | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                BODY_HUGE | PART_HORNS, 0, RES_MAGIC, 0, RES_POISON,
+                0, 0, 0, 0,
+                400, 8000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_gas", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 3200
         }
 
 };
@@ -2656,6 +2707,27 @@ static const CREATURE_TRAIT_CHANGE wasp_swarm_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 16}
 };
 
+static const CREATURE_TRAIT_CHANGE fox_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE wolf_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE warg_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE brownie_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7}
+};
+static const CREATURE_TRAIT_CHANGE adult_green_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -2725,6 +2797,16 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
             TRAIT_ITEMS(badger_trait_changes)},
         {"lynx", NULL, lynx_trait_changes,
             TRAIT_ITEMS(lynx_trait_changes)},
+        {"fox", NULL, fox_trait_changes,
+            TRAIT_ITEMS(fox_trait_changes)},
+        {"wolf", NULL, wolf_trait_changes,
+            TRAIT_ITEMS(wolf_trait_changes)},
+        {"warg", "wolf", warg_trait_changes,
+            TRAIT_ITEMS(warg_trait_changes)},
+        {"brownie", NULL, brownie_trait_changes,
+            TRAIT_ITEMS(brownie_trait_changes)},
+        {"adult_green_dragon", NULL, adult_green_dragon_trait_changes,
+            TRAIT_ITEMS(adult_green_dragon_trait_changes)},
         {"mosquito_swarm", NULL, mosquito_swarm_trait_changes,
             TRAIT_ITEMS(mosquito_swarm_trait_changes)},
         {"wasp_swarm", NULL, wasp_swarm_trait_changes,
@@ -5800,6 +5882,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
 
                 { "spec_poison", 5 },
                 { "spec_bear", 5 },
+                { "spec_brownie", 5 },
                 { "spec_poison_palm", 5 },
                 { "spec_poison_bite", 5 },
                 { "spec_bloodsucker", 5 },

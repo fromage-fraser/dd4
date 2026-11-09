@@ -20,6 +20,9 @@ one of a peaceful man leading a simple life.
 5 15 7 5d5+50 1d8+2
 0 600
 8 8 1
+< human~ common~
+MobHeight 183
+MobWeight 95
 #6002
 bear~
 the brown bear~
@@ -30,8 +33,9 @@ teeth.  It doesn't resemble those cute little thingies from toy shops at all.
 ~
 96 0 -50 S
 8 13 3 8d8+80 2d6+2
-36 2000
+0 2000
 4 8 0
+< brown_bear~ common~
 #6003
 rabbit~
 the ferocious rabbit~
@@ -43,8 +47,9 @@ rabbits into ferocious and bloodthirsty monsters.
 ~
 96 0 -150 S
 3 17 6 1d4+26 1d8+0
-36 350
+0 350
 4 8 0
+< rabbit~ common~
 #6004
 deer~
 the fallow deer~
@@ -53,10 +58,11 @@ A fallow deer is grazing peacefully here.
 She is a graceful creature on long, slender legs, and with large, brown eyes
 looking back at you with an air of watchful interest.
 ~
-82 1 350 S
+66 0 350 S
 2 19 2 2d8+2 1d6+0
-36 200
+0 200
 8 8 2
+< deer~ common~
 #6005
 fox~
 the brown fox~
@@ -66,8 +72,12 @@ It is a large fox with beautiful, red-brown fur and a long, thick brush.
 ~
 64 0 -50 S
 2 18 6 1d4+18 1d6+0
-36 200
+0 200
 8 8 0
+< fox~ common~
+MobHeight 45
+MobWeight 10
+MobLength 120
 #6100
 warg vicious~
 the vicious warg~
@@ -78,8 +88,9 @@ quickly from its long, white fangs.  It looks quite dangerous and very angry.
 ~
 96 0 -350 S
 5 16 5 1d12+60 2d4+0
-36 800
+0 800
 8 8 0
+< warg~ common~
 #6101
 warg ferocious~
 the ferocious warg~
@@ -90,8 +101,9 @@ quickly from its long, white fangs.  It looks quite dangerous and very angry.
 ~
 96 0 -350 S
 5 16 5 1d12+60 2d4+0
-36 800
+0 800
 8 8 0
+< warg~ common~
 #6102
 wolf grey~
 the large, grey wolf~
@@ -101,8 +113,9 @@ The large, grey wolf eyes you with interest while licking its lips.
 ~
 96 0 -150 S
 3 18 7 1d12+35 1d7+0
-36 450
+0 450
 8 8 0
+< wolf~ common~
 #6103
 wolf black~
 the large, black wolf~
@@ -112,35 +125,40 @@ The large, black wolf eyes you with interest while licking its lips.
 ~
 96 0 -150 S
 3 18 7 1d12+35 1d7+0
-36 450
+0 450
 8 8 0
+< wolf~ common~
 #6112
 dragon green~
 the huge, green dragon~
 A huge green dragon is here, its narrow yellow eyes glowing with rage.
 ~
 This enormous winged serpent has dark green scales covering most of its
-colossal body.  Numerous holes in its heavy wings tell of many fights as does
+colossal body.  Numerous holes in its heavy wings tell of many fights as do
 the nicks in the horns on its head.  It smells as disgusting as only dragons
 do.
 ~
-99|16384 8 -1000 S
+99|16384 0 -1000 S
 25 -5 -7 25r25+250 2d6+18
-128 200000
+0 200000
 8 8 0
+< adult_green_dragon~ boss~
 #6115
 shargugh brownie~
 Shargugh~
 Shargugh the Forest Brownie is here, grinning broadly at you.
 ~
-This little fellow is only three foot tall with wild matted brown hair and long
+This little fellow is only three feet tall with wild matted brown hair and a long,
 tangled brown beard.  He wears ragged brown and green clothing and looks as if
 he is having great fun.
 ~
-148 32778 1000 S
+132 32776 1000 S
 10 1 -10 10d10+100 1d8+2
 0 3000
 8 8 1
+< brownie~ rare~
+MobHeight 91
+MobWeight 18
 #6116
 elder druid~
 the elder druid~
@@ -153,6 +171,8 @@ he would be a tough foe.
 17 4 -7 17d17+170 2d8+2
 0 20000
 8 8 1
+< human~ rare~
+MobWeight 70
 #0
 
 
@@ -361,7 +381,7 @@ A yellow potion has been left here.~
 2 1000 300
 E
 potion yellow~
-It has a deep yellow colour and and a strong spicy smell.
+It has a deep yellow colour and a strong spicy smell.
 ~
 #6111
 shield large~
@@ -2530,7 +2550,6 @@ S
 
 
 #SPECIALS
-M  6112 spec_breath_gas
 M  6116 spec_cast_cleric
 S
 

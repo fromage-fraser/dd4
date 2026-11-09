@@ -96,6 +96,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         snake wererat firedrake green_ooze yochlol deer stag eel guardian_daemon frog
         seagull dolphin blue_whale hammerhead_shark small_fish
         brown_bear mosquito_swarm wasp_swarm badger robin lynx
+        fox wolf warg brownie adult_green_dragon
 /;
 
 my %mob_act = (
@@ -344,7 +345,7 @@ my @mob_spec = qw/
     spec_mummy              spec_banshee            spec_death_knight         spec_lich
     spec_giant             spec_cast_cleric_helper
     spec_firedrake spec_guardian_daemon
-    spec_bear spec_poison_bite spec_breath_acid_anatomical spec_breath_fire_anatomical
+    spec_bear spec_brownie spec_poison_bite spec_breath_acid_anatomical spec_breath_fire_anatomical
     spec_breath_any_anatomical
     spec_faerie_dragon      spec_duergar            spec_swallow            spec_poison_palm spec_manticore spec_alhoon
 /;
