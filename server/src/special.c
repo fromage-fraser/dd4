@@ -85,6 +85,7 @@ DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
 DECLARE_SPEC_FUN( spec_bear                 );
+DECLARE_SPEC_FUN( spec_brownie              );
 DECLARE_SPEC_FUN( spec_firedrake );
 DECLARE_SPEC_FUN( spec_poison_bite );
 DECLARE_SPEC_FUN( spec_breath_acid_anatomical );
@@ -183,6 +184,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_bear"))                 return spec_bear;
+        if (!str_cmp(name, "spec_brownie"))              return spec_brownie;
         if (!str_cmp(name, "spec_firedrake")) return spec_firedrake;
         if (!str_cmp(name, "spec_poison_bite")) return spec_poison_bite;
         if (!str_cmp(name, "spec_breath_acid_anatomical")) return spec_breath_acid_anatomical;
@@ -286,6 +288,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_janitor) return "spec_janitor";
         if (special == spec_poison) return "spec_poison";
         if (special == spec_bear) return "spec_bear";
+        if (special == spec_brownie) return "spec_brownie";
         if (special == spec_firedrake) return "spec_firedrake";
         if (special == spec_poison_bite) return "spec_poison_bite";
         if (special == spec_breath_acid_anatomical) return "spec_breath_acid_anatomical";
@@ -5094,6 +5097,51 @@ bool spec_bear(CHAR_DATA *ch)
         act("$n catches $N in a crushing hug!", ch, NULL, victim, TO_NOTVICT);
         damage_with_resistance_types(ch, victim, dice(2, 6),
                                      TYPE_HIT + 8, FALSE, RES_BLUNT | RES_NONMAGIC);
+        return TRUE;
+}
+
+/* A brownie uses a few woodland tricks, rather than a mage's whole spell list. */
+bool spec_brownie(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!native_power_ready(ch) || ch->hit <= 0 || !HAS_HEAD(ch)
+        ||  !(ch->body_form & PART_BRAINS)
+        ||  IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+                return FALSE;
+
+        victim = ch->fighting;
+        if (!victim)
+        {
+                /* Respond to an attacker before tending to a missing defence. */
+                if (is_in_combat(ch)
+                ||  (IS_AFFECTED(ch, AFF_INVISIBLE)
+                     && IS_AFFECTED(ch, AFF_PROTECT))
+                ||  number_bits(3) != 0)
+                        return FALSE;
+
+                if (!IS_AFFECTED(ch, AFF_INVISIBLE))
+                {
+                        spell_invis(gsn_invis, ch->level, ch, ch);
+                        return IS_AFFECTED(ch, AFF_INVISIBLE) != 0;
+                }
+
+                spell_protection(gsn_protection, ch->level, ch, ch);
+                return IS_AFFECTED(ch, AFF_PROTECT) != 0;
+        }
+
+        if (victim == ch || victim->deleted || victim->in_room != ch->in_room
+        ||  victim->hit <= 0 || victim->position == POS_DEAD
+        ||  !can_see(ch, victim) || is_safe(ch, victim)
+        ||  is_mindless(victim)
+        ||  (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        ||  is_affected(victim, gsn_confusion)
+        ||  IS_AFFECTED(victim, AFF_CONFUSION)
+        ||  number_percent() > 15)
+                return FALSE;
+
+        /* Confusion supplies its own save, duration and ordinary restrictions. */
+        spell_confusion(gsn_confusion, ch->level, ch, victim);
         return TRUE;
 }
 

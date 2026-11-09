@@ -6954,3 +6954,105 @@ Keep the bear claws, medicine man's necklace/gold and ground toe. Keep
 short names, keywords and picture paths. Correct only the stag's "scar's",
 the lynx's "it seem", and the wasp room's plural grammar. There is no
 matching Scribe source, no shop or teacher, and no new player skill/spell.
+
+
+Haon Dor: woodland mammals, Shargugh and the green dragon
+-------------------------------------------------------
+
+Use human for John 6000 and the elder druid 6116, brown_bear for 6002,
+rabbit for 6003, deer for 6004, fox for 6005, warg for 6100/6101, wolf for
+6102/6103, adult_green_dragon for 6112 and brownie for Shargugh 6115.
+These reuse humanoid, quadrupedal_mammal and dragon; no new basic body
+species is needed. All ordinary anatomy still comes through inheritance.
+
+John is common, at 183 cm tall and 95 kg, matching his six-foot muscular
+description. The bear inherits the ordinary brown-bear measurements and
+spec_bear. It does not get the Kodiak's individual HUGE flag or claw item.
+The existing leg-body-weapon rule stays unchanged. The rabid rabbit stays
+a loaded definition without a reset; this does not add disease spreading.
+The fallow deer keeps the antlerless deer profile and female sex. Remove
+her stray blind affect, which contradicts her watchful eyes, and unused
+ACT value 16. Keep her sentinel and stay-area behaviour.
+
+Fox and wolf use living mammal anatomy with paws, claws, fangs and a tail.
+Only the fangs supply their ordinary native attack. Both have detect-hidden
+for keen senses and natural armour -3. Fox defaults to 40 cm at the shoulder,
+100 cm long and 7 kg, Small; this large fox uses 45 cm/120 cm/10 kg. Wolf
+defaults to 80 cm/150 cm/50 kg, Small. There are no added poison, tracking
+or disease specials, and the area's existing aggression stays as authored.
+
+Warg is this area's spelling of the second-edition worg. It uses the same
+mammal body, at 100 cm/210 cm/120 kg, Medium, with natural armour -4 and
+detect-hidden. Its archetype cancels the inherited no-speech bit, allowing
+its simple language. It does not automatically become mountable or gain
+a new language system. Neither of these wargs is identified as an alpha;
+both remain common. Its trait profile shares the wolf profile within the
+same basic species, then replaces the armour value. All weights are whole
+kilograms; these measurements are descriptive estimates.
+
+The adult green dragon inherits flight, swimming, infrared, detect-invisible
+and detect-hidden, plus HUGE and anatomical horns. Its ordinary dragon
+claw, bite and tail attack choices remain; horns add no extra attack.
+This adult profile measures 400 cm at the shoulder, 3200 cm including its
+tail and 8000 kg, Large. Younger green dragons can have separate profiles.
+Natural armour is -20, RES_MAGIC represents adult magical resistance, and
+poison immunity uses DD4's existing poisonous-gas channel. That immunity
+also covers other poisons; there is no new gas-resistance flag.
+
+It inherits spec_breath_gas, so remove the duplicate area special row.
+Keep its individual aggression, sentinel, stay-area and famous
+flags. The existing fear aura attempts fear once per visible opponent's
+fight, using the normal resistance-aware save; this does not frighten idle
+bystanders. No new fear function or generic mage spell list is added.
+Age-specific woodland spells can be considered separately later.
+
+Dragon 6112 is boss, with 7x normal rank HP applied once. Its existing gas
+breath scales with current HP, so that promotion strengthens the breath
+as well. This is an approved encounter choice, not an effect of body size.
+Keep the potion 6110, crown 6112 and shield 6111 as carried treasure; do
+not equip human-sized items on it. Shargugh and the elder druid are rare,
+with 2x rank HP once. All other Haon Dor definitions remain common.
+
+A brownie is a living humanoid, with ordinary blood, pain, soul, speech
+and remains. Its default height/weight are 61 cm/9 kg, Small. Shargugh's
+explicit three-foot description overrides those to 91 cm/18 kg. Hide,
+invisibility and detect-hidden represent woodland concealment and keen
+senses. Armour -7 represents agility; RES_MAGIC is our broad adaptation
+of strong second-edition saving throws, not a claim that the book gives
+brownies a percentage magic-resistance score. No blanket charm/sleep
+immunity or material vulnerability is added.
+
+The inherited spec_brownie has a one-in-eight opportunity outside combat
+to restore missing self-invisibility or protection, one effect at a time.
+It responds to an attacker before refreshing defences. During combat it
+has a 15% opportunity to use the existing Confusion spell on its legal
+opponent. The ordinary spell supplies its save, duration and restrictions;
+this is a magical trick, not poison gas. Readiness, head/brain injury,
+safety and existing affects are checked. It adds 5 special XP. Repeatable
+DD4 tricks are a deliberate adaptation of the book's daily abilities.
+
+Keep Shargugh's individual detect-invisible, sneak, wimpy/scavenging, good
+alignment and ring 6114. Remove only unused ACT value 16 and the raw
+invisibility duplicate, so XOR does not cancel that inherited defence.
+The elder druid remains human at 175 cm/70 kg, with spec_cast_cleric,
+his existing detect-invisible/aggression/sentinel/scavenging and morning star.
+His unsettling cultist temple is not a new healer or NO_UNDEAD room.
+
+Clear the dragon's duplicate detect-invisible, raw quadruped body 36
+duplicates and the dragon's raw HUGE bit:
+those properties now come from their templates. The warg's speech
+exception belongs in its archetype, rather than in each area entry.
+Keep all source levels, alignments, other behaviour bits, names, sex,
+picture paths and loot. Correct only the small dragon/brownie grammar
+and the potion's repeated "and". The checked deer and Shargugh portraits
+agree with their descriptions and are unchanged.
+
+Keep all 71 room flags, exits, doors, traps, ambient data and reset rows.
+The initial population from these definitions is 19, with eight carried
+items; refills add the second fox for 20. There are also imported Plains
+rabbits 309 with teeth 313, and Arachnos spiders 6318/6319 in room 6134.
+The four rabbit rows share global population caps with the Plains, so a
+fresh full-world load produces two here and three there. Preserve that
+arrangement and the shared water barrel 6013 used in Redferne. There is
+no matching Scribe source, no new shop/teacher/player spell and no new
+area field or ACT bit.
