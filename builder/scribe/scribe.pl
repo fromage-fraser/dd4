@@ -97,6 +97,8 @@ my %mob_archetype = map { $_ => 1 } qw/
         seagull dolphin blue_whale hammerhead_shark small_fish
         brown_bear mosquito_swarm wasp_swarm badger robin lynx
         fox wolf warg brownie adult_green_dragon
+        web_spider hunting_spider giant_spider venomous_spider phase_spider
+        giant_wasp spider_empress quasit ki_rin wormkin
 /;
 
 my %mob_act = (
