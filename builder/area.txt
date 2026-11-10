@@ -7110,3 +7110,33 @@ The trapped orc uses orc. The slave, Hermit, Donjonkeeper and Guardian
 use human. Keep the young spider male and the drone female to match
 their descriptions. Keep the authored footstep keys, loot and reset
 caps, including the four spiders placed in Haon Dor room 6134.
+
+
+Harpy Haven
+-----------
+
+Use harpy for both the screaming harpy and its leader. The archetype
+adds feathered wings, flight, claws and fangs to the humanoid body.
+Keep the two local sonic fight programs at their original chances.
+Place the archetype and rank after each program's closing marker.
+Clear the area flight bit so it keeps the inherited flight through XOR.
+Both leader spawns use rare rank and keep their individual gas breath.
+Rare doubles normal HP once, and gas breath scales with current HP.
+
+Air elemental uses the inorganic elemental_being body and adds the
+parts and restrictions of a shifting cloud. Flight and pass-door
+come from the archetype. Its ordinary attack uses the existing blunt
+pound type for a wind strike. Its measurements are unspecified.
+Clear the duplicate flight, pass-door and inorganic bits in the area.
+
+Efreeti is a huge humanoid with flight and fire resistance. Keep the
+individual no-corpse bit, defensive affects and mage special. Clear
+the individual HUGE bit because the archetype supplies it.
+
+Both rocs use the bird body, flight, HUGE, claws and a beak. Use common
+rank for both. Keep their original behaviour, and leave the egg in the
+female's nest. Clear the body and flight duplicates in the area.
+
+The Wicked Witch uses the living green_hag profile and elite rank.
+Keep her existing Sanctuary, detection affects and necromantic special.
+The special selects her spells and works on a living caster.
