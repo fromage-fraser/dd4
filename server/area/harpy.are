@@ -13,7 +13,7 @@ The harpy looks at you with her bloodshot eyes.  Her entire body is
 caked in filth and grime and she stinks to high heaven.  Her razor-
 sharp talons flex as she considers you for dinner.
 ~
-4|32 8|32|32768|524288 -500 S
+4|32 8|32|32768 -500 S
 50 1 0 2d6+260 4d6+4
 0 15000
 8 8 2
@@ -21,6 +21,7 @@ sharp talons flex as she considers you for dinner.
 c sonic $n
 ~
 |
+< harpy~ common~
 #9102
 harpy leader screaming~
 the screaming harpy leader~
@@ -31,7 +32,7 @@ her wings and you see insects crawling around in them.  Her hair is
 matted and greasy and you are sickened by the miasma of stench that
 surrounds her.
 ~
-2|4|32 8|32|32768|524288 -750 S
+2|4|32 8|32|32768 -750 S
 53 8 2 4d7+510 4d8+5
 0 15000
 8 8 2
@@ -39,6 +40,7 @@ surrounds her.
 c sonic $n
 ~
 |
+< harpy~ rare~
 #9103
 air elemental ghostly~
 a ghostly air elemental~
@@ -47,10 +49,11 @@ A ghostly air elemental floats through the clouds.
 The air elemental is hard to see.  You know that it's there
 because objects behind it seem to wobble, and are slightly blurred.
 ~
-4|32 8|32|32768|65536|524288|1048576 0 S
+4|32 8|32|32768|65536 0 S
 55 0 -4 5d10+600 4d7+7
-256 45000
+0 45000
 8 8 0
+< air_elemental~ common~
 #9104
 mysterious efreeti~
 the mysterious efreeti~
@@ -61,8 +64,9 @@ finest ghostly silks and a headdress adorned by an elaborate brooch.
 ~
 4 8|16|128|8192 -100 S
 57 0 -7 10d7+700 5d6+4
-64|128 60000
+64 60000
 8 8 0
+< efreeti~ common~
 #9105
 roc gigantic~
 the gigantic roc~
@@ -70,10 +74,11 @@ The gigantic roc.
 ~
 This bird has a wingspan that stretches several spear-lengths.  It
 moves surprisingly fast for something of its size.~
-64 8|32|524288 50 S
+64 8|32 50 S
 54 0 -3 6d9+500 3d10+5
-4|32|128 40000
+0 40000
 8 8 2
+< roc~ common~
 #9106
 roc gigantic~
 the gigantic roc~
@@ -82,10 +87,11 @@ The gigantic roc stares menacingly at you.
 This bird has a wingspan that stretches several spear-lengths.  It
 moves surprisingly fast for something of its size.
 ~
-64 8|32|524288 50 S
+64 8|32 50 S
 58 0 -8 5d9+800 5d6+15
-4|32|128 80000
+0 80000
 8 8 1
+< roc~ common~
 #9107
 wicked ugly witch~
 the ugly, wicked witch~
@@ -100,6 +106,7 @@ turn towards you, feeling as though they pierce your very soul.
 61 0 -11 9r10+1200 5d9+5
 0 200000
 8 8 2
+< green_hag~ elite~
 #0
 
 
@@ -931,7 +938,7 @@ D4
 0 -1 9141
 S
 #9141
-Witch's' Tower~
+Witch's Tower~
 Here you see strange things of arcane value.  There is a cauldron in the
 corner bubbling madly, belching a foul brew that must have come from Hell.
 On shelves lie jars of strange creatures you have never seen before, or
@@ -944,7 +951,7 @@ picture~
 1 -1 3001
 E
 picture~
-The picture is in on the east wall.  It is highly detailed, and you
+The picture is on the east wall.  It is highly detailed, and you
 see some people you think you recognise walking around the temple in the
 picture.
 ~

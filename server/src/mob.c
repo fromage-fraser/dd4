@@ -2450,6 +2450,53 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_breath_gas", "", "", 0,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 230
+        },
+        {
+                "harpy", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_FEATHERS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                180, 55, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        /* A moving cloud has no fixed head or limbs. */
+        {
+                "air_elemental", "elemental_being", "icon1", "icon2",
+                0, AFF_FLYING | AFF_PASS_DOOR,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS
+                    | BODY_NO_SPEECH | BODY_NO_CORPSE,
+                0, RES_NONMAGIC, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "efreeti", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING, BODY_HUGE, 0, RES_FIRE, 0, 0,
+                0, 0, 0, 0,
+                366, 600, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "roc", "bird", "icon1", "icon2",
+                0, AFF_FLYING, BODY_HUGE | PART_CLAWS,
+                PART_CLAWS | PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                250, 650, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 450
+        },
+        {
+                "green_hag", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED, PART_CLAWS, PART_CLAWS, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                165, 55, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2933,6 +2980,32 @@ static const CREATURE_TRAIT_CHANGE wormkin_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
 };
 
+static const CREATURE_TRAIT_CHANGE harpy_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+
+static const CREATURE_TRAIT_CHANGE air_elemental_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7}
+};
+
+static const CREATURE_TRAIT_CHANGE efreeti_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8}
+};
+
+static const CREATURE_TRAIT_CHANGE roc_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+
+static const CREATURE_TRAIT_CHANGE green_hag_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -12}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3031,6 +3104,16 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"wormkin", NULL, wormkin_trait_changes,
             TRAIT_ITEMS(wormkin_trait_changes)},
         {"venomous_spider", "giant_spider", NULL, 0},
+        {"harpy", NULL, harpy_trait_changes,
+            TRAIT_ITEMS(harpy_trait_changes)},
+        {"air_elemental", NULL, air_elemental_trait_changes,
+            TRAIT_ITEMS(air_elemental_trait_changes)},
+        {"efreeti", NULL, efreeti_trait_changes,
+            TRAIT_ITEMS(efreeti_trait_changes)},
+        {"roc", NULL, roc_trait_changes,
+            TRAIT_ITEMS(roc_trait_changes)},
+        {"green_hag", NULL, green_hag_trait_changes,
+            TRAIT_ITEMS(green_hag_trait_changes)},
         {"mosquito_swarm", NULL, mosquito_swarm_trait_changes,
             TRAIT_ITEMS(mosquito_swarm_trait_changes)},
         {"wasp_swarm", NULL, wasp_swarm_trait_changes,
