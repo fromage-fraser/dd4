@@ -7056,3 +7056,57 @@ fresh full-world load produces two here and three there. Preserve that
 arrangement and the shared water barrel 6013 used in Redferne. There is
 no matching Scribe source, no new shop/teacher/player spell and no new
 area field or ACT bit.
+
+
+Arachnos
+--------
+
+Use web_spider for the young and drone spiders, hunting_spider for the
+Wolf Spider, giant_spider for the Bird Spider and phase_spider for the
+ethereal spider. Their arachnid body uses many legs and the front of the
+body as its head target. Fangs supply the bite. The ordinary web spider
+measures 35 cm high and 70 cm long and weighs 15 kg. Give the young spider
+its smaller 8 cm, 15 cm and 1 kg individual measurements.
+
+The poisonous spiders in Haon Dor and their Queen Spider use
+venomous_spider. Its armour comes from giant_spider and its inherited
+spec_poison_bite uses the existing venom, with the mouth and fang checks.
+The queen is rare and uses individual measurements of 220 cm high,
+350 cm long and 1800 kg, with Large size and HUGE. The phase spider is a
+living spider. Its Blink uses the existing level and mana rules.
+
+Use giant_wasp for the Queen Wasp. An insect is a single living body,
+with a head, eyes and many legs. The wasp adds wings, flight and the
+piercing sting attack type. Its existing poison callback uses the sting
+wording. Its armour bonus represents the chitin, and its rare rank
+reflects its role in the hive.
+
+Arachnos uses spider_empress. An arachnoid_humanoid has a speaking
+humanoid torso, hands and a spider's walking legs. Arachnos inherits her
+gas breath from spider_empress and keeps her individual Invisibility
+and Detect Invisible. Yevaud uses adult_green_dragon and inherits gas
+breath and Detect Invisible. Clear his duplicate Detect Invisible
+and HUGE bits so XOR leaves the inherited abilities active.
+
+Yevaud is elite, Arachnos is boss, and the Queen Wasp, Donjonkeeper and
+Queen Spider are rare. Rank applies its normal HP multiplier once.
+Gas breath uses current HP, so the dragon's and empress's new ranks also
+strengthen their breath. The other definitions are common.
+
+The Ki-rin uses the quadrupedal mammal body, with speech, scales, hooves,
+a horn and magical flight. She uses normal magic resistance and has
+HUGE on the archetype. The quasit uses the humanoid body with horns,
+claws and fangs, Blink and regeneration. It has magic and nonmagic
+resistance and immunity to fire, cold and electricity. Keep this
+individual's alignment and stealth affects.
+
+Both wormkins use the legless serpentine reptile body, magical flight,
+tail attacks and gas breath. Use the juvenile's individual 20 cm
+height, 90 cm length, 5 kg weight and Small size. Set both the juvenile's
+body mask and MobAttackParts to the fangs bit. This cancels the inherited
+fangs in both places while keeping the tail attack.
+
+The trapped orc uses orc. The slave, Hermit, Donjonkeeper and Guardian
+use human. Keep the young spider male and the drone female to match
+their descriptions. Keep the authored footstep keys, loot and reset
+caps, including the four spiders placed in Haon Dor room 6134.

@@ -22,8 +22,12 @@ growing in as of late.
 ~
 68 8 0 S
 5 17 8 5d4+50 2d4+1
-63 600
-8 8 2
+0 600
+8 8 1
+< web_spider~ common~
+MobHeight 8
+MobWeight 1
+MobLength 15
 FStepInside sfx.foley.mob.6301.inside~
 FStepCity sfx.foley.mob.6301.city~
 FStepField sfx.foley.mob.6301.field~
@@ -43,10 +47,11 @@ Yevaud the Usurper of Midgaard is here, grinning evilly at you.
 ~
 Old, scaly, but still with a lot of bite in him left.
 ~
-71 8 -1000 S
+71 0 -1000 S
 24 2 0 24b24+240 4d6+3
-128 65100
+0 65100
 8 8 1
+< adult_green_dragon~ elite~
 #6303
 spider wolf~
 the Wolf Spider~
@@ -56,8 +61,9 @@ The Wolf Spider is hairy, very hairy.
 ~
 34 0 -300 S
 6 12 4 3d8+70 2d5+3
-52 2000
+0 2000
 8 8 2
+< hunting_spider~ common~
 FStepInside sfx.foley.mob.6303.inside~
 FStepCity sfx.foley.mob.6303.city~
 FStepField sfx.foley.mob.6303.field~
@@ -81,6 +87,7 @@ You notice an evil look in his eyes.
 5 15 5 2d10+30 2d4+0
 0 600
 8 8 1
+< orc~ common~
 #6305
 wasp queen~
 the Queen Wasp~
@@ -91,8 +98,9 @@ You notice a glazed look in her eyes.
 ~
 34 0 -800 S
 12 7 -3 12d12+120 2d8+5
-52 8000
+0 8000
 8 8 2
+< giant_wasp~ rare~
 #6306
 spider drone~
 the drone spider~
@@ -102,8 +110,9 @@ An ordinary drone spider.
 ~
 68 0 -300 S
 6 12 4 6d6+60 2d4+0
-52 800
-8 8 1
+0 800
+8 8 2
+< web_spider~ common~
 FStepInside sfx.foley.mob.6306.inside~
 FStepCity sfx.foley.mob.6306.city~
 FStepField sfx.foley.mob.6306.field~
@@ -125,8 +134,9 @@ She winks in and out.
 ~
 68 0 1000 S
 10 10 0 10d10+100 2d4+4
-52 4000
+0 4000
 8 8 2
+< phase_spider~ common~
 FStepInside sfx.foley.mob.6307.inside~
 FStepCity sfx.foley.mob.6307.city~
 FStepField sfx.foley.mob.6307.field~
@@ -150,6 +160,7 @@ The slave does not mind you, but will fight like a warrior if attacked.
 8 13 1 8d8+80 2d8+1
 0 2000
 8 8 1
+< human~ common~
 #6309
 quasit~
 the quasit~
@@ -158,10 +169,11 @@ The quasit blinks in and out, grinning at you.
 Demoniac in nature, but more mischievous.  He twiddles his thumbs
 and creates a magical treasure!
 ~
-148 32778 1000 S
+132 32778 1000 S
 10 1 -7 10d10+100 1d8+3
 0 3000
 8 8 1
+< quasit~ common~
 #6310
 spider bird~
 the Bird Spider~
@@ -171,8 +183,9 @@ The Bird Spider has very powerful jaws.
 ~
 34 0 -800 S
 14 7 -3 14d14+140 2d9+2
-52 8000
+0 8000
 8 8 2
+< giant_spider~ common~
 FStepInside sfx.foley.mob.6310.inside~
 FStepCity sfx.foley.mob.6310.city~
 FStepField sfx.foley.mob.6310.field~
@@ -197,6 +210,7 @@ means well.
 7 13 5 3d10+80 2d5+0
 0 1500
 8 8 1
+< human~ common~
 #6312
 donjonkeeper~
 the Donjonkeeper~
@@ -208,6 +222,7 @@ He delves deeper into you as you stare at him.
 25 -1 -10 25d25+250 3d8+10
 0 65000
 8 8 1
+< human~ rare~
 #6313
 guardian~
 The guardian~
@@ -219,6 +234,7 @@ He looks like a lazy bum who sleeps half the time.
 17 4 -7 17d17+170 2d8+10
 0 20000
 4 4 1
+< human~ common~
 #6314
 spider empress arachnos~
 Arachnos~
@@ -231,8 +247,9 @@ them.
 ~
 34 10 -1000 S
 26 -2 -8 26d26+260 1d8+20
-52 65000
+0 65000
 8 8 2
+< spider_empress~ boss~
 FStepInside sfx.foley.mob.6314.inside~
 FStepCity sfx.foley.mob.6314.city~
 FStepField sfx.foley.mob.6314.field~
@@ -257,6 +274,7 @@ someday free the slaves of the Empress.
 26 0 -2 26d26+260 3d4+12
 0 50000
 8 8 2
+< ki_rin~ common~
 #6316
 dragon wormkin young~
 the young dragon wormkin~
@@ -266,8 +284,14 @@ Rather small, you almost feel sad in killing it.
 ~
 3 8 1000 S
 10 2 0 10d10+120 2d6+3
-60 3700
+17179869184 3700
 8 8 1
+< wormkin~ common~
+MobHeight 20
+MobWeight 5
+MobLength 90
+MobSize 0
+MobAttackParts 17179869184
 #6317
 dragon wormkin medium~
 the medium dragon wormkin~
@@ -277,21 +301,23 @@ A medium-sized dragon--seems it hasn't killed anything yet by itself.
 ~
 3 8 100 S
 13 2 -2 13d13+150 3d6+5
-32 9500
+0 9500
 8 8 1
+< wormkin~ common~
 #6318
 spider poisonous~
 the huge, poisonous spider~
 A huge, poisonous spider is here.
 ~
-This disgusting creature is at the size of a human crawling on all four.  It
-has eight hairy legs that gives it a tremendous speed on almost any surface and
+This disgusting creature is about the size of a human crawling on all fours.  It
+has eight hairy legs that give it a tremendous speed on almost any surface and
 sharp poisonous fangs to paralyse or kill its prey.
 ~
 67 0 -350 S
 8 13 2 8d8+80 2d5+1
-52 2500
+0 2500
 8 8 0
+< venomous_spider~ common~
 FStepInside sfx.foley.mob.6318.inside~
 FStepCity sfx.foley.mob.6318.city~
 FStepField sfx.foley.mob.6318.field~
@@ -309,14 +335,19 @@ queen spider~
 the Queen Spider~
 The huge, bulky Queen Spider is here.
 ~
-This disgusting creature is at the size of a small elephant.  It has eight
+This disgusting creature is about the size of a small elephant.  It has eight
 huge, hairy legs that would give it a tremendous speed on almost any surface
 if it wasn't so immensely fat.  Its large, bulbous eyes stare back at you.
 ~
 67 8 -1000 S
 15 6 -4 15d15+150 2d8+2
-52 12000
+128 12000
 8 8 2
+< venomous_spider~ rare~
+MobHeight 220
+MobWeight 1800
+MobLength 350
+MobSize 2
 FStepInside sfx.foley.mob.6319.inside~
 FStepCity sfx.foley.mob.6319.city~
 FStepField sfx.foley.mob.6319.field~
@@ -498,7 +529,7 @@ S
 Wasp Hive~
      Drones scuttle about in this room.  The cells on the walls
 are honeycomb in shape and many of the maggots and wasps you see
-have fang-marks on there bodies.  You sense some order in their markings.
+have fang-marks on their bodies.  You sense some order in their markings.
 ~
 63 0 2
 D1
@@ -520,7 +551,7 @@ S
 #6305
 Beneath the Busy Path~
      You hear the sounds of crawling arachnids above.  The rhythms of
-the footsteps suggest a primitive order in there movement.  The light
+the footsteps suggest a primitive order in their movement.  The light
 seems brighter upwards.
 ~
 63 0 2
@@ -1291,13 +1322,13 @@ S
 * Arachnos originally made by Mahatma (Mr. Melo)
 *
 M 0 6319 1 6134                 Queen Spider
-G 1 6308 10                     10,000 gold
+G 1 6308 10                     pile of gold coins
 M 0 6318 3 6134                 Poisonous spider
-G 1 6309 20                     Healing potion
+G 1 6309 20                     ochre potion
 M 0 6318 3 6134                 Poisonous spider
-G 1 6309 20                     Healing potion
+G 1 6309 20                     ochre potion
 M 0 6318 3 6134                 Poisonous spider
-G 1 6309 20                     Healing potion
+G 1 6309 20                     ochre potion
 M 0 6301 10 6301                young spider
 M 0 6301 10 6306                young spider
 M 0 6301 10 6306                young spider
@@ -1322,15 +1353,15 @@ M 0 6311 1 6373                 Hermit
 * G 1 6302 2                      give him a wizard's hat
 *
 M 0 6315 1 6350                 Ki-Rin
-G 1 6309 10                        give him a blue potion
-G 1 6309 10                        give him a blue potion
+G 1 6309 10                        give an ochre potion
+G 1 6309 10                        give an ochre potion
 *
 M 0 6314 1 6399                 Arachnos
 G 1 6303 2                        give her a pontiff's headdress
 G 1 6304 2                        give her a black knight's visor
 *
 M 0 6312 1 6370                 Donjonkeeper
-G 1 6309 10                        give him a blue potion
+G 1 6309 10                        give an ochre potion
 *
 M 0 6313 1 6367                 guardian
 M 0 6306 3 6330                 drone spider
@@ -1344,17 +1375,6 @@ M 0 6317 1 6340                 elder wormkin
 *
 D 0 6392 0 2
 D 0 6399 2 2
-S
-
-
-
-#SPECIALS
-M  6302 spec_breath_gas
-M  6314 spec_breath_gas
-M  6316 spec_breath_gas
-M  6317 spec_breath_gas
-M  6318 spec_poison
-M  6319 spec_poison
 S
 
 

@@ -474,6 +474,54 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        /* Use the front of the spider's body for head and eye targeting. */
+        {
+                "arachnid",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_SPEECH | PART_HEAD | PART_EYE
+                    | PART_MANY_LEGS | PART_HEART | PART_BRAINS | PART_GUTS,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+        {
+                "insect",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_SPEECH | PART_HEAD | PART_EYE
+                    | PART_MANY_LEGS | PART_HEART | PART_BRAINS | PART_GUTS,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+        /* A humanoid torso sits above the spider's walking legs. */
+        {
+                "arachnoid_humanoid",
+                0, 0,
+                PART_HEAD | PART_ARMS | PART_HANDS | PART_FINGERS
+                    | PART_EYE | PART_EAR | PART_MANY_LEGS
+                    | PART_HEART | PART_BRAINS | PART_GUTS,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2291,6 +2339,117 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_breath_gas", "", "", 0,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 3200
+        },
+        {
+                "web_spider", "arachnid", "icon1", "icon2",
+                0, 0,
+                PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                35, 15, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 70
+        },
+        {
+                "hunting_spider", "arachnid", "icon1", "icon2",
+                0, 0,
+                PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                45, 30, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 90
+        },
+        {
+                "giant_spider", "arachnid", "icon1", "icon2",
+                0, 0,
+                PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                90, 120, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 180
+        },
+        {
+                "venomous_spider", "arachnid", "icon1", "icon2",
+                0, 0,
+                PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                65, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_poison_bite", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "phase_spider", "arachnid", "icon1", "icon2",
+                ACT_BLINK, 0,
+                PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                70, 85, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_poison_bite", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 160
+        },
+        {
+                "giant_wasp", "insect", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                60, 35, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_poison", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "spider_empress", "arachnoid_humanoid", "icon1", "icon2",
+                0, 0,
+                0, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                220, 250, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_gas", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 280
+        },
+        {
+                "quasit", "humanoid", "icon1", "icon2",
+                ACT_BLINK | ACT_REGENERATOR, 0,
+                PART_HORNS | PART_CLAWS | PART_FANGS, PART_CLAWS | PART_FANGS,
+                RES_MAGIC | RES_NONMAGIC, 0, RES_FIRE | RES_COLD | RES_ELECTRICITY,
+                0, 0, 0, 0,
+                61, 12, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "ki_rin", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_SPEECH | BODY_HUGE | PART_TAIL | PART_SCALES
+                    | PART_HOOVES | PART_HORNS, PART_HOOVES | PART_HORNS,
+                RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                235, 950, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 400
+        },
+        {
+                "wormkin", "serpentine_reptile", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_FANGS, PART_FANGS | PART_TAILATTACK,
+                0, 0, 0,
+                0, 0, 0, 0,
+                60, 55, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_breath_gas", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 230
         }
 
 };
@@ -2728,6 +2887,52 @@ static const CREATURE_TRAIT_CHANGE adult_green_dragon_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
 };
 
+static const CREATURE_TRAIT_CHANGE web_spider_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -2}
+};
+
+static const CREATURE_TRAIT_CHANGE hunting_spider_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+
+static const CREATURE_TRAIT_CHANGE giant_spider_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+
+static const CREATURE_TRAIT_CHANGE phase_spider_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+
+static const CREATURE_TRAIT_CHANGE giant_wasp_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 16}
+};
+
+static const CREATURE_TRAIT_CHANGE spider_empress_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8}
+};
+
+static const CREATURE_TRAIT_CHANGE quasit_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8}
+};
+
+static const CREATURE_TRAIT_CHANGE ki_rin_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -25}
+};
+
+static const CREATURE_TRAIT_CHANGE wormkin_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -2807,6 +3012,25 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
             TRAIT_ITEMS(brownie_trait_changes)},
         {"adult_green_dragon", NULL, adult_green_dragon_trait_changes,
             TRAIT_ITEMS(adult_green_dragon_trait_changes)},
+        {"web_spider", NULL, web_spider_trait_changes,
+            TRAIT_ITEMS(web_spider_trait_changes)},
+        {"hunting_spider", NULL, hunting_spider_trait_changes,
+            TRAIT_ITEMS(hunting_spider_trait_changes)},
+        {"giant_spider", NULL, giant_spider_trait_changes,
+            TRAIT_ITEMS(giant_spider_trait_changes)},
+        {"phase_spider", NULL, phase_spider_trait_changes,
+            TRAIT_ITEMS(phase_spider_trait_changes)},
+        {"giant_wasp", NULL, giant_wasp_trait_changes,
+            TRAIT_ITEMS(giant_wasp_trait_changes)},
+        {"spider_empress", NULL, spider_empress_trait_changes,
+            TRAIT_ITEMS(spider_empress_trait_changes)},
+        {"quasit", NULL, quasit_trait_changes,
+            TRAIT_ITEMS(quasit_trait_changes)},
+        {"ki_rin", NULL, ki_rin_trait_changes,
+            TRAIT_ITEMS(ki_rin_trait_changes)},
+        {"wormkin", NULL, wormkin_trait_changes,
+            TRAIT_ITEMS(wormkin_trait_changes)},
+        {"venomous_spider", "giant_spider", NULL, 0},
         {"mosquito_swarm", NULL, mosquito_swarm_trait_changes,
             TRAIT_ITEMS(mosquito_swarm_trait_changes)},
         {"wasp_swarm", NULL, wasp_swarm_trait_changes,
