@@ -9,10 +9,11 @@ A grey wolf moves through the shadows.
 ~
 The wolf slips quietly through the forest searching for food.
 ~
-64|128 32768|524288 0 S
+64|128 32768 0 S
 45 0 0 0d0+0 0d0+0
-50 0
+0 0
 8 8 1
+< wolf~ common~
 #29001
 wolf cub~
 the wolf cub~
@@ -20,9 +21,9 @@ A wolf cub is hiding in some straw.
 ~
 The tiny wolf cub tries to escape your notice by burrowing in some straw.
 ~
-2|4|64 8|32|8388608 0 S
+2|4|64 8|8388608 0 S
 35 0 0 0d0+0 0d0+0
-40 0
+0 0
 8 8 1
 >rand_prog 2~
 mpecho ::snuffle::
@@ -37,6 +38,10 @@ mpecho ::sniffle::
 hide
 ~
 |
+< wolf~ common~
+MobHeight 25
+MobLength 45
+MobWeight 4
 #29002
 wolf cub~
 the wolf cub~
@@ -44,9 +49,9 @@ A wolf cub is hiding in some straw.
 ~
 The tiny wolf cub tries to escape your notice by burrowing in some straw.
 ~
-2|4|64 8|32|8388608 0 S
+2|4|64 8|8388608 0 S
 35 0 0 0d0+0 0d0+0
-40 0
+0 0
 8 8 2
 >rand_prog 2~
 mpecho ::snuffle::
@@ -61,6 +66,10 @@ mpecho ::sniffle::
 hide
 ~
 |
+< wolf~ common~
+MobHeight 25
+MobLength 45
+MobWeight 4
 #29003
 female wolf~
 the female wolf~
@@ -69,10 +78,11 @@ A female wolf growls and prepares to defend her den.
 You have stumbled into the territory of a nursing female wolf. She prepares to
 defend her cubs with her life.
 ~
-2|4|32|64 8|32|65536|8388608 0 S
+2|4|32|64 8|65536|8388608 0 S
 45 0 0 0d0+0 0d0+0
-45 0
+0 0
 8 8 2
+< wolf~ common~
 #29004
 frantic bee~
 a frantic bee~
@@ -81,34 +91,37 @@ A frantic bee is buzzing about your head.
 The bee seems to be quite disturbed by your presence and flies wildly about your
 head, buzzing loudly.
 ~
-2|32|64|512 8|32|65536|524288|8388608 0 S
+2|32|64|512 8|32|65536|8388608 0 S
 30 0 0 0d0+0 0d0+0
-52 0
+0 0
 8 8 0
+< bee~ common~
 #29005
 frantic bee~
-a frantic bee ~
+a frantic bee~
 A frantic bee is buzzing about your head.
 ~
 The bee seems to be quite disturbed by your presence and flies wildly about your
 head, buzzing loudly.
 ~
-2|32|64|512 8|32|65536|524288|8388608 0 S
+2|32|64|512 8|32|65536|8388608 0 S
 30 0 0 0d0+0 0d0+0
-52 0
+0 0
 8 8 0
+< bee~ common~
 #29006
 frantic bee~
-a frantic bee ~
+a frantic bee~
 A frantic bee is buzzing about your head.
 ~
 The bee seems to be quite disturbed by your presence and flies wildly about your
 head, buzzing loudly.
 ~
-2|32|64 8|32|65536|524288|8388608 0 S
+2|32|64 8|32|65536|8388608 0 S
 30 0 0 0d0+0 0d0+0
-52 0
+0 0
 8 8 0
+< bee~ common~
 #29007
 tree~
 the tree~
@@ -119,9 +132,9 @@ Its branches are all gnarled and twisted at odd angles. As you turn away from
 it you catch a glimpse of movement out of the corner of your eye, or maybe it
 was just your imagination.
 ~
-64 8|32|32768|524288|8388608 1000 S
+64 8|32|32768|8388608 1000 S
 100 0 0 0d0+0 0d0+0
-2|8|16|32|256 0
+0 0
 8 8 0
 >rand_prog 3~
 mpecho ::rustle:: ::rustle::
@@ -133,6 +146,7 @@ mpforce $n rest
 endif
 ~
 |
+< enchanted_oak~ rare~
 #29008
 leprechaun~
 the leprechaun~
@@ -143,10 +157,11 @@ visitors to these woods and hoarding useless rubbish. He regards you with a
 piercing gaze, and a wave of horror washes over you as you realize he is reading
 your mind. He cackles hysterically.
 ~
-64|128 2|8|32|128|512|32768|65536|524288|8388608 -400 S
+64|128 2|8|128|512|32768|65536|524288|8388608 -400 S
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< leprechaun~ rare~
 #29009
 white horse~
 the enchanted horse~
@@ -157,8 +172,12 @@ form in the air and fall to the ground when it breathes.
 ~
 64|131072 2|8|512|32768|524288|4194304 1000 S
 55 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 2
+< horse~ common~
+MobHeight 170
+MobLength 260
+MobWeight 550
 #29010
 white horse~
 the enchanted horse~
@@ -169,8 +188,12 @@ form in the air and fall to the ground when it breathes.
 ~
 64|131072 2|8|512|32768|524288|4194304 1000 S
 55 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< horse~ common~
+MobHeight 170
+MobLength 260
+MobWeight 550
 #29011
 bard elven~
 the elven bard~
@@ -179,10 +202,11 @@ An elven bard is sitting here, playing an enchanting melody on a lute.
 An elven bard sits here playing gracefully on a lute and singing in a high,
 clear voice full of melancholy and wistfulness.
 ~
-64 2|8|128|512|32768|524288 1000 S
+64 2|8|128|32768|524288 1000 S
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< elf~ common~
 #29012
 elf blond female~
 the female elf~
@@ -192,7 +216,7 @@ This attractive female elf is sitting here in the hut quietly reading from a
 large book bound in red leather. She seems to be taking some trouble to avoid
 being seen, so it's probably a good idea to leave her to it.
 ~
-2|64 2|8|32|128|512|65536|524288|8388608 1000 S
+2|64 2|8|32|128|65536|524288|8388608 1000 S
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -204,6 +228,7 @@ hide
 endif
 ~
 |
+< elf~ common~
 #29013
 elderly elf male~
 the elderly elf~
@@ -213,7 +238,7 @@ The ancient-looking elf is resting here, having fallen asleep with a book in his
 hand. He opens his eyes briefly and looks at you appraisingly, then returns to
 his napping.
 ~
-2|64 2|8|128|512|524288 1000 S
+2|64 2|8|128|524288 1000 S
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -222,11 +247,13 @@ if ispc($n)
 wake
 mpecho $I looks at you appraisingly
 rest
+endif
 ~
 >rand_prog 25~
 rest
 ~
 |
+< elf~ rare~
 #0
 
 
@@ -2260,11 +2287,11 @@ E 1 29007 100 6
 M 1 29010 1 29046           the enchanted horse to Wandering in the woods
 E 1 29007 100 6
 *
-M 1 29011 1 29001           the dood to Wandering in the woods
+M 1 29011 1 29001           the elven bard to Wandering in the woods
 E 1 29014 100 12
 G 1 29018 100
 *
-M 1 29012 1 29051           the chick to In a hut
+M 1 29012 1 29051           the female elf to In a hut
 E 1 29011 100 17
 E 1 29014 100 12
 E 1 29015 100 14
@@ -2279,19 +2306,15 @@ S
 
 
 #SHOPS
-29008 13 8 2 18 0 100 200 0 23          (mobile is from another zone)
+29008 13 8 2 18 0 100 200 0 23          (local leprechaun shopkeeper)
 0
 
 
 #SPECIALS
-M  29004 spec_poison                a frantic bee
-M  29005 spec_poison                a frantic bee
-M  29006 spec_poison                a frantic bee
-M  29008 spec_cast_psionicist       the leprechaun
-M  29009 spec_breath_frost          the enchanted horse
-M  29010 spec_breath_frost          the enchanted horse
+M  29008 spec_psionic_thief       the leprechaun
+M  29009 spec_breath_frost_anatomical          the enchanted horse
+M  29010 spec_breath_frost_anatomical          the enchanted horse
 M  29011 spec_cast_cleric           the elven bard
-M  29007 spec_warrior               the tree
 S
 
 

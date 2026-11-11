@@ -7220,3 +7220,44 @@ Body and affect masks use XOR. Remove duplicate no-arms/no-speech/Sneak
 from a converted cooshee, and duplicate infrared from valley elf overrides.
 Keep the individual's aggression, passivity, movement and other affects.
 Rank remains an encounter choice: it does not determine body dimensions.
+
+
+Eerie Woods creature profiles
+----------------------------
+
+`bee`, `enchanted_oak`, `leprechaun` and `horse` are available as archetypes.
+The plant body is organic, BLOODLESS and ANALGIC, without animal organs,
+head, eyes, legs or speech. Mind and soul are separate choices: being a
+plant does not automatically make a creature mindless or soulless.
+
+An enchanted oak has arm-like branches, HUGE, fire vulnerability and
+ordinary blunt body/branch contact. Its defaults are 1500 cm height,
+10,000 kg and Large. It gains no extra natural armour: the Eerie Woods
+oak already wears the existing bark armour and holds an earthquake staff.
+Keep that staff's spell-level field intact; it is not a weapon targeting
+category. These botanical measurements and masses are descriptive estimates.
+
+Bees use insect anatomy, wings, flight, a sting and ordinary poison.
+Their default length is 2 cm, with Small as DD4's minimum size category.
+Height and whole-kg mass stay unspecified. Do not turn an individual bee
+into a giant or a swarm merely because it has a high MUD level.
+
+Leprechauns use humanoid anatomy, Detect Hidden, armour -2 and ordinary
+magic resistance. Defaults are 61 cm and 12 kg, Small. Psionic casting
+is an individual role, not a racial default. The new `spec_psionic_thief`
+keeps the existing psionic caster in combat. While idle it restores
+invisibility if needed, otherwise attempts the existing gold theft.
+It takes one action per opportunity and respects normal readiness checks.
+
+Horses have quadrupedal mammal anatomy, a tail, hooves and armour -3.
+Defaults are 150 cm shoulder height, 230 cm length and 450 kg, Large.
+Mountability, flight and breath are individual choices, not horse defaults.
+`spec_breath_frost_anatomical` keeps ordinary frost breath's power and
+frequency, with the same missing/injured-head gate as the other anatomical
+breath wrappers. Both new specials can use the existing `sp` command.
+
+The Eerie Woods wolf cubs use ordinary wolf anatomy with individual
+25 cm height, 45 cm length and 4 kg. Their levels are encounter design,
+not a reason to give them adult bodies. Preserve authored aggression,
+wimpy behaviour, quest restrictions and programs. Remove duplicate
+body/affect defaults carefully because the area overrides use XOR.

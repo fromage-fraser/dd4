@@ -522,6 +522,21 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        /* Living plants have sap, but no animal blood or pain sensation. */
+        {
+                "plant",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS
+                    | BODY_NO_HEART | BODY_NO_SPEECH | BODY_BLOODLESS | BODY_ANALGIC,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2551,6 +2566,38 @@ const struct mob_type mob_table[MAX_MOB] =
                 100, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 160
+        },
+        {
+                "bee", "insect", "icon1", "icon2",
+                0, AFF_FLYING, PART_WINGS, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_poison", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 2
+        },
+        {
+                "enchanted_oak", "plant", "icon1", "icon2",
+                0, 0, BODY_NO_ARMS | PART_ARMS | BODY_HUGE, 0, 0, RES_FIRE, 0,
+                0, 0, 0, 0,
+                1500, 10000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "leprechaun", "humanoid", "icon1", "icon2",
+                0, AFF_DETECT_HIDDEN, 0, 0, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                61, 12, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "horse", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_HOOVES, PART_HOOVES, 0, 0, 0,
+                0, 0, 0, 0,
+                150, 450, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 230
         }
 
 };
@@ -3084,6 +3131,23 @@ static const CREATURE_TRAIT_CHANGE antelope_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
 };
 
+static const CREATURE_TRAIT_CHANGE bee_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 16}
+};
+static const CREATURE_TRAIT_CHANGE enchanted_oak_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7}
+};
+static const CREATURE_TRAIT_CHANGE leprechaun_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -2}
+};
+static const CREATURE_TRAIT_CHANGE horse_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3183,6 +3247,14 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"wormkin", NULL, wormkin_trait_changes,
             TRAIT_ITEMS(wormkin_trait_changes)},
         {"venomous_spider", "giant_spider", NULL, 0},
+        {"bee", NULL, bee_trait_changes,
+            TRAIT_ITEMS(bee_trait_changes)},
+        {"enchanted_oak", NULL, enchanted_oak_trait_changes,
+            TRAIT_ITEMS(enchanted_oak_trait_changes)},
+        {"leprechaun", NULL, leprechaun_trait_changes,
+            TRAIT_ITEMS(leprechaun_trait_changes)},
+        {"horse", NULL, horse_trait_changes,
+            TRAIT_ITEMS(horse_trait_changes)},
         {"cooshee", NULL, cooshee_trait_changes,
             TRAIT_ITEMS(cooshee_trait_changes)},
         {"antelope", NULL, antelope_trait_changes,
@@ -6301,6 +6373,8 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_laghathti", 10 },
                 { "spec_uzollru", 10 },
                 { "spec_warrior", 10 },
+                { "spec_psionic_thief", 10 },
+                { "spec_breath_frost_anatomical", 10 },
                 { "spec_wight", 10 },
                 { "spec_wraith", 10 },
                 { "spec_prism_flash", 10 },
