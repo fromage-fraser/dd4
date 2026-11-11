@@ -102,6 +102,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         harpy air_elemental efreeti roc green_hag
         black_bear hydra imp
         valley_elf cooshee antelope
+        bee enchanted_oak leprechaun horse
 /;
 
 my %mob_act = (
@@ -351,7 +352,7 @@ my @mob_spec = qw/
     spec_giant             spec_cast_cleric_helper
     spec_firedrake spec_guardian_daemon
     spec_bear spec_cooshee spec_brownie spec_poison_bite spec_breath_acid_anatomical spec_breath_fire_anatomical
-    spec_breath_any_anatomical
+    spec_breath_any_anatomical spec_breath_frost_anatomical spec_psionic_thief
     spec_faerie_dragon      spec_duergar            spec_swallow            spec_poison_palm spec_manticore spec_alhoon
 /;
 
