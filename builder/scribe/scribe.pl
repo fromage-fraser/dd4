@@ -100,6 +100,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         web_spider hunting_spider giant_spider venomous_spider phase_spider
         giant_wasp spider_empress quasit ki_rin wormkin
         harpy air_elemental efreeti roc green_hag
+        black_bear hydra imp
 /;
 
 my %mob_act = (

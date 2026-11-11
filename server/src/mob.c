@@ -2497,6 +2497,34 @@ const struct mob_type mob_table[MAX_MOB] =
                 165, 55, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "black_bear", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 120, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_bear", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 180
+        },
+        {
+                "hydra", "quadrupedal_reptile", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_MANY_HEAD | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                250, 3000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 900
+        },
+        {
+                "imp", "humanoid", "icon1", "icon2",
+                ACT_REGENERATOR,
+                AFF_FLYING | AFF_INFRARED | AFF_DETECT_GOOD | AFF_DETECT_MAGIC,
+                PART_HORNS | PART_WINGS | PART_FANGS | PART_TAIL, PART_FANGS,
+                RES_MAGIC | RES_NONMAGIC, 0, RES_FIRE | RES_COLD | RES_ELECTRICITY,
+                0, 0, 0, 0,
+                61, 12, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -3006,6 +3034,21 @@ static const CREATURE_TRAIT_CHANGE green_hag_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -12}
 };
 
+static const CREATURE_TRAIT_CHANGE black_bear_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+
+static const CREATURE_TRAIT_CHANGE hydra_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+
+static const CREATURE_TRAIT_CHANGE imp_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3104,6 +3147,12 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"wormkin", NULL, wormkin_trait_changes,
             TRAIT_ITEMS(wormkin_trait_changes)},
         {"venomous_spider", "giant_spider", NULL, 0},
+        {"black_bear", NULL, black_bear_trait_changes,
+            TRAIT_ITEMS(black_bear_trait_changes)},
+        {"hydra", NULL, hydra_trait_changes,
+            TRAIT_ITEMS(hydra_trait_changes)},
+        {"imp", NULL, imp_trait_changes,
+            TRAIT_ITEMS(imp_trait_changes)},
         {"harpy", NULL, harpy_trait_changes,
             TRAIT_ITEMS(harpy_trait_changes)},
         {"air_elemental", NULL, air_elemental_trait_changes,
