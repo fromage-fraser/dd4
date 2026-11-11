@@ -85,6 +85,7 @@ DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
 DECLARE_SPEC_FUN( spec_bear                 );
+DECLARE_SPEC_FUN( spec_cooshee              );
 DECLARE_SPEC_FUN( spec_brownie              );
 DECLARE_SPEC_FUN( spec_firedrake );
 DECLARE_SPEC_FUN( spec_poison_bite );
@@ -184,6 +185,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_bear"))                 return spec_bear;
+        if (!str_cmp(name, "spec_cooshee"))              return spec_cooshee;
         if (!str_cmp(name, "spec_brownie"))              return spec_brownie;
         if (!str_cmp(name, "spec_firedrake")) return spec_firedrake;
         if (!str_cmp(name, "spec_poison_bite")) return spec_poison_bite;
@@ -288,6 +290,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_janitor) return "spec_janitor";
         if (special == spec_poison) return "spec_poison";
         if (special == spec_bear) return "spec_bear";
+        if (special == spec_cooshee) return "spec_cooshee";
         if (special == spec_brownie) return "spec_brownie";
         if (special == spec_firedrake) return "spec_firedrake";
         if (special == spec_poison_bite) return "spec_poison_bite";
@@ -5098,6 +5101,48 @@ bool spec_bear(CHAR_DATA *ch)
         damage_with_resistance_types(ch, victim, dice(2, 6),
                                      TYPE_HIT + 8, FALSE, RES_BLUNT | RES_NONMAGIC);
         return TRUE;
+}
+
+/* An elven dog can bowl over a grounded opponent with its forepaws. */
+bool spec_cooshee(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!native_power_ready(ch) || ch->hit <= 0
+        || !HAS_LEGS(ch) || !(ch->body_form & PART_FORELEGS)
+        || !(ch->body_form & PART_PAWS)
+        || IS_AFFECTED(ch, AFF_LEG_TRAUMA)
+        || IS_AFFECTED(ch, AFF_BLIND)
+        || IS_AFFECTED(ch, AFF_FLYING)
+        || IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+        || ch->mount)
+                return FALSE;
+
+        victim = ch->fighting;
+        if (!victim || victim == ch || victim->deleted
+        || victim->in_room != ch->in_room || victim->hit <= 0
+        || victim->position < POS_FIGHTING
+        || !HAS_LEGS(victim)
+        || (victim->body_form & (PART_4_LEGS | PART_MANY_LEGS))
+        || victim->size < CHAR_SIZE_SMALL || victim->size > CHAR_SIZE_MEDIUM
+        || IS_HUGE(victim) || victim->mount
+        || IS_AFFECTED(victim, AFF_FLYING)
+        || IS_AFFECTED(victim, AFF_PRONE)
+        || IS_AFFECTED(victim, AFF_NON_CORPOREAL)
+        || (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        || (IS_NPC(victim) && IS_SET(victim->act, ACT_INVULNERABLE))
+        || ch->in_room->sector_type == SECT_UNDERWATER
+        || ch->in_room->sector_type == SECT_WATER_SWIM
+        || ch->in_room->sector_type == SECT_WATER_NOSWIM
+        || !can_see(ch, victim) || is_safe(ch, victim)
+        || get_contact_resistance_result(ch, victim, RES_NONMAGIC | RES_BLUNT)
+                == RES_RESULT_IMMUNE
+        || number_percent() > 10)
+                return FALSE;
+
+        /* Trip supplies the usual prone effect and recovery time. */
+        do_trip(ch, "");
+        return IS_AFFECTED(victim, AFF_PRONE) != 0;
 }
 
 /* A brownie uses a few woodland tricks, rather than a mage's whole spell list. */

@@ -2525,6 +2525,32 @@ const struct mob_type mob_table[MAX_MOB] =
                 61, 12, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "valley_elf", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED, 0, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                175, 60, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_ELF, MOB_TEMPLATE_UNSET
+        },
+        {
+                "cooshee", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_SNEAK,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                80, 60, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_cooshee", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "antelope", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_HORNS | PART_HOOVES,
+                PART_HORNS | PART_HOOVES, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 160
         }
 
 };
@@ -3049,6 +3075,15 @@ static const CREATURE_TRAIT_CHANGE imp_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -8}
 };
 
+static const CREATURE_TRAIT_CHANGE cooshee_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE antelope_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3073,6 +3108,7 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"goblin", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"orc", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"elf", NULL, elf_trait_changes, TRAIT_ITEMS(elf_trait_changes)},
+        {"valley_elf", "elf", NULL, 0},
         {"drow", "elf", drow_trait_changes, TRAIT_ITEMS(drow_trait_changes)},
         {"alhoon", NULL, alhoon_trait_changes, TRAIT_ITEMS(alhoon_trait_changes)},
         {"bat", NULL, bat_trait_changes, TRAIT_ITEMS(bat_trait_changes)},
@@ -3147,6 +3183,10 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"wormkin", NULL, wormkin_trait_changes,
             TRAIT_ITEMS(wormkin_trait_changes)},
         {"venomous_spider", "giant_spider", NULL, 0},
+        {"cooshee", NULL, cooshee_trait_changes,
+            TRAIT_ITEMS(cooshee_trait_changes)},
+        {"antelope", NULL, antelope_trait_changes,
+            TRAIT_ITEMS(antelope_trait_changes)},
         {"black_bear", NULL, black_bear_trait_changes,
             TRAIT_ITEMS(black_bear_trait_changes)},
         {"hydra", NULL, hydra_trait_changes,
@@ -6238,6 +6278,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
 
                 { "spec_poison", 5 },
                 { "spec_bear", 5 },
+                { "spec_cooshee", 5 },
                 { "spec_brownie", 5 },
                 { "spec_poison_palm", 5 },
                 { "spec_poison_bite", 5 },
