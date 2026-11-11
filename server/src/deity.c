@@ -770,7 +770,7 @@ void do_pantheon (CHAR_DATA *ch, char *argument)
 
         for (j = 1; j < MAX_SUB_CLASS; j++)
                 if (deity_info_table[deity].sub_class_favour[j] > 0)
-                        list[i++] = j+7;
+                        list[i++] = MAX_CLASS + j - 1;
         if (i)
         {
                 if (!flag)
@@ -830,7 +830,7 @@ void do_pantheon (CHAR_DATA *ch, char *argument)
                         list[i++] = j;
         for (j = 1; j < MAX_SUB_CLASS; j++)
                 if (deity_info_table[deity].sub_class_favour[j] < 0)
-                        list[i++] = j+7;
+                        list[i++] = MAX_CLASS + j - 1;
         if (i)
         {
                 if (!flag)

@@ -1536,6 +1536,13 @@ void do_lodge(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (container && container->item_type != ITEM_CONTAINER
+            && container->item_type != ITEM_TURRET)
+        {
+                send_to_char("That's not a container.\n\r", ch);
+                return;
+        }
+
         /* If you're not trying to put an item in a container and not an "all command" */
         if ((arg2[0] == '\0') && str_cmp(arg1, "all") && str_prefix("all.", arg1))
         {
@@ -5196,6 +5203,12 @@ void do_recite(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (IS_SET(ch->in_room->room_flags, ROOM_CONE_OF_SILENCE))
+        {
+                send_to_char("An anti-magic field prevents any casting here.\n\r", ch);
+                return;
+        }
+
         obj = NULL;
         if (arg2[0] == '\0')
         {
@@ -8749,31 +8762,82 @@ bool is_obj_owner(OBJ_DATA *obj, CHAR_DATA *ch)
         return FALSE;
 }
 
+/* Remove clan equipment from inventory and vault without destroying loot. */
+static bool destroy_clan_item(CHAR_DATA *ch, OBJ_DATA *obj, bool vaulted)
+{
+        OBJ_DATA *content, *next, *container;
+        bool found = FALSE;
+        int clan;
+
+        if (obj->deleted)
+                return FALSE;
+
+        for (content = obj->contains; content; content = next)
+        {
+                next = content->next_content;
+                if (destroy_clan_item(ch, content, vaulted))
+                        found = TRUE;
+        }
+
+        for (clan = 0; clan < MAX_CLAN; clan++)
+        {
+                if (obj->pIndexData->vnum != clan_item_list[clan].first_item
+                    && obj->pIndexData->vnum != clan_item_list[clan].second_item
+                    && obj->pIndexData->vnum != clan_item_list[clan].third_item
+                    && obj->pIndexData->vnum != clan_item_list[clan].pouch_item)
+                        continue;
+
+                /* Keep ordinary contents in the enclosing bag or inventory. */
+                container = obj->in_obj;
+                for (content = obj->contains; content; content = next)
+                {
+                        next = content->next_content;
+                        if (content->deleted)
+                                continue;
+                        if (vaulted)
+                        {
+                                ch->pcdata->vault_weight -= get_obj_weight(content);
+                                obj_from_objvault(content);
+                                if (container)
+                                        obj_to_objvault(content, container);
+                                else
+                                        obj_to_charvault(content, ch);
+                        }
+                        else
+                        {
+                                obj_from_obj(content);
+                                if (container)
+                                        obj_to_obj(content, container);
+                                else
+                                        obj_to_char(content, ch);
+                        }
+                }
+                extract_obj(obj);
+                return TRUE;
+        }
+
+        return found;
+}
+
 void destroy_clan_items(CHAR_DATA *ch)
 {
         OBJ_DATA *obj, *obj_next;
         bool found = FALSE;
-        int clan;
 
         for (obj = ch->carrying; obj; obj = obj_next)
         {
                 obj_next = obj->next_content;
+                if (destroy_clan_item(ch, obj, FALSE))
+                        found = TRUE;
+        }
 
-                if (obj->deleted)
-                        continue;
-
-                for (clan = 0; clan < MAX_CLAN; clan++)
+        if (ch->pcdata)
+        {
+                for (obj = ch->pcdata->vault; obj; obj = obj_next)
                 {
-                        if (obj->pIndexData->vnum == clan_item_list[clan].first_item || obj->pIndexData->vnum == clan_item_list[clan].second_item || obj->pIndexData->vnum == clan_item_list[clan].third_item || obj->pIndexData->vnum == clan_item_list[clan].pouch_item)
-                        {
+                        obj_next = obj->next_content;
+                        if (destroy_clan_item(ch, obj, TRUE))
                                 found = TRUE;
-
-                                if (obj->wear_loc != WEAR_NONE)
-                                        unequip_char(ch, obj);
-
-                                obj_from_char(obj);
-                                extract_obj(obj);
-                        }
                 }
         }
 

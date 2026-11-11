@@ -911,8 +911,8 @@ void trapdamage(CHAR_DATA *ch, OBJ_DATA *obj)
                                 affect_join( wch, &af );
 
                                 if ( IS_AWAKE(wch) ) {
-                                        send_to_char( "You are entangled in a snare--you cannot move!\n\r", ch );
-                                        act( "$c becomes entangled in a snare!", ch, NULL, NULL, TO_ROOM );
+                                        send_to_char( "You are entangled in a snare--you cannot move!\n\r", wch );
+                                        act( "$c becomes entangled in a snare!", wch, NULL, NULL, TO_ROOM );
                                 }
                         }
                 }

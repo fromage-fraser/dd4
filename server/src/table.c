@@ -237,6 +237,68 @@ void print_fame_table ( CHAR_DATA *ch, char *argument )
  * Infamy table - Shade Apr 2022, copied from Fame
  */
 
+/* Keep lifetime totals independently of the bounded display shortlist. */
+typedef struct infamy_total INFAMY_TOTAL;
+struct infamy_total
+{
+        INFAMY_TOTAL *next;
+        int vnum;
+        int kills;
+};
+
+static INFAMY_TOTAL *infamy_totals;
+
+static INFAMY_TOTAL *infamy_total_for(int vnum)
+{
+        INFAMY_TOTAL *total;
+
+        for (total = infamy_totals; total; total = total->next)
+                if (total->vnum == vnum)
+                        return total;
+
+        total = alloc_perm(sizeof(*total));
+        total->vnum = vnum;
+        total->kills = 0;
+        total->next = infamy_totals;
+        infamy_totals = total;
+        return total;
+}
+
+void load_infamy_totals(FILE *fp)
+{
+        char line[MAX_INPUT_LENGTH];
+        int i, vnum, kills;
+        INFAMY_TOTAL *total;
+
+        /* Legacy files contain only the shortlist. Preserve those totals. */
+        for (i = 0; i < INFAMY_TABLE_LENGTH; i++)
+        {
+                if (infamy_table[i].vnum <= 0 || infamy_table[i].kills <= 0)
+                        continue;
+                total = infamy_total_for(infamy_table[i].vnum);
+                total->kills = UMAX(total->kills, infamy_table[i].kills);
+        }
+
+        /* Appended records follow #END~, so old readers safely ignore them. */
+        while (fgets(line, sizeof(line), fp))
+        {
+                if (sscanf(line, "%d %d", &vnum, &kills) != 2
+                    || vnum <= 0 || kills <= 0)
+                        continue;
+                total = infamy_total_for(vnum);
+                total->kills = UMAX(total->kills, kills);
+        }
+}
+
+void save_infamy_totals(FILE *fp)
+{
+        INFAMY_TOTAL *total;
+
+        fprintf(fp, "#TOTALS\n");
+        for (total = infamy_totals; total; total = total->next)
+                fprintf(fp, "%d %d\n", total->vnum, total->kills);
+}
+
 void infamy_table_swap (int one, int two)
 {
         char buf [MAX_STRING_LENGTH];
@@ -270,9 +332,15 @@ void check_infamy_table (CHAR_DATA *mob)
         int prev = 0;
         int in = 0;
         int i = 0;
-        int kills = 0;
+        int kills;
+        INFAMY_TOTAL *total;
         char buf[ MAX_STRING_LENGTH ];
         char buf1[ MAX_STRING_LENGTH ];
+
+        total = infamy_total_for(mob->pIndexData->vnum);
+        if (total->kills < INT_MAX)
+                total->kills++;
+        kills = total->kills;
 
         /*
          * Are they in the table
@@ -284,17 +352,20 @@ void check_infamy_table (CHAR_DATA *mob)
                 {
                         prev = i;
                         in = 1;
-                        kills = infamy_table[i].kills + 1;
                 }
         }
 
-        if (!in && (1 < infamy_table[INFAMY_TABLE_LENGTH - 1].kills))
+        if (!in && kills < infamy_table[INFAMY_TABLE_LENGTH - 1].kills)
+        {
+                save_infamy_table();
                 return;
+        }
 
-        /* if they aren't in the table, this is their first kill */
+        /* A previously unranked monster may now reach the shortlist. */
         if (!in)
         {
-                for (i = INFAMY_TABLE_LENGTH - 1; (infamy_table[i - 1].kills <= 1); i--)
+                for (i = INFAMY_TABLE_LENGTH - 1;
+                     i > 0 && infamy_table[i - 1].kills <= kills; i--)
                 {
                         strncpy(infamy_table[i].name, infamy_table[i - 1].name, sizeof(infamy_table[i].name));
                         strncpy(infamy_table[i].loc, infamy_table[i - 1].loc, sizeof(infamy_table[i].loc));
@@ -322,7 +393,7 @@ void check_infamy_table (CHAR_DATA *mob)
                 strncpy(infamy_table[i].name, mob->short_descr, sizeof(infamy_table[i].name));
                 strncpy(infamy_table[i].name, capitalize_initial(infamy_table[i].name), sizeof(infamy_table[i].name));
                 strncpy(infamy_table[i].loc, mob->in_room->area->name, sizeof(infamy_table[i].loc));
-                infamy_table[i].kills = 1;
+                infamy_table[i].kills = kills;
                 infamy_table[i].vnum = mob->pIndexData->vnum;
 
                 if (i < INFAMY_TABLE_LENGTH_PRINT)
@@ -489,7 +560,7 @@ void check_clan_pkill_table (CHAR_DATA *ch)
         if (!in)
         {
                 for (i = CLAN_PKILL_TABLE_LENGTH - 1;
-                     (clan_pkill_table[clan][i - 1].pkills <= 1 && i != 0);
+                     (i != 0 && clan_pkill_table[clan][i - 1].pkills <= 1);
                      i--)
                 {
                         strncpy(clan_pkill_table[clan][i].name, clan_pkill_table[clan][i - 1].name,
@@ -671,7 +742,7 @@ void check_clan_vanq_table ( CHAR_DATA *ch, CHAR_DATA *victim )
         if (!in)
         {
                 for (i = CLAN_VANQ_TABLE_LENGTH - 1;
-                     (clan_vanq_table[clan][i - 1].killed <= 1 && i != 0);
+                     (i != 0 && clan_vanq_table[clan][i - 1].killed <= 1);
                      i--)
                 {
                         strncpy(clan_vanq_table[clan][i].name, clan_vanq_table[clan][i - 1].name, sizeof(clan_vanq_table[clan][i].name));

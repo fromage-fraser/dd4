@@ -865,7 +865,7 @@ void bot_think (int num)
         {
                 for (j = 0; j < tournament_team_count; j++)
                 {
-                        for (i = 0; i < tournament_entrant_count[0]; i++)
+                        for (i = 0; i < tournament_entrant_count[j]; i++)
                         {
                                 if (tournament_team_count > 1
                                     && j == bot->tournament_team)
