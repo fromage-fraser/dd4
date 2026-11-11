@@ -1632,6 +1632,21 @@ blocking unrelated directions.
 - PRAY LOCATE safely handles looking for yourself.
 - NEWBIE channel colours persist across logout and login.
 - POSE gives Rangers and Smithies a message instead of remaining silent.
+- FRENZY cancels SLOW instead of leaving both speed effects active.
+- PANTHEON names favoured and disfavoured subclasses correctly.
+- Room-wide snares describe each affected victim correctly.
+- Tournament bots count entrants on each team's own roster.
+- Bounty rewards preserve existing bank balances and the full reward.
+- Hero monks receive their active BONUS ATTACK melee strike.
+- Leaving a clan removes clan equipment from nested inventory and vaults.
+- INFAMY remembers kills by mobs outside the displayed ranking.
+- Clan PK and vanquished rankings safely insert their first entries.
+- LODGE rejects destinations that are not containers or turrets.
+- Empty channel commands ask what you want to say.
+- Interrupted tails no longer leave a phantom tail blocking STEAL.
+- FIRESTORM and METEOR SWARM skip targets removed by earlier spell hits.
+- RECITE respects rooms where magic is forbidden.
+
 
 ~
 

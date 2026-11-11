@@ -513,6 +513,7 @@ void talk_channel(CHAR_DATA *ch, char *argument, int channel, const char *verb)
         {
                 sprintf(buf, "%s what?\n\r", verb);
                 buf[0] = UPPER(buf[0]);
+                send_to_char(buf, ch);
                 return;
         }
 

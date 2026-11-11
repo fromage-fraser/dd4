@@ -10611,11 +10611,30 @@ void spell_frenzy(int sn, int level, CHAR_DATA *caster, void *vo)
                 affects.modifier = level + 50;
                 affect_to_char(target, &affects);
 
-                affects.type = gsn_haste;
-                affects.duration = 24;
-                affects.modifier = 0;
-                affects.location = APPLY_NONE;
-                affect_to_char(target, &affects);
+                /* The speed boon cancels Slow instead of stacking with it. */
+                if (is_affected(target, gsn_slow)
+                ||  IS_AFFECTED(target, AFF_SLOW))
+                {
+                        affect_strip(target, gsn_slow);
+                        affect_strip_raw_bit(target, AFF_SLOW);
+
+                        if (!is_affected(target, gsn_slow)
+                        &&  !IS_AFFECTED(target, AFF_SLOW))
+                        {
+                                act("$c is no longer moving in slow motion.",
+                                    target, NULL, NULL, TO_ROOM);
+                                send_to_char("You start to move at your normal speed.\n\r",
+                                             target);
+                        }
+                }
+                else
+                {
+                        affects.type = gsn_haste;
+                        affects.duration = 24;
+                        affects.modifier = 0;
+                        affects.location = APPLY_NONE;
+                        affect_to_char(target, &affects);
+                }
         }
 
         credit_group_support(caster, target);
@@ -11328,12 +11347,27 @@ void spell_dark_globe(int sn, int level, CHAR_DATA *ch, void *vo)
 void spell_firestorm(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *vch;
-        CHAR_DATA *vch_next;
+        ACTION_ROOM_TARGET *targets;
+        ROOM_INDEX_DATA *room;
+        size_t count;
+        size_t i;
+        int deaths = action_deaths(ch);
         int dam;
 
-        for (vch = ch->in_room->people; vch; vch = vch_next)
+        if (!action_character_alive(ch, deaths))
+                return;
+        room = ch->in_room;
+        targets = action_room_snapshot(room, &count);
+        if (!targets)
+                return;
+
+        for (i = 0; i < count; i++)
         {
-                vch_next = vch->next_in_room;
+                if (!action_character_in_room(ch, room, deaths))
+                        break;
+                vch = targets[i].character;
+                if (!action_character_in_room(vch, room, targets[i].deaths))
+                        continue;
 
                 if (!mob_interacts_players(vch))
                         continue;
@@ -11351,17 +11385,34 @@ void spell_firestorm(int sn, int level, CHAR_DATA *ch, void *vo)
                         damage(ch, vch, dam, sn, FALSE);
                 }
         }
+
+        free(targets);
 }
 
 void spell_meteor_storm(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *vch;
-        CHAR_DATA *vch_next;
+        ACTION_ROOM_TARGET *targets;
+        ROOM_INDEX_DATA *room;
+        size_t count;
+        size_t i;
+        int deaths = action_deaths(ch);
         int dam;
 
-        for (vch = ch->in_room->people; vch; vch = vch_next)
+        if (!action_character_alive(ch, deaths))
+                return;
+        room = ch->in_room;
+        targets = action_room_snapshot(room, &count);
+        if (!targets)
+                return;
+
+        for (i = 0; i < count; i++)
         {
-                vch_next = vch->next_in_room;
+                if (!action_character_in_room(ch, room, deaths))
+                        break;
+                vch = targets[i].character;
+                if (!action_character_in_room(vch, room, targets[i].deaths))
+                        continue;
 
                 if (!mob_interacts_players(vch))
                         continue;
@@ -11380,6 +11431,7 @@ void spell_meteor_storm(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
+        free(targets);
         return;
 }
 

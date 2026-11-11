@@ -6093,6 +6093,8 @@ void load_pkscore_table();
 void save_pkscore_table();
 void load_infamy_table();
 void save_infamy_table();
+void load_infamy_totals(FILE *fp);
+void save_infamy_totals(FILE *fp);
 
 /* gamble.c */
 GF *game_lookup args((const char *name));

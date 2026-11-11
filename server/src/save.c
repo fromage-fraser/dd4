@@ -1821,6 +1821,7 @@ void save_infamy_table ()
                 }
 
                 fprintf(fp, "#END~\n");
+                save_infamy_totals(fp);
                 fclose(fp);
         }
 
@@ -1871,6 +1872,7 @@ void load_infamy_table ()
                         infamy_table[iter].vnum = fread_number( fp, &stat );
                 }
 
+                load_infamy_totals(fp);
                 fclose(fp);
         }
 

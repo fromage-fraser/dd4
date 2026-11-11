@@ -684,6 +684,10 @@ void multi_hit(CHAR_DATA *ch, CHAR_DATA *victim, int dt)
                         }
                 }
 
+                if (is_affected(ch, gsn_bonus_attack)
+                &&  !IS_AFFECTED(ch, AFF_PRONE))
+                        one_hit(ch, victim, dt, FALSE);
+
                 return;
         }
 
@@ -1767,6 +1771,28 @@ void check_group_bonus(CHAR_DATA *ch, CHAR_DATA *victim)
 /*
  * Inflict damage from a hit.
  */
+/* Deliver the complete bounty before clearing its wanted entry. */
+static bool pay_bounty(CHAR_DATA *ch, int bounty)
+{
+        if (!ch || !ch->pcdata || bounty <= 0)
+                return FALSE;
+
+        if ((int64_t)ch->pcdata->bank + bounty <= INT_MAX)
+        {
+                ch->pcdata->bank += bounty;
+                send_to_char("The bounty is placed in your bank account.\n\r", ch);
+                return TRUE;
+        }
+
+        if (!reward_coins(ch, bounty / COIN_PLAT,
+                          (bounty % COIN_PLAT) / COIN_GOLD,
+                          (bounty % COIN_GOLD) / COIN_SILVER,
+                          bounty % COIN_SILVER))
+                return FALSE;
+        send_to_char("Your bank cannot hold the bounty, so you are paid in coins.\n\r", ch);
+        return TRUE;
+}
+
 void death_penalty(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         char buf[MAX_STRING_LENGTH];
@@ -1812,10 +1838,10 @@ void death_penalty(CHAR_DATA *ch, CHAR_DATA *victim)
 
                 if (ch != victim)
                 {
-                        if (victim->pcdata->bounty && ch->clan && victim->clan && victim->clan != ch->clan)
+                        if (victim->pcdata->bounty && ch->clan && victim->clan && victim->clan != ch->clan
+                        &&  pay_bounty(ch, victim->pcdata->bounty))
                         {
-                                sprintf(buf, "{WYou receive {C%d{W platinum coins as reward for the death of %s!{x\n\r"
-                                             "The money is placed in your bank account.\n\r",
+                                sprintf(buf, "{WYou receive {C%d{W platinum coins as reward for the death of %s!{x\n\r",
                                         victim->pcdata->bounty / 1000,
                                         victim->name);
                                 send_to_char(buf, ch);
@@ -1826,9 +1852,6 @@ void death_penalty(CHAR_DATA *ch, CHAR_DATA *victim)
                                         victim->name);
                                 do_info(ch, buf);
 
-                                ch->pcdata->bank = (int)UMIN((int64_t)2000000000,
-                                                        (int64_t)ch->pcdata->bank
-                                                        + victim->pcdata->bounty);
                                 victim->pcdata->bounty = 0;
 
                                 if (IS_SET(victim->status, PLR_HUNTED))
@@ -2292,8 +2315,11 @@ static void damage_internal(CHAR_DATA *ch,
                 if (IS_AFFECTED(ch, AFF_MEDITATE))
                         REMOVE_BIT(ch->affected_by, AFF_MEDITATE);
 
-                if (!IS_NPC(ch) && (ch->pcdata->tailing))
-                        ch->pcdata->tailing = str_dup( "" );
+                if (!IS_NPC(ch) && ch->pcdata->tailing)
+                {
+                        free_string(ch->pcdata->tailing);
+                        ch->pcdata->tailing = NULL;
+                }
 
                 remove_songs(ch);
 
@@ -3850,8 +3876,11 @@ void set_fighting(CHAR_DATA *ch, CHAR_DATA *victim)
                         act("$c fades into existence.", ch, NULL, NULL, TO_ROOM);
         }
 
-        if (!IS_NPC(ch) && (ch->pcdata->tailing))
-                ch->pcdata->tailing = str_dup("");
+        if (!IS_NPC(ch) && ch->pcdata->tailing)
+        {
+                free_string(ch->pcdata->tailing);
+                ch->pcdata->tailing = NULL;
+        }
 
         remove_songs(ch);
 
@@ -8366,7 +8395,10 @@ void do_trap(CHAR_DATA *ch, char *argument)
                 WAIT_STATE(victim, 2 * PULSE_VIOLENCE);
 
                 if (!IS_NPC(ch) && ch->pcdata->tailing)
-                        ch->pcdata->tailing = str_dup("");
+                {
+                        free_string(ch->pcdata->tailing);
+                        ch->pcdata->tailing = NULL;
+                }
 
                 check_group_bonus(ch, victim);
         }
@@ -8474,7 +8506,10 @@ void do_snare(CHAR_DATA *ch, char *argument)
                 WAIT_STATE(victim, 3 * PULSE_VIOLENCE);
 
                 if (!IS_NPC(ch) && ch->pcdata->tailing)
-                        ch->pcdata->tailing = str_dup("");
+                {
+                        free_string(ch->pcdata->tailing);
+                        ch->pcdata->tailing = NULL;
+                }
 
                 check_group_bonus(ch, victim);
         }
@@ -8618,7 +8653,10 @@ void do_transfix(CHAR_DATA *ch, char *argument)
                 check_group_bonus(ch, victim);
 
                 if (!IS_NPC(ch) && ch->pcdata->tailing)
-                        ch->pcdata->tailing = str_dup("");
+                {
+                        free_string(ch->pcdata->tailing);
+                        ch->pcdata->tailing = NULL;
+                }
         }
         else
         {
