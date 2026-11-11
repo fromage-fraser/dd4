@@ -7140,3 +7140,44 @@ female's nest. Clear the body and flight duplicates in the area.
 The Wicked Witch uses the living green_hag profile and elite rank.
 Keep her existing Sanctuary, detection affects and necromantic special.
 The special selects her spells and works on a living caster.
+
+
+Witch's Tower creature profiles
+------------------------------
+
+`black_bear`, `hydra` and `imp` are available as mob archetypes.
+Black bears use quadrupedal mammal anatomy, natural armour -3 and the
+existing bear hug special. Their defaults are 100 cm shoulder height,
+180 cm length and 120 kg, Medium. Give unusually large individuals their
+own dimensions, size and HUGE flag rather than enlarging every black bear.
+
+Hydrae use quadrupedal reptile anatomy, multiple heads, fangs and HUGE,
+with natural armour -5. Defaults are 250 cm shoulder height, 900 cm length
+and 3,000 kg, Large. The archetype supplies neither breath nor head
+regrowth. Add a special only when the individual or a reviewed variant
+needs it. MANY_HEAD describes anatomy; injuries still use the existing
+shared head-trauma state, not a separate counter for each head.
+
+Imps are small winged humanoids with horns, fangs and a tail. They fly,
+regenerate, see infrared, and detect good and magic. They have armour -8,
+magic/nonmagic resistance and fire/cold/electricity immunity. Defaults are
+61 cm and 12 kg, Small. These are DD4 adaptations of the second-edition
+creature; familiar bonds, shapechanging and automatic invisibility are
+not supplied. Individual casting still comes from the existing specials.
+
+Attached body-part weapons keep their targeting category in weapon
+value 0. A tail sting uses category 6 and attack verb 16; POISONED uses
+ordinary DD4 venom, not instant death. Keep BODY_PART, omit TAKE for a
+non-lootable attached weapon, and use DONOT_RANDOMISE to prevent random
+item upgrades. A separate native attack of the same kind can
+undo the point of injuring or removing the attached weapon. Cancel that
+individual attack through the existing `atk` XOR setting while
+keeping the anatomical part. Regenerate heals injuries but does not
+recreate a removed weapon. The existing leg-weapon rules are unchanged.
+
+The tower's ghostly nymph, elf and Aiseen reuse `ghost`; a former identity
+does not require a duplicate living-body archetype. Keep deliberate
+individual casters such as the nymph's druid and Aiseen's demon special.
+Use `wraith` for dedicated wraith phase/drain behaviour and `wight` for
+a corporeal undead body with ordinary remains. Remove duplicate raw
+physiology flags carefully: area body and attack-part fields use XOR.

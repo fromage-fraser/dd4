@@ -12,12 +12,14 @@ ignores your presence.
 ~
 64 0 250 S
 28 0 0 0d0+0 0d0+0
-32|128 0
+128 0
 0 0 1
 >rand_prog 15~
     mpecho The bear sniffs about in the trees looking for food.
 ~
 |
+< brown_bear~ common~
+MobAttackParts 17179869184
 
 #10100
 black bear~
@@ -29,8 +31,14 @@ bloodshot and it snarls and snaps at you angrily.
 ~
 2|32|64 0 -250 S
 30 0 0 0d0+0 0d0+0
-32|128 0
+128 0
 0 0 1
+< black_bear~ common~
+MobHeight 150
+MobLength 250
+MobWeight 350
+MobSize 2
+MobAttackParts 8589934592
 
 #10101
 two hydra~
@@ -43,13 +51,15 @@ frightening roar that fills your bones with terror.
 ~
 2|32|64 8|65536|8388608 -500 S
 32 0 0 0d0+0 0d0+0
-32|128 0
+0 0
 0 0 1
 >greet_prog 100~
 mpecho {x
 mpecho {RA massive form rises out from the pool roaring in anger!{x
 ~
 |
+< hydra~ common~
+MobAttackParts 17179869184
 
 #10103
 ghostly nymph~
@@ -61,7 +71,7 @@ touch each one.  She looks despairingly at you.
 ~
 64 524288 250 S
 28 0 0 0d0+0 0d0+0
-32|64|256 0
+32 0
 0 0 2
 >rand_prog 15~
     mpasound A despairing wail echoes through the trees.
@@ -70,6 +80,8 @@ touch each one.  She looks despairingly at you.
     mpecho The nymph lets out a despairing wail.
 ~
 |
+< ghost~ common~
+MobHeight 150
 
 #10104
 spectral elf~
@@ -82,12 +94,14 @@ of sadness; this spirit is not resting peacefully.
 ~
 64 524288 500 S
 30 0 0 0d0+0 0d0+0
-32|64|256 0
-0 0 0
+32 0
+0 0 1
 >rand_prog 15~
     mpecho The spectral elf wails sadly.
 ~
 |
+< ghost~ common~
+MobHeight 150
 
 #10105
 black witch~
@@ -102,7 +116,7 @@ are almost completely ruined; nothing but rags now.
 35 0 0 0d0+0 0d0+0
 0 0
 0 0 2
-< reserved~ rare~
+< human~ rare~
 
 #10107
 wraith~
@@ -114,8 +128,9 @@ shrilly at you!
 ~
 32|64 8|65536|524288 0 S
 30 0 0 0d0+0 0d0+0
-32|64|256 0
+32 0
 0 0 2
+< wraith~ common~
 
 #10106
 imp small~
@@ -126,7 +141,7 @@ The imp is about three feet tall, with reddish-brown skin.  He wields a
 small trident, and his tail is cockily wrapped around the end.  The imp
 grins back at you.
 ~
-2|32|64 8|32|8192|65536|524288 -600 S
+2|32|64 8|32|8192|65536 -600 S
 34 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -134,7 +149,9 @@ grins back at you.
     mpecho The imp throws back his head and cackles with insane glee!
 ~
 |
-< reserved~ elite~
+< imp~ elite~
+MobHeight 91
+MobWeight 20
 
 #10108
 demon spirit aiseen~
@@ -159,7 +176,7 @@ gaze falls upon you.
     mpecho {x
 ~
 |
-< reserved~ rare~
+< ghost~ rare~
 #10109
 wight~
 a wight~
@@ -169,14 +186,15 @@ The wight is rotting, almost before your eyes, and has clearly been dead for
 a long time.  Its form is still humanoid but exactly what it was in life
 is impossible to tell.  The wight shifts about restlessly.
 ~
-2|64 524288 -500 S
+2|64 0 -500 S
 34 0 0 0d0+0 0d0+0
-32|64|256 0
+0 0
 0 0 0
 >rand_prog 15~
     mpecho The wight shuffles about restlessly.
 ~
 |
+< wight~ common~
 #0
 
 #OBJECTS
@@ -247,8 +265,8 @@ tail~
 a tail~
 A pointy tail has been separated from its owner.~
 ~
-5 67108864 0
-6~ ~ ~ 11~
+5 67108864|16384|137438953472 0
+6~ ~ ~ 16~
 10 0 0
 
 #10107
@@ -1960,7 +1978,7 @@ S
 M 10101 spec_breath_fire        a two headed hydra
 M 10103 spec_cast_druid         a ghostly nymph
 M 10105 spec_cast_priestess     a black witch
-M 10107 spec_cast_undead        a ghostly wraith
+* M 10107 spec_cast_undead        a ghostly wraith
 M 10106 spec_cast_mage          a small imp
 M 10108 spec_demon              a demon spirit
 S
