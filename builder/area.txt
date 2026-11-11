@@ -7181,3 +7181,42 @@ individual casters such as the nymph's druid and Aiseen's demon special.
 Use `wraith` for dedicated wraith phase/drain behaviour and `wight` for
 a corporeal undead body with ordinary remains. Remove duplicate raw
 physiology flags carefully: area body and attack-part fields use XOR.
+
+
+Valley of the Elves creature profiles
+------------------------------------
+
+`valley_elf`, `cooshee` and `antelope` are available as mob archetypes.
+Valley elves use humanoid anatomy and elf family identity, with infrared
+and descriptive defaults of 175 cm and 60 kg, Medium. Their trait profile
+shares the established elf sleep/charm resistance and ghoul-touch immunity.
+This does not change the ordinary elf, drow or player abilities. Keep
+occupational casting on each mob rather than making every valley elf a mage.
+
+Cooshees are elven dogs with quadrupedal mammal anatomy, a fang bite,
+Sneak and natural armour -5. Defaults are 80 cm shoulder height,
+150 cm length and 60 kg, Medium. Their inherited `spec_cooshee` has a 10%
+chance per ready combat opportunity to use Trip on a grounded Small/Medium
+biped. It needs usable forelegs and paws and respects leg trauma, physical
+contact, safety, visibility, flight, mount, water and action restrictions.
+It ignores opponents already prone and adds no direct damage. The usual
+Trip effect and two-violence-pulse actor cooldown apply. It neither starts
+a fight nor overrides the mob's authored wimpy behaviour. The special is
+also available individually through the existing `sp` setting.
+
+Antelopes have quadrupedal mammal anatomy, horns, hooves and armour -3.
+Defaults are 100 cm shoulder height, 160 cm length and 70 kg, Medium.
+They use existing natural horn/hoof attacks; there is no new herd AI.
+These animal measurements and masses are descriptive estimates.
+
+The valley's pyrohydra reuses `hydra` with individual `spec_breath_fire`.
+It has a natural bite, so it does not need the `atk` XOR cancellation
+used by a hydra whose bites are supplied by attached fang weapons.
+The guardian daemon keeps its individual `spec_demon` override: the
+acid-trunk wrapper belongs to the already-reviewed trunked guardian form.
+Use individual specials when the creature's actual form or role differs.
+
+Body and affect masks use XOR. Remove duplicate no-arms/no-speech/Sneak
+from a converted cooshee, and duplicate infrared from valley elf overrides.
+Keep the individual's aggression, passivity, movement and other affects.
+Rank remains an encounter choice: it does not determine body dimensions.

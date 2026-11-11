@@ -23,10 +23,11 @@ A beast is the size of the largest common dog.  It has a greenish coat with
 brown spots.  Its shape, along with its colors, make this cooshee almost
 undetectable as it moves.
 ~
-64|128 32768 0 S
+64|128 0 0 S
 5 15 4 4d4+55 2d4+1
-36 700
+0 700
 8 8 0
+< cooshee~ common~
 #7801
 valley elf~
 a valley elf~
@@ -37,10 +38,11 @@ hatred in his eyes, and you try to avoid his stare.  His tense body looks ready
 to spring upon you, like a mountain lion stalking its prey.  He sees you
 noticing him, and quietly disappears.
 ~
-4|32|64|128 512|32768 0 S
+4|32|64|128 32768 0 S
 8 11 0 7d7+80 1d4+6
 0 2000
 8 8 1
+< valley_elf~ common~
 #7802
 valley elf~
 a valley elf~
@@ -49,10 +51,11 @@ A female valley elf wanders here, skirting between the tall grasses.
 This elf is almost as tall as you are, but much slimmer and more agile.
 She glares at you, then quickly disappears before you see more of her.
 ~
-4|32|64|128 512|32768 0 S
+4|32|64|128 32768 0 S
 8 11 0 7d7+80 1d4+6
 0 2000
 8 8 2
+< valley_elf~ common~
 #7803
 sentry valley elf~
 a valley elf sentry~
@@ -61,10 +64,11 @@ A valley elf sentry stands here, then noticing you, attacks quickly!
 This elf is almost as tall as you are, but much slimmer and more agile.
 He glares at your intrusion and attacks with menace.
 ~
-2|32 512|32768 0 S
+2|32 32768 0 S
 7 12 1 6d6+70 1d4+5
 0 1500
 8 8 1
+< valley_elf~ common~
 #7804
 sentry valley elf~
 a valley elf sentry~
@@ -73,10 +77,11 @@ A valley elf sentry stands here, then noticing you, attacks quickly!
 This elf is almost as tall as you are, but much slimmer and more agile.
 She glares at your intrusion and attacks with menace.
 ~
-2|32 512|32768 0 S
+2|32 32768 0 S
 7 12 1 6d6+70 1d4+5
 0 1500
 8 8 2
+< valley_elf~ common~
 #7805
 scout valley elf~
 a valley elf scout~
@@ -84,10 +89,11 @@ A valley elf scout wanders the valley, searching for intruders like you!
 ~
 The elf notices your intrusion and attacks with determination.
 ~
-4|32|64 512|32768 0 S
+4|32|64 32768 0 S
 6 13 2 5d5+60 1d4+4
 0 1000
 8 8 1
+< valley_elf~ common~
 #7806
 valley elf~
 a valley elf~
@@ -96,10 +102,11 @@ A valley elf is here, doing her duties.
 She is currently doing some menial chores, and ignores your intrusion except
 when you are in her way.
 ~
-64|128 512|32768 0 S
+64|128 32768 0 S
 6 13 2 5d5+60 1d4+4
 0 1000
 8 8 2
+< valley_elf~ common~
 #7807
 elder valley elf~
 a valley elf elder~
@@ -113,6 +120,7 @@ quite potent, though.
 15 3 -7 14d14+150 1d4+9
 0 30000
 8 8 1
+< valley_elf~ rare~
 #7808
 elder valley elf~
 a valley elf elder~
@@ -126,6 +134,7 @@ quite potent, though.
 15 3 -10 14d14+150 1d4+9
 0 30000
 8 8 2
+< valley_elf~ rare~
 #7809
 pyrohydra pyro hydra big beast~
 the pyrohydra~
@@ -136,8 +145,9 @@ regular dragon, too.  It doesn't look happy.
 ~
 2|32 0 0 S
 20 2 -5 20d20+200 1d20+12
-32 50000
+0 50000
 8 8 0
+< hydra~ rare~
 #7810
 hermit man old~
 an old hermit~
@@ -149,6 +159,8 @@ He looks old and feeble.
 3 17 7 3d3+33 1d4+2
 0 300
 8 8 1
+< human~ common~
+MobWeight 55
 #7811
 talemon wizard mage~
 Talemon~
@@ -160,6 +172,7 @@ Talemon looks harmless, but the fireballs he throws at you don't.
 25 0 -10 25e25+250 1d4+10
 0 100000
 8 8 1
+< human~ boss~
 #7812
 guardian daemon~
 the guardian daemon~
@@ -172,6 +185,7 @@ anger at you!
 25 -2 -10 25r25+250 2d4+20
 0 80000
 8 8 0
+< guardian_daemon~ elite~
 #7813
 wolf~
 a wolf~
@@ -183,6 +197,7 @@ The wolf is covered with brown hair.  It looks at you with fright.
 4 16 6 4d4+40 1d4+3
 0 500
 8 8 0
+< wolf~ common~
 #7814
 antelope~
 an antelope~
@@ -195,6 +210,7 @@ image of ... an antelope.
 6 14 4 6d6+66 1d4+5
 0 1000
 8 8 0
+< antelope~ common~
 #0
 
 
@@ -2056,7 +2072,7 @@ S
 #7881
 The Workroom~
 This room looks like it is used for magical studies.  Potions bubble over
-burners, and the whole room spells of herbs and dead animal flesh.  A furnace
+burners, and the whole room smells of herbs and dead animal flesh.  A furnace
 to the side casts a bright light in this room.  The whole room radiates with
 a magical aura.
 ~
@@ -2165,17 +2181,17 @@ E 1 7800 99 5
 E 1 7801 99 8
 E 1 7802 99 16
 E 1 7803 99 3
-M 0 7804 1 7856
+M 0 7804 2 7856
 E 1 7800 99 5
 E 1 7801 99 8
 E 1 7802 99 16
 E 1 7803 99 3
-M 0 7804 1 7863
+M 0 7804 3 7863
 E 1 7800 99 5
 E 1 7801 99 8
 E 1 7802 99 16
 E 1 7803 99 3
-M 0 7804 1 7848
+M 0 7804 4 7848
 E 1 7800 99 5
 E 1 7801 99 8
 E 1 7802 99 16
