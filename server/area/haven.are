@@ -7,14 +7,15 @@ gnome busy~
 the busy gnome~
 The busy gnome shuffles past you.
 ~
-The weather does not phase him in the least.  She is ready
+The weather does not faze him in the least.  He is ready
 to defend himself to the death.  There is a glazed look
-about her eyes.
+about his eyes.
 ~
 69 32768 100 S
 16 17 8 5d4+260 3d6+1
 0 4500
-8 8 2
+8 8 1
+< gnome~ common~
 #1802
 gnome guard~
 the gnome guard~
@@ -26,6 +27,7 @@ There is a glazed look about her eyes.
 20 8 0 6d6+440 4d4+2
 0 40000
 8 8 2
+< gnome~ common~
 #1803
 bear giant polar~
 the giant polar bear~
@@ -35,8 +37,12 @@ She blends with the snow.
 ~
 34 65544 0 S
 24 8 3 6d10+400 20d2+1
-36 75000
+0 75000
 8 8 2
+< polar_bear~ common~
+MobHeight 250
+MobLength 500
+MobWeight 1500
 #1804
 dragon white~
 the white dragon~
@@ -46,8 +52,9 @@ He is an enormous, mature dragon, ready to freeze you.
 ~
 3 128 -1000 S
 25 -5 -100 25d4+550 5d4+5
-128 450000
+0 450000
 8 8 1
+< adult_white_dragon~ elite~
 #1805
 dragon blue~
 the blue dragon~
@@ -56,10 +63,11 @@ The blue dragon dislikes being here.
 She is an enormous, mature dragon, with an attitude
 to match her electric blue scales.
 ~
-32 136 -1000 S
+32 128 -1000 S
 26 -5  -100 25d4+600 4d10+10
-128 500000
+0 500000
 8 8 2
+< adult_blue_dragon~ elite~
 #1806
 queen snow~
 the Snow Queen~
@@ -71,6 +79,7 @@ Dressed in all white, she almost charms you with her placidness.
 32 -10 -100 3b10+2000 15d3+15
 0 600000
 8 8 2
+< human~ boss~
 #1807
 giant frost guard~
 the cold frost giant~
@@ -83,6 +92,7 @@ but they keep him fed.
 20 0 -65 6d4+370 3d8+1
 0 75000
 8 8 1
+< frost_giant~ common~
 #1808
 mistress white~
 the white mistress~
@@ -94,6 +104,7 @@ She is a fanatical servant to the Snow Queen.
 20 5 -66 100d4+50 5d4+10
 0 70000
 8 8 2
+< human~ common~
 #1809
 master herbal~
 the master herbal~
@@ -105,6 +116,7 @@ She is too busy to consider you.
 20 0 -66 4d100+75 3d6+3
 0 65000
 8 8 2
+< human~ common~
 #1810
 thief~
 the thief~
@@ -116,6 +128,7 @@ He REALLY likes your money!
 7 13 3 7d7+77 2d3+3
 0 1000
 8 8 1
+< human~ common~
 #0
 
 #OBJECTS
@@ -856,9 +869,9 @@ M 0 1803 4 1832         polar bear
 M 0 1803 4 1833         polar bear
 M 0 1803 4 1805         polar bear
 M 0 1804 1 1824         white dragon
-E 1 1802 2 17               gets a fire wand
+G 1 1802 2                  carries a fire wand
 M 0 1805 1 1825         blue dragon
-E 1 1803 2 16               gets a flaming axe
+G 1 1803 2                  carries a flaming axe
 M 0 1806 1 1819         Snow Queen
 E 1 1804 1 11               gets a shield southwind
 E 1 1801 4 17               gets an ice staff
@@ -896,8 +909,13 @@ S
 
 #SPECIALS
 M  1804 spec_cast_mage
+N  1804 2 spec_breath_frost_anatomical
+P  1804 50 50 0
 M  1805 spec_cast_mage
+N  1805 2 spec_breath_lightning_anatomical
+P  1805 50 50 0
 M  1806 spec_cast_mage
+M  1810 spec_thief
 S
 
 #$

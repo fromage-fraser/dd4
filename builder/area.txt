@@ -7261,3 +7261,52 @@ The Eerie Woods wolf cubs use ordinary wolf anatomy with individual
 not a reason to give them adult bodies. Preserve authored aggression,
 wimpy behaviour, quest restrictions and programs. Remove duplicate
 body/affect defaults carefully because the area overrides use XOR.
+
+
+Little Haven creature profiles
+-----------------------------
+
+`polar_bear`, `adult_white_dragon`, `adult_blue_dragon` and `frost_giant`
+are available as archetypes. They use existing mammal, dragon and humanoid
+bodies. Dimensions remain descriptive estimates, in cm and whole kg.
+
+Polar bears have paws, claws, fangs, forelegs, a short tail, HUGE,
+armour -4 and cold resistance. Defaults are 200 cm shoulder height,
+400 cm length and 900 kg, Large. The explicitly giant Little Haven bears
+use individual 250 cm / 500 cm / 1500 kg overrides. Their existing
+`spec_bear` hug has its usual 15% opportunity and deals 3d6 blunt damage.
+The internal `bear_hug_dice` trait selects three dice for polar bears;
+brown and black bears keep two. MSTAT shows the resolved trait and origin.
+It is not an area field or a Scribe command. Injury, safety and readiness
+checks still apply; the hug does not hold or stun its target.
+
+Adult white and blue dragons have flight, infrared, enhanced senses,
+HUGE, the existing combat fear aura, armour -20 and magic resistance.
+White dragons are cold-immune and breathe frost; blue dragons are
+electricity-immune and breathe lightning. The blue's horn is anatomical,
+not another attack. White defaults are 350 cm shoulder height, 3000 cm
+including the tail and 6000 kg; blue defaults are 500 cm / 4000 cm /
+12000 kg. Both use Large. No extra age powers or fire vulnerability
+are implied. Generic profiles inherit their breath, not mage casting.
+
+`spec_breath_lightning_anatomical` keeps ordinary lightning breath, with
+the existing missing/injured-head gate. It is available through `sp`,
+like the frost, fire and acid wrappers. Little Haven's two dragons keep
+individual 50% mage / 50% appropriate-breath choices. Each opportunity
+selects one special; a failed choice does not try another. They carry
+their old wand and axe as loot instead of equipping them without arms.
+
+Frost giants have ordinary humanoid organs and speech, HUGE, cold
+immunity and armour -15. Defaults are 640 cm / 3600 kg, Large. Their
+giant-family identity participates in the existing dwarf/gnome defences.
+`spec_giant` gives a 15% eligible combat-pulse throw chance, four rocks
+per game day, 2d10 plus the existing level/2 term and a 40% catch chance.
+Its normal arm/head/eye, safety, visibility and ammunition checks apply.
+This grants no new axe, regeneration or fire vulnerability.
+
+Keep local encounter choices separate: the Snow Queen is a human mage,
+her servants remain human, and the area's thief uses `spec_thief`.
+The dragons are Elite and the Queen is Boss; ordinary guards and bears
+remain Common. Rank applies HP once through the existing system.
+When replacing raw body flags, remember XOR: do not cancel inherited
+HUGE, NO_ARMS or NO_SPEECH by repeating them in the area override.

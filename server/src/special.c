@@ -93,6 +93,7 @@ DECLARE_SPEC_FUN( spec_poison_bite );
 DECLARE_SPEC_FUN( spec_breath_acid_anatomical );
 DECLARE_SPEC_FUN( spec_breath_fire_anatomical );
 DECLARE_SPEC_FUN( spec_breath_frost_anatomical );
+DECLARE_SPEC_FUN( spec_breath_lightning_anatomical );
 DECLARE_SPEC_FUN( spec_breath_any_anatomical );
 DECLARE_SPEC_FUN( spec_poison_palm          );
 DECLARE_SPEC_FUN( spec_repairman            );
@@ -195,6 +196,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_breath_acid_anatomical")) return spec_breath_acid_anatomical;
         if (!str_cmp(name, "spec_breath_fire_anatomical")) return spec_breath_fire_anatomical;
         if (!str_cmp(name, "spec_breath_frost_anatomical")) return spec_breath_frost_anatomical;
+        if (!str_cmp(name, "spec_breath_lightning_anatomical")) return spec_breath_lightning_anatomical;
         if (!str_cmp(name, "spec_breath_any_anatomical")) return spec_breath_any_anatomical;
         if (!str_cmp(name, "spec_poison_palm"))          return spec_poison_palm;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
@@ -302,6 +304,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_breath_acid_anatomical) return "spec_breath_acid_anatomical";
         if (special == spec_breath_fire_anatomical) return "spec_breath_fire_anatomical";
         if (special == spec_breath_frost_anatomical) return "spec_breath_frost_anatomical";
+        if (special == spec_breath_lightning_anatomical) return "spec_breath_lightning_anatomical";
         if (special == spec_breath_any_anatomical) return "spec_breath_any_anatomical";
         if (special == spec_poison_palm) return "spec_poison_palm";
         if (special == spec_repairman) return "spec_repairman";
@@ -3029,6 +3032,12 @@ bool spec_breath_frost_anatomical(CHAR_DATA *ch)
         return usable_breath_head(ch) ? spec_breath_frost(ch) : FALSE;
 }
 
+/* Lightning breath needs the same usable mouth as the other breaths. */
+bool spec_breath_lightning_anatomical(CHAR_DATA *ch)
+{
+        return usable_breath_head(ch) ? spec_breath_lightning(ch) : FALSE;
+}
+
 /* This keeps the authored breath choices, without a daily charge limit. */
 bool spec_breath_any_anatomical(CHAR_DATA *ch)
 {
@@ -5119,6 +5128,7 @@ bool spec_psionic_thief(CHAR_DATA *ch)
 bool spec_bear(CHAR_DATA *ch)
 {
         CHAR_DATA *victim;
+        int hug_dice;
 
         if (!native_power_ready(ch) || ch->hit <= 0
         || !HAS_LEGS(ch) || !(ch->body_form & PART_FORELEGS)
@@ -5135,7 +5145,11 @@ bool spec_bear(CHAR_DATA *ch)
         act("You catch $N in a crushing hug!", ch, NULL, victim, TO_CHAR);
         act("$n catches you in a crushing hug!", ch, NULL, victim, TO_VICT);
         act("$n catches $N in a crushing hug!", ch, NULL, victim, TO_NOTVICT);
-        damage_with_resistance_types(ch, victim, dice(2, 6),
+        /* Unclassified users keep the original two dice. */
+        hug_dice = creature_trait_value(ch, CREATURE_TRAIT_BEAR_HUG_DICE);
+        if (hug_dice <= 0)
+                hug_dice = 2;
+        damage_with_resistance_types(ch, victim, dice(URANGE(1, hug_dice, 100), 6),
                                      TYPE_HIT + 8, FALSE, RES_BLUNT | RES_NONMAGIC);
         return TRUE;
 }
