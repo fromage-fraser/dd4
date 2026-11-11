@@ -2598,6 +2598,45 @@ const struct mob_type mob_table[MAX_MOB] =
                 150, 450, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 230
+        },
+        {
+                "polar_bear", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, RES_COLD, 0, 0,
+                0, 0, 0, 0,
+                200, 900, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_bear", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 400
+        },
+        {
+                "adult_white_dragon", "dragon", "icon1", "icon2",
+                ACT_FEAR_AURA,
+                AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                BODY_HUGE, 0, RES_MAGIC, 0, RES_COLD,
+                0, 0, 0, 0,
+                350, 6000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_frost_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 3000
+        },
+        {
+                "adult_blue_dragon", "dragon", "icon1", "icon2",
+                ACT_FEAR_AURA,
+                AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                BODY_HUGE | PART_HORNS, 0, RES_MAGIC, 0, RES_ELECTRICITY,
+                0, 0, 0, 0,
+                500, 12000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_lightning_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 4000
+        },
+        {
+                "frost_giant", "humanoid", "icon1", "icon2",
+                0, 0, BODY_HUGE, 0, 0, 0, RES_COLD,
+                0, 0, 0, 0,
+                640, 3600, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_giant", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_GIANT, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2691,6 +2730,7 @@ typedef enum creature_trait_effect
         TRAIT_BLOOD_REACTION_QUANTITY,
         TRAIT_FEAR_IMMUNITY,
         TRAIT_BODY_WEAPON_LOOT,
+        TRAIT_NATIVE_HUG_DICE,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -2795,7 +2835,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"burning_blood_sides", TRAIT_BLOOD_REACTION_QUANTITY, NULL},
         {"fear_immunity", TRAIT_FEAR_IMMUNITY, NULL},
         {"acid_spit_daily_casts", TRAIT_NATIVE_BREATH_QUANTITY, NULL},
-        {"body_weapon_loot", TRAIT_BODY_WEAPON_LOOT, NULL}
+        {"body_weapon_loot", TRAIT_BODY_WEAPON_LOOT, NULL},
+        {"bear_hug_dice", TRAIT_NATIVE_HUG_DICE, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -2994,6 +3035,7 @@ static const CREATURE_TRAIT_CHANGE hammerhead_shark_trait_changes[] =
 
 static const CREATURE_TRAIT_CHANGE brown_bear_trait_changes[] =
 {
+        {CREATURE_TRAIT_BEAR_HUG_DICE, 2},
         {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
         {CREATURE_TRAIT_BODY_WEAPON_LOOT, 1}
 };
@@ -3109,6 +3151,7 @@ static const CREATURE_TRAIT_CHANGE green_hag_trait_changes[] =
 
 static const CREATURE_TRAIT_CHANGE black_bear_trait_changes[] =
 {
+        {CREATURE_TRAIT_BEAR_HUG_DICE, 2},
         {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
 };
 
@@ -3146,6 +3189,25 @@ static const CREATURE_TRAIT_CHANGE leprechaun_trait_changes[] =
 static const CREATURE_TRAIT_CHANGE horse_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+
+static const CREATURE_TRAIT_CHANGE polar_bear_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_BEAR_HUG_DICE, 3}
+};
+static const CREATURE_TRAIT_CHANGE adult_cold_lightning_dragon_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
+};
+static const CREATURE_TRAIT_CHANGE frost_giant_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -15},
+        {CREATURE_TRAIT_ROCK_THROW_PERCENT, 15},
+        {CREATURE_TRAIT_ROCK_DAMAGE_DICE, 2},
+        {CREATURE_TRAIT_ROCK_DAMAGE_SIDES, 10},
+        {CREATURE_TRAIT_ROCK_DAILY_AMMO, 4},
+        {CREATURE_TRAIT_ROCK_CATCH_PERCENT, 40}
 };
 
 /* Add body defaults here when a reviewed species needs them. */
@@ -3247,6 +3309,14 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"wormkin", NULL, wormkin_trait_changes,
             TRAIT_ITEMS(wormkin_trait_changes)},
         {"venomous_spider", "giant_spider", NULL, 0},
+        {"polar_bear", NULL, polar_bear_trait_changes,
+            TRAIT_ITEMS(polar_bear_trait_changes)},
+        {"adult_white_dragon", NULL, adult_cold_lightning_dragon_traits,
+            TRAIT_ITEMS(adult_cold_lightning_dragon_traits)},
+        {"adult_blue_dragon", NULL, adult_cold_lightning_dragon_traits,
+            TRAIT_ITEMS(adult_cold_lightning_dragon_traits)},
+        {"frost_giant", NULL, frost_giant_trait_changes,
+            TRAIT_ITEMS(frost_giant_trait_changes)},
         {"bee", NULL, bee_trait_changes,
             TRAIT_ITEMS(bee_trait_changes)},
         {"enchanted_oak", NULL, enchanted_oak_trait_changes,
@@ -3455,6 +3525,7 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_COMBAT_CASTING_PERCENT
                                     || effect == TRAIT_NATIVE_ROCK_PERCENT
                                     || effect == TRAIT_NATIVE_ROCK_QUANTITY
+                                    || effect == TRAIT_NATIVE_HUG_DICE
                                     || effect == TRAIT_NATIVE_REGEN_QUANTITY
                                     || effect == TRAIT_NATIVE_BREATH_QUANTITY
                                     || effect == TRAIT_BLOOD_REACTION_QUANTITY
@@ -6375,6 +6446,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_warrior", 10 },
                 { "spec_psionic_thief", 10 },
                 { "spec_breath_frost_anatomical", 10 },
+                { "spec_breath_lightning_anatomical", 10 },
                 { "spec_wight", 10 },
                 { "spec_wraith", 10 },
                 { "spec_prism_flash", 10 },
