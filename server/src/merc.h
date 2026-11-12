@@ -3669,7 +3669,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 143
+#define MAX_MOB 146
 #define MAX_SPECIES 29
 #define MAX_RANK 6
 
@@ -5966,6 +5966,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_ACID_SPIT_DAILY_CASTS,
         CREATURE_TRAIT_BODY_WEAPON_LOOT,
         CREATURE_TRAIT_BEAR_HUG_DICE,
+        CREATURE_TRAIT_STONE_DEATH,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Passive native regeneration never invokes or replaces an active special. */

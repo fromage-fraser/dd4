@@ -69,6 +69,7 @@ DECLARE_SPEC_FUN( spec_cast_druid           );
 DECLARE_SPEC_FUN( spec_cast_water_sprite    );
 DECLARE_SPEC_FUN( spec_cast_psionicist      );
 DECLARE_SPEC_FUN( spec_psionic_thief );
+DECLARE_SPEC_FUN( spec_cleric_adept );
 DECLARE_SPEC_FUN( spec_cast_undead          );
 DECLARE_SPEC_FUN( spec_executioner          );
 DECLARE_SPEC_FUN( spec_fido                 );
@@ -94,6 +95,7 @@ DECLARE_SPEC_FUN( spec_breath_acid_anatomical );
 DECLARE_SPEC_FUN( spec_breath_fire_anatomical );
 DECLARE_SPEC_FUN( spec_breath_frost_anatomical );
 DECLARE_SPEC_FUN( spec_breath_lightning_anatomical );
+DECLARE_SPEC_FUN( spec_breath_steam_anatomical );
 DECLARE_SPEC_FUN( spec_breath_any_anatomical );
 DECLARE_SPEC_FUN( spec_poison_palm          );
 DECLARE_SPEC_FUN( spec_repairman            );
@@ -168,6 +170,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_cast_water_sprite"))    return spec_cast_water_sprite;
         if (!str_cmp(name, "spec_cast_psionicist"))      return spec_cast_psionicist;
         if (!str_cmp(name, "spec_psionic_thief")) return spec_psionic_thief;
+        if (!str_cmp(name, "spec_cleric_adept")) return spec_cleric_adept;
         if (!str_cmp(name, "spec_cast_undead"))          return spec_cast_undead;
         if (!str_cmp(name, "spec_executioner"))          return spec_executioner;
         if (!str_cmp(name, "spec_fido"))                 return spec_fido;
@@ -197,6 +200,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_breath_fire_anatomical")) return spec_breath_fire_anatomical;
         if (!str_cmp(name, "spec_breath_frost_anatomical")) return spec_breath_frost_anatomical;
         if (!str_cmp(name, "spec_breath_lightning_anatomical")) return spec_breath_lightning_anatomical;
+        if (!str_cmp(name, "spec_breath_steam_anatomical")) return spec_breath_steam_anatomical;
         if (!str_cmp(name, "spec_breath_any_anatomical")) return spec_breath_any_anatomical;
         if (!str_cmp(name, "spec_poison_palm"))          return spec_poison_palm;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
@@ -276,6 +280,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_cast_water_sprite) return "spec_cast_water_sprite";
         if (special == spec_cast_psionicist) return "spec_cast_psionicist";
         if (special == spec_psionic_thief) return "spec_psionic_thief";
+        if (special == spec_cleric_adept) return "spec_cleric_adept";
         if (special == spec_cast_undead) return "spec_cast_undead";
         if (special == spec_executioner) return "spec_executioner";
         if (special == spec_fido) return "spec_fido";
@@ -305,6 +310,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_breath_fire_anatomical) return "spec_breath_fire_anatomical";
         if (special == spec_breath_frost_anatomical) return "spec_breath_frost_anatomical";
         if (special == spec_breath_lightning_anatomical) return "spec_breath_lightning_anatomical";
+        if (special == spec_breath_steam_anatomical) return "spec_breath_steam_anatomical";
         if (special == spec_breath_any_anatomical) return "spec_breath_any_anatomical";
         if (special == spec_poison_palm) return "spec_poison_palm";
         if (special == spec_repairman) return "spec_repairman";
@@ -3038,6 +3044,12 @@ bool spec_breath_lightning_anatomical(CHAR_DATA *ch)
         return usable_breath_head(ch) ? spec_breath_lightning(ch) : FALSE;
 }
 
+/* Steam keeps its old power, but still needs a usable mouth. */
+bool spec_breath_steam_anatomical(CHAR_DATA *ch)
+{
+        return usable_breath_head(ch) ? spec_breath_steam(ch) : FALSE;
+}
+
 /* This keeps the authored breath choices, without a daily charge limit. */
 bool spec_breath_any_anatomical(CHAR_DATA *ch)
 {
@@ -5097,6 +5109,23 @@ static bool native_power_ready(CHAR_DATA *ch)
             && !IS_AFFECTED(ch, AFF_CHARM)
             && !IS_AFFECTED(ch, AFF_HOLD)
             && !IS_AFFECTED(ch, AFF_DAZED);
+}
+
+/* A helpful priest fights as a cleric, then returns to helping visitors. */
+bool spec_cleric_adept(CHAR_DATA *ch)
+{
+        if (!native_power_ready(ch) || ch->hit <= 0)
+                return FALSE;
+
+        if (is_in_combat(ch))
+        {
+                if (IS_SET(ch->act, ACT_NO_FIGHT)
+                ||  IS_SET(ch->in_room->room_flags, ROOM_SAFE))
+                        return FALSE;
+                return spec_cast_cleric(ch);
+        }
+
+        return spec_cast_adept(ch);
 }
 
 /* A psionic thief answers a fight before tending to tricks or purses. */
