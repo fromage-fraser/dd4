@@ -11580,3 +11580,58 @@ The dragons are Elite and the Queen is Boss; ordinary guards and bears
 remain Common. Rank applies HP once through the existing system.
 When replacing raw body flags, remember XOR: do not cancel inherited
 HUGE, NO_ARMS or NO_SPEECH by repeating them in the area override.
+
+
+Crystalmir Lake creature profiles
+--------------------------------
+
+`baaz_draconian`, `barracuda` and `dragon_turtle` use the existing humanoid,
+fish and quadrupedal reptile bodies. No new area fields are needed.
+
+A Baaz is a living scaled humanoid with wings, a tail, claws and fangs.
+It has ordinary arms, organs, speech, blood, pain and soul, with armour -6
+and ordinary magic resistance. Defaults are 168 cm / 75 kg, Medium.
+An equipped weapon keeps precedence over its ordinary claw/bite fallback.
+Wings do not grant powered flight; actual gliding remains future work.
+
+Its code-only `stone_death` trait makes it turn to stone and crumble at
+death. It leaves no biological corpse or death-part drops; normal gear
+and coins fall to the floor. This works independently of active specials.
+MSTAT shows the trait and origin. Do not mark the living creature undead,
+inorganic, bloodless, soulless or analgic. The brief statue interval and
+temporary killing-weapon trap are deliberately not implemented here.
+
+Barracudas have ordinary fish anatomy, scales, fangs and a piercing bite,
+with armour -4. Defaults are 120 cm length and 10 kg, Small; height is
+unspecified. Being a predatory fish does not imply venom or swallowing.
+
+Dragon turtles have four reptile legs, a tail, scales, shell, claws and
+fangs, with HUGE and armour -20. Defaults are 350 cm shoulder height,
+1200 cm length and 25000 kg, Large. They can speak by default; keep a
+local NO_SPEECH override when a particular area has a deliberately mute
+turtle. The Crystalmir turtle carries its original wearable shell as
+loot, rather than counting that shell's armour twice. Leave the item
+unmarked as BODY_PART so existing death cleanup does not destroy it.
+There is no automatic flight, fear aura, magical defence or fire immunity.
+
+`spec_breath_steam_anatomical` keeps existing steam breath and its ordinary
+opportunities, with the same missing/injured-head gate as other anatomical
+breath wrappers. It is available through `sp`. No daily charge limit,
+ship-capsizing mechanic or new player spell is added.
+
+`spec_cleric_adept` is a reusable individual role: combat cleric when
+engaged, otherwise the existing helpful adept. It takes one action per
+opportunity and keeps the adept's harmful-help checks. It does not add
+paid healer services or change any teaching groups. In an old area, two
+legacy M rows replace each other; use this role when both jobs are wanted.
+
+Goldmoon, Toede and Riverwind have individual dimensions rounded from
+their second-edition character cards. Keep ordinary hobgoblin/human
+defaults for other creatures unless their own descriptions differ.
+Pooh uses `animated_soft_toy`, retaining its individual thief routine;
+it is a stuffed toy, not a living bear. Ranks are encounter choices,
+not the sourcebook's morale labels, and their HP multipliers apply once.
+
+Use the existing `silver` item flag for explicitly silver gear. It does
+not replace alignment restrictions, ordinary weapon flags or attack verbs.
+The Crystalmir footman's lance keeps its lance flag and now pierces.

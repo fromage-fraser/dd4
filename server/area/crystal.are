@@ -32,7 +32,7 @@ accept the quest, and it will begin."
 25 0 0 0d0+0 0d0+0
 0 0
 0 0 2
-< reserved~ rare~
+< human~ rare~
 & 15 'teacher base'
 & 75 'healing magiks'
 & 75 'curative magiks'
@@ -41,6 +41,8 @@ accept the quest, and it will begin."
 & 75 'mana control disciplines'
 & 75 'divination magiks'
 & 75 'disease magiks'
+MobHeight 170
+MobWeight 52
 #10002
 Fewmaster Toede~
 Fewmaster Toede~
@@ -53,6 +55,9 @@ double chins, and pot belly all resemble those of a vicious little toad.
 12 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< hobgoblin~ elite~
+MobHeight 165
+MobWeight 95
 #10003
 riverwind man~
 Riverwind~
@@ -65,12 +70,15 @@ He looks travel-weary and tired, but happy to help.
 30 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< human~ rare~
 & 15 'teacher base'
 & 75 'defense knowledge'
 & 75 'inner force'
 & 75 'archery knowledge'
 & 75 'dowse'
 & 75 'forage'
+MobHeight 201
+MobWeight 79
 #10004
 Baaz Draconian robed~
 Baaz Draconian~
@@ -83,6 +91,7 @@ and hood.
 7 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< baaz_draconian~ common~
 #10005
 Farmer~
 The Farmer~
@@ -94,6 +103,7 @@ He looks like a farmer... go figure.
 10 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< human~ common~
 #10006
 Farm worker~
 Farm worker~
@@ -105,6 +115,7 @@ The worker is very busy... leave him alone.
 5 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< human~ common~
 #10007
 barracuda~
 Barracuda~
@@ -116,6 +127,7 @@ This is a very hungry-looking fish with BIG teeth...
 7 0 0 0d0+0 0d0+0
 0 0
 0 0 0
+< barracuda~ common~
 #10008
 Turtle Dragon~
 Turtle dragon~
@@ -127,8 +139,9 @@ It looks intently at you as if inspecting you before deciding to eat you.
 ~
 99 8 -700 S
 27 0 0 0d0+0 0d0+0
-36 0
+32 0
 0 0 0
+< dragon_turtle~ elite~
 #10009
 farmers guard dog~
 Farmers guarddog~
@@ -139,8 +152,9 @@ thinking of biting you!
 ~
 34 8 100 S
 7 0 0 0d0+0 0d0+0
-36 0
-0 0 0
+0 0
+0 0 1
+< dog~ common~
 #10010
 strange fish~
 strange fish~
@@ -150,8 +164,9 @@ Some unknown type of fish.
 ~
 2|64 0 200 S
 5 0 0 0d0+0 0d0+0
-44 0
+0 0
 0 0 0
+< small_fish~ common~
 #10011
 hobgoblin flunky~
 hobgoblin flunky~
@@ -163,6 +178,9 @@ The hobgoblin screams at you, "Give me the blue crystal staff!"
 6 12 6 6d6+60 2d4+0
 0 1000
 8 8 1
+< hobgoblin~ common~
+MobHeight 160
+MobWeight 60
 #10012
 White Stag~
 the White Stag~
@@ -173,8 +191,9 @@ to be just a legend...
 ~
 68 65536 -300 S
 17 12 6 6d6+60 2d4+0
-36 1000
+0 1000
 8 8 1
+< stag~ rare~
 #10013
 Old pooh bear~
 Old pooh bear~
@@ -186,6 +205,7 @@ This is an old pooh bear. It looks as if it has been loved a little too much.
 5 18 9 2d5+19 1d5+1
 0 200
 6 8 1
+< animated_soft_toy~ common~
 #10014
 rat large~
 a large rat~
@@ -196,8 +216,12 @@ I'm sure the farmers would appreciate it too.
 ~
 4 0 -200 S
 5 17 6 3d4+48 1d8+0
-36 400
+0 400
 8 8 1
+< rat~ common~
+MobHeight 15
+MobLength 35
+MobWeight 2
 #10015
 mouse field~
 a field mouse~
@@ -207,8 +231,9 @@ The mouse is a cute little creature.
 ~
 6 0 100 S
 4 19 9 2d4+10 1d4+0
-36 100
+0 100
 8 8 1
+< mouse~ common~
 #0
 
 #OBJECTS
@@ -256,7 +281,7 @@ bright silver bracer~
 a bright silver bracer~
 A bright silver bracer lies here.~
 ~
-9 512 1|4096
+9 512|8589934592 1|4096
 7~ 0~ 0~ 0~
 7 0 0
 E
@@ -311,7 +336,7 @@ silver longsword~
 silver longsword~
 There is a silver longsword on the ground.~
 ~
-5 1024 1|8192
+5 1024|8589934592 1|8192
 0~ 5~ 20~ 1~
 7 0 0
 E
@@ -392,7 +417,7 @@ a Footman's lance~
 There is a long, wicked-looking polearm lying here.~
 ~
 5 134217728 1|8192
-0~ 7~ 15~ 0~
+0~ 7~ 15~ 11~
 20 0 0
 E
 footmans lance~
@@ -2428,7 +2453,7 @@ M 0 10007 16 10079       Barracuda
 M 0 10007 16 10005       Barracuda
 *
 M 0 10008 1 10076        Turtle Dragon
-E 1 10001 20 12          Equipped with Turtle Dragon Shell
+G 1 10001 20             Carries the harvestable Turtle Dragon Shell
 G 0 10010 0              Give Pile of ancient coins.
 *
 M 0 10009 2 10039        Farmer's Dog
@@ -2496,10 +2521,9 @@ S
 
 #SPECIALS
 *
-M  10001 spec_cast_cleric       Goldmoon
-M  10001 spec_cast_adept       Goldmoon
+M  10001 spec_cleric_adept      Goldmoon
 *
-M  10008 spec_breath_steam      Turtle Dragon
+M  10008 spec_breath_steam_anatomical  Turtle Dragon
 *
 M  10013 spec_thief                Pooh bear
 *

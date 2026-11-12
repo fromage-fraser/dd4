@@ -4065,6 +4065,11 @@ void make_corpse(CHAR_DATA *ch)
         char *name;
         char buf[MAX_STRING_LENGTH];
         bool report_eq_falling;
+        bool leaves_corpse;
+
+        leaves_corpse = MAKES_CORPSE(ch)
+            && !(IS_NPC(ch)
+                && creature_trait_value(ch, CREATURE_TRAIT_STONE_DEATH) > 0);
 
         if (IS_NPC(ch))
         {
@@ -4097,7 +4102,7 @@ void make_corpse(CHAR_DATA *ch)
                 {
                         coins = create_money(ch->plat, ch->gold, ch->silver, ch->copper);
 
-                        if (MAKES_CORPSE(ch))
+                        if (leaves_corpse)
                                 obj_to_obj(coins, corpse);
                         else
                                 obj_to_room(coins, ch->in_room);
@@ -4147,7 +4152,7 @@ void make_corpse(CHAR_DATA *ch)
                          && !detach_body_weapon_loot(ch, obj))
                         extract_obj(obj);
 
-                else if (!IS_NPC(ch) || MAKES_CORPSE(ch))
+                else if (!IS_NPC(ch) || leaves_corpse)
                         obj_to_obj(obj, corpse);
 
                 else
@@ -4164,7 +4169,7 @@ TO_ROOM );
 
         if (IS_NPC(ch))
         {
-                if (MAKES_CORPSE(ch))
+                if (leaves_corpse)
                         obj_to_room(corpse, ch->in_room);
                 else
                         extract_obj(corpse);
@@ -4270,7 +4275,9 @@ static unsigned long int death_part_mask(CHAR_DATA *ch)
 {
         unsigned long int parts;
 
-        if (!ch || !MAKES_CORPSE(ch))
+        if (!ch || !MAKES_CORPSE(ch)
+        || (IS_NPC(ch)
+            && creature_trait_value(ch, CREATURE_TRAIT_STONE_DEATH) > 0))
                 return 0;
 
         parts = ch->body_form;
@@ -4461,6 +4468,11 @@ void death_cry(CHAR_DATA *ch)
         char msg[MAX_STRING_LENGTH];
         int door;
 
+        /* The shared death hook owns stone collapse, without blood or body parts. */
+        if (IS_NPC(ch)
+        && creature_trait_value(ch, CREATURE_TRAIT_STONE_DEATH) > 0)
+                return;
+
         /* Default messages */
         if ((!IS_INORGANIC(ch) && !IS_SET(ch->act, ACT_OBJECT)) || (!IS_NPC(ch)))
         {
@@ -4599,6 +4611,15 @@ void raw_kill(CHAR_DATA *ch, CHAR_DATA *victim, bool corpse)
 
         if (ch != victim)
                 mprog_death_trigger(victim);
+
+        /* This is a death property, independent of a mob's active specials. */
+        if (IS_NPC(victim) && !victim->deleted && victim->in_room
+        &&  creature_trait_value(victim, CREATURE_TRAIT_STONE_DEATH) > 0)
+        {
+                act("$c turns to stone, then crumbles into dust.",
+                    victim, NULL, NULL, TO_ROOM);
+                sound_mobdeath_room_key(victim->in_room, "sfx.combat.mobdeath.2", 40);
+        }
 
         if (corpse)
                 make_corpse(victim);

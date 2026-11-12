@@ -2637,6 +2637,37 @@ const struct mob_type mob_table[MAX_MOB] =
                 640, 3600, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_giant", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_GIANT, MOB_TEMPLATE_UNSET
+        },
+        {
+                "baaz_draconian", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | PART_SCALES | PART_WINGS | PART_TAIL
+                    | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                168, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "barracuda", "fish", "icon1", "icon2",
+                0, 0, PART_SCALES | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 10, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 120
+        },
+        /* The local mute turtle keeps its own NO_SPEECH override. */
+        {
+                "dragon_turtle", "quadrupedal_reptile", "icon1", "icon2",
+                0, 0, BODY_NO_SPEECH | BODY_HUGE | PART_CLAWS
+                    | PART_FANGS | PART_HUSK_SHELL,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                350, 25000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_steam_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 1200
         }
 
 };
@@ -2731,6 +2762,7 @@ typedef enum creature_trait_effect
         TRAIT_FEAR_IMMUNITY,
         TRAIT_BODY_WEAPON_LOOT,
         TRAIT_NATIVE_HUG_DICE,
+        TRAIT_STONE_DEATH,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -2836,7 +2868,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"fear_immunity", TRAIT_FEAR_IMMUNITY, NULL},
         {"acid_spit_daily_casts", TRAIT_NATIVE_BREATH_QUANTITY, NULL},
         {"body_weapon_loot", TRAIT_BODY_WEAPON_LOOT, NULL},
-        {"bear_hug_dice", TRAIT_NATIVE_HUG_DICE, NULL}
+        {"bear_hug_dice", TRAIT_NATIVE_HUG_DICE, NULL},
+        {"stone_death", TRAIT_STONE_DEATH, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -3210,6 +3243,20 @@ static const CREATURE_TRAIT_CHANGE frost_giant_trait_changes[] =
         {CREATURE_TRAIT_ROCK_CATCH_PERCENT, 40}
 };
 
+static const CREATURE_TRAIT_CHANGE baaz_draconian_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_STONE_DEATH, 1}
+};
+static const CREATURE_TRAIT_CHANGE barracuda_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE dragon_turtle_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3309,6 +3356,12 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"wormkin", NULL, wormkin_trait_changes,
             TRAIT_ITEMS(wormkin_trait_changes)},
         {"venomous_spider", "giant_spider", NULL, 0},
+        {"baaz_draconian", NULL, baaz_draconian_trait_changes,
+            TRAIT_ITEMS(baaz_draconian_trait_changes)},
+        {"barracuda", NULL, barracuda_trait_changes,
+            TRAIT_ITEMS(barracuda_trait_changes)},
+        {"dragon_turtle", NULL, dragon_turtle_trait_changes,
+            TRAIT_ITEMS(dragon_turtle_trait_changes)},
         {"polar_bear", NULL, polar_bear_trait_changes,
             TRAIT_ITEMS(polar_bear_trait_changes)},
         {"adult_white_dragon", NULL, adult_cold_lightning_dragon_traits,
@@ -3542,7 +3595,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_SUNLIGHT_POWERLESS
                                     || effect == TRAIT_TURN_IMMUNITY
                                     || effect == TRAIT_HOLY_WATER_IMMUNITY
-                                    || effect == TRAIT_FEAR_IMMUNITY)
+                                    || effect == TRAIT_FEAR_IMMUNITY
+                                    || effect == TRAIT_STONE_DEATH)
                                 && (profile->changes[i].value < 0
                                     || profile->changes[i].value > 1))
                                         issues++;
@@ -6447,6 +6501,8 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_psionic_thief", 10 },
                 { "spec_breath_frost_anatomical", 10 },
                 { "spec_breath_lightning_anatomical", 10 },
+                { "spec_breath_steam_anatomical", 10 },
+                { "spec_cleric_adept", 10 },
                 { "spec_wight", 10 },
                 { "spec_wraith", 10 },
                 { "spec_prism_flash", 10 },
