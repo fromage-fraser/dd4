@@ -3669,8 +3669,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 158
-#define MAX_SPECIES 29
+#define MAX_MOB 161
+#define MAX_SPECIES 30
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -5969,8 +5969,32 @@ typedef enum creature_trait
         CREATURE_TRAIT_BEAR_HUG_DICE,
         CREATURE_TRAIT_STONE_DEATH,
         CREATURE_TRAIT_BOW_ACCURACY,
+        CREATURE_TRAIT_NATURAL_DAMAGE_TYPE,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
+/* Internal damage kinds keep trait strengths small and named. */
+typedef enum
+{
+        NATURAL_DAMAGE_NONE,
+        NATURAL_DAMAGE_FIRE,
+        NATURAL_DAMAGE_COLD,
+        NATURAL_DAMAGE_ELECTRICITY,
+        NATURAL_DAMAGE_ENERGY,
+        NATURAL_DAMAGE_BLUNT,
+        NATURAL_DAMAGE_PIERCE,
+        NATURAL_DAMAGE_SLASH,
+        NATURAL_DAMAGE_ACID,
+        NATURAL_DAMAGE_POISON,
+        NATURAL_DAMAGE_DRAIN,
+        NATURAL_DAMAGE_PSYCHIC,
+        NATURAL_DAMAGE_HOLY,
+        NATURAL_DAMAGE_DARK,
+        NATURAL_DAMAGE_SONIC,
+        NATURAL_DAMAGE_WATER,
+        NATURAL_DAMAGE_COUNT
+} NATURAL_DAMAGE_KIND;
+unsigned long int creature_natural_damage_type args((CHAR_DATA *ch));
+
 /* Passive native regeneration never invokes or replaces an active special. */
 void update_native_regeneration(void);
 void notify_native_regeneration_damage(CHAR_DATA *victim, int actual_damage,

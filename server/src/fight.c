@@ -78,6 +78,7 @@ bool check_shield_unit args((CHAR_DATA * ch, CHAR_DATA *victim, int dt));
 bool check_driver_unit args((CHAR_DATA * ch, CHAR_DATA *victim));
 bool remove_bodypart args((CHAR_DATA * ch, int iWear, bool fReplace));
 static unsigned long int ordinary_attack_resistance_types args((int dt, OBJ_DATA *weapon));
+static unsigned long int one_hit_resistance_types args((CHAR_DATA *ch, int dt, OBJ_DATA *weapon));
 static bool blessed_weapon_vs_undead
         args((OBJ_DATA *weapon, CHAR_DATA *victim));
 static int blessed_weapon_damage_bonus
@@ -1019,6 +1020,25 @@ static unsigned long int ordinary_attack_resistance_types(int dt,
         return res_types;
 }
 
+/* Keep weapon and skill categories separate from native unarmed damage. */
+static unsigned long int one_hit_resistance_types(CHAR_DATA *ch, int dt,
+                                                  OBJ_DATA *weapon)
+{
+        unsigned long int types = ordinary_attack_resistance_types(dt, weapon);
+        unsigned long int native = !weapon && dt >= TYPE_HIT
+            ? creature_natural_damage_type(ch) : 0;
+
+        if (native)
+        {
+                types &= ~(RES_FIRE | RES_COLD | RES_ELECTRICITY | RES_ENERGY
+                    | RES_BLUNT | RES_PIERCE | RES_SLASH | RES_ACID | RES_POISON
+                    | RES_DRAIN | RES_PSYCHIC | RES_HOLY | RES_DARK | RES_SONIC
+                    | RES_WATER);
+                types |= native;
+        }
+        return types;
+}
+
 /*
  * Resistance categories for a named attack delivered by a specific object.
  *
@@ -1427,7 +1447,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                         {
                                 damage_internal(
                                     ch, victim, 0, dt, poison,
-                                    ordinary_attack_resistance_types(dt, wield),
+                                    one_hit_resistance_types(ch, dt, wield),
                                     FALSE, TRUE, FALSE, 0, 0, 0, NULL, NULL, NULL);
                         }
                         else
@@ -1671,7 +1691,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                             dam,
                             dt,
                             poison,
-                            ordinary_attack_resistance_types(dt, wield),
+                            one_hit_resistance_types(ch, dt, wield),
                             !wield && IS_NPC(ch),
                             TRUE, FALSE, 0, 0, 0, &firebrand, &contact_damage, &blood);
 

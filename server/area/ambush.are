@@ -40,6 +40,7 @@ have taken, and then bids you farewell.
 6 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #4502
 goblin lookout~
 The goblin lookout~
@@ -53,6 +54,7 @@ hair. Its eyes look you over in a shifty nervous fashion.
 7 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #4503
 goblin raider~
 The goblin raider~
@@ -66,6 +68,9 @@ at your weapons.
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
+MobHeight 110
+MobWeight 35
 #4504
 dog war~
 The war dog~
@@ -76,8 +81,13 @@ canines. It seems oblivious to you as it feeds.
 ~
 2 0 0 S
 6 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< dog~ common~
+MobHeight 61
+MobWeight 40
+MobLength 110
+MobSize 1
 #4505
 goblin looter~
 The goblin looter~
@@ -90,6 +100,7 @@ for something. He seems oblivious to you.
 7 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #4506
 goblin wounded~
 The wounded goblin~
@@ -102,6 +113,7 @@ closes them. It has a nasty belly wound.
 6 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #4507
 boy stunned~
 The stunned boy~
@@ -114,6 +126,10 @@ respond to you in any way.
 6 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 130
+MobWeight 30
+MobSize 0
 #4508
 flame roaring~
 The roaring flames~
@@ -123,8 +139,9 @@ The roaring flames~
 ~
 2|32 8|32 0 S
 6 0 0 0d0+0 0d0+0
-383 0
-8 8 1
+0 0
+8 8 0
+< fire_hazard~ common~
 #4509
 flame searing~
 The searing flames~
@@ -133,8 +150,9 @@ The searing flames~
 ~
 2|32 8|32 0 S
 7 0 0 0d0+0 0d0+0
-383 0
-8 8 1
+0 0
+8 8 0
+< fire_hazard~ common~
 #4510
 smoke choking~
 The choking smoke~
@@ -144,8 +162,9 @@ The choking smoke~
 ~
 2|32 8|32 0 S
 8 0 0 0d0+0 0d0+0
-383 0
-8 8 1
+0 0
+8 8 0
+< smoke_hazard~ common~
 #4511
 horse tethered~
 The tethered horse~
@@ -155,8 +174,9 @@ The horse smells of smoke and is skittish.
 ~
 2|131072 0 0 S
 7 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< horse~ common~
 #4512
 goblin molesting~
 The vile goblin~
@@ -168,18 +188,20 @@ The goblin is oblivious to you, and is naked.
 9 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #4513
 female whimpering~
 The whimpering female~
 A half clothed human female is here, whimpering.
 ~
 Her eyes widen in hope as she sees you, and she
-tries to occupy the goblins complete attention.
+tries to occupy the goblin's complete attention.
 ~
 2 0 800 S
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #4514
 goblin archer~
 The goblin archer~
@@ -192,6 +214,7 @@ of re-feathering a bad arrow.
 9 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #4515
 bardoosh goblin~
 Bardoosh~
@@ -204,6 +227,7 @@ a tough weathered exterior. He smells of liquor.
 12 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #4516
 guard fanatical goblin~
 The fanatical goblin guard~
@@ -216,6 +240,7 @@ The goblin guard mumbles over and over to itself
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #4517
 guard elite goblin~
 The elite goblin guard~
@@ -229,7 +254,7 @@ as if he is actually guarding something.
 11 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ rare~
+< goblin~ rare~
 #4518
 prisoner beaten unconscious~
 The beaten prisoner~
@@ -241,6 +266,8 @@ The prisoner is barely living.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 55
 #4519
 haglik goblin~
 Haglik~
@@ -254,6 +281,7 @@ him silly.
 13 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #4520
 goblin evil~
 The evil goblin~
@@ -268,6 +296,7 @@ me where that key is, and I may go easy on you."
 12 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #4521
 essabella human prisoner female~
 Essabella~
@@ -280,6 +309,7 @@ a tangled mess, but her eyes are fiery.
 12 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #4522
 hamal mercenary captain prisoner~
 Hamal, the mercenary captain~
@@ -287,7 +317,7 @@ An unconscious prisoner has been tossed here.
 ~
 You wake up the prisoner. Upon seeing you instead
 of goblins, his face brightens. He tells you his name
-is Hamal, the mercenary captain. He lead the caravan
+is Hamal, the mercenary captain. He led the caravan
 into the ambush, and lost most of his men. He implores
 you to rescue Essabella.
 ~
@@ -295,6 +325,7 @@ you to rescue Essabella.
 14 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #4523
 goblin patrolling~
 The patrolling goblin~
@@ -307,6 +338,7 @@ oblivious to you.
 11 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #4524
 women goblin~
 The goblin women~
@@ -318,11 +350,12 @@ and really do stink.
 2 0 -300 S
 13 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 2
+< goblin~ common~
 #4525
 children goblin~
 The goblin children~
-A group of goblin children are here, playing.
+A group of goblin children is here, playing.
 ~
 The kids are kicking a human head around.
 ~
@@ -330,6 +363,9 @@ The kids are kicking a human head around.
 12 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< goblin~ common~
+MobHeight 80
+MobWeight 15
 #4526
 smith goblin~
 The goblin smith~
@@ -342,6 +378,7 @@ is black from the smoke, and does not notice you.
 11 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #4527
 nevdara drow female~
 Nevdara~
@@ -354,6 +391,7 @@ She slowly strokes her spider amulet.
 14 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< drow~ rare~
 #4528
 guard personal~
 The personal guard of Gruluk~
@@ -365,6 +403,7 @@ The guard is well groomed and alert.
 12 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ rare~
 #4529
 pigeon~
 The pigeon~
@@ -372,10 +411,11 @@ A pigeon is flying here.
 ~
 The pigeon is small, grey, and coos.
 ~
-2 524288 0 S
+2 0 0 S
 1 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< pigeon~ common~
 #4530
 gruluk goblin leader~
 Gruluk~
@@ -387,7 +427,7 @@ The leader is trying to grab the pigeon.
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ rare~
+< goblin~ elite~
 #0
 
 
