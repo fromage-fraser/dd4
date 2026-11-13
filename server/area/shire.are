@@ -23,6 +23,7 @@ cannot overcome.
 18 5 0 18r18+180 3d2+15
 0 30000
 8 8 1
+< elf~ rare~
 #1101
 ring keeper~
 the Keeper of the Ring~
@@ -38,6 +39,9 @@ to take away that which belongs to him.
 19 2 -5 19d19+190 1d8+16
 0 35000
 8 8 1
+< halfling~ elite~
+MobHeight 90
+MobWeight 45
 #1102
 farmer gamgee~
 Farmer Gamgee~
@@ -51,6 +55,9 @@ chap, always ready to befriend an injured bunny rabbit.
 7 14 4 7d7+77 1d4+5
 0 1000
 5 5 1
+< halfling~ common~
+MobHeight 85
+MobWeight 40
 #1103
 toddler~
 a toddler~
@@ -63,6 +70,9 @@ for he hasn't learned to walk yet.  He peers up at you and asks "da da?"
 2 19 9 2d2+22 1d3+1
 0 100
 6 6 1
+< halfling_untrained~ common~
+MobHeight 45
+MobWeight 8
 #1104
 nursemaid~
 a nursemaid~
@@ -76,6 +86,7 @@ in her eyes you can see her longing for a better life.
 5 16 5 5d5+55 1d3+4
 0 300
 8 8 2
+< halfling~ common~
 #1105
 cow~
 a cow~
@@ -87,8 +98,13 @@ if provoked, her rear kick can be quite deadly.
 ~
 64 0 0 S
 4 17 6 4d4+44 1d4+3
-36 200
-5 5 0
+34359738368 200
+5 5 2
+< cattle~ common~
+MobHeight 140
+MobWeight 550
+MobLength 240
+MobAttackParts 34359738368
 #1106
 pig~
 a pig~
@@ -100,8 +116,11 @@ and consequently cannot move around very quickly.
 ~
 64 0 0 S
 3 17 7 3d3+33 2d2+1
-36 150
-5 5 0
+0 150
+5 5 1
+< pig~ common~
+MobWeight 200
+MobLength 150
 #1107
 chicken~
 a chicken~
@@ -111,8 +130,9 @@ The chicken is bright and healthy.  She has no weapons but her beak.
 ~
 64 0 0 S
 2 20 7 2d2+22 1d4+0
-36 100
+0 100
 6 6 2
+< chicken~ common~
 #1108
 bull~
 a bull~
@@ -124,8 +144,12 @@ anything.
 ~
 2|32 0 0 S
 6 15 4 6d6+66 1d4+4
-36 500
+0 500
 8 8 1
+< cattle~ common~
+MobHeight 165
+MobWeight 900
+MobLength 280
 #1109
 horse~
 a horse~
@@ -135,8 +159,9 @@ The horse looks at you and turns away.  You can tell that it is afraid of you.
 ~
 66 0 0 S
 4 17 6 4d4+44 1d8+0
-36 460
+0 460
 8 8 0
+< horse~ common~
 #1110
 shiriff~
 a shiriff~
@@ -151,6 +176,9 @@ This is one halfling you don't want to mess with.
 8 13 5 8d8+88 1d4+5
 0 1000
 6 6 1
+< halfling~ common~
+MobHeight 110
+MobWeight 38
 #1111
 shiriff~
 a shiriff~
@@ -165,6 +193,9 @@ This is one halfling you don't want to mess with.
 8 13 5 8d8+88 1d4+5
 0 1000
 6 6 1
+< halfling~ common~
+MobHeight 110
+MobWeight 38
 #1112
 thain~
 the Thain~
@@ -179,6 +210,7 @@ Shire folk.
 14 7 -3 14e14+140 1d4+12
 0 20000
 6 6 1
+< halfling~ elite~
 #1113
 innkeeper~
 the Innkeeper~
@@ -191,6 +223,7 @@ local gossip.  In his younger days, he was quite a seasoned traveller.
 12 9 2 12d12+120 1d4+10
 0 10000
 8 8 1
+< halfling~ common~
 #1114
 miller~
 the Miller~
@@ -204,6 +237,7 @@ who deserves a spanking but never got one.
 6 15 4 6d6+66 1d4+4
 0 500
 8 8 1
+< halfling~ common~
 #1115
 mill worker~
 the mill worker~
@@ -217,6 +251,8 @@ in two without thinking about it.
 5 16 5 5d5+55 1d6+3
 0 450
 8 8 1
+< halfling~ common~
+MobWeight 40
 #1116
 elven warrior~
 the elven warrior~
@@ -230,6 +266,9 @@ longer and wearies of it.
 17 4 -4 17d17+170 1d4+15
 0 30000
 6 6 1
+< elf~ common~
+MobHeight 170
+MobWeight 55
 #1117
 dwarven prince~
 the dwarven prince~
@@ -243,6 +282,10 @@ beyond your gaze.
 17 6 -8 17d17+170 1d4+15
 0 30000
 6 6 1
+< dwarf~ rare~
+MobHeight 140
+MobWeight 100
+MobSize 1
 #1118
 shopkeeper~
 the shopkeeper~
@@ -255,6 +298,7 @@ like you.
 21 -2 -12 22d22+222 2d4+22
 0 40000
 8 8 1
+< halfling~ common~
 #1119
 grocer~
 the grocer~
@@ -268,6 +312,9 @@ in his power to prevent riff-raff like you from stealing it.
 21 -2 -12 22d22+222 2d4+22
 0 40000
 8 8 1
+< halfling~ common~
+MobHeight 105
+MobWeight 50
 #1120
 blacksmith~
 the blacksmith~
@@ -280,6 +327,7 @@ and armour would certainly help him in any fight against riff-raff like you.
 50 -20 -30 50d50+500 1d6+36
 0 10000
 8 8 1
+< halfling~ common~
 #1121
 battle master~
 the battle master~
@@ -291,6 +339,7 @@ The battle master is a wizened fighter, with many scars to prove his worth.
 25 -2 -15 25d25+250 2d6+20
 0 40000
 8 8 1
+< halfling~ rare~
 #1122
 halfling youth~
 a halfling youth~
@@ -303,6 +352,9 @@ high and you get the sudden urge to step on him.
 3 18 7 3d3+33 1d6+1
 0 150
 8 8 1
+< halfling_untrained~ common~
+MobHeight 60
+MobWeight 15
 #1123
 seasoned adventurer~
 a seasoned adventurer~
@@ -316,6 +368,7 @@ a good fight.
 8 13 3 8d8+88 2d3+7
 0 1000
 6 6 1
+< human~ common~
 #1124
 local gossip~
 a local gossip~
@@ -328,6 +381,7 @@ talk so much so quickly.
 4 17 6 4d4+44 1d4+2
 0 200
 6 6 2
+< halfling~ common~
 #1125
 halfling beauty~
 a halfling beauty~
@@ -342,6 +396,7 @@ harm a hair on her precious little head.
 6 15 4 6d6+66 1d4+4
 0 500
 8 8 2
+< halfling~ common~
 #1126
 trainee~
 a trainee~
@@ -355,6 +410,7 @@ he lacks in skill.
 5 16 5 5d5+55 1d6+3
 0 400
 8 8 1
+< halfling~ common~
 #1127
 chic urbanite~
 a chic urbanite~
@@ -368,6 +424,7 @@ coins if you'd be so good as to order a drink for him.
 4 17 6 4d4+44 2d2+2
 0 200
 6 6 1
+< halfling~ common~
 #1128
 country bumpkin~
 a country bumpkin~
@@ -379,6 +436,7 @@ The country bumpkin snores noisily.
 5 16 5 5d5+55 1d4+3
 0 100
 4 4 1
+< halfling~ common~
 #1130
 innkeeper~
 the Innkeeper~
@@ -391,6 +449,7 @@ local gossip.  In his younger days, he was quite a seasoned traveller.
 12 9 2 12d12+120 1d4+10
 0 10000
 8 8 1
+< halfling~ common~
 #1131
 receptionist~
 the receptionist~
@@ -402,6 +461,7 @@ He is a very professional looking type.
 12 4 -2 12d12+120 1d8+14
 0 5000
 8 8 1
+< halfling~ common~
 #1132
 shiriff~
 a shiriff~
@@ -415,6 +475,9 @@ somewhere outside the shire.
 8 13 5 8d8+88 1d4+6
 0 1000
 8 8 1
+< halfling~ common~
+MobHeight 110
+MobWeight 38
 #0
 
 
@@ -1410,7 +1473,7 @@ S
 #1144
 The Green Dragon~
    Welcome to the Green Dragon, the undisputed leader in the art of
-innkeeping.  A rather charming and friendly hostess stands to the side,
+innkeeping.  A rather charming and friendly host stands to the side,
 ready to offer you food and drink.  While most of the patrons are halfling
 locals, you spy an occasional human or two.  As you listen more closely
 to the conversations that fill the inn, you hear the tales of great and
@@ -1678,7 +1741,7 @@ M 0 1103 6 1108
 M 0 1103 6 1108
 M 0 1103 6 1108
 M 0 1103 6 1108
-M 0 1110 8 1110     Non-mobile shiriffs
+M 0 1110 8 1110     Shiriffs
 E 1 1109 9 16       Tiny dagger
 E 1 616 100 5       Leather armour
 M 0 1110 8 1110
@@ -1706,15 +1769,15 @@ M 0 1127 7 1116     Chic urbanites
 M 0 1127 7 1116
 M 0 1127 7 1116
 M 0 1121 1 1117     Battle master
-E 1 1113 100 16     Small sword
+E 1 1113 100 16     Bardiche
 M 0 1126 3 1117     Trainees
-E 1 1113 100 16     Small sword
+E 1 1113 100 16     Bardiche
 M 0 1126 3 1117
 E 1 1113 100 16
 M 0 1126 3 1117
 E 1 1113 100 16
-M 0 1110 8 1119     Non-mobile shiriffs
-E 1 1109 3 16       Tiny dagger
+M 0 1110 8 1119     Shiriffs
+E 1 1109 9 16       Tiny dagger
 E 1 616 100 5
 M 0 1110 8 1119
 E 1 616 100 5
@@ -1792,15 +1855,15 @@ M 0 1127 7 1144     Chic urbanites
 M 0 1127 7 1144
 M 0 1127 7 1144
 M 0 1127 7 1144
-M 0 1110 8 1145     Non-mobile shiriffs
-E 1 1109 3 16       Tiny daggers
+M 0 1110 8 1145     Shiriffs
+E 1 1109 9 16       Tiny daggers
 E 1 616 100 5       Leather armour
 M 0 1110 8 1145
 E 1 616 100 5
 M 0 1111 4 1145     Mobile shiriff
 E 1 616 100 5
-M 0 1110 8 1153     Non-mobile shiriffs
-E 1 1109 3 16       Tiny daggers
+M 0 1110 8 1153     Shiriffs
+E 1 1109 9 16       Tiny daggers
 E 1 616 100 5       Leather armour
 M 0 1110 8 1153
 E 1 616 100 5

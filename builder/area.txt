@@ -7483,3 +7483,70 @@ white stone and key remain carried rewards, not newly equipped gear.
 All room flags, area school/safe/no_quest settings, XP125 and reset caps
 stay. No new NO_UNDEAD rooms are added. The giant-lizard portrait should
 show the described red-scaled, blue-tongued quadruped; artwork is separate.
+
+
+The Shire creature profiles
+--------------------------
+
+`halfling` and `halfling_untrained` use humanoid. `pig` uses
+quadrupedal_mammal and `chicken` uses bird. No new area fields are needed.
+
+Halflings default to 91 cm and 30 kg, Small, with ordinary living organs,
+hands, speech, blood, pain, soul and remains. Ordinary magic/poison
+resistance and sneak adapt their second-edition defences. They gain no
+innate armour, generic infrared, automatic hide/invisibility or fear bonus.
+Tall or stout prose alone does not select a separate halfling subrace.
+
+The code-only bow_accuracy trait gives trained NPC halflings +3 to hit
+with an actual bow shot. It does not improve melee, thrown knives, damage
+or attack count. PCs keep their existing abilities; their halfling family
+identity is recognised for matching only. Slings remain deferred until
+there is a supported sling weapon type. No bows or automatic shooting AI
+are added to the Shire residents.
+
+Use halfling_untrained for the toddlers and youths. It shares all ordinary
+halfling defaults and has a same-body trait parent that explicitly removes
+bow_accuracy. No vnum exception, ACT marker or individual trait command is
+used. MSTAT reports the trait source and explicit removal.
+
+The NPC shoot command now fires at least one shot below level 30. Its
+higher-level counts, normal combat/equipment/safety checks and PC behaviour
+stay unchanged. NPC snapshot remains disabled. The racial bonus applies
+once to an eligible bow shot, not to every ordinary attack with a bow held.
+
+Pigs default to 75 cm, 120 kg and 130 cm long, Medium, with tail, hooves,
+fangs and an ordinary bite. No innate armour or active special is added.
+The Shire's particularly fat pig is 200 kg and 150 cm long. Its slow-looking
+prose does not add a permanent combat penalty.
+
+Chickens default to 40 cm, 3 kg and 50 cm long, Small. Their bird body has
+feathered wings, two legs, feet, beak and normal organs, with no arms or
+speech. Ordinary attacks use the beak only. Brief fluttering does not grant
+full flying behaviour. Existing egg resets remain; no egg-laying routine.
+
+The cow and bull reuse cattle. The older cow is 140 cm, 550 kg and 240 cm
+long; the bull is 165 cm, 900 kg and 280 cm. Both are Large. The cow cancels
+inherited horns in both its body and attack XOR masks, leaving hoof-only
+attacks. Do not repeat inherited NO_ARMS/NO_SPEECH restrictions, since that
+would cancel them. The pig, chicken, bull and horse likewise drop only
+their repeated absence flags. Generic cattle/horse defaults stay unchanged.
+
+Keeper/Thain are Elite; Wizard/Prince/Battle master are Rare. Other Shire
+mobs remain Common, including the level-50 smith. Rank HP applies once.
+Private caster, guard, thief and Keeper poison roles stay individual;
+ordinary halflings do not gain venom. The elven warrior and dwarf prince
+retain their authored mage specials. The traveller is human; unspecified
+village staff are halflings. Individual stature/bulk overrides are descriptive.
+The unusually tall dwarf prince explicitly uses Medium instead of the
+ordinary dwarf Small size; shared dwarf defaults stay as they are.
+
+Cow is female and pig male, matching their prose; horse sex stays unknown.
+The Green Dragon room calls its male innkeeper a host. Shiriff movement
+flags stay as authored, while stale non-mobile comments are corrected.
+Three dagger reset caps now match the existing first-post cap of nine.
+This tidies the authored data; non-shop E resets currently ignore that cap,
+and all four authored daggers already equip. No new guard weapon resets are added. Shared bardiche 1113 stays unchanged,
+including its Midgaard use; only stale small-sword comments are corrected.
+All room flags, mob placements and five shops remain. Shiriff 1132 stays
+unplaced. The cloak's ABOUT slot and the rainbow staff's light role are
+already correct. Receptionist artwork is handled separately from area data.

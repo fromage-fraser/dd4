@@ -2726,6 +2726,39 @@ const struct mob_type mob_table[MAX_MOB] =
                 90, 120, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 160
+        },
+        {
+                "halfling", "humanoid", "icon1", "icon2",
+                0, AFF_SNEAK, 0, 0, RES_MAGIC | RES_POISON, 0, 0,
+                0, 0, 0, 0,
+                91, 30, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_HALFLING, MOB_TEMPLATE_UNSET
+        },
+        {
+                "halfling_untrained", "humanoid", "icon1", "icon2",
+                0, AFF_SNEAK, 0, 0, RES_MAGIC | RES_POISON, 0, 0,
+                0, 0, 0, 0,
+                91, 30, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_HALFLING, MOB_TEMPLATE_UNSET
+        },
+        {
+                "pig", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_HOOVES | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                75, 120, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 130
+        },
+        /* Wings describe the bird; brief fluttering is not full aerial flight. */
+        {
+                "chicken", "bird", "icon1", "icon2",
+                0, 0, 0, PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                40, 3, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 50
         }
 
 };
@@ -2763,6 +2796,7 @@ CREATURE_FAMILY creature_family(CHAR_DATA *ch)
         case RACE_OGRE:      return CREATURE_FAMILY_OGRE;
         case RACE_TROLL:     return CREATURE_FAMILY_TROLL;
         case RACE_GIANT:     return CREATURE_FAMILY_GIANT;
+        case RACE_HALFLING:  return CREATURE_FAMILY_HALFLING;
         default:            return CREATURE_FAMILY_NONE;
         }
 }
@@ -2788,6 +2822,7 @@ const char *creature_family_name(CREATURE_FAMILY family)
         case CREATURE_FAMILY_KOBOLD: return "kobold";
         case CREATURE_FAMILY_GNOLL: return "gnoll";
         case CREATURE_FAMILY_BUGBEAR: return "bugbear";
+        case CREATURE_FAMILY_HALFLING: return "halfling";
         default: return "invalid";
         }
 }
@@ -2821,6 +2856,7 @@ typedef enum creature_trait_effect
         TRAIT_BODY_WEAPON_LOOT,
         TRAIT_NATIVE_HUG_DICE,
         TRAIT_STONE_DEATH,
+        TRAIT_BOW_ACCURACY,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -2927,7 +2963,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"acid_spit_daily_casts", TRAIT_NATIVE_BREATH_QUANTITY, NULL},
         {"body_weapon_loot", TRAIT_BODY_WEAPON_LOOT, NULL},
         {"bear_hug_dice", TRAIT_NATIVE_HUG_DICE, NULL},
-        {"stone_death", TRAIT_STONE_DEATH, NULL}
+        {"stone_death", TRAIT_STONE_DEATH, NULL},
+        {"bow_accuracy", TRAIT_BOW_ACCURACY, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -3335,6 +3372,15 @@ static const CREATURE_TRAIT_CHANGE wild_boar_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
 };
 
+static const CREATURE_TRAIT_CHANGE halfling_trait_changes[] =
+{
+        {CREATURE_TRAIT_BOW_ACCURACY, 3}
+};
+static const CREATURE_TRAIT_CHANGE untrained_halfling_trait_changes[] =
+{
+        {CREATURE_TRAIT_BOW_ACCURACY, 0}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3358,6 +3404,9 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
             TRAIT_ITEMS(untrained_dwarf_trait_changes)},
         {"goblin", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"kobold", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
+        {"halfling", NULL, halfling_trait_changes, TRAIT_ITEMS(halfling_trait_changes)},
+        {"halfling_untrained", "halfling", untrained_halfling_trait_changes,
+            TRAIT_ITEMS(untrained_halfling_trait_changes)},
         {"orc", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"elf", NULL, elf_trait_changes, TRAIT_ITEMS(elf_trait_changes)},
         {"valley_elf", "elf", NULL, 0},
@@ -3669,7 +3718,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_NATIVE_REGEN_QUANTITY
                                     || effect == TRAIT_NATIVE_BREATH_QUANTITY
                                     || effect == TRAIT_BLOOD_REACTION_QUANTITY
-                                    || effect == TRAIT_LICH_CHILL_TOUCH)
+                                    || effect == TRAIT_LICH_CHILL_TOUCH
+                                    || effect == TRAIT_BOW_ACCURACY)
                                 && profile->changes[i].value < 0)
                                         issues++;
                                 /* Zero removes the override; 1-19 are ordinary attack verbs. */
@@ -3938,6 +3988,18 @@ void show_creature_traits(CHAR_DATA *viewer, CHAR_DATA *victim)
         }
         if (!any)
                 send_to_char("  None.\n\r", viewer);
+}
+
+/* Bow training improves a real shot, without changing general hitroll. */
+int creature_bow_hit_bonus(CHAR_DATA *ch, OBJ_DATA *weapon, int dt)
+{
+        if (!ch || ch->deleted || !IS_NPC(ch)
+        ||  !weapon || weapon->deleted || weapon->item_type != ITEM_WEAPON
+        ||  !IS_OBJ_STAT(weapon, ITEM_BOW)
+        ||  (dt != gsn_shoot && dt != gsn_snap_shot))
+                return 0;
+
+        return UMAX(0, creature_trait_value(ch, CREATURE_TRAIT_BOW_ACCURACY));
 }
 
 int creature_natural_armour(CHAR_DATA *ch)

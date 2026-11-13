@@ -3669,7 +3669,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 152
+#define MAX_MOB 156
 #define MAX_SPECIES 29
 #define MAX_RANK 6
 
@@ -3765,6 +3765,7 @@ typedef enum creature_family
         CREATURE_FAMILY_KOBOLD,
         CREATURE_FAMILY_GNOLL,
         CREATURE_FAMILY_BUGBEAR,
+        CREATURE_FAMILY_HALFLING,
         CREATURE_FAMILY_MAX
 } CREATURE_FAMILY;
 
@@ -5967,6 +5968,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_BODY_WEAPON_LOOT,
         CREATURE_TRAIT_BEAR_HUG_DICE,
         CREATURE_TRAIT_STONE_DEATH,
+        CREATURE_TRAIT_BOW_ACCURACY,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Passive native regeneration never invokes or replaces an active special. */
@@ -5986,6 +5988,7 @@ void strength_drain_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim,
                                   int dt, int actual_damage));
 void show_creature_traits args((CHAR_DATA *viewer, CHAR_DATA *victim));
 int creature_melee_hit_bonus args((CHAR_DATA *attacker, CHAR_DATA *victim));
+int creature_bow_hit_bonus args((CHAR_DATA *ch, OBJ_DATA *weapon, int dt));
 bool creature_is_sunlight_sensitive args((CHAR_DATA *ch));
 int creature_sunlight_hit_penalty args((CHAR_DATA *ch));
 bool creature_sunlight_powerless args((CHAR_DATA *ch));
