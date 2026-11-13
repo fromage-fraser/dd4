@@ -24,6 +24,7 @@ knowledge.
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 & 1 'teacher base'
 & 60 'combat knowledge'
 & 60 'defense knowledge'
@@ -79,7 +80,7 @@ would probably not be a good idea.
 2 8|32|512|4194304|8388608 0 S
 300 18 8 2d4+30 1d6+1
 0 100
-8 8 0
+8 8 1
 >all_greet_prog 100~
 if name ($n) == Amaya
 break
@@ -228,18 +229,20 @@ endif
 endif
 ~
 |
+< human~ common~
 
 #3702
 wild dog~
 a wild dog~
 A wild dog barks and growls.
 ~
-The crazed dog bares its evil fangs and growls visciously.
+The crazed dog bares its evil fangs and growls viciously.
 ~
 2|512 0 0 S
 1 0 0 0d0+0 0d0+0
-36 0
+0 0
 0 0 1
+< dog~ common~
 
 #3703
 mountain lion~
@@ -250,8 +253,13 @@ The mountain lion looks young but dangerous.
 ~
 2|512 0 0 S
 1 0 0 0d0+0 0d0+0
-36 0
+0 0
 0 0 2
+< puma~ common~
+MobHeight 55
+MobWeight 25
+MobLength 130
+MobSize 0
 
 #3704
 cobra snake~
@@ -263,8 +271,11 @@ ground, forked tongue darting in and out.
 ~
 2|512 0 0 S
 1 0 0 0d0+0 0d0+0
-44 0
+0 0
 0 0 0
+< cobra~ common~
+MobWeight 6
+MobLength 300
 
 #3705
 wolf~
@@ -276,8 +287,9 @@ scars.
 ~
 2|512 0 0 S
 2 0 0 0d0+0 0d0+0
-36 0
+0 0
 0 0 0
+< wolf~ common~
 
 #3706
 goblin~
@@ -291,6 +303,9 @@ are wild and long, yellow fangs protrude from his mouth.
 2 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< goblin~ common~
+MobHeight 100
+MobWeight 20
 
 #3707
 kobold~
@@ -303,6 +318,9 @@ Small and stooped, the kobold should be easily dispatched.
 2 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< kobold~ common~
+MobHeight 85
+MobWeight 12
 
 #3708
 man human prisoner~
@@ -316,6 +334,7 @@ recruits.
 2 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< human~ common~
 
 #3709
 lizardman man~
@@ -328,6 +347,9 @@ The lizardman is a lot taller than you, but is not in good health.
 2 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< lizardman~ common~
+MobHeight 220
+MobWeight 80
 
 #3710
 cleric priest healer~
@@ -362,6 +384,7 @@ and protective magiks on the tired and injured recruits.
     endif
 ~
 |
+< human~ common~
 
 #3711
 quartermaster master~
@@ -369,13 +392,15 @@ the Quartermaster~
 The Quartermaster will sell you provisions and equipment.
 ~
 The garrison's Quartermaster is dressed in a simple tunic and is unarmed.
-He is muscular, and looks asthough he'll tolerate no nonsense in his
+He is muscular, and looks as though he'll tolerate no nonsense in his
 store.
 ~
 2|8192|512|4096|32768 128 500 S
 30 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< human~ common~
+MobWeight 90
 
 #3712
 gladiator fighter~
@@ -388,6 +413,7 @@ The gladiator circles you warily, readying himself for combat.
 1 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< human~ common~
 
 #3713
 wild boar~
@@ -400,6 +426,7 @@ The boar has razor sharp tusks and looks agitated.
 3 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< wild_boar~ common~
 
 #3714
 giant lizard~
@@ -413,6 +440,11 @@ scales.  Its blue tongue flicks out at your approach.
 1 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< giant_lizard~ common~
+MobHeight 45
+MobWeight 35
+MobLength 180
+MobSize 0
 
 #3715
 wolf~
@@ -425,6 +457,7 @@ The wolf bares its fangs and emits a fearsome low growl.
 2 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< wolf~ common~
 
 #0
 
@@ -1602,13 +1635,13 @@ E
 imp~
 The Imp tells you "The Loremaster will train you until you are able to
 learn from your Guildmaster at level ten.  You increase your attributes
-automatically as raise in level: enter `TRAIN <<attribute>' to select
+automatically as you raise in level: enter `TRAIN <<attribute>' to select
 which attribute you wish to be improved.
 
 "Type PRACTICE to list what skills you have and which skills you may
 learn.  Enter SLIST for a list of skills you may eventually learn.  Enter
 `PRACTICE <<skill name>' to ask the Loremaster to train you.  It is wise
-to spell out the name skill you want in full, as he is easily confused!
+to spell out the name of the skill you want in full, as he is easily confused!
 
 "You will need to have the correct type of practice point in order to be
 successfully trained.  See online HELP entries for PRACTICE and TRAIN,

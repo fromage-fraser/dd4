@@ -2084,11 +2084,11 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "kobold", "humanoid", "icon1", "icon2",
-                0, 0,
-                0, 0,
+                0, AFF_INFRARED,
+                PART_SCALES | PART_HORNS | PART_TAIL, 0,
                 0, 0, 0,
                 0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                91, 15, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "",
                 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_KOBOLD, MOB_TEMPLATE_UNSET
@@ -2699,6 +2699,33 @@ const struct mob_type mob_table[MAX_MOB] =
                 15, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "puma", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_INFRARED | AFF_SNEAK,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                75, 60, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 200
+        },
+        /* Venom stays opt-in; the school's introductory cobra only bites. */
+        {
+                "cobra", "serpentine_reptile", "icon1", "icon2",
+                0, 0, PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 3, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 200
+        },
+        {
+                "wild_boar", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_TUSKS | PART_HOOVES, PART_TUSKS,
+                0, 0, 0, 0, 0, 0, 0,
+                90, 120, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 160
         }
 
 };
@@ -3293,6 +3320,21 @@ static const CREATURE_TRAIT_CHANGE lair_gremlin_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
 };
 
+static const CREATURE_TRAIT_CHANGE puma_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+
+static const CREATURE_TRAIT_CHANGE cobra_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+
+static const CREATURE_TRAIT_CHANGE wild_boar_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3315,6 +3357,7 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"dwarf_untrained", "dwarf", untrained_dwarf_trait_changes,
             TRAIT_ITEMS(untrained_dwarf_trait_changes)},
         {"goblin", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
+        {"kobold", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"orc", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"elf", NULL, elf_trait_changes, TRAIT_ITEMS(elf_trait_changes)},
         {"valley_elf", "elf", NULL, 0},
@@ -3400,6 +3443,12 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
             TRAIT_ITEMS(dragon_turtle_trait_changes)},
         {"lair_gremlin", NULL, lair_gremlin_trait_changes,
             TRAIT_ITEMS(lair_gremlin_trait_changes)},
+        {"puma", NULL, puma_trait_changes,
+            TRAIT_ITEMS(puma_trait_changes)},
+        {"cobra", NULL, cobra_trait_changes,
+            TRAIT_ITEMS(cobra_trait_changes)},
+        {"wild_boar", NULL, wild_boar_trait_changes,
+            TRAIT_ITEMS(wild_boar_trait_changes)},
         {"polar_bear", NULL, polar_bear_trait_changes,
             TRAIT_ITEMS(polar_bear_trait_changes)},
         {"adult_white_dragon", NULL, adult_cold_lightning_dragon_traits,
