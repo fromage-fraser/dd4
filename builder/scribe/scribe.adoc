@@ -11889,3 +11889,63 @@ Portrait corrections are separate from the area-file patch.
 For hand-written .are mobs, keep programs first, then archetype/rank,
 then teacher rows, then named metadata such as MobWeight. Scribe emits
 that order for you.
+
+
+Ambush, pigeons and environmental hazards
+----------------------------------------
+
+Ambush reuses human, goblin, drow, dog and horse. The new pigeon profile
+uses bird. The new environmental_hazard body supplies fire_hazard and
+smoke_hazard. These choices use the existing archetype field.
+
+Pigeons default to 15 cm high, 30 cm long and Small, with flight, feathers,
+wings, a beak and normal living bird anatomy. Their ordinary attack uses
+the beak. Weight stays unknown: the whole-kilogram field cannot describe
+an ordinary sub-kilogram pigeon. No fractional weights or new active
+specials are added. Avoid repeating inherited flight and absence flags.
+
+The hazard body has no head, eyes, arms, legs, heart, speech or corpse.
+It is inorganic and mindless, with no blood, pain or soul. Poison, drain,
+sleep, charm, hold, paralysis and psychic effects do not affect it. Physical
+attacks can still defeat these existing encounters. The profiles do not
+add ACT_OBJECT or change the existing targeting rules. Their Medium size
+describes the hazard's extent; height, length and weight remain unknown.
+
+Fire hazards use the existing blast attack verb and ordinary attack amount.
+The code-only natural_damage_type trait selects fire as their damage kind.
+The internal kind is named; MSTAT shows fire and its profile origin. Other
+native damage kinds can reuse this mechanism through species/archetype
+traits. No ACT marker, vnum exception, area field or individual trait input
+is needed. Zero removes the override. Existing weapon attacks, object/skill
+categories and player abilities retain their rules. Source magic/material
+classification and ordinary contact handling remain in place.
+
+These flames are fire-immune and take the usual 50% extra damage from cold
+or water. Smoke is also fire-immune, but keeps its existing ordinary damage
+in this chunk. Proper suffocation, including creatures that do not breathe,
+remains a separate shared mechanic. There are no extra attacks, fireballs
+or active special opportunities. Authored aggression, sentinel, detection
+and blank hazard descriptions stay. The old raw body mask 383 was deliberate;
+the new body now supplies it through inheritance. The hazards use neutral
+sex data. The old fire_elemental is a training example, not a suitable real
+fire elemental. Review and fix it before actual use; it is unchanged here.
+
+War dog 4504 is about two feet at the shoulder: 61 cm high, 40 kg and 110 cm
+long, Medium. It keeps spec_fido. Horse 4511 keeps its mountable/sentinel
+settings, ordinary 150 cm/450 kg/230 cm Large dimensions and both resets.
+Dog, horse and pigeon drop repeated NO_ARMS/NO_SPEECH raw XOR bits, so
+those restrictions remain inherited. Goblin women 4524 use female data;
+mixed children 4525 remain neutral. Collective names and single resets
+stay; their dimensions describe a representative individual.
+
+Elite guard 4517 stays Rare. Gruluk 4530 becomes Elite; Nevdara 4527 and
+the personal guard 4528 become Rare. Other named captives and guards stay
+Common. Rank HP applies once. All levels, alignments, sleep/Curse effects,
+legacy positions and authored behaviour remain. No permanent injuries or
+daze are added from story prose. Essabella keeps her protective spec_guard;
+Nevdara gains no arbitrary caster and the goblin archer gains no shooting AI
+or racial accuracy bonus. Shared Omu equipment and all other loot stay.
+
+All 39 room flags/exits, area XP 115, 76 object definitions, traps, keys,
+placements and caps are preserved. Only the approved small grammar fixes
+change prose. The three hazard portrait replacements are handled separately.

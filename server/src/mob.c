@@ -537,6 +537,23 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        {
+                "environmental_hazard",
+                0, AFF_MINDLESS,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS
+                    | BODY_NO_HEART | BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_INORGANIC
+                    | BODY_SOULLESS,
+                0, 0, 0,
+                RES_POISON | RES_DRAIN | RES_SLEEP | RES_CHARM | RES_HOLD
+                    | RES_PARALYSIS | RES_PSYCHIC,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2781,6 +2798,32 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_breath_gold_anatomical", "spec_cast_mage", "", 0,
                 { 70, 30, 0 }, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 6000
+        },
+        {
+                "pigeon", "bird", "icon1", "icon2",
+                0, AFF_FLYING, 0, PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                15, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 30
+        },
+        {
+                "fire_hazard", "environmental_hazard", "icon1", "icon2",
+                0, 0, 0, 0, 0, RES_COLD | RES_WATER, RES_FIRE,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM,
+                MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "smoke_hazard", "environmental_hazard", "icon1", "icon2",
+                0, 0, 0, 0, 0, 0, RES_FIRE,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM,
+                MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2879,6 +2922,7 @@ typedef enum creature_trait_effect
         TRAIT_NATIVE_HUG_DICE,
         TRAIT_STONE_DEATH,
         TRAIT_BOW_ACCURACY,
+        TRAIT_NATURAL_DAMAGE_TYPE,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -2986,7 +3030,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"body_weapon_loot", TRAIT_BODY_WEAPON_LOOT, NULL},
         {"bear_hug_dice", TRAIT_NATIVE_HUG_DICE, NULL},
         {"stone_death", TRAIT_STONE_DEATH, NULL},
-        {"bow_accuracy", TRAIT_BOW_ACCURACY, NULL}
+        {"bow_accuracy", TRAIT_BOW_ACCURACY, NULL},
+        {"natural_damage_type", TRAIT_NATURAL_DAMAGE_TYPE, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -3412,6 +3457,12 @@ static const CREATURE_TRAIT_CHANGE ancient_gold_dragon_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -40}
 };
 
+static const CREATURE_TRAIT_CHANGE fire_hazard_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 6}, /* blast */
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_FIRE}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3435,6 +3486,8 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
             TRAIT_ITEMS(untrained_dwarf_trait_changes)},
         {"goblin", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"kobold", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
+        {"fire_hazard", NULL, fire_hazard_trait_changes,
+            TRAIT_ITEMS(fire_hazard_trait_changes)},
         {"gold_dragon_kin", NULL, gold_dragon_kin_trait_changes,
             TRAIT_ITEMS(gold_dragon_kin_trait_changes)},
         {"ancient_gold_dragon", NULL, ancient_gold_dragon_trait_changes,
@@ -3709,6 +3762,30 @@ static bool build_creature_traits(int sn)
         return TRUE;
 }
 
+static const struct
+{
+        const char *name;
+        unsigned long int types;
+} natural_damage_kinds[NATURAL_DAMAGE_COUNT] =
+{
+        {"none", 0},
+        {"fire", RES_FIRE},
+        {"cold", RES_COLD},
+        {"electricity", RES_ELECTRICITY},
+        {"energy", RES_ENERGY},
+        {"blunt", RES_BLUNT},
+        {"pierce", RES_PIERCE},
+        {"slash", RES_SLASH},
+        {"acid", RES_ACID},
+        {"poison", RES_POISON},
+        {"drain", RES_DRAIN},
+        {"psychic", RES_PSYCHIC},
+        {"holy", RES_HOLY},
+        {"dark", RES_DARK},
+        {"sonic", RES_SONIC},
+        {"water", RES_WATER},
+};
+
 static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
     bool species)
 {
@@ -3756,6 +3833,10 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_LICH_CHILL_TOUCH
                                     || effect == TRAIT_BOW_ACCURACY)
                                 && profile->changes[i].value < 0)
+                                        issues++;
+                                if (effect == TRAIT_NATURAL_DAMAGE_TYPE
+                                && (profile->changes[i].value < NATURAL_DAMAGE_NONE
+                                    || profile->changes[i].value >= NATURAL_DAMAGE_COUNT))
                                         issues++;
                                 /* Zero removes the override; 1-19 are ordinary attack verbs. */
                                 if (effect == TRAIT_NATURAL_ATTACK_TYPE
@@ -4004,7 +4085,16 @@ void show_creature_traits(CHAR_DATA *viewer, CHAR_DATA *victim)
                 if (!entry)
                         continue;
                 any = TRUE;
-                if (creature_trait_definitions[id].effect == TRAIT_STATUS_RESISTANCE_PERCENT
+                if (creature_trait_definitions[id].effect == TRAIT_NATURAL_DAMAGE_TYPE)
+                        snprintf(buf, sizeof(buf), "  %s: %s%s; %s %s%s.\n\r",
+                            creature_trait_definitions[id].name,
+                            entry->value >= NATURAL_DAMAGE_NONE
+                                && entry->value < NATURAL_DAMAGE_COUNT
+                                ? natural_damage_kinds[entry->value].name : "invalid",
+                            entry->value == 0 ? " (disabled)" : "",
+                            entry->from_species ? "species" : "archetype", entry->source,
+                            IS_NPC(victim) ? "" : "; approved player racial trait");
+                else if (creature_trait_definitions[id].effect == TRAIT_STATUS_RESISTANCE_PERCENT
                 ||  creature_trait_definitions[id].effect == TRAIT_COMBAT_VOLLEY_PERCENT
                 ||  creature_trait_definitions[id].effect == TRAIT_COMBAT_CASTING_PERCENT
                 ||  creature_trait_definitions[id].effect == TRAIT_NATIVE_ROCK_PERCENT)
@@ -4035,6 +4125,18 @@ int creature_bow_hit_bonus(CHAR_DATA *ch, OBJ_DATA *weapon, int dt)
                 return 0;
 
         return UMAX(0, creature_trait_value(ch, CREATURE_TRAIT_BOW_ACCURACY));
+}
+
+/* An ordinary unarmed NPC attack can have an elemental damage kind. */
+unsigned long int creature_natural_damage_type(CHAR_DATA *ch)
+{
+        int kind;
+
+        if (!ch || ch->deleted || !IS_NPC(ch))
+                return 0;
+        kind = creature_trait_value(ch, CREATURE_TRAIT_NATURAL_DAMAGE_TYPE);
+        return kind > NATURAL_DAMAGE_NONE && kind < NATURAL_DAMAGE_COUNT
+            ? natural_damage_kinds[kind].types : 0;
 }
 
 int creature_natural_armour(CHAR_DATA *ch)

@@ -109,6 +109,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         puma cobra wild_boar
         halfling halfling_untrained pig chicken
         gold_dragon_kin ancient_gold_dragon
+        pigeon fire_hazard smoke_hazard
 /;
 
 my %mob_act = (
