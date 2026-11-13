@@ -11820,3 +11820,72 @@ including its Midgaard use; only stale small-sword comments are corrected.
 All room flags, mob placements and five shops remain. Shiriff 1132 stays
 unplaced. The cloak's ABOUT slot and the rainbow staff's light role are
 already correct. Receptionist artwork is handled separately from area data.
+
+
+New Ofcol and the gold dragon profiles
+-------------------------------------
+
+New Ofcol reuses human, cattle, horse, pig and chicken. The new
+gold_dragon_kin profile uses humanoid; ancient_gold_dragon uses dragon.
+No new area fields, ACT markers or individual trait commands are needed.
+
+Gold dragon kin are a DD4 interpretation of the Keeper's sons and his
+draconic knights. They default to 190 cm, 100 kg and Medium, with normal
+living humanoid organs, hands, speech, blood, pain, soul and remains.
+Scales and fangs add an ordinary bite fallback. Their code-only traits
+give -10 natural armour, with ordinary fire and poison resistance.
+They gain no innate immunity, flight, fear aura, HUGE or extra attacks.
+Their existing equipment keeps its role; the shared Golden Claw is an
+ordinary weapon, not a body-part weapon attached to every holder.
+
+Ancient gold dragons default to 700 cm shoulder height, 6000 cm total
+length and 40000 kg, Large with HUGE. These are descriptive DD4 estimates,
+informed by the second-edition Gold Dragon rather than exact book weights.
+Their dragon body supplies ordinary claw, fang and tail attacks. They fly
+and swim, see infrared, invisible and hidden creatures, resist magic and
+are immune to fire and poison. Their code-only natural armour is -40.
+Fear uses the existing independent in-combat aura, not a special slot.
+
+spec_breath_gold_anatomical needs a usable head, like the other anatomical
+breaths. It chooses fire or gas equally and uses the existing spell damage,
+saves and targeting. It adds no daily pool or extra attack. Gold dragon kin
+use it for their single special opportunity. Ancient gold dragons select
+70% gold-breath and 30% mage opportunities; a failed choice does not fall
+through into another special. These percentages describe opportunities,
+not guaranteed successful casts. MSTAT shows the inherited set and traits.
+Polymorph, gem luck, summoning, detect-lie and quest powers remain deferred.
+Existing player abilities and other dragon profiles stay as they are.
+
+The Keeper's local Sanctuary, Protect, sentinel and scavenger choices stay.
+Do not repeat inherited HUGE, infrared or detect-invisible in his raw XOR
+masks. His signet ring, Golden Claw and healing-staff Dragon Orb are carried
+loot instead of worn equipment. All three remain, but their worn bonuses
+cease; the native anatomy and defences supply the intended dragon model.
+The shared item definitions and other mobs' equipment are unchanged.
+
+The hen (612), cows (613/614) and horse (615) drop repeated
+NO_ARMS/NO_SPEECH XOR bits, so those restrictions remain inherited. Dairy cow 614 cancels horns in both
+its body and attack XOR masks, leaving hoof-only attacks. Grazing cow 613
+keeps horns/hooves and is female, matching its portrait. Horse 615 remains
+mountable and wimpy, with a local height of 130 cm, weight of 250 kg and
+length of 200 cm.
+Pig 616 uses ordinary pig defaults; hen 612 has no full flying behaviour.
+
+Diana (601) and the Dragonlords (630) are Elite. The captains (602/603),
+priestess (628) and Dragonknights (633) are Rare; the Keeper (631) is Boss.
+Others remain Common. Rank HP
+applies once; current-HP breath damage also rises with the dragon's rank.
+Diana keeps NO_EXPERIENCE. All source levels, alignments, legacy positions,
+aggression, passivity, wimpy and sentinel choices stay as authored.
+
+The two teacher lists, seven shops and other individual specials stay.
+Priestess 628 keeps her supportive adept and teaching role; the hostile
+spec_cast_priestess routine is not a substitute. No new paid services are
+added. Tracy keeps repairs, the teller keeps banking, and the maid keeps
+janitor behaviour. The bard does not gain an arbitrary combat caster.
+Marty's son is Jack (610); Jim (604) is the separate blacksmith. The hall
+now describes its three reset sons. All 102 room flags/exits, including seven NO_UNDEAD rooms, stay intact.
+Portrait corrections are separate from the area-file patch.
+For hand-written .are mobs, keep programs first, then archetype/rank,
+then teacher rows, then named metadata such as MobWeight. Scribe emits
+that order for you.

@@ -97,6 +97,7 @@ DECLARE_SPEC_FUN( spec_breath_frost_anatomical );
 DECLARE_SPEC_FUN( spec_breath_lightning_anatomical );
 DECLARE_SPEC_FUN( spec_breath_steam_anatomical );
 DECLARE_SPEC_FUN( spec_breath_any_anatomical );
+DECLARE_SPEC_FUN( spec_breath_gold_anatomical );
 DECLARE_SPEC_FUN( spec_poison_palm          );
 DECLARE_SPEC_FUN( spec_repairman            );
 DECLARE_SPEC_FUN( spec_thief                );
@@ -202,6 +203,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_breath_lightning_anatomical")) return spec_breath_lightning_anatomical;
         if (!str_cmp(name, "spec_breath_steam_anatomical")) return spec_breath_steam_anatomical;
         if (!str_cmp(name, "spec_breath_any_anatomical")) return spec_breath_any_anatomical;
+        if (!str_cmp(name, "spec_breath_gold_anatomical")) return spec_breath_gold_anatomical;
         if (!str_cmp(name, "spec_poison_palm"))          return spec_poison_palm;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
         if (!str_cmp(name, "spec_thief"))                return spec_thief;
@@ -312,6 +314,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_breath_lightning_anatomical) return "spec_breath_lightning_anatomical";
         if (special == spec_breath_steam_anatomical) return "spec_breath_steam_anatomical";
         if (special == spec_breath_any_anatomical) return "spec_breath_any_anatomical";
+        if (special == spec_breath_gold_anatomical) return "spec_breath_gold_anatomical";
         if (special == spec_poison_palm) return "spec_poison_palm";
         if (special == spec_repairman) return "spec_repairman";
         if (special == spec_thief) return "spec_thief";
@@ -3054,6 +3057,15 @@ bool spec_breath_steam_anatomical(CHAR_DATA *ch)
 bool spec_breath_any_anatomical(CHAR_DATA *ch)
 {
         return usable_breath_head(ch) ? spec_breath_any(ch) : FALSE;
+}
+
+/* Gold dragons and their kin share a fire and gas breath mix. */
+bool spec_breath_gold_anatomical(CHAR_DATA *ch)
+{
+        if (!usable_breath_head(ch))
+                return FALSE;
+
+        return number_bits(1) ? spec_breath_gas(ch) : spec_breath_fire(ch);
 }
 
 /* Keep the old breath selection, with a bounded native daily supply. */

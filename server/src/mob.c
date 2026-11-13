@@ -2759,6 +2759,28 @@ const struct mob_type mob_table[MAX_MOB] =
                 40, 3, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 50
+        },
+        {
+                "gold_dragon_kin", "humanoid", "icon1", "icon2",
+                0, 0, PART_SCALES | PART_FANGS, PART_FANGS,
+                RES_FIRE | RES_POISON, 0, 0,
+                0, 0, 0, 0,
+                190, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_breath_gold_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "ancient_gold_dragon", "dragon", "icon1", "icon2",
+                ACT_FEAR_AURA,
+                AFF_FLYING | AFF_SWIM | AFF_INFRARED
+                    | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                BODY_HUGE, 0, RES_MAGIC, 0, RES_FIRE | RES_POISON,
+                0, 0, 0, 0,
+                700, 40000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_gold_anatomical", "spec_cast_mage", "", 0,
+                { 70, 30, 0 }, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 6000
         }
 
 };
@@ -3381,6 +3403,15 @@ static const CREATURE_TRAIT_CHANGE untrained_halfling_trait_changes[] =
         {CREATURE_TRAIT_BOW_ACCURACY, 0}
 };
 
+static const CREATURE_TRAIT_CHANGE gold_dragon_kin_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
+};
+static const CREATURE_TRAIT_CHANGE ancient_gold_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -40}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3404,6 +3435,10 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
             TRAIT_ITEMS(untrained_dwarf_trait_changes)},
         {"goblin", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"kobold", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
+        {"gold_dragon_kin", NULL, gold_dragon_kin_trait_changes,
+            TRAIT_ITEMS(gold_dragon_kin_trait_changes)},
+        {"ancient_gold_dragon", NULL, ancient_gold_dragon_trait_changes,
+            TRAIT_ITEMS(ancient_gold_dragon_trait_changes)},
         {"halfling", NULL, halfling_trait_changes, TRAIT_ITEMS(halfling_trait_changes)},
         {"halfling_untrained", "halfling", untrained_halfling_trait_changes,
             TRAIT_ITEMS(untrained_halfling_trait_changes)},
