@@ -11635,3 +11635,52 @@ not the sourcebook's morale labels, and their HP multipliers apply once.
 Use the existing `silver` item flag for explicitly silver gear. It does
 not replace alignment restrictions, ordinary weapon flags or attack verbs.
 The Crystalmir footman's lance keeps its lance flag and now pierces.
+
+
+Gremlin Lair creature profiles
+-----------------------------
+
+`lair_gremlin` and `mogwai` use the existing humanoid body.
+`animated_toy_head` uses head_only. There are no new area fields.
+
+The lair gremlin is our wingless local variant. Adults default to 46 cm
+and 6 kg, Small, with normal living organs, speech, blood, pain, soul and
+remains. Claws and fangs supply ordinary unarmed attack choices, not extra
+attacks; an equipped weapon keeps precedence. Natural armour is -6 and
+ordinary magic resistance applies. This is a coarse adaptation, not a
+literal 25 percent chance to cancel spells. Unlike the standard 2e creature,
+this beginner-area variant can be hurt by ordinary weapons. It has no
+racial flight or equipment-malfunction power. Its creature family is not
+goblin, so goblin-targeted racial bonuses do not automatically apply.
+
+Keep aggression, passivity, sentinel, stay-area, scavenging and wimpy
+choices in the individual area build. King Boo keeps his wimpy behaviour
+as an Elite encounter. Jeremiah's imposing description is a joke: he stays
+Common and has no fear aura. Boos's uneven legs do not imply a permanent
+injury; Boozes's eye-poking does not add a blindness power. Booz retains
+his individual spec_fido, and remains a living creature.
+
+Mogwai default to 30 cm and 3 kg, Small, with ordinary living humanoid
+anatomy. They gain no new racial resistances, natural weapons or special
+powers. Gizmo keeps his Rare rank, individual spec_cast_adept, magical
+flight and other authored effects. His flight does not add wings. The
+water/midnight warning remains flavour; no cloning or transformation rule
+is implemented.
+
+An animated toy head defaults to 15 cm, Small, with weight unspecified:
+we do not invent a fractional kilogram or claim that it has no mass.
+It has a head, eyes and ears, without arms, legs, heart, brains or guts.
+Like the other soft toys it is inorganic, mindless, bloodless, analgic,
+soulless, mute and corpseless. It is immune to poison, sleep, charm and
+drain, and vulnerable to fire. It has no sharp teeth or bite; ordinary
+blunt fallback still works. It remains attackable and drops ordinary loot.
+Do not repeat the inherited NO_ARMS/NO_LEGS/NO_HEART flags in an individual
+XOR mask, since that would cancel those restrictions.
+
+Little/baby/large/puny gremlins and King Boo use existing individual height
+and whole-kilogram weight overrides. Sir Durok reuses human defaults and
+becomes Rare; no knight caster special is added. Rank HP applies once.
+The Female Gremlin is female, and Boose is male as his room text says.
+All existing portraits, room flags, equipment and resets stay unchanged.
+The soda can remains the cell key and Xevlin's corpse stays a scenery
+container. The repeated journal reset already produces just one page.
