@@ -7414,3 +7414,72 @@ The Female Gremlin is female, and Boose is male as his room text says.
 All existing portraits, room flags, equipment and resets stay unchanged.
 The soda can remains the cell key and Xevlin's corpse stays a scenery
 container. The repeated journal reset already produces just one page.
+
+
+Mud School creature profiles
+----------------------------
+
+`puma` and `wild_boar` use quadrupedal_mammal; `cobra` uses
+serpentine_reptile. Kobold now fills out the existing humanoid placeholder.
+There are no new area fields or trait commands.
+
+An adult puma defaults to 75 cm, 60 kg and 200 cm long, Medium. It has a
+tail, paws, claws and fangs, with ordinary claw/bite choices and armour -4.
+Infrared and sneak use the same coarse cat treatment as the lynx. The
+school's young female uses 55 cm, 25 kg and 130 cm long, Small.
+Leaping and a coordinated rear-claw rake remain separate future mechanics;
+the ordinary attack choices do not create extra attacks.
+
+A cobra defaults to 200 cm long and 3 kg, Small, with height unspecified.
+It has normal snake organs, scales, tail and fangs, an ordinary piercing
+bite and armour -4. It has no arms, legs or speech. The school specimen is
+300 cm long and 6 kg. The profile deliberately inherits no venom special,
+and the introductory school cobra must not gain poison. A future builder
+can explicitly choose an existing venom special for a different encounter.
+Do not silently give it a pit viper's infrared, poison immunity, spitting,
+constriction or instant-death venom. The original descriptive prose stays.
+
+Wild boar default to 90 cm, 120 kg and 160 cm long, Medium. Tusks supply
+the ordinary gore attack; their hooves and tail are anatomical. Armour is
+-3. They gain no extra hoof attack or active special. Fighting below zero
+HP needs a safe shared ferocity mechanic and remains deferred.
+
+These three profiles have normal living bodies, blood, pain, soul and
+remains, neutral HP/damage/critical/haste modifiers and no racial XP bonus.
+They do not decide whether a particular creature is aggressive or passive.
+
+Kobolds default to 91 cm and 15 kg, Small, with scales, small horns and a
+non-prehensile tail. They keep ordinary humanoid organs, hands and speech.
+Infrared and the existing NPC-only sunlight -1 hit trait apply. Their
+kobold family still participates in existing racial target matching. No
+player-race behaviour changes. Innate armour stays zero; the source's
+AC7(10) listing is not treated as proof of an armoured hide. Horns and tail
+do not grant extra natural attacks. The stooped school kobold is 85 cm
+and 12 kg. Do not add fire breath, wings or forced anti-gnome aggression.
+
+Keep all sixteen school mobs Common. Staff levels are service choices,
+and the gladiator is a novice graduation fight. Preserve all individual
+behaviour, effects, source levels and alignments, including quest exclusions.
+The school area's NO_QUEST also contributes to loaded ACT flags.
+
+The starved goblin uses 100 cm / 20 kg, the tall unhealthy lizardman
+220 cm / 80 kg, and the muscular Quartermaster 175 cm / 90 kg. Scars and
+poor health do not add permanent trauma or another HP penalty. The small
+giant lizard overrides the generic 457 cm/Large default with 45 cm shoulder
+height, 35 kg, 180 cm length and Small. The shared giant_lizard stays as it
+was. Dimensions remain descriptive. Use whole kilograms.
+
+Do not repeat inherited missing-limb or NO_SPEECH body flags in the area
+XOR mask: those repeated flags would cancel the body restrictions. The
+school dog, puma and chained wolf now use raw body zero instead of 36;
+the cobra uses zero instead of 44. Other raw body choices stay unchanged.
+
+The manservant is male, matching his prose and portrait, and remains
+unplaced without a reset. His four programs and level 300 stay. The Cleric
+remains female and keeps adept aid, paid-healer services and fly help. Keep
+the Loremaster's 35 teacher rows and individual psionicist special, and the
+Quartermaster's shop, healer flag, prices and stock. The gladiator's diploma,
+white stone and key remain carried rewards, not newly equipped gear.
+All room flags, area school/safe/no_quest settings, XP125 and reset caps
+stay. No new NO_UNDEAD rooms are added. The giant-lizard portrait should
+show the described red-scaled, blue-tongued quadruped; artwork is separate.
