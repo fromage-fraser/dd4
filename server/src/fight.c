@@ -1383,6 +1383,8 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                 if (melee_attack)
                         thac0 -= creature_melee_hit_bonus(ch, victim);
 
+                thac0 -= creature_bow_hit_bonus(ch, wield, dt);
+
                 /* Sunlight also makes ranged attacks harder to aim. */
                 thac0 += creature_sunlight_hit_penalty(ch);
 
@@ -10818,7 +10820,8 @@ void do_shoot(CHAR_DATA *ch, char *argument)
 
         if (IS_NPC(ch))
         {
-                for (i = 0; i < (ch->level / 30); i++)
+                /* A low-level NPC still fires one ordinary shot. */
+                for (i = 0; i < UMAX(1, ch->level / 30); i++)
                 {
                         one_hit(ch, victim, gsn_shoot, FALSE);
 
