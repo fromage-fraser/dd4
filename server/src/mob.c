@@ -2668,6 +2668,37 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_breath_steam_anatomical", "", "", 0,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 1200
+        },
+        /* These wingless lair dwellers keep their own authored behaviour. */
+        {
+                "lair_gremlin", "humanoid", "icon1", "icon2",
+                0, 0, PART_CLAWS | PART_FANGS, PART_CLAWS | PART_FANGS,
+                RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                46, 6, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        /* Water and midnight transformations are still just local flavour. */
+        {
+                "mogwai", "humanoid", "icon1", "icon2",
+                0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                30, 3, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        /* A stuffed head has neither a living body nor sharp teeth. */
+        {
+                "animated_toy_head", "head_only", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_INORGANIC
+                    | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS,
+                0, 0, RES_FIRE, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                15, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -3257,6 +3288,11 @@ static const CREATURE_TRAIT_CHANGE dragon_turtle_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
 };
 
+static const CREATURE_TRAIT_CHANGE lair_gremlin_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3362,6 +3398,8 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
             TRAIT_ITEMS(barracuda_trait_changes)},
         {"dragon_turtle", NULL, dragon_turtle_trait_changes,
             TRAIT_ITEMS(dragon_turtle_trait_changes)},
+        {"lair_gremlin", NULL, lair_gremlin_trait_changes,
+            TRAIT_ITEMS(lair_gremlin_trait_changes)},
         {"polar_bear", NULL, polar_bear_trait_changes,
             TRAIT_ITEMS(polar_bear_trait_changes)},
         {"adult_white_dragon", NULL, adult_cold_lightning_dragon_traits,

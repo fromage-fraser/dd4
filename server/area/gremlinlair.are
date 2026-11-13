@@ -18,6 +18,9 @@ The {gGremlin{x looks back at you..yes, YOU!
 3 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lair_gremlin~ common~
+MobHeight 35
+MobWeight 3
 #131
 Baby Gremlin~
 a Baby Gremlin~
@@ -29,6 +32,9 @@ The Baby claws at you.
 2 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< lair_gremlin~ common~
+MobHeight 25
+MobWeight 2
 #132
 Male Gremlin~
 a Male Gremlin~
@@ -40,6 +46,7 @@ The Male {gGremlin{x looks REALLY pissed.
 5 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lair_gremlin~ common~
 #133
 Female Gremlin~
 a Female Gremlin~
@@ -51,7 +58,8 @@ way as she looks for her own.
 4|64 0 -1000 S
 4 0 0 0d0+0 0d0+0
 0 0
-8 8 1
+8 8 2
+< lair_gremlin~ common~
 #134
 Boos Gremlin~
 Boos the Gremlin~
@@ -63,6 +71,7 @@ As you look at him you notice one leg is longer then the other.
 6 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lair_gremlin~ common~
 #135
 Boose~
 Boose the Gremlin~
@@ -73,7 +82,10 @@ Boose says "{gGarble Gar Blargh Garble BLAH!{x"
 2|4|32|64 0 -1000 S
 6 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< lair_gremlin~ common~
+MobHeight 60
+MobWeight 10
 #136
 Booz~
 Booz the Gremlin~
@@ -85,6 +97,7 @@ Booz can't find "{rXeddy{x" and is very unhappy about it.
 6 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lair_gremlin~ common~
 #137
 Boozes~
 Boozes the Gremlin~
@@ -96,6 +109,7 @@ Boozes pokes at your eyes.
 6 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lair_gremlin~ common~
 #138
 King Boo Gremlin Lord~
 King Boo the Gremlin Lord~
@@ -107,6 +121,9 @@ King Boo is the biggest {ggremlin{x you've ever seen.
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lair_gremlin~ elite~
+MobHeight 75
+MobWeight 18
 #139
 Sir Durok EAT~
 Sir Durok of EAT~
@@ -119,6 +136,7 @@ infamous Gremlin Lord.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
 #140
 teddy bear head~
 a teddy bear head~
@@ -128,8 +146,9 @@ The teddy bear's head seems mildly annoyed at not having a body.
 ~
 2|64 0 1000 S
 1 0 0 0d0+0 0d0+0
-4|8|16 0
+0 0
 8 8 0
+< animated_toy_head~ common~
 #141
 Jeremiah gremlin~
 Jeremiah the gremlin~
@@ -144,6 +163,9 @@ little thing is the most laughable little critter you've ever seen.
 0 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lair_gremlin~ common~
+MobHeight 30
+MobWeight 2
 #142
 Gizmo~
 Gizmo~
@@ -155,7 +177,7 @@ It's GIZMO! Don't get him wet, feed him after midnight and all that.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ rare~
+< mogwai~ rare~
 
 #0
 
