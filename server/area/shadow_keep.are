@@ -11,8 +11,9 @@ The Shadow Wraith Glares Back At YOU!
 ~
 2|64 2|524288 0 S
 10 0 0 0d0+0 0d0+0
-96 0
+32 0
 8 8 0
+< wraith~ common~
 #16601
 Undead Soldier~
 an Undead Soldier~
@@ -24,6 +25,7 @@ The Undead Soldier looks straight through you.
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< skeleton~ common~
 #16602
 Eel~
 a Giant Eel~
@@ -33,8 +35,9 @@ Electricity Streaks from the Eel.
 ~
 2|32|64 0 0 S
 17 0 0 0d0+0 0d0+0
-60 0
+0 0
 8 8 1
+< giant_electric_eel~ common~
 #16603
 Giant Rat~
 a Giant Rat~
@@ -44,8 +47,9 @@ I hate to think what they feed this rat.
 ~
 2|32|64 0 0 S
 10 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< giant_rat~ common~
 #16604
 Slave~
 a slave~
@@ -57,6 +61,7 @@ A slave shivers and moves closer to the wall.
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16605
 Armour guard suit~
 a suit of armour~
@@ -68,10 +73,11 @@ You could swear the armour was staring back at you.
 22 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< animated_armour~ common~
 #16606
 Castle Archer~
 the archer~
-A archer stands here scanning the forest below.
+An archer stands here scanning the forest below.
 ~
 The archer is garbed in a green cloak and looks better suited to the
 forest than a castle.
@@ -80,6 +86,7 @@ forest than a castle.
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16607
 soldier undead~
 an Undead Soldier~
@@ -87,10 +94,11 @@ An undead soldier waits here for reinforcements.
 ~
 The soldier looks almost dead, or maybe is dead.
 ~
-64 0 0 S
+64 562949953421312 0 S
 20 0 0 0d0+0 0d0+0
-0 0
+32 0
 8 8 1
+< zombie~ common~
 #16608
 horse stallion~
 a horse~
@@ -100,8 +108,12 @@ The stallion snorts and turns toward you.
 ~
 2|64|131072 0 0 S
 20 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< horse~ common~
+MobHeight 165
+MobWeight 600
+MobLength 260
 #16609
 smuggler~
 the smuggler~
@@ -113,6 +125,7 @@ He is covered head to toe with fine furs.
 26 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16610
 Keep Sentry~
 Keep Sentry~
@@ -124,6 +137,7 @@ The sentry demands to know your business.
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16611
 Shadow Demon~
 the shadow demon~
@@ -135,6 +149,7 @@ The Demon Snarls and presses against the invisible barrier.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< shadow_fiend~ common~
 #16612
 Keep Guard~
 the keep guard~
@@ -146,6 +161,7 @@ The keep guard grunts at you and demands your business in the keep.
 28 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16613
 Captain Guard~
 the captain of the guards~
@@ -157,7 +173,7 @@ The captain growls and asks your business in the castle.
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ elite~
+< human~ elite~
 #16614
 Jailer~
 the jailer~
@@ -169,10 +185,11 @@ The jailer laughs and points his dagger at you.
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16615
 Insane torturer~
 the insane torturer~
-A insane torturer stands here torturing himself.
+An insane torturer stands here torturing himself.
 ~
 This guy is sick, there are scars and burn marks all over him.
 ~
@@ -180,6 +197,7 @@ This guy is sick, there are scars and burn marks all over him.
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16616
 Servant~
 a servant~
@@ -191,21 +209,25 @@ He is too busy even to notice you.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16617
 page boy~
 a page boy~
 A page boy stands here carrying messages.
 ~
-He is to busy to even notice you.
+He is too busy to even notice you.
 ~
 4|64|128 0 0 S
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 155
+MobWeight 45
 #16618
 Priest~
 the priest~
-A powerful priest stand here incanting.
+A powerful priest stands here incanting.
 ~
 The priest glares at you and says
 "How dare you interrupt me."
@@ -214,6 +236,7 @@ The priest glares at you and says
 32 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16619
 King~
 the king~
@@ -225,7 +248,7 @@ He is very regal looking.
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ boss~
+< human~ boss~
 #16620
 Bodyguard guard~
 the bodyguard~
@@ -237,6 +260,7 @@ The figure stares at you without blinking.
 36 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16621
 Cook~
 the cook~
@@ -248,17 +272,19 @@ The cook smiles at you.
 16 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16622
 Mad Prisoner~
 A mad Prisoner~
 A mad prisoner cowers in the corner.
 ~
-You cant decide whether its a rat or human.
+You can't decide whether it's a rat or a human.
 ~
 4|128 0 0 S
 17 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #16623
 Hunting dog~
 the hunting dog~
@@ -268,8 +294,9 @@ The hunting dog looks rather happy with itself.
 ~
 128 0 0 S
 6 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< dog~ common~
 #16624
 Gnome ambassador~
 a Gnome ambassador~
@@ -281,6 +308,7 @@ The ambassador sniffs his nose at you and turns away.
 23 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< gnome~ common~
 #16625
 Dwarven ambassador dwarf~
 the dwarven ambassador~
@@ -292,6 +320,8 @@ The Dwarven ambassador stands here feet planted like a stone.
 23 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
 #16626
 Prisoner~
 the prisoner~
@@ -303,6 +333,7 @@ The prisoner looks like he has no more skin left on his body unburnt.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #0
 
 
@@ -2897,20 +2928,18 @@ S
 
 
 #SPECIALS
-M  16602 spec_breath_lightning                   A  Giant Eel
-M  16603 spec_poison                     A Giant Rat
+M  16603 spec_poison_bite                     A Giant Rat
 M  16605 spec_guard                      A suit of armour
 M  16606 spec_guard                      the archer
 M  16607 spec_cast_undead                        A  Soldier
 M  16609 spec_thief                      the smuggler
 M  16610 spec_guard                      Keep Sentry
-M  16611 spec_demon                      the shadow demon
 M  16612 spec_guard                      the keep guard
 M  16613 spec_guard                      the captain of the guards
 M  16618 spec_cast_mage                  the priest
 M  16619 spec_cast_cleric                        the king
-M  16620 spec_poison                     the bodyguard
-M  16622 spec_poison                     A mad Prisoner
+M  16620 spec_poison_palm                     the bodyguard
+M  16622 spec_poison_palm                     A mad Prisoner
 M  16623 spec_fido                       the hunting dog
 S
 
