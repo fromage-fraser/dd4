@@ -4525,6 +4525,12 @@ void reset_area(AREA_DATA *pArea)
  */
 CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
 {
+        return create_mobile_at_level(pMobIndex, 0);
+}
+
+/* A positive level is fixed; zero retains the normal random variation. */
+CHAR_DATA *create_mobile_at_level(MOB_INDEX_DATA *pMobIndex, int level)
+{
         CHAR_DATA *mob;
         if (!pMobIndex)
         {
@@ -4564,7 +4570,7 @@ CHAR_DATA *create_mobile(MOB_INDEX_DATA *pMobIndex)
         mob->specials = pMobIndex->specials;
         mob->prompt = str_dup("<%hhp %mm %vmv> ");
         mob->rank = pMobIndex->rank;
-        mob->level = number_fuzzy(pMobIndex->level);
+        mob->level = level > 0 ? level : number_fuzzy(pMobIndex->level);
         mob->act = pMobIndex->act;
         mob->affected_by = pMobIndex->affected_by;
         mob->alignment = pMobIndex->alignment;

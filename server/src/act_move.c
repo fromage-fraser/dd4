@@ -2861,6 +2861,15 @@ void do_kiai(CHAR_DATA *ch, char *argument)
                 damage(ch, victim, 0, gsn_kiai, FALSE);
 }
 
+/* Slot zero follows the area default, not the global fallback. */
+static int default_recall_vnum(const CHAR_DATA *ch)
+{
+        if (ch->in_room && ch->in_room->area)
+                return ch->in_room->area->recall;
+
+        return DEFAULT_RECALL;
+}
+
 /*
  * Recall and clan Home have already chosen their destination.
  */
@@ -2909,7 +2918,7 @@ void do_recall(CHAR_DATA *ch, char *argument)
 
         if (arg[0] == '\0')
         {
-                place = ch->in_room->area->recall;
+                place = default_recall_vnum(ch);
 
                 if (place == DEFAULT_RECALL && ch->level > 40 && ch->level < LEVEL_IMMORTAL && ch->clan && !ch->pcdata->current_recall)
                 {
@@ -3094,16 +3103,18 @@ void do_recall(CHAR_DATA *ch, char *argument)
                 char tmp[MAX_STRING_LENGTH];
                 const char *template = "%2d %c %-35s (%s)";
 
+                place = default_recall_vnum(ch);
+                location = get_room_index(place);
                 sprintf(buf, "Recall points currently available (indexed by number):\n");
                 sprintf(tmp, template,
                         0,
                         ((!ch->pcdata->current_recall) ? '*' : ' '),
                         "Default recall",
-                        get_room_index(DEFAULT_RECALL)->name);
+                        location ? location->name : "Unknown");
                 strcat(buf, tmp);
 
                 if (IS_IMMORTAL(ch))
-                        sprintf(tmp, " (%d)\n\r", DEFAULT_RECALL);
+                        sprintf(tmp, " (%d)\n\r", place);
                 else
                         sprintf(tmp, "\n\r");
                 strcat(buf, tmp);
@@ -3145,19 +3156,21 @@ void do_recall(CHAR_DATA *ch, char *argument)
                         tmp = atoi(arg2);
 
                 tmp = URANGE(0, tmp, (MAX_RECALL_POINTS - 1));
-                place = ch->pcdata->recall_points[tmp];
+                place = tmp ? ch->pcdata->recall_points[tmp] : default_recall_vnum(ch);
+                location = get_room_index(place);
 
-                if (get_room_index(place))
+                if (location)
                 {
                         ch->pcdata->current_recall = tmp;
                         sprintf(buf, "Setting recall to point %d (%s)\n\r", tmp,
-                                get_room_index(place)->name);
+                                location->name);
                 }
                 else
                 {
                         ch->pcdata->current_recall = 0;
+                        location = get_room_index(default_recall_vnum(ch));
                         sprintf(buf, "Cannot access point %d, defaulting to 0 (%s)\n\r", tmp,
-                                get_room_index(DEFAULT_RECALL)->name);
+                                location ? location->name : "Unknown");
                 }
 
                 send_to_char(buf, ch);

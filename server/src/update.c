@@ -3366,6 +3366,9 @@ void aggr_update()
                                                 &&  !IS_AFFECTED(
                                                         vch->pcdata->group_leader,
                                                         AFF_NON_CORPOREAL)
+                                                &&  (!IS_SET(mch->act, ACT_WIMPY)
+                                                  || !IS_AWAKE(
+                                                         vch->pcdata->group_leader))
                                                 &&  can_see(
                                                         mch,
                                                         vch->pcdata->group_leader)

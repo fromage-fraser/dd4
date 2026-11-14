@@ -1581,6 +1581,12 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Blank notes cannot be posted, and over-limit lines leave the draft intact.
+- Shop purchases check carry weight using the purse after payment.
+- Purchased pets match the level listed by the pet shop.
+- Resist heat reduces native fire hits from flame hazards.
+- Sleep-only mobs do not redirect attacks to awake group leaders.
+- Recall list and set show the current area's default recall room.
 - Convert Moria mobs; add level-scaled constrictors, centipedes and breath bats.
 - Convert Circus mobs; add elephant trunks and fix headwear and cage-key resets.
 - Convert Ambush mobs; add environmental hazards and native fire damage.

@@ -147,7 +147,7 @@ static void append_note (FILE *fp, NOTE_DATA *note)
         fprintf (fp, "Expire  %ld\n", note->expire);
         fprintf (fp, "To      %s~\n", note->to_list);
         fprintf (fp, "Subject %s~\n", note->subject);
-        fprintf (fp, "Text\n%s~\n\n", note->text);
+        fprintf (fp, "Text\n%s~\n\n", note->text ? note->text : "");
 }
 
 
@@ -303,7 +303,7 @@ static bool show_note_to_char (CHAR_DATA *ch, NOTE_DATA *note, int num)
         fields[1] = note->sender;
         fields[2] = note->date;
         fields[3] = note->to_list;
-        fields[4] = note->text;
+        fields[4] = note->text ? note->text : "";
         for (i = 0; i < 5; i++)
         {
                 if (strlen(fields[i]) > MAX_NOTE_DISPLAY_LENGTH - total)
@@ -322,7 +322,7 @@ static bool show_note_to_char (CHAR_DATA *ch, NOTE_DATA *note, int num)
         strcpy(subject, note->subject);
         subject[0] = UPPER(subject[0]);
         length = snprintf(NULL, 0, format, num, subject, note->sender,
-                          note->date, note->to_list, note->text);
+                          note->date, note->to_list, fields[4]);
         if (length < 0 || (buf = malloc((size_t)length + 1)) == NULL)
         {
                 free(subject);
@@ -330,7 +330,7 @@ static bool show_note_to_char (CHAR_DATA *ch, NOTE_DATA *note, int num)
                 return FALSE;
         }
         snprintf(buf, (size_t)length + 1, format, num, subject, note->sender,
-                 note->date, note->to_list, note->text);
+                 note->date, note->to_list, fields[4]);
         free(subject);
         displayed = send_to_char_paged(buf, ch);
         free(buf);
@@ -1212,7 +1212,9 @@ void handle_con_note_text (DESCRIPTOR_DATA *d, char * argument)
 {
         CHAR_DATA *ch = d->character;
         char buf[MAX_STRING_LENGTH];
-        char letter[4*MAX_STRING_LENGTH];
+        char letter[4 * MAX_STRING_LENGTH];
+        NOTE_DATA *note;
+        size_t old_len, line_len;
 
         if (!ch->pcdata->in_progress)
         {
@@ -1244,42 +1246,32 @@ void handle_con_note_text (DESCRIPTOR_DATA *d, char * argument)
 
         /* Check for lines that are too long. Do not allow lines longer than 80 chars */
 
-        if (strlen (buf) > MAX_LINE_LENGTH)
+        line_len = strlen(buf);
+        if (line_len > MAX_LINE_LENGTH)
         {
                 write_to_buffer (d, "Long line rejected. Do NOT go over 80 characters!\n\r",0);
                 return;
         }
 
-        /* Not end of note. Copy current text into temp buffer, add new line, and copy back */
+        note = ch->pcdata->in_progress;
+        old_len = note->text ? strlen(note->text) : 0;
 
-        /* How would the system react to strcpy( , NULL) ? */
-        if (ch->pcdata->in_progress->text)
+        /* Count the stored CRLF before changing the existing draft. */
+        if (old_len + line_len + 2 > MAX_NOTE_TEXT)
         {
-                strcpy (letter, ch->pcdata->in_progress->text);
-                free_string (ch->pcdata->in_progress->text);
-                ch->pcdata->in_progress->text = NULL; /* be sure we don't free it twice */
-        }
-        else
-                strcpy (letter, "");
-
-        /* Check for overflow */
-
-        if ((strlen(letter) + strlen (buf)) > MAX_NOTE_TEXT)
-        { /* Note too long, take appropriate steps */
-                write_to_buffer (d, "Note too long!\n\r", 0);
-                free_note (ch->pcdata->in_progress);
-                ch->pcdata->in_progress = NULL;                 /* important */
-                d->connected = CON_PLAYING;
+                write_to_buffer(d, "Note limit reached. Line not added; "
+                                "end the note to keep what you wrote.\n\r", 0);
                 return;
         }
 
-        /* Add new line to the buffer */
+        if (old_len)
+                memcpy(letter, note->text, old_len);
+        memcpy(letter + old_len, buf, line_len);
+        memcpy(letter + old_len + line_len, "\r\n", 3);
 
-        strcat (letter, buf);
-        strcat (letter, "\r\n"); /* new line. \r first to make note files better readable */
-
-        /* allocate dynamically */
-        ch->pcdata->in_progress->text = str_dup (letter);
+        if (note->text)
+                free_string(note->text);
+        note->text = str_dup(letter);
 }
 
 void handle_con_note_finish (DESCRIPTOR_DATA *d, char * argument)
@@ -1287,8 +1279,9 @@ void handle_con_note_finish (DESCRIPTOR_DATA *d, char * argument)
         char buf [MAX_STRING_LENGTH];
 
         CHAR_DATA *ch = d->character;
+        NOTE_DATA *note = ch->pcdata->in_progress;
 
-                if (!ch->pcdata->in_progress)
+                if (!note)
                 {
                         d->connected = CON_PLAYING;
                         bug ("nanny: In CON_NOTE_FINISH, but no note in progress",0);
@@ -1324,7 +1317,16 @@ void handle_con_note_finish (DESCRIPTOR_DATA *d, char * argument)
                                 break;
 
                         case 'p': /* post note */
-                                finish_note (ch->pcdata->board, ch->pcdata->in_progress);
+                                if (!note->text
+                                || note->text[strspn(note->text, " \t\r\n\v\f")] == '\0')
+                                {
+                                        write_to_buffer(
+                                            d, "Write something before posting.\n\r", 0);
+                                        d->connected = CON_NOTE_TEXT;
+                                        break;
+                                }
+
+                                finish_note (ch->pcdata->board, note);
                                 write_to_buffer (d, "Note posted.\n\r",0);
                                 d->connected = CON_PLAYING;
                                 /* remove AFK status */
