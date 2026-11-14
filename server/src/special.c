@@ -104,6 +104,11 @@ DECLARE_SPEC_FUN( spec_breath_any_anatomical );
 DECLARE_SPEC_FUN( spec_breath_gold_anatomical );
 DECLARE_SPEC_FUN( spec_poison_palm          );
 DECLARE_SPEC_FUN( spec_poison_claw          );
+DECLARE_SPEC_FUN( spec_breath_brass );
+DECLARE_SPEC_FUN( spec_paralysing_bite );
+DECLARE_SPEC_FUN( spec_myconid_spores );
+DECLARE_SPEC_FUN( spec_engulf );
+DECLARE_SPEC_FUN( spec_camel_spit );
 DECLARE_SPEC_FUN( spec_repairman            );
 DECLARE_SPEC_FUN( spec_thief                );
 DECLARE_SPEC_FUN( spec_bounty               );
@@ -215,6 +220,11 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_breath_gold_anatomical")) return spec_breath_gold_anatomical;
         if (!str_cmp(name, "spec_poison_palm"))          return spec_poison_palm;
         if (!str_cmp(name, "spec_poison_claw"))          return spec_poison_claw;
+        if (!str_cmp(name, "spec_breath_brass")) return spec_breath_brass;
+        if (!str_cmp(name, "spec_paralysing_bite")) return spec_paralysing_bite;
+        if (!str_cmp(name, "spec_myconid_spores")) return spec_myconid_spores;
+        if (!str_cmp(name, "spec_engulf")) return spec_engulf;
+        if (!str_cmp(name, "spec_camel_spit")) return spec_camel_spit;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
         if (!str_cmp(name, "spec_thief"))                return spec_thief;
         if (!str_cmp(name, "spec_bounty"))               return spec_bounty;
@@ -331,6 +341,11 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_breath_gold_anatomical) return "spec_breath_gold_anatomical";
         if (special == spec_poison_palm) return "spec_poison_palm";
         if (special == spec_poison_claw) return "spec_poison_claw";
+        if (special == spec_breath_brass) return "spec_breath_brass";
+        if (special == spec_paralysing_bite) return "spec_paralysing_bite";
+        if (special == spec_myconid_spores) return "spec_myconid_spores";
+        if (special == spec_engulf) return "spec_engulf";
+        if (special == spec_camel_spit) return "spec_camel_spit";
         if (special == spec_repairman) return "spec_repairman";
         if (special == spec_thief) return "spec_thief";
         if (special == spec_bounty) return "spec_bounty";
@@ -5168,6 +5183,183 @@ bool spec_poison_claw(CHAR_DATA *ch)
         spell_poison(gsn_venom, ch->level, ch, victim);
         return TRUE;
 }
+
+/* These powers use the current opponent and the normal combat permissions. */
+static CHAR_DATA *native_combat_opponent(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!native_power_ready(ch) || ch->hit <= 0
+        || IS_SET(ch->act, ACT_NO_FIGHT)
+        || IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+                return NULL;
+
+        victim = ch->fighting;
+        if (!victim || victim == ch || victim->deleted
+        || victim->hit <= 0 || victim->position == POS_DEAD
+        || victim->in_room != ch->in_room || is_safe(ch, victim))
+                return NULL;
+        return victim;
+}
+
+/* Brass dragons breathe dry heat or sleep, rather than lightning or poison. */
+bool spec_breath_brass(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        int sn;
+
+        if (!victim || !usable_breath_head(ch))
+                return FALSE;
+
+        if (number_bits(1))
+        {
+                sn = skill_lookup("fire breath");
+                if (sn < 0)
+                        return FALSE;
+                act("$n breathes a cloud of scorching desert heat at $N!",
+                    ch, NULL, victim, TO_NOTVICT);
+                act("$n breathes a cloud of scorching desert heat at you!",
+                    ch, NULL, victim, TO_VICT);
+                act("You breathe scorching desert heat at $N!",
+                    ch, NULL, victim, TO_CHAR);
+        }
+        else
+        {
+                if (IS_AFFECTED(victim, AFF_SLEEP))
+                        return FALSE;
+                sn = gsn_sleep;
+                act("$n breathes a drowsy haze over $N!",
+                    ch, NULL, victim, TO_NOTVICT);
+                act("$n breathes a drowsy haze over you!",
+                    ch, NULL, victim, TO_VICT);
+                act("You breathe a drowsy haze over $N!",
+                    ch, NULL, victim, TO_CHAR);
+        }
+
+        if (sn < 0 || sn >= MAX_SKILL || !skill_table[sn].spell_fun)
+                return FALSE;
+        (*skill_table[sn].spell_fun)(sn, ch->level, ch, victim);
+        return TRUE;
+}
+
+/* A venomous bite can briefly paralyse, without a second physical hit. */
+bool spec_paralysing_bite(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        AFFECT_DATA af;
+
+        if (!victim || !can_be_poisoned(victim) || !usable_breath_head(ch)
+        || !(ch->body_form & PART_FANGS)
+        || !(mob_usable_attack_parts(ch) & PART_FANGS)
+        || IS_AFFECTED(victim, AFF_NON_CORPOREAL | AFF_HOLD)
+        || is_affected(victim, gsn_paralysis))
+                return FALSE;
+
+        act("$n sinks $s venomous fangs into $N!", ch, NULL, victim, TO_NOTVICT);
+        act("$n sinks $s venomous fangs into you!", ch, NULL, victim, TO_VICT);
+        act("You sink your venomous fangs into $N!", ch, NULL, victim, TO_CHAR);
+        if (saves_resistance_effect(ch, ch->level, victim,
+                                   RES_POISON | RES_PARALYSIS))
+                return TRUE;
+
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_paralysis;
+        af.duration = 1;
+        af.location = APPLY_NONE;
+        af.bitvector = AFF_HOLD;
+        affect_to_char(victim, &af);
+        act("$N goes rigid as the venom takes hold.", ch, NULL, victim, TO_NOTVICT);
+        send_to_char("Your muscles lock as the venom takes hold!\n\r", victim);
+        return TRUE;
+}
+
+/* These spores cause the ordinary confusion penalties, after a poison save. */
+bool spec_myconid_spores(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        AFFECT_DATA af;
+
+        if (!victim || !can_be_poisoned(victim) || !usable_breath_head(ch)
+        || IS_AFFECTED(victim, AFF_NON_CORPOREAL | AFF_CONFUSION)
+        || is_affected(victim, gsn_confusion) || is_mindless(victim)
+        || (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        || number_bits(2))
+                return FALSE;
+
+        act("$n releases a cloud of shimmering spores around $N!",
+            ch, NULL, victim, TO_NOTVICT);
+        act("$n releases a cloud of shimmering spores around you!",
+            ch, NULL, victim, TO_VICT);
+        act("You release shimmering spores around $N!", ch, NULL, victim, TO_CHAR);
+        if (saves_resistance_effect(ch, ch->level, victim, RES_POISON))
+                return TRUE;
+
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_confusion;
+        af.duration = 1;
+        af.bitvector = AFF_CONFUSION;
+        af.location = APPLY_HITROLL;
+        af.modifier = -((ch->level / 5) + 1);
+        affect_to_char(victim, &af);
+        af.location = APPLY_INT;
+        af.modifier = -((ch->level / 15) + 1);
+        affect_to_char(victim, &af);
+        af.location = APPLY_WIS;
+        affect_to_char(victim, &af);
+        send_to_char("The world twists into strange shapes around you.\n\r", victim);
+        return TRUE;
+}
+
+/* A central maw can engulf prey without pretending it has a head. */
+bool spec_engulf(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        CHAR_DATA *inside;
+
+        if (!victim || !HAS_ARMS(ch) || !(ch->body_form & PART_GUTS)
+        || IS_AFFECTED(ch, AFF_ARM_TRAUMA | AFF_TORSO_TRAUMA)
+        || IS_AFFECTED(victim, AFF_NON_CORPOREAL | AFF_SWALLOWED)
+        || IS_HUGE(victim) || victim->inside)
+                return FALSE;
+
+        for (inside = char_list; inside; inside = inside->next)
+                if (!inside->deleted && inside->inside == ch)
+                        return FALSE;
+
+        if (number_percent() > 15)
+                return FALSE;
+        do_swallow(ch, "");
+        return TRUE;
+}
+
+/* Spit irritates the eyes; it does not deal the Blindness spell's damage. */
+bool spec_camel_spit(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        AFFECT_DATA af;
+
+        if (!victim || !usable_breath_head(ch)
+        || IS_AFFECTED(victim, AFF_NON_CORPOREAL | AFF_BLIND)
+        || (IS_NPC(victim) && !HAS_EYES(victim)) || number_bits(2))
+                return FALSE;
+
+        act("$n spits into $N's face!", ch, NULL, victim, TO_NOTVICT);
+        act("$n spits into your face!", ch, NULL, victim, TO_VICT);
+        act("You spit into $N's face!", ch, NULL, victim, TO_CHAR);
+        if (saves_spell(ch, ch->level, victim))
+                return TRUE;
+
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_blindness;
+        af.duration = 1;
+        af.location = APPLY_HITROLL;
+        af.modifier = -4;
+        af.bitvector = AFF_BLIND;
+        affect_to_char(victim, &af);
+        send_to_char("You blink helplessly as the spit stings your eyes!\n\r", victim);
+        return TRUE;
+}
+
 
 /* Keep the authored lightning attack, but discharge it from a usable tail. */
 bool spec_electric_eel(CHAR_DATA *ch)

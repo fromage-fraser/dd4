@@ -10,9 +10,9 @@ $
 
 #MOBILES
 #5000
-dervish raggity~
+dervish ragged raggity~
 the dervish~
-The raggity dervish walks on aimlessly.
+The ragged dervish walks on aimlessly.
 ~
 Dressed in loose fitting rags, this man looks like he could use
 some rest.
@@ -21,6 +21,8 @@ some rest.
 5 15 5 5d5+50 2d4+0
 0 700
 8 8 1
+< human~ common~
+MobWeight 65
 #5001
 dervish large~
 the dervish~
@@ -33,6 +35,9 @@ LOTS of rest.
 8 11 1 8d8+80 2d6+1
 0 2000
 8 8 1
+< human~ common~
+MobHeight 185
+MobWeight 95
 #5002
 snake coral~
 the coral snake~
@@ -43,8 +48,11 @@ and black.
 ~
 64 0 -10 S
 4 17 4 4d4+40 1d9+0
-60|512 500
+0 500
 8 8 0
+< snake~ common~
+MobWeight 1
+MobLength 90
 #5003
 scorpion small~
 the small scorpion~
@@ -54,8 +62,9 @@ The little tail is mighty dangerous for such a small creature.
 ~
 64 0 -50 S
 3 17 1 3d3+30 1d8+0
-63|512 500
+0 500
 8 8 0
+< small_scorpion~ common~
 #5004
 worm giant~
 the giant, purple sand worm~
@@ -65,19 +74,25 @@ He's big, mean, and purple. Watch out!
 ~
 2|32 0 -100 S
 18 -1 0 18d18+180 3d6+4
-60|128|512 50000
+0 50000
 8 8 0
+< purple_worm~ common~
 #5005
 dragon brass~
 the brass dragon~
 The brass dragon steps out of the darkness and says 'Hello'.
 Then adds to it, 'Prepare to die, have a nice day!'
 ~
+A broad-winged brass dragon regards you with bright, inquisitive eyes. Her
+burnished scales catch the light as she shifts among the scattered treasures
+of her lair. She seems eager to talk, though her claws suggest that leaving
+the conversation early might be a mistake.
 ~
-2|4|32|16384 8|128 450 S
+2|4|32|16384 128 450 S
 30 -10 -10 30r30+300 1d9+25
-5500 295000
+0 295000
 128|512 8 2
+< adult_brass_dragon~ boss~
 #5006
 nomad leader~
 the nomad leader~
@@ -91,6 +106,7 @@ about him.
 14 7 0 14d14+140 3d8+2
 0 17000
 6 6 1
+< human~ elite~
 #5007
 nomad commander~
 the nomad commander~
@@ -103,26 +119,36 @@ woven of silk and gold thread. A nasty cutlass hangs at his side.
 12 8 1 12d12+120 3d5+1
 0 11000
 8 8 1
+< human~ rare~
 #5008
 nomad warrior~
 the nomad warrior~
 A proud nomad warrior stands here.
 ~
+A human warrior stands ready beside the nomads' tents. His desert clothes
+are dusty from travel, but his cutlass is well cared for and close at hand.
 ~
 2 0 700 S
 10 10 0 10d10+100 4d3+0
 0 4000
 8 8 1
+< human~ common~
 #5009
 slave young~
 the slave~
 A young slave sits here staring at you with pleading eyes.
 ~
+A young adult human woman sits quietly among the few possessions in this
+simple tent. Her worn clothes and tired face speak of a hard life. She watches
+you with a hopeful expression, as though you might offer a way out.
 ~
 130 0 1000 S
 3 18 9 3d3+30 1d5+0
 0 200
 5 5 2
+< human~ common~
+MobHeight 160
+MobWeight 50
 #5010
 dracolich lich~
 the dracolich~
@@ -133,8 +159,12 @@ Obviously it no longer fears death.
 ~
 2083 136 -1000 S
 20 1 -2 20d20+200 25d2+0
-16|128|256|512 50000
+0 50000
 8 8 0
+< dracolich~ boss~
+MobHeight 400
+MobWeight 2000
+MobLength 1600
 #5011
 drider drow~
 the drider~
@@ -146,6 +176,7 @@ This half-spider, half-drow creature is a formidable opponent.
 8 12 2 8d8+80 2d6+2
 0 2000
 8 8 2
+< drider~ common~
 #5012
 duergar dwarf~
 the dark dwarf~
@@ -157,6 +188,7 @@ The duergar could crush your head as easily as it does those rocks.
 5 16 3 5d5+50 2d5+1
 0 750
 8 8 1
+< duergar~ common~
 #5013
 myconoid~
 the myconoid~
@@ -167,29 +199,40 @@ has the same effect).
 ~
 192 8 850 S
 6 15 4 6d6+60 2d7+0
-6 700
+0 700
 8 8 1
+< myconid~ common~
 #5014
 myconoid shaman~
 the myconoid shaman~
-A rather large myconoid stands here chanting in a strange tongue.
+A rather large myconoid sways here, releasing clouds of spores.
 ~
-The shaman shoots spores into the air.
+The shaman slowly raises its broad cap, sending shimmering spores into
+the air. Its heavy arms move in a quiet rhythm above a mushroom-shaped
+amulet. There is no sound, but the motions have the feel of a ritual.
 ~
 130 136 850 S
 10 13 2 8d8+80 2d7+2
-6 3000
+0 3000
 8 8 1
+< myconid~ rare~
+MobHeight 244
+MobWeight 110
+MobSize 2
 #5015
 dustdigger~
 the dustdigger~
 A small oasis invites you to dive in.
 ~
+Beneath the shifting sand lies a broad, flattened creature with five thick
+arms arranged around a central maw. Its rough hide blends into the dunes.
+The inviting pool above it shimmers whenever the creature moves.
 ~
 38 65536 -200 S
 7 10 1 7d7+70 3d4+0
-63 1500
+0 1500
 8 8 0
+< dustdigger~ common~
 #5017
 camel~
 the rabid camel~
@@ -199,8 +242,9 @@ Don't mess with this animal.
 ~
 34 0 -351 S
 5 12 6 6d6+60 2d4+3
-36|512 700
+0 700
 8 8 0
+< camel~ common~
 #0
 
 
@@ -488,6 +532,22 @@ A fiery green emerald sits here.~
 8 64 1
 23~ 0~ 0~ 0~
 7 5500 1550
+#5033
+scorpion stinger tail~
+a scorpion's tail stinger~
+A small scorpion's severed tail stinger lies here.~
+~
+5 16384|67108864|137438953472 8192
+6~ 1~ 4~ 16~
+1 0 0
+#5034
+worm stinger tail purple~
+a purple worm's tail stinger~
+A purple worm's severed tail stinger lies here.~
+~
+5 16384|67108864|137438953472 8192
+6~ 2~ 4~ 16~
+10 0 0
 #0
 
 
@@ -1370,8 +1430,10 @@ E 1 3022 25 16             (long sword)
 *
 M 0 5002 5 5031          Snake, coral
 M 0 5003 5 5028          Scorpion, small
+E 1 5033 99 16             (attached tail stinger)
 *
 M 0 5004 1 5028          Purple Worm
+E 1 5034 99 16             (attached tail stinger)
 G 1 5019 10                (pink potion)
 G 1 5020 5                 (platinum wand)
 G 1 5021 1                 (energy bow)
@@ -1403,8 +1465,8 @@ E 1 5018 25 16             (cutlass)
 M 0 5009 10 5057         Slaves
 *
 M 0 5010 1 5011          Dracolich
-E 1 5001 8 5                (Banded mail)
-E 1 5002 8 16               (Halberd)
+G 1 5001 8                  (Banded mail, carried treasure)
+G 1 5002 8                  (Halberd, carried treasure)
 *
 M 0 5011 3 5009          Driders
 E 1 3022 50 16             (long sword)
@@ -1430,9 +1492,11 @@ S
 
 
 #SPECIALS
-M  5005 spec_breath_lightning
-M  5010 spec_breath_fire
-M  5014 spec_cast_cleric
+N 5010 2 spec_breath_fire_anatomical
+P 5010 70 30 0
+N 5014 1 spec_cast_cleric
+N 5014 2 spec_myconid_spores
+P 5014 70 30 0
 S
 
 

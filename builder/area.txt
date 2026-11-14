@@ -8086,3 +8086,100 @@ The unnamed Sentinel blast, other object stats, shop prices/hours and
 unplaced artifacts stay. Text fixes cover the champion, copied Jakyra
 description, mastodon, paladin, rack keyword and misleading reset comments.
 No matching Pit source exists; other source/area pairs stay unchanged.
+
+
+Great Eastern Desert creatures and native powers
+-----------------------------------------------
+
+These archetypes are available through the existing archetype field:
+small_scorpion, purple_worm, adult_brass_dragon, drider, myconid,
+dustdigger and camel. The new fungoid and radial_invertebrate entries
+are basic body species, not archetypes to put directly on an area mob.
+Existing IDs and individual area fields have not changed.
+
+The coral snake 5002 stays harmless: it has an ordinary bite and no
+poison special, poisoned body weapon or inherited venom. Its original
+harmless description stays. Its 90cm length and 1kg weight are descriptive.
+The school cobra's separate harmless exception also stays.
+
+Small scorpions use arachnid anatomy, pincers, a shell and a tail.
+Purple worms are living, limbless animals with a gut, mouth and tail.
+Both use an attached poisoned body-part weapon for the stinger, not a
+new stinger flag or target group. The weapon has ITEM_BODY_PART,
+ITEM_POISONED and ITEM_DONOT_RANDOMISE, no TAKE, value[0]=6 for tail
+targeting and value[3]=16 for sting. Tail injury/disarming stops it;
+ordinary pincers or bite remain available. Regenerate heals an attached
+injured weapon, but does not recreate one that has been cut off.
+Source weapon dice are 1d4 for 5033 and 2d4 for 5034; DD4's existing weapon
+creation still sets live dice from level, before the randomiser flag.
+That existing scaling is unchanged. These stingers add the usual +5
+Venom allowance once through their archetypes. Purple worm Swallow
+adds its own +10 once. Swallow continues to exclude HUGE targets,
+not every Large target. Purple worms have -4 natural armour and HUGE.
+
+Adult brass dragons are living, speaking dragons with wings, organs,
+blood and a corpse. They have ordinary adult-dragon senses, flight,
+fear, magic resistance, fire immunity and -20 natural armour.
+spec_breath_brass chooses scorching heat or sleep equally. Heat uses
+the existing fire-breath spell; sleep uses the existing Sleep spell,
+its save and immunity. It never refreshes an already sleeping target.
+The power needs a usable head and a permitted current opponent.
+The special adds +10 XP. Existing area aggression and Sanctuary stay.
+
+Driders use arachnoid_humanoid, with a drow upper body and spider legs.
+They have infrared, magic resistance, -10 natural armour, the reviewed
+drow light penalty and elf sleep/charm/ghoul-touch defences. Their
+trait profile supplies these directly: a trait parent is not shared
+across different basic body species. Default specials are 70 percent
+mage and 30 percent spec_paralysing_bite. The bite needs usable fangs,
+does no second physical hit, saves against poison/paralysis and holds
+for one tick. It does not refresh an existing hold. The profile's +5
+defence allowance and the specials' +10 each are counted once.
+
+Myconids are conscious organic fungi, with limbs and a cap/head region
+but no animal eyes, heart, brain, gut or usable blood. They are not
+mindless, undead, inorganic, soulless or automatically ANALGIC, and
+they leave a physical corpse. spec_myconid_spores has a one-in-four
+eligible-pulse chance to cause Confusion for one tick after a poison
+save. It uses the ordinary level-based confusion penalties without
+stacking, refreshing or confusing mindless/attackable-object targets.
+The special adds +5 XP. The local shaman keeps cleric casting with
+70 percent cleric/30 percent spores, and releases spores without speech.
+Full rapport, reproductive spawning and corpse-animation systems are
+not supplied by this archetype.
+
+Dustdiggers have five arms around a central mouth, with no separate
+head, eyes, legs or heart. They are living, bloodless radial animals,
+not inorganic objects or soulless hazards. They keep physical corpses,
+have -6 natural armour and use the existing natural-attack-type trait
+for a central bite. spec_engulf uses ordinary Swallow at a 15 percent
+eligible-pulse attempt rate, but checks the arms/torso instead of
+requiring a head. It keeps one meal, ordinary safety, HUGE exclusion,
+escape and digestion. The special adds +10 XP. The area keeps its
+authored oasis disguise and Hide; there is no new global mirage system.
+The reference is the original AD&D 1e Monster Manual II, p61. A 2e entry
+has not been verified; this older reference was an explicit decision.
+
+Camels use quadrupedal_mammal with padded feet, a tail and a biting
+mouth. They have -3 natural armour and ordinary bite/foreleg attacks.
+spec_camel_spit has a one-in-four eligible-pulse chance to blind a
+target with eyes for one tick, with a normal save and no HP damage.
+It does not refresh blindness. The special adds +5 XP. This does not
+make a camel mountable or implement contagious rabies automatically.
+
+The new combat powers require a living, awake, available NPC and a
+permitted current opponent in the same room. Normal player-order
+authority, safety and resistance rules still apply. Physical venom,
+spores, spit and engulf cannot touch an incorporeal target. No new
+player spells, ACT markers, trait fields or area-file fields were added.
+
+In Great Eastern Desert, the brass dragon 5005 and dracolich 5010 are
+Boss, nomad leader 5006 is Elite, commander 5007 and shaman 5014 are Rare.
+Others are Common. Rank HP applies once. All aggression, Wimpy,
+Sentinel, Stay Area, regeneration, fame, levels, alignments and sexes
+remain as authored. Body XOR masks now inherit the intended anatomy.
+Brass dragon retains her key and scroll. Dracolich uses its normal
+power 70 percent/fire breath 30 percent and carries its old mail/halberd
+as loot. Two stinger objects/resets are added; other object properties,
+population caps/placements, room flags, random exits and key links stay.
+There is no matching Scribe source for this area.
