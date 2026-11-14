@@ -103,6 +103,7 @@ DECLARE_SPEC_FUN( spec_breath_steam_anatomical );
 DECLARE_SPEC_FUN( spec_breath_any_anatomical );
 DECLARE_SPEC_FUN( spec_breath_gold_anatomical );
 DECLARE_SPEC_FUN( spec_poison_palm          );
+DECLARE_SPEC_FUN( spec_poison_claw          );
 DECLARE_SPEC_FUN( spec_repairman            );
 DECLARE_SPEC_FUN( spec_thief                );
 DECLARE_SPEC_FUN( spec_bounty               );
@@ -213,6 +214,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_breath_any_anatomical")) return spec_breath_any_anatomical;
         if (!str_cmp(name, "spec_breath_gold_anatomical")) return spec_breath_gold_anatomical;
         if (!str_cmp(name, "spec_poison_palm"))          return spec_poison_palm;
+        if (!str_cmp(name, "spec_poison_claw"))          return spec_poison_claw;
         if (!str_cmp(name, "spec_repairman"))            return spec_repairman;
         if (!str_cmp(name, "spec_thief"))                return spec_thief;
         if (!str_cmp(name, "spec_bounty"))               return spec_bounty;
@@ -328,6 +330,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_breath_any_anatomical) return "spec_breath_any_anatomical";
         if (special == spec_breath_gold_anatomical) return "spec_breath_gold_anatomical";
         if (special == spec_poison_palm) return "spec_poison_palm";
+        if (special == spec_poison_claw) return "spec_poison_claw";
         if (special == spec_repairman) return "spec_repairman";
         if (special == spec_thief) return "spec_thief";
         if (special == spec_bounty) return "spec_bounty";
@@ -5142,6 +5145,30 @@ static bool native_power_ready(CHAR_DATA *ch)
             && !IS_AFFECTED(ch, AFF_DAZED);
 }
 
+/* A venomous claw needs a usable limb and an opponent it can reach. */
+bool spec_poison_claw(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!native_power_ready(ch) || ch->hit <= 0
+        || IS_SET(ch->act, ACT_NO_FIGHT)
+        || !(ch->body_form & PART_CLAWS)
+        || !(mob_usable_attack_parts(ch) & PART_CLAWS))
+                return FALSE;
+
+        victim = ch->fighting;
+        if (!victim || victim == ch || victim->deleted || victim->hit <= 0
+        || victim->position == POS_DEAD || victim->in_room != ch->in_room
+        || is_safe(ch, victim) || number_bits(2))
+                return FALSE;
+
+        act("You rake $N with your poisoned claws!", ch, NULL, victim, TO_CHAR);
+        act("$n rakes you with poisoned claws!", ch, NULL, victim, TO_VICT);
+        act("$n rakes $N with poisoned claws!", ch, NULL, victim, TO_NOTVICT);
+        spell_poison(gsn_venom, ch->level, ch, victim);
+        return TRUE;
+}
+
 /* Keep the authored lightning attack, but discharge it from a usable tail. */
 bool spec_electric_eel(CHAR_DATA *ch)
 {
@@ -5252,12 +5279,10 @@ bool spec_elephant(CHAR_DATA *ch)
 
         if (!native_power_ready(ch) || ch->hit <= 0
         || IS_SET(ch->act, ACT_NO_FIGHT)
-        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
-        || (ch->in_room->area
-            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
         || !(ch->body_form & PART_TRUNK) || !usable_breath_head(ch))
                 return FALSE;
 
+        /* Scripted NPC fights use the same safety decision as normal combat. */
         victim = ch->fighting;
         if (!victim || victim == ch || victim->deleted || victim->hit <= 0
         || victim->position == POS_DEAD || victim->in_room != ch->in_room
