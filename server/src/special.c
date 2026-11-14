@@ -89,6 +89,7 @@ DECLARE_SPEC_FUN( spec_poison               );
 DECLARE_SPEC_FUN( spec_bear                 );
 DECLARE_SPEC_FUN( spec_elephant             );
 DECLARE_SPEC_FUN( spec_constrictor          );
+DECLARE_SPEC_FUN( spec_electric_eel         );
 DECLARE_SPEC_FUN( spec_breath_gas_anatomical );
 DECLARE_SPEC_FUN( spec_cooshee              );
 DECLARE_SPEC_FUN( spec_brownie              );
@@ -198,6 +199,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_bear"))                 return spec_bear;
         if (!str_cmp(name, "spec_elephant"))             return spec_elephant;
         if (!str_cmp(name, "spec_constrictor"))          return spec_constrictor;
+        if (!str_cmp(name, "spec_electric_eel"))         return spec_electric_eel;
         if (!str_cmp(name, "spec_breath_gas_anatomical")) return spec_breath_gas_anatomical;
         if (!str_cmp(name, "spec_cooshee"))              return spec_cooshee;
         if (!str_cmp(name, "spec_brownie"))              return spec_brownie;
@@ -312,6 +314,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_bear) return "spec_bear";
         if (special == spec_elephant) return "spec_elephant";
         if (special == spec_constrictor) return "spec_constrictor";
+        if (special == spec_electric_eel) return "spec_electric_eel";
         if (special == spec_breath_gas_anatomical) return "spec_breath_gas_anatomical";
         if (special == spec_cooshee) return "spec_cooshee";
         if (special == spec_brownie) return "spec_brownie";
@@ -5137,6 +5140,37 @@ static bool native_power_ready(CHAR_DATA *ch)
             && !IS_AFFECTED(ch, AFF_CHARM)
             && !IS_AFFECTED(ch, AFF_HOLD)
             && !IS_AFFECTED(ch, AFF_DAZED);
+}
+
+/* Keep the authored lightning attack, but discharge it from a usable tail. */
+bool spec_electric_eel(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        int sn;
+
+        if (!native_power_ready(ch) || ch->hit <= 0
+        || !HAS_TAIL(ch) || IS_AFFECTED(ch, AFF_TAIL_TRAUMA)
+        || IS_SET(ch->act, ACT_NO_FIGHT)
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || (ch->in_room->area
+            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE)))
+                return FALSE;
+
+        /* Match the old breath's one-in-four choice among its attackers. */
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+                if (!victim->deleted && victim != ch && victim->hit > 0
+                && victim->position != POS_DEAD && victim->fighting == ch
+                && !number_bits(2))
+                        break;
+        if (!victim || is_safe(ch, victim))
+                return FALSE;
+        sn = skill_lookup("lightning breath");
+        if (sn < 0)
+                return FALSE;
+        act("Electricity crackles along $n's body and leaps towards $N!",
+            ch, NULL, victim, TO_ROOM);
+        (*skill_table[sn].spell_fun)(sn, ch->level, ch, victim);
+        return TRUE;
 }
 
 /* A helpful priest fights as a cleric, then returns to helping visitors. */

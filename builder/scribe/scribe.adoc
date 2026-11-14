@@ -12092,3 +12092,85 @@ refill inhabitants, carrying 17 then 20 items. Its imported Midgaard thief
 not counted again here. Both mage routines, thief invisibility/Sneak and
 silver dagger remain. The only text corrections are bares its teeth, there
 is, and a reset comment. The two portrait corrections are handled separately.
+
+
+Shadow Keep, animated armour and shadow fiends
+---------------------------------------------
+
+Shadow Keep's 27 definitions use the reviewed human, wraith, skeleton,
+zombie, horse, dog, gnome and dwarf profiles, plus giant_electric_eel,
+giant_rat, animated_armour and shadow_fiend. The captain stays Elite and
+the king stays Boss; all others stay Common. There are no rank promotions.
+These profiles append without renumbering earlier entries or adding area
+fields, body flags or ACT markers.
+
+Giant_electric_eel uses fish: ordinary head, eyes, heart and other organs,
+fins, tail and fang bite, swimming and electrical immunity. Its estimates
+are 300 cm length, 30 kg and Medium, with height unspecified and no HUGE.
+Spec_electric_eel keeps the old lightning-breath spell, one-in-four victim
+selection, damage and +10 special XP. It describes bodily discharge instead
+of lightning from a mouth. A missing or injured tail blocks it; Regenerate
+repairs the injury. Arm/head trauma does not disable its electrical organs.
+Ordinary native readiness, safety and no-fight rules apply. There is no new
+radius model, extra attack or one-hour recharge. The old eel stays unchanged.
+
+Giant_rat uses quadrupedal_mammal with rat anatomy, swimming and ordinary
+fang attacks. Defaults are 30 cm shoulder height, 8 kg, 60 cm body length
+and Small. It has no blanket poison immunity or inherited venom special.
+Shadow Keep's rat keeps its authored venom through individual
+spec_poison_bite. Shared disease and fire-aversion remain separate work.
+
+Animated_armour uses bipedal_construct: inorganic, mindless, no speech,
+blood, soul, pain or corpse, with the existing construct pattern of poison,
+sleep, charm and drain immunity. Defaults are 175 cm, 35 kg and Medium.
+It gains no extra natural armour, weapon immunity, magic immunity or golem
+breath. The two guardians keep individual spec_guard and their worn silver
+equipment and axes. Ordinary loot still drops when the construct breaks.
+
+Shadow_fiend is an intelligent creature of darkness, not an undead shadow.
+It uses humanoid limbs and senses, claws, fangs and small wings, without
+physical heart, brain or guts. It is inorganic and leaves no corpse, but
+retains soul, pain and communication. It is not mindless, soulless, analgic
+or undead. Defaults are 183 cm and Medium, with mass unspecified. Small
+wings do not grant flight. It is immune to fire, cold and electricity and
+inherits the existing spec_demon as this DD4 creature's casting routine.
+
+The internal shadow_light_response trait opts an NPC into live lighting
+responses. In darkness it gains +2 melee accuracy and -8 natural armour,
+and receives 50% damage. Ordinary light gives +1, -4 and 100%. Direct
+sunlight or an active Continual Light orb gives +0, +0 and 200%. Natural
+sunlight keeps the normal shelter, weather and underwater rules. Spell
+orbs count on the ground or worn in the light slot; inactive, deleted or
+unequipped inventory orbs do not brighten the room. Other light uses the
+normal room-darkness check. No vnum test selects the creature, and PCs do
+not inherit this new trait. MSTAT shows its source and current response.
+
+Damage changes once after contact/resistance, before ordinary combat
+defences and the existing damage cap. Zero damage stays zero. Light does
+not add automatic fleeing, attacks, possession, darkness/fear casting,
+special turning or an undead flag. The tabletop light response informs
+this adaptation; direct-target Light damage has no matching DD4 spell.
+
+The first undead soldier 16601 is a skeleton. The decaying soldier 16607
+is a deliberate zombie caster: use the existing area AFF/body XOR to remove
+inherited mindless/no-speech while keeping its individual spec_cast_undead.
+The wraith keeps invisibility, flight, muteness and its ordinary claw loot,
+and inherits the reviewed wraith phase/drain routine. Its raw corpse flag
+is removed so it cannot cancel inherited no-corpse.
+
+The great stallion 16608 uses local 165 cm shoulder height, 600 kg and
+260 cm length, Large without HUGE. Its mountable flag stays. Page boy
+16617 uses adolescent 155 cm/45 kg. The cook and ambiguous prisoner are
+human; the prisoner's rat comparison does not grant lycanthropy. Human
+bodyguards and that prisoner retain their authored poison power through
+the existing arm-checked spec_poison_palm. The priest keeps mage casting:
+his demon book and offensive scroll support that authored occult role.
+
+All source behaviour, effects, sexes, levels and alignments stay. Clear
+repeated absence masks on rat/horse/dog, and the eel's erroneous no-heart
+mask. Preserve all 98 room flags/exits, 57 objects, keys, original caps,
+placements and carried-versus-worn choices. The old soldier caps yield
+52 initial inhabitants/125 carried items and 53/127 after refills. The
+shared coin 16615 and its seven Omu Central consumers stay unchanged.
+The archer's bow is already correctly flagged and wielded. No matching
+Shadow Keep source exists; other source/area pairs stay unchanged.

@@ -3670,7 +3670,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 170
+#define MAX_MOB 174
 #define MAX_SPECIES 31
 #define MAX_RANK 6
 
@@ -5972,6 +5972,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_STONE_DEATH,
         CREATURE_TRAIT_BOW_ACCURACY,
         CREATURE_TRAIT_NATURAL_DAMAGE_TYPE,
+        CREATURE_TRAIT_SHADOW_LIGHT_RESPONSE,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Internal damage kinds keep trait strengths small and named. */
@@ -6008,6 +6009,15 @@ int creature_trait_value args((CHAR_DATA *ch, CREATURE_TRAIT id));
 int creature_status_resistance_percent args((CHAR_DATA *ch, unsigned long int res_types));
 bool creature_resists_status args((CHAR_DATA *ch, unsigned long int res_types));
 int creature_natural_armour args((CHAR_DATA *ch));
+typedef enum
+{
+        CREATURE_LIGHT_DARK,
+        CREATURE_LIGHT_ORDINARY,
+        CREATURE_LIGHT_BRIGHT
+} CREATURE_LIGHT_STATE;
+CREATURE_LIGHT_STATE creature_light_state(CHAR_DATA *ch);
+int creature_light_melee_bonus(CHAR_DATA *ch);
+int creature_light_damage(CHAR_DATA *victim, int damage);
 bool creature_echo_locates args((CHAR_DATA *ch, CHAR_DATA *victim));
 bool clear_strength_drain args((CHAR_DATA *ch));
 void strength_drain_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim,

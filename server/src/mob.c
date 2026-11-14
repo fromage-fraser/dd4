@@ -14,6 +14,7 @@
 #include <sys/types.h>
 #endif
 #include <errno.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -2917,6 +2918,46 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_breath_acid_anatomical", "", "", 0,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 30
+        },
+        {
+                "giant_electric_eel", "fish", "icon1", "icon2",
+                0, 0, PART_FANGS, PART_FANGS, 0, 0, RES_ELECTRICITY,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 30, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_electric_eel", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "giant_rat", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_SWIM, PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_FANGS, 0, 0, 0, 0, 0, 0, 0,
+                30, 8, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 60
+        },
+        {
+                "animated_armour", "bipedal_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_BLOODLESS
+                    | BODY_ANALGIC | BODY_SOULLESS,
+                0, 0, 0, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                175, 35, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "shadow_fiend", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_INORGANIC | BODY_NO_HEART | BODY_NO_CORPSE
+                    | PART_HEART | PART_BRAINS | PART_GUTS
+                    | PART_CLAWS | PART_FANGS | PART_WINGS,
+                PART_CLAWS | PART_FANGS, 0, 0,
+                RES_FIRE | RES_COLD | RES_ELECTRICITY,
+                0, 0, 0, 0,
+                183, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 
 };
@@ -3016,6 +3057,7 @@ typedef enum creature_trait_effect
         TRAIT_STONE_DEATH,
         TRAIT_BOW_ACCURACY,
         TRAIT_NATURAL_DAMAGE_TYPE,
+        TRAIT_LIGHT_RESPONSE,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -3124,7 +3166,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"bear_hug_dice", TRAIT_NATIVE_HUG_DICE, NULL},
         {"stone_death", TRAIT_STONE_DEATH, NULL},
         {"bow_accuracy", TRAIT_BOW_ACCURACY, NULL},
-        {"natural_damage_type", TRAIT_NATURAL_DAMAGE_TYPE, NULL}
+        {"natural_damage_type", TRAIT_NATURAL_DAMAGE_TYPE, NULL},
+        {"shadow_light_response", TRAIT_LIGHT_RESPONSE, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -3574,6 +3617,11 @@ static const CREATURE_TRAIT_CHANGE centipede_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -1}
 };
 
+static const CREATURE_TRAIT_CHANGE shadow_fiend_trait_changes[] =
+{
+        {CREATURE_TRAIT_SHADOW_LIGHT_RESPONSE, 1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3597,6 +3645,7 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
             TRAIT_ITEMS(untrained_dwarf_trait_changes)},
         {"goblin", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"kobold", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
+        {"shadow_fiend", NULL, shadow_fiend_trait_changes, TRAIT_ITEMS(shadow_fiend_trait_changes)},
         {"constrictor_snake", NULL, constrictor_trait_changes, TRAIT_ITEMS(constrictor_trait_changes)},
         {"centipede", NULL, centipede_trait_changes, TRAIT_ITEMS(centipede_trait_changes)},
         {"lightning_bat", "bat", NULL, 0},
@@ -3969,7 +4018,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_TURN_IMMUNITY
                                     || effect == TRAIT_HOLY_WATER_IMMUNITY
                                     || effect == TRAIT_FEAR_IMMUNITY
-                                    || effect == TRAIT_STONE_DEATH)
+                                    || effect == TRAIT_STONE_DEATH
+                                    || effect == TRAIT_LIGHT_RESPONSE)
                                 && (profile->changes[i].value < 0
                                     || profile->changes[i].value > 1))
                                         issues++;
@@ -4141,7 +4191,7 @@ int creature_melee_hit_bonus(CHAR_DATA *attacker, CHAR_DATA *victim)
                 && trait_targets_family(&creature_trait_definitions[id], attacker_family))
                         bonus += creature_trait_value(victim, id);
         }
-        return bonus;
+        return bonus + creature_light_melee_bonus(attacker);
 }
 
 bool creature_is_sunlight_sensitive(CHAR_DATA *ch)
@@ -4168,6 +4218,66 @@ bool creature_sunlight_powerless(CHAR_DATA *ch)
 {
         return creature_trait_value(ch, CREATURE_TRAIT_SUNLIGHT_POWERLESS) > 0
             && creature_in_direct_sunlight(ch);
+}
+
+/* An active spell orb is bright whether it rests here or is worn as a light. */
+static bool active_continual_light(OBJ_DATA *obj)
+{
+        return obj && !obj->deleted && obj->pIndexData
+            && obj->item_type == ITEM_LIGHT && obj->value[2] != 0
+            && (obj->pIndexData->vnum == OBJ_VNUM_LIGHT_BALL
+                || obj->pIndexData->vnum == OBJ_VNUM_LIGHT_BALL_CRAFT);
+}
+
+CREATURE_LIGHT_STATE creature_light_state(CHAR_DATA *ch)
+{
+        OBJ_DATA *obj;
+        CHAR_DATA *other;
+        ROOM_INDEX_DATA *room;
+
+        if (!ch || ch->deleted || !(room = ch->in_room))
+                return CREATURE_LIGHT_ORDINARY;
+        if (creature_in_direct_sunlight(ch))
+                return CREATURE_LIGHT_BRIGHT;
+        for (obj = room->contents; obj; obj = obj->next_content)
+                if (active_continual_light(obj))
+                        return CREATURE_LIGHT_BRIGHT;
+        for (other = room->people; other; other = other->next_in_room)
+                if (!other->deleted
+                && active_continual_light(get_eq_char(other, WEAR_LIGHT)))
+                        return CREATURE_LIGHT_BRIGHT;
+        return room_is_dark(room) ? CREATURE_LIGHT_DARK : CREATURE_LIGHT_ORDINARY;
+}
+
+/* A trait opts an NPC in; there is no creature-name or vnum exception. */
+static bool creature_has_light_response(CHAR_DATA *ch)
+{
+        return ch && !ch->deleted && IS_NPC(ch)
+            && creature_trait_value(ch, CREATURE_TRAIT_SHADOW_LIGHT_RESPONSE) > 0;
+}
+
+int creature_light_melee_bonus(CHAR_DATA *ch)
+{
+        if (!creature_has_light_response(ch))
+                return 0;
+        switch (creature_light_state(ch))
+        {
+        case CREATURE_LIGHT_DARK: return 2;
+        case CREATURE_LIGHT_ORDINARY: return 1;
+        default: return 0;
+        }
+}
+
+int creature_light_damage(CHAR_DATA *victim, int damage)
+{
+        if (damage <= 0 || !creature_has_light_response(victim))
+                return damage;
+        switch (creature_light_state(victim))
+        {
+        case CREATURE_LIGHT_DARK: return damage / 2;
+        case CREATURE_LIGHT_BRIGHT: return (int)UMIN((long long)INT_MAX, 2LL * damage);
+        default: return damage;
+        }
 }
 
 /* Sunlight exposes a phased spirit without changing an explicit NONE. */
@@ -4231,6 +4341,18 @@ void show_creature_traits(CHAR_DATA *viewer, CHAR_DATA *victim)
                             IS_NPC(victim) ? "" : "; approved player racial trait");
                 send_to_char(buf, viewer);
         }
+        if (creature_has_light_response(victim))
+        {
+                CREATURE_LIGHT_STATE light = creature_light_state(victim);
+                snprintf(buf, sizeof(buf),
+                    "  Current light response: %s; melee +%d, armour %+d, incoming damage %d%%.\n\r",
+                    light == CREATURE_LIGHT_DARK ? "darkness"
+                        : light == CREATURE_LIGHT_BRIGHT ? "bright light" : "ordinary light",
+                    creature_light_melee_bonus(victim),
+                    light == CREATURE_LIGHT_DARK ? -8 : light == CREATURE_LIGHT_ORDINARY ? -4 : 0,
+                    light == CREATURE_LIGHT_DARK ? 50 : light == CREATURE_LIGHT_BRIGHT ? 200 : 100);
+                send_to_char(buf, viewer);
+        }
         if (!any)
                 send_to_char("  None.\n\r", viewer);
 }
@@ -4261,7 +4383,17 @@ unsigned long int creature_natural_damage_type(CHAR_DATA *ch)
 
 int creature_natural_armour(CHAR_DATA *ch)
 {
-        return creature_trait_value(ch, CREATURE_TRAIT_NATURAL_ARMOUR);
+        int armour = creature_trait_value(ch, CREATURE_TRAIT_NATURAL_ARMOUR);
+        if (creature_has_light_response(ch))
+        {
+                switch (creature_light_state(ch))
+                {
+                case CREATURE_LIGHT_DARK: armour -= 8; break;
+                case CREATURE_LIGHT_ORDINARY: armour -= 4; break;
+                default: break;
+                }
+        }
+        return armour;
 }
 
 /* Sonar locates a nearby physical creature; it does not provide distant sight. */
@@ -6882,6 +7014,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_poison", 5 },
                 { "spec_bear", 5 },
                 { "spec_constrictor", 5 },
+                { "spec_electric_eel", 10 },
                 { "spec_cooshee", 5 },
                 { "spec_brownie", 5 },
                 { "spec_poison_palm", 5 },

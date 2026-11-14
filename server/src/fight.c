@@ -2278,6 +2278,9 @@ static void damage_internal(CHAR_DATA *ch,
                         dam += cold_bonus;
         }
 
+        /* Apply the opted-in light response once, after contact and resistance. */
+        dam = creature_light_damage(victim, dam);
+
         if ((!forced_fall || ch != victim) && !IS_NPC(ch)
         &&  !is_noncorporeal_player(ch))
                 ch->pcdata->dam_per_fight += dam;
