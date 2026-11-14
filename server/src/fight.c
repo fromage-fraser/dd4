@@ -2245,6 +2245,10 @@ static void damage_internal(CHAR_DATA *ch,
         {
                 dam = apply_resistance_result_to_damage(
                     dam, resistance_result);
+                /* Native unarmed fire has no spell-specific ward check. */
+                if (natural_contact && IS_SET(res_types, RES_FIRE)
+                &&  has_elemental_resistance(victim, gsn_resist_heat))
+                        dam *= 0.8;
         }
 
         /*

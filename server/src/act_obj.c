@@ -6284,7 +6284,7 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         send_to_char("You can't afford it.\n\r", ch);
                         return;
                 }
-                pet = create_mobile(pet->pIndexData);
+                pet = create_mobile_at_level(pet->pIndexData, pet->level);
                 SET_BIT(ch->act, PLR_BOUGHT_PET);
                 SET_BIT(pet->act, ACT_PET);
                 SET_BIT(pet->affected_by, AFF_CHARM);
@@ -6317,6 +6317,7 @@ void do_buy(CHAR_DATA *ch, char *argument)
                 int cost;
                 int64_t total_cost;
                 int64_t charcoins;
+                CHAR_DATA buyer_balance;
                 int discount;
 
                 /* multiple buy additions :P */
@@ -6445,7 +6446,15 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if ((int64_t)ch->carry_weight + ch->coin_weight
+                /* Change can make the purse heavier or lighter. */
+                buyer_balance = *ch;
+                if (!coins_from_char(total_cost, &buyer_balance))
+                {
+                        send_to_char("You can't afford it.\n\r", ch);
+                        return;
+                }
+
+                if ((int64_t)ch->carry_weight + buyer_balance.coin_weight
                     + (int64_t)item_count * get_obj_weight(obj) > can_carry_w(ch))
                 {
                         send_to_char("You can't carry that much weight.\n\r", ch);
@@ -6467,11 +6476,11 @@ void do_buy(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (!coins_from_char(total_cost, ch))
-                {
-                        send_to_char("You can't afford it.\n\r", ch);
-                        return;
-                }
+                ch->plat = buyer_balance.plat;
+                ch->gold = buyer_balance.gold;
+                ch->silver = buyer_balance.silver;
+                ch->copper = buyer_balance.copper;
+                ch->coin_weight = buyer_balance.coin_weight;
 
                 if (ch->pcdata->fame < 400)
                         act("$n nods solemnly at you.", keeper, NULL, ch, TO_VICT);

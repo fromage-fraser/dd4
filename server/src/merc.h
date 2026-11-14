@@ -5591,6 +5591,7 @@ void cache_prerequisites args((void));
 int mob_lookup args((const char *name));
 void area_update args((void));
 CD *create_mobile args((MOB_INDEX_DATA * pMobIndex));
+CD *create_mobile_at_level args((MOB_INDEX_DATA *pMobIndex, int level));
 OD *create_object args((OBJ_INDEX_DATA * pObjIndex, int level, char *rank, int randomise));
 void clear_char args((CHAR_DATA * ch));
 void free_char args((CHAR_DATA * ch));
