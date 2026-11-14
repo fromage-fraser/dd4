@@ -2990,6 +2990,22 @@ const struct mob_type mob_table[MAX_MOB] =
                 80, 25, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "lemming_folk", "humanoid", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                70, 15, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "bear_wolf", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0, 0, 0, 0, 0,
+                120, 300, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 240
         }
 };
 

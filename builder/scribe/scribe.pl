@@ -114,6 +114,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         constrictor_snake centipede lightning_bat fire_breathing_bat gas_bat frost_bat acid_bat
         giant_electric_eel giant_rat animated_armour shadow_fiend
         macaw raven hawk giant_falcon
+        lemming_folk bear_wolf
 /;
 
 my %mob_act = (

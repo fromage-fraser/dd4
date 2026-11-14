@@ -17,7 +17,10 @@ really grating on your nerves...
 32|128 0 0 S
 5 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< lemming_folk~ common~
+MobHeight 50
+MobWeight 8
 #29951
 Large lemming~
 a large lemming~
@@ -28,7 +31,10 @@ Much larger than the smaller lemmings, he still comes only to about waist height
 128 32 0 S
 9 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< lemming_folk~ common~
+MobHeight 90
+MobWeight 25
 #29952
 Lemming Carpenter~
 the lemming carpenter~
@@ -41,6 +47,9 @@ but you can tell that it did see you...
 11 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< lemming_folk~ common~
+MobHeight 90
+MobWeight 25
 #29953
 Lemming smithy~
 the lemming smithy~
@@ -52,7 +61,8 @@ digging a new tunnel somewhere deeper in the cave.
 2|128|1024 8|32|8192 250 S
 13 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< lemming_folk~ common~
 & 15 'teacher base'
 & 75 'weaponsmithing'
 & 75 'armoursmithing'
@@ -69,6 +79,7 @@ tries to hide in the shadows.
 11 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< lemming_folk~ common~
 #29955
 Lemming Doctor~
 the lemming doctor~
@@ -78,10 +89,11 @@ The doctor seems rather busy today, with quite a few wounded
 lemmings laying on cots, all with various claw wounds, and
 most bleeding.
 ~
-2 8|32|128|8192 950 S
+2|8192 8|32|128|8192 950 S
 14 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< lemming_folk~ common~
 #29956
 a lemming~
 a lemming~
@@ -93,6 +105,7 @@ This average lemming looks pretty harmless...
 7 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lemming_folk~ common~
 #29957
 wounded lemming~
 a wounded lemming~
@@ -106,6 +119,9 @@ rather less friendly and cute than the others.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lemming_folk~ common~
+MobHeight 90
+MobWeight 25
 #29958
 The Beast~
 the Beast~
@@ -118,7 +134,7 @@ with large, fearsome claws, a muscular body, and a lupine head.
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ elite~
+< bear_wolf~ elite~
 #29959
 Shadowy figure mage lemming~
 a lemming mage~
@@ -133,6 +149,7 @@ by its hood, all you can see are two glowing red eyes.
 12 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< lemming_folk~ common~
 #0
 
 
@@ -369,13 +386,12 @@ You think you see a light below you.
 ~
 0 4|8 0
 D4
-The tunnel looks just large enough for you to enter..
-Looks kinda dark down there though... ~
-down tunnel cave~
+The tunnel climbs towards the cave entrance above.~
+up tunnel cave~
 0 -1 29950
 D5
-You think you can see daylight (nightlight?) above you..~
-up tunnel~
+You can see light in the lemming cavern below.~
+down tunnel~
 0 -1 29952
 E
 footprints floor~
@@ -626,7 +642,7 @@ and you see an alcove to the west, where a shadowy figure stands.
 ~
 0 1|8 0
 D1
-The the cavern also continues east.
+The cavern also continues east.
 ~
 east~
 0 -1 29965
@@ -805,7 +821,7 @@ east~
 E
 sign~
 This sign is illegible too. You'd probably do better
-to enter the room to find out whats inside.
+to enter the room to find out what's inside.
 ~
 S
 #29972
@@ -953,7 +969,7 @@ clean compared to the litter in the lair.
 ~
 0 1|8 0
 D0
-North leads back to the lemming caverns.
+To the north is the Beast's lair.
 ~
 north~
 0 -1 29978
@@ -1062,7 +1078,7 @@ S
 
 
 #SPECIALS
-M  29955 spec_cast_cleric       the lemming doctor
+M  29955 spec_cleric_adept      the lemming doctor
 M  29959 spec_cast_mage         a lemming mage
 S
 
