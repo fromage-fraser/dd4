@@ -2958,8 +2958,39 @@ const struct mob_type mob_table[MAX_MOB] =
                 183, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "spec_demon", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "macaw", "bird", "icon1", "icon2",
+                0, AFF_FLYING, PART_CLAWS, PART_BEAK,
+                0, 0, 0, 0, 0, 0, 0,
+                40, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 90
+        },
+        {
+                "raven", "bird", "icon1", "icon2",
+                0, AFF_FLYING, PART_CLAWS, PART_BEAK | PART_CLAWS,
+                0, 0, 0, 0, 0, 0, 0,
+                25, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 65
+        },
+        {
+                "hawk", "bird", "icon1", "icon2",
+                0, AFF_FLYING, PART_CLAWS, PART_BEAK | PART_CLAWS,
+                0, 0, 0, 0, 0, 0, 0,
+                30, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 60
+        },
+        {
+                "giant_falcon", "bird", "icon1", "icon2",
+                0, AFF_FLYING, PART_CLAWS, PART_BEAK | PART_CLAWS,
+                0, 0, 0, 0, 0, 0, 0,
+                80, 25, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 150
         }
-
 };
 
 #undef DWARF_ARCHETYPE

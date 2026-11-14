@@ -12174,3 +12174,61 @@ placements and carried-versus-worn choices. The old soldier caps yield
 shared coin 16615 and its seven Omu Central consumers stay unchanged.
 The archer's bow is already correctly flagged and wielded. No matching
 Shadow Keep source exists; other source/area pairs stay unchanged.
+
+
+Solace and ordinary birds of prey
+--------------------------------
+
+Solace's 57 definitions use human, ghost, rat and bat, plus four new
+bird archetypes: macaw, raven, hawk and giant_falcon. These append without
+renumbering existing profiles or adding species, area fields or ACT flags.
+The Captain is Elite; the Lieutenant and Sergeant are Rare. Other ranks
+stay Common. Old HP letters are not rank markers.
+
+All four new birds use the existing bird body, including wings, feathers,
+beak, tail, ordinary organs and legs without arms or speech. They add claw
+anatomy and flight. The macaw's ordinary attack is its beak; the other
+three choose a beak or claw through the normal single-attack rules.
+Weapons, targeting, trauma and Regenerate keep their existing behaviour.
+These birds gain no extra attacks, venom, armour, resistances, immunities,
+casting, mountability or HUGE flag. They retain normal blood, soul and pain.
+No new leg-trauma restriction is introduced.
+
+Descriptive defaults are macaw 40 cm standing height, 1 kg and 90 cm
+length; raven 25/1/65; hawk 30/1/60; giant_falcon 80/25/150. The first
+three are Small and the giant falcon is Medium. These are whole-kilogram
+DD4 estimates informed by the second-edition bird entries. Pet levels stay
+12, 15, 18 and 21. Timed eye injuries, diving attacks, scouting, surprise
+bonuses and mimicry remain separate future work, not hidden extra powers.
+
+The five ghosts use the existing semi-material ghost profile, ordinary
+nonmagic immunity and corpse-free physiology. Bar ghosts can speak, and
+duplicate raw corpse flags no longer cancel their inherited no-corpse.
+Their old broad undead casting is removed. The tired human adventurer
+loses an incorrectly assigned undead special; it is not moved onto the
+ghost gambler. The Lieutenant keeps the effective cleric routine, with
+the earlier overwritten mage row removed. Other authored specials and
+Identify, banker and tinker roles stay.
+
+The human child gains ordinary arms and speech by clearing an erroneous
+body XOR. Rats, bat and birds stop cancelling their inherited absence
+flags. The ghost barkeeper is male and the old lady female, matching their
+words and retained portraits. Individual dimensions reflect the reviewed
+children, bulky guards, lean clerk and thief, tall patrons and large rat
+and bat. The ordinary bat stays Small, 1 kg and 30 cm long; it does not
+use the larger vampire transformation. Dimensions remain descriptive.
+
+Tika's shop row now names Tika rather than duplicating Otik. Prices,
+opening hours, stock and existing shop roles stay. Matt's ringmail uses
+the body wear flag that its reset already expects. The city and depository
+keys are carried rather than forced into a hold slot they cannot use.
+Their prototype vnums still control the original locks; old value metadata
+is unchanged. High Dice and its greet program stay exactly as authored.
+
+All 120 room flags and exits, other 112-object data, encounter caps,
+placements, levels, alignments and aggressive/passive choices stay. The
+old caps still produce 129 initial and 142 refill inhabitants, with 238
+and 244 carried items. Imported Limbo tobacconist Ghelt 81 is unchanged
+and is not one of the 57 conversions. The shared robe and Underdark reset
+also stay unchanged. No matching Solace source exists; other source/area
+pairs remain in sync.
