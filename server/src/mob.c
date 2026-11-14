@@ -3006,6 +3006,29 @@ const struct mob_type mob_table[MAX_MOB] =
                 120, 300, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 240
+        },
+        {
+                "jakyra", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0, 0, 0, 0, 0,
+                100, 120, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_poison_claw", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 200
+        },
+        {
+                "bile_demon", "humanoid", "icon1", "icon2",
+                0, 0, PART_HORNS, PART_HORNS, 0, 0, 0, 0, 0, 0, 0,
+                220, 350, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "mastodon", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_TAIL | PART_TUSKS | PART_TRUNK,
+                PART_TUSKS | PART_FORELEGS, 0, 0, 0, 0, 0, 0, 0,
+                305, 6000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_elephant", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 700
         }
 };
 
@@ -3702,6 +3725,7 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"acid_bat", "bat", NULL, 0},
         {"lion", NULL, lion_trait_changes, TRAIT_ITEMS(lion_trait_changes)},
         {"elephant", NULL, elephant_trait_changes, TRAIT_ITEMS(elephant_trait_changes)},
+        {"mastodon", "elephant", NULL, 0},
         {"fire_hazard", NULL, fire_hazard_trait_changes,
             TRAIT_ITEMS(fire_hazard_trait_changes)},
         {"gold_dragon_kin", NULL, gold_dragon_kin_trait_changes,
@@ -7065,6 +7089,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_cooshee", 5 },
                 { "spec_brownie", 5 },
                 { "spec_poison_palm", 5 },
+                { "spec_poison_claw", 5 },
                 { "spec_poison_bite", 5 },
                 { "spec_bloodsucker", 5 },
                 { "spec_superwimpy", 5 },

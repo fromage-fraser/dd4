@@ -8020,3 +8020,69 @@ the bedding and heroic helm. Pickaxe 29965 is the intentional ITEM_DIGGER
 with a fixed-level-12 I reset; weapon pickaxe 29950 remains separate.
 There is no matching Lemming Caves source. Other source/area pairs stay
 unchanged, and the ten existing portraits are retained.
+
+
+The Pit, venomous claws and mastodons
+------------------------------------
+
+The Pit uses nine humans plus jakyra, bile_demon and mastodon. The three
+new archetypes append without renumbering earlier entries. Painkiller
+keeps Elite; the Sentinel is Boss as the arena's final champion. Others
+stay Common. Human defaults are 175 cm/75 kg/Medium; Turbo uses 165/55.
+Myra's female sex matches her wording and retained portrait. The Sentinel,
+Valan and Osarr use the approved human interpretations and replacement art.
+
+Jakyra uses quadrupedal_mammal with paws, claws, fangs and tail, four legs
+and ordinary organs, without arms or speech. Defaults are 100 cm shoulder
+height, 120 kg, 200 cm length and Medium without HUGE. Ordinary attacks
+choose claw or bite. Spec_poison_claw is a reusable venomous-claw action:
+an awake, ready creature needs usable claws and a living current opponent
+in the same room. Normal safety, no-fight, injury and action rules apply.
+It keeps the existing one-in-four poison roll and Venom spell's level,
+save and duration, with the normal poison-special XP allowance. It adds
+no physical damage or venom to ordinary bites. No new trauma rule or
+body-part flag is added. The anti-evil axe is carried as loot; its flags
+and statistics stay unchanged.
+
+Bile_demon uses humanoid arms, hands, legs and ordinary living organs.
+Its spiked head masses use existing horn anatomy and a normal head-based
+fallback attack. Defaults are 220 cm, 350 kg and Large without HUGE.
+It inherits the existing spec_demon and keeps its glaive. The duplicate
+area special is removed, leaving one effective routine and XP allowance.
+No blanket demon immunities or new breath attack are granted.
+
+Mastodon uses quadrupedal_mammal with tusks, trunk, tail and four legs,
+Large with HUGE. Defaults are 305 cm shoulder height, 6000 kg and 700 cm
+length; mass and length are DD4 estimates. The existing elephant trait
+profile supplies -4 natural armour. It uses ordinary tusk/foreleg attacks
+and spec_elephant, with no automatic mountability or rhino horn. Raw body
+36 becomes zero to retain inherited no-arms/no-speech. Its magical wolf-claw
+treasure remains an ordinary wielded loot weapon. Template HP, damage,
+critical, haste and extra XP scalars are zero for all three new profiles.
+
+The elephant trunk power now asks is_safe about its opponent, matching
+ordinary NPC combat. A SAFE room or area can contain legitimate scripted
+NPC fights, as in the Pit. Existing protected-target checks still apply.
+Readiness, no-fight, current-opponent, same-room, living target, Small or
+Medium/non-HUGE target, usable head/trunk and injury checks stay. The
+15-percent choice, 2d6 damage, wait, physical contact, resistance and
+phasing rules are unchanged. All room and area flags remain intact.
+
+The Official and arms dealer keep acid breath through the existing
+head-checked wrapper. Turbo uses poison palm with the same Venom rules.
+The Defender keeps executioner; both psionicists retain their casting and
+authored flight. All source behaviour and regeneration remain.
+
+Turbo's duplicate M reset is collapsed so her three existing equipment
+rows run, with one Turbo in the same room. Their empty ground descriptions
+are filled. The Jakyra's axe is carried instead of being dropped by an
+incompatible wield reset. These changes keep 12 inhabitants and put 33
+items on mobs instead of 29. The single Official/cap and unused ticketing
+room stay. Eight greet programs, all 48 room flags/exits/doors and other
+reset caps/placements are preserved. Two spectator robes use existing
+plain-wearable ITEM_TRASH rather than furniture: ARMOR would automatically
+gain AC at creation, so plain wearables preserve their zero-AC behaviour.
+The unnamed Sentinel blast, other object stats, shop prices/hours and
+unplaced artifacts stay. Text fixes cover the champion, copied Jakyra
+description, mastodon, paladin, rack keyword and misleading reset comments.
+No matching Pit source exists; other source/area pairs stay unchanged.

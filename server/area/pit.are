@@ -42,6 +42,7 @@ if ispc($n)
  endif
 ~
 |
+< human~ common~
 #13701
 turbo~
 Turbo~
@@ -63,10 +64,13 @@ that's what she wants you to think, coz she's gonna kick your arse!
 endif
 ~
 |
+< human~ common~
+MobHeight 165
+MobWeight 55
 #13702
 Defender faith paladin~
 The Defender of the Faith~
-An paladin in half-plate struggles through the mire here.
+A paladin in half-plate struggles through the mire here.
 ~
 The Defender of the Faith tries, unsuccessfully, to navigate his way
 through this swampy area without getting his armour too dirty.
@@ -84,6 +88,7 @@ if ispc($n)
 endif
 ~
 |
+< human~ common~
 #13703
 Painkiller~
 Painkiller~
@@ -104,13 +109,15 @@ if ispc($n)
 endif
 ~
 |
-< reserved~ elite~
+< human~ elite~
 #13704
 sentinel~
 The Sentinel~
-
+The Sentinel hovers here, watching for challengers.
 ~
-Madboy says 'Hi'
+An experienced human champion floats effortlessly above the floor. His
+steady gaze follows your movements, and one hand glows with a gathering
+psionic blast. He looks ready to defend his title.
 ~
 2|64|4096 8|32|128|512|524288 -200 S
 55 0 0 0d0+0 0d0+0
@@ -123,6 +130,7 @@ if ispc($n)
     endif
 ~
 |
+< human~ boss~
 #13705
 dealer arms~
 the arms dealer~
@@ -132,8 +140,10 @@ The arms dealer grins toothily.... his teeth appear to be too sharp...
 ~
 2|4|64|128|2048|4096 8|32|128|512|32768|524288 0 S
 45 0 0 0d0+0 0d0+0
-0 0
+17179869184 0
 8 8 1
+< human~ common~
+MobAttackParts 17179869184
 #13706
 valan rich~
 Valan the rich~
@@ -145,6 +155,7 @@ Valan takes no notice of you as he watches the events unfold below.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13707
 Myra~
 Myra~
@@ -155,7 +166,8 @@ Myra appears not to have her husband's avid excitement for the battles in the pi
 2|64|128 0 0 S
 1 0 0 0d0+0 0d0+0
 0 0
-8 8 1
+8 8 2
+< human~ common~
 #13708
 osarr~
 Osarr the gambler~
@@ -167,12 +179,15 @@ Osarr looks back at you and grins.  Want to bet on the action?
 5 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13709
 Jakyra~
 a Jakyra~
 A bright orange beast stands here.
 ~
-Oh, dear. Painkiller, dressed in his spiked and bladed armour is going to kill you.
+A powerful orange beast prowls on four clawed legs. Its fangs show beneath
+a snarling muzzle, and its long claws glisten with venom. It watches your
+movements, ready to spring.
 ~
 4|32|64|4096 8|32|512|8192 -650 S
 55 0 0 0d0+0 0d0+0
@@ -186,6 +201,7 @@ if ispc($n)
 endif
 ~
 |
+< jakyra~ common~
 #13710
 biledemon~
 a Biledemon~
@@ -206,17 +222,18 @@ if ispc($n)
 endif
 ~
 |
+< bile_demon~ common~
 #13711
 mastodon~
 the mastodon~
 A great big hairy beast snorts and stamps as you enter the room.
 ~
-A cross between a rhino and an elephant with great amounts of hair this beast is gonna rip you
-apart.
+An enormous, shaggy relative of the elephant snorts and stamps before you.
+Its heavy trunk swings between long tusks as it prepares to charge.
 ~
 4|32|64|4096 8|32|512|8192 -650 S
 55 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
 >greet_prog 100~
 if ispc($n)
@@ -226,6 +243,7 @@ if ispc($n)
 endif
 ~
 |
+< mastodon~ common~
 #0
 
 
@@ -300,7 +318,7 @@ A
 A
 19 8
 #13706
-rack weapon wapons~
+rack weapon weapons~
 a weapon rack~
 ~
 ~
@@ -382,7 +400,7 @@ A
 #13711
 turbo dagger~
 Turbo's Dagger~
-~
+A small dagger lies here.~
 ~
 5 64|512 1|8192
 0~ 1~ 6~ 11~
@@ -398,7 +416,7 @@ A
 #13712
 turbo breastplate leather~
 Turbo's leather breastplate~
-~
+A leather breastplate lies here.~
 ~
 13 64|512 1|8
 0~ 1~ 6~ 11~
@@ -444,7 +462,7 @@ A glowing knife hovers here.~
 #13717
 turbo boots~
 turbo's boots of speed~
-~
+A pair of boots lies here.~
 ~
 13 64|512 1|64
 0~ 1~ 6~ 11~
@@ -732,7 +750,7 @@ robes~
 some rich, golden robes~
 A pile of golden cloth rests here.~
 ~
-12 0 1|1024
+13 0 1|1024
 0~ 1~ 6~ 11~
 5 0 0
 #13740
@@ -748,7 +766,7 @@ velvet robes~
 some purple velvet robes~
 A pile of purple velvet lies here.~
 ~
-12 0 1|1024
+13 0 1|1024
 0~ 1~ 6~ 11~
 5 0 0
 #13742
@@ -1648,11 +1666,11 @@ E 1 13702 100 16
 E 1 13737 100 12
 O 1 13700 100 13705       a desk to Small ticketing room
 O 1 13706 100 13704       a weapon rack to The changing room
-P 1 13701 100 13706       a morningstar to container rack weapon weapons
-P 1 13702 100 13706       a weighted net to container rack weapon weapons
+P 1 13701 100 13706       a sword to container rack weapon weapons
+P 1 13702 100 13706       a spear to container rack weapon weapons
 P 1 13703 100 13706       an axe to container rack weapon weapons
-P 1 13704 100 13706       a spear to container rack weapon weapons
-P 1 13705 100 13706       a sword to container rack weapon weapons
+P 1 13704 100 13706       a weighted net to container rack weapon weapons
+P 1 13705 100 13706       a morningstar to container rack weapon weapons
 *
 M 1 13705 1 13704                 the arms dealer to The changing room
 *
@@ -1678,7 +1696,6 @@ E 1 13732 100 7
 E 1 13731 100 13
 G 1 13735 100
 *
-M 1 13701 1 13724
 D 1 13724 3 2            ; Rocky plateau - The closed portcullis Lock West
 *
 M 1 13701 1 13724              Turbo to The Rocky Plateau - The closed portcullis
@@ -1712,8 +1729,8 @@ O 1 13738 1 13747              Daeron's Lantern to The very top!
 M 1 13710 1 13718       biledemon
 E 1 13710 100 16
 M 1 13709 1 13726       jakyra
-E 1 13709 100 16
-M 1 13711 1 13733       mastadon
+G 1 13709 100
+M 1 13711 1 13733       mastodon
 E 1 13708 100 16
 *
 M 1 13706 1 13703                 Valan the rich to The spectators area
@@ -1733,18 +1750,17 @@ S
 
 
 #SHOPS
-13705 5 9 8 0 0 75 150 0 23       (mobile is from another zone)
+13705 5 9 8 0 0 75 150 0 23       (the Pit arms dealer)
 0
 
 
 #SPECIALS
-M  13700 spec_breath_acid           the Pit Official
-M  13701 spec_poison                Turbo
+M  13700 spec_breath_acid_anatomical           the Pit Official
+M  13701 spec_poison_palm                Turbo
 M  13702 spec_executioner           The Defender of the Faith
 M  13703 spec_cast_psionicist       Painkiller
 M  13704 spec_cast_psionicist       The Sentinel
-M  13705 spec_breath_acid           the arms dealer
-M  13710 spec_demon                 the Biledemon
+M  13705 spec_breath_acid_anatomical           the arms dealer
 S
 
 
