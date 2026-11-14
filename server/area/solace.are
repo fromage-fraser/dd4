@@ -16,6 +16,7 @@ the wealth of this town.
 30 2 2 1e1+30000 1d8+32
 0 80000
 8 8 1
+< human~ elite~
 #10202
 lieutenant commander~
 Lieutenant Commander~
@@ -31,6 +32,7 @@ fight.
 27 2 2 1d1+30000 1d8+32
 0 80000
 8 8 1
+< human~ rare~
 #10203
 Sergeant Arms~
 Sergeant at Arms~
@@ -44,6 +46,9 @@ his helmet. He is always waiting for a fight.
 20 2 2 1d1+30000 1d8+32
 0 80000
 8 8 1
+< human~ rare~
+MobHeight 180
+MobWeight 100
 #10204
 townguard guard~
 Townguard~
@@ -56,6 +61,9 @@ A big strong townguard of Solace.
 15 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
+MobHeight 185
+MobWeight 95
 #10205
 townguard guard agg~
 Townguard~
@@ -68,6 +76,9 @@ A big strong townguard of Solace.
 15 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
+MobHeight 185
+MobWeight 95
 #10206
 citizen solace~
 Citizen of Solace~
@@ -79,6 +90,7 @@ He is one of the wealthy citizens of Solace.
 10 20 9 2d6+10 1d5+0
 0 100
 8 8 1
+< human~ common~
 #10207
 woman~
 woman~
@@ -90,6 +102,7 @@ She is a beautiful woman.
 5 20 9 2d6+10 1d5+0
 0 100
 8 8 2
+< human~ common~
 #10208
 matt brewmaster~
 Matt the brewmaster~
@@ -100,6 +113,7 @@ Matt the brewmaster is here looking for something to drink.
 25 20 9 2d6+10 1d5+0
 0 100
 8 8 1
+< human~ common~
 #10209
 Mcbaker~
 the Mcbaker~
@@ -112,6 +126,8 @@ body.
 23 2 2 1d1+30000 1d8+20
 0 80000
 8 8 1
+< human~ common~
+MobWeight 110
 #10210
 cookie's helper~
 Cookie's Helper~
@@ -123,31 +139,38 @@ A young neighborhood girl helps out cookie when she is not around.
 20 2 2 1d1+30000 1d8+20
 0 80000
 8 8 2
+< human~ common~
+MobHeight 135
+MobWeight 30
+MobSize 0
 #10211
 marilyn~
 Marilyn~
 Marilyn is here selling birds.
 ~
-She is a very pretty and loves her birds. Her black hair hangs behind her
+She is very pretty and loves her birds. Her black hair hangs behind her
 tied in a pony tail.
 ~
 2|32768 128 900 S
 30 2 2 1d1+30000 1d8+20
 0 80000
 8 8 2
+< human~ common~
 #10212
 ghost jander~
 Ghost of Jander~
 The Ghost of Jander is here.
 ~
 The ghost of Jander is as he was in life. A rather large man with flaming
-red hair. His clothes seems dirty and tattered. His bushy beard obscures
+red hair. His clothes seem dirty and tattered. His bushy beard obscures
 his stone face.
 ~
 2 0 900 S
 15 2 2 1d1+30000 1d8+20
-96 80000
+0 80000
 8 8 1
+< ghost~ common~
+MobHeight 190
 #10213
 ghost waiter~
 ghost of waiter~
@@ -158,8 +181,9 @@ Jander killed for spilling a drink or something.
 ~
 2 0 900 S
 15 2 2 1d1+30000 1d8+20
-96 80000
+0 80000
 8 8 1
+< ghost~ common~
 #10214
 ghost barkeep~
 ghost of a barkeeper~
@@ -170,8 +194,9 @@ his hand in the cash or something.
 ~
 2 0 900 S
 13 2 2 1d1+30000 1d8+20
-96 80000
-8 8 2
+0 80000
+8 8 1
+< ghost~ common~
 #10215
 townguard guard~
 Townguard~
@@ -184,6 +209,9 @@ A big strong townguard of Solace.
 15 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
+MobHeight 185
+MobWeight 95
 #10216
 field rat~
 field rat~
@@ -193,8 +221,9 @@ A dirty nasty field rat . Obviously  looking for food in the town.
 ~
 1|64 65536 300 S
 10 15 -2 1d1+999 2d10+20
-36 19000
+0 19000
 8 8 0
+< rat~ common~
 #10217
 town clerk~
 Town Clerk~
@@ -207,18 +236,23 @@ as if he can see the money in your pockets.
 17 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
+MobWeight 55
 #10218
 treasury guards~
 Treasury Guards~
 the Treasury Guards are here guarding the town's money.
 ~
-These are like the biggest and meanest men you've every seen.
+These are like the biggest and meanest men you've ever seen.
 They look more like trolls or ogres than men.
 ~
 2 4|8|32|128 800 S
 16 15 -2 1r1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
+MobHeight 200
+MobWeight 130
 #10219
 Jhen~
 Jhen the farmer~
@@ -230,6 +264,9 @@ a rather tall man who works hard for his money.
 23 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
+MobHeight 190
+MobWeight 85
 #10220
 Krista~
 Krista the fruit peddler~
@@ -242,6 +279,7 @@ to the market to sell her fruits.
 24 15 -2 1d1+999 2d10+20
 0 19000
 8 8 2
+< human~ common~
 #10221
 Janni~
 Janni~
@@ -253,6 +291,7 @@ Janni has spent his whole life making trinkets for people to enjoy.
 22 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10222
 Nisi~
 Nisi the grocer~
@@ -264,6 +303,7 @@ Nisi is a very interesting person. It shows in the wares she sells.
 24 15 -2 1d1+999 2d10+20
 0 19000
 8 8 2
+< human~ common~
 #10223
 Molin~
 Molin the brewer~
@@ -275,6 +315,7 @@ Molin is a grey old man with hair down to his toes.
 24 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10224
 Rashan~
 Rashan the farmer~
@@ -286,6 +327,7 @@ Rashan is a middle aged man who grows his rutabagas by candlelight.
 21 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10225
 Lexie~
 Lexie~
@@ -298,6 +340,7 @@ students.
 25 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10226
 Croben~
 Croben~
@@ -310,6 +353,7 @@ grandfather.
 25 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10227
 otik sandath bartender~
 Otik Sandath~
@@ -324,6 +368,7 @@ terrible Darken Wood. There are terrible mysteries in that place, there are."
 27 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10228
 tika barmaid~
 Tika the barmaid~
@@ -332,12 +377,13 @@ Tika the barmaid is here delivering drinks and food.
 Curly auburn hair tumbles around Tika's lightly freckled face. Her striking
 green eyes match her low-cut blouse. She is a brash young barmaid who
 looks older than her 19 years. Rough living has hardened her and she
-presents a tough image as protection against her sense of vulnerablility.
+presents a tough image as protection against her sense of vulnerability.
 ~
 2|32768 0 800 S
 16 15 -2 1d1+999 2d10+20
 0 19000
 8 8 2
+< human~ common~
 #10229
 thief cloaked figure~
 Thief~
@@ -350,6 +396,8 @@ glass of ale before him.
 17 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
+MobWeight 60
 #10230
 old man~
 old man~
@@ -361,6 +409,7 @@ He looks like an old man...go figure...
 13 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10231
 boy~
 boy~
@@ -376,6 +425,10 @@ blessed, I hear tell."
 7 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
+MobHeight 120
+MobWeight 25
+MobSize 0
 #10232
 brat boy~
 bratty boy~
@@ -387,6 +440,9 @@ He looks like a pain in the ass.
 10 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
+MobHeight 140
+MobWeight 35
 #10233
 Mage~
 mage~
@@ -398,6 +454,7 @@ He is the typical adventurer. He looks as if he has travelled far.
 14 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10234
 Thief~
 Thief~
@@ -409,6 +466,7 @@ He is the typical adventurer. He looks as if he has travelled far.
 12 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10235
 Warrior~
 Warrior~
@@ -420,6 +478,7 @@ He is the typical adventurer. He looks as if he has travelled far.
 16 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10236
 Cleric~
 Cleric~
@@ -431,6 +490,7 @@ He is the typical adventurer. He looks as if he has travelled far.
 19 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10237
 ghost gambler~
 Ghost of gambler~
@@ -440,8 +500,9 @@ Even in death this sad spirit is looking to gamble.
 ~
 2 0 -200 S
 10 15 -2 1d1+999 2d10+20
-96 19000
+0 19000
 8 8 0
+< ghost~ common~
 #10238
 child~
 child~
@@ -450,8 +511,12 @@ A child is here eating bugs off the ground.
 ~
 1 0 800 S
 5 20 9 2d6+10 1d5+0
-36 100
+0 100
 8 8 0
+< human~ common~
+MobHeight 110
+MobWeight 20
+MobSize 0
 #10239
 rat~
 rat~
@@ -460,8 +525,12 @@ There is a large rat here.
 ~
 1|4|64 65536 -100 S
 5 20 9 2d6+10 1d5+0
-36 100
+0 100
 8 8 0
+< rat~ common~
+MobHeight 12
+MobWeight 1
+MobLength 30
 #10240
 bat~
 bat~
@@ -470,8 +539,11 @@ There is a large bat here.
 ~
 2|32 8 100 S
 5 20 9 2d6+10 1d5+0
-36 100
+0 100
 8 8 0
+< bat~ common~
+MobWeight 1
+MobLength 30
 #10241
 old lady~
 old lady~
@@ -481,7 +553,8 @@ There is an old lady here.
 1|4|64 0 100 S
 8 20 9 2d6+10 1d5+0
 0 100
-8 8 0
+8 8 2
+< human~ common~
 #10242
 tired adventurer~
 tired adventurer~
@@ -492,10 +565,11 @@ There is a tired adventurer resting here.
 13 20 9 2d6+10 1d5+0
 0 100
 8 8 0
+< human~ common~
 #10243
 Magnus wizard~
 Magnus wizard~
-Magnus the wizard is resting here but wil be happy to ID things.. for a price.
+Magnus the wizard is resting here but will be happy to ID things.. for a price.
 ~
 The knowledgeable and wise wizard is happy to share his knowledge with you
 although at a small fee of course. To get Magnus to Identify things for you,
@@ -505,6 +579,7 @@ type identify <object>.
 19 20 9 2d6+10 1d5+0
 0 100
 8 8 1
+< human~ common~
 #10244
 Lord doom warrior~
 Lord Doom~
@@ -515,6 +590,7 @@ Lord Doom is resting here from his long journeys.
 18 20 9 2r6+10 1d5+0
 0 100
 8 8 1
+< human~ common~
 #10245
 foreign trade representative~
 Foreign Trade Representative~
@@ -525,6 +601,7 @@ A foreign trade representative is waiting here to meet with the Captain of the G
 14 20 9 2d6+10 1d5+0
 0 100
 8 8 1
+< human~ common~
 #10246
 bodyguard~
 bodyguard~
@@ -535,6 +612,7 @@ There is a bodyguard here.
 16 20 9 2d6+10 1d5+0
 0 100
 8 8 1
+< human~ common~
 #10247
 Secretary captain~
 Secretary~
@@ -548,6 +626,7 @@ The Secretary says 'Please sit down and have a seat in the meantime'.
 25 20 9 2d6+10 1d5+0
 0 100
 8 8 2
+< human~ common~
 #10248
 Secretary Lieutenant ~
 Secretary~
@@ -561,6 +640,7 @@ The Secretary says 'Please sit down and have a seat in the meantime'.
 20 20 9 2d6+10 1d5+0
 0 100
 8 8 2
+< human~ common~
 #10249
 Secretary Sergeant ~
 Secretary~
@@ -574,6 +654,7 @@ The Secretary says 'Please sit down and have a seat in the meantime'.
 15 20 9 2d6+10 1d5+0
 0 100
 8 8 2
+< human~ common~
 #10250
 Macaw~
 the macaw~
@@ -583,8 +664,9 @@ The macaw looks like a strong, fearless fighter. It is a beautiful bird.
 ~
 6|512 0 0 S
 12 17 6 1d12+47 1d8+0
-36 1600
+0 1600
 8 8 0
+< macaw~ common~
 #10251
 Raven~
 the raven~
@@ -594,8 +676,9 @@ The raven looks like a strong, fearless fighter.
 ~
 6|512 0 0 S
 15 17 6 1d12+47 1d8+0
-36 1600
+0 1600
 8 8 0
+< raven~ common~
 #10252
 hunting hawk~
 the hunting hawk~
@@ -606,8 +689,9 @@ hunting game.
 ~
 6|512 0 0 S
 18 17 6 1d12+47 1d8+0
-36 1600
+0 1600
 8 8 0
+< hawk~ common~
 #10253
 Battle falcon~
 the battle falcon~
@@ -618,8 +702,9 @@ been trained especially for combat.
 ~
 6|512 0 0 S
 21 17 6 1d12+47 1d8+0
-36 1600
+0 1600
 8 8 0
+< giant_falcon~ common~
 #10254
 prophet~
 Prophet~
@@ -631,6 +716,7 @@ The Prophet talks to those who listen.
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #10255
 Alex~
 Alex~
@@ -644,6 +730,7 @@ you have the coin handy to pay for it.
 25 15 -2 1d1+999 2d10+20
 0 19000
 8 8 1
+< human~ common~
 #10256
 enthusiastic dragonhoard teller~
 an enthusiastic Dragonhoard teller~
@@ -656,6 +743,7 @@ anything she can.
 8 20 9 2d6+10 1d5+0
 0 100
 8 8 2
+< human~ common~
 #10257
 ghost diceboss~
 the ghost of a diceboss~
@@ -685,6 +773,7 @@ else
 endif
 ~
 |
+< ghost~ common~
 #0
 
 
@@ -1188,7 +1277,7 @@ chamorro ringmail~
 chamorro ringmail~
 A bunch of rings sewn together with taotamoa bark is on the ground.~
 ~
-9 64 1|8192
+9 64 1|8
 11~ 0~ 0~ 0~
 6 1000 100
 E
@@ -4345,7 +4434,7 @@ E 1 10207 1 13              wear obsidian girth
 E 1 10209 1 4                wear amulet of Solace
 E 1 10208 1 11              wear obsidian shield
 G 1 10210 1                   load Obsidian Key
-E 1 10306 80 17             load City Key
+G 1 10306 80                load City Key
 E 1 10211 1 16              wield Doomgiver
 E 1 10212 1 1                wear Solace signet ring
 E 1 10213 1 14              wear obsidian bracers L
@@ -4551,7 +4640,7 @@ M 0 10250 1 10253       Macaw in pet storage
 *
 M 0 10217 1 10266       Town Clerk
 E 1 10249 1 16              wield taxes and fines
-E 1 10305 1 17              hold depository key
+G 1 10305 1                 carry depository key
 *
 M 0 10218 4 10267       Treasury Guards
 E 1 10236 1 5                wear black platemail
@@ -4957,14 +5046,13 @@ S
  10225   22  0  0  0  0  125 75     4 20   ; Lexie
  10226   15  0  0  0  0  125 75     4 20   ; Croben
  10227   0  0  0  0  0   105 15     0 23   ; Otik barkeep
- 10227   0  0  0  0  0   105 15     0 23   ; Tika Barmaid
+ 10228   0  0  0  0  0   105 15     0 23   ; Tika Barmaid
  81      52 53 54 0  0   115 75     8 21   ; Ghelt Tobacconist
 0
 
 #SPECIALS
 
 M  10201 spec_cast_mage     Captain
-M  10202 spec_cast_mage     Lieutenant
 M  10203 spec_cast_mage     Sergeant
 M  10223 spec_cast_mage     Molin
 M  10224 spec_cast_mage     Rashan
@@ -4982,10 +5070,6 @@ M  10211 spec_cast_cleric      Marilyn
 M  10208 spec_cast_cleric      Matt
 M  10236 spec_cast_cleric      Cleric, Traveller
 *
-M  10212 spec_cast_undead   Ghost of Jander
-M  10213 spec_cast_undead   Ghost of waiter
-M  10214 spec_cast_undead   Ghost of barkeep
-M  10242 spec_cast_undead   Ghost of gambler
 *
 M  10204 spec_guard             Townguard Sentry
 M  10205 spec_guard             Townguard Agg
