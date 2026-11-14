@@ -535,6 +535,14 @@ An obsidian mace lies here.~
 5 120 0
 #0
 
+#AREA_SPECIAL
+reset_msg {RA distant bell tolls, filling you with dread.{x
+~
+reset_sound notify/area/cathedral_reset.mp3
+reset_sound_vol 55
+music music/area/cathedral.mp3
+music_vol 20
+$
 
 #ROOMS
 #4300
