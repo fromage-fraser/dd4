@@ -3672,7 +3672,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 192
+#define MAX_MOB 196
 #define MAX_SPECIES 33
 #define MAX_RANK 6
 
@@ -5975,6 +5975,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_BOW_ACCURACY,
         CREATURE_TRAIT_NATURAL_DAMAGE_TYPE,
         CREATURE_TRAIT_SHADOW_LIGHT_RESPONSE,
+        CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Internal damage kinds keep trait strengths small and named. */

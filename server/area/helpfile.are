@@ -1581,6 +1581,7 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Convert Highlands mobs; rebuild fire elementals and preserve bogleech behaviour.
 - Fix digging tools, scroll names, and mixed EXAMINE targets.
 - Validate crafting and paid weapon blessings before spending resources.
 - Require fresh patronage confirmation for each deity.

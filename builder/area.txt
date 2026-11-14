@@ -8238,3 +8238,85 @@ mp0load 280 line is corrected to mpoload 380. Remove the surplus final
 endif in the bone-golem program. Other payouts and the 7 percent rename
 piece chance stay. All 70 room flags, exits, music and original objects
 are preserved. There is no matching Scribe source for this area.
+
+
+Highlands creatures
+------------------
+
+giant_frog, sheep, plesiosaur and giant_leech are available through the
+existing archetype field. They use existing body species and append
+without renumbering earlier entries. The old fire_elemental example is
+now a reviewed profile on elemental_being, at its original ID.
+
+giant_frog uses quadrupedal_amphibian, with a long tongue, swimming,
+ordinary organs, four legs, no arms or speech, and -3 natural armour.
+Defaults are 60cm high, 110kg, 180cm long and Medium. The Highlands frog
+is explicitly over six metres long: it overrides these to 200cm/5000kg/
+650cm, Large and HUGE. Its six resets equip mouth weapon 11530 with
+ITEM_BODY_PART and ITEM_DONOT_RANDOMISE, no TAKE, head category 1 and
+bite verb 10. Existing targeting, injury, disarming, Regenerate and
+level-based weapon scaling apply. Its individual spec_swallow keeps
+the existing 15 percent attempt, one meal, safety and head gates,
+escape/digestion and HUGE-target exclusion. Large targets remain
+allowed. The ordinary profile has no automatic Swallow or venom.
+Tongue grappling, exceptional jumping and fire avoidance are follow-ups.
+
+sheep uses clean quadrupedal_mammal, with hooves and a tail, normal
+organs and an ordinary hoof attack. Defaults are 80cm high, 70kg,
+120cm long and Small. No goat demonstration bonuses, vulnerabilities,
+poison, scavenging or special function are inherited. The twenty
+existing sheep placements and passive wandering stay.
+
+plesiosaur uses quadrupedal_reptile. Fins replace ordinary feet on
+its four swimming limbs; it has a tail, organs, blood and a biting
+mouth, without arms or speech. It has -3 natural armour, swimming and
+ordinary piercing bites. Defaults are 1500cm long, 5000kg, Large/HUGE,
+with height unspecified. Nessy's child overrides length to 400cm and
+weight to 150kg and cancels HUGE through its individual body XOR.
+Both keep their individual spec_breath_any assignments; magical breath
+is not a default for every plesiosaur. Keep the mother's Sanctuary,
+the child's infrared and both passive Sentinel settings. The child's
+sex is female to match her description; no new sleep behaviour is added.
+
+The Holy Slayer uses ghost and keeps Rare, neutral alignment, existing
+effects, Holy Basher and holy armour. Existing semi-material, conscious,
+corpse-free undead rules apply. His sex is male to match the prose.
+The Lord stays Boss and the elite barbarians stay Elite. Other ranks
+remain Common. Human defaults are 175cm/75kg/Medium; the short, tough
+off-duty guard overrides height/weight to 165cm/80kg. Existing warrior,
+mage and cleric roles, bagpipes and four tower keys remain individual.
+
+fire_elemental is conscious, inorganic, bloodless, ANALGIC and
+corpse-free, with a soul, flame arms and an eye/head region, but no
+legs, physical heart or animal brain/gut. It is not undead or mindless.
+Defaults are 300cm/Large, unknown weight, -8 natural armour, neutral
+combat scalars and +10 XP. It is immune to fire, ordinary nonmagical
+weapons, poison, sleep, drain, hold and paralysis. Cold/water
+vulnerability is a DD4 choice. The existing magical/nonmagical
+distinction approximates the sourcebook's weapon protection.
+Ordinary unarmed contact uses magical fire damage at normal strength;
+there is no frost breath, poison special or extra active attack.
+magical_natural_attacks is an internal code-only trait, shown in MSTAT.
+Only opted-in NPC ordinary unarmed hits use it; equipped weapons,
+skills, spells and players keep their existing categories. No new ACT
+bit, area field or individual trait override is available. The local
+guards keep their authored flight, Fireshield, senses, mute flag,
+aggression and Sentinel behaviour. Cross-water rules, object ignition
+and broader Fireshield changes remain separate follow-ups.
+
+giant_leech uses limbless_invertebrate with a mouth/head, simple eyes,
+ganglia and gut, blood and ordinary pain sensation, but no limbs,
+speech or one discrete targetable heart. Defaults are 10cm high, 8kg,
+100cm long and Small. Its ordinary mouth bite uses the existing
+natural_attack_type trait, without invented fangs or a new weapon.
+It inherits the exact existing spec_bloodsucker at 100 percent. The
+bogleech's feeding chance, damage and blood interactions, effective
+aggression/scavenging/Stay Area, swimming, hiding, sneaking and senses
+are unchanged. Its squirming program and death-drop cure-poison paste
+are unchanged. No wrapper, attachment system, disease or Drained
+condition is added. The feeding special's +5 XP applies once.
+
+All dimensions are descriptive. All 200 room flags/exits/randomisation/
+keys, 30 original objects, original reset locations/caps and behaviour
+are retained. Six frog-mouth E rows are added. No Highlands source
+file exists; the four other source/area pairs remain unchanged.

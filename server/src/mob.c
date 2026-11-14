@@ -726,21 +726,17 @@ const struct mob_type mob_table[MAX_MOB] =
         },
 
         {
-                "fire_elemental", "elemental", "icon1", "icon2",
-                ACT_UNDEAD, AFF_DETECT_MAGIC,
-                0, PART_CLAWS,
-                0, 0,
-                RES_FIRE | RES_COLD | RES_POISON | RES_PARALYSIS
-                    | RES_HOLD | RES_DRAIN | RES_NONMAGIC,
-                50, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, 20,
-                2, 20, 3, 1,
-                "spec_breath_fire", "spec_breath_frost", "spec_poison",
-                5,
-                { 60, 30, 10 },
-                MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE,
-                MOB_TEMPLATE_UNSET
+                "fire_elemental", "elemental_being", "icon1", "icon2",
+                0, AFF_INFRARED,
+                BODY_NO_LEGS | BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC
+                    | PART_HEAD | PART_EYE | PART_ARMS,
+                0, 0, RES_COLD | RES_WATER,
+                RES_FIRE | RES_NONMAGIC | RES_POISON | RES_SLEEP | RES_DRAIN
+                    | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                300, MOB_TEMPLATE_UNSET, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         },
         {
                 "skeleton", "humanoid", "icon1", "icon2",
@@ -3143,6 +3139,41 @@ const struct mob_type mob_table[MAX_MOB] =
                 60, 10, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "spec_fido", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 80
+        },
+        {
+                "giant_frog", "quadrupedal_amphibian", "icon1", "icon2",
+                0, 0, PART_LONG_TONGUE, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                60, 110, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 180
+        },
+        {
+                "sheep", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_HOOVES, PART_HOOVES, 0, 0, 0,
+                0, 0, 0, 0,
+                80, 70, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 120
+        },
+        {
+                "plesiosaur", "quadrupedal_reptile", "icon1", "icon2",
+                0, AFF_SWIM,
+                /* Its four swimming limbs have fins rather than ordinary feet. */
+                PART_FEET | PART_FINS | PART_FANGS | BODY_HUGE,
+                PART_FANGS, 0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 5000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 1500
+        },
+        {
+                "giant_leech", "limbless_invertebrate", "icon1", "icon2",
+                0, AFF_SWIM,
+                /* Keep the area author's absence of one discrete, targetable heart. */
+                BODY_NO_HEART | PART_HEART, 0, 0, 0, 0, 0, 0, 0, 0,
+                10, 8, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_bloodsucker", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 100
         }
 };
 
@@ -3242,6 +3273,7 @@ typedef enum creature_trait_effect
         TRAIT_BOW_ACCURACY,
         TRAIT_NATURAL_DAMAGE_TYPE,
         TRAIT_LIGHT_RESPONSE,
+        TRAIT_MAGICAL_NATURAL_ATTACKS,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -3351,7 +3383,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"stone_death", TRAIT_STONE_DEATH, NULL},
         {"bow_accuracy", TRAIT_BOW_ACCURACY, NULL},
         {"natural_damage_type", TRAIT_NATURAL_DAMAGE_TYPE, NULL},
-        {"shadow_light_response", TRAIT_LIGHT_RESPONSE, NULL}
+        {"shadow_light_response", TRAIT_LIGHT_RESPONSE, NULL},
+        {"magical_natural_attacks", TRAIT_MAGICAL_NATURAL_ATTACKS, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -3839,6 +3872,26 @@ static const CREATURE_TRAIT_CHANGE rolling_boulder_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8} /* The boulder crushes with its own body. */
 };
 
+static const CREATURE_TRAIT_CHANGE giant_frog_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE plesiosaur_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE giant_leech_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 10} /* A mouth bite, without invented fangs. */
+};
+static const CREATURE_TRAIT_CHANGE fire_elemental_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_FIRE},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3846,6 +3899,14 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"giant_frog", NULL, giant_frog_trait_changes,
+            TRAIT_ITEMS(giant_frog_trait_changes)},
+        {"plesiosaur", NULL, plesiosaur_trait_changes,
+            TRAIT_ITEMS(plesiosaur_trait_changes)},
+        {"giant_leech", NULL, giant_leech_trait_changes,
+            TRAIT_ITEMS(giant_leech_trait_changes)},
+        {"fire_elemental", NULL, fire_elemental_trait_changes,
+            TRAIT_ITEMS(fire_elemental_trait_changes)},
         {"rolling_boulder", NULL, rolling_boulder_trait_changes,
             TRAIT_ITEMS(rolling_boulder_trait_changes)},
         {"purple_worm", NULL, purple_worm_trait_changes,
@@ -4249,7 +4310,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_HOLY_WATER_IMMUNITY
                                     || effect == TRAIT_FEAR_IMMUNITY
                                     || effect == TRAIT_STONE_DEATH
-                                    || effect == TRAIT_LIGHT_RESPONSE)
+                                    || effect == TRAIT_LIGHT_RESPONSE
+                                    || effect == TRAIT_MAGICAL_NATURAL_ATTACKS)
                                 && (profile->changes[i].value < 0
                                     || profile->changes[i].value > 1))
                                         issues++;
