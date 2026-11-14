@@ -206,6 +206,8 @@ void do_heal(CHAR_DATA *ch, char *argument)
 
         if (service->kind == HEALER_BLESS_WEAPON)
         {
+                unsigned long int blessed_flags;
+
                 if (argument[0] == '\0')
                 {
                         send_to_char("Syntax: heal blessweapon <carried weapon>\n\r", ch);
@@ -222,6 +224,25 @@ void do_heal(CHAR_DATA *ch, char *argument)
                 if (IS_AFFECTED(mob, AFF_HEAD_TRAUMA))
                 {
                         send_to_char("The priest cannot remember the blessing just now.\n\r", ch);
+                        return;
+                }
+
+                /* The priest casts the spell, retaining existing restrictions. */
+                blessed_flags = obj->extra_flags;
+                if (IS_GOOD(mob))
+                        SET_BIT(blessed_flags, ITEM_ANTI_EVIL);
+                else if (IS_EVIL(mob))
+                        SET_BIT(blessed_flags, ITEM_ANTI_GOOD);
+                else
+                {
+                        SET_BIT(blessed_flags, ITEM_ANTI_EVIL);
+                        SET_BIT(blessed_flags, ITEM_ANTI_GOOD);
+                }
+                if ((IS_SET(blessed_flags, ITEM_ANTI_EVIL) && IS_EVIL(ch))
+                ||  (IS_SET(blessed_flags, ITEM_ANTI_GOOD) && IS_GOOD(ch))
+                ||  (IS_SET(blessed_flags, ITEM_ANTI_NEUTRAL) && IS_NEUTRAL(ch)))
+                {
+                        send_to_char("That blessing would make the weapon reject your alignment.\n\r", ch);
                         return;
                 }
                 price += 5 * (int64_t)UMAX(0, obj->level);

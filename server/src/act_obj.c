@@ -375,6 +375,7 @@ void do_dig(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
         OBJ_DATA *dig_tool = NULL;
+        bool tool_too_high = FALSE;
         int dig_mode = DIG_NONE;
         int move_cost;
         int wait;
@@ -430,11 +431,16 @@ void do_dig(CHAR_DATA *ch, char *argument)
 
         for (obj = ch->carrying; obj != NULL; obj = obj->next_content)
         {
-                if (obj->item_type == ITEM_CONTAINER)
+                if (obj->deleted || obj->item_type == ITEM_CONTAINER)
                         continue;
 
                 if (obj->item_type == ITEM_DIGGER)
                 {
+                        if (obj->level > ch->level)
+                        {
+                                tool_too_high = TRUE;
+                                continue;
+                        }
                         dig_tool = obj;
                         dig_mode = DIG_TOOL;
                         break;
@@ -449,6 +455,11 @@ void do_dig(CHAR_DATA *ch, char *argument)
                         obj = get_eq_char(ch, i);
                         if (obj && obj->item_type == ITEM_DIGGER)
                         {
+                                if (obj->level > ch->level)
+                                {
+                                        tool_too_high = TRUE;
+                                        continue;
+                                }
                                 dig_tool = obj;
                                 dig_mode = DIG_TOOL;
                                 break;
@@ -492,17 +503,14 @@ void do_dig(CHAR_DATA *ch, char *argument)
 
         if (dig_mode == DIG_NONE)
         {
-                send_to_char("You have no way of doing that.\n\r", ch);
+                if (tool_too_high)
+                        send_to_char("You're too inexperienced to use that digging implement effectively.\n\r", ch);
+                else
+                        send_to_char("You have no way of doing that.\n\r", ch);
                 return;
         }
 
         /*  bug("Dig mode is: %d", dig_mode); */
-
-        if ((dig_mode == DIG_TOOL) && (dig_tool->level > ch->level))
-        {
-                send_to_char("You're too inexperienced to use that digging implement effectively.\n\r", ch);
-                return;
-        }
 
         /* Okay we're going to dig! Figure out default values for digging mode */
 
@@ -5203,6 +5211,13 @@ void do_recite(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        /* A named scroll must be the one actually being recited. */
+        if (arg1[0] != '\0' && get_obj_wear(ch, arg1) != scroll)
+        {
+                send_to_char("You are not holding that scroll.\n\r", ch);
+                return;
+        }
+
         if (IS_SET(ch->in_room->room_flags, ROOM_CONE_OF_SILENCE))
         {
                 send_to_char("An anti-magic field prevents any casting here.\n\r", ch);
@@ -7389,6 +7404,12 @@ static bool can_craft_imprint(CHAR_DATA *ch, OBJ_DATA *obj, int sn)
         if (skill_table[sn].spell_fun == spell_null)
         {
                 send_to_char("That is not a spell.\n\r", ch);
+                return FALSE;
+        }
+
+        if (ch->pcdata->learned[sn] <= 0)
+        {
+                send_to_char("You don't know any spells by that name.\n\r", ch);
                 return FALSE;
         }
 

@@ -1378,6 +1378,115 @@ static void show_drink_contents(CHAR_DATA *ch, OBJ_DATA *obj)
         send_to_char(buf, ch);
 }
 
+/* LOOK and EXAMINE must apply the same visibility restrictions. */
+static bool can_look(CHAR_DATA *ch)
+{
+        if (!IS_NPC(ch) && !ch->desc)
+                return FALSE;
+
+        if (ch->position < POS_SLEEPING)
+        {
+                send_to_char("You can't see anything but stars!\n\r", ch);
+                return FALSE;
+        }
+
+        if (ch->position == POS_SLEEPING)
+        {
+                send_to_char("You can't see anything, you're sleeping!\n\r", ch);
+                return FALSE;
+        }
+
+        if (!check_blind(ch))
+                return FALSE;
+
+        if (!IS_NPC(ch) && !IS_SET(ch->act, PLR_HOLYLIGHT) && ch->sub_class != SUB_CLASS_VAMPIRE && ch->form != FORM_FLY && room_is_dark(ch->in_room))
+        {
+                send_to_char("It is pitch black... \n\r", ch);
+                show_char_to_char(ch->in_room->people, ch);
+                return FALSE;
+        }
+
+        return TRUE;
+}
+
+/* Keep an inspection tied to the object already selected by its caller. */
+static void show_object_contents(CHAR_DATA *ch, OBJ_DATA *obj)
+{
+        char buf[MAX_STRING_LENGTH];
+
+        switch (obj->item_type)
+        {
+        default:
+                send_to_char("That is not a container.\n\r", ch);
+                break;
+
+        case ITEM_DRINK_CON:
+                show_drink_contents(ch, obj);
+                break;
+
+        case ITEM_TURRET:
+                if (obj)
+                {
+                        int count;
+                        int i;
+                        count = 0;
+
+                        for (obj = obj->contains; obj; obj = obj->next_content)
+                        {
+                                if (!obj)
+                                        continue;
+                                sprintf(buf, "<97>============================={x\n\r");
+                                send_to_char(buf, ch);
+                                /* Invalid capacity must not make inspection unsafe. */
+                                sprintf(buf, "<97>|<0><15> %-20s %3lld%%  <0>\n\r", obj->name,
+                                        obj->value[3] > 0 ? (100LL * obj->value[2]) / obj->value[3] : 0LL);
+                                send_to_char(buf, ch);
+
+                                count++;
+                        }
+                        for (i = count; i < 4; i++)
+                        {
+
+                                sprintf(buf, "<97>============================={x\n\r");
+                                send_to_char(buf, ch);
+                                sprintf(buf, "<97>|<0><8>------------EMPTY-----------<0>\n\r");
+                                send_to_char(buf, ch);
+                        }
+
+                        sprintf(buf, "<97>============================={x\n\r");
+                        send_to_char(buf, ch);
+                        sprintf(buf, "<97>   <565>/  /              \\  \\<564>   {x\n\r");
+                        send_to_char(buf, ch);
+                        sprintf(buf, "<97>  /  /                \\  \\  {x\n\r");
+                        send_to_char(buf, ch);
+                        sprintf(buf, "<97> /__/                  \\__\\ {x\n\r");
+                        send_to_char(buf, ch);
+                }
+                break;
+
+        case ITEM_CONTAINER:
+        case ITEM_CORPSE_NPC:
+        case ITEM_CORPSE_PC:
+        case ITEM_REMAINS:
+                if (IS_SET(obj->value[1], CONT_CLOSED))
+                {
+                        send_to_char("It is closed.\n\r", ch);
+                        break;
+                }
+
+                if (obj->item_type == ITEM_REMAINS)
+                {
+                        act("$p contain:", ch, obj, NULL, TO_CHAR);
+                }
+                else
+                {
+                        act("$p contains:", ch, obj, NULL, TO_CHAR);
+                }
+                show_list_to_char(obj->contains, ch, TRUE, TRUE, FALSE);
+                break;
+        }
+}
+
 void do_look(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
@@ -1396,30 +1505,8 @@ void do_look(CHAR_DATA *ch, char *argument)
         number_percent(), number_percent());
         log_string(buf2); */
 
-        if (!IS_NPC(ch) && !ch->desc)
+        if (!can_look(ch))
                 return;
-
-        if (ch->position < POS_SLEEPING)
-        {
-                send_to_char("You can't see anything but stars!\n\r", ch);
-                return;
-        }
-
-        if (ch->position == POS_SLEEPING)
-        {
-                send_to_char("You can't see anything, you're sleeping!\n\r", ch);
-                return;
-        }
-
-        if (!check_blind(ch))
-                return;
-
-        if (!IS_NPC(ch) && !IS_SET(ch->act, PLR_HOLYLIGHT) && ch->sub_class != SUB_CLASS_VAMPIRE && ch->form != FORM_FLY && room_is_dark(ch->in_room))
-        {
-                send_to_char("It is pitch black... \n\r", ch);
-                show_char_to_char(ch->in_room->people, ch);
-                return;
-        }
 
         argument = one_argument(argument, arg1);
         argument = one_argument(argument, arg2);
@@ -1486,77 +1573,7 @@ void do_look(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                switch (obj->item_type)
-                {
-                default:
-                        send_to_char("That is not a container.\n\r", ch);
-                        break;
-
-                case ITEM_DRINK_CON:
-                        show_drink_contents(ch, obj);
-                        break;
-
-                case ITEM_TURRET:
-                        if (obj)
-                        {
-                                int count;
-                                int i;
-                                count = 0;
-
-                                for (obj = obj->contains; obj; obj = obj->next_content)
-                                {
-                                        if (!obj)
-                                                continue;
-                                        sprintf(buf, "<97>============================={x\n\r");
-                                        send_to_char(buf, ch);
-                                        /* Invalid capacity must not make inspection unsafe. */
-                                        sprintf(buf, "<97>|<0><15> %-20s %3lld%%  <0>\n\r", obj->name,
-                                                obj->value[3] > 0 ? (100LL * obj->value[2]) / obj->value[3] : 0LL);
-                                        send_to_char(buf, ch);
-
-                                        count++;
-                                }
-                                for (i = count; i < 4; i++)
-                                {
-
-                                        sprintf(buf, "<97>============================={x\n\r");
-                                        send_to_char(buf, ch);
-                                        sprintf(buf, "<97>|<0><8>------------EMPTY-----------<0>\n\r");
-                                        send_to_char(buf, ch);
-                                }
-
-                                sprintf(buf, "<97>============================={x\n\r");
-                                send_to_char(buf, ch);
-                                sprintf(buf, "<97>   <565>/  /              \\  \\<564>   {x\n\r");
-                                send_to_char(buf, ch);
-                                sprintf(buf, "<97>  /  /                \\  \\  {x\n\r");
-                                send_to_char(buf, ch);
-                                sprintf(buf, "<97> /__/                  \\__\\ {x\n\r");
-                                send_to_char(buf, ch);
-                        }
-                        break;
-
-                case ITEM_CONTAINER:
-                case ITEM_CORPSE_NPC:
-                case ITEM_CORPSE_PC:
-                case ITEM_REMAINS:
-                        if (IS_SET(obj->value[1], CONT_CLOSED))
-                        {
-                                send_to_char("It is closed.\n\r", ch);
-                                break;
-                        }
-
-                        if (obj->item_type == ITEM_REMAINS)
-                        {
-                                act("$p contain:", ch, obj, NULL, TO_CHAR);
-                        }
-                        else
-                        {
-                                act("$p contains:", ch, obj, NULL, TO_CHAR);
-                        }
-                        show_list_to_char(obj->contains, ch, TRUE, TRUE, FALSE);
-                        break;
-                }
+                show_object_contents(ch, obj);
                 return;
         }
 
@@ -1749,12 +1766,54 @@ void do_look(CHAR_DATA *ch, char *argument)
         return;
 }
 
+/* Match LOOK's carried-first descriptions, but retain one numbered target. */
+static OBJ_DATA *find_examine_object(CHAR_DATA *ch, char *argument, char **pdesc)
+{
+        OBJ_DATA *obj;
+        char name[MAX_INPUT_LENGTH];
+        char *description;
+        uint64_t target_id;
+        int number;
+        int count = 0;
+        int list;
+
+        *pdesc = NULL;
+        if (parse_target_id(argument, &target_id))
+                return get_obj_here(ch, argument);
+
+        number = number_argument(argument, name);
+        for (list = 0; list < 2; list++)
+        {
+                for (obj = list == 0 ? ch->carrying : ch->in_room->contents;
+                     obj; obj = obj->next_content)
+                {
+                        if (obj->deleted || !can_see_obj(ch, obj))
+                                continue;
+
+                        description = get_extra_descr(name, obj->extra_descr);
+                        if (!description)
+                                description = get_extra_descr(name, obj->pIndexData->extra_descr);
+
+                        if (!description && !is_name(name, obj->name))
+                                continue;
+
+                        if (++count == number)
+                        {
+                                *pdesc = description;
+                                return obj;
+                        }
+                }
+        }
+        return NULL;
+}
+
 void do_examine(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
         char buf[MAX_STRING_LENGTH];
         char tmp[MAX_STRING_LENGTH];
         char arg[MAX_INPUT_LENGTH];
+        char *pdesc;
         int i;
         bool found;
 
@@ -1773,7 +1832,10 @@ void do_examine(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if ((obj = get_obj_here(ch, arg)))
+        if (!can_look(ch))
+                return;
+
+        if ((obj = find_examine_object(ch, arg, &pdesc)))
         {
                 if ((ch->class == CLASS_SMITHY) && (ch->pcdata->learned[gsn_innate_knowledge] > obj->level) &&
                     (obj->item_type == ITEM_WEAPON || obj->item_type == ITEM_ARMOR || obj->item_type == ITEM_TURRET_MODULE || obj->item_type == ITEM_TURRET || obj->item_type == ITEM_DEFENSIVE_TURRET_MODULE))
@@ -1782,7 +1844,16 @@ void do_examine(CHAR_DATA *ch, char *argument)
                         obj->identified = TRUE;
                 }
 
-                do_look(ch, arg);
+                if (pdesc)
+                        send_to_char(pdesc, ch);
+                else
+                {
+                        send_to_char(obj->description, ch);
+                        send_to_char("\n\r", ch);
+                }
+
+                if (obj->carried_by == ch && obj->identified)
+                        spell_identify(1, 1, ch, obj);
         }
         else
         {
@@ -1816,8 +1887,7 @@ void do_examine(CHAR_DATA *ch, char *argument)
                         {
                                 send_to_char("When you look inside, you see:\n\r", ch);
                         }
-                        sprintf(buf, "in %s", arg);
-                        do_look(ch, buf);
+                        show_object_contents(ch, obj);
                         break;
 
                 case ITEM_MONEY:

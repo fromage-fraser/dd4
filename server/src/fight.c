@@ -10283,7 +10283,7 @@ void use_magical_item(CHAR_DATA *ch)
         {
         case ITEM_SCROLL:
                 if (cobj->wear_loc == WEAR_HOLD)
-                        do_recite(ch, "scroll");
+                        do_recite(ch, "");
                 return;
 
         case ITEM_POTION:

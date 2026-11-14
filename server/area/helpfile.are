@@ -1581,6 +1581,9 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Fix digging tools, scroll names, and mixed EXAMINE targets.
+- Validate crafting and paid weapon blessings before spending resources.
+- Require fresh patronage confirmation for each deity.
 - Convert Plains of the South mobs; fix Ben's dialogue and bounty scripts.
 - Convert Great Eastern Desert mobs; add native stings, spores and brass breath.
 - Convert the Pit mobs; fix equipment resets and add venom claws and mastodons.

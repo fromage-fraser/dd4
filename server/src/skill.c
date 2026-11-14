@@ -4379,6 +4379,41 @@ void do_harvest (CHAR_DATA *ch, char *arg)
                 return;
         }
 
+        /* Reject an ineligible named material before spending movement. */
+        smokeable_type = -1;
+        random_smokeable = -1;
+        random = ( arg[0] == '\0' );
+
+        if( !random )
+        {
+                for( i=0; i<MAX_SMOKEABLES; i++ )
+                {
+                        if( is_full_name( arg, smokeable_table[i].name ) )
+                        {
+                                if( ch->in_room->sector_type != smokeable_table[i].sect_type )
+                                {
+                                        send_to_char( "You wouldn't find any of that in this sort of terrain.\n\r", ch );
+                                        return;
+                                }
+
+                                if( ch->pcdata->learned[ gsn_harvest ] < smokeable_table[i].min_skill )
+                                {
+                                        send_to_char( "You don't know enough about how to find it.\n\r", ch );
+                                        return;
+                                }
+
+                                if( ch->level < smokeable_table[i].min_level)
+                                {
+                                        send_to_char( "You aren't experienced enough to know how to do that.\n\r", ch );
+                                        return;
+                                }
+
+                                smokeable_type = i;
+                                break;
+                        }
+                }
+        }
+
         if (ch->sub_class == SUB_CLASS_DRUID)
         {
                 move_cost = number_range( 75, 100 );
@@ -4396,13 +4431,8 @@ void do_harvest (CHAR_DATA *ch, char *arg)
         ch->move -= move_cost;
         WAIT_STATE( ch, PULSE_VIOLENCE );
 
-        smokeable_type = -1;
-        random_smokeable = -1;
-        random = FALSE;
-
-        if( arg[0] == '\0' )
+        if( random )
         {
-                random = TRUE;
                 for( i=0; i < MAX_SMOKEABLES; i++ )
                 {
                         random_smokeable = number_range( 0, MAX_SMOKEABLES-1 );
@@ -4413,32 +4443,6 @@ void do_harvest (CHAR_DATA *ch, char *arg)
                                 smokeable_type = random_smokeable;
                                 break;
                         }
-                }
-        }
-        else for( i=0; i<MAX_SMOKEABLES; i++ )
-        {
-                if( is_full_name( arg, smokeable_table[i].name ) )
-                {
-                        if( ch->in_room->sector_type != smokeable_table[i].sect_type )
-                        {
-                            send_to_char( "You wouldn't find any of that in this sort of terrain.\n\r", ch );
-                            return;
-                        }
-
-                        if( ch->pcdata->learned[ gsn_harvest ] < smokeable_table[i].min_skill )
-                        {
-                            send_to_char( "You don't know enough about how to find it.\n\r", ch );
-                            return;
-                        }
-
-                        if( ch->level < smokeable_table[i].min_level)
-                        {
-                            send_to_char( "You aren't experienced enough to know how to do that.\n\r", ch );
-                            return;
-                        }
-
-                        smokeable_type = i;
-                        break;
                 }
         }
 
@@ -4571,6 +4575,42 @@ void do_carve (CHAR_DATA *ch, char *arg)
                 return;
         }
 
+        /* Reject an ineligible named material before spending movement. */
+        pipe_type = -1;
+        random_pipe = -1;
+        random = ( arg1[0] == '\0' );
+
+        if( !random )
+        {
+                for( i=0; i < MAX_PIPES; i++ )
+                {
+
+                        if( is_full_name( arg1, pipe_table[i].name ) )
+                        {
+                                if( ch->in_room->sector_type != pipe_table[i].sect_type )
+                                {
+                                        send_to_char( "You won't find materials for that pipe in this terrain.\n\r", ch );
+                                        return;
+                                }
+
+                                if( ch->pcdata->learned[ gsn_carve ] < pipe_table[i].min_skill )
+                                {
+                                        send_to_char( "You don't know enough about how to find it.\n\r", ch );
+                                        return;
+                                }
+
+                                if( ch->level < pipe_table[i].min_level)
+                                {
+                                        send_to_char( "You aren't experienced enough to know how to do that.\n\r", ch );
+                                        return;
+                                }
+
+                                pipe_type = i;
+                                break;
+                        }
+                }
+        }
+
         if (ch->sub_class == SUB_CLASS_DRUID)
         {
                 move_cost = number_range( 50, 75 );
@@ -4588,13 +4628,8 @@ void do_carve (CHAR_DATA *ch, char *arg)
         ch->move -= move_cost;
         WAIT_STATE( ch, PULSE_VIOLENCE );
 
-        pipe_type = -1;
-        random_pipe = -1;
-        random = FALSE;
-
-        if( arg1[0] == '\0' )
+        if( random )
         {
-                random = TRUE;
                 for( i=0; i < 5; i++ )
                 {
                         random_pipe = number_range( 0, MAX_PIPES-1 );
@@ -4605,33 +4640,6 @@ void do_carve (CHAR_DATA *ch, char *arg)
                                 pipe_type = random_pipe;
                                 break;
                         }
-                }
-        }
-        else for( i=0; i < MAX_PIPES; i++ )
-        {
-
-                if( is_full_name( arg1, pipe_table[i].name ) )
-                {
-                        if( ch->in_room->sector_type != pipe_table[i].sect_type )
-                        {
-                            send_to_char( "You won't find materials for that pipe in this terrain.\n\r", ch );
-                            return;
-                        }
-
-                        if( ch->pcdata->learned[ gsn_carve ] < pipe_table[i].min_skill )
-                        {
-                            send_to_char( "You don't know enough about how to find it.\n\r", ch );
-                            return;
-                        }
-
-                        if( ch->level < pipe_table[i].min_level)
-                        {
-                            send_to_char( "You aren't experienced enough to know how to do that.\n\r", ch );
-                            return;
-                        }
-
-                        pipe_type = i;
-                        break;
                 }
         }
 

@@ -1643,6 +1643,8 @@ void do_pray (CHAR_DATA *ch, char *argument)
                 ch->pcdata->deity_patron = -1;
                 ch->pcdata->deity_timer = DEITY_DEFAULT_PLAYER_TIMER;
                 ch->pcdata->deity_flags = 0;
+                ch->pcdata->deity_patron_warnings = 0;
+                ch->pcdata->deity_release_pending = 0;
 
                 for (next = 0; next < DEITY_NUMBER_TYPES; next++)
                         ch->pcdata->deity_type_timer[next] = 0;
@@ -1885,6 +1887,7 @@ void pray_for_release (CHAR_DATA* ch)
          */
 
         patron = ch->pcdata->deity_patron;
+        ch->pcdata->deity_patron_warnings = 0;
 
         if (patron < 0 || patron >= NUMBER_DEITIES)
         {
@@ -1902,7 +1905,7 @@ void pray_for_release (CHAR_DATA* ch)
                  deity_info_table[patron].name);
         send_to_char (buf, ch);
 
-        if (!IS_SET (ch->pcdata->deity_flags, DEITY_PFLAG_RELEASE_WARNING))
+        if (ch->pcdata->deity_release_pending != patron + 1)
         {
                 send_paragraph_to_char ("\n\r{RWarning!{x  You are about to abandon "
                         "your patron, who may or may not release you.  If you are not "
@@ -1910,7 +1913,7 @@ void pray_for_release (CHAR_DATA* ch)
                         "released, you will lose favour with your patron and possibly "
                         "your patron's allies within the Pantheon!\n\r\n\rRepeat "
                         "this command to ask for release.\n\r", ch, 0);
-                SET_BIT (ch->pcdata->deity_flags, DEITY_PFLAG_RELEASE_WARNING);
+                ch->pcdata->deity_release_pending = patron + 1;
                 return;
         }
 
@@ -1922,6 +1925,7 @@ void pray_for_release (CHAR_DATA* ch)
          *  although release attempt penalty still applies.
          */
 
+        ch->pcdata->deity_release_pending = 0;
         if (deity_info_table[patron].alignment < -349
             || deity_info_table[patron].personality == DEITY_PERSONALITY_CRUEL)
         {
@@ -1987,6 +1991,7 @@ void pray_for_patronage (CHAR_DATA* ch, int deity)
          */
 
         patron = ch->pcdata->deity_patron;
+        ch->pcdata->deity_release_pending = 0;
 
         if (ch->fighting)
         {
@@ -2017,7 +2022,13 @@ void pray_for_patronage (CHAR_DATA* ch, int deity)
                  his_her[deity_info_table[deity].sex]);
         send_to_char (buf, ch);
 
-        if (!IS_SET (ch->pcdata->deity_flags, DEITY_PFLAG_PATRON_WARNING_1))
+        if (ch->pcdata->deity_patron_pending != deity)
+        {
+                ch->pcdata->deity_patron_pending = deity;
+                ch->pcdata->deity_patron_warnings = 0;
+        }
+
+        if (ch->pcdata->deity_patron_warnings == 0)
         {
                 send_paragraph_to_char ("\n\r{RWarning!{x  You are about to select a "
                       "patron deity!  Once you have chosen a patron, you may not "
@@ -2030,17 +2041,17 @@ void pray_for_patronage (CHAR_DATA* ch, int deity)
                       "the online help entries for DEITIES, PANTHEON and PRAY.  "
                       "Also check the FAQ for any information.\n\r\n\rRepeat "
                       "this command to select your patron.\n\r", ch, 0);
-                SET_BIT (ch->pcdata->deity_flags, DEITY_PFLAG_PATRON_WARNING_1);
+                ch->pcdata->deity_patron_warnings = 1;
                 return;
         }
 
-        if (!IS_SET (ch->pcdata->deity_flags, DEITY_PFLAG_PATRON_WARNING_2))
+        if (ch->pcdata->deity_patron_warnings == 1)
         {
                 send_paragraph_to_char ("\n\r{RFinal Warning!{x  The deity system is "
                       "currently experimental.  If you continue, you accept that "
                       "TERRIBLE things may happen to you!\n\r\n\rRepeat this "
                       "command one last time to select a patron.\n\r", ch, 0);
-                SET_BIT (ch->pcdata->deity_flags, DEITY_PFLAG_PATRON_WARNING_2);
+                ch->pcdata->deity_patron_warnings = 2;
                 return;
         }
 
@@ -2049,6 +2060,7 @@ void pray_for_patronage (CHAR_DATA* ch, int deity)
          *  See if the deity is interested next.
          */
 
+        ch->pcdata->deity_patron_warnings = 0;
         if (ch->pcdata->deity_favour[deity] < DEITY_MAX_FAVOUR / 2)
         {
                 sprintf (buf, "\n\r%s speaks to your mind: {C",
