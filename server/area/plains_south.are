@@ -16,8 +16,9 @@ This oversized pebble moves with a mind of its own.
 ~
 32|64 0 0 S
 10 0 0 0d0+0 0d0+0
-63|256 0
+0 0
 8 8 0
+< rolling_boulder~ common~
 #18401
 rolling rock boulder~
 The rolling rock~
@@ -27,8 +28,9 @@ This oversized pebble moves with a mind of its own.
 ~
 32|64 0 0 S
 15 0 0 0d0+0 0d0+0
-63|256 0
+0 0
 8 8 0
+< rolling_boulder~ common~
 #18402
 crazed rabbit~
 A crazed Rabbit~
@@ -39,8 +41,9 @@ attacks!  He must be on something.
 ~
 32|64 0 0 S
 10 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< rabbit~ common~
 #18403
 crazed rabbit~
 A crazed Rabbit~
@@ -51,8 +54,9 @@ attacks!  He must be on something.
 ~
 32|64 0 0 S
 15 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< rabbit~ common~
 #18404
 king dead~
 The dead King~
@@ -61,35 +65,37 @@ A long dead King moulders on his Bower.
 This guy is not even skin and bones.... Dark magic ensures his eternal
 existence.
 ~
-32|64 2|8|32|128|4096|32768|65536 -1000 S
+32|64 2|8|32|128|32768|65536 -1000 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lich~ boss~
 #18405
 carnivorous grass~
 The carnivorous grass~
 A tall clump of grass growls at you and attacks!?
 ~
 This strange creature looks like a big bunch of spring onions with lots of
-litte legs..... and since it's chewing on you, it must have teeth too!?
+little legs..... and since it's chewing on you, it must have teeth too!?
 ~
-32|64 32 0 S
+32|64 0 0 S
 10 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< carnivorous_grass~ common~
 #18406
 carnivorous grass~
 The carnivorous grass~
 A tall clump of grass growls at you and attacks!?
 ~
 This strange creature looks like a big bunch of spring onions with lots of
-litte legs..... and since it's chewing on you, it must have teeth too!?
+little legs..... and since it's chewing on you, it must have teeth too!?
 ~
-32|64 32 0 S
+32|64 0 0 S
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 0
-
+< carnivorous_grass~ common~
 #18407
 Ben trapper~
 Ben the Trapper~
@@ -100,7 +106,7 @@ dangers from the land. He appears to be on the hunt even now.
 ~
 64|512|8388608|16777216 8|16|32|2048|65536|8388608|4194304 0 S
 300 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
 >give_prog morque skin~
 if number($o) == 754
@@ -317,7 +323,6 @@ mpecho The trapper peers at the bone closely.
 say Trying to cheat me, eh?
 give $o $n
 endif
-endif
 ~
 >give_prog voice vial~
 if number($o) == 764
@@ -345,7 +350,7 @@ endif
 if number($o) == 766
 mpjunk wing
 mpoload 380 1
-mp0load 280 1
+mpoload 380 1
 give / $n
 give / $n
 mpoload 28098 1
@@ -404,7 +409,7 @@ give list $n
 say Return to me once you've destroyed something on the list.
 ~
 |
-
+< human~ common~
 #0
 
 
@@ -1605,7 +1610,7 @@ S
 Grassy Plain~
 You are walking through knee-high grass covering a gently undulating
 landscape.  The trail you are following heads north and west. To the south
-lies a deep ravine and the remains of a tension brige.  Only the tall
+lies a deep ravine and the remains of a tension bridge.  Only the tall
 anchor stones and some rotten planks remain.  Looks like you'll have to
 go around if you want to get to the other side.
 ~
@@ -1646,7 +1651,7 @@ S
 #18467
 Grassy Plain~
 The trail you are standing on heads south.  To the north lies a deep ravine
-and the remains of a tension brige.  Only the tall anchor stones and some
+and the remains of a tension bridge.  Only the tall anchor stones and some
 rotten planks remain.  Looks like you'll have to go around if you want to
 get to the other side.
 ~
@@ -1659,7 +1664,7 @@ S
 #18469
 Bottom of the Bank~
 Feeling a little worse-for-wear after your fall, you stagger to your feet.
-The bank to the east is far to unsteady to be climbed.  Trails converge
+The bank to the east is far too unsteady to be climbed.  Trails converge
 here from the west, north and south.
 ~
 0 0 2
@@ -1679,7 +1684,7 @@ S
 #18470
 Barrow Mound~
 The interior of this barrow mound is dank and musty.  Over the centuries
-since its comstruction any exterior sign of the mounds existence has been
+since its construction any exterior sign of the mound's existence has been
 eroded away.
 ~
 0 4 2
@@ -1692,36 +1697,43 @@ S
 O 1 18401 100 18470                     A gleaming pile of coins to Barrow Mound
 *
 M 1 18402 4 18456                       A crazed Rabbit to Grassy Plain
+E 1 313 100 16                         (attached rabbit incisors)
 *
 M 1 18403 4 18442                       A crazed Rabbit to Grassy Plain
+E 1 313 100 16                         (attached rabbit incisors)
 *
 M 1 18403 4 18444                       A crazed Rabbit to Grassy Plain
+E 1 313 100 16                         (attached rabbit incisors)
 *
 M 1 18403 4 18410                       A crazed Rabbit to Grassy Plain
+E 1 313 100 16                         (attached rabbit incisors)
 *
 M 1 18403 4 18408                       A crazed Rabbit to Grassy Plain
+E 1 313 100 16                         (attached rabbit incisors)
 *
 M 1 18402 4 18458                       A crazed Rabbit to Grassy Plain
+E 1 313 100 16                         (attached rabbit incisors)
 *
 M 1 18402 4 18454                       A crazed Rabbit to Grassy Plain
+E 1 313 100 16                         (attached rabbit incisors)
 *
 M 1 18405 4 18428                       The carnivorous grass to Grassy Plain
 *
-M 1 18405 1 18404                       The carnivorous grass to Grassy Plain
+M 1 18405 4 18404                       The carnivorous grass to Grassy Plain
 *
 M 1 18406 2 18422                       The carnivorous grass to Grassy Plain
 *
 M 1 18400 2 18420                       The rolling rock to Grassy Plain
-E 1 18400 100 16
+G 1 18400 100                         (rock, carried loot)
 *
 M 1 18401 4 18412                       The rolling rock to Grassy Plain
-E 1 18400 100 16
+G 1 18400 100                         (rock, carried loot)
 *
 M 1 18401 4 18408                       The rolling rock to Grassy Plain
-E 1 18400 100 16
+G 1 18400 100                         (rock, carried loot)
 *
 M 1 18401 4 18417                       The rolling rock to Grassy Plain
-E 1 18400 100 16
+G 1 18400 100                         (rock, carried loot)
 *
 M 1 18401 4 18467                       The rolling rock to Grassy Plain
 *
@@ -1735,8 +1747,6 @@ S
 
 #SPECIALS
 M  18404 spec_cast_psionicist           The dead King
-M  18405 spec_fido                      The carnivorous grass
-M  18406 spec_fido                      The carnivorous grass
 S
 
 

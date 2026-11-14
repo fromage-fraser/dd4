@@ -12453,3 +12453,58 @@ power 70 percent/fire breath 30 percent and carries its old mail/halberd
 as loot. Two stinger objects/resets are added; other object properties,
 population caps/placements, room flags, random exits and key links stay.
 There is no matching Scribe source for this area.
+
+
+Plains of the South creatures
+----------------------------
+
+rolling_boulder and carnivorous_grass are available through the existing
+archetype field. They append to the table without changing earlier IDs.
+No new body species, area fields, flags or individual trait fields are needed.
+
+rolling_boulder uses limbless_construct. It is inorganic, mindless,
+bloodless, ANALGIC, soulless and corpseless, without organs or limbs.
+It has the same poison/sleep/charm/drain immunities as the other animated
+objects, -10 natural armour and an ordinary crushing attack supplied by
+the existing natural_attack_type trait. It has no extra attack, physical
+immunity or magical-weapon requirement. Its defaults are 150cm high and
+long, 4000kg, Large without HUGE. These measurements are descriptive.
+Its XP modifier is zero. The four existing rock weapons in this area
+are now carried loot; their object properties have not changed.
+
+carnivorous_grass uses plant, retaining an organic, bloodless, ANALGIC
+body without animal organs, eyes, arms or speech. Its bulb has a
+targetable mouth/head region, many little legs and teeth for an ordinary
+bite. The archetype removes the parent's NO_HEAD and NO_LEGS through
+the usual XOR fields. It supplies hidden detection and the existing
+spec_fido corpse-eating behaviour, with no toxin or entangling power.
+Defaults are 60cm high, 80cm long, 10kg and Small. Both area variants
+now inherit the same anatomy. The second reset for 18405 uses cap 4,
+matching the existing overall cap and restoring its room 18404 placement.
+
+The two crazed rabbits reuse rabbit and attached incisor weapon 313.
+Place an E reset for 313 after every rabbit M reset. The existing head
+target category, bite verb, injury/disarming/Regenerate rules and
+level-based weapon scaling apply. Do not add venom or fangs. Their
+authored aggression stays, unlike the passive rabbits in other areas.
+
+The dead King 18404 uses lich and Boss, with the existing rank HP bonus
+applied once. He keeps his individual spec_cast_psionicist at 100 percent,
+his original stone reset, coin pile and other effects. The stone is
+anti-evil, so the King drops it in the barrow as he did before; its
+flags and affects stay unchanged. Lich physiology supplies undead
+defences, fear and the existing 20 percent
+chill contact on qualifying damaging unarmed hits. That trait does
+not depend on the default lich special. The contradictory permanent
+poison flag is removed. His default dimensions are 175cm/45kg/Medium.
+
+Ben 18407 uses human at 175cm/75kg/Medium and remains Common. His level 300
+and protected hunting-service flags are individual area design, not
+human defaults. Clear the old NO_ARMS/NO_SPEECH body mask so his arms
+and scripted dialogue work. Keep his senses, infinite-light object,
+15 trophy programs, greet and two speech programs. Cockatrice wings
+now give the intended two 30-QP tokens and existing 55 platinum; the bad
+mp0load 280 line is corrected to mpoload 380. Remove the surplus final
+endif in the bone-golem program. Other payouts and the 7 percent rename
+piece chance stay. All 70 room flags, exits, music and original objects
+are preserved. There is no matching Scribe source for this area.

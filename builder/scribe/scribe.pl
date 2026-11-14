@@ -117,6 +117,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         lemming_folk bear_wolf
         jakyra bile_demon mastodon
         small_scorpion purple_worm adult_brass_dragon drider myconid dustdigger camel
+        rolling_boulder carnivorous_grass
 /;
 
 my %mob_act = (

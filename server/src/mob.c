@@ -3123,6 +3123,26 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_camel_spit", "", "", 0,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "rolling_boulder", "limbless_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS, 0,
+                0, 0, RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN,
+                0, 0, 0, 0,
+                150, 4000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "carnivorous_grass", "plant", "icon1", "icon2",
+                0, AFF_DETECT_HIDDEN,
+                /* Its bulb has a mouth, and the plant walks on many little legs. */
+                BODY_NO_HEAD | BODY_NO_LEGS | PART_HEAD | PART_MANY_LEGS | PART_FANGS,
+                PART_FANGS, 0, 0, 0, 0, 0, 0, 0,
+                60, 10, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_fido", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 80
         }
 };
 
@@ -3813,6 +3833,12 @@ static const CREATURE_TRAIT_CHANGE camel_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
 };
 
+static const CREATURE_TRAIT_CHANGE rolling_boulder_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8} /* The boulder crushes with its own body. */
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3820,6 +3846,8 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"rolling_boulder", NULL, rolling_boulder_trait_changes,
+            TRAIT_ITEMS(rolling_boulder_trait_changes)},
         {"purple_worm", NULL, purple_worm_trait_changes,
             TRAIT_ITEMS(purple_worm_trait_changes)},
         {"adult_brass_dragon", NULL, adult_brass_dragon_trait_changes,
