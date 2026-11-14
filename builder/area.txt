@@ -7962,3 +7962,61 @@ and 244 carried items. Imported Limbo tobacconist Ghelt 81 is unchanged
 and is not one of the 57 conversions. The shared robe and Underdark reset
 also stay unchanged. No matching Solace source exists; other source/area
 pairs remain in sync.
+
+
+Lemming folk and the Beast
+-------------------------
+
+Lemming Caves uses lemming_folk for its nine speaking, tool-using
+lemmings and bear_wolf for the Beast. Both append to the archetype list;
+existing species and archetype numbers stay the same. There are no new
+species, area fields, traits or body flags.
+
+Lemming_folk uses humanoid as its anatomical base: head, eyes, ears,
+arms, hands, fingers, two legs, feet and ordinary organs. It adds a short
+tail and tooth anatomy through existing PART_FANGS, with an ordinary
+nonvenomous fallback bite. Wielded tools and weapons keep precedence.
+It retains speech, blood, soul, pain and normal corpses. Defaults are
+70 cm standing height, 15 kg and Small; length is unspecified. The small
+adult uses 50 cm/8 kg, while the large lemming, carpenter and wounded
+lemming use 90 cm/25 kg. These are descriptive DD4 estimates, not child
+combat penalties or tabletop statistics. No extra senses, speed, disease,
+burrowing, attacks, resistances or immunities are added.
+
+Bear_wolf uses quadrupedal_mammal, adding tail, paws, claws and fangs.
+It has four legs and ordinary organs, without arms or speech. Defaults
+are 120 cm shoulder height, 300 kg, 240 cm length and Large without HUGE.
+Ordinary fallback attacks choose a claw or bite; no extra attack, active
+special, hug, venom, disease, lycanthropy or magical defence is granted.
+All template HP, damage, critical, haste and XP modifiers are zero.
+
+The Beast keeps its existing Elite rank, senses, aggression and magical
+wielded claw treasure 29960. That treasure keeps its flags, claw verb,
+damage bonus, TAKE/WIELD and reset. It remains an ordinary loot weapon;
+this conversion adds no BODY_PART flag or trauma rule. The nine lemmings
+stay Common, including the smith, doctor and mage.
+
+Doctor 29955 uses existing spec_cleric_adept: cleric combat, then adept
+player support while idle. ACT_IS_HEALER enables the usual paid services
+and prices. Existing undead checks still apply. No priest-service flag
+is added. The adept skips NPCs, so the patients remain narrative actors;
+their bandages do not create permanent trauma, bleeding or HP penalties.
+The smith keeps PRACTICE, teacher base 15 and all three 75-percent lessons.
+The mage keeps its casting and robes. Three male pronouns are matched by
+male sex fields; the other authored sex values stay.
+
+All authored behaviour stays, including the small lemming's aggressive
+and wimpy combination. It normally avoids initiating against awake players.
+The nervous miner gains no new wimpy flag. Raw body masks stay zero so
+they do not cancel the new inherited anatomy or the Beast's absence flags.
+Only the doctor's healer flag is added to individual ACT data.
+
+The conversion fixes up/down exit descriptions in 29951, two text typos
+and the north exit description in 29979. All 31 room flags, destinations,
+doors and key links stay. All 16 objects, original reset commands, caps,
+placements and loot stay. Existing caps still give 24 initial and 32 refill
+inhabitants, carrying 12 and 13 objects. Keep area exp_mod 115, key 29964,
+the bedding and heroic helm. Pickaxe 29965 is the intentional ITEM_DIGGER
+with a fixed-level-12 I reset; weapon pickaxe 29950 remains separate.
+There is no matching Lemming Caves source. Other source/area pairs stay
+unchanged, and the ten existing portraits are retained.
