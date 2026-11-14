@@ -400,7 +400,8 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
                  ? "None" : deity_info_table[ch->pcdata->deity_patron].name);
 
         fprintf (fp, "DeityTimer  %d\n", ch->pcdata->deity_timer);
-        fprintf (fp, "DeityFlags  %d\n", ch->pcdata->deity_flags);
+        fprintf (fp, "DeityFlags  %d\n",
+                 ch->pcdata->deity_flags & ~DEITY_PFLAG_LEGACY_CONFIRMATIONS);
 
         for (i = 0; i < NUMBER_DEITIES; i++)
         {
@@ -1071,7 +1072,8 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
                         KEY("DamageMit", ch->damage_mitigation, fread_number( fp, &stat ));
                         KEY("DamangeEnh", ch->damage_enhancement, fread_number( fp, &stat));
                         KEY("Deaf", ch->deaf, fread_number( fp, &stat ));
-                        KEY("DeityFlags", ch->pcdata->deity_flags, fread_number( fp, &stat ));
+                        KEY("DeityFlags", ch->pcdata->deity_flags,
+                            fread_number(fp, &stat) & ~DEITY_PFLAG_LEGACY_CONFIRMATIONS);
                         KEY("DeityTimer", ch->pcdata->deity_timer, fread_number( fp, &stat ));
                         KEY("Dscr", ch->description, fread_string(fp));
 

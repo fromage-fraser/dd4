@@ -7321,6 +7321,8 @@ void do_mset(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                victim->pcdata->deity_patron_warnings = 0;
+                victim->pcdata->deity_release_pending = 0;
                 if (ivalue < 0 || ivalue >= NUMBER_DEITIES)
                 {
                         victim->pcdata->deity_patron = -1;

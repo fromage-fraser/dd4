@@ -1554,10 +1554,9 @@ struct clan_member_data
 #define DEITY_NUMBER_PRAYERS 13
 #define DEITY_PRAYERS_PER_TYPE 4
 
-#define DEITY_PFLAG_PATRON_WARNING_1 BIT_0
-#define DEITY_PFLAG_PATRON_WARNING_2 BIT_1
+/* Reserved legacy save bits; deity confirmations are session-only. */
+#define DEITY_PFLAG_LEGACY_CONFIRMATIONS (BIT_0 | BIT_1 | BIT_3)
 #define DEITY_PFLAG_PATRON_CHOSEN BIT_2
-#define DEITY_PFLAG_RELEASE_WARNING BIT_3
 #define DEITY_PFLAG_LEFT_GOOD BIT_4
 #define DEITY_PFLAG_LEFT_NEUTRAL BIT_5
 #define DEITY_PFLAG_LEFT_EVIL BIT_6
@@ -3247,6 +3246,9 @@ struct pc_data
         int vault_number;
         int blink;
         int deity_patron;
+        int deity_patron_pending;
+        int deity_patron_warnings;
+        int deity_release_pending; /* Patron index plus one, or zero. */
         int deity_favour[NUMBER_DEITIES];
         int deity_type_timer[DEITY_NUMBER_TYPES];
         int deity_personality_timer[DEITY_NUMBER_PERSONALITIES];
