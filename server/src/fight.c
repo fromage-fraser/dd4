@@ -1036,6 +1036,13 @@ static unsigned long int one_hit_resistance_types(CHAR_DATA *ch, int dt,
                     | RES_WATER);
                 types |= native;
         }
+        /* Only an opted-in NPC's ordinary unarmed contact becomes magical. */
+        if (ch && IS_NPC(ch) && !weapon && dt >= TYPE_HIT
+        &&  creature_trait_value(ch, CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS) > 0)
+        {
+                types &= ~RES_NONMAGIC;
+                types |= RES_MAGIC;
+        }
         return types;
 }
 

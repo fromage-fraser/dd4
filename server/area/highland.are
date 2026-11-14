@@ -12,8 +12,13 @@ stay alive. Giant bogleeches, perhaps?
 ~
 32 0 -230 S
 15 0 0 0d0+0 0d0+0
-36 8000
+128 8000
 0 0 0
+< giant_frog~ common~
+MobHeight 200
+MobWeight 5000
+MobLength 650
+MobSize 2
 #11501
 Barbarian~
 a barbarian~
@@ -26,6 +31,7 @@ you instead.
 14 0 0 0d0+0 0d0+0
 0 5000
 0 0 1
+< human~ common~
 #11502
 Barbarian Warrior~
 a barbarian warrior~
@@ -37,6 +43,7 @@ The barbarian warrior looks about for someone to kill.
 16 0 0 0d0+0 0d0+0
 0 12800
 0 0 1
+< human~ common~
 #11503
 Barbarian Guard~
 a barbarian guard~
@@ -49,19 +56,20 @@ They also guard the Lord's cleric and mage.
 18 0 0 0d0+0 0d0+0
 0 17000
 0 0 1
+< human~ common~
 #11504
 Barbarian Elite~
 an elite barbarian~
 The elite barbarian is just waiting for you to try something.
 ~
-The elite of the army they will protect their Lord at all cost,
+The elite of the army will protect their Lord at all costs,
 even unto death.
 ~
 2 0 -600 S
 21 0 0 0d0+0 0d0+0
 0 38000
 0 0 1
-< reserved~ elite~
+< human~ elite~
 #11505
 Highlander~
 a Highlander~
@@ -74,6 +82,7 @@ confidently, playing his bagpipes.
 25 0 0 0d0+0 0d0+0
 0 17000
 0 0 1
+< human~ common~
 #11506
 Barbarian Lord~
 the Barbarian Lord~
@@ -87,7 +96,7 @@ to a boar's tusks.
 25 0 0 0d0+0 0d0+0
 0 90000
 0 0 1
-< reserved~ boss~
+< human~ boss~
 #11507
 Wife~
 the wife of the Lord~
@@ -100,6 +109,7 @@ can stand the sight of her, even in absolute darkness.
 20 0 0 0d0+0 0d0+0
 0 37000
 0 0 2
+< human~ common~
 #11508
 Holy Slayer~
 the Holy Slayer~
@@ -112,8 +122,8 @@ for peace.
 1 642 0 S
 35 0 0 0d0+0 0d0+0
 0 100000
-0 0 0
-< reserved~ rare~
+0 0 1
+< ghost~ rare~
 #11509
 sheep~
 a sheep~
@@ -123,8 +133,9 @@ It looks like a sheep, it sounds like a sheep and... it's a sheep.
 ~
 1 0 200 S
 13 0 0 0d0+0 0d0+0
-36 5000
+0 5000
 0 0 0
+< sheep~ common~
 #11510
 mage lord mardonna~
 the Lord's Mage, Mardonna~
@@ -138,6 +149,7 @@ might explode in your face!
 18 0 0 0d0+0 0d0+0
 0 29000
 0 0 2
+< human~ common~
 #11511
 cleric lord boldar~
 the Lord's Cleric, Boldar~
@@ -150,6 +162,7 @@ in body and mind.
 18 0 0 0d0+0 0d0+0
 0 30000
 0 0 1
+< human~ common~
 #11512
 Keeper~
 the Keeper of the Tower~
@@ -162,6 +175,7 @@ thing he cares about.
 16 0 0 0d0+0 0d0+0
 0 17500
 0 0 1
+< human~ common~
 #11513
 Nessy~
 Nessy~
@@ -172,8 +186,9 @@ You better not pick a fight with her!
 ~
 2 128 200 S
 24 0 0 0d0+0 0d0+0
-128|32 38000
+0 38000
 0 0 2
+< plesiosaur~ common~
 #11514
 Child kid Nessy~
 Nessy's Child~
@@ -184,8 +199,11 @@ Even reptilian kids need their sleep.
 ~
 3 512 300 S
 20 0 0 0d0+0 0d0+0
-0 25000
-0 0 1
+128 25000
+0 0 2
+< plesiosaur~ common~
+MobWeight 150
+MobLength 400
 #11515
 fire elemental Guardian~
 a fire elemental~
@@ -194,10 +212,11 @@ A fire elemental is here.
 A fire elemental, probably summoned by the castle's mage to protect this exit.
 It will attack anybody that comes here--except the mage who summoned it.
 ~
-34 2048|524840 -1000 S
+34 526376 -1000 S
 20 0 0 0d0+0 0d0+0
-96 25000
+32 25000
 0 0 0
+< fire_elemental~ common~
 #11516
 Guard~
 a guard~
@@ -212,6 +231,9 @@ They are not tall, but look quite tough.
 17 0 0 0d0+0 0d0+0
 0 17000
 0 0 0
+< human~ common~
+MobHeight 165
+MobWeight 80
 #11517
 hideous bogleech leech~
 a hideous bogleech~
@@ -220,9 +242,9 @@ A hideous bogleech squirms in the muck.
 A native of the Highland bog, this hideous leech looks for any opportunity
 to attach itself to an unsuspecting traveller's body parts.
 ~
-4|32|64 32|512|32768|65536|8388608|67108864 -130 S
+4|32|64 8487456 -130 S
 12 0 0 0d0+0 0d0+0
-4|8|16|32 25000
+0 25000
 0 0 0
 >rand_prog 10~
         mpecho You hear violent sloshing and squirming near your feet.
@@ -232,6 +254,7 @@ mpecho {WThe hideous bogleech explodes in a shower of blood and entrails.{x
 mpoload 11525
 ~
 |
+< giant_leech~ common~
 #11518
 Keeper~
 the Keeper of the Tower~
@@ -244,6 +267,7 @@ thing he cares about.
 16 0 0 0d0+0 0d0+0
 0 17500
 0 0 1
+< human~ common~
 #11519
 Keeper~
 the Keeper of the Tower~
@@ -256,6 +280,7 @@ thing he cares about.
 16 0 0 0d0+0 0d0+0
 0 17500
 0 0 1
+< human~ common~
 #11520
 Keeper~
 the Keeper of the Tower~
@@ -268,6 +293,7 @@ thing he cares about.
 16 0 0 0d0+0 0d0+0
 0 17500
 0 0 1
+< human~ common~
 #0
 
 
@@ -587,6 +613,14 @@ A crimson jewel hovers in the air above the ground.~
 1 0 0
 A
 19 1
+#11530
+frog mouth~
+a giant frog's mouth~
+A giant frog's mouth lies here.~
+~
+5 67108864|137438953472 0
+1~ 0~ 0~ 10~
+0 0 0
 #0
 
 
@@ -3969,11 +4003,17 @@ D 0 11624 2 1
 D 0 11625 3 1
 D 0 11662 3 1
 M 0 11500 6 11547
+E 1 11530 100 16               (attached frog mouth)
 M 0 11500 6 11565
+E 1 11530 100 16               (attached frog mouth)
 M 0 11500 6 11628
+E 1 11530 100 16               (attached frog mouth)
 M 0 11500 6 11636
+E 1 11530 100 16               (attached frog mouth)
 M 0 11500 6 11638
+E 1 11530 100 16               (attached frog mouth)
 M 0 11500 6 11648
+E 1 11530 100 16               (attached frog mouth)
 M 0 11501 10 11522
 E 1 11501 0 16
 M 0 11501 10 11522
@@ -4149,7 +4189,7 @@ M 11510 spec_cast_mage          the Lord's mage Mardonna
 M 11511 spec_cast_cleric        the Lord's cleric Boldar
 M 11513 spec_breath_any         Nessy
 M 11514 spec_breath_any         Nessy's child
-M 11517 spec_bloodsucker        bogleech
+M 11500 spec_swallow            gigantic frog
 *
 S
 #$
