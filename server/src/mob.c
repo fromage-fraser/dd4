@@ -554,6 +554,20 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        {
+                "myriapod",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_SPEECH | PART_HEAD | PART_EYE
+                    | PART_MANY_LEGS | PART_HEART | PART_BRAINS | PART_GUTS,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 
 };
@@ -2842,6 +2856,67 @@ const struct mob_type mob_table[MAX_MOB] =
                 330, 5500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_elephant", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 650
+        },
+        {
+                "constrictor_snake", "serpentine_reptile", "icon1", "icon2",
+                0, 0, PART_FANGS, PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 70, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_constrictor", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 600
+        },
+        {
+                "centipede", "myriapod", "icon1", "icon2",
+                0, 0, PART_FANGS | PART_HUSK_SHELL, PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 15
+        },
+        {
+                "lightning_bat", "winged_mammal", "icon1", "icon2",
+                0, AFF_FLYING, PART_FANGS, PART_FANGS, 0, 0, RES_ELECTRICITY,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_breath_lightning_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 30
+        },
+        {
+                "fire_breathing_bat", "winged_mammal", "icon1", "icon2",
+                0, AFF_FLYING, PART_FANGS, PART_FANGS, 0, 0, RES_FIRE,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_breath_fire_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 30
+        },
+        {
+                "gas_bat", "winged_mammal", "icon1", "icon2",
+                0, AFF_FLYING, PART_FANGS, PART_FANGS, 0, 0, RES_POISON,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_breath_gas_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 30
+        },
+        {
+                "frost_bat", "winged_mammal", "icon1", "icon2",
+                0, AFF_FLYING, PART_FANGS, PART_FANGS, 0, 0, RES_COLD,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_breath_frost_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 30
+        },
+        {
+                "acid_bat", "winged_mammal", "icon1", "icon2",
+                0, AFF_FLYING, PART_FANGS, PART_FANGS, 0, 0, RES_ACID,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_breath_acid_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 30
         }
 
 };
@@ -3490,6 +3565,15 @@ static const CREATURE_TRAIT_CHANGE elephant_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
 };
 
+static const CREATURE_TRAIT_CHANGE constrictor_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE centipede_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3513,6 +3597,13 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
             TRAIT_ITEMS(untrained_dwarf_trait_changes)},
         {"goblin", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"kobold", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
+        {"constrictor_snake", NULL, constrictor_trait_changes, TRAIT_ITEMS(constrictor_trait_changes)},
+        {"centipede", NULL, centipede_trait_changes, TRAIT_ITEMS(centipede_trait_changes)},
+        {"lightning_bat", "bat", NULL, 0},
+        {"fire_breathing_bat", "bat", NULL, 0},
+        {"gas_bat", "bat", NULL, 0},
+        {"frost_bat", "bat", NULL, 0},
+        {"acid_bat", "bat", NULL, 0},
         {"lion", NULL, lion_trait_changes, TRAIT_ITEMS(lion_trait_changes)},
         {"elephant", NULL, elephant_trait_changes, TRAIT_ITEMS(elephant_trait_changes)},
         {"fire_hazard", NULL, fire_hazard_trait_changes,
@@ -6790,6 +6881,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
 
                 { "spec_poison", 5 },
                 { "spec_bear", 5 },
+                { "spec_constrictor", 5 },
                 { "spec_cooshee", 5 },
                 { "spec_brownie", 5 },
                 { "spec_poison_palm", 5 },
@@ -6814,6 +6906,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_uzollru", 10 },
                 { "spec_warrior", 10 },
                 { "spec_psionic_thief", 10 },
+                { "spec_breath_gas_anatomical", 10 },
                 { "spec_breath_frost_anatomical", 10 },
                 { "spec_breath_lightning_anatomical", 10 },
                 { "spec_breath_steam_anatomical", 10 },

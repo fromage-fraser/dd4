@@ -16,8 +16,9 @@ It sways back and forth contemplating whether or not to eat you.
 ~
 35 8 -200 S
 11 7 3 11d11+110 3d6+0
-4|8|32 5000
+0 5000
 8 8 1
+< constrictor_snake~ common~
 #4001
 garter snake~
 the garter snake~
@@ -27,8 +28,11 @@ It looks harmless enough.  Or is it?
 ~
 3 0 -100 S
 7 12 4 7d7+70 2d6+1
-4|8|32 1500
+0 1500
 8 8 0
+< snake~ common~
+MobWeight 0
+MobLength 80
 #4002
 centipede~
 the centipede~
@@ -38,8 +42,9 @@ It looks completely harmless but who knows for sure?
 ~
 2 0 100 S
 3 20 6 3d3+30 1d6+0
-4|32 400
+0 400
 8 8 0
+< centipede~ common~
 #4003
 kobold~
 the kobold~
@@ -51,6 +56,7 @@ It looks ugly enough to scare its own mother.
 4 16 5 4d4+40 1d8+1
 0 500
 8 8 0
+< kobold~ common~
 #4004
 orc~
 the orc~
@@ -62,6 +68,7 @@ You notice a slight tinge of madness in his eyes.
 5 15 5 5d5+50 2d4+0
 0 700
 8 8 1
+< orc~ common~
 #4005
 orc~
 the large orc~
@@ -73,6 +80,9 @@ The orc says, "Whatcha look'n at?"
 7 11 2 7d7+70 2d6+2
 0 1500
 8 8 1
+< orc~ common~
+MobHeight 190
+MobWeight 110
 #4050
 warrior~
 the warrior~
@@ -84,6 +94,9 @@ He's surely a strong, brainless fighter.  Like you.
 12 8 -1 12d12+120 2d8+1
 0 5000
 8 8 1
+< human~ common~
+MobHeight 190
+MobWeight 95
 #4051
 warrior~
 the warrior~
@@ -96,6 +109,7 @@ to show you what he can do!
 7 13 3 7d7+70 2d5+0
 0 1500
 8 8 1
+< human~ common~
 #4052
 hobgoblin~
 the hobgoblin~
@@ -109,6 +123,9 @@ don't you put it out of its misery?
 6 12 6 6d6+60 2d4+0
 0 1000
 8 8 1
+< hobgoblin~ common~
+MobHeight 165
+MobWeight 70
 #4053
 snake sickly brown~
 the snake~
@@ -118,8 +135,9 @@ A closer look reveals a hungry demeanor.  Don't get too close!
 ~
 35 0 -600 S
 10 10 4  10d10+100 3d5+1
-4|8|32 1000
+0 1000
 8 8 0
+< snake~ common~
 #4054
 centipede~
 the centipede~
@@ -129,8 +147,9 @@ The centipede doesn't really seem to notice you.
 ~
 2 0 -100 S
 5 17 5 5d5+50 1d7+0
-4|32 100
+0 100
 8 8 0
+< centipede~ common~
 #4055
 hobgoblin~
 the large hobgoblin~
@@ -143,6 +162,9 @@ wonder just how far away you should be.
 10 11 2 1d10+120 2d6+1
 0 4000
 8 8 1
+< hobgoblin~ common~
+MobHeight 215
+MobWeight 125
 #4056
 orc~
 the orc~
@@ -155,18 +177,20 @@ Care to be dinner?
 8 13 2 3d10+100 2d5+2
 0 1000
 8 8 1
+< orc~ common~
 #4057
 lion mountain~
 the mountain lion~
-A mountain lion bears its teeth at the sight of more food.
+A mountain lion bares its teeth at the sight of more food.
 ~
 Huge claws and big teeth make quite a fearsome opponent for
 the weary.  Are you next?
 ~
 96 0 -100 S
 5 16 5 1d10+60 2d4+0
-4|32 900
+0 900
 8 8 1
+< puma~ common~
 #4058
 giant hill~
 the hill giant~
@@ -178,8 +202,11 @@ playmate for you.
 ~
 64 0 0 S
 13 8 2 1d10+160 2d10+0
-0 16500
+128 16500
 8 8 1
+< hill_giant~ common~
+MobHeight 274
+MobWeight 350
 #4100
 mage~
 the Mage~
@@ -191,6 +218,9 @@ This guy can ace the SAT with his frontal lobe tied behind his back.
 13 10 2 13d13+130 2d6+0
 0 17000
 8 8 1
+< human~ common~
+MobHeight 155
+MobWeight 50
 #4101
 troll~
 the troll~
@@ -203,6 +233,7 @@ figure just how tender you are.
 12 8 1 2d10+100 2d7+1
 0 15000
 8 8 1
+< troll~ common~
 #4102
 large green guardian snake~
 the guardian snake~
@@ -213,8 +244,12 @@ bite your head off!
 ~
 39 0 -700 S
 10 8 5 10d10+100 2d5+2
-4|8|32 9000
+0 9000
 8 8 1
+< snake~ common~
+MobWeight 15
+MobLength 300
+MobSize 1
 #4104
 orc~
 the orc~
@@ -226,6 +261,7 @@ Yrkk..  He belches in your face!
 7 14 4 1d5+90 2d4+1
 0 2250
 8 8 1
+< orc~ common~
 #4105
 centipede~
 a centipede~
@@ -236,8 +272,9 @@ not important.
 ~
 2 0 300 S
 6 15 4 3d10+50 1d8+1
-4|32 1500
+0 1500
 8 8 0
+< centipede~ common~
 #4106
 warrior~
 the Warrior~
@@ -249,6 +286,7 @@ He doesn't look friendly at all...  He is no Mr. Rogers!
 9 10 3 3d10+100 2d6+1
 0 9000
 8 8 1
+< human~ common~
 #4107
 kobold green~
 the green kobold~
@@ -260,6 +298,7 @@ It looks a little sick.  Something he ate maybe?
 7 14 4 2d10+20 1d10+0
 0 3000
 8 8 1
+< kobold~ common~
 #4150
 bat blue~
 the blue bat~
@@ -269,8 +308,9 @@ Bzzzt.  Zap.  Crackle.  Speak about static electricity!
 ~
 35 0 -100 S
 7 15 4 3d10+70 1d7+1
-4|32 2200
+0 2200
 8 8 0
+< lightning_bat~ common~
 #4151
 bat red~
 the red bat~
@@ -280,8 +320,9 @@ You can definitely feel some heat from this thing.  A fever perhaps?
 ~
 35 0 -100 S
 7 15 4 3d10+70 1d7+1
-4|32 2200
+0 2200
 8 8 0
+< fire_breathing_bat~ common~
 #4152
 bat green~
 the green bat~
@@ -291,8 +332,9 @@ Whew!  What a stinker!
 ~
 35 0 -100 S
 7 15 4 3d10+70 1d7+1
-4|32 2200
+0 2200
 8 8 0
+< gas_bat~ common~
 #4153
 bat white~
 the white bat~
@@ -302,8 +344,9 @@ Brrr!  You almost can't distinguish this bat from an ice cube.
 ~
 35 0 -100 S
 7 15 4 3d10+70 1d7+1
-4|32 2200
+0 2200
 8 8 0
+< frost_bat~ common~
 #4154
 bat black~
 the black bat~
@@ -313,8 +356,9 @@ Amazing!  This bat is grooming itself with acid!
 ~
 35 0 -100 S
 7 15 4 3d10+70 1d7+1
-4|32 2200
+0 2200
 8 8 0
+< acid_bat~ common~
 #4155
 thief~
 the thief~
@@ -326,6 +370,7 @@ He definitely knows what he's doing.  Trust him.
 12 7 1 3d20+130 2d7+1
 0 14000
 8 8 1
+< human~ common~
 #4156
 troll~
 the troll~
@@ -337,6 +382,7 @@ He looks quite mean.  Don't mess with him.
 14 8 1 8d20+140 2d7+1
 0 20000
 8 8 1
+< troll~ common~
 #4157
 mage man small~
 the Mage~
@@ -349,6 +395,9 @@ angry should you bother his studies.
 11 10 2 4d10+80 2d5+1
 0 11000
 8 8 1
+< human~ common~
+MobHeight 150
+MobWeight 50
 #4158
 snake brown~
 the snake~
@@ -359,8 +408,9 @@ for dinner.
 ~
 35 0 200 S
 9 12 3 1d10+110 2d5+1
-4|8|32 8000
+0 8000
 8 8 1
+< snake~ common~
 #4159
 troll small~
 the small troll~
@@ -372,6 +422,7 @@ He is so happy, you are disgusted.  Kill him now!
 8 13 3 3d10+80 2d5+2
 0 5000
 8 8 1
+< troll_infant~ common~
 #4160
 orc~
 the orc~
@@ -383,6 +434,9 @@ He is just looking for a fight isn't he?
 9 12 3 1d20+100 2d5+1
 0 6000
 8 8 1
+< orc~ common~
+MobHeight 190
+MobWeight 110
 #0
 
 
@@ -1662,7 +1716,7 @@ D2
 S
 #4069
 The large cave~
-   You are in the northeast end of a large cave. To the north the
+   You are in the northeast end of a large cave. To the north there
 is a small damp tunnel.
 ~
 40 9 5
@@ -2640,7 +2694,7 @@ G 1 4104 3         Poisoned slime
 *
 M 0 3005 5 4103    A thief
 *
-M 0 4104 3 4124    A orc
+M 0 4104 3 4124    An orc
 G 1 4104 10        Slime
 *
 M 0 4105 3 4108    A centipede
@@ -2687,21 +2741,14 @@ S
 
 
 #SPECIALS
-M  4000 spec_poison
-M  4001 spec_poison
-M  4053 spec_poison
+M  4053 spec_poison_bite
 *
 M  4100 spec_cast_mage
-M  4102 spec_poison
+M  4102 spec_poison_bite
 *
-M  4150 spec_breath_lightning
-M  4151 spec_breath_fire
-M  4152 spec_breath_gas
-M  4153 spec_breath_frost
-M  4154 spec_breath_acid
 M  4155 spec_thief
 M  4157 spec_cast_mage
-M  4158 spec_poison
+M  4158 spec_poison_bite
 S
 
 

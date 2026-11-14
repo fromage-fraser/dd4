@@ -7749,3 +7749,76 @@ the unplaced alternate illusionist, worker and thief. The thief keeps his
 special and the chef keeps NO_QUEST. No new helper summon, combat magician,
 tamer domination or actual dragon is inferred from the circus scenery.
 The four portrait replacements are handled separately from the area patch.
+
+
+Moria, constrictors and coloured bats
+------------------------------------
+
+All 33 Moria definitions stay Common. No rank promotion is part of this
+conversion. Reuse human, orc, hobgoblin, kobold, snake, puma, hill_giant,
+troll and troll_infant, with the approved individual dimensions. The short
+mage 4157 is human; the small dancing troll 4159 uses the juvenile profile.
+Existing source levels, alignments, behaviour and effects stay. Brainless,
+frothing, fear or sickness in prose does not add new status flags.
+
+Constrictor_snake uses serpentine_reptile, with ordinary fangs, -4 natural
+armour, 70 kg, 600 cm and Large. Height remains unspecified and HUGE is not
+added. Its spec_constrictor has a 15% chance per eligible special opportunity
+to crush its current Small or Medium, non-HUGE opponent. Damage is two dice,
+each with ceil(level / 2) sides, with at least one side: 2d6 at levels 11-12,
+2d25 at level 50 and 2d50 at level 100. This scales with the actual user's
+level, without a vnum check. Physical blunt/nonmagic contact, phase rules,
+defences, sanctuary and ordinary native action timing still apply.
+
+The crush needs a usable head and tail; matching trauma blocks it. It adds
+no lasting Hold, stun, throw, extra bite or DOT. Player Coil/Constrict and
+the old special-NPC permissions are unchanged. Full persistent binding and
+escape rules remain a separate design. The new special keeps the old poison
+special's +5 XP contribution, without an extra archetype modifier. Python
+4000 now uses it instead of poison and keeps its detect-invisible, behaviour,
+corpse-shaped container and coins. Garter snake 4001 loses harmful poison;
+its existing snake profile gets a local length of 80 cm and weight 0, meaning
+unknown rather than a literally massless animal. Other venomous snakes
+4053, 4102 and 4158 keep the anatomical poison-bite special. Guardian snake
+4102 is 300 cm/15 kg/Medium; ordinary brown snakes keep 120 cm/2 kg/Small.
+
+The new myriapod body reuses existing many-leg, head, eye and organic-organ
+flags, without human arms or speech. Centipede adds piercing mouthparts
+through the existing fang/bite representation, chitin through husk_shell,
+and -1 natural armour. It defaults to 15 cm and Small; height and sub-kilogram
+weight stay unknown. These three explicitly harmless, vegetation-foraging
+DD4 creatures gain no venom or active special. They keep the ordinary
+individual-arthropod physiology used for reviewed wasps and bees; no extra
+mindless, analgic, bloodless, soulless or blanket immunity is inferred.
+
+Lightning_bat, fire_breathing_bat, gas_bat, frost_bat and acid_bat use winged_mammal.
+They keep normal living bat anatomy, flight and ordinary fang attacks, and
+share the existing bat echolocation trait. The estimates are 30 cm body
+length, 1 kg and Small; height remains unspecified. Ordinary bat defaults
+and vampire bat form dimensions stay. Their matched immunities are
+electricity, fire, poison, cold and acid, respectively. These are living
+magical bats, not inorganic elementals. No opposite-element vulnerability,
+physical/magic immunity, damaging aura or fire shield is added.
+
+Each bat profile supplies its original breath spell through an anatomical
+head check. The new spec_breath_gas_anatomical completes the shared wrapper
+set. Original spell, selection, chance, damage and special XP mapping stay;
+there is no new daily cap or extra attack. The old individual breath rows
+are removed so another builder can reuse the whole profile. No individual
+trait fields or ACT markers are needed. The 2e Bat, Centipede and Snake
+entries inform the anatomy; coloured-bat powers, harmless centipedes and
+the exact DD4 measurements/mechanics are deliberate adaptations.
+
+Hill giant 4058 explicitly stands nine feet tall, so use local 274 cm/350 kg,
+Large and cancel inherited HUGE through its existing body XOR. Its giant
+family, defences and rock rules remain. Mountain lion 4057 uses puma, not
+common lion. Both remain unplaced. Remove repeated raw absence masks on
+snakes and the centipede/puma/bats so they do not cancel inherited anatomy.
+
+All 121 room flags/exits, 15 objects, original placements/caps, carried-vs-worn
+choices and other loot stay. Moria's definitions produce 62 initial and 67
+refill inhabitants, carrying 17 then 20 items. Its imported Midgaard thief
+3005 still follows the original shared cap and is converted with Midgaard,
+not counted again here. Both mage routines, thief invisibility/Sneak and
+silver dagger remain. The only text corrections are bares its teeth, there
+is, and a reset comment. The two portrait corrections are handled separately.
