@@ -569,8 +569,39 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        /* These fungi have a thinking body, without animal organs or eyes. */
+        {
+                "fungoid",
+                0, 0,
+                BODY_NO_EYES | BODY_NO_HEART | BODY_NO_SPEECH | BODY_BLOODLESS
+                    | PART_HEAD | PART_ARMS | PART_HANDS | PART_FINGERS
+                    | PART_2_LEGS | PART_FEET,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+        /* The arms fold around a central mouth; there is no separate head. */
+        {
+                "radial_invertebrate",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_LEGS | BODY_NO_HEART
+                    | BODY_NO_SPEECH | BODY_BLOODLESS
+                    | PART_ARMS | PART_MANY_ARMS | PART_GUTS,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
-
 };
 
 /*
@@ -3029,6 +3060,69 @@ const struct mob_type mob_table[MAX_MOB] =
                 305, 6000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_elephant", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 700
+        },
+        {
+                "small_scorpion", "arachnid", "icon1", "icon2",
+                0, 0, PART_HUSK_SHELL | PART_TAIL | PART_CLAWS, PART_CLAWS,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, /* The attached stinger uses ordinary Venom. */
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 20
+        },
+        {
+                "purple_worm", "limbless_invertebrate", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_TAIL | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 12000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_swallow", "", "", 5, /* Venom; Swallow adds its own XP once. */
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 1500
+        },
+        {
+                "adult_brass_dragon", "dragon", "icon1", "icon2",
+                ACT_FEAR_AURA,
+                AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                BODY_HUGE, 0, RES_MAGIC, 0, RES_FIRE,
+                0, 0, 0, 0,
+                300, 6000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_brass", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 2400
+        },
+        {
+                "drider", "arachnoid_humanoid", "icon1", "icon2",
+                0, AFF_INFRARED, PART_FANGS, PART_FANGS,
+                RES_MAGIC, 0, 0, 0, 0, 0, 0,
+                200, 250, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_mage", "spec_paralysing_bite", "", 5,
+                {70, 30, 0}, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_ELF, 250
+        },
+        {
+                "myconid", "fungoid", "icon1", "icon2",
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                183, 60, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_myconid_spores", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "dustdigger", "radial_invertebrate", "icon1", "icon2",
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                40, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_engulf", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "camel", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_FANGS, PART_FANGS | PART_FORELEGS,
+                0, 0, 0, 0, 0, 0, 0,
+                210, 550, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_camel_spit", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 300
         }
 };
 
@@ -3692,6 +3786,33 @@ static const CREATURE_TRAIT_CHANGE shadow_fiend_trait_changes[] =
         {CREATURE_TRAIT_SHADOW_LIGHT_RESPONSE, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE purple_worm_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE adult_brass_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
+};
+/* A drider keeps these drow defences on its different body species. */
+static const CREATURE_TRAIT_CHANGE drider_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_SUNLIGHT_SENSITIVE, -2},
+        {CREATURE_TRAIT_SLEEP_RESISTANCE_PERCENT, 90},
+        {CREATURE_TRAIT_CHARM_RESISTANCE_PERCENT, 90},
+        {CREATURE_TRAIT_GHOUL_TOUCH_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE dustdigger_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 10}
+};
+static const CREATURE_TRAIT_CHANGE camel_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3699,6 +3820,16 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"purple_worm", NULL, purple_worm_trait_changes,
+            TRAIT_ITEMS(purple_worm_trait_changes)},
+        {"adult_brass_dragon", NULL, adult_brass_dragon_trait_changes,
+            TRAIT_ITEMS(adult_brass_dragon_trait_changes)},
+        {"drider", NULL, drider_trait_changes,
+            TRAIT_ITEMS(drider_trait_changes)},
+        {"dustdigger", NULL, dustdigger_trait_changes,
+            TRAIT_ITEMS(dustdigger_trait_changes)},
+        {"camel", NULL, camel_trait_changes,
+            TRAIT_ITEMS(camel_trait_changes)},
         {"guardian_daemon", NULL, guardian_daemon_trait_changes,
             TRAIT_ITEMS(guardian_daemon_trait_changes)},
         {"snake", NULL, snake_trait_changes, TRAIT_ITEMS(snake_trait_changes)},
@@ -7090,6 +7221,11 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_brownie", 5 },
                 { "spec_poison_palm", 5 },
                 { "spec_poison_claw", 5 },
+                { "spec_breath_brass", 10 },
+                { "spec_paralysing_bite", 10 },
+                { "spec_myconid_spores", 5 },
+                { "spec_engulf", 10 },
+                { "spec_camel_spit", 5 },
                 { "spec_poison_bite", 5 },
                 { "spec_bloodsucker", 5 },
                 { "spec_superwimpy", 5 },
