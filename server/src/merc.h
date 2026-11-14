@@ -986,6 +986,7 @@ struct descriptor_data
 #define BODY_BLOODLESS BIT_46      /* Cannot supply usable blood */
 #define BODY_ANALGIC BIT_47        /* Insensible to pain */
 #define BODY_SOULLESS BIT_48       /* Has no soul available to these effects */
+#define PART_TRUNK BIT_49           /* Trunk anatomy; uses the existing head injury group */
 
 /*
  * Existing PART_* flags designated for natural combat features.
@@ -3669,7 +3670,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 161
+#define MAX_MOB 163
 #define MAX_SPECIES 30
 #define MAX_RANK 6
 

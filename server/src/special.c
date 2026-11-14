@@ -87,6 +87,7 @@ DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
 DECLARE_SPEC_FUN( spec_bear                 );
+DECLARE_SPEC_FUN( spec_elephant             );
 DECLARE_SPEC_FUN( spec_cooshee              );
 DECLARE_SPEC_FUN( spec_brownie              );
 DECLARE_SPEC_FUN( spec_firedrake );
@@ -193,6 +194,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_bear"))                 return spec_bear;
+        if (!str_cmp(name, "spec_elephant"))             return spec_elephant;
         if (!str_cmp(name, "spec_cooshee"))              return spec_cooshee;
         if (!str_cmp(name, "spec_brownie"))              return spec_brownie;
         if (!str_cmp(name, "spec_firedrake")) return spec_firedrake;
@@ -304,6 +306,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_janitor) return "spec_janitor";
         if (special == spec_poison) return "spec_poison";
         if (special == spec_bear) return "spec_bear";
+        if (special == spec_elephant) return "spec_elephant";
         if (special == spec_cooshee) return "spec_cooshee";
         if (special == spec_brownie) return "spec_brownie";
         if (special == spec_firedrake) return "spec_firedrake";
@@ -3125,6 +3128,7 @@ bool spec_guardian_daemon(CHAR_DATA *ch)
 
         /* A damaged trunk does not silence the guardian's other magic. */
         if (limit <= 0 || ch->guardian_spits >= UMIN(limit, 100)
+        || !(ch->body_form & PART_TRUNK)
         || !usable_breath_head(ch) || number_percent() > 20)
                 return spec_demon(ch);
 
@@ -5192,6 +5196,35 @@ bool spec_bear(CHAR_DATA *ch)
                 hug_dice = 2;
         damage_with_resistance_types(ch, victim, dice(URANGE(1, hug_dice, 100), 6),
                                      TYPE_HIT + 8, FALSE, RES_BLUNT | RES_NONMAGIC);
+        return TRUE;
+}
+
+/* A trunk blow is physical contact, without a hold, stun or throw. */
+bool spec_elephant(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!native_power_ready(ch) || ch->hit <= 0
+        || IS_SET(ch->act, ACT_NO_FIGHT)
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || (ch->in_room->area
+            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
+        || !(ch->body_form & PART_TRUNK) || !usable_breath_head(ch))
+                return FALSE;
+
+        victim = ch->fighting;
+        if (!victim || victim == ch || victim->deleted || victim->hit <= 0
+        || victim->position == POS_DEAD || victim->in_room != ch->in_room
+        || victim->size < CHAR_SIZE_SMALL || victim->size > CHAR_SIZE_MEDIUM
+        || IS_HUGE(victim) || is_safe(ch, victim) || number_percent() > 15)
+                return FALSE;
+
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+        act("You strike $N with your trunk!", ch, NULL, victim, TO_CHAR);
+        act("$n strikes you with $s trunk!", ch, NULL, victim, TO_VICT);
+        act("$n strikes $N with $s trunk!", ch, NULL, victim, TO_NOTVICT);
+        /* NULL means no weapon: keep normal blunt/nonmagic contact and phasing. */
+        damage_from_object(ch, victim, dice(2, 6), TYPE_HIT + 8, FALSE, NULL);
         return TRUE;
 }
 

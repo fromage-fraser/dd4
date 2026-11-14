@@ -110,6 +110,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         halfling halfling_untrained pig chicken
         gold_dragon_kin ancient_gold_dragon
         pigeon fire_hazard smoke_hazard
+        lion elephant
 /;
 
 my %mob_act = (
@@ -272,6 +273,7 @@ my %mob_bf = (
         forelegs      => '8796093022208',
         feathers      => '17592186044416',
         husk_shell    => '35184372088832',
+        trunk         => '562949953421312',
 );
 
 my %mob_resistance = (
@@ -358,7 +360,7 @@ my @mob_spec = qw/
     spec_mummy              spec_banshee            spec_death_knight         spec_lich
     spec_giant             spec_cast_cleric_helper
     spec_firedrake spec_guardian_daemon
-    spec_bear spec_cooshee spec_brownie spec_poison_bite spec_breath_acid_anatomical spec_breath_fire_anatomical
+    spec_bear spec_elephant spec_cooshee spec_brownie spec_poison_bite spec_breath_acid_anatomical spec_breath_fire_anatomical
     spec_breath_gold_anatomical spec_breath_any_anatomical spec_breath_frost_anatomical spec_breath_lightning_anatomical spec_breath_steam_anatomical spec_psionic_thief spec_cleric_adept
     spec_faerie_dragon      spec_duergar            spec_swallow            spec_poison_palm spec_manticore spec_alhoon
 /;

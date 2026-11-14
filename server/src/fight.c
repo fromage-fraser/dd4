@@ -4272,6 +4272,8 @@ static const DEATH_PART_DATA death_parts[] =
           "horn horns", "horn", 0 },
         { PART_TUSKS, OBJ_VNUM_GENERIC_BODY_PART,
           "tusk tusks", "tusk", 0 },
+        { PART_TRUNK, OBJ_VNUM_GENERIC_BODY_PART,
+          "trunk", "trunk", 5 },
         { PART_BEAK, OBJ_VNUM_GENERIC_BODY_PART,
           "beak", "beak", 0 },
         { PART_HAUNCH, OBJ_VNUM_GENERIC_BODY_PART,

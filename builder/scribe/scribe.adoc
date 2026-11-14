@@ -2870,7 +2870,7 @@ eyestalks       tentacles       fins            wings
 tail            scales          claws           fangs
 horns           tusks           tail_attack     sharp_scales
 beak            haunch          hooves          paws
-forelegs        feathers        husk_shell
+forelegs        feathers        husk_shell      trunk
 ----
 
 These remain individual XOR inputs. Repeating an inherited part cancels that
@@ -11949,3 +11949,73 @@ or racial accuracy bonus. Shared Omu equipment and all other loot stay.
 All 39 room flags/exits, area XP 115, 76 object definitions, traps, keys,
 placements and caps are preserved. Only the approved small grammar fixes
 change prose. The three hazard portrait replacements are handled separately.
+
+
+The Circus, lions and elephants
+-------------------------------
+
+The Circus uses human for its visitors and staff, including its two short
+adult performers. Their stature does not make them fantasy dwarves. The
+new lion and elephant archetypes use quadrupedal_mammal; brown_bear, horse
+and dog reuse their existing profiles. No new area fields or ACT markers
+are needed. Individual measurements remain descriptive centimetres and
+whole kilograms, with ordinary existing inheritance and XOR rules.
+
+Lions default to 110 cm at the shoulder, 190 kg and 280 cm total length,
+Medium. They have a tail, paws, claws and fangs, with ordinary claw/bite
+choices, infrared and -4 natural armour. These choices do not grant extra
+automatic attacks. The 2e Lion informs the anatomy; these dimensions and
+the uniform armour are DD4 estimates. Shared leap/rear-rake and precise
+surprise mechanics remain deferred, as with the puma. Circus lions keep
+their authored aggression and alignment, with male data matching the text.
+
+Elephants default to 330 cm at the shoulder, 5500 kg and 650 cm total length,
+Large with HUGE. Tusks and forelegs supply piercing and blunt ordinary
+attack choices; their feet are not flagged as hooves. Natural armour is -4.
+The 2e Elephant informs the anatomy; the exact measurements are DD4 estimates.
+There is no five-attack tabletop sequence, extra racial HP/damage multiplier,
+fire vulnerability or new mountability. The Circus elephant stays passive
+and sentinel. Its one reset row still has cap two, so refills can add a second.
+
+The elephant's spec_elephant has a 15% chance per eligible special opportunity
+to strike its current Small or Medium opponent for 2d6 blunt/nonmagic damage.
+HUGE targets are excluded. It needs normal NPC action readiness, a present
+trunk and a usable head. Head trauma blocks it; arm trauma does not treat the
+trunk as a missing human arm. Normal safety, physical contact, phase and
+damage defences apply. It uses the ordinary special timing, without a hold,
+stun, throw or multi-target routine. Shared fear-of-fire morale and trunk
+inventory manipulation remain separate future work.
+
+PART_TRUNK is anatomy, not an ordinary attack-part choice. Scribe accepts
+bf trunk through its existing body-mask input, and MSTAT names the part.
+It can appear among ordinary death parts. It belongs to the existing head
+injury/recovery group: target head and head trauma affect native trunk use,
+and Regenerate restores that use when it heals the injury. There is no new
+target category, trauma bit, area field, human hand or equipment slot.
+The existing guardian_daemon also gains trunk anatomy. Its acid-spit/caster
+mix, daily limit and damage stay; it does not gain the elephant's special.
+
+Ivan 4409 and the Owner 4426 become Rare. Rank HP applies once, with normal
+rank labels and randomised-loot treatment. The Ringmaster, high-level ticket
+clerk and chef stay Common; occupation, name and level alone do not decide
+rank. The legacy HP letter in 8r8 does not set a rank and remains untouched.
+The short performers are 110 cm/35 kg/Small; children use 110 cm/20 kg/Small.
+Ivan is 200 cm/150 kg, the big clown 190 cm/110 kg and the worker 190 cm/105 kg.
+
+The starving bear uses 300 kg instead of the shared 450 kg; its existing hug,
+armour and native loot stay. Both underfed horses use 375 kg instead of 450 kg,
+without a new starvation penalty. The white horse is an ordinary horse before
+a false horn is fitted, not a real unicorn. The guard dog is a rather large
+65 cm/40 kg/110 cm, Medium. Existing aggression, detection and mountability
+choices stay. Remove repeated NO_ARMS/NO_SPEECH raw bits on the five animals
+which already have body 36, so they do not cancel inherited restrictions.
+
+Red clown noses belong on the head, not the body. The assistant's blindfold
+also belongs on the head rather than in her hand; its effects and her Sleep
+remain. The lion tamer now carries the existing cage key 4436 beside his
+wielded whip. All other original objects, affects, keys, locks, reset caps,
+placements and room flags stay. The two shops and games remain, along with
+the unplaced alternate illusionist, worker and thief. The thief keeps his
+special and the chef keeps NO_QUEST. No new helper summon, combat magician,
+tamer domination or actual dragon is inferred from the circus scenery.
+The four portrait replacements are handled separately from the area patch.
