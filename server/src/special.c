@@ -88,6 +88,8 @@ DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
 DECLARE_SPEC_FUN( spec_bear                 );
 DECLARE_SPEC_FUN( spec_elephant             );
+DECLARE_SPEC_FUN( spec_constrictor          );
+DECLARE_SPEC_FUN( spec_breath_gas_anatomical );
 DECLARE_SPEC_FUN( spec_cooshee              );
 DECLARE_SPEC_FUN( spec_brownie              );
 DECLARE_SPEC_FUN( spec_firedrake );
@@ -195,6 +197,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
         if (!str_cmp(name, "spec_bear"))                 return spec_bear;
         if (!str_cmp(name, "spec_elephant"))             return spec_elephant;
+        if (!str_cmp(name, "spec_constrictor"))          return spec_constrictor;
+        if (!str_cmp(name, "spec_breath_gas_anatomical")) return spec_breath_gas_anatomical;
         if (!str_cmp(name, "spec_cooshee"))              return spec_cooshee;
         if (!str_cmp(name, "spec_brownie"))              return spec_brownie;
         if (!str_cmp(name, "spec_firedrake")) return spec_firedrake;
@@ -307,6 +311,8 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_poison) return "spec_poison";
         if (special == spec_bear) return "spec_bear";
         if (special == spec_elephant) return "spec_elephant";
+        if (special == spec_constrictor) return "spec_constrictor";
+        if (special == spec_breath_gas_anatomical) return "spec_breath_gas_anatomical";
         if (special == spec_cooshee) return "spec_cooshee";
         if (special == spec_brownie) return "spec_brownie";
         if (special == spec_firedrake) return "spec_firedrake";
@@ -3038,6 +3044,12 @@ bool spec_breath_fire_anatomical(CHAR_DATA *ch)
         return usable_breath_head(ch) ? spec_breath_fire(ch) : FALSE;
 }
 
+/* The same gas breath, with the shared mouth and head-injury check. */
+bool spec_breath_gas_anatomical(CHAR_DATA *ch)
+{
+        return usable_breath_head(ch) ? spec_breath_gas(ch) : FALSE;
+}
+
 /* Keep the full frost breath, but it still needs a usable mouth. */
 bool spec_breath_frost_anatomical(CHAR_DATA *ch)
 {
@@ -5225,6 +5237,38 @@ bool spec_elephant(CHAR_DATA *ch)
         act("$n strikes $N with $s trunk!", ch, NULL, victim, TO_NOTVICT);
         /* NULL means no weapon: keep normal blunt/nonmagic contact and phasing. */
         damage_from_object(ch, victim, dice(2, 6), TYPE_HIT + 8, FALSE, NULL);
+        return TRUE;
+}
+
+/* A short crushing action, without changing the player Coil system. */
+bool spec_constrictor(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        int sides;
+
+        if (!native_power_ready(ch) || ch->hit <= 0
+        || IS_SET(ch->act, ACT_NO_FIGHT)
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || (ch->in_room->area
+            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
+        || !usable_breath_head(ch) || !HAS_TAIL(ch)
+        || IS_AFFECTED(ch, AFF_TAIL_TRAUMA))
+                return FALSE;
+
+        victim = ch->fighting;
+        if (!victim || victim == ch || victim->deleted || victim->hit <= 0
+        || victim->position == POS_DEAD || victim->in_room != ch->in_room
+        || victim->size < CHAR_SIZE_SMALL || victim->size > CHAR_SIZE_MEDIUM
+        || IS_HUGE(victim) || is_safe(ch, victim) || number_percent() > 15)
+                return FALSE;
+
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+        act("You briefly tighten your coils around $N!", ch, NULL, victim, TO_CHAR);
+        act("$n briefly tightens $s coils around you!", ch, NULL, victim, TO_VICT);
+        act("$n briefly tightens $s coils around $N!", ch, NULL, victim, TO_NOTVICT);
+        /* Two dice grow with this creature's level: 2d6 at levels 11 and 12. */
+        sides = UMAX(1, (ch->level + 1) / 2);
+        damage_from_object(ch, victim, dice(2, sides), TYPE_HIT + 8, FALSE, NULL);
         return TRUE;
 }
 
