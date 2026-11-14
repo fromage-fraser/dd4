@@ -2209,7 +2209,7 @@ const struct mob_type mob_table[MAX_MOB] =
         /* This is the temple's acid-trunked guardian, with ordinary living anatomy. */
         {
                 "guardian_daemon", "humanoid", "icon1", "icon2",
-                0, 0, BODY_HUGE | PART_CLAWS, PART_CLAWS,
+                0, 0, BODY_HUGE | PART_CLAWS | PART_TRUNK, PART_CLAWS,
                 RES_MAGIC | RES_NONMAGIC, 0,
                 RES_ACID | RES_CHARM | RES_HOLD | RES_SLEEP,
                 0, 0, 0, 0,
@@ -2824,6 +2824,24 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "lion", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_INFRARED, PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                110, 190, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 280
+        },
+        {
+                "elephant", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_TAIL | PART_TUSKS | PART_TRUNK,
+                PART_TUSKS | PART_FORELEGS, 0, 0, 0,
+                0, 0, 0, 0,
+                330, 5500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_elephant", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 650
         }
 
 };
@@ -3463,6 +3481,15 @@ static const CREATURE_TRAIT_CHANGE fire_hazard_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_FIRE}
 };
 
+static const CREATURE_TRAIT_CHANGE lion_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE elephant_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3486,6 +3513,8 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
             TRAIT_ITEMS(untrained_dwarf_trait_changes)},
         {"goblin", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
         {"kobold", NULL, sunlight_trait_changes, TRAIT_ITEMS(sunlight_trait_changes)},
+        {"lion", NULL, lion_trait_changes, TRAIT_ITEMS(lion_trait_changes)},
+        {"elephant", NULL, elephant_trait_changes, TRAIT_ITEMS(elephant_trait_changes)},
         {"fire_hazard", NULL, fire_hazard_trait_changes,
             TRAIT_ITEMS(fire_hazard_trait_changes)},
         {"gold_dragon_kin", NULL, gold_dragon_kin_trait_changes,

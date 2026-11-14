@@ -5289,6 +5289,7 @@ char* body_form_name (unsigned long int vector)
                 case PART_FORELEGS:             return "forelegs";
                 case PART_FEATHERS:             return "feathers";
                 case PART_HUSK_SHELL:           return "husk_shell";
+                case PART_TRUNK:                return "trunk";
 
                 default: return "none";
         }

@@ -26,6 +26,7 @@ to you.  So are you going to buy a ticket or what????
 31 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4401
 child small~
 a small child~
@@ -38,6 +39,10 @@ don't you put him out of your misery?
 1 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
+MobHeight 110
+MobWeight 20
+MobSize 0
 #4402
 dad father man~
 the child's father~
@@ -50,6 +55,7 @@ in line.
 5 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4403
 woman mother mom~
 the child's mother~
@@ -62,18 +68,23 @@ bath at home right now.
 3 8 8 8d8+8 10d10+10
 0 8
 8 8 2
+< human~ common~
 #4404
 bobby boy~
 little Bobby~
 Little Bobby is lost, and is looking for his mommy.
 ~
-Bobby is scared, he should never have ran off to look at the Bearded Lady.
+Bobby is scared, he should never have run off to look at the Bearded Lady.
 Besides being lost, he is now psychologically scarred.
 ~
 4|64|128 0 1000 S
 1 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
+MobHeight 110
+MobWeight 20
+MobSize 0
 #4405
 mother woman~
 Bobby's mother~
@@ -86,6 +97,7 @@ won't you?
 3 8 8 8d8+8 10d10+10
 0 8
 8 8 2
+< human~ common~
 #4406
 bearded lady~
 the Bearded Lady~
@@ -98,6 +110,7 @@ eyes.   RUN!!!!
 5 8 8 8d8+8 10d10+10
 0 8
 8 8 2
+< human~ common~
 #4407
 Illusionist mage~
 the Illusionist~
@@ -110,6 +123,7 @@ creations, you might actually be amazed.
 5 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4408
 midget~
 the Midget~
@@ -122,6 +136,10 @@ one to watch out for.
 3 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
+MobHeight 110
+MobWeight 35
+MobSize 0
 #4409
 Ivan strongman man strong~
 Ivan~
@@ -134,6 +152,9 @@ before tangling with him.
 7 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ rare~
+MobHeight 200
+MobWeight 150
 #4410
 sword swallower~
 the Sword Swallower~
@@ -146,6 +167,7 @@ to use his sword as well.
 1 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4411
 member audience~
 a member of the audience~
@@ -157,6 +179,7 @@ This person is so interested in the show, he doesn't even realize you are here.
 1 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4412
 clown red~
 a red-nosed clown~
@@ -169,6 +192,7 @@ He turns towards you with a pie.  DUCK!
 1 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4413
 clown big~
 a clown with big shoes~
@@ -181,6 +205,7 @@ fit.
 3 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4414
 clown big~
 a big clown~
@@ -193,6 +218,9 @@ away from him until you know.
 5 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
+MobHeight 190
+MobWeight 110
 #4415
 ringmaster master~
 the Ringmaster~
@@ -200,40 +228,43 @@ The Ringmaster is introducing the next act.
 ~
 The Ringmaster is dressed in a red coat, and is wearing a big black top hat.
 He was probably hired because he has a voice you could hear over a roaring
-dragon (which, incidently, is the next act).
+dragon (which, incidentally, is the next act).
 ~
 2|4 8192 0 S
 10 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4416
 thrower~
 the knife thrower~
-The knife thrower is getting ready to throw 4 knifes at his assistant.
+The knife thrower is getting ready to throw 4 knives at his assistant.
 ~
-He is getting ready to put on a blind fold.  He has spent years of practice,
+He is getting ready to put on a blindfold.  He has spent years of practice,
 and is completely confident in his skills.  He also has a handkerchief he keeps
-wiping his face with.  You here him mumble, 'maybe I shouldn't have stopped
+wiping his face with.  You hear him mumble, 'maybe I shouldn't have stopped
 by the Grunting Boar before my act'.
 ~
 2|4 0 0 S
 4 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4417
 assistant~
 the knife thrower's assistant~
 The knife thrower's assistant is asleep against the target.
 ~
 The assistant dreams a drugged sleep.  It seems she thought she would be
-helping with the animals, until a slight mishap last night during the knife
-throwers rehearsal last night.  She did wonder why the dashing knife thrower
+helping with the animals, until a slight mishap during the knife
+thrower's rehearsal last night.  She did wonder why the dashing knife thrower
 invited her out to dinner.
 ~
 2 131072 0 S
 1 8 8 8d8+8 10d10+10
 0 8
 8 8 2
+< human~ common~
 #4418
 tamer~
 the lion tamer~
@@ -246,6 +277,7 @@ the animals with whip and force of mind.
 8 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4419
 lion~
 a ferocious Lion~
@@ -256,8 +288,9 @@ flesh from your body!
 ~
 2|4|32 0 -1000 S
 8 8 8 8d8+8 10d10+10
-36 8
-8 8 0
+0 8
+8 8 1
+< lion~ common~
 #4420
 walker tightrope~
 a tightrope walker~
@@ -270,6 +303,7 @@ would you?
 5 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4421
 keeper~
 an animal keeper~
@@ -282,6 +316,7 @@ supplies bought for them by the Circus Owner.
 3 8 8 8d8+8 10d10+10
 0 8
 8 8 2
+< human~ common~
 #4422
 elephant~
 an elephant~
@@ -293,32 +328,37 @@ probably would not want to get him angry.
 2 0 0 S
 10 8 8 8d8+8 10d10+10
 0 8
-8 8 0
+8 8 1
+< elephant~ common~
 #4423
 bear~
 a trained bear~
 The trained bear hasn't been fed in a week.  Look out!
 ~
 The bear hasn't been fed for a long time.  The Circus Owner figures he can
-save a lot of money buy feeding the bear on unwary adventurers like yourself.
+save a lot of money by feeding the bear on unwary adventurers like yourself.
 ~
 2|32 0 0 S
 6 8 8 8d8+8 10d10+10
-36 8
+0 8
 8 8 0
+< brown_bear~ common~
+MobWeight 300
 #4424
 horse~
 a horse~
 A trained horse is here, prancing in anticipation.
 ~
-The horse has been trained by the bare back rider.  These are magnificent
+The horse has been trained by the bareback rider.  These are magnificent
 animals, although they look like they could use more food.  More evidence
 of the cheapness of the Circus Owner.
 ~
 2|131072 0 0 S
 4 8 8 8d8+8 10d10+10
-36 8
+0 8
 8 8 0
+< horse~ common~
+MobWeight 375
 #4425
 unicorn horse white~
 a poor horse~
@@ -329,8 +369,10 @@ Circus Owner was looking for.
 ~
 2|131072 0 0 S
 3 8 8 8d8+8 10d10+10
-36 8
+0 8
 8 8 0
+< horse~ common~
+MobWeight 375
 #4426
 owner~
 the Circus Owner~
@@ -345,6 +387,7 @@ he will probably keep making a LOT of money.
 10 8 8 8r8+8 10d10+10
 0 8
 8 8 1
+< human~ rare~
 #4427
 vendor~
 the cotton candy vendor~
@@ -357,6 +400,7 @@ makes cotton candy in a big tub, where all the kids can watch him.
 7 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4428
 Illusionist mage~
 the Illusionist~
@@ -369,6 +413,7 @@ creations, you might actually be amazed.
 3 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4429
 dog guard~
 a guard dog~
@@ -379,8 +424,13 @@ gave him a pie, he would be your friend?
 ~
 2|4|32 8|32 -500 S
 4 8 8 8d8+8 10d10+10
-36 8
+0 8
 8 8 1
+< dog~ common~
+MobHeight 65
+MobWeight 40
+MobLength 110
+MobSize 1
 #4430
 burly worker~
 a burly worker~
@@ -392,6 +442,9 @@ The burly worker has sweat dripping off of every inch of his body.
 8 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
+MobHeight 190
+MobWeight 105
 #4450
 chef~
 Binky's chef~
@@ -402,18 +455,23 @@ Binky's chef stands here, ready to carve the turkey.
 18 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #4451
 midget thief~
 the Midget~
 A Midget is here, stealing money from the crowd.
 ~
-The Midget is very good at his trade, and makes quit a bit of money buy picking
+The Midget is very good at his trade, and makes quite a bit of money by picking
 pockets of the unwary.
 ~
 64 512 -900 S
 3 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
+MobHeight 110
+MobWeight 35
+MobSize 0
 #4452
 croupier~
 a croupier~
@@ -425,6 +483,7 @@ She loves gambling and believes in the old adage 'there's one born every minute'
 3 8 8 8d8+8 10d10+10
 0 8
 8 8 2
+< human~ common~
 #4453
 games huckster grimy~
 a games huckster~
@@ -436,6 +495,7 @@ He loves gambling and believes in the old adage 'there's one born every minute'.
 3 8 8 8d8+8 10d10+10
 0 8
 8 8 1
+< human~ common~
 #0
 
 
@@ -1012,7 +1072,7 @@ D1
 0 0 4403
 S
 #4405
-A Game Booths~
+A Game Booth~
         This booth has been set up for people to play the gambling
 game 'high dice'. It's a bit run-down and grubby, but seems popular
 nonetheless. You hope it's not rigged.
@@ -1728,7 +1788,7 @@ D3
 S
 #4441
 The Illusionist's Trailer~
-        This trailer seems much larger on the inside that it does on the
+        This trailer seems much larger on the inside than it does on the
 outside.  You see a spacious, king-sized bed, a large table and kitchenette,
 and a separate sitting room.  The longer that you look though, you see that
 all the objects in the room have a slight shimmer to them.  Closer examination
@@ -1762,7 +1822,7 @@ S
 #4443
 The Secret Room~
         This is a small area in the back of the Circus Owner's Trailer.  You
-see that this must be where he keeps the money that he makes off his employee's
+see that this must be where he keeps the money that he makes off his employees'
 hard work.  There are several objects of value in here, but you know you would
 not be able to make it off The Circus property with them, so you'd better just
 take the coins.  Most things here you couldn't sell easily, except the artwork.
@@ -1776,7 +1836,7 @@ S
 #4444
 The Clown's Room below the 2nd Ring~
         This room has been cunningly hollowed out below the 2nd Ring, giving
-the clown's a place to hide after they supposedly hid in the car.  This place
+the clowns a place to hide after they supposedly hid in the car.  This place
 is very hot.  That doesn't surprise you, as it is filled with clowns.
 ~
 0 1|8 0
@@ -1986,15 +2046,15 @@ M 0 4411 7 4420         member of crowd
 M 0 4411 7 4420         member of crowd
 M 0 4411 7 4420         member of crowd
 M 0 4412 5 4422         red-nosed clown
-E 1 4439 0 5                    clown nose
+E 1 4439 0 6                    clown nose
 M 0 4412 5 4444         red-nosed clown
-E 1 4439 0 5                    clown nose
+E 1 4439 0 6                    clown nose
 M 0 4412 5 4444         red-nosed clown
-E 1 4439 0 5                    clown nose
+E 1 4439 0 6                    clown nose
 M 0 4412 5 4446         red-nosed clown
-E 1 4439 0 5                    clown nose
+E 1 4439 0 6                    clown nose
 M 0 4412 5 4429         red-nosed clown
-E 1 4439 0 5                    clown nose
+E 1 4439 0 6                    clown nose
 M 0 4413 2 4422         big-shoe clown
 E 1 4420 0 8                    shoes
 M 0 4413 2 4444         big-shoe clown
@@ -2009,9 +2069,10 @@ M 0 4416 1 4423         Knife Thrower
 E 1 4416 0 16                   sharp knife
 G 1 4431 0                      drugged food
 M 0 4417 1 4423         knife thrower's assistant
-E 1 4417 1 17                   blindfold
+E 1 4417 1 6                   blindfold
 M 0 4418 1 4424         Lion Tamer
 E 1 4418 0 16                   whip
+G 1 4436 1                      lion cage key
 M 0 4419 3 4424         Lion
 M 0 4419 3 4424         Lion
 M 0 4419 3 4424         Lion
@@ -2043,9 +2104,9 @@ P 1 4412 0 4428                 put coins in safe
 P 1 4451 0 4428                 put small diamond in safe
 M 0 4427 1 4407         Cotton Candy Vendor
 G 1 4401 0                      cotton candy
-*   4428 is Illusionist's brother, summoned to his aid as above
+*   4428 is the alternate Illusionist; no reset or summon currently loads him.
 M 0 4429 1 4439         guard dog
-*   4430 is burly worker summoned to boss's aid, not done in reset.
+*   4430 is a possible helper for the Owner; he currently stays unplaced.
 *
 *
 * various items in rooms
