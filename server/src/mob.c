@@ -3174,6 +3174,46 @@ const struct mob_type mob_table[MAX_MOB] =
                 10, 8, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "spec_bloodsucker", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "ancient_fire_dragon", "dragon", "icon1", "icon2",
+                ACT_FEAR_AURA,
+                AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                BODY_HUGE, 0, RES_MAGIC, 0, RES_FIRE,
+                0, 0, 0, 0,
+                700, 30000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_any_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 4500
+        },
+        {
+                "fiery_demon", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_TAIL | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS | PART_TAILATTACK,
+                RES_MAGIC | RES_COLD, 0, RES_FIRE | RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                240, 180, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "hell_hound", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_INFRARED, PART_PAWS | PART_FANGS | PART_TAIL,
+                PART_FANGS, 0, 0, RES_FIRE, 0, 0, 0, 0,
+                90, 65, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_breath_fire_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "acid_hell_hound", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_INFRARED, PART_HOOVES | PART_FANGS | PART_TAIL,
+                PART_FANGS, 0, 0, RES_FIRE, 0, 0, 0, 0,
+                100, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_breath_fire_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 180
         }
 };
 
@@ -3892,6 +3932,26 @@ static const CREATURE_TRAIT_CHANGE fire_elemental_trait_changes[] =
         {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE ancient_fire_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -40},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE fiery_demon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE hell_hound_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+static const CREATURE_TRAIT_CHANGE acid_hell_hound_trait_changes[] =
+{
+        /* The saliva changes the bite's contact, without adding a second hit. */
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ACID}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3899,6 +3959,14 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"ancient_fire_dragon", NULL, ancient_fire_dragon_trait_changes,
+            TRAIT_ITEMS(ancient_fire_dragon_trait_changes)},
+        {"fiery_demon", NULL, fiery_demon_trait_changes,
+            TRAIT_ITEMS(fiery_demon_trait_changes)},
+        {"hell_hound", NULL, hell_hound_trait_changes,
+            TRAIT_ITEMS(hell_hound_trait_changes)},
+        {"acid_hell_hound", "hell_hound", acid_hell_hound_trait_changes,
+            TRAIT_ITEMS(acid_hell_hound_trait_changes)},
         {"giant_frog", NULL, giant_frog_trait_changes,
             TRAIT_ITEMS(giant_frog_trait_changes)},
         {"plesiosaur", NULL, plesiosaur_trait_changes,

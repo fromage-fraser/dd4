@@ -16,10 +16,11 @@ after all these ages, each scale on her body has remained in place.
 You think that one of them would make an excellent shield.  She
 rears her head and attacks.
 ~
-4|32|64 2|8|32|128|512|2048|8192|32768|65536 -1000 S
+4|32|64 108674 -1000 S
 100 0 0 0d0+0 0d0+0
-128 0
+0 0
 8 8 2
+< ancient_fire_dragon~ boss~
 #24001
 demon fiery~
 the fiery demon~
@@ -34,6 +35,7 @@ the Dragon to oversee the workers, he hastens to attack.
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< fiery_demon~ common~
 #24002
 hound war hell~
 the war hound from hell~
@@ -44,36 +46,41 @@ of flame surround his hooves, charring the ground he walks upon.
 The Dragon called this hound from the depths of hell to watch the
 mines while construction finishes.
 ~
-32|64 8|32|512|32768 -1000 S
+32|64 32808 -1000 S
 70 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< acid_hell_hound~ common~
 #24003
 dwarven worker slave miner~
 the dwarven worker~
 A chained miner is widening the tunnels.
 ~
-Shackles cover the wrists and ankle of this poor dwarf.  The evil
+Shackles cover the wrists and ankles of this poor dwarf.  The evil
 minions of the Dragon captured him and have forced him into
 slavery.  Pitiful eyes beg you for freedom in one form or another.
 ~
-2|64 512|8192 1000 S
+2|64 8192 1000 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
 #24004
 large fire elemental~
 the fire elemental~
 A large fire elemental is clearing the tunnel.
 ~
 Eight feet tall and made entirely of flame, this elemental has
-taken humanoid form.  The Dragon created him to help ease his
+taken humanoid form.  The Dragon created it to help ease her
 passage out of the mines and back into the world of men.
 ~
-32|64 8|32|512 -1000 S
+32|64 40 -1000 S
 65 0 0 0d0+0 0d0+0
-96 0
+32 0
 8 8 0
+< fire_elemental~ common~
+MobHeight 244
 #24005
 guard dwarf~
 the dwarven guard~
@@ -84,10 +91,12 @@ the Dragon and slay her, the fear in his dark eyes is evident.
 Sweat drips down his face into his black beard and his hands
 nervously grip his weapon.
 ~
-64 512|8192 1000 S
+64 8192 1000 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
 #24006
 captain erich guard dwarf~
 Erich, Captain of the Cobresh Guard~
@@ -100,11 +109,12 @@ eyes.  Erich is hunting the Dragon for his people rather than
 glory.  Not only is he the captain of the guard, but he is also
 Prince Erich, second born to King Guntharson.
 ~
-64 8|32|128|512|2048|8192 1000 S
+64 10408 1000 S
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ elite~
+< dwarf~ elite~
+MobSize 1
 #24007
 dwarf king guntharson~
 Guntharson, King of Cobresh~
@@ -117,28 +127,30 @@ king since before the RockBreaker wars, and still wears the same
 armour that he wore back then.  A large hammer hangs at his side.
 Try as you might to talk, he will not listen.
 ~
-2|64 8|32|128|512|2048|8192 1000 S
+2|64 10408 1000 S
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ boss~
+< dwarf~ boss~
+MobSize 1
 #24008
 ivan prince dwarf~
 Prince Ivan~
 Prince Ivan stands here packing some bags.
 ~
 Prince Ivan is the first-born and heir apparent to King Guntharson.
-Older than Erich by only a few minutes, he has the same read hair
+Older than Erich by only a few minutes, he has the same red hair
 as his twin.  But looks are all that these brothers share.  Ivan is
 cowardly, and in no way ready to rule the Kingdom of Cobresh.  For
 some reason, he seems in a hurry to leave, and you hear him mumble
 something about a dragon as he hastily packs.
 ~
-2|64|128 512|8192 1000 S
+2|64|128 8192 1000 S
 70 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ rare~
+< dwarf~ rare~
+MobSize 1
 #24009
 hanson white dwarf~
 Hanson~
@@ -147,13 +159,17 @@ A white bearded dwarf is standing here.
 Hanson is the most trusted advisor of King Guntharson.  Bags are
 under his weary eyes, and wrinkles cover his face.  His back is
 slightly stooped, making him even shorter than most dwarves.  He is
-old and wise, but also strong.  At one time, he lead the Paladins
+old and wise, but also strong.  At one time, he led the Paladins
 of Cobresh into battle.
 ~
-2|64 8|32|128|512|2048|8192 1000 S
+2|64 10408 1000 S
 75 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
+MobHeight 120
+MobWeight 65
 #24010
 olaf dwarf barrel~
 Olaf the Dwarf~
@@ -164,10 +180,13 @@ bald head of this black bearded dwarf.  In battle, he was known for
 his calm and patience.  But now, he walks back and forth, eyes full
 of worry.
 ~
-2|64 8|32|512|8192 1000 S
+2|64 8232 1000 S
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
+MobWeight 90
 #24011
 Bjorn dwarf healer~
 Bjorn the Dwarf~
@@ -178,10 +197,12 @@ member of King Guntharson's council.  But the aura of peace seems
 to only be a facade, for you can see worry creeping into his face
 as he heals the assembled masses.
 ~
-2|64 8|32|512|8192 1000 S
+2|64 8232 1000 S
 70 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
 #24012
 Adolf dwarf mage~
 Adolf the Dwarf~
@@ -194,10 +215,12 @@ bones.  As you enter, he jumps and loses his concentration.  He
 nervously strokes his white beard while he asks you what you have
 come here for.
 ~
-2|64 8|32|512|8192 1000 S
+2|64 8232 1000 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
 #24013
 dwarf guard bulky~
 the dwarven guard~
@@ -208,10 +231,13 @@ is as broad as he is tall, and you have no doubt that this compact
 man could have put that boulder there by himself.  He speaks
 crisply saying only "Halt!  The mines are closed.  Leave."
 ~
-2|64 128|512|2048 1000 S
+2|64 2176 1000 S
 58 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
+MobWeight 120
 #24014
 dwarf smith~
 the dwarven smith~
@@ -223,25 +249,32 @@ But the mines are closed and the smithy has been closed for weeks.
 He absentmindedly tosses his hammer from hand to hand, waiting for
 more work to do.
 ~
-2|64 512 1000 S
+2|64 0 1000 S
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
+MobHeight 125
+MobWeight 95
 #24015
 dwarf friedreich~
 Friedreich the Dwarf~
 A muscular dwarf is here shadowboxing.
 ~
 Friedreich, like everyone it seems, is very worried about the
-mines.  This veteran warriour keeps his body in shape and his mind
+mines.  This veteran warrior keeps his body in shape and his mind
 occupied with physical activity.  Sweat drips from his bushy grey
 brow.  Grabbing a towel, he stops and dries off before turning his
 brown eyes toward you.
 ~
-2|64 512|8192 1000 S
+2|64 8192 1000 S
 58 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
+MobWeight 90
 #24016
 dwarf scout guard~
 the dwarven scout~
@@ -252,10 +285,14 @@ small dwarven guard watching the entrance to the cave.  Dressed to
 blend in with the cave, he notes your presence and then returns to
 hiding.
 ~
-2|64 8|32|512|8192|65536 1000 S
+2|64 73768 1000 S
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
+MobHeight 120
+MobWeight 55
 #24017
 guard dwarf~
 the dwarven guard~
@@ -266,10 +303,12 @@ dwarf patrols the streets in silence.  Dark eyes scour the area,
 always ready for trouble, but even more so now than usual it
 appears.
 ~
-64 8|32|512|8192 1000 S
+64 8232 1000 S
 57 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
 #24018
 dwarf citizen resident~
 the dwarf~
@@ -280,10 +319,14 @@ their city.  Hastily, the stout fellow looks away, not wanting to
 draw attention.  The cave-ins have greatly scared the people of
 Cobresh, and he is no exception.
 ~
-64|128 512 1000 S
+64|128 0 1000 S
 56 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
+MobHeight 120
+MobWeight 75
 #24019
 dwarf baker~
 the dwarven baker~
@@ -294,10 +337,13 @@ in the whole city of Cobresh who is not worried.  A jolly chuckle
 comes from him, and his large belly shakes with laughter.  The
 baker welcomes you into his shop, hoping to hear news from upside.
 ~
-2|64|128 8|32|512|8192 1000 S
+2|64|128 8232 1000 S
 57 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
+MobWeight 100
 #24020
 stain thief tom~
 Stain, master thief~
@@ -323,6 +369,9 @@ pipe, Stain grows silent.
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 190
+MobWeight 65
 #24021
 mazzy peggy kid~
 Mazzy~
@@ -338,6 +387,9 @@ heard you touched her, he would put an end to you fast.
 59 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
+MobHeight 160
+MobWeight 50
 #24022
 dwarven dwarf guard royal~
 the royal dwarven guard~
@@ -349,10 +401,12 @@ toe in the red and silver armour of Cobresh.  Ever at the ready, he
 stands silently, ready to protect his King and city at any risk,
 even that of his own life.
 ~
-2|64 8|32|128|512|8192 1000 S
+2|64 8360 1000 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobSize 1
 #0
 
 
@@ -4751,10 +4805,7 @@ S
 0
 
 #SPECIALS
-M  24000 spec_breath_any       The Dragon
-M  24001 spec_demon            the fiery demon
-M  24002 spec_breath_fire      the war hound from hell
-M  24004 spec_breath_fire      the fire elemental
+M  24004 spec_breath_fire_anatomical the fire elemental
 M  24005 spec_guard            the dwarven guard
 M  24006 spec_guard            Erich, Captain of the Cobresh Guard
 M  24007 spec_guard            Guntharson, King of Cobresh
