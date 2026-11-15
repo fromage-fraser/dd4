@@ -12590,3 +12590,95 @@ All dimensions are descriptive. All 200 room flags/exits/randomisation/
 keys, 30 original objects, original reset locations/caps and behaviour
 are retained. Six frog-mouth E rows are added. No Highlands source
 file exists; the four other source/area pairs remain unchanged.
+
+
+Cobresh and the Yitrite Mines
+----------------------------
+
+ancient_fire_dragon, fiery_demon, hell_hound and acid_hell_hound are
+available through the existing archetype field. They append without
+renumbering older entries and use existing body species. No new ACT
+trait bit, area field or individual trait override is needed.
+
+ancient_fire_dragon uses dragon, with wings, scales, claws, fangs,
+a tail and ordinary living organs. It has no arms. Defaults are
+700cm at the shoulder, 30000kg, 4500cm long, Large and HUGE. These
+are DD4 estimates for an ancient wyrm, not measurements in the area.
+It flies, sees infrared/hidden/invisible targets, resists magic and
+is immune to fire. Natural armour is -40. Ordinary unarmed attacks
+are magical through the existing internal magical_natural_attacks
+trait; equipped weapons keep their own contact categories. It has
+the existing independent fear aura and spec_breath_any_anatomical
+as its sole selected special. This keeps the old breath choices and
+probabilities, but needs a usable head. It does not add mage casting,
+a daily breath limit, poison immunity or a canonical dragon colour.
+The Cobresh Dragon is female and Boss; its rank HP applies once.
+
+fiery_demon uses living humanoid anatomy with wings, claws, fangs
+and a barbed tail. Defaults are 240cm/180kg/Large, without HUGE.
+It flies, has -10 natural armour and magical ordinary natural
+attacks, resists magic/cold and is immune to fire/electricity/poison.
+It keeps spec_demon and its existing spell selection. This is a
+generic DD4 fiery fiend, not a Balor; complete fire immunity and
+the armour value are DD4 choices. No passive Fireshield, regeneration,
+telepathy or additional caster is supplied. All24 local encounters
+stay Common and keep their authored behaviour, buffs and senses.
+
+hell_hound uses quadrupedal_mammal, with four legs, paws, fangs,
+a tail and ordinary organs, without arms or speech. Defaults are
+90cm at the shoulder, 65kg, 150cm long and Medium. It has infrared,
+fire immunity, -6 natural armour and an ordinary bite. Its sole
+special is spec_breath_fire_anatomical, retaining the existing fire
+breath and requiring a usable head. No new stealth or probabilistic
+detection system is added.
+
+acid_hell_hound is the same-body variant with hooves instead of paws.
+Defaults are 100cm/100kg/180cm/Medium. It shares hell_hound's internal
+armour trait and adds ordinary acid bite contact through the existing
+natural_damage_type trait. This changes one hit's damage kind; it
+does not add a second acid hit, poison or a hoof attack. Fire breath
+stays fire. The hoofed, acid-salivating variant follows the Cobresh
+description rather than claiming to be an ordinary2e hell hound.
+Neither profile gains cold vulnerability or magical ordinary contact.
+
+The existing fire_elemental remains on elemental_being, at ID2,
+with its reviewed flame physiology, magical fire contact, -8 armour,
+immunities, cold/water vulnerabilities and +10 profile XP. The local
+eight-foot elemental overrides height to244cm, stays Large with no
+HUGE and unknown weight, and keeps its muteness and individual fire
+breath through spec_breath_fire_anatomical. A profile without an
+active special does not erase this local assignment.
+
+The seventeen dwarves use the existing dwarf profile: RES_MAGIC,
+RES_POISON, infrared and trained melee +1 against goblinoids/-4
+opponent accuracy against giants. Human Stain and Mazzy stay human.
+Erich remains Elite, Guntharson Boss and Ivan Rare; the other nineteen
+definitions stay Common. Named councillors are not automatically
+promoted. Individual guard/thief/cleric/archmage roles stay, and Bjorn
+keeps his free spec_cast_adept assistance rather than paid services.
+All original aggression/passivity, StayArea, Sentinel, Wimpy, senses,
+buffs, levels, alignments and sexes stay.
+
+Shared dwarf defaults are130cm/70kg/Small. The seventeen Cobresh
+dwarves explicitly override size toMedium, following the approved
+area table; earlier dwarf profiles and areas stay unchanged.
+Individual height/weight estimates follow the prose: Hanson120/65, Olaf130/90, entrance guard
+130/120, smith125/95, Friedreich130/90, scout120/55, citizen120/75 and
+baker130/100. Stain is190/65 and teenage Mazzy160/50, both Medium.
+Dimensions remain descriptive and are not extra rank/combat bonuses.
+
+When an effect becomes inherited, clear its duplicate raw XOR input.
+The Dragon keeps HUGE and its senses; dwarves keep infrared; hounds
+keep their lack of arms/speech; the elemental keeps no corpse and
+its local mute input. MSTAT shows resolved anatomy and trait origins.
+Traits are internal and cannot be assigned to individual area mobs.
+
+Keep all39 original objects and every original reset/equipment slot.
+The Dragon's Scale/Talon/Eye and the demon's wearable tail remain
+ordinary player loot, not BODY_PART objects. Keep the workers'
+shackles and their movement penalties, royal gear, keys, forge,
+digger, Stain's pipe and triple-Heal whiskey. The bakery's zero
+markup is valid: normal base price, not a free shop. All198 rooms,
+flags, exits, two NO_UNDEAD wards and area XP40 remain. Only obvious
+mobile prose errors are corrected. No matching Scribe source exists;
+the four other source/area pairs remain unchanged.
