@@ -1581,6 +1581,7 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Convert Old Thalos mobs; add stone-golem Slow and preserve city services.
 - Convert Cobresh mobs; add ancient fire wyrm, fiery demon and hell hound profiles.
 - Convert Highlands mobs; rebuild fire elementals and preserve bogleech behaviour.
 - Fix digging tools, scroll names, and mixed EXAMINE targets.

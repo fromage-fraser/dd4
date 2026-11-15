@@ -3214,6 +3214,36 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_breath_fire_anatomical", "", "", 0,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 180
+        },
+        {
+                "baby_beholder", "limbless_invertebrate", "icon1", "icon2",
+                0, AFF_FLYING, PART_EYESTALKS | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                45, 12, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_cast_mage", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 45
+        },
+        {
+                "tame_lamia", "centauroid_mammal", "icon1", "icon2",
+                0, 0, PART_PAWS | PART_CLAWS | PART_TAIL, 0,
+                0, 0, 0, 0, 0, 0, 0,
+                150, 140, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 210
+        },
+        {
+                "stone_golem", "bipedal_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_NO_SPEECH | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS,
+                0, RES_MAGIC, 0,
+                RES_NONMAGIC | RES_POISON | RES_SLEEP | RES_DRAIN | RES_CHARM
+                    | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                290, 900, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_slow", "", "", 10,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -3952,6 +3982,21 @@ static const CREATURE_TRAIT_CHANGE acid_hell_hound_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ACID}
 };
 
+static const CREATURE_TRAIT_CHANGE baby_beholder_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -2}
+};
+static const CREATURE_TRAIT_CHANGE tame_lamia_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7}
+};
+static const CREATURE_TRAIT_CHANGE stone_golem_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -3959,6 +4004,12 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"baby_beholder", NULL, baby_beholder_trait_changes,
+            TRAIT_ITEMS(baby_beholder_trait_changes)},
+        {"tame_lamia", NULL, tame_lamia_trait_changes,
+            TRAIT_ITEMS(tame_lamia_trait_changes)},
+        {"stone_golem", NULL, stone_golem_trait_changes,
+            TRAIT_ITEMS(stone_golem_trait_changes)},
         {"ancient_fire_dragon", NULL, ancient_fire_dragon_trait_changes,
             TRAIT_ITEMS(ancient_fire_dragon_trait_changes)},
         {"fiery_demon", NULL, fiery_demon_trait_changes,
@@ -7398,6 +7449,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_faerie_dragon", 10 },
                 { "spec_giant", 10 },
                 { "spec_cast_cleric_helper", 10 },
+                { "spec_cast_slow", 10 },
                 { "spec_duergar", 10 },
                 { "spec_swallow", 10 },
                 { "spec_kappa", 10 },
