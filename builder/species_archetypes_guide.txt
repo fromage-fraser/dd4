@@ -1,0 +1,3057 @@
+DRAGON'S DOMAIN
+SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
+=======================================
+
+Edition: 15 November 2026
+Checked against master e2d54d9b36ef32f6056b21a330cb8a6b71bc2f6e (PR #976).
+
+This guide is for a builder who can describe and balance a creature, but
+doesn't spend their day writing C. You can use most of the system through
+Scribe and area files. Creating a reusable species or archetype does mean
+editing a few tables in the server, so those steps are explained as well.
+
+The examples teach the system. Names starting with tutorial_ are deliberately
+fictional examples, not proposals to add creatures to the live game. No
+project files were changed to produce this guide. The examples were checked
+in a separate working copy outside the official checkout.
+
+The server code is the final authority. This is a dated guide, not a promise
+that the tables will never change. Check the current source before copying
+an initializer or changing a table count. In particular, older sections of
+the Scribe manual sometimes describe development examples that have since
+been rebuilt. The current fire_elemental is a good example of that.
+
+CONTENTS
+--------
+  1. What the three layers mean
+  2. Decide where a property belongs
+  3. Use an existing archetype in Scribe
+  4. Understand the generated area file
+  5. XOR: how flags really inherit
+  6. Ordinary values: inherit, replace and explicit zero
+  7. Anatomy, physiology and ordinary natural attacks
+  8. Resistances, vulnerabilities and immunities
+  9. Special functions and their selection percentages
+ 10. Traits, families and trait parents
+ 11. Ranks, level, HP, damage, scores and XP
+ 12. The complete profile field reference
+ 13. Create a new archetype, step by step
+ 14. Create a new body species, when one is actually needed
+ 15. Create a variant and remove inherited traits
+ 16. Add a genuinely new ability
+ 17. Body-part weapons, trauma, Regenerate and loot
+ 18. Convert an existing area without breaking it
+ 19. Build, load and inspect the result
+ 20. Troubleshooting and a final review checklist
+ 21. File and function map
+ Appendices: current body species, archetypes, traits, Scribe flags,
+             special names and ordinary attack verbs
+
+
+1. WHAT THE THREE LAYERS MEAN
+=============================
+
+Think about a wolf, a dwarf and a particular dwarven captain.
+
+A wolf is a four-legged mammal. A dwarf is a humanoid. Those are broad body
+relationships: the creature's basic species. A dwarf is not a humanoid with
+every possible dwarf detail built into the humanoid body.
+
+The archetype makes the body into a recognisable creature. A dwarf archetype
+supplies dwarf resistances, infrared sight, family identity and training.
+A wolf archetype supplies canine details on a quadrupedal mammal body.
+
+The individual area definition is the actual character or encounter. It
+supplies the captain's name, description, level, alignment, sex, rank,
+behaviour, equipment, programmes and any deliberate local differences.
+
+The ordinary flag/scalar path is:
+
+    basic body species -> creature archetype -> individual mob definition
+                        -> loaded prototype -> spawned live mob
+
+The prototype is the definition the server loaded. A live mob is one spawned
+copy. Equipment, spells, injuries, programmes and admin changes may make that
+copy differ from its prototype. Another copy can still have the original
+defaults.
+
+There is one body species and one archetype per selected mob. This is not a
+free-form stack of species, classes and templates. You cannot write
+"archetype elf vampire warrior" and expect the server to combine them.
+Use an appropriate composite archetype or an approved individual exception.
+
+There is also a separate internal trait system. It shares named abilities
+and bonuses between suitable archetypes. Its parent links do not create
+another layer of ordinary flags, dimensions or specials. Section 10 explains
+that distinction.
+
+Names do not select profiles. Calling a mob "a vampire" in its description
+doesn't make it undead. Selecting the vampire archetype does. Selecting an
+archetype also doesn't rewrite the mob's description to match it.
+
+Rank is independent of species and archetype. A human can be Common or Boss;
+a dragon can be Common or Boss. Rank is encounter design, not a body type.
+
+
+2. DECIDE WHERE A PROPERTY BELONGS
+=================================
+
+Use this order when deciding where to put something:
+
+  * Body species: does this belong to the broad physical body? Four legs,
+    ordinary organs and the absence of humanoid arms are good candidates.
+
+  * Archetype: does this belong to this kind of creature wherever it occurs?
+    Dwarf resistances, a wolf's biting anatomy or a fire elemental's flame
+    physiology belong here.
+
+  * Individual: is it an exception, a named role or an area design choice?
+    A dwarf who is unusually heavy, a goblin who casts mage spells, a child
+    without adult combat training, and a guard who never leaves a doorway
+    are examples. Some exceptions need a reusable variant archetype rather
+    than an individual flag; traits cannot be overridden individually.
+
+Don't make every human a healer because one human is a village doctor.
+Don't make every snake aggressive because one area has an ambush snake.
+Don't put Boss rank or a unique key in a species table.
+
+Keep these in the individual area build unless there is a clear, approved
+reason otherwise:
+
+    name and prose; level; alignment; sex; rank; reset placement and cap;
+    role specials; shops and teachers; carried/equipped objects; keys;
+    deliberate aggression, passivity, Sentinel, Stay Area and Wimpy settings;
+    mob programmes; individual measurements and encounter exceptions.
+
+A flag that looks odd may have an explanation. Read the description, reset
+chain, equipment, room and special together. Old imported areas can also
+contain obsolete or mistranslated bits. Investigate before preserving an
+obvious mistake or deleting a deliberate design feature.
+
+Look for an existing body and archetype first. A new job title does not need
+a new species. A new body species affects every archetype using it, so a
+change there deserves a wider review than a local measurement override.
+
+
+3. USE AN EXISTING ARCHETYPE IN SCRIBE
+=====================================
+
+The shortest useful addition to an existing $mob block is:
+
+    archetype dwarf
+
+Omitted rank means Common. To make the individual Elite:
+
+    archetype dwarf
+    rnk elite
+
+Use the archetype's name, not its numeric table index. Use one name, normally
+lowercase with underscores. Scribe normalises case and checks its name list.
+"humanoid" is a body species, not an archetype selection. "none", "inherit"
+and a list of several archetypes are not valid archetype values.
+
+To preserve old no-selection behaviour, omit archetype. The reserved entry
+is a neutral placeholder, not a secret species with useful racial defaults.
+
+Keep the rest of the mob's existing source definition. For example:
+
+    archetype dwarf
+    rnk common
+    height 140
+    weight 100
+
+This uses dwarf defaults but makes that individual 140 cm tall and 100 kg.
+You don't repeat every inherited organ, resistance and effect in the source.
+
+Useful local fields are:
+
+    act       individual behaviour/classification XOR flags
+    aff       individual affect XOR flags
+    bf        individual body-form XOR flags
+    atk       individual natural-attack-part XOR flags
+    res       individual resistance XOR flags
+    vuln      individual vulnerability XOR flags
+    imm       individual immunity XOR flags
+    hpmod     spawn HP percentage adjustment
+    dammod    ordinary one_hit damage percentage adjustment
+    critmod   critical-score adjustment
+    swiftmod  swiftness-score adjustment
+    height    centimetres
+    length    centimetres
+    weight    whole kilograms
+    size      raw size code: 0 Small, 1 Medium, 2 Large
+    language  raw non-negative language metadata code
+    ghostphase none, ethereal, semi_material or inherit
+    sp/sp2/sp3 special assignments or none/inherit
+    spchance  three selection percentages, auto or inherit
+
+Flags in Scribe are usually space-separated keywords:
+
+    act sentinel stay_area
+    aff detect_invis
+    res cold poison
+
+Those are raw individual XOR inputs, not a requested final state. Selecting
+an archetype does not change that rule. Section 5 is essential reading before
+you add or remove inherited flags.
+
+Omit an optional field when you don't need an exception. For ordinary scalar
+fields, "inherit" is also available. Do not invent a Scribe field named after
+an internal trait, such as natural_armour or goblinoid_training: it isn't a
+supported individual override.
+
+If a .src exists, put the selection and overrides there and regenerate its
+.are. A change made only to generated output will disappear on regeneration.
+Keep the matching source and output together in the same proposed change.
+
+
+4. UNDERSTAND THE GENERATED AREA FILE
+====================================
+
+An individual selection looks like this in #MOBILES:
+
+    < dwarf~ elite~
+    MobHeight 140
+    MobWeight 100
+
+The first name is the archetype. The second is the rank. Neither is a special
+function name, a body-species name or the mobile's vnum.
+
+The optional selection line comes after any mobile programmes and before
+teacher declarations. Optional Mob... override lines follow in the loader's
+expected tail. Scribe already writes this order. Don't put the literal
+"< dwarf~ elite~" line into a $mob source block.
+
+Scribe -> area-file field:
+
+    archetype/rnk -> < archetype~ rank~
+    res          -> MobResists
+    vuln         -> MobVulnerabilities
+    imm          -> MobImmunes
+    atk          -> MobAttackParts
+    hpmod        -> MobHPMod
+    dammod       -> MobDamMod
+    critmod      -> MobCritMod
+    swiftmod     -> MobSwiftMod
+    height       -> MobHeight
+    length       -> MobLength
+    weight       -> MobWeight
+    size         -> MobSize
+    language     -> MobLanguage
+    ghostphase   -> MobGhostPhase
+
+ACT, AFF and body-form inputs remain in the older numeric mobile record.
+The optional resistance/attack masks use their existing numeric namespace.
+Raw area resistance and attack masks accept a decimal number or a compact
+numeric OR expression such as 1|256. Do not copy C's RES_FIRE spelling into
+a numeric .are field. Use the Scribe keywords in source instead.
+
+Special assignments are in #SPECIALS, not in the Mob... tail. For example:
+
+    #SPECIALS
+    N 65001 1 spec_cast_mage
+    N 65001 2 none
+    N 65001 3 none
+    P 65001 100 0 0
+    S
+
+N selects a numbered slot; P selects the complete probability policy. M is
+the older singleton/reset-all-slots form. The distinction matters; see 9.
+
+The old S-format HP and damage dice-looking fields are not the place to set
+this system's rank or percentage modifiers. The current loader ignores those
+legacy build numbers. Level and rank still matter, and level is fuzzed by
+the normal loader. A letter in an old HP field is not an Elite/Boss marker.
+
+
+5. XOR: HOW FLAGS REALLY INHERIT
+===============================
+
+XOR means "toggle this bit". It does not mean "make sure this bit is on".
+
+    inherited  individual toggle  final
+        0              0            0
+        0              1            1
+        1              0            1
+        1              1            0
+
+For ordinary masks, the complete rule is:
+
+    effective = body-species mask XOR archetype mask XOR individual mask
+
+It is applied independently to ACT, AFF, body_form, attack_parts, resists,
+vulnerabilities and immunes. In C, ^ is XOR. The | operator combines several
+different bits into one mask; it doesn't replace the layer-to-layer XOR rule.
+
+Example: a dwarf already inherits infrared. Its old raw AFF input also has
+infrared. Once you select dwarf, those two infrared bits cancel. The correct
+conversion is to remove infrared from the raw input, allowing inheritance
+to leave it on.
+
+    inherited infrared 1 XOR raw infrared 1 = final infrared 0
+    inherited infrared 1 XOR raw infrared 0 = final infrared 1
+
+Conversely, to deliberately make one dwarf lack inherited infrared, repeat
+that bit as an individual toggle. That is an exception, not reinforcement.
+
+For each namespace, you can calculate the required individual mask from the
+desired final mask:
+
+    individual = resolved template XOR desired final
+
+Do this on the source masks, not by taking a live mob covered in spell and
+equipment effects and treating its live flags as the desired prototype.
+
+Anatomy needs extra care. A humanoid supplies PART_HEART. To create a body
+with no physical heart, an archetype may need both:
+
+    BODY_NO_HEART | PART_HEART
+
+The absent negative flag is added; the inherited positive organ is removed.
+Just adding BODY_NO_HEART while leaving PART_HEART present can still make
+HAS_HEART return true. The same sort of issue exists with head, eyes, arms
+and legs. Check the effective result, not the apparent English wording of
+one raw flag. See 7 for the presence rules.
+
+A raw zero mask means "toggle nothing; keep inheritance". It does not clear
+all inherited flags. To clear a particular inherited mask, the raw toggle
+must contain the relevant inherited bits.
+
+The namespaces are separate. Decimal512 is ACT_NO_QUEST in ACT, infrared in
+AFF, legacy has-tail in BODY, and drain in RES. Never copy a number between
+namespaces because the value happens to match.
+
+For valid prototypes, the server forces ACT_IS_NPC on and removes raw
+AFF_CHARM. Those are engine protections, not flags for builders to toggle
+into a permanent pet/charm relationship.
+
+Important working rule: keep one copy of the original raw inputs. Never
+XOR a resolved prototype or live mask again as though it were raw input.
+That can flip the same property off on a later pass.
+
+
+6. ORDINARY VALUES: INHERIT, REPLACE AND EXPLICIT ZERO
+====================================================
+
+Dimensions, numeric combat modifiers, language and starting ghost phase
+don't use XOR. They choose a value from the most specific layer that supplies
+one:
+
+    individual value, else archetype value, else body value, else zero
+
+In C tables, MOB_TEMPLATE_UNSET means "take the value from the layer below".
+In supported source/area scalar fields, omission or inherit does that job.
+
+Zero is an actual override. It is not another spelling of inherit.
+
+    template hp_mod +20; individual hpmod 0       -> no HP adjustment
+    template weight 75; individual weight 0      -> unknown/unspecified weight
+    template weight 75; individual weight inherit -> 75
+
+The modifiers replace one another; they aren't added across layers. If a
+body has +10 HP and the archetype has +20, the resolved modifier is +20,
+not +30. An individual -10 then replaces that with -10.
+
+Unknown dimensions and Small size are easy to confuse. A resolved height,
+length or weight of zero means unspecified measurement. But size zero means
+CHAR_SIZE_SMALL. If every size layer is unset, the fallback is zero, which
+is Small, not a fourth "unknown size" category.
+
+For example, the current dwarf table explicitly gives 130 cm/70 kg but leaves
+size unset. It resolves to Small. Cobresh's approved Medium dwarves use
+individual MobSize 1; they don't change all dwarves in the MUD.
+
+Height and length use centimetres, weight whole kilograms. Don't put a
+fraction such as0.5 in a whole-number field. Unknown weight is better than
+pretending a tiny animal weighs one kilogram merely to get a nonzero value.
+For quadrupeds, state whether height means shoulder height. Keep long body,
+shoulder height and wingspan conceptually separate; there is no general
+wingspan field in this system.
+
+These measurements are descriptive metadata. They don't automatically change
+weapon reach, carrying, armour fitting or damage. Size metadata and
+BODY_HUGE are separate: setting size2/Large does not add HUGE. The existing
+HUGE flag has real restrictions, including some swallowing checks.
+
+Language is a raw non-negative code in these fields, not a language-name
+lookup. A code is not a new language implementation or a grant of speech.
+BODY_NO_SPEECH and consumers of CAN_SPEAK still decide whether speech is
+available.
+
+Special-function names and selection policies have their own inheritance
+rules. XP is also a separate case. Neither follows the ordinary scalar rule
+in every respect; see 9 and 11.
+
+
+7. ANATOMY, PHYSIOLOGY AND ORDINARY NATURAL ATTACKS
+================================================
+
+There are two different questions:
+
+    What body parts does this creature have?        body_form / bf
+    Which parts can supply ordinary natural hits? attack_parts / atk
+
+A wolf may have claws without using them for its normal attack. A bird can
+have wings without having a wing attack. Adding PART_TAIL does not itself
+add PART_TAILATTACK. Having tentacles doesn't automatically implement a
+grapple, and a long tongue doesn't implement a tongue snare.
+
+The basic presence checks deliberately support older definitions:
+
+    Head:  no NO_HEAD flag, or HEAD/MANY_HEAD present.
+    Eyes:  no NO_EYES flag, or EYE present.
+    Arms:  no NO_ARMS flag, or ARMS/MANY_ARMS present.
+    Legs:  no NO_LEGS flag, or a positive leg-count part present.
+    Heart: no NO_HEART flag, or HEART present.
+    Tail:  legacy HAS_TAIL or positive TAIL present.
+    Speech: NO_SPEECH absent.
+    Biological corpse: NO_CORPSE absent, subject to the normal death rules.
+
+So the absence of PART_HEAD alone doesn't prove headlessness. Use a coherent
+combination of negative restrictions and positive anatomy. A body that is
+deliberately mysterious may need explicit absence flags, not just zero bits.
+
+BODY_NO_EYES is not the same as AFF_BLIND. Existing visibility code does not
+simply turn every eyeless creature blind, and an eyeless profile doesn't gain
+universal perception either. Eye-targeting and vision/effect routines have
+their own checks. Test what the creature can actually see and what can be
+targeted instead of assuming the English name implements all of that.
+
+Classification, anatomy and mind are independent:
+
+  * ACT_UNDEAD means undead. It does not automatically make a mob mindless,
+    inorganic, bloodless, mute or corpseless.
+  * AFF_MINDLESS is the explicit mindlessness setting. Low intelligence or
+    being a skeleton in the prose doesn't substitute for it.
+  * BODY_INORGANIC removes ordinary organic-body/blood eligibility. It does
+    not by itself remove a mind, soul, pain or corpse.
+  * BODY_BLOODLESS explicitly prevents usable blood.
+  * BODY_ANALGIC means insensible to pain. Use ANALGIC, not an invented
+    PAINLESS flag. Mindlessness and objectlike behaviour can also exclude
+    pain through existing tests.
+  * BODY_SOULLESS explicitly excludes a usable soul. Objectlike mobs are
+    also excluded by the existing soul test.
+
+The explicit flags add restrictions to existing inference rules. Don't add
+bloodlessness just to conceal contradictory physiology; decide what the
+creature actually is. A conscious fire elemental can have a soul while
+being inorganic, bloodless, ANALGIC and corpseless.
+
+Natural attack selection
+------------------------
+The engine chooses one eligible natural part for an ordinary unarmed NPC
+strike. This does not create extra attacks just because several parts exist.
+
+Claws give a slashing claw; fangs a piercing bite; horns/tusks/beak piercing;
+tail, hooves, paws and forelegs blunt attacks; sharp scales slashing; haunch
+a blunt crush. The exact current table is in the attack-verb appendix.
+
+Feathers and husk/shell can be stored in the attack mask but are currently
+filtered out of ordinary offensive selection. Anatomy is not a promise that
+an active mechanic has been written.
+
+Eligibility checks account for actual body parts and relevant injuries.
+Do not assume every body part uses the same trauma rule. Current ordinary
+fang selection checks whether a head exists; it does not globally remove
+fangs for AFF_HEAD_TRAUMA. Anatomical breath wrappers do stop on head trauma.
+Preserve that distinction unless a separate mechanics change is approved.
+
+A wielded weapon normally supplies the attack instead of the unarmed body.
+If an attached weapon becomes unusable, ordinary NPC attacks may fall back
+to another natural option. Don't assume every bite you see comes from atk:
+it may come from an equipped body-part weapon or an internal attack-verb
+trait. If no configured natural part is eligible, the old default hit can
+still be available. Test the real fallback rather than guessing.
+
+The internal natural_attack_type trait can supply an ordinary verb where
+a conventional weapon or anatomical part would be misleading, such as a
+boulder's crush. It isn't an instruction to invent fangs for every mouth.
+
+The natural_damage_type trait changes the damage category of an ordinary
+unarmed NPC hit, not its number of hits. Fire contact and the Cobresh hound's
+acid contact use this. It applies through the ordinary unarmed contact
+helper, not through every spell, skill or body-part weapon. It isn't a
+general per-body-region damage selector; check fallback behaviour too.
+
+magical_natural_attacks changes opted-in NPC ordinary unarmed contact from
+nonmagical to magical. Equipped weapons keep their own categories. A
+magical claw attack does not make every object the creature holds magical.
+
+
+8. RESISTANCES, VULNERABILITIES AND IMMUNITIES
+============================================
+
+Each is a separate XOR mask:
+
+    resists          matching ordinary damage is normally halved
+    vulnerabilities  matching ordinary damage is normally increased to 150%
+    immunes          matching supported contact/effect is rejected
+
+Use the RES_* namespace, not AFF_* or BODY_* values. The appendix lists all
+24 currently recognised categories, including damage types, magical contact,
+materials and typed status effects.
+
+A resolved category must not appear in more than one of the three masks.
+For example, to change inherited fire resistance into fire immunity, toggle
+the inherited fire bit out of resists and add it to immunes. Merely adding
+immunity leaves an invalid contradictory final state.
+
+One attack can carry several categories, such as magic and poison. The
+normal resolver applies one result; it doesn't halve the same attack once
+for each matching resistance. An immune matching category wins. Otherwise,
+matching resistance and vulnerability together normally cancel to a normal
+result. Further contact/phase rules can apply before ordinary scaling.
+
+For supported status effects, matching resistance/vulnerability changes the
+effective casting level used by the existing saving-throw machinery. It is
+not automatically a second independent saving throw. An immunity to sleep
+is not an immunity to every psychic effect; choose the category actually
+used by the effect's caller.
+
+RES_MAGIC and RES_NONMAGIC are attack-source categories. They are not a
+universal guarantee that every script, direct HP change or untyped legacy
+ability has been routed through the typed system. New abilities must use
+the normal damage/effect paths and supply the right categories.
+
+Silver and cold iron have their own contact rules. A silver vulnerability
+can both permit contact past ordinary nonmagical immunity and increase
+damage. The silver_bypasses_nonmagic trait can permit silver contact for a
+suitable corporeal creature without also granting bonus silver damage.
+Those are different designs. Don't use a vulnerability when only access
+through the immunity was intended.
+
+Ghost phase is another separate layer:
+
+    none          ordinary unphased contact rules
+    ethereal      fully phased contact state
+    semi_material partially phased contact state
+
+It is an initial scalar, not an XOR flag. The current supported physical
+contact path considers both actors' live phases, source magic and material
+exceptions. Fully ethereal and unphased contact cannot normally reach one
+another; semi-material contact has particular exceptions. It doesn't
+replace resistance masks, anatomy, AFF_NON_CORPOREAL or every spell rule.
+Use an existing reviewed spirit profile and test the exact attack types you
+care about. The word "ghost" is not a universal pass through every wall,
+spell, trap or weapon rule.
+
+
+9. SPECIAL FUNCTIONS AND THEIR SELECTION PERCENTAGES
+===================================================
+
+A special function, or spec_fun, is an existing routine the engine may call
+for a mob. It may cast spells, guard an area, steal, heal bystanders, breathe
+fire or do something more specialised. Choosing a name doesn't explain all
+its behaviour: read the routine and an existing reviewed use.
+
+There are three slots. The C fields are spec_fun1, spec_fun2 and spec_boss.
+Despite its historical name, spec_boss is slot 3. It doesn't require Boss
+rank and doesn't make the creature a Boss.
+
+In body/archetype C tables:
+
+    NULL                inherit the lower layer's name for that slot
+    ""                  explicitly clear that slot
+    "spec_cast_mage"    use that function in that slot
+
+For an individual extended override, inherit means keep that slot's template
+name, none means clear it, and a function name replaces it.
+
+Selection percentages choose at most one routine at an existing special
+opportunity. A70/30 mix means choose the first70% and second30%; it does not
+mean make two separate rolls. A chosen routine still has its own eligibility,
+combat, safety and random checks. A100% selection does not mean the ability
+successfully fires every pulse. If the chosen routine returns false, the
+selector doesn't retry a different routine.
+
+The whole chance vector inherits together. You cannot put inherit in one
+component and a number in the others.
+
+    MOB_SPECIAL_CHANCES_INHERIT  inherit the complete lower-layer policy
+    MOB_SPECIAL_CHANCES_AUTO     divide100 across nonempty slots
+    {70,30,0}                    explicit selection percentages
+
+Auto gives 100/0/0 for one function,50/50/0 for two, and 34/33/33 for three
+when they occupy those slots. Empty slots get zero. Explicit nonempty sets
+must total100; an entirely empty set totals0. An empty slot cannot have a
+positive percentage. A named zero-percent slot is not an enabled capability.
+
+Scribe examples
+---------------
+To inherit everything, omit sp, sp2, sp3 and spchance.
+
+For a70/30 mixed caster:
+
+    sp spec_cast_cleric
+    sp2 spec_cast_mage
+    sp3 none
+    spchance 70 30 0
+
+To clear every inherited special explicitly:
+
+    sp none
+    sp2 none
+    sp3 none
+    spchance auto
+
+To override slot 2 while keeping the other template names and recalculating
+the distribution:
+
+    sp2 spec_cast_mage
+    spchance auto
+
+Do not keep an incompatible inherited chance vector after clearing a slot.
+For example, clearing slot 2 from a70/30 template generally also needs a new
+policy;70/30/0 with slot 2 empty is invalid.
+
+The important legacy M difference
+--------------------------------
+Scribe's sp field on its own uses the older M record. A non-inherit M record
+resets the complete individual special set, not just slot 1:
+
+    M 65001 spec_cast_mage  -> mage alone at 100%; other slots cleared
+    M 65001 none            -> all slots cleared,0/0/0
+    M 65001 inherit         -> restore inheritance for all names/policy
+
+If sp2, sp3 or spchance is present, Scribe uses extended N/P records instead.
+An N record changes one slot, while P changes the complete policy. An sp
+override that behaved as a singleton may behave differently once you add
+sp2. Check the exported #SPECIALS section and mstat full.
+
+Prefer the existing anatomical breath wrappers for a native mouth-based
+breath when the approved design calls for normal head/trauma gating:
+spec_breath_fire_anatomical, spec_breath_any_anatomical and their siblings.
+Keep the authored breath mix unless changing it is an explicit design
+decision. A coloured dragon does not automatically replace an area's old
+mixed breath; a fire-breathing hell hound doesn't become an acid breather
+merely because its ordinary bite is acidic.
+
+Some properties operate outside these three active slots. Fear aura, native
+regeneration and certain contact effects have their own hooks. Some native
+abilities also require a particular enabled special as a capability gate.
+For example, giant rock mechanics use their traits with spec_giant. A
+parameter trait on its own does not promise the associated action will run.
+
+
+10. TRAITS, FAMILIES AND TRAIT PARENTS
+====================================
+
+Traits are named internal capabilities or parameters. They handle things
+such as dwarf training, natural armour, sunlight sensitivity, echolocation,
+regeneration settings and the damage kind of a native unarmed attack.
+
+They are deliberately not ACT flags. There is no 64-trait ceiling caused by
+a single flag word. This does not remove the 64-bit limits of the separate
+ACT/AFF/BODY flag namespaces. Retired ACT bits34-36 remain reserved.
+
+Traits cannot be set or removed for an individual mob through a new area
+field, Scribe command, magic numeric flag or mset shortcut. To give a class
+of exceptions different training, use an appropriate archetype or variant.
+
+The important pieces in server/src/mob.c are:
+
+    creature_trait_definitions   names, effects and optional target lists
+    CREATURE_TRAIT_CHANGE arrays a profile's trait values
+    species_trait_profiles      body-level trait profiles
+    archetype_trait_profiles    archetype-level trait profiles and parents
+    player_creature_traits      explicit approved player-race opt-ins
+
+The public trait IDs are the CREATURE_TRAIT enum in merc.h. Keep its order
+aligned with the named registry; append new IDs rather than renumbering old
+ones. They are IDs, not BIT_ numbers.
+
+A value is a value, not XOR. Later profile values replace earlier values
+for the same trait. Zero explicitly disables an inherited trait, and mstat
+retains that zero with its source so the removal is visible.
+
+For example, ordinary dwarves have:
+
+    goblinoid_training =1
+    giant_defence =-4
+
+dwarf_untrained shares the ordinary dwarf defaults but sets both of those
+traits to 0. It doesn't spend two ACT flags or special-case the child's vnum.
+
+A trait parent copies only the parent's resolved trait list. It does not
+copy the parent's ordinary ACT/AFF/BODY masks, dimensions, resistances,
+special names, XP adjustment, ghost phase or family field. Each variant's
+ordinary mob_table row must still describe those properties correctly.
+
+Trait parents must exist and use the same body species as their child.
+There must not be a parent loop. A body-species trait profile cannot itself
+have a trait parent. With no archetype parent, the body trait profile is
+applied first; with a parent, the child's list starts from the parent's
+already-resolved traits, then applies the child's changes.
+
+At this revision, the general trait-value validator allows -100..100, with
+additional restrictions for specific effects. Percentage/quantity effects
+are normally non-negative; many booleans require 0/1; natural attack verbs
+use 0..19; natural damage uses its named enum. Don't assume every integer
+has meaning for every trait. The complete current trait reference follows
+the main guide.
+
+Creature families
+-----------------
+Family is a creature's matching identity for rules such as trained attacks
+against goblinoids. It is not anatomy, clan, alignment, faction or rank.
+Different archetypes can share one family.
+
+For example, dwarf and dwarf_untrained are both dwarf family. A mob named
+"the goblin slayer" doesn't become goblin family because its keywords contain
+goblin. Unclassified NPCs don't gain family identity from a guess based on
+their name or a player race field.
+
+The family enum and explicit target-family lists avoid allocating a racial
+ACT flag for every new creature. If a new family is genuinely needed, add it
+to CREATURE_FAMILY in merc.h, update the name/matching handling in mob.c,
+and add it only to the target lists where it belongs. Recheck every affected
+bonus. Family assignment alone doesn't grant a training trait.
+
+NPC and player rules are separate. Changing the NPC dwarf profile does not
+automatically redesign the player Dwarf race. Approved player trait opt-ins
+are explicit in player_creature_traits; this revision lists the two dwarf
+combat-training traits. Likewise, selecting a profile must not accidentally
+grant player powers through a shared helper.
+
+
+11. RANKS, LEVEL, HP, DAMAGE, SCORES AND XP
+=========================================
+
+Rank is an individual encounter choice:
+
+    common: 1x HP   rare: 2x   elite: 5x   boss: 7x   world: 30x
+
+Rank also feeds existing equipment randomisation and rank-based item-affect
+adjustments, so a promotion is more than a coloured name or extra HP.
+Don't promote a whole population just because its
+description says fierce. A unique commander is a better candidate than
+every guard. Do not infer body size from rank, level, kinship or an old HP
+letter.
+
+The ordinary spawn HP calculation uses level and normal randomness, applies
+rank once, then applies the resolved hp_mod once. A modifier of +25 means
+multiply that normal spawn HP by 1.25, not give 25 total HP. A modifier of 0
+preserves the normal level/rank result; it doesn't give zero HP.
+
+hp_mod and dam_mod accept-99 through INT_MAX, or inheritance. The parser's
+large upper limit isn't sensible balancing advice. Use modest, reviewed
+values. For a multiplier:
+
+    percent modifier =100 x (wanted multiplier -1)
+
+So1.5x is +50,2x is +100 and half is -50. The code protects against overflow
+and floors a positive result, but that isn't a substitute for balancing.
+
+dam_mod affects NPC attacks resolved through one_hit, before the ordinary
+resistance/defence pipeline. It is not a universal multiplier for every
+spell, breath, script or direct HP change. Check a special's damage path
+before assuming the same adjustment affects it.
+
+crit_mod and haste_mod are score adjustments, not HP/damage percentages.
+The current spawn base is 5 for both critical and swiftness; a+5 adjustment
+makes that spawn score10 before later equipment/effects. Their allowed
+adjustments are -100..100 or inherit. Negative stored scores are preserved
+so later bonuses don't erase a configured penalty. The field named
+haste_mod is surfaced as swiftmod/MobSwiftMod; it isn't a haste spell or an
+automatic extra attack every pulse.
+
+XP is a different calculation
+-----------------------------
+Only the archetype table has xp_mod. It is a signed addition in percentage
+points to the existing XP modifier, not another multiplier and not a body
+species scalar. There is no individual MobXPMod or Scribe xpmod field in
+this system.
+
+For example, if the existing area/equipment/special machinery contributes
+120 percentage points and the archetype contributes+10, the result is 130,
+not 132. The accessor adds it once; don't add it again in reset code.
+
+Active specials have their own XP allowances. With several weighted slots,
+the allowance is weighted and rounded, not the sum of three full bonuses.
+Don't automatically add a second archetype allowance for a power already
+covered by its special. Native traits and passive hooks may need their own
+reviewed allowance; the presence of a flag isn't an automatic price list.
+
+
+12. THE COMPLETE PROFILE FIELD REFERENCE
+=======================================
+
+Both species_table and mob_table live in:
+    C:\Games\dd4\server\src\mob.c
+
+Their structure definitions and count constants live in:
+    C:\Games\dd4\server\src\merc.h
+
+The existing C rows are positional. Each comma-separated value belongs to
+a specific field. Don't insert or omit a value because it looks repetitive.
+Comments alongside a copied row help, but the structure definitions remain
+the authority for field order.
+
+Archetype row order, in full:
+
+  1 name                 unique archetype name, e.g. "tutorial_wolf"
+  2 species              existing body-species name, e.g. "quadrupedal_mammal"
+  3 icon_m               legacy male icon string
+  4 icon_f               legacy female icon string
+  5 act                  XOR ACT mask over the body
+  6 affected_by          XOR AFF mask over the body
+  7 body_form            XOR BODY/PART anatomy mask over the body
+  8 attack_parts         XOR natural-attack candidate mask over the body
+  9 resists              XOR RES mask
+ 10 vulnerabilities      XOR RES mask
+ 11 immunes              XOR RES mask
+ 12 hp_mod               ordinary inherited/replacing HP percentage scalar
+ 13 dam_mod              ordinary inherited/replacing one_hit percentage scalar
+ 14 crit_mod             inherited/replacing critical-score adjustment
+ 15 haste_mod            inherited/replacing swiftness-score adjustment
+ 16 height               inherited/replacing cm; 0 means unspecified
+ 17 weight               inherited/replacing whole kg; 0 means unspecified
+ 18 size                 inherited/replacing code; 0 Small/1 Medium/2 Large
+ 19 language             inherited/replacing raw non-negative metadata code
+ 20 spec_fun1            special slot 1; NULL inherit/empty clear/name replace
+ 21 spec_fun2            special slot 2; same rule
+ 22 spec_boss            special slot 3; unrelated to rank
+ 23 xp_mod               archetype XP percentage-point adjustment
+ 24 spec_chance[3]       complete selection policy or inherit/auto macro
+ 25 initial_ghost_phase  GHOST_PHASE_NONE/ETHEREAL/SEMI_MATERIAL or inherit
+ 26 family               CREATURE_FAMILY_* identity, or NONE
+ 27 length               inherited/replacing body length in cm
+
+icon_m/icon_f are not the vnum-based portrait filename or the mob's sex.
+Copy appropriate existing placeholders if the project hasn't assigned a
+different use. Don't put a portrait URL there expecting the GUI to load it.
+
+A body-species row has 22 fields, in this order:
+
+    species;
+    act, affected_by;
+    body_form, attack_parts;
+    resists, vulnerabilities, immunes;
+    hp_mod, dam_mod, crit_mod, haste_mod;
+    height, weight, size, language;
+    spec_fun1, spec_fun2, spec_boss;
+    spec_chance[3]; initial_ghost_phase; length.
+
+The body row has no icon fields, family field or xp_mod. Its masks establish
+the starting body; they aren't toggles over a parent species. There is no
+general species-to-species parent field in these ordinary tables.
+
+Zero is a good raw mask when that layer should add/remove nothing. It is
+not a good substitute for MOB_TEMPLATE_UNSET when a scalar should inherit.
+Likewise, NULL and"" are different special-name choices. An omitted trailing
+C initializer becomes a zero/default value, not a magical request to inherit.
+
+Use named C constants, e.g.RES_FIRE or PART_FANGS, in code. Use Scribe's
+keywords in source. Use the appropriate numeric masks only where the area
+format requires them. Keep those three representations straight.
+
+
+13. CREATE A NEW ARCHETYPE, STEP BY STEP
+=======================================
+
+This example adds tutorial_wolf on an existing quadrupedal mammal body.
+Cold resistance and -2 natural armour are arbitrary tutorial choices, not
+a claim about the current ordinary wolf or a particular AD&D creature.
+
+Step 1: write the design in plain English
+---------------------------------------
+"A living, mute four-legged mammal with paws, fangs and a tail. Its ordinary
+attack is a bite. It has ordinary organs/blood/pain/soul/corpse, cold
+resistance, no active special, no default aggression and no extra HP or
+damage. It is 80 cm at the shoulder,45 kg and 140 cm long, Medium."
+
+Do this first. It gives you a final state to compare with the inherited
+body, rather than guessing which impressive-looking flags to paste in.
+
+Step 2: append the archetype row
+-------------------------------
+In mob.c, locate const struct mob_type mob_table[MAX_MOB]. Append the
+following entry at the end of that table, before its closing };.
+
+    {
+            "tutorial_wolf", "quadrupedal_mammal", "icon1", "icon2",
+            0, 0,
+            PART_PAWS | PART_FANGS | PART_TAIL,
+            PART_FANGS,
+            RES_COLD, 0, 0,
+            0, 0, 0, 0,
+            80, 45, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+            "", "", "", 0,
+            MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+            CREATURE_FAMILY_NONE, 140
+    }
+
+There must be a comma between the previous entry and this one. Don't insert
+the example into species_table or a trait-profile array by mistake. Don't
+reorder older entries to keep the names alphabetical: older numeric IDs
+must remain stable.
+
+The body already supplies no arms/no speech and ordinary organs/legs.
+That is why the archetype doesn't repeat those BODY flags. It adds paws,
+fangs and tail, and chooses only fangs for ordinary natural attacks.
+
+The four combat scalars are explicitly zero. Unknown language inherits.
+The three empty special names explicitly clear body defaults. The profile
+adds no XP adjustment; family NONE gives it no matching family identity.
+
+Step 3: increase the table count
+-------------------------------
+Some practical C punctuation helps when adding a row:
+
+    "tutorial_wolf" is a quoted name; RES_COLD is an unquoted C constant.
+    NULL is unquoted and is different from the empty quoted string "".
+    | combines separate flag bits; ^ is the layer-to-layer toggle operation.
+    Braces group a row or a chance vector. Commas separate its values.
+    A comma separates adjacent rows; the table ends with };, not just }.
+
+Keep the structure definitions unchanged when you are only adding a row.
+If a copied row is generated through a macro, either use that same macro
+with its documented arguments or copy a compatible full row. Don't guess
+which hidden fields the macro supplies.
+
+Increase MAX_MOB in merc.h by the number of entries actually added. At this
+guide's checked revision it is 200, so this single example would make 201.
+Use the current value when doing real work, not this historical number.
+MAX_MOB is the number of rows, including the reserved row, not the largest
+valid index. This example would receive index200.
+
+Do not increase MAX_SPECIES when reusing an existing body. Do not add an
+ACT bit, an area-file column or a trait ID merely to add this archetype.
+
+Step 4: add the existing natural-armour trait
+-------------------------------------------
+The ordinary row has no natural_armour field. Use the existing internal
+trait rather than squeezing a value into some unrelated scalar.
+
+Before the trait-profile tables in mob.c, add:
+
+    static const CREATURE_TRAIT_CHANGE tutorial_wolf_trait_changes[] =
+    {
+            {CREATURE_TRAIT_NATURAL_ARMOUR, -2}
+    };
+
+Inside archetype_trait_profiles[], add:
+
+    {"tutorial_wolf", NULL, tutorial_wolf_trait_changes,
+        TRAIT_ITEMS(tutorial_wolf_trait_changes)},
+
+The string must exactly identify the archetype you created. NULL here means
+"no trait parent"; it isn't a special-function setting. TRAIT_ITEMS counts
+the entries in the change array. Leave the profile table's terminating
+NULL entry at the end.
+
+natural_armour already exists in the registry, so this step doesn't need a
+new enum ID or a new combat hook. A negative armour value is a defensive
+improvement in this existing rule. Keep it separate from dam_mod, hitroll
+and a rank HP multiplier.
+
+Step 5: let Scribe recognise the name
+------------------------------------
+In builder\scribe\scribe.pl, add tutorial_wolf to %mob_archetype's qw/.../
+list. This list validates names; it doesn't contain the profile's powers.
+
+If no new special function was written, @mob_spec doesn't need changing.
+If no new body was added, no body-species selection field needs inventing.
+
+Step 6: document the profile
+---------------------------
+Update builder\scribe\scribe.adoc and builder\area.txt with the body,
+anatomy, defences, traits, dimensions, active specials and deliberate limits.
+Add a brief CHANGES entry in server\area\helpfile.are. Supply the entire
+updated Scribe manual with the proposed change, as well as its patch.
+
+Step 7: select it in an individual source
+---------------------------------------
+The following is a complete minimal Scribe fixture. It is an example area
+for export checks, not a live area to load unchanged alongside real vnums.
+
+    $area
+    au Tutorial
+    ti Species tutorial
+    ls 1
+    us 100
+    le 0
+    ue 100
+    bv 65000
+
+    $mob
+    vn 1
+    nm wolf tutorial
+    sh a tutorial wolf
+    lo A tutorial wolf watches the trail.
+    de
+    A sturdy grey wolf watches the trail. Its paws are broad and its
+    heavy coat protects it from the cold.
+    ~
+    lv 20
+    al 0
+    sx neuter
+    archetype tutorial_wolf
+    rnk common
+
+The base vnum65000 plus local vn1 makes mobile65001. Choose non-conflicting
+real vnums and ordinary room/reset data for actual play. The archetype does
+not create a reset, room, weapon, portrait or help entry for the individual.
+
+Step 8: clean build, regenerate, boot and inspect
+-----------------------------------------------
+Changing MAX_MOB or a header needs a clean rebuild, not merely a newly
+compiled mob.c. mob_lookup is compiled in db.c and uses the count too. A
+stale object file can make a perfectly spelled new name appear missing.
+
+Regenerate the source, boot a test world, create a fresh instance and check
+mstat full. Then test an actual unarmed bite, cold resistance, ordinary
+corpse/loot and the absence of unwanted aggression or specials. Section 19
+gives the complete checks.
+
+
+14. CREATE A NEW BODY SPECIES, WHEN ONE IS ACTUALLY NEEDED
+========================================================
+
+First check the body catalogue. A new colour of dragon or a new sort of
+four-legged mammal probably doesn't need a new basic body.
+
+Here is a deliberately hypothetical winged four-legged body. Existing
+winged_reptile, quadrupedal_hybrid or another current body may be a better
+choice for a real creature. This example exists to show the procedure.
+
+Append this row to species_table[MAX_SPECIES] in mob.c:
+
+    {
+            "tutorial_winged_quadruped",
+            0, 0,
+            BODY_NO_ARMS | BODY_NO_SPEECH
+                | PART_HEAD | PART_4_LEGS | PART_FORELEGS | PART_HEART
+                | PART_BRAINS | PART_GUTS | PART_FEET | PART_EAR
+                | PART_EYE | PART_WINGS,
+            0,
+            0, 0, 0,
+            MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+            MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+            MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+            MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+            NULL, NULL, NULL,
+            MOB_SPECIAL_CHANCES_INHERIT,
+            GHOST_PHASE_NONE,
+            MOB_TEMPLATE_UNSET
+    }
+
+This body has wings, but supplies no flight affect. Anatomy and the ability
+to fly aren't the same thing. An archetype can decide whether this particular
+kind of winged creature actually flies and can add AFF_FLYING then.
+
+It supplies ordinary living organs, four legs and no humanoid arms/speech.
+It doesn't prescribe a natural attack, dimensions, defences, active power or
+combat bonus for every future creature using it.
+
+Increase MAX_SPECIES by one:33 would become 34 at this revision. Append
+without reordering older bodies. Add an archetype which names the new body
+in its species field, and increase MAX_MOB if that archetype is also new.
+Scribe selects the archetype, never the new body's name directly.
+
+If tutorial_wolf were changed to use this demonstration body, its ordinary
+row would need to be reviewed against that body's inherited anatomy. If it
+also acquired a trait parent, the parent would need the same body species.
+
+There is no body-species family field or body XP field to fill in. There is
+also no species-parent column. If several bodies need shared internal
+traits, use the explicit species trait-profile mechanism with suitable
+entries; don't create an imaginary inheritance syntax in an area file.
+
+Changing an existing body's defaults is often more consequential than adding
+a new one. List every archetype which uses it and every affected area before
+altering it. An individual raw toggle can turn into a different effective
+result when its inherited body changes.
+
+
+15. CREATE A VARIANT AND REMOVE INHERITED TRAITS
+===============================================
+
+Use a variant when a repeatable creature needs different internal traits:
+an untrained child, a daylight-adapted relative or a hound with acid saliva.
+Don't special-case one vnum in fight.c.
+
+The current acid_hell_hound is a useful real example. It and hell_hound both
+use quadrupedal_mammal. Each ordinary row independently supplies its anatomy,
+dimensions, infrared, fire immunity and fire-breath special. The acid row
+gives it hooves, not paws. Its trait profile inherits hell_hound's-6 armour
+and adds natural_damage_type=NATURAL_DAMAGE_ACID.
+
+The trait parent does not give it hooves or fire breath. Those still come
+from the ordinary archetype row. If you change the parent's dimensions
+later, don't assume the child has inherited those changes.
+
+To remove a parent's training trait, use an explicit zero in the variant's
+change array. For example, the real untrained-dwarf changes are:
+
+    {CREATURE_TRAIT_GOBLINOID_TRAINING, 0},
+    {CREATURE_TRAIT_GIANT_DEFENCE, 0}
+
+Its profile names dwarf as the trait parent. The two archetypes also use
+the same ordinary dwarf-default macro, which separately keeps their flags,
+defences and dimensions aligned. That macro reuse is code organisation,
+not another runtime area-file inheritance layer.
+
+For a child, set age-appropriate measurements and any ordinary local
+exceptions as well. Disabling training doesn't automatically make the child
+shorter, lighter or weaker, and small size doesn't automatically disable
+adult training.
+
+Never use a zero individual flag mask as though it removed a named trait.
+There is no individual natural_armour0 or giant_defence0 field in Scribe.
+
+
+16. ADD A GENUINELY NEW ABILITY
+===============================
+
+Before creating a new function, decide whether the ability already exists
+as a flag, resistance, trait, native attack, body-part weapon or special.
+Reuse a suitable existing mechanic without copying a second version under
+another name.
+
+Three levels of work are possible:
+
+  A. Data only: choose existing fields, traits and specials. Most new
+     archetypes should be here.
+  B. A new special: write an active routine with behaviour that doesn't
+     already exist, then register and expose it.
+  C. A new shared mechanic: add a trait/effect hook or engine behaviour.
+     This needs a developer review, because naming a trait does not create
+     the code that uses it.
+
+For a new special in server\src\special.c:
+
+  1. Add its DECLARE_SPEC_FUN declaration alongside the existing ones.
+  2. Add the string->function entry in spec_lookup.
+  3. Add the function->name entry in mob_special_name.
+  4. Implement the routine, following a suitable current example.
+  5. Add the name to Scribe's @mob_spec list.
+  6. Review mob_special_exp_bonus in mob.c; its default allowance may not
+     be the right balance for the new routine.
+  7. Document it and test a real call, including all rejection paths.
+
+Design the routine so another suitable creature can use it later. Prefer
+resolved anatomy, traits, enabled capabilities and current level to hardcoded
+area names or vnums. Don't silently tie a generic fear aura to dracoliches
+or a native constriction amount to one particular snake's level.
+
+Depending on what the action does, check all of these:
+
+    valid NPC/current room; awake/alive/position; action wait; charm/order
+    restrictions; combat target; remote/deleted targets; safe rooms;
+    protected players, riders and pets; usable anatomy and trauma; phase;
+    resistance and typed saving throws; no accidental extra hits;
+    daily limits/cooldowns; target death/movement/extraction after damage;
+    recursion/double execution; corpse/loot and player exclusions.
+
+Use ordinary DD4 damage and effect helpers. A routine that subtracts hit
+points directly may bypass immunity, phase, safety, regeneration suppression
+or death handling. Borrow the full control flow of an appropriate reviewed
+routine, not just the line which does damage.
+
+A new trait has more moving parts:
+
+  * Append its public ID in CREATURE_TRAIT in merc.h, before COUNT.
+  * Add the matching named registry entry in mob.c, in the same ID order.
+  * Reuse an existing effect category if it means exactly the right thing.
+    Otherwise add the effect and its validation/display treatment.
+  * Add values through named species/archetype profiles.
+  * Add or update the actual engine consumer. Without that, it is only a
+    stored/displayed number.
+  * Show useful units and origins in MSTAT. Test zero-removal and parents.
+  * Keep it internal: no new individual trait field, ACT racial marker or
+    per-vnum exemption. Player opt-ins remain explicit decisions.
+
+For a new body part or new damage category, there can be many more consumers:
+targeting, trauma, name displays, natural attack eligibility, disarming,
+Regenerate, death drops, identification, resistance masks and Scribe flag
+validation. This is not just one extra #define. Often the existing tail
+category plus a sting-verb body weapon is enough for a stinger; a special
+PART_STINGER and a new injury type are unnecessary.
+
+If the work also adds an actual player skill or spell, update its learnability,
+groups/teachers, all relevant help lists and the area.txt spell list as
+appropriate. That is separate work from merely adding a mob archetype.
+
+
+17. BODY-PART WEAPONS, TRAUMA, REGENERATE AND LOOT
+================================================
+
+An anatomical flag doesn't create an object. Use an attached body-part
+weapon when the design needs an actual disarmable stinger, beak, mouth or
+other weapon tied to an injury region.
+
+The usual native-weapon recipe is:
+
+    object type WEAPON
+    ITEM_BODY_PART
+    ITEM_DONOT_RANDOMISE
+    no ITEM_TAKE unless an explicitly reviewed loot design needs it
+    value[0] = existing body region
+    value[3] = ordinary attack verb, e.g.bite10 or sting16
+    E reset on every relevant mob reset, normally in the wield slot
+
+The current HowTos region mapping is:
+
+    1 head   2 eye   3 arm   4 leg   5 heart   6 tail   7 torso/body
+
+Weapons and lights store that region in value[0]. Armour uses value[1]
+because its other values already have a different purpose. A zero or an
+unrecognised region is not a request for intelligent automatic targeting.
+The HowTos describe it as undisarmable by that mapping.
+
+There is a difference between the target/disarm region and ordinary weapon
+eligibility. The current bodypart_weapon_usable helper explicitly handles
+head, arm and tail weapon gates; don't assume every possible region has
+an identical offensive disable rule. Test the region used by your design.
+
+For an attached weapon, test all of these:
+
+  * It exists on every intended reset, with the correct slot/verb/region.
+  * Normal attacks actually use it, and its poison/contact category works.
+  * The corresponding target strike can inflict trauma and disarm it.
+  * An injured attached weapon stays in the inventory/equipment lifecycle
+    but can't supply an attack where the eligibility gate rejects it.
+  * Regenerate heals the injury and restores use of an existing attached
+    weapon where applicable. It does not recreate a disarmed object.
+  * Other natural options and explicit skills follow their existing fallback
+    rules; don't accidentally grant an injured weapon to a skill.
+  * Death doesn't flood the area with unwanted native weapons or destroy
+    valuable ordinary loot.
+
+DONOT_RANDOMISE is not a promise that the object's final damage values are
+identical at every creation level. Existing level-based weapon creation
+scaling still needs checking.
+
+Don't retag an ordinary treasure just because it has an anatomical name.
+The Cobresh Dragon's Talon, Scale and Eye intentionally remain ordinary
+equipped, player-usable treasure. Turning all of them into native BODY_PART
+objects would change their targeting, death and loot behaviour.
+
+The body_weapon_loot trait is an explicit exception used by reviewed
+creatures: a TAKE body-part weapon can detach into ordinary loot at death,
+losing its attached region. It is not a general invitation to make every
+native mouth or stinger takeable.
+
+
+18. CONVERT AN EXISTING AREA WITHOUT BREAKING IT
+===============================================
+
+Start with current master and the actual area, not an old downloaded patch
+or a source export from another branch. In this project, use the existing
+nerble-mob-species branch unless the user directs otherwise. The user runs
+all Git commands and applies project changes.
+
+Make a short inventory before changing anything:
+
+    all mobile definitions, including unused ones;
+    descriptions, level/alignment/sex and existing ranks;
+    raw ACT/AFF/body/resistance/attack inputs;
+    specials and weights;
+    shops, teachers and programmes;
+    every M/G/E reset, caps, order and actual initial/refill populations;
+    carried/worn objects, wear slots, keys, doors and shared object use;
+    matching .src files and consumers in other areas/code;
+    room flags, particularly wards and movement restrictions;
+    portraits when description and sex/identity disagree.
+
+Choose the intended final anatomy and properties before computing XOR
+differences. If you add an archetype, remove raw duplicates only where they
+would cancel something you actually intend to keep. Don't reset the whole
+ACT or body line to zero without accounting for its independent authored
+properties.
+
+Treat a local spec as a deliberate role until you have checked it. Remove a
+redundant local assignment only when the inherited profile really provides
+the same intended power and policy. Otherwise keep the local override.
+Replacing a doctor's adept assistance with a combat caster is a gameplay
+change, not a consequence of calling the doctor human.
+
+Keep deliberate aggression/passivity, Sentinel, Stay Area and Wimpy settings.
+Preserve room masks by changing only the approved bits. Species conversion
+doesn't authorise stripping unrelated room flags or changing a quest chain.
+
+Check equipment compatibility: alignment restrictions, wield slots, anatomy,
+BODY_PART treatment and original bonuses. A claw named as loot may need to
+stay loot; an ordinary sword carried by a quadruped may need a separate
+design decision. Don't delete the treasure while fixing its encounter use.
+
+Check reset order in a real boot. A cap can skip an M row, leaving later
+equipment attached to the previous mob or a planned key-holder absent.
+A tidy-looking text diff doesn't prove the same world loaded.
+
+Matching source/output files must agree. If no source exists, don't invent
+a new one simply to make the conversion appear complete. Document that
+limitation. When a source does exist, preserve mob programmes and regenerate
+it, comparing the output with the approved intended differences.
+
+Review ranks and dimensions explicitly for every mob. Don't force old
+portrait mistakes back into the prose to avoid replacing an image. Images
+are separate assets from these C profile fields; icon_m/icon_f aren't their
+file paths. Record and seek judgement on any proposed artwork correction.
+
+During this conversion project, verified progress uses153 loaded areas
+with mobs and 4,131 loaded definitions. Count an area/mob complete after its
+merge is verified. Report both counts and percentages, to one decimal.
+Inactive definitions and runtime bot variants are separately tracked scope.
+
+
+19. BUILD, LOAD AND INSPECT THE RESULT
+=====================================
+
+Use the project's normal test/build environment. In particular, don't try
+to execute a Linux build as though gcc were automatically available in a
+plain Windows PowerShell session. The exact Docker/WSL/server setup is a
+local deployment matter; this guide doesn't reset anyone's branch or start
+a live server for them.
+
+After table counts, headers or structures change, perform a clean rebuild
+using the project's existing build procedure. A successful compile alone
+doesn't prove a profile resolves, an area loads or an ability is usable.
+
+For source export, the command shape is:
+
+    perl C:\Games\dd4\builder\scribe\scribe.pl INPUT.src OUTPUT.are
+
+Use different input and output paths and your actual area filenames. Read
+the exporter log: don't rely solely on an exit code to establish that the
+intended output was created. Keep an old output to compare.
+
+Boot a test world and inspect the startup validation messages. Relevant
+validators include:
+
+    validate_mob_template_tables
+    validate_mob_resistance_table
+    validate_mob_attack_part_tables
+    validate_mob_hp_modifiers / validate_mob_damage_modifiers
+    validate_mob_combat_modifiers
+    validate_mob_dimensions / validate_mob_languages
+    validate_mob_ghost_phases
+    validate_mob_special_templates
+    validate_creature_traits
+
+These are C function names, not new builder commands. The normal boot path
+calls the appropriate checks. Look for unknown names, wrong species, bad
+policies, invalid masks, contradictory resistance categories, duplicate
+traits and cyclic/different-body trait parents.
+
+The server logs deliberate inherited flag cancellations. A cancellation
+message is not necessarily a bug; it is a prompt to confirm that the raw
+toggle was intentional.
+
+For a fresh live mobile, use:
+
+    mstat <mobile-keyword> full
+
+Use the actual mob's name/keyword, with enough context to identify the right
+copy. The command looks up a live character; the example isn't a promise
+that a bare vnum is a live-character selector. The double angle bracket in
+some old syntax messages isn't text you need to type.
+
+Normal mstat shows the live view and creature traits. Full adds the layers:
+body/archetype/template settings where supplied, individual raw inputs,
+prototype, live state and explicit XOR removals. Natural attacks also show
+eligible/inactive parts, which helps distinguish a missing definition from
+an injury or unavailable limb.
+
+Check the dimensions, resolved family, enabled specials and weights, XP
+contribution, rank HP once, base/spawn/live scores, phase and trait origins.
+Do not mistake an older live copy for a new spawn from the changed profile.
+Equipment and timed effects can account for legitimate live differences.
+
+Live mset changes aren't a replacement for source/C changes. For example,
+mset on an NPC's height/weight/length changes that instance's metadata; it
+doesn't make a source edit persistent or change every future instance.
+
+Then test behaviour, not just labels:
+
+    ordinary unarmed attack and equipped-weapon precedence;
+    correct damage/source/material categories;
+    resistance, immunity and vulnerability controls;
+    actual special selection and its internal failure/proc conditions;
+    trauma, disarming, Regenerate and fallback attacks;
+    blood, pain, mind, soul and corpse eligibility;
+    normal loot and keys at death;
+    shop/healer/teacher/programme interaction;
+    initial population and several reset cycles;
+    existing users of any shared profile or body you changed.
+
+For a new shared ability, include remote/dead/extracted targets, safety,
+players, ordered/charmed mobs, phase and interruption cases. When a power
+should only affect NPCs, prove that the corresponding player path is still
+excluded. A test which merely repeats the initializer values won't catch
+most of these problems.
+
+Before delivering a patch, check exact application to its stated master
+commit, the complete changed-file list and the entire Scribe manual. Keep
+temporary fixture areas out of the delivered area.lst. A test-only mob or
+object must not leak into the live package by accident.
+
+
+20. TROUBLESHOOTING AND A FINAL REVIEW CHECKLIST
+===============================================
+
+"I added infrared and it disappeared."
+    It was probably already inherited and your raw XOR input cancelled it.
+    Compare the Template, #MOBILES and XOR removed rows in mstat full.
+
+"I set all the masks to zero, but the inherited features are still there."
+    Zero toggles nothing. It doesn't clear the template. Compute the actual
+    difference from the final state you want.
+
+"NO_HEART is present, but heart-targeting still works."
+    Check for inherited PART_HEART. Positive anatomy can establish presence
+    despite the negative flag. Remove contradictory effective organ bits.
+
+"The creature has wings/tentacles/a long tongue but no special attack."
+    Anatomy doesn't implement active abilities. Check atk, equipped weapons,
+    traits and the actual special/engine consumer separately.
+
+"My new species is rejected in archetype."
+    Scribe selects a mob_table archetype name, not a species_table body.
+
+"The server knows the new name but Scribe doesn't."
+    Update %mob_archetype, regenerate with the current Scribe installation,
+    and check you aren't invoking an older copied script.
+
+"The code compiles, but lookup can't find the new last entry."
+    Check MAX_MOB/MAX_SPECIES and do a clean build. The object containing
+    mob_lookup may still have the old count compiled into it.
+
+"The child inherited armour but not its parent's breath or size."
+    A trait parent only inherits traits. Copy/review ordinary table defaults
+    separately, or share them through a carefully maintained C macro.
+
+"I added a trait name and nothing happens."
+    It also needs a profile value and an implemented consumer. It is not a
+    new area command. Check the enum/registry order and MSTAT origin.
+
+"The second special never runs."
+    Check for a later legacy M record resetting the entire special set,
+    a zero weight, an invalid policy, or the selected function's own checks.
+
+"The special is 100%, but it doesn't cast every time."
+    That is selection probability, not guaranteed action success. Its own
+    random checks and eligibility still apply. There is no automatic retry.
+
+"Clearing slot 2 stopped the area loading."
+    A surviving explicit policy may still allocate positive probability to
+    the empty slot. Use a compatible complete vector or auto.
+
+"My damage modifier doesn't strengthen its breath."
+    dam_mod belongs to one_hit. Inspect the breath routine's separate path.
+
+"I selected Large but the HUGE swallowing restriction didn't apply."
+    Size metadata and BODY_HUGE are separate. Set/toggle the intended flag
+    explicitly through the correct inherited anatomy layer.
+
+"My local edit vanished after Scribe regeneration."
+    Put it in the matching .src. Scribe doesn't import .are-only overrides.
+
+"The stinger never comes back after Regenerate."
+    Healing trauma isn't object creation. An attached object still present
+    can become usable again; a disarmed one isn't recreated automatically.
+
+"An immunity didn't stop this new special."
+    Check the actual damage/effect helper and categories. Direct HP changes
+    or an untyped custom path may bypass the intended rule.
+
+"All the stats look right, but a key or shop has broken."
+    Compare actual reset order, caps, equipment, alignment restrictions and
+    services. A profile inspection isn't an area integration test.
+
+Final review checklist
+-----------------------
+  [ ] Current master and intended existing branch are identified.
+  [ ] Every mob has a deliberate species/archetype/rank choice.
+  [ ] Anatomy, mind, blood, pain, soul, corpse and speech make sense together.
+  [ ] Each namespace's XOR result matches the intended final flags.
+  [ ] Numeric inheritance, explicit zero and units are correct.
+  [ ] Natural anatomy and offensive parts aren't being confused.
+  [ ] Specials, weights, native hooks and weapon precedence were tested.
+  [ ] Rank HP and modifier/XP contributions apply once.
+  [ ] Behaviour, room flags, services, programmes and loot were preserved
+      unless their specific change was approved.
+  [ ] All uses of changed shared bodies/profiles were checked.
+  [ ] Source/output pairs agree; no fixture files leaked into the package.
+  [ ] Scribe name lists, manual, area guide and terse CHANGES are updated.
+  [ ] A complete replacement Scribe manual accompanies a manual-changing patch.
+  [ ] The user can inspect and apply the exact proposed change themselves.
+
+
+21. FILE AND FUNCTION MAP
+=========================
+
+All project paths below start at C:\Games\dd4. These are places to inspect
+and propose changes, not instructions for the assistant to edit the checkout.
+
+C:\Games\dd4\server\src\merc.h
+    Structs species_type, mob_type and mob_template_data; MAX_SPECIES and
+    MAX_MOB; inheritance constants; ACT/AFF/BODY/PART/RES definitions;
+    CREATURE_FAMILY and CREATURE_TRAIT; public helper declarations.
+
+C:\Games\dd4\server\src\mob.c
+    species_table and mob_table; rank_table; creature_trait_definitions;
+    species/archetype/player trait profiles; species_lookup;
+    resolve_mob_template; initialise_mob_index_flags; trait building and
+    validation; natural attack eligibility/selection; special resolution,
+    execution and XP allowances; field parsers and profile validators.
+
+C:\Games\dd4\server\src\db.c
+    mob_lookup; load_mobiles/load_mob_spec; optional field loading;
+    load_specials and initialise_mob_specials; create_mobile and normal
+    level/rank/HP/score creation. A count change needs this rebuilt too.
+
+C:\Games\dd4\server\src\special.c
+    DECLARE_SPEC_FUN entries, spec_lookup, mob_special_name and the actual
+    active routines. Read their own proc/action/safety/anatomy gates.
+
+C:\Games\dd4\server\src\fight.c
+    one_hit, source/contact categories and damage pipeline; natural/weapon
+    precedence; damage modifier use; relevant native hooks; make_corpse and
+    body-weapon loot treatment. Not a place for area-vnum exceptions.
+
+C:\Games\dd4\server\src\magic.c
+    get_resistance_result/get_contact_resistance_result;
+    apply_resistance_to_damage and supernatural/typed save helpers;
+    actual spells and their undead/physiology interactions.
+
+C:\Games\dd4\server\src\handler.c
+    bodypart_weapon_usable/get_attack_weapon; has_organic_body/has_blood/
+    can_experience_pain/has_soul/is_mindless; visibility and ordinary object
+    handling helpers; flag-name displays.
+
+C:\Games\dd4\server\src\update.c
+    World update hooks, native regeneration and sunlight-related updates.
+    Check it when adding a passive/timed physiology mechanic.
+
+C:\Games\dd4\server\src\act_wiz.c
+    do_mstat and the full layer displays; relevant live mset handling.
+
+C:\Games\dd4\server\src\act_obj.c
+    Equipment, shops and targeting/disarming interactions where applicable.
+    Read the actual relevant function before changing item behaviour.
+
+C:\Games\dd4\builder\scribe\scribe.pl
+    %mob_archetype; @mob_spec; %mob_act/%mob_aff/%mob_bf;
+    %mob_resistance/%mob_attack_parts; field validation;
+    format_mob_specials and generated Mob.../#SPECIALS output.
+
+C:\Games\dd4\builder\scribe\scribe.adoc
+    The full Scribe manual. Keep its examples and name lists current.
+
+C:\Games\dd4\builder\area.txt
+    Area-builder reference, including relevant name/ability documentation.
+
+C:\Games\dd4\builder\howtos.adoc
+    Wider builder procedures, including target/body-part weapon mapping.
+    Older unrelated Git examples do not override this project's current
+    branch and user-application arrangement.
+
+C:\Games\dd4\server\area\<area>.src and <area>.are
+    Individual definitions, generated output, programmes, objects, resets,
+    services and room flags. Update matching pairs together where they exist.
+
+C:\Games\dd4\server\area\helpfile.are
+    Brief CHANGES entries and relevant player/builder help. New player skills
+    and spells require the additional help/learnability work they actually
+    introduce; a new archetype name alone doesn't add a player skill.
+
+The appendices below are extracted from the checked merged code/Scribe,
+not copied from a historical monster list. The presence of an old profile
+in the catalogue isn't certification that its design has been reviewed.
+
+APPENDIX A. CURRENT BODY SPECIES
+================================
+These are the 33 current rows, including reserved. The index is not an
+area vnum or a value to put in Scribe archetype. Older elemental and
+farm_mammal examples remain in the code; presence is not design approval.
+
+     0  reserved
+     1  humanoid
+     2  elemental
+     3  farm_mammal
+     4  dragon
+     5  quadrupedal_reptile
+     6  serpentine_reptile
+     7  mysterious_being
+     8  winged_mammal
+     9  winged_reptile
+    10  bipedal_construct
+    11  quadrupedal_mammal
+    12  head_only
+    13  limbless_invertebrate
+    14  limbless_construct
+    15  centauroid_mammal
+    16  quadrupedal_hybrid
+    17  elemental_being
+    18  crustacean
+    19  amorphous_organism
+    20  fish
+    21  quadrupedal_amphibian
+    22  bird
+    23  cetacean
+    24  insect_swarm
+    25  arachnid
+    26  insect
+    27  arachnoid_humanoid
+    28  plant
+    29  environmental_hazard
+    30  myriapod
+    31  fungoid
+    32  radial_invertebrate
+
+New physical variants should reuse these where they fit. A body name alone
+does not select a fully reviewed creature, assign a rank or create a power.
+
+APPENDIX B. CURRENT ARCHETYPES
+==============================
+All 200 current table rows follow, grouped by body. Numeric IDs are for
+cross-checking code only. Do not reorder the table or use an ID in source.
+h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
+Size is the resolved numeric Small/Medium/Large metadata, not HUGE.
+HP/dam are percentage adjustments; crit/swift are score adjustments;
+XP is the archetype percentage-point addition. These are resolved template
+values before individual area overrides, equipment, spells and injuries.
+Flags/defences/trait details still require the actual profile and MSTAT.
+An old or placeholder entry is not automatically a good model for new work.
+
+RESERVED (1)
+--------------
+  [  0] reserved: h/w/l ? / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
+HUMANOID (65)
+--------------
+  [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [  4] zombie: h/w/l 175 / 65 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [  5] ghoul: h/w/l 175 / 65 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_ghoul; policy auto
+  [  6] ghast: h/w/l 175 / 65 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_ghast; policy auto
+  [  7] ghost: h/w/l 175 / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase semi_material
+        specials none; policy auto
+  [  8] wight: h/w/l 175 / 60 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_wight; policy auto
+  [  9] wraith: h/w/l 175 / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase semi_material
+        specials 1:spec_wraith; policy auto
+  [ 10] spectre: h/w/l 175 / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase semi_material
+        specials 1:spec_spectre; policy auto
+  [ 11] mummy: h/w/l ? / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_mummy; policy auto
+  [ 12] banshee: h/w/l 175 / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase semi_material
+        specials 1:spec_banshee; policy auto
+  [ 13] death_knight: h/w/l ? / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_death_knight; policy auto
+  [ 14] vampire: h/w/l 175 / 75 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_vampire; policy auto
+  [ 15] lich: h/w/l 175 / 45 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_lich; policy auto
+  [ 17] dwarf: h/w/l 130 / 70 / ?; Small; family dwarf
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
+  [ 18] dwarf_untrained: h/w/l 130 / 70 / ?; Small; family dwarf
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
+  [ 19] orc: h/w/l 175 / 85 / ?; Medium; family orc
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 20] half_orc: h/w/l 175 / 80 / ?; Medium; family half_orc
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 21] goblin: h/w/l 120 / 30 / ?; Small; family goblin
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 22] hobgoblin: h/w/l 200 / 100 / ?; Medium; family hobgoblin
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 23] ogre: h/w/l ? / ? / ?; Small; family ogre
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 24] troll: h/w/l 275 / 225 / ?; Large; family troll
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_giant; policy auto
+  [ 25] ogre_mage: h/w/l ? / ? / ?; Small; family ogre_mage
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 26] giant: h/w/l ? / ? / ?; Small; family giant
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 27] titan: h/w/l ? / ? / ?; Small; family titan
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 28] human: h/w/l 175 / 75 / ?; Medium; family human
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 34] shadow: h/w/l ? / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 41] giant_zombie: h/w/l 450 / 700 / ?; Large; family giant
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 43] elf: h/w/l 150 / 45 / ?; Medium; family elf
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 46] lizardman: h/w/l 200 / 100 / ?; Medium; family lizardman
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 47] duergar: h/w/l 120 / 55 / ?; Small; family dwarf
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_duergar; policy auto
+  [ 49] manifested_double: h/w/l ? / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 57] cave_beast: h/w/l 300 / 500 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 58] human_goblin: h/w/l 150 / 50 / ?; Medium; family goblin
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 63] winged_human: h/w/l 175 / 85 / ?; Medium; family human
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 66] alhoon: h/w/l 183 / 65 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_alhoon; policy auto
+  [ 67] drow: h/w/l 150 / 45 / ?; Medium; family elf
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [ 74] hill_giant: h/w/l 490 / 2050 / ?; Large; family giant
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_giant; policy auto
+  [ 75] stone_giant: h/w/l 550 / 4100 / ?; Large; family giant
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_giant; policy auto
+  [ 76] troll_infant: h/w/l 140 / 80 / ?; Medium; family troll
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
+  [ 79] gnome: h/w/l 105 / 40 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [ 80] gnome_untrained: h/w/l 105 / 40 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [ 85] kobold: h/w/l 91 / 15 / ?; Small; family kobold
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 86] gnoll: h/w/l ? / ? / ?; Small; family gnoll
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 87] bugbear: h/w/l ? / ? / ?; Small; family bugbear
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 89] wererat: h/w/l 150 / 55 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
+  [ 96] guardian_daemon: h/w/l 366 / 600 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_guardian_daemon; policy auto
+  [112] brownie: h/w/l 61 / 9 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_brownie; policy auto
+  [121] quasit: h/w/l 61 / 12 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [124] harpy: h/w/l 180 / 55 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [126] efreeti: h/w/l 366 / 600 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [128] green_hag: h/w/l 165 / 55 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [131] imp: h/w/l 61 / 12 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [132] valley_elf: h/w/l 175 / 60 / ?; Medium; family elf
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [137] leprechaun: h/w/l 61 / 12 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [142] frost_giant: h/w/l 640 / 3600 / ?; Large; family giant
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_giant; policy auto
+  [143] baaz_draconian: h/w/l 168 / 75 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [146] lair_gremlin: h/w/l 46 / 6 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [147] mogwai: h/w/l 30 / 3 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [152] halfling: h/w/l 91 / 30 / ?; Small; family halfling
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [153] halfling_untrained: h/w/l 91 / 30 / ?; Small; family halfling
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [156] gold_dragon_kin: h/w/l 190 / 100 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gold_anatomical; policy auto
+  [173] shadow_fiend: h/w/l 183 / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_demon; policy auto
+  [178] lemming_folk: h/w/l 70 / 15 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [181] bile_demon: h/w/l 220 / 350 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_demon; policy auto
+  [197] fiery_demon: h/w/l 240 / 180 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_demon; policy auto
+
+FARM_MAMMAL (1)
+-----------------
+  [  1] goat: h/w/l 1 / 30 / ?; 100; family none
+        HP+20 dam+20 crit-10 swift-2 XP+0; phase none
+        specials 1:spec_fido, 2:spec_poison; policy auto
+
+DRAGON (13)
+------------
+  [ 16] dracolich: h/w/l ? / ? / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_dracolich, 2:spec_breath_any; policy 70/30/0
+  [ 36] prism_dragon: h/w/l 300 / 3000 / 1200; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_any, 2:spec_prism_flash; policy 75/25/0
+  [ 52] black_dragon_hatchling: h/w/l 60 / 70 / 250; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_breath_acid; policy auto
+  [ 53] young_lightning_dragon: h/w/l 120 / 400 / 550; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_breath_lightning; policy auto
+  [ 70] dragon_hatchling: h/w/l 91 / 70 / 250; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 71] faerie_dragon: h/w/l 20 / 2 / 61; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_faerie_dragon; policy auto
+  [ 90] firedrake: h/w/l 65 / 25 / 122; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_firedrake; policy auto
+  [113] adult_green_dragon: h/w/l 400 / 8000 / 3200; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gas; policy auto
+  [140] adult_white_dragon: h/w/l 350 / 6000 / 3000; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_frost_anatomical; policy auto
+  [141] adult_blue_dragon: h/w/l 500 / 12000 / 4000; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_lightning_anatomical; policy auto
+  [157] ancient_gold_dragon: h/w/l 700 / 40000 / 6000; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gold_anatomical, 2:spec_cast_mage; policy 70/30/0
+  [185] adult_brass_dragon: h/w/l 300 / 6000 / 2400; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_brass; policy auto
+  [196] ancient_fire_dragon: h/w/l 700 / 30000 / 4500; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_any_anatomical; policy auto
+
+QUADRUPEDAL_REPTILE (5)
+-------------------------
+  [ 29] giant_lizard: h/w/l ? / ? / 457; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 45] lizard: h/w/l 8 / 1 / 46; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [130] hydra: h/w/l 250 / 3000 / 900; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [145] dragon_turtle: h/w/l 350 / 25000 / 1200; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_steam_anatomical; policy auto
+  [194] plesiosaur: h/w/l ? / 5000 / 1500; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
+SERPENTINE_REPTILE (5)
+------------------------
+  [ 30] giant_pit_viper: h/w/l ? / ? / 366; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison; policy auto
+  [ 88] snake: h/w/l ? / 2 / 120; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [123] wormkin: h/w/l 60 / 55 / 230; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gas; policy auto
+  [150] cobra: h/w/l ? / 3 / 200; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [163] constrictor_snake: h/w/l ? / 70 / 600; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_constrictor; policy auto
+
+MYSTERIOUS_BEING (4)
+----------------------
+  [ 32] animated_mist: h/w/l ? / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 33] mysterious_being: h/w/l ? / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 61] script_controller: h/w/l ? / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 65] magical_spirit: h/w/l ? / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
+WINGED_MAMMAL (8)
+-------------------
+  [ 31] bat: h/w/l ? / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 35] vampire_bat_form: h/w/l ? / 10 / 91; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_vampire; policy auto
+  [ 64] talking_bat: h/w/l ? / ? / 10; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [165] lightning_bat: h/w/l ? / 1 / 30; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_lightning_anatomical; policy auto
+  [166] fire_breathing_bat: h/w/l ? / 1 / 30; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_fire_anatomical; policy auto
+  [167] gas_bat: h/w/l ? / 1 / 30; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gas_anatomical; policy auto
+  [168] frost_bat: h/w/l ? / 1 / 30; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_frost_anatomical; policy auto
+  [169] acid_bat: h/w/l ? / 1 / 30; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_acid_anatomical; policy auto
+
+WINGED_REPTILE (2)
+--------------------
+  [ 37] darkenbeast: h/w/l ? / ? / 120; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 40] wyvern: h/w/l ? / ? / 1070; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+
+BIPEDAL_CONSTRUCT (5)
+-----------------------
+  [ 38] animated_soft_toy: h/w/l 30 / 1 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 39] animated_toy_soldier: h/w/l 30 / 2 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 50] wooden_automaton: h/w/l 175 / 50 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 51] animated_relic: h/w/l 175 / 45 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [172] animated_armour: h/w/l 175 / 35 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
+QUADRUPEDAL_MAMMAL (35)
+------------------------
+  [ 42] dog: h/w/l 50 / 25 / 90; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 60] domestic_cat: h/w/l 30 / 4 / 50; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 62] manticore: h/w/l 183 / 500 / 457; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_manticore; policy auto
+  [ 69] rabbit: h/w/l 25 / 2 / 40; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 73] cattle: h/w/l 150 / 650 / 250; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 77] den_beast: h/w/l 90 / 120 / 180; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 81] mouse: h/w/l 3 / ? / 10; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 82] rat: h/w/l 8 / ? / 20; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 93] deer: h/w/l 100 / 70 / 160; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 94] stag: h/w/l 130 / 180 / 210; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [103] brown_bear: h/w/l 150 / 450 / 280; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_bear; policy auto
+  [106] badger: h/w/l 30 / 12 / 70; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [108] lynx: h/w/l 55 / 20 / 100; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [109] fox: h/w/l 40 / 7 / 100; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [110] wolf: h/w/l 80 / 50 / 150; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [111] warg: h/w/l 100 / 120 / 210; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [122] ki_rin: h/w/l 235 / 950 / 400; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [129] black_bear: h/w/l 100 / 120 / 180; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_bear; policy auto
+  [133] cooshee: h/w/l 80 / 60 / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cooshee; policy auto
+  [134] antelope: h/w/l 100 / 70 / 160; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [138] horse: h/w/l 150 / 450 / 230; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [139] polar_bear: h/w/l 200 / 900 / 400; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_bear; policy auto
+  [149] puma: h/w/l 75 / 60 / 200; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [151] wild_boar: h/w/l 90 / 120 / 160; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [154] pig: h/w/l 75 / 120 / 130; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [161] lion: h/w/l 110 / 190 / 280; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [162] elephant: h/w/l 330 / 5500 / 650; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_elephant; policy auto
+  [171] giant_rat: h/w/l 30 / 8 / 60; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [179] bear_wolf: h/w/l 120 / 300 / 240; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [180] jakyra: h/w/l 100 / 120 / 200; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison_claw; policy auto
+  [182] mastodon: h/w/l 305 / 6000 / 700; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_elephant; policy auto
+  [189] camel: h/w/l 210 / 550 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_camel_spit; policy auto
+  [193] sheep: h/w/l 80 / 70 / 120; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [198] hell_hound: h/w/l 90 / 65 / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_fire_anatomical; policy auto
+  [199] acid_hell_hound: h/w/l 100 / 100 / 180; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_fire_anatomical; policy auto
+
+HEAD_ONLY (2)
+---------------
+  [ 44] preserved_head: h/w/l 30 / 5 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [148] animated_toy_head: h/w/l 15 / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
+LIMBLESS_INVERTEBRATE (5)
+---------------------------
+  [ 48] rock_worm: h/w/l 150 / 8000 / 800; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_swallow; policy auto
+  [ 68] giant_worm: h/w/l 70 / 1000 / 460; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_swallow; policy auto
+  [ 78] carrion_worm: h/w/l 10 / 12 / 150; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_fido; policy auto
+  [184] purple_worm: h/w/l ? / 12000 / 1500; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_swallow; policy auto
+  [195] giant_leech: h/w/l 10 / 8 / 100; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_bloodsucker; policy auto
+
+LIMBLESS_CONSTRUCT (4)
+------------------------
+  [ 54] animated_vase: h/w/l 40 / 3 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 55] animated_blade: h/w/l ? / 1 / 50; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [ 56] animated_mirror: h/w/l 100 / 15 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [190] rolling_boulder: h/w/l 150 / 4000 / 150; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
+CENTAUROID_MAMMAL (1)
+-----------------------
+  [ 59] centaur: h/w/l 260 / 600 / 250; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+
+QUADRUPEDAL_HYBRID (1)
+------------------------
+  [ 72] griffin: h/w/l 152 / 600 / 275; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+
+ELEMENTAL_BEING (3)
+---------------------
+  [  2] fire_elemental: h/w/l 300 / ? / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
+  [ 83] fire_bat: h/w/l 30 / ? / 61; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_breath_fire_anatomical; policy auto
+  [125] air_elemental: h/w/l ? / ? / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
+CRUSTACEAN (1)
+----------------
+  [ 84] giant_hermit_crab: h/w/l 152 / 350 / 250; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+
+AMORPHOUS_ORGANISM (2)
+------------------------
+  [ 91] green_ooze: h/w/l 30 / 80 / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [ 92] yochlol: h/w/l 180 / 100 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
+
+FISH (5)
+----------
+  [ 95] eel: h/w/l ? / 5 / 150; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [101] hammerhead_shark: h/w/l ? / 200 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [102] small_fish: h/w/l ? / ? / 20; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [144] barracuda: h/w/l ? / 10 / 120; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [170] giant_electric_eel: h/w/l ? / 30 / 300; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_electric_eel; policy auto
+
+QUADRUPEDAL_AMPHIBIAN (2)
+---------------------------
+  [ 97] frog: h/w/l 5 / ? / 10; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [192] giant_frog: h/w/l 60 / 110 / 180; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
+BIRD (9)
+----------
+  [ 98] seagull: h/w/l 25 / 1 / 45; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [107] robin: h/w/l 7 / ? / 10; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [127] roc: h/w/l 250 / 650 / 450; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [155] chicken: h/w/l 40 / 3 / 50; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [158] pigeon: h/w/l 15 / ? / 30; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [174] macaw: h/w/l 40 / 1 / 90; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [175] raven: h/w/l 25 / 1 / 65; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [176] hawk: h/w/l 30 / 1 / 60; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [177] giant_falcon: h/w/l 80 / 25 / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
+CETACEAN (2)
+--------------
+  [ 99] dolphin: h/w/l ? / 90 / 180; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_small_whale; policy auto
+  [100] blue_whale: h/w/l ? / 100000 / 2400; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_large_whale; policy auto
+
+INSECT_SWARM (2)
+------------------
+  [104] mosquito_swarm: h/w/l ? / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison; policy auto
+  [105] wasp_swarm: h/w/l ? / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison; policy auto
+
+ARACHNID (6)
+--------------
+  [114] web_spider: h/w/l 35 / 15 / 70; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [115] hunting_spider: h/w/l 45 / 30 / 90; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [116] giant_spider: h/w/l 90 / 120 / 180; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [117] venomous_spider: h/w/l 65 / 75 / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison_bite; policy auto
+  [118] phase_spider: h/w/l 70 / 85 / 160; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison_bite; policy auto
+  [183] small_scorpion: h/w/l ? / 1 / 20; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+
+INSECT (2)
+------------
+  [119] giant_wasp: h/w/l 60 / 35 / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison; policy auto
+  [135] bee: h/w/l ? / ? / 2; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison; policy auto
+
+ARACHNOID_HUMANOID (2)
+------------------------
+  [120] spider_empress: h/w/l 220 / 250 / 280; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gas; policy auto
+  [186] drider: h/w/l 200 / 250 / 250; Large; family elf
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_cast_mage, 2:spec_paralysing_bite; policy 70/30/0
+
+PLANT (2)
+-----------
+  [136] enchanted_oak: h/w/l 1500 / 10000 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [191] carnivorous_grass: h/w/l 60 / 10 / 80; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_fido; policy auto
+
+ENVIRONMENTAL_HAZARD (2)
+--------------------------
+  [159] fire_hazard: h/w/l ? / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [160] smoke_hazard: h/w/l ? / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
+MYRIAPOD (1)
+--------------
+  [164] centipede: h/w/l ? / ? / 15; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
+FUNGOID (1)
+-------------
+  [187] myconid: h/w/l 183 / 60 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_myconid_spores; policy auto
+
+RADIAL_INVERTEBRATE (1)
+-------------------------
+  [188] dustdigger: h/w/l 40 / 200 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_engulf; policy auto
+
+APPENDIX C. COMPLETE CURRENT TRAIT REFERENCE
+===========================================
+The named registry currently contains 42 traits. These are internal
+profile values, not Scribe fields. Zero disables an inherited value.
+The general validator uses-100..100 plus the effect-specific limits.
+Use named enum constants for natural damage rather than memorised numbers.
+Positive-enable traits should normally use 1, not an arbitrary larger value.
+A listed parameter needs its existing consumer and any capability/special gate.
+
+ 0. goblinoid_training
+    Value: signed melee hitroll points
+    Bonus against the configured orc/half-orc/goblin/hobgoblin families; ordinary dwarf
+    value +1. Not stored hitroll or extra damage.
+
+ 1. giant_defence
+    Value: signed opponent melee hitroll points
+    Penalty applied to the configured giant-kin attacker against this defender; ordinary
+    dwarf value -4. Family matching, not a racial ACT flag.
+
+ 2. sunlight_sensitive
+    Value: signed accuracy adjustment
+    Direct bright sunlight changes effective attack accuracy; goblin-1 and duergar-2 are
+    existing uses. Stored hitroll is unchanged; it is not burning damage.
+
+ 3. echolocation
+    Value: positive enables; normally 1
+    Short-range physical-target location with the existing
+    head/ear/awake/phase/visibility restrictions. It is not universal sight through all
+    barriers.
+
+ 4. strength_drain_touch
+    Value: positive strength-drain increment
+    Existing shadow-style successful-contact hook; its own25% chance, save, exclusions,
+    cap3 and four-tick strength effect remain. Distinct from the general Drained
+    condition.
+
+ 5. natural_armour
+    Value: signed AC adjustment
+    Negative improves the ordinary natural defence. Does not change stored rank, body
+    size, damage modifier or equipped armour objects.
+
+ 6. silver_bypasses_nonmagic
+    Value: positive enables; normally 1
+    Allows suitable corporeal silver contact through nonmagical-weapon immunity without
+    adding silver vulnerability/bonus damage.
+
+ 7. sleep_resistance_pct
+    Value: 0..100 percent
+    Additional status-rejection percentage for supported sleep paths. A mixed
+    sleep/charm effect uses the stronger percentage once; ordinary typed saves still
+    have their own role.
+
+ 8. charm_resistance_pct
+    Value: 0..100 percent
+    As above, for supported charm/control paths. It is not the same as setting AFF_CHARM
+    or ACT_NOCHARM.
+
+ 9. ghoul_touch_immunity
+    Value: 0/1
+    Specific ghoul-touch exclusion used by the existing contact mechanic. Do not assume
+    it supplies blanket paralysis immunity against every source.
+
+10. illusion_immunity
+    Value: 0/1
+    Opts into supported illusion-effect exclusions. Only consumers which consult it are
+    affected.
+
+11. lich_chill_touch
+    Value: 0..100 percent
+    Chance of the existing cold follow-up after a real eligible unarmed hit; includes
+    arm, living-target, cold-damage and paralysis-save gates. It is independent of the
+    selected caster slot.
+
+12. natural_attack_type
+    Value: 0 disabled;1..19 verb number
+    Fallback native ordinary attack verb when no eligible configured part is selected.
+    This changes the description/base physical kind, not an attack count.
+
+13. sunlight_powerless
+    Value: 0/1
+    Existing direct-sunlight powerlessness policy for opted-in spirits. This is
+    different from a modest sunlight hitroll penalty.
+
+14. tail_spike_volley
+    Value: 0..100 percent
+    Native volley chance consumed by the existing manticore routine. Needs its active
+    mechanic, body/action checks and ammunition rules.
+
+15. turn_immunity
+    Value: 0/1
+    Excludes the creature from supported Turn Undead resolution. It does not itself make
+    the creature undead.
+
+16. holy_water_immunity
+    Value: 0/1
+    Specific holy-water exclusion. It is not blanket RES_HOLY immunity.
+
+17. psionic_casting_pct
+    Value: 0..100 percent
+    Internal psionic/magical mix used by spec_alhoon; distinct from the three outer
+    special-slot percentages.
+
+18. rock_throw_pct
+    Value: 0..100 percent
+    Combat-pulse throw chance for the existing spec_giant capability, with eligible
+    body/action/target checks.
+
+19. rock_damage_dice
+    Value: 0..100 dice
+    Number of rock damage dice; the current giant formula also adds max(1,level/2).
+    Needs the rest of the rock configuration.
+
+20. rock_damage_sides
+    Value: 0..100 sides
+    Sides per rock damage die. Zero prevents a usable throwing configuration.
+
+21. rock_daily_ammo
+    Value: 0..100 throws
+    Per-mob daily throw supply in existing game-calendar reset logic. No physical stone
+    object is automatically authored by this trait.
+
+22. rock_catch_pct
+    Value: 0..100 percent
+    Existing native rock-catching chance. No immunity to all ranged attacks is implied.
+
+23. native_regen_min_hp
+    Value: 0..100 HP;positive enables physiology
+    Minimum HP gain per native regeneration pulse. It replaces the ordinary positive NPC
+    tick stream for that physiology rather than stacking blindly with it.
+
+24. native_regen_level_divisor
+    Value: 0..100 divisor
+    Gain is max(minimum,level/divisor), with the existing minimum-divisor guard. Use a
+    positive reviewed divisor.
+
+25. native_regen_interval
+    Value: 0..100 real seconds
+    Interval between native healing opportunities. Existing minimum interval is one
+    second; stalls do not bank a catch-up healing loop.
+
+26. native_regen_delay
+    Value: 0..100 real seconds
+    Initial injury-to-regeneration delay.
+
+27. native_regen_suppression
+    Value: 0..100 real seconds
+    Pause restarted by actual eligible fire/acid damage, not a damage-type bitmask.
+    Immune or zero-damage contacts do not restart it.
+
+28. native_regen_trauma_interval
+    Value: 0..100 eligible seconds
+    Time of eligible native regeneration progress before repairing an injury. Zero
+    disables this trauma-repair configuration; it is not object regrowth.
+
+29. gnome_training
+    Value: signed melee hitroll points
+    Training against configured goblin/kobold targets; existing value +1. Different
+    target list from dwarf goblinoid training.
+
+30. gnome_giant_defence
+    Value: signed opponent melee hitroll points
+    Gnome defensive matching includes its explicit gnoll/bugbear/ogre/troll/giant-class
+    list; existing value -4.
+
+31. fire_breath_daily_casts
+    Value: 0..100 uses
+    Native fire-breath supply consumed by the existing firedrake routine. Merely adding
+    the value does not replace or create a breath special.
+
+32. burning_blood_sides
+    Value: 0..100 maximum damage roll
+    Existing burning-blood reaction rolls1..value on eligible damaging close
+    cutting/piercing or feeding contact, with its own save/resistance rules. Not a
+    universal damage shield.
+
+33. fear_immunity
+    Value: 0/1
+    Excludes supported supernatural fear resolution. It is different from the
+    ACT_FEAR_AURA offensive capability.
+
+34. acid_spit_daily_casts
+    Value: 0..100 uses
+    Native acid-spit supply used by the guardian-daemon mechanic. Needs the
+    corresponding active routine and eligibility checks.
+
+35. body_weapon_loot
+    Value: positive enables;normally 1
+    Approved TAKE/WEAPON/BODY_PART objects can detach into ordinary death loot, clearing
+    BODY_PART and the attached region. Not intended for every native weapon.
+
+36. bear_hug_dice
+    Value: 0..100 dice
+    Selects the existing spec_bear hug damage dice. Other proc, contact, action and
+    target gates remain in that routine.
+
+37. stone_death
+    Value: 0/1
+    Opts into the existing stone/statue death treatment. It is not a generic
+    petrification attack or RES_BLUNT immunity.
+
+38. bow_accuracy
+    Value: 0..100 hitroll points
+    NPC bow accuracy for the supported Shoot/Snap Shot helper and a real bow source; not
+    a general melee bonus or player race opt-in.
+
+39. natural_damage_type
+    Value: NATURAL_DAMAGE_* enum
+    Replaces the damage kind of ordinary unarmed NPC contact. Existing choices: none/fir
+    e/cold/electricity/energy/blunt/pierce/slash/acid/poison/drain/psychic/holy/dark/son
+    ic/water.
+
+40. shadow_light_response
+    Value: 0/1
+    Existing dynamic light policy: darkness gives +2 melee,-8 armour,50% incoming damage;
+    ordinary light+1/-4/100%; bright light0/0/200%. Current light classification is
+    handled by the engine.
+
+41. magical_natural_attacks
+    Value: 0/1
+    Ordinary unarmed NPC hits become magical contact. Weapons, explicit skills, spells
+    and players retain their own categories. Does not add a damage hit or make held
+    objects magical.
+
+APPENDIX D. SCRIBE FLAG AND MASK REFERENCE
+==========================================
+These spellings and aliases are extracted from the current Scribe maps.
+In source use space-separated keywords; in code use the C constants.
+The decimal column is the exact individual bit value, not a request to
+copy a complete inherited mask into a mob. Each field remains XOR.
+Some are services, transient effects or dangerous runtime state: recognition
+by the parser is not a recommendation to put every flag in an archetype.
+For example, do not author permanent raw charm or swallowed status to
+simulate a pet or an encounter. Relevant engine rules still apply.
+
+ACT
+~~~
+  none, zero
+      0
+  sentinel
+      2 = ACT_SENTINEL
+  scavenger
+      4 = ACT_SCAVENGER
+  questmaster
+      8 = ACT_QUESTMASTER
+  aggressive, aggro
+      32 = ACT_AGGRESSIVE
+  stay_area
+      64 = ACT_STAY_AREA
+  wimpy
+      128 = ACT_WIMPY
+  pet
+      256 = ACT_PET
+  no_quest
+      512 = ACT_NO_QUEST
+  practice
+      1024 = ACT_PRACTICE
+  regenerator, regenerate
+      2048 = ACT_REGENERATOR
+  no_charm
+      4096 = ACT_NOCHARM
+  healer
+      8192 = ACT_IS_HEALER
+  famous
+      16384 = ACT_IS_FAMOUS
+  lose_fame
+      32768 = ACT_LOSE_FAME
+  wizinvis
+      65536 = ACT_WIZINVIS_MOB
+  mount
+      131072 = ACT_MOUNTABLE
+  tinker
+      262144 = ACT_TINKER
+  banker
+      524288 = ACT_BANKER
+  identify
+      1048576 = ACT_IDENTIFY
+  die_if_master_gone
+      2097152 = ACT_DIE_IF_MASTER_GONE
+  clan_guard
+      4194304 = ACT_CLAN_GUARD
+  no_summon
+      8388608 = ACT_NO_SUMMON
+  no_experience, no_xp, no_exp
+      16777216 = ACT_NO_EXPERIENCE
+  no_heal
+      33554432 = ACT_NO_HEAL
+  cannot_fight, cant_fight, no_fight
+      67108864 = ACT_NO_FIGHT
+  objectlike
+      134217728 = ACT_OBJECT
+  invulnerable
+      268435456 = ACT_INVULNERABLE
+  blink
+      536870912 = ACT_BLINK
+  undead
+      1073741824 = ACT_UNDEAD
+  fear_aura
+      2147483648 = ACT_FEAR_AURA
+  priest_services
+      4294967296 = ACT_PRIEST_SERVICES
+  undead_healer, undead_healing
+      8589934592 = ACT_UNDEAD_HEALER
+  unkillable
+      9223372036854775808 = ACT_UNKILLABLE
+
+AFF
+~~~
+  none, zero
+      0
+  blind
+      1 = AFF_BLIND
+  invisible, invis
+      2 = AFF_INVISIBLE
+  detect_evil, det_evil
+      4 = AFF_DETECT_EVIL
+  detect_invis, det_invis
+      8 = AFF_DETECT_INVIS
+  detect_magic, det_magic
+      16 = AFF_DETECT_MAGIC
+  detect_hidden, det_hidden
+      32 = AFF_DETECT_HIDDEN
+  hold
+      64 = AFF_HOLD
+  sanctuary, sanc
+      128 = AFF_SANCTUARY
+  faerie_fire
+      256 = AFF_FAERIE_FIRE
+  infrared
+      512 = AFF_INFRARED
+  cursed
+      1024 = AFF_CURSE
+  fireshield, flaming
+      2048 = AFF_FLAMING
+  poisoned, poison
+      4096 = AFF_POISON
+  protection
+      8192 = AFF_PROTECT
+  meditating, meditate
+      16384 = AFF_MEDITATE
+  sneak
+      32768 = AFF_SNEAK
+  hide, hidden
+      65536 = AFF_HIDE
+  sleep
+      131072 = AFF_SLEEP
+  charmed
+      262144 = AFF_CHARM
+  fly, flying
+      524288 = AFF_FLYING
+  pass_door, passdoor
+      1048576 = AFF_PASS_DOOR
+  detect_traps, det_traps
+      2097152 = AFF_DETECT_TRAPS
+  battle_aura
+      4194304 = AFF_BATTLE_AURA
+  detect_sneak, det_sneak
+      8388608 = AFF_DETECT_SNEAK
+  globed, globe
+      16777216 = AFF_GLOBE
+  deter
+      33554432 = AFF_DETER
+  swim
+      67108864 = AFF_SWIM
+  plague
+      134217728 = AFF_PRAYER_PLAGUE
+  non_corporeal
+      268435456 = AFF_NON_CORPOREAL
+  detect_curse, det_curse
+      536870912 = AFF_DETECT_CURSE
+  detect_good, det_good
+      1073741824 = AFF_DETECT_GOOD
+  swallowed
+      2147483648 = AFF_SWALLOWED
+  no_recall
+      4294967296 = AFF_NO_RECALL
+  DOT
+      8589934592 = AFF_DOT
+  prone
+      17179869184 = AFF_PRONE
+  dazed
+      34359738368 = AFF_DAZED
+  confusion
+      68719476736 = AFF_CONFUSION
+  mindless
+      562949953421312 = AFF_MINDLESS
+  stench
+      1125899906842624 = AFF_STENCH
+  slow
+      9223372036854775808 = AFF_SLOW
+
+BF
+~~
+  none, zero
+      0
+  no_head
+      1 = BODY_NO_HEAD
+  no_eyes
+      2 = BODY_NO_EYES
+  no_arms
+      4 = BODY_NO_ARMS
+  no_legs
+      8 = BODY_NO_LEGS
+  no_heart
+      16 = BODY_NO_HEART
+  no_speech
+      32 = BODY_NO_SPEECH
+  no_corpse
+      64 = BODY_NO_CORPSE
+  huge
+      128 = BODY_HUGE
+  inorganic
+      256 = BODY_INORGANIC
+  has_tail
+      512 = BODY_HAS_TAIL
+  head
+      1024 = PART_HEAD
+  many_heads
+      2048 = PART_MANY_HEAD
+  arms
+      4096 = PART_ARMS
+  many_arms
+      8192 = PART_MANY_ARMS
+  two_legs
+      32768 = PART_2_LEGS
+  four_legs
+      65536 = PART_4_LEGS
+  many_legs
+      131072 = PART_MANY_LEGS
+  heart
+      262144 = PART_HEART
+  brains
+      524288 = PART_BRAINS
+  guts
+      1048576 = PART_GUTS
+  hands
+      2097152 = PART_HANDS
+  feet
+      4194304 = PART_FEET
+  fingers
+      8388608 = PART_FINGERS
+  ear
+      16777216 = PART_EAR
+  eye
+      33554432 = PART_EYE
+  long_tongue
+      67108864 = PART_LONG_TONGUE
+  eyestalks
+      134217728 = PART_EYESTALKS
+  tentacles
+      268435456 = PART_TENTACLES
+  fins
+      536870912 = PART_FINS
+  wings
+      1073741824 = PART_WINGS
+  tail
+      2147483648 = PART_TAIL
+  scales
+      4294967296 = PART_SCALES
+  claws
+      8589934592 = PART_CLAWS
+  fangs
+      17179869184 = PART_FANGS
+  horns
+      34359738368 = PART_HORNS
+  tusks
+      68719476736 = PART_TUSKS
+  tail_attack
+      137438953472 = PART_TAILATTACK
+  sharp_scales
+      274877906944 = PART_SHARPSCALES
+  beak
+      549755813888 = PART_BEAK
+  haunch
+      1099511627776 = PART_HAUNCH
+  hooves
+      2199023255552 = PART_HOOVES
+  paws
+      4398046511104 = PART_PAWS
+  forelegs
+      8796093022208 = PART_FORELEGS
+  feathers
+      17592186044416 = PART_FEATHERS
+  husk_shell
+      35184372088832 = PART_HUSK_SHELL
+  bloodless
+      70368744177664 = BODY_BLOODLESS
+  analgic
+      140737488355328 = BODY_ANALGIC
+  soulless
+      281474976710656 = BODY_SOULLESS
+  trunk
+      562949953421312 = PART_TRUNK
+
+RES/VULN/IMM
+~~~~~~~~~~~~
+  none, zero
+      0
+  fire
+      1 = RES_FIRE
+  cold
+      2 = RES_COLD
+  electricity
+      4 = RES_ELECTRICITY
+  energy
+      8 = RES_ENERGY
+  blunt
+      16 = RES_BLUNT
+  pierce, piercing
+      32 = RES_PIERCE
+  slash, slashing
+      64 = RES_SLASH
+  acid
+      128 = RES_ACID
+  poison
+      256 = RES_POISON
+  drain
+      512 = RES_DRAIN
+  sleep
+      1024 = RES_SLEEP
+  charm
+      2048 = RES_CHARM
+  hold
+      4096 = RES_HOLD
+  nonmagic, non_magic
+      8192 = RES_NONMAGIC
+  magic
+      16384 = RES_MAGIC
+  paralysis
+      32768 = RES_PARALYSIS
+  psychic
+      65536 = RES_PSYCHIC
+  holy
+      131072 = RES_HOLY
+  dark
+      262144 = RES_DARK
+  curse
+      524288 = RES_CURSE
+  sonic
+      1048576 = RES_SONIC
+  water
+      2097152 = RES_WATER
+  cold_iron
+      4194304 = RES_COLD_IRON
+  silver
+      8388608 = RES_SILVER
+
+ATK
+~~~
+  none, zero
+      0
+  claws
+      8589934592 = PART_CLAWS
+  fangs
+      17179869184 = PART_FANGS
+  horns
+      34359738368 = PART_HORNS
+  tusks
+      68719476736 = PART_TUSKS
+  tail
+      137438953472 = PART_TAILATTACK
+  sharp_scales
+      274877906944 = PART_SHARPSCALES
+  beak
+      549755813888 = PART_BEAK
+  haunch
+      1099511627776 = PART_HAUNCH
+  hooves
+      2199023255552 = PART_HOOVES
+  paws
+      4398046511104 = PART_PAWS
+  forelegs
+      8796093022208 = PART_FORELEGS
+  feathers
+      17592186044416 = PART_FEATHERS
+  husk_shell
+      35184372088832 = PART_HUSK_SHELL
+
+For atk, tail maps to PART_TAILATTACK, not the anatomical PART_TAIL.
+Feathers and husk_shell are currently non-offensive candidates despite
+being recognised inputs. Some other runtime AFF bits have no named Scribe
+keyword; check merc.h and the relevant consumer before any numeric use.
+ACT bits34-36 are retired/reserved, not spare racial-ability slots.
+
+APPENDIX E. CURRENT SCRIBE SPECIAL-FUNCTION NAMES
+================================================
+These names are recognised by the current @mob_spec companion list.
+The actual spec_lookup and function body in special.c remain authoritative.
+Availability is not a guarantee that a legacy routine suits your creature.
+Check native helpers, safety, active-slot policies and XP before reusing one.
+
+    spec_aboleth
+    spec_alhoon
+    spec_assassin
+    spec_banshee
+    spec_bear
+    spec_bloodsucker
+    spec_blue_grung
+    spec_bounty
+    spec_breath_acid
+    spec_breath_acid_anatomical
+    spec_breath_any
+    spec_breath_any_anatomical
+    spec_breath_brass
+    spec_breath_fire
+    spec_breath_fire_anatomical
+    spec_breath_frost
+    spec_breath_frost_anatomical
+    spec_breath_gas
+    spec_breath_gas_anatomical
+    spec_breath_gold_anatomical
+    spec_breath_lightning
+    spec_breath_lightning_anatomical
+    spec_breath_steam
+    spec_breath_steam_anatomical
+    spec_brownie
+    spec_buddha
+    spec_camel_spit
+    spec_cast_adept
+    spec_cast_archmage
+    spec_cast_cleric
+    spec_cast_cleric_helper
+    spec_cast_druid
+    spec_cast_electric
+    spec_cast_hooker
+    spec_cast_judge
+    spec_cast_mage
+    spec_cast_orb
+    spec_cast_priestess
+    spec_cast_psionicist
+    spec_cast_undead
+    spec_cast_water_sprite
+    spec_celestial_repairman
+    spec_clan_guard
+    spec_cleric_adept
+    spec_constrictor
+    spec_cooshee
+    spec_death_knight
+    spec_demon
+    spec_duergar
+    spec_electric_eel
+    spec_elephant
+    spec_engulf
+    spec_evil_evil_gezhp
+    spec_executioner
+    spec_faerie_dragon
+    spec_fido
+    spec_firedrake
+    spec_ghast
+    spec_ghoul
+    spec_giant
+    spec_gold_grung
+    spec_grail
+    spec_green_grung
+    spec_guard
+    spec_guardian_daemon
+    spec_janitor
+    spec_kappa
+    spec_kungfu_poison
+    spec_laghathti
+    spec_large_whale
+    spec_lich
+    spec_manticore
+    spec_mast_vampire
+    spec_mummy
+    spec_myconid_spores
+    spec_orange_grung
+    spec_paralysing_bite
+    spec_poison
+    spec_poison_bite
+    spec_poison_claw
+    spec_poison_palm
+    spec_prism_flash
+    spec_psionic_thief
+    spec_purple_grung
+    spec_red_grung
+    spec_repairman
+    spec_sahuagin
+    spec_sahuagin_baron
+    spec_sahuagin_cavalry
+    spec_sahuagin_cleric
+    spec_sahuagin_guard
+    spec_sahuagin_high_cleric
+    spec_sahuagin_infantry
+    spec_sahuagin_lieutenant
+    spec_sahuagin_prince
+    spec_small_whale
+    spec_spectral_minion
+    spec_spectre
+    spec_superwimpy
+    spec_swallow
+    spec_thief
+    spec_uzollru
+    spec_vampire
+    spec_warrior
+    spec_wight
+    spec_wraith
+
+APPENDIX F. ORDINARY ATTACK VERBS AND THEIR BASE CONTACT
+=======================================================
+The value is the ordinary attack verb offset, e.g. weapon value[3].
+It is not a RES_* bit or an extra attack count. Internal natural damage
+traits and actual weapon/material/magic sources can change the contact.
+Natural part selection and an equipped weapon are separate mechanisms.
+
+     0  hit      blunt
+     1  slice    slash
+     2  stab     pierce
+     3  slash    slash
+     4  whip     slash
+     5  claw     slash
+     6  blast    energy
+     7  pound    blunt
+     8  crush    blunt
+     9  grep     blunt
+    10  bite     pierce
+    11  pierce   pierce
+    12  suction  drain
+    13  chop     slash
+    14  rake     slash
+    15  swipe    slash
+    16  sting    pierce
+    17  scoop    blunt
+    18  mash     blunt
+    19  hack     slash
+
+SOURCE AND VALIDATION NOTES
+===========================
+Owning source revision:
+  https://github.com/fromage-fraser/dd4/commit/e2d54d9b36ef32f6056b21a330cb8a6b71bc2f6e
+  PR976: https://github.com/fromage-fraser/dd4/pull/976
+
+The current catalogues were extracted through the actual C template resolver
+and current Scribe maps. Both tables include their reserved entries.
+The complete tutorial archetype/body/trait snippets compile and resolve in
+an isolated check; the minimal Scribe source exports successfully there.
+That is a tutorial verification, not a proposed production patch or a full
+live-game validation of a new creature. The guide changes no official code,
+area, source, manual, branch or Git state.
+
+The live conversion is currently 67/153 areas (43.8%) and 988/4131 mob
+definitions (23.9%) merged and verified. This guide adds no conversions.
+
+END OF GUIDE
