@@ -8412,3 +8412,92 @@ markup is valid: normal base price, not a free shop. All198 rooms,
 flags, exits, two NO_UNDEAD wards and area XP40 remain. Only obvious
 mobile prose errors are corrected. No matching Scribe source exists;
 the four other source/area pairs remain unchanged.
+
+
+Old Thalos creatures
+-------------------
+
+baby_beholder, tame_lamia and stone_golem append at IDs 200-202 using
+existing bodies. Earlier IDs, body species, flags and trait IDs stay.
+These profiles are available through the existing archetype field.
+
+baby_beholder uses limbless_invertebrate: a living organic orb with
+head, eyes/eyestalks, heart, brain and gut, no arms/legs, retained
+juvenile muteness and an ordinary fang bite. Flight represents
+levitation without wings. Defaults are 45 cm body diameter, 12 kg,
+45 cm length and Small, with -2 natural armour and no resistance
+package. It inherits the existing spec_cast_mage at 100 percent.
+Keep the local good alignment, detect-invisibility and friendly
+Sentinel/Scavenger/Wimpy build. Clear the old heartless/inorganic
+raw body input; the inherited juvenile mute result stays. Adult
+eye rays, anti-magic cones and full adult beholder rules aren't
+implemented by this baby profile. Its dimensions and armour are
+DD4 estimates, informed by the 2e adult's living anatomy/levitation.
+
+tame_lamia uses centauroid_mammal: a human upper body and four-legged
+feline lower body, with paws/claws/tail, ordinary organs, blood,
+speech, pain, soul and corpse. Defaults are 150 cm ground-to-head,
+140 kg, 210 cm length and Medium, with -7 natural armour. It has
+no active special, extra ordinary claw attack, resistance or combat
+scalar adjustment. The good level-four ambient pets retain their
+collars and behaviour. The twenty-mob cap across twenty-eight reset
+locations stays. This tame DD4 variant does not supply the wild
+lamia's Wisdom drain, charm/illusion package or follower status.
+Those need a separately reviewed wild profile, not an unannounced
+power increase for the city's pets.
+
+stone_golem uses bipedal_construct, with head/eyes/ears, arms/hands,
+two legs and feet, but no biological organs. It is mindless, mute,
+inorganic, bloodless, ANALGIC and without a usable mortal soul;
+it is neither undead nor ACT_OBJECT. Physical remains and loot stay.
+Defaults are 290 cm, 900 kg, Large without HUGE, -5 natural armour
+and a magical ordinary fist/pound attack using existing traits.
+It resists magic and is immune to nonmagic, poison, sleep, drain,
+charm, hold and paralysis. HP/damage/critical/swiftness scalars are
+zero. Its profile adds +10 XP for the passive package; its selected
+special has the separate ordinary +10 allowance. The 2e height/mass
+inform the rounded dimensions. This DD4 defence package is not full
+2e spell immunity or a numeric +2-weapon threshold. Mud/flesh/stone
+spell exceptions remain separate future mechanics.
+
+spec_cast_slow is a reusable, silent innate power for the current
+opponent. It gets one 50 percent attempt per eligible special
+opportunity, with normal action/safety/visibility/magical contact
+checks and no stacking. It calls the existing Slow spell, keeping
+its saves, Haste/Quicken interactions and ordinary spell outcomes.
+It needs no voice, spellbook or brain. It is a probabilistic DD4
+adaptation of the golem's sourcebook power, not an alternating-round
+timer, unrelated caster package or extra custom damage attack.
+
+Gordon becomes Elite; the other thirty-four definitions stay Common.
+Rank HP applies once. Keep his teacher base 25, four knowledge limits
+85 and warrior base 30. His actual iron breastplate remains loot;
+the prose now says a fine suit of plate rather than full mithril.
+High priest 5307 keeps free adept healing, Sanctuary, teacher base
+25 and six 85 magik limits. The two druids use spec_cast_druid.
+All guard/mage/cleric/janitor/fido roles otherwise stay individual.
+All six shops keep their types, prices, hours and stock.
+
+Human defaults are 175 cm/75 kg/Medium. The scholar is 160/50;
+big guards 5331/5334 are 190/95. Thaellor inherits dwarf 130/70/Small,
+RES_MAGIC/RES_POISON/infrared and the approved +1/-4 training traits.
+Doe uses deer 100/70/160/Medium. Male 5323 uses stag 130/180/210;
+larger 5324 overrides to 140/220/230, still Medium with no HUGE.
+Rabbit uses 25/2/40/Small and existing head-targeted incisors 313.
+One E row equips every new spawn from its single reset location.
+The snake stays nonvenomous, 60 cm long with explicit unknown weight
+zero; clear its obsolete heartless input and keep normal organs.
+Fido is a small dog at 30/8/50, with its original scavenging special.
+All dimensions remain descriptive estimates/defaults.
+
+The four golem sword resets become carried loot, so fists supply
+their ordinary attacks. Keep all Ioun stones in their authored held
+slots, every other object/equipment row and both teachers. Existing
+deer/rabbit/body XOR duplicates are cleared without cancelling the
+intended no-arms/no-speech or construct physiology. All aggression,
+passivity, Sentinel, StayArea, Wimpy, base levels, alignments and
+sexes stay. No new trait, body species, area field or ACT bit is added.
+All 86 rooms, nine NO_UNDEAD wards, 32 original objects and reset
+caps/placements remain. No matching source exists; the four other
+source/area pairs stay unchanged. Obvious mobile prose errors and
+the janitor's blank description are corrected as approved.

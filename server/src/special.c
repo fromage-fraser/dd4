@@ -65,6 +65,7 @@ DECLARE_SPEC_FUN( spec_cast_cleric          );
 DECLARE_SPEC_FUN( spec_cast_cleric_helper   );
 DECLARE_SPEC_FUN( spec_cast_judge           );
 DECLARE_SPEC_FUN( spec_cast_mage            );
+DECLARE_SPEC_FUN( spec_cast_slow            );
 DECLARE_SPEC_FUN( spec_cast_druid           );
 DECLARE_SPEC_FUN( spec_cast_water_sprite    );
 DECLARE_SPEC_FUN( spec_cast_psionicist      );
@@ -176,6 +177,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_cast_cleric_helper"))   return spec_cast_cleric_helper;
         if (!str_cmp(name, "spec_cast_judge"))           return spec_cast_judge;
         if (!str_cmp(name, "spec_cast_mage"))            return spec_cast_mage;
+        if (!str_cmp(name, "spec_cast_slow"))           return spec_cast_slow;
         if (!str_cmp(name, "spec_faerie_dragon"))        return spec_faerie_dragon;
         if (!str_cmp(name, "spec_cast_druid"))           return spec_cast_druid;
         if (!str_cmp(name, "spec_cast_water_sprite"))    return spec_cast_water_sprite;
@@ -297,6 +299,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_cast_cleric_helper) return "spec_cast_cleric_helper";
         if (special == spec_cast_judge) return "spec_cast_judge";
         if (special == spec_cast_mage) return "spec_cast_mage";
+        if (special == spec_cast_slow) return "spec_cast_slow";
         if (special == spec_faerie_dragon) return "spec_faerie_dragon";
         if (special == spec_cast_druid) return "spec_cast_druid";
         if (special == spec_cast_water_sprite) return "spec_cast_water_sprite";
@@ -5200,6 +5203,22 @@ static CHAR_DATA *native_combat_opponent(CHAR_DATA *ch)
         || victim->in_room != ch->in_room || is_safe(ch, victim))
                 return NULL;
         return victim;
+}
+
+/* This innate slowing power needs an opponent, not a voice or spellbook. */
+bool spec_cast_slow(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+
+        if (!victim || gsn_slow < 0 || gsn_slow >= MAX_SKILL
+        ||  !can_see(ch, victim)
+        ||  is_affected(victim, gsn_slow) || IS_AFFECTED(victim, AFF_SLOW)
+        ||  get_contact_resistance_result(ch, victim, RES_MAGIC) == RES_RESULT_IMMUNE
+        ||  number_percent() > 50)
+                return FALSE;
+
+        spell_slow(gsn_slow, ch->level, ch, victim);
+        return TRUE;
 }
 
 /* Brass dragons breathe dry heat or sleep, rather than lightning or poison. */

@@ -14,8 +14,9 @@ their playful personality.  Hmmm....  It looks like the baby is teething!
 ~
 2|4|128 8 500 S
 5 16 5 5d5+55 1d6+2
-304 700
+0 700
 8 8 0
+< baby_beholder~ common~
 #5301
 lamia pet~
 the pet lamia~
@@ -28,6 +29,7 @@ body of a four-legged beast.
 4 17 6 4d4+44 1d5+1
 0 500
 8 8 2
+< tame_lamia~ common~
 #5302
 citizen man~
 a citizen of Thalos~
@@ -40,6 +42,7 @@ choice but to reciprocate.
 5 16 5 5d5+55 1d4+3
 0 700
 8 8 1
+< human~ common~
 #5303
 guard imperial cityguard~
 an imperial cityguard~
@@ -52,12 +55,13 @@ he is just giggling with a kid running about.
 17 6 -5 15d15+150 1d4+10
 0 15000
 8 8 1
+< human~ common~
 #5304
 citizen woman female~
 a female citizen of Thalos~
 A female citizen of Thalos is here, showing off her new dress.
 ~
-She is beautiful, dressed in a sundress that sparkles with gems sown in.  She
+She is beautiful, dressed in a sundress that sparkles with gems sewn in.  She
 smiles at you, and your heart flutters at the thought that you have her
 attention, if only for a moment.
 ~
@@ -65,13 +69,14 @@ attention, if only for a moment.
 5 16 5 5d5+55 1d4+3
 0 700
 8 8 2
+< human~ common~
 #5305
 gordon defender~
 Gordon the Brave~
 Gordon the Brave, the Defender of Thalos, is here, looking at no
 one but you, the only stranger in town.
 ~
-Gordon is dressed in full mithril plate, and he looks indestructible.  He eyes
+Gordon is dressed in a fine suit of plate, and he looks indestructible.  He eyes
 you suspiciously not only because you are a stranger, but because you are an
 ARMED stranger.  Better not do any funny stuff in his presence.
 ~
@@ -79,6 +84,7 @@ ARMED stranger.  Better not do any funny stuff in his presence.
 35 0 -10 35r35+350 1d8+30
 0 150000
 8 8 1
+< human~ elite~
 & 25 'teacher base'
 & 85 'armed combat knowledge'
 & 85 'defense knowledge'
@@ -99,12 +105,13 @@ and he clenches it at you.  Other than that, he is dressed all in black.
 10 10 0 10d10+100 1d4+8
 0 5000
 8 8 1
+< human~ common~
 #5307
 priest~
 the priest of Thalos~
 The priest of Thalos tells you of the glories of this city.
 ~
-He stands here gloriously telling of Thalos's history, how it is now referred
+He stands here gloriously telling of Thalos's history, how it is now referred to
 by the world as 'The City of Peace'.  He is very happy to be the high priest
 here.
 ~
@@ -112,6 +119,7 @@ here.
 20 5 -5 20d20+200 1d4+15
 0 17000
 8 8 1
+< human~ common~
 & 25 'teacher base'
 & 85 'healing magiks'
 & 85 'advanced healing magiks'
@@ -129,8 +137,9 @@ stone creature.  It stands here guarding the city.
 ~
 2 8192 1000 S
 30 0 -5 30d30+300 1d8+25
-304 95000
+0 95000
 8 8 0
+< stone_golem~ common~
 #5309
 mayor~
 the mayor of Thalos~
@@ -143,6 +152,7 @@ He looks very proud of his work.
 20 5 -5 20d20+200 1d4+5
 0 15000
 8 8 1
+< human~ common~
 #5310
 dan barkeep~
 Dan the Barkeep~
@@ -154,6 +164,7 @@ He looks at you, and says, 'What's your poison, stranger?'
 30 0 -10 30d30+300 1d6+20
 0 100000
 8 8 1
+< human~ common~
 #5311
 george butcher~
 George the Butcher~
@@ -166,6 +177,7 @@ he asks, 'How much you want?'
 30 0 -10 30d30+300 1d6+20
 0 100000
 8 8 1
+< human~ common~
 #5312
 farmer betty~
 Farmer Betty~
@@ -177,6 +189,7 @@ She smiles at you meekly.
 30 0 -10 30d30+300 1d6+20
 0 100000
 8 8 2
+< human~ common~
 #5313
 thaellor dwarf~
 Thaellor the dwarf~
@@ -189,6 +202,7 @@ metal into items of defense and destruction.
 30 0 -10 30d30+300 1d6+20
 0 100000
 8 8 1
+< dwarf~ common~
 #5314
 ben smith~
 Ben the Smith~
@@ -200,6 +214,7 @@ Ben tries to pawn his various wares to you.
 30 0 -10 30d30+30 1d6+20
 0 100000
 8 8 1
+< human~ common~
 #5315
 librarian~
 the librarian~
@@ -211,6 +226,7 @@ The librarian looks busy and whispers, 'Shhh!'
 8 12 2 8d8+80 1d4+6
 0 2000
 8 8 2
+< human~ common~
 #5316
 scholar boy~
 a young scholar~
@@ -222,6 +238,9 @@ This young scholar is studying to be a priest.
 6 14 4 6d6+60 1d4+4
 0 1000
 8 8 1
+< human~ common~
+MobHeight 160
+MobWeight 50
 #5317
 wizard~
 an old wizard~
@@ -233,12 +252,13 @@ This old wizard almost looks like he is about to fall over and sleep.
 30 0 -10 30d30+300 1d6+20
 0 100000
 8 8 1
+< human~ common~
 #5318
 masseuse woman~
 a beautiful masseuse~
 A beautiful woman is here offering you a massage.
 ~
-She is beautiful, dressed in a sundress that sparkles with gems sown in.  She
+She is beautiful, dressed in a sundress that sparkles with gems sewn in.  She
 smiles at you, and your heart flutters at the thought that you have her
 attention, and you jump to her offer for a massage.
 ~
@@ -246,6 +266,7 @@ attention, and you jump to her offer for a massage.
 4 16 6 4d4+40 1d4+3
 0 400
 8 8 2
+< human~ common~
 #5319
 bather man~
 a man~
@@ -258,6 +279,7 @@ choice but to reciprocate and join him and the others in the soothing pool.
 5 15 5 5d5+50 1d4+4
 0 600
 8 8 1
+< human~ common~
 #5320
 guard imperial cityguard~
 An imperial cityguard~
@@ -271,6 +293,7 @@ track of each city patrol.
 17 6 -5 15d15+150 1d4+10
 0 15000
 8 8 1
+< human~ common~
 #5321
 guard cityguard~
 an imperial cityguard~
@@ -283,6 +306,7 @@ he is watching the children play with amusement.
 17 6 -5 15d15+150 1d4+10
 0 15000
 8 8 1
+< human~ common~
 #5322
 doe~
 a doe~
@@ -293,8 +317,9 @@ she sniffs at you, but she goes back to chewing some grass.
 ~
 64|128 0 0 S
 5 15 5 5d5+55 1d4+3
-36 600
+0 600
 8 8 2
+< deer~ common~
 #5323
 deer~
 a deer~
@@ -305,8 +330,9 @@ albeit ineffectively.
 ~
 64|128 0 0 S
 6 14 4 6d6+66 1d4+4
-36 800
+0 800
 8 8 1
+< stag~ common~
 #5324
 stag deer~
 a stag~
@@ -316,19 +342,24 @@ He eyes you with contained anger.  You'd better leave him alone!
 ~
 32|64|128 0 0 S
 8 12 2 8d8+88 1d4+9
-36 2000
+0 2000
 8 8 1
+< stag~ common~
+MobHeight 140
+MobWeight 220
+MobLength 230
 #5325
 bunny rabbit~
 a small bunny~
 A small bunny pokes from bush to bush.
 ~
-This bunny looks so adorable, you wished you had one just like this!
+This bunny looks so adorable, you wish you had one just like this!
 ~
 64|128 0 0 S
 2 18 8 2d2+22 1d4+1
-36 100
+0 100
 8 8 0
+< rabbit~ common~
 #5326
 snake~
 a harmless snake~
@@ -338,8 +369,11 @@ Upon careful inspection, you are sure it is NOT a cobra!
 ~
 32|64|128 32768 0 S
 4 16 4 4d4+44 1d8+4
-60 500
+0 500
 8 8 0
+< snake~ common~
+MobWeight 0
+MobLength 60
 #5327
 druid~
 a druid~
@@ -351,6 +385,7 @@ He doesn't like you bothering him, but is too polite to ask you to leave.
 10 10 0 10d10+100 1d4+6
 0 5000
 8 8 1
+< human~ common~
 #5328
 druidess~
 a druidess~
@@ -362,6 +397,7 @@ She wonders why you are staring at her, and how you got in here.
 10 10 0 10d10+100 1d4+6
 0 5000
 8 8 2
+< human~ common~
 #5329
 musician bard~
 bard of Thalos~
@@ -373,6 +409,7 @@ This musical fellow plays a happy song with his fellow comrades.
 6 15 4 6d6+60 1d4+4
 0 800
 8 8 1
+< human~ common~
 #5330
 musician bard~
 bard of Thalos~
@@ -384,6 +421,7 @@ This musical fellow wanders the world singing of the glory of Thalos.
 7 14 3 7d7+70 1d4+5
 0 850
 8 8 1
+< human~ common~
 #5331
 cityguard guard~
 the cityguard~
@@ -395,16 +433,21 @@ A big, strong, helpful, trustworthy guard.
 15 15 -2 15d15+150 1d4+10
 0 19000
 8 8 1
+< human~ common~
+MobHeight 190
+MobWeight 95
 #5332
 janitor~
 the janitor~
 A janitor is walking around, cleaning up.
 ~
+He makes his rounds with a broom, keeping the streets of Thalos tidy.
 ~
 1 0 900 S
 1 20 9 2d6+10 1d5+0
 0 100
 8 8 1
+< human~ common~
 #5333
 fido dog~
 the beastly fido~
@@ -417,6 +460,10 @@ around his teeth.
 0 20 10 1d6+4 1d4+0
 0 25
 8 8 1
+< dog~ common~
+MobHeight 30
+MobWeight 8
+MobLength 50
 #5334
 cityguard guard~
 the cityguard~
@@ -428,6 +475,9 @@ A big, strong, helpful, trustworthy guard.
 15 5 -2 15d15+150 1d4+10
 0 19000
 8 8 1
+< human~ common~
+MobHeight 190
+MobWeight 95
 #0
 
 
@@ -2756,19 +2806,19 @@ M 0 5319 2 5342         Bath people
 M 0 5318 4 5344         Women
 *
 M 0 5308 8 5347         Golem SW
-E 1 5221 80 16          (2-handed sword)
+G 1 5221 80 16          (2-handed sword)
 E 1 5232 9 17           (inc. blue stone)
 *
 M 0 5308 8 5346         Golem NW
-E 1 5221 80 16          (2-handed sword)
+G 1 5221 80 16          (2-handed sword)
 E 1 5233 9 17           (deep red stone)
 *
 M 0 5308 8 5348         Golem NE
-E 1 5221 80 16          (2-handed sword)
+G 1 5221 80 16          (2-handed sword)
 E 1 5235 9 17           (white stone)
 *
 M 0 5308 8 5354         Golem SE
-E 1 5221 80 16          (2-handed sword)
+G 1 5221 80 16          (2-handed sword)
 E 1 5237 9 17           (green and lav. stone)
 *
 M 0 5311 1 5317         Grocer/meat seller
@@ -2953,6 +3003,7 @@ M 0 5322 2 5367         Doe
 M 0 5323 3 5370         Deer
 M 0 5324 1 5369         Stag
 M 0 5325 3 5373         Rabbit
+E 1 313 100 16         (attached rabbit incisors)
 M 0 5326 4 5372         Snake
 *
 M 0 5334 1 5384         City Guard at Gate
@@ -2990,7 +3041,6 @@ S
 
 
 #SPECIALS
-M  5300 spec_cast_mage
 M  5303 spec_guard
 M  5305 spec_guard
 M  5306 spec_cast_cleric
@@ -2998,8 +3048,8 @@ M  5307 spec_cast_adept
 M  5317 spec_cast_mage
 M  5320 spec_guard
 M  5321 spec_guard
-M  5327 spec_cast_cleric
-M  5328 spec_cast_cleric
+M  5327 spec_cast_druid
+M  5328 spec_cast_druid
 M  5331 spec_guard
 M  5332 spec_janitor
 M  5333 spec_fido
