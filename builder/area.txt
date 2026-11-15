@@ -8501,3 +8501,114 @@ All 86 rooms, nine NO_UNDEAD wards, 32 original objects and reset
 caps/placements remain. No matching source exists; the four other
 source/area pairs stay unchanged. Obvious mobile prose errors and
 the janitor's blank description are corrected as approved.
+
+
+Thalos creatures
+----------------
+
+beholder, lamia and mimic append at IDs 203-205. MAX_MOB is 206;
+earlier profiles keep their indices. No basic species or area field
+is added. The internal trait catalogue gains antimagic_gaze_pct.
+The ordinary archetype field selects these creatures in Scribe.
+
+beholder uses the living limbless_invertebrate body, with a head,
+central eye, eyestalks, fangs, heart, brain and gut, but no arms or
+legs. It can speak. Flight represents levitation without wings.
+Defaults are 180 cm body diameter/length, 250 kg, Medium, -10 natural
+armour, no elemental resistance or blanket magic immunity. An ordinary
+fang bite is physical contact; the native rays are magical abilities.
+
+spec_beholder has a 50 percent attempt per eligible opportunity,
+choosing one eligible ray: Slow, Fear, Sleep, Cause Serious, normal
+NPC-only Charm Person or Unmaking. It skips redundant Slow/Sleep and
+illegal charm targets. It needs usable head/eyes and sight, not hands
+or speech. Normal saves, resistances, phase, action, safety and player
+order rules remain. One opportunity produces one ray, not ten casts.
+
+Unmaking is deliberately named differently from Disintegrate. It deals
+level + random(level, 2*level) MAGIC|ENERGY damage, save for half.
+It never destroys equipment, invokes automatic execution or suppresses
+a normal corpse. A lethal damage hit still uses ordinary death rules.
+Telekinesis, petrification and a separate death-ray instant kill are
+not supplied by this profile.
+
+antimagic_gaze_pct is a code-only percentage, 25 on beholder. An awake,
+uncharmed, able, living source with usable head/eyes can counter its
+visible current opponent's magical activation in the same room.
+One casting, native special or spell-item use shares one decision,
+including multi-spell consumables and multi-target staves. Several
+eligible sources use the strongest percentage once. A nested distinct
+activation gets its own scope. Pure nonmagical psionics, physical skills
+and physical animal specials do not trigger it. Existing buffs/passive
+worn effects remain. Death, separation, blindness/head injury or loss
+of the eligible combat state stops it immediately. It never sets a
+room flag or leaves a persistent cone. This is a focused DD4 adaptation
+of brief central-eye pulses, not the complete second-edition cone.
+
+The countered activation follows its normal resource/item use: the
+attempt still spends its normal mana, charges or consumable. Invalid
+casts and item targets still fail their ordinary checks. No extra
+counterspell roll is made for each effect or target of that activation.
+Native spell callers use cast_native_spell with the actual function
+pointer and SN; run_mob_special supplies their activation scope. An
+innate physical routine must not be routed through this magical check.
+
+lamia uses centauroid_mammal: living organs, human upper body/arms,
+four legs, paws, claws and tail; 150 cm ground-to-head, 140 kg,
+210 cm length, Medium and -7 natural armour. It adds no ordinary
+claw attack or compulsory behaviour. The tame_lamia profile is unchanged.
+spec_lamia has a 25 percent attempt, selecting an eligible Wisdom touch,
+self Displacement or normal Charm Person. Player charm and protected
+NPC targets remain excluded. Displacement retains its normal duration
+and non-stacking policy; this is an illusion approximation, not a new
+mirror-image engine or sourcebook once-per-day charge system.
+
+The touch uses normal magical/charm and supernatural-control defences.
+It needs usable arms and real close contact with a minded target.
+Each failed save adds -1 Wisdom, capped at -3 across all lamias, for
+four ticks. Effective Wisdom cannot be pushed below 3 by this condition.
+Successful additions below the cap refresh its duration; capped or
+resisted attempts do not. NPC Wisdom reflects this condition too.
+It causes no permanent loss, player obedience, extra damage or Drained.
+
+mimic uses amorphous_organism, with no fixed head/arms/legs but living
+brain/gut/heart, distributed sight and pseudopods. It can bleed, feel
+pain, have a soul and leave a corpse. It is not ACT_OBJECT, inorganic
+or mindless. Default speech can be removed individually, as for chest
+5202. Defaults are 90 cm/500 kg/240 cm, Large without HUGE, -3 natural
+armour, infrared, acid immunity and existing sunlight accuracy -1.
+Its ordinary attack is a blunt pound. Native glue needs no head or voice.
+
+spec_mimic has a 25 percent physical adhesive-grab attempt against its
+current close opponent. A normal NONMAGIC|HOLD save prevents it.
+Otherwise it applies one tick of Hold, without damage, stacking or
+refresh. The effect records its live creature source; movement or death
+releases only that grip. It cannot survive logout/reload. Another source's
+hold is preserved. Freedom removes the adhesive condition through its
+normal cure path. No weapon theft/sticking or solvent command is added.
+Creature-sourced affects show (C) in the existing affect origin display.
+
+lamia touch, mimic glue and unmaking ray are internal effect names,
+not player-learnable spells or new services. They use spell_null in the
+player spell table and do not belong in class training groups. Native
+power routines supply their actual actions.
+
+Thalos 5200 is Elite; all eight other definitions stay Common. Rank HP
+applies once. The beholder's shield/cloak, mimic lights/robe and four
+golem swords become carried loot. Golem armour and both actual seal keys
+stay in their original slots. The golem reuses stone_golem and its Slow.
+All original base levels, build numbers, alignments, sexes, aggression,
+passivity, wandering, Scavenger, Sentinel, Stay Area and Wimpy remain.
+The twenty wild lamias keep their daggers and original reset cap/order.
+
+Mimic disguise overrides keep 500 kg: boulder160cm/220cm length;
+floor20/450; pottery60/300; planks45/400. The small horned lizard uses
+5 cm/unknown whole-kg weight0/20 cm/Small, individual anatomical horns
+and the existing ordinary nonvenomous lizard bite. No extra horn attack.
+All dimensions remain descriptive DD4 estimates; size and HUGE differ.
+
+All 80 rooms/flags/exits, 39 original objects, imported Drow reset rows,
+keys/container chain, original loot, placements and caps are preserved.
+There are no NO_UNDEAD rooms, shops, teachers or matching Scribe source
+in Thalos. The four existing source/area pairs elsewhere stay unchanged.
+The baby beholder and tame lamias in Old Thalos keep their existing powers.

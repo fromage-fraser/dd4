@@ -120,7 +120,14 @@ int get_curr_wis(CHAR_DATA *ch)
         int max;
 
         if (IS_NPC(ch))
-                return 13;
+        {
+                AFFECT_DATA *af;
+                int drain = 0;
+                for (af = ch->affected; af; af = af->next)
+                        if (!af->deleted && af->type == gsn_lamia_touch && af->location == APPLY_WIS)
+                                drain = UMAX(drain, -af->modifier);
+                return 13 - URANGE(0, drain, 3);
+        }
 
         max = 25 + race_table[ch->race].wis_bonus +  class_table[ch->class].class_stats[2];
         return URANGE(3, ch->pcdata->perm_wis + ch->pcdata->mod_wis, max);
@@ -1285,6 +1292,9 @@ const char *affect_source_display_suffix(const AFFECT_DATA *paf)
         case AFFECT_SOURCE_OBJSET:
                 return "{x({CS{x){x";
 
+        case AFFECT_SOURCE_CREATURE:
+                return "{x({mC{x){x";
+
         case AFFECT_SOURCE_FORM:
                 return "{x({gF{x){x";
 
@@ -1698,6 +1708,8 @@ void char_from_room( CHAR_DATA *ch )
                 bug( "Char_from_room: NULL.", 0 );
                 return;
         }
+
+        release_mimic_glue(ch);
 
         /* Departure ends this target's exposure and restores its modifier. */
         clear_stench_exposure(ch, FALSE);
@@ -2676,6 +2688,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
 
         clear_rescue_retaliation(ch);
         invalidate_fall_source(ch);
+        release_mimic_glue(ch);
 
         if ( !ch->in_room )
         {

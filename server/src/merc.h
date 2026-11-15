@@ -427,7 +427,7 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 633           /* Includes the internal strength-drain condition. */
+#define MAX_SKILL 636           /* Includes the internal native-power conditions. */
 #define MAX_PRE_REQ 1612        /* Includes both Restoration learning paths. */
 #define MAX_SPELL_GROUP 483     /* Restoration belongs to Healing and Curative. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
@@ -1327,6 +1327,7 @@ struct note_data
 #define AFFECT_SOURCE_FORM      1
 #define AFFECT_SOURCE_OBJECT    2
 #define AFFECT_SOURCE_OBJSET    3
+#define AFFECT_SOURCE_CREATURE  4
 
 /*
  * An affect.
@@ -3672,7 +3673,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 203
+#define MAX_MOB 206
 #define MAX_SPECIES 33
 #define MAX_RANK 6
 
@@ -4561,6 +4562,9 @@ extern int gsn_banish;
 extern int gsn_stench;
 extern int gsn_mummy_rot;
 extern int gsn_strength_drain;
+extern int gsn_lamia_touch;
+extern int gsn_mimic_glue;
+extern int gsn_unmaking_ray;
 extern int gsn_turn_undead;
 extern int gsn_chant_of_turning;
 extern int gsn_protect_vs_evil;
@@ -5931,6 +5935,23 @@ bool undead_protection_blocks_aggression args((CHAR_DATA *mob,
 int species_lookup args((const char *name));
 CREATURE_FAMILY creature_family args((CHAR_DATA *ch));
 const char *creature_family_name args((CREATURE_FAMILY family));
+
+/* A synchronous scope lets a whole spell/item share one counterspell decision. */
+typedef struct magic_activation_data MAGIC_ACTIVATION_DATA;
+struct magic_activation_data
+{
+        MAGIC_ACTIVATION_DATA *previous;
+        CHAR_DATA *caster;
+        bool checked;
+        bool blocked;
+};
+void begin_magic_activation(MAGIC_ACTIVATION_DATA *activation, CHAR_DATA *caster);
+void end_magic_activation(MAGIC_ACTIVATION_DATA *activation);
+bool antimagic_blocks_activation(CHAR_DATA *caster, unsigned long int res_types);
+bool cast_native_spell(SPELL_FUN *spell, int sn, int level, CHAR_DATA *caster, void *target);
+void spell_unmaking_ray(int sn, int level, CHAR_DATA *ch, void *vo);
+void release_mimic_glue(CHAR_DATA *source);
+
 /* These are registry IDs, not bits in an ACT word. */
 typedef enum creature_trait
 {
@@ -5976,6 +5997,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_NATURAL_DAMAGE_TYPE,
         CREATURE_TRAIT_SHADOW_LIGHT_RESPONSE,
         CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS,
+        CREATURE_TRAIT_ANTIMAGIC_GAZE_PERCENT,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Internal damage kinds keep trait strengths small and named. */

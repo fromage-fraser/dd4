@@ -325,6 +325,8 @@ void do_heal(CHAR_DATA *ch, char *argument)
                 sprintf(buf, "The refill costs %lld gold.\n\r", (long long)price);
                 send_to_char(buf, ch);
         }
+        else if (antimagic_blocks_activation(mob, RES_MAGIC))
+                return;
         else if (service->kind == HEALER_MEND)
                 restore_undead_energy(mob, ch, service->amount, FALSE);
         else if (service->kind == HEALER_MANA)

@@ -3244,6 +3244,32 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_cast_slow", "", "", 10,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "beholder", "limbless_invertebrate", "icon1", "icon2",
+                0, AFF_FLYING, BODY_NO_SPEECH | PART_EYESTALKS | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                180, 250, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_beholder", "", "", 15,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 180
+        },
+        {
+                "lamia", "centauroid_mammal", "icon1", "icon2",
+                0, 0, PART_PAWS | PART_CLAWS | PART_TAIL, 0,
+                0, 0, 0, 0, 0, 0, 0,
+                150, 140, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_lamia", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 210
+        },
+        {
+                "mimic", "amorphous_organism", "icon1", "icon2",
+                0, AFF_INFRARED,
+                BODY_NO_EYES | BODY_NO_HEART | BODY_NO_SPEECH | BODY_BLOODLESS
+                    | PART_EYE | PART_HEART | PART_BRAINS | PART_GUTS | PART_TENTACLES,
+                0, 0, 0, RES_ACID, 0, 0, 0, 0,
+                90, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_mimic", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 240
         }
 };
 
@@ -3454,7 +3480,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"bow_accuracy", TRAIT_BOW_ACCURACY, NULL},
         {"natural_damage_type", TRAIT_NATURAL_DAMAGE_TYPE, NULL},
         {"shadow_light_response", TRAIT_LIGHT_RESPONSE, NULL},
-        {"magical_natural_attacks", TRAIT_MAGICAL_NATURAL_ATTACKS, NULL}
+        {"magical_natural_attacks", TRAIT_MAGICAL_NATURAL_ATTACKS, NULL},
+        {"antimagic_gaze_pct", TRAIT_COMBAT_CASTING_PERCENT, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -3997,6 +4024,22 @@ static const CREATURE_TRAIT_CHANGE stone_golem_trait_changes[] =
         {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE beholder_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_ANTIMAGIC_GAZE_PERCENT, 25}
+};
+static const CREATURE_TRAIT_CHANGE lamia_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7}
+};
+static const CREATURE_TRAIT_CHANGE mimic_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_SUNLIGHT_SENSITIVE, -1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4004,6 +4047,12 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"beholder", NULL, beholder_trait_changes,
+            TRAIT_ITEMS(beholder_trait_changes)},
+        {"lamia", NULL, lamia_trait_changes,
+            TRAIT_ITEMS(lamia_trait_changes)},
+        {"mimic", NULL, mimic_trait_changes,
+            TRAIT_ITEMS(mimic_trait_changes)},
         {"baby_beholder", NULL, baby_beholder_trait_changes,
             TRAIT_ITEMS(baby_beholder_trait_changes)},
         {"tame_lamia", NULL, tame_lamia_trait_changes,
@@ -7108,6 +7157,7 @@ bool run_mob_special(CHAR_DATA *mob)
         int slot;
         int draw;
         bool handled;
+        MAGIC_ACTIVATION_DATA activation;
 
         if (!mob || !IS_NPC(mob))
                 return FALSE;
@@ -7171,7 +7221,9 @@ bool run_mob_special(CHAR_DATA *mob)
                 mob->special_calls[slot]++;
 
         mob->special_running = TRUE;
+        begin_magic_activation(&activation, mob);
         handled = (*selected)(mob);
+        end_magic_activation(&activation);
         mob->special_running = FALSE;
 
         /*
@@ -7450,6 +7502,9 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_giant", 10 },
                 { "spec_cast_cleric_helper", 10 },
                 { "spec_cast_slow", 10 },
+                { "spec_beholder", 15 },
+                { "spec_lamia", 10 },
+                { "spec_mimic", 5 },
                 { "spec_duergar", 10 },
                 { "spec_swallow", 10 },
                 { "spec_kappa", 10 },

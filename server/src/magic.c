@@ -30,6 +30,124 @@
 #include <string.h>
 #include <time.h>
 #include "merc.h"
+
+/* An activation owns one decision, even when it applies several spell effects. */
+static MAGIC_ACTIVATION_DATA *magic_activation;
+
+void begin_magic_activation(MAGIC_ACTIVATION_DATA *activation, CHAR_DATA *caster)
+{
+        activation->previous = magic_activation;
+        activation->caster = caster;
+        activation->checked = FALSE;
+        activation->blocked = FALSE;
+        magic_activation = activation;
+}
+
+void end_magic_activation(MAGIC_ACTIVATION_DATA *activation)
+{
+        magic_activation = activation->previous;
+}
+
+bool antimagic_blocks_activation(CHAR_DATA *caster, unsigned long int res_types)
+{
+        CHAR_DATA *source, *best = NULL;
+        MAGIC_ACTIVATION_DATA *activation = magic_activation;
+        int chance = 0, value;
+        bool blocked;
+
+        if (!caster || caster->deleted || caster->hit <= 0 || caster->position == POS_DEAD || !caster->in_room
+        || !(res_types & RES_MAGIC))
+                return FALSE;
+
+        if (activation && activation->caster == caster && activation->checked)
+                return activation->blocked;
+
+        for (source = caster->in_room->people; source; source = source->next_in_room)
+        {
+                value = creature_trait_value(source, CREATURE_TRAIT_ANTIMAGIC_GAZE_PERCENT);
+                if (value <= 0)
+                        continue;
+                if (source == caster || !IS_NPC(source) || source->deleted
+                || source->hit <= 0 || source->fighting != caster
+                || !IS_AWAKE(source) || source->wait > 0
+                || IS_SET(source->act, ACT_NO_FIGHT)
+                || IS_AFFECTED(source, AFF_CHARM | AFF_HOLD | AFF_DAZED
+                    | AFF_BLIND | AFF_EYE_TRAUMA | AFF_HEAD_TRAUMA
+                    | AFF_NON_CORPOREAL)
+                || !HAS_HEAD(source) || !HAS_EYES(source)
+                || !can_see(source, caster) || is_safe(source, caster)
+                || get_contact_resistance_result(source, caster, RES_MAGIC)
+                    == RES_RESULT_IMMUNE)
+                        continue;
+                if (value > chance)
+                {
+                        chance = value;
+                        best = source;
+                }
+        }
+
+        /* Several eyes cannot turn one activation into several saving rolls. */
+        blocked = best && number_percent() <= URANGE(0, chance, 100);
+        if (activation && activation->caster == caster)
+        {
+                activation->checked = TRUE;
+                activation->blocked = blocked;
+        }
+        if (blocked)
+        {
+                act("$n's central eye flashes, unravelling your magic!", best, NULL, caster, TO_VICT);
+                act("Your central eye unravels $N's magic.", best, NULL, caster, TO_CHAR);
+                act("$n's central eye flashes and $N's magic fizzles.", best, NULL, caster, TO_NOTVICT);
+        }
+        return blocked;
+}
+
+/* Keep the original function pointer: some native powers use a condition's SN. */
+bool cast_native_spell(SPELL_FUN *spell, int sn, int level, CHAR_DATA *caster, void *target)
+{
+        if (!spell || sn < 0 || sn >= MAX_SKILL)
+                return FALSE;
+        if (antimagic_blocks_activation(caster, skill_table[sn].res_type))
+                return FALSE;
+        (*spell)(sn, level, caster, target);
+        return TRUE;
+}
+
+/* Unmaking is ordinary energy damage; it never invokes Disintegrate. */
+void spell_unmaking_ray(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+        int dam;
+        level = URANGE(1, level, MAX_LEVEL);
+        dam = level + number_range(level, 2 * level);
+        if (saves_resistance_effect(ch, level, victim, RES_MAGIC | RES_ENERGY))
+                dam /= 2;
+        damage_with_resistance_types(ch, victim, dam, sn, FALSE, RES_MAGIC | RES_ENERGY);
+}
+
+/* A cure removes this condition without releasing the victim's own prey. */
+static void clear_mimic_glue(CHAR_DATA *victim)
+{
+        AFFECT_DATA *af;
+        for (af = victim->affected; af; af = af->next)
+                if (!af->deleted && af->type == gsn_mimic_glue)
+                        affect_remove(victim, af);
+}
+
+/* Movement and death release only this creature's adhesive, not another hold. */
+void release_mimic_glue(CHAR_DATA *source)
+{
+        CHAR_DATA *victim;
+        if (!source || gsn_mimic_glue < 0)
+                return;
+        clear_mimic_glue(source);
+        if (!source->target_id || !source->in_room)
+                return;
+        for (victim = source->in_room->people; victim; victim = victim->next_in_room)
+                if (!victim->deleted && victim != source)
+                        affect_strip_source_sn(victim, gsn_mimic_glue,
+                            AFFECT_SOURCE_CREATURE, source->target_id);
+}
 #include "webgate.h"
 #include "sound.h"
 
@@ -261,7 +379,7 @@ bool try_undead_support_spell(int sn, CHAR_DATA *ch)
                                 continue;
 
                         sound_spell_sfx(ch, sn, "cast");
-                        (*skill_table[sn].spell_fun)(
+                        cast_native_spell(skill_table[sn].spell_fun,
                             sn, URANGE(1, ch->level, MAX_LEVEL), ch, victim);
                         return TRUE;
                 }
@@ -1066,7 +1184,15 @@ char *target_name;
  */
 int spell_attack_number;
 
+static void do_cast_activation(CHAR_DATA *ch, char *argument);
 void do_cast(CHAR_DATA *ch, char *argument)
+{
+        MAGIC_ACTIVATION_DATA activation;
+        begin_magic_activation(&activation, ch);
+        do_cast_activation(ch, argument);
+        end_magic_activation(&activation);
+}
+static void do_cast_activation(CHAR_DATA *ch, char *argument)
 {
         void *vo;
         OBJ_DATA *obj;
@@ -1442,6 +1568,8 @@ void do_cast(CHAR_DATA *ch, char *argument)
                         return;
                 }
 
+                if (antimagic_blocks_activation(ch, skill_table[sn].res_type))
+                        return;
                 (*skill_table[sn].spell_fun)(sn, URANGE(1, ch->level, MAX_LEVEL), ch, vo);
                 if (!action_character_alive(ch, caster_deaths))
                         return;
@@ -1742,6 +1870,8 @@ void obj_cast_spell(int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DAT
                 return;
 
         target_name = "";
+        if (antimagic_blocks_activation(ch, skill_table[sn].res_type))
+                return;
         (*skill_table[sn].spell_fun)(sn, level, ch, vo);
         if (!action_character_alive(ch, caster_deaths))
                 return;
@@ -13580,6 +13710,7 @@ void spell_freedom(int sn, int level, CHAR_DATA *ch, void *vo)
         affect_strip(victim, gsn_coil);
         affect_strip(victim, gsn_web);
         affect_strip(victim, gsn_crush);
+        clear_mimic_glue(victim);
         affect_strip(victim, gsn_abyssal_hand);
         affect_strip(victim, gsn_transfix);
         affect_strip(victim, gsn_howl);
