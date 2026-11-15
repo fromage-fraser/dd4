@@ -3790,6 +3790,9 @@ bool check_aura_of_fear(CHAR_DATA *ch, CHAR_DATA *victim)
 
 void update_pos(CHAR_DATA *victim)
 {
+        if (victim->hit <= 0 || victim->position == POS_DEAD)
+                release_mimic_glue(victim);
+
         /* Death ends the pair's right even if later healing revives it. */
         if (victim->position == POS_DEAD)
                 clear_rescue_retaliation(victim);

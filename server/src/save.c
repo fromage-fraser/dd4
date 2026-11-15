@@ -1425,6 +1425,9 @@ void fread_char(CHAR_DATA *ch, FILE *fp)
          */
         migrate_form_affect_sources(ch);
 
+        /* A live creature grip cannot survive logout or a server restart. */
+        release_mimic_glue(ch);
+
         /*
          *  Init some variables that aren't saved
          */

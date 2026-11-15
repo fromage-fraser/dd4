@@ -66,6 +66,9 @@ DECLARE_SPEC_FUN( spec_cast_cleric_helper   );
 DECLARE_SPEC_FUN( spec_cast_judge           );
 DECLARE_SPEC_FUN( spec_cast_mage            );
 DECLARE_SPEC_FUN( spec_cast_slow            );
+DECLARE_SPEC_FUN( spec_mimic );
+DECLARE_SPEC_FUN( spec_lamia );
+DECLARE_SPEC_FUN( spec_beholder );
 DECLARE_SPEC_FUN( spec_cast_druid           );
 DECLARE_SPEC_FUN( spec_cast_water_sprite    );
 DECLARE_SPEC_FUN( spec_cast_psionicist      );
@@ -178,6 +181,9 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_cast_judge"))           return spec_cast_judge;
         if (!str_cmp(name, "spec_cast_mage"))            return spec_cast_mage;
         if (!str_cmp(name, "spec_cast_slow"))           return spec_cast_slow;
+        if (!str_cmp(name, "spec_mimic")) return spec_mimic;
+        if (!str_cmp(name, "spec_lamia")) return spec_lamia;
+        if (!str_cmp(name, "spec_beholder")) return spec_beholder;
         if (!str_cmp(name, "spec_faerie_dragon"))        return spec_faerie_dragon;
         if (!str_cmp(name, "spec_cast_druid"))           return spec_cast_druid;
         if (!str_cmp(name, "spec_cast_water_sprite"))    return spec_cast_water_sprite;
@@ -300,6 +306,9 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_cast_judge) return "spec_cast_judge";
         if (special == spec_cast_mage) return "spec_cast_mage";
         if (special == spec_cast_slow) return "spec_cast_slow";
+        if (special == spec_mimic) return "spec_mimic";
+        if (special == spec_lamia) return "spec_lamia";
+        if (special == spec_beholder) return "spec_beholder";
         if (special == spec_faerie_dragon) return "spec_faerie_dragon";
         if (special == spec_cast_druid) return "spec_cast_druid";
         if (special == spec_cast_water_sprite) return "spec_cast_water_sprite";
@@ -471,7 +480,7 @@ bool dragon( CHAR_DATA *ch, char *spell_name )
                                 NULL);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
 
         return TRUE;
 }
@@ -499,7 +508,7 @@ bool spec_prism_flash(CHAR_DATA *ch)
         if (sn < 0)
                 return FALSE;
         act("Prismatic light bursts from $n's scales!", ch, NULL, victim, TO_ROOM);
-        (*skill_table[sn].spell_fun)(sn, ch->level, ch, victim);
+        cast_native_spell(skill_table[sn].spell_fun, sn, ch->level, ch, victim);
         return TRUE;
 }
 
@@ -560,7 +569,7 @@ bool spec_breath_gas( CHAR_DATA *ch )
         act("A vile cloud of poisonous gas erupts from $n's wide-open jaws!",
             ch, NULL, NULL, TO_ROOM);
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, NULL );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, NULL );
 
         return TRUE;
 }
@@ -598,7 +607,7 @@ bool spec_cast_adept( CHAR_DATA *ch )
             case 0:
                 act( "$n utters the word 'Edahs'.", ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "armor" ), "cast" ); }
-                spell_armor( skill_lookup( "armor" ), ch->level, ch, victim );
+                cast_native_spell(spell_armor,  skill_lookup( "armor" ), ch->level, ch, victim );
                 return TRUE;
 
             case 1:
@@ -606,13 +615,13 @@ bool spec_cast_adept( CHAR_DATA *ch )
                     return FALSE;
                 act( "$n utters the word 'Lwo'.",    ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "bless" ), "cast" ); }
-                spell_bless( skill_lookup( "bless" ), ch->level, ch, victim );
+                cast_native_spell(spell_bless,  skill_lookup( "bless" ), ch->level, ch, victim );
                 return TRUE;
 
             case 2:
                 act( "$n utters the word 'Phzeg'.",   ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure blindness" ), "cast" ); }
-                spell_cure_blindness( skill_lookup( "cure blindness" ),
+                cast_native_spell(spell_cure_blindness,  skill_lookup( "cure blindness" ),
                                      ch->level, ch, victim );
                 return TRUE;
 
@@ -621,19 +630,19 @@ bool spec_cast_adept( CHAR_DATA *ch )
                     return FALSE;
                 act( "$n utters the word 'Nixmas'.",    ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure light" ), "cast" ); }
-                spell_cure_light( skill_lookup( "cure light" ), ch->level, ch, victim );
+                cast_native_spell(spell_cure_light,  skill_lookup( "cure light" ), ch->level, ch, victim );
                 return TRUE;
 
             case 4:
                 act( "$n utters the word 'Suturb'.",  ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure poison" ), "cast" ); }
-                spell_cure_poison( skill_lookup( "cure poison" ), ch->level, ch, victim );
+                cast_native_spell(spell_cure_poison,  skill_lookup( "cure poison" ), ch->level, ch, victim );
                 return TRUE;
 
             case 5:
                 act( "$n utters the word 'Aitseh'.", ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "refresh" ), "cast" ); }
-                spell_refresh( skill_lookup( "refresh" ), ch->level, ch, victim );
+                cast_native_spell(spell_refresh,  skill_lookup( "refresh" ), ch->level, ch, victim );
                 return TRUE;
 
             case 6:
@@ -641,13 +650,13 @@ bool spec_cast_adept( CHAR_DATA *ch )
                     return FALSE;
                 act("$n says the word 'Tnemrot'.",ch,NULL,NULL,TO_ROOM);
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure serious" ), "cast" ); }
-                spell_cure_serious( skill_lookup( "cure serious" ), ch->level, ch, victim );
+                cast_native_spell(spell_cure_serious,  skill_lookup( "cure serious" ), ch->level, ch, victim );
                 return TRUE;
 
             case 7:
                 act("$n utters the word 'Enroht'.", ch, NULL, NULL, TO_ROOM );
                 if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "cure mana" ), "cast" ); }
-                spell_cure_mana( skill_lookup( "cure mana" ), ch->level, ch, victim );
+                cast_native_spell(spell_cure_mana,  skill_lookup( "cure mana" ), ch->level, ch, victim );
                 return TRUE;
 
             case 8:
@@ -657,7 +666,7 @@ bool spec_cast_adept( CHAR_DATA *ch )
                 {
                     act("$n utters the word 'Sifircas'.", ch, NULL, NULL, TO_ROOM );
                     if( victim->position > POS_SLEEPING ) { sound_spell_sfx( ch, skill_lookup( "regenerate" ), "cast" ); }
-                    spell_regenerate( skill_lookup( "regenerate" ), ch->level, ch, victim );
+                    cast_native_spell(spell_regenerate,  skill_lookup( "regenerate" ), ch->level, ch, victim );
                 }
                 return TRUE;
         }
@@ -687,48 +696,48 @@ bool spec_cast_hooker(CHAR_DATA *ch)
         {
             case 0:
                 act("$n begins to slowly rub your crotch.", ch, NULL, NULL, TO_ROOM);
-                spell_armor(skill_lookup("armor"), ch->level, ch, victim);
+                cast_native_spell(spell_armor, skill_lookup("armor"), ch->level, ch, victim);
                 return TRUE;
 
             case 1:
                 if (helpful_spell_harms_target(gsn_bless, ch, victim))
                     return FALSE;
                 act("$n spanks you on your bottom. OUCH!", ch, NULL, NULL, TO_ROOM);
-                spell_bless(skill_lookup("bless"), ch->level, ch, victim);
+                cast_native_spell(spell_bless, skill_lookup("bless"), ch->level, ch, victim);
                 return TRUE;
 
             case 2:
                 act("$n gently caresses your face.", ch, NULL, NULL, TO_ROOM);
-                spell_cure_blindness(skill_lookup("cure blindness"), ch->level, ch,
+                cast_native_spell(spell_cure_blindness, skill_lookup("cure blindness"), ch->level, ch,
                                      victim);
                 return TRUE;
 
             case 3:
                 act("$n eyes you up and down, seductively.", ch, NULL, NULL, TO_ROOM);
-                spell_cure_mana(skill_lookup("cure mana"), ch->level, ch, victim);
+                cast_native_spell(spell_cure_mana, skill_lookup("cure mana"), ch->level, ch, victim);
                 return TRUE;
 
             case 4:
                 act("$n playfully starts to suck on your finger.",ch,NULL,NULL,TO_ROOM);
-                spell_cure_poison(skill_lookup("cure poison"), ch->level, ch, victim);
+                cast_native_spell(spell_cure_poison, skill_lookup("cure poison"), ch->level, ch, victim);
                 return TRUE;
 
             case 5:
                 act("$n moves closer, licking her lips.", ch, NULL, NULL, TO_ROOM);
-                spell_refresh(skill_lookup("refresh"), ch->level, ch, victim);
+                cast_native_spell(spell_refresh, skill_lookup("refresh"), ch->level, ch, victim);
                 return TRUE;
 
             case 6:
                 if (helpful_spell_harms_target(gsn_cure_serious, ch, victim))
                     return FALSE;
                 if ( CAN_SPEAK(ch) ) { act("$n says, 'Hey baby, want a date?'", ch, NULL, NULL, TO_ROOM); }
-                spell_cure_serious(skill_lookup("cure serious"), ch->level, ch, victim);
+                cast_native_spell(spell_cure_serious, skill_lookup("cure serious"), ch->level, ch, victim);
                 return TRUE;
 
             case 7:
                 if ( CAN_SPEAK(ch) ) { act("$n says, 'I go all the way for 500 coins.'", ch, NULL, NULL,
                     TO_ROOM); }
-                spell_cure_mana(skill_lookup("cure mana"), ch->level, ch, victim);
+                cast_native_spell(spell_cure_mana, skill_lookup("cure mana"), ch->level, ch, victim);
                 return TRUE;
 
         }
@@ -787,7 +796,7 @@ bool spec_cast_cleric( CHAR_DATA *ch )
 
 
         sound_spell_sfx( ch, sn, "cast" );
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
 
         return TRUE;
 }
@@ -838,7 +847,7 @@ bool spec_cast_judge( CHAR_DATA *ch )
         if ( ( sn = skill_lookup( spell ) ) < 0 )
                 return FALSE;
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
 
         return TRUE;
 }
@@ -891,7 +900,7 @@ bool spec_cast_mage( CHAR_DATA *ch )
         if (spell_benefits_undead(sn, victim))
                 return try_undead_support_spell(sn, ch);
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
 
         return TRUE;
 }
@@ -983,7 +992,7 @@ bool spec_cast_druid( CHAR_DATA *ch )
                 act ("$c gestures towards you.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 }
@@ -1090,7 +1099,7 @@ bool spec_cast_water_sprite( CHAR_DATA *ch )
                 act ("$c gestures towards you.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 }
@@ -1142,7 +1151,7 @@ bool spec_cast_undead( CHAR_DATA *ch )
         if (spell_benefits_undead(sn, victim))
                 return try_undead_support_spell(sn, ch);
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
 
         return TRUE;
 }
@@ -1357,7 +1366,7 @@ static bool undead_energy_drain_special(
                     ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun)(
+        cast_native_spell(skill_table[sn].spell_fun,
             sn,
             ch->level,
             ch,
@@ -1633,7 +1642,7 @@ bool spec_mummy(CHAR_DATA *ch)
         if (gsn_fear < 0 || gsn_fear >= MAX_SKILL)
                 return FALSE;
 
-        spell_fear(gsn_fear, ch->level, ch, victim);
+        cast_native_spell(spell_fear, gsn_fear, ch->level, ch, victim);
         return TRUE;
 }
 
@@ -1922,7 +1931,7 @@ bool spec_death_knight(CHAR_DATA *ch)
         if (spell_benefits_undead(sn, victim))
                 return try_undead_support_spell(sn, ch);
 
-        (*skill_table[sn].spell_fun)(
+        cast_native_spell(skill_table[sn].spell_fun,
             sn,
             ch->level,
             ch,
@@ -2003,7 +2012,7 @@ bool spec_lich(CHAR_DATA *ch)
         if (spell_benefits_undead(sn, victim))
                 return try_undead_support_spell(sn, ch);
 
-        (*skill_table[sn].spell_fun)(
+        cast_native_spell(skill_table[sn].spell_fun,
             sn,
             ch->level,
             ch,
@@ -3039,7 +3048,7 @@ static bool poison_contact_special(CHAR_DATA *ch, bool palm)
                 act("$n bites you!", ch, NULL, victim, TO_VICT);
                 act("$n bites $N!", ch, NULL, victim, TO_NOTVICT);
         }
-        spell_poison(gsn_venom, ch->level, ch, victim);
+        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
         return TRUE;
 }
 
@@ -3338,7 +3347,7 @@ bool spec_cast_psionicist( CHAR_DATA *ch )
                 return try_undead_support_spell(sn, ch);
 
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
 
         return TRUE;
 }
@@ -3465,7 +3474,7 @@ bool spec_aboleth( CHAR_DATA *ch )
                 act ("$c motions towards you with $s tentacles.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 }
@@ -3707,7 +3716,7 @@ bool spec_grail (CHAR_DATA *ch)
                                 do_mpgoto( ch, "75" );
                         }
                         else
-                                spell_teleport( skill_lookup( "teleport" ), ch->level, ch, ch );
+                                cast_native_spell(spell_teleport,  skill_lookup( "teleport" ), ch->level, ch, ch );
                         return TRUE;
                 }
         }
@@ -3721,20 +3730,20 @@ bool spec_grail (CHAR_DATA *ch)
                             return FALSE;
                         act("$c tells you, 'Fear me, for I am the cruellest of this realm...'",
                             ch, NULL, NULL, TO_ROOM );
-                        spell_heal( skill_lookup( "heal" ), ch->level, ch, victim );
+                        cast_native_spell(spell_heal,  skill_lookup( "heal" ), ch->level, ch, victim );
                         return TRUE;
 
                     case 1:
                         act("$c says, 'Blood, I must shed more blood for my masters...'", ch,
                             NULL, NULL, TO_ROOM);
-                        spell_combat_mind( skill_lookup( "combat mind" ), ch->level,
+                        cast_native_spell(spell_combat_mind,  skill_lookup( "combat mind" ), ch->level,
                                           ch, victim );
                         return TRUE;
 
                     case 2:
                         act("$c asks you 'Be vigilant.  There are many agents of evil in this plane.'",
                             ch, NULL, NULL, TO_ROOM );
-                        spell_detect_evil( skill_lookup( "detect evil" ), ch->level,
+                        cast_native_spell(spell_detect_evil,  skill_lookup( "detect evil" ), ch->level,
                                           ch, victim );
                         return TRUE;
 
@@ -3743,20 +3752,20 @@ bool spec_grail (CHAR_DATA *ch)
                             return FALSE;
                         act("$c tells you 'May you walk with the gods, and fear them...'",
                             ch, NULL, NULL, TO_ROOM );
-                        spell_bless( skill_lookup( "bless" ), ch->level, ch, victim );
+                        cast_native_spell(spell_bless,  skill_lookup( "bless" ), ch->level, ch, victim );
                         return TRUE;
 
 
                     case 4:
                         act("$c tells you 'I may never rest, I must hunt forever...'",
                             ch, NULL, NULL, TO_ROOM );
-                        spell_shield( skill_lookup( "shield" ), ch->level, ch, victim );
+                        cast_native_spell(spell_shield,  skill_lookup( "shield" ), ch->level, ch, victim );
                         return TRUE;
 
                     case 5:
                         act("$c says 'My steel thirsts for sinners' blood!'",
                             ch, NULL, NULL, TO_ROOM );
-                        spell_sanctuary( skill_lookup( "sanctuary" ), ch->level, ch, victim );
+                        cast_native_spell(spell_sanctuary,  skill_lookup( "sanctuary" ), ch->level, ch, victim );
                         return TRUE;
 
                     case 6:
@@ -3770,7 +3779,7 @@ bool spec_grail (CHAR_DATA *ch)
                                 do_mpgoto( ch, "75" );
                         }
                         else
-                                spell_teleport( skill_lookup( "teleport" ), ch->level, ch, ch );
+                                cast_native_spell(spell_teleport,  skill_lookup( "teleport" ), ch->level, ch, ch );
                         return TRUE;
 
                     case 7:
@@ -3778,7 +3787,7 @@ bool spec_grail (CHAR_DATA *ch)
                             return FALSE;
                         act("$c says 'Be restored, stranger, and of good cheer...'",
                             ch, NULL, NULL, TO_ROOM );
-                        spell_regenerate( skill_lookup( "regenerate" ), ch->level, ch, victim );
+                        cast_native_spell(spell_regenerate,  skill_lookup( "regenerate" ), ch->level, ch, victim );
                         return TRUE;
                 }
         }
@@ -3850,7 +3859,7 @@ bool spec_bounty (CHAR_DATA *ch)
                                 do_mpgoto( ch, "75" );
                         }
                         else
-                                spell_teleport( skill_lookup( "teleport" ), ch->level, ch, ch );
+                                cast_native_spell(spell_teleport,  skill_lookup( "teleport" ), ch->level, ch, ch );
                         return TRUE;
                 }
         }
@@ -3863,20 +3872,20 @@ bool spec_bounty (CHAR_DATA *ch)
                             return FALSE;
                         act("$c tells you 'Fear me, for I am the cruelest of this realm...'",
                             ch, NULL, NULL, TO_ROOM );
-                        spell_heal( skill_lookup( "heal" ), ch->level, ch, victim );
+                        cast_native_spell(spell_heal,  skill_lookup( "heal" ), ch->level, ch, victim );
                         return TRUE;
 
                     case 1:
                         act("$c says 'Blood, I must shed more blood for my masters...'", ch,
                             NULL, NULL, TO_ROOM);
-                        spell_combat_mind( skill_lookup( "combat mind" ), ch->level,
+                        cast_native_spell(spell_combat_mind,  skill_lookup( "combat mind" ), ch->level,
                                           ch, victim );
                         return TRUE;
 
                     case 2:
                         act("$c asks you 'Be vigilant.  There are many agents of evil in this plane.'",
                             ch, NULL, NULL, TO_ROOM );
-                        spell_detect_evil( skill_lookup( "detect evil" ), ch->level,
+                        cast_native_spell(spell_detect_evil,  skill_lookup( "detect evil" ), ch->level,
                                           ch, victim );
                         return TRUE;
 
@@ -3885,20 +3894,20 @@ bool spec_bounty (CHAR_DATA *ch)
                             return FALSE;
                         act("$c tells you 'May you walk with the gods, and fear them...'",
                             ch, NULL, NULL, TO_ROOM );
-                        spell_bless( skill_lookup( "bless" ), ch->level, ch, victim );
+                        cast_native_spell(spell_bless,  skill_lookup( "bless" ), ch->level, ch, victim );
                         return TRUE;
 
 
                     case 4:
                         act("$c tells you 'I may never rest, I must hunt forever...'",
                             ch, NULL, NULL, TO_ROOM );
-                        spell_shield( skill_lookup( "shield" ), ch->level, ch, victim );
+                        cast_native_spell(spell_shield,  skill_lookup( "shield" ), ch->level, ch, victim );
                         return TRUE;
 
                     case 5:
                         act("$c says 'My steel thirsts for sinners' blood!'",
                             ch, NULL, NULL, TO_ROOM );
-                        spell_sanctuary( skill_lookup( "sanctuary" ), ch->level, ch, victim );
+                        cast_native_spell(spell_sanctuary,  skill_lookup( "sanctuary" ), ch->level, ch, victim );
                         return TRUE;
 
                     case 6:
@@ -3912,7 +3921,7 @@ bool spec_bounty (CHAR_DATA *ch)
                                 do_mpgoto( ch, "75" );
                         }
                         else
-                                spell_teleport( skill_lookup( "teleport" ), ch->level, ch, ch );
+                                cast_native_spell(spell_teleport,  skill_lookup( "teleport" ), ch->level, ch, ch );
                         return TRUE;
                 }
         }
@@ -3942,50 +3951,50 @@ bool spec_cast_orb( CHAR_DATA *ch )
         {
             case 0:
                 act( "$n pulses briefly.", ch, NULL, NULL, TO_ROOM );
-                spell_armor( skill_lookup( "armor" ), ch->level, ch, victim );
+                cast_native_spell(spell_armor,  skill_lookup( "armor" ), ch->level, ch, victim );
                 return TRUE;
 
             case 1:
                 if (helpful_spell_harms_target(gsn_bless, ch, victim))
                     return FALSE;
                 act( "$n pulses briefly.",    ch, NULL, NULL, TO_ROOM );
-                spell_bless( skill_lookup( "bless" ), ch->level, ch, victim );
+                cast_native_spell(spell_bless,  skill_lookup( "bless" ), ch->level, ch, victim );
                 return TRUE;
 
             case 2:
                 if (helpful_spell_harms_target(gsn_heal, ch, victim))
                     return FALSE;
                 act( "$n pulses briefly.",   ch, NULL, NULL, TO_ROOM );
-                spell_heal( skill_lookup( "heal" ),
+                cast_native_spell(spell_heal,  skill_lookup( "heal" ),
                            ch->level, ch, victim );
                 return TRUE;
 
             case 3:
                 act( "$n pulses briefly.",    ch, NULL, NULL, TO_ROOM );
-                spell_combat_mind( skill_lookup( "combat mind" ),
+                cast_native_spell(spell_combat_mind,  skill_lookup( "combat mind" ),
                                   ch->level, ch, victim );
                 return TRUE;
 
             case 4:
                 act( "$n pulses briefly.",  ch, NULL, NULL, TO_ROOM );
-                spell_cure_poison( skill_lookup( "cure poison" ),
+                cast_native_spell(spell_cure_poison,  skill_lookup( "cure poison" ),
                                   ch->level, ch, victim );
                 return TRUE;
 
             case 5:
                 act( "$n pulses briefly.", ch, NULL, NULL, TO_ROOM );
-                spell_refresh( skill_lookup( "refresh" ), ch->level, ch, victim );
+                cast_native_spell(spell_refresh,  skill_lookup( "refresh" ), ch->level, ch, victim );
                 return TRUE;
 
             case 6:
                 act("$n pulses briefly.",ch,NULL,NULL,TO_ROOM);
-                spell_sanctuary( skill_lookup( "sanctuary" ),
+                cast_native_spell(spell_sanctuary,  skill_lookup( "sanctuary" ),
                                 ch->level, ch, victim );
                 return TRUE;
 
             case 7:
                 act("$n pulses briefly.", ch, NULL, NULL, TO_ROOM );
-                spell_cure_mana( skill_lookup( "cure mana" ),
+                cast_native_spell(spell_cure_mana,  skill_lookup( "cure mana" ),
                                 ch->level, ch, victim );
                 return TRUE;
 
@@ -3995,7 +4004,7 @@ bool spec_cast_orb( CHAR_DATA *ch )
                 if (number_percent() < 20)
                 {
                     act("$n pulses briefly.", ch, NULL, NULL, TO_ROOM );
-                    spell_regenerate( skill_lookup( "regenerate" ),
+                    cast_native_spell(spell_regenerate,  skill_lookup( "regenerate" ),
                                 ch->level, ch, victim );
                 }
                 return TRUE;
@@ -4040,7 +4049,7 @@ bool spec_kungfu_poison( CHAR_DATA *ch )
         act( "$n hits $N with the poison palm technique!",  ch, NULL, victim, TO_NOTVICT );
         act( "$n hits you with the poison palm technique!", ch, NULL, victim, TO_VICT    );
 
-        spell_poison(gsn_venom, ch->level, ch, victim);
+        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
 
         return TRUE;
 }
@@ -4416,7 +4425,7 @@ bool spec_cast_archmage (CHAR_DATA *ch)
 
         do_say(ch,buf);
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
         return TRUE;
 }
 
@@ -4499,7 +4508,7 @@ bool spec_cast_priestess (CHAR_DATA *ch)
 
 
         do_say(ch,buf);
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
 
         return TRUE;
 }
@@ -4608,7 +4617,7 @@ bool spec_mast_vampire(CHAR_DATA *ch)
                 if ((sn = skill_lookup(spell)) < 0)
                         return FALSE;
 
-                (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+                cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
         }
 
         return TRUE;
@@ -4779,7 +4788,7 @@ bool spec_celestial_repairman (CHAR_DATA *ch)
                         do_mpgoto( ch, "75" );
                 }
                 else
-                        spell_teleport( skill_lookup( "teleport" ), ch->level, ch, ch );
+                        cast_native_spell(spell_teleport,  skill_lookup( "teleport" ), ch->level, ch, ch );
 
                 return TRUE;
         }
@@ -4874,7 +4883,7 @@ bool spec_sahuagin (CHAR_DATA *ch)
                 if ((sn = skill_lookup(spell)) < 0)
                         return FALSE;
 
-                (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+                cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
                 return TRUE;
         }
 
@@ -5021,7 +5030,7 @@ bool spec_demon( CHAR_DATA *ch )
         if (spell_benefits_undead(sn, victim))
                 return try_undead_support_spell(sn, ch);
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
 
         return TRUE;
 }
@@ -5112,7 +5121,7 @@ bool spec_cast_electric (CHAR_DATA *ch)
 
         do_say(ch,buf);
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
         return TRUE;
 }
 
@@ -5183,7 +5192,7 @@ bool spec_poison_claw(CHAR_DATA *ch)
         act("You rake $N with your poisoned claws!", ch, NULL, victim, TO_CHAR);
         act("$n rakes you with poisoned claws!", ch, NULL, victim, TO_VICT);
         act("$n rakes $N with poisoned claws!", ch, NULL, victim, TO_NOTVICT);
-        spell_poison(gsn_venom, ch->level, ch, victim);
+        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
         return TRUE;
 }
 
@@ -5217,7 +5226,136 @@ bool spec_cast_slow(CHAR_DATA *ch)
         ||  number_percent() > 50)
                 return FALSE;
 
-        spell_slow(gsn_slow, ch->level, ch, victim);
+        cast_native_spell(spell_slow, gsn_slow, ch->level, ch, victim);
+        return TRUE;
+}
+
+/* These eyes need a usable head and sight, but neither hands nor a voice. */
+static bool native_eye_ready(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        return victim && HAS_HEAD(ch) && HAS_EYES(ch) && can_see(ch, victim)
+            && !IS_AFFECTED(ch, AFF_BLIND | AFF_EYE_TRAUMA | AFF_HEAD_TRAUMA)
+            && get_contact_resistance_result(ch, victim, RES_MAGIC) != RES_RESULT_IMMUNE;
+}
+
+static bool native_charm_target(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        return victim && IS_NPC(victim) && !is_mindless(victim)
+            && !IS_SET(victim->act, ACT_OBJECT | ACT_NOCHARM | ACT_BANKER | ACT_CLAN_GUARD)
+            && !IS_AFFECTED(victim, AFF_CHARM) && ch->level >= victim->level
+            && ch->mount != victim && !victim->rider
+            && mob_interacts_players(victim) && !mob_is_quest_target(victim);
+}
+
+bool spec_beholder(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        int rays[6], count = 0, sn;
+        if (!native_eye_ready(ch, victim) || number_percent() > 50)
+                return FALSE;
+        if (!is_affected(victim, gsn_slow) && !IS_AFFECTED(victim, AFF_SLOW))
+                rays[count++] = gsn_slow;
+        if (!is_mindless(victim) && !(IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT)))
+                rays[count++] = gsn_fear;
+        if (!IS_AFFECTED(victim, AFF_SLEEP)
+        && get_resistance_result(victim, RES_MAGIC | RES_SLEEP) != RES_RESULT_IMMUNE)
+                rays[count++] = gsn_sleep;
+        rays[count++] = gsn_cause_serious;
+        if (native_charm_target(ch, victim))
+                rays[count++] = gsn_charm_person;
+        rays[count++] = gsn_unmaking_ray;
+        sn = rays[number_range(0, count - 1)];
+        act("One of $n's eyestalks flashes towards $N!", ch, NULL, victim, TO_NOTVICT);
+        act("One of $n's eyestalks flashes towards you!", ch, NULL, victim, TO_VICT);
+        cast_native_spell(sn == gsn_unmaking_ray ? spell_unmaking_ray : skill_table[sn].spell_fun,
+            sn, ch->level, ch, victim);
+        return TRUE;
+}
+
+static bool lamia_touch_target(CHAR_DATA *ch, CHAR_DATA *victim)
+{
+        return HAS_ARMS(ch) && !IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+            && !is_mindless(victim) && !(IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+            && get_curr_wis(victim) > 3
+            && get_contact_resistance_result(ch, victim, RES_MAGIC) != RES_RESULT_IMMUNE
+            && get_contact_resistance_result(ch, victim, RES_NONMAGIC | RES_CHARM)
+                != RES_RESULT_IMMUNE;
+}
+
+static void lamia_wisdom_touch(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+        AFFECT_DATA *old = NULL, af;
+        int drain = 0;
+        if (!lamia_touch_target(ch, victim))
+                return;
+        for (old = victim->affected; old; old = old->next)
+                if (!old->deleted && old->type == sn && old->location == APPLY_WIS)
+                {
+                        drain = UMAX(drain, -old->modifier);
+                        break;
+                }
+        if (drain >= 3 || saves_supernatural_effect(ch, level, victim,
+            RES_MAGIC | RES_CHARM, SUPERNATURAL_CONTROL))
+                return;
+        memset(&af, 0, sizeof(af));
+        af.type = sn;
+        af.duration = 4;
+        af.location = APPLY_WIS;
+        af.modifier = -(drain + 1);
+        if (old)
+                affect_remove(victim, old);
+        affect_to_char(victim, &af);
+        act("$n's touch clouds your judgement.", ch, NULL, victim, TO_VICT);
+        act("Your touch clouds $N's judgement.", ch, NULL, victim, TO_CHAR);
+}
+
+bool spec_lamia(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        AFFECT_DATA *af;
+        int choices[3], count = 0, sn, drain = 0;
+        if (!victim || !HAS_HEAD(ch) || !CAN_SPEAK(ch)
+        || IS_AFFECTED(ch, AFF_HEAD_TRAUMA)
+        || !can_see(ch, victim))
+                return FALSE;
+        for (af = victim->affected; af; af = af->next)
+                if (!af->deleted && af->type == gsn_lamia_touch)
+                        drain = UMAX(drain, -af->modifier);
+        if (drain < 3 && lamia_touch_target(ch, victim))
+                choices[count++] = gsn_lamia_touch;
+        if (!is_affected(ch, gsn_displacement))
+                choices[count++] = gsn_displacement;
+        if (native_charm_target(ch, victim)
+        && get_contact_resistance_result(ch, victim, RES_MAGIC) != RES_RESULT_IMMUNE)
+                choices[count++] = gsn_charm_person;
+        if (!count || number_percent() > 25)
+                return FALSE;
+        sn = choices[number_range(0, count - 1)];
+        cast_native_spell(sn == gsn_lamia_touch ? lamia_wisdom_touch : skill_table[sn].spell_fun,
+            sn, ch->level, ch, sn == gsn_displacement ? ch : victim);
+        return TRUE;
+}
+
+bool spec_mimic(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        AFFECT_DATA af;
+        if (!victim || !ch->target_id || IS_AFFECTED(victim, AFF_HOLD)
+        || is_affected(victim, gsn_mimic_glue)
+        || get_contact_resistance_result(ch, victim, RES_NONMAGIC | RES_HOLD)
+            == RES_RESULT_IMMUNE || number_percent() > 25)
+                return FALSE;
+        if (saves_resistance_effect(ch, ch->level, victim, RES_NONMAGIC | RES_HOLD))
+                return TRUE;
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_mimic_glue;
+        af.duration = 1;
+        af.location = APPLY_NONE;
+        af.bitvector = AFF_HOLD;
+        affect_to_char_source(victim, &af, AFFECT_SOURCE_CREATURE, ch->target_id);
+        act("$n's adhesive pseudopod holds you fast!", ch, NULL, victim, TO_VICT);
+        act("Your adhesive pseudopod holds $N fast!", ch, NULL, victim, TO_CHAR);
         return TRUE;
 }
 
@@ -5257,7 +5395,7 @@ bool spec_breath_brass(CHAR_DATA *ch)
 
         if (sn < 0 || sn >= MAX_SKILL || !skill_table[sn].spell_fun)
                 return FALSE;
-        (*skill_table[sn].spell_fun)(sn, ch->level, ch, victim);
+        cast_native_spell(skill_table[sn].spell_fun, sn, ch->level, ch, victim);
         return TRUE;
 }
 
@@ -5407,7 +5545,7 @@ bool spec_electric_eel(CHAR_DATA *ch)
                 return FALSE;
         act("Electricity crackles along $n's body and leaps towards $N!",
             ch, NULL, victim, TO_ROOM);
-        (*skill_table[sn].spell_fun)(sn, ch->level, ch, victim);
+        cast_native_spell(skill_table[sn].spell_fun, sn, ch->level, ch, victim);
         return TRUE;
 }
 
@@ -5446,7 +5584,7 @@ bool spec_psionic_thief(CHAR_DATA *ch)
                         return FALSE;
                 /* Some attacks reveal an NPC without clearing its raw provider. */
                 affect_strip_raw_bit(ch, AFF_INVISIBLE);
-                spell_invis(sn, ch->level, ch, ch);
+                cast_native_spell(spell_invis, sn, ch->level, ch, ch);
                 return IS_AFFECTED(ch, AFF_INVISIBLE) != 0;
         }
 
@@ -5606,11 +5744,11 @@ bool spec_brownie(CHAR_DATA *ch)
 
                 if (!IS_AFFECTED(ch, AFF_INVISIBLE))
                 {
-                        spell_invis(gsn_invis, ch->level, ch, ch);
+                        cast_native_spell(spell_invis, gsn_invis, ch->level, ch, ch);
                         return IS_AFFECTED(ch, AFF_INVISIBLE) != 0;
                 }
 
-                spell_protection(gsn_protection, ch->level, ch, ch);
+                cast_native_spell(spell_protection, gsn_protection, ch->level, ch, ch);
                 return IS_AFFECTED(ch, AFF_PROTECT) != 0;
         }
 
@@ -5625,7 +5763,7 @@ bool spec_brownie(CHAR_DATA *ch)
                 return FALSE;
 
         /* Confusion supplies its own save, duration and ordinary restrictions. */
-        spell_confusion(gsn_confusion, ch->level, ch, victim);
+        cast_native_spell(spell_confusion, gsn_confusion, ch->level, ch, victim);
         return TRUE;
 }
 
@@ -5647,7 +5785,7 @@ bool spec_faerie_dragon(CHAR_DATA *ch)
                 ||  number_bits(3) != 0)
                         return FALSE;
 
-                spell_invis(gsn_invis, ch->level, ch, ch);
+                cast_native_spell(spell_invis, gsn_invis, ch->level, ch, ch);
                 return IS_AFFECTED(ch, AFF_INVISIBLE) != 0;
         }
 
@@ -5670,7 +5808,7 @@ bool spec_faerie_dragon(CHAR_DATA *ch)
             ch, NULL, victim, TO_VICT);
 
         /* Confusion makes its own single save and handles duration and cures. */
-        spell_confusion(gsn_confusion, ch->level, ch, victim);
+        cast_native_spell(spell_confusion, gsn_confusion, ch->level, ch, victim);
         return TRUE;
 }
 
@@ -5686,7 +5824,7 @@ bool spec_duergar(CHAR_DATA *ch)
         if (sn < 0 || sn >= MAX_SKILL || !skill_table[sn].spell_fun)
                 return FALSE;
 
-        (*skill_table[sn].spell_fun)(sn, ch->level, ch, ch);
+        cast_native_spell(skill_table[sn].spell_fun, sn, ch->level, ch, ch);
         return IS_AFFECTED(ch, AFF_INVISIBLE) != 0;
 }
 
@@ -5876,7 +6014,7 @@ bool spec_kappa( CHAR_DATA *ch )
                 act ("$c waves $s claws at you.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 
@@ -6034,7 +6172,7 @@ bool spec_laghathti( CHAR_DATA *ch )
                 act ("$c waves $s hideous tentacles at you.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 
@@ -6135,7 +6273,7 @@ bool spec_superwimpy( CHAR_DATA *ch )
 
         do_say(ch,buf);
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 
@@ -6200,7 +6338,7 @@ bool spec_uzollru( CHAR_DATA *ch )
                         act( "Your tentacles burrow into $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n's tentacles burrow into you...", ch, NULL, victim, TO_VICT  );
                         act( "$n's tentacles burrow into $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
                         one_hit(ch, victim, gsn_suck, FALSE);
                         one_hit(ch, victim, gsn_suck, FALSE);
                         return TRUE;
@@ -6223,7 +6361,7 @@ bool spec_uzollru( CHAR_DATA *ch )
                         act( "Your tentacles burrow into $N' flesh!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n's tentacles burrow into your flesh!", ch, NULL, victim, TO_VICT    );
                         act( "$n's tentacles burrow into $N's flesh!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
                         one_hit(ch, victim, gsn_suck, FALSE);
                         one_hit(ch, victim, gsn_suck, FALSE);
                         return TRUE;
@@ -6299,7 +6437,7 @@ bool spec_uzollru( CHAR_DATA *ch )
                 act ("$c caresses you with $s hideous tentacles.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 
@@ -6373,7 +6511,7 @@ bool spec_sahuagin_baron (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_nausea( gsn_nausea, ch->level, ch, victim );
+                        cast_native_spell(spell_nausea,  gsn_nausea, ch->level, ch, victim );
                         return TRUE;
 
                     case  6:
@@ -6433,7 +6571,7 @@ bool spec_sahuagin_baron (CHAR_DATA *ch)
                 act ("$c waves $s hideous clawed hands at you.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 
@@ -6514,7 +6652,7 @@ bool spec_sahuagin_prince (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
                         return TRUE;
 
                     case  6:
@@ -6580,7 +6718,7 @@ bool spec_sahuagin_prince (CHAR_DATA *ch)
                 act ("$c waves $s huge clawed hands at you.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 
@@ -6750,7 +6888,7 @@ bool spec_sahuagin_cavalry (CHAR_DATA *ch)
                 act ("$c clatters $s spear at you.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 }
@@ -6908,7 +7046,7 @@ bool spec_sahuagin_cleric (CHAR_DATA *ch)
                 return try_undead_support_spell(sn, ch);
 
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
 
         return TRUE;
 }
@@ -6988,7 +7126,7 @@ bool spec_sahuagin_high_cleric (CHAR_DATA *ch)
 
 
         do_say(ch,buf);
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
 
         return TRUE;
 }
@@ -7042,7 +7180,7 @@ bool spec_sahuagin_lieutenant (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
                         return TRUE;
 
                     case  5:
@@ -7084,7 +7222,7 @@ bool spec_sahuagin_lieutenant (CHAR_DATA *ch)
                 act ("$c waves $s hideous clawed hands at you.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 }
@@ -7142,8 +7280,8 @@ bool spec_green_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
-                        spell_paralysis( gsn_paralysis, ch->level, ch, victim );
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_paralysis,  gsn_paralysis, ch->level, ch, victim );
                         return TRUE;
 
                     case  6:
@@ -7162,8 +7300,8 @@ bool spec_green_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
-                        spell_paralysis( gsn_paralysis, ch->level, ch, victim );
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_paralysis,  gsn_paralysis, ch->level, ch, victim );
                         return TRUE;
 
                     case  10:
@@ -7200,7 +7338,7 @@ bool spec_green_grung (CHAR_DATA *ch)
                 act ("$c claws at you with $s green, webbed hands.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 
@@ -7307,7 +7445,7 @@ bool spec_red_grung (CHAR_DATA *ch)
 
         do_say(ch,buf);
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, victim );
 
 
 
@@ -7367,9 +7505,9 @@ bool spec_blue_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
                         if ( CAN_SPEAK(victim) ) { do_shout(victim, "ArrRrRRrrRRgh!!!"); }
-                        spell_confusion( gsn_confusion, ch->level, ch, victim );
+                        cast_native_spell(spell_confusion,  gsn_confusion, ch->level, ch, victim );
                         return TRUE;
 
                     case  6:
@@ -7403,7 +7541,7 @@ bool spec_blue_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
                         if ( CAN_SPEAK(victim) ) { do_shout(victim, "oOooOooOOoOoOOOo!!!"); }
                         return TRUE;
 
@@ -7442,7 +7580,7 @@ bool spec_blue_grung (CHAR_DATA *ch)
                 act ("$c claws at you with $s blue, webbed hands.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 
@@ -7518,8 +7656,8 @@ bool spec_purple_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
-                        spell_paralysis( gsn_paralysis, ch->level, ch, victim );
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_paralysis,  gsn_paralysis, ch->level, ch, victim );
                         if (!IS_NPC(victim)) {
                             if ( ( victim->pcdata->condition[COND_THIRST] > 0 )
                             &&   ( victim->level < LEVEL_HERO ) ) {
@@ -7561,8 +7699,8 @@ bool spec_purple_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
-                        spell_paralysis( gsn_paralysis, ch->level, ch, victim );
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_paralysis,  gsn_paralysis, ch->level, ch, victim );
                         if (!IS_NPC(victim)) {
                             if ( ( victim->pcdata->condition[COND_THIRST] > 0 )
                             &&   ( victim->level < LEVEL_HERO ) ) {
@@ -7610,7 +7748,7 @@ bool spec_purple_grung (CHAR_DATA *ch)
                 act ("$c claws at you with $s purple, webbed hands.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 
@@ -7674,8 +7812,8 @@ bool spec_orange_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
-                        spell_fear( gsn_fear, ch->level, ch, victim );
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_fear,  gsn_fear, ch->level, ch, victim );
                         return TRUE;
 
                     case  6:
@@ -7696,8 +7834,8 @@ bool spec_orange_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
-                        spell_fear( gsn_fear, ch->level, ch, victim );
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_fear,  gsn_fear, ch->level, ch, victim );
                         return TRUE;
 
                     case  10:
@@ -7734,7 +7872,7 @@ bool spec_orange_grung (CHAR_DATA *ch)
                 act ("$c claws at you with $s orange, webbed hands.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 
@@ -7798,7 +7936,7 @@ bool spec_gold_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
                         act ("<220>$c's powerful will overrides your own, forcing you to stop fighting!<0>", ch, NULL, victim, TO_VICT);
                         do_peace(victim, "");
                         return TRUE;
@@ -7833,7 +7971,7 @@ bool spec_gold_grung (CHAR_DATA *ch)
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
-                        spell_poison(gsn_venom, ch->level, ch, victim);
+                        cast_native_spell(spell_poison, gsn_venom, ch->level, ch, victim);
                         act ("<220>$c's powerful will overrides your own, forcing you to stop fighting!<0>", ch, NULL, victim, TO_VICT);
                         do_peace(victim, "");
                         return TRUE;
@@ -7874,7 +8012,7 @@ bool spec_gold_grung (CHAR_DATA *ch)
                 act ("$c rubs you with $s gold, webbed hands.", ch, NULL, victim, TO_VICT);
         }
 
-        (*skill_table[sn].spell_fun) ( sn, ch->level, ch, target_self ? ch : victim );
+        cast_native_spell(skill_table[sn].spell_fun,  sn, ch->level, ch, target_self ? ch : victim );
 
         return TRUE;
 

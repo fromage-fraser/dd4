@@ -121,6 +121,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         giant_frog sheep plesiosaur giant_leech
         ancient_fire_dragon fiery_demon hell_hound acid_hell_hound
         baby_beholder tame_lamia stone_golem
+        beholder lamia mimic
 /;
 
 my %mob_act = (
@@ -374,6 +375,7 @@ my @mob_spec = qw/
     spec_breath_gold_anatomical spec_breath_any_anatomical spec_breath_frost_anatomical spec_breath_lightning_anatomical spec_breath_steam_anatomical spec_psionic_thief spec_cleric_adept
     spec_faerie_dragon      spec_duergar            spec_swallow            spec_poison_palm spec_poison_claw spec_breath_brass spec_paralysing_bite spec_myconid_spores spec_engulf spec_camel_spit spec_manticore spec_alhoon
     spec_cast_slow
+    spec_beholder spec_lamia spec_mimic
 /;
 
 my %obj_ex = (

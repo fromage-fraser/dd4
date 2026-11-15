@@ -8,14 +8,17 @@ beholder~
 The mighty beholder~
 You meet a beholder's deadly gaze!
 ~
-It has a large central eye that projects an anti-magic ray and ten
-eyestalks atop the round body which can do anything from charm you
-to disintegrate you.  Beholders are not known for their personality.
+Its great central eye watches you from a floating, tooth-filled orb. Ten
+eyestalks curl above it, ready to cast their strange rays. Brief flashes
+from the central eye unravel hostile magic, while the lesser eyes can
+slow, frighten or lull its prey, wound it, charm susceptible creatures,
+or strike it with a ray of Unmaking.
 ~
 163 8 -870 S
 25 6 0 25e25+250 6d6+5
-29 94000
+0 94000
 8 8 0
+< beholder~ elite~
 #5201
 lamia beast~
 The lamia~
@@ -28,6 +31,7 @@ body of a four-legged beast.  She licks her lips as she looks at you greedily.
 9 12 1 9d9+99 1d5+4
 0 3000
 8 8 2
+< lamia~ common~
 #5202
 mimic chest~
 The mimic~
@@ -38,59 +42,80 @@ front.
 ~
 228 32768 10 S
 11 10 1 11d11+110 2d7+0
-63 4000
+32 4000
 8 8 0
+< mimic~ common~
 #5203
 mimic boulder~
 The mimic~
 Two skeletons lie crushed under a large boulder.
 ~
+The boulder looks solid, but a faint ripple passes beneath its stony skin.
 ~
 228 32768 -10 S
 11 10 1 11d11+110 3d5+1
 0 4000
 8 8 0
+< mimic~ common~
+MobHeight 160
+MobLength 220
 #5204
 mimic floor~
 The mimic~
 The stone floor of this house has been ripped apart.
 ~
+The broken floor conceals a living mass whose skin copies the surrounding stone.
 ~
 228 32768 -140 S
 11 10 1 11d11+110 2d6+0
 0 3500
 8 8 0
+< mimic~ common~
+MobHeight 20
+MobLength 450
 #5205
 mimic pottery~
 The mimic~
 Some broken shards of pottery lie strewn about the floor.
 ~
+Among the pottery shards, flexible seams betray a living creature copying the broken pots.
 ~
 228 32768 200 S
 11 10 0 11d11+110 2d5+1
 0 3500
 8 8 0
+< mimic~ common~
+MobHeight 60
+MobLength 300
 #5206
 mimic planks~
 The mimic~
 A few wooden planks lie stacked on a low shelf.
 ~
+The stacked planks shift against one another, joined by a pliant, living underside.
 ~
 228 32768 0 S
 11 9 0 11d11+110 4d3+1
 0 3500
 8 8 0
+< mimic~ common~
+MobHeight 45
+MobLength 400
 #5207
 lizard horned~
 The horned lizard~
-A small horned lizard flicks his tongue and slithers away.
+A small horned lizard flicks his tongue and scurries away.
 ~
 A cute little lizard, that is, if you like reptiles!
 ~
 128 0 0 S
 3 17 4 1d4+30 1d4+0
-0 300
+34359738368 300
 8 8 0
+< lizard~ common~
+MobHeight 5
+MobWeight 0
+MobLength 20
 #5208
 golem stone~
 The stone golem~
@@ -101,8 +126,9 @@ stone creature. He stands here still guarding the city.
 ~
 2 8192 600 S
 25 0 0 6d10+600 3d7+15
-304 80000
+0 80000
 8 8 0
+< stone_golem~ common~
 #0
 
 
@@ -2078,8 +2104,8 @@ S
 * 1992
 *
 M 0 5200 1 5250             Beholder
-E 1 5208 3 11                 (iron shield)
-E 1 5223 10 3                  (green cloak)
+G 1 5208 3 11                 (iron shield)
+G 1 5223 10 3                  (green cloak)
 *
 M 0 5201 20 5234             Lamia (all lamias have daggers)
 E 1 5252 150 16
@@ -2145,15 +2171,15 @@ O 0 5241 1 5238             pink and green
 O 0 5243 1 5246             clear
 *
 M 0 5202 1 5229             Mimic chest
-E 1 5214 4 17                 (ball o' light)
+G 1 5214 4 17                 (ball o' light)
 M 0 5203 1 5226             Mimic boulder
 G 1 5215 8                    (tattered scroll)
 M 0 5204 1 5219             Mimic floor
 G 1 5218 8                    (talisman)
 M 0 5205 1 5238             Mimic pottery
-E 1 5214 4 17                 (ball o' light)
+G 1 5214 4 17                 (ball o' light)
 M 0 5206 1 5236             Mimic planks
-E 1 5222 8 12                 (black robe)
+G 1 5222 8 12                 (black robe)
 *
 M 0 5207 4 5232             lizard
 M 0 5207 4 5217             lizard
@@ -2161,20 +2187,20 @@ M 0 5207 4 5227             lizard
 M 0 5207 4 5244             lizard
 *
 M 0 5208 8 5247             golem SW
-E 1 5221 80 16                (2-handed sword)
+G 1 5221 80 16                (2-handed sword)
 E 1 5224 8 17                 (ebony seal)
 E 1 5200 8 5                  (chainmail vest)
 E 1 5204 8 8                  (mithril boots)
 M 0 5208 8 5246             golem NW
-E 1 5221 80 16                (2-handed sword)
+G 1 5221 80 16                (2-handed sword)
 E 1 5226 8 17                 (ivory seal)
 E 1 5203 8 10                 (mithril sleeves)
 M 0 5208 8 5248             golem NE
-E 1 5221 80 16                (2-handed sword)
+G 1 5221 80 16                (2-handed sword)
 E 1 5205 8 7                  (mithril leggings)
 E 1 5206 8 13                 (mithril girth)
 M 0 5208 8 5254             golem SE
-E 1 5221 80 16                (2-handed sword)
+G 1 5221 80 16                (2-handed sword)
 E 1 5201 8 6                  (mithril helm)
 E 1 5202 8 9                  (mithril gauntlets)
 *
@@ -2206,7 +2232,6 @@ S
 
 
 #SPECIALS
-M  5200 spec_cast_mage
 S
 
 

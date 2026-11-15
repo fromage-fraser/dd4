@@ -1581,6 +1581,7 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Convert Thalos mobs; add native eye rays, lamia touch and mimic glue.
 - Convert Old Thalos mobs; add stone-golem Slow and preserve city services.
 - Convert Cobresh mobs; add ancient fire wyrm, fiery demon and hell hound profiles.
 - Convert Highlands mobs; rebuild fire elementals and preserve bogleech behaviour.
@@ -10266,6 +10267,24 @@ they keep their existing hunger, thirst and drowning exceptions.
 For builders: use Scribe's bf field. Skeleton and zombie templates inherit
 all three flags. Repeating an inherited flag in an individual mask removes
 that flag through XOR, but independent restrictions can still apply.
+~
+
+0 UNMAKING 'UNMAKING RAY'~
+A beholder's Unmaking ray deals magical energy damage. A saving throw halves
+that damage. Ordinary damage, death and loot rules apply.
+~
+
+0 'LAMIA TOUCH'~
+A lamia's touch can cloud your judgement, temporarily reducing Wisdom.
+The penalty builds to -3 across all lamias and lasts four ticks. Further
+successful touches below the cap refresh it. The condition cannot push your
+Wisdom below 3. Your stolen clarity returns when the condition wears off.
+~
+
+0 'MIMIC GLUE'~
+A mimic can hold you with an adhesive pseudopod. A saving throw prevents
+the grip. It lasts one tick and cannot stack or refresh while you are held.
+Separation or the mimic's death releases its grip. Freedom also frees you.
 ~
 
 0 $~

@@ -3583,7 +3583,15 @@ static bool consumable_user_alive(CHAR_DATA *ch, int killed)
             && (IS_NPC(ch) || ch->pcdata->killed == killed);
 }
 
+static void do_eat_activation(CHAR_DATA *ch, char *argument);
 void do_eat(CHAR_DATA *ch, char *argument)
+{
+        MAGIC_ACTIVATION_DATA activation;
+        begin_magic_activation(&activation, ch);
+        do_eat_activation(ch, argument);
+        end_magic_activation(&activation);
+}
+static void do_eat_activation(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
         OBJ_DATA *pouch;
@@ -4940,7 +4948,15 @@ void do_sacrifice(CHAR_DATA *ch, char *argument)
         extract_obj(obj);
 }
 
+static void do_smear_activation(CHAR_DATA *ch, char *argument);
 void do_smear(CHAR_DATA *ch, char *argument)
+{
+        MAGIC_ACTIVATION_DATA activation;
+        begin_magic_activation(&activation, ch);
+        do_smear_activation(ch, argument);
+        end_magic_activation(&activation);
+}
+static void do_smear_activation(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
         OBJ_DATA *pouch;
@@ -5036,7 +5052,15 @@ void do_smear(CHAR_DATA *ch, char *argument)
         return;
 }
 
+static void do_quaff_activation(CHAR_DATA *ch, char *argument);
 void do_quaff(CHAR_DATA *ch, char *argument)
+{
+        MAGIC_ACTIVATION_DATA activation;
+        begin_magic_activation(&activation, ch);
+        do_quaff_activation(ch, argument);
+        end_magic_activation(&activation);
+}
+static void do_quaff_activation(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj;
         OBJ_DATA *pouch;
@@ -5182,7 +5206,15 @@ static bool spell_object_present(CHAR_DATA *ch, OBJ_DATA *obj)
         return FALSE;
 }
 
+static void do_recite_activation(CHAR_DATA *ch, char *argument);
 void do_recite(CHAR_DATA *ch, char *argument)
+{
+        MAGIC_ACTIVATION_DATA activation;
+        begin_magic_activation(&activation, ch);
+        do_recite_activation(ch, argument);
+        end_magic_activation(&activation);
+}
+static void do_recite_activation(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *scroll;
         OBJ_DATA *obj;
@@ -5272,7 +5304,15 @@ void do_recite(CHAR_DATA *ch, char *argument)
         return;
 }
 
+static void do_brandish_activation(CHAR_DATA *ch, char *argument);
 void do_brandish(CHAR_DATA *ch, char *argument)
+{
+        MAGIC_ACTIVATION_DATA activation;
+        begin_magic_activation(&activation, ch);
+        do_brandish_activation(ch, argument);
+        end_magic_activation(&activation);
+}
+static void do_brandish_activation(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *staff;
         CHAR_DATA *vch;
@@ -5413,7 +5453,15 @@ void do_brandish(CHAR_DATA *ch, char *argument)
         return;
 }
 
+static void do_smoke_activation(CHAR_DATA *ch, char *argument);
 void do_smoke(CHAR_DATA *ch, char *argument)
+{
+        MAGIC_ACTIVATION_DATA activation;
+        begin_magic_activation(&activation, ch);
+        do_smoke_activation(ch, argument);
+        end_magic_activation(&activation);
+}
+static void do_smoke_activation(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *pipe;
         OBJ_DATA *smokeable;
@@ -5743,7 +5791,15 @@ void do_clean(CHAR_DATA *ch, char *argument)
         return;
 }
 
+static void do_zap_activation(CHAR_DATA *ch, char *argument);
 void do_zap(CHAR_DATA *ch, char *argument)
+{
+        MAGIC_ACTIVATION_DATA activation;
+        begin_magic_activation(&activation, ch);
+        do_zap_activation(ch, argument);
+        end_magic_activation(&activation);
+}
+static void do_zap_activation(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *wand;
         OBJ_DATA *obj;

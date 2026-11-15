@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 15 November 2026
-Based on master a8a4e331ff3ac9656fb7c5c113858b10a2660538 (PR #977),
-with the accompanying Old Thalos changes.
+Based on master 0fbd615976370e6bcf13334ade94979fba13f733 (PR #978),
+with the accompanying Thalos changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -911,10 +911,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 203, so this single example would make 204.
+guide's checked revision it is 206, so this single example would make 207.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 203.
+valid index. This example would receive index 206.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1607,6 +1607,118 @@ attacks. Held Ioun stones stay held. Rank remains an individual encounter
 choice: Gordon is elite; the golems and the other inhabitants are common.
 The two teacher lists and all six shops keep their authored services.
 
+THALOS: NATIVE POWERS AND ACTIVATIONS
+====================================
+Thalos creatures
+----------------
+
+beholder, lamia and mimic append at IDs 203-205. MAX_MOB is 206;
+earlier profiles keep their indices. No basic species or area field
+is added. The internal trait catalogue gains antimagic_gaze_pct.
+The ordinary archetype field selects these creatures in Scribe.
+
+beholder uses the living limbless_invertebrate body, with a head,
+central eye, eyestalks, fangs, heart, brain and gut, but no arms or
+legs. It can speak. Flight represents levitation without wings.
+Defaults are 180 cm body diameter/length, 250 kg, Medium, -10 natural
+armour, no elemental resistance or blanket magic immunity. An ordinary
+fang bite is physical contact; the native rays are magical abilities.
+
+spec_beholder has a 50 percent attempt per eligible opportunity,
+choosing one eligible ray: Slow, Fear, Sleep, Cause Serious, normal
+NPC-only Charm Person or Unmaking. It skips redundant Slow/Sleep and
+illegal charm targets. It needs usable head/eyes and sight, not hands
+or speech. Normal saves, resistances, phase, action, safety and player
+order rules remain. One opportunity produces one ray, not ten casts.
+
+Unmaking is deliberately named differently from Disintegrate. It deals
+level + random(level, 2*level) MAGIC|ENERGY damage, save for half.
+It never destroys equipment, invokes automatic execution or suppresses
+a normal corpse. A lethal damage hit still uses ordinary death rules.
+Telekinesis, petrification and a separate death-ray instant kill are
+not supplied by this profile.
+
+antimagic_gaze_pct is a code-only percentage, 25 on beholder. An awake,
+uncharmed, able, living source with usable head/eyes can counter its
+visible current opponent's magical activation in the same room.
+One casting, native special or spell-item use shares one decision,
+including multi-spell consumables and multi-target staves. Several
+eligible sources use the strongest percentage once. A nested distinct
+activation gets its own scope. Pure nonmagical psionics, physical skills
+and physical animal specials do not trigger it. Existing buffs/passive
+worn effects remain. Death, separation, blindness/head injury or loss
+of the eligible combat state stops it immediately. It never sets a
+room flag or leaves a persistent cone. This is a focused DD4 adaptation
+of brief central-eye pulses, not the complete second-edition cone.
+
+The countered activation follows its normal resource/item use: the
+attempt still spends its normal mana, charges or consumable. Invalid
+casts and item targets still fail their ordinary checks. No extra
+counterspell roll is made for each effect or target of that activation.
+Native spell callers use cast_native_spell with the actual function
+pointer and SN; run_mob_special supplies their activation scope. An
+innate physical routine must not be routed through this magical check.
+
+lamia uses centauroid_mammal: living organs, human upper body/arms,
+four legs, paws, claws and tail; 150 cm ground-to-head, 140 kg,
+210 cm length, Medium and -7 natural armour. It adds no ordinary
+claw attack or compulsory behaviour. The tame_lamia profile is unchanged.
+spec_lamia has a 25 percent attempt, selecting an eligible Wisdom touch,
+self Displacement or normal Charm Person. Player charm and protected
+NPC targets remain excluded. Displacement retains its normal duration
+and non-stacking policy; this is an illusion approximation, not a new
+mirror-image engine or sourcebook once-per-day charge system.
+
+The touch uses normal magical/charm and supernatural-control defences.
+It needs usable arms and real close contact with a minded target.
+Each failed save adds -1 Wisdom, capped at -3 across all lamias, for
+four ticks. Effective Wisdom cannot be pushed below 3 by this condition.
+Successful additions below the cap refresh its duration; capped or
+resisted attempts do not. NPC Wisdom reflects this condition too.
+It causes no permanent loss, player obedience, extra damage or Drained.
+
+mimic uses amorphous_organism, with no fixed head/arms/legs but living
+brain/gut/heart, distributed sight and pseudopods. It can bleed, feel
+pain, have a soul and leave a corpse. It is not ACT_OBJECT, inorganic
+or mindless. Default speech can be removed individually, as for chest
+5202. Defaults are 90 cm/500 kg/240 cm, Large without HUGE, -3 natural
+armour, infrared, acid immunity and existing sunlight accuracy -1.
+Its ordinary attack is a blunt pound. Native glue needs no head or voice.
+
+spec_mimic has a 25 percent physical adhesive-grab attempt against its
+current close opponent. A normal NONMAGIC|HOLD save prevents it.
+Otherwise it applies one tick of Hold, without damage, stacking or
+refresh. The effect records its live creature source; movement or death
+releases only that grip. It cannot survive logout/reload. Another source's
+hold is preserved. Freedom removes the adhesive condition through its
+normal cure path. No weapon theft/sticking or solvent command is added.
+Creature-sourced affects show (C) in the existing affect origin display.
+
+lamia touch, mimic glue and unmaking ray are internal effect names,
+not player-learnable spells or new services. They use spell_null in the
+player spell table and do not belong in class training groups. Native
+power routines supply their actual actions.
+
+Thalos 5200 is Elite; all eight other definitions stay Common. Rank HP
+applies once. The beholder's shield/cloak, mimic lights/robe and four
+golem swords become carried loot. Golem armour and both actual seal keys
+stay in their original slots. The golem reuses stone_golem and its Slow.
+All original base levels, build numbers, alignments, sexes, aggression,
+passivity, wandering, Scavenger, Sentinel, Stay Area and Wimpy remain.
+The twenty wild lamias keep their daggers and original reset cap/order.
+
+Mimic disguise overrides keep 500 kg: boulder160 cm/220 cm length;
+floor20/450; pottery60/300; planks45/400. The small horned lizard uses
+5 cm/unknown whole-kg weight0/20 cm/Small, individual anatomical horns
+and the existing ordinary nonvenomous lizard bite. No extra horn attack.
+All dimensions remain descriptive DD4 estimates; size and HUGE differ.
+
+All 80 rooms/flags/exits, 39 original objects, imported Drow reset rows,
+keys/container chain, original loot, placements and caps are preserved.
+There are no NO_UNDEAD rooms, shops, teachers or matching Scribe source
+in Thalos. The four existing source/area pairs elsewhere stay unchanged.
+The baby beholder and tame lamias in Old Thalos keep their existing powers.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 33 current rows, including reserved. The index is not an
@@ -1652,7 +1764,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 203 current table rows follow, grouped by body. Numeric IDs are for
+All 206 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved numeric Small/Medium/Large metadata, not HUGE.
@@ -2139,7 +2251,7 @@ HEAD_ONLY (2)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-LIMBLESS_INVERTEBRATE (6)
+LIMBLESS_INVERTEBRATE (7)
 ---------------------------
   [ 48] rock_worm: h/w/l 150 / 8000 / 800; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -2159,6 +2271,9 @@ LIMBLESS_INVERTEBRATE (6)
   [200] baby_beholder: h/w/l 45 / 12 / 45; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_mage; policy auto
+  [203] beholder: h/w/l 180 / 250 / 180; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+15; phase none
+        specials 1:spec_beholder; policy auto
 
 LIMBLESS_CONSTRUCT (4)
 ------------------------
@@ -2175,7 +2290,7 @@ LIMBLESS_CONSTRUCT (4)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-CENTAUROID_MAMMAL (2)
+CENTAUROID_MAMMAL (3)
 -----------------------
   [ 59] centaur: h/w/l 260 / 600 / 250; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -2183,6 +2298,9 @@ CENTAUROID_MAMMAL (2)
   [201] tame_lamia: h/w/l 150 / 140 / 210; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [204] lamia: h/w/l 150 / 140 / 210; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_lamia; policy auto
 
 QUADRUPEDAL_HYBRID (1)
 ------------------------
@@ -2208,7 +2326,7 @@ CRUSTACEAN (1)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-AMORPHOUS_ORGANISM (2)
+AMORPHOUS_ORGANISM (3)
 ------------------------
   [ 91] green_ooze: h/w/l 30 / 80 / 150; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -2216,6 +2334,9 @@ AMORPHOUS_ORGANISM (2)
   [ 92] yochlol: h/w/l 180 / 100 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials none; policy auto
+  [205] mimic: h/w/l 90 / 500 / 240; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_mimic; policy auto
 
 FISH (5)
 ----------
@@ -2369,7 +2490,7 @@ RADIAL_INVERTEBRATE (1)
 
 APPENDIX C. COMPLETE CURRENT TRAIT REFERENCE
 ===========================================
-The named registry currently contains 42 traits. These are internal
+The named registry currently contains 43 traits. These are internal
 profile values, not Scribe fields. Zero disables an inherited value.
 The general validator uses-100..100 plus the effect-specific limits.
 Use named enum constants for natural damage rather than memorised numbers.
@@ -2589,6 +2710,12 @@ A listed parameter needs its existing consumer and any capability/special gate.
     Ordinary unarmed NPC hits become magical contact. Weapons, explicit skills, spells
     and players retain their own categories. Does not add a damage hit or make held
     objects magical.
+
+42. antimagic_gaze_pct
+    Value: 0..100 percent
+    One focused counterspell decision per magical activation by the visible current
+    opponent. Live head/eye/action/phase/safety gates apply; strongest eligible source
+    once. No room cone, passive-effect suppression or pure nonmagical psionic block.
 
 APPENDIX D. SCRIBE FLAG AND MASK REFERENCE
 ==========================================
@@ -2962,6 +3089,7 @@ Check native helpers, safety, active-slot policies and XP before reusing one.
     spec_assassin
     spec_banshee
     spec_bear
+    spec_beholder
     spec_bloodsucker
     spec_blue_grung
     spec_bounty
@@ -3027,10 +3155,12 @@ Check native helpers, safety, active-slot policies and XP before reusing one.
     spec_kappa
     spec_kungfu_poison
     spec_laghathti
+    spec_lamia
     spec_large_whale
     spec_lich
     spec_manticore
     spec_mast_vampire
+    spec_mimic
     spec_mummy
     spec_myconid_spores
     spec_orange_grung
@@ -3096,8 +3226,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/a8a4e331ff3ac9656fb7c5c113858b10a2660538
-  Base PR977 plus the accompanying Old Thalos patch.
+  https://github.com/fromage-fraser/dd4/commit/0fbd615976370e6bcf13334ade94979fba13f733
+  Base PR978 plus the accompanying Thalos patch.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -3107,8 +3237,8 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 67/153 areas (43.8%) and 988/4131 mob
-definitions (23.9%) merged and verified. Old Thalos adds 35 definitions in the
+The live conversion is currently 68/153 areas (44.4%) and 1023/4131 mob
+definitions (24.8%) merged and verified. Thalos adds 9 definitions in the
 accompanying patch; count them only after its merge is verified.
 
 END OF GUIDE

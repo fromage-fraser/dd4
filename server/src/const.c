@@ -5704,6 +5704,20 @@ const struct skill_type skill_table[MAX_SKILL] =
          spell_null, 0, 0,
          "strength-draining touch", "Your stolen strength returns."},
 
+        /* Native effect names are for inspection, not player training/casting. */
+        {"lamia touch", &gsn_lamia_touch,
+         TYPE_NULL, TAR_IGNORE, POS_DEAD, RES_MAGIC | RES_CHARM,
+         spell_null, 0, 0,
+         "clouding touch", "Your judgement clears."},
+        {"mimic glue", &gsn_mimic_glue,
+         TYPE_NULL, TAR_IGNORE, POS_DEAD, RES_NONMAGIC | RES_HOLD,
+         spell_null, 0, 0,
+         "adhesive grasp", "You pull free of the adhesive."},
+        {"unmaking ray", &gsn_unmaking_ray,
+         TYPE_NULL, TAR_IGNORE, POS_DEAD, RES_MAGIC | RES_ENERGY,
+         spell_null, 0, 0,
+         "unmaking ray", "!Unmaking Ray!"},
+
         /*
          *  Add new spells/skills at the end of the section just above.  NOWHERE ELSE.
          */
