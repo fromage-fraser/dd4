@@ -635,16 +635,6 @@ void sound_combat_shield_block_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
         sound_combat_skill_sfx( ch, victim, "sfx.combat.shield_block" );
 }
 
-void sound_combat_miss_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
-{
-        sound_combat_skill_sfx( ch, victim, "sfx.combat.miss" );
-}
-
-void sound_combat_dodge_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
-{
-        sound_combat_skill_sfx( ch, victim, "sfx.combat.dodge" );
-}
-
 void sound_combat_blink_sfx( CHAR_DATA *ch, CHAR_DATA *victim )
 {
         sound_combat_skill_sfx( ch, victim, "sfx.combat.blink" );
@@ -1714,11 +1704,20 @@ void sound_sfx_update( void )
 
         for ( d = descriptor_list; d; d = d->next )
         {
+                CHAR_DATA *owner = d->original ? d->original : d->character;
                 SFX_EVENT *e;
                 char opts[256];
 
                 if ( !d->pProtocol )
                         continue;
+
+                if ( !owner || !owner->pcdata || !owner->pcdata->snd_enabled
+                ||   owner->pcdata->snd_master <= 0 )
+                {
+                        if ( d->sfx_head != d->sfx_tail || d->sfx_cooldown > 0 )
+                                sfx_queue_clear(d);
+                        continue;
+                }
 
                 /* Always tick cooldown, even if queue is empty. */
                 if ( d->sfx_cooldown > 0 )
@@ -2892,6 +2891,9 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
         {
             ch->pcdata->snd_enabled = set ? TRUE : FALSE;
 
+            if (!set)
+                    sfx_queue_clear(ch->desc);
+
             if (!set && ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
             {
                 /* Fade everything out politely if turning sound off */
@@ -3157,11 +3159,12 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
             send_to_char(buf, ch);
         }
 
-        if ((!ch->pcdata->snd_enabled || ch->pcdata->snd_master == 0) &&
-            ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
+        if (!ch->pcdata->snd_enabled || ch->pcdata->snd_master == 0)
         {
-            GMCP_Media_Stop(ch->desc, "\"fadeaway\":true,\"fadeout\":800");
-            return;
+                sfx_queue_clear(ch->desc);
+                if (ch->desc && ch->desc->pProtocol && ch->desc->pProtocol->bGMCP)
+                        GMCP_Media_Stop(ch->desc, "\"fadeaway\":true,\"fadeout\":800");
+                return;
         }
 
         if ((slot == &ch->pcdata->snd_env)
@@ -3264,7 +3267,17 @@ void do_sconfig( CHAR_DATA *ch, char *argument )
     }
 }
 
-void sound_combat_skill_sfx( CHAR_DATA *ch, CHAR_DATA *victim, const char *key )
+enum combat_sfx_audience
+{
+        SFX_ATTACKER = 1,
+        SFX_VICTIM   = 2,
+        SFX_ROOM     = 4,
+        SFX_ALL      = SFX_ATTACKER | SFX_VICTIM | SFX_ROOM
+};
+
+static void sound_combat_event_sfx(CHAR_DATA *ch, CHAR_DATA *victim,
+                                   const char *key, unsigned int audience,
+                                   bool match_combat_text)
 {
         const sound_event_def *ev;
         const char            *file;
@@ -3296,6 +3309,13 @@ void sound_combat_skill_sfx( CHAR_DATA *ch, CHAR_DATA *victim, const char *key )
                 if ( !vch->pcdata || !vch->pcdata->snd_enabled )
                         continue;
 
+                if (match_combat_text && (vch->deleted || !IS_AWAKE(vch)))
+                        continue;
+
+                if (!(audience & (vch == ch ? SFX_ATTACKER :
+                                  vch == victim ? SFX_VICTIM : SFX_ROOM)))
+                        continue;
+
                 if ( !str_prefix("sfx.foley.", key) )
                         vol = media_apply_volume( ev->default_volume, vch, "foley", "sound" );
                 else
@@ -3310,6 +3330,30 @@ void sound_combat_skill_sfx( CHAR_DATA *ch, CHAR_DATA *victim, const char *key )
                              ( ev->tag && *ev->tag ) ? ev->tag : "sfx",
                              1 );
         }
+}
+
+void sound_combat_skill_sfx(CHAR_DATA *ch, CHAR_DATA *victim, const char *key)
+{
+        sound_combat_event_sfx(ch, victim, key, SFX_ALL, FALSE);
+}
+
+void sound_combat_miss_sfx(CHAR_DATA *ch, CHAR_DATA *victim, bool attacker_message)
+{
+        unsigned int audience = SFX_VICTIM | SFX_ROOM;
+
+        if (attacker_message)
+                audience |= SFX_ATTACKER;
+
+        sound_combat_event_sfx(ch, victim, "sfx.combat.miss", audience, TRUE);
+}
+
+void sound_combat_dodge_sfx(CHAR_DATA *ch, CHAR_DATA *victim,
+                            bool attacker_message, bool victim_message)
+{
+        unsigned int audience = (attacker_message ? SFX_ATTACKER : 0)
+                              | (victim_message ? SFX_VICTIM : 0);
+
+        sound_combat_event_sfx(ch, victim, "sfx.combat.dodge", audience, TRUE);
 }
 
 void sound_morph_sfx( CHAR_DATA *ch )

@@ -126,6 +126,7 @@ NOTE_DATA *new_note ()
 
         /* Zero all the fields - Envy does not guarantee zeroed memory */
         note->next = NULL;
+        note->draft_board = NULL;
         note->sender = NULL;
         note->expire = 0;
         note->to_list = NULL;
@@ -537,17 +538,12 @@ int unread_notes (CHAR_DATA *ch, BOARD_DATA *board)
 /* Start writing a note */
 static void do_nwrite (CHAR_DATA *ch, char *argument)
 {
+        BOARD_DATA *board;
         char *strtime;
         char buf[200];
 
         if (IS_NPC(ch)) /* NPC cannot post notes */
                 return;
-
-        if (get_trust(ch) < ch->pcdata->board->write_level)
-        {
-                send_to_char ("You cannot post notes on this board.\n\r",ch);
-                return;
-        }
 
         /* continue previous note, if any text was written*/
         if (ch->pcdata->in_progress && (!ch->pcdata->in_progress->text))
@@ -559,9 +555,18 @@ static void do_nwrite (CHAR_DATA *ch, char *argument)
         }
 
 
+        board = ch->pcdata->in_progress ? ch->pcdata->in_progress->draft_board
+                                       : ch->pcdata->board;
+        if (!board || get_trust(ch) < board->write_level)
+        {
+                send_to_char("You cannot post notes on that board.\n\r", ch);
+                return;
+        }
+
         if (!ch->pcdata->in_progress)
         {
                 ch->pcdata->in_progress = new_note();
+                ch->pcdata->in_progress->draft_board = board;
                 ch->pcdata->in_progress->sender = str_dup (ch->name);
 
                 /* convert to ascii. ctime returns a string which last character is \n, so remove that */
@@ -576,7 +581,7 @@ static void do_nwrite (CHAR_DATA *ch, char *argument)
         if (ch->pcdata->in_progress->text)
         {
                 const char *format =
-                        "You are now continuing a new note on the {W%s{x board.\n\r"
+                        "You are now continuing your note on the {W%s{x board.\n\r"
                         "If you are using tintin, type #verbose to turn off alias expansion!\n\r\n\r"
                         "{YFrom{x:    %s\n\r\n\r{YTo{x:      %s\n\r"
                         "{YExpires{x: %s\n\r{YSubject{x: %s\n\r"
@@ -586,7 +591,7 @@ static void do_nwrite (CHAR_DATA *ch, char *argument)
                 int length;
 
                 ch->desc->connected = CON_NOTE_TEXT;
-                length = snprintf(NULL, 0, format, ch->pcdata->board->short_name,
+                length = snprintf(NULL, 0, format, board->short_name,
                                   ch->name, note->to_list, ctime(&note->expire),
                                   note->subject, note->text);
                 if (length < 0 || (preview = malloc((size_t)length + 1)) == NULL)
@@ -596,7 +601,7 @@ static void do_nwrite (CHAR_DATA *ch, char *argument)
                         return;
                 }
                 snprintf(preview, (size_t)length + 1, format,
-                         ch->pcdata->board->short_name, ch->name, note->to_list,
+                         board->short_name, ch->name, note->to_list,
                          ctime(&note->expire), note->subject, note->text);
                 if (!send_to_char_paged(preview, ch))
                         note_preview_prompt(ch->desc);
@@ -608,7 +613,7 @@ static void do_nwrite (CHAR_DATA *ch, char *argument)
         sprintf (buf, "You are now %s a new note on the {W%s{x board.\n\r"
                       "If you are using tintin, type #verbose to turn off alias expansion!\n\r\n\r",
                        ch->pcdata->in_progress->text ? "continuing" : "posting",
-                       ch->pcdata->board->short_name);
+                       board->short_name);
         send_to_char (buf,ch);
 
         sprintf (buf, "{YFrom{x:    %s\n\r\n\r", ch->name);
@@ -616,20 +621,20 @@ static void do_nwrite (CHAR_DATA *ch, char *argument)
 
         if (!ch->pcdata->in_progress->text) /* Are we continuing an old note or not? */
         {
-                switch (ch->pcdata->board->force_type)
+                switch (board->force_type)
                 {
                 case DEF_NORMAL:
                         sprintf (buf, "If you press Return, default recipient '{W%s{x' will be chosen.\n\r",
-                                 ch->pcdata->board->names);
+                                 board->names);
                         break;
                 case DEF_INCLUDE:
                         sprintf (buf, "The recipient list MUST include '{W%s{x'. If not, it will be added automatically.\n\r",
-                                 ch->pcdata->board->names);
+                                 board->names);
                         break;
 
                 case DEF_EXCLUDE:
                         sprintf (buf, "The recipient of this note must NOT include: '{W%s{x'.",
-                                 ch->pcdata->board->names);
+                                 board->names);
                         break;
                 }
 
@@ -1013,8 +1018,10 @@ void handle_con_note_to (DESCRIPTOR_DATA *d, char * argument)
 {
         char buf [MAX_INPUT_LENGTH];
         CHAR_DATA *ch = d->character;
+        NOTE_DATA *note = ch->pcdata->in_progress;
+        BOARD_DATA *board;
 
-        if (!ch->pcdata->in_progress)
+        if (!note || !(board = note->draft_board))
         {
                 d->connected = CON_PLAYING;
                 bug ("nanny: In CON_NOTE_TO, but no note in progress",0);
@@ -1030,24 +1037,24 @@ void handle_con_note_to (DESCRIPTOR_DATA *d, char * argument)
         strcpy (buf, argument);
         smash_tilde (buf); /* change ~ to - as we save this field as a string later */
 
-        switch (ch->pcdata->board->force_type)
+        switch (board->force_type)
         {
                 case DEF_NORMAL: /* default field */
                         if (!buf[0]) /* empty string? */
                         {
-                                ch->pcdata->in_progress->to_list = str_dup (ch->pcdata->board->names);
-                                sprintf (buf, "Assumed default recipient: %s\n\r", ch->pcdata->board->names);
+                                note->to_list = str_dup (board->names);
+                                sprintf (buf, "Assumed default recipient: %s\n\r", board->names);
                                 send_to_char(buf, ch);
                         }
                         else
-                                ch->pcdata->in_progress->to_list = str_dup (buf);
+                                note->to_list = str_dup (buf);
 
                         break;
 
                 case DEF_INCLUDE: /* forced default */
-                        if (!is_full_name (ch->pcdata->board->names, buf))
+                        if (!is_full_name (board->names, buf))
                         {
-                                if (strlen(buf) + strlen(ch->pcdata->board->names) + 2 > sizeof(buf))
+                                if (strlen(buf) + strlen(board->names) + 2 > sizeof(buf))
                                 {
                                         send_to_char("Recipient list too long to add the required recipient. Try again.\n\r"
                                                      "{YTo{x:      ", ch);
@@ -1055,30 +1062,30 @@ void handle_con_note_to (DESCRIPTOR_DATA *d, char * argument)
                                 }
 
                                 strcat (buf, " ");
-                                strcat (buf, ch->pcdata->board->names);
-                                ch->pcdata->in_progress->to_list = str_dup(buf);
+                                strcat (buf, board->names);
+                                note->to_list = str_dup(buf);
 
                                 send_to_char("\n\rYou did not specify ", ch);
-                                send_to_char(ch->pcdata->board->names, ch);
+                                send_to_char(board->names, ch);
                                 send_to_char(" as recipient, so it was automatically added.\n\r"
                                              "{YNew To{x:  ", ch);
-                                send_to_char(ch->pcdata->in_progress->to_list, ch);
+                                send_to_char(note->to_list, ch);
                                 send_to_char("\n\r", ch);
                         }
                         else
-                                ch->pcdata->in_progress->to_list = str_dup (buf);
+                                note->to_list = str_dup (buf);
                         break;
 
                 case DEF_EXCLUDE: /* forced exclude */
-                        if (is_full_name (ch->pcdata->board->names, buf))
+                        if (is_full_name (board->names, buf))
                         {
                                 sprintf (buf, "You are not allowed to send notes to %s on this board. Try again.\n\r"
-                                         "{YTo{x:      ", ch->pcdata->board->names);
+                                         "{YTo{x:      ", board->names);
                                 send_to_char(buf, ch);
                                 return; /* return from nanny, not changing to the next state! */
                         }
                         else
-                                ch->pcdata->in_progress->to_list = str_dup (buf);
+                                note->to_list = str_dup (buf);
                         break;
 
         }
@@ -1091,8 +1098,10 @@ void handle_con_note_subject (DESCRIPTOR_DATA *d, char * argument)
 {
         char buf [MAX_INPUT_LENGTH];
         CHAR_DATA *ch = d->character;
+        NOTE_DATA *note = ch->pcdata->in_progress;
+        BOARD_DATA *board;
 
-        if (!ch->pcdata->in_progress)
+        if (!note || !(board = note->draft_board))
         {
                 d->connected = CON_PLAYING;
                 bug ("nanny: In CON_NOTE_SUBJECT, but no note in progress",0);
@@ -1115,23 +1124,23 @@ void handle_con_note_subject (DESCRIPTOR_DATA *d, char * argument)
         else
         /* advance to next stage */
         {
-                ch->pcdata->in_progress->subject = str_dup(buf);
+                note->subject = str_dup(buf);
 
                 if (IS_IMMORTAL(ch)) /* immortals get to choose number of expire days */
                 {
                         sprintf (buf,"\n\rHow many days do you want this note to expire in?\n\r"
                                      "Press Enter for default value for this board: %d days.\n\r"
                                      "{YExpire{x:  ",
-                                 ch->pcdata->board->purge_days);
+                                 board->purge_days);
                         send_to_char(buf, ch);
                         d->connected = CON_NOTE_EXPIRE;
                 }
                 else
                 {
-                        ch->pcdata->in_progress->expire =
-                                current_time + ch->pcdata->board->purge_days * 24L * 3600L;
+                        note->expire =
+                                current_time + board->purge_days * 24L * 3600L;
                         sprintf (buf, "This note will expire %s\r",
-                                 ctime(&ch->pcdata->in_progress->expire));
+                                 ctime(&note->expire));
                         send_to_char(buf, ch);
                         send_to_char("\n\rEnter text. Type '{W~{x' or '{WEND{x' on an empty line to end note.\n\r"
                                             "---------------------------------------------------------------------------\n\r", ch);
@@ -1143,11 +1152,13 @@ void handle_con_note_subject (DESCRIPTOR_DATA *d, char * argument)
 void handle_con_note_expire(DESCRIPTOR_DATA *d, char * argument)
 {
         CHAR_DATA *ch = d->character;
+        NOTE_DATA *note = ch->pcdata->in_progress;
+        BOARD_DATA *board;
         char buf[MAX_STRING_LENGTH];
         time_t expire;
         int days;
 
-        if (!ch->pcdata->in_progress)
+        if (!note || !(board = note->draft_board))
         {
                 d->connected = CON_PLAYING;
                 bug ("nanny: In CON_NOTE_EXPIRE, but no note in progress",0);
@@ -1157,7 +1168,7 @@ void handle_con_note_expire(DESCRIPTOR_DATA *d, char * argument)
         /* Numeric argument. no tilde smashing */
         strcpy (buf, argument);
         if (!buf[0]) /* assume default expire */
-                days =  ch->pcdata->board->purge_days;
+                days =  board->purge_days;
         else /* use this expire */
                 if (!is_number(buf))
                 {
@@ -1178,7 +1189,7 @@ void handle_con_note_expire(DESCRIPTOR_DATA *d, char * argument)
 
         expire = current_time + (days*24L*3600L); /* 24 hours, 3600 seconds */
 
-        ch->pcdata->in_progress->expire = expire;
+        note->expire = expire;
 
         /* note that ctime returns XXX\n so we only need to add an \r */
 
@@ -1280,6 +1291,7 @@ void handle_con_note_finish (DESCRIPTOR_DATA *d, char * argument)
 
         CHAR_DATA *ch = d->character;
         NOTE_DATA *note = ch->pcdata->in_progress;
+        BOARD_DATA *board = note ? note->draft_board : NULL;
 
                 if (!note)
                 {
@@ -1317,6 +1329,14 @@ void handle_con_note_finish (DESCRIPTOR_DATA *d, char * argument)
                                 break;
 
                         case 'p': /* post note */
+                                if (!board || get_trust(ch) < board->write_level)
+                                {
+                                        write_to_buffer(d,
+                                            "You cannot post notes on that board.\n\r", 0);
+                                        note_preview_prompt(d);
+                                        break;
+                                }
+
                                 if (!note->text
                                 || note->text[strspn(note->text, " \t\r\n\v\f")] == '\0')
                                 {
@@ -1326,17 +1346,18 @@ void handle_con_note_finish (DESCRIPTOR_DATA *d, char * argument)
                                         break;
                                 }
 
-                                finish_note (ch->pcdata->board, note);
+                                note->draft_board = NULL;
+                                finish_note (board, note);
                                 write_to_buffer (d, "Note posted.\n\r",0);
                                 d->connected = CON_PLAYING;
                                 /* remove AFK status */
                                 ch->pcdata->in_progress = NULL;
                                 act ("{G$c finishes $s note.{x", ch, NULL, NULL, TO_ROOM);
 
-                                if (ch->pcdata->board->announce_post)
+                                if (board->announce_post)
                                 {
                                         sprintf(buf, "%s has posted a new note on Board %s.",
-                                                ch->name, ch->pcdata->board->short_name);
+                                                ch->name, board->short_name);
                                         do_info(ch, buf);
                                 }
                                 break;

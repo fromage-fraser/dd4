@@ -19,7 +19,6 @@
  */
 
 int tournament_entrant_count [TOURNAMENT_MAX_TEAMS];
-int tournament_banned_count;
 int tournament_status;
 int tournament_type;
 int tournament_lower_level;
@@ -29,7 +28,6 @@ int tournament_team_count;
 int tournament_countdown;
 
 struct tournament_entrant tournament_entrants [TOURNAMENT_MAX_TEAMS] [TOURNAMENT_MAX_ENTRANTS];
-CHAR_DATA *tournament_banned [TOURNAMENT_MAX_BANNED];
 
 struct tournament_team tournament_teams [TOURNAMENT_MAX_TEAMS] =
 {
@@ -55,6 +53,10 @@ void ban_from_tournament (CHAR_DATA *ch, char *argument);
 void set_tournament (CHAR_DATA *ch, char *argument);
 void print_entrant_info (CHAR_DATA *ch);
 void transfer_entrants ();
+
+/* Player names identify characters independently of their login session. */
+static char *tournament_banned_names[TOURNAMENT_MAX_BANNED];
+static int tournament_banned_count;
 
 bool tournament_team_alive [TOURNAMENT_MAX_TEAMS];
 int tournament_tag_order [TOURNAMENT_MAX_TEAMS] [TOURNAMENT_MAX_ENTRANTS];
@@ -124,6 +126,11 @@ void tournament_init ()
         tournament_type = TOURNAMENT_TYPE_OPEN;
         tournament_team_count = 0;
         tournament_options = 0;
+        for (i = 0; i < tournament_banned_count; i++)
+        {
+                free_string(tournament_banned_names[i]);
+                tournament_banned_names[i] = NULL;
+        }
         tournament_banned_count = 0;
         tournament_countdown = 0;
         tournament_host = NULL;
@@ -301,7 +308,7 @@ void enter_tournament (CHAR_DATA *ch, char *arg)
 
         for (i = 0; i < tournament_banned_count; i++)
         {
-                if (ch == tournament_banned[i])
+                if (!str_cmp(ch->name, tournament_banned_names[i]))
                 {
                         send_to_char("Sorry, you are banned from this tournament.\n\r", ch);
                         return;
@@ -576,7 +583,8 @@ void ban_from_tournament (CHAR_DATA *ch, char *argument)
                         return;
                 }
                 
-                if (tournament_banned_count == TOURNAMENT_MAX_BANNED)
+                if (!IS_NPC(victim)
+                    && tournament_banned_count == TOURNAMENT_MAX_BANNED)
                 {
                         send_to_char("Can't ban anymore characters.\n\r", ch);
                         return;
@@ -587,8 +595,10 @@ void ban_from_tournament (CHAR_DATA *ch, char *argument)
                 sprintf(buf, "%s has been removed from the tournament!", victim->name);
                 tournament_message(buf, victim);
 
+                if (!IS_NPC(victim))
+                        tournament_banned_names[tournament_banned_count++] =
+                                str_dup(victim->name);
                 remove_from_tournament(victim);
-                tournament_banned[tournament_banned_count++] = victim;
         }
 }
 

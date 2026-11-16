@@ -272,7 +272,10 @@ void scan(CHAR_DATA *ch, int door)
                         list = ch->in_room->people;
                         for (rch = list; rch; rch = rch->next_in_room)
                         {
-                                if (can_see(ch, rch) && (!IS_AFFECTED(rch, AFF_HIDE) || is_affected(ch, gsn_clairvoyance)))
+                                if (can_see(ch, rch)
+                                && (!IS_AFFECTED(rch, AFF_HIDE)
+                                    || IS_AFFECTED(ch, AFF_DETECT_HIDDEN)
+                                    || is_affected(ch, gsn_clairvoyance)))
                                 {
                                         found = TRUE;
 
@@ -933,12 +936,10 @@ static void move_char_internal(CHAR_DATA *ch, int door, bool fleeing)
                     ch);
         }
 
-        /* Lets check we're a pc BEFORE we call the trigger */
-        if (!IS_NPC(ch))
-        {
-                mprog_entry_trigger(ch); /* for mob programs - Brutus */
-                mprog_greet_trigger(ch); /* for mob programs - Brutus */
-        }
+        if (IS_NPC(ch))
+                mprog_entry_trigger(ch);
+        else
+                mprog_greet_trigger(ch);
 }
 
 void do_north(CHAR_DATA *ch, char *argument)

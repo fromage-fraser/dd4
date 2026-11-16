@@ -2206,13 +2206,29 @@ void mprog_death_trigger( CHAR_DATA *mob )
 
 void mprog_entry_trigger( CHAR_DATA *mob )
 {
+        struct entry_prog_frame
+        {
+                CHAR_DATA *mob;
+                struct entry_prog_frame *previous;
+        };
+        static struct entry_prog_frame *active_entry;
+        struct entry_prog_frame frame;
+        struct entry_prog_frame *active;
 
- if ( IS_NPC( mob )
-     && ( mob->pIndexData->progtypes & ENTRY_PROG ) )
-   mprog_percent_check( mob, NULL, NULL, NULL, ENTRY_PROG );
+        if (!IS_NPC(mob) || !mob->pIndexData || IS_AFFECTED(mob, AFF_CHARM)
+        || !IS_SET(mob->pIndexData->progtypes, ENTRY_PROG))
+                return;
 
- return;
+        /* A script that moves its own mob must not recursively fire itself. */
+        for (active = active_entry; active; active = active->previous)
+                if (active->mob == mob)
+                        return;
 
+        frame.mob = mob;
+        frame.previous = active_entry;
+        active_entry = &frame;
+        mprog_percent_check(mob, NULL, NULL, NULL, ENTRY_PROG);
+        active_entry = frame.previous;
 }
 
 void mprog_fight_trigger( CHAR_DATA *mob, CHAR_DATA *ch )

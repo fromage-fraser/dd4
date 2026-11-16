@@ -811,19 +811,37 @@ static OBJ_DATA *overweight_weapon(OBJ_DATA *primary, OBJ_DATA *secondary,
         return NULL;
 }
 
+/* Ranged-slot objects contribute these affects only while held to shoot. */
+static int object_wield_strength(const OBJ_DATA *obj)
+{
+        const AFFECT_DATA *paf;
+        int strength = 0;
+
+        if (!obj->how_created || obj->how_created == CREATED_PRE_DD5)
+        {
+                for (paf = obj->pIndexData->affected; paf; paf = paf->next)
+                        if (paf->location == APPLY_STR)
+                                strength += paf->modifier;
+        }
+
+        for (paf = obj->affected; paf; paf = paf->next)
+                if (paf->location == APPLY_STR)
+                        strength += paf->modifier;
+
+        return strength;
+}
+
 /*
  * Predict complete unequips without changing affects, equipment or messages.
  * Removed objects are ordered, so a set bonus is lost only at the same
- * threshold crossing as a real unequip. Incoming effects never count here.
+ * threshold crossing as a real unequip.
  */
-int get_wield_limit_after_removals(CHAR_DATA *ch, OBJ_DATA *const *removed,
-                                  int removed_count)
+static int strength_delta_after_removals(CHAR_DATA *ch,
+                                         OBJ_DATA *const *removed,
+                                         int removed_count)
 {
         int modifier = 0;
         int i;
-
-        if (IS_NPC(ch))
-                return str_app[get_curr_str(ch)].wield;
 
         for (i = 0; i < removed_count; i++)
         {
@@ -849,26 +867,36 @@ int get_wield_limit_after_removals(CHAR_DATA *ch, OBJ_DATA *const *removed,
                         }
                 }
 
-                if (obj->wear_loc == WEAR_RANGED_WEAPON)
-                        continue;
-
-                if (!obj->how_created || obj->how_created == CREATED_PRE_DD5)
-                {
-                        for (paf = obj->pIndexData->affected; paf; paf = paf->next)
-                        {
-                                if (paf->location == APPLY_STR)
-                                        modifier -= paf->modifier;
-                        }
-                }
-
-                for (paf = obj->affected; paf; paf = paf->next)
-                {
-                        if (paf->location == APPLY_STR)
-                                modifier -= paf->modifier;
-                }
+                if (obj->wear_loc != WEAR_RANGED_WEAPON)
+                        modifier -= object_wield_strength(obj);
         }
 
+        return modifier;
+}
+
+/* A newly equipped item cannot supply strength for an ordinary WIELD. */
+int get_wield_limit_after_removals(CHAR_DATA *ch, OBJ_DATA *const *removed,
+                                  int removed_count)
+{
+        int modifier = IS_NPC(ch) ? 0
+            : strength_delta_after_removals(ch, removed, removed_count);
+
         return str_app[get_curr_str_modified(ch, modifier)].wield;
+}
+
+/* The bow stays in the same set while it moves out of its ranged slot. */
+bool can_hold_readied_bow(CHAR_DATA *ch, OBJ_DATA *bow,
+                          OBJ_DATA *const *removed, int removed_count)
+{
+        int modifier;
+
+        if (IS_NPC(ch))
+                return TRUE;
+
+        modifier = strength_delta_after_removals(ch, removed, removed_count)
+            + object_wield_strength(bow);
+        return get_obj_weight(bow)
+            <= str_app[get_curr_str_modified(ch, modifier)].wield;
 }
 
 /*
@@ -1875,13 +1903,25 @@ void obj_to_charfromvault( OBJ_DATA *obj, CHAR_DATA *ch )
 }
 
 
+static void clear_morph_slots(CHAR_DATA *ch, const OBJ_DATA *obj)
+{
+        int slot;
+
+        if (IS_NPC(ch) || !ch->pcdata)
+                return;
+
+        for (slot = 0; slot < MAX_WEAR; slot++)
+                if (ch->pcdata->morph_list[slot] == obj)
+                        ch->pcdata->morph_list[slot] = NULL;
+}
+
+
 /*
  * Take an obj from its character.
  */
 void obj_from_char( OBJ_DATA *obj )
 {
         CHAR_DATA *ch;
-        int i;
 
         if ( !( ch = obj->carried_by ) )
         {
@@ -1913,18 +1953,7 @@ void obj_from_char( OBJ_DATA *obj )
                         bug( "Obj_from_char: obj not in list.", 0 );
         }
 
-        /* Clear morph list for shifters - Shade */
-        if (ch->class == CLASS_SHAPE_SHIFTER && !IS_NPC(ch))
-        {
-                for (i=0;i<MAX_WEAR;i++)
-                {
-                        if (ch->pcdata->morph_list[i] == obj)
-                        {
-                                ch->pcdata->morph_list[i] = NULL;
-                                break;
-                        }
-                }
-        }
+        clear_morph_slots(ch, obj);
 
         obj->carried_by = NULL;
         obj->next_content = NULL;
@@ -2214,6 +2243,7 @@ void equip_char( CHAR_DATA *ch, OBJ_DATA *obj, int iWear )
         }
 
         obj->wear_loc = iWear;
+        clear_morph_slots(ch, obj);
         affect_update_depth--;
         check_weapon_weight(ch, NULL);
         update_pos( ch );

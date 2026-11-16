@@ -3561,35 +3561,28 @@ S
 
 === The #ROOMS_AMBIENT section
 
-The section for adding any environmental sounds to rooms.  These instructions
-will override any area-wide (in #AREA_SPECIAL) or terrain-based environmental
-sounds/loops.
+This section adds ambient sound or music to individual rooms.  A room's
+media takes precedence over area and terrain media on the same layer.
 
-The syntax of this section is:
+The syntax is one entry per line:
 
     #ROOMS_AMBIENT
-    {
-     <vnum:number>
-     <relative_filepath:string>
-     <volume:number>
-    }
-    #0
+    <vnum> <relative_filepath> <volume>
+    $
 
-The 'vnum' is the virtual number of the room.
+The 'vnum' is the virtual number of the room.  The relative file path must
+begin with 'ambient/' for environmental sound or 'music/' for music.
 
-The 'relative_filepath' is the relative path to the room sound file.
+Each entry must include a volume from 0 to 100 (0 is muted).  Scribe's input
+defaults to 25, but it still writes an explicit volume into the area file.
 
-The 'volume' is the volume the file should be platyed at (0->100, 0 is muted).
-If volume is omitted, the default of 25 is used (server-configurable).
+Place this section after #ROOMS and end it with '$', not '#0'.
 
-The '$' at the end marks the end of this section.  It is not optional.
-
-This section must be declared after #ROOMS.
-
-An example section from the MUD:
+An example section from Midgaard:
 
 #ROOMS_AMBIENT
-3054 room/3054.mp3 35
+3054 music/room/3054.mp3 15
+3050 ambient/room/3050.mp3 25
 $
 
 

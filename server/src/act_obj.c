@@ -4434,19 +4434,22 @@ void do_remove(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        /* For remove all command (hopefully) - Brutus */
-
         if (!str_cmp(arg, "all"))
         {
-                OBJ_DATA *obj_next;
+                int slots[MAX_WEAR];
+                int count = 0;
+                int i;
 
-                for (obj = ch->carrying; obj; obj = obj_next)
+                /* Unequipping stat gear can drop a weapon from this list. */
+                for (obj = ch->carrying; obj; obj = obj->next_content)
                 {
-                        obj_next = obj->next_content;
-
-                        if (obj->wear_loc != WEAR_NONE)
-                                remove_obj(ch, obj->wear_loc, TRUE);
+                        if (!obj->deleted && obj->wear_loc >= 0
+                            && obj->wear_loc < MAX_WEAR && count < MAX_WEAR)
+                                slots[count++] = obj->wear_loc;
                 }
+
+                for (i = 0; i < count; i++)
+                        remove_obj(ch, slots[i], TRUE);
 
                 /* After remove all, notify web clients of inventory and equipment update */
                 if (!IS_NPC(ch) && ch->desc)

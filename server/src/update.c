@@ -843,36 +843,31 @@ static void gmcp_build_worn_equipment(CHAR_DATA *ch,
         }
 }
 
+int next_stat_to_advance(CHAR_DATA *ch)
+{
+        const int candidates[] = {
+                ch->pcdata->stat_train, class_table[ch->class].attr_prime,
+                APPLY_WIS, APPLY_CON, APPLY_STR, APPLY_INT, APPLY_DEX
+        };
+        size_t i;
+
+        for (i = 0; i < sizeof(candidates) / sizeof(candidates[0]); i++)
+        {
+                if (check_stat_advance(ch, candidates[i]))
+                        return candidates[i];
+        }
+
+        return APPLY_NONE;
+}
+
 void advance_stat(CHAR_DATA *ch)
 {
-        int type = -1;
+        int type;
 
         if (ch->level % 2)
                 return;
 
-        if (check_stat_advance(ch, ch->pcdata->stat_train))
-                type = ch->pcdata->stat_train;
-
-        else if (check_stat_advance(ch, class_table[ch->class].attr_prime))
-                type = class_table[ch->class].attr_prime;
-
-        else if (check_stat_advance(ch, APPLY_WIS))
-                type = APPLY_WIS;
-
-        else if (check_stat_advance(ch, APPLY_CON))
-                type = APPLY_CON;
-
-        else if (check_stat_advance(ch, APPLY_STR))
-                type = APPLY_STR;
-
-        else if (check_stat_advance(ch, APPLY_INT))
-                type = APPLY_INT;
-
-        else if (check_stat_advance(ch, APPLY_DEX))
-                type = APPLY_DEX;
-
-        else
-                return; /* max stats */
+        type = next_stat_to_advance(ch);
 
         switch (type)
         {
@@ -2613,21 +2608,25 @@ void char_update(void)
                                 continue;
                         }
                         if (paf->duration > 0)
-                                paf->duration--;
-                        else
                         {
-                                if (!paf->next || paf->next->type != paf->type || paf->next->duration > 0)
-                                {
-                                        if (paf->type > 0 && skill_table[paf->type].msg_off)
-                                        {
-                                                sound_spell_sfx( ch, paf->type, "wearoff" );
-                                                send_to_char(skill_table[paf->type].msg_off, ch);
-                                                send_to_char("\n\r", ch);
-                                        }
-                                }
-
-                                affect_remove(ch, paf);
+                                paf->duration--;
+                                /* These native effects last exactly the stated ticks. */
+                                if (paf->duration > 0
+                                || (paf->type != gsn_mimic_glue && paf->type != gsn_lamia_touch))
+                                        continue;
                         }
+
+                        if (!paf->next || paf->next->type != paf->type || paf->next->duration > 0)
+                        {
+                                if (paf->type > 0 && skill_table[paf->type].msg_off)
+                                {
+                                        sound_spell_sfx( ch, paf->type, "wearoff" );
+                                        send_to_char(skill_table[paf->type].msg_off, ch);
+                                        send_to_char("\n\r", ch);
+                                }
+                        }
+
+                        affect_remove(ch, paf);
                 }
 
                 /*
@@ -3203,7 +3202,9 @@ void aggr_update()
                                         {
                                                 fch_next = fch->next_in_room;
 
-                                                if (fch->deleted)
+                                                if (ch->deleted || ch->in_room != to_room)
+                                                        break;
+                                                if (fch->deleted || fch->in_room != in_room)
                                                         continue;
 
                                                 if (fch->rider == ch && fch->position == POS_STANDING && ch->in_room != fch->in_room)
@@ -3215,6 +3216,9 @@ void aggr_update()
                                                         move_char(fch, 5);
                                                 }
                                         }
+
+                                        if (ch->deleted || ch->in_room != to_room)
+                                                continue;
 
                                         if (ch->mount && ch->in_room != ch->mount->in_room)
                                         {
@@ -3259,19 +3263,17 @@ void aggr_update()
                                                 if (!survived)
                                                         continue;
 
-                                                if (!IS_NPC(ch))
-                                                {
+                                                if (IS_NPC(ch))
                                                         mprog_entry_trigger(ch);
+                                                else
                                                         mprog_greet_trigger(ch);
-                                                }
                                                 continue;
                                         }
 
-                                        if (!IS_NPC(ch))
-                                        {
+                                        if (IS_NPC(ch))
                                                 mprog_entry_trigger(ch);
+                                        else
                                                 mprog_greet_trigger(ch);
-                                        }
                                 }
                                 else
                                 {
@@ -3843,11 +3845,11 @@ void rem_morph_list(CHAR_DATA *ch, int iWear)
 {
         OBJ_DATA *theObj = ch->pcdata->morph_list[iWear];
 
-        if (!theObj)
-                return;
-
-        equip_char(ch, theObj, iWear);
         ch->pcdata->morph_list[iWear] = NULL;
+
+        if (theObj && !theObj->deleted && theObj->carried_by == ch
+            && theObj->wear_loc == WEAR_NONE)
+                equip_char(ch, theObj, iWear);
 }
 
 bool remove_obj(CHAR_DATA *ch, int iWear, bool fReplace);

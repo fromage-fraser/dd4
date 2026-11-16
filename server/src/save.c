@@ -511,6 +511,23 @@ void fwrite_obj (CHAR_DATA *ch, OBJ_DATA *obj, FILE *fp, int iNest, bool vault)
         fprintf(fp, "WearFlags    %d\n",        obj->wear_flags             );
         fprintf(fp, "EgoFlags     %d\n",        obj->ego_flags              );
         fprintf(fp, "WearLoc      %d\n",        obj->wear_loc               );
+
+        if (!vault && iNest == 0 && obj->wear_loc == WEAR_NONE
+            && !IS_SET(obj->extra_flags, ITEM_BODY_PART))
+        {
+                int slot;
+
+                for (slot = 0; slot < MAX_WEAR; slot++)
+                {
+                        if (ch->pcdata->morph_list[slot] == obj)
+                        {
+                                /* Older readers skip this as a comment. */
+                                fprintf(fp, "*MorphWear   %d\n", slot);
+                                break;
+                        }
+                }
+        }
+
         fprintf(fp, "ItemType     %d\n",        obj->item_type              );
         fprintf(fp, "Identified   %d\n",        obj->identified             );
         fprintf(fp, "Weight       %d\n",        obj->weight                 );
@@ -1454,6 +1471,7 @@ void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
         OBJ_DATA        *obj;
         char            *word;
         int             iNest;
+        int             morph_wear = WEAR_NONE;
         int             stat;
         bool            fMatch;
         bool            fNest;
@@ -1485,8 +1503,21 @@ void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
                 switch (UPPER(word[0]))
                 {
                     case '*':
+                        if (!str_cmp(word, "*MorphWear"))
+                        {
+                                char line[MAX_INPUT_LENGTH];
+                                char trailing;
+                                int slot;
+
+                                if (fgets(line, sizeof(line), fp)
+                                    && sscanf(line, "%2d %c", &slot, &trailing) == 1
+                                    && slot >= 0 && slot < MAX_WEAR)
+                                        morph_wear = slot;
+                        }
+                        else
+                                fread_to_eol(fp);
+
                         fMatch = TRUE;
-                        fread_to_eol(fp);
                         break;
 
                     case 'A':
@@ -1582,6 +1613,14 @@ void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
                                                     obj_to_obj(obj, rgObjNest[iNest-1]);
                                                 }
                                         }
+
+                                        /* Restore the pending slot without equipping at login. */
+                                        if (!vault && iNest == 0 && morph_wear != WEAR_NONE
+                                            && obj->wear_loc == WEAR_NONE
+                                            && !IS_SET(obj->extra_flags, ITEM_BODY_PART)
+                                            && !ch->pcdata->morph_list[morph_wear])
+                                                ch->pcdata->morph_list[morph_wear] = obj;
+
                                         return;
                                 }
                         }
