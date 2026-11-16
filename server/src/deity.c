@@ -1421,7 +1421,7 @@ void update_player_favour (CHAR_DATA *ch, int deity)
                         else if (tmp > 179)
                                 favour -= 2 * step;
                         else if (tmp > 119)
-                                favour -= 3 / 2 * step;
+                                favour -= (3 * step) / 2;
                         else if (tmp > 59)
                                 favour -= step;
                         else if (tmp > 19)

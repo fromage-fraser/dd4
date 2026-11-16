@@ -1925,22 +1925,25 @@ void bust_a_prompt(DESCRIPTOR_DATA *d)
                         i = buf2;
                         break;
                 case 's':
-                        if (!IS_NPC(ch))
+                        switch (player_safety_summary(ch))
                         {
-                                if (IS_SET(ch->in_room->room_flags,
-                                           ROOM_PLAYER_KILLER))
-                                        sprintf(buf2, "{Yarena{x");
-                                else if ((IS_SET(ch->status,
-                                                 PLR_RONIN) ||
-                                          ch->clan) &&
-                                         ch->level > 14 && !(IS_SET(ch->in_room->room_flags, ROOM_SAFE) || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE)))
-                                        sprintf(buf2, "{Runsafe{x");
-                                else
-                                        sprintf(buf2, "{Gsafe{x");
+                        case PLAYER_SAFETY_ARENA:
+                                i = "{Yarena{x";
+                                break;
+                        case PLAYER_SAFETY_NON_CORPOREAL:
+                        case PLAYER_SAFETY_SANCTUARY:
+                        case PLAYER_SAFETY_LOW_LEVEL:
+                                i = "{Gsafe{x";
+                                break;
+                        case PLAYER_SAFETY_KILLER:
+                        case PLAYER_SAFETY_CLAN_HALL:
+                        case PLAYER_SAFETY_IN_RANGE:
+                                i = "{Runsafe{x";
+                                break;
+                        default:
+                                i = " ";
+                                break;
                         }
-                        else
-                                sprintf(buf2, " ");
-                        i = buf2;
                         break;
                 case 't':
                         if (ch->pcdata->countdown)
@@ -2761,7 +2764,6 @@ void nanny(DESCRIPTOR_DATA *d, char *argument)
                 break;
 
         case CON_READ_MOTD:
-                SET_BIT(ch->act, PLR_AUTOEXIT);
                 ch->next = char_list;
                 char_list = ch;
                 d->connected = CON_PLAYING;
@@ -2772,6 +2774,7 @@ void nanny(DESCRIPTOR_DATA *d, char *argument)
                 {
                         OBJ_DATA *obj;
 
+                        SET_BIT(ch->act, PLR_AUTOEXIT);
                         ch->level = 1;
                         ch->exp = 1000;
 

@@ -1581,6 +1581,22 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Require training for player combat defences and use the actual striking
+  weapon for serration.
+- Check that a bow can be wielded before shooting; cured weapon poison no
+  longer weakens the next application.
+- Keep damage and dodge sounds in step with combat gagging, and discard
+  queued effects when sound is muted.
+- Correct the room-audio example in the area builder guide.
+- Make scan respect detect hidden, and run mobile entry programs on arrival.
+- Match the documented durations for mimic glue and lamia wisdom drain.
+- Apply the full middle-band favour penalty for chaotic patrons.
+- Remember autoexit and temporarily stowed morph gear across logins.
+- Keep a resumed note on its original board.
+- Remove all eligible gear, and report the actual next training stat.
+- Keep tournament bans with the intended character until the event resets.
+- Use consistent PvP safety text and preserve custom prompts during empower.
+- Correct the player corpse lifetime in HELP DEATH.
 - Convert Thalos mobs; add native eye rays, lamia touch and mimic glue.
 - Convert Old Thalos mobs; add stone-golem Slow and preserve city services.
 - Convert Cobresh mobs; add ancient fire wyrm, fiery demon and hell hound profiles.
@@ -3142,9 +3158,9 @@ several times, the penalties won't clobber you.  You won't lose any
 experience if you die in the Arena (see 'HELP ARENA').
 
 Corpses decay after time, and the objects inside corpses decay with them.
-Player corpses last *roughly* 30 hours of game time (15 minutes of real
-time).  Only the player who died, or someone in the same group, can
-retrieve objects from a player's corpse.
+Player corpses last 90 to 100 game ticks, averaging about 45 to 50 minutes
+of real time while the game is running. Only the player who died, or
+someone in the same group, can retrieve objects from a player's corpse.
 
 Group access uses your current group with the deceased player while that
 player remains in the world. Item bindings still apply to each object.
@@ -6891,13 +6907,13 @@ The physical attributes of a character increase automatically with level.
 Every even level (2, 4, 6 ...) a character gains, an attribute is raised,
 determined by the train command.
 
-Initially, the attribute which will advance first is the prime requisite
-of the character's class.  Once an attribute reaches its maximum value, it
-will no longer advance.  If a new attribute is not selected prior to the
-next advance it defaults to the prime requisite, then to random order.
+Your training preference initially matches your class's prime requisite.
+When your preferred attribute is capped, the game tries the prime
+requisite, then Wisdom, Constitution, Strength, Intelligence and
+Dexterity in that order. If all attributes are capped, none increases.
 
-The attribute to be trained can be set at any time by typing 'TRAIN
-<<attribute>'.  Type TRAIN to see what you will attempt to train next.
+Set your preference with TRAIN <<attribute>. Type TRAIN to see your
+preference and which attribute will actually increase next.
 ~
 
 0 PRACTICE~

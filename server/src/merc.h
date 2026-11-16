@@ -1307,6 +1307,7 @@ struct color_data_8bit
 struct note_data
 {
         NOTE_DATA *next;
+        BOARD_DATA *draft_board;
         char *sender;
         char *date;
         char *to_list;
@@ -1708,10 +1709,8 @@ struct tournament_team
 
 extern struct tournament_entrant tournament_entrants[TOURNAMENT_MAX_TEAMS][TOURNAMENT_MAX_ENTRANTS];
 extern struct tournament_team tournament_teams[TOURNAMENT_MAX_TEAMS];
-extern CHAR_DATA *tournament_banned[TOURNAMENT_MAX_BANNED];
 extern CHAR_DATA *tournament_host;
 extern int tournament_entrant_count[TOURNAMENT_MAX_TEAMS];
-extern int tournament_banned_count;
 extern int tournament_status;
 extern int tournament_lower_level;
 extern int tournament_upper_level;
@@ -5516,6 +5515,19 @@ void colourconv args((char *buffer, const char *txt, CHAR_DATA *ch));
 void send_to_char_bw args((const char *txt, CHAR_DATA *ch));
 
 /* act_info.c */
+typedef enum player_safety
+{
+        PLAYER_SAFETY_UNKNOWN,
+        PLAYER_SAFETY_NON_CORPOREAL,
+        PLAYER_SAFETY_KILLER,
+        PLAYER_SAFETY_ARENA,
+        PLAYER_SAFETY_CLAN_HALL,
+        PLAYER_SAFETY_SANCTUARY,
+        PLAYER_SAFETY_LOW_LEVEL,
+        PLAYER_SAFETY_IN_RANGE
+} PLAYER_SAFETY;
+
+PLAYER_SAFETY player_safety_summary(const CHAR_DATA *ch);
 void show_list_to_char args((OBJ_DATA * list, CHAR_DATA *ch, bool fShort, bool fShowNothing, bool vaulted));
 char *format_obj_to_char args((OBJ_DATA * obj, CHAR_DATA *ch, bool fShort));
 void show_char_to_char args((CHAR_DATA * list, CHAR_DATA *ch));
@@ -5710,6 +5722,8 @@ int get_age args((CHAR_DATA * ch));
 int get_curr_str args((CHAR_DATA * ch));
 int get_wield_limit_after_removals(CHAR_DATA *ch, OBJ_DATA *const *removed,
                                   int removed_count);
+bool can_hold_readied_bow(CHAR_DATA *ch, OBJ_DATA *bow,
+                          OBJ_DATA *const *removed, int removed_count);
 int preview_wield_removal(CHAR_DATA *ch, OBJ_DATA *obj,
                           OBJ_DATA **removed, int removed_count);
 bool check_equip_alignment(CHAR_DATA *ch, OBJ_DATA *obj);
@@ -6181,6 +6195,7 @@ void form_equipment_update(CHAR_DATA *ch);
 void begin_equipment_update(void);
 void end_equipment_update(CHAR_DATA *ch);
 int check_stat_advance(CHAR_DATA *ch, int stat);
+int next_stat_to_advance(CHAR_DATA *ch);
 bool check_questpoints_allow_level_gain(CHAR_DATA *ch, bool verbose);
 int questpoints_required_for_advance(int level);
 void recharge_bonuses(CHAR_DATA *ch);

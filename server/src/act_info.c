@@ -4703,6 +4703,17 @@ void do_skilltree(CHAR_DATA *ch, char *argument)
 
 void do_train(CHAR_DATA *ch, char *argument)
 {
+        static const char *const stat_names[] = {
+                [APPLY_STR] = "strength",
+                [APPLY_INT] = "intelligence",
+                [APPLY_WIS] = "wisdom",
+                [APPLY_DEX] = "dexterity",
+                [APPLY_CON] = "constitution"
+        };
+        char buf[MAX_STRING_LENGTH];
+        int preferred;
+        int next;
+
         if (IS_NPC(ch))
                 return;
 
@@ -4732,32 +4743,26 @@ void do_train(CHAR_DATA *ch, char *argument)
                 send_to_char("You intend to cultivate a hardier constitution.\n\r", ch);
         }
         else
+                send_to_char("Syntax: train [str|int|wis|dex|con]\n\r", ch);
+
+        preferred = ch->pcdata->stat_train;
+        if (preferred >= APPLY_STR && preferred <= APPLY_CON)
         {
-                send_to_char("Syntax: train <<str|int|wis|dex|con>\n\r", ch);
-
-                switch (ch->pcdata->stat_train)
-                {
-                case APPLY_STR:
-                        send_to_char("You are currently training strength.\n\r", ch);
-                        return;
-
-                case APPLY_INT:
-                        send_to_char("You are currently training intelligence.\n\r", ch);
-                        return;
-
-                case APPLY_WIS:
-                        send_to_char("You are currently training wisdom.\n\r", ch);
-                        return;
-
-                case APPLY_DEX:
-                        send_to_char("You are currently training dexterity.\n\r", ch);
-                        return;
-
-                case APPLY_CON:
-                        send_to_char("You are currently training constitution.\n\r", ch);
-                        return;
-                }
+                snprintf(buf, sizeof(buf), "Preferred training: %s.\n\r",
+                         stat_names[preferred]);
+                send_to_char(buf, ch);
         }
+
+        next = next_stat_to_advance(ch);
+        if (next != APPLY_NONE)
+        {
+                snprintf(buf, sizeof(buf),
+                         "At the next even level, you will gain %s.\n\r",
+                         stat_names[next]);
+                send_to_char(buf, ch);
+        }
+        else
+                send_to_char("All of your attributes are at maximum.\n\r", ch);
 }
 
 /*
@@ -6402,27 +6407,59 @@ void print_player_status(CHAR_DATA *ch, char *buf)
 }
 
 /* Report attack restrictions separately from KILLER penalties. */
-void do_safe(CHAR_DATA *ch, char *argument)
+/* Describe potential incoming player attacks without changing combat state. */
+PLAYER_SAFETY player_safety_summary(const CHAR_DATA *ch)
 {
-        if (IS_NPC(ch) || !ch->in_room)
-                return;
+        const ROOM_INDEX_DATA *room = ch->in_room;
+
+        if (IS_NPC(ch) || !room || !room->area)
+                return PLAYER_SAFETY_UNKNOWN;
 
         if (IS_AFFECTED(ch, AFF_NON_CORPOREAL))
+                return PLAYER_SAFETY_NON_CORPOREAL;
+        if (IS_SET(ch->status, PLR_KILLER))
+                return PLAYER_SAFETY_KILLER;
+        if (IS_SET(room->room_flags, ROOM_PLAYER_KILLER))
+                return PLAYER_SAFETY_ARENA;
+        if (room->area->low_level == -4 && room->area->high_level == -4
+        &&  ch->level > 50)
+                return PLAYER_SAFETY_CLAN_HALL;
+        if (IS_SET(room->room_flags, ROOM_SAFE)
+        ||  IS_SET(room->area->area_flags, AREA_FLAG_SAFE))
+                return PLAYER_SAFETY_SANCTUARY;
+        if (ch->level < 20)
+                return PLAYER_SAFETY_LOW_LEVEL;
+        return PLAYER_SAFETY_IN_RANGE;
+}
+
+void do_safe(CHAR_DATA *ch, char *argument)
+{
+        switch (player_safety_summary(ch))
+        {
+        case PLAYER_SAFETY_UNKNOWN:
+                return;
+        case PLAYER_SAFETY_NON_CORPOREAL:
                 send_to_char("Your non-corporeal form prevents attacks against you.\n\r", ch);
-        else if (IS_SET(ch->status, PLR_KILLER))
+                break;
+        case PLAYER_SAFETY_KILLER:
                 send_to_char("Your KILLER flag allows player attacks even in sanctuary and outside normal level ranges.\n\r", ch);
-        else if (IS_SET(ch->in_room->room_flags, ROOM_PLAYER_KILLER))
+                break;
+        case PLAYER_SAFETY_ARENA:
                 send_to_char("You are in the Arena: player attacks are allowed regardless of level.\n\r", ch);
-        else if (ch->in_room->area->low_level == -4
-             && ch->in_room->area->high_level == -4 && ch->level > 50)
+                break;
+        case PLAYER_SAFETY_CLAN_HALL:
                 send_to_char("In this clan hall, players above level 50 may attack you even in sanctuary.\n\r", ch);
-        else if (IS_SET(ch->in_room->room_flags, ROOM_SAFE)
-             || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
+                break;
+        case PLAYER_SAFETY_SANCTUARY:
                 send_to_char("Sanctuary prevents ordinary mortal player attacks here.\n\r", ch);
-        else if (ch->level < 20)
+                break;
+        case PLAYER_SAFETY_LOW_LEVEL:
                 send_to_char("Your level prevents ordinary mortal player attacks here (below level 20).\n\r", ch);
-        else
+                break;
+        case PLAYER_SAFETY_IN_RANGE:
                 send_to_char("Players within your pkilling level range may attack you here.\n\r", ch);
+                break;
+        }
 
         if (!ch->clan && !IS_SET(ch->status, PLR_RONIN))
                 send_to_char("Being unclanned and not ronin does not prevent MURDER; it can give the attacker a KILLER flag.\n\r", ch);

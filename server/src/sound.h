@@ -78,8 +78,8 @@ void            sound_mobdeath_room             ( ROOM_INDEX_DATA *room, int bas
 void            sfx_queue_clear                 ( DESCRIPTOR_DATA *d );
 void            sound_mobdeath_room_key         ( ROOM_INDEX_DATA *room, const char *key, int base_vol );
 void            sound_combat_shield_block_sfx   ( CHAR_DATA *ch, CHAR_DATA *victim );
-void            sound_combat_miss_sfx           ( CHAR_DATA *ch, CHAR_DATA *victim );
-void            sound_combat_dodge_sfx          ( CHAR_DATA *ch, CHAR_DATA *victim );
+void            sound_combat_miss_sfx           ( CHAR_DATA *ch, CHAR_DATA *victim, bool attacker_message );
+void            sound_combat_dodge_sfx          ( CHAR_DATA *ch, CHAR_DATA *victim, bool attacker_message, bool victim_message );
 void            sound_combat_parry_sfx          ( CHAR_DATA *ch, CHAR_DATA *victim );
 void            sound_combat_acrobatics_sfx     ( CHAR_DATA *ch, CHAR_DATA *victim );
 void            sound_combat_transfix_sfx       ( CHAR_DATA *ch, CHAR_DATA *victim );

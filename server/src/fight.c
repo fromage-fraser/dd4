@@ -115,7 +115,8 @@ static void damage_internal args((CHAR_DATA *ch,
                                   int aggravated_percent,
                                   int aggravated_cap,
                                   const FIREBRAND_COMPONENT *firebrand,
-                                  int *damage_dealt, BLOOD_CONTACT *blood));
+                                  int *damage_dealt, BLOOD_CONTACT *blood,
+                                  bool serrated_contact));
 
 /*
  * Death blurb
@@ -1114,6 +1115,13 @@ bool object_attack_is_immune(CHAR_DATA *ch, CHAR_DATA *victim,
             == RES_RESULT_IMMUNE;
 }
 
+static bool serrated_weapon_contact(const OBJ_DATA *weapon)
+{
+        return weapon && !weapon->deleted && weapon->item_type == ITEM_WEAPON
+            && !IS_OBJ_STAT(weapon, ITEM_BODY_PART)
+            && IS_SET(weapon->ego_flags, EGO_ITEM_SERRATED);
+}
+
 /*
  * Preserve the named attack and use the normal damage/death machinery.
  * Object contact is not a ghoul/ghast natural-contact attack.
@@ -1143,7 +1151,7 @@ static void damage_from_object_internal(CHAR_DATA *ch, CHAR_DATA *victim,
         damage_internal(
             ch, victim, dam, dt, poison,
             object_attack_resistance_types(dt, source), FALSE, TRUE, FALSE,
-            0, 0, 0, firebrand, NULL, blood);
+            0, 0, 0, firebrand, NULL, blood, serrated_weapon_contact(source));
 }
 
 /*
@@ -1455,7 +1463,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                                 damage_internal(
                                     ch, victim, 0, dt, poison,
                                     one_hit_resistance_types(ch, dt, wield),
-                                    FALSE, TRUE, FALSE, 0, 0, 0, NULL, NULL, NULL);
+                                    FALSE, TRUE, FALSE, 0, 0, 0, NULL, NULL, NULL, FALSE);
                         }
                         else
                         {
@@ -1700,7 +1708,8 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                             poison,
                             one_hit_resistance_types(ch, dt, wield),
                             !wield && IS_NPC(ch),
-                            TRUE, FALSE, 0, 0, 0, &firebrand, &contact_damage, &blood);
+                            TRUE, FALSE, 0, 0, 0, &firebrand, &contact_damage, &blood,
+                            serrated_weapon_contact(wield));
 
                         /* Finish the original hit before its touch can cause another death. */
                         if (!wield && IS_NPC(ch))
@@ -1920,7 +1929,7 @@ static void damage_with_firebrand_component(CHAR_DATA *ch, CHAR_DATA *victim,
         }
 
         damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE,
-                        FALSE, 0, 0, 0, firebrand, NULL, blood);
+                        FALSE, 0, 0, 0, firebrand, NULL, blood, FALSE);
 }
 
 /* Classify part of this event's defended HP loss; never subtract HP twice. */
@@ -1947,7 +1956,7 @@ static void damage_with_aggravated_component_internal(
                 res_types = skill_table[dt].res_type;
 
         damage_internal(ch, victim, dam, dt, poison, res_types, FALSE, FALSE,
-                        FALSE, chance, percent, cap, firebrand, NULL, blood);
+                        FALSE, chance, percent, cap, firebrand, NULL, blood, FALSE);
 }
 
 /*
@@ -1975,7 +1984,7 @@ void damage_with_resistance_types(
             FALSE,
             FALSE,
             FALSE,
-            0, 0, 0, NULL, NULL, NULL);
+            0, 0, 0, NULL, NULL, NULL, FALSE);
 }
 
 /* Runtime-only, monotonically allocated identities survive no extraction. */
@@ -2048,7 +2057,7 @@ bool forced_fall_damage(CHAR_DATA *ch, int dam)
 
         deaths = IS_NPC(ch) ? 0 : ch->pcdata->killed;
         damage_internal(causer, ch, UMAX(0, dam), TYPE_UNDEFINED, FALSE, 0,
-                        FALSE, FALSE, TRUE, 0, 0, 0, NULL, NULL, NULL);
+                        FALSE, FALSE, TRUE, 0, 0, 0, NULL, NULL, NULL, FALSE);
         return !ch->deleted && ch->in_room && ch->position != POS_DEAD
             && (IS_NPC(ch) || ch->pcdata->killed == deaths);
 }
@@ -2192,7 +2201,8 @@ static void damage_internal(CHAR_DATA *ch,
                             int aggravated_percent,
                             int aggravated_cap,
                             const FIREBRAND_COMPONENT *firebrand,
-                            int *damage_dealt, BLOOD_CONTACT *blood)
+                            int *damage_dealt, BLOOD_CONTACT *blood,
+                            bool serrated_contact)
 {
         CHAR_DATA *fighter;
         CHAR_DATA *opponent;
@@ -2659,43 +2669,6 @@ static void damage_internal(CHAR_DATA *ch,
                     ch, retaliation_hit_before, firedam, RES_FIRE);
         }
 
-        /* A terrain impact cannot apply the rider's weapon effects. */
-        if (!forced_fall
-        &&  dam > 0
-        &&  !IS_NPC(ch)
-        &&  ch->pcdata->learned[gsn_serrate] > 0
-        &&  get_attack_weapon(ch, WEAR_WIELD)
-        &&  dt != gsn_serrate)
-        {
-                OBJ_DATA *wield2;
-                wield2 = get_attack_weapon(ch, WEAR_WIELD);
-
-                if (IS_SET(wield2->ego_flags, EGO_ITEM_SERRATED))
-                {
-                        CHAR_DATA *vic = (CHAR_DATA *)victim;
-                        AFFECT_DATA af;
-                        AFFECT_DATA *paf;
-
-                        af.type = gsn_serrate;
-                        af.duration = 2;
-
-                        /* limiting serrate to 2 rounds of damage after fight */
-                        for (paf = victim->affected; paf; paf = paf->next)
-                        {
-                                if ((paf->type == gsn_serrate) && (paf->duration > 2))
-                                {
-                                        af.duration = 0;
-                                        break;
-                                }
-                        }
-
-                        af.location = APPLY_NONE;
-                        af.modifier = 15;
-                        af.bitvector = AFF_DOT;
-                        affect_join(vic, &af);
-                }
-        }
-
         if (!forced_fall && !IS_NPC(ch) && IS_AFFECTED(ch, AFF_BONUS_DAMAGE))
                 dam += dam / 3;
 
@@ -2710,6 +2683,34 @@ static void damage_internal(CHAR_DATA *ch,
 
         actual_damage = (int)UMIN((long long)UMAX(0, dam),
             UMAX(0LL, (long long)hit_before - victim->hit));
+
+        /* Bleeding belongs to the blade that actually landed this hit. */
+        if (serrated_contact && actual_damage > 0 && !IS_NPC(ch)
+        &&  ch->pcdata->learned[gsn_serrate] > 0 && dt != gsn_serrate)
+        {
+                AFFECT_DATA af;
+                AFFECT_DATA *paf;
+
+                af.type = gsn_serrate;
+                af.duration = 2;
+
+                /* limiting serrate to 2 rounds of damage after fight */
+                for (paf = victim->affected; paf; paf = paf->next)
+                {
+                        if (!paf->deleted && paf->type == gsn_serrate
+                        &&  paf->source_type == AFFECT_SOURCE_NONE
+                        &&  paf->duration > 2)
+                        {
+                                af.duration = 0;
+                                break;
+                        }
+                }
+
+                af.location = APPLY_NONE;
+                af.modifier = 15;
+                af.bitvector = AFF_DOT;
+                affect_join(victim, &af);
+        }
 
         if (damage_dealt)
                 *damage_dealt = actual_damage;
@@ -2824,7 +2825,8 @@ static void damage_internal(CHAR_DATA *ch,
 
                         for (paf = victim->affected; paf; paf = paf->next)
                         {
-                                if (paf->type == gsn_poison)
+                                if (!paf->deleted && paf->type == gsn_poison
+                                &&  paf->source_type == AFFECT_SOURCE_NONE)
                                 {
                                         if (paf->modifier <= -6)
                                                 af.modifier = 0;
@@ -3061,7 +3063,7 @@ void lich_chill_touch_after_hit(CHAR_DATA *ch, CHAR_DATA *victim,
                 return;
 
         damage_internal(ch, victim, number_range(1, 10), gsn_chill_touch,
-            FALSE, RES_COLD, FALSE, FALSE, FALSE, 0, 0, 0, NULL, &cold_damage, NULL);
+            FALSE, RES_COLD, FALSE, FALSE, FALSE, 0, 0, 0, NULL, &cold_damage, NULL, FALSE);
 
         /* Death, escape and cold immunity all end the freezing attempt here. */
         if (cold_damage <= 0 || ch->deleted || victim->deleted
@@ -3331,6 +3333,7 @@ void check_killer(CHAR_DATA *ch, CHAR_DATA *victim)
 bool check_parry(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         int chance;
+        bool primary_eligible = TRUE;
 
         if (IS_NPC(victim))
         {
@@ -3343,6 +3346,7 @@ bool check_parry(CHAR_DATA *ch, CHAR_DATA *victim)
         {
                 if (victim->class == CLASS_BRAWLER)
                 {
+                        primary_eligible = victim->pcdata->learned[gsn_pre_empt] > 0;
                         chance = victim->pcdata->learned[gsn_pre_empt] / 2;
                 }
                 else
@@ -3350,11 +3354,12 @@ bool check_parry(CHAR_DATA *ch, CHAR_DATA *victim)
                         if (!get_eq_char(victim, WEAR_WIELD))
                                 return FALSE;
 
+                        primary_eligible = victim->pcdata->learned[gsn_parry] > 0;
                         chance = victim->pcdata->learned[gsn_parry] / 2;
                 }
         }
 
-        if (!IS_NPC(ch) && ch->pcdata->learned[gsn_feint] > 0 && number_percent() <= ch->pcdata->learned[gsn_feint])
+        if (primary_eligible && !IS_NPC(ch) && ch->pcdata->learned[gsn_feint] > 0 && number_percent() <= ch->pcdata->learned[gsn_feint])
                 chance -= 10;
 
         chance += (victim->level - ch->level) * 2;
@@ -3368,7 +3373,7 @@ bool check_parry(CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_AFFECTED(victim, AFF_ARM_TRAUMA))
                 chance /= 2;
 
-        if (number_percent() >= chance)
+        if (!primary_eligible || number_percent() >= chance)
         {
                 if (IS_NPC(victim) || !CAN_DO(victim, gsn_dual_parry) || !get_eq_char(victim, WEAR_DUAL))
                         return FALSE;
@@ -3440,6 +3445,9 @@ bool check_shield_block(CHAR_DATA *ch, CHAR_DATA *victim)
         else
         {
                 if (!get_eq_char(victim, WEAR_SHIELD))
+                        return FALSE;
+
+                if (victim->pcdata->learned[gsn_shield_block] <= 0)
                         return FALSE;
 
                 chance = victim->pcdata->learned[gsn_shield_block] / 2;
@@ -3641,6 +3649,8 @@ bool check_blink(CHAR_DATA *ch, CHAR_DATA *victim)
 bool check_dodge(CHAR_DATA *ch, CHAR_DATA *victim)
 {
         int chance;
+        bool attacker_message;
+        bool victim_message;
 
         if (IS_AFFECTED(victim, AFF_HOLD))
                 return FALSE;
@@ -3654,7 +3664,12 @@ bool check_dodge(CHAR_DATA *ch, CHAR_DATA *victim)
         if (IS_NPC(victim))
                 chance = UMIN(60, 2 * victim->level);
         else
+        {
+                if (victim->pcdata->learned[gsn_dodge] <= 0)
+                        return FALSE;
+
                 chance = victim->pcdata->learned[gsn_dodge] / 2;
+        }
 
         if (!IS_NPC(ch) && ch->pcdata->learned[gsn_feint] > 0 && number_percent() <= ch->pcdata->learned[gsn_feint])
                 chance -= 10;
@@ -3673,17 +3688,17 @@ bool check_dodge(CHAR_DATA *ch, CHAR_DATA *victim)
         if (number_percent() >= chance)
                 return FALSE;
 
-        if (!IS_NPC(ch) && !ch->gag)
-        {
-                sound_combat_dodge_sfx( ch, victim );
-                act("<76>$C dodges your attack.<0>", ch, NULL, victim, TO_CHAR);
-        }
+        attacker_message = !IS_NPC(ch) && !ch->gag;
+        victim_message = victim != ch && !IS_NPC(victim) && !victim->gag;
 
-        if (!IS_NPC(victim) && !victim->gag)
-        {
-                sound_combat_dodge_sfx( ch, victim );
+        if (attacker_message || victim_message)
+                sound_combat_dodge_sfx(ch, victim, attacker_message, victim_message);
+
+        if (attacker_message)
+                act("<76>$C dodges your attack.<0>", ch, NULL, victim, TO_CHAR);
+
+        if (victim_message)
                 act("<113>You dodge $n's attack.<0>", ch, NULL, victim, TO_VICT);
-        }
 
         return TRUE;
 }
@@ -5317,10 +5332,6 @@ void dam_message(CHAR_DATA *ch,
 
         punct = (dam <= 24) ? '.' : '!';
 
-        /* if ( dam <= 0 && ch->gag < 2 ) */
-        if ( dam <= 0 )
-                sound_combat_miss_sfx( ch, victim );
-
         if ((crit) && (dam > 0))
                 sprintf(buf9, " {W*CRITICAL HIT*{x");
         else
@@ -5340,22 +5351,10 @@ void dam_message(CHAR_DATA *ch,
         {
                 /* Combat gagging level 2 now gags 'misses' -- Owl */
 
-                if (((ch->gag == 2) && (dam > 0)))
-                {
+                if (dam > 0 || ch->gag < 2)
                         sprintf(buf1, "You %s $N%c", vs, punct);
-                }
-                else if (dam > 0)
-                {
-                        sprintf(buf1, "You %s $N%c", vs, punct);
-                }
-                else if (ch->gag < 2)
-                {
-                        sprintf(buf1, "You %s $N%c", vs, punct);
-                }
                 else
-                {
                         *buf1 = '\0';
-                }
 
                 strcat(buf1, buf9);
 
@@ -5429,6 +5428,10 @@ void dam_message(CHAR_DATA *ch,
                         strcat(buf5, buf9);
                 }
         }
+
+        if (dam <= 0)
+                sound_combat_miss_sfx(ch, victim,
+                                      victim == ch ? buf4[0] != '\0' : buf1[0] != '\0');
 
         if (victim != ch)
         {
@@ -10771,6 +10774,46 @@ static void restore_shoot_equipment(CHAR_DATA *ch, OBJ_DATA *obj,
         end_equipment_update(ch);
 }
 
+static bool ready_shoot_weapon(CHAR_DATA *ch, OBJ_DATA *bow,
+                               OBJ_DATA *wield, OBJ_DATA *shield,
+                               OBJ_DATA *dual, int killed)
+{
+        OBJ_DATA *removed[3];
+        int count = 0;
+
+        if (wield)
+                removed[count++] = wield;
+        if (shield)
+                removed[count++] = shield;
+        if (dual)
+                removed[count++] = dual;
+
+        if (!can_hold_readied_bow(ch, bow, removed, count))
+        {
+                send_to_char("Your bow is too heavy to draw.\n\r", ch);
+                return FALSE;
+        }
+
+        begin_equipment_update();
+        for (int i = 0; i < count; i++)
+                unequip_char(ch, removed[i]);
+        equip_char(ch, bow, WEAR_WIELD);
+
+        /* Roll back a failed swap while automatic drops are still deferred. */
+        if (get_attack_weapon(ch, WEAR_WIELD) != bow
+        ||  (!IS_NPC(ch) && get_obj_weight(bow) > str_app[get_curr_str(ch)].wield))
+        {
+                restore_shoot_equipment(ch, bow, wield, shield, dual, killed);
+                end_equipment_update(ch);
+                send_to_char("You cannot ready your bow to shoot.\n\r", ch);
+                return FALSE;
+        }
+
+        /* Combat callbacks must see normal weight enforcement. */
+        end_equipment_update(ch);
+        return get_attack_weapon(ch, WEAR_WIELD) == bow;
+}
+
 void do_shoot(CHAR_DATA *ch, char *argument)
 {
         OBJ_DATA *obj, *objWield, *objShield, *objDual;
@@ -10844,16 +10887,8 @@ void do_shoot(CHAR_DATA *ch, char *argument)
         objShield = get_eq_char(ch, WEAR_SHIELD);
         objDual = get_eq_char(ch, WEAR_DUAL);
 
-        begin_equipment_update();
-        if (objWield)
-                unequip_char(ch, objWield);
-        if (objShield)
-                unequip_char(ch, objShield);
-        if (objDual)
-                unequip_char(ch, objDual);
-        equip_char(ch, obj, WEAR_WIELD);
-        /* Combat callbacks must see normal weight enforcement. */
-        end_equipment_update(ch);
+        if (!ready_shoot_weapon(ch, obj, objWield, objShield, objDual, killed))
+                return;
         WAIT_STATE(ch, PULSE_VIOLENCE);
         send_to_char("{WYou take aim and let loose!{x\n\r", ch);
 
@@ -10865,7 +10900,8 @@ void do_shoot(CHAR_DATA *ch, char *argument)
                         one_hit(ch, victim, gsn_shoot, FALSE);
 
                         if (!ranged_attacker_alive(ch, killed) || victim->deleted
-                        ||  victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                        ||  victim->position == POS_DEAD || ch->in_room != victim->in_room
+                        ||  get_attack_weapon(ch, WEAR_WIELD) != obj)
                                 break;
                 }
         }
@@ -10892,7 +10928,8 @@ void do_shoot(CHAR_DATA *ch, char *argument)
                         one_hit(ch, victim, gsn_shoot, FALSE);
 
                         if (!ranged_attacker_alive(ch, killed) || victim->deleted
-                        ||  victim->position == POS_DEAD || ch->in_room != victim->in_room)
+                        ||  victim->position == POS_DEAD || ch->in_room != victim->in_room
+                        ||  get_attack_weapon(ch, WEAR_WIELD) != obj)
                                 break;
                 }
         }
@@ -10947,16 +10984,8 @@ void do_snap_shot(CHAR_DATA *ch, char *argument)
         objShield = get_eq_char(ch, WEAR_SHIELD);
         objDual = get_eq_char(ch, WEAR_DUAL);
 
-        begin_equipment_update();
-        if (objWield)
-                unequip_char(ch, objWield);
-        if (objShield)
-                unequip_char(ch, objShield);
-        if (objDual)
-                unequip_char(ch, objDual);
-        equip_char(ch, obj, WEAR_WIELD);
-        /* Combat callbacks must see normal weight enforcement. */
-        end_equipment_update(ch);
+        if (!ready_shoot_weapon(ch, obj, objWield, objShield, objDual, killed))
+                return;
         WAIT_STATE(ch, 2 * PULSE_VIOLENCE); /* change of equipment, we'll make the wait state count regardless of hit */
 
         send_to_char("{WYou quickly grab your bow and fire off a shot!{x\n\r", ch);

@@ -5244,9 +5244,8 @@ void do_empower (CHAR_DATA *ch, char *argument)
         set_obj_owner(obj, ch->name);
 
         act ("You empower $p!", ch, obj, NULL, TO_CHAR);
-        act ( "{WNOTE: $p has a power meter! The meter has been added to the prompt (see help PROMPT for %G)", ch, obj, NULL, TO_CHAR);
+        send_to_char("Use %G in your prompt to display the power meter (see HELP PROMPT).\n\r", ch);
         act ("$n empowers $p!", ch, obj, NULL, TO_ROOM);
-        ch->prompt = str_dup("<<{G%h/%H{x hits {C%m/%M{x mana {Y%v/%V{x move [{W%z{x] %G> ");
 }
 
 void do_discharge (CHAR_DATA *ch, char *argument)
