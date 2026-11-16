@@ -54,6 +54,7 @@ DECLARE_SPEC_FUN( spec_breath_gas           );
 DECLARE_SPEC_FUN( spec_breath_lightning     );
 DECLARE_SPEC_FUN( spec_breath_steam         );
 DECLARE_SPEC_FUN( spec_cast_adept           );
+DECLARE_SPEC_FUN( spec_cast_construct_adept );
 DECLARE_SPEC_FUN( spec_cast_hooker          );
 DECLARE_SPEC_FUN( spec_buddha               );
 DECLARE_SPEC_FUN( spec_kungfu_poison        );
@@ -173,6 +174,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_breath_lightning"))     return spec_breath_lightning;
         if (!str_cmp(name, "spec_breath_steam"))         return spec_breath_steam;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
+        if (!str_cmp(name, "spec_cast_construct_adept")) return spec_cast_construct_adept;
         if (!str_cmp(name, "spec_cast_hooker"))          return spec_cast_hooker;
         if (!str_cmp(name, "spec_buddha"))               return spec_buddha;
         if (!str_cmp(name, "spec_kungfu_poison"))        return spec_kungfu_poison;
@@ -298,6 +300,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_breath_lightning) return "spec_breath_lightning";
         if (special == spec_breath_steam) return "spec_breath_steam";
         if (special == spec_cast_adept) return "spec_cast_adept";
+        if (special == spec_cast_construct_adept) return "spec_cast_construct_adept";
         if (special == spec_cast_hooker) return "spec_cast_hooker";
         if (special == spec_buddha) return "spec_buddha";
         if (special == spec_kungfu_poison) return "spec_kungfu_poison";
@@ -5170,6 +5173,50 @@ static bool native_power_ready(CHAR_DATA *ch)
             && !IS_AFFECTED(ch, AFF_CHARM)
             && !IS_AFFECTED(ch, AFF_HOLD)
             && !IS_AFFECTED(ch, AFF_DAZED);
+}
+
+/* A construct healer keeps free visitor aid and can tend an injured neighbour. */
+bool spec_cast_construct_adept(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        int construct_species;
+
+        if (!native_power_ready(ch) || ch->hit <= 0
+        || ch->position == POS_FIGHTING || ch->fighting || is_in_combat(ch)
+        || ch->ghost_phase != GHOST_PHASE_NONE
+        || IS_AFFECTED(ch, AFF_NON_CORPOREAL | AFF_HEAD_TRAUMA | AFF_ARM_TRAUMA)
+        || !HAS_HEAD(ch) || !HAS_ARMS(ch) || !CAN_SPEAK(ch) || is_silenced(ch)
+        || IS_SET(ch->in_room->room_flags, ROOM_CONE_OF_SILENCE)
+        || (ch->in_room->area
+            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_NO_MAGIC)))
+                return FALSE;
+
+        construct_species = species_lookup("bipedal_construct");
+        if (construct_species >= 0 && number_percent() <= 25)
+        {
+                for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+                {
+                        if (victim == ch || victim->deleted || !IS_NPC(victim)
+                        || victim->hit <= 0 || victim->hit >= victim->max_hit
+                        || victim->position == POS_DEAD || victim->position == POS_FIGHTING
+                        || victim->fighting || is_in_combat(victim)
+                        || victim->ghost_phase != GHOST_PHASE_NONE
+                        || IS_AFFECTED(victim, AFF_NON_CORPOREAL)
+                        || IS_SET(victim->act, ACT_NO_HEAL)
+                        || species_sn(victim) != construct_species
+                        || !can_see(ch, victim)
+                        || helpful_spell_harms_target(gsn_cure_serious, ch, victim))
+                                continue;
+
+                        act("$n speaks a healing prayer over $N.", ch, NULL, victim, TO_NOTVICT);
+                        act("$n speaks a healing prayer over you.", ch, NULL, victim, TO_VICT);
+                        sound_spell_sfx(ch, gsn_cure_serious, "cast");
+                        return cast_native_spell(spell_cure_serious, gsn_cure_serious,
+                                                 ch->level, ch, victim);
+                }
+        }
+
+        return spec_cast_adept(ch);
 }
 
 /* A venomous claw needs a usable limb and an opponent it can reach. */

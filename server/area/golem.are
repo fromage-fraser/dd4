@@ -15,20 +15,25 @@ The golem child is made of earth and is quite large compared to human children.
 ~
 64 0 -500 S
 80 0 0 100d12+15150 9d10+25
-304 0
+0 0
 8 8 0
+< awakened_golem~ common~
+MobHeight 160
+MobWeight 100
+MobSize 1
 #20401
 golem beggar~
 the golem beggar~
 A golem beggar grovels at your feet.
 ~
-The golem beggar is dirty and is wearing tattered cloths fit for one such as he.
+The golem beggar is dirty and is wearing tattered clothes fit for one such as he.
 He looks at you with dark pleading eyes and asks you for a single coin.
 ~
 4|64|128 8|32 1000 S
 85 1 0 100d12+16300 9d10+34
-304 0
+0 0
 8 8 1
+< awakened_golem~ common~
 #20402
 golem worker~
 a golem worker~
@@ -38,8 +43,9 @@ The worker is quite dirty and looks as though he's been working long and hard.
 ~
 64 8|32 1000 S
 90 1 0 100d12+18100 10d10+43
-304 0
+0 0
 8 8 1
+< awakened_golem~ common~
 #20403
 golem husband~
 the golem husband~
@@ -49,8 +55,9 @@ The golem is quite large and stares at you warily, ready for a fight.
 ~
 2|64 8|32 -1000 S
 92 1 0 100d12+18400 10d10+46
-304 0
+0 0
 8 8 1
+< awakened_golem~ common~
 #20404
 golem female wife~
 the golem wife~
@@ -60,8 +67,9 @@ The golem is preparing a meal for her family.
 ~
 2|64 8|32 1000 S
 92 1 0 100d12+18400 10d10+46
-304 0
+0 0
 8 8 2
+< awakened_golem~ common~
 #20405
 golem healer~
 the golem healer~
@@ -72,8 +80,11 @@ other golems which are coming back from war or from a hard day of hunting.
 ~
 2|64 8|32|128|512|8192|16777216 -1000 S
 100 0 0 1d100+999 0d0+0
-304 0
+0 0
 8 8 1
+< awakened_golem~ common~
+MobHeight 270
+MobWeight 350
 #20406
 golem shopkeeper mortanya~
 the golem shopkeeper~
@@ -83,8 +94,9 @@ The shopkeeper eyes you warily, making sure you don't steal anything.
 ~
 2|64 8|32|128 -1000 S
 100 0 0 50d10+10000 10d10+10
-304 0
+0 0
 8 8 0
+< awakened_golem~ common~
 #20407
 golem warrior~
 a golem warrior~
@@ -96,8 +108,9 @@ fight.
 ~
 64 8|32|2097152|16777216 -700 S
 100 1 0 100d12+19500 10d10+56
-304 0
+0 0
 8 8 0
+< awakened_golem~ common~
 #20408
 golem mage~
 the golem mage~
@@ -107,8 +120,9 @@ The mage is clothed in a plain robe and mutters many strange words.
 ~
 64 2|8|32|512|8192|16777216 -700 S
 100 0 0 100d12+18800 10d10+50
-304 0
+0 0
 8 8 0
+< awakened_golem~ common~
 #20409
 golem cleric~
 the golem cleric~
@@ -119,8 +133,9 @@ It stares at you, piercing your soul.
 ~
 64|536870912 8|32|512|8192|16777216 1000 S
 105 1 0 100d12+19900 10d10+56
-304 0
+0 0
 8 8 0
+< awakened_golem~ common~
 #20410
 golem thief~
 the golem thief~
@@ -131,8 +146,9 @@ seeming to change color from setting to setting.
 ~
 32|64 8|32|512|8192|32768|65536 -1000 S
 100 2 0 100d12+20300 10d10+66
-304 0
+0 0
 8 8 0
+< awakened_golem~ common~
 #20411
 golem master warrior~
 the master~
@@ -143,8 +159,9 @@ He has saved the settlement on many occasions, without a scratch upon his body.
 ~
 2|32|64 8|32|512|8192|67108864 -1000 S
 110 2 0 100e12+20300 10d10+66
-304 0
+0 0
 8 8 1
+< awakened_golem~ boss~
 #20412
 golem destroyer~
 the destroyer~
@@ -155,8 +172,9 @@ protect and serve the master warrior however possible.
 ~
 2|32|64 2|8|32|512|8192|32768|65536|67108864|16777216 -1000 S
 85 0 0 100d12+19200 10d10+54
-304 0
+0 0
 8 8 0
+< awakened_golem~ rare~
 #20413
 dorak shopkeeper~
 Dorak~
@@ -170,6 +188,9 @@ you steal none of his wares.
 110 0 0 1d1+999 1d1+999
 0 0
 8 8 1
+< human~ common~
+MobHeight 195
+MobWeight 110
 #0
 
 
@@ -1175,9 +1196,9 @@ M  20404 spec_warrior
 M  20406 spec_warrior
 M  20407 spec_warrior
 M  20411 spec_warrior
-M  20405 spec_cast_adept                the golem healer
+M  20405 spec_cast_construct_adept      the golem healer
 M  20408 spec_cast_mage                 the golem mage
-M  20409 spec_cast_cleric               the golem cleric
+M  20409 spec_cast_cleric_helper        the golem cleric
 M  20410 spec_thief                     the golem thief
 M  20412 spec_thief                     the destroyer
 S

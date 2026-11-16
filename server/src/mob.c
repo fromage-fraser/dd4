@@ -3270,6 +3270,16 @@ const struct mob_type mob_table[MAX_MOB] =
                 90, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_mimic", "", "", 5,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 240
+        },
+        {
+                "awakened_golem", "bipedal_construct", "icon1", "icon2",
+                0, 0, 0, 0,
+                RES_MAGIC, 0, RES_POISON | RES_DRAIN,
+                0, 0, 0, 0,
+                240, 300, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 10,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -4040,6 +4050,14 @@ static const CREATURE_TRAIT_CHANGE mimic_trait_changes[] =
         {CREATURE_TRAIT_SUNLIGHT_SENSITIVE, -1}
 };
 
+/* These golems are people; their construction does not remove mind or soul. */
+static const CREATURE_TRAIT_CHANGE awakened_golem_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4047,6 +4065,8 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"awakened_golem", NULL, awakened_golem_trait_changes,
+            TRAIT_ITEMS(awakened_golem_trait_changes)},
         {"beholder", NULL, beholder_trait_changes,
             TRAIT_ITEMS(beholder_trait_changes)},
         {"lamia", NULL, lamia_trait_changes,
@@ -7502,6 +7522,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_giant", 10 },
                 { "spec_cast_cleric_helper", 10 },
                 { "spec_cast_slow", 10 },
+                { "spec_cast_construct_adept", 10 },
                 { "spec_beholder", 15 },
                 { "spec_lamia", 10 },
                 { "spec_mimic", 5 },
