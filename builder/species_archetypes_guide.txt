@@ -2,9 +2,9 @@ DRAGON'S DOMAIN
 SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
-Edition: 15 November 2026
-Based on master 0fbd615976370e6bcf13334ade94979fba13f733 (PR #978),
-with the accompanying Thalos changes.
+Edition: 16 November 2026
+Based on master 72d52e2be6976015c4b3178ec493e2030ac582a9 (PR #980),
+with the accompanying Golem Settlement changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -911,10 +911,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 206, so this single example would make 207.
+guide's checked revision it is 207, so this single example would make 208.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 206.
+valid index. This example would receive index 207.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1612,7 +1612,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic append at IDs 203-205. MAX_MOB is 206;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 207;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1719,6 +1719,80 @@ There are no NO_UNDEAD rooms, shops, teachers or matching Scribe source
 in Thalos. The four existing source/area pairs elsewhere stay unchanged.
 The baby beholder and tame lamias in Old Thalos keep their existing powers.
 
+Golem Settlement and awakened golems
+-----------------------------------
+
+awakened_golem appends at ID 206. MAX_MOB is 207; all earlier indices
+stay unchanged. It uses the existing bipedal_construct body. There are
+33 body rows, 207 archetype rows, 43 internal traits and 111 Scribe
+special-function names. No area field, body flag or trait ID is added.
+
+These golems are independent people with families, jobs and spellcasting.
+They have a head, eyes, ears, arms, hands, fingers, two legs and feet.
+They are inorganic and have no heart or blood, but they are minded,
+can speak, feel pain, have a soul and leave physical remains. Do not
+infer mindlessness, ANALGIC or SOULLESS from inorganic construction.
+The shared bipedal_construct body and earlier construct profiles stay
+unchanged. Ordinary body-part targeting and injury rules still apply.
+
+Defaults are 240 cm tall, 300 kg and Large, without HUGE. The child
+20400 overrides height/weight/size to 160 cm/100 kg/Medium. Tall healer
+20405 uses 270 cm/350 kg. Dorak 20413 is human, 195 cm/110 kg/Medium.
+Length is unspecified. These whole-number dimensions are descriptive
+DD4 estimates, informed by local prose and the second-edition clay
+golem's physical scale, rather than an exact standard golem conversion.
+
+The profile has RES_MAGIC, IMM_POISON and IMM_DRAIN, -3 natural armour
+and magical natural attacks. Its ordinary unarmed fallback is pound,
+verb 7, with blunt contact. This adds no extra attack and does not make
+an equipped weapon magical. Profile XP adds 10 percentage points;
+HP/damage/crit/swift modifiers stay neutral. There is no inherited
+special, Slow, passive regeneration, immunity to nonmagical weapons,
+blanket spell immunity or immunity to charm, fear and sleep.
+
+All thirteen golems clear the old individual body mask 304 to zero.
+The body now supplies inorganic/no-heart anatomy and allows speech.
+Repeating 304 would XOR away the inherited physiology and add muteness.
+Do not copy a resolved body mask into an individual XOR field.
+
+spec_cast_construct_adept is a reusable free helper, not a paid healer
+service. It needs an awake, able, corporeal NPC with usable head/arms,
+speech and no silencing or anti-magic-room restriction. It refuses
+combat, including incoming attackers. On a 25 percent opportunity it
+casts normal Cure Serious on one other injured, visible, corporeal NPC
+whose resolved body species is bipedal_construct. It skips dead, full-HP,
+NO_HEAL, fighting/attacked and harmful helpful-spell targets. A native
+cast still passes through the existing magical-activation gateway.
+It never heals itself or takes two actions in one opportunity.
+
+Otherwise it delegates the existing free PC adept assistance, retaining
+the vampire safeguards. This special is selected individually on 20405;
+it is not a compulsory awakened_golem ability. Its special XP allowance
+is +10, matching the existing adept role. Ordinary adept code stays
+unchanged. No ACT_IS_HEALER or paid services are added.
+
+Temple 20415 keeps NO_MOB, INDOORS, SAFE, HEALING and NO_UNDEAD. NO_MOB
+blocks ordinary random wandering; this patch does not make the town
+visit the healer. Controlled/following NPCs can still be brought there
+through existing movement rules. The cleric 20409 uses the existing
+spec_cast_cleric_helper: cleric combat casting and idle free PC aid.
+All other individual specials and original combat/service roles stay.
+
+Master warrior 20411 is Boss (7x rank HP once); destroyer 20412 is Rare
+(2x once); the other twelve definitions remain Common. The destroyer
+has two initial inhabitants and can grow to six through its unchanged
+reset cap/order. HP letters are not rank markers. Rank supplies no
+automatic dimension change.
+
+All original behaviour, base levels/build numbers, alignments, sexes,
+weapons, armour, loot and two shops' terms/hours remain. All 33 room
+blocks/flags/exits, 25 objects and reset rows/caps/placements stay.
+Population/items remain 46/73 initially and 50/77 after refill. Only
+the original three of five children receive toys. The area exp_mod 125
+stays. The beggar's tattered cloths becomes tattered clothes.
+There is no matching Scribe source; four other source/area pairs stay
+unchanged. All fourteen existing portraits are retained.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 33 current rows, including reserved. The index is not an
@@ -1764,7 +1838,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 206 current table rows follow, grouped by body. Numeric IDs are for
+All 207 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved numeric Small/Medium/Large metadata, not HUGE.
@@ -2113,7 +2187,7 @@ WINGED_REPTILE (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-BIPEDAL_CONSTRUCT (6)
+BIPEDAL_CONSTRUCT (7)
 -----------------------
   [ 38] animated_soft_toy: h/w/l 30 / 1 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -2133,6 +2207,9 @@ BIPEDAL_CONSTRUCT (6)
   [202] stone_golem: h/w/l 290 / 900 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials 1:spec_cast_slow; policy auto
+  [206] awakened_golem: h/w/l 240 / 300 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
 
 QUADRUPEDAL_MAMMAL (35)
 ------------------------
@@ -3116,6 +3193,7 @@ Check native helpers, safety, active-slot policies and XP before reusing one.
     spec_cast_archmage
     spec_cast_cleric
     spec_cast_cleric_helper
+    spec_cast_construct_adept
     spec_cast_druid
     spec_cast_electric
     spec_cast_hooker
@@ -3226,8 +3304,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/0fbd615976370e6bcf13334ade94979fba13f733
-  Base PR978 plus the accompanying Thalos patch.
+  https://github.com/fromage-fraser/dd4/commit/72d52e2be6976015c4b3178ec493e2030ac582a9
+  Base PR980 plus the accompanying Golem Settlement patch.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -3237,8 +3315,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 68/153 areas (44.4%) and 1023/4131 mob
-definitions (24.8%) merged and verified. Thalos adds 9 definitions in the
-accompanying patch; count them only after its merge is verified.
+The live conversion is currently 69/153 areas (45.1%) and 1032/4131 mob
+definitions (25.0%) merged and verified. Golem Settlement adds 14 definitions
+in the accompanying patch. After its merge is verified, completion becomes
+70/153 areas (45.8%) and 1046/4131 definitions (25.3%).
 
 END OF GUIDE

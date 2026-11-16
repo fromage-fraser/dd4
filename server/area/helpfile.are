@@ -1581,6 +1581,8 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Convert Golem Settlement mobs; retain their minds, roles and shops, and
+  let the healer tend injured constructs.
 - Require training for player combat defences and use the actual striking
   weapon for serration.
 - Check that a bow can be wielded before shooting; cured weapon poison no

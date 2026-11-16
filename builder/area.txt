@@ -8605,3 +8605,78 @@ keys/container chain, original loot, placements and caps are preserved.
 There are no NO_UNDEAD rooms, shops, teachers or matching Scribe source
 in Thalos. The four existing source/area pairs elsewhere stay unchanged.
 The baby beholder and tame lamias in Old Thalos keep their existing powers.
+
+
+Golem Settlement and awakened golems
+-----------------------------------
+
+awakened_golem appends at ID 206. MAX_MOB is 207; all earlier indices
+stay unchanged. It uses the existing bipedal_construct body. There are
+33 body rows, 207 archetype rows, 43 internal traits and 111 Scribe
+special-function names. No area field, body flag or trait ID is added.
+
+These golems are independent people with families, jobs and spellcasting.
+They have a head, eyes, ears, arms, hands, fingers, two legs and feet.
+They are inorganic and have no heart or blood, but they are minded,
+can speak, feel pain, have a soul and leave physical remains. Do not
+infer mindlessness, ANALGIC or SOULLESS from inorganic construction.
+The shared bipedal_construct body and earlier construct profiles stay
+unchanged. Ordinary body-part targeting and injury rules still apply.
+
+Defaults are 240 cm tall, 300 kg and Large, without HUGE. The child
+20400 overrides height/weight/size to 160 cm/100 kg/Medium. Tall healer
+20405 uses 270 cm/350 kg. Dorak 20413 is human, 195 cm/110 kg/Medium.
+Length is unspecified. These whole-number dimensions are descriptive
+DD4 estimates, informed by local prose and the second-edition clay
+golem's physical scale, rather than an exact standard golem conversion.
+
+The profile has RES_MAGIC, IMM_POISON and IMM_DRAIN, -3 natural armour
+and magical natural attacks. Its ordinary unarmed fallback is pound,
+verb 7, with blunt contact. This adds no extra attack and does not make
+an equipped weapon magical. Profile XP adds 10 percentage points;
+HP/damage/crit/swift modifiers stay neutral. There is no inherited
+special, Slow, passive regeneration, immunity to nonmagical weapons,
+blanket spell immunity or immunity to charm, fear and sleep.
+
+All thirteen golems clear the old individual body mask 304 to zero.
+The body now supplies inorganic/no-heart anatomy and allows speech.
+Repeating 304 would XOR away the inherited physiology and add muteness.
+Do not copy a resolved body mask into an individual XOR field.
+
+spec_cast_construct_adept is a reusable free helper, not a paid healer
+service. It needs an awake, able, corporeal NPC with usable head/arms,
+speech and no silencing or anti-magic-room restriction. It refuses
+combat, including incoming attackers. On a 25 percent opportunity it
+casts normal Cure Serious on one other injured, visible, corporeal NPC
+whose resolved body species is bipedal_construct. It skips dead, full-HP,
+NO_HEAL, fighting/attacked and harmful helpful-spell targets. A native
+cast still passes through the existing magical-activation gateway.
+It never heals itself or takes two actions in one opportunity.
+
+Otherwise it delegates the existing free PC adept assistance, retaining
+the vampire safeguards. This special is selected individually on 20405;
+it is not a compulsory awakened_golem ability. Its special XP allowance
+is +10, matching the existing adept role. Ordinary adept code stays
+unchanged. No ACT_IS_HEALER or paid services are added.
+
+Temple 20415 keeps NO_MOB, INDOORS, SAFE, HEALING and NO_UNDEAD. NO_MOB
+blocks ordinary random wandering; this patch does not make the town
+visit the healer. Controlled/following NPCs can still be brought there
+through existing movement rules. The cleric 20409 uses the existing
+spec_cast_cleric_helper: cleric combat casting and idle free PC aid.
+All other individual specials and original combat/service roles stay.
+
+Master warrior 20411 is Boss (7x rank HP once); destroyer 20412 is Rare
+(2x once); the other twelve definitions remain Common. The destroyer
+has two initial inhabitants and can grow to six through its unchanged
+reset cap/order. HP letters are not rank markers. Rank supplies no
+automatic dimension change.
+
+All original behaviour, base levels/build numbers, alignments, sexes,
+weapons, armour, loot and two shops' terms/hours remain. All 33 room
+blocks/flags/exits, 25 objects and reset rows/caps/placements stay.
+Population/items remain 46/73 initially and 50/77 after refill. Only
+the original three of five children receive toys. The area exp_mod 125
+stays. The beggar's tattered cloths becomes tattered clothes.
+There is no matching Scribe source; four other source/area pairs stay
+unchanged. All fourteen existing portraits are retained.
