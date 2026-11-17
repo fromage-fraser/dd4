@@ -126,27 +126,31 @@ void spell_unmaking_ray(int sn, int level, CHAR_DATA *ch, void *vo)
 }
 
 /* A cure removes this condition without releasing the victim's own prey. */
-static void clear_mimic_glue(CHAR_DATA *victim)
+static void clear_creature_grips(CHAR_DATA *victim)
 {
         AFFECT_DATA *af;
         for (af = victim->affected; af; af = af->next)
-                if (!af->deleted && af->type == gsn_mimic_glue)
+                if (!af->deleted && (af->type == gsn_mimic_glue || af->type == gsn_tentacle_grip))
                         affect_remove(victim, af);
 }
 
-/* Movement and death release only this creature's adhesive, not another hold. */
-void release_mimic_glue(CHAR_DATA *source)
+/* Movement and death release only this creature's grips, not another hold. */
+void release_creature_grips(CHAR_DATA *source)
 {
         CHAR_DATA *victim;
-        if (!source || gsn_mimic_glue < 0)
+        if (!source)
                 return;
-        clear_mimic_glue(source);
+        clear_creature_grips(source);
         if (!source->target_id || !source->in_room)
                 return;
         for (victim = source->in_room->people; victim; victim = victim->next_in_room)
                 if (!victim->deleted && victim != source)
+                {
                         affect_strip_source_sn(victim, gsn_mimic_glue,
                             AFFECT_SOURCE_CREATURE, source->target_id);
+                        affect_strip_source_sn(victim, gsn_tentacle_grip,
+                            AFFECT_SOURCE_CREATURE, source->target_id);
+                }
 }
 #include "webgate.h"
 #include "sound.h"
@@ -13710,7 +13714,7 @@ void spell_freedom(int sn, int level, CHAR_DATA *ch, void *vo)
         affect_strip(victim, gsn_coil);
         affect_strip(victim, gsn_web);
         affect_strip(victim, gsn_crush);
-        clear_mimic_glue(victim);
+        clear_creature_grips(victim);
         affect_strip(victim, gsn_abyssal_hand);
         affect_strip(victim, gsn_transfix);
         affect_strip(victim, gsn_howl);

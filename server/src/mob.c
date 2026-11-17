@@ -601,6 +601,21 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        {
+                "tripodal_organism",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_ARMS | BODY_NO_SPEECH
+                    | PART_3_LEGS | PART_FEET | PART_EYE
+                    | PART_HEART | PART_BRAINS | PART_GUTS,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 };
 
@@ -1327,18 +1342,12 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "ogre", "humanoid", "icon1", "icon2",
-                0, 0,
-                0, 0,
-                0, 0, 0,
                 0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                "", "", "",
-                0,
-                MOB_SPECIAL_CHANCES_AUTO,
-                GHOST_PHASE_NONE,
-                CREATURE_FAMILY_OGRE,
-                MOB_TEMPLATE_UNSET
+                0, 0, 0, 0, 0, 0, 0,
+                290, 160, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_OGRE, MOB_TEMPLATE_UNSET
         },
         /* Native healing is passive; the existing giant special throws rocks. */
         {
@@ -2154,13 +2163,11 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "gnoll", "humanoid", "icon1", "icon2",
-                0, 0,
-                0, 0,
-                0, 0, 0,
-                0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                "", "", "",
-                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                0, 0, PART_TAIL | PART_FANGS, 0,
+                0, 0, 0, 0, 0, 0, 0,
+                230, 130, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_GNOLL, MOB_TEMPLATE_UNSET
         },
         {
@@ -3280,6 +3287,71 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "", 10,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "four_armed_demon", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED, PART_MANY_ARMS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS,
+                RES_FIRE | RES_COLD, 0, RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                244, 220, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 10,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "flesh_golem", "bipedal_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_INORGANIC | BODY_NO_SPEECH | BODY_BLOODLESS
+                    | BODY_ANALGIC | BODY_SOULLESS | PART_BRAINS | PART_GUTS,
+                0, RES_MAGIC, 0,
+                RES_NONMAGIC | RES_POISON | RES_SLEEP | RES_DRAIN | RES_CHARM
+                    | RES_HOLD | RES_PARALYSIS | RES_FIRE | RES_COLD | RES_ELECTRICITY,
+                0, 0, 0, 0,
+                230, 160, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 15,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "grell", "limbless_invertebrate", "icon1", "icon2",
+                0, AFF_FLYING | AFF_INFRARED,
+                BODY_NO_ARMS | PART_MANY_ARMS | PART_TENTACLES | PART_BEAK, PART_BEAK,
+                0, 0, RES_ELECTRICITY,
+                0, 0, 0, 0,
+                300, 150, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_grell", "", "", 10,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 120
+        },
+        {
+                "crocodile", "quadrupedal_reptile", "icon1", "icon2",
+                0, AFF_SWIM, PART_CLAWS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                45, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "flind", "humanoid", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_FANGS, 0,
+                0, 0, 0, 0, 0, 0, 0,
+                198, 140, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_flind", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_GNOLL, MOB_TEMPLATE_UNSET
+        },
+        {
+                "otyugh", "tripodal_organism", "icon1", "icon2",
+                0, AFF_INFRARED,
+                BODY_NO_HEAD | BODY_NO_ARMS | PART_HEAD | PART_MANY_ARMS | PART_TENTACLES
+                    | PART_EYESTALKS | PART_FANGS,
+                PART_FANGS, 0, 0, 0, 0, 0, 0, 0,
+                140, 400, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_otyugh", "", "", 10,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 210
         }
 };
 
@@ -3380,6 +3452,9 @@ typedef enum creature_trait_effect
         TRAIT_NATURAL_DAMAGE_TYPE,
         TRAIT_LIGHT_RESPONSE,
         TRAIT_MAGICAL_NATURAL_ATTACKS,
+        TRAIT_MELEE_ACCURACY,
+        TRAIT_ARMED_MELEE_ACCURACY,
+        TRAIT_ELEMENTAL_REACTION_QUANTITY,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -3491,7 +3566,11 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"natural_damage_type", TRAIT_NATURAL_DAMAGE_TYPE, NULL},
         {"shadow_light_response", TRAIT_LIGHT_RESPONSE, NULL},
         {"magical_natural_attacks", TRAIT_MAGICAL_NATURAL_ATTACKS, NULL},
-        {"antimagic_gaze_pct", TRAIT_COMBAT_CASTING_PERCENT, NULL}
+        {"antimagic_gaze_pct", TRAIT_COMBAT_CASTING_PERCENT, NULL},
+        {"melee_accuracy", TRAIT_MELEE_ACCURACY, NULL},
+        {"armed_melee_accuracy", TRAIT_ARMED_MELEE_ACCURACY, NULL},
+        {"electricity_healing_pct", TRAIT_ELEMENTAL_REACTION_QUANTITY, NULL},
+        {"fire_cold_slow_ticks", TRAIT_ELEMENTAL_REACTION_QUANTITY, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -4058,6 +4137,41 @@ static const CREATURE_TRAIT_CHANGE awakened_golem_trait_changes[] =
         {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE four_armed_demon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE flesh_golem_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -1},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1},
+        {CREATURE_TRAIT_ELECTRICITY_HEALING_PERCENT, 20},
+        {CREATURE_TRAIT_FIRE_COLD_SLOW_TICKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE grell_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE crocodile_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE flind_trait_changes[] =
+{
+        {CREATURE_TRAIT_MELEE_ACCURACY, 1}
+};
+static const CREATURE_TRAIT_CHANGE otyugh_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7}
+};
+static const CREATURE_TRAIT_CHANGE ogre_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_ARMED_MELEE_ACCURACY, 2}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4065,6 +4179,20 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"four_armed_demon", NULL, four_armed_demon_trait_changes,
+            TRAIT_ITEMS(four_armed_demon_trait_changes)},
+        {"flesh_golem", NULL, flesh_golem_trait_changes,
+            TRAIT_ITEMS(flesh_golem_trait_changes)},
+        {"grell", NULL, grell_trait_changes,
+            TRAIT_ITEMS(grell_trait_changes)},
+        {"crocodile", NULL, crocodile_trait_changes,
+            TRAIT_ITEMS(crocodile_trait_changes)},
+        {"flind", NULL, flind_trait_changes,
+            TRAIT_ITEMS(flind_trait_changes)},
+        {"otyugh", NULL, otyugh_trait_changes,
+            TRAIT_ITEMS(otyugh_trait_changes)},
+        {"ogre", NULL, ogre_trait_changes,
+            TRAIT_ITEMS(ogre_trait_changes)},
         {"awakened_golem", NULL, awakened_golem_trait_changes,
             TRAIT_ITEMS(awakened_golem_trait_changes)},
         {"beholder", NULL, beholder_trait_changes,
@@ -4479,7 +4607,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_NATIVE_BREATH_QUANTITY
                                     || effect == TRAIT_BLOOD_REACTION_QUANTITY
                                     || effect == TRAIT_LICH_CHILL_TOUCH
-                                    || effect == TRAIT_BOW_ACCURACY)
+                                    || effect == TRAIT_BOW_ACCURACY
+                                    || effect == TRAIT_ELEMENTAL_REACTION_QUANTITY)
                                 && profile->changes[i].value < 0)
                                         issues++;
                                 if (effect == TRAIT_NATURAL_DAMAGE_TYPE
@@ -4657,9 +4786,14 @@ static bool trait_targets_family(const CREATURE_TRAIT_DEFINITION *trait,
 int creature_melee_hit_bonus(CHAR_DATA *attacker, CHAR_DATA *victim)
 {
         int id, bonus = 0;
+        OBJ_DATA *weapon;
         CREATURE_FAMILY attacker_family, victim_family;
         if (!attacker || !victim)
                 return 0;
+        bonus += creature_trait_value(attacker, CREATURE_TRAIT_MELEE_ACCURACY);
+        weapon = get_attack_weapon(attacker, WEAR_WIELD);
+        if (weapon && weapon->item_type == ITEM_WEAPON)
+                bonus += creature_trait_value(attacker, CREATURE_TRAIT_ARMED_MELEE_ACCURACY);
         attacker_family = creature_family(attacker);
         victim_family = creature_family(victim);
         for (id = 0; id < CREATURE_TRAIT_COUNT; id++)
@@ -4672,6 +4806,60 @@ int creature_melee_hit_bonus(CHAR_DATA *attacker, CHAR_DATA *victim)
                         bonus += creature_trait_value(victim, id);
         }
         return bonus + creature_light_melee_bonus(attacker);
+}
+
+/* These optional reactions belong to the creature, not to every immune target. */
+void creature_elemental_reaction(CHAR_DATA *victim, int contact_damage,
+                                unsigned long int types)
+{
+        int percent, heal, limit, ticks;
+        AFFECT_DATA af;
+
+        if (!victim || !IS_NPC(victim) || victim->deleted || !victim->in_room
+        || victim->hit <= 0 || victim->position == POS_DEAD || contact_damage <= 0
+        || victim->ghost_phase != GHOST_PHASE_NONE
+        || IS_AFFECTED(victim, AFF_NON_CORPOREAL))
+                return;
+
+        percent = creature_trait_value(victim, CREATURE_TRAIT_ELECTRICITY_HEALING_PERCENT);
+        if ((types & RES_ELECTRICITY) && percent > 0
+        && !IS_SET(victim->act, ACT_NO_HEAL))
+        {
+                limit = UMIN(effective_max_hit(victim), aggravated_healing_limit(victim));
+                if (victim->hit < limit)
+                {
+                        heal = (int)UMIN((long long)limit - victim->hit,
+                            UMAX(1LL, (long long)contact_damage * URANGE(0, percent, 100) / 100));
+                        victim->hit += heal;
+                        update_pos(victim);
+                        act("Electricity knits $n's stitched flesh back together.", victim, NULL, NULL, TO_ROOM);
+                }
+        }
+
+        ticks = creature_trait_value(victim, CREATURE_TRAIT_FIRE_COLD_SLOW_TICKS);
+        if (!(types & (RES_FIRE | RES_COLD)) || ticks <= 0
+        || gsn_slow < 0 || gsn_slow >= MAX_SKILL
+        || IS_AFFECTED(victim, AFF_SLOW) || is_affected(victim, gsn_slow))
+                return;
+
+        /* As with ordinary Slow, an existing speed spell is cancelled first. */
+        if (is_affected(victim, gsn_haste))
+        {
+                affect_strip(victim, gsn_haste);
+                return;
+        }
+        if (is_affected(victim, gsn_quicken))
+        {
+                affect_strip(victim, gsn_quicken);
+                return;
+        }
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_slow;
+        af.duration = ticks - 1;
+        af.location = APPLY_NONE;
+        af.bitvector = AFF_SLOW;
+        affect_to_char(victim, &af);
+        act("$n's stitched limbs stiffen and slow down.", victim, NULL, NULL, TO_ROOM);
 }
 
 bool creature_is_sunlight_sensitive(CHAR_DATA *ch)
@@ -7521,6 +7709,10 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_faerie_dragon", 10 },
                 { "spec_giant", 10 },
                 { "spec_cast_cleric_helper", 10 },
+                { "spec_executioner_local", 0 },
+                { "spec_grell", 5 },
+                { "spec_flind", 5 },
+                { "spec_otyugh", 5 },
                 { "spec_cast_slow", 10 },
                 { "spec_cast_construct_adept", 10 },
                 { "spec_beholder", 15 },

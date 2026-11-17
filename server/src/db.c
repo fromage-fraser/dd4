@@ -720,6 +720,7 @@ int gsn_mummy_rot = -1;
 int gsn_strength_drain = -1;
 int gsn_lamia_touch = -1;
 int gsn_mimic_glue = -1;
+int gsn_tentacle_grip = -1;
 int gsn_unmaking_ray = -1;
 int gsn_detect_undead;
 int gsn_turn_undead;

@@ -33,8 +33,8 @@ to his eyes, and the evil grin on his thin, cruel lips.
 2|64|128 4|8|16|32|128|512|8192|524288 -1000 S
 87 0 0 0d0+0 0d0+0
 0 0
-8 8 0
-< reserved~ boss~
+8 8 1
+< human~ boss~
 #15901
 woman witch alara~
 the witch Alara~
@@ -49,7 +49,7 @@ attractive if she didn't cackle insanely so much.
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 2
-< reserved~ elite~
+< human~ elite~
 #15902
 demon~
 a demon~
@@ -60,11 +60,11 @@ but they lacked the power necessary to control it, so they dare not release
 it again. And now you're in here with this eight foot tall, four armed,
 green skinned monstrosity from the lower planes. Great.
 ~
-2|32|64 8|128|512|524288 -1000 S
+2|32|64 8|128|524288 -1000 S
 90 0 0 0d0+0 0d0+0
 0 0
 8 8 0
-< reserved~ rare~
+< four_armed_demon~ rare~
 #15903
 cat familiar~
 a cat familiar~
@@ -72,10 +72,11 @@ Alara's familiar, a black cat, hisses at you.
 ~
 This angry feline is Alara's familiar. Do away with it.
 ~
-2|32|64|128 8|512|8192 -1000 S
+2|32|64|128 8|8192 -1000 S
 60 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 2
+< domestic_cat~ common~
 #15904
 hawk familiar~
 a hawk familiar~
@@ -83,10 +84,11 @@ Baragar's familiar, a hawk, screeches at you.
 ~
 This angry bird is Baragar's familiar. Do away with it.
 ~
-2|32|64|128 8|512|8192|524288 -1000 S
+2|32|64|128 8|512|8192 -1000 S
 65 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< hawk~ common~
 #15905
 troll guard~
 a troll guard~
@@ -96,10 +98,11 @@ These trolls are meant to prevent strangers from entering the inner keep,
 but they see so many strange creatures here they aren't sure which type is
 allowed and which isn't.
 ~
-2|64 8|32|128|512|8192 -400 S
+2|64 8|32|128|8192 -400 S
 72 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< troll~ common~
 #15906
 flesh golem~
 a flesh golem~
@@ -110,8 +113,9 @@ a fact which irritates (and worries) Alara.
 ~
 2|64 128|8192 0 S
 82 0 0 0d0+0 0d0+0
-48 0
+0 0
 8 8 0
+< flesh_golem~ common~
 #15907
 fire drake~
 a fire drake~
@@ -124,6 +128,7 @@ about it...
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< firedrake~ common~
 #15908
 zombie servant~
 a zombie servant~
@@ -138,6 +143,7 @@ mindless undead. That's what a charming guy he is.
 70 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< zombie~ common~
 #15909
 guard~
 a keep guard~
@@ -153,6 +159,7 @@ Well, so does he.
 70 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #15910
 apprentice~
 an apprentice mage~
@@ -166,6 +173,9 @@ gender. She is small, cute, and evil.
 73 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
+MobHeight 155
+MobWeight 48
 #15911
 grell~
 a grell~
@@ -174,10 +184,11 @@ A grell gropes at you with its tentacles.
 This looks like a huge brain with green tentacles and a huge squid-like
 beak. It hovers in the center of the room, glaring at you menacingly.
 ~
-2|32|64 8|32|128|512|8192|524288|1048576 -800 S
+2|32|64 8|32|128|8192 -800 S
 81 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< grell~ common~
 #15912
 mimic~
 a mimic~
@@ -186,10 +197,11 @@ A wooden chest suddenly comes to life!
 This mimic has been placed here by Baragar to fool (and hopefully slay)
 potential thieves.
 ~
-2|32|64 8|32|128|512|8192 -400 S
+2|32|64 8|32|128|8192 -400 S
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< mimic~ common~
 #15913
 crocodile~
 a hungry crocodile~
@@ -201,8 +213,9 @@ the same mistake twice, because they are usually dead.
 ~
 2|32|64 8|32|128|512|8192 0 S
 80 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< crocodile~ common~
 #15914
 war dog~
 a savage war dog~
@@ -214,8 +227,12 @@ friendly.
 ~
 2|32|64|512 8192 -400 S
 60 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< dog~ common~
+MobHeight 60
+MobWeight 35
+MobLength 100
 #15915
 assassin~
 an assassin~
@@ -229,6 +246,7 @@ blooded, ruthless fanatics devoted to their ruler.
 84 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #15916
 dagar assassin~
 the assassin Dagar~
@@ -242,31 +260,34 @@ However, he'd be more than happy for you to complete the task for him.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #15917
 gnoll slave~
 a gnoll slave~
 A gnoll slave yelps in surprise at your presence.
 ~
 These evil dog-like humanoids have been captured by Baragar and set to work
-as miners and laborers helping to excavate the ancient lower cavers beneath
+as miners and laborers helping to excavate the ancient lower caverns beneath
 the keep.
 ~
 64|128|512 0 -400 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< gnoll~ common~
 #15918
 ogre slave~
 an ogre slave~
 An ogre slave grunts as you enter, then turns back to his work.
 ~
 These evil giant-kin have been captured by Baragar and set to work as miners
-and laborers helping to excavate the ancient lower cavers beneath the keep.
+and laborers helping to excavate the ancient lower caverns beneath the keep.
 ~
 64 512 -400 S
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< ogre~ common~
 #15919
 flind slave master~
 a flind slave master~
@@ -279,19 +300,21 @@ labor here, and will not tolerate any interruptions.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< flind~ rare~
 #15920
 otyugh~
 an otyugh~
 An otyugh gibbers and attacks!
 ~
-This creature is a trangular mass of flesh with a huge maw and two tentacles.
+This creature is a triangular mass of flesh with a huge maw and two tentacles.
 It rushes toward you on stubby legs. It is used to devour the garbage of
 the keep.
 ~
-2|32|64 128|512 0 S
+2|32|64 128 0 S
 86 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< otyugh~ common~
 #0
 
 
@@ -376,7 +399,7 @@ a lightning scroll~
 A lightning scroll is curled up on the floor here.~
 ~
 2 0 1|16384
-60~ call lightning~ lightning bolt~ lightening breath~
+60~ call lightning~ lightning bolt~ lightning breath~
 1 2500 0
 #15908
 scroll~
@@ -647,7 +670,7 @@ flind bar~
 a flind bar~
 A flind bar has been left here.~
 ~
-9 512 1|8192
+5 512 1|8192
 0~ 0~ 0~ 7~
 5 0 0
 A
@@ -1683,18 +1706,14 @@ M  15902 spec_demon             a demon
 M  15903 spec_cast_mage         a cat familiar
 M  15904 spec_cast_mage         a hawk familiar
 M  15905 spec_fido          a troll guard
-M  15906 spec_executioner           a flesh golem
-M  15907 spec_breath_fire           a fire drake
-M  15908 spec_cast_archmage         a zombie servant
+M  15906 spec_executioner_local           a flesh golem
+M  15907 spec_breath_fire_anatomical           a fire drake
 M  15909 spec_guard         a keep guard
 M  15910 spec_cast_archmage         an apprentice mage
-M  15911 spec_poison            a grell
 M  15913 spec_fido          a hungry crocodile
-M  15914 spec_poison            a savage war dog
+M  15914 spec_poison_bite            a savage war dog
 M  15915 spec_thief         an assassin
 M  15916 spec_cast_mage         the assassin Dagar
-M  15919 spec_poison            a flind slave master
-M  15920 spec_fido          an otyugh
 S
 
 

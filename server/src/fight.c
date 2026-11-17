@@ -2151,6 +2151,7 @@ static void burning_blood_contact(CHAR_DATA *attacker, CHAR_DATA *source,
         burn = number_range(1, UMIN(sides, 100));
         if (has_elemental_resistance(attacker, gsn_resist_heat))
                 burn = burn * 4 / 5;
+        creature_elemental_reaction(attacker, burn, RES_FIRE);
         burn = apply_resistance_to_damage(attacker, burn, RES_FIRE);
         if (IS_AFFECTED(attacker, AFF_GLOBE))
         {
@@ -2219,6 +2220,9 @@ static void damage_internal(CHAR_DATA *ch,
         int actual_damage;
         int retaliation_hit_before;
         unsigned long int regeneration_types;
+        int elemental_contact_damage = UMAX(0, dam);
+        ROOM_INDEX_DATA *elemental_contact_room = victim->in_room;
+        unsigned long int elemental_reaction_types = res_types;
 
         resistance_result = RES_RESULT_NORMAL;
         if (damage_dealt)
@@ -2590,6 +2594,20 @@ static void damage_internal(CHAR_DATA *ch,
                         send_to_char(buf, victim);
                 }
         */
+        /* Folded firebrand and dracolich chill are contacts of this same hit. */
+        if (dracolich_contact)
+                elemental_reaction_types |= RES_COLD;
+        if (firebrand && firebrand->bonus > 0 && firebrand->total > 0
+        && (long long)elemental_contact_damage * firebrand->bonus / firebrand->total > 0)
+                elemental_reaction_types |= RES_FIRE;
+        /* A real elemental contact can power an opted-in immune construct. */
+        if (!forced_fall && !victim->deleted
+        && victim->in_room == elemental_contact_room
+        && (dam > 0 || resistance_result == RES_RESULT_IMMUNE)
+        && (!physical_contact || !IS_NPC(ch)
+            || ch->ghost_phase != GHOST_PHASE_ETHEREAL))
+                creature_elemental_reaction(victim, elemental_contact_damage, elemental_reaction_types);
+
         if (dt != TYPE_UNDEFINED)
         {
                 dam_message(
@@ -2638,11 +2656,13 @@ static void damage_internal(CHAR_DATA *ch,
                         firedam *= 0.8;
 
                 /*
-                 * This retaliation bypasses damage(). Apply innate PC
-                 * fire vulnerability once, after Resist Heat, to the
-                 * actual recipient.
+                 * This retaliation bypasses damage(). Keep the existing PC
+                 * handling and honour an opted-in construct reaction too.
                  */
-                if (!IS_NPC(ch))
+                creature_elemental_reaction(ch, firedam, RES_FIRE);
+                if (!IS_NPC(ch)
+                || creature_trait_value(ch, CREATURE_TRAIT_FIRE_COLD_SLOW_TICKS) > 0
+                || creature_trait_value(ch, CREATURE_TRAIT_ELECTRICITY_HEALING_PERCENT) > 0)
                 {
                         firedam = apply_resistance_to_damage(
                             ch, firedam, RES_FIRE);
@@ -3806,7 +3826,7 @@ bool check_aura_of_fear(CHAR_DATA *ch, CHAR_DATA *victim)
 void update_pos(CHAR_DATA *victim)
 {
         if (victim->hit <= 0 || victim->position == POS_DEAD)
-                release_mimic_glue(victim);
+                release_creature_grips(victim);
 
         /* Death ends the pair's right even if later healing revives it. */
         if (victim->position == POS_DEAD)
@@ -4265,7 +4285,7 @@ static const DEATH_PART_DATA death_parts[] =
           OBJ_VNUM_TORN_HEART, "heart", "heart", 0 },
         { PART_ARMS | PART_MANY_ARMS,
           OBJ_VNUM_SLICED_ARM, "arm", "arm", 0 },
-        { PART_2_LEGS | PART_4_LEGS | PART_MANY_LEGS,
+        { PART_2_LEGS | PART_3_LEGS | PART_4_LEGS | PART_MANY_LEGS,
           OBJ_VNUM_SLICED_LEG, "leg", "leg", 0 },
         { PART_TAIL | PART_TAILATTACK,
           OBJ_VNUM_SLICED_TAIL, "tail", "tail", 0 },
