@@ -1188,6 +1188,58 @@ char *target_name;
  */
 int spell_attack_number;
 
+static void chain_lightning_first_hit(int sn, int level, CHAR_DATA *ch,
+                                      CHAR_DATA *victim);
+static void elemental_breath_hit(int sn, int level, CHAR_DATA *ch,
+                                 CHAR_DATA *victim, int divisor, bool resist);
+
+/*
+ * Only a reviewed damage callback can produce an immune contact. A spell
+ * with an elemental status but no damage must still stop at immunity.
+ */
+static bool has_immune_elemental_packet(CHAR_DATA *victim, int sn)
+{
+        unsigned long int types = skill_table[sn].res_type;
+        SPELL_FUN *spell = skill_table[sn].spell_fun;
+
+        if (!victim || !IS_NPC(victim)
+        ||  !(((types & RES_ELECTRICITY)
+              && creature_trait_value(victim, CREATURE_TRAIT_ELECTRICITY_HEALING_PERCENT) > 0)
+          || ((types & (RES_FIRE | RES_COLD))
+              && creature_trait_value(victim, CREATURE_TRAIT_FIRE_COLD_SLOW_TICKS) > 0)))
+                return FALSE;
+
+        return spell == spell_inner_fire || spell == spell_burning_hands
+            || spell == spell_fireball || spell == spell_flamestrike
+            || spell == spell_lightning_bolt || spell == spell_shocking_grasp
+            || spell == spell_lightning_breath || spell == spell_control_flames
+            || spell == spell_hells_fire || spell == spell_runic_flames
+            || spell == spell_runic_frost || spell == spell_runic_bolts
+            /* An immune target already resists Chill Touch's strength drain. */
+            || (spell == spell_chill_touch && !IS_UNDEAD(victim))
+            || spell == spell_chain_lightning || spell == spell_fire_breath
+            || spell == spell_frost_breath || spell == spell_steam_breath;
+}
+
+static void cast_immune_elemental_packet(int sn, int level, CHAR_DATA *ch,
+                                        CHAR_DATA *victim)
+{
+        SPELL_FUN *spell = skill_table[sn].spell_fun;
+
+        /* Keep the immune cast to its target and protect its inventory. */
+        if (spell == spell_chain_lightning)
+                chain_lightning_first_hit(sn, level, ch, victim);
+        else if (spell == spell_fire_breath || spell == spell_steam_breath)
+                elemental_breath_hit(sn, level, ch, victim,
+                    spell == spell_steam_breath ? 7 : 8,
+                    has_elemental_resistance(victim, gsn_resist_heat));
+        else if (spell == spell_frost_breath)
+                elemental_breath_hit(sn, level, ch, victim, 8,
+                    has_elemental_resistance(victim, gsn_resist_cold));
+        else
+                (*spell)(sn, level, ch, victim);
+}
+
 static void do_cast_activation(CHAR_DATA *ch, char *argument);
 void do_cast(CHAR_DATA *ch, char *argument)
 {
@@ -1535,8 +1587,8 @@ static void do_cast_activation(CHAR_DATA *ch, char *argument)
 
                 /*
                  * Preserve the existing pre-cast immunity behaviour for direct
-                 * offensive casting. Resolve the spell's complete resistance
-                 * mask once rather than checking each bit independently.
+                 * offensive casting, except that reactive constructs still
+                 * receive one real damage packet from eligible spells.
                  */
                 if (!undead_helpful
                 &&  (skill_table[sn].target == TAR_CHAR_OFFENSIVE
@@ -1545,6 +1597,18 @@ static void do_cast_activation(CHAR_DATA *ch, char *argument)
                 &&  get_resistance_result(victim, skill_table[sn].res_type)
                     == RES_RESULT_IMMUNE)
                 {
+                        if (has_immune_elemental_packet(victim, sn))
+                        {
+                                if (antimagic_blocks_activation(ch, skill_table[sn].res_type))
+                                        return;
+
+                                cast_immune_elemental_packet(
+                                    sn, URANGE(1, ch->level, MAX_LEVEL), ch, victim);
+                                if (action_character_alive(ch, caster_deaths))
+                                        sound_spell_sfx(ch, sn, "cast");
+                                return;
+                        }
+
                         send_to_char(
                             "{WThey are immune to this spell's effects!{x\n\r\n\r",
                             ch);
@@ -2407,14 +2471,10 @@ void spell_cause_serious(int sn, int level, CHAR_DATA *ch, void *vo)
         damage(ch, (CHAR_DATA *)vo, dice(2, 8) + level / 2, sn, FALSE);
 }
 
-void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
+static void chain_lightning_first_hit(int sn, int level, CHAR_DATA *ch,
+                                      CHAR_DATA *victim)
 {
-        CHAR_DATA *victim = (CHAR_DATA *)vo;
-        CHAR_DATA *tmp_vict, *last_vict, *next_vict;
-        bool found;
         int dam;
-
-        /* first strike */
 
         act("A lightning bolt leaps from $n's hand and arcs to $N.",
             ch, NULL, victim, TO_ROOM);
@@ -2429,6 +2489,16 @@ void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
                 dam /= 3;
 
         damage(ch, victim, dam, sn, FALSE);
+}
+
+void spell_chain_lightning(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+        CHAR_DATA *tmp_vict, *last_vict, *next_vict;
+        bool found;
+        int dam;
+
+        chain_lightning_first_hit(sn, level, ch, victim);
 
         if (!victim->in_room || victim->in_room != ch->in_room)
                 return;
@@ -8500,13 +8570,28 @@ void spell_acid_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         damage(ch, victim, dam, sn, FALSE);
 }
 
+/* Resolve the breath's contact without its separate inventory damage. */
+static void elemental_breath_hit(int sn, int level, CHAR_DATA *ch,
+                                 CHAR_DATA *victim, int divisor, bool resist)
+{
+        int hpch = UMAX(10, ch->hit);
+        int dam = number_range(hpch / divisor + 1, hpch / 4);
+
+        if (resist || saves_spell(ch, level, victim))
+                dam /= 2;
+
+        if (is_affected(victim, gsn_dragon_shield)
+        ||  is_affected(victim, gsn_bonus_exotic))
+                dam /= 2;
+
+        damage(ch, victim, dam, sn, FALSE);
+}
+
 void spell_fire_breath(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         OBJ_DATA *obj_lose;
         OBJ_DATA *obj_next;
         CHAR_DATA *victim = (CHAR_DATA *)vo;
-        int dam;
-        int hpch;
         bool resist = FALSE;
 
         if (has_elemental_resistance(victim, gsn_resist_heat))
@@ -8566,16 +8651,7 @@ void spell_fire_breath(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        hpch = UMAX(10, ch->hit);
-        dam = number_range(hpch / 8 + 1, hpch / 4);
-
-        if (resist || saves_spell(ch, level, victim))
-                dam /= 2;
-
-        if (is_affected(victim, gsn_dragon_shield) || is_affected(victim, gsn_bonus_exotic))
-                dam /= 2;
-
-        damage(ch, victim, dam, sn, FALSE);
+        elemental_breath_hit(sn, level, ch, victim, 8, resist);
 }
 
 void spell_steam_breath(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -8583,8 +8659,6 @@ void spell_steam_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         OBJ_DATA *obj_lose;
         OBJ_DATA *obj_next;
         CHAR_DATA *victim = (CHAR_DATA *)vo;
-        int dam;
-        int hpch;
         bool resist = FALSE;
 
         if (has_elemental_resistance(victim, gsn_resist_heat))
@@ -8644,16 +8718,7 @@ void spell_steam_breath(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        hpch = UMAX(10, ch->hit);
-        dam = number_range(hpch / 7 + 1, hpch / 4);
-
-        if (resist || saves_spell(ch, level, victim))
-                dam /= 2;
-
-        if (is_affected(victim, gsn_dragon_shield) || is_affected(victim, gsn_bonus_exotic))
-                dam /= 2;
-
-        damage(ch, victim, dam, sn, FALSE);
+        elemental_breath_hit(sn, level, ch, victim, 7, resist);
 }
 
 void spell_frost_breath(int sn, int level, CHAR_DATA *ch, void *vo)
@@ -8661,8 +8726,6 @@ void spell_frost_breath(int sn, int level, CHAR_DATA *ch, void *vo)
         OBJ_DATA *obj_lose;
         OBJ_DATA *obj_next;
         CHAR_DATA *victim = (CHAR_DATA *)vo;
-        int dam;
-        int hpch;
         bool resist = FALSE;
 
         if (has_elemental_resistance(victim, gsn_resist_cold))
@@ -8704,16 +8767,7 @@ void spell_frost_breath(int sn, int level, CHAR_DATA *ch, void *vo)
                 }
         }
 
-        hpch = UMAX(10, ch->hit);
-        dam = number_range(hpch / 8 + 1, hpch / 4);
-
-        if (resist || saves_spell(ch, level, victim))
-                dam /= 2;
-
-        if (is_affected(victim, gsn_dragon_shield) || is_affected(victim, gsn_bonus_exotic))
-                dam /= 2;
-
-        damage(ch, victim, dam, sn, FALSE);
+        elemental_breath_hit(sn, level, ch, victim, 8, resist);
 }
 
 void spell_gas_breath(int sn, int level, CHAR_DATA *ch, void *vo)

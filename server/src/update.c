@@ -1922,12 +1922,13 @@ void gain_condition(CHAR_DATA *ch, int iCond, int value)
         else
                 ch->pcdata->condition[iCond] = URANGE(-10, condition + value, MAX_FOOD);
 
+        /* These short notices must not replace the text a player is paging. */
         if (value < 0 && ch->pcdata->condition[iCond] <= -8)
         {
                 switch (iCond)
                 {
                 case COND_FULL:
-                        send_to_char("You're dying of hunger!\n\r", ch);
+                        send_to_char_bw("You're dying of hunger!\n\r", ch);
                         gain = -number_range(2, 5) * ch->level;
 
                         if (ch->hit + gain <= 0)
@@ -1940,11 +1941,11 @@ void gain_condition(CHAR_DATA *ch, int iCond, int value)
                 case COND_THIRST:
                         if (ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG)
                         {
-                                send_to_char("You're dying of dehydration!  You NEED water!\n\r", ch);
+                                send_to_char_bw("You're dying of dehydration!  You NEED water!\n\r", ch);
                         }
                         else
                         {
-                                send_to_char("You're dying of thirst!\n\r", ch);
+                                send_to_char_bw("You're dying of thirst!\n\r", ch);
                         }
                         gain = -number_range(15, 30);
 
@@ -1963,7 +1964,7 @@ void gain_condition(CHAR_DATA *ch, int iCond, int value)
                 switch (iCond)
                 {
                 case COND_FULL:
-                        send_to_char("You begin to feel weak due to lack of food.\n\r", ch);
+                        send_to_char_bw("You begin to feel weak due to lack of food.\n\r", ch);
                         gain = -number_range(5, 10);
 
                         if (ch->hit + gain <= 0)
@@ -1976,11 +1977,11 @@ void gain_condition(CHAR_DATA *ch, int iCond, int value)
                 case COND_THIRST:
                         if (ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG)
                         {
-                                send_to_char("You're drying out; you badly need water.\n\r", ch);
+                                send_to_char_bw("You're drying out; you badly need water.\n\r", ch);
                         }
                         else
                         {
-                                send_to_char("Your throat is parched; you cry out for liquid.\n\r", ch);
+                                send_to_char_bw("Your throat is parched; you cry out for liquid.\n\r", ch);
                         }
                         gain = -number_range(1, 2) * ch->level;
 
@@ -1999,17 +2000,17 @@ void gain_condition(CHAR_DATA *ch, int iCond, int value)
                 switch (iCond)
                 {
                 case COND_FULL:
-                        send_to_char("You are hungry.\n\r", ch);
+                        send_to_char_bw("You are hungry.\n\r", ch);
                         break;
 
                 case COND_THIRST:
                         if (ch->race == RACE_SAHUAGIN || ch->race == RACE_GRUNG)
                         {
-                                send_to_char("Your body is starting to lose its moisture.\n\r", ch);
+                                send_to_char_bw("Your body is starting to lose its moisture.\n\r", ch);
                         }
                         else
                         {
-                                send_to_char("You are thirsty.\n\r", ch);
+                                send_to_char_bw("You are thirsty.\n\r", ch);
                         }
                         break;
                 }

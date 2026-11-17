@@ -3772,10 +3772,10 @@ The #GAMES section has one command per line.
 
 The 'M' command assigns game-fun to all mobiles with mob-vnum.
 
-bankroll is the amount of gold that the croupier (the mob running the game) has
-when it is loaded.  When the bankroll goes below zero, the mob shuts down its
-game.  Currently games can only be conducted with gold pieces, though it is
-planned that this will be changed eventually to allow all denominations.
+bankroll is the house's starting balance in gold value.  The croupier stops
+taking bets when the bankroll reaches zero or below.  Bets are quoted in gold
+value but can be paid with any combination of coin denominations.  Winnings
+are paid in gold coins.
 
 The max_wait value is the number of PULSE_MOBILEs the croupier will wait for
 each person to make a decision for interactive games (currently unimplemented).
@@ -3796,7 +3796,7 @@ game_seven                Seven, a dice game
 An example of a #GAMES section:
 *
 M  3160 game_u_l_t            100000    4    1    /* Croupier, cheats    */
-M  3161 game_blackjack        1000000   8    0    /* Dealer, doesn't cheat */
+M  3161 game_high_dice        1000000   8    0    /* Dealer, doesn't cheat */
 *
 S
 

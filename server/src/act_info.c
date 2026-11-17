@@ -24,6 +24,7 @@
 #include <sys/types.h>
 #endif
 #include <ctype.h>
+#include <errno.h>
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -5017,15 +5018,36 @@ void prac_slist(CHAR_DATA *ch)
 void do_wimpy(CHAR_DATA *ch, char *argument)
 {
         char buf[MAX_STRING_LENGTH];
-        char arg[MAX_INPUT_LENGTH];
-        int wimpy;
+        int max_wimpy = effective_max_hit(ch) / 5;
+        long wimpy;
 
-        one_argument(argument, arg);
+        while (isspace((unsigned char)*argument))
+                argument++;
 
-        if (arg[0] == '\0')
-                wimpy = effective_max_hit(ch) / 5;
+        if (*argument == '\0')
+                wimpy = max_wimpy;
         else
-                wimpy = atoi(arg);
+        {
+                char *end;
+
+                errno = 0;
+                wimpy = strtol(argument, &end, 10);
+
+                if (errno == ERANGE || end == argument)
+                {
+                        send_to_char("Syntax: wimpy [number]\n\r", ch);
+                        return;
+                }
+
+                while (isspace((unsigned char)*end))
+                        end++;
+
+                if (*end != '\0')
+                {
+                        send_to_char("Syntax: wimpy [number]\n\r", ch);
+                        return;
+                }
+        }
 
         if (wimpy < 0)
         {
@@ -5033,14 +5055,14 @@ void do_wimpy(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (wimpy > effective_max_hit(ch) / 5)
+        if (wimpy > max_wimpy)
         {
                 send_to_char("Such cowardice ill becomes you.\n\r", ch);
                 return;
         }
 
-        ch->wimpy = wimpy;
-        sprintf(buf, "Wimpy set to %d hit points.\n\r", wimpy);
+        ch->wimpy = (int)wimpy;
+        sprintf(buf, "Wimpy set to %d hit points.\n\r", ch->wimpy);
         send_to_char(buf, ch);
         return;
 }
