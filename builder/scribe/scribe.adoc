@@ -13091,3 +13091,121 @@ The registry now has 47 traits, 115 Scribe special names and 637 skill rows.
 tentacle grip is an internal spell_null condition, not a learnable spell
 or new priest service. Baragar, Alara and grell portraits are regenerated
 separately; portrait publication is independent of applying this patch.
+
+
+Mahn-Tor Keep
+-------------
+
+The catalogue now has 219 archetypes, 34 body species, 48 internal traits,
+116 Scribe special names and 637 skill rows. Six new archetypes append at
+213-218: treant, beaked_cave_beast, mistling, yeti, ice_worm and minotaur.
+Existing IDs, body rows, flags and player-race trait opt-ins stay unchanged.
+These profiles use the existing plant, humanoid, mysterious_being and
+limbless_invertebrate bodies; the rock toad reuses giant_frog on the
+quadrupedal_amphibian body. No area columns or ACT markers are added.
+
+minotaur is an organic humanoid with a bull head, horns, hooves, normal
+organs, hands, speech, blood, soul and pain eligibility. It has infrared,
+-4 natural armour and ordinary unarmed horn contact; a wielded weapon
+keeps precedence. Default dimensions are 230 cm/250 kg/Large, without HUGE.
+The 2e illustration also has hooves. Neither horns nor hooves create an
+extra ordinary attack or equipment slot. Its profile XP adjustment is +5.
+
+The new code-only armed_melee_damage trait is +2 for minotaurs. It adds
+flat damage to an eligible ordinary melee weapon hit, before the normal
+damage adjustments. It does not change stored damroll, the percentage
+dam_mod field, unarmed attacks, body-part weapons, bows, ranged skills or
+spells. It follows the actual primary or secondary melee weapon used.
+Like other traits, define it in the code registry and sparse species or
+archetype lists. Do not put armed_melee_damage in Scribe or an area file.
+There is no player-race opt-in for this trait in this patch.
+
+spec_horn_gore is reusable by a horned NPC. Against its current visible,
+legal opponent it has a 15 percent opportunity to deal ordinary nonmagical
+piercing damage of 2d max(4, (level+1)/2), using integer division. It takes
+one combat-pulse wait. Head/horns, head trauma, action, room/area safety,
+contact, phase and resistance checks apply. It adds no hold, stun or
+knockdown. The special XP allowance is +5. Giving another creature the
+special still requires appropriate anatomy; no name or vnum test exists.
+Local mage/cleric/anti-paladin assignments override this inherited special,
+so the old caster roles keep their normal casting selection.
+
+treant is an intelligent organic plant. It retains bloodless, no-heart and
+ANALGIC plant physiology and soul eligibility, with wooden physical remains.
+Its XOR delta enables a functional head/eyes/ears, speech, branch arms,
+hands and root legs/feet. Natural armour is -10, fire vulnerability uses
+the normal 150 percent damage response, and ordinary branch blows are
+nonmagical blunt contact. Defaults are 450 cm/2000 kg/Large/HUGE, with +10
+profile XP. The old treant is 500 cm/2500 kg. Both keep Sentinel. Tree
+animation and structural damage remain shared-mechanics retrofit work.
+
+beaked_cave_beast is the area's own furry, clawed, bird-beaked hybrid. It
+uses the humanoid body, is mute but minded and organic, and has normal
+organs, blood, soul, pain eligibility and physical remains. Ordinary
+claw/beak attacks and spec_breath_acid_anatomical preserve its authored
+combat role. Defaults are 230 cm/250 kg/Large. It gains no assumed
+owlbear hug, feathers, invented armour or resistances; profile XP is 0.
+Its old detection abilities and aggression stay.
+
+mistling uses mysterious_being for a substantial mist without organs,
+anatomical limbs, speech or a physical corpse. It is inorganic, ANALGIC,
+minded and non-undead, retaining soul eligibility. Flight permits movement;
+local Sneak stays. Fixed height/weight/length are unknown (0); size is
+Medium. No arbitrary Sanctuary, Pass Door, phase or nonmagic immunity is
+copied from the old animated_mist example. Profile XP is 0.
+
+yeti is an organic humanoid mammal with long clawed arms and anatomical
+fangs, ordinary claw attacks and normal organs/remains. It is mute. The
+244 cm/136 kg/Large dimensions follow the 2e eight-foot/about300-pound
+description. Natural armour is -4; cold resistance is the normal 50 percent
+DD4 approximation of protection from normal cold, and fire vulnerability
+is 150 percent. Profile XP is +5. Local 2313 keeps its frost breath through
+the anatomical wrapper. Surprise-dependent gaze/fright and heat-absorbing
+squeeze remain explicit shared-mechanics retrofit candidates, rather than
+extra powers stacked on this area's breath.
+
+ice_worm is a separate DD4 creature, not an asserted remorhaz or purple
+worm. It has living worm organs, a mouth/fangs, blood and physical remains,
+without limbs/speech. Existing mind eligibility stays. Its explicit almost
+50-foot length is represented by 1500 cm, estimated thickness150 cm and
+12000 kg, Large/HUGE. It has cold resistance, +5 profile XP and anatomical
+frost breath in place of the mismatching acid assignment. No poison,
+stinger, Swallow, added armour or damage multiplier is introduced.
+
+All34 definitions are converted. Reused ghost2300 retains undead casting
+and a voice; wraith2306 keeps muteness and inherits its drain special,
+replacing poison. Five ogres use the completed ogre defaults. The barbarian
+and adult captive are human. Darkoth is a living minotaur despite the name
+spec_cast_undead. Nasturn keeps cleric casting; Tyrgoth, Gorak and Dorgar
+keep their original absence of a caster assignment. No teacher, healer or
+priest-service flags are added. Minotaur cold discomfort stays meaningful.
+
+Mahn-Tor2333 is Boss. Ogre chieftain2311 and eight guildmasters2325-2332
+are Elite. Inner guards2321 and ring-keeper2324 are Rare; other22Common.
+Rank HP applies once. Dice letters, sourcebook morale and the word elite
+are not rank markers. Dimensions are individual descriptive choices,
+not automatic rank bonuses. Amyrok is200cm/160kg/Medium; Gorak280/450,
+Mahn-Tor300/500, Belrak230/200 and Dorgar250/200 areLarge. No minotaur
+gets HUGE merely for an impressive adjective.
+
+Remove only the approved conflicting legacy body masks and duplicated
+inherited AFF bits. Rock toad2303 keeps its cow-sized150cm/500kg/250cm
+Large body and gets anatomical horns/spines, without an extra attack.
+All original ACT behaviour, levels/build numbers/dice letters/damage,
+alignments, sexes and equipment remain. All100 room blocks/flags/exits,
+both NO_UNDEAD wards2374/2390, reset caps/order/slots, eight key-ring keys
+and door chain stay. Population/items remain70/135 initially and at refill.
+No matching source exists; four other source/area pairs stay unchanged.
+
+Crossbow2334 gains ITEM_BOW while keeping its magic flag and all other
+stats/affects/reset placement; verb7 pound becomes11 pierce. This enables
+normal bow commands for players, without new automatic NPC shooting AI.
+Held spiked knuckles2381 use pierce11 instead of slice1, keeping the maul
+primary and their held placement. No extra offhand attack is added. The
+other92objects, including shared Underdark items2313/2365/2390, stay intact.
+Only Its about/long thins and the Old Treant reset comment are corrected.
+
+Maze/scent/surprise equivalents for minotaurs remain shared-mechanics
+retrofit work. Existing player races keep their abilities. Portraits2329
+and2331 are regenerated separately: minotaur Sumaron and crossbow Belrak.
+The other32 portraits stay; image publication is independent of Git.

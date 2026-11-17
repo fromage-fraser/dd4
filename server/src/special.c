@@ -56,6 +56,7 @@ DECLARE_SPEC_FUN( spec_breath_steam         );
 DECLARE_SPEC_FUN( spec_executioner_local );
 DECLARE_SPEC_FUN( spec_grell );
 DECLARE_SPEC_FUN( spec_flind );
+DECLARE_SPEC_FUN( spec_horn_gore );
 DECLARE_SPEC_FUN( spec_otyugh );
 DECLARE_SPEC_FUN( spec_cast_adept           );
 DECLARE_SPEC_FUN( spec_cast_construct_adept );
@@ -180,6 +181,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_executioner_local")) return spec_executioner_local;
         if (!str_cmp(name, "spec_grell")) return spec_grell;
         if (!str_cmp(name, "spec_flind")) return spec_flind;
+        if (!str_cmp(name, "spec_horn_gore")) return spec_horn_gore;
         if (!str_cmp(name, "spec_otyugh")) return spec_otyugh;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
         if (!str_cmp(name, "spec_cast_construct_adept")) return spec_cast_construct_adept;
@@ -310,6 +312,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_executioner_local) return "spec_executioner_local";
         if (special == spec_grell) return "spec_grell";
         if (special == spec_flind) return "spec_flind";
+        if (special == spec_horn_gore) return "spec_horn_gore";
         if (special == spec_otyugh) return "spec_otyugh";
         if (special == spec_cast_adept) return "spec_cast_adept";
         if (special == spec_cast_construct_adept) return "spec_cast_construct_adept";
@@ -5316,6 +5319,28 @@ bool spec_grell(CHAR_DATA *ch)
         af.location = APPLY_NONE;
         af.bitvector = AFF_HOLD;
         affect_to_char(victim, &af);
+        return TRUE;
+}
+
+/* Any horned creature can use this short, physical gore. */
+bool spec_horn_gore(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        int sides;
+        if (!victim || !HAS_HEAD(ch) || !(ch->body_form & PART_HORNS)
+        || IS_AFFECTED(ch, AFF_HEAD_TRAUMA) || !can_see(ch, victim)
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || (ch->in_room->area
+            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
+        || get_contact_resistance_result(ch, victim, RES_NONMAGIC | RES_PIERCE)
+            == RES_RESULT_IMMUNE || number_percent() > 15)
+                return FALSE;
+        sides = UMAX(4, (ch->level + 1) / 2);
+        WAIT_STATE(ch, PULSE_VIOLENCE);
+        act("You drive your horns into $N!", ch, NULL, victim, TO_CHAR);
+        act("$n drives $s horns into you!", ch, NULL, victim, TO_VICT);
+        act("$n drives $s horns into $N!", ch, NULL, victim, TO_NOTVICT);
+        damage_from_object(ch, victim, dice(2, sides), TYPE_HIT + 11, FALSE, NULL);
         return TRUE;
 }
 

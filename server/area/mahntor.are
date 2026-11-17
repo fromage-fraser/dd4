@@ -13,8 +13,9 @@ he waits for release.
 ~
 2 136 -1000 S
 25 0 -5 550d1+75 1d8+15
-96 70000
+0 70000
 8 8 1
+< ghost~ common~
 #2301
 treant tree~
 the Old Treant~
@@ -26,8 +27,11 @@ wind pushes it back and forth.
 ~
 2 0 250 S
 20 0 -3 250d1+50 3d6+5
-1|2|8|16|32|256 35000
+0 35000
 8 8 0
+< treant~ common~
+MobHeight 500
+MobWeight 2500
 #2302
 dweller cave~
 the Cave Dweller~
@@ -39,33 +43,40 @@ It sees you and snarls.
 ~
 2|32 32788 0 S
 15 5 2 150d1+75 3d6+3
-32 21000
+0 21000
 8 8 0
 
 
+< beaked_cave_beast~ common~
 #2303
 toad rock~
 the Rock Toad~
 A rather large rock toad sits here, croaking loudly.
 ~
-A grey toad. Its about the size of a cow. Small horns grow all over its body.
+A grey toad. It is about the size of a cow. Small horns grow all over its body.
 ~
 2 0 -250 S
 14 6 4 150d1+35 2d8+3
-36 17500
+34359738368 17500
 6 6 0
+< giant_frog~ common~
+MobHeight 150
+MobWeight 500
+MobLength 250
+MobSize 2
 #2304
 weeping willow tree~
 the Weeping Willow~
 A large willow tree stands here, weeping.
 ~
-The weeping willow has long thins branches. These branches seem to droop in
+The weeping willow has long thin branches. These branches seem to droop in
 anguish and dismay. You hear a faint sound of crying.
 ~
 2 136 1000 S
 25 0 -5 550d1+50 4d6+5
-1|2|8|16|32|256 150000
+0 150000
 8 8 2
+< treant~ common~
 #2305
 mist mistling~
 the Mistling~
@@ -75,8 +86,9 @@ It looks like a thin wisp of mist that has gained substance and size.
 ~
 34 65536 0 S
 15 1 5 200d1+20 2d9+3
-96 22000
+0 22000
 8 8 0
+< mistling~ common~
 #2306
 swamp wraith~
 the Swamp Wraith~
@@ -88,8 +100,9 @@ he nears you.
 ~
 38 0 -1000 S
 20 0 -10 250d1+25 6d4+5
-96 50000
+32 50000
 8 8 1
+< wraith~ common~
 #2307
 ogre villager~
 the Ogre Villager~
@@ -102,6 +115,7 @@ with its head hung low. It sees you and cringes in mortal terror.
 10 11 3 100d1+20 2d6+2
 0 10000
 8 8 0
+< ogre~ common~
 #2308
 warrior ogre~
 the Ogre Warrior~
@@ -114,6 +128,7 @@ formidable.
 15 6 1 175d1+25 3d6+3
 0 22000
 8 8 1
+< ogre~ common~
 #2309
 guard ogre~
 the Ogre Guard~
@@ -126,6 +141,7 @@ fight to the death before abandoning his post.
 19 0 2 200d1+50 3d6+5
 0 35000
 8 8 1
+< ogre~ common~
 #2310
 shaman ogre~
 The Ogre Shaman~
@@ -138,6 +154,7 @@ charms and holy symbols draped about him. He looks at you and snarls.
 20 0 1 250d1+50 4d6+5
 0 45000
 8 8 1
+< ogre~ common~
 #2311
 chief chieftain ogre~
 the Ogre Chieftain~
@@ -150,6 +167,9 @@ quite formidable. He towers high above you and growls menacingly.
 25 -4 0 550e1+50 5d5+5
 0 145000
 8 8 1
+< ogre~ elite~
+MobHeight 350
+MobWeight 250
 #2312
 barbarian~
 the Plains Barbarian~
@@ -162,6 +182,9 @@ and icy wastes.
 20 0 1 250d1+50 3D6+4
 0 50000
 8 8 1
+< human~ common~
+MobHeight 185
+MobWeight 95
 #2313
 yeti white~
 the White Yeti~
@@ -172,8 +195,9 @@ curved talons and its mouth is full of sharp teeth.
 ~
 230 0 -350 S
 16 1 5 200d1+25 3d7+3
-32 28000
+0 28000
 8 8 0
+< yeti~ common~
 #2314
 worm ice iceworm~
 the Ice Worm~
@@ -185,8 +209,9 @@ as it charges directly at you.
 ~
 102 0 0 S
 20 0 -5 250d1+75 3d6+5
-64 45000
+0 45000
 8 8 0
+< ice_worm~ common~
 #2315
 citizen minotaur~
 the Minotaur Citizen~
@@ -199,6 +224,7 @@ place to seek refuge from the cold.
 15 5 3 100d1+90 2d5+5
 0 15000
 8 8 0
+< minotaur~ common~
 #2316
 guard minotaur~
 the Minotaur Guard~
@@ -211,6 +237,7 @@ his armor.
 22 -2 0 400d1+40 4d6+5
 0 90000
 8 8 1
+< minotaur~ common~
 #2317
 warrior minotaur~
 the Minotaur Warrior~
@@ -223,6 +250,9 @@ fur and red eyes. He looks quite capable of protecting the city.
 21 -1 0 300d1+50 3d7+5
 0 65000
 8 8 1
+< minotaur~ common~
+MobHeight 260
+MobWeight 350
 #2318
 minotaur gatekeeper~
 the Minotaur Gatekeeper~
@@ -235,6 +265,7 @@ miserable standing in the driven snow and ice.
 25 -4 -5 550d1+50 5d5+5
 0 100000
 8 8 0
+< minotaur~ common~
 #2319
 minotaur high guard~
 the High Minotaur Guard~
@@ -247,6 +278,7 @@ skilled.
 25 -4 -5 600d1+20 4d7+4
 0 130000
 8 8 1
+< minotaur~ common~
 #2320
 minotaur royal guard~
 the Royal Minotaur Guard~
@@ -259,6 +291,9 @@ huge glaive. He looks quite capable of protecting the keep.
 26 -6 -7 650d1+50 5d5+4
 0 160000
 8 8 1
+< minotaur~ common~
+MobHeight 260
+MobWeight 350
 #2321
 guard minotaur elite~
 the Elite Minotaur Guard~
@@ -271,6 +306,7 @@ furs.
 28 -8 -8 800d1+50 6d5+5
 0 300000
 8 8 1
+< minotaur~ rare~
 #2322
 girl haremgirl harem slave~
 the Harem Girl~
@@ -283,6 +319,9 @@ in the harem.
 15 20 10 50d1+10 3d1+5
 0 100
 8 8 2
+< human~ common~
+MobHeight 165
+MobWeight 55
 #2323
 butler minotaur~
 the Minotaur Butler~
@@ -294,6 +333,7 @@ He looks quite regal and refined to be a minotaur.
 20 1 0 1d12+247 3d6+4
 0 40000
 8 8 1
+< minotaur~ common~
 #2324
 keeper minotaur ring-keeper~
 the Minotaur Ring-Keeper~
@@ -306,6 +346,9 @@ keys hanging from his belt. He wears huge, spiked brass knuckles.
 29 -9 -9 100d3+700 5d7+5
 0 400000
 8 8 1
+< minotaur~ rare~
+MobHeight 260
+MobWeight 350
 #2325
 gorak minotaur warrior master~
 Gorak~
@@ -318,6 +361,9 @@ master of the warrior guild of Mahn-Tor.
 30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
+< minotaur~ elite~
+MobHeight 280
+MobWeight 450
 #2326
 darkoth minotaur anti-paladin master~
 Darkoth~
@@ -330,6 +376,7 @@ chill runs down your spine. He is the master of the Mahn-Tor anti-paladins.
 30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
+< minotaur~ elite~
 #2327
 tyrgoth minotaur paladin master~
 Tyrgoth~
@@ -342,6 +389,7 @@ presence. He is the leader of the Mahn-Tor paladins.
 30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
+< minotaur~ elite~
 #2328
 amyrok minotaur mage master~
 Amyrok~
@@ -355,6 +403,10 @@ mages of Mahn-Tor.
 30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
+< minotaur~ elite~
+MobHeight 200
+MobWeight 160
+MobSize 1
 #2329
 sumaron minotaur cleric master~
 Sumaron~
@@ -367,6 +419,7 @@ master of all the clerics of Mahn-Tor.
 30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
+< minotaur~ elite~
 #2330
 nasturn minotaur druid master~
 Nasturn~
@@ -379,6 +432,7 @@ wears no metal of any type. He looks at you and smiles.
 30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
+< minotaur~ elite~
 #2331
 belrak minotaur ranger master~
 Belrak~
@@ -391,6 +445,8 @@ compared to the normal minotaur. He looks at you with a slight smirk.
 30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
+< minotaur~ elite~
+MobWeight 200
 #2332
 dorgar minotaur thief master~
 Dorgar~
@@ -403,6 +459,9 @@ appears to be quite a skilled thief.
 30 -9 -10 2500e1+500 6d6+5
 0 800000
 8 8 1
+< minotaur~ elite~
+MobHeight 250
+MobWeight 200
 #2333
 mahn-tor minotaur grand master~
 Mahn-Tor~
@@ -416,6 +475,9 @@ Mahn-Tor is the leader of the minotaurs. He is awe-inspiring.
 33 -10 -10 3000b1+500 6d7+5
 0 900000
 8 8 1
+< minotaur~ boss~
+MobHeight 300
+MobWeight 500
 #0
 
 
@@ -843,8 +905,8 @@ crossbow huge~
 a huge crossbow~
 A huge crossbow rests here.~
 ~
-5 64 8193
-0~ 3~ 7~ 7~
+5 64|1073741824 8193
+0~ 3~ 7~ 11~
 15 35000 3500
 A
 18 1
@@ -1311,7 +1373,7 @@ some huge spiked brass knuckles~
 A set of spiked brass knuckles lies here.~
 ~
 5 0 8193
-0~ 4~ 3~ 1~
+0~ 4~ 3~ 11~
 9 15000 1500
 E
 spiked brass knuckles~
@@ -3509,7 +3571,7 @@ E 1 2346 5 5         Ethereal Plate
 E 1 2347 5 6         Ethereal Helm
 E 1 2348 10 16       Ethereal Blade
 *
-M 0 2301 1 2314      Evil Treant
+M 0 2301 1 2314      Old Treant
 *
 M 0 2302 1 2316      Cave Dweller
 *
@@ -3813,11 +3875,8 @@ S
 
 #SPECIALS
 M  2300 spec_cast_undead
-M  2302 spec_breath_acid
-M  2306 spec_poison
 M  2310 spec_cast_cleric
-M  2313 spec_breath_frost
-M  2314 spec_breath_acid
+M  2313 spec_breath_frost_anatomical
 M  2324 spec_cast_mage
 M  2326 spec_cast_undead
 M  2328 spec_cast_mage
