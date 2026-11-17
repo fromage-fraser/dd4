@@ -58,6 +58,8 @@ DECLARE_SPEC_FUN( spec_grell );
 DECLARE_SPEC_FUN( spec_flind );
 DECLARE_SPEC_FUN( spec_horn_gore );
 DECLARE_SPEC_FUN( spec_breath_crystal );
+DECLARE_SPEC_FUN( spec_sprite );
+DECLARE_SPEC_FUN( spec_elemental_burst );
 DECLARE_SPEC_FUN( spec_otyugh );
 DECLARE_SPEC_FUN( spec_cast_adept           );
 DECLARE_SPEC_FUN( spec_cast_construct_adept );
@@ -184,6 +186,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_flind")) return spec_flind;
         if (!str_cmp(name, "spec_horn_gore")) return spec_horn_gore;
         if (!str_cmp(name, "spec_breath_crystal")) return spec_breath_crystal;
+        if (!str_cmp(name, "spec_sprite")) return spec_sprite;
+        if (!str_cmp(name, "spec_elemental_burst")) return spec_elemental_burst;
         if (!str_cmp(name, "spec_otyugh")) return spec_otyugh;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
         if (!str_cmp(name, "spec_cast_construct_adept")) return spec_cast_construct_adept;
@@ -316,6 +320,8 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_flind) return "spec_flind";
         if (special == spec_horn_gore) return "spec_horn_gore";
         if (special == spec_breath_crystal) return "spec_breath_crystal";
+        if (special == spec_sprite) return "spec_sprite";
+        if (special == spec_elemental_burst) return "spec_elemental_burst";
         if (special == spec_otyugh) return "spec_otyugh";
         if (special == spec_cast_adept) return "spec_cast_adept";
         if (special == spec_cast_construct_adept) return "spec_cast_construct_adept";
@@ -5380,6 +5386,90 @@ bool spec_breath_crystal(CHAR_DATA *ch)
         act("The dazzling shards blind you!", ch, NULL, victim, TO_VICT);
         act("$N is blinded by the dazzling shards!", ch, NULL, victim, TO_NOTVICT);
         return TRUE;
+}
+
+/* These innate spells still respect action, safety and ordered-player rules. */
+static bool innate_spell_ready(CHAR_DATA *ch)
+{
+        CHAR_DATA *issuer;
+        return native_power_ready(ch) && ch->hit > 0
+            && !IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+            && ch->ghost_phase == GHOST_PHASE_NONE
+            && !get_ordered_player(ch, &issuer)
+            && !(ch->in_room->area
+                && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_NO_MAGIC));
+}
+
+/* Keep the old elemental mix and target sampling without inventing a mouth. */
+bool spec_elemental_burst(CHAR_DATA *ch)
+{
+        static const char *spells[] =
+        {
+                "fire breath", "lightning breath", "lightning breath",
+                "gas breath", "acid breath", "steam breath", "steam breath",
+                "frost breath"
+        };
+        static const char *messages[] =
+        {
+                "Flames erupt from $n!", "Lightning arcs from $n!",
+                "Lightning arcs from $n!", "Poisonous gas billows from $n!",
+                "Acid sprays from $n!", "Scalding steam erupts from $n!",
+                "Scalding steam erupts from $n!", "A freezing blast erupts from $n!"
+        };
+        CHAR_DATA *victim;
+        int choice, sn;
+
+        if (!innate_spell_ready(ch) || IS_SET(ch->act, ACT_NO_FIGHT)
+        || ch->position != POS_FIGHTING || !ch->fighting
+        || ch->fighting->deleted || ch->fighting->hit <= 0
+        || ch->fighting->in_room != ch->in_room
+        || is_safe(ch, ch->fighting)
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || (ch->in_room->area
+            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE)))
+                return FALSE;
+
+        choice = number_bits(3);
+        sn = skill_lookup((char *)spells[choice]);
+        if (sn < 0)
+                return FALSE;
+        victim = NULL;
+        if (choice != 3)
+        {
+                for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+                {
+                        if (victim == ch || victim->deleted || victim->hit <= 0
+                        || victim->position == POS_DEAD || victim->fighting != ch
+                        || is_safe(ch, victim))
+                                continue;
+                        if (!number_bits(2))
+                                break;
+                }
+                if (!victim)
+                        return FALSE;
+        }
+        /* The discharge is magic even when the old spell lists only an element. */
+        if (antimagic_blocks_activation(ch, RES_MAGIC))
+                return FALSE;
+        act((char *)messages[choice], ch, NULL, NULL, TO_ROOM);
+        if (choice == 5 || choice == 6)
+                sound_emit_room(ch->in_room, "sfx.spell.cast.steam_breath", -1, NULL);
+        return cast_native_spell(skill_table[sn].spell_fun, sn, ch->level, ch, victim);
+}
+
+/* A woodland sprite hides with its own magic while things are quiet. */
+bool spec_sprite(CHAR_DATA *ch)
+{
+        int sn;
+        if (!innate_spell_ready(ch) || ch->position == POS_FIGHTING
+        || ch->fighting || is_in_combat(ch) || !HAS_HEAD(ch)
+        || !(ch->body_form & PART_BRAINS) || IS_AFFECTED(ch, AFF_HEAD_TRAUMA)
+        || IS_AFFECTED(ch, AFF_INVISIBLE) || number_percent() > 25)
+                return FALSE;
+        sn = skill_lookup("invis");
+        if (sn < 0 || is_affected(ch, sn))
+                return FALSE;
+        return cast_native_spell(skill_table[sn].spell_fun, sn, ch->level, ch, ch);
 }
 
 /* Any horned creature can use this short, physical gore. */
