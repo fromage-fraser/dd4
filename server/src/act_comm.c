@@ -1000,7 +1000,7 @@ void do_tell(CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        if (body != settings && !IS_IMMORTAL(speaker) && !IS_AWAKE(body))
+        if (!IS_IMMORTAL(speaker) && !IS_AWAKE(body))
         {
                 act("$E can't hear you.", ch, 0, victim, TO_CHAR);
                 return;

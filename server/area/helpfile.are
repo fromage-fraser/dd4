@@ -1581,6 +1581,12 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Let direct elemental damage trigger flesh-golem reactions without
+  hurting the golem.
+- Keep unread help pages intact when hunger and thirst notices appear.
+- Make tell and reply follow the same rules for sleeping recipients.
+- Reject invalid wimpy settings without changing the flee threshold.
+- Reject unsupported Scribe games and correct the builder game example.
 - Convert Warlock Keep mobs; add grell and otyugh grips, flesh-golem
   reactions and flind disarming; fix the flind bar and lightning scroll.
 - Convert Golem Settlement mobs; retain their minds, roles and shops, and

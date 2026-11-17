@@ -629,6 +629,7 @@ my %trap_trig = (
         'open' => 512,
 );
 
+# Scribe game names map to the registered functions in server/src/gamble.c.
 my %game_str = (
         ult         => 'game_u_l_t',
         highdice    => 'game_high_dice',
@@ -1107,6 +1108,7 @@ while (1) {
                 next;
             }
 
+            $game{'duplicate_gm'} = 1 if $field eq 'gm' && exists $game{'gm'};
             next if &add_field_data(\%game, $field, $data, 'mb gm br mw ch');
             print "    line $line: game: unknown field '$field'\n";
         }
@@ -2167,10 +2169,6 @@ foreach (0 .. $#games) {
     my %game = @{$games[$_]};
     my $err = "    game, line $game{'line'}:";
 
-    # foreach (qw/t1 t2 t3 t4 t5/) {
-    #     $shop{$_} = 0 if (!exists $shop{$_} || $shop{$_} eq '');
-    # }
-
     if ($msg = &check_field_number_range(\%game, 'mb', 0, 'none')) {
         print "$err $msg\n";
         $game_errors{$game{'line'}}++;
@@ -2187,15 +2185,22 @@ foreach (0 .. $#games) {
         }
     }
 
-    if ($msg = &get_multiple_flags(\%game, 'gm', \%game_str, '')) {
+    if ($game{'duplicate_gm'}) {
+        print "$err field 'gm' may only be set once\n";
+        $game_errors{$game{'line'}}++;
+    }
+    elsif ($msg = &check_field_defined(\%game, 'gm')) {
         print "$err $msg\n";
         $game_errors{$game{'line'}}++;
     }
+    elsif (!exists $game_str{$game{'gm'}}) {
+        my $names = join(', ', sort keys %game_str);
+        print "$err field 'gm' must name one game ($names): '$game{'gm'}'\n";
+        $game_errors{$game{'line'}}++;
+    }
 
-    $games[$_] = "M $game{'mb'} $game{'gm'} \t\t $game{'br'}\t$game{'mw'} $game{'ch'}\n"
+    $games[$_] = "M $game{'mb'} $game_str{$game{'gm'}} \t\t $game{'br'}\t$game{'mw'} $game{'ch'}\n"
             unless $game_errors{$game{'line'}};
-
-    # M 27232 game_seven			1000000   8	0	/* Slymah */
 }
 
 #  Shops
@@ -3061,7 +3066,8 @@ sub is_number($) {
 
 if ($area_errors || keys %recall_errors || keys %special_errors || keys %mob_errors
         || keys %obj_errors || keys %room_errors || keys %addmob_errors
-        || keys %addobj_errors || keys %help_errors || keys %shop_errors) {
+        || keys %addobj_errors || keys %help_errors || keys %shop_errors
+        || keys %game_errors) {
     sub errors($) {
         my $num = shift;
         my $text = "$num error";
@@ -3111,6 +3117,11 @@ if ($area_errors || keys %recall_errors || keys %special_errors || keys %mob_err
         print "    shop, line $_: ", errors($shop_errors{$_});
     }
 
+    foreach (keys %game_errors) {
+        print "    game, line $_: ", errors($game_errors{$_});
+    }
+
+    exit 1 if keys %game_errors;
     exit 0;
 }
 
