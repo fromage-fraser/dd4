@@ -59,6 +59,8 @@ DECLARE_SPEC_FUN( spec_flind );
 DECLARE_SPEC_FUN( spec_horn_gore );
 DECLARE_SPEC_FUN( spec_breath_crystal );
 DECLARE_SPEC_FUN( spec_sprite );
+DECLARE_SPEC_FUN( spec_vine_grip );
+DECLARE_SPEC_FUN( spec_innate_fade );
 DECLARE_SPEC_FUN( spec_elemental_burst );
 DECLARE_SPEC_FUN( spec_otyugh );
 DECLARE_SPEC_FUN( spec_cast_adept           );
@@ -187,6 +189,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_horn_gore")) return spec_horn_gore;
         if (!str_cmp(name, "spec_breath_crystal")) return spec_breath_crystal;
         if (!str_cmp(name, "spec_sprite")) return spec_sprite;
+        if (!str_cmp(name, "spec_vine_grip")) return spec_vine_grip;
+        if (!str_cmp(name, "spec_innate_fade")) return spec_innate_fade;
         if (!str_cmp(name, "spec_elemental_burst")) return spec_elemental_burst;
         if (!str_cmp(name, "spec_otyugh")) return spec_otyugh;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
@@ -321,6 +325,8 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_horn_gore) return "spec_horn_gore";
         if (special == spec_breath_crystal) return "spec_breath_crystal";
         if (special == spec_sprite) return "spec_sprite";
+        if (special == spec_vine_grip) return "spec_vine_grip";
+        if (special == spec_innate_fade) return "spec_innate_fade";
         if (special == spec_elemental_burst) return "spec_elemental_burst";
         if (special == spec_otyugh) return "spec_otyugh";
         if (special == spec_cast_adept) return "spec_cast_adept";
@@ -5470,6 +5476,80 @@ bool spec_sprite(CHAR_DATA *ch)
         if (sn < 0 || is_affected(ch, sn))
                 return FALSE;
         return cast_native_spell(skill_table[sn].spell_fun, sn, ch->level, ch, ch);
+}
+
+/* A short fade shares the ordinary invisibility effect and combat stripping. */
+static void spell_innate_fade(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        ROOM_INDEX_DATA *room = ch->in_room;
+        int deaths = action_deaths(ch);
+        AFFECT_DATA af;
+
+        /* Set the short lifetime before messages can trigger another action. */
+        memset(&af, 0, sizeof(af));
+        af.type = sn;
+        af.duration = 0;
+        af.location = APPLY_NONE;
+        af.bitvector = AFF_INVISIBLE;
+        affect_to_char(ch, &af);
+        send_to_char("Your glow dims until you vanish from sight.\n\r", ch);
+        if (action_character_in_room(ch, room, deaths))
+                act("$n dims and fades from sight.", ch, NULL, NULL, TO_ROOM);
+}
+
+/* A creature can dim its own glow without needing a mouth or a brain organ. */
+bool spec_innate_fade(CHAR_DATA *ch)
+{
+        int sn;
+        if (!innate_spell_ready(ch) || ch->position == POS_FIGHTING
+        || ch->fighting || is_in_combat(ch) || IS_AFFECTED(ch, AFF_INVISIBLE))
+                return FALSE;
+        sn = skill_lookup("invis");
+        if (sn < 0 || is_affected(ch, sn) || number_percent() > 25)
+                return FALSE;
+        return cast_native_spell(spell_innate_fade, sn, ch->level, ch, ch);
+}
+
+/* Living vines use the same short, source-tracked grip as other grasping limbs. */
+bool spec_vine_grip(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch), *issuer;
+        ROOM_INDEX_DATA *room;
+        AFFECT_DATA af;
+        int source_deaths, target_deaths;
+
+        if (!victim || !ch->target_id || !HAS_ARMS(ch)
+        || IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+        || ch->ghost_phase != GHOST_PHASE_NONE
+        || get_ordered_player(ch, &issuer)
+        || !can_see(ch, victim) || IS_HUGE(victim)
+        || IS_AFFECTED(victim, AFF_HOLD) || is_affected(victim, gsn_tentacle_grip)
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || (ch->in_room->area
+            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
+        || get_contact_resistance_result(ch, victim, RES_NONMAGIC | RES_HOLD)
+            == RES_RESULT_IMMUNE || number_percent() > 25)
+                return FALSE;
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        target_deaths = action_deaths(victim);
+        if (saves_resistance_effect(ch, ch->level, victim, RES_NONMAGIC | RES_HOLD))
+                return TRUE;
+        if (!action_character_in_room(ch, room, source_deaths)
+        || !action_character_in_room(victim, room, target_deaths)
+        || ch->fighting != victim)
+                return TRUE;
+
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_tentacle_grip;
+        af.duration = 0;
+        af.location = APPLY_NONE;
+        af.bitvector = AFF_HOLD;
+        affect_to_char_source(victim, &af, AFFECT_SOURCE_CREATURE, ch->target_id);
+        act("$n's vines close around you!", ch, NULL, victim, TO_VICT);
+        act("Your vines close around $N!", ch, NULL, victim, TO_CHAR);
+        act("$n's vines close around $N!", ch, NULL, victim, TO_NOTVICT);
+        return TRUE;
 }
 
 /* Any horned creature can use this short, physical gore. */
