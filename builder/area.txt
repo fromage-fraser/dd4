@@ -9060,8 +9060,8 @@ was found.
 Sentinel Pass
 -------------
 
-The current catalogue has 231 archetypes, 34 body species, 48 internal
-traits, 119 Scribe special names and 637 skill rows. Four archetypes
+The Sentinel Pass step brought the catalogue to 231 archetypes, 34 body
+species, 48 internal traits, 119 Scribe special names and 637 skill rows. Four archetypes
 append at IDs 227-230: giant_land_crab, sasquatch, boulder_beast and
 sprite. Goat keeps its existing ID 1 but is completely rewritten as a real
 animal. There are no new area fields, body species, trait IDs, ACT bits or
@@ -9176,3 +9176,148 @@ The shadow portrait is the only proposed replacement: an insubstantial
 humanoid holding the smooth grey stone, without unsupported sword or
 armour. The other seven portraits and all 73 room images stay. Image
 publication remains separate from applying this code patch.
+
+
+Old Marsh
+---------
+
+The current catalogue has 238 archetypes, 34 body species, 48 internal
+traits, 121 Scribe special names and 637 skill rows. The seven new entries
+at IDs 231-237 are swamp_thing, small_beast, will_o_wisp,
+death_slaad_humanoid, shambling_mound, marsh_giant and gargoyle. Existing
+rows, body species, trait IDs and player race opt-ins stay unchanged. No
+area field or player skill is added. All 17 local mobs remain Common; the
+Swamp Thing has no rank promotion or extra HP multiplier.
+
+swamp_thing uses plant anatomy, with a head, eyes, ears, arms, legs, hands
+and feet restored through its archetype XOR mask. It is conscious,
+soul-eligible and able to leave vegetation remains, but has no animal
+organs or blood and is insensible to pain. It stays mute. Defaults are 240
+cm, 300 kg and Large, with ordinary pounds, -5 natural armour and +5
+profile XP. It gains no elemental immunity or spell package. The local
+creature keeps its aggressive behaviour and existing lair.
+
+small_beast is a reusable furry quadrupedal mammal rather than a claim
+that every small unidentified animal is a particular real species. It has
+normal organs, blood, soul, pain and remains, plus paws, claws, fangs and
+tail, but no arms or speech. Only its ordinary bite is selected; claw
+anatomy grants no extra attack. Defaults are 30 cm at the shoulder, 6 kg,
+50 cm long and Small, with -1 natural armour and zero profile XP. The
+local beast keeps Sneak, Wimpy and passive wandering.
+
+will_o_wisp uses mysterious_being as a physical starting point. It is a
+conscious inorganic floating orb with eyes, no head, arms, legs, heart,
+voice or corpse. It has no usable animal blood and is insensible to pain,
+but retains soul eligibility. Defaults are 61 cm diameter, mass
+unspecified (0), and Small. Both height and length store that diameter;
+zero mass means unknown, not massless. It flies, has -18 natural armour,
+poison immunity and ordinary RES_MAGIC. The existing natural_damage_type
+trait makes its ordinary contact electrical, using the blast verb. It adds
+neither a second bolt nor magical-natural-contact classification; physical
+weapons still hurt it normally. Profile XP is +10. RES_MAGIC is the usual
+DD4 50 percent damage response, not a literal implementation of the
+tabletop wisp's spell whitelist. No undead or noncorporeal flag is added.
+Keep its existing Sneak, Wimpy, scavenging and passive behaviour.
+
+spec_innate_fade is a reusable short magical fade for creatures whose
+power does not require a mouth or brain organ. On 25 percent of eligible
+idle opportunities it applies the ordinary Invis effect to itself, with
+duration 0 so it clears at the next affect update. It neither stacks nor
+refreshes existing invisibility. Fighting or being attacked prevents the
+fade, and normal combat stripping still applies. Awake/action/wait, charm,
+hold, daze, phase, ordered-player, NO_MAGIC and antimagic rules apply; no
+forced luring or travel is added. The special XP allowance is +5. Existing
+spec_sprite keeps its own head/brain requirements and full ordinary Invis
+duration. A new special does not mean a new player spell.
+
+death_slaad_humanoid is the living humanoid guise of a death slaad. It
+uses normal humanoid anatomy, blood, soul, pain, speech and remains by
+default. Defaults are 183 cm, 90 kg and Medium, with -14 natural armour,
+RES_MAGIC, nonmagic immunity and +10 profile XP. This uses coarse DD4
+magic/weapon categories instead of an exact tabletop 70 percent magic
+resistance roll or +2 weapon threshold. It grants no frog claws, fangs,
+extra attacks, strength bonus, transformation command or additional
+summoning system. The local 8313 is explicitly 13 feet tall, so it uses
+396 cm, 600 kg, Large and an individual HUGE bit. Keep its individual
+no-speech/no-corpse bits, spec_cast_undead repertoire including its
+existing Gate, scythe in WIELD and horned helmet on HEAD. A borrowed
+caster special does not classify a living creature as undead. The helmet
+explains the horns in its portrait; they are not body anatomy.
+
+shambling_mound uses conscious, soul-eligible plant anatomy. It has
+grasping arm and leg masses, no separate head, eyes, animal organs or
+voice, no animal blood or pain, and physical vegetation remains. Keep its
+existing Hide; its profile adds Sneak and Swim. Defaults are 210 cm, 350
+kg and Large, with ordinary crush attacks, -10 natural armour and +15
+profile XP. It is immune to blunt damage, fire and electricity, and
+resists piercing, slashing and cold by 50 percent. Electricity restores 20
+percent of contact damage through the existing electricity_healing_pct
+trait, capped by the normal effective/aggravated healing limit and NO_HEAL
+rules. It never increases permanent HP or dimensions. The shared reaction
+now describes restored vitality so it also makes sense for plants;
+flesh-golem reaction mechanics remain unchanged. No blanket charm, sleep
+or psychic immunity and no mindless flag are added. Cold resistance is a
+DD4 approximation of the stronger tabletop save rule.
+
+spec_vine_grip is a short, physical grasp using the existing
+source-tracked grip condition. It has a 25 percent chance against the
+current legal opponent, followed by a physical Hold save. It needs usable
+arms, normal action/contact/visibility/safety permissions, and cannot
+affect a HUGE or already held target. A successful grip uses duration 0,
+does no HP damage and adds no attack. It clears at the next affect update
+or through the ordinary source movement/death and Freedom handling. Other
+sources' holds are preserved. Antimagic and NO_MAGIC do not block a
+physical grip. The special XP allowance is +5. This is a bounded DD4
+adaptation rather than a countdown to suffocation. Exact cold-save
+immunity, permanent electrical growth and autonomous limb rebuilding
+remain later work; ordinary Regenerate can still repair suitable plant
+limbs.
+
+marsh_giant is a DD4 giant variant on humanoid anatomy. Defaults are 450
+cm, 1500 kg, Large and HUGE, with -5 natural armour, giant family matching
+and +5 profile XP. Its trait profile shares forest_giant's armour entry
+internally; only traits are shared by that parent link. It inherits no
+rock special or swamp spell. Keep the local stationary aggression,
+detection and carried spears. The older generic giant entry is unchanged.
+
+gargoyle uses the existing bipedal_construct stone anatomy while keeping
+consciousness, speech and soul eligibility. It is inorganic, without
+animal organs, blood or pain, and leaves physical stone remains. It has
+wings, flight, claws, fangs and horns; ordinary attacks choose a claw,
+bite or horn without adding attacks. Defaults are 183 cm, 180 kg and
+Medium, with -5 natural armour, nonmagic/poison immunity, magical natural
+contact and +10 profile XP. It has no mindless or undead classification,
+blanket spell immunity or added caster special. Remove its duplicate body
+mask so the old mute bit does not cancel the intended anatomy.
+
+The other ten definitions reuse reviewed troll, ogre, gnoll, cave_beast,
+constrictor_snake, green_hag, wolf and orc entries. The 15-foot swamp
+troll uses 457 cm/900 kg/Large/HUGE, the 20-foot hairy beast uses 610
+cm/4000 kg/Large/HUGE, and the 10-metre anaconda uses 1000 cm/250
+kg/Large/HUGE. The python keeps 600 cm/70 kg/Large without HUGE. Both
+snakes lose the inappropriate poison override and inherit the established
+level-scaled spec_constrictor. Keep their aggression, Hide, Sneak and
+Wimpy. The plump female wolf uses 65 kg while retaining the wolf's 80 cm
+height, 150 cm length and Small size. The hag retains spec_thief; the
+shaman retains spec_cast_cleric. Do not stack another regeneration flag on
+the trolls' existing native regeneration.
+
+One orc shaman now resets at room 8313, By the Monolith, with global cap
+1. The obsidian monolith suits his ritual markings. His existing Sentinel,
+aggression, StayArea and scavenging remain, and no extra loot is invented.
+This reset is appended after all original equipment chains. Every original
+reset number stays, particularly the green trolls' mixed 12/2/2 caps.
+Initial population becomes 33 instead of 32 and population after three
+refills becomes 40 instead of 39. Carried item counts stay 9 initially and
+15 after refills. There are no shops, teachers, local programs or
+NO_UNDEAD wards. Remove only the unsupported questmaster role bit from
+shaman 8319 and gargoyle 8321. Preserve all other authored behaviour,
+builds, levels, alignments, sexes, equipment and room flags.
+
+Text corrections are limited to the wolf's broken long-description
+sentence and then -> than in room 8316. No matching Old Marsh .src exists.
+For a future source-backed area, update .src and .are together and compare
+the whole regenerated result, including scripts, resets and room flags.
+The four other real source exports, including Eakos, stay exact. The wisp
+portrait and southern lake image are regenerated separately from Git; the
+other 16 portraits and 17 room images stay unchanged.

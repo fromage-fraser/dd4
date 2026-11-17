@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 18 November 2026
-Based on master 71db8ea20a2dfb4863cb7ef2f9c9195656f3a65a (PR #985),
-with the accompanying Sentinel Pass changes.
+Based on master 29b5634a67c42e9371d6f0a630959b1a8fa46a00 (PR #986),
+with the accompanying Old Marsh changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -911,10 +911,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 231, so this single example would make 232.
+guide's checked revision it is 238, so this single example would make 239.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 231.
+valid index. This example would receive index 238.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1612,7 +1612,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 231;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 238;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1722,9 +1722,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 231; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 238; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-34 body rows, 231 archetype rows, 48 internal traits and 119 Scribe
+34 body rows, 238 archetype rows, 48 internal traits and 121 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -2168,8 +2168,8 @@ was found.
 Sentinel Pass
 -------------
 
-The current catalogue has 231 archetypes, 34 body species, 48 internal
-traits, 119 Scribe special names and 637 skill rows. Four archetypes
+The Sentinel Pass step brought the catalogue to 231 archetypes, 34 body
+species, 48 internal traits, 119 Scribe special names and 637 skill rows. Four archetypes
 append at IDs 227-230: giant_land_crab, sasquatch, boulder_beast and
 sprite. Goat keeps its existing ID 1 but is completely rewritten as a real
 animal. There are no new area fields, body species, trait IDs, ACT bits or
@@ -2285,6 +2285,150 @@ humanoid holding the smooth grey stone, without unsupported sword or
 armour. The other seven portraits and all 73 room images stay. Image
 publication remains separate from applying this code patch.
 
+Old Marsh
+---------
+
+The current catalogue has 238 archetypes, 34 body species, 48 internal
+traits, 121 Scribe special names and 637 skill rows. The seven new entries
+at IDs 231-237 are swamp_thing, small_beast, will_o_wisp,
+death_slaad_humanoid, shambling_mound, marsh_giant and gargoyle. Existing
+rows, body species, trait IDs and player race opt-ins stay unchanged. No
+area field or player skill is added. All 17 local mobs remain Common; the
+Swamp Thing has no rank promotion or extra HP multiplier.
+
+swamp_thing uses plant anatomy, with a head, eyes, ears, arms, legs, hands
+and feet restored through its archetype XOR mask. It is conscious,
+soul-eligible and able to leave vegetation remains, but has no animal
+organs or blood and is insensible to pain. It stays mute. Defaults are 240
+cm, 300 kg and Large, with ordinary pounds, -5 natural armour and +5
+profile XP. It gains no elemental immunity or spell package. The local
+creature keeps its aggressive behaviour and existing lair.
+
+small_beast is a reusable furry quadrupedal mammal rather than a claim
+that every small unidentified animal is a particular real species. It has
+normal organs, blood, soul, pain and remains, plus paws, claws, fangs and
+tail, but no arms or speech. Only its ordinary bite is selected; claw
+anatomy grants no extra attack. Defaults are 30 cm at the shoulder, 6 kg,
+50 cm long and Small, with -1 natural armour and zero profile XP. The
+local beast keeps Sneak, Wimpy and passive wandering.
+
+will_o_wisp uses mysterious_being as a physical starting point. It is a
+conscious inorganic floating orb with eyes, no head, arms, legs, heart,
+voice or corpse. It has no usable animal blood and is insensible to pain,
+but retains soul eligibility. Defaults are 61 cm diameter, mass
+unspecified (0), and Small. Both height and length store that diameter;
+zero mass means unknown, not massless. It flies, has -18 natural armour,
+poison immunity and ordinary RES_MAGIC. The existing natural_damage_type
+trait makes its ordinary contact electrical, using the blast verb. It adds
+neither a second bolt nor magical-natural-contact classification; physical
+weapons still hurt it normally. Profile XP is +10. RES_MAGIC is the usual
+DD4 50 percent damage response, not a literal implementation of the
+tabletop wisp's spell whitelist. No undead or noncorporeal flag is added.
+Keep its existing Sneak, Wimpy, scavenging and passive behaviour.
+
+spec_innate_fade is a reusable short magical fade for creatures whose
+power does not require a mouth or brain organ. On 25 percent of eligible
+idle opportunities it applies the ordinary Invis effect to itself, with
+duration 0 so it clears at the next affect update. It neither stacks nor
+refreshes existing invisibility. Fighting or being attacked prevents the
+fade, and normal combat stripping still applies. Awake/action/wait, charm,
+hold, daze, phase, ordered-player, NO_MAGIC and antimagic rules apply; no
+forced luring or travel is added. The special XP allowance is +5. Existing
+spec_sprite keeps its own head/brain requirements and full ordinary Invis
+duration. A new special does not mean a new player spell.
+
+death_slaad_humanoid is the living humanoid guise of a death slaad. It
+uses normal humanoid anatomy, blood, soul, pain, speech and remains by
+default. Defaults are 183 cm, 90 kg and Medium, with -14 natural armour,
+RES_MAGIC, nonmagic immunity and +10 profile XP. This uses coarse DD4
+magic/weapon categories instead of an exact tabletop 70 percent magic
+resistance roll or +2 weapon threshold. It grants no frog claws, fangs,
+extra attacks, strength bonus, transformation command or additional
+summoning system. The local 8313 is explicitly 13 feet tall, so it uses
+396 cm, 600 kg, Large and an individual HUGE bit. Keep its individual
+no-speech/no-corpse bits, spec_cast_undead repertoire including its
+existing Gate, scythe in WIELD and horned helmet on HEAD. A borrowed
+caster special does not classify a living creature as undead. The helmet
+explains the horns in its portrait; they are not body anatomy.
+
+shambling_mound uses conscious, soul-eligible plant anatomy. It has
+grasping arm and leg masses, no separate head, eyes, animal organs or
+voice, no animal blood or pain, and physical vegetation remains. Keep its
+existing Hide; its profile adds Sneak and Swim. Defaults are 210 cm, 350
+kg and Large, with ordinary crush attacks, -10 natural armour and +15
+profile XP. It is immune to blunt damage, fire and electricity, and
+resists piercing, slashing and cold by 50 percent. Electricity restores 20
+percent of contact damage through the existing electricity_healing_pct
+trait, capped by the normal effective/aggravated healing limit and NO_HEAL
+rules. It never increases permanent HP or dimensions. The shared reaction
+now describes restored vitality so it also makes sense for plants;
+flesh-golem reaction mechanics remain unchanged. No blanket charm, sleep
+or psychic immunity and no mindless flag are added. Cold resistance is a
+DD4 approximation of the stronger tabletop save rule.
+
+spec_vine_grip is a short, physical grasp using the existing
+source-tracked grip condition. It has a 25 percent chance against the
+current legal opponent, followed by a physical Hold save. It needs usable
+arms, normal action/contact/visibility/safety permissions, and cannot
+affect a HUGE or already held target. A successful grip uses duration 0,
+does no HP damage and adds no attack. It clears at the next affect update
+or through the ordinary source movement/death and Freedom handling. Other
+sources' holds are preserved. Antimagic and NO_MAGIC do not block a
+physical grip. The special XP allowance is +5. This is a bounded DD4
+adaptation rather than a countdown to suffocation. Exact cold-save
+immunity, permanent electrical growth and autonomous limb rebuilding
+remain later work; ordinary Regenerate can still repair suitable plant
+limbs.
+
+marsh_giant is a DD4 giant variant on humanoid anatomy. Defaults are 450
+cm, 1500 kg, Large and HUGE, with -5 natural armour, giant family matching
+and +5 profile XP. Its trait profile shares forest_giant's armour entry
+internally; only traits are shared by that parent link. It inherits no
+rock special or swamp spell. Keep the local stationary aggression,
+detection and carried spears. The older generic giant entry is unchanged.
+
+gargoyle uses the existing bipedal_construct stone anatomy while keeping
+consciousness, speech and soul eligibility. It is inorganic, without
+animal organs, blood or pain, and leaves physical stone remains. It has
+wings, flight, claws, fangs and horns; ordinary attacks choose a claw,
+bite or horn without adding attacks. Defaults are 183 cm, 180 kg and
+Medium, with -5 natural armour, nonmagic/poison immunity, magical natural
+contact and +10 profile XP. It has no mindless or undead classification,
+blanket spell immunity or added caster special. Remove its duplicate body
+mask so the old mute bit does not cancel the intended anatomy.
+
+The other ten definitions reuse reviewed troll, ogre, gnoll, cave_beast,
+constrictor_snake, green_hag, wolf and orc entries. The 15-foot swamp
+troll uses 457 cm/900 kg/Large/HUGE, the 20-foot hairy beast uses 610
+cm/4000 kg/Large/HUGE, and the 10-metre anaconda uses 1000 cm/250
+kg/Large/HUGE. The python keeps 600 cm/70 kg/Large without HUGE. Both
+snakes lose the inappropriate poison override and inherit the established
+level-scaled spec_constrictor. Keep their aggression, Hide, Sneak and
+Wimpy. The plump female wolf uses 65 kg while retaining the wolf's 80 cm
+height, 150 cm length and Small size. The hag retains spec_thief; the
+shaman retains spec_cast_cleric. Do not stack another regeneration flag on
+the trolls' existing native regeneration.
+
+One orc shaman now resets at room 8313, By the Monolith, with global cap
+1. The obsidian monolith suits his ritual markings. His existing Sentinel,
+aggression, StayArea and scavenging remain, and no extra loot is invented.
+This reset is appended after all original equipment chains. Every original
+reset number stays, particularly the green trolls' mixed 12/2/2 caps.
+Initial population becomes 33 instead of 32 and population after three
+refills becomes 40 instead of 39. Carried item counts stay 9 initially and
+15 after refills. There are no shops, teachers, local programs or
+NO_UNDEAD wards. Remove only the unsupported questmaster role bit from
+shaman 8319 and gargoyle 8321. Preserve all other authored behaviour,
+builds, levels, alignments, sexes, equipment and room flags.
+
+Text corrections are limited to the wolf's broken long-description
+sentence and then -> than in room 8316. No matching Old Marsh .src exists.
+For a future source-backed area, update .src and .are together and compare
+the whole regenerated result, including scripts, resets and room flags.
+The four other real source exports, including Eakos, stay exact. The wisp
+portrait and southern lake image are regenerated separately from Git; the
+other 16 portraits and 17 room images stay unchanged.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 34 current rows, including reserved. The index is not an
@@ -2331,7 +2475,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 231 current table rows follow, grouped by body. Numeric IDs are for
+All 238 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -2347,7 +2491,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (74)
+HUMANOID (76)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -2571,6 +2715,12 @@ HUMANOID (74)
   [230] sprite: h/w/l 61 / 4 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_sprite; policy auto
+  [234] death_slaad_humanoid: h/w/l 183 / 90 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
+  [236] marsh_giant: h/w/l 450 / 1500 / ?; Large; family giant
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
 
 DRAGON (14)
 ------------
@@ -2656,7 +2806,7 @@ SERPENTINE_REPTILE (5)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_constrictor; policy auto
 
-MYSTERIOUS_BEING (5)
+MYSTERIOUS_BEING (6)
 ----------------------
   [ 32] animated_mist: h/w/l ? / ? / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -2673,6 +2823,9 @@ MYSTERIOUS_BEING (5)
   [215] mistling: h/w/l ? / ? / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [233] will_o_wisp: h/w/l 61 / ? / 61; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_innate_fade; policy auto
 
 WINGED_MAMMAL (8)
 -------------------
@@ -2710,7 +2863,7 @@ WINGED_REPTILE (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-BIPEDAL_CONSTRUCT (9)
+BIPEDAL_CONSTRUCT (10)
 -----------------------
   [ 38] animated_soft_toy: h/w/l 30 / 1 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -2739,8 +2892,11 @@ BIPEDAL_CONSTRUCT (9)
   [229] boulder_beast: h/w/l 250 / 1200 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials 1:spec_elemental_burst; policy auto
+  [237] gargoyle: h/w/l 183 / 180 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
 
-QUADRUPEDAL_MAMMAL (37)
+QUADRUPEDAL_MAMMAL (38)
 ------------------------
   [  1] goat: h/w/l 70 / 55 / 110; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -2851,6 +3007,9 @@ QUADRUPEDAL_MAMMAL (37)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_fire_anatomical; policy auto
   [224] tiger: h/w/l 100 / 220 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [232] small_beast: h/w/l 30 / 6 / 50; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -3076,7 +3235,7 @@ ARACHNOID_HUMANOID (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_cast_mage, 2:spec_paralysing_bite; policy 70/30/0
 
-PLANT (3)
+PLANT (5)
 -----------
   [136] enchanted_oak: h/w/l 1500 / 10000 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3087,6 +3246,12 @@ PLANT (3)
   [213] treant: h/w/l 450 / 2000 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials none; policy auto
+  [231] swamp_thing: h/w/l 240 / 300 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [235] shambling_mound: h/w/l 210 / 350 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+15; phase none
+        specials 1:spec_vine_grip; policy auto
 
 ENVIRONMENTAL_HAZARD (5)
 --------------------------
@@ -3776,6 +3941,7 @@ Check native helpers, safety, active-slot policies and XP before reusing one.
     spec_breath_crystal
     spec_elemental_burst
     spec_sprite
+    spec_innate_fade
     spec_breath_fire
     spec_breath_fire_anatomical
     spec_breath_frost
@@ -3875,6 +4041,7 @@ Check native helpers, safety, active-slot policies and XP before reusing one.
     spec_thief
     spec_uzollru
     spec_vampire
+    spec_vine_grip
     spec_warrior
     spec_wight
     spec_wraith
@@ -3910,8 +4077,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/71db8ea20a2dfb4863cb7ef2f9c9195656f3a65a
-  Base PR985 plus the accompanying Sentinel Pass patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/29b5634a67c42e9371d6f0a630959b1a8fa46a00
+  Base PR986 plus the accompanying Old Marsh patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -3921,9 +4088,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 73/153 areas (47.7%) and 1116/4131 mob
-definitions (27.0%) merged and verified. Sentinel Pass adds eight definitions.
-After its merge is verified, completion becomes 74/153 areas (48.4%) and
-1124/4131 definitions (27.2%).
+The live conversion is currently 74/153 areas (48.4%) and 1124/4131 mob
+definitions (27.2%) merged and verified. Old Marsh adds 17 definitions.
+After its merge is verified, completion becomes 75/153 areas (49.0%) and
+1141/4131 definitions (27.6%).
 
 END OF GUIDE

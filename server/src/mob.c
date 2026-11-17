@@ -3502,6 +3502,64 @@ const struct mob_type mob_table[MAX_MOB] =
                 61, 4, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "spec_sprite", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "swamp_thing", "plant", "icon1", "icon2",
+                0, 0, BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS
+                    | PART_HEAD | PART_EYE | PART_EAR | PART_ARMS | PART_2_LEGS
+                    | PART_HANDS | PART_FEET | PART_FINGERS, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                240, 300, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "small_beast", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_PAWS | PART_CLAWS | PART_FANGS | PART_TAIL, PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                30, 6, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 50
+        },
+        {
+                "will_o_wisp", "mysterious_being", "icon1", "icon2",
+                0, AFF_FLYING, BODY_NO_EYES | PART_EYE | BODY_ANALGIC, 0, RES_MAGIC, 0, RES_POISON,
+                0, 0, 0, 0,
+                61, 0, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_innate_fade", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 61
+        },
+        {
+                "death_slaad_humanoid", "humanoid", "icon1", "icon2",
+                0, 0, 0, 0, RES_MAGIC, 0, RES_NONMAGIC,
+                0, 0, 0, 0,
+                183, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "shambling_mound", "plant", "icon1", "icon2",
+                0, AFF_SNEAK | AFF_SWIM, BODY_NO_ARMS | BODY_NO_LEGS | PART_ARMS | PART_2_LEGS, 0, RES_PIERCE | RES_SLASH | RES_COLD, 0, RES_BLUNT | RES_FIRE | RES_ELECTRICITY,
+                0, 0, 0, 0,
+                210, 350, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_vine_grip", "", "", 15, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "marsh_giant", "humanoid", "icon1", "icon2",
+                0, 0, BODY_HUGE, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                450, 1500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_GIANT, 0
+        },
+        {
+                "gargoyle", "bipedal_construct", "icon1", "icon2",
+                0, AFF_FLYING, PART_WINGS | PART_CLAWS | PART_FANGS | PART_HORNS | BODY_ANALGIC, PART_CLAWS | PART_FANGS | PART_HORNS, 0, 0, RES_NONMAGIC | RES_POISON,
+                0, 0, 0, 0,
+                183, 180, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
         }
 };
 
@@ -4384,6 +4442,37 @@ static const CREATURE_TRAIT_CHANGE sprite_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
 };
 
+static const CREATURE_TRAIT_CHANGE swamp_thing_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7}
+};
+static const CREATURE_TRAIT_CHANGE small_beast_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -1}
+};
+static const CREATURE_TRAIT_CHANGE will_o_wisp_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -18},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 6},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ELECTRICITY}
+};
+static const CREATURE_TRAIT_CHANGE death_slaad_humanoid_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -14}
+};
+static const CREATURE_TRAIT_CHANGE shambling_mound_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8},
+        {CREATURE_TRAIT_ELECTRICITY_HEALING_PERCENT, 20}
+};
+static const CREATURE_TRAIT_CHANGE gargoyle_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4391,6 +4480,19 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"swamp_thing", NULL, swamp_thing_trait_changes,
+            TRAIT_ITEMS(swamp_thing_trait_changes)},
+        {"small_beast", NULL, small_beast_trait_changes,
+            TRAIT_ITEMS(small_beast_trait_changes)},
+        {"will_o_wisp", NULL, will_o_wisp_trait_changes,
+            TRAIT_ITEMS(will_o_wisp_trait_changes)},
+        {"death_slaad_humanoid", NULL, death_slaad_humanoid_trait_changes,
+            TRAIT_ITEMS(death_slaad_humanoid_trait_changes)},
+        {"shambling_mound", NULL, shambling_mound_trait_changes,
+            TRAIT_ITEMS(shambling_mound_trait_changes)},
+        {"gargoyle", NULL, gargoyle_trait_changes,
+            TRAIT_ITEMS(gargoyle_trait_changes)},
+        {"marsh_giant", "forest_giant", NULL, 0},
         {"goat", NULL, goat_trait_changes,
             TRAIT_ITEMS(goat_trait_changes)},
         {"giant_land_crab", NULL, giant_land_crab_trait_changes,
@@ -5083,7 +5185,7 @@ void creature_elemental_reaction(CHAR_DATA *victim, int contact_damage,
                             UMAX(1LL, (long long)contact_damage * URANGE(0, percent, 100) / 100));
                         victim->hit += heal;
                         update_pos(victim);
-                        act("Electricity knits $n's stitched flesh back together.", victim, NULL, NULL, TO_ROOM);
+                        act("Electricity surges through $n, restoring $s vitality.", victim, NULL, NULL, TO_ROOM);
                 }
         }
 
@@ -7967,6 +8069,8 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_breath_crystal", 10 },
                 { "spec_elemental_burst", 10 },
                 { "spec_sprite", 5 },
+                { "spec_innate_fade", 5 },
+                { "spec_vine_grip", 5 },
                 { "spec_otyugh", 5 },
                 { "spec_cast_slow", 10 },
                 { "spec_cast_construct_adept", 10 },

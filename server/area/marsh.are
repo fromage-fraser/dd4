@@ -20,8 +20,11 @@ as he approaches and raises two black taloned claws to strike you.
 ~
 2|4|32|64 0 -600 S
 16 5 1 5d20+200 4d4+8
-0 20000
+128 20000
 8 5 1
+< troll~ common~
+MobHeight 457
+MobWeight 900
 #8302
 troll green~
 a green troll~
@@ -34,6 +37,7 @@ as he barrels towards you.
 14 7 3 3d20+150 2d4+6
 0 12000
 8 8 1
+< troll~ common~
 #8303
 ogre~
 an ogre~
@@ -45,6 +49,7 @@ This mean bastard looks like he could tear you limb from limb.
 20 1 0 1d20+250 5d5+8
 0 11000
 8 8 1
+< ogre~ common~
 #8304
 swamp thing~
 the Swamp Thing~
@@ -54,8 +59,9 @@ The Swamp Thing has huge fists, which look like they could pound you flat.
 ~
 4|32|64 0 -700 S
 24 1 8 10d10+500 4d5+10
-32 60000
+0 60000
 8 5 0
+< swamp_thing~ common~
 #8305
 gnoll~
 a gnoll~
@@ -67,6 +73,7 @@ The Gnoll seems annoyed at your presence.
 30 0 -3 2d10+750 2d8+15
 0 100000
 8 8 1
+< gnoll~ common~
 #8306
 huge hairy beast~
 a huge hairy beast~
@@ -77,8 +84,11 @@ appendages.
 ~
 4|32|64 8|32 -450 S
 21 0 0 21d21+210 2d4+15
-32|128 40000
+0 40000
 8 8 1
+< cave_beast~ common~
+MobHeight 610
+MobWeight 4000
 #8307
 small beast~
 a rather small beast~
@@ -91,6 +101,7 @@ sword blow.
 3 18 9 3d10+40 1d20+1
 0 200
 8 8 1
+< small_beast~ common~
 #8308
 will wisp will-o-wisp~
 the Will-O-Wisp~
@@ -102,8 +113,9 @@ make out a small pair of eyes at its centre.
 ~
 4|64|128 32768 0 S
 10 11 -5 5d5+100 3d3+3
-96 5000
+0 5000
 8 8 0
+< will_o_wisp~ common~
 #8309
 snake monstrous anaconda~
 the monstrous snake~
@@ -113,8 +125,11 @@ This 10 meter anaconda looks rather hungry.
 ~
 4|32|64|128 32768|65536 -100 S
 16 5 1 16d16+200 4d4+6
-60 26000
+128 26000
 8 8 1
+< constrictor_snake~ common~
+MobWeight 250
+MobLength 1000
 #8310
 large snake python~
 a large snake~
@@ -124,8 +139,9 @@ It's the largest Amazon python you have ever seen.
 ~
 4|32|64|128 32768|65536 -100 S
 11 10 2 4d10+100 3d3+5
-60 9000
+0 9000
 8 8 2
+< constrictor_snake~ common~
 #8312
 hag marsh~
 the Marsh Hag~
@@ -138,6 +154,7 @@ because she thinks you stink too, and she's about to do something about it.
 9 12 3 2d10+300 3d5+10
 0 6000
 8 8 2
+< green_hag~ common~
 #8313
 death slaad~
 a Death Slaad~
@@ -146,22 +163,28 @@ A Death Slaad is standing here distraught.  He seems lost.
 This dark apparition stands a meager 13 feet in height.  Even in the dim
 swamp light, the blade of his scythe gleams.
 ~
-4|64 40 -200 S
+4|64 8|32 -200 S
 20 1 -2 5d20+300 5d5+15
-96 40000
+32|64|128 40000
 8 8 1
+< death_slaad_humanoid~ common~
+MobHeight 396
+MobWeight 600
+MobSize 2
 #8314
 marsh wolf~
 a marsh wolf~
-A marsh wolf sniffs the ground has followed your scent.
+A marsh wolf sniffs the ground, following your scent.
 ~
 This wolf looks plump.  She probably ate a friend or two of yours who came
 into the marsh.
 ~
 4|32|64 0 -200 S
 8 13 3 10d10+50 3d5+1
-36 2000
+0 2000
 8 8 2
+< wolf~ common~
+MobWeight 65
 #8318
 mound shambling garbage heap~
 a shambling mound~
@@ -171,8 +194,9 @@ This grotesque pile of plant matter fills you with the utmost horror.
 ~
 4|64 65536 -100 S
 13 8 10 10d10+150 3d6+2
-63 10000
+0 10000
 8 8 0
+< shambling_mound~ common~
 #8319
 shaman orc~
 the orc shaman~
@@ -181,10 +205,11 @@ An orc shaman stands before you holding a staff and wearing robes.
 This old orc has an array of bones stuck in his hair and strange symbols
 painted on his face and hands.
 ~
-110 40 -100 S
+2|4|32|64 8|32 -100 S
 12 10 7 5d6+120 3d4+1
 0 10000
 8 8 1
+< orc~ common~
 #8320
 giant marsh~
 a marsh giant~
@@ -192,10 +217,11 @@ A marsh giant stomps towards you.
 ~
 This huge monster of a man has green gnarly teeth and a BIG stick.
 ~
-2|4|32|64 40 -100 S
+2|4|32|64 8|32 -100 S
 15 8 5 6d6+300 2d4+10
 0 18000
 8 8 1
+< marsh_giant~ common~
 #8321
 gargoyle large~
 a gargoyle~
@@ -203,10 +229,11 @@ A large gargoyle lands next to you, baring his fangs.
 ~
 This creepy fellow looks like he could use you as a meal.
 ~
-110 40 -100 S
+2|4|32|64 8|32 -100 S
 12 4 0 4d5+200 4d4+4
-304 12000
+0 12000
 8 8 0
+< gargoyle~ common~
 #0
 
 
@@ -639,7 +666,7 @@ S
 #8316
 Southern Lake Side.~
 You are floating on a calm section of blue crystal water.  You feel much more
-at ease then you were before in this area.  Then a wave of fear passes over
+at ease than you were before in this area.  Then a wave of fear passes over
 you.  You are not alone.
 ~
 83 1 7
@@ -754,13 +781,12 @@ G 1 8301 10                     give him the spear
 M 0 8320 2 8315         marsh giant
 G 1 8301 10                     give him the spear
 E 1 8302 5 6                    give him the horned helmet
+M 0 8319 1 8313         orc shaman by the monolith
 S
 
 
 
 #SPECIALS
-M  8309 spec_poison
-M  8310 spec_poison
 M  8312 spec_thief
 M  8313 spec_cast_undead
 M  8319 spec_cast_cleric
