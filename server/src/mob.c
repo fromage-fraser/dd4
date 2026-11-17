@@ -3414,6 +3414,70 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_horn_gore", "", "", 5,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "mist_hazard", "environmental_hazard", "icon1", "icon2",
+                0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "rock_hazard", "environmental_hazard", "icon1", "icon2",
+                0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "enchanted_chamber", "environmental_hazard", "icon1", "icon2",
+                0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "adult_crystal_dragon", "dragon", "icon1", "icon2",
+                0, AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS, BODY_HUGE, 0, RES_COLD | RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                300, 5000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_crystal", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 2000
+        },
+        {
+                "forest_giant", "humanoid", "icon1", "icon2",
+                0, 0, BODY_HUGE, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                450, 1500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_GIANT, 0
+        },
+        {
+                "tiger", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_INFRARED | AFF_SNEAK | AFF_SWIM, PART_PAWS | PART_CLAWS | PART_FANGS | PART_TAIL, PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 220, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "decaying_demon", "humanoid", "icon1", "icon2",
+                0, 0, PART_HORNS | PART_CLAWS | PART_FANGS, PART_CLAWS | PART_FANGS, RES_FIRE | RES_COLD, 0, RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                240, 220, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "morepork", "bird", "icon1", "icon2",
+                0, AFF_FLYING | AFF_INFRARED | AFF_SNEAK, PART_CLAWS, PART_CLAWS | PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                20, 0, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 29
         }
 };
 
@@ -4251,6 +4315,28 @@ static const CREATURE_TRAIT_CHANGE minotaur_trait_changes[] =
         {CREATURE_TRAIT_ARMED_MELEE_DAMAGE, 2}
 };
 
+static const CREATURE_TRAIT_CHANGE adult_crystal_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
+};
+static const CREATURE_TRAIT_CHANGE forest_giant_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE tiger_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE decaying_demon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE morepork_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4258,6 +4344,16 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"adult_crystal_dragon", NULL, adult_crystal_dragon_trait_changes,
+            TRAIT_ITEMS(adult_crystal_dragon_trait_changes)},
+        {"forest_giant", NULL, forest_giant_trait_changes,
+            TRAIT_ITEMS(forest_giant_trait_changes)},
+        {"tiger", NULL, tiger_trait_changes,
+            TRAIT_ITEMS(tiger_trait_changes)},
+        {"decaying_demon", NULL, decaying_demon_trait_changes,
+            TRAIT_ITEMS(decaying_demon_trait_changes)},
+        {"morepork", NULL, morepork_trait_changes,
+            TRAIT_ITEMS(morepork_trait_changes)},
         {"treant", NULL, treant_trait_changes,
             TRAIT_ITEMS(treant_trait_changes)},
         {"yeti", NULL, yeti_trait_changes,
@@ -7811,6 +7907,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_grell", 5 },
                 { "spec_flind", 5 },
                 { "spec_horn_gore", 5 },
+                { "spec_breath_crystal", 10 },
                 { "spec_otyugh", 5 },
                 { "spec_cast_slow", 10 },
                 { "spec_cast_construct_adept", 10 },

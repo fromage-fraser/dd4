@@ -6,15 +6,15 @@
 #11200
 Mist~
 the strange mist~
-A figure forms out the mist.
+A figure forms out of the mist.
 ~
 The mist is very thick, it is impossible to
 see anything through it.
 ~
 2|64 8|32|32768|65536|524288 0 S
 50 0 0 0d0+0 0d0+0
-127|256 0
-8 8 1
+0 0
+8 8 0
 >all_greet_prog 20~
     mpecho The mist begins to stir up around you.
     mpechoat $n .
@@ -27,6 +27,7 @@ see anything through it.
     mptrans $n 11213
 ~
 |
+< mist_hazard~ common~
 #11201
 Rocks~
 the sharp rocks~
@@ -36,30 +37,32 @@ The rocks are rather large and they are very very sharp.
 ~
 2|32|64 8|32|524288 0 S
 45 0 0 0d0+0 0d0+0
-256 0
-8 8 1
+0 0
+8 8 0
 >death_prog 100~
 mpecho The rock sinks into the river.
 mpgoto 11275
 ~
 |
+< rock_hazard~ common~
 #11202
 rocks~
 the large rocks~
 Some large rocks in the water.
 ~
 The rocks are rather large and their smooth surface
-makes it difficult to get a rip on.
+makes it difficult to get a grip on.
 ~
 2|32|64 8|32|524288 0 S
 45 0 0 0d0+0 0d0+0
-256 0
-8 8 1
+0 0
+8 8 0
 >death_prog 100~
-mpecho The rock skins into the river.
+mpecho The rock sinks into the river.
 mpgoto 11275
 ~
 |
+< rock_hazard~ common~
 #11203
 crystal dragon~
 The crystal dragon~
@@ -67,9 +70,9 @@ A crystal dragon sleeps quietly upon his treasure.
 ~
 The near translucent dragon is sleek and slender but looks incredibly strong.
 ~
-2|64 128|524288|1048576 0 S
+2|64 128|1048576 0 S
 55 0 0 0d0+0 0d0+0
-128 0
+0 0
 8 8 1
 >act_prog looks at you~
 mpecho the dragon opens his eye and looks at you.
@@ -78,7 +81,7 @@ mpecho the dragon opens his eye and looks at you.
      murder $n
 ~
 |
-< reserved~ boss~
+< adult_crystal_dragon~ boss~
 #11204
 _nothing~
 The crystal chamber~
@@ -88,8 +91,8 @@ The crystal walls beat as if they were alive.
 ~
 2|64 8 0 S
 120 0 0 0d0+0 0d0+0
-127|256 0
-8 8 1
+0 0
+8 8 0
 >act_prog is surrounded ~
 mpecho You find yourself wishing for home....
      mptrans $n 3001
@@ -99,26 +102,28 @@ mpecho You find yourself wishing for home....
      mptrans $n 3001
 ~
 |
+< enchanted_chamber~ common~
 #11205
 rocks~
 the jagged rocks~
 The sharp rocks beckon you.
 ~
-The rock are sharp and jagged.
+The rocks are sharp and jagged.
 ~
 2|32|64 8|32 0 S
 45 0 0 0d0+0 0d0+0
-127|256 0
-8 8 1
+0 0
+8 8 0
 >death_prog 100~
-mpecho The rock skins into the river.
+mpecho The rock sinks into the river.
 mpgoto 11275
 ~
 |
+< rock_hazard~ common~
 #11206
 Giant~
 the forest giant~
-A large giant wonders around looking lost.
+A large giant wanders around looking lost.
 ~
 The giant is well camouflaged in green leather, but he looks
 a little slow, he must have forgotten how to get home. He
@@ -132,10 +137,11 @@ doesn't even notice you.
 mpecho A large giant stumbles through the forest.
 ~
 |
+< forest_giant~ common~
 #11207
 giant~
 the forest giant~
-A large giant wonders around looking lost.
+A large giant wanders around looking lost.
 ~
 The giant is well camouflaged in green leather, but he looks
 a little slow, he must have forgotten how to get home. He
@@ -149,6 +155,7 @@ doesn't even notice you.
 mpecho A large giant stumbles through the forest.
 ~
 |
+< forest_giant~ common~
 #11208
 tiger~
 the tiger~
@@ -156,14 +163,15 @@ A large tiger stalks the forest.
 ~
 The large powerful beast snarls quietly and seeks its next victim.
 ~
-32|64 32768 0 S
+32|64 0 0 S
 55 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
 >entry_prog 100~
 mpecho A tiger leaps out of the forest.
 ~
 |
+< tiger~ common~
 #11209
 tiger~
 the tiger~
@@ -171,22 +179,23 @@ A large tiger stalks the forest.
 ~
 The large powerful beast snarls quietly and seeks its next victim.
 ~
-32|64 32768 0 S
+32|64 0 0 S
 54 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
 >entry_prog 100~
 mpecho A large tiger leaps out from the trees.
 ~
 |
+< tiger~ common~
 #11210
 darkone~
 the Darkone~
-A dark figure stand engulfed in dark fire.
+A dark figure stands engulfed in dark fire.
 ~
-The Darkone stands within a wall of fire, the fire itself give
+The Darkone stands within a wall of fire, the fire itself gives
 out no light whatsoever. In its center the Darkone watches you
-with two glowing red eye that stare at you from a dark hooded
+with two glowing red eyes that stare at you from a dark hooded
 cape. This has been the Darkone's prison for centuries yet fresh
 blood stains his pale hands.
 ~
@@ -208,7 +217,7 @@ yell At last I am free!
     mpecho .
 ~
 |
-< reserved~ elite~
+< human~ elite~
 #11211
 vampire~
 the vampire~
@@ -221,6 +230,7 @@ your chest, you recognize him for what he really is.
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< vampire~ common~
 #11212
 vampire~
 the vampire~
@@ -233,6 +243,7 @@ your chest, you recognize him for what he really is.
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< vampire~ common~
 #11213
 demon~
 the demon~
@@ -246,23 +257,25 @@ parts of its body.
 75 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< decaying_demon~ common~
 #11214
 morepork~
 the morepork~
-A small brown morepork watches you from a tree
+A small brown morepork watches you from a tree.
 ~
-The small brown morepork has large yellow eye, he
+The small brown morepork has large yellow eyes, he
 watches you as you make your way through the forest.
 ~
 2|64 0 0 S
 25 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
 >death_prog 30~
 mpecho The morepork's wing is torn from its body.
     mpoload 11215 15
 ~
 |
+< morepork~ common~
 #0
 
 
@@ -1072,7 +1085,7 @@ out, how will you ever get back home
 0 1|4|8|8192|16384 5
 E
 chamber crystal crystals wall walls~
-The crystal walls beast as if they were alive.
+The crystal walls beat as if they were alive.
 ~
 S
 #11233
@@ -2140,9 +2153,9 @@ M 1 11200 1 11211           the strange mist to A misty bridge
 D 1 11231 0 2               ; The Crystal Cavern Lock North
 *
 M 1 11203 1 11231              the crystal dragon to The crystal cavern
-E 1 11206 100 2
+E 1 11206 100 16
 *
-M 1 11204 1 11232              the crystal tree to A crystal chamber
+M 1 11204 1 11232              the crystal chamber to A crystal chamber
 *
 M 1 11214 1 11239           the morepork to Dark Wood
 O 1 11200 100 11231            a crystal dagger to The crystal cavern
@@ -2193,12 +2206,8 @@ S
 
 
 #SPECIALS
-M  11203 spec_breath_gas            the crystal dragon
 M  11204 spec_cast_orb              the crystal tree
 M  11210 spec_cast_undead           the Darkone
-M  11211 spec_cast_undead           the vampire
-M  11212 spec_cast_undead           the vampire
-M  11213 spec_demon                 the demon
 S
 
 
