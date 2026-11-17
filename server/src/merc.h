@@ -3673,7 +3673,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 213
+#define MAX_MOB 219
 #define MAX_SPECIES 34
 #define MAX_RANK 6
 
@@ -6019,6 +6019,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_ARMED_MELEE_ACCURACY,
         CREATURE_TRAIT_ELECTRICITY_HEALING_PERCENT,
         CREATURE_TRAIT_FIRE_COLD_SLOW_TICKS,
+        CREATURE_TRAIT_ARMED_MELEE_DAMAGE,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Internal damage kinds keep trait strengths small and named. */
@@ -6070,6 +6071,7 @@ void strength_drain_after_hit args((CHAR_DATA *ch, CHAR_DATA *victim,
                                   int dt, int actual_damage));
 void show_creature_traits args((CHAR_DATA *viewer, CHAR_DATA *victim));
 int creature_melee_hit_bonus args((CHAR_DATA *attacker, CHAR_DATA *victim));
+int creature_armed_melee_damage_bonus args((CHAR_DATA *ch, OBJ_DATA *weapon, int dt));
 int creature_bow_hit_bonus args((CHAR_DATA *ch, OBJ_DATA *weapon, int dt));
 bool creature_is_sunlight_sensitive args((CHAR_DATA *ch));
 int creature_sunlight_hit_penalty args((CHAR_DATA *ch));

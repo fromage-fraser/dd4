@@ -3352,6 +3352,68 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_otyugh", "", "", 10,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 210
+        },
+        {
+                "treant", "plant", "icon1", "icon2",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS
+                    | BODY_NO_SPEECH | BODY_HUGE | PART_HEAD | PART_EYE | PART_EAR
+                    | PART_ARMS | PART_2_LEGS | PART_HANDS | PART_FEET | PART_FINGERS,
+                0, 0, RES_FIRE, 0,
+                0, 0, 0, 0,
+                450, 2000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 10,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "beaked_cave_beast", "humanoid", "icon1", "icon2",
+                0, 0, BODY_NO_SPEECH | PART_BEAK | PART_CLAWS,
+                PART_BEAK | PART_CLAWS, 0, 0, 0,
+                0, 0, 0, 0,
+                230, 250, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_acid_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "mistling", "mysterious_being", "icon1", "icon2",
+                0, AFF_FLYING, BODY_ANALGIC, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "yeti", "humanoid", "icon1", "icon2",
+                0, 0, BODY_NO_SPEECH | PART_CLAWS | PART_FANGS,
+                PART_CLAWS, RES_COLD, RES_FIRE, 0,
+                0, 0, 0, 0,
+                244, 136, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "ice_worm", "limbless_invertebrate", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_FANGS, PART_FANGS,
+                RES_COLD, 0, 0,
+                0, 0, 0, 0,
+                150, 12000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_frost_anatomical", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 1500
+        },
+        {
+                "minotaur", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED, PART_HORNS | PART_HOOVES, PART_HORNS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                230, 250, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_horn_gore", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -3455,6 +3517,7 @@ typedef enum creature_trait_effect
         TRAIT_MELEE_ACCURACY,
         TRAIT_ARMED_MELEE_ACCURACY,
         TRAIT_ELEMENTAL_REACTION_QUANTITY,
+        TRAIT_ARMED_MELEE_DAMAGE,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -3570,7 +3633,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"melee_accuracy", TRAIT_MELEE_ACCURACY, NULL},
         {"armed_melee_accuracy", TRAIT_ARMED_MELEE_ACCURACY, NULL},
         {"electricity_healing_pct", TRAIT_ELEMENTAL_REACTION_QUANTITY, NULL},
-        {"fire_cold_slow_ticks", TRAIT_ELEMENTAL_REACTION_QUANTITY, NULL}
+        {"fire_cold_slow_ticks", TRAIT_ELEMENTAL_REACTION_QUANTITY, NULL},
+        {"armed_melee_damage", TRAIT_ARMED_MELEE_DAMAGE, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -4172,6 +4236,21 @@ static const CREATURE_TRAIT_CHANGE ogre_trait_changes[] =
         {CREATURE_TRAIT_ARMED_MELEE_ACCURACY, 2}
 };
 
+static const CREATURE_TRAIT_CHANGE treant_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7}
+};
+static const CREATURE_TRAIT_CHANGE yeti_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE minotaur_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_ARMED_MELEE_DAMAGE, 2}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4179,6 +4258,12 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"treant", NULL, treant_trait_changes,
+            TRAIT_ITEMS(treant_trait_changes)},
+        {"yeti", NULL, yeti_trait_changes,
+            TRAIT_ITEMS(yeti_trait_changes)},
+        {"minotaur", NULL, minotaur_trait_changes,
+            TRAIT_ITEMS(minotaur_trait_changes)},
         {"four_armed_demon", NULL, four_armed_demon_trait_changes,
             TRAIT_ITEMS(four_armed_demon_trait_changes)},
         {"flesh_golem", NULL, flesh_golem_trait_changes,
@@ -4806,6 +4891,19 @@ int creature_melee_hit_bonus(CHAR_DATA *attacker, CHAR_DATA *victim)
                         bonus += creature_trait_value(victim, id);
         }
         return bonus + creature_light_melee_bonus(attacker);
+}
+
+/* This bonus follows the actual melee weapon used for this hit. */
+int creature_armed_melee_damage_bonus(CHAR_DATA *ch, OBJ_DATA *weapon, int dt)
+{
+        if (!ch || !weapon || weapon->deleted || weapon->item_type != ITEM_WEAPON
+        || weapon->carried_by != ch
+        || (weapon->wear_loc != WEAR_WIELD && weapon->wear_loc != WEAR_DUAL)
+        || dt < TYPE_HIT || IS_OBJ_STAT(weapon, ITEM_BOW | ITEM_BODY_PART)
+        || !bodypart_weapon_usable(ch, weapon))
+                return 0;
+        return URANGE(-100,
+            creature_trait_value(ch, CREATURE_TRAIT_ARMED_MELEE_DAMAGE), 100);
 }
 
 /* These optional reactions belong to the creature, not to every immune target. */
@@ -7712,6 +7810,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_executioner_local", 0 },
                 { "spec_grell", 5 },
                 { "spec_flind", 5 },
+                { "spec_horn_gore", 5 },
                 { "spec_otyugh", 5 },
                 { "spec_cast_slow", 10 },
                 { "spec_cast_construct_adept", 10 },

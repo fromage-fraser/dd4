@@ -1535,6 +1535,7 @@ static bool one_hit_internal(CHAR_DATA *ch, CHAR_DATA *victim, int dt,
                  * Bonuses.
                  */
                 dam += GET_DAMROLL(ch);
+                dam += creature_armed_melee_damage_bonus(ch, wield, dt);
 
                 if (wield && IS_SET(wield->extra_flags, ITEM_POISONED)
                 &&  can_be_poisoned(victim)
