@@ -1581,6 +1581,8 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Convert Warlock Keep mobs; add grell and otyugh grips, flesh-golem
+  reactions and flind disarming; fix the flind bar and lightning scroll.
 - Convert Golem Settlement mobs; retain their minds, roles and shops, and
   let the healer tend injured constructs.
 - Require training for player combat defences and use the actual striking

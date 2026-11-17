@@ -12957,3 +12957,137 @@ the original three of five children receive toys. The area exp_mod 125
 stays. The beggar's tattered cloths becomes tattered clothes.
 There is no matching Scribe source; four other source/area pairs stay
 unchanged. All fourteen existing portraits are retained.
+
+
+The Keep of the Warlock
+-----------------------
+
+The creature catalogue now has 34 body rows and 213 archetype rows. The
+new body tripodal_organism appends at 33; six profiles append at 207-212:
+four_armed_demon, flesh_golem, grell, crocodile, flind and otyugh. Existing
+IDs stay unchanged. The gnoll and ogre family placeholders now have their
+reviewed anatomy and dimensions. Neither had a previously converted area
+consumer. Player race opt-ins stay unchanged.
+
+PART_3_LEGS uses body bit 50. In Scribe, bf three_legs sets that individual
+XOR bit; an otyugh already inherits it, so do not repeat it there. MSTAT,
+body displays, HAS_LEGS, leg targeting, trauma, body-part weapons and death
+parts recognise it. It adds no new target command, injury or area column.
+The new tripod body is organic, with living organs, three legs and feet.
+The otyugh adds its central mouth/sensory region, eyestalks and tentacles.
+As with the yochlol, the mouth region uses the existing head-targeting
+group rather than inventing a humanoid skull. Tentacles use the existing
+arm/limb injury group. More arms do not add attacks or weapon slots.
+
+four_armed_demon is an unnamed DD4 demon, not a claim that the local
+creature is a particular formal tanar'ri type. It has four arms, claws
+and fangs, magical natural contact, -3 natural armour, infrared, fire/cold
+resistance and electricity/poison immunity. It keeps spec_demon and +10
+profile XP. Local 15902 retains its original flight without adding wings.
+Defaults are 244 cm/220 kg/Large. No gate or extra attack stream is added.
+
+flesh_golem uses bipedal_construct, but XORs inorganic OFF. Its assembled
+flesh is organic and bloodless, with no functional heart. It is mindless,
+mute, ANALGIC and SOULLESS, with physical remains. Defaults are 230 cm/
+160 kg/Large, -1 natural armour and magical ordinary pound. It has magic
+resistance and immunity to nonmagical damage, poison, sleep, drain, charm,
+hold, paralysis, fire, cold and electricity. Profile XP adds 15 points.
+It has no compulsory policing role, blanket spell immunity or berserk
+creator-control system. The earlier awakened and stone golems stay intact.
+
+Two reusable code-only traits supply its reactions. electricity_healing_pct
+is 20: a positive electrical contact restores floor(contact damage*20/100),
+minimum 1 HP, capped by effective/aggravated healing limits. NO_HEAL still
+blocks healing. fire_cold_slow_ticks is 1: a positive fire/cold contact
+causes ordinary non-stacking Slow until the next character update.
+An existing Haste or Quicken is cancelled first, as with normal Slow.
+Repeated contacts do not refresh an existing Slow. A zero/missed/blocked
+attempt supplies no reaction. Each actual pre-immunity packet is handled
+once, including folded firebrand/chill and direct retaliation paths.
+Fire-shield resistance is honoured for an opted-in construct; unrelated
+legacy NPC paths stay as before. These are elemental-contact reactions,
+not damage-over-time healing or an excuse to count an immune hit as blood.
+
+grell is a minded, organic floating brain with a beak and ten tentacles.
+It uses the existing limbless_invertebrate body with functional tentacles
+in the arm injury group. Defaults are 300 cm overall hanging height,
+150 kg, 120 cm body diameter/length, Medium, -5 natural armour, flight
+and electricity immunity. Existing local detection/infrared supply the
+DD4 sensory model. Its normal attack is a physical beak strike.
+spec_grell has a 25 percent tentacle-paralysis opportunity against its
+current close opponent. Normal poison/paralysis saves and physical-contact
+permissions apply. It needs usable tentacles and a poisonable organic
+target. It deals no bonus damage, does not stack/refresh Hold and expires
+at the next character update. Profile XP is +10, special XP +5. Local
+15911 loses the unsupported Pass Door and its old ordinary poison special.
+
+crocodile uses quadrupedal_reptile: 45 cm shoulder height/150 kg/300 cm
+length/Large, scales, tail, claws and fangs, swimming, ordinary fang bite
+and -5 natural armour. Profile XP is +5. The local fido feeding role stays.
+No venom, compulsory extra tail attack or death-roll system is supplied.
+
+gnoll is a living hyena-like humanoid with tail/fangs and normal hands,
+230 cm/130 kg/Large. It has no automatic bite or natural armour. The
+second-edition AC 5 (10) includes worn armour. flind uses the same gnoll
+family but is shorter and broader: 198 cm/140 kg/Medium. Its new internal
+melee_accuracy is +1. spec_flind has a 15 percent opportunity to use normal
+Disarm while armed. Weapon, injury, visibility, phase, safety, NO_DROP and
+body-part protections remain. This DD4 training works with other wielded
+weapons too; there is no vnum/name test. Profile XP +5, special XP +5.
+
+ogre is now 290 cm/160 kg/Large with -5 natural armour, +5 profile XP and
+armed_melee_accuracy +2. That accuracy applies only with a real eligible
+wielded weapon; no bonus is given merely for carrying one. These two
+accuracy traits are signed code-only values. They do not change stored
+hitroll, base damage or player opt-ins. The existing family matching stays.
+
+otyugh uses tripodal_organism: a living central toothed mouth, eyestalks,
+two tentacles and three legs. Defaults are 140 cm/400 kg/210 cm/Large,
+infrared, -7 natural armour, ordinary bite and +10 profile XP. spec_otyugh
+keeps idle fido corpse feeding, and has a 25 percent combat opportunity
+for a physical tentacle grip. Normal NONMAGIC|HOLD save/contact rules apply;
+HUGE targets and unusable tentacles are excluded. There is no extra damage,
+stacking or refresh. Grip expires on the next update or immediately when
+its source moves, dies, separates or logs out. Freedom removes it too.
+The new internal tentacle grip condition uses creature-source metadata
+and shared grip cleanup, alongside mimic glue. Other sources' holds stay.
+Saved live-creature grips cannot survive a later login. Special XP is +5.
+Actual infectious disease and immunity to its own disease remain on the
+shared disease retrofit list. A poison effect is not silently called disease.
+
+spec_executioner_local retains the existing KILLER/THIEF attack trigger,
+with ordinary action/visibility/safety checks, but calls no city guards.
+It is individually selected for flesh golem 15906; stock executioners
+elsewhere are unchanged. It adds no XP allowance or forced aggression.
+The cat and hawk retain their deliberately authored mage specials. Dagar
+keeps mage casting; the apprentice keeps archmage casting. The explicitly
+mindless zombie servants lose archmage casting. The troll keeps fido while
+passive regeneration works; it does not gain the inherited rock special.
+Local firedrake uses spec_breath_fire_anatomical to retain its original
+unrestricted breath with head-injury checks, rather than the body's limited
+daily breath. The war dog keeps its old poison attack via spec_poison_bite;
+its super-rabies prose is still the existing poison abstraction. Mimic
+15912 inherits the existing glue power and physiology.
+
+Keep Baragar Boss, Alara Elite and the demon Rare. Only foreman 15919 is
+newly Rare (2x HP once); other seventeen definitions stay Common. Baragar
+is male. The small apprentice uses 155 cm/48 kg; war dog uses 60 cm/35 kg/
+100 cm/Small. Other dimensions inherit. All are without HUGE. Sourcebook
+physical measurements inform these whole-number descriptive DD4 estimates;
+rank does not supply body size, attacks, behaviour or levels.
+
+All authored aggression/passivity, Sentinel, Stay Area, Wimpy, NO_QUEST,
+levels/build numbers/damage and alignments remain. All 43 room blocks,
+flags/exits/doors, reset rows/caps/placements/equipment and original loot
+remain. Population/items are 37/70 initially and 73/148 after refill.
+There is no matching source, shop, teacher, program or NO_UNDEAD room.
+Four other source/area pairs stay unchanged. Flind bar 15935 becomes a
+proper weapon, keeping blunt verb 7, +5 damage affect, flags and reset.
+Scroll 15907's lightening breath becomes lightning breath. Deliberately
+mixed helpful/harmful potions stay. Only lower cavers/lower caverns twice
+and trangular/triangular are corrected in mobile prose.
+
+The registry now has 47 traits, 115 Scribe special names and 637 skill rows.
+tentacle grip is an internal spell_null condition, not a learnable spell
+or new priest service. Baragar, Alara and grell portraits are regenerated
+separately; portrait publication is independent of applying this patch.

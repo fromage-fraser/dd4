@@ -1737,7 +1737,7 @@ void char_from_room( CHAR_DATA *ch )
                 return;
         }
 
-        release_mimic_glue(ch);
+        release_creature_grips(ch);
 
         /* Departure ends this target's exposure and restores its modifier. */
         clear_stench_exposure(ch, FALSE);
@@ -2718,7 +2718,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
 
         clear_rescue_retaliation(ch);
         invalidate_fall_source(ch);
-        release_mimic_glue(ch);
+        release_creature_grips(ch);
 
         if ( !ch->in_room )
         {
@@ -5302,6 +5302,7 @@ char* body_form_name (unsigned long int vector)
                 case PART_MANY_ARMS:            return "many_arms";
                 case PART_2_LEGS:               return "two_legs";
                 case PART_4_LEGS:               return "four_legs";
+                case PART_3_LEGS:               return "three_legs";
                 case PART_MANY_LEGS:            return "many_legs";
                 case PART_HEART:                return "heart";
                 case PART_BRAINS:               return "brains";

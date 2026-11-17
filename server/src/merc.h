@@ -427,7 +427,7 @@ bool has_tranquility(CHAR_DATA *ch);
 #define LEVEL_IMMORTAL L_BUI
 #define LEVEL_HERO (LEVEL_IMMORTAL - 1)
 
-#define MAX_SKILL 636           /* Includes the internal native-power conditions. */
+#define MAX_SKILL 637           /* Includes the internal native-power conditions. */
 #define MAX_PRE_REQ 1612        /* Includes both Restoration learning paths. */
 #define MAX_SPELL_GROUP 483     /* Restoration belongs to Healing and Curative. */
 #define MAX_PREREQ_CHAIN_DEPTH 6 /* Maximum depth for prerequisite chain display */
@@ -987,6 +987,7 @@ struct descriptor_data
 #define BODY_ANALGIC BIT_47        /* Insensible to pain */
 #define BODY_SOULLESS BIT_48       /* Has no soul available to these effects */
 #define PART_TRUNK BIT_49           /* Trunk anatomy; uses the existing head injury group */
+#define PART_3_LEGS BIT_50          /* A tripod still uses the ordinary leg injury group. */
 
 /*
  * Existing PART_* flags designated for natural combat features.
@@ -1002,7 +1003,7 @@ struct descriptor_data
 #define HAS_HEAD(ch) (!(ch->body_form & BODY_NO_HEAD) || (ch->body_form & PART_HEAD) || (ch->body_form & PART_MANY_HEAD))
 #define HAS_EYES(ch) (!(ch->body_form & BODY_NO_EYES) || (ch->body_form & PART_EYE))
 #define HAS_ARMS(ch) (!(ch->body_form & BODY_NO_ARMS) || (ch->body_form & PART_ARMS) || (ch->body_form & PART_MANY_ARMS))
-#define HAS_LEGS(ch) (!(ch->body_form & BODY_NO_LEGS) || (ch->body_form & PART_2_LEGS) || (ch->body_form & PART_4_LEGS) || (ch->body_form & PART_MANY_LEGS))
+#define HAS_LEGS(ch) (!(ch->body_form & BODY_NO_LEGS) || (ch->body_form & PART_2_LEGS) || (ch->body_form & PART_3_LEGS) || (ch->body_form & PART_4_LEGS) || (ch->body_form & PART_MANY_LEGS))
 #define HAS_HEART(ch) (!(ch->body_form & BODY_NO_HEART) || (ch->body_form & PART_HEART))
 #define CAN_SPEAK(ch) (!(ch->body_form & BODY_NO_SPEECH))
 #define MAKES_CORPSE(ch) (!(ch->body_form & BODY_NO_CORPSE))
@@ -3672,8 +3673,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 207
-#define MAX_SPECIES 33
+#define MAX_MOB 213
+#define MAX_SPECIES 34
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -4563,6 +4564,7 @@ extern int gsn_mummy_rot;
 extern int gsn_strength_drain;
 extern int gsn_lamia_touch;
 extern int gsn_mimic_glue;
+extern int gsn_tentacle_grip;
 extern int gsn_unmaking_ray;
 extern int gsn_turn_undead;
 extern int gsn_chant_of_turning;
@@ -5964,7 +5966,8 @@ void end_magic_activation(MAGIC_ACTIVATION_DATA *activation);
 bool antimagic_blocks_activation(CHAR_DATA *caster, unsigned long int res_types);
 bool cast_native_spell(SPELL_FUN *spell, int sn, int level, CHAR_DATA *caster, void *target);
 void spell_unmaking_ray(int sn, int level, CHAR_DATA *ch, void *vo);
-void release_mimic_glue(CHAR_DATA *source);
+void release_creature_grips(CHAR_DATA *source);
+void creature_elemental_reaction(CHAR_DATA *victim, int contact_damage, unsigned long int types);
 
 /* These are registry IDs, not bits in an ACT word. */
 typedef enum creature_trait
@@ -6012,6 +6015,10 @@ typedef enum creature_trait
         CREATURE_TRAIT_SHADOW_LIGHT_RESPONSE,
         CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS,
         CREATURE_TRAIT_ANTIMAGIC_GAZE_PERCENT,
+        CREATURE_TRAIT_MELEE_ACCURACY,
+        CREATURE_TRAIT_ARMED_MELEE_ACCURACY,
+        CREATURE_TRAIT_ELECTRICITY_HEALING_PERCENT,
+        CREATURE_TRAIT_FIRE_COLD_SLOW_TICKS,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Internal damage kinds keep trait strengths small and named. */

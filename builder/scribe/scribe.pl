@@ -122,6 +122,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         ancient_fire_dragon fiery_demon hell_hound acid_hell_hound
         baby_beholder tame_lamia stone_golem
         beholder lamia mimic awakened_golem
+        four_armed_demon flesh_golem grell crocodile flind otyugh
 /;
 
 my %mob_act = (
@@ -255,6 +256,7 @@ my %mob_bf = (
         many_arms     => '8192',
         two_legs      => '32768',
         four_legs     => '65536',
+        three_legs    => '1125899906842624',
         many_legs     => '131072',
         heart         => '262144',
         brains        => '524288',
@@ -376,6 +378,7 @@ my @mob_spec = qw/
     spec_faerie_dragon      spec_duergar            spec_swallow            spec_poison_palm spec_poison_claw spec_breath_brass spec_paralysing_bite spec_myconid_spores spec_engulf spec_camel_spit spec_manticore spec_alhoon
     spec_cast_slow
     spec_beholder spec_lamia spec_mimic spec_cast_construct_adept
+    spec_executioner_local spec_grell spec_flind spec_otyugh
 /;
 
 my %obj_ex = (

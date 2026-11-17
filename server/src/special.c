@@ -53,6 +53,10 @@ DECLARE_SPEC_FUN( spec_breath_frost         );
 DECLARE_SPEC_FUN( spec_breath_gas           );
 DECLARE_SPEC_FUN( spec_breath_lightning     );
 DECLARE_SPEC_FUN( spec_breath_steam         );
+DECLARE_SPEC_FUN( spec_executioner_local );
+DECLARE_SPEC_FUN( spec_grell );
+DECLARE_SPEC_FUN( spec_flind );
+DECLARE_SPEC_FUN( spec_otyugh );
 DECLARE_SPEC_FUN( spec_cast_adept           );
 DECLARE_SPEC_FUN( spec_cast_construct_adept );
 DECLARE_SPEC_FUN( spec_cast_hooker          );
@@ -173,6 +177,10 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_breath_gas"))           return spec_breath_gas;
         if (!str_cmp(name, "spec_breath_lightning"))     return spec_breath_lightning;
         if (!str_cmp(name, "spec_breath_steam"))         return spec_breath_steam;
+        if (!str_cmp(name, "spec_executioner_local")) return spec_executioner_local;
+        if (!str_cmp(name, "spec_grell")) return spec_grell;
+        if (!str_cmp(name, "spec_flind")) return spec_flind;
+        if (!str_cmp(name, "spec_otyugh")) return spec_otyugh;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
         if (!str_cmp(name, "spec_cast_construct_adept")) return spec_cast_construct_adept;
         if (!str_cmp(name, "spec_cast_hooker"))          return spec_cast_hooker;
@@ -299,6 +307,10 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_breath_gas) return "spec_breath_gas";
         if (special == spec_breath_lightning) return "spec_breath_lightning";
         if (special == spec_breath_steam) return "spec_breath_steam";
+        if (special == spec_executioner_local) return "spec_executioner_local";
+        if (special == spec_grell) return "spec_grell";
+        if (special == spec_flind) return "spec_flind";
+        if (special == spec_otyugh) return "spec_otyugh";
         if (special == spec_cast_adept) return "spec_cast_adept";
         if (special == spec_cast_construct_adept) return "spec_cast_construct_adept";
         if (special == spec_cast_hooker) return "spec_cast_hooker";
@@ -5261,6 +5273,97 @@ static CHAR_DATA *native_combat_opponent(CHAR_DATA *ch)
         return victim;
 }
 
+/* Keep the keep's criminal-only trigger without calling another city's guards. */
+bool spec_executioner_local(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        if (!native_power_ready(ch) || ch->hit <= 0 || ch->fighting
+        || is_in_combat(ch) || IS_SET(ch->act, ACT_NO_FIGHT))
+                return FALSE;
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim == ch || victim->deleted || IS_NPC(victim)
+                || victim->hit <= 0 || victim->position == POS_DEAD
+                || !(victim->status & (PLR_KILLER | PLR_THIEF))
+                || !can_see(ch, victim) || is_safe(ch, victim))
+                        continue;
+                multi_hit(ch, victim, TYPE_UNDEFINED);
+                return TRUE;
+        }
+        return FALSE;
+}
+
+/* The tentacles deliver a short paralytic touch, not another damage stream. */
+bool spec_grell(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        AFFECT_DATA af;
+        if (!victim || !(ch->body_form & PART_TENTACLES) || !HAS_ARMS(ch)
+        || IS_AFFECTED(ch, AFF_ARM_TRAUMA) || !can_see(ch, victim)
+        || !can_be_poisoned(victim) || IS_AFFECTED(victim, AFF_HOLD)
+        || is_affected(victim, gsn_paralysis)
+        || get_contact_resistance_result(ch, victim,
+            RES_NONMAGIC | RES_POISON | RES_PARALYSIS) == RES_RESULT_IMMUNE
+        || number_percent() > 25)
+                return FALSE;
+        act("$n lashes $N with paralysing tentacles!", ch, NULL, victim, TO_NOTVICT);
+        act("$n lashes you with paralysing tentacles!", ch, NULL, victim, TO_VICT);
+        if (saves_resistance_effect(ch, ch->level, victim, RES_POISON | RES_PARALYSIS))
+                return TRUE;
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_paralysis;
+        af.duration = 0;
+        af.location = APPLY_NONE;
+        af.bitvector = AFF_HOLD;
+        affect_to_char(victim, &af);
+        return TRUE;
+}
+
+/* An armed flind uses the ordinary disarm command and all its protections. */
+bool spec_flind(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        OBJ_DATA *weapon = ch ? get_attack_weapon(ch, WEAR_WIELD) : NULL;
+        if (!victim || !HAS_ARMS(ch) || IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+        || !weapon || weapon->item_type != ITEM_WEAPON || !can_see(ch, victim)
+        || IS_SET(ch->in_room->room_flags, ROOM_NO_DROP)
+        || get_contact_resistance_result(ch, victim, RES_NONMAGIC) == RES_RESULT_IMMUNE
+        || number_percent() > 15)
+                return FALSE;
+        do_disarm(ch, "");
+        return TRUE;
+}
+
+/* Feeding stays idle behaviour; a fighting otyugh can briefly seize its prey. */
+bool spec_otyugh(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        AFFECT_DATA af;
+        if (!native_power_ready(ch) || ch->hit <= 0)
+                return FALSE;
+        if (!ch->fighting && !is_in_combat(ch))
+                return spec_fido(ch);
+        victim = native_combat_opponent(ch);
+        if (!victim || !ch->target_id || !HAS_ARMS(ch)
+        || !(ch->body_form & PART_TENTACLES) || IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+        || !can_see(ch, victim) || IS_HUGE(victim)
+        || IS_AFFECTED(victim, AFF_HOLD) || is_affected(victim, gsn_tentacle_grip)
+        || get_contact_resistance_result(ch, victim, RES_NONMAGIC | RES_HOLD)
+            == RES_RESULT_IMMUNE || number_percent() > 25)
+                return FALSE;
+        if (saves_resistance_effect(ch, ch->level, victim, RES_NONMAGIC | RES_HOLD))
+                return TRUE;
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_tentacle_grip;
+        af.duration = 0;
+        af.location = APPLY_NONE;
+        af.bitvector = AFF_HOLD;
+        affect_to_char_source(victim, &af, AFFECT_SOURCE_CREATURE, ch->target_id);
+        act("$n's tentacles close around you!", ch, NULL, victim, TO_VICT);
+        act("Your tentacles close around $N!", ch, NULL, victim, TO_CHAR);
+        return TRUE;
+}
+
 /* This innate slowing power needs an opponent, not a voice or spellbook. */
 bool spec_cast_slow(CHAR_DATA *ch)
 {
@@ -5747,7 +5850,7 @@ bool spec_cooshee(CHAR_DATA *ch)
         || victim->in_room != ch->in_room || victim->hit <= 0
         || victim->position < POS_FIGHTING
         || !HAS_LEGS(victim)
-        || (victim->body_form & (PART_4_LEGS | PART_MANY_LEGS))
+        || (victim->body_form & (PART_3_LEGS | PART_4_LEGS | PART_MANY_LEGS))
         || victim->size < CHAR_SIZE_SMALL || victim->size > CHAR_SIZE_MEDIUM
         || IS_HUGE(victim) || victim->mount
         || IS_AFFECTED(victim, AFF_FLYING)
