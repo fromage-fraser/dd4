@@ -57,6 +57,7 @@ DECLARE_SPEC_FUN( spec_executioner_local );
 DECLARE_SPEC_FUN( spec_grell );
 DECLARE_SPEC_FUN( spec_flind );
 DECLARE_SPEC_FUN( spec_horn_gore );
+DECLARE_SPEC_FUN( spec_breath_crystal );
 DECLARE_SPEC_FUN( spec_otyugh );
 DECLARE_SPEC_FUN( spec_cast_adept           );
 DECLARE_SPEC_FUN( spec_cast_construct_adept );
@@ -182,6 +183,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_grell")) return spec_grell;
         if (!str_cmp(name, "spec_flind")) return spec_flind;
         if (!str_cmp(name, "spec_horn_gore")) return spec_horn_gore;
+        if (!str_cmp(name, "spec_breath_crystal")) return spec_breath_crystal;
         if (!str_cmp(name, "spec_otyugh")) return spec_otyugh;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
         if (!str_cmp(name, "spec_cast_construct_adept")) return spec_cast_construct_adept;
@@ -313,6 +315,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_grell) return "spec_grell";
         if (special == spec_flind) return "spec_flind";
         if (special == spec_horn_gore) return "spec_horn_gore";
+        if (special == spec_breath_crystal) return "spec_breath_crystal";
         if (special == spec_otyugh) return "spec_otyugh";
         if (special == spec_cast_adept) return "spec_cast_adept";
         if (special == spec_cast_construct_adept) return "spec_cast_construct_adept";
@@ -5319,6 +5322,63 @@ bool spec_grell(CHAR_DATA *ch)
         af.location = APPLY_NONE;
         af.bitvector = AFF_HOLD;
         affect_to_char(victim, &af);
+        return TRUE;
+}
+
+/* Glowing shards replace this opportunity's breath, not the whole room. */
+bool spec_breath_crystal(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        ROOM_INDEX_DATA *room;
+        AFFECT_DATA af;
+        int source_deaths, target_deaths, before_hit, hpch, dam;
+        unsigned long int types = RES_MAGIC | RES_PIERCE;
+
+        if (!victim || !usable_breath_head(ch) || !can_see(ch, victim)
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || (ch->in_room->area
+            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
+        || get_contact_resistance_result(ch, victim, types) == RES_RESULT_IMMUNE)
+                return FALSE;
+
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        target_deaths = action_deaths(victim);
+        before_hit = victim->hit;
+        hpch = UMAX(10, ch->hit);
+        dam = number_range(hpch / 8 + 1, hpch / 4);
+        if (saves_resistance_effect(ch, ch->level, victim, types))
+                dam /= 2;
+        if (is_affected(victim, gsn_dragon_shield)
+        || is_affected(victim, gsn_bonus_exotic))
+                dam /= 2;
+
+        act("You breathe a glittering stream of crystal shards at $N!",
+            ch, NULL, victim, TO_CHAR);
+        act("$n breathes a glittering stream of crystal shards at you!",
+            ch, NULL, victim, TO_VICT);
+        act("$n breathes glittering crystal shards at $N!",
+            ch, NULL, victim, TO_NOTVICT);
+        damage_with_resistance_types(ch, victim, dam, TYPE_HIT + 11, FALSE, types);
+
+        /* A blocked hit or a death/move cannot leave a fresh blindness affect. */
+        if (!action_character_in_room(ch, room, source_deaths)
+        || !action_character_in_room(victim, room, target_deaths)
+        || ch->fighting != victim || victim->hit >= before_hit
+        || !HAS_EYES(victim) || IS_AFFECTED(victim, AFF_BLIND)
+        || is_affected(victim, gsn_blindness)
+        || saves_resistance_effect(ch, ch->level, victim, types))
+                return TRUE;
+
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_blindness;
+        af.duration = 0; /* Clears at the next affect update. */
+        af.location = APPLY_HITROLL;
+        af.modifier = -4;
+        af.bitvector = AFF_BLIND;
+        affect_to_char(victim, &af);
+        act("The dazzling shards blind you!", ch, NULL, victim, TO_VICT);
+        act("$N is blinded by the dazzling shards!", ch, NULL, victim, TO_NOTVICT);
         return TRUE;
 }
 

@@ -8932,3 +8932,124 @@ Maze/scent/surprise equivalents for minotaurs remain shared-mechanics
 retrofit work. Existing player races keep their abilities. Portraits2329
 and2331 are regenerated separately: minotaur Sumaron and crossbow Belrak.
 The other32 portraits stay; image publication is independent of Git.
+
+
+Dark Wood
+---------
+
+The catalogue now has 227 archetypes, 34 body species, 48 internal traits,
+117 Scribe special names and 637 skill rows. Eight archetypes append at
+219-226: mist_hazard, rock_hazard, enchanted_chamber,
+adult_crystal_dragon, forest_giant, tiger, decaying_demon and morepork.
+Existing IDs, body rows, traits, player opt-ins and area fields stay
+unchanged.
+
+The three environmental archetypes use environmental_hazard. These are
+scripted scenery: mindless, inorganic, soulless, without creature organs,
+speech or corpses. Their inherited immunity covers poison, drain, sleep,
+charm, hold, paralysis and psychic effects. Inorganic physiology already
+rules out animal blood and pain; no extra marker is needed. There is no
+new physical immunity, nonmagic immunity, invulnerability, ACT_OBJECT or
+NO_FIGHT flag. Fixed dimensions stay unknown (0), with Medium as a
+technical size placeholder. The local five actors use neutral sex 0. Their
+original behaviour and scripts remain: mist knocks visitors from the
+bridge, river rocks stay aggressive, and the chamber provides helpful
+spec_cast_orb and both home-return triggers. A speech-triggered room need
+not have a voice.
+
+adult_crystal_dragon is an organic, intelligent speaking dragon with
+normal organs, wings, scales, claws, fangs and tail. Its defaults are 300
+cm height/5000 kg/2000 cm total length/Large/HUGE. These are descriptive
+estimates for this large slender adult, not a length inferred from rank.
+It has flight, infrared, detect-invisible and -20 natural armour. Cold and
+magic resistance each use DD4's normal 50 percent damage reduction. This
+is an explicit game approximation, not the full 2e light/normal-cold
+immunity. Local 11203 keeps Boss, Sanctuary, Pass Door, treasure and
+attack-on-look. Remove duplicated inherited HUGE/flight bits so XOR does
+not cancel them.
+
+spec_breath_crystal replaces the old poisonous gas with a stream of
+glowing magical piercing shards against the current visible legal opponent
+only. Damage rolls between max(10,current HP)/8+1 and max(10,current
+HP)/4, following the existing breath scale. A resistance save halves
+damage; Dragon Shield and the existing exotic protection halve it again.
+Shared damage resistance, contact/phase and normal combat permissions
+apply. A separate save can prevent a short glare blindness after positive
+damage. It needs eyes and does not stack or refresh an existing blindness
+affect. The affect uses the ordinary blindness ID, -4 hitroll and duration
+0, which clears at the next affect update. A blocked hit, death, movement
+or lost opponent cannot apply follow-up blindness. Head/head-trauma,
+action/wait, visibility, room/area safety and resistance gates apply. It
+damages no bystander or inventory, adds no poison/nausea, and does not add
+another special-function turn. The special XP allowance is +10. This native
+special uses existing damage and blindness machinery; it adds no learnable
+spell, skill row or new player help/area spell-list entry. The archetype
+profile XP adjustment is 0. Extra casting, specialised gem fear, psionics,
+light immunity and age-dependent spell powers remain explicit shared
+retrofits.
+
+forest_giant is a DD4 giant-kin variant, not an asserted Voadkyn. It is
+an ordinary organic speaking humanoid, family giant, with 450 cm/1500
+kg/Large/ HUGE defaults, -5 natural armour and+5 profile XP. It adds no
+rock special, polymorph, broad resistance or strength modifier. Existing
+dwarf/giant family matching works normally. Local 11206/11207 keep their
+different levels, passive wandering, Sneak, entry programs and green
+leather vests. The older generic giant and official hill/stone/frost
+profiles stay intact.
+
+tiger uses quadrupedal_mammal: normal living organs, four legs, paws,
+claws, fangs and tail, no arms or speech. Ordinary attacks choose claw or
+bite, without extra attacks. Defaults 100 cm shoulder/220 kg/300 cm full
+length/ Large, -4 armour, infrared/Sneak/Swim and 0 profile XP. Keep both
+local tigers' aggression, levels, caps and entry programs. A shared
+rear-claw rake or surprise system remains later work; neither is silently
+simulated here.
+
+decaying_demon is a separate organic DD4 demon, not an undead corpse or a
+forced named tanar'ri subtype. It has two arms, normal organs/blood/soul/
+pain/remains, horns, claws and fangs. Horn anatomy adds no automatic gore.
+Defaults 240 cm/220 kg/Large, -3 armour, magical ordinary claw/bite
+contact, fire/cold resistance, electricity/poison immunity and+10 profile
+XP. It inherits spec_demon. Rotten skin does not grant a disease proc,
+extra limbs, flight or undead physiology. Existing authored alignment
+stays.
+
+morepork uses bird anatomy, beak/talon ordinary attacks, flight, infrared,
+Sneak, -5 armour and 0 profile XP. Defaults 20 cm standing height/29 cm
+full length/ Small. NZDOC gives 29 cm and 175 g for this small owl; mass
+stays 0(unspecified) because the current whole-kg metadata cannot express
+175 g. Do not enter a fraction or pretend it weighs 1 kg. Preserve its
+Sentinel and 30 percent wing drop program. The dropped wing remains the
+original magic loot object.
+
+All 15 local definitions are converted. Darkone 11210 is the approved
+living human 175 cm/75 kg/Medium caster under magical imprisonment; keep
+Elite, spec_cast_undead, Flaming, greeting and death-release/beacon
+program. A special's name is not an undead classification. The two actual
+vampires reuse vampire 175 cm/75 kg/Medium and its regeneration, defences,
+weaknesses and spec_vampire; their generic undead-caster overrides are
+removed. Existing Boss dragon/Elite Darkone and thirteen Common ranks
+remain, with rank HP applied once. No new rank promotion or blanket
+HP/damage multiplier is introduced. All other original sexes and
+alignments stay.
+
+Crystal-claw weapon 11206 moves from reset slot 2(right finger) to
+16(WIELD). Its portable TAKE flag, weapon type, pierce verb, dice, affects
+and loot remain. It is not converted to an attached ITEM_BODY_PART weapon;
+actual dragon anatomy is supplied by the template. Other reset
+caps/order/rooms/ gear stay. Population/items remain 15/4 initially and
+24/6 after three refills. The original 18 objects,
+key/chest/cross/prayer/crystaldoor/slippers puzzle, beacon and wing drops
+remain. All 96 room flags/exits stay. Only the approved local spelling
+corrections and crystal-chamber reset comment change.
+
+No matching Dark Wood .src exists. If another area has a Scribe .src,
+patch the source and its .are together, then regenerate and compare the
+complete agreed output, including scripts, resets and room flags. The four
+other real source exports, including Eakos, must stay unchanged.
+
+All 15 mob portraits and 96 room images were reviewed. Only mob 11204's
+fleshy chamber portrait needs replacement; regenerate it as a crystal
+interior. Other 14 mob portraits and all room images stay. Image
+publication remains separate from Git. No clear, major room-image mismatch
+was found.
