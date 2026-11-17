@@ -10,8 +10,9 @@ The carrier of the mortalsbane lurks in these dark depths.
 ~
 32|64 8 0 S
 100 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
+< shadow~ elite~
 #18501
 rock crab~
 The rock crab~
@@ -21,8 +22,9 @@ This land dwelling relative of the sea crab still likes a tasty morsel.  It seem
 ~
 32|64 32768 0 S
 10 0 0 0d0+0 0d0+0
-53 0
+0 0
 8 8 0
+< giant_land_crab~ common~
 #18502
 jim sasquatch humanoid hairy~
 The sasquatch~
@@ -34,18 +36,19 @@ Bigfoot?
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ rare~
+< sasquatch~ rare~
 #18503
 beast stone boulder granite slab~
 The boulder beast~
 A large granite slab leans inanimate against the mountainside.
 ~
-A large creature hued out of living stone!
+A large creature hewn out of living stone!
 ~
 64 8|32|32768 0 S
 50 0 0 0d0+0 0d0+0
-304 0
+0 0
 8 8 0
+< boulder_beast~ common~
 #18504
 troglodyte troll~
 The troglodyte~
@@ -57,6 +60,7 @@ It's your father!!  You now know where you got that ugly face from!
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #18505
 cave slime~
 The cave slime~
@@ -66,8 +70,9 @@ Slime! Eeeuuuuurrgghh! Don't mess with it, you'll never get the stains out.
 ~
 2|64 0 0 S
 80 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< green_ooze~ common~
 #18506
 tree sprite~
 The tree sprite~
@@ -79,6 +84,7 @@ Even trees as isolated and far from a forest as these need tending.
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< sprite~ common~
 #18507
 mountain goat~
 The goat~
@@ -89,8 +95,12 @@ could do some serious damage.
 ~
 64 0 0 S
 30 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< goat~ common~
+MobHeight 100
+MobWeight 100
+MobLength 150
 #0
 
 
@@ -524,7 +534,7 @@ S
 Underground River~
 Luckily this normally timid river is not in flood, as it would probably
 flow into the other tunnels.  The river disappears into the western
-wall and contiues to the east.
+wall and continues to the east.
 ~
 0 1|8 0
 D0
@@ -540,7 +550,7 @@ S
 Underground River~
 Luckily this normally timid river is not in flood, as it would probably
 flow into the other tunnels.  The river disappears into the eastern wall
-and contiues to the west.
+and continues to the west.
 ~
 0 1|8 0
 D0
@@ -681,7 +691,7 @@ S
 Rolling Grasslands~
 The plains come to an end here. To the north is a sandy beach and you
 can see deep blue waters for many miles. To the east featureless grasslands
-stretchs for miles, and in the distance you see an imposing mountain range
+stretches for miles, and in the distance you see an imposing mountain range
 and to the west you see a small valley.
 ~
 0 0 2
@@ -1342,12 +1352,12 @@ S
 
 
 #SPECIALS
+M 18507 spec_horn_gore
 M  18500 spec_cast_psionicist       The shadow
-M  18501 spec_breath_gas            The rock crab
+M  18501 spec_breath_gas_anatomical            The rock crab
 M  18502 spec_fido                  The sasquatch
-M  18503 spec_breath_any            The boulder beast
 M  18504 spec_fido                  The troglodyte
-M  18505 spec_breath_any            The cave slime
+M  18505 spec_elemental_burst            The cave slime
 S
 
 

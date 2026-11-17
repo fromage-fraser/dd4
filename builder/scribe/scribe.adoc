@@ -853,7 +853,7 @@ Accepted archetype names are:
 | fire_bat | Winged inorganic elemental with fire immunity, infrared and anatomy-checked fire breath; 30 cm height/61 cm length, Small, no corpse.
 | giant_hermit_crab | Organic crustacean with native crushing pincer and armour -20; 152 cm height/250 cm length, 350 kg, Large without HUGE.
 | kobold, gnoll, bugbear | Minimal humanoid target-family placeholders awaiting full review.
-| `goat` | Existing goat archetype, based on `farm_mammal`.
+| `goat` | Ordinary goat, based on `quadrupedal_mammal`.
 | `fire_elemental` | Existing fire-elemental test archetype, based on `elemental`.
 | `skeleton` | Skeletal humanoid archetype.
 | `zombie` | Mindless undead humanoid retaining flesh, organs and limbs.
@@ -4108,7 +4108,7 @@ adjustment is zero. For the individual layer:
 |===
 
 An untemplated mobile can use `hpmod`; its inherited adjustment is zero.
-The goat archetype supplies a +20% adjustment unless individually replaced.
+The rewritten goat archetype supplies a zero HP adjustment.
 
 ===== Scribe and area syntax
 
@@ -4257,7 +4257,7 @@ resolved value; it is not XORed, added, or independently compounded.
 |===
 
 An untemplated mobile inherits a zero damage adjustment and can override it.
-The goat archetype supplies +20% damage for applicable attacks.
+The rewritten goat archetype supplies a zero damage adjustment.
 
 [source,text]
 ----
@@ -4390,8 +4390,8 @@ For an inherited adjustment of +20:
 | `-5` | -5 | 0
 |===
 
-Untemplated mobiles inherit a zero adjustment. The goat defaults are -10
-critical and -2 swiftness points, producing scores -5 and 3. The fire-elemental
+Untemplated mobiles and the rewritten goat inherit zero critical and
+swiftness adjustments, producing scores 5 and 5. The fire-elemental
 defaults produce scores 5 and 25 before individual overrides or equipment.
 
 [source,text]
@@ -4496,13 +4496,13 @@ _Default: omitted; inherit the resolved body-species/archetype value_
 
 These are absolute metadata values, not modifiers, percentages or bitmasks.
 Reviewed creatures use descriptive centimetres for height and kilograms for
-weight, with the existing small/medium/large size constants. Older entries
-still retain their historical raw values; for example:
+weight, with the existing small/medium/large size constants. Goat now uses
+reviewed defaults; the fire_elemental example retains historical raw values:
 
 [cols="<2,<1,<1,<1",options="header"]
 |===
 | Archetype | Raw height | Raw weight | Raw size
-| `goat` | 1 | 30 | 100
+| `goat` | 70 | 55 | 1 (Medium)
 | `fire_elemental` | 2 | 20 | 3
 |===
 
@@ -4622,11 +4622,10 @@ _Default: omitted; inherit the resolved body-species/archetype value_
 
 ===== Meaning and boundaries
 
-The existing table member is an integer. Its retained values are `1` for
-`fire_elemental` and `3` for `goat`. This data layer preserves those codes;
-it does not assign language names to them or treat them as indexes into a
-new language-name table. Do not infer that code 1 means Common, or that code
-3 identifies any particular named language.
+The table member is an integer. The fire_elemental example retains raw
+code `1`; the rewritten goat uses unspecified metadata (`0`). No language
+names or proficiency are assigned by these codes. Do not infer that code
+1 means Common or use it as an index into a language-name table.
 
 For this interface, `0` means unspecified metadata. It does not mean mute,
 unable to understand, unable to cast, or unable to communicate. A nonzero
@@ -8917,7 +8916,8 @@ the fangs for an ordinary piercing bite. Claws and tail are anatomy here,
 not extra attacks. Normal head and trauma checks still apply. Dogs are
 living organic creatures with blood, souls, pain and ordinary corpses;
 they are not mindless. No special, extra resistance or combat bonus is added.
-The existing provisional farm_mammal and its goat users are unchanged.
+The provisional farm_mammal example remains. Goat now uses the clean
+quadrupedal_mammal body described in Sentinel Pass below.
 
 Dog defaults are shoulder height 50 cm, weight 25 kg, length 90 cm and
 small size. Pitbull 2108 replaces weight with 30 kg and keeps its existing
@@ -10115,7 +10115,8 @@ The bull (712) individually replaces these with 170 cm, 280 cm and 1000 kg;
 the cow (711) keeps the defaults. Hide supplies natural_armour -5, with
 zero racial XP adjustment and no resistance, immunity or special package.
 Keep the cow passive and the bull aggressive; there is no stampede rule.
-The legacy farm_mammal/goat body is unchanged.
+The legacy farm_mammal example remains; goat has been rewritten on
+quadrupedal_mammal, as described in Sentinel Pass below.
 
 hill_giant and stone_giant use living, speaking humanoid anatomy and the
 giant target family, so existing dwarf giant defence applies. Both are
@@ -10708,8 +10709,8 @@ anatomical filters and leg-trauma restrictions apply.
 Their armour, HP, damage, critical, haste and racial XP adjustments are
 neutral. They have no resistance, immunity, vulnerability or default
 aggression, and need no active special or new body/target/trait flag.
-Use the clean mammal body; the old farm_mammal/goat test defaults do not
-describe these animals.
+Use the clean mammal body. The separate farm_mammal example is not an
+animal template; goat now also uses quadrupedal_mammal.
 
 Deer defaults are 100 cm shoulder height, 70 kg, 160 cm length and Medium.
 Stag defaults are 130 cm, 180 kg, 210 cm and Medium. Male deer 8905 uses
@@ -13214,8 +13215,8 @@ The other32 portraits stay; image publication is independent of Git.
 Dark Wood
 ---------
 
-The catalogue now has 227 archetypes, 34 body species, 48 internal traits,
-117 Scribe special names and 637 skill rows. Eight archetypes append at
+The Dark Wood step brought the catalogue to 227 archetypes, 34 body species,
+48 internal traits, 117 Scribe special names and 637 skill rows. Its entries occupy
 219-226: mist_hazard, rock_hazard, enchanted_chamber,
 adult_crystal_dragon, forest_giant, tiger, decaying_demon and morepork.
 Existing IDs, body rows, traits, player opt-ins and area fields stay
@@ -13330,3 +13331,124 @@ fleshy chamber portrait needs replacement; regenerate it as a crystal
 interior. Other 14 mob portraits and all room images stay. Image
 publication remains separate from Git. No clear, major room-image mismatch
 was found.
+
+
+Sentinel Pass
+-------------
+
+The current catalogue has 231 archetypes, 34 body species, 48 internal
+traits, 119 Scribe special names and 637 skill rows. Four archetypes
+append at IDs 227-230: giant_land_crab, sasquatch, boulder_beast and
+sprite. Goat keeps its existing ID 1 but is completely rewritten as a real
+animal. There are no new area fields, body species, trait IDs, ACT bits or
+player race opt-ins. Existing entry numbers stay stable.
+
+Goat now uses quadrupedal_mammal, with ordinary organs, four legs,
+forelegs, horns, hooves and tail, but no arms or speech. Its ordinary
+attacks choose a horn pierce or hoof pound. Defaults are 70 cm at the
+shoulder, 55 kg, 110 cm long, Medium, with -3 natural armour and zero HP,
+damage, critical, swiftness and profile XP adjustments. It has no
+elemental vulnerabilities and no default special. The old poison, fido,
+scalar, size-100 and language-3 values were development tests; do not copy
+them. Language metadata is now unspecified. The separate farm_mammal
+example body remains unchanged. Sentinel's male mountain goat is
+individually 100 cm high, 100 kg and 150 cm long, still Medium. It
+receives the existing spec_horn_gore individually: 15 percent chance, two
+dice with max(4,(level+1)/2) sides using integer division, nonmagical
+piercing contact and one combat pulse of wait. Its ordinary action, usable
+head, horn, trauma, visibility, safety and contact rules still apply. Do
+not add a leg-injury restriction to the horn attack. Its passive StayArea
+behaviour remains.
+
+giant_land_crab uses crustacean: eyes on stalks, a head region, pincers
+represented by arms and claws, many legs, shell, heart and ordinary
+organs; no speech. Ordinary pincers crush, with -7 natural armour and +5
+profile XP. Defaults are 100 cm to the shell top, 250 kg, 250 cm long,
+Large. It has no added swimming, resistance or default special. Local
+18501 keeps Sneak and its deliberately authored gas breath through
+spec_breath_gas_anatomical, which needs a usable head. That special has
+the existing +10 XP allowance. Gas is not a default for future land crabs.
+
+sasquatch is a large, hairy living humanoid with ordinary organs, hands,
+feet, fists and speech eligibility. Defaults are 230 cm, 180 kg, Large, -3
+natural armour and zero profile XP. There is no added cold immunity, fire
+weakness, fear, squeeze or rock throw. This is DD4's Bigfoot reading; an
+exact primary 2e Sasquatch entry was not established in the references
+checked, which does not prove that none exists. Jim 18502 retains Rare,
+passive wandering, his keywords and individual spec_fido.
+
+boulder_beast uses bipedal_construct. It is a mindless stone biped,
+inorganic, bloodless, soulless and mute, with no animal organs and no
+animal pain, but physical stone remains. Defaults are 250 cm, 1200 kg,
+Large, -15 natural armour and +10 profile XP. It resists piercing and
+slashing by the usual 50 percent, takes normal blunt damage and is immune
+to poison, drain, sleep, charm, hold and paralysis. Ordinary attacks pound
+without becoming magical. It has no full weapon or magic immunity and no
+golem Slow. It inherits spec_elemental_burst, preserving this area's
+authored elemental power. Local 18503 stays passive and keeps StayArea,
+Sneak and detection.
+
+spec_elemental_burst preserves the old mixed breath spell distribution:
+fire 1/8, lightning 2/8, gas 1/8, acid 1/8, steam 2/8 and frost 1/8. For
+non-gas choices, it keeps the old one-in-four sample per eligible
+attacker; it does not guarantee a hit on the current opponent. Gas retains
+the existing area spell's target rules. Existing damage scales, saves,
+resistances, nausea, inventory interactions and steam sound remain. Only
+one spell can use a special opportunity. Narration describes an intrinsic
+elemental discharge, so this power needs no head or mouth. It still needs
+a living, awake NPC able to act, a legal fight, no wait, charm, hold,
+daze, noncorporeality, safe room/area, NO_MAGIC area or active
+player-order context. Antimagic uses the existing native-spell activation
+rules. The special XP allowance is +10. Other breath specials are
+unchanged.
+
+The cave slime 18505 reuses green_ooze and receives spec_elemental_burst
+as an individual override. This does not give every green ooze elemental
+powers. It remains organic, mindless and bloodless, without discrete
+animal organs. Existing inference rules prevent pain; soul eligibility and
+physical goo remains stay. Its existing status defences apply. Defaults
+are 30 cm approximate thickness, 80 kg, 150 cm long, Medium. Keep Sentinel
+and StayArea. There is no new acid-touch, item-dissolution, infection or
+blanket weapon-immunity mechanic. The retained breath spells still have
+their pre-existing item effects.
+
+sprite is a standard woodland sprite on humanoid anatomy, with normal
+organs, blood, soul, pain, speech and remains, plus wings and flight.
+Defaults are 61 cm, 4 kg, Small, -4 natural armour and zero profile XP. It
+detects good and evil but gains no broad magic resistance. Its spec_sprite
+has a +5 XP allowance. On 25 percent of eligible idle opportunities it
+casts the existing Invis spell on itself, only outside combat and while
+not already invisible or affected by Invis. Usable head and brain, head
+trauma, ordinary action, NO_MAGIC and antimagic rules apply. It does not
+refresh invisibility, add combat casting or change aggression. Ordinary
+spell duration and combat stripping remain. The local female sprite stays
+neutral, Sentinel, StayArea, Sneak and Hide. Sleep-arrow ointment awaits
+proper projectile support; it is not silently replaced by an innate Sleep
+spell or a poisoned unarmed attack.
+
+The shadow 18500 uses the existing shadow archetype and keeps its
+individual psionicist special, strength-drain physiology, held mortalsbane
+stone 18500, and intentionally empty long description. Its unknown
+measurements stay unspecified. Its rank becomes Elite as the unique
+level-100 artifact guardian: normal rank HP applies once. Sasquatch's
+existing Rare rank stays; the other six mobs remain Common. No mob gains
+HUGE. The troglodyte 18504 is the approved prehistoric human
+interpretation, 175 cm, 75 kg and Medium. Keep its name, troll keyword,
+father joke, male sex, aggression, Sneak and fido. The standard reptilian
+2e troglodyte is a different reading, not a reason to add scales or stench
+here.
+
+All eight local definitions preserve their original ACT behaviour, levels,
+HP/damage build letters, alignments, sexes, reset caps, order, placements
+and the held stone's slot and affects. Remove duplicated raw body flags so
+XOR does not cancel inherited anatomy. All room flags and exits stay. Text
+corrections are only hewn, continues and stretches. No matching Sentinel
+.src exists. For future source-backed areas, update the .src and .are
+together and compare the whole regenerated result, including scripts,
+resets, exits and room flags. No new player spell or skill is added, so
+player skill lists and spell lists need no new entry.
+
+The shadow portrait is the only proposed replacement: an insubstantial
+humanoid holding the smooth grey stone, without unsupported sword or
+armour. The other seven portraits and all 73 room images stay. Image
+publication remains separate from applying this code patch.

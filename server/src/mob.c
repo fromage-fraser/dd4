@@ -724,20 +724,12 @@ const struct mob_type mob_table[MAX_MOB] =
         },
 
         {
-                "goat", "farm_mammal", "icon1", "icon2",
-                0, 0,
-                0, 0,
-                0,
-                RES_FIRE | RES_COLD | RES_ELECTRICITY | RES_ENERGY,
-                0,
-                20, 20, -10, -2,
-                1, 30, 100, 3,
-                "spec_fido", "spec_poison", NULL,
-                0,
-                MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE,
-                MOB_TEMPLATE_UNSET
+                "goat", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_HORNS | PART_HOOVES | PART_TAIL, PART_HORNS | PART_HOOVES, 0, 0, 0,
+                0, 0, 0, 0,
+                70, 55, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 110
         },
 
         {
@@ -2011,7 +2003,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 275
         },
-        /* Cattle share clean mammal anatomy without inheriting goat test data. */
+        /* Cattle and goats share ordinary mammal anatomy. */
         {
                 "cattle", "quadrupedal_mammal", "icon1", "icon2",
                 0, 0,
@@ -3478,6 +3470,38 @@ const struct mob_type mob_table[MAX_MOB] =
                 20, 0, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 29
+        },
+        {
+                "giant_land_crab", "crustacean", "icon1", "icon2",
+                0, 0, PART_CLAWS, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 250, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 250
+        },
+        {
+                "sasquatch", "humanoid", "icon1", "icon2",
+                0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                230, 180, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "boulder_beast", "bipedal_construct", "icon1", "icon2",
+                0, AFF_MINDLESS, BODY_NO_SPEECH | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS, 0, RES_PIERCE | RES_SLASH, 0, RES_POISON | RES_DRAIN | RES_SLEEP | RES_CHARM | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                250, 1200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_elemental_burst", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "sprite", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING | AFF_DETECT_GOOD | AFF_DETECT_EVIL, PART_WINGS, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                61, 4, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_sprite", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
         }
 };
 
@@ -4337,6 +4361,29 @@ static const CREATURE_TRAIT_CHANGE morepork_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
 };
 
+static const CREATURE_TRAIT_CHANGE goat_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE giant_land_crab_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8}
+};
+static const CREATURE_TRAIT_CHANGE sasquatch_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE boulder_beast_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -15},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7}
+};
+static const CREATURE_TRAIT_CHANGE sprite_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4344,6 +4391,16 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"goat", NULL, goat_trait_changes,
+            TRAIT_ITEMS(goat_trait_changes)},
+        {"giant_land_crab", NULL, giant_land_crab_trait_changes,
+            TRAIT_ITEMS(giant_land_crab_trait_changes)},
+        {"sasquatch", NULL, sasquatch_trait_changes,
+            TRAIT_ITEMS(sasquatch_trait_changes)},
+        {"boulder_beast", NULL, boulder_beast_trait_changes,
+            TRAIT_ITEMS(boulder_beast_trait_changes)},
+        {"sprite", NULL, sprite_trait_changes,
+            TRAIT_ITEMS(sprite_trait_changes)},
         {"adult_crystal_dragon", NULL, adult_crystal_dragon_trait_changes,
             TRAIT_ITEMS(adult_crystal_dragon_trait_changes)},
         {"forest_giant", NULL, forest_giant_trait_changes,
@@ -7908,6 +7965,8 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_flind", 5 },
                 { "spec_horn_gore", 5 },
                 { "spec_breath_crystal", 10 },
+                { "spec_elemental_burst", 10 },
+                { "spec_sprite", 5 },
                 { "spec_otyugh", 5 },
                 { "spec_cast_slow", 10 },
                 { "spec_cast_construct_adept", 10 },

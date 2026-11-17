@@ -1581,6 +1581,10 @@ blocking unrelated directions.
 
 {WNovember 2026{x
 
+- Convert Sentinel Pass mobs; rebuild goat defaults; add sprite and elemental specials.
+
+- Convert Sentinel Pass mobs; rebuild goat defaults; add sprite and elemental specials.
+
 - Convert Dark Wood mobs; add crystal breath; correct dragon weapon reset.
 
 - Convert Mahn-Tor mobs; add horn gore and melee training; fix weapons.
@@ -3505,7 +3509,7 @@ Syntax:
   sconfig ui N            UI/alerts volume scale
 
 Notes:
-- "ambient/music/foley/sfx/ui" scales multiply with each track’s own volume.
+- "ambient/music/foley/sfx/ui" scales multiply with each trackâ€™s own volume.
 - Setting master to 0 or "-sound" fades out all currently playing media.
 - More options to come as the DD sound system implementation proceeds.
 ~
@@ -9996,11 +10000,11 @@ typing construct with no arguments.
 Icons: Those that specialise in the Smithy Profession obtain icons for
 their weapons:
 
-adamantite katana:      <11>{}oo((X))ΞΞΞΞΞΞΞΞΞΞΞΞΞ><0>
+adamantite katana:      <11>{}oo((X))ÎžÎžÎžÎžÎžÎžÎžÎžÎžÎžÎžÎžÎž><0>
 
 electrum sword:         <7>@()xxx[:::":::":::":::":::=><0>
 
-starmetal dual blade:   <1>₪₪₪₪§|(Ξ≥≤≥≤≥≤ΞΞΞΞΞΞΞΞ><0>
+starmetal dual blade:   <1>â‚ªâ‚ªâ‚ªâ‚ªÂ§|(Îžâ‰¥â‰¤â‰¥â‰¤â‰¥â‰¤ÎžÎžÎžÎžÎžÎžÎžÎž><0>
 ~
 
 1 'WRENCH OF THE CROW' 'WINGS OF THE CROW' 'HUNTSMITHS'~
