@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 18 November 2026
-Based on master 569dac0186c4a36ef73a4f532ff7e71400548892 (PR #989),
-with the accompanying Apocalypse Now changes.
+Based on master 4f61b455e5719459f98eace6c3a3636889a12d89 (PR #990),
+with the accompanying Purgatory changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -2714,6 +2714,75 @@ Famine hang/hangs and final Horsemen wording corrections accompany it. No
 matching .src exists; the four other real source exports stay. All twelve
 portraits and 55 room images were inspected and retained.
 
+Purgatory
+---------
+
+Purgatory reuses apocalyptic_avatar for the Reaper of the Dead (401) and
+ghost for the lost soul (402). No new profile, body, trait, skill, special
+or parser feature is added. The catalogue stays at 245 archetypes, 35 body
+species, 50 internal traits, 124 Scribe special names and 637 skill rows.
+All shared defaults and player opt-ins stay unchanged.
+
+The Reaper is a conscious, physically present manifestation of Death, not
+an ordinary reanimated skeleton. He remains non-undead, soul-bearing and
+corpseless. His skeleton has a head, senses, hands, arms and legs, but no
+physical heart, brain or guts. Individual Inorganic, Bloodless and Analgic
+properties describe that body without making him mindless, soulless or
+ethereal. Keep the positive organ bits cancelled as well as No Heart: an
+inherited PART_HEART would otherwise defeat the negative flag. His
+dimensions are an estimated 200 cm height, unknown mass, Medium and no
+HUGE. Explicit weight 0 overrides the avatar's 75 kg default; it means
+unspecified, not physically weightless.
+
+Clear his individual No Speech to allow ordinary speech, and set male sex
+to match the description's he. His existing shout already takes a separate
+channel path; this is not a claim that the fight program was broken. His
+portrait shows the skeletal Reaper, scythe and book, but does not
+establish sex. The description supplies that decision.
+
+Keep Sentinel, No Quest and the individual Unkillable flag, including its
+existing bit 63 value. These are service and encounter settings, not a new
+racial ability. Both Reaper and lost soul stay Common. The Reaper is not a
+ranked combat boss, and Unkillable makes an extra rank HP multiplier
+unnecessary. Levels, alignments, generated builds and existing detection,
+Sanctuary and Protection affects stay.
+
+The lost soul inherits conscious undead classification, organless
+inorganic/corpseless anatomy, semi-material ghost phase and the existing
+mundane-weapon barrier. It retains a soul and a mind, and keeps its
+individual No Speech, Stay Area, No Quest and unspecified sex. Clear the
+duplicate individual No Corpse bit so XOR does not restore remains. Its
+human-sized outline is 175 cm, with unknown mass, Medium and no HUGE. No
+drain, fear, wail, flight, Pass Door, Analgic or Soulless property is
+added. Ghost phase and player Non-Corporeal are separate.
+
+The Reaper keeps spec_cast_adept in the single 100-percent special slot.
+Its existing checks skip helpful spells that would harm undead targets. It
+still chooses players rather than the wandering NPC souls. Preserve his
+shop, profit settings 100/0 and opening hours 0..23. The greeting still
+casts Giant Strength, creates the tear potion, gives it to the visitor and
+forces that visitor to quaff it. The fight program keeps its original
+5-percent shout. No new fee or priest-service role is added.
+
+His gear stays scythe 403 in WIELD, Book of Judgement 402 in HOLD and tear
+potion 401 in inventory. All four objects, stats, affects, flags, potion
+spells and book charges stay. Initial population is one Reaper and two
+lost souls, with three souls after refills; total population is therefore
+3 initially and 4 after refills. Carried items stay at 3.
+
+All 27 room records, flags, exits, maze randomization, hints, area safety,
+recall and ambience stay. The area has no NO_UNDEAD rooms. Preserve entry
+room 401, player-corpse/judgement room 427 and portal object 404 leading
+to room 3054. These identifiers are used by player extraction, corpse
+placement, executioner pursuit, quest-room exclusion and the portal's
+save-after-entry behavior. A mob, room and object sharing a number are
+separate records; classification must not renumber them.
+
+The only wording correction is the Reaper's doesn't seems to doesn't seem.
+There is no matching .src. All four other real source exports remain
+unchanged. Both portraits and all 27 room images were reviewed and
+retained; no image generation or publication accompanies this step.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 35 current rows, including reserved. The index is not an
@@ -4402,8 +4471,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/569dac0186c4a36ef73a4f532ff7e71400548892
-  Base PR989 plus the accompanying Apocalypse Now patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/4f61b455e5719459f98eace6c3a3636889a12d89
+  Base PR990 plus the accompanying Purgatory patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -4413,9 +4482,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently77/153 areas (50.3%) and1171/4131 mob
-definitions (28.3%) merged and verified. Apocalypse Now adds12 definitions.
-After its merge is verified, completion becomes78/153 areas (51.0%) and
-1183/4131 definitions (28.6%).
+The live conversion is currently 78/153 areas (51.0%) and 1183/4131 mob
+definitions (28.6%) merged and verified. Purgatory adds two definitions.
+After its merge is verified, completion becomes 79/153 areas (51.6%) and
+1185/4131 definitions (28.7%).
 
 END OF GUIDE
