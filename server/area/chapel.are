@@ -11,10 +11,11 @@ A bony skeleton is here.
 Brown bones with tufts of clothing still hanging from them.  This
 skeleton looks mindless but still dangerous ..
 ~
-32|1073741824 0 0 S
+32 0 0 S
 1 20 9 1d1+19 1d6+0
-16|32|256 100
+0 100
 8 8 1
+< skeleton~ common~
 #3401
 undead zombie~
 the undead zombie~
@@ -24,22 +25,24 @@ His body is totally white and slowly rotting away.  Each zombie looks
 quite different from the next because they were, of course, once alive and
 human.
 ~
-34 40 -100 S
+2|32 8|32 -100 S
 4 17 6 1d1+49 1d8+0
-32 600
+0 600
 8 8 1
+< zombie~ common~
 #3402
 undead ghoul~
 The ghoul~
 A ghoul is here staring at you hungrily.
 ~
 The ghoul no longer resembles the adventurer he once was.  Nonetheless
-he looks like he hasn't forgot his fighting skills.
+he looks like he hasn't forgotten his fighting skills.
 ~
 32 8 -500 S
 6 15 4 1d1+79 2d5+1
 32 1500
 8 8 1
+< ghoul~ common~
 #3403
 undead wraith~
 The wraith~
@@ -49,22 +52,24 @@ The wraith no longer has a material form.  He is wearing a tattered
 black robe which hides all but the darkness of his face and the glimmer
 in his eyes.
 ~
-34 42 -750 S
+2|32 2|8|32 -750 S
 12 9 2 1d1+149 3d6+0
-96 13000
+32 13000
 8 8 1
+< wraith~ common~
 #3404
 undead guardian vampire~
 The guardian vampire~
 A vampire is here hiding his face from your light source.
 ~
 The guardian vampire looks quite EVIL.  Just by looking at him the hair on your
-arms raises. He looks mighty tough to be just a minor minion.
+arms rises. He looks mighty tough to be just a minor minion.
 ~
-2|32|512|8388608 40 -1000 S
+2|32|512|8388608 8|32 -1000 S
 28 0 -4 1d1+385 4d5+15
 64 105000
 8 8 1
+< vampire~ common~
 #3405
 priest~
 the priest~
@@ -74,10 +79,11 @@ Obviously a goodly man, you feel closer to God just by gazing upon this man.
 Dressed in white, with fine white hair and a soft slightly wrinkled face this
 man has a sacred beauty.  You see a halo around his head.
 ~
-2050 168 1000 S
+2|2048 8|32|128 1000 S
 15 5 -5 15d15+150 1d4+8
 0 20000
 8 8 1
+< human~ common~
 #3406
 Mi-Go Fungi~
 the Mi-Go~
@@ -91,8 +97,9 @@ beings sometimes walk on all their legs and sometimes on the hind pair only.
 ~
 32 0 -500 S
 12 9 2 12d12+120 2d7+2
-63 10000
+0 10000
 8 8 0
+< mi_go~ common~
 #3407
 nightgaunt~
 the nightgaunt~
@@ -104,10 +111,11 @@ ugly prehensile paws, and a barbed tail that lashes disquietingly.  And worst
 of all, it makes absolutely no sound or speech and smiles not at all because
 it has no face, only a suggestive blackness where a face ought to be ...
 ~
-96 98304 -1000 S
+32|64 32768|65536 -1000 S
 32 11 1 10d10+100 2d6+3
-150 4050
+0 4050
 8 8 0
+< nightgaunt~ common~
 #3408
 hunting horror~
 the hunting horror~
@@ -119,10 +127,11 @@ umbrella-like wings.  Their forms continually shift and change, twitching
 and writhing, so it is hard to look at them.  They speak in great harsh
 voices.  A hunting horror is HUGE, normally around 40 feet long.
 ~
-32 40 -1000 S
+32 8|32 -1000 S
 60 1 -5 20d20+200 3d6+12
-128 60000
+0 60000
 8 8 0
+< hunting_horror~ common~
 #3409
 weeds~
 some cave weeds~
@@ -130,10 +139,15 @@ Some weeds are creeping across the floor.
 ~
 Just some unpleasant looking vine-like growths ...
 ~
-36 98312 0 S
+4|32 8|32768|65536 0 S
 6 15 4 1d1+75 1d8+1
-53 1500
+0 1500
 8 8 0
+< animated_vine~ common~
+MobHeight 10
+MobWeight 3
+MobLength 200
+MobSize 0
 #3410
 snapper joe~
 Snapper Joe~
@@ -147,6 +161,7 @@ He is called up from his service in hell in order to aid the Undying One.
 20 0 -1 1d1+365 4d3+15
 0 40000
 8 8 1
+< infernal_servitor~ rare~
 #3411
 X-ist eater~
 the X-ist flesh eater~
@@ -158,10 +173,13 @@ small room.  It has a pair of tremendous claws that it uses to rip and tear.
 It has dog-like face except ... different.  Bright glowing eyes and a grimace
 lead you to believe that he knew that you were coming.
 ~
-34 8 -1000 S
+2|32 8 -1000 S
 17 4 1 1d1+215 4d2+7
-0 28000
+128 28000
 8 8 1
+< cave_beast~ common~
+MobHeight 244
+MobWeight 250
 #3412
 spirit ghost king crotus~
 the spirit of King Crotus~
@@ -175,10 +193,11 @@ softly into the air:
     anyone that can hear. The peace of the grave
     calls me but I am blocked from its quiet.
 ~
-2 40 350 S
+2 8|32|524288 350 S
 20 0 -1 1d1+260 4d6+5
 0 40000
 8 8 1
+< ghost~ common~
 #3413
 rock slug~
 the rock slug~
@@ -188,8 +207,9 @@ It is a large brownish slug.  Got any salt?  Didn't think so...
 ~
 4 0 0 S
 3 18 7 1d1+42 1d7+0
-63 350
+0 350
 8 8 0
+< rock_slug~ common~
 #3414
 etcher~
 The mad etcher~
@@ -211,6 +231,7 @@ And on he babbles ...
 5 5 3 1d1+80 2d6+1
 0 900
 6 6 1
+< human~ common~
 #3415
 wife ghost spectre~
 The spectral etcher's wife~
@@ -222,10 +243,11 @@ fall.  Her one damaged eye hangs on its own.  She smiles insanely at you thru a
 broken jaw and missing teeth.  One hand of hers is resting on the shoulder of
 the etcher... her husband.
 ~
-2 65536 1000 S
+2 65536|524288 1000 S
 7 14 4 1d1+86 2d4+3
-96 2250
+32 2250
 8 8 2
+< ghost~ common~
 #3416
 body~
 The half-decomposed body~
@@ -233,34 +255,37 @@ A half-decomposed body is lying in the corner here.
 ~
 YUK! It's ugly, disgusting... it smells... it also moves a bit!
 ~
-36 0 -350 S
+4|32 0 -350 S
 6 15 4 1d1+80 2d5+1
-32 1500
+0 1500
 8 8 1
+< zombie~ common~
 #3417
 undead guardian vampire~
 The guardian vampire~
 A vampire is here hiding his face from your light source.
 ~
 The guardian vampire looks quite EVIL.  Just by looking at him the hair on your
-arms raises. He looks mighty tough to be just a minor minion.
+arms rises. He looks mighty tough to be just a minor minion.
 ~
-2|32 40 -1000 S
+2|32 8|32 -1000 S
 75 0 -4 1d1+385 4d5+15
-96 105000
+32|64 105000
 8 8 1
+< vampire~ common~
 #3418
 undead guardian vampire~
 The guardian vampire~
 A vampire is here hiding his face from your light source.
 ~
 The guardian vampire looks quite EVIL.  Just by looking at him the hair on your
-arms raises. He looks mighty tough to be just a minor minion.
+arms rises. He looks mighty tough to be just a minor minion.
 ~
-2|32 40 -1000 S
+2|32 8|32 -1000 S
 35 0 -4 1d1+385 4d5+15
-96 105000
+32|64 105000
 8 8 1
+< vampire~ common~
 #3419
 water elemental guardian~
 The guardian water elemental~
@@ -271,10 +296,13 @@ water. Its vaguely humanoid shape constantly collapses and reforms, while two
 cold points of blue light burn within its featureless face. Powerful currents
 twist through its body, suggesting that this is no ordinary summoned servant.
 ~
-2|32|512|8388608|1048576|67108864 40 -1000 S
+2|32|512|8388608 8|32 -1000 S
 28 0 -4 1d1+385 4d5+15
-64|256|16|1|2|4|8 105000
+0 105000
 8 8 1
+< water_spirit~ common~
+MobHeight 300
+MobSize 2
 #3420
 desert djinn guardian~
 The desert djinn~
@@ -285,10 +313,11 @@ Its broad, bronze-skinned torso is adorned with ancient golden ornaments, while
 its lower body dissolves into a restless desert whirlwind. Burning amber eyes
 regard all who approach with the merciless patience of the endless wastes.
 ~
-2|32|512|8388608|524288 40 -1000 S
+2|32|512|4096|8388608 8|32 -1000 S
 28 0 -4 1d1+385 4d5+15
-64|8 105000
+8|64|32768|4194304 105000
 8 8 1
+< djinni~ common~
 #3421
 evil air spirit guardian~
 The evil air spirit~
@@ -299,10 +328,12 @@ and roiling vapour. A gaunt, distorted face repeatedly forms within the gale,
 its hollow eyes flashing with pale lightning before dissolving again. Freezing
 currents circle its insubstantial body, carrying whispers of hatred and death.
 ~
-2|32|512|8388608|1048576|524288 40 -1000 S
+2|32|512|4096|8388608 8|32 -1000 S
 28 0 -4 1d1+385 4d5+15
-64|1|2|4|8|16|256 105000
+0 105000
 8 8 1
+< air_elemental~ common~
+MobHeight 350
 #0
 
 
@@ -449,7 +480,7 @@ It looks to be a very heavy old iron key.
 #3417
 flask wineflask~
 a wineflask~
-A wineflask has been been left here.~
+A wineflask has been left here.~
 ~
 17 0 16385
 4~ 4~ 2~ 0~
@@ -1838,7 +1869,7 @@ S
 #3475
 Inside the coffin~
 You are inside a coffin.  It seems rather cramped in here.  You can climb
-up out of the coffin, or you can wait for here the real occupant to join you.
+up out of the coffin, or you can wait here for the real occupant to join you.
 ~
 34 9 0
 D4
@@ -1927,7 +1958,7 @@ E 1 3402 5 16            wield tickler
 M 0 3407 5 3453       load a nightgaunt in cata.
 E 1 3402 5 16            wield tickler
 M 0 3408 1 3471       loads a H. Horror in the secret passage.
-E 1 3425 3 17            give 'em an orb
+G 1 3425 3            give 'em an orb
 G 1 3426 10               give bar of gold
 *
 M 0 3409 4 3444       load Weeds in tombs
@@ -1996,20 +2027,9 @@ S
 
 
 #SPECIALS
-M  3400 spec_cast_undead
-M  3401 spec_cast_undead
-M  3402 spec_cast_undead
-M  3403 spec_cast_undead
-M  3404 spec_cast_undead
 M  3405 spec_cast_cleric
-M  3407 spec_cast_undead
-M  3408 spec_cast_undead
-M  3410 spec_cast_undead
-M  3411 spec_cast_undead
 M  3412 spec_cast_mage
 M  3414 spec_cast_mage
-M  3415 spec_cast_undead
-M  3416 spec_cast_undead
 S
 
 

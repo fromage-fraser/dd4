@@ -14082,3 +14082,152 @@ definitions stay except the talon region and shoe wording. No shop,
 teacher or matching .src exists. Four other real source exports remain
 unchanged. All 26 portraits and 106 room images were reviewed and
 retained; no image generation accompanies this patch.
+
+
+Chapel Catacombs
+----------------
+
+The catalogue now has 255 archetypes, 35 basic body species, 50 internal
+traits, 124 Scribe special names and 637 skill rows. Six profiles append
+at 249-254: mi_go, nightgaunt, hunting_horror, infernal_servitor,
+rock_slug and djinni. Earlier indices stay. Existing trait and special
+mechanics are reused; no new body, flag, area field or individual trait
+command is added. One reviewed shared change gives air_elemental
+BODY_ANALGIC. Wind is insensible to physical pain. Inorganic already
+prevents usable blood, so no redundant Bloodless flag is needed. This also
+applies to Harpy Haven's ghostly air elemental 9103; its other defaults
+stay.
+
+mi_go uses fungoid for a conscious, organic, Bloodless fungus. It keeps No
+Eyes, No Heart and No Speech, without becoming Mindless, Soulless,
+Inorganic or Analgic. Its antenna-bearing body has no head. Cancel the
+body's positive PART_HEAD, PART_2_LEGS and PART_FEET before adding
+BODY_NO_HEAD, many grasping arms, many jointed legs, wings, shell and
+claws. Ordinary claw contact and Flying match the description. Defaults
+are 100 cm high, 45 kg, 152 cm long and Medium. The five-foot body length
+comes from the area; the other measurements are estimates. Shell armour is
+-4 and profile XP is +5 percentage points; other stat modifiers stay zero.
+No active special is supplied. Mi-Go 3406 keeps its aggression and
+plasma-webbing equipment.
+
+nightgaunt uses humanoid at 250 cm/140 kg/Large/HUGE. Its head, brain,
+grasping arms, paws, claws, legs, horns, wings and barbed tail fit the
+prose. Keep the authored No Heart and HUGE exceptions. Cancel inherited
+PART_HEART and PART_EYE as well as setting No Heart and No Eyes; it has no
+face. Add No Speech and Flying to match its silent voice and wings. It
+stays conscious, organic, soul-bearing and non-undead, with physical
+remains and ordinary blood/pain rules. There is no new armour, venom,
+fear, resistance or active special. Nightgaunt 3407 keeps aggression, Stay
+Area, sneak/hide and its ordinary tickler weapons. The corpse-derived
+tickler loot is not reclassified as an attached body-part weapon.
+
+hunting_horror uses limbless_invertebrate for the area's winged, ropy,
+wormlike creature. It has a head, eyes, mouth, organs, wings and fangs,
+without hands, arms, walking legs or invented reptile scales. Cancel the
+body's No Speech so its described harsh voice works. Defaults are unknown
+height, 500 kg, 1220 cm long, Large and HUGE. Forty-foot length comes from
+the prose; mass is estimated. It has ordinary bite contact and Flying,
+with no extra stat/XP modifier, displacement mechanic or active special.
+Horror 3408 keeps its existing aggression and senses. Orb 3425 moves from
+HOLD to carried inventory: E 1 3425 3 17 becomes G 1 3425 3. It remains
+loot with the same reset value, rather than an item held in a nonexistent
+hand. Its gold and all object definitions stay.
+
+infernal_servitor is a living humanoid fiend with ordinary organs, senses,
+hands, legs, speech, blood, pain, soul and physical remains. Defaults are
+198 cm/100 kg/Medium; the six-foot-six height describes Snapper Joe. It
+supplies RES_FIRE, RES_COLD, poison immunity and the existing spec_demon.
+These are conservative DD4 fiend defences, not a claim to a particular
+named baatezu or tanar'ri stat block. No unmentioned wings, horns, tail or
+undead status is added. Profile XP is +5; the existing demon special
+allowance is +15. Other stat modifiers stay zero. Snapper Joe 3410 is
+Rare, giving the ordinary 2x rank HP once. Keep his rapier, breastplate,
+key, Sentinel, level and alignment.
+
+rock_slug uses limbless_invertebrate: living head, eyes/eye stalks, mouth
+and internal organs, without limbs or speech. It keeps ordinary animal
+blood/pain/soul rules and physical remains. Defaults are 20 cm high, 40
+kg, 120 cm long and Small, all estimates. The existing PART_FANGS attack
+selector supplies ordinary bite/radula contact, while the separate body
+anatomy has no fangs. This keeps the usable-head gate. All stat/XP
+modifiers are zero, with no special, acid spit or extra defence. Slug 3413
+remains a nonaggressive scavenger with its slime food drops. This local
+level-3 creature is much smaller than the giant slug in the second-edition
+reference.
+
+djinni uses humanoid at 320 cm/200 kg/Large, without HUGE. The
+second-edition ten-and-a-half-foot height, AC4, flight and invisibility
+guide this adaptation. Mass is estimated. It has Flying without wings,
+natural armour -6 and existing spec_innate_fade: 25-percent eligible idle
+invisibility recovery, not persistent combat invisibility or the full
+genie spell list. Profile XP is +5 and the special allowance +5; other
+modifiers stay zero. No fire/magic immunity is supplied. Desert guardian
+3420 keeps its individual No Corpse and legless whirlwind lower body.
+Cancel inherited PART_2_LEGS and PART_FEET as well as setting No Legs.
+Keep its evil alignment, speech, printed name and portrait path.
+
+Reuse skeleton for 3400, zombie for 3401/3416, ghoul for 3402, wraith for
+3403 and vampire for 3404/3417/3418. Their established physiology,
+defences and native ghoul/wraith/vampire specials apply. Clear duplicate
+raw ACT_UNDEAD and inherited body negatives so XOR does not switch off
+undead or restore organs. Keep the ghoul/wraith mute exceptions and the
+three vampires' No Corpse; 3417/3418 also stay mute. Vampire regeneration
+is inherited. All eleven generic spec_cast_undead entries are removed.
+
+Priest 3405 reuses human at 175 cm/75 kg/Medium. Keep his individual
+Regenerator, Sentinel, affects and spec_cast_cleric at 100 percent. Do not
+invent paid healing or priest services. Crotus 3412 reuses ghost at 175
+cm/unknown mass/Medium with speaking, conscious undead anatomy,
+semi-material phase and the existing mundane barrier. Keep his mage
+special and coffin key, and add individual flight for his floating
+description. Etcher 3414 stays a living human at 175 cm/75 kg/Medium, with
+actual Blind, Stay Area, mage special and smock. His insanity does not
+make him Mindless. Existing individual mage/cleric slots replace the
+complete inherited special set at 100 percent.
+
+Wife 3415 uses ghost at 175 cm/unknown mass/Medium. Her good-aligned
+recognisable haunting supports this interpretation. Keep No Speech and
+Hide, clear duplicate No Corpse, and add individual flight. Her described
+injuries do not impose permanent trauma. Do not import an automatic
+spectre energy-drain power. All ghost masses of zero mean unspecified, not
+physical weightlessness. Flesh eater 3411 reuses living cave_beast at 244
+cm/250 kg/Large, without HUGE, retaining its humanoid hands, ordinary
+claw/fang contact, rapier and Jubal-head/ring loot chain.
+
+Cave weeds 3409 reuse animated_vine at 10 cm high, 3 kg, 200 cm spread and
+Small. They inherit Mindless, organic plant remains, Bloodless, Analgic,
+soul eligibility, grasping arms/tendrils and spec_vine_grip. Keep
+scavenging, aggression, sneak/hide and detection. No flight or Sentinel is
+added; the ordinary movement code permits creeping without anatomical
+legs. Existing grip sampling/saves/trauma/safety/source lifecycle rules
+and its +5 special XP allowance stay.
+
+Gate selects vampire 3404 on ordinary terrain, water guardian 3419 in
+water, desert djinn 3420 in desert and air spirit 3421 in air. Keep those
+vnums, terrain routing, caster-level-minus-7/HP scaling and summon ward
+checks. Guardian 3419 reuses water_spirit with individual height 300 cm,
+Large and no HUGE; 3421 reuses air_elemental with height 350 cm, unknown
+mass, Large and no HUGE. Keep both non-undead and conscious, with their
+fluid/wind physiology and existing profile defences. Flight/Pass Door
+remain specific to the appropriate profiles and original affects.
+
+Remove Identify and Cannot Fight from 3419 so it no longer sells
+identification and can make normal attacks. Remove Banker from 3420, and
+Banker/Identify from 3421. Give 3420/3421 explicit ACT_NOCHARM to keep the
+charm/domination protection that Banker formerly supplied. No Quest, No
+Summon, aggression, Sentinel and senses stay. Other than these approved
+service/combat corrections, preserve authored behaviour. Vampire 3404
+stays Common as both a minor guardian and shared Gate template. Loaded
+unreset variants 3417/3418 stay Common at their existing levels. Crotus's
+royal title is not a combat-rank promotion. Snapper is the only Rare; all
+21 others remain Common.
+
+Preserve all 67 room flags/exits/keys/maze, including NO_UNDEAD chapel
+3405, all 24 object definitions/bonuses, every other reset row/cap/order,
+placement and loot chain. Population remains 46 initially and 55 after
+refills, with 32/37 carried items. Correct only the approved wording:
+ghoul hasn't forgot to hasn't forgotten, vampire hair raises to rises in
+all three clones, wineflask been been to been, and coffin wait for here to
+wait here for. No matching .src exists; all four other real source exports
+stay unchanged. All 22 portraits and 67 room images were reviewed and
+retained; there is no image generation or publication.
