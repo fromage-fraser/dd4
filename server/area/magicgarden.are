@@ -14,7 +14,7 @@ He doesn't look pleased to see you.
 ~
 2|32|64 8|32|512|8192|65536|524288|4194304|8388608 -1000 S
 105 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 1
 >all_greet_prog 100~
 if ispc ($n)
@@ -31,7 +31,7 @@ mpasound ::groWWwWwlll::
 mpasound ::hiSSsssss::
 ~
 |
-< reserved~ elite~
+< water_drake~ elite~
 #11301
 sprite water~
 A water sprite~
@@ -41,8 +41,9 @@ This translucent being seems to be made from the very river itself.
 ~
 64 8|512|32768|524288|1048576 -1000 S
 100 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
+< water_spirit~ common~
 #11302
 sprite water~
 A water sprite~
@@ -52,8 +53,9 @@ This translucent being seems to be made from the very river itself.
 ~
 64 8|512|32768|524288|1048576 -1000 S
 100 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
+< water_spirit~ common~
 #11303
 sprite water~
 A water sprite~
@@ -63,8 +65,9 @@ This translucent being seems to be made from the very river itself.
 ~
 64 8|512|32768|524288|1048576 -1000 S
 100 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
+< water_spirit~ common~
 #11304
 sprite water~
 A water sprite~
@@ -74,8 +77,9 @@ This translucent being seems to be made from the very river itself.
 ~
 64 8|512|32768|524288|1048576 -1000 S
 100 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
+< water_spirit~ common~
 #11305
 sprite water~
 A water sprite~
@@ -85,8 +89,9 @@ This translucent being seems to be made from the very river itself.
 ~
 64 8|512|32768|524288|1048576 -1000 S
 100 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
+< water_spirit~ common~
 #11306
 carnivorous plant~
 A carnivorous plant~
@@ -97,8 +102,12 @@ it searches for something to devour.
 ~
 32|64 8|32|512|524288|8388608 0 S
 90 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< giant_flytrap~ common~
+MobHeight 213
+MobWeight 90
+MobLength 150
 #11307
 carnivorous plant~
 A carnivorous plant~
@@ -109,8 +118,12 @@ it searches for something to devour.
 ~
 32|64 8|32|512|524288|8388608 0 S
 90 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< giant_flytrap~ common~
+MobHeight 213
+MobWeight 90
+MobLength 150
 #11308
 carnivorous plant~
 A carnivorous plant~
@@ -121,8 +134,12 @@ it searches for something to devour.
 ~
 32|64 8|32|512|524288|8388608 0 S
 90 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< giant_flytrap~ common~
+MobHeight 213
+MobWeight 90
+MobLength 150
 #11309
 carnivorous plant~
 A carnivorous plant~
@@ -133,8 +150,12 @@ it searches for something to devour.
 ~
 32|64 8|32|512|524288|8388608 0 S
 90 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< giant_flytrap~ common~
+MobHeight 213
+MobWeight 90
+MobLength 150
 #11310
 carnivorous plant~
 A carnivorous plant~
@@ -145,8 +166,12 @@ it searches for something to devour.
 ~
 32|64 8|32|512|524288|8388608 0 S
 90 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< giant_flytrap~ common~
+MobHeight 213
+MobWeight 90
+MobLength 150
 #11311
 gnome gardener~
 The gardener~
@@ -154,10 +179,11 @@ A homely looking gnome is here tending to the gardens.
 ~
 The gardener is humming a pleasant tune and lovingly tending to the plants and flowers.
 ~
-64|128 8|512|524288 0 S
+64|128 8|524288 0 S
 90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< gnome~ common~
 #11312
 vine~
 A vine~
@@ -167,8 +193,9 @@ The vine is very large and seems to be moving towards you.
 ~
 2|64 8|512|524288 0 S
 95 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< animated_vine~ common~
 #11313
 vine~
 A vine~
@@ -178,8 +205,9 @@ The vine is very large and seems to be moving towards you.
 ~
 2|64 8|512|524288 0 S
 95 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< animated_vine~ common~
 #11314
 vine~
 A vine~
@@ -189,8 +217,9 @@ The vine is very large and seems to be moving towards you.
 ~
 2|64 8|512|524288 0 S
 95 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< animated_vine~ common~
 #11315
 fairy~
 The fairy~
@@ -202,7 +231,8 @@ interwoven. She flits from flower to flower sampling the pollen from each.
 64 8|512|65536 1000 S
 100 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 2
+< sprite~ common~
 #11316
 fairy~
 The fairy~
@@ -214,7 +244,8 @@ interwoven. She flits from flower to flower sampling the pollen from each.
 64 8|512|65536 1000 S
 100 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 2
+< sprite~ common~
 #11317
 fairy~
 The fairy~
@@ -226,7 +257,8 @@ interwoven. She flits from flower to flower sampling the pollen from each.
 64 8|512|65536 1000 S
 100 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 2
+< sprite~ common~
 #11318
 fairy~
 The fairy~
@@ -238,7 +270,8 @@ interwoven. She flits from flower to flower sampling the pollen from each.
 64 8|512|65536 1000 S
 100 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 2
+< sprite~ common~
 #11319
 tree~
 The tree~
@@ -251,7 +284,7 @@ was just your imagination.
 ~
 64 8|512|32768|524288|8388608 1000 S
 100 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
 >rand_prog 3~
 mpecho ::rustle:: ::rustle::
@@ -263,6 +296,7 @@ mpforce $n rest
 endif
 ~
 |
+< enchanted_oak~ common~
 #11320
 tree~
 The tree~
@@ -275,7 +309,7 @@ was just your imagination.
 ~
 64 8|512|32768|524288|8388608 1000 S
 100 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
 >rand_prog 3~
 mpecho ::rustle:: ::rustle::
@@ -287,6 +321,7 @@ mpforce $n rest
 endif
 ~
 |
+< enchanted_oak~ common~
 #11321
 fairy queen~
 the fairy queen~
@@ -297,10 +332,11 @@ been caught in it and tiny white flowers are entwined in its tresses. You recall
 hearing rumours regarding her beauty though no tales you have heard accurately
 described the enchantment of this breathtaking vision.
 ~
-2|64 8|128|512|524288|4194304|16777216 1000 S
+2|64 8|128|512|4194304|16777216 1000 S
 110 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< sprite~ common~
 #11322
 pixie~
 the mischievous pixie~
@@ -321,6 +357,7 @@ em giggles.
 endif
 ~
 |
+< pixie~ common~
 #11323
 pixie~
 the mischievous pixie~
@@ -341,6 +378,7 @@ em giggles.
 endif
 ~
 |
+< pixie~ common~
 #11324
 pixie~
 the mischievous pixie~
@@ -361,18 +399,20 @@ em giggles.
 endif
 ~
 |
+< pixie~ common~
 #11325
 leprechaun~
 the leprechaun~
 A leprechaun sneaks about the garden.
 ~
-This filthy, greedy leprechaun spends his days and knights stealing from
+This filthy, greedy leprechaun spends his days and nights stealing from
 visitors to this magical garden and hoarding useless rubbish.
 ~
-64|128 2|8|32|512|8192|32768|65536|8388608 -400 S
+64|128 2|8|512|8192|32768|65536|8388608 -400 S
 95 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< leprechaun~ common~
 #0
 
 
@@ -383,7 +423,7 @@ deadly talons~
 Sharp deadly looking talons have been hacked from some creature and left on the ground.~
 ~
 5 2|16384|67108864 1|8192
-1~ 0~ 0~ 5~
+4~ 0~ 0~ 5~
 5 0 0
 A
 19 40
@@ -639,7 +679,7 @@ A pair of green stockings have been discarded here.~
 #11324
 buckled shoes~
 buckled shoes~
-A pair of buckled shoes are have been left here.~
+A pair of buckled shoes has been left here.~
 ~
 9 64 1|64
 0~ 0~ 0~ 0~

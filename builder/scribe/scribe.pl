@@ -131,6 +131,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         shambling_mound marsh_giant gargoyle
         killer_frog giant_flytrap black_pudding clay_golem displacer_beast
         apocalyptic_avatar apocalyptic_steed
+        water_drake water_spirit animated_vine pixie
 /;
 
 my %mob_act = (
