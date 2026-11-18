@@ -616,6 +616,23 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        {
+                "hexapodal_mammal",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_MANY_LEGS | PART_FORELEGS | PART_HEART
+                    | PART_BRAINS | PART_GUTS | PART_FEET | PART_EAR | PART_EYE,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 };
 
@@ -3560,6 +3577,46 @@ const struct mob_type mob_table[MAX_MOB] =
                 183, 180, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "killer_frog", "quadrupedal_amphibian", "icon1", "icon2",
+                0, 0, PART_CLAWS | PART_FANGS, PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                30, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 91
+        },
+        {
+                "giant_flytrap", "plant", "icon1", "icon2",
+                0, AFF_MINDLESS, BODY_NO_HEAD | BODY_NO_ARMS | PART_HEAD | PART_ARMS | PART_FANGS, PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                300, 250, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_vine_grip", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "black_pudding", "amorphous_organism", "icon1", "icon2",
+                0, AFF_MINDLESS | AFF_INFRARED, BODY_ANALGIC, 0, 0, 0, RES_POISON | RES_SLEEP | RES_CHARM | RES_HOLD | RES_PARALYSIS | RES_ACID | RES_COLD | RES_ELECTRICITY | RES_BLUNT | RES_PIERCE | RES_SLASH,
+                0, 0, 0, 0,
+                60, 450, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_acid_spray", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 244
+        },
+        {
+                "clay_golem", "bipedal_construct", "icon1", "icon2",
+                0, AFF_MINDLESS, BODY_NO_SPEECH | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS, 0, RES_MAGIC, 0, RES_POISON | RES_SLEEP | RES_CHARM | RES_HOLD | RES_PARALYSIS | RES_DRAIN | RES_NONMAGIC | RES_SLASH | RES_PIERCE,
+                0, 0, 0, 0,
+                244, 272, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_golem_haste", "", "", 15, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "displacer_beast", "hexapodal_mammal", "icon1", "icon2",
+                0, 0, PART_ARMS | PART_TENTACLES | PART_PAWS | PART_CLAWS | PART_FANGS | PART_TAIL, PART_TENTACLES, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 220, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
         }
 };
 
@@ -3664,6 +3721,8 @@ typedef enum creature_trait_effect
         TRAIT_ARMED_MELEE_ACCURACY,
         TRAIT_ELEMENTAL_REACTION_QUANTITY,
         TRAIT_ARMED_MELEE_DAMAGE,
+        TRAIT_DISPLACEMENT,
+        TRAIT_SPELL_SAVE_BONUS,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -3780,7 +3839,9 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"armed_melee_accuracy", TRAIT_ARMED_MELEE_ACCURACY, NULL},
         {"electricity_healing_pct", TRAIT_ELEMENTAL_REACTION_QUANTITY, NULL},
         {"fire_cold_slow_ticks", TRAIT_ELEMENTAL_REACTION_QUANTITY, NULL},
-        {"armed_melee_damage", TRAIT_ARMED_MELEE_DAMAGE, NULL}
+        {"armed_melee_damage", TRAIT_ARMED_MELEE_DAMAGE, NULL},
+        {"displacement_melee_penalty", TRAIT_DISPLACEMENT, NULL},
+        {"spell_save_bonus_pct", TRAIT_SPELL_SAVE_BONUS, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -4473,6 +4534,32 @@ static const CREATURE_TRAIT_CHANGE gargoyle_trait_changes[] =
         {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE killer_frog_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -2}
+};
+static const CREATURE_TRAIT_CHANGE giant_flytrap_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE black_pudding_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 12},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ACID}
+};
+static const CREATURE_TRAIT_CHANGE clay_golem_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE displacer_beast_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_DISPLACEMENT_MELEE_PENALTY, -2},
+        {CREATURE_TRAIT_SPELL_SAVE_BONUS_PERCENT, 10}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4480,6 +4567,16 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"killer_frog", NULL, killer_frog_trait_changes,
+            TRAIT_ITEMS(killer_frog_trait_changes)},
+        {"giant_flytrap", NULL, giant_flytrap_trait_changes,
+            TRAIT_ITEMS(giant_flytrap_trait_changes)},
+        {"black_pudding", NULL, black_pudding_trait_changes,
+            TRAIT_ITEMS(black_pudding_trait_changes)},
+        {"clay_golem", NULL, clay_golem_trait_changes,
+            TRAIT_ITEMS(clay_golem_trait_changes)},
+        {"displacer_beast", NULL, displacer_beast_trait_changes,
+            TRAIT_ITEMS(displacer_beast_trait_changes)},
         {"swamp_thing", NULL, swamp_thing_trait_changes,
             TRAIT_ITEMS(swamp_thing_trait_changes)},
         {"small_beast", NULL, small_beast_trait_changes,
@@ -5130,6 +5227,12 @@ int creature_melee_hit_bonus(CHAR_DATA *attacker, CHAR_DATA *victim)
         CREATURE_FAMILY attacker_family, victim_family;
         if (!attacker || !victim)
                 return 0;
+        /* The spell already supplies displacement while its condition is present. */
+        if (!is_affected(victim, gsn_displacement)
+        && (!victim->in_room || !victim->in_room->area
+            || !IS_SET(victim->in_room->area->area_flags, AREA_FLAG_NO_MAGIC)))
+                bonus += creature_trait_value(victim,
+                    CREATURE_TRAIT_DISPLACEMENT_MELEE_PENALTY);
         bonus += creature_trait_value(attacker, CREATURE_TRAIT_MELEE_ACCURACY);
         weapon = get_attack_weapon(attacker, WEAR_WIELD);
         if (weapon && weapon->item_type == ITEM_WEAPON)
@@ -6564,6 +6667,9 @@ unsigned long int mob_usable_attack_parts(CHAR_DATA *mob)
         if (!legs_usable)
                 parts &= ~(PART_HAUNCH | PART_HOOVES | PART_FORELEGS);
 
+        if (!arms_usable)
+                parts &= ~PART_TENTACLES;
+
         if (!HAS_TAIL(mob) || IS_AFFECTED(mob, AFF_TAIL_TRAUMA))
                 parts &= ~PART_TAILATTACK;
 
@@ -6593,7 +6699,8 @@ int mob_natural_attack_type(CHAR_DATA *mob)
                 { PART_HAUNCH,      TYPE_HIT + 8  }, /* crush: blunt */
                 { PART_HOOVES,      TYPE_HIT + 7  }, /* pound: blunt */
                 { PART_PAWS,        TYPE_HIT + 7  }, /* pound: blunt */
-                { PART_FORELEGS,    TYPE_HIT + 7  }  /* pound: blunt */
+                { PART_FORELEGS,    TYPE_HIT + 7  }, /* pound: blunt */
+                { PART_TENTACLES,   TYPE_HIT + 4  }  /* whip: slash */
         };
         unsigned long int parts;
         size_t i;
@@ -8071,6 +8178,8 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_sprite", 5 },
                 { "spec_innate_fade", 5 },
                 { "spec_wisp_lightning", 10 },
+                { "spec_acid_spray", 10 },
+                { "spec_golem_haste", 5 },
                 { "spec_vine_grip", 5 },
                 { "spec_otyugh", 5 },
                 { "spec_cast_slow", 10 },

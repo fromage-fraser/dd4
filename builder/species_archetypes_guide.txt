@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 18 November 2026
-Based on master 3a34e2f6f8fcde63c4e45ef5f3516cfd63445c2f (PR #987),
-with the accompanying Swamp connector changes.
+Based on master a1be9834825fd51ae6796ef7a20e352711d7db9d (PR #988),
+with the accompanying Wyvern's Tower changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -911,10 +911,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 238, so this single example would make 239.
+guide's checked revision it is 243, so this single example would make 244.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 238.
+valid index. This example would receive index 243.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1045,7 +1045,7 @@ It supplies ordinary living organs, four legs and no humanoid arms/speech.
 It doesn't prescribe a natural attack, dimensions, defences, active power or
 combat bonus for every future creature using it.
 
-Increase MAX_SPECIES by one:34 would become 35 at this revision. Append
+Increase MAX_SPECIES by one:35 would become 36 at this revision. Append
 without reordering older bodies. Add an archetype which names the new body
 in its species field, and increase MAX_MOB if that archetype is also new.
 Scribe selects the archetype, never the new body's name directly.
@@ -1612,7 +1612,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 238;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 243;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1722,9 +1722,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 238; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 243; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-34 body rows, 238 archetype rows, 48 internal traits and 122 Scribe
+35 body rows, 243 archetype rows, 50 internal traits and 124 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -2492,9 +2492,137 @@ destinations, area audio and reset messages. Correct only 'on he ground'
 to 'on the ground' in the pool cue's long description. No matching .src
 exists. Both mob portraits and all 50 room images stay unchanged.
 
+Wyvern's Tower
+--------------
+
+The catalogue now has 243 archetypes, 35 basic body species, 50 internal
+traits, 124 Scribe special names and 637 skill rows. The new body is
+hexapodal_mammal at index 34. The five archetypes append at 238-242:
+killer_frog, giant_flytrap, black_pudding, clay_golem and displacer_beast.
+Existing indices, body profiles, trait values and player opt-ins stay. No
+ACT bit, area field, player spell or individual trait override is added.
+
+killer_frog uses quadrupedal_amphibian with fangs and front claws. Either
+is one ordinary attack candidate; this does not add attacks. Defaults are
+30 cm high, 25 kg, 91 cm long and Small, with -2 natural armour and zero
+profile XP. The three-foot length and anatomy follow the 2e Frog entry;
+height/weight are estimates. It has no swallowing or venom power. The
+local stationary aggression, original build and global cap three stay.
+
+giant_flytrap is a DD4 plant inspired by the 2e mantrap's flytrap form. It
+is rooted, mindless, bloodless, insensible to pain and soul-eligible, with
+vegetation remains. A tooth-edged mouth uses the head region; leaf masses
+use the arm region. It has no eyes, animal heart, hands or legs. Defaults
+are 300 cm height/spread, 250 kg and Large without HUGE, with -4 natural
+armour, ordinary bite, +5 profile XP and spec_vine_grip. The existing 25
+percent physical grip adds no HP damage, respects Hold saves and source
+cleanup, and uses arm trauma/Regenerate. No fascination pollen,
+inescapable prison or automatic acid digestion is implemented.
+
+black_pudding uses amorphous_organism: an organic cell colony, mindless,
+without animal blood, organs, voice, pain or a separate head/limbs. It is
+soul-eligible and leaves slime remains. Defaults are 60 cm high, 450 kg,
+244 cm across and Large, without HUGE. It has -4 armour, ordinary acid
+contact with the suction verb, infrared as heat-sensing abstraction and
+the usual mindless status immunities. Cold, acid, poison, electricity and
+blunt/pierce/slash contacts are immune; fire and energy stay effective.
+Physical/electrical immunity approximates the tabletop fission response
+without multiplying live mobs. Profile XP is +10.
+
+spec_acid_spray keeps the old acid-breath spell's HP-based damage, saves,
+one-in-four attacker sampling and existing equipment corrosion, without
+requiring a mouth or head. It uses normal action, legal-target, safety,
+phase, ordered-player, NO_MAGIC and antimagic checks, and revalidates
+movement/death/fighting after messages. It neither adds an area attack nor
+automatic extra corrosion. Its XP allowance is +10. The local pudding
+inherits it instead of the old singleton breath entry.
+
+clay_golem uses bipedal_construct, with mindless, soulless, inorganic,
+mute, bloodless and pain-insensitive physiology, no animal organs and
+physical clay remains. Defaults are 244 cm/272 kg/Large, -3 armour,
+magical natural contact and +15 profile XP. Nonmagic/slash/pierce
+immunities express the magical-blunt weapon gate; poison, drain, sleep,
+charm, hold and paralysis are immune. Ordinary RES_MAGIC is the coarse DD4
+spell defence, not the tabletop's exact exceptions. Local1615 keeps the
+rod in WIELD. Cursed wounds, berserk control and individual earth- spell
+reactions are not part of this adaptation.
+
+spec_golem_haste has a 20 percent eligible combat chance and one use per
+MUD day. It applies the ordinary Haste condition with duration 0 so it
+expires at the next affect update; it is not an exact three-round timer.
+It does not stack/refresh Haste or Quicken, and skips Slow. Normal action,
+legal-opponent, safety, phase, ordered-player, NO_MAGIC and antimagic
+rules apply. The short effect and daily reservation are set before
+messages can trigger another action. A blocked activation spends no use.
+The daily fields live only in runtime character state, not area records; a
+newly created creature starts with a fresh supply. XP allowance is +5.
+
+hexapodal_mammal is a basic six-legged mammal shape with ordinary living
+organs and the existing many-legs bit, without human speech or hands.
+displacer_beast adds paws, claws, fangs, tail and two shoulder tentacles
+mapped to the ordinary arm region. Defaults are 100 cm at the shoulder,
+220 kg, 300 cm long and Large, with -6 armour and +10 profile XP. The 2e
+entry supplies its six-legged anatomy and approximate size/mass; height is
+an estimate. Only tentacles are selected for ordinary attacks. Claws/teeth
+are anatomy, not bonus attacks or a near-death switch.
+
+The existing PART_TENTACLES bit is now permitted in MobAttackParts and
+Scribe atk. It uses whip/slash and requires usable arms; arm trauma or
+missing arms removes that candidate. Leg trauma alone does not disable it.
+Regenerate restores usable attached anatomy through the existing rules. No
+new body-part bit, target region or native weapon object is needed. Other
+creatures get no tentacle attack unless explicitly selected.
+
+Two new named internal traits belong in the species/archetype registry:
+displacement_melee_penalty uses signed hitroll points (displacer -2)
+against ordinary incoming melee. It is suppressed in NO_MAGIC areas and
+while the existing Displacement condition supplies the spell's defence.
+Detection and Dispel do not remove an inherent trait; a future true-
+seeing mechanic needs its own explicit bypass. spell_save_bonus_pct uses
+signed percentage points (displacer +10) in ordinary spell saves before
+the existing 5..95 clamp. It does not modify stored saving_throw or give
+RES_MAGIC. MSTAT shows both values and origins. Existing player race
+opt-ins remain unchanged, and neither trait is an individual Scribe field.
+
+All 28 area definitions are converted. Rank totals are 20 Common, two
+Rare, four Elite and two Boss. Chief1716 keeps his existing Boss rank and
+individual spec_cast_undead as a living caster. Gargoyle1604, captain1613
+and final spectre1617 become Elite; shrine shaman1605 is Rare; ancient
+wyvern1616 is Boss. Unplaced1707/1708 receive Rare/Elite data without
+adding resets. Rank HP multiplies once, with no profile HP bonus. All
+authored aggressive/passive, Wimpy, Sentinel and other behaviour flags
+stay. Clear duplicate anatomy/AFF XOR entries when selecting profiles.
+
+Ancient wyvern1616 keeps its authored speech and breath mix through an
+individual no-speech cancellation and spec_breath_any_anatomical. Its
+individual dimensions are 300 cm/1200 kg/1400 cm/Large/HUGE. Add the same
+native tail stinger594 used in Miden'nir, in WIELD. Its tail region,
+poisoned BODY_PART weapon, trauma/disarm/Regenerate and no-TAKE rules
+stay. Bracer1615 becomes carried loot instead of HOLD gear; potion1621
+stays. Shaman1605's supposed scarlet belt is actually potion1621; move it
+from WAIST to inventory. Shared item definitions1615/1704 stay unchanged.
+
+Wight1609 and spectre1617 inherit their specific undead specials. Both
+keep local muteness; the wight regains physical remains and the spectre
+stays corpseless. The shadow inherits its approved light/strength-drain
+mechanics. Gargoyles reuse stone physiology and nonmagic immunity,
+including the Common guards. Minotaurs reuse approved training and gore.
+Teacher1706 keeps practice, base30 and all seven lessons at85, bow and
+potion. Strong/burly/rugged individual weights are descriptive overrides;
+elder/female dimensions are not changed merely for age or sex.
+
+Preserve all61room flags/exits/extras, every original mobile reset cap,
+order and placement, keys, doors, maze, chest and three unplaced
+definitions 1707/1708/1720. Original population stays46 initially/50 after
+refills; items become24/25 only because of the one native stinger. Correct
+the approved wording and blank ranger-lord description. No matching .src
+exists; all four other real source exports remain unchanged. Portraits
+stay. Room1607 gets a separately generated descending-ceiling picture;
+image publication is separate from Git.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
-These are the 34 current rows, including reserved. The index is not an
+These are the 35 current rows, including reserved. The index is not an
 area vnum or a value to put in Scribe archetype. Older elemental and
 farm_mammal examples remain in the code; presence is not design approval.
 
@@ -2532,13 +2660,14 @@ farm_mammal examples remain in the code; presence is not design approval.
     31  fungoid
     32  radial_invertebrate
     33  tripodal_organism
+    34  hexapodal_mammal
 
 New physical variants should reuse these where they fit. A body name alone
 does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 238 current table rows follow, grouped by body. Numeric IDs are for
+All 243 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -2926,7 +3055,7 @@ WINGED_REPTILE (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-BIPEDAL_CONSTRUCT (10)
+BIPEDAL_CONSTRUCT (11)
 -----------------------
   [ 38] animated_soft_toy: h/w/l 30 / 1 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -2958,6 +3087,9 @@ BIPEDAL_CONSTRUCT (10)
   [237] gargoyle: h/w/l 183 / 180 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials none; policy auto
+  [241] clay_golem: h/w/l 244 / 272 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+15; phase none
+        specials 1:spec_golem_haste; policy auto
 
 QUADRUPEDAL_MAMMAL (38)
 ------------------------
@@ -3169,7 +3301,7 @@ CRUSTACEAN (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-AMORPHOUS_ORGANISM (3)
+AMORPHOUS_ORGANISM (4)
 ------------------------
   [ 91] green_ooze: h/w/l 30 / 80 / 150; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -3180,6 +3312,9 @@ AMORPHOUS_ORGANISM (3)
   [205] mimic: h/w/l 90 / 500 / 240; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_mimic; policy auto
+  [240] black_pudding: h/w/l 60 / 450 / 244; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_acid_spray; policy auto
 
 FISH (5)
 ----------
@@ -3199,12 +3334,15 @@ FISH (5)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_electric_eel; policy auto
 
-QUADRUPEDAL_AMPHIBIAN (2)
+QUADRUPEDAL_AMPHIBIAN (3)
 ---------------------------
   [ 97] frog: h/w/l 5 / ? / 10; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [192] giant_frog: h/w/l 60 / 110 / 180; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [238] killer_frog: h/w/l 30 / 25 / 91; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -3298,7 +3436,7 @@ ARACHNOID_HUMANOID (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_cast_mage, 2:spec_paralysing_bite; policy 70/30/0
 
-PLANT (5)
+PLANT (6)
 -----------
   [136] enchanted_oak: h/w/l 1500 / 10000 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3314,6 +3452,9 @@ PLANT (5)
         specials none; policy auto
   [235] shambling_mound: h/w/l 210 / 350 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+15; phase none
+        specials 1:spec_vine_grip; policy auto
+  [239] giant_flytrap: h/w/l 300 / 250 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_vine_grip; policy auto
 
 ENVIRONMENTAL_HAZARD (5)
@@ -3358,9 +3499,15 @@ TRIPODAL_ORGANISM (1)
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials 1:spec_otyugh; policy auto
 
+HEXAPODAL_MAMMAL (1)
+----------------------
+  [242] displacer_beast: h/w/l 100 / 220 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
+
 APPENDIX C. COMPLETE CURRENT TRAIT REFERENCE
 ===========================================
-The named registry currently contains 48 traits. These are internal
+The named registry currently contains 50 traits. These are internal
 profile values, not Scribe fields. Zero disables an inherited value.
 The general validator uses-100..100 plus the effect-specific limits.
 Use named enum constants for natural damage rather than memorised numbers.
@@ -3616,6 +3763,16 @@ A listed parameter needs its existing consumer and any capability/special gate.
     attacks, bows, ranged skills or spells. Define it only in the code
     trait registry and sparse species/archetype profiles; no Scribe field
     or individual area override exists. Current player opt-ins are unchanged.
+
+48. displacement_melee_penalty
+    Value: signed ordinary melee hitroll points (-100..100)
+    Applies from the defender's profile. Displacer uses -2. Suppressed in
+    NO_MAGIC areas and while the ordinary Displacement condition is present.
+
+49. spell_save_bonus_pct
+    Value: signed percentage points (-100..100)
+    Added to ordinary spell saves before the existing 5..95 clamp. Displacer
+    uses +10. Stored saving_throw and player race opt-ins stay unchanged.
 
 APPENDIX D. SCRIBE FLAG AND MASK REFERENCE
 ==========================================
@@ -3973,6 +4130,8 @@ ATK
       17592186044416 = PART_FEATHERS
   husk_shell
       35184372088832 = PART_HUSK_SHELL
+  tentacles
+      268435456 = PART_TENTACLES
 
 For atk, tail maps to PART_TAILATTACK, not the anatomical PART_TAIL.
 Feathers and husk_shell are currently non-offensive candidates despite
@@ -3988,6 +4147,7 @@ Availability is not a guarantee that a legacy routine suits your creature.
 Check native helpers, safety, active-slot policies and XP before reusing one.
 
     spec_aboleth
+    spec_acid_spray
     spec_alhoon
     spec_assassin
     spec_banshee
@@ -4059,6 +4219,7 @@ Check native helpers, safety, active-slot policies and XP before reusing one.
     spec_gold_grung
     spec_grail
     spec_green_grung
+    spec_golem_haste
     spec_grell
     spec_horn_gore
     spec_guard
@@ -4141,8 +4302,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/3a34e2f6f8fcde63c4e45ef5f3516cfd63445c2f
-  Base PR987 plus the accompanying Swamp connector patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/a1be9834825fd51ae6796ef7a20e352711d7db9d
+  Base PR988 plus the accompanying Wyvern's Tower patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -4152,9 +4313,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 75/153 areas (49.0%) and 1141/4131 mob
-definitions (27.6%) merged and verified. Swamp adds two definitions.
-After its merge is verified, completion becomes 76/153 areas (49.7%) and
-1143/4131 definitions (27.7%).
+The live conversion is currently 76/153 areas (49.7%) and 1143/4131 mob
+definitions (27.7%) merged and verified. Wyvern's Tower adds28 definitions.
+After its merge is verified, completion becomes77/153 areas (50.3%) and
+1171/4131 definitions (28.3%).
 
 END OF GUIDE

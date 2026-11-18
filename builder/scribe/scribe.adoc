@@ -3775,6 +3775,7 @@ resistance values or converted through a 32-bit integer.
 | `forelegs` | `PART_FORELEGS` | 8796093022208
 | `feathers` | `PART_FEATHERS` | 17592186044416
 | `husk_shell` | `PART_HUSK_SHELL` | 35184372088832
+| `tentacles` | `PART_TENTACLES` | 268435456
 | `none`, `zero` | Empty mask | 0
 |===
 
@@ -3983,6 +3984,7 @@ These mappings use the existing ordinary attack vocabulary.
 | `forelegs` | `pound` | `RES_BLUNT` | Usable legs.
 | `feathers` | Not selected | None | Retained data; no ordinary offensive action supplied.
 | `husk_shell` | Not selected | None | Retained data; no ordinary offensive action supplied.
+| `tentacles` | whip | slash | Needs usable arms; arm trauma disables it.
 |===
 
 These objectless attacks also carry `RES_NONMAGIC`. Being undead, having an
@@ -13661,3 +13663,132 @@ and extras, all four objects and affects, the two portal resets and
 destinations, area audio and reset messages. Correct only 'on he ground'
 to 'on the ground' in the pool cue's long description. No matching .src
 exists. Both mob portraits and all 50 room images stay unchanged.
+
+
+Wyvern's Tower
+--------------
+
+The catalogue now has 243 archetypes, 35 basic body species, 50 internal
+traits, 124 Scribe special names and 637 skill rows. The new body is
+hexapodal_mammal at index 34. The five archetypes append at 238-242:
+killer_frog, giant_flytrap, black_pudding, clay_golem and displacer_beast.
+Existing indices, body profiles, trait values and player opt-ins stay. No
+ACT bit, area field, player spell or individual trait override is added.
+
+killer_frog uses quadrupedal_amphibian with fangs and front claws. Either
+is one ordinary attack candidate; this does not add attacks. Defaults are
+30 cm high, 25 kg, 91 cm long and Small, with -2 natural armour and zero
+profile XP. The three-foot length and anatomy follow the 2e Frog entry;
+height/weight are estimates. It has no swallowing or venom power. The
+local stationary aggression, original build and global cap three stay.
+
+giant_flytrap is a DD4 plant inspired by the 2e mantrap's flytrap form. It
+is rooted, mindless, bloodless, insensible to pain and soul-eligible, with
+vegetation remains. A tooth-edged mouth uses the head region; leaf masses
+use the arm region. It has no eyes, animal heart, hands or legs. Defaults
+are 300 cm height/spread, 250 kg and Large without HUGE, with -4 natural
+armour, ordinary bite, +5 profile XP and spec_vine_grip. The existing 25
+percent physical grip adds no HP damage, respects Hold saves and source
+cleanup, and uses arm trauma/Regenerate. No fascination pollen,
+inescapable prison or automatic acid digestion is implemented.
+
+black_pudding uses amorphous_organism: an organic cell colony, mindless,
+without animal blood, organs, voice, pain or a separate head/limbs. It is
+soul-eligible and leaves slime remains. Defaults are 60 cm high, 450 kg,
+244 cm across and Large, without HUGE. It has -4 armour, ordinary acid
+contact with the suction verb, infrared as heat-sensing abstraction and
+the usual mindless status immunities. Cold, acid, poison, electricity and
+blunt/pierce/slash contacts are immune; fire and energy stay effective.
+Physical/electrical immunity approximates the tabletop fission response
+without multiplying live mobs. Profile XP is +10.
+
+spec_acid_spray keeps the old acid-breath spell's HP-based damage, saves,
+one-in-four attacker sampling and existing equipment corrosion, without
+requiring a mouth or head. It uses normal action, legal-target, safety,
+phase, ordered-player, NO_MAGIC and antimagic checks, and revalidates
+movement/death/fighting after messages. It neither adds an area attack nor
+automatic extra corrosion. Its XP allowance is +10. The local pudding
+inherits it instead of the old singleton breath entry.
+
+clay_golem uses bipedal_construct, with mindless, soulless, inorganic,
+mute, bloodless and pain-insensitive physiology, no animal organs and
+physical clay remains. Defaults are 244 cm/272 kg/Large, -3 armour,
+magical natural contact and +15 profile XP. Nonmagic/slash/pierce
+immunities express the magical-blunt weapon gate; poison, drain, sleep,
+charm, hold and paralysis are immune. Ordinary RES_MAGIC is the coarse DD4
+spell defence, not the tabletop's exact exceptions. Local1615 keeps the
+rod in WIELD. Cursed wounds, berserk control and individual earth- spell
+reactions are not part of this adaptation.
+
+spec_golem_haste has a 20 percent eligible combat chance and one use per
+MUD day. It applies the ordinary Haste condition with duration 0 so it
+expires at the next affect update; it is not an exact three-round timer.
+It does not stack/refresh Haste or Quicken, and skips Slow. Normal action,
+legal-opponent, safety, phase, ordered-player, NO_MAGIC and antimagic
+rules apply. The short effect and daily reservation are set before
+messages can trigger another action. A blocked activation spends no use.
+The daily fields live only in runtime character state, not area records; a
+newly created creature starts with a fresh supply. XP allowance is +5.
+
+hexapodal_mammal is a basic six-legged mammal shape with ordinary living
+organs and the existing many-legs bit, without human speech or hands.
+displacer_beast adds paws, claws, fangs, tail and two shoulder tentacles
+mapped to the ordinary arm region. Defaults are 100 cm at the shoulder,
+220 kg, 300 cm long and Large, with -6 armour and +10 profile XP. The 2e
+entry supplies its six-legged anatomy and approximate size/mass; height is
+an estimate. Only tentacles are selected for ordinary attacks. Claws/teeth
+are anatomy, not bonus attacks or a near-death switch.
+
+The existing PART_TENTACLES bit is now permitted in MobAttackParts and
+Scribe atk. It uses whip/slash and requires usable arms; arm trauma or
+missing arms removes that candidate. Leg trauma alone does not disable it.
+Regenerate restores usable attached anatomy through the existing rules. No
+new body-part bit, target region or native weapon object is needed. Other
+creatures get no tentacle attack unless explicitly selected.
+
+Two new named internal traits belong in the species/archetype registry:
+displacement_melee_penalty uses signed hitroll points (displacer -2)
+against ordinary incoming melee. It is suppressed in NO_MAGIC areas and
+while the existing Displacement condition supplies the spell's defence.
+Detection and Dispel do not remove an inherent trait; a future true-
+seeing mechanic needs its own explicit bypass. spell_save_bonus_pct uses
+signed percentage points (displacer +10) in ordinary spell saves before
+the existing 5..95 clamp. It does not modify stored saving_throw or give
+RES_MAGIC. MSTAT shows both values and origins. Existing player race
+opt-ins remain unchanged, and neither trait is an individual Scribe field.
+
+All 28 area definitions are converted. Rank totals are 20 Common, two
+Rare, four Elite and two Boss. Chief1716 keeps his existing Boss rank and
+individual spec_cast_undead as a living caster. Gargoyle1604, captain1613
+and final spectre1617 become Elite; shrine shaman1605 is Rare; ancient
+wyvern1616 is Boss. Unplaced1707/1708 receive Rare/Elite data without
+adding resets. Rank HP multiplies once, with no profile HP bonus. All
+authored aggressive/passive, Wimpy, Sentinel and other behaviour flags
+stay. Clear duplicate anatomy/AFF XOR entries when selecting profiles.
+
+Ancient wyvern1616 keeps its authored speech and breath mix through an
+individual no-speech cancellation and spec_breath_any_anatomical. Its
+individual dimensions are 300 cm/1200 kg/1400 cm/Large/HUGE. Add the same
+native tail stinger594 used in Miden'nir, in WIELD. Its tail region,
+poisoned BODY_PART weapon, trauma/disarm/Regenerate and no-TAKE rules
+stay. Bracer1615 becomes carried loot instead of HOLD gear; potion1621
+stays. Shaman1605's supposed scarlet belt is actually potion1621; move it
+from WAIST to inventory. Shared item definitions1615/1704 stay unchanged.
+
+Wight1609 and spectre1617 inherit their specific undead specials. Both
+keep local muteness; the wight regains physical remains and the spectre
+stays corpseless. The shadow inherits its approved light/strength-drain
+mechanics. Gargoyles reuse stone physiology and nonmagic immunity,
+including the Common guards. Minotaurs reuse approved training and gore.
+Teacher1706 keeps practice, base30 and all seven lessons at85, bow and
+potion. Strong/burly/rugged individual weights are descriptive overrides;
+elder/female dimensions are not changed merely for age or sex.
+
+Preserve all61room flags/exits/extras, every original mobile reset cap,
+order and placement, keys, doors, maze, chest and three unplaced
+definitions 1707/1708/1720. Original population stays46 initially/50 after
+refills; items become24/25 only because of the one native stinger. Correct
+the approved wording and blank ranger-lord description. No matching .src
+exists; all four other real source exports remain unchanged. Portraits
+stay. Room1607 gets a separately generated descending-ceiling picture;
+image publication is separate from Git.

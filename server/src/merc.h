@@ -998,7 +998,7 @@ struct descriptor_data
                              PART_TUSKS | PART_TAILATTACK |              \
                              PART_SHARPSCALES | PART_BEAK | PART_HAUNCH |\
                              PART_HOOVES | PART_PAWS | PART_FORELEGS |   \
-                             PART_FEATHERS | PART_HUSK_SHELL))
+                             PART_FEATHERS | PART_HUSK_SHELL | PART_TENTACLES))
 
 #define HAS_HEAD(ch) (!(ch->body_form & BODY_NO_HEAD) || (ch->body_form & PART_HEAD) || (ch->body_form & PART_MANY_HEAD))
 #define HAS_EYES(ch) (!(ch->body_form & BODY_NO_EYES) || (ch->body_form & PART_EYE))
@@ -3112,6 +3112,8 @@ struct char_data
         int native_regen_trauma_seconds;
         /* Native breath charges are a daily runtime supply. */
         int firedrake_breath_day, firedrake_breath_month, firedrake_breath_year;
+        int golem_haste_day, golem_haste_month, golem_haste_year;
+        bool golem_haste_used;
         int firedrake_breaths;
         bool firedrake_breath_running;
         /* A guardian's trunk has its own daily supply. */
@@ -3673,8 +3675,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 238
-#define MAX_SPECIES 34
+#define MAX_MOB 243
+#define MAX_SPECIES 35
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -6020,6 +6022,8 @@ typedef enum creature_trait
         CREATURE_TRAIT_ELECTRICITY_HEALING_PERCENT,
         CREATURE_TRAIT_FIRE_COLD_SLOW_TICKS,
         CREATURE_TRAIT_ARMED_MELEE_DAMAGE,
+        CREATURE_TRAIT_DISPLACEMENT_MELEE_PENALTY,
+        CREATURE_TRAIT_SPELL_SAVE_BONUS_PERCENT,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Internal damage kinds keep trait strengths small and named. */

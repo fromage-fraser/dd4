@@ -1168,7 +1168,8 @@ static bool saves_spell_with_bonus(CHAR_DATA *source, int level,
         if (alignment_protection_applies(source, victim))
                 save -= ALIGNMENT_PROTECTION_SAVE_BONUS;
 
-        save += holy_focus_save_bonus(victim, source) + bonus;
+        save += holy_focus_save_bonus(victim, source) + bonus
+            + creature_trait_value(victim, CREATURE_TRAIT_SPELL_SAVE_BONUS_PERCENT);
         save = URANGE(5, save, 95);
 
         return number_percent() < save;
