@@ -10,12 +10,12 @@ A skeletal man is roaming the land.
 Skin is stretched so tight over the frame of this tall man that you
 can count every bone in his body.  His eyes seem lifeless and are
 sunk deep within his skull.  Tattered and torn remnants of clothing
-hangs over his matchstick-like body.  You find yourself growing
+hang over his matchstick-like body.  You find yourself growing
 hungry as you stand near this starving man.
 ~
 4|32|64 2|8|32|128|512|32768|65536 0 S
 85 0 0 0d0+0 0d0+0
-16|32|256 0
+16|32|256|262144|524288|1048576 0
 8 8 1
 >fight_prog 10~
     c starve $N
@@ -24,7 +24,9 @@ hungry as you stand near this starving man.
     c parch $N
 ~
 |
-< reserved~ elite~
+< apocalyptic_avatar~ elite~
+MobHeight 195
+MobWeight 35
 #5601
 War~
 War~
@@ -42,7 +44,9 @@ ballet of death and destruction.  Finally, it is your turn.
 95 0 0 0d0+0 0d0+0
 0 0
 8 8 2
-< reserved~ elite~
+< apocalyptic_avatar~ elite~
+MobHeight 185
+MobWeight 90
 #5602
 Death~
 Death~
@@ -58,9 +62,11 @@ take his next soul...YOURS!!!!
 ~
 4|32|64 2|8|32|128|512|32768|65536 0 S
 100 0 0 0d0+0 0d0+0
-96 0
+16|32|64|256|262144|524288|1048576|70368744177664|140737488355328 0
 8 8 1
-< reserved~ elite~
+< apocalyptic_avatar~ elite~
+MobHeight 200
+MobWeight 0
 #5603
 Pestilence~
 Pestilence~
@@ -77,7 +83,7 @@ viciously.
 90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ elite~
+< apocalyptic_avatar~ elite~
 #5604
 starving man~
 the starving man~
@@ -93,6 +99,8 @@ make you his next meal.
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 45
 #5605
 rat rats~
 the pestilence-filled rat~
@@ -105,8 +113,12 @@ would make a nice carrier for its pestilence.
 ~
 4|32|64 8|32|512 0 S
 65 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< giant_rat~ common~
+MobHeight 50
+MobWeight 25
+MobLength 100
 #5606
 soldier wounded man~
 the wounded soldier~
@@ -124,6 +136,8 @@ cry.
 70 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 180
 #5607
 ghost spirit apparition~
 the ghost~
@@ -136,8 +150,9 @@ the ghost wails a sorrowful cry and attacks.
 ~
 4|32|64 8|32|512|1048576 0 S
 75 0 0 0d0+0 0d0+0
-96 0
+32 0
 8 8 1
+< ghost~ common~
 #5608
 horse white~
 The Horse of Death~
@@ -151,8 +166,9 @@ your direction, he snorts and charges at you.
 ~
 4|32|64 2|8|32|512|32768|65536 0 S
 95 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< apocalyptic_steed~ common~
 #5609
 horse red~
 The Horse of War~
@@ -166,8 +182,9 @@ direction, he snorts and charges at you.
 ~
 4|32|64 2|8|32|512|32768|65536 0 S
 90 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< apocalyptic_steed~ common~
 #5610
 horse brown~
 The Horse of Famine~
@@ -181,8 +198,9 @@ your direction, he snorts and charges at you.
 ~
 4|32|64 2|8|32|512|32768|65536 0 S
 80 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< apocalyptic_steed~ common~
 #5611
 horse green~
 The Horse of Pestilence~
@@ -196,8 +214,9 @@ your direction, he snorts and charges at you.
 ~
 4|32|64 2|8|32|512|32768|65536 0 S
 85 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< apocalyptic_steed~ common~
 #0
 
 
@@ -1808,7 +1827,7 @@ S
 #5654
 The End of it All~
 This is the end.  Your fearless efforts have saved the day...for
-now.  The horseman shall return sometime, and with them, the
+now.  The Horsemen shall return sometime, and with them, the
 destruction of the world.  Unless some brave adventurers like
 yourself can stop them.  Claim your prize, go home, and rest.  You
 deserve it.
@@ -1835,7 +1854,7 @@ M 1 5604 10 5606             the starving man to A room
 *
 M 1 5604 10 5608             the starving man to A room
 *
-M 1 5604 1 5610              the starving man to A room
+M 1 5604 10 5610              the starving man to A room
 *
 M 1 5610 1 5613              The Horse of Famine to A room
 *
@@ -1902,15 +1921,15 @@ S
 
 
 #SPECIALS
-M  5600 spec_breath_any            Famine
+M  5600 spec_breath_any_anatomical            Famine
 M  5601 spec_cast_priestess        War
 M  5602 spec_cast_archmage         Death
 M  5603 spec_cast_psionicist       Pestilence
-M  5605 spec_poison                the pestilence filled rats
-M  5608 spec_breath_any            The Horse of Death
-M  5609 spec_breath_fire           The Horse of War
-M  5610 spec_breath_acid           The Horse of Famine
-M  5611 spec_breath_gas            The Horse of Pestilence
+M  5605 spec_poison_bite                the pestilence filled rats
+M  5608 spec_breath_any_anatomical            The Horse of Death
+M  5609 spec_breath_fire_anatomical           The Horse of War
+M  5610 spec_breath_acid_anatomical           The Horse of Famine
+M  5611 spec_breath_gas_anatomical            The Horse of Pestilence
 S
 
 

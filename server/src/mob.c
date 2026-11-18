@@ -3617,6 +3617,25 @@ const struct mob_type mob_table[MAX_MOB] =
                 100, 220, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                /* A conscious manifestation; each avatar keeps its own powers. */
+                "apocalyptic_avatar", "humanoid", "icon1", "icon2",
+                0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                190, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                /* These enormous horses share fiery feet, not one breath spell. */
+                "apocalyptic_steed", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_TAIL | PART_HOOVES, PART_HOOVES,
+                RES_FIRE, 0, 0,
+                0, 0, 0, 0,
+                230, 1400, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 330
         }
 };
 

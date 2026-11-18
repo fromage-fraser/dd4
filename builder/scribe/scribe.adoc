@@ -13792,3 +13792,98 @@ the approved wording and blank ranger-lord description. No matching .src
 exists; all four other real source exports remain unchanged. Portraits
 stay. Room1607 gets a separately generated descending-ceiling picture;
 image publication is separate from Git.
+
+
+Apocalypse Now
+--------------
+
+The catalogue has 245 archetypes, 35 basic body species, 50 internal
+traits, 124 Scribe special names and 637 skill rows. apocalyptic_avatar
+and apocalyptic_steed append at indices 243 and 244. Existing indices and
+all old profiles, body defaults, traits and player opt-ins stay. There is
+no new field, flag, player ability or special-function implementation.
+
+apocalyptic_avatar is a conscious, corporeal humanoid manifestation, not
+automatically an undead creature or a member of the human family. Defaults
+are 190 cm, 75 kg and Medium, with ordinary humanoid anatomy. Its family
+is none. All stat modifiers and profile XP are zero. No resistance,
+immunity, special or ghost phase is supplied. Use the individual record
+for an avatar's physiology, dimensions and powers.
+
+The four Horsemen are DD4-specific personifications. Their area-file
+descriptions guide this adaptation; these are not claimed AD&D avatar
+statistics. Famine 5600 is 195 cm/35 kg/Medium. He keeps No Heart, No
+Speech, Inorganic and physical remains. Cancel inherited PART_HEART as
+well as physical brains/guts so positive anatomy does not defeat No Heart.
+He still thinks, has senses and limbs, and remains soul-eligible. No
+Speech does not block his existing Starve/Parch fight programs; it only
+suppresses spoken incantations. Keep both 10-percent entries and their
+order. The normal trigger walker stops at the first successful non-greet
+program, rather than firing both automatically. His original mixed breath
+uses spec_breath_any_anatomical.
+
+War 5601 is 185 cm/90 kg/Medium and female, with fleshy humanoid anatomy.
+She keeps spec_cast_priestess, her sword and body armour. Pestilence 5603
+is 190 cm/75 kg/Medium, male and organic; the surrounding insect cloud
+does not turn his body into a swarm. He keeps spec_cast_psionicist and his
+gloves. Death 5602 is a 200 cm conscious skeletal manifestation, mute and
+corpseless as authored. He is inorganic, Bloodless and Analgic, without a
+physical heart, brain or guts, but with senses, head, hands and limbs. His
+mass is unknown: use explicit weight 0, overriding the avatar's 75 kg
+default. Zero means unspecified, not physical weightlessness. He keeps
+spec_cast_archmage and his scythe/robe. Death personified remains
+non-undead; no skeleton immunities, mindlessness, soullessness or special
+holy-healing rules are imported into this avatar.
+
+apocalyptic_steed uses quadrupedal_mammal with an ordinary horse head,
+organs, four legs, tail and hooves. It has no arms or speech. Its ordinary
+hoof contact adds no attack opportunities. Defaults are 230 cm shoulder
+height, 1400 kg, 330 cm long,Large plus BODY_HUGE, RES_FIRE and +5 profile
+XP. All other stat modifiers stay zero. These descriptive estimates depict
+the enormous coloured horses whose feet and breath are fiery. This is not
+an asserted standard nightmare profile. No wings, flight, ethereal phase,
+corpse suppression or undead classification is supplied.
+
+Each steed keeps its own single 100-percent special slot: white Death 5608
+uses spec_breath_any_anatomical; red War 5609 fire; brown Famine 5610
+acid; green Pestilence 5611 gas, all through their existing anatomical
+breath wrappers. The payloads, sampling and XP allowances are unchanged,
+with the shared usable-head/head-trauma rules. The archetype itself adds
+no breath, so there is no accidental second special or probability split.
+
+Starving man 5604 reuses human at 175 cm/45 kg/Medium. Wounded soldier
+5606 reuses human at 180 cm/75 kg/Medium and keeps his sword. Starvation,
+wounds and violent despair do not imply undead status, mindlessness or
+permanent trauma. Rat 5605 reuses giant_rat at 50 cm shoulder height, 25
+kg, 100 cm long, Small. It inherits approved living rat anatomy, swimming
+and ordinary fang contact, while its authored poison uses
+spec_poison_bite. That existing wrapper requires usable head/fangs but
+keeps the poison payload and opportunity sampling. Do not silently replace
+poison with deity Plague: shared infectious disease remains a separate
+deferred design.
+
+Ghost 5607 reuses ghost at 175 cm/unknown mass/Medium. It now inherits
+real undead classification, conscious semi-material phase and the
+established mundane-weapon barrier. Keep authored Pass Door and No Speech.
+Do not confuse Pass Door or ghost phase with the player Non-Corporeal
+affect. Clear the duplicate individual No Corpse bit so XOR does not
+restore physical remains. Rat and steed raw No Arms/No Speech bits
+likewise clear to inherit their existing body defaults correctly.
+
+All four Horsemen keep their explicit Elite ranks and all eight other
+definitions stay Common. Rank HP applies once: Elite is 5x, without an
+extra avatar HP bonus. High levels or unique names alone do not promote
+the steeds. Preserve Scavenger, Aggressive and StayArea on all twelve,
+every alignment/sex/level/build, authored detection/infrared, Horsemen
+invisibility/sanctuary/sneak/hide and steed invisibility/sneak/hide.
+
+The starving-man reset in room 5610 now has global cap 10, matching the
+other four placements. Cap 1 caused that last row to be skipped on a clean
+boot. Initial population becomes 28 instead of 27; eventual refill
+population stays 48, and the cap does not reserve any particular room.
+Carried items remain 11 initially and 16 after refills. Preserve every
+other reset/cap/order, all eleven objects/affects, all 55 room flags,
+exits/doors/keys and the absence of NO_UNDEAD rooms. Only the approved
+Famine hang/hangs and final Horsemen wording corrections accompany it. No
+matching .src exists; the four other real source exports stay. All twelve
+portraits and 55 room images were inspected and retained.
