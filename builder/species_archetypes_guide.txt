@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 18 November 2026
-Based on master a1be9834825fd51ae6796ef7a20e352711d7db9d (PR #988),
-with the accompanying Wyvern's Tower changes.
+Based on master 569dac0186c4a36ef73a4f532ff7e71400548892 (PR #989),
+with the accompanying Apocalypse Now changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -911,10 +911,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 243, so this single example would make 244.
+guide's checked revision it is 245, so this single example would make 246.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 243.
+valid index. This example would receive index 245.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1612,7 +1612,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 243;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 245;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1722,9 +1722,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 243; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 245; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-35 body rows, 243 archetype rows, 50 internal traits and 124 Scribe
+35 body rows, 245 archetype rows, 50 internal traits and 124 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -2495,7 +2495,7 @@ exists. Both mob portraits and all 50 room images stay unchanged.
 Wyvern's Tower
 --------------
 
-The catalogue now has 243 archetypes, 35 basic body species, 50 internal
+The catalogue now has 245 archetypes, 35 basic body species, 50 internal
 traits, 124 Scribe special names and 637 skill rows. The new body is
 hexapodal_mammal at index 34. The five archetypes append at 238-242:
 killer_frog, giant_flytrap, black_pudding, clay_golem and displacer_beast.
@@ -2620,6 +2620,100 @@ exists; all four other real source exports remain unchanged. Portraits
 stay. Room1607 gets a separately generated descending-ceiling picture;
 image publication is separate from Git.
 
+Apocalypse Now
+--------------
+
+The catalogue has 245 archetypes, 35 basic body species, 50 internal
+traits, 124 Scribe special names and 637 skill rows. apocalyptic_avatar
+and apocalyptic_steed append at indices 243 and 244. Existing indices and
+all old profiles, body defaults, traits and player opt-ins stay. There is
+no new field, flag, player ability or special-function implementation.
+
+apocalyptic_avatar is a conscious, corporeal humanoid manifestation, not
+automatically an undead creature or a member of the human family. Defaults
+are 190 cm, 75 kg and Medium, with ordinary humanoid anatomy. Its family
+is none. All stat modifiers and profile XP are zero. No resistance,
+immunity, special or ghost phase is supplied. Use the individual record
+for an avatar's physiology, dimensions and powers.
+
+The four Horsemen are DD4-specific personifications. Their area-file
+descriptions guide this adaptation; these are not claimed AD&D avatar
+statistics. Famine 5600 is 195 cm/35 kg/Medium. He keeps No Heart, No
+Speech, Inorganic and physical remains. Cancel inherited PART_HEART as
+well as physical brains/guts so positive anatomy does not defeat No Heart.
+He still thinks, has senses and limbs, and remains soul-eligible. No
+Speech does not block his existing Starve/Parch fight programs; it only
+suppresses spoken incantations. Keep both 10-percent entries and their
+order. The normal trigger walker stops at the first successful non-greet
+program, rather than firing both automatically. His original mixed breath
+uses spec_breath_any_anatomical.
+
+War 5601 is 185 cm/90 kg/Medium and female, with fleshy humanoid anatomy.
+She keeps spec_cast_priestess, her sword and body armour. Pestilence 5603
+is 190 cm/75 kg/Medium, male and organic; the surrounding insect cloud
+does not turn his body into a swarm. He keeps spec_cast_psionicist and his
+gloves. Death 5602 is a 200 cm conscious skeletal manifestation, mute and
+corpseless as authored. He is inorganic, Bloodless and Analgic, without a
+physical heart, brain or guts, but with senses, head, hands and limbs. His
+mass is unknown: use explicit weight 0, overriding the avatar's 75 kg
+default. Zero means unspecified, not physical weightlessness. He keeps
+spec_cast_archmage and his scythe/robe. Death personified remains
+non-undead; no skeleton immunities, mindlessness, soullessness or special
+holy-healing rules are imported into this avatar.
+
+apocalyptic_steed uses quadrupedal_mammal with an ordinary horse head,
+organs, four legs, tail and hooves. It has no arms or speech. Its ordinary
+hoof contact adds no attack opportunities. Defaults are 230 cm shoulder
+height, 1400 kg, 330 cm long,Large plus BODY_HUGE, RES_FIRE and +5 profile
+XP. All other stat modifiers stay zero. These descriptive estimates depict
+the enormous coloured horses whose feet and breath are fiery. This is not
+an asserted standard nightmare profile. No wings, flight, ethereal phase,
+corpse suppression or undead classification is supplied.
+
+Each steed keeps its own single 100-percent special slot: white Death 5608
+uses spec_breath_any_anatomical; red War 5609 fire; brown Famine 5610
+acid; green Pestilence 5611 gas, all through their existing anatomical
+breath wrappers. The payloads, sampling and XP allowances are unchanged,
+with the shared usable-head/head-trauma rules. The archetype itself adds
+no breath, so there is no accidental second special or probability split.
+
+Starving man 5604 reuses human at 175 cm/45 kg/Medium. Wounded soldier
+5606 reuses human at 180 cm/75 kg/Medium and keeps his sword. Starvation,
+wounds and violent despair do not imply undead status, mindlessness or
+permanent trauma. Rat 5605 reuses giant_rat at 50 cm shoulder height, 25
+kg, 100 cm long, Small. It inherits approved living rat anatomy, swimming
+and ordinary fang contact, while its authored poison uses
+spec_poison_bite. That existing wrapper requires usable head/fangs but
+keeps the poison payload and opportunity sampling. Do not silently replace
+poison with deity Plague: shared infectious disease remains a separate
+deferred design.
+
+Ghost 5607 reuses ghost at 175 cm/unknown mass/Medium. It now inherits
+real undead classification, conscious semi-material phase and the
+established mundane-weapon barrier. Keep authored Pass Door and No Speech.
+Do not confuse Pass Door or ghost phase with the player Non-Corporeal
+affect. Clear the duplicate individual No Corpse bit so XOR does not
+restore physical remains. Rat and steed raw No Arms/No Speech bits
+likewise clear to inherit their existing body defaults correctly.
+
+All four Horsemen keep their explicit Elite ranks and all eight other
+definitions stay Common. Rank HP applies once: Elite is 5x, without an
+extra avatar HP bonus. High levels or unique names alone do not promote
+the steeds. Preserve Scavenger, Aggressive and StayArea on all twelve,
+every alignment/sex/level/build, authored detection/infrared, Horsemen
+invisibility/sanctuary/sneak/hide and steed invisibility/sneak/hide.
+
+The starving-man reset in room 5610 now has global cap 10, matching the
+other four placements. Cap 1 caused that last row to be skipped on a clean
+boot. Initial population becomes 28 instead of 27; eventual refill
+population stays 48, and the cap does not reserve any particular room.
+Carried items remain 11 initially and 16 after refills. Preserve every
+other reset/cap/order, all eleven objects/affects, all 55 room flags,
+exits/doors/keys and the absence of NO_UNDEAD rooms. Only the approved
+Famine hang/hangs and final Horsemen wording corrections accompany it. No
+matching .src exists; the four other real source exports stay. All twelve
+portraits and 55 room images were inspected and retained.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 35 current rows, including reserved. The index is not an
@@ -2667,7 +2761,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 243 current table rows follow, grouped by body. Numeric IDs are for
+All 245 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -2683,7 +2777,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (76)
+HUMANOID (77)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -2913,6 +3007,9 @@ HUMANOID (76)
   [236] marsh_giant: h/w/l 450 / 1500 / ?; Large; family giant
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
+  [243] apocalyptic_avatar: h/w/l 190 / 75 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 DRAGON (14)
 ------------
@@ -3091,7 +3188,7 @@ BIPEDAL_CONSTRUCT (11)
         HP+0 dam+0 crit+0 swift+0 XP+15; phase none
         specials 1:spec_golem_haste; policy auto
 
-QUADRUPEDAL_MAMMAL (38)
+QUADRUPEDAL_MAMMAL (39)
 ------------------------
   [  1] goat: h/w/l 70 / 55 / 110; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3206,6 +3303,9 @@ QUADRUPEDAL_MAMMAL (38)
         specials none; policy auto
   [232] small_beast: h/w/l 30 / 6 / 50; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [244] apocalyptic_steed: h/w/l 230 / 1400 / 330; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
 HEAD_ONLY (2)
@@ -4302,8 +4402,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/a1be9834825fd51ae6796ef7a20e352711d7db9d
-  Base PR988 plus the accompanying Wyvern's Tower patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/569dac0186c4a36ef73a4f532ff7e71400548892
+  Base PR989 plus the accompanying Apocalypse Now patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -4313,9 +4413,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 76/153 areas (49.7%) and 1143/4131 mob
-definitions (27.7%) merged and verified. Wyvern's Tower adds28 definitions.
-After its merge is verified, completion becomes77/153 areas (50.3%) and
-1171/4131 definitions (28.3%).
+The live conversion is currently77/153 areas (50.3%) and1171/4131 mob
+definitions (28.3%) merged and verified. Apocalypse Now adds12 definitions.
+After its merge is verified, completion becomes78/153 areas (51.0%) and
+1183/4131 definitions (28.6%).
 
 END OF GUIDE
