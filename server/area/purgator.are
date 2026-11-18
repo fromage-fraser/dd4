@@ -17,12 +17,12 @@ dead reaper~
 The Reaper of the Dead~
 The Reaper of the Dead is here to decide your fate.
 ~
-Ever-smiling, he doesn't seems to mind being stuck here for eternity.
+Ever-smiling, he doesn't seem to mind being stuck here for eternity.
 ~
 2|512|9223372036854775808 8|32|128|8192|8388608 -1000 S
 50 0 0 0d0+0 0d0+0
-96 0
-8 8 0
+16|64|256|262144|524288|1048576|70368744177664|140737488355328 0
+8 8 1
 >all_greet_prog 100~
 c 'giant strength' $n
 mpoload 401 1
@@ -33,6 +33,9 @@ mpforce $n quaff tear
    shout You cannot kill me! I AM DEATH!
 ~
 |
+< apocalyptic_avatar~ common~
+MobHeight 200
+MobWeight 0
 #402
 lost soul~
 A lost soul~
@@ -43,9 +46,10 @@ wasting time if you don't want to end up like it.
 ~
 64|512 0 0 S
 1 0 0 0d0+0 0d0+0
-96 0
+32 0
 8 8 0
 
+< ghost~ common~
 #0
 
 #OBJECTS
