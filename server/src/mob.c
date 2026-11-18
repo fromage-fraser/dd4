@@ -2556,7 +2556,7 @@ const struct mob_type mob_table[MAX_MOB] =
                 "air_elemental", "elemental_being", "icon1", "icon2",
                 0, AFF_FLYING | AFF_PASS_DOOR,
                 BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS
-                    | BODY_NO_SPEECH | BODY_NO_CORPSE,
+                    | BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_ANALGIC,
                 0, RES_NONMAGIC, 0, 0,
                 0, 0, 0, 0,
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
@@ -3678,6 +3678,69 @@ const struct mob_type mob_table[MAX_MOB] =
                 76, 8, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "spec_innate_fade", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* Its antenna-bearing body has limbs and wings, but no head. */
+                "mi_go", "fungoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_HEAD | PART_2_LEGS | PART_FEET | BODY_NO_HEAD
+                    | PART_MANY_ARMS | PART_MANY_LEGS | PART_WINGS
+                    | PART_HUSK_SHELL | PART_CLAWS,
+                PART_CLAWS, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 45, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 152
+        },
+        {
+                /* Keep the area's heartless, faceless body and grasping paws. */
+                "nightgaunt", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_EYE | PART_HEART | BODY_NO_EYES | BODY_NO_HEART
+                    | BODY_NO_SPEECH | BODY_HUGE | PART_WINGS
+                    | PART_HORNS | PART_PAWS | PART_CLAWS | PART_TAIL,
+                PART_CLAWS, 0, 0, 0,
+                0, 0, 0, 0,
+                250, 140, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* The winged, wormlike horror speaks without having hands. */
+                "hunting_horror", "limbless_invertebrate", "icon1", "icon2",
+                0, AFF_FLYING, BODY_NO_SPEECH | BODY_HUGE | PART_WINGS | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 1220
+        },
+        {
+                /* A living infernal servant keeps ordinary humanoid anatomy. */
+                "infernal_servitor", "humanoid", "icon1", "icon2",
+                0, 0, 0, 0, RES_FIRE | RES_COLD, 0, RES_POISON,
+                0, 0, 0, 0,
+                198, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* The bite selector does not give the slug anatomical fangs. */
+                "rock_slug", "limbless_invertebrate", "icon1", "icon2",
+                0, 0, PART_EYESTALKS, PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                20, 40, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 120
+        },
+        {
+                /* A djinni flies without wings; a local record can change its legs. */
+                "djinni", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING, 0, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                320, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_innate_fade", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
         }
 };
 
@@ -4631,6 +4694,15 @@ static const CREATURE_TRAIT_CHANGE pixie_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
 };
 
+static const CREATURE_TRAIT_CHANGE mi_go_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE djinni_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4638,6 +4710,8 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"mi_go", NULL, mi_go_trait_changes, TRAIT_ITEMS(mi_go_trait_changes)},
+        {"djinni", NULL, djinni_trait_changes, TRAIT_ITEMS(djinni_trait_changes)},
         {"water_spirit", NULL, water_spirit_trait_changes,
             TRAIT_ITEMS(water_spirit_trait_changes)},
         {"pixie", NULL, pixie_trait_changes, TRAIT_ITEMS(pixie_trait_changes)},
