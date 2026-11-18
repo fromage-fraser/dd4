@@ -3636,6 +3636,48 @@ const struct mob_type mob_table[MAX_MOB] =
                 230, 1400, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 330
+        },
+        {
+                /* The garden drake keeps its own magical flight and equipment. */
+                "water_drake", "quadrupedal_reptile", "icon1", "icon2",
+                0, AFF_SWIM, BODY_HUGE | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                250, 2500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 1000
+        },
+        {
+                /* River water can think and take a shape without animal organs. */
+                "water_spirit", "elemental_being", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_LEGS | BODY_NO_SPEECH | BODY_NO_CORPSE
+                    | BODY_BLOODLESS | BODY_ANALGIC
+                    | PART_HEAD | PART_EYE | PART_EAR | PART_ARMS,
+                0, RES_NONMAGIC | RES_WATER, 0, RES_POISON,
+                0, 0, 0, 0,
+                90, 0, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* Treat the grasping tendrils as arms for targeting and trauma. */
+                "animated_vine", "plant", "icon1", "icon2",
+                0, AFF_MINDLESS, BODY_NO_ARMS | PART_ARMS | PART_TENTACLES,
+                PART_TENTACLES, 0, 0, 0,
+                0, 0, 0, 0,
+                30, 40, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_vine_grip", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 600
+        },
+        {
+                /* Their old invisibility remains; fading restores it while idle. */
+                "pixie", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING, PART_WINGS, 0, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                76, 8, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_innate_fade", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
         }
 };
 
@@ -4579,6 +4621,16 @@ static const CREATURE_TRAIT_CHANGE displacer_beast_trait_changes[] =
         {CREATURE_TRAIT_SPELL_SAVE_BONUS_PERCENT, 10}
 };
 
+static const CREATURE_TRAIT_CHANGE water_spirit_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_WATER}
+};
+static const CREATURE_TRAIT_CHANGE pixie_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4586,6 +4638,9 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"water_spirit", NULL, water_spirit_trait_changes,
+            TRAIT_ITEMS(water_spirit_trait_changes)},
+        {"pixie", NULL, pixie_trait_changes, TRAIT_ITEMS(pixie_trait_changes)},
         {"killer_frog", NULL, killer_frog_trait_changes,
             TRAIT_ITEMS(killer_frog_trait_changes)},
         {"giant_flytrap", NULL, giant_flytrap_trait_changes,

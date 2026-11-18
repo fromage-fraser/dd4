@@ -13957,3 +13957,128 @@ The only wording correction is the Reaper's doesn't seems to doesn't seem.
 There is no matching .src. All four other real source exports remain
 unchanged. Both portraits and all 27 room images were reviewed and
 retained; no image generation or publication accompanies this step.
+
+
+The Magic Garden
+----------------
+
+The catalogue now has 249 archetypes, 35 basic body species, 50 internal
+traits, 124 Scribe special names and 637 skill rows. water_drake,
+water_spirit, animated_vine and pixie append at indices 245 through 248.
+Earlier indices, shared profiles, body defaults and player opt-ins stay.
+These additions use existing traits and specials. No new area field, trait
+command, body flag or special-function implementation is needed.
+
+water_drake uses quadrupedal_reptile: a living head, senses, heart,
+brains, guts, four legs, scales and tail, without humanoid arms or speech.
+It adds claws, fangs, swimming and HUGE. Defaults are 250 cm shoulder
+height, 2500 kg, 1000 cm long and Large. The ordinary claw/bite fallback
+adds no attack opportunities. All stat modifiers and profile XP are zero;
+it supplies no armour, resistance, breath or active special. This is DD4's
+aquatic dragon relative, not a claim to reproduce a standard AD&D
+water-drake stat block. Its measurements are estimates. Drake 11300 keeps
+its existing magical flight, without new wings, its Elite rank,
+aggression, Sentinel, Stay Area, greeting attack, ambient sounds, both
+talons, dragon's prayer, blue scales and loot.
+
+The talons, object 11300, are WEAPON/BODY_PART with value[0] = 4 for the
+leg targeting region. The old value 1 incorrectly meant head. value[3]
+stays 5, the existing claw verb. Keep both WIELD/DUAL resets, TAKE and
+other flags, damage generation and all three bonuses. This does not add a
+leg-trauma attack gate: the existing approved targeting and eligibility
+rules still apply. WEAPON and LIGHT use value[0] for the region; ARMOUR
+uses value[1]. Staff values remain spell/charge data, so do not
+reinterpret the marked native prayer or orb as a weapon.
+
+water_spirit uses elemental_being for a conscious, soul-bearing shape made
+of river water. It has a pseudo-head, eyes, ears, arms and hands, but no
+legs, animal heart, brains or guts. It is inorganic, Bloodless, Analgic,
+mute and corpseless, without undead classification, Mindless, Soulless or
+a ghost phase. Defaults are 90 cm, unknown mass (weight 0), Small, no HUGE
+and swimming. Zero means unspecified, not weightless. It resists ordinary
+nonmagical contact and water and is immune to poison. Its existing
+natural_attack_type trait is 7 (pound), and natural_damage_type is
+NATURAL_DAMAGE_WATER. This changes ordinary unarmed contact, not the held
+orb or an extra damage packet. Profile XP is +5 percentage points; all
+other stat modifiers stay zero and there is no active special. Sprites
+11301-11305 keep authored Flying, Pass Door, sneak, senses and their
+watery orbs. The area describes river-water beings, rather than the
+biological sea sprites in AD&D.
+
+Carnivorous plants 11306-11310 reuse giant_flytrap. Their seven-foot
+description gives individual height 213 cm; weight 90 kg and spread 150 cm
+are estimates replacing the shared 300 cm/250 kg/300 cm defaults. They
+stay Large without HUGE. The inherited mouth uses head targeting, and
+grasping leaf/tendril masses use arm targeting. They have fangs, ordinary
+bite, Mindless, organic vegetation remains, Bloodless and Analgic, without
+animal eyes, legs, heart or speech. They stay soul-eligible. Natural
+armour is -4; profile XP is +5 and the existing vine-grip special
+allowance is +5. Preserve aggression, Stay Area, magical flight and all
+original detection affects. Do not turn them into rooted Sentinel plants
+merely because they lack walking legs.
+
+animated_vine uses plant, with tendrils mapped to PART_ARMS and
+PART_TENTACLES. Its archetype XOR cancels the body's No Arms flag, then
+adds usable arm anatomy. Defaults are 30 cm rise, 40 kg, 600 cm extended
+length, Large and no HUGE; these are descriptive estimates. It is
+Mindless, organic, Bloodless and Analgic, but soul-eligible and leaves
+vegetation remains. It has no head, eyes, legs, animal heart or speech.
+PART_TENTACLES supplies ordinary tentacle-whip attacks. spec_vine_grip
+uses its existing 25-percent eligible combat sampling, nonmagic/Hold save,
+safety, usable-arm/trauma, HUGE-target and source lifecycle checks. It
+adds no separate damage packet. Profile XP and stat modifiers are zero;
+the existing special allowance is +5. Vines 11312-11314 keep Sentinel,
+Stay Area and magical flight.
+
+Gardener 11311 reuses gnome at 105 cm/40 kg/Small. Keep Wimpy and flight.
+It inherits Infrared, RES_MAGIC, +1 trained melee against goblins and
+kobolds, and the established -4 opponent penalty against the gnome
+giant-defence target families, including gnoll, bugbear, ogre, ogre mage,
+troll, giant and titan. The shared profile XP adjustment is +5.
+
+Fairies 11315-11318 and queen 11321 reuse sprite: 61 cm/4 kg/Small,
+ordinary living humanoid organs, wings, Flying, Detect Good/Evil and
+natural armour -4. The four fairies are female, matching both their
+descriptions and portraits. Their wing items still grant flight. Their
+individual spec_cast_archmage slots replace the whole inherited special
+set at 100 percent. The queen likewise keeps spec_cast_adept, including
+its existing checks against harmful help for undead visitors. Do not add
+spec_sprite beside those roles or dilute their casting. The queen stays
+Common in SAFE, HEALING, NO_RECALL and NO_UNDEAD room 11405. Royal status
+alone does not require a combat-rank promotion.
+
+Oaks 11319/11320 reuse enchanted_oak at 1500 cm/10000 kg/Large/HUGE.
+Branches supply usable arms and ordinary blunt pound contact. They are
+organic, Bloodless and Analgic, without animal head, eyes, legs, heart or
+speech, and have fire vulnerability. They remain soul-eligible and leave
+wood remains. Keep spec_warrior, magical flight, their rustling and
+forced-rest programs, gnarled branches and bark equipment. Objects
+11304/11342 also reset in Eerie Woods; their definitions are unchanged.
+
+pixie uses humanoid with wings and Flying, 76 cm/8 kg/Small, no HUGE,
+RES_MAGIC and natural armour -5. Profile XP is +5, with the existing
+innate-fade special allowance +5; all other stat modifiers are zero.
+spec_innate_fade restores invisibility on 25-percent eligible idle checks,
+never as persistent combat invisibility. Pixies 11322-11324 keep their
+initial invisibility, senses, sexes and greeting pranks. The height and
+defence choices adapt the second-edition pixie entry; 8 kg is an estimate.
+RES_MAGIC uses DD4's ordinary resistance mechanic, not literal 25-percent
+spell negation. No new daily spell list, sleep arrows or special player
+ability is supplied.
+
+Leprechaun 11325 reuses leprechaun at 61 cm/12 kg/Small, with Detect
+Hidden, RES_MAGIC and natural armour -2. Keep spec_thief, Wimpy, all other
+affects and the flying boots. Correct days and knights to days and nights.
+Object 11324 now says A pair of buckled shoes has been left here. These
+are the only prose changes.
+
+Drake 11300 remains Elite; all other 25 definitions stay Common. Rank HP
+applies once. Preserve levels, alignments, generated builds, all authored
+movement/aggression/passivity, flight and other affects, every embedded
+program, all reset placements/caps/order and equipment slots. There are 26
+inhabitants and 73 carried objects at boot and after refills. All 106
+rooms, exits and flags stay, including ward 11405. All 45 object
+definitions stay except the talon region and shoe wording. No shop,
+teacher or matching .src exists. Four other real source exports remain
+unchanged. All 26 portraits and 106 room images were reviewed and
+retained; no image generation accompanies this patch.

@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 18 November 2026
-Based on master 4f61b455e5719459f98eace6c3a3636889a12d89 (PR #990),
-with the accompanying Purgatory changes.
+Based on master 84aac1fbbb37b83a5eed3434447893ac013bcffe (PR #991),
+with the accompanying Magic Garden changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -911,10 +911,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 245, so this single example would make 246.
+guide's checked revision it is 249, so this single example would make 250.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 245.
+valid index. This example would receive index 249.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1612,7 +1612,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 245;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 249;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1722,9 +1722,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 245; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 249; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-35 body rows, 245 archetype rows, 50 internal traits and 124 Scribe
+35 body rows, 249 archetype rows, 50 internal traits and 124 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -2783,6 +2783,130 @@ There is no matching .src. All four other real source exports remain
 unchanged. Both portraits and all 27 room images were reviewed and
 retained; no image generation or publication accompanies this step.
 
+The Magic Garden
+----------------
+
+The catalogue now has 249 archetypes, 35 basic body species, 50 internal
+traits, 124 Scribe special names and 637 skill rows. water_drake,
+water_spirit, animated_vine and pixie append at indices 245 through 248.
+Earlier indices, shared profiles, body defaults and player opt-ins stay.
+These additions use existing traits and specials. No new area field, trait
+command, body flag or special-function implementation is needed.
+
+water_drake uses quadrupedal_reptile: a living head, senses, heart,
+brains, guts, four legs, scales and tail, without humanoid arms or speech.
+It adds claws, fangs, swimming and HUGE. Defaults are 250 cm shoulder
+height, 2500 kg, 1000 cm long and Large. The ordinary claw/bite fallback
+adds no attack opportunities. All stat modifiers and profile XP are zero;
+it supplies no armour, resistance, breath or active special. This is DD4's
+aquatic dragon relative, not a claim to reproduce a standard AD&D
+water-drake stat block. Its measurements are estimates. Drake 11300 keeps
+its existing magical flight, without new wings, its Elite rank,
+aggression, Sentinel, Stay Area, greeting attack, ambient sounds, both
+talons, dragon's prayer, blue scales and loot.
+
+The talons, object 11300, are WEAPON/BODY_PART with value[0] = 4 for the
+leg targeting region. The old value 1 incorrectly meant head. value[3]
+stays 5, the existing claw verb. Keep both WIELD/DUAL resets, TAKE and
+other flags, damage generation and all three bonuses. This does not add a
+leg-trauma attack gate: the existing approved targeting and eligibility
+rules still apply. WEAPON and LIGHT use value[0] for the region; ARMOUR
+uses value[1]. Staff values remain spell/charge data, so do not
+reinterpret the marked native prayer or orb as a weapon.
+
+water_spirit uses elemental_being for a conscious, soul-bearing shape made
+of river water. It has a pseudo-head, eyes, ears, arms and hands, but no
+legs, animal heart, brains or guts. It is inorganic, Bloodless, Analgic,
+mute and corpseless, without undead classification, Mindless, Soulless or
+a ghost phase. Defaults are 90 cm, unknown mass (weight 0), Small, no HUGE
+and swimming. Zero means unspecified, not weightless. It resists ordinary
+nonmagical contact and water and is immune to poison. Its existing
+natural_attack_type trait is 7 (pound), and natural_damage_type is
+NATURAL_DAMAGE_WATER. This changes ordinary unarmed contact, not the held
+orb or an extra damage packet. Profile XP is +5 percentage points; all
+other stat modifiers stay zero and there is no active special. Sprites
+11301-11305 keep authored Flying, Pass Door, sneak, senses and their
+watery orbs. The area describes river-water beings, rather than the
+biological sea sprites in AD&D.
+
+Carnivorous plants 11306-11310 reuse giant_flytrap. Their seven-foot
+description gives individual height 213 cm; weight 90 kg and spread 150 cm
+are estimates replacing the shared 300 cm/250 kg/300 cm defaults. They
+stay Large without HUGE. The inherited mouth uses head targeting, and
+grasping leaf/tendril masses use arm targeting. They have fangs, ordinary
+bite, Mindless, organic vegetation remains, Bloodless and Analgic, without
+animal eyes, legs, heart or speech. They stay soul-eligible. Natural
+armour is -4; profile XP is +5 and the existing vine-grip special
+allowance is +5. Preserve aggression, Stay Area, magical flight and all
+original detection affects. Do not turn them into rooted Sentinel plants
+merely because they lack walking legs.
+
+animated_vine uses plant, with tendrils mapped to PART_ARMS and
+PART_TENTACLES. Its archetype XOR cancels the body's No Arms flag, then
+adds usable arm anatomy. Defaults are 30 cm rise, 40 kg, 600 cm extended
+length, Large and no HUGE; these are descriptive estimates. It is
+Mindless, organic, Bloodless and Analgic, but soul-eligible and leaves
+vegetation remains. It has no head, eyes, legs, animal heart or speech.
+PART_TENTACLES supplies ordinary tentacle-whip attacks. spec_vine_grip
+uses its existing 25-percent eligible combat sampling, nonmagic/Hold save,
+safety, usable-arm/trauma, HUGE-target and source lifecycle checks. It
+adds no separate damage packet. Profile XP and stat modifiers are zero;
+the existing special allowance is +5. Vines 11312-11314 keep Sentinel,
+Stay Area and magical flight.
+
+Gardener 11311 reuses gnome at 105 cm/40 kg/Small. Keep Wimpy and flight.
+It inherits Infrared, RES_MAGIC, +1 trained melee against goblins and
+kobolds, and the established -4 opponent penalty against the gnome
+giant-defence target families, including gnoll, bugbear, ogre, ogre mage,
+troll, giant and titan. The shared profile XP adjustment is +5.
+
+Fairies 11315-11318 and queen 11321 reuse sprite: 61 cm/4 kg/Small,
+ordinary living humanoid organs, wings, Flying, Detect Good/Evil and
+natural armour -4. The four fairies are female, matching both their
+descriptions and portraits. Their wing items still grant flight. Their
+individual spec_cast_archmage slots replace the whole inherited special
+set at 100 percent. The queen likewise keeps spec_cast_adept, including
+its existing checks against harmful help for undead visitors. Do not add
+spec_sprite beside those roles or dilute their casting. The queen stays
+Common in SAFE, HEALING, NO_RECALL and NO_UNDEAD room 11405. Royal status
+alone does not require a combat-rank promotion.
+
+Oaks 11319/11320 reuse enchanted_oak at 1500 cm/10000 kg/Large/HUGE.
+Branches supply usable arms and ordinary blunt pound contact. They are
+organic, Bloodless and Analgic, without animal head, eyes, legs, heart or
+speech, and have fire vulnerability. They remain soul-eligible and leave
+wood remains. Keep spec_warrior, magical flight, their rustling and
+forced-rest programs, gnarled branches and bark equipment. Objects
+11304/11342 also reset in Eerie Woods; their definitions are unchanged.
+
+pixie uses humanoid with wings and Flying, 76 cm/8 kg/Small, no HUGE,
+RES_MAGIC and natural armour -5. Profile XP is +5, with the existing
+innate-fade special allowance +5; all other stat modifiers are zero.
+spec_innate_fade restores invisibility on 25-percent eligible idle checks,
+never as persistent combat invisibility. Pixies 11322-11324 keep their
+initial invisibility, senses, sexes and greeting pranks. The height and
+defence choices adapt the second-edition pixie entry; 8 kg is an estimate.
+RES_MAGIC uses DD4's ordinary resistance mechanic, not literal 25-percent
+spell negation. No new daily spell list, sleep arrows or special player
+ability is supplied.
+
+Leprechaun 11325 reuses leprechaun at 61 cm/12 kg/Small, with Detect
+Hidden, RES_MAGIC and natural armour -2. Keep spec_thief, Wimpy, all other
+affects and the flying boots. Correct days and knights to days and nights.
+Object 11324 now says A pair of buckled shoes has been left here. These
+are the only prose changes.
+
+Drake 11300 remains Elite; all other 25 definitions stay Common. Rank HP
+applies once. Preserve levels, alignments, generated builds, all authored
+movement/aggression/passivity, flight and other affects, every embedded
+program, all reset placements/caps/order and equipment slots. There are 26
+inhabitants and 73 carried objects at boot and after refills. All 106
+rooms, exits and flags stay, including ward 11405. All 45 object
+definitions stay except the talon region and shoe wording. No shop,
+teacher or matching .src exists. Four other real source exports remain
+unchanged. All 26 portraits and 106 room images were reviewed and
+retained; no image generation accompanies this patch.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 35 current rows, including reserved. The index is not an
@@ -2830,7 +2954,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 245 current table rows follow, grouped by body. Numeric IDs are for
+All 249 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -2846,7 +2970,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (77)
+HUMANOID (78)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3079,6 +3203,9 @@ HUMANOID (77)
   [243] apocalyptic_avatar: h/w/l 190 / 75 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [248] pixie: h/w/l 76 / 8 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_innate_fade; policy auto
 
 DRAGON (14)
 ------------
@@ -3125,7 +3252,7 @@ DRAGON (14)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_crystal; policy auto
 
-QUADRUPEDAL_REPTILE (6)
+QUADRUPEDAL_REPTILE (7)
 -------------------------
   [ 29] giant_lizard: h/w/l ? / ? / 457; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3144,6 +3271,9 @@ QUADRUPEDAL_REPTILE (6)
         specials none; policy auto
   [210] crocodile: h/w/l 45 / 150 / 300; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [245] water_drake: h/w/l 250 / 2500 / 1000; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
 SERPENTINE_REPTILE (5)
@@ -3449,7 +3579,7 @@ QUADRUPEDAL_HYBRID (1)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-ELEMENTAL_BEING (3)
+ELEMENTAL_BEING (4)
 ---------------------
   [  2] fire_elemental: h/w/l 300 / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
@@ -3459,6 +3589,9 @@ ELEMENTAL_BEING (3)
         specials 1:spec_breath_fire_anatomical; policy auto
   [125] air_elemental: h/w/l ? / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [246] water_spirit: h/w/l 90 / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
 CRUSTACEAN (2)
@@ -3605,7 +3738,7 @@ ARACHNOID_HUMANOID (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_cast_mage, 2:spec_paralysing_bite; policy 70/30/0
 
-PLANT (6)
+PLANT (7)
 -----------
   [136] enchanted_oak: h/w/l 1500 / 10000 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3624,6 +3757,9 @@ PLANT (6)
         specials 1:spec_vine_grip; policy auto
   [239] giant_flytrap: h/w/l 300 / 250 / 300; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_vine_grip; policy auto
+  [247] animated_vine: h/w/l 30 / 40 / 600; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_vine_grip; policy auto
 
 ENVIRONMENTAL_HAZARD (5)
@@ -4471,8 +4607,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/4f61b455e5719459f98eace6c3a3636889a12d89
-  Base PR990 plus the accompanying Purgatory patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/84aac1fbbb37b83a5eed3434447893ac013bcffe
+  Base PR991 plus the accompanying Magic Garden patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -4482,9 +4618,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 78/153 areas (51.0%) and 1183/4131 mob
-definitions (28.6%) merged and verified. Purgatory adds two definitions.
-After its merge is verified, completion becomes 79/153 areas (51.6%) and
-1185/4131 definitions (28.7%).
+The live conversion is currently 79/153 areas (51.6%) and 1185/4131 mob
+definitions (28.7%) merged and verified. Magic Garden adds 26 definitions.
+After its merge is verified, completion becomes 80/153 areas (52.3%) and
+1211/4131 definitions (29.3%).
 
 END OF GUIDE
