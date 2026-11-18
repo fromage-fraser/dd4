@@ -761,6 +761,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 {WNovember 2026{x
+- Convert Wyvern's Tower creatures; correct their gear and add native abilities.
 - Swamp creatures use species profiles; the wisp keeps lightning and idle fading.
 
 {WMarch 2022{x

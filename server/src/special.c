@@ -62,6 +62,8 @@ DECLARE_SPEC_FUN( spec_sprite );
 DECLARE_SPEC_FUN( spec_vine_grip );
 DECLARE_SPEC_FUN( spec_innate_fade );
 DECLARE_SPEC_FUN( spec_wisp_lightning );
+DECLARE_SPEC_FUN( spec_golem_haste );
+DECLARE_SPEC_FUN( spec_acid_spray );
 DECLARE_SPEC_FUN( spec_elemental_burst );
 DECLARE_SPEC_FUN( spec_otyugh );
 DECLARE_SPEC_FUN( spec_cast_adept           );
@@ -193,6 +195,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_vine_grip")) return spec_vine_grip;
         if (!str_cmp(name, "spec_innate_fade")) return spec_innate_fade;
         if (!str_cmp(name, "spec_wisp_lightning")) return spec_wisp_lightning;
+        if (!str_cmp(name, "spec_golem_haste")) return spec_golem_haste;
+        if (!str_cmp(name, "spec_acid_spray")) return spec_acid_spray;
         if (!str_cmp(name, "spec_elemental_burst")) return spec_elemental_burst;
         if (!str_cmp(name, "spec_otyugh")) return spec_otyugh;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
@@ -330,6 +334,8 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_vine_grip) return "spec_vine_grip";
         if (special == spec_innate_fade) return "spec_innate_fade";
         if (special == spec_wisp_lightning) return "spec_wisp_lightning";
+        if (special == spec_golem_haste) return "spec_golem_haste";
+        if (special == spec_acid_spray) return "spec_acid_spray";
         if (special == spec_elemental_burst) return "spec_elemental_burst";
         if (special == spec_otyugh) return "spec_otyugh";
         if (special == spec_cast_adept) return "spec_cast_adept";
@@ -5562,6 +5568,104 @@ bool spec_wisp_lightning(CHAR_DATA *ch)
                 return TRUE;
         return cast_native_spell(skill_table[sn].spell_fun, sn,
                                  ch->level, ch, victim);
+}
+
+/* A mouthless creature can keep its old acid spell and corrosion. */
+bool spec_acid_spray(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        ROOM_INDEX_DATA *room;
+        int sn, source_deaths, target_deaths;
+
+        if (!innate_spell_ready(ch))
+                return FALSE;
+        if (!native_combat_opponent(ch) || ch->position != POS_FIGHTING
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || (ch->in_room->area
+            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE)))
+                return FALSE;
+
+        /* Keep the old one-in-four sampling among attackers in this room. */
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim == ch || victim->deleted || victim->hit <= 0
+                || victim->position == POS_DEAD || victim->fighting != ch
+                || !can_see(ch, victim) || is_safe(ch, victim))
+                        continue;
+                if (!number_bits(2))
+                        break;
+        }
+        if (!victim)
+                return FALSE;
+        sn = skill_lookup("acid breath");
+        if (sn < 0 || antimagic_blocks_activation(ch, RES_MAGIC))
+                return FALSE;
+
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        target_deaths = action_deaths(victim);
+        act("Acid sprays from $n towards $N!", ch, NULL, victim, TO_ROOM);
+
+        /* An act program may have moved someone or ended the fight. */
+        if (!action_character_in_room(ch, room, source_deaths)
+        || !action_character_in_room(victim, room, target_deaths)
+        || !innate_spell_ready(ch) || !native_combat_opponent(ch)
+        || ch->position != POS_FIGHTING || victim->fighting != ch
+        || !can_see(ch, victim) || is_safe(ch, victim)
+        || IS_SET(room->room_flags, ROOM_SAFE)
+        || (room->area && IS_SET(room->area->area_flags, AREA_FLAG_SAFE)))
+                return TRUE;
+        return cast_native_spell(skill_table[sn].spell_fun, sn,
+                                 ch->level, ch, victim);
+}
+
+/* Keep the usual Haste condition short before messages can trigger an action. */
+static void spell_golem_haste(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        AFFECT_DATA af;
+        ROOM_INDEX_DATA *room = ch->in_room;
+        int deaths = action_deaths(ch);
+        memset(&af, 0, sizeof(af));
+        af.type = sn;
+        af.duration = 0;
+        af.location = APPLY_NONE;
+        affect_to_char(ch, &af);
+        send_to_char("Your movements suddenly quicken.\n\r", ch);
+        if (action_character_in_room(ch, room, deaths))
+                act("$n's movements suddenly quicken.", ch, NULL, NULL, TO_ROOM);
+}
+
+/* A daily burst of speed belongs to this power, not to every construct. */
+bool spec_golem_haste(CHAR_DATA *ch)
+{
+        int sn;
+        if (!innate_spell_ready(ch) || !native_combat_opponent(ch)
+        || IS_SET(ch->act, ACT_OBJECT)
+        || ch->position != POS_FIGHTING
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || (ch->in_room->area
+            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE))
+        || is_affected(ch, gsn_haste) || is_affected(ch, gsn_quicken)
+        || is_affected(ch, gsn_slow) || IS_AFFECTED(ch, AFF_SLOW))
+                return FALSE;
+        if (ch->golem_haste_used && ch->golem_haste_day == time_info.day
+        && ch->golem_haste_month == time_info.month
+        && ch->golem_haste_year == time_info.year)
+                return FALSE;
+        sn = skill_lookup("haste");
+        if (sn < 0 || number_percent() > 20
+        || antimagic_blocks_activation(ch, RES_MAGIC))
+                return FALSE;
+
+        /* Reserve the use before a message can re-enter the creature's power. */
+        ch->golem_haste_used = TRUE;
+        ch->golem_haste_day = time_info.day;
+        ch->golem_haste_month = time_info.month;
+        ch->golem_haste_year = time_info.year;
+        if (cast_native_spell(spell_golem_haste, sn, ch->level, ch, ch))
+                return TRUE;
+        ch->golem_haste_used = FALSE;
+        return FALSE;
 }
 
 /* Living vines use the same short, source-tracked grip as other grasping limbs. */

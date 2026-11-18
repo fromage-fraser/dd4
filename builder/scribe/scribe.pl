@@ -129,6 +129,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         giant_land_crab sasquatch boulder_beast sprite
         swamp_thing small_beast will_o_wisp death_slaad_humanoid
         shambling_mound marsh_giant gargoyle
+        killer_frog giant_flytrap black_pudding clay_golem displacer_beast
 /;
 
 my %mob_act = (
@@ -349,6 +350,7 @@ my %mob_attack_parts = (
         forelegs     => '8796093022208',
         feathers     => '17592186044416',
         husk_shell   => '35184372088832',
+        tentacles    => '268435456',
 );
 
 my $mob_attack_parts_valid_mask = Math::BigInt->new(0);
@@ -384,7 +386,7 @@ my @mob_spec = qw/
     spec_faerie_dragon      spec_duergar            spec_swallow            spec_poison_palm spec_poison_claw spec_breath_brass spec_paralysing_bite spec_myconid_spores spec_engulf spec_camel_spit spec_manticore spec_alhoon
     spec_cast_slow
     spec_beholder spec_lamia spec_mimic spec_cast_construct_adept
-    spec_executioner_local spec_grell spec_flind spec_otyugh spec_horn_gore spec_breath_crystal spec_elemental_burst spec_sprite spec_innate_fade spec_vine_grip spec_wisp_lightning
+    spec_executioner_local spec_grell spec_flind spec_otyugh spec_horn_gore spec_breath_crystal spec_elemental_burst spec_sprite spec_innate_fade spec_vine_grip spec_wisp_lightning spec_acid_spray spec_golem_haste
 /;
 
 my %obj_ex = (

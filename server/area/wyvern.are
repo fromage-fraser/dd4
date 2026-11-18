@@ -12,8 +12,9 @@ The killer frog looks ravenous.
 ~
 2|32|64 0 -300 S
 5 16 6 5d5+55 1d5+4
-36 700
+0 700
 8 8 0
+< killer_frog~ common~
 #1602
 stone gargoyle~
 the stone gargoyle~
@@ -23,8 +24,9 @@ As you look, the figure seems to shift and move ...
 ~
 2|32|64|128 0 -400 S
 9 13 1 9d9+90 4d3+2
-304 2500
+0 2500
 8 8 1
+< gargoyle~ common~
 #1603
 angry gargoyle~
 an angry gargoyle~
@@ -34,8 +36,9 @@ He looks ready to attack!
 ~
 4|32|64 0 -600 S
 10 12 1 10d10+100 4d3+3
-304 3000
+0 3000
 8 8 1
+< gargoyle~ common~
 #1604
 elite gargoyle~
 the elite gargoyle~
@@ -45,8 +48,9 @@ He snarls at you and says LEAVE OR DIE!
 ~
 2|4 0 -600 S
 12 10 0 12d12+120 6d2+4
-304 5000
+0 5000
 8 8 1
+< gargoyle~ elite~
 #1605
 gargoyle shaman~
 the gargoyle shaman~
@@ -56,8 +60,9 @@ She says 'I can SEE you! I have been waiting ...'.
 ~
 2|4|64 8|32 -900 S
 13 8 -1 13d13+130 6d3+4
-256|16 9000
+0 9000
 8 8 2
+< gargoyle~ rare~
 #1606
 carnivorous plant~
 a carnivorous plant~
@@ -67,8 +72,9 @@ The plant looks something like a Venus fly-trap, only MUCH larger.
 ~
 2|32|64 0 0 S
 9 12 3 9d9+90 3d3+3
-63 2800
+0 2800
 8 8 0
+< giant_flytrap~ common~
 #1607
 gruesome ogre~
 a gruesome ogre~
@@ -80,6 +86,7 @@ It thinks that perhaps you would make a better meal.
 10 12 2 10d10+100 4d2+4
 0 3500
 6 8 0
+< ogre~ common~
 #1608
 shadow~
 a shadow~
@@ -87,10 +94,11 @@ A dark shadow moves about the room.
 ~
 The Shadow is vaguely humanoid. Two glowing pinpoints look at you.
 ~
-4|32|64 2|8|32 -1000 S
+4|32|64 2|8 -1000 S
 10 12 0 10d10+100 4d3+4
-96 4000
+0 4000
 8 8 0
+< shadow~ common~
 #1609
 evil wight~
 an evil wight~
@@ -100,8 +108,9 @@ He glares at you savagely and charges!
 ~
 2|4|32|64 8|32 -1000 S
 12 10 -2 12d12+120 6d2+3
-96 7000
+32 7000
 8 8 1
+< wight~ common~
 #1610
 burly minotaur~
 A burly minotaur~
@@ -113,10 +122,12 @@ This powerful creature wonders whether to kill you or not ...
 14 9 0 14d14+140 5d3+4
 0 11000
 8 8 1
+< minotaur~ common~
+MobWeight 300
 #1612
 savage minotaur~
 the savage minotaur~
-A bloodthirsty minotaur slowly counts his loot
+A bloodthirsty minotaur slowly counts his loot.
 ~
 He looks up at you and screams 'SO! Coming to steal my hoard!'
 ~
@@ -124,6 +135,7 @@ He looks up at you and screams 'SO! Coming to steal my hoard!'
 15 8 0 15d15+150 5d3+5
 0 14000
 8 8 1
+< minotaur~ common~
 #1613
 minotaur captain~
 the captain~
@@ -135,17 +147,19 @@ He looks at you, and a sinister grin slowly spreads on his face ...
 17 5 -3 17d17+170 5d3+6
 0 18000
 8 8 1
+< minotaur~ elite~
 #1614
 black pudding~
 the black pudding~
 A huge black pudding fills the center of the room!!
 ~
-It is a huge black blob that oozes about the room. Its heading toward YOU!
+It is a huge black blob that oozes about the room. It's heading toward YOU!
 ~
 4|32|64 0 -1000 S
 15 9 0 15d15+150 8d2+5
-63 14000
+0 14000
 8 8 0
+< black_pudding~ common~
 #1615
 lesser golem~
 a lesser golem~
@@ -155,8 +169,9 @@ The golem appears to be made of some kind of clay, enchanted to come to life!
 ~
 2|64 8 0 S
 16 8 -2 16d16+160 8d2+7
-304 18000
+0 18000
 8 8 0
+< clay_golem~ common~
 #1616
 ancient wyvern~
 the ancient wyvern~
@@ -166,8 +181,12 @@ It thunders loudly 'I must protect my Master's wealth!'
 ~
 4|32|64 8|32 -1000 S
 18 5 -2 18d18+180 10d2+8
-4 28000
+32 28000
 8 5 1
+< wyvern~ boss~
+MobHeight 300
+MobWeight 1200
+MobLength 1400
 #1617
 spectre~
 the spectre~
@@ -175,11 +194,12 @@ A spectre has begun to materialize in front of you!
 ~
 Terror fills your heart as you view this master of the undead.
 ~
-4|64 138 -1000 S
+4|64 2|8|128 -1000 S
 19 2 -8 19d19+190 8d3+7
-96 30000
+32 30000
 8 8 1
 
+< spectre~ elite~
 #1702
 trapper~
 a trapper~
@@ -191,6 +211,7 @@ The trapper is clad mostly in the fur of various animals he's caught.
 6 15 4 6d6+60 2d4+1
 0 800
 8 8 1
+< human~ common~
 #1704
 hunter~
 a hunter~
@@ -202,6 +223,8 @@ The hunter is rugged and sturdy from his occupation.
 8 13 3 8d8+80 2d4+2
 0 1500
 5 8 1
+< human~ common~
+MobWeight 85
 #1706
 ranger~
 a ranger~
@@ -213,6 +236,7 @@ The years of wandering have left the ranger hardened and strong.
 12 11 0 12d12+120 3d4+3
 0 7500
 5 8 1
+< human~ common~
 & 30 'teacher base'
 & 85 'hunting arts'
 & 85 'herb lore'
@@ -221,6 +245,7 @@ The years of wandering have left the ranger hardened and strong.
 & 85 'armed combat knowledge'
 & 85 'dowse'
 & 85 'forage'
+MobWeight 80
 #1707
 ranger leader~
 a ranger leader~
@@ -232,16 +257,20 @@ This individual has quite a reputation at the local trading posts!
 15 7 -3 15d15+150 4d4+4
 0 14500
 8 8 1
+< human~ rare~
 #1708
 ranger lord~
 the Lord of the Rangers~
 The Lord of the Rangers catches your eye.
 ~
+This seasoned ranger watches his surroundings with quiet confidence. Years
+in the wilderness have left their mark on his face and equipment.
 ~
 2|4 8 400 S
 20 1 -9 20d20+200 6d4+5
 0 40000
 8 8 1
+< human~ elite~
 #1710
 male centaur~
 a centaur~
@@ -253,6 +282,7 @@ The centaur has the upper torso of a man and lower body of a horse.
 7 14 4 7d7+70 2d4+1
 0 1000
 8 8 1
+< centaur~ common~
 #1711
 female centaur~
 a centaur~
@@ -264,6 +294,7 @@ The centaur has the upper torso of a woman and lower body of a horse.
 7 14 4 7d7+70 2d4+1
 0 1000
 8 8 2
+< centaur~ common~
 #1712
 old centaur~
 an old centaur~
@@ -275,6 +306,7 @@ This centaur has lived a full life.
 6 15 5 6d6+60 2d4+0
 0 800
 5 5 1
+< centaur~ common~
 #1714
 centaur elder~
 an elder centaur~
@@ -286,6 +318,7 @@ The elders act as counselors and advisors to the chief.
 9 13 2 9d9+90 2d4+2
 0 3000
 8 8 1
+< centaur~ common~
 #1715
 centaur guard~
 a centaur guard~
@@ -297,6 +330,8 @@ He appears to be blocking entrance to the next room.
 10 12 1 10d10+100 2d4+3
 0 4000
 8 8 1
+< centaur~ common~
+MobWeight 650
 #1716
 centaur chief~
 the centaur chief~
@@ -309,11 +344,11 @@ wisdom.
 12 11 1 12b12+120 2d4+3
 0 7000
 5 8 1
-< reserved~ boss~
+< centaur~ boss~
 #1720
 displacer beast~
 a displacer beast~
-A displacer beast is grazing nearby.
+A displacer beast is prowling nearby.
 ~
 As you watch this strange creature, its position seems to flicker and shift.
 ~
@@ -321,6 +356,7 @@ As you watch this strange creature, its position seems to flicker and shift.
 10 11 -3 10d10+100 4d3+2
 0 4500
 8 8 0
+< displacer_beast~ common~
 #0
 
 
@@ -479,7 +515,7 @@ A short bow has been carelessly left here.~
 5 150 20
 E
 short bow~
-It looks like the bows used by rustin hunters.
+It looks like the bows used by rustic hunters.
 ~
 #1702
 long bow~
@@ -491,7 +527,7 @@ A long bow has been foolishly abandoned here.~
 8 500 100
 E
 long bow~
-It looks like the bows used by rustin hunters.
+It looks like the bows used by rustic hunters.
 ~
 A
 18 1
@@ -826,7 +862,7 @@ S
 #1626
 The Musty Corridor~
 You are walking along a musty east-west corridor joining the two towers.
-There are room on each side of the corridor, and openings at each end.
+There are rooms on each side of the corridor, and openings at each end.
 ~
 16 9 0
 D0
@@ -897,7 +933,7 @@ S
 Base of the Eastern Tower~
 You stand in the center of the Eastern tower's base. Torch brackets occupy the
 four corners of this huge room.  Above each torch is a lifelike ornate stone
-gargoyle.  There are are open doors to the north and south, and passages east
+gargoyle.  There are open doors to the north and south, and passages east
 and west.  In addition, a spiral staircase leads up to the next level of this
 tower.
 ~
@@ -924,7 +960,7 @@ S
 The Common Room~
 You are in what must once have been a common room for all residents of the
 tower. There is a huge fire pit with a chimney in the center, and the smashed
-remains of a great many table and chairs.  The exit is south.
+remains of a great many tables and chairs.  The exit is south.
 ~
 16 8 0
 D2
@@ -979,7 +1015,7 @@ S
 #1636
 Second Level of the Eastern Tower~
 You are in the center of the second level of the Eastern tower. This large
-room appears quite empty, except for the candle abras firmly fixed to the
+room appears quite empty, except for the candelabras firmly fixed to the
 walls.  An opening leads westward, and a spiral staircase leads down.
 ~
 16 9 1
@@ -994,9 +1030,9 @@ D5
 S
 #1637
 The Elegant Hall~
-You are in what was once a elegant hall, although everything is moldering now.
-The rotted remains of a plush carpet covers the floor, while several moldy
-tapestries adorn the each side of the hall.  There are door north and south,
+You are in what was once an elegant hall, although everything is moldering now.
+The rotted remains of a plush carpet cover the floor, while several moldy
+tapestries adorn each side of the hall.  There are doors north and south,
 and openings east and west.
 ~
 16 9 0
@@ -1142,7 +1178,7 @@ S
 #1646
 The Officer's Quarters~
 You have entered a lavish but functional room decked out in a military style.
-Murals on the wall show battle scenes in gargoyles, minotaurs, and huge,
+Murals on the wall show battle scenes in which gargoyles, minotaurs, and huge,
 flying snake-like reptiles with poisonous tails fight humans and dwarves.
 Various objects in the room give evidence that it is occupied by individuals
 of authority.  The only door is north.
@@ -1157,7 +1193,7 @@ S
 Third Level of Eastern Tower~
 You are in the center of the Eastern Tower's third floor.  The room you are in
 glows with a mysterious light that has no source.  In the center of the room a
-ladder climbs up to a hatchway in the ceiling.  The hatchway is a strange
+ladder climbs up to a hatchway in the ceiling.  The hatchway has a strange
 looking keyhole.  There is also a door to the west.
 ~
 16 8 1
@@ -1571,7 +1607,7 @@ be seen in any direction.
 ~
 17 0 4
 D1
-A path dissappears into the scrub
+A path disappears into the scrub
 ~
 ~
 0 -1 25200
@@ -1618,7 +1654,7 @@ M 0 1604 2 1639         ;Load 2 Elite gargoyles
 M 0 1604 2 1639
 M 0 1605 1 1638         ;Load Gargoyle Shaman
 E 1 1602 6 16                   ;Equip her fine mace
-E 1 1621 3 13                   ;Equip her scarlet belt
+G 1 1621 3                     ;Keep her red potion in inventory
 M 0 1606 1 1628         ;Load Carn. Plant
 M 0 1607 1 1629         ;Load Ogre
 M 0 1608 4 1644         ;Load shadow < 4 existing
@@ -1636,7 +1672,8 @@ M 0 1614 1 1643         ;Load Black Pudding
 M 0 1615 2 1647         ;Load Lesser Golem < 2 existing
 E 1 1606 2 16                   ;Equip him Might rod
 M 0 1616 1 1648         ;Load the Ancient Wyvern!
-E 1 1615 2 17                   ;Equip him bracers
+G 1 1615 2                     ;Keep the armless wyvern's bracer as loot
+E 1 594 100 16                 ;Equip its native tail stinger
 G 1 1621 5                      ;Red potion in inv.
 M 0 1617 1 1650         ;Load the Spectre!
 E 1 1616 2 3                    ;Equip him blue cloak
@@ -1678,10 +1715,7 @@ S
 
 #SPECIALS
 M  1605 spec_cast_cleric
-M  1609 spec_cast_undead
-M  1614 spec_breath_acid
-M  1616 spec_breath_any
-M  1617 spec_cast_undead
+M  1616 spec_breath_any_anatomical
 M  1716 spec_cast_undead
 S
 
