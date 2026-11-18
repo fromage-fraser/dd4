@@ -760,6 +760,9 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 ~
 
 0 CHANGES~
+{WNovember 2026{x
+- Swamp creatures use species profiles; the wisp keeps lightning and idle fading.
+
 {WMarch 2022{x
 
 We're back!

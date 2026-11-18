@@ -8070,6 +8070,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_elemental_burst", 10 },
                 { "spec_sprite", 5 },
                 { "spec_innate_fade", 5 },
+                { "spec_wisp_lightning", 10 },
                 { "spec_vine_grip", 5 },
                 { "spec_otyugh", 5 },
                 { "spec_cast_slow", 10 },

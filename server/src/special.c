@@ -61,6 +61,7 @@ DECLARE_SPEC_FUN( spec_breath_crystal );
 DECLARE_SPEC_FUN( spec_sprite );
 DECLARE_SPEC_FUN( spec_vine_grip );
 DECLARE_SPEC_FUN( spec_innate_fade );
+DECLARE_SPEC_FUN( spec_wisp_lightning );
 DECLARE_SPEC_FUN( spec_elemental_burst );
 DECLARE_SPEC_FUN( spec_otyugh );
 DECLARE_SPEC_FUN( spec_cast_adept           );
@@ -191,6 +192,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_sprite")) return spec_sprite;
         if (!str_cmp(name, "spec_vine_grip")) return spec_vine_grip;
         if (!str_cmp(name, "spec_innate_fade")) return spec_innate_fade;
+        if (!str_cmp(name, "spec_wisp_lightning")) return spec_wisp_lightning;
         if (!str_cmp(name, "spec_elemental_burst")) return spec_elemental_burst;
         if (!str_cmp(name, "spec_otyugh")) return spec_otyugh;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
@@ -327,6 +329,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_sprite) return "spec_sprite";
         if (special == spec_vine_grip) return "spec_vine_grip";
         if (special == spec_innate_fade) return "spec_innate_fade";
+        if (special == spec_wisp_lightning) return "spec_wisp_lightning";
         if (special == spec_elemental_burst) return "spec_elemental_burst";
         if (special == spec_otyugh) return "spec_otyugh";
         if (special == spec_cast_adept) return "spec_cast_adept";
@@ -5508,6 +5511,57 @@ bool spec_innate_fade(CHAR_DATA *ch)
         if (sn < 0 || is_affected(ch, sn) || number_percent() > 25)
                 return FALSE;
         return cast_native_spell(spell_innate_fade, sn, ch->level, ch, ch);
+}
+
+/* This wisp keeps its old lightning attack and fades when things are quiet. */
+bool spec_wisp_lightning(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        ROOM_INDEX_DATA *room;
+        int sn, source_deaths, target_deaths;
+
+        if (!innate_spell_ready(ch))
+                return FALSE;
+        if (!ch->fighting && ch->position != POS_FIGHTING && !is_in_combat(ch))
+                return spec_innate_fade(ch);
+        if (!native_combat_opponent(ch) || ch->position != POS_FIGHTING
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || (ch->in_room->area
+            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE)))
+                return FALSE;
+
+        /* Keep the old one-in-four sampling among attackers in this room. */
+        for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim == ch || victim->deleted || victim->hit <= 0
+                || victim->position == POS_DEAD || victim->fighting != ch
+                || !can_see(ch, victim) || is_safe(ch, victim))
+                        continue;
+                if (!number_bits(2))
+                        break;
+        }
+        if (!victim)
+                return FALSE;
+        sn = skill_lookup("lightning breath");
+        if (sn < 0 || antimagic_blocks_activation(ch, RES_MAGIC))
+                return FALSE;
+
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        target_deaths = action_deaths(victim);
+        act("Lightning arcs from $n towards $N!", ch, NULL, victim, TO_ROOM);
+
+        /* An act program may have moved someone or ended the fight. */
+        if (!action_character_in_room(ch, room, source_deaths)
+        || !action_character_in_room(victim, room, target_deaths)
+        || !innate_spell_ready(ch) || !native_combat_opponent(ch)
+        || ch->position != POS_FIGHTING || victim->fighting != ch
+        || !can_see(ch, victim) || is_safe(ch, victim)
+        || IS_SET(room->room_flags, ROOM_SAFE)
+        || (room->area && IS_SET(room->area->area_flags, AREA_FLAG_SAFE)))
+                return TRUE;
+        return cast_native_spell(skill_table[sn].spell_fun, sn,
+                                 ch->level, ch, victim);
 }
 
 /* Living vines use the same short, source-tracked grip as other grasping limbs. */

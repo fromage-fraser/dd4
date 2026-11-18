@@ -384,7 +384,7 @@ my @mob_spec = qw/
     spec_faerie_dragon      spec_duergar            spec_swallow            spec_poison_palm spec_poison_claw spec_breath_brass spec_paralysing_bite spec_myconid_spores spec_engulf spec_camel_spit spec_manticore spec_alhoon
     spec_cast_slow
     spec_beholder spec_lamia spec_mimic spec_cast_construct_adept
-    spec_executioner_local spec_grell spec_flind spec_otyugh spec_horn_gore spec_breath_crystal spec_elemental_burst spec_sprite spec_innate_fade spec_vine_grip
+    spec_executioner_local spec_grell spec_flind spec_otyugh spec_horn_gore spec_breath_crystal spec_elemental_burst spec_sprite spec_innate_fade spec_vine_grip spec_wisp_lightning
 /;
 
 my %obj_ex = (
