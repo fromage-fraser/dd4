@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 18 November 2026
-Based on master 29b5634a67c42e9371d6f0a630959b1a8fa46a00 (PR #986),
-with the accompanying Old Marsh changes.
+Based on master 3a34e2f6f8fcde63c4e45ef5f3516cfd63445c2f (PR #987),
+with the accompanying Swamp connector changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -1724,7 +1724,7 @@ Golem Settlement and awakened golems
 
 awakened_golem occupies ID 206. MAX_MOB is now 238; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-34 body rows, 238 archetype rows, 48 internal traits and 121 Scribe
+34 body rows, 238 archetype rows, 48 internal traits and 122 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -2288,8 +2288,8 @@ publication remains separate from applying this code patch.
 Old Marsh
 ---------
 
-The current catalogue has 238 archetypes, 34 body species, 48 internal
-traits, 121 Scribe special names and 637 skill rows. The seven new entries
+The Old Marsh step brought the catalogue to 238 archetypes, 34 body
+species, 48 internal traits, 121 Scribe special names and 637 skill rows. The seven new entries
 at IDs 231-237 are swamp_thing, small_beast, will_o_wisp,
 death_slaad_humanoid, shambling_mound, marsh_giant and gargoyle. Existing
 rows, body species, trait IDs and player race opt-ins stay unchanged. No
@@ -2428,6 +2428,69 @@ the whole regenerated result, including scripts, resets and room flags.
 The four other real source exports, including Eakos, stay exact. The wisp
 portrait and southern lake image are regenerated separately from Git; the
 other 16 portraits and 17 room images stay unchanged.
+
+Swamp connector
+---------------
+
+Swamp (swamp_conn.are) reuses will_o_wisp and crocodile for its two
+definitions. The catalogue remains 238 archetypes, 34 body species and 48
+traits. Scribe now knows 122 special names; there are still 637 skill
+rows. No body, archetype, trait, area field or player skill is added.
+
+Will o' the Wisp 31400 inherits the reviewed mysterious_being/will_o_wisp
+profile: a conscious inorganic orb with eyes, no animal blood or organs,
+no voice or corpse, no pain, and an eligible soul. It flies, has -18
+natural armour, ordinary RES_MAGIC and poison immunity, and makes ordinary
+electrical contact with the blast verb. Its diameter is 61 cm (height and
+length), its weight is unspecified (0), and its size is Small. Zero weight
+means unknown, not massless. Clear the individual Flying, No Speech and No
+Corpse duplicates so XOR does not cancel those inherited properties. Keep
+its detection, infrared, passive, StayArea and Wimpy settings.
+
+The local spec_wisp_lightning keeps this wisp's authored lightning attack.
+It uses one slot at 100 percent. When idle it delegates to the existing
+spec_innate_fade: 25 percent of eligible opportunities, ordinary Invis
+with duration 0, no stacking or refresh, normal expiry and combat
+stripping. During combat it uses the old lightning breath spell and its
+HP-based damage and saves, with one-in-four sampling among eligible
+attackers. Lightning arcs from the orb; it does not need a mouth, head or
+brain organ. Both paths respect action, phase, ordered-player, NO_MAGIC
+and antimagic rules; the attack also checks legal targets and room/area
+safety. A message that moves or kills either participant or ends the fight
+cancels the bolt. Its special XP allowance stays +10, alongside the
+inherited profile +10. These are separate existing XP allowances, not two
+full special bonuses.
+
+This is an individual override, not a change to every will_o_wisp. The
+ordinary Old Marsh wisp 8308 still uses spec_innate_fade alone. A 50/50
+split between fading and lightning would halve their opportunities; the
+combined special chooses by combat state instead. For Scribe, use:
+
+    archetype will_o_wisp
+    sp spec_wisp_lightning
+
+That singleton deliberately replaces the inherited special set. The .are
+equivalent is M 31400 spec_wisp_lightning in #SPECIALS. MSTAT shows the
+resolved special and 100/0/0 probabilities. No new player spell is added.
+
+Alligator 31401 uses quadrupedal_reptile/crocodile while keeping its name
+and description. It is an ordinary living, blooded, soul-eligible animal,
+with pain and physical remains, four legs, scales, tail, claws and fang
+bite, without arms or human speech. Inherit Swimming, -5 natural armour
+and +5 profile XP. Defaults are 45 cm shoulder height, 150 kg, 300 cm long
+and Large, without HUGE. Its normal bite uses the authored damage build;
+it adds no attack, poison, tail strike, death roll or swallow ability.
+Keep Detect Invisible, Detect Hidden, Infrared and Sneak. Keep Aggressive
+and Wimpy together: this existing aggression rule skips awake targets.
+
+Both mobs remain Common. Preserve source levels 70/50, original builds,
+sexes, alignments and all six M resets. There is one wisp and five
+alligators initially and after refills, without carried equipment. No
+individual dimension override is needed. Preserve all 50 room flags, exits
+and extras, all four objects and affects, the two portal resets and
+destinations, area audio and reset messages. Correct only 'on he ground'
+to 'on the ground' in the pool cue's long description. No matching .src
+exists. Both mob portraits and all 50 room images stay unchanged.
 
 APPENDIX A. CURRENT BODY SPECIES
 ================================
@@ -4043,6 +4106,7 @@ Check native helpers, safety, active-slot policies and XP before reusing one.
     spec_vampire
     spec_vine_grip
     spec_warrior
+    spec_wisp_lightning
     spec_wight
     spec_wraith
 
@@ -4077,8 +4141,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/29b5634a67c42e9371d6f0a630959b1a8fa46a00
-  Base PR986 plus the accompanying Old Marsh patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/3a34e2f6f8fcde63c4e45ef5f3516cfd63445c2f
+  Base PR987 plus the accompanying Swamp connector patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -4088,9 +4152,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 74/153 areas (48.4%) and 1124/4131 mob
-definitions (27.2%) merged and verified. Old Marsh adds 17 definitions.
-After its merge is verified, completion becomes 75/153 areas (49.0%) and
-1141/4131 definitions (27.6%).
+The live conversion is currently 75/153 areas (49.0%) and 1141/4131 mob
+definitions (27.6%) merged and verified. Swamp adds two definitions.
+After its merge is verified, completion becomes 76/153 areas (49.7%) and
+1143/4131 definitions (27.7%).
 
 END OF GUIDE
