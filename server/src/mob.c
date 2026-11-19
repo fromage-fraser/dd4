@@ -1116,58 +1116,18 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "mummy", "humanoid", "icon1", "icon2",
-
-                /*
-                 * Intelligent corporeal undead.
-                 *
-                 * Mummies remain physical humanoids. Mummy rot and fear
-                 * are active behaviour and are added separately rather
-                 * than encoded as passive flags.
-                 */
-                ACT_UNDEAD, 0,
-
-                /*
-                 * Retain inherited humanoid anatomy unchanged.
-                 *
-                 * Do not infer inorganic physiology, removed organs,
-                 * mindlessness or no-corpse behaviour merely from the
-                 * mummy classification.
-                 */
-                0,
-
-                /* No additional natural attack parts. */
-                0,
-
-                /*
-                 * Corporeal undead baseline plus the mummy-specific
-                 * fire weakness called out by the undead design.
-                 */
-                RES_DARK,
+                /* A dried body still has organs, a mind and physical remains. */
+                ACT_UNDEAD, 0, BODY_BLOODLESS | BODY_ANALGIC, 0,
+                RES_DARK | RES_BLUNT | RES_PIERCE | RES_SLASH,
                 RES_HOLY | RES_FIRE,
-                RES_POISON | RES_SLEEP | RES_DRAIN,
-
-                /* Ordinary DD4 HP, damage, critical and swiftness values. */
+                RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN
+                    | RES_COLD | RES_HOLD | RES_PARALYSIS,
                 0, 0, 0, 0,
-
-                /* Inherit humanoid dimensions and language. */
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-
-                /*
-                 * Scheduled fear plus weaponless-contact mummy rot.
-                 * Do not use the broad legacy undead caster.
-                 */
-                "spec_mummy", "", "",
-
-                /* No additional archetype XP adjustment. */
-                0,
-
-                MOB_SPECIAL_CHANCES_AUTO,
-
-                /* Corporeal; inherit humanoid ghost phase of none. */
-                MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE,
-                MOB_TEMPLATE_UNSET
+                175, 45, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                /* The existing special supplies fear and contact rot. */
+                "spec_mummy", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         },
         {
                 "banshee", "humanoid", "icon1", "icon2",
@@ -3741,6 +3701,50 @@ const struct mob_type mob_table[MAX_MOB] =
                 320, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_innate_fade", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* This blood-eating race is living, rather than undead. */
+                "blood_reaper", "humanoid", "icon1", "icon2",
+                0, 0, PART_CLAWS | PART_FANGS, PART_CLAWS | PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                175, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_poison_bite", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* Ratlike people need no lycanthropic powers or weaknesses. */
+                "ratfolk", "humanoid", "icon1", "icon2",
+                0, 0, PART_TAIL | PART_CLAWS | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                152, 45, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* Reuse the reviewed otyugh body and its grip special. */
+                "neo_otyugh", "tripodal_organism", "icon1", "icon2",
+                0, AFF_INFRARED,
+                BODY_NO_HEAD | BODY_NO_ARMS | PART_HEAD | PART_MANY_ARMS
+                    | PART_TENTACLES | PART_EYESTALKS | PART_FANGS,
+                PART_FANGS, 0, 0, 0, 0, 0, 0, 0,
+                160, 650, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_otyugh", "", "", 10,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 244
+        },
+        {
+                /* A conscious magical outline has limbs, but no living organs. */
+                "ethereal_servitor", "humanoid", "icon1", "icon2",
+                0, AFF_INVISIBLE | AFF_FLYING,
+                PART_HEART | PART_BRAINS | PART_GUTS | BODY_NO_HEART
+                    | BODY_INORGANIC | BODY_ANALGIC | BODY_NO_SPEECH | BODY_NO_CORPSE,
+                0, 0, 0, 0, 0, 0, 0, 0,
+                175, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
         }
 };
 
@@ -4703,6 +4707,15 @@ static const CREATURE_TRAIT_CHANGE djinni_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
 };
 
+static const CREATURE_TRAIT_CHANGE mummy_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7}
+};
+static const CREATURE_TRAIT_CHANGE neo_otyugh_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4710,6 +4723,8 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"mummy", NULL, mummy_trait_changes, TRAIT_ITEMS(mummy_trait_changes)},
+        {"neo_otyugh", "otyugh", neo_otyugh_trait_changes, TRAIT_ITEMS(neo_otyugh_trait_changes)},
         {"mi_go", NULL, mi_go_trait_changes, TRAIT_ITEMS(mi_go_trait_changes)},
         {"djinni", NULL, djinni_trait_changes, TRAIT_ITEMS(djinni_trait_changes)},
         {"water_spirit", NULL, water_spirit_trait_changes,
