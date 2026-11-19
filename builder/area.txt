@@ -1059,12 +1059,15 @@ retains speech, remains corporeal and uses ghostphase none.
 
 Passive combat defaults are:
 
-    resistance:     RES_DARK
+    resistance:     RES_DARK | RES_BLUNT | RES_PIERCE | RES_SLASH
     vulnerability:  RES_HOLY | RES_FIRE
-    immunity:       RES_POISON | RES_SLEEP | RES_DRAIN
+    immunity:       RES_POISON | RES_SLEEP | RES_CHARM | RES_DRAIN
+                    | RES_COLD | RES_HOLD | RES_PARALYSIS
 
 Mummies do not inherit RES_NONMAGIC, silver/cold-iron interaction or spirit
-phase behaviour. Ordinary mundane weapons affect them normally.
+phase behaviour. Physical resistance halves qualifying ordinary weapon
+damage. Natural armour is -7. Defaults are 175 cm/45 kg/Medium, Bloodless
+and Analgic, retaining organs, consciousness, soul and physical remains.
 
 The template supplies spec_mummy. It does not use the broad legacy
 spec_cast_undead spellcaster.
@@ -9953,3 +9956,158 @@ all three clones, wineflask been been to been, and coffin wait for here to
 wait here for. No matching .src exists; all four other real source exports
 stay unchanged. All 22 portraits and 67 room images were reviewed and
 retained; there is no image generation or publication.
+
+
+The Catacombs
+-------------
+
+The catalogue has 259 archetypes, 35 basic body species, 50 internal
+traits, 124 Scribe special names and 637 skill rows. The four appended
+profiles are 255 blood_reaper, 256 ratfolk, 257 neo_otyugh and 258
+ethereal_servitor. Earlier indices stay. No new body species, registry
+trait, flag, special, area field or individual trait override is
+introduced. The mummy profile is refined for its first actual converted
+area consumer.
+
+blood_reaper uses humanoid: a living, conscious human-derived race whose
+blood diet does not make it undead. It keeps normal organs, blood, pain,
+soul, speech and remains. Anatomical claws/fangs supply ordinary claw/bite
+contact; existing spec_poison_bite preserves the area's venom with mouth
+and head checks. Defaults are 175 cm, 75 kg and Medium. There is no added
+resistance, vulnerability, regeneration, gaze, drain or invented feeding
+power. Stat/profile XP modifiers are zero; the existing poison special
+contributes +5 percentage points. Blood Reaper 13300 keeps its behaviour
+and senses. Its long line now says Blood Reaper rather than Flesh Reaper.
+
+ratfolk uses humanoid for naturally ratlike people, rather than presumed
+were-rats. It has arms/hands, two legs, tail and anatomical claws/fangs,
+with only ordinary fang bite selected. Defaults are 152 cm, 45 kg and
+Medium: the area supplies five-foot height, while thin-body weight is an
+estimate. No lycanthropy, disease power, silver exception, weapon immunity
+or new sensory default is added. All stat/XP modifiers are zero and no
+active special is supplied. Rat-man 13311 keeps its individual senses,
+sneak/hide, aggression and Wimpy. Its sex becomes male to match 'He' in
+the description; the portrait is compatible.
+
+neo_otyugh uses tripodal_organism and the same reviewed anatomy as otyugh:
+three legs, central toothed mouth, tentacles and eye stalks, ordinary
+living organs/blood/pain/soul/remains, conscious but without speech. It
+has Infrared, a PART_FANGS bite selector and existing spec_otyugh.
+Defaults are 160 cm high, 650 kg, 244 cm long and Large, without HUGE. The
+second edition eight-foot body diameter supplies length; height and mass
+are estimates relative to the existing otyugh. Its internal trait profile
+parents otyugh, within the same body species, and replaces natural_armour
+-7 with -10 rather than adding both. AC0 informs this value. Stat
+modifiers stay zero; profile XP is +10 and the existing special
+contributes +5. There is no added body-shield/damage-redirection power.
+Shared infectious disease remains deferred. Neo-Otyugh 13323 keeps
+authored nonaggression, even though its long description mentions
+attacking. Add neo-otyugh as a keyword while keeping Neo and Otyugh.
+
+ethereal_servitor uses humanoid for a conscious, soul-bearing, non-undead
+magical apparition. It has a humanoid head/eyes/arms/hands/legs outline,
+but no biological heart, brain or guts. Cancel the positive PART_HEART,
+PART_BRAINS and PART_GUTS inherited bits as well as setting BODY_NO_HEART.
+It is Inorganic, Analgic, mute and corpseless; Inorganic already rules out
+usable blood, so a duplicate Bloodless flag is unnecessary. Invisible and
+Flying are defaults. Height is 175 cm, mass is unknown (0), and size is
+Medium. Zero mass means unspecified, not physical weightlessness. There is
+no ghost phase, Pass Door, mundane-weapon barrier, immunity or active
+special. Stat/XP modifiers are zero. Ethereal Servant 13320 keeps its
+individual 100-percent cleric override, senses/sneak/hide/aggression and
+deliberately empty long/full descriptions.
+
+mummy remains a conscious, soul-bearing corporeal humanoid with normal
+organs and remains. It now defaults to 175 cm/45 kg/Medium, Bloodless and
+Analgic, with natural armour -7. Its resistances are Dark plus Blunt,
+Pierce and Slash; the physical resistances halve qualifying damage.
+Immunities are Poison, Sleep, Charm, Drain, Cold, Hold and Paralysis. Holy
+and Fire vulnerabilities remain. This is a scaled DD4 adaptation of the
+second-edition mummy's weapon protection, not blanket nonmagical immunity.
+Ordinary weapons still affect it through physical resistance; ordinary
+fire still exploits its fire vulnerability. No Mindless, Soulless,
+Inorganic, No Heart, No Corpse or extra fear-aura flag is added. Existing
+spec_mummy supplies scheduled fear and positive weaponless contact mummy
+rot, with its existing sampling, resistance and lifecycle checks. Do not
+duplicate that fear in another special slot. Profile XP is zero; the
+special contributes +15. Guardian 13306 has individual 190 cm/60 kg
+measurements for its unusually large human frame and inherits spec_mummy
+instead of generic poison.
+
+Reuse human for 13301-13305, 13314, 13315, 13317-13319, 13321, 13322 and
+13325. They retain ordinary 175 cm/75 kg/Medium defaults, original sex,
+levels, alignments, behaviour and assigned roles, except the approved
+ranks. Guildmaster 13305 stays female and keeps Practice/NoCharm/mage; its
+masked portrait establishes no contrary gender. Keep thief specials on
+13301/13302/13303/13314/13318, mage on 13305/13315/13319 and cleric on
+13321/13322. Alchemist 13317 uses existing spec_poison_palm to keep its
+venom through usable hands instead of inventing fangs. Apprentice 13314
+remains unplaced. Keep Practice on Archwizard 13319 and its exact program.
+
+Guardian Vampire 13307 and vampire lord 13313 reuse vampire, with native
+spec_vampire, regeneration and the established physiology/defences.
+Guardian sex becomes male to match 'His' and its portrait. Preserve all
+authored affects including flight/Pass Door and the lord's neutral
+alignment. Kharneth-Dhar 13309 and retainer 13312 reuse lich at 175 cm/ 45
+kg/Medium. Their individual 100-percent cleric and mage sets replace all
+inherited active slots, while passive lich chill contact and the
+independent fear aura remain. A cursed warrior described as a lich does
+not need an invented death-knight identity.
+
+Troll 13310 reuses troll at 275 cm/225 kg/Large without HUGE. Its reviewed
+regeneration traits and ordinary claw/bite/giant special apply; generic
+poison is removed. O-Yoroi 13316 reuses animated_armour at 175 cm/Medium
+with individual 25 kg weight, rather than the profile's 35 kg. Remove
+legacy inert-body XOR bits so they do not cancel inherited construct
+physiology or erase its articulated limbs. Guardian Statue 13324 uses
+stone_golem at 290 cm/900 kg/Large without HUGE. Its existing gas breath
+becomes a 100-percent spec_breath_gas_anatomical override, replacing the
+profile's Slow slot. Keep its key and all other defences/behaviour.
+
+Combination Lock 13308 reuses script_controller/mysterious_being. Its
+inert Mindless/Inorganic/Bloodless/Analgic/Soulless/mute/corpseless body,
+No Quest and Cannot Fight are inherited. Add individual ACT_UNKILLABLE to
+protect the puzzle node. Set sex unspecified, height 20 cm, weight 2 kg
+and Small; these dimensions are estimates. Keep blank keywords and long
+text, and preserve speech code 078340306 and transfer to 13442. Remove its
+one internal blank line so the old script interpreter reaches mptransfer
+instead of abandoning the IF block. Key 13356 moves from E 1 13356 100 17
+to G 1 13356 100: carried loot, no longer held in a nonexistent hand.
+Every other reset stays.
+
+Ranks are individual encounter design. Guildmaster 13305 and Lich-Lord
+13309 become Boss. Nightmaster 13304, vampire lord 13313, Archwizard 13319
+and explicitly elite WatchGuard 13321 become Elite. The guard's promotion
+applies to its eight reset inhabitants. Zed Knight 13325 keeps existing
+Rare and all eighteen equipment items/item-set behaviour. The other
+nineteen definitions stay Common. Existing rank HP multipliers apply once:
+Boss7x, Elite5x, Rare2x. No racial HP modifier is added, and service jobs
+or build letters alone do not establish a rank.
+
+Clear duplicate inherited ACT/AFF/body bits so XOR preserves the intended
+undead status, senses and anatomy. All original behaviour flags, including
+Aggressive/Wimpy combinations, Sentinel, Stay Area, scavenging,
+Regenerator, Practice and NoCharm stay except the explicit
+inert-controller protection. Individual role specials replace the whole
+inherited set at 100 percent; there is no automatic second caster slot.
+Retain all 146 room flags/exits, recall13441, program messages and
+destinations, all79 object definitions/stats/bonuses,
+key/treasury/nest/desk chains, reset caps/order/placements and loot. Keep
+skipped low-cap and duplicate armour reset rows: no population correction
+was approved. Population remains110initial/118afterrefill with128/138
+carried items. The apprentice stays unplaced.
+
+Monk 13322 keeps its fight-program messages and Stop it! response, but
+uses the existing mppeace command instead of the inaccessible immortal
+peace command. Actual combat now stops. Apart from this command and the
+lock's blank-line removal, all three scripts are preserved. The
+Archwizard's existing word-list trigger and equipment-drop/transfer
+program stay.
+
+Correct only the approved text: Blood Reaper name, Its eyes, Its bottom
+fangs, Neo-Otyugh 'rises up and attacks', library 'catalogue tags don't',
+and throne-room 'fill' and 'Kharneth-Dhar's'. Add Mrinthian to monk13322
+while retaining the old Mrinthain keyword. All short names stay, keeping
+portrait filenames stable. All26 portraits and146 room images were
+reviewed and retained. No matching .src exists; the four other real source
+exports remain unchanged, including exact Eakos regeneration.

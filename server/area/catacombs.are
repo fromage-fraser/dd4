@@ -7,7 +7,7 @@
 #13300
 blood reaper~
 a Blood Reaper~
-The Flesh Reaper snarls and salivates as it senses your blood.
+The Blood Reaper snarls and salivates as it senses your blood.
 ~
 The Blood Reaper appears to be a race of humanoids whose main diet is blood. Although,
 apparently originating from human stock, this is where the similarity ends. Their
@@ -18,6 +18,7 @@ fangs with long canines. Their claws are covered with dried blood.
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< blood_reaper~ common~
 #13301
 thief~
 a thief~
@@ -29,6 +30,7 @@ The thief appears to be nothing more than any other thief found in the land.
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13302
 thief guard~
 a thief guard~
@@ -40,6 +42,7 @@ The thief guard appears to be nothing more than any other thief found in the lan
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13303
 thief quarter master quartermaster~
 the Quartermaster~
@@ -51,6 +54,7 @@ The Thief Quartermaster appears to be nothing more than any other thief found in
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13304
 thief night master nightmaster~
 the Nightmaster~
@@ -62,6 +66,7 @@ The Nightmaster appears no different to any other thief found in the land.
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ elite~
 #13305
 thief guild master guildmaster~
 the guildmaster~
@@ -73,19 +78,23 @@ The Guildmaster is dressed as a ninja.
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ boss~
 #13306
 guardian mummy mummified~
 the Mummified Guardian~
 A Mummified Guardian shambles toward you.
 ~
 The mummified guardian appears to be the preserved corpse of a large human
-swathed in fine bandages. It's eyes have an evil red glow that seems to extend
+swathed in fine bandages. Its eyes have an evil red glow that seems to extend
 around its body.
 ~
 4|32|64|4096 8|32|512 -750 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< mummy~ common~
+MobHeight 190
+MobWeight 60
 #13307
 vampire guardian~
 Guardian Vampire~
@@ -98,7 +107,8 @@ room.
 2|4|32|64|128|4096 8|32|512|32768|65536|524288|1048576 -1000 S
 50 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< vampire~ common~
 #13308
 ~
 Combination Lock~
@@ -107,19 +117,21 @@ Combination Lock~
 The combination Lock has a dial on it and numbers around the outside. It appears
 that you must turn the dial to the correct numbers to open the door.
 ~
-2|64|4096 0 0 S
+2|64|4096|9223372036854775808 0 0 S
 1 0 0 0d0+0 0d0+0
-127|256 0
-8 8 1
+0 0
+8 8 0
 >speech_prog 078340306~
 if ispc($n)
 mpechoat $n You hear a soft click.  The door swings open and you step through, the door swinging shut behind you.
-
 mptransfer $n 13442
 mpechoaround $n The door opens, $n steps through it and is gone.  The door swings closed behind $m
 endif
 ~
 |
+< script_controller~ common~
+MobHeight 20
+MobWeight 2
 #13309
 dhar kharneth kharneth-dhar~
 Kharneth-Dhar~
@@ -129,22 +141,24 @@ The Lich-Lord, Kharneth-Dhar, wears rich, black robes made from the finest
 velvet. His skin is stretched tautly over his bones and has even split in places
 revealing skeletal whiteness.
 ~
-2|4|64|128|4096 8|32|128|512|32768|1048576 -1000 S
+2|4|64|128|4096 8|32|128|32768|1048576 -1000 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lich~ boss~
 #13310
 Troll~
 a troll~
 The troll looks hungrily in your direction and licks his fat lips.
 ~
-The troll stands about 9 feet tall and has green, warty skin. It's bottom fangs
+The troll stands about 9 feet tall and has green, warty skin. Its bottom fangs
 protrude from its mouth and its dirty, yellow claws look amazingly sharp.
 ~
-4|32 32|512|32768 -500 S
+4|32 32|32768 -500 S
 33 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< troll~ common~
 #13311
 Rat ratman rat-man~
 a rat-man~
@@ -155,7 +169,8 @@ The rat-man looks like a thin rat standing on two legs. He stands about 5 feet t
 4|32|128 8|32|512|32768|65536 -100 S
 35 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< ratfolk~ common~
 #13312
 lich retainer warrior~
 Lich retainer~
@@ -163,10 +178,11 @@ A lich warrior snarls at your arrival.
 ~
 The lich retainer is a warrior who has been cursed by his master to become a lich.
 ~
-2|4|32|64|128|4096 8|32|512|32768|65536|1048576 -750 S
+2|4|32|64|128|4096 8|32|32768|65536|1048576 -750 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lich~ common~
 #13313
 Vampire lord~
 a vampire lord~
@@ -179,6 +195,7 @@ swearing fealty to Kharneth-Dhar.
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< vampire~ elite~
 #13314
 apprentice thief~
 Apprentice Thief~
@@ -190,6 +207,7 @@ The Apprentice Thief appears no different from any other thief in the land.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13315
 Librarian~
 the Librarian~
@@ -202,6 +220,7 @@ patrons of the library to bring books to be stamped.
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13316
 suit samurai armour~
 Suit of O-Yoroi~
@@ -211,8 +230,10 @@ On closer inspection, the armour appears to be unoccupied.
 ~
 2|32|64|4096 8|32|512 0 S
 35 0 0 0d0+0 0d0+0
-127|256 0
+0 0
 8 8 0
+< animated_armour~ common~
+MobWeight 25
 #13317
 mad alchemist chemist~
 A mad alchemist~
@@ -226,6 +247,7 @@ head back and cackles with glee whilst rubbing his hands together.
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13318
 sentry thief~
 The Sentry~
@@ -237,6 +259,7 @@ The thief sentry appears to be an ordinary thief found anywhere in the land.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13319
 Arch Wizard~
 the Archwizard~
@@ -259,6 +282,7 @@ wave $n
 mptransfer $n 13300
 ~
 |
+< human~ elite~
 #13320
 Ethereal Servant~
 the Ethereal Servant~
@@ -266,10 +290,11 @@ the Ethereal Servant~
 ~
 
 ~
-2|32|64|4096 2|8|32|32768|65536|524288 0 S
+2|32|64|4096 8|32|32768|65536 0 S
 35 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
+< ethereal_servitor~ common~
 #13321
 Watch guard~
 the WatchGuard~
@@ -281,8 +306,9 @@ The Elite Temple guard vigilantly keeps order here.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ elite~
 #13322
-Mrinthain Monk~
+Mrinthain Monk Mrinthian~
 the Mrinthian Monk~
 The Monk quietly goes about his business
 ~
@@ -296,21 +322,23 @@ The initiates efficiently scurry around doing mundane duties.
 mpechoat $n $I looks irritably at you.
 mpechoaround $n $I looks irritably at $n
 say Stop it!
-peace
+mppeace
 ~
 |
+< human~ common~
 #13323
-Neo Otyugh~
+Neo Otyugh neo-otyugh~
 the Neo-Otyugh~
-The Neo-Otyugh rises up at attacks
+The Neo-Otyugh rises up and attacks
 ~
 This multi-tentacled creature smells of offal, urine and excrement. It doesn't
 look much better either.
 ~
-2|4|64|128 8|32|512|65536 0 S
+2|4|64|128 8|32|65536 0 S
 38 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 0
+< neo_otyugh~ common~
 #13324
 Guardian statue~
 the Guardian Statue~
@@ -322,6 +350,7 @@ The Guardian statue senses your presence and attacks!
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< stone_golem~ common~
 #13325
 Zed Knight~
 the Zed Knight~
@@ -334,8 +363,8 @@ in past campaigns.
 58 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ rare~
 
+< human~ rare~
 #0
 
 
@@ -1757,7 +1786,7 @@ S
 #13323
 Library~
 You are standing in an aisle, with bookshelves lining both walls.  The
-catalogue tags doesn't seem to make any sense to you.
+catalogue tags don't seem to make any sense to you.
 ~
 0 1|8|8192 0
 D1
@@ -3613,8 +3642,8 @@ S
 #13442
 The Throne room of Kharneth-Dhar.~
 This room is massive. The walls appear to be red-veined, black marble and
-the pillars that fiull the room appear constructed of the same material.
-A rich, blood-red carpet leads to Kharneth-Dhar's throne. Behind Khaneth-Dhar's
+the pillars that fill the room appear constructed of the same material.
+A rich, blood-red carpet leads to Kharneth-Dhar's throne. Behind Kharneth-Dhar's
 throne is a large tapestry depicting the Temple of Mrinthas, made from the
 same stone as the walls, surrounded by hideous creatures under a blood-red sky.
 ~
@@ -4149,7 +4178,7 @@ P 1 13342 100 13353               some hard cheese to container desk
 P 1 13345 100 13353               a tattered scroll to container desk
 *
 M 1 13308 1 13441                 Combination Lock to Teleported!
-E 1 13356 100 17
+G 1 13356 100
 D 1 13441 0 2                   ; Teleported! Lock North
 *
 M 1 13325 1 13315                      the Zed Knight to The Double Doors
@@ -4227,26 +4256,21 @@ S
 
 
 #SPECIALS
-M  13300 spec_poison                    a Blood Reaver
 M  13301 spec_thief                     a thief
 M  13302 spec_thief                     a thief guard
 M  13303 spec_thief                     the Quartermaster
 M  13305 spec_cast_mage                 the guildmaster
-M  13306 spec_poison                    the Mummified Guardian
-M  13307 spec_cast_undead                       Guardian Vampire
 M  13309 spec_cast_cleric                       Kharneth-Dhar
-M  13310 spec_poison                    a troll
 M  13312 spec_cast_mage                 a minor lich-lord
-M  13313 spec_cast_undead                       a Vampire Lord
 M  13314 spec_thief                     Apprentice Thief
 M  13315 spec_cast_mage                 the Librarian
-M  13317 spec_poison                    A mad alchemist
+M  13317 spec_poison_palm                    A mad alchemist
 M  13318 spec_thief                     The Sentry
 M  13319 spec_cast_mage                 the Archwizard
 M  13320 spec_cast_cleric                       the Ethereal Servant
 M  13321 spec_cast_cleric                       the WatchGuard
 M  13322 spec_cast_cleric                       the Mrinthian Monk
-M  13324 spec_breath_gas                        the Guardian Statue
+M  13324 spec_breath_gas_anatomical                        the Guardian Statue
 S
 
 

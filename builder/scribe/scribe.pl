@@ -133,6 +133,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         apocalyptic_avatar apocalyptic_steed
         water_drake water_spirit animated_vine pixie
         mi_go nightgaunt hunting_horror infernal_servitor rock_slug djinni
+        blood_reaper ratfolk neo_otyugh ethereal_servitor
 /;
 
 my %mob_act = (
