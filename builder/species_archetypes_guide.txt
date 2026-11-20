@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 21 November 2026
-Based on master e78edc4256315c616ba39f830c5a3cd578064fcf (PR #995),
-with the accompanying Ancalador changes.
+Based on master b4065f3494606a7c293ec6c16fef28204dd3aa2f (PR #996),
+with the accompanying Dragon Tower changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -911,10 +911,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 273, so this single example would make 274.
+guide's checked revision it is 279, so this single example would make 280.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 273.
+valid index. This example would receive index 279.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1612,7 +1612,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 273;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 279;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1722,9 +1722,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 273; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 279; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-35 body rows, 273 archetype rows, 50 internal traits and 126 Scribe
+35 body rows, 279 archetype rows, 50 internal traits and 126 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -3526,6 +3526,120 @@ comments. The amphitheatre title becomes The Macabre Amphitheatre. No
 matching.src exists; four other real exports stay unchanged, including
 exact Eakos regeneration. Artwork replacements are separate staged assets.
 
+The Dragon Tower
+----------------
+
+The catalogue now has 279 archetypes, 35 body species, 50 internal traits,
+126 Scribe special names and 637 skill rows. Six profiles append at IDs
+273-278: draconian, undead_draconian, adult_black_dragon,
+ancient_green_dragon, phase_dragon and tiamat_avatar. All 273 earlier
+profiles and all body species stay unchanged. There are no new area
+fields, trait commands, registry traits, special callbacks or player
+skills.
+
+draconian is the Tower's living humanoid dragonfolk. It has ordinary
+organs, arms, hands and legs, plus scales, wings, tail, horns, claws and
+fangs. It speaks, bleeds, feels pain, has a mind and soul, and leaves a
+corpse. Natural armour is -4; claws and fangs supply ordinary natural
+attacks. Defaults are 190 cm high, 90 kg and Medium; length is
+unspecified. Wings alone do not grant flight. There is no inherited
+breath, casting, broad resistance or Baaz stone death. Use baaz_draconian
+only for that distinct creature, not as a shortcut for every dragonfolk
+inhabitant.
+
+undead_draconian uses the same humanoid anatomy at 190 cm/80 kg/Medium.
+Its scales, wings, tail, horns, claws, fangs and physical remains persist.
+It is Undead, Mindless, No Speech, Bloodless, Analgic and Soulless.
+Ordinary zombie organs remain anatomically present. It resists Dark, is
+vulnerable to Holy and is immune to Cold, Poison, Drain, Sleep, Hold and
+Paralysis. Natural armour is -4. There is no inherited flight, breath or
+casting. The local zombie 2240 loses generic undead casting and becomes
+male to match its description. Its aggression, senses and reset caps
+remain.
+
+adult_black_dragon is 350 cm high/5000 kg/2500 cm long/Large with HUGE. It
+has natural armour -16, Magic resistance, Acid immunity and anatomical
+acid breath. ancient_green_dragon is 600 cm/18000 kg/4000 cm/Large with
+HUGE, natural armour -25, magical natural attacks, Magic resistance,
+Poison immunity and anatomical gas breath. Both speak and have ordinary
+living dragon anatomy, horns, fear aura, flight, swimming and established
+dragon senses. The older green is a new profile; adult_green_dragon stays
+unchanged. Colour defences and dragon anatomy follow the 2e references;
+these whole-number heights and masses are DD4 estimates.
+
+phase_dragon is a small living dragon: 25 cm high/8 kg/100 cm long/Small,
+natural armour -4, flight and dragon senses, with anatomical gas breath.
+Its existing ACT_BLINK flag grants ordinary defensive Blink. The NPC base
+chance is min(30, max(1, level/2)), adjusted by twice the level difference
+and clamped to 1..66. A successful roll needs 5 mana and spends it. Blink
+does not grant permanent noncorporeality, Pass Door or movement
+exceptions. The local phase dragon remains mute, Wimpy, Aggressive,
+Scavenger and Stay Area. This flag represents an existing active ability,
+not another racial-bonus marker.
+
+tiamat_avatar is a living, corporeal, killable five-headed dragon. Its
+Many Heads anatomy cancels the inherited single Head through XOR. It has
+ordinary eyes, horns, wings, claws, fangs, tail, organs, blood, pain, soul
+and remains. Defaults are 1200 cm high/80000 kg/6500 cm long/Large with
+HUGE. Natural armour is -40, natural attacks are magical, Magic is
+resisted, and Fire/Cold/Electricity/Acid/Poison are immune. Fear aura,
+flight and dragon senses apply. The existing mixed anatomical breath
+selects one of its eight payloads per invocation. It does not make five
+attacks at once or confer a full deity spell list. Profile XP is +10. All
+six profiles have zero HP/damage/critical/haste modifiers; the other five
+have XP +0. Existing special XP and individual rank HP multipliers still
+apply.
+
+The hatchling 2200 reuses dragon_hatchling with individual replacements 40
+cm/12 kg/120 cm/Small, preserving its mute mixed-breath role. A red
+portrait does not grant Fire immunity. The King 2205 uses individual 250
+cm/220 kg/Large without HUGE; other dragonfolk use the adult defaults.
+Human master 2202 keeps authored flight and melee combat, without an
+invented lich or mage identity. Human mage 2203, Tiamat priest 2204, royal
+mixed breath and slave/fool thievery retain their individual roles. Red
+2221 keeps fire-only anatomical breath. Hydra 2226 retains its authored
+venom through an individual spec_poison_bite override; shared hydra stays
+nonvenomous. No behaviour or moral alignment follows from a job title.
+
+Ranks are individual: Boss 2220/2221/2222/2223/2225, Elite 2202/2205/2243,
+Rare 2203/2204, and Common for the other nine definitions. Black 2222 was
+already Boss and stays so. Rare/Elite/Boss multiply HP by 2/5/7 once.
+Legacy HP dice letters are not rank markers and remain unchanged. All
+authored aggression/passivity, Sentinel, Scavenger, Stay Area, Wimpy,
+Sanctuary, Invisibility, senses and magical flight are retained through
+resolved XOR.
+
+Move priest 2204 from library 2214 to sanctum 2215, and Tiamat 2220 from
+mountaintop 2243 into her described final lair 2231 behind the platinum
+door. Both stone-door exits between nursery 2205 and hall 2223 use the
+existing stone key 2237 instead of missing 2297. Give that key to King
+2205 and set its destination value to 2223. Preserve both door flags.
+Hydra staff 2244, Tiamat orb 2298, red staff 2245, black leggings 2280 and
+white scale mail 2246 become carried loot. Red helm 2275 and green brooch
+2261 stay equipped. The Old Marsh use of spear 2200 stays unchanged. All
+other reset counts, caps, order, items and room flags remain. The new key
+adds one carried object: 49 initially and 58 after three refill resets;
+inhabitants remain 42 initially and 58 after those three resets. Those
+refill totals are observations, not a claim about the eventual maximum.
+
+Room and mob names stay unchanged. Minor prose fixes repair missing words,
+a bridge typo and the coffin's west-wall direction. No NO_UNDEAD flag is
+added. There is no matching .src; the other four real source exports stay
+unchanged. Updated pictures are separate assets, not part of the Git
+patch.
+
+Media filenames must follow the actual dd-gui lookup, not the image
+server's broader punctuation cleanup. Lowercase mob names and replace
+spaces/apostrophes with underscores; room names additionally replace
+slash, angle brackets and opening brace. Periods remain. Therefore room
+2229 needs 2229_the_great_hall_ends..png and room 2231 needs
+2231_the_end....png. Their existing images can be copied under those
+names. Preserve original_name when rewriting image prompts; the
+concubine's canonical filename stays 2206_a_concubine.png. The
+royal_attendant alias is not the current lookup. Regenerated 2206/2207
+portraits and room 2212 depict the approved dragonfolk, with covered
+nonsexual court clothing.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 35 current rows, including reserved. The index is not an
@@ -3573,7 +3687,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 273 current table rows follow, grouped by body. Numeric IDs are for
+All 279 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -3589,7 +3703,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (85)
+HUMANOID (87)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3846,8 +3960,14 @@ HUMANOID (85)
   [271] umber_hulk: h/w/l 244 / 750 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_confusing_gaze; policy auto
+  [273] draconian: h/w/l 190 / 90 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [274] undead_draconian: h/w/l 190 / 80 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
-DRAGON (14)
+DRAGON (18)
 ------------
   [ 16] dracolich: h/w/l ? / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3891,6 +4011,18 @@ DRAGON (14)
   [222] adult_crystal_dragon: h/w/l 300 / 5000 / 2000; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_crystal; policy auto
+  [275] adult_black_dragon: h/w/l 350 / 5000 / 2500; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_acid_anatomical; policy auto
+  [276] ancient_green_dragon: h/w/l 600 / 18000 / 4000; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gas_anatomical; policy auto
+  [277] phase_dragon: h/w/l 25 / 8 / 100; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gas_anatomical; policy auto
+  [278] tiamat_avatar: h/w/l 1200 / 80000 / 6500; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_breath_any_anatomical; policy auto
 
 QUADRUPEDAL_REPTILE (7)
 -------------------------
@@ -5300,8 +5432,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/e78edc4256315c616ba39f830c5a3cd578064fcf
-  Base PR995 plus the accompanying Ancalador patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/b4065f3494606a7c293ec6c16fef28204dd3aa2f
+  Base PR996 plus the accompanying Dragon Tower patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -5311,9 +5443,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 83/153 areas (54.2%) and 1277/4131 mob
-definitions (30.9%) merged and verified. Ancalador adds 16 definitions.
-After its merge is verified, completion becomes 84/153 areas (54.9%) and
-1293/4131 definitions (31.3%).
+The live conversion is currently 84/153 areas (54.9%) and 1293/4131 mob
+definitions (31.3%) merged and verified. Dragon Tower adds 19 definitions.
+After its merge is verified, completion becomes 85/153 areas (55.6%) and
+1312/4131 definitions (31.8%).
 
 END OF GUIDE

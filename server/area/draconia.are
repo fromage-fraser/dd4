@@ -11,10 +11,15 @@ A dragon hatchling is here, chewing on a bone.
 This small dragon hisses at you as you enter the room.  Although it is only a
 few feet long, its sharp teeth make you think twice about petting it.
 ~
-2|64 524288 -900 S
+2|64 0 -900 S
 7 12 4 4d8+100 1d8+2
 32 2250
 8 8 0
+< dragon_hatchling~ common~
+MobHeight 40
+MobWeight 12
+MobLength 120
+MobSize 0
 #2201
 draconian~
 the Draconian~
@@ -28,6 +33,7 @@ spear as you enter the room.
 13 8 2 13d13+130 2d6+3
 0 15000
 8 8 1
+< draconian~ common~
 #2202
 master~
 the dragon master~
@@ -39,6 +45,7 @@ He doesn't look happy to see you.
 37 0 -2 27d27+270 3d6+8
 0 60000
 8 8 1
+< human~ elite~
 #2203
 man mage wizard~
 a powerful mage~
@@ -52,6 +59,7 @@ powerful to have been accepted by the creatures which live here.
 32 0 3 22d22+220 1d8+10
 0 45000
 8 8 1
+< human~ rare~
 #2204
 cleric draconian~
 the holy Draconian~
@@ -64,6 +72,7 @@ notice a golden medallion in the shape of a five headed dragon.
 32 1 0 22d22+220 3d5+6
 0 45000
 8 8 1
+< draconian~ rare~
 #2205
 king draconian~
 the Draconian King~
@@ -77,6 +86,10 @@ is controlled by a greater power.
 26 0 1 26d26+260 2d8+12
 0 100000
 8 8 1
+< draconian~ elite~
+MobHeight 250
+MobWeight 220
+MobSize 2
 #2206
 concubine draconian~
 a concubine~
@@ -90,6 +103,7 @@ prepares to defend herself.
 6 16 5 6d10+50 2d3+1
 0 1000
 8 8 2
+< draconian~ common~
 #2207
 bodyguard draconian~
 A bodyguard~
@@ -102,6 +116,7 @@ not pleased it.
 18 3 2 18d18+180 2d6+10
 0 30000
 8 8 1
+< draconian~ common~
 #2220
 tiamat dragon~
 Tiamat~
@@ -110,10 +125,11 @@ A five headed dragon hisses at you as you enter this room.
 You see before you the master of this Tower, Tiamat.  She frowns at you as she
 prepares to make you pay for your insolence ... with your lives!
 ~
-2|4|32|16384 8|32|128 -1000 S
+2|4|32|16384 128 -1000 S
 50 0 -10 35b35+1000 4d9+15
-128 3500000
+0 3500000
 8 8 2
+< tiamat_avatar~ boss~
 #2221
 dragon red~
 the Great Red Dragon~
@@ -122,10 +138,11 @@ A red dragon is here, contemplating your existence.
 This huge red dragon dominates the chamber.  As you turn to flee, he grins at
 you and invites you to stay ... forever!
 ~
-2|4|32|16384 8|32 -1000 S
+2|4|32|16384 0 -1000 S
 41 0 -5 27r27+270 2d8+10
-128 300000
+0 300000
 8 8 1
+< ancient_fire_dragon~ boss~
 #2222
 dragon black~
 the Great Black Dragon~
@@ -134,11 +151,11 @@ A black dragon is here, laughing at your insolence.
 This huge black wyrm laughs at your puny weapons.  You realize that he is not
 going to roll over and die for you.
 ~
-2|4|32|16384 8|32 -900 S
+2|4|32|16384 0 -900 S
 36 1 -3 26d26+260 3d8+4
-128 250000
+0 250000
 8 8 1
-< reserved~ boss~
+< adult_black_dragon~ boss~
 #2223
 dragon white~
 the Great White Dragon~
@@ -148,10 +165,11 @@ This dragon towers over you.  Recalling your previous experiences with white
 dragons, you are not afraid.  She smiles at you and says 'I think you will find
 me a greater challenge than my offspring.'
 ~
-2|4|32|16384 8|32 -1000 S
+2|4|32|16384 0 -1000 S
 39 0 -3 27d27+270 3d8+4
-128 200000
+0 200000
 8 8 2
+< adult_white_dragon~ boss~
 #2225
 dragon green~
 the Ancient Green Dragon~
@@ -161,10 +179,11 @@ This huge beast appears to be the most directly related to the draconians.
 She looks at you with sorrow in her eyes and says 'You have slaughtered my
 children.  Prepare to die.'
 ~
-2|4|32|16384 8|32 -1000 S
+2|4|32|16384 0 -1000 S
 41 0 -4 31d31+310 3d8+15
-128 500000
+0 500000
 8 8 2
+< ancient_green_dragon~ boss~
 #2226
 hydra~
 a large hydra~
@@ -175,8 +194,9 @@ it isn't happy to see you.
 ~
 2|4|32 8|32 -800 S
 18 3 1 18d18+180 2d8+7
-128 35000
+0 35000
 8 8 0
+< hydra~ common~
 #2227
 slave human~
 A human slave~
@@ -189,6 +209,7 @@ left him alone.
 5 16 6 1d10+50 1d6+4
 0 900
 8 8 1
+< human~ common~
 #2240
 zombie draconian~
 a Draconian zombie~
@@ -199,8 +220,9 @@ rest, however, and now guards this corridor tirelessly as a zombie.
 ~
 2|4|32 8|32 -400 S
 9 9 4 1d100+175 1d8+6
-32 3000
-8 8 0
+0 3000
+8 8 1
+< undead_draconian~ common~
 #2241
 dragon phase~
 the phase dragon~
@@ -208,10 +230,11 @@ A Phase Dragon is darting around the room.
 ~
 This small dragon looks like he's up to no good.
 ~
-4|32|64|128 8|32 -300 S
+4|32|64|128 0 -300 S
 10 11 3 10d10+150 2d6+6
 32 6000
 8 8 1
+< phase_dragon~ common~
 #2242
 fool draconian~
 the draconian fool~
@@ -224,6 +247,7 @@ suit.  As you enter the room, he points at you and laughs.
 5 16 5 1d10+50 3d3+4
 0 800
 8 8 1
+< draconian~ common~
 #2243
 queen draconian~
 the Draconian Queen~
@@ -236,6 +260,7 @@ it might be a good idea to leave her alone.
 20 1 2 20d20+200 3d4+8
 0 45000
 8 8 2
+< draconian~ elite~
 #0
 
 
@@ -401,7 +426,7 @@ a stone key~
 A stone key.~
 ~
 18 0 1
-0~ 0~ 0~ 0~
+2223~ 0~ 0~ 0~
 1 500 1000
 #2240
 key black~
@@ -726,7 +751,7 @@ D1
 You see a large stone door.
 ~
 door stone~
-2 2297 2223
+2 2237 2223
 S
 #2206
 Storage Room~
@@ -768,7 +793,7 @@ E
 sign~
 The sign reads:
     This area is kind of tough.  You probably shouldn't go up these stairs
-    alone if you are under 18th level, or at all if you under 14th level.
+    alone if you are under 18th level, or at all if you're under 14th level.
     Have fun! -- Wench
 ~
 S
@@ -979,7 +1004,7 @@ at you before it attacks.
 ~
 22 8 1
 D2
-You the cave opening.
+You see the cave opening.
 ~
 ~
 0 0 2235
@@ -991,7 +1016,7 @@ as though it is amused by your presence.
 ~
 22 8 1
 D0
-You the cave opening.
+You see the cave opening.
 ~
 ~
 0 0 2241
@@ -1013,7 +1038,7 @@ coffin~
 1 0 2232
 E
 coffin~
-  A coffin lies a against the east wall.  It is closed.
+  A coffin lies against the west wall.  It is closed.
 ~
 S
 #2223
@@ -1027,7 +1052,7 @@ D3
 You see the Nursery.
 ~
 door stone~
-1 2297 2205
+1 2237 2205
 D1
 The Hall continues.
 ~
@@ -1178,7 +1203,7 @@ S
 Wine cellar~
    This is the old wine cellar of the Dragon Tower.  The shelves are empty.
 Nothing living has been in here for a long time.  You see a tunnel leading
-off to the east and boy does it smell bad.  Kinda of like rotting flesh.
+off to the east and boy does it smell bad.  Kind of like rotting flesh.
 ~
 22 1 2
 D4
@@ -1239,7 +1264,7 @@ S
 The End of the tunnel~
    You have finally come to the end of the tunnel.  Back to the west lies
 the miles of tunnels you have walked through.  You see the faint outline of
-a trapdoor above you.  A bride over an underground river lies to the south.
+a trapdoor above you.  A bridge over an underground river lies to the south.
 ~
 22 257 2
 D3
@@ -1260,7 +1285,7 @@ bridge
 S
 #2237
 The Bridge~
-   You are walking along an old wooden bridge.  Its not that secure.  You
+   You are walking along an old wooden bridge.  It's not that secure.  You
 might want to hurry along.  To the south, on the other side of the bridge,
 lies a small opening.
 ~
@@ -1279,7 +1304,7 @@ S
 #2238
 A small opening~
    You are standing in a small opening.  To the north lies the old wooden
-bridge.  To your south the you can see a clearing.  You can see sunlight
+bridge.  To your south you can see a clearing.  You can see sunlight
 again.  What a welcome relief!
 ~
 22 9 2
@@ -1354,7 +1379,7 @@ the path continues
 S
 #2241
 A cave opening~
-   You stand before a huge cave opening.  You hearing heavy breathing from
+   You stand before a huge cave opening.  You hear heavy breathing from
 within the cave.  There are a few skeletons lying about.  The cave lies to
 the south.  The path is back to the east.
 ~
@@ -1373,7 +1398,7 @@ S
 #2242
 The path continues~
    The path continues up the mountain to the top.  The path also goes down.
-Thats it, nothing more to see.
+That's it, nothing more to see.
 ~
 22 0 2
 D4
@@ -1392,7 +1417,7 @@ The top of the mountain~
    You are standing at the top of the mountain.  It feels more like the top of
 the world.  To your north lies a huge platinum door.  You hear very pronounced
 grumbling from behind the doors.  It sounds like something huge and hungry.
-But if you don't have the key you don't have to worry because you can't get it.
+But if you don't have the key you don't have to worry because you can't get in.
 If you do have the key I would suggest not going in.  Some believe the Five
 Headed dragon Tiamat was imprisoned here by the gods.  But who believes in
 fairy tales.  Well, if you're scared, you can always go down the mountain.
@@ -1422,7 +1447,7 @@ O
       o
        !
 
-   I warned you!  You have fallen into the bottomless pit.  You life flashes
+   I warned you!  You have fallen into the bottomless pit.  Your life flashes
 right before your eyes.  Pretty pathetic isn't it?  Next time you'll know
 to listen to the God of Laughs.
 ~
@@ -1459,7 +1484,7 @@ M 0 2226 1 2208
 G 1 2234 1
 G 1 2243 9
 G 1 2223 20
-E 1 2244 5 17
+G 1 2244 5
 D 0 2230 3 2
 D 0 2218 1 2
 D 0 2201 0 2
@@ -1491,7 +1516,7 @@ E 1 2250 50 17
 G 1 2251 50
 E 1 2261 50 3
 M 0 2242 5 2214
-M 0 2204 1 2214
+M 0 2204 1 2215
 E 1 2220 50 3
 E 1 2211 50 14
 E 1 2210 50 13
@@ -1503,6 +1528,7 @@ E 1 2276 50 12
 E 1 2242 50 11
 E 1 2254 50 9
 G 1 2232 2
+G 1 2237 1
 M 0 2207 5 2216
 M 0 2207 5 2216
 M 0 2207 5 2216
@@ -1524,43 +1550,37 @@ M 0 2240 5 2233
 M 0 2240 5 2234
 M 0 2240 5 2236
 M 0 2223 1 2220
-E 1 2246 50 5
+G 1 2246 50
 M 0 2222 1 2221
-E 1 2280 50 7
+G 1 2280 50
 M 0 2202 1 2222
 E 1 2202 50 16
 E 1 2281 50 10
 E 1 2271 50 9
 M 0 2221 1 2226
 E 1 2275 50 6
-E 1 2245 50 17
+G 1 2245 50
 G 1 2299 2
 M 0 2225 1 2230
 G 1 2241 2
 G 1 2285 50
 E 1 2261 50 3
-M 0 2220 1 2243         TIAMAT
-E 1 2298 50 17          his chromatic orb
+M 0 2220 1 2231         TIAMAT
+G 1 2298 50          her chromatic orb
 S
 
 
 
 #SPECIALS
-M  2200 spec_breath_any
-M  2203 spec_cast_mage
-M  2204 spec_cast_cleric
-M  2205 spec_breath_any
-M  2220 spec_breath_any
-M  2221 spec_breath_fire
-M  2222 spec_breath_acid
-M  2223 spec_breath_frost
-M  2225 spec_breath_gas
-M  2226 spec_poison
-M  2227 spec_thief
-M  2240 spec_cast_undead
-M  2241 spec_breath_gas
-M  2242 spec_thief
-M  2243 spec_breath_any
+M 2200 spec_breath_any_anatomical
+M 2203 spec_cast_mage
+M 2204 spec_cast_cleric
+M 2205 spec_breath_any_anatomical
+M 2221 spec_breath_fire_anatomical
+M 2226 spec_poison_bite
+M 2227 spec_thief
+M 2242 spec_thief
+M 2243 spec_breath_any_anatomical
 S
 
 

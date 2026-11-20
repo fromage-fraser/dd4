@@ -137,6 +137,8 @@ my %mob_archetype = map { $_ => 1 } qw/
         asp mongoose animated_carpet sandman caryatid_column
         hieracosphinx gynosphinx criosphinx androsphinx
         undead_riding_beetle green_slime crystal_spider umber_hulk ochre_jelly
+        draconian undead_draconian adult_black_dragon ancient_green_dragon
+        phase_dragon tiamat_avatar
 /;
 
 my %mob_act = (
