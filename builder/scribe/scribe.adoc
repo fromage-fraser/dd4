@@ -14390,3 +14390,194 @@ while retaining the old Mrinthain keyword. All short names stay, keeping
 portrait filenames stable. All26 portraits and146 room images were
 reviewed and retained. No matching .src exists; the four other real source
 exports remain unchanged, including exact Eakos regeneration.
+
+
+The Great Pyramid
+-----------------
+
+The catalogue has 268 archetypes, 35 basic body species, 50 internal
+traits, 125 Scribe special names and 637 skill rows. Nine profiles append
+at259-267: asp, mongoose, animated_carpet, sandman, caryatid_column,
+hieracosphinx, gynosphinx, criosphinx and androsphinx. All259 earlier
+resolved profiles and all35 bodies stay unchanged. New passive bonuses use
+existing internal traits; there are no new flags, area fields, player
+skills or individual trait commands. All HP/damage/critical/haste
+modifiers remain zero. Ranks and individual dimensions still belong to
+encounter design.
+
+asp uses serpentine_reptile, with ordinary living head/eyes/mouth/fangs,
+scales/tail/organs/blood/pain/soul/remains and no arms, legs or speech.
+Defaults are unknown height,1kg,60cm length and Small, using estimated
+measurements. A natural fang bite and existing spec_poison_bite retain the
+area's explicit venom. Profile XP is zero; the existing special adds +5
+percentage points. Asp2600 inherits it. Cobra2601 reuses cobra at unknown
+height/3kg/200cm/Small and gets the same special individually. The shared
+cobra still has no venom special, preserving the Mud School introductory
+animal. Clear legacy No Heart and duplicate limb/speech flags so XOR keeps
+the snake's real heart and proper limbless body.
+
+mongoose uses quadrupedal_mammal at20cm/2kg/50cm/Small, all estimated. It
+has paws, tail, fangs and anatomical claws, but only ordinary fang bite
+selected. It keeps organic organs/blood/pain/soul/remains, without hands
+or speech. There is no poison immunity, extra snake-hunting attack or
+active special. All stat/profile XP modifiers are zero. Individual2602
+keeps female sex, Infrared, Stay Area and nonaggression. Correct its
+rodent description to small carnivorous mammal.
+
+animated_carpet uses limbless_construct: no head, eyes, heart, arms or
+legs; Mindless, Soulless, Inorganic, Bloodless, Analgic, mute and
+corpseless. Its5cm height describes thickness, with8kg/200cm/Medium
+estimates. Flying and ACT_MOUNTABLE make its described
+rising-under-your-feet role usable through the existing Mount command.
+Native natural_attack_type7 supplies ordinary blunt body contact without
+pretending it has a mouth. Immunities are Poison, Sleep, Drain and Charm;
+profile XP and other stat modifiers are zero. Carpet2606 keeps Sentinel
+and its original detection. Existing skill/race/form/level/master/rider
+gates apply; Mountable also excludes it from ordinary quest targets and
+Summon under existing rules. No new riding, vehicle, movement or ward
+implementation is introduced.
+
+sandman uses elemental_being at240cm/250kg/Large, with length unspecified.
+It is a conscious, soul-bearing non-undead sand humanoid. Its sculpted
+head/eyes/ears/arms/hands/fingers/two legs/feet do not add biological
+heart, brain or guts. Keep Inorganic, Analgic, mute and corpseless,
+without Mindless or Soulless. Inorganic already rules out usable blood.
+Fire and Nonmagic resistance each halve qualifying damage; Poison immunity
+is explicit. Profile XP is+5, other stat modifiers zero. These defences
+and measurements are proposed DD4 adaptations of a hot granular body, not
+an exact second-edition stat block. No sleep attack, earth phase or
+blanket spell/control immunity is supplied.2608 keeps its original senses,
+male sex, Wimpy, Stay Area and nonaggression.
+
+caryatid_column uses bipedal_construct for a head/eyes/ears/arms/hands/
+fingers/two legs/feet stone humanoid without biological organs. It is
+Mindless, Soulless, Inorganic, Bloodless, Analgic and mute, with physical
+stone remains and loot. Defaults are213cm/300kg/Medium. The local
+second-edition seven-foot height and AC5 inform height and natural armour
+-5; mass is estimated. RES_NONMAGIC halves ordinary weapon damage;
+RES_MAGIC is the chosen DD4 adaptation of its save protection. Immunities
+are Poison, Sleep, Drain, Charm, Hold and Paralysis. Profile XP is+5;
+other stat modifiers zero. No stone-golem Slow, weapon shattering or
+stone-transform instant kill is added.
+
+Caryatid2610 explicitly depicts four women carved around one column.
+Individual body XOR cancels PART_HEAD/PART_ARMS/PART_2_LEGS and adds
+PART_MANY_HEAD/PART_MANY_ARMS/PART_MANY_LEGS. Keep hands/fingers/feet and
+working eyes. Individual240cm/1200kg/Large dimensions describe the
+composite; it is not HUGE. Many-part flags describe anatomy, not four
+extra attacks, extra wear slots or four weapon drops. Each of the two
+original mobs still wields its one ordinary stone scimitar. Keep all reset
+caps/order and the second guardian's key exactly, including the author's
+intentional reload dependency when only one guardian has been killed.
+
+The four sphinx profiles use quadrupedal_hybrid: living, conscious,
+soul-bearing, speaking creatures with organic organs, blood, pain and
+remains. They have four feline legs/paws/claws/tails and feathered wings,
+with Flying and no human arms/hands by default. No new resistance or
+immunity is inferred. Their local second-edition heights/AC values inform
+height and natural armour; masses/body lengths are estimates. Ordinary
+part attacks use the shared anatomical/trauma filters and grant no extra
+attack count.
+
+hieracosphinx has a bird head/beak and claw/beak
+attacks,213cm/300kg/350cm/ Large, natural armour-9 and profile XP+5. No
+active special. Local2612 is smaller180cm/200kg/300cm while stillLarge,
+preserving relative smallness beside its cousins. Keep its Infrared,
+aggression and Wimpy. Sex0 becomes male from the second-edition identity;
+the bird-headed portrait is compatible but cannot itself establish sex.
+
+gynosphinx defaults to a female-humanlike head on a winged feline body,
+213cm/260kg/330cm/Large, armour-11, ordinary claw contact and profile
+XP+5. There is no profile active special. The local2613 explicitly has a
+woman's upper body and two feline hind legs. Its individual XOR cancels
+BODY_NO_ARMS, PART_4_LEGS and PART_FORELEGS, and adds
+PART_ARMS/PART_HANDS/PART_FINGERS/ PART_2_LEGS, keeping
+paws/claws/wings/tail. Use213cm/180kg/unknown length0/ Large. It keeps
+female sex, good alignment and the individual100-percent cleric role. Its
+local appearance and artwork are retained; no full2e
+clairvoyance/symbol/legend-lore repertoire is introduced.
+
+criosphinx has a ram head/horns and claw/horn contact,229cm/400kg/400cm/
+Large, armour-10, existing spec_horn_gore and profile XP+5. Its local2614
+retains the authored cleric role despite differing from the spell-less2e
+cousin. Supply an explicit individual70-percent cleric/30-percent gore
+set, replacing the complete inherited set. The existing gore still has its
+own15-percent attempt and head/horn/action/visibility checks.
+
+androsphinx has a manlike face/mane and ordinary claw contact,244cm/500kg/
+450cm/Large, armour-12 and profile XP+10. Its profile selects
+cleric70percent or spec_terrifying_roar30percent. OrdinaryLarge does not
+imply BODY_HUGE. Local2615 is Elite, becomes male to match
+reference/portrait, and inherits that mixture. Great Sphinx2616 is
+Boss,1000cm high/30000kg/1800cm long/Large, retaining individualHUGE. Its
+stone-like dormant appearance and imposing indestructible prose do not
+make it a construct or Unkillable: its treasure key remains obtainable. It
+retains Sanctuary/Protect/senses and uses cleric50percent/random
+anatomical breath30percent/roar20percent.
+
+spec_terrifying_roar is reusable by any suitable mobile, without vnum
+checks. When selected it attempts20percent of eligible opportunities. Only
+the current opponent is affected. It needs an awake, active NPC, a usable
+head without Head Trauma, an unchanged living same-room opponent, normal
+combat permissions and a room without Cone of Silence. Source silence is
+respected. A human language, eyes or a visible target is not required.
+Mindless and ACT_OBJECT victims are excluded. Normal supernatural Fear
+saving uses RES_SONIC|RES_PSYCHIC, including current fear protections and
+werewolf defences. A successful save has no effect; failure attempts
+normal fleeing, which still obeys movement and escape restrictions.
+
+The roar deals no direct HP damage, adds no persistent condition and does
+not change deaf/chat settings. It has no three-stage daily counter or
+permanent deafness. Messages and saves can run other actions, so recheck
+source/victim death identity, room, current opponent, action/head/silence
+and permissions before continuing. No bystander is targeted. It adds+5
+percentage points through the existing weighted special XP calculation.
+Androsphinx30percent selection gives6percent eligible roar attempts; Great
+Sphinx20percent gives4percent. These are attempts before saves and normal
+flee restrictions, not guaranteed successful escapes.
+
+Human watcher2603/tomb thief2604 reuse175cm/75kg/Medium; Ali Baba2605 uses
+individual190cm/90kg for the tall description and becomes Rare. Keep all
+thief roles, original behaviours/levels/alignments and gear. Mummy2607
+reuses the reviewed175cm/45kg/Medium mummy, native fear/rot and complete
+physiology/defences. Keep Infrared/Wimpy/nonaggression. Ramses2617 uses
+individual190cm/80kg for his tall, healthy-looking body, becomes Boss,
+retains individual No Corpse and regains speech. His good alignment150,
+Sanctuary/Protect/senses, curse/elixirs/mask/sand loot stay.
+Healthy-looking flesh does not require living classification; mummy
+organs/consciousness/ soul, Bloodless/Analgic and physical defences still
+apply.
+
+Efreet2609 reuses the reviewed366cm/600kg/Large/HUGE efreeti, armour-8,
+fire resistance and flight. Keep individual No Corpse and restore speech;
+its individual100-percent anatomical fire breath retains the original
+payload with usable-head checks. Djinni2611 reuses320cm/200kg/Large,
+armour-6 and flight, keeping its held lamp. Its explicit70-percent mage/
+30-percent anatomical gas-breath set replaces inherited fade. Ramses
+selects cleric70percent/mummy30percent; the overwritten generic undead
+caster row is removed. Mummy contact capability is also weighted:30percent
+capability times25percent contact sampling gives7.5percent rot attempts
+per eligible positive weaponless contact. Ordinary mummy2607 retains
+100percent capability and25percent sampling. No extra fear aura is added.
+
+Old duplicate #SPECIALS M records were last-wins: djinni had mage only,
+Great Sphinx had random breath only, Ramses had cleric only. The explicit
+N/P records now retain the approved mixtures. Specify all three slot
+names, using none for unused slots, and one complete probability vector.
+The scheduler chooses one callback and never retries another after FALSE.
+Profile and special XP adjustments add once, with weighted special XP; no
+new rank multiplier or second combat scheduler is supplied.
+
+Only the Great Sphinx's answer2617 reset changes: E0/2617/0/17 becomes
+G0/2617/0, retaining the exact key and reset maximum while moving HOLD to
+carried inventory. Its lion body has no hand. All other reset rows/caps/
+order/placements remain. Population45initial/49refill and34carrieditems
+stay; preserve the second-caryatid key, mummy jars, djinni lamp, magical
+paw glove2616 and book2615's external Ota'ar Dar reset. The glove is
+ordinary magical loot, not a new attached body-part weapon. All28 object
+definitions/ stats,60roomflags/exits,maze/deathtraps/locks and zero wards
+stay. Correct only the approved mongoose rodent wording and
+room2632then->than. All short names stay, preserving image paths.
+All18portraits/60roomimages were reviewed and retained. No matching.src
+exists; all four other real source exports remain unchanged, including
+exact Eakos regeneration.

@@ -3745,6 +3745,106 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "", 0,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* A small asp keeps its authored venom and ordinary snake organs. */
+                "asp", "serpentine_reptile", "icon1", "icon2",
+                0, 0, PART_FANGS, PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_poison_bite", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 60
+        },
+        {
+                /* Hunting snakes does not make this animal immune to venom. */
+                "mongoose", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, PART_PAWS | PART_CLAWS | PART_FANGS | PART_TAIL,
+                PART_FANGS, 0, 0, 0, 0, 0, 0, 0,
+                20, 2, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 50
+        },
+        {
+                /* Its five-centimetre height is the thickness of the carpet. */
+                "animated_carpet", "limbless_construct", "icon1", "icon2",
+                ACT_MOUNTABLE, AFF_FLYING | AFF_MINDLESS,
+                BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS | BODY_NO_CORPSE,
+                0, 0, 0, RES_POISON | RES_SLEEP | RES_DRAIN | RES_CHARM,
+                0, 0, 0, 0,
+                5, 8, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 200
+        },
+        {
+                /* This conscious sand spirit keeps a soul, but no living organs. */
+                "sandman", "elemental_being", "icon1", "icon2",
+                0, 0,
+                PART_HEAD | PART_EYE | PART_EAR | PART_ARMS | PART_HANDS
+                    | PART_FINGERS | PART_2_LEGS | PART_FEET
+                    | BODY_ANALGIC | BODY_NO_SPEECH | BODY_NO_CORPSE,
+                0, RES_FIRE | RES_NONMAGIC, 0, RES_POISON,
+                0, 0, 0, 0,
+                240, 250, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* Keep the stone remains and carried loot when it falls. */
+                "caryatid_column", "bipedal_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS | BODY_NO_SPEECH,
+                0, RES_MAGIC | RES_NONMAGIC, 0,
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_CHARM | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                213, 300, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "hieracosphinx", "quadrupedal_hybrid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_FEATHERS | PART_PAWS | PART_CLAWS | PART_TAIL | PART_BEAK,
+                PART_CLAWS | PART_BEAK, 0, 0, 0, 0, 0, 0, 0,
+                213, 300, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 350
+        },
+        {
+                /* An individual may replace its forelegs with a human upper body. */
+                "gynosphinx", "quadrupedal_hybrid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_FEATHERS | PART_PAWS | PART_CLAWS | PART_TAIL,
+                PART_CLAWS, 0, 0, 0, 0, 0, 0, 0,
+                213, 260, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 330
+        },
+        {
+                "criosphinx", "quadrupedal_hybrid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_FEATHERS | PART_PAWS | PART_CLAWS | PART_TAIL | PART_HORNS,
+                PART_CLAWS | PART_HORNS, 0, 0, 0, 0, 0, 0, 0,
+                229, 400, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_horn_gore", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 400
+        },
+        {
+                "androsphinx", "quadrupedal_hybrid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_FEATHERS | PART_PAWS | PART_CLAWS | PART_TAIL,
+                PART_CLAWS, 0, 0, 0, 0, 0, 0, 0,
+                244, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_cleric", "spec_terrifying_roar", "", 10,
+                {70, 30, 0}, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 450
         }
 };
 
@@ -4716,6 +4816,31 @@ static const CREATURE_TRAIT_CHANGE neo_otyugh_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
 };
 
+static const CREATURE_TRAIT_CHANGE animated_carpet_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7}
+};
+static const CREATURE_TRAIT_CHANGE caryatid_column_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE hieracosphinx_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -9}
+};
+static const CREATURE_TRAIT_CHANGE gynosphinx_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -11}
+};
+static const CREATURE_TRAIT_CHANGE criosphinx_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
+};
+static const CREATURE_TRAIT_CHANGE androsphinx_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -12}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4723,6 +4848,12 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"animated_carpet", NULL, animated_carpet_trait_changes, TRAIT_ITEMS(animated_carpet_trait_changes)},
+        {"caryatid_column", NULL, caryatid_column_trait_changes, TRAIT_ITEMS(caryatid_column_trait_changes)},
+        {"hieracosphinx", NULL, hieracosphinx_trait_changes, TRAIT_ITEMS(hieracosphinx_trait_changes)},
+        {"gynosphinx", NULL, gynosphinx_trait_changes, TRAIT_ITEMS(gynosphinx_trait_changes)},
+        {"criosphinx", NULL, criosphinx_trait_changes, TRAIT_ITEMS(criosphinx_trait_changes)},
+        {"androsphinx", NULL, androsphinx_trait_changes, TRAIT_ITEMS(androsphinx_trait_changes)},
         {"mummy", NULL, mummy_trait_changes, TRAIT_ITEMS(mummy_trait_changes)},
         {"neo_otyugh", "otyugh", neo_otyugh_trait_changes, TRAIT_ITEMS(neo_otyugh_trait_changes)},
         {"mi_go", NULL, mi_go_trait_changes, TRAIT_ITEMS(mi_go_trait_changes)},
@@ -8336,6 +8467,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_grell", 5 },
                 { "spec_flind", 5 },
                 { "spec_horn_gore", 5 },
+                { "spec_terrifying_roar", 5 },
                 { "spec_breath_crystal", 10 },
                 { "spec_elemental_burst", 10 },
                 { "spec_sprite", 5 },

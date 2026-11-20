@@ -13,8 +13,9 @@ The poison bite of this snake has felled many a mighty pharaoh.
 ~
 1|32|64 0 0 S
 5 14 8 5d5+50 1d6+1
-60 1000
+0 1000
 8 8 0
+< asp~ common~
 #2601
 cobra snake~
 A hooded cobra snake~
@@ -25,20 +26,22 @@ colours designed to serve notice to its prey that it is about to strike.
 ~
 1|32|64 0 0 S
 7 13 7 7d7+70 2d4+2
-60 2000
+0 2000
 8 8 0
+< cobra~ common~
 #2602
 mongoose~
 A wily little mongoose~
 A small mongoose slinks along the ground, hunting snakes.
 ~
-The mongoose is a wily rodent, a quick hunter of nasty poisonous snakes.
+The mongoose is a small carnivorous mammal, a quick hunter of nasty poisonous snakes.
 She sniffs you and appears to be looking for food in your hand.
 ~
 1|64 512 10 S
 11 10 6 11d11+110 3d5+3
-36 10000
+0 10000
 8 8 2
+< mongoose~ common~
 #2603
 pyramid watcher~
 A pyramid watcher~
@@ -52,6 +55,7 @@ sand-coloured clothing.
 8 12 5 8d8+80 2d6+2
 0 3750
 8 8 1
+< human~ common~
 #2604
 thief tomb~
 A tomb thief~
@@ -63,6 +67,7 @@ The thief brushes against you briefly, then slinks back into the shadows.
 10 10 5 10d10+100 2d6+3
 0 9000
 8 8 1
+< human~ common~
 #2605
 ali baba thief~
 Ali Baba~
@@ -77,6 +82,9 @@ he might get caught, but not today...
 18 2 0 18d18+180 3d8+2
 0 30000
 8 8 1
+< human~ rare~
+MobHeight 190
+MobWeight 90
 #2606
 magic carpet~
 The magic carpet~
@@ -88,8 +96,9 @@ above the ground!  In fact, it seems to be ALIVE!
 ~
 1|2 8|512 500 S
 9 11 7 9d9+90 2d5+2
-63|64|256 6000
+0 6000
 8 8 0
+< animated_carpet~ common~
 #2607
 mummy corpse~
 A mummy~
@@ -102,6 +111,7 @@ animated by the distempered spirit of a long-deceased person.
 12 8 4 12d12+120 1d6+6
 0 15000
 8 8 0
+< mummy~ common~
 #2608
 sand man sandman~
 A sandman~
@@ -115,6 +125,7 @@ and sandy winds.
 14 6 2 14d14+140 2d7+4
 0 18000
 8 8 1
+< sandman~ common~
 #2609
 efreeti efreet~
 The efreeti~
@@ -125,8 +136,9 @@ with disdain and scorn, arms folded across his mighty chest.
 ~
 1|2|32 8|512 -600 S
 20 0 -1 20d20+200 4d6+4
-96 40000
+64 40000
 8 8 1
+< efreeti~ common~
 #2610
 caryatid column~
 A caryatid~
@@ -138,8 +150,12 @@ but you can still make out a deadly stone sword in the hands of each figure.
 ~
 1|2 512 0 S
 24 -4 -3 24d24+240 4d6+8
-63|256 100000
+1024|2048|4096|8192|32768|131072 100000
 8 8 2
+< caryatid_column~ common~
+MobHeight 240
+MobWeight 1200
+MobSize 2
 #2611
 djinn genie~
 The djinn~
@@ -154,6 +170,7 @@ skin, and strokes his goatee.
 28 -8 -6 28d28+280 6d6+12
 0 310000
 8 8 1
+< djinni~ common~
 #2612
 hieracosphinx sphinx~
 A hieracosphinx~
@@ -166,8 +183,12 @@ cousins.
 ~
 1|32|64 512 -200 S
 15 5 3 15d15+150 1d10+5
-4 21000
-8 8 0
+0 21000
+8 8 1
+< hieracosphinx~ common~
+MobHeight 180
+MobWeight 200
+MobLength 300
 #2613
 gynosphinx sphinx~
 A gynosphinx~
@@ -180,8 +201,11 @@ just heard a puzzling riddle from a cousin criosphinx.
 ~
 1|2 8 100 S
 19 1 0 19d19+190 2d10+10
-0 35000
+4|4096|32768|65536|2097152|8388608|8796093022208 35000
 8 8 2
+< gynosphinx~ common~
+MobWeight 180
+MobLength 0
 #2614
 criosphinx sphinx~
 A criosphinx~
@@ -195,6 +219,7 @@ and in poking occasional fun at his easily-confused lesser cousins.
 23 -3 -2 23d23+230 3d10+15
 0 80000
 8 8 1
+< criosphinx~ common~
 #2615
 androsphinx sphinx~
 An androsphinx~
@@ -208,7 +233,8 @@ mighty roar of this sphinx.
 1|2 8 400 S
 27 -7 -6 27d27+270 4d10+20
 0 200000
-8 8 0
+8 8 1
+< androsphinx~ elite~
 #2616
 great sphinx~
 The great sphinx~
@@ -224,6 +250,10 @@ advised many rulers.
 41 -21 -20 41e41+410 5d10+25
 128 1500000
 8 8 0
+< androsphinx~ boss~
+MobHeight 1000
+MobWeight 30000
+MobLength 1800
 #2617
 ramses mummy~
 Ramses the Damned~
@@ -237,8 +267,11 @@ his chest not even moving to breathe.
 ~
 1|2 8|16|128|512|8192 150 S
 38 -18 -18 38r38+380 8d5+40
-96 1000000
+64 1000000
 8 8 1
+< mummy~ boss~
+MobHeight 190
+MobWeight 80
 #0
 
 
@@ -1503,7 +1536,7 @@ walked the earth.  Disturb my rest at your peril.'
 S
 #2632
 The Tomb of Ramses~
-   You stand in an empty tomb, a cubicle no more then ten feet to a side.
+   You stand in an empty tomb, a cubicle no more than ten feet to a side.
 ~
 26 9 0
 D4
@@ -2268,7 +2301,7 @@ S
  G 0 2616 0     Give him a lion's paw
 * Load the great sphinx
  M 0 2616 1 2658
- E 0 2617 0 17      He holds the answer (key to room #59)
+ G 0 2617 0         He carries the answer (key to room #59)
 * And also his treasure
  O 0 2618 0 2659    The treasure of the sphinx
  O 0 2624 0 2659    A sun wand
@@ -2287,20 +2320,27 @@ S
 S
 
 #SPECIALS
-M  2600 spec_poison         asp
-M  2601 spec_poison         cobra
-M  2604 spec_thief          tomb thief
-M  2605 spec_thief          Ali Baba
-M  2609 spec_breath_fire    efreet
-M  2611 spec_breath_gas     djinn
-M  2611 spec_cast_mage      djinn
-M  2613 spec_cast_cleric    gynosphinx
-M  2614 spec_cast_cleric    criosphinx
-M  2615 spec_cast_cleric    androsphinx
-M  2616 spec_cast_cleric    great sphinx
-M  2616 spec_breath_any     great sphinx
-M  2617 spec_cast_undead    Ramses
-M  2617 spec_cast_cleric    Ramses
+M 2601 spec_poison_bite
+M 2604 spec_thief
+M 2605 spec_thief
+M 2609 spec_breath_fire_anatomical
+N 2611 1 spec_cast_mage
+N 2611 2 spec_breath_gas_anatomical
+N 2611 3 none
+P 2611 70 30 0
+M 2613 spec_cast_cleric
+N 2614 1 spec_cast_cleric
+N 2614 2 spec_horn_gore
+N 2614 3 none
+P 2614 70 30 0
+N 2616 1 spec_cast_cleric
+N 2616 2 spec_breath_any_anatomical
+N 2616 3 spec_terrifying_roar
+P 2616 50 30 20
+N 2617 1 spec_cast_cleric
+N 2617 2 spec_mummy
+N 2617 3 none
+P 2617 70 30 0
 S
 
 #$
