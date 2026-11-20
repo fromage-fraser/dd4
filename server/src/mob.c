@@ -3903,6 +3903,79 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_acid_spray", "", "", 5,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 180
+        },
+        {
+                /* These local dragonfolk do not share the Baaz stone death. */
+                "draconian", "humanoid", "icon1", "icon2",
+                0, 0, PART_SCALES | PART_WINGS | PART_TAIL | PART_HORNS
+                    | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                190, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* The dead keep their scales and wings, but cannot fly. */
+                "undead_draconian", "humanoid", "icon1", "icon2",
+                ACT_UNDEAD, AFF_MINDLESS,
+                PART_SCALES | PART_WINGS | PART_TAIL | PART_HORNS
+                    | PART_CLAWS | PART_FANGS | BODY_NO_SPEECH
+                    | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS,
+                PART_CLAWS | PART_FANGS, RES_DARK, RES_HOLY,
+                RES_COLD | RES_POISON | RES_DRAIN | RES_SLEEP | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                190, 80, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "adult_black_dragon", "dragon", "icon1", "icon2",
+                ACT_FEAR_AURA,
+                AFF_FLYING | AFF_SWIM | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                BODY_HUGE | PART_HORNS, 0, RES_MAGIC, 0, RES_ACID,
+                0, 0, 0, 0,
+                350, 5000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_acid_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 2500
+        },
+        {
+                "ancient_green_dragon", "dragon", "icon1", "icon2",
+                ACT_FEAR_AURA,
+                AFF_FLYING | AFF_SWIM | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                BODY_HUGE | PART_HORNS, 0, RES_MAGIC, 0, RES_POISON,
+                0, 0, 0, 0,
+                600, 18000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_gas_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 4000
+        },
+        {
+                /* Blink uses the existing defensive ability and its mana cost. */
+                "phase_dragon", "dragon", "icon1", "icon2",
+                ACT_BLINK,
+                AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                0, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                25, 8, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_breath_gas_anatomical", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 100
+        },
+        {
+                /* This is a living, killable avatar with one mixed breath. */
+                "tiamat_avatar", "dragon", "icon1", "icon2",
+                ACT_FEAR_AURA,
+                AFF_FLYING | AFF_INFRARED | AFF_DETECT_INVIS | AFF_DETECT_HIDDEN,
+                PART_HEAD | PART_MANY_HEAD | PART_HORNS | BODY_HUGE,
+                0, RES_MAGIC, 0,
+                RES_FIRE | RES_COLD | RES_ELECTRICITY | RES_ACID | RES_POISON,
+                0, 0, 0, 0,
+                1200, 80000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_any_anatomical", "", "", 10,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 6500
         }
 };
 
@@ -4922,6 +4995,33 @@ static const CREATURE_TRAIT_CHANGE ochre_jelly_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ACID}
 };
 
+static const CREATURE_TRAIT_CHANGE draconian_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE undead_draconian_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE adult_black_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -16}
+};
+static const CREATURE_TRAIT_CHANGE ancient_green_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -25},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE phase_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE tiamat_avatar_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -40},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4929,6 +5029,12 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"draconian", NULL, draconian_trait_changes, TRAIT_ITEMS(draconian_trait_changes)},
+        {"undead_draconian", NULL, undead_draconian_trait_changes, TRAIT_ITEMS(undead_draconian_trait_changes)},
+        {"adult_black_dragon", NULL, adult_black_dragon_trait_changes, TRAIT_ITEMS(adult_black_dragon_trait_changes)},
+        {"ancient_green_dragon", NULL, ancient_green_dragon_trait_changes, TRAIT_ITEMS(ancient_green_dragon_trait_changes)},
+        {"phase_dragon", NULL, phase_dragon_trait_changes, TRAIT_ITEMS(phase_dragon_trait_changes)},
+        {"tiamat_avatar", NULL, tiamat_avatar_trait_changes, TRAIT_ITEMS(tiamat_avatar_trait_changes)},
         {"undead_riding_beetle", NULL, undead_riding_beetle_trait_changes, TRAIT_ITEMS(undead_riding_beetle_trait_changes)},
         {"green_slime", NULL, green_slime_trait_changes, TRAIT_ITEMS(green_slime_trait_changes)},
         {"crystal_spider", NULL, crystal_spider_trait_changes, TRAIT_ITEMS(crystal_spider_trait_changes)},

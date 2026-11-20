@@ -10430,3 +10430,118 @@ fixes affect Keeper/hulk, lung 16808, amphitheatre 16847 and Lazarus reset
 comments. The amphitheatre title becomes The Macabre Amphitheatre. No
 matching.src exists; four other real exports stay unchanged, including
 exact Eakos regeneration. Artwork replacements are separate staged assets.
+
+
+The Dragon Tower
+----------------
+
+The catalogue now has 279 archetypes, 35 body species, 50 internal traits,
+126 Scribe special names and 637 skill rows. Six profiles append at IDs
+273-278: draconian, undead_draconian, adult_black_dragon,
+ancient_green_dragon, phase_dragon and tiamat_avatar. All 273 earlier
+profiles and all body species stay unchanged. There are no new area
+fields, trait commands, registry traits, special callbacks or player
+skills.
+
+draconian is the Tower's living humanoid dragonfolk. It has ordinary
+organs, arms, hands and legs, plus scales, wings, tail, horns, claws and
+fangs. It speaks, bleeds, feels pain, has a mind and soul, and leaves a
+corpse. Natural armour is -4; claws and fangs supply ordinary natural
+attacks. Defaults are 190 cm high, 90 kg and Medium; length is
+unspecified. Wings alone do not grant flight. There is no inherited
+breath, casting, broad resistance or Baaz stone death. Use baaz_draconian
+only for that distinct creature, not as a shortcut for every dragonfolk
+inhabitant.
+
+undead_draconian uses the same humanoid anatomy at 190 cm/80 kg/Medium.
+Its scales, wings, tail, horns, claws, fangs and physical remains persist.
+It is Undead, Mindless, No Speech, Bloodless, Analgic and Soulless.
+Ordinary zombie organs remain anatomically present. It resists Dark, is
+vulnerable to Holy and is immune to Cold, Poison, Drain, Sleep, Hold and
+Paralysis. Natural armour is -4. There is no inherited flight, breath or
+casting. The local zombie 2240 loses generic undead casting and becomes
+male to match its description. Its aggression, senses and reset caps
+remain.
+
+adult_black_dragon is 350 cm high/5000 kg/2500 cm long/Large with HUGE. It
+has natural armour -16, Magic resistance, Acid immunity and anatomical
+acid breath. ancient_green_dragon is 600 cm/18000 kg/4000 cm/Large with
+HUGE, natural armour -25, magical natural attacks, Magic resistance,
+Poison immunity and anatomical gas breath. Both speak and have ordinary
+living dragon anatomy, horns, fear aura, flight, swimming and established
+dragon senses. The older green is a new profile; adult_green_dragon stays
+unchanged. Colour defences and dragon anatomy follow the 2e references;
+these whole-number heights and masses are DD4 estimates.
+
+phase_dragon is a small living dragon: 25 cm high/8 kg/100 cm long/Small,
+natural armour -4, flight and dragon senses, with anatomical gas breath.
+Its existing ACT_BLINK flag grants ordinary defensive Blink. The NPC base
+chance is min(30, max(1, level/2)), adjusted by twice the level difference
+and clamped to 1..66. A successful roll needs 5 mana and spends it. Blink
+does not grant permanent noncorporeality, Pass Door or movement
+exceptions. The local phase dragon remains mute, Wimpy, Aggressive,
+Scavenger and Stay Area. This flag represents an existing active ability,
+not another racial-bonus marker.
+
+tiamat_avatar is a living, corporeal, killable five-headed dragon. Its
+Many Heads anatomy cancels the inherited single Head through XOR. It has
+ordinary eyes, horns, wings, claws, fangs, tail, organs, blood, pain, soul
+and remains. Defaults are 1200 cm high/80000 kg/6500 cm long/Large with
+HUGE. Natural armour is -40, natural attacks are magical, Magic is
+resisted, and Fire/Cold/Electricity/Acid/Poison are immune. Fear aura,
+flight and dragon senses apply. The existing mixed anatomical breath
+selects one of its eight payloads per invocation. It does not make five
+attacks at once or confer a full deity spell list. Profile XP is +10. All
+six profiles have zero HP/damage/critical/haste modifiers; the other five
+have XP +0. Existing special XP and individual rank HP multipliers still
+apply.
+
+The hatchling 2200 reuses dragon_hatchling with individual replacements 40
+cm/12 kg/120 cm/Small, preserving its mute mixed-breath role. A red
+portrait does not grant Fire immunity. The King 2205 uses individual 250
+cm/220 kg/Large without HUGE; other dragonfolk use the adult defaults.
+Human master 2202 keeps authored flight and melee combat, without an
+invented lich or mage identity. Human mage 2203, Tiamat priest 2204, royal
+mixed breath and slave/fool thievery retain their individual roles. Red
+2221 keeps fire-only anatomical breath. Hydra 2226 retains its authored
+venom through an individual spec_poison_bite override; shared hydra stays
+nonvenomous. No behaviour or moral alignment follows from a job title.
+
+Ranks are individual: Boss 2220/2221/2222/2223/2225, Elite 2202/2205/2243,
+Rare 2203/2204, and Common for the other nine definitions. Black 2222 was
+already Boss and stays so. Rare/Elite/Boss multiply HP by 2/5/7 once.
+Legacy HP dice letters are not rank markers and remain unchanged. All
+authored aggression/passivity, Sentinel, Scavenger, Stay Area, Wimpy,
+Sanctuary, Invisibility, senses and magical flight are retained through
+resolved XOR.
+
+Move priest 2204 from library 2214 to sanctum 2215, and Tiamat 2220 from
+mountaintop 2243 into her described final lair 2231 behind the platinum
+door. Both stone-door exits between nursery 2205 and hall 2223 use the
+existing stone key 2237 instead of missing 2297. Give that key to King
+2205 and set its destination value to 2223. Preserve both door flags.
+Hydra staff 2244, Tiamat orb 2298, red staff 2245, black leggings 2280 and
+white scale mail 2246 become carried loot. Red helm 2275 and green brooch
+2261 stay equipped. The Old Marsh use of spear 2200 stays unchanged. All
+other reset counts, caps, order, items and room flags remain. The new key
+adds one carried object: 49 initially and 58 after three refill resets;
+inhabitants remain 42 initially and 58 after those three resets. Those
+refill totals are observations, not a claim about the eventual maximum.
+
+Room and mob names stay unchanged. Minor prose fixes repair missing words,
+a bridge typo and the coffin's west-wall direction. No NO_UNDEAD flag is
+added. There is no matching .src; the other four real source exports stay
+unchanged. Updated pictures are separate assets, not part of the Git
+patch.
+
+Media filenames must follow the actual dd-gui lookup, not the image
+server's broader punctuation cleanup. Lowercase mob names and replace
+spaces/apostrophes with underscores; room names additionally replace
+slash, angle brackets and opening brace. Periods remain. Therefore room
+2229 needs 2229_the_great_hall_ends..png and room 2231 needs
+2231_the_end....png. Their existing images can be copied under those
+names. Preserve original_name when rewriting image prompts; the
+concubine's canonical filename stays 2206_a_concubine.png. The
+royal_attendant alias is not the current lookup. Regenerated 2206/2207
+portraits and room 2212 depict the approved dragonfolk, with covered
+nonsexual court clothing.
