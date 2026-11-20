@@ -58,6 +58,7 @@ DECLARE_SPEC_FUN( spec_grell );
 DECLARE_SPEC_FUN( spec_flind );
 DECLARE_SPEC_FUN( spec_horn_gore );
 DECLARE_SPEC_FUN( spec_terrifying_roar );
+DECLARE_SPEC_FUN( spec_confusing_gaze );
 DECLARE_SPEC_FUN( spec_breath_crystal );
 DECLARE_SPEC_FUN( spec_sprite );
 DECLARE_SPEC_FUN( spec_vine_grip );
@@ -192,6 +193,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_flind")) return spec_flind;
         if (!str_cmp(name, "spec_horn_gore")) return spec_horn_gore;
         if (!str_cmp(name, "spec_terrifying_roar")) return spec_terrifying_roar;
+        if (!str_cmp(name, "spec_confusing_gaze")) return spec_confusing_gaze;
         if (!str_cmp(name, "spec_breath_crystal")) return spec_breath_crystal;
         if (!str_cmp(name, "spec_sprite")) return spec_sprite;
         if (!str_cmp(name, "spec_vine_grip")) return spec_vine_grip;
@@ -332,6 +334,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_flind) return "spec_flind";
         if (special == spec_horn_gore) return "spec_horn_gore";
         if (special == spec_terrifying_roar) return "spec_terrifying_roar";
+        if (special == spec_confusing_gaze) return "spec_confusing_gaze";
         if (special == spec_breath_crystal) return "spec_breath_crystal";
         if (special == spec_sprite) return "spec_sprite";
         if (special == spec_vine_grip) return "spec_vine_grip";
@@ -5710,6 +5713,96 @@ bool spec_vine_grip(CHAR_DATA *ch)
         act("$n's vines close around you!", ch, NULL, victim, TO_VICT);
         act("Your vines close around $N!", ch, NULL, victim, TO_CHAR);
         act("$n's vines close around $N!", ch, NULL, victim, TO_NOTVICT);
+        return TRUE;
+}
+
+/* The viewer needs to see the eyes; the viewer need not be visible. */
+static bool confusing_gaze_opponent_unchanged(CHAR_DATA *ch, CHAR_DATA *victim,
+    ROOM_INDEX_DATA *room, int source_deaths, int target_deaths)
+{
+        return action_character_in_room(ch, room, source_deaths)
+            && action_character_in_room(victim, room, target_deaths)
+            && innate_spell_ready(ch) && native_combat_opponent(ch) == victim
+            && HAS_HEAD(ch) && HAS_EYES(ch)
+            && !IS_AFFECTED(ch, AFF_BLIND | AFF_EYE_TRAUMA | AFF_HEAD_TRAUMA)
+            && IS_AWAKE(victim) && HAS_EYES(victim)
+            && !IS_AFFECTED(victim, AFF_BLIND | AFF_EYE_TRAUMA)
+            && can_see(victim, ch) && !is_mindless(victim)
+            && !(IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+            && !is_affected(victim, gsn_confusion)
+            && !IS_AFFECTED(victim, AFF_CONFUSION)
+            && !IS_SET(room->room_flags, ROOM_SAFE)
+            && !(room->area && IS_SET(room->area->area_flags, AREA_FLAG_SAFE));
+}
+
+/* Keep ordinary Confusion's save and penalties, with a short gaze duration. */
+static void spell_confusing_gaze(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+        ROOM_INDEX_DATA *room = ch->in_room;
+        int source_deaths = action_deaths(ch), target_deaths = action_deaths(victim);
+        AFFECT_DATA af;
+        bool saved;
+
+        if (!confusing_gaze_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                return;
+        saved = saves_resistance_effect(ch, level, victim, skill_table[sn].res_type);
+        if (!confusing_gaze_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                return;
+        if (saved)
+        {
+                act("You tear your eyes away from $n's confusing gaze.",
+                    ch, NULL, victim, TO_VICT);
+                return;
+        }
+        memset(&af, 0, sizeof(af));
+        af.type = sn;
+        af.duration = URANGE(1, level / 30, 3);
+        af.bitvector = AFF_CONFUSION;
+        af.location = APPLY_HITROLL;
+        af.modifier = -((level / 5) + 1);
+        affect_to_char(victim, &af);
+        af.location = APPLY_INT;
+        af.modifier = -((level / 15) + 1);
+        affect_to_char(victim, &af);
+        af.location = APPLY_WIS;
+        affect_to_char(victim, &af);
+        act("$n's gaze leaves you utterly confused!", ch, NULL, victim, TO_VICT);
+}
+
+/* This silent power affects one opponent, never everyone in the room. */
+bool spec_confusing_gaze(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        ROOM_INDEX_DATA *room;
+        int source_deaths, target_deaths;
+
+        if (!victim || gsn_confusion <= 0)
+                return FALSE;
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        target_deaths = action_deaths(victim);
+        if (!confusing_gaze_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths) || number_percent() > 20)
+                return FALSE;
+        if (!confusing_gaze_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                return TRUE;
+        act("You fix $N with your confusing gaze.", ch, NULL, victim, TO_CHAR);
+        if (!confusing_gaze_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                return TRUE;
+        act("$n's strange eyes fix on you.", ch, NULL, victim, TO_VICT);
+        if (!confusing_gaze_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                return TRUE;
+        act("$n fixes $N with a confusing gaze.", ch, NULL, victim, TO_NOTVICT);
+        if (confusing_gaze_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                cast_native_spell(spell_confusing_gaze, gsn_confusion,
+                    ch->level, ch, victim);
         return TRUE;
 }
 

@@ -3845,6 +3845,64 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_cast_cleric", "spec_terrifying_roar", "", 10,
                 {70, 30, 0}, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 450
+        },
+        {
+                /* It keeps its shell and mandibles, but no working organs. */
+                "undead_riding_beetle", "insect", "icon1", "icon2",
+                ACT_UNDEAD | ACT_MOUNTABLE, AFF_MINDLESS,
+                PART_HEART | PART_BRAINS | PART_GUTS | PART_FANGS | PART_HUSK_SHELL
+                    | BODY_NO_HEART | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS,
+                PART_FANGS, RES_DARK, RES_HOLY,
+                RES_COLD | RES_POISON | RES_DRAIN | RES_SLEEP | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                120, 350, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 300
+        },
+        {
+                /* Acidic contact replaces a punch; it does not add another hit. */
+                "green_slime", "amorphous_organism", "icon1", "icon2",
+                0, AFF_MINDLESS, BODY_ANALGIC, 0, 0, 0,
+                RES_ACID | RES_POISON | RES_SLEEP | RES_CHARM | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                20, 40, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 100
+        },
+        {
+                /* Living crystal can have a mind and soul without animal organs. */
+                "crystal_spider", "arachnid", "icon1", "icon2",
+                0, 0,
+                PART_HEART | PART_BRAINS | PART_GUTS | PART_FANGS | PART_HUSK_SHELL
+                    | BODY_NO_HEART | BODY_INORGANIC | BODY_BLOODLESS | BODY_ANALGIC,
+                PART_FANGS, RES_PIERCE | RES_SLASH, RES_SONIC, RES_POISON,
+                0, 0, 0, 0,
+                90, 350, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_poison_bite", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 200
+        },
+        {
+                "umber_hulk", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED, PART_SCALES | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                244, 750, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_confusing_gaze", "", "", 0,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* Undigested treasure remains ordinary carried loot. */
+                "ochre_jelly", "amorphous_organism", "icon1", "icon2",
+                0, AFF_MINDLESS, BODY_ANALGIC, 0, 0, 0,
+                RES_ELECTRICITY | RES_ACID | RES_POISON | RES_SLEEP
+                    | RES_CHARM | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                40, 150, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_acid_spray", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 180
         }
 };
 
@@ -4841,6 +4899,29 @@ static const CREATURE_TRAIT_CHANGE androsphinx_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -12}
 };
 
+static const CREATURE_TRAIT_CHANGE undead_riding_beetle_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7}
+};
+static const CREATURE_TRAIT_CHANGE green_slime_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ACID}
+};
+static const CREATURE_TRAIT_CHANGE crystal_spider_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE umber_hulk_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8}
+};
+static const CREATURE_TRAIT_CHANGE ochre_jelly_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ACID}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -4848,6 +4929,11 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"undead_riding_beetle", NULL, undead_riding_beetle_trait_changes, TRAIT_ITEMS(undead_riding_beetle_trait_changes)},
+        {"green_slime", NULL, green_slime_trait_changes, TRAIT_ITEMS(green_slime_trait_changes)},
+        {"crystal_spider", NULL, crystal_spider_trait_changes, TRAIT_ITEMS(crystal_spider_trait_changes)},
+        {"umber_hulk", NULL, umber_hulk_trait_changes, TRAIT_ITEMS(umber_hulk_trait_changes)},
+        {"ochre_jelly", NULL, ochre_jelly_trait_changes, TRAIT_ITEMS(ochre_jelly_trait_changes)},
         {"animated_carpet", NULL, animated_carpet_trait_changes, TRAIT_ITEMS(animated_carpet_trait_changes)},
         {"caryatid_column", NULL, caryatid_column_trait_changes, TRAIT_ITEMS(caryatid_column_trait_changes)},
         {"hieracosphinx", NULL, hieracosphinx_trait_changes, TRAIT_ITEMS(hieracosphinx_trait_changes)},
@@ -8468,6 +8554,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_flind", 5 },
                 { "spec_horn_gore", 5 },
                 { "spec_terrifying_roar", 5 },
+                { "spec_confusing_gaze", 5 },
                 { "spec_breath_crystal", 10 },
                 { "spec_elemental_burst", 10 },
                 { "spec_sprite", 5 },

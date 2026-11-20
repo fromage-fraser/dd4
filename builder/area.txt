@@ -10302,3 +10302,131 @@ room2632then->than. All short names stay, preserving image paths.
 All18portraits/60roomimages were reviewed and retained. No matching.src
 exists; all four other real source exports remain unchanged, including
 exact Eakos regeneration.
+
+
+Ancalador
+---------
+
+The catalogue has 273 archetypes, 35 basic body species, 50 internal
+traits, 126 Scribe special names and 637 skill rows. Five profiles append
+at 268-272: undead_riding_beetle, green_slime, crystal_spider, umber_hulk
+and ochre_jelly. All 268 earlier resolved profiles and all 35 bodies stay
+unchanged. These creatures use existing internal traits, not new ACT
+flags, area fields or individual trait commands. Their
+HP/damage/critical/haste modifiers are zero. Existing Rare/Elite/Boss HP
+multipliers apply once.
+
+undead_riding_beetle is an insect with six legs, head, eyes, shell and
+biting mandibles represented by fangs. Cancel inherited heart/brain/guts
+through XOR; add No Heart, Bloodless, Analgic and Soulless. No Arms/No
+Speech come from insect. It is Undead, Mountable and Mindless, with
+physical remains and no flight or casting. Estimated defaults are 120 cm
+high/350 kg/300 cm long/Large. Natural armour is-7, Dark is resisted, Holy
+is vulnerable, and Cold/Poison/Drain/Sleep/Hold/ Paralysis are immune.
+Profile XP is 0. Preserve local Sanctuary/Sentinel and cap 2: one
+initially and a second on refill.
+
+green_slime is an organic amorphous_organism: organless, without head,
+eyes, limbs or speech, Mindless/Bloodless/Analgic, with physical residue.
+Defaults are 20 cm high/40 kg/100 cm long/Small. Existing
+natural_attack_type 7 and natural_damage_type acid change ordinary contact
+without another hit. Acid/Poison/Sleep/Charm/Hold/Paralysis are immune;
+Fire/Cold work normally. No instant transformation, Cure Disease kill
+hook, item destruction or full weapon immunity is added. Profile XP is+5.
+Existing green_ooze is unchanged.
+
+crystal_spider is a conscious living-crystal arachnid: eight legs, head,
+eyes, fanged mandibles and shell, but no arms/heart/brain/guts. It is
+Inorganic, Bloodless, Analgic and unable to speak; it is not automatically
+Mindless or Soulless. It leaves crystal remains. Green defaults are 90
+cm/350 kg/200 cm/Large; yellow individual replacements are 65 cm/180
+kg/150 cm/Medium. Natural armour-5, Piercing/Slash resistance, Poison
+immunity and Sonic vulnerability apply. Both inherit spec_poison_bite.
+Profile XP is+5, plus ordinary weighted special XP. Keep their original
+behaviours: green Wimpy/passive, yellow Aggressive. Their glow stays
+descriptive. Move glove 16816 and arsenal buckler 16812 to carried loot,
+retaining all seven knife resets inside the buckler. The current reset
+engine loads only one copy of a vnum into a container, so actual contents
+stay at one knife. Worn item bonuses no longer apply to the spider.
+
+umber_hulk is an intelligent, speaking humanoid-shaped biped with ordinary
+organs, two arms/two legs, scales, claws, fanged mandibles and Infrared.
+Four eyes use existing Eye anatomy, not a new body bit or area field.
+Defaults are 244 cm/750 kg/Large/unknown length; height follows 2e, mass
+is estimated. Natural armour is-8. It inherits spec_confusing_gaze rather
+than gas breath. Profile XP is 0; the special adds+5 through ordinary
+weighted special XP. No additional attacks, burrowing exits or cave-ins
+are added.
+
+spec_confusing_gaze attempts its power 20 percent of eligible selected
+opportunities, against the current fighting opponent only. Source must be
+awake/able to act/corporeal, with head/eyes and no Blind/Eye Trauma/Head
+Trauma. The viewer must be awake, have usable eyes, not be blind or
+suffering Eye Trauma, and be able to see the source. An invisible target
+remains eligible if it can see the source. A source hidden from the viewer
+cannot affect it. Silence and Cone of Silence do not stop the gaze.
+Ordinary safety, ordered- player, mindlessness/object exclusions,
+resistance and antimagic still apply.
+
+The gaze uses the existing Confusion condition and resistance-aware save
+once. Failure gives hitroll-((level/5)+1),
+Intelligence/Wisdom-((level/15)+1), for URANGE(1,level/30,3)ticks. All
+three affect records share the duration. Existing Confusion is never
+stacked/refreshed. No HP damage or bystander effect occurs. Recheck death
+identity, room, opponent, action/anatomy/sight/permissions after messages
+and saves, since they can trigger another action. Antimagic is checked
+once through native spell activation. This callback adds no player spell;
+the ordinary Confusion spell is unchanged.
+
+ochre_jelly is an organic amorphous_organism with organless
+Mindless/Bloodless/ Analgic anatomy, no speech and physical residue.
+Defaults 40 cm/150 kg/180 cm/ Medium. Contact becomes acidic through
+existing traits. Electricity/Acid/ Poison/Sleep/Charm/Hold/Paralysis are
+immune. No splitting/population mechanic is added. Existing
+spec_acid_spray retains the old acid-breath payload and sampling without
+inventing a mouth. Keep Sanctuary/Aggressive and all undigested loot.
+Profile XP is+5 plus ordinary weighted special XP.
+
+Putrid zombie 16800 adds its described claws and MobAttackParts claw
+selection. Asp 16801 reuses asp and its existing venom; clear old No Heart
+and duplicate limb/speech/tail XOR. Morticia 16802 is a living human
+necromancer at 170 cm/ 60 kg/Medium/Boss. A spec_cast_undead callback
+names dark spells, not an undead species. Preserve her female identity,
+casting, Scavenger/Sentinel, senses, Sanctuary and equipped treasures.
+
+Lazarus 16803 and Crypt Keeper 16806 reuse zombie but cancel inherited
+Mindless and No Speech through existing individual affect/body XOR fields.
+Keep Bloodless/Analgic/Soulless, undead protections and remains.
+Intelligence does not automatically restore a soul. Lazarus 175 cm/65
+kg/Medium/Rare keeps thief/ blowgun; Keeper 160 cm/45 kg/Medium/Rare keeps
+repairman/cackling/mace/heldBloodstone. The hermit 16807 is human 175
+cm/75 kg/Medium/Common; change neutral sex to male to match pronouns and
+portrait. His 600 year story remains mysterious.
+
+Wraith knights 16805 keep their individual No Speech and explicit 100
+percent mage override, six falchions and Common rank. Inherited wraith
+physiology, protections and phasing apply; clear duplicate No Corpse XOR.
+Flame dwellers 16809 reuse the developed fire_elemental 300 cm/unknown
+mass/Large, with fire contact/protections and individual No Speech plus
+100 percent spec_breath_fire_anatomical. Its ordinary head/injury
+restrictions still apply.
+
+Petrified Warden 16812 is a conscious awakened_golem at individual 600 cm/
+5000 kg/Large/Elite. Preserve authored HUGE, legacy tail, No Speech and No
+Corpse; restore a head for its visage and add positive Tail anatomy. No
+Heart/ Inorganic are inherited without duplicate XOR. Keep
+mind/soul/darkcasting/ Sentinel/senses/guisarme, with no automatic undead
+identity, wings, flight or slow spell. Granite key 16818 moves HOLD to
+inventory. Three necromancers 16815 remain Common humans 175 cm/75
+kg/Medium; retain mage/Flying/Sanctuary/senses/ Aggressive/Wimpy/Sentinel
+and all gear. Skeleton key 16805 moves HOLD to inventory on its original
+designated owner.
+
+All original mob placements/caps remain:48 initial/49 refill inhabitants
+and 27 top-level carried items plus its one nested knife. All seven knife
+reset rows remain. Only four E-to-G resets change. All 28 objects/stats,58
+roomflags/exits/locks and NO_UNDEAD 16809 stay. Approved spelling/grammar
+fixes affect Keeper/hulk, lung 16808, amphitheatre 16847 and Lazarus reset
+comments. The amphitheatre title becomes The Macabre Amphitheatre. No
+matching.src exists; four other real exports stay unchanged, including
+exact Eakos regeneration. Artwork replacements are separate staged assets.
