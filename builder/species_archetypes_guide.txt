@@ -2,9 +2,9 @@ DRAGON'S DOMAIN
 SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
-Edition: 18 November 2026
-Based on master 5a886e24b130047debfac8739b0fd150f2d7ee26 (PR #993),
-with the accompanying Catacombs changes.
+Edition: 20 November 2026
+Based on master 5f2db2665294509e42e842409fa1eef532cdeb4d (PR #994),
+with the accompanying Great Pyramid changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -911,10 +911,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 259, so this single example would make 260.
+guide's checked revision it is 268, so this single example would make 269.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 259.
+valid index. This example would receive index 268.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1612,7 +1612,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 259;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 268;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1722,9 +1722,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 259; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 268; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-35 body rows, 259 archetype rows, 50 internal traits and 124 Scribe
+35 body rows, 268 archetype rows, 50 internal traits and 125 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -3209,6 +3209,196 @@ portrait filenames stable. All26 portraits and146 room images were
 reviewed and retained. No matching .src exists; the four other real source
 exports remain unchanged, including exact Eakos regeneration.
 
+The Great Pyramid
+-----------------
+
+The catalogue has 268 archetypes, 35 basic body species, 50 internal
+traits, 125 Scribe special names and 637 skill rows. Nine profiles append
+at259-267: asp, mongoose, animated_carpet, sandman, caryatid_column,
+hieracosphinx, gynosphinx, criosphinx and androsphinx. All259 earlier
+resolved profiles and all35 bodies stay unchanged. New passive bonuses use
+existing internal traits; there are no new flags, area fields, player
+skills or individual trait commands. All HP/damage/critical/haste
+modifiers remain zero. Ranks and individual dimensions still belong to
+encounter design.
+
+asp uses serpentine_reptile, with ordinary living head/eyes/mouth/fangs,
+scales/tail/organs/blood/pain/soul/remains and no arms, legs or speech.
+Defaults are unknown height,1kg,60cm length and Small, using estimated
+measurements. A natural fang bite and existing spec_poison_bite retain the
+area's explicit venom. Profile XP is zero; the existing special adds +5
+percentage points. Asp2600 inherits it. Cobra2601 reuses cobra at unknown
+height/3kg/200cm/Small and gets the same special individually. The shared
+cobra still has no venom special, preserving the Mud School introductory
+animal. Clear legacy No Heart and duplicate limb/speech flags so XOR keeps
+the snake's real heart and proper limbless body.
+
+mongoose uses quadrupedal_mammal at20cm/2kg/50cm/Small, all estimated. It
+has paws, tail, fangs and anatomical claws, but only ordinary fang bite
+selected. It keeps organic organs/blood/pain/soul/remains, without hands
+or speech. There is no poison immunity, extra snake-hunting attack or
+active special. All stat/profile XP modifiers are zero. Individual2602
+keeps female sex, Infrared, Stay Area and nonaggression. Correct its
+rodent description to small carnivorous mammal.
+
+animated_carpet uses limbless_construct: no head, eyes, heart, arms or
+legs; Mindless, Soulless, Inorganic, Bloodless, Analgic, mute and
+corpseless. Its5cm height describes thickness, with8kg/200cm/Medium
+estimates. Flying and ACT_MOUNTABLE make its described
+rising-under-your-feet role usable through the existing Mount command.
+Native natural_attack_type7 supplies ordinary blunt body contact without
+pretending it has a mouth. Immunities are Poison, Sleep, Drain and Charm;
+profile XP and other stat modifiers are zero. Carpet2606 keeps Sentinel
+and its original detection. Existing skill/race/form/level/master/rider
+gates apply; Mountable also excludes it from ordinary quest targets and
+Summon under existing rules. No new riding, vehicle, movement or ward
+implementation is introduced.
+
+sandman uses elemental_being at240cm/250kg/Large, with length unspecified.
+It is a conscious, soul-bearing non-undead sand humanoid. Its sculpted
+head/eyes/ears/arms/hands/fingers/two legs/feet do not add biological
+heart, brain or guts. Keep Inorganic, Analgic, mute and corpseless,
+without Mindless or Soulless. Inorganic already rules out usable blood.
+Fire and Nonmagic resistance each halve qualifying damage; Poison immunity
+is explicit. Profile XP is+5, other stat modifiers zero. These defences
+and measurements are proposed DD4 adaptations of a hot granular body, not
+an exact second-edition stat block. No sleep attack, earth phase or
+blanket spell/control immunity is supplied.2608 keeps its original senses,
+male sex, Wimpy, Stay Area and nonaggression.
+
+caryatid_column uses bipedal_construct for a head/eyes/ears/arms/hands/
+fingers/two legs/feet stone humanoid without biological organs. It is
+Mindless, Soulless, Inorganic, Bloodless, Analgic and mute, with physical
+stone remains and loot. Defaults are213cm/300kg/Medium. The local
+second-edition seven-foot height and AC5 inform height and natural armour
+-5; mass is estimated. RES_NONMAGIC halves ordinary weapon damage;
+RES_MAGIC is the chosen DD4 adaptation of its save protection. Immunities
+are Poison, Sleep, Drain, Charm, Hold and Paralysis. Profile XP is+5;
+other stat modifiers zero. No stone-golem Slow, weapon shattering or
+stone-transform instant kill is added.
+
+Caryatid2610 explicitly depicts four women carved around one column.
+Individual body XOR cancels PART_HEAD/PART_ARMS/PART_2_LEGS and adds
+PART_MANY_HEAD/PART_MANY_ARMS/PART_MANY_LEGS. Keep hands/fingers/feet and
+working eyes. Individual240cm/1200kg/Large dimensions describe the
+composite; it is not HUGE. Many-part flags describe anatomy, not four
+extra attacks, extra wear slots or four weapon drops. Each of the two
+original mobs still wields its one ordinary stone scimitar. Keep all reset
+caps/order and the second guardian's key exactly, including the author's
+intentional reload dependency when only one guardian has been killed.
+
+The four sphinx profiles use quadrupedal_hybrid: living, conscious,
+soul-bearing, speaking creatures with organic organs, blood, pain and
+remains. They have four feline legs/paws/claws/tails and feathered wings,
+with Flying and no human arms/hands by default. No new resistance or
+immunity is inferred. Their local second-edition heights/AC values inform
+height and natural armour; masses/body lengths are estimates. Ordinary
+part attacks use the shared anatomical/trauma filters and grant no extra
+attack count.
+
+hieracosphinx has a bird head/beak and claw/beak
+attacks,213cm/300kg/350cm/ Large, natural armour-9 and profile XP+5. No
+active special. Local2612 is smaller180cm/200kg/300cm while stillLarge,
+preserving relative smallness beside its cousins. Keep its Infrared,
+aggression and Wimpy. Sex0 becomes male from the second-edition identity;
+the bird-headed portrait is compatible but cannot itself establish sex.
+
+gynosphinx defaults to a female-humanlike head on a winged feline body,
+213cm/260kg/330cm/Large, armour-11, ordinary claw contact and profile
+XP+5. There is no profile active special. The local2613 explicitly has a
+woman's upper body and two feline hind legs. Its individual XOR cancels
+BODY_NO_ARMS, PART_4_LEGS and PART_FORELEGS, and adds
+PART_ARMS/PART_HANDS/PART_FINGERS/ PART_2_LEGS, keeping
+paws/claws/wings/tail. Use213cm/180kg/unknown length0/ Large. It keeps
+female sex, good alignment and the individual100-percent cleric role. Its
+local appearance and artwork are retained; no full2e
+clairvoyance/symbol/legend-lore repertoire is introduced.
+
+criosphinx has a ram head/horns and claw/horn contact,229cm/400kg/400cm/
+Large, armour-10, existing spec_horn_gore and profile XP+5. Its local2614
+retains the authored cleric role despite differing from the spell-less2e
+cousin. Supply an explicit individual70-percent cleric/30-percent gore
+set, replacing the complete inherited set. The existing gore still has its
+own15-percent attempt and head/horn/action/visibility checks.
+
+androsphinx has a manlike face/mane and ordinary claw contact,244cm/500kg/
+450cm/Large, armour-12 and profile XP+10. Its profile selects
+cleric70percent or spec_terrifying_roar30percent. OrdinaryLarge does not
+imply BODY_HUGE. Local2615 is Elite, becomes male to match
+reference/portrait, and inherits that mixture. Great Sphinx2616 is
+Boss,1000cm high/30000kg/1800cm long/Large, retaining individualHUGE. Its
+stone-like dormant appearance and imposing indestructible prose do not
+make it a construct or Unkillable: its treasure key remains obtainable. It
+retains Sanctuary/Protect/senses and uses cleric50percent/random
+anatomical breath30percent/roar20percent.
+
+spec_terrifying_roar is reusable by any suitable mobile, without vnum
+checks. When selected it attempts20percent of eligible opportunities. Only
+the current opponent is affected. It needs an awake, active NPC, a usable
+head without Head Trauma, an unchanged living same-room opponent, normal
+combat permissions and a room without Cone of Silence. Source silence is
+respected. A human language, eyes or a visible target is not required.
+Mindless and ACT_OBJECT victims are excluded. Normal supernatural Fear
+saving uses RES_SONIC|RES_PSYCHIC, including current fear protections and
+werewolf defences. A successful save has no effect; failure attempts
+normal fleeing, which still obeys movement and escape restrictions.
+
+The roar deals no direct HP damage, adds no persistent condition and does
+not change deaf/chat settings. It has no three-stage daily counter or
+permanent deafness. Messages and saves can run other actions, so recheck
+source/victim death identity, room, current opponent, action/head/silence
+and permissions before continuing. No bystander is targeted. It adds+5
+percentage points through the existing weighted special XP calculation.
+Androsphinx30percent selection gives6percent eligible roar attempts; Great
+Sphinx20percent gives4percent. These are attempts before saves and normal
+flee restrictions, not guaranteed successful escapes.
+
+Human watcher2603/tomb thief2604 reuse175cm/75kg/Medium; Ali Baba2605 uses
+individual190cm/90kg for the tall description and becomes Rare. Keep all
+thief roles, original behaviours/levels/alignments and gear. Mummy2607
+reuses the reviewed175cm/45kg/Medium mummy, native fear/rot and complete
+physiology/defences. Keep Infrared/Wimpy/nonaggression. Ramses2617 uses
+individual190cm/80kg for his tall, healthy-looking body, becomes Boss,
+retains individual No Corpse and regains speech. His good alignment150,
+Sanctuary/Protect/senses, curse/elixirs/mask/sand loot stay.
+Healthy-looking flesh does not require living classification; mummy
+organs/consciousness/ soul, Bloodless/Analgic and physical defences still
+apply.
+
+Efreet2609 reuses the reviewed366cm/600kg/Large/HUGE efreeti, armour-8,
+fire resistance and flight. Keep individual No Corpse and restore speech;
+its individual100-percent anatomical fire breath retains the original
+payload with usable-head checks. Djinni2611 reuses320cm/200kg/Large,
+armour-6 and flight, keeping its held lamp. Its explicit70-percent mage/
+30-percent anatomical gas-breath set replaces inherited fade. Ramses
+selects cleric70percent/mummy30percent; the overwritten generic undead
+caster row is removed. Mummy contact capability is also weighted:30percent
+capability times25percent contact sampling gives7.5percent rot attempts
+per eligible positive weaponless contact. Ordinary mummy2607 retains
+100percent capability and25percent sampling. No extra fear aura is added.
+
+Old duplicate #SPECIALS M records were last-wins: djinni had mage only,
+Great Sphinx had random breath only, Ramses had cleric only. The explicit
+N/P records now retain the approved mixtures. Specify all three slot
+names, using none for unused slots, and one complete probability vector.
+The scheduler chooses one callback and never retries another after FALSE.
+Profile and special XP adjustments add once, with weighted special XP; no
+new rank multiplier or second combat scheduler is supplied.
+
+Only the Great Sphinx's answer2617 reset changes: E0/2617/0/17 becomes
+G0/2617/0, retaining the exact key and reset maximum while moving HOLD to
+carried inventory. Its lion body has no hand. All other reset rows/caps/
+order/placements remain. Population45initial/49refill and34carrieditems
+stay; preserve the second-caryatid key, mummy jars, djinni lamp, magical
+paw glove2616 and book2615's external Ota'ar Dar reset. The glove is
+ordinary magical loot, not a new attached body-part weapon. All28 object
+definitions/ stats,60roomflags/exits,maze/deathtraps/locks and zero wards
+stay. Correct only the approved mongoose rodent wording and
+room2632then->than. All short names stay, preserving image paths.
+All18portraits/60roomimages were reviewed and retained. No matching.src
+exists; all four other real source exports remain unchanged, including
+exact Eakos regeneration.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 35 current rows, including reserved. The index is not an
@@ -3256,7 +3446,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 259 current table rows follow, grouped by body. Numeric IDs are for
+All 268 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -3596,7 +3786,7 @@ QUADRUPEDAL_REPTILE (7)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-SERPENTINE_REPTILE (5)
+SERPENTINE_REPTILE (6)
 ------------------------
   [ 30] giant_pit_viper: h/w/l ? / ? / 366; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3613,6 +3803,9 @@ SERPENTINE_REPTILE (5)
   [163] constrictor_snake: h/w/l ? / 70 / 600; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_constrictor; policy auto
+  [259] asp: h/w/l ? / 1 / 60; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison_bite; policy auto
 
 MYSTERIOUS_BEING (6)
 ----------------------
@@ -3671,7 +3864,7 @@ WINGED_REPTILE (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-BIPEDAL_CONSTRUCT (11)
+BIPEDAL_CONSTRUCT (12)
 -----------------------
   [ 38] animated_soft_toy: h/w/l 30 / 1 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3706,8 +3899,11 @@ BIPEDAL_CONSTRUCT (11)
   [241] clay_golem: h/w/l 244 / 272 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+15; phase none
         specials 1:spec_golem_haste; policy auto
+  [263] caryatid_column: h/w/l 213 / 300 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
 
-QUADRUPEDAL_MAMMAL (39)
+QUADRUPEDAL_MAMMAL (40)
 ------------------------
   [  1] goat: h/w/l 70 / 55 / 110; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3826,6 +4022,9 @@ QUADRUPEDAL_MAMMAL (39)
   [244] apocalyptic_steed: h/w/l 230 / 1400 / 330; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
+  [260] mongoose: h/w/l 20 / 2 / 50; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 HEAD_ONLY (2)
 ---------------
@@ -3872,7 +4071,7 @@ LIMBLESS_INVERTEBRATE (11)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-LIMBLESS_CONSTRUCT (4)
+LIMBLESS_CONSTRUCT (5)
 ------------------------
   [ 54] animated_vase: h/w/l 40 / 3 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3884,6 +4083,9 @@ LIMBLESS_CONSTRUCT (4)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [190] rolling_boulder: h/w/l 150 / 4000 / 150; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [261] animated_carpet: h/w/l 5 / 8 / 200; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -3899,13 +4101,25 @@ CENTAUROID_MAMMAL (3)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_lamia; policy auto
 
-QUADRUPEDAL_HYBRID (1)
+QUADRUPEDAL_HYBRID (5)
 ------------------------
   [ 72] griffin: h/w/l 152 / 600 / 275; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
+  [264] hieracosphinx: h/w/l 213 / 300 / 350; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [265] gynosphinx: h/w/l 213 / 260 / 330; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [266] criosphinx: h/w/l 229 / 400 / 400; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_horn_gore; policy auto
+  [267] androsphinx: h/w/l 244 / 500 / 450; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_cast_cleric, 2:spec_terrifying_roar; policy 70/30/0
 
-ELEMENTAL_BEING (4)
+ELEMENTAL_BEING (5)
 ---------------------
   [  2] fire_elemental: h/w/l 300 / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
@@ -3917,6 +4131,9 @@ ELEMENTAL_BEING (4)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [246] water_spirit: h/w/l 90 / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [262] sandman: h/w/l 240 / 250 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
@@ -4859,6 +5076,7 @@ Check native helpers, safety, active-slot policies and XP before reusing one.
     spec_golem_haste
     spec_grell
     spec_horn_gore
+    spec_terrifying_roar
     spec_guard
     spec_guardian_daemon
     spec_janitor
@@ -4939,8 +5157,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/5a886e24b130047debfac8739b0fd150f2d7ee26
-  Base PR993 plus the accompanying Catacombs patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/5f2db2665294509e42e842409fa1eef532cdeb4d
+  Base PR994 plus the accompanying Great Pyramid patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -4950,9 +5168,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 81/153 areas (52.9%) and 1233/4131 mob
-definitions (29.8%) merged and verified. The Catacombs adds 26 definitions.
-After its merge is verified, completion becomes 82/153 areas (53.6%) and
-1259/4131 definitions (30.5%).
+The live conversion is currently 82/153 areas (53.6%) and 1259/4131 mob
+definitions (30.5%) merged and verified. The Great Pyramid adds 18 definitions.
+After its merge is verified, completion becomes 83/153 areas (54.2%) and
+1277/4131 definitions (30.9%).
 
 END OF GUIDE

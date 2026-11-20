@@ -57,6 +57,7 @@ DECLARE_SPEC_FUN( spec_executioner_local );
 DECLARE_SPEC_FUN( spec_grell );
 DECLARE_SPEC_FUN( spec_flind );
 DECLARE_SPEC_FUN( spec_horn_gore );
+DECLARE_SPEC_FUN( spec_terrifying_roar );
 DECLARE_SPEC_FUN( spec_breath_crystal );
 DECLARE_SPEC_FUN( spec_sprite );
 DECLARE_SPEC_FUN( spec_vine_grip );
@@ -190,6 +191,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_grell")) return spec_grell;
         if (!str_cmp(name, "spec_flind")) return spec_flind;
         if (!str_cmp(name, "spec_horn_gore")) return spec_horn_gore;
+        if (!str_cmp(name, "spec_terrifying_roar")) return spec_terrifying_roar;
         if (!str_cmp(name, "spec_breath_crystal")) return spec_breath_crystal;
         if (!str_cmp(name, "spec_sprite")) return spec_sprite;
         if (!str_cmp(name, "spec_vine_grip")) return spec_vine_grip;
@@ -329,6 +331,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_grell) return "spec_grell";
         if (special == spec_flind) return "spec_flind";
         if (special == spec_horn_gore) return "spec_horn_gore";
+        if (special == spec_terrifying_roar) return "spec_terrifying_roar";
         if (special == spec_breath_crystal) return "spec_breath_crystal";
         if (special == spec_sprite) return "spec_sprite";
         if (special == spec_vine_grip) return "spec_vine_grip";
@@ -5707,6 +5710,65 @@ bool spec_vine_grip(CHAR_DATA *ch)
         act("$n's vines close around you!", ch, NULL, victim, TO_VICT);
         act("Your vines close around $N!", ch, NULL, victim, TO_CHAR);
         act("$n's vines close around $N!", ch, NULL, victim, TO_NOTVICT);
+        return TRUE;
+}
+
+/* Recheck after messages and saves, which may move or change either actor. */
+static bool roar_opponent_unchanged(CHAR_DATA *ch, CHAR_DATA *victim,
+    ROOM_INDEX_DATA *room, int source_deaths, int target_deaths)
+{
+        return action_character_in_room(ch, room, source_deaths)
+            && action_character_in_room(victim, room, target_deaths)
+            && native_combat_opponent(ch) == victim
+            && HAS_HEAD(ch) && !IS_AFFECTED(ch, AFF_HEAD_TRAUMA)
+            && !is_silenced(ch)
+            && !IS_SET(room->room_flags, ROOM_CONE_OF_SILENCE)
+            && !IS_SET(room->room_flags, ROOM_SAFE)
+            && !(room->area && IS_SET(room->area->area_flags, AREA_FLAG_SAFE))
+            && !is_mindless(victim)
+            && !(IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT));
+}
+
+/* A roar needs a usable head, not human speech or a visible opponent. */
+bool spec_terrifying_roar(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        ROOM_INDEX_DATA *room;
+        int source_deaths, target_deaths;
+        bool saved;
+
+        if (!victim)
+                return FALSE;
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        target_deaths = action_deaths(victim);
+        if (!roar_opponent_unchanged(ch, victim, room, source_deaths, target_deaths)
+        || number_percent() > 20)
+                return FALSE;
+
+        act("You unleash a terrifying roar at $N!", ch, NULL, victim, TO_CHAR);
+        if (!roar_opponent_unchanged(ch, victim, room, source_deaths, target_deaths))
+                return TRUE;
+        act("$n unleashes a terrifying roar at you!", ch, NULL, victim, TO_VICT);
+        if (!roar_opponent_unchanged(ch, victim, room, source_deaths, target_deaths))
+                return TRUE;
+        act("$n unleashes a terrifying roar at $N!", ch, NULL, victim, TO_NOTVICT);
+        if (!roar_opponent_unchanged(ch, victim, room, source_deaths, target_deaths))
+                return TRUE;
+
+        saved = saves_supernatural_effect(ch, ch->level, victim,
+            RES_SONIC | RES_PSYCHIC, SUPERNATURAL_FEAR);
+        if (!roar_opponent_unchanged(ch, victim, room, source_deaths, target_deaths))
+                return TRUE;
+        if (saved)
+        {
+                act("You withstand $n's roar.", ch, NULL, victim, TO_VICT);
+                return TRUE;
+        }
+
+        act("Terror grips you at the sound of $n's roar!", ch, NULL, victim, TO_VICT);
+        if (roar_opponent_unchanged(ch, victim, room, source_deaths, target_deaths))
+                do_flee(victim, "Fear");
         return TRUE;
 }
 
