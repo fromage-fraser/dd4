@@ -139,6 +139,8 @@ my %mob_archetype = map { $_ => 1 } qw/
         undead_riding_beetle green_slime crystal_spider umber_hulk ochre_jelly
         draconian undead_draconian adult_black_dragon ancient_green_dragon
         phase_dragon tiamat_avatar
+        rhinoceros_beetle bulette jaguar humanoid_gargantua rakshasa
+        black_phasebeast great_ape
 /;
 
 my %mob_act = (
@@ -395,7 +397,7 @@ my @mob_spec = qw/
     spec_faerie_dragon      spec_duergar            spec_swallow            spec_poison_palm spec_poison_claw spec_breath_brass spec_paralysing_bite spec_myconid_spores spec_engulf spec_camel_spit spec_manticore spec_alhoon
     spec_cast_slow
     spec_beholder spec_lamia spec_mimic spec_cast_construct_adept
-    spec_executioner_local spec_grell spec_flind spec_otyugh spec_horn_gore spec_terrifying_roar spec_confusing_gaze spec_breath_crystal spec_elemental_burst spec_sprite spec_innate_fade spec_vine_grip spec_wisp_lightning spec_acid_spray spec_golem_haste
+    spec_executioner_local spec_grell spec_flind spec_otyugh spec_horn_gore spec_terrifying_roar spec_confusing_gaze spec_breath_crystal spec_elemental_burst spec_sprite spec_innate_fade spec_vine_grip spec_wisp_lightning spec_acid_spray spec_gas_cloud spec_golem_haste
 /;
 
 my %obj_ex = (

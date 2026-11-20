@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 21 November 2026
-Based on master b4065f3494606a7c293ec6c16fef28204dd3aa2f (PR #996),
-with the accompanying Dragon Tower changes.
+Based on master c98255a64ccc24cdf4e7d0698955bc03798b97af (PR #997),
+with the accompanying Valley of Dreams changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -911,10 +911,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 279, so this single example would make 280.
+guide's checked revision it is 286, so this single example would make 287.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 279.
+valid index. This example would receive index 286.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1612,7 +1612,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 279;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 286;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1722,9 +1722,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 279; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 286; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-35 body rows, 279 archetype rows, 50 internal traits and 126 Scribe
+35 body rows, 286 archetype rows, 50 internal traits and 127 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -3640,6 +3640,161 @@ royal_attendant alias is not the current lookup. Regenerated 2206/2207
 portraits and room 2212 depict the approved dragonfolk, with covered
 nonsexual court clothing.
 
+The Valley of Dreams
+--------------------
+
+The catalogue now has 286 archetypes, 35 body species, 50 internal traits,
+127 Scribe special names and 637 skill rows. Seven profiles append at
+279-285: rhinoceros_beetle, bulette, jaguar, humanoid_gargantua, rakshasa,
+black_phasebeast and great_ape. All 279 earlier profiles and all bodies
+stay unchanged. These creatures use existing traits and area fields. All
+seven have zero HP/damage/critical/haste modifiers. Ranks stay individual.
+
+rhinoceros_beetle is a living six-legged insect with ordinary organs,
+head, eyes, shell, horn and fanged mandibles. No Arms and No Speech are
+inherited. It has natural armour -8 and ordinary horn/bite contact, with
+no additional attack or default acid ability. Defaults are 120 cm/350
+kg/366 cm/Large. The local man-sized beetle 13600 uses 90 cm/120 kg/180
+cm/Medium. Remove its old No Heart override and duplicate limb/speech XOR,
+and keep its authored acid attack through an individual
+spec_breath_acid_anatomical. No new resistance, immunity or Mindless
+property is inferred. Profile XP is 0.
+
+bulette is a living quadrupedal_hybrid with plates/scales/shell, claws,
+fangs and tail. It cannot speak, but keeps blood, pain, mind, soul and
+ordinary remains. Defaults are 290 cm/1800 kg/366 cm/Large with HUGE;
+natural armour is -12 and profile XP +5. No active burrowing, jumping,
+swallowing or item destruction is added. Local 13601 keeps its authored
+venom through spec_poison_bite; the shared profile is nonvenomous.
+
+jaguar is a living quadrupedal_mammal with feline paws/claws/fangs/tail,
+ordinary organs, No Speech, Hide/Sneak/Infrared/Swim and natural armour
+-4. Defaults are 75 cm/90 kg/200 cm/Medium; the local giant 13605 uses 100
+cm/180 kg/300 cm/Large without HUGE. Existing detection and passive
+behaviour stay. Fur and melanistic colour are descriptive, not new flags.
+Profile XP is 0. These measurements are DD4 estimates informed by the 2e
+great-cat entry, not an extra rank or additional claw attacks.
+
+humanoid_gargantua is a living humanoid in the giant combat family. It has
+ordinary organs, arms/hands/two legs, blood, pain, mind, soul and remains,
+but No Speech. It is not Mindless. The area's explicit thirty-metre height
+becomes 3000 cm; estimated mass is 300000 kg, length unspecified, Large
+with HUGE. Natural armour is -6 and profile XP +5. Existing native
+regeneration traits give max(4, level/25) HP every 3 seconds after an
+initial 3-second delay. Actual fire/acid harm restarts a 3-second pause.
+Poison/Plague quarters healing, Slow halves it, NO_HEAL stops it and the
+aggravated healing ceiling applies. Ordinary positive NPC tick healing is
+replaced, so it cannot stack. There is no stored catch-up healing or
+automatic trauma repair. The sourcebook's regeneration informs this
+bounded DD4 timing; no extra trample hit or forced rank is added.
+
+rakshasa is a living flesh-encased spirit, with humanoid arms/hands/legs,
+ordinary organs and animal-featured claw/fang anatomy. It keeps blood,
+pain, mind, soul and physical remains. Defaults are 183 cm/125 kg/Medium,
+length unspecified. Natural armour is -14, natural attacks are magical,
+Magic is resisted and Nonmagic is immune. This is a DD4 adaptation rather
+than importing tabletop spell-circle immunity or blessed-bolt instant
+death. Its default caster is spec_cast_mage; local 13610 keeps an explicit
+100 percent spec_demon override, Flying and its adult female human
+disguise. No new disguise subsystem or automatic elemental immunity is
+added. Profile XP is +10. Keep displayed Rakasasha and its old keyword;
+add the correct rakshasa keyword and repair the species spelling in its
+description. Small key 13634 moves from the finger slot to inventory,
+retaining the loot.
+
+black_phasebeast is a conscious mysterious_being: no head, eyes, limbs,
+organs, speech or corpse; Inorganic/Bloodless/Analgic, with mind and soul
+retained. It is not automatically Undead, Soulless or noncorporeal. All
+three measurements remain unspecified; size is Medium. It has Poison
+immunity, hovering flight and the existing ACT_BLINK defensive ability,
+whose successful use costs 5 mana. Preserve local invisibility, hiding,
+sneaking, senses, Sentinel and aggression. No Pass Door or room-ward
+exception is added. Profile XP is +5, plus ordinary special XP.
+
+spec_gas_cloud is a reusable mouthless release of the old gas-breath spell
+payload. It is selected once per eligible fighting opportunity, without
+the acid spray's one-in-four target sampling. Keep the original room-wide
+gas spell targets, damage, nausea and resistance rules. The message
+describes gas billowing from the creature, not imaginary jaws. Head, eyes
+and speech are unnecessary. Ordinary action, current-opponent, room/area
+safety, antimagic and ordered-player restrictions still apply. Recheck
+source/target death identity, room, opponent and permissions after
+messages. Antimagic gets one activation decision. The special adds +10 XP,
+like gas breath, and is registered in both lookup directions and Scribe.
+No new player spell, condition or area field is needed.
+
+great_ape uses humanoid anatomy for a gorilla's grasping arms, hands,
+fingers and two legs, with ordinary organs and fangs. It has No Speech, no
+tail or invented claws, and keeps normal living physiology. Defaults are
+estimated 180 cm/180 kg/Medium with unspecified length; natural armour is
+-3, profile XP 0 and the natural attack is a bite. Local 13617 keeps its
+existing poison through spec_poison_bite; the shared profile has no venom,
+plague or new rabies mechanic. Both original ape resets remain.
+
+Torba 13602 and Jakor 13611 remain Common human males at 175 cm/75 kg.
+Torba keeps spec_cast_adept and gains ACT_IS_HEALER, so HEAL offers the
+ordinary menu/prices alongside incidental adept assistance. His
+protection, Sanctuary, senses and passivity stay. Jakor keeps psionic
+casting, levitation, Sanctuary and ACT_PRACTICE; his existing lesson list
+is empty and stays so. The spring and area recall room 13609 remain free
+of NO_UNDEAD.
+
+Giant crocodile 13603 reuses crocodile with individual 80 cm/900 kg/ 700
+cm/Large/HUGE and keeps its carried fingerbone. Black dragon 13604 reuses
+adult_black_dragon with inherited acid breath, defences and dragon
+abilities; it remains Common. Guard 13607 and shaman 13608 reuse lizardman
+at 200 cm/100 kg/Medium. Keep guard equipment/Sanctuary and the shaman's
+existing psionic special, headdress, aggression and Wimpy behaviour.
+
+Kiqir 13609 stays Elite, with individual 450 cm/1500 kg/Large/HUGE, all 17
+equipped items, psionic casting and authored stealth, magical flight,
+passivity and Wimpy. Giant servant 13612 is the described stitched green
+construct: reuse flesh_golem at 350 cm/600 kg/Large/HUGE with individual
+spec_breath_lightning_anatomical. Its reviewed nonmagic barrier, magical
+fists, electrical healing and fire/cold slowing apply; it is not Undead.
+Cook 13613 and maid 13614 are living generic giants at the same estimated
+400 cm/900 kg/Large/HUGE, with fire breath and psionic casting
+respectively. These individual dimensions leave generic giant and earlier
+6506 unchanged.
+
+The actual area sex fields are corrected: cook 13613 is male 1, maid 13614
+is female 2. Their long descriptions contain no conflicting pronouns and
+their detailed descriptions are blank. The bearded male cook and female
+maid portraits support the correction; neither portrait needs replacement.
+The full area, resolved prototype and fresh/live mob values must agree.
+
+Giant red roc 13616 reuses roc with individual 600 cm/3000 kg/1800 cm/
+Large/HUGE, retaining authored fire breath through the anatomical wrapper.
+Red plumage does not add Fire immunity. Shared roc defaults stay
+unchanged. All authored Aggressive/passive, Sentinel, Stay Area, Wimpy,
+Scavenger, Sanctuary, Invisibility, senses and flight exceptions stay.
+Anatomical wrappers keep ordinary head/trauma restrictions and special
+frequency.
+
+Ranks: Kiqir 13609 remains Elite with 5x HP once; Rakasasha 13610 becomes
+Rare with 2x HP once as the inner-bedroom deceiver and key guardian. Other
+16 definitions stay Common. No rank or racial HP modifier follows from
+size, level, sourcebook rarity or legacy HP dice notation.
+
+Keep all original reset counts/order/caps/placements: 19 inhabitants and
+22 carried items initially and after three refill resets. Eleven later
+guard/servant/maid rows remain suppressed at their existing caps. Only the
+small key's equipment slot changes. All 36 object definitions/stats
+remain. Make the study return door 13637 east use key 13604, matching
+13635 west; make laboratory return door 13639 south use 13602, matching
+13636 north. Preserve door flags/reset states and approach-side key
+requirements, the crypt's keyless return, magical one-way routes and all
+52 room flags.
+
+Repair obvious spelling and broken words without changing displayed mob
+names. Remove only the accidental trailing space from room 13631's title,
+making the existing image 13631_the_corridor.png match the GUI. Keep the
+period in The Staircase. (13633); its exact GUI filename is
+13633_the_staircase..png. Supply an unchanged copy under that name. All 70
+current portraits/room images were reviewed; no regeneration is needed.
+Media publication is separate from the source patch. There is no matching
+.src; all four other real source exports stay unchanged, including Eakos.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 35 current rows, including reserved. The index is not an
@@ -3687,7 +3842,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 279 current table rows follow, grouped by body. Numeric IDs are for
+All 286 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -3703,7 +3858,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (87)
+HUMANOID (90)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3966,6 +4121,15 @@ HUMANOID (87)
   [274] undead_draconian: h/w/l 190 / 80 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [282] humanoid_gargantua: h/w/l 3000 / 300000 / ?; Large; family giant
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [283] rakshasa: h/w/l 183 / 125 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_cast_mage; policy auto
+  [285] great_ape: h/w/l 180 / 180 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 DRAGON (18)
 ------------
@@ -4069,7 +4233,7 @@ SERPENTINE_REPTILE (6)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_poison_bite; policy auto
 
-MYSTERIOUS_BEING (6)
+MYSTERIOUS_BEING (7)
 ----------------------
   [ 32] animated_mist: h/w/l ? / ? / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -4089,6 +4253,9 @@ MYSTERIOUS_BEING (6)
   [233] will_o_wisp: h/w/l 61 / ? / 61; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials 1:spec_innate_fade; policy auto
+  [284] black_phasebeast: h/w/l ? / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_gas_cloud; policy auto
 
 WINGED_MAMMAL (8)
 -------------------
@@ -4165,7 +4332,7 @@ BIPEDAL_CONSTRUCT (12)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-QUADRUPEDAL_MAMMAL (40)
+QUADRUPEDAL_MAMMAL (41)
 ------------------------
   [  1] goat: h/w/l 70 / 55 / 110; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -4287,6 +4454,9 @@ QUADRUPEDAL_MAMMAL (40)
   [260] mongoose: h/w/l 20 / 2 / 50; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [281] jaguar: h/w/l 75 / 90 / 200; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 HEAD_ONLY (2)
 ---------------
@@ -4363,7 +4533,7 @@ CENTAUROID_MAMMAL (3)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_lamia; policy auto
 
-QUADRUPEDAL_HYBRID (5)
+QUADRUPEDAL_HYBRID (6)
 ------------------------
   [ 72] griffin: h/w/l 152 / 600 / 275; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -4380,6 +4550,9 @@ QUADRUPEDAL_HYBRID (5)
   [267] androsphinx: h/w/l 244 / 500 / 450; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials 1:spec_cast_cleric, 2:spec_terrifying_roar; policy 70/30/0
+  [280] bulette: h/w/l 290 / 1800 / 366; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
 
 ELEMENTAL_BEING (5)
 ---------------------
@@ -4534,7 +4707,7 @@ ARACHNID (7)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_poison_bite; policy auto
 
-INSECT (3)
+INSECT (4)
 ------------
   [119] giant_wasp: h/w/l 60 / 35 / 150; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -4543,6 +4716,9 @@ INSECT (3)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_poison; policy auto
   [268] undead_riding_beetle: h/w/l 120 / 350 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [279] rhinoceros_beetle: h/w/l 120 / 350 / 366; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -5276,6 +5452,7 @@ Check native helpers, safety, active-slot policies and XP before reusing one.
 
     spec_aboleth
     spec_acid_spray
+    spec_gas_cloud
     spec_alhoon
     spec_assassin
     spec_banshee
@@ -5432,8 +5609,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/b4065f3494606a7c293ec6c16fef28204dd3aa2f
-  Base PR996 plus the accompanying Dragon Tower patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/c98255a64ccc24cdf4e7d0698955bc03798b97af
+  Base PR997 plus the accompanying Valley of Dreams patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -5443,9 +5620,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 84/153 areas (54.9%) and 1293/4131 mob
-definitions (31.3%) merged and verified. Dragon Tower adds 19 definitions.
-After its merge is verified, completion becomes 85/153 areas (55.6%) and
-1312/4131 definitions (31.8%).
+The live conversion is currently 85/153 areas (55.6%) and 1312/4131 mob
+definitions (31.8%) merged and verified. Valley of Dreams adds 18 definitions.
+After its merge is verified, completion becomes 86/153 areas (56.2%) and
+1330/4131 definitions (32.2%).
 
 END OF GUIDE

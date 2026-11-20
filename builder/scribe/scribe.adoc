@@ -14824,3 +14824,159 @@ concubine's canonical filename stays 2206_a_concubine.png. The
 royal_attendant alias is not the current lookup. Regenerated 2206/2207
 portraits and room 2212 depict the approved dragonfolk, with covered
 nonsexual court clothing.
+
+
+The Valley of Dreams
+--------------------
+
+The catalogue now has 286 archetypes, 35 body species, 50 internal traits,
+127 Scribe special names and 637 skill rows. Seven profiles append at
+279-285: rhinoceros_beetle, bulette, jaguar, humanoid_gargantua, rakshasa,
+black_phasebeast and great_ape. All 279 earlier profiles and all bodies
+stay unchanged. These creatures use existing traits and area fields. All
+seven have zero HP/damage/critical/haste modifiers. Ranks stay individual.
+
+rhinoceros_beetle is a living six-legged insect with ordinary organs,
+head, eyes, shell, horn and fanged mandibles. No Arms and No Speech are
+inherited. It has natural armour -8 and ordinary horn/bite contact, with
+no additional attack or default acid ability. Defaults are 120 cm/350
+kg/366 cm/Large. The local man-sized beetle 13600 uses 90 cm/120 kg/180
+cm/Medium. Remove its old No Heart override and duplicate limb/speech XOR,
+and keep its authored acid attack through an individual
+spec_breath_acid_anatomical. No new resistance, immunity or Mindless
+property is inferred. Profile XP is 0.
+
+bulette is a living quadrupedal_hybrid with plates/scales/shell, claws,
+fangs and tail. It cannot speak, but keeps blood, pain, mind, soul and
+ordinary remains. Defaults are 290 cm/1800 kg/366 cm/Large with HUGE;
+natural armour is -12 and profile XP +5. No active burrowing, jumping,
+swallowing or item destruction is added. Local 13601 keeps its authored
+venom through spec_poison_bite; the shared profile is nonvenomous.
+
+jaguar is a living quadrupedal_mammal with feline paws/claws/fangs/tail,
+ordinary organs, No Speech, Hide/Sneak/Infrared/Swim and natural armour
+-4. Defaults are 75 cm/90 kg/200 cm/Medium; the local giant 13605 uses 100
+cm/180 kg/300 cm/Large without HUGE. Existing detection and passive
+behaviour stay. Fur and melanistic colour are descriptive, not new flags.
+Profile XP is 0. These measurements are DD4 estimates informed by the 2e
+great-cat entry, not an extra rank or additional claw attacks.
+
+humanoid_gargantua is a living humanoid in the giant combat family. It has
+ordinary organs, arms/hands/two legs, blood, pain, mind, soul and remains,
+but No Speech. It is not Mindless. The area's explicit thirty-metre height
+becomes 3000 cm; estimated mass is 300000 kg, length unspecified, Large
+with HUGE. Natural armour is -6 and profile XP +5. Existing native
+regeneration traits give max(4, level/25) HP every 3 seconds after an
+initial 3-second delay. Actual fire/acid harm restarts a 3-second pause.
+Poison/Plague quarters healing, Slow halves it, NO_HEAL stops it and the
+aggravated healing ceiling applies. Ordinary positive NPC tick healing is
+replaced, so it cannot stack. There is no stored catch-up healing or
+automatic trauma repair. The sourcebook's regeneration informs this
+bounded DD4 timing; no extra trample hit or forced rank is added.
+
+rakshasa is a living flesh-encased spirit, with humanoid arms/hands/legs,
+ordinary organs and animal-featured claw/fang anatomy. It keeps blood,
+pain, mind, soul and physical remains. Defaults are 183 cm/125 kg/Medium,
+length unspecified. Natural armour is -14, natural attacks are magical,
+Magic is resisted and Nonmagic is immune. This is a DD4 adaptation rather
+than importing tabletop spell-circle immunity or blessed-bolt instant
+death. Its default caster is spec_cast_mage; local 13610 keeps an explicit
+100 percent spec_demon override, Flying and its adult female human
+disguise. No new disguise subsystem or automatic elemental immunity is
+added. Profile XP is +10. Keep displayed Rakasasha and its old keyword;
+add the correct rakshasa keyword and repair the species spelling in its
+description. Small key 13634 moves from the finger slot to inventory,
+retaining the loot.
+
+black_phasebeast is a conscious mysterious_being: no head, eyes, limbs,
+organs, speech or corpse; Inorganic/Bloodless/Analgic, with mind and soul
+retained. It is not automatically Undead, Soulless or noncorporeal. All
+three measurements remain unspecified; size is Medium. It has Poison
+immunity, hovering flight and the existing ACT_BLINK defensive ability,
+whose successful use costs 5 mana. Preserve local invisibility, hiding,
+sneaking, senses, Sentinel and aggression. No Pass Door or room-ward
+exception is added. Profile XP is +5, plus ordinary special XP.
+
+spec_gas_cloud is a reusable mouthless release of the old gas-breath spell
+payload. It is selected once per eligible fighting opportunity, without
+the acid spray's one-in-four target sampling. Keep the original room-wide
+gas spell targets, damage, nausea and resistance rules. The message
+describes gas billowing from the creature, not imaginary jaws. Head, eyes
+and speech are unnecessary. Ordinary action, current-opponent, room/area
+safety, antimagic and ordered-player restrictions still apply. Recheck
+source/target death identity, room, opponent and permissions after
+messages. Antimagic gets one activation decision. The special adds +10 XP,
+like gas breath, and is registered in both lookup directions and Scribe.
+No new player spell, condition or area field is needed.
+
+great_ape uses humanoid anatomy for a gorilla's grasping arms, hands,
+fingers and two legs, with ordinary organs and fangs. It has No Speech, no
+tail or invented claws, and keeps normal living physiology. Defaults are
+estimated 180 cm/180 kg/Medium with unspecified length; natural armour is
+-3, profile XP 0 and the natural attack is a bite. Local 13617 keeps its
+existing poison through spec_poison_bite; the shared profile has no venom,
+plague or new rabies mechanic. Both original ape resets remain.
+
+Torba 13602 and Jakor 13611 remain Common human males at 175 cm/75 kg.
+Torba keeps spec_cast_adept and gains ACT_IS_HEALER, so HEAL offers the
+ordinary menu/prices alongside incidental adept assistance. His
+protection, Sanctuary, senses and passivity stay. Jakor keeps psionic
+casting, levitation, Sanctuary and ACT_PRACTICE; his existing lesson list
+is empty and stays so. The spring and area recall room 13609 remain free
+of NO_UNDEAD.
+
+Giant crocodile 13603 reuses crocodile with individual 80 cm/900 kg/ 700
+cm/Large/HUGE and keeps its carried fingerbone. Black dragon 13604 reuses
+adult_black_dragon with inherited acid breath, defences and dragon
+abilities; it remains Common. Guard 13607 and shaman 13608 reuse lizardman
+at 200 cm/100 kg/Medium. Keep guard equipment/Sanctuary and the shaman's
+existing psionic special, headdress, aggression and Wimpy behaviour.
+
+Kiqir 13609 stays Elite, with individual 450 cm/1500 kg/Large/HUGE, all 17
+equipped items, psionic casting and authored stealth, magical flight,
+passivity and Wimpy. Giant servant 13612 is the described stitched green
+construct: reuse flesh_golem at 350 cm/600 kg/Large/HUGE with individual
+spec_breath_lightning_anatomical. Its reviewed nonmagic barrier, magical
+fists, electrical healing and fire/cold slowing apply; it is not Undead.
+Cook 13613 and maid 13614 are living generic giants at the same estimated
+400 cm/900 kg/Large/HUGE, with fire breath and psionic casting
+respectively. These individual dimensions leave generic giant and earlier
+6506 unchanged.
+
+The actual area sex fields are corrected: cook 13613 is male 1, maid 13614
+is female 2. Their long descriptions contain no conflicting pronouns and
+their detailed descriptions are blank. The bearded male cook and female
+maid portraits support the correction; neither portrait needs replacement.
+The full area, resolved prototype and fresh/live mob values must agree.
+
+Giant red roc 13616 reuses roc with individual 600 cm/3000 kg/1800 cm/
+Large/HUGE, retaining authored fire breath through the anatomical wrapper.
+Red plumage does not add Fire immunity. Shared roc defaults stay
+unchanged. All authored Aggressive/passive, Sentinel, Stay Area, Wimpy,
+Scavenger, Sanctuary, Invisibility, senses and flight exceptions stay.
+Anatomical wrappers keep ordinary head/trauma restrictions and special
+frequency.
+
+Ranks: Kiqir 13609 remains Elite with 5x HP once; Rakasasha 13610 becomes
+Rare with 2x HP once as the inner-bedroom deceiver and key guardian. Other
+16 definitions stay Common. No rank or racial HP modifier follows from
+size, level, sourcebook rarity or legacy HP dice notation.
+
+Keep all original reset counts/order/caps/placements: 19 inhabitants and
+22 carried items initially and after three refill resets. Eleven later
+guard/servant/maid rows remain suppressed at their existing caps. Only the
+small key's equipment slot changes. All 36 object definitions/stats
+remain. Make the study return door 13637 east use key 13604, matching
+13635 west; make laboratory return door 13639 south use 13602, matching
+13636 north. Preserve door flags/reset states and approach-side key
+requirements, the crypt's keyless return, magical one-way routes and all
+52 room flags.
+
+Repair obvious spelling and broken words without changing displayed mob
+names. Remove only the accidental trailing space from room 13631's title,
+making the existing image 13631_the_corridor.png match the GUI. Keep the
+period in The Staircase. (13633); its exact GUI filename is
+13633_the_staircase..png. Supply an unchanged copy under that name. All 70
+current portraits/room images were reviewed; no regeneration is needed.
+Media publication is separate from the source patch. There is no matching
+.src; all four other real source exports stay unchanged, including Eakos.
