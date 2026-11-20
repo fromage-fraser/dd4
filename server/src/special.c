@@ -66,6 +66,7 @@ DECLARE_SPEC_FUN( spec_innate_fade );
 DECLARE_SPEC_FUN( spec_wisp_lightning );
 DECLARE_SPEC_FUN( spec_golem_haste );
 DECLARE_SPEC_FUN( spec_acid_spray );
+DECLARE_SPEC_FUN( spec_gas_cloud );
 DECLARE_SPEC_FUN( spec_elemental_burst );
 DECLARE_SPEC_FUN( spec_otyugh );
 DECLARE_SPEC_FUN( spec_cast_adept           );
@@ -201,6 +202,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_wisp_lightning")) return spec_wisp_lightning;
         if (!str_cmp(name, "spec_golem_haste")) return spec_golem_haste;
         if (!str_cmp(name, "spec_acid_spray")) return spec_acid_spray;
+        if (!str_cmp(name, "spec_gas_cloud")) return spec_gas_cloud;
         if (!str_cmp(name, "spec_elemental_burst")) return spec_elemental_burst;
         if (!str_cmp(name, "spec_otyugh")) return spec_otyugh;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
@@ -342,6 +344,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_wisp_lightning) return "spec_wisp_lightning";
         if (special == spec_golem_haste) return "spec_golem_haste";
         if (special == spec_acid_spray) return "spec_acid_spray";
+        if (special == spec_gas_cloud) return "spec_gas_cloud";
         if (special == spec_elemental_burst) return "spec_elemental_burst";
         if (special == spec_otyugh) return "spec_otyugh";
         if (special == spec_cast_adept) return "spec_cast_adept";
@@ -5623,6 +5626,47 @@ bool spec_acid_spray(CHAR_DATA *ch)
                 return TRUE;
         return cast_native_spell(skill_table[sn].spell_fun, sn,
                                  ch->level, ch, victim);
+}
+
+/* Gas can spread from a whole cloud without a mouth, eyes or speech. */
+static bool gas_cloud_combat_unchanged(CHAR_DATA *ch, CHAR_DATA *victim,
+    ROOM_INDEX_DATA *room, int source_deaths, int target_deaths)
+{
+        return action_character_in_room(ch, room, source_deaths)
+            && action_character_in_room(victim, room, target_deaths)
+            && innate_spell_ready(ch) && native_combat_opponent(ch) == victim
+            && ch->position == POS_FIGHTING && !is_safe(ch, victim)
+            && !IS_SET(room->room_flags, ROOM_SAFE)
+            && !(room->area && IS_SET(room->area->area_flags, AREA_FLAG_SAFE));
+}
+
+/* Keep the original room-wide gas payload and selected-opportunity timing. */
+bool spec_gas_cloud(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        ROOM_INDEX_DATA *room;
+        int sn, source_deaths, target_deaths;
+
+        if (!victim)
+                return FALSE;
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        target_deaths = action_deaths(victim);
+        if (!gas_cloud_combat_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                return FALSE;
+        sn = skill_lookup("gas breath");
+        if (sn < 0 || antimagic_blocks_activation(ch, RES_MAGIC))
+                return FALSE;
+        if (!gas_cloud_combat_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                return TRUE;
+        act("A vile cloud of poisonous gas billows out from $n!",
+            ch, NULL, NULL, TO_ROOM);
+        if (gas_cloud_combat_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                cast_native_spell(skill_table[sn].spell_fun, sn, ch->level, ch, NULL);
+        return TRUE;
 }
 
 /* Keep the usual Haste condition short before messages can trigger an action. */

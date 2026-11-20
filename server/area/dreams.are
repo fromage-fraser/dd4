@@ -13,8 +13,13 @@ This huge armour-plated insect is the size of a man and looks very mean.
 ~
 64 0 0 S
 45 0 0 0d0+0 0d0+0
-52 0
+0 0
 8 8 0
+< rhinoceros_beetle~ common~
+MobHeight 90
+MobWeight 120
+MobLength 180
+MobSize 1
 #13601
 Bulette~
 the Bulette~
@@ -24,8 +29,9 @@ This bizarre creature looks like a cross between a rhinoceros, an armadillo and 
 ~
 32|64 8|32|512 0 S
 58 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< bulette~ common~
 #13602
 Torba hermit healer shaman~
 Torba the Shaman Healer~
@@ -33,10 +39,11 @@ Torba,  a hermit healer is Shaman of the forest.  He welcomes all who come in pe
 ~
 This hermit now in old age is deceptively strong and agile.  He has chosen this small forest as his home and tends to the adventurers and travellers that pass through this region.
 ~
-2|64 8|32|128|512|8192 700 S
+2|64|8192 8|32|128|512|8192 700 S
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13603
 giant croc crocodile~
 the Giant Crocodile~
@@ -46,8 +53,12 @@ The crocodile stares back at you!
 ~
 2|32|64 8|32 0 S
 45 0 0 0d0+0 0d0+0
-36 0
+128 0
 8 8 0
+< crocodile~ common~
+MobHeight 80
+MobWeight 900
+MobLength 700
 #13604
 black dragon~
 the Black Dragon~
@@ -55,10 +66,11 @@ The Black Dragon has its lair near here...
 ~
 The Black Dragon has jet black scales that allow it to effectively blend into the surrounding shadows.
 ~
-2|32|64 8|32 -200 S
+2|32|64 0 -200 S
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< adult_black_dragon~ common~
 #13605
 giant jaguar~
 the Giant Jaguar~
@@ -66,21 +78,27 @@ The giant jaguar stares at you from the branch of a nearby tree...
 ~
 This black cat looks every bit dangerous as it is beautiful.
 ~
-64 8|32|65536 100 S
+64 8|32 100 S
 45 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< jaguar~ common~
+MobHeight 100
+MobWeight 180
+MobLength 300
+MobSize 2
 #13606
 Gargantua garg humanoid~
 the Humanoid Gargantua~
 The Humanoid Gargantua lumbers around squashing things...
 ~
-This masssive humanoid is around 30 metres tall and must weigh at least as much as a stone house.
+This massive humanoid is around 30 metres tall and must weigh at least as much as a stone house.
 ~
 2|32|64 8|32|512 0 S
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< humanoid_gargantua~ common~
 #13607
 lizard man guard~
 the Lizardman Guard~
@@ -92,18 +110,20 @@ This green scaled cross between a human and a lizard makes your skin crawl.  Sma
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lizardman~ common~
 #13608
 Lizard man Shaman~
 the Lizardman Shaman~
 The Lizardman Shaman looks for humans to sacrifice
 ~
-This lizardman differs from others in that he wears a headress and carries a
+This lizardman differs from others in that he wears a headdress and carries a
 rattle symbolizing some pagan religion.
 ~
 32|64|128 8|32|512 -750 S
 54 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< lizardman~ common~
 #13609
 Kiqir Warrior Mage~
 Kiqir the Warrior Mage~
@@ -114,21 +134,25 @@ of legend.  This formidable fighting machine should not be reckoned lightly.
 ~
 2|64|128 2|8|32|512|32768|65536|524288 -990 S
 70 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
-< reserved~ elite~
+< giant~ elite~
+MobHeight 450
+MobWeight 1500
+MobSize 2
 #13610
-rakasasha~
+rakasasha rakshasa~
 Rakasasha the demon~
 A beautiful maiden lies here in a provocative pose...
 ~
-In actuality,  the beautiful maiden is in fact a rakasasha,  a demon of
+In actuality,  the beautiful maiden is in fact a rakshasa,  a demon of
 illusions.
 ~
 2|32|64|128 8|32|512|524288 0 S
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< rakshasa~ rare~
 #13611
 Hermit Jakor~
 Jakor the Hermit~
@@ -137,12 +161,13 @@ A wizened old hermit sits here contemplating deep thoughts whilst levitating him
 This man has a faint yellow tinge to his skin.  His hair,  white with age,  is
 almost as long as his beard.  He is dressed in faded grey robes in station with
 the simple life that he has chosen to live.  As you look upon him,  you somehow
-know that he is definately aware of your presence...
+know that he is definitely aware of your presence...
 ~
 2|64|1024 8|32|128|512|524288 1000 S
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13612
 Giant servant~
 the Giant Servant~
@@ -154,8 +179,11 @@ you look closer you can see small stitch marks in the major joint areas.
 ~
 4|32|64 8|32 -300 S
 50 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< flesh_golem~ common~
+MobHeight 350
+MobWeight 600
 #13613
 Giant Cook~
 the Giant Cook~
@@ -165,8 +193,12 @@ A large giant cook stands waiting for some fresh meat to arrive
 ~
 2|4|32|64 8|32 -500 S
 54 0 0 0d0+0 0d0+0
-0 0
-8 8 2
+128 0
+8 8 1
+< giant~ common~
+MobHeight 400
+MobWeight 900
+MobSize 2
 #13614
 Giant Maid~
 the Giant Maid~
@@ -176,20 +208,25 @@ A huge giant maid is dusting and generally tidying up...
 ~
 4|32|64 8|32 -350 S
 53 0 0 0d0+0 0d0+0
-0 0
-8 8 1
+128 0
+8 8 2
+< giant~ common~
+MobHeight 400
+MobWeight 900
+MobSize 2
 #13615
 black phase beast~
 the Black Phasebeast~
 A black shape swirls up out of the dust
 ~
-This black cloud reeks of death and dispair.  You feel nauseous and sick as you
-breath in the cloud of gas.
+This black cloud reeks of death and despair.  You feel nauseous and sick as you
+breathe in the cloud of gas.
 ~
 2|32|64 2|8|32|32768|65536 -1000 S
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< black_phasebeast~ common~
 #13616
 roc giant red~
 the Giant Red Roc~
@@ -198,10 +235,14 @@ A giant red Roc has made its nest here...
 This is a massive bird.  Differing from other Rocs in its bright orange red
 feathers and strangely shaped beak.
 ~
-2|32|64 8|32|512|524288 0 S
+2|32|64 8|32|512 0 S
 55 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< roc~ common~
+MobHeight 600
+MobWeight 3000
+MobLength 1800
 #13617
 rabid ape~
 the Rabid Ape~
@@ -213,6 +254,7 @@ The Ape's eyes are reddened and have the look of total insanity about them.
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< great_ape~ common~
 #0
 
 
@@ -698,7 +740,7 @@ S
 #13603
 The great Desert~
 The sun beats down hard on your head as you make your way through the sandy
-terrain.  The air is very dry and you can feel the moisture evapourating from
+terrain.  The air is very dry and you can feel the moisture evaporating from
 your body.  Your tongue feels dry and you hope that soon you will find relief
 from the elements.
 ~
@@ -817,7 +859,7 @@ The Valley Spring~
 You are standing in a small grassy clearing.  About 3 metres above you,  a
 spring gushes out of the wall of the canyon.  The air around you is rather cool,
 and this looks like a pleasant place to rest.  There is a ramshackle shelter
-from the rain that ha s been erected here.
+from the rain that has been erected here.
 ~
 0 1024|8192 2
 D1
@@ -851,7 +893,7 @@ D3
 S
 #13611
 The Hidden Jungle~
-The trail leads off infront of you.  The stream gurgles merrily along side you
+The trail leads off in front of you.  The stream gurgles merrily alongside you
 and then swings to the north.  All around you are signs of life,  insects and
 birds mainly.  You feel hairs prickling on your neck...
 ~
@@ -892,7 +934,7 @@ S
 The Canyon wall~
 You are next to the canyon wall.  The forest stretches out covering the floor of
 the valley right up to the other side of the canyon.  There is a trail leading
-west and north from here.  The jungle west looks to be inpenetrable.
+west and north from here.  The jungle west looks to be impenetrable.
 ~
 0 1024|8192 3
 D0
@@ -977,7 +1019,7 @@ S
 #13618
 The tomb~
 You are standing in the northeast corner of the tomb.  You would figure about
-100 people were buried here.  How ever,  in the middle of the room is a massive
+100 people were buried here.  However,  in the middle of the room is a massive
 stone fixture.
 ~
 0 1|8|1024|8192 0
@@ -999,7 +1041,7 @@ The tomb~
 You are standing in the south east corner of the tomb.  Small depressions in the
 walls are filled with the remains of a long forgotten race of people.  You are
 in awe of the work which went into the intricate carvings and perfect stone work
-of this mass g rave.  Markings above the graves mean little - most are worn away
+of this mass grave.  Markings above the graves mean little - most are worn away
 and the ones you can make out are in a strange language,  long unused...
 ~
 0 1|8|1024|8192 0
@@ -1091,7 +1133,7 @@ D3
 S
 #13624
 The Hidden Jungle~
-You seem to be making little progress in your journey.  Most of your exhertion
+You seem to be making little progress in your journey.  Most of your exertion
 is in clearing a trail through the bush and scrub around you.
 ~
 0 1|1024|8192 3
@@ -1175,7 +1217,7 @@ The entrance~
 As you pass through the entrance your body feels like it has been wrenched apart
 and put back together again.  You feel whole but you check the tip of your nose
 just to make sure. You are standing at the end of a corridor.  There is a solid
-wall at your b ack.  The walls are lavishly decorated and light comes from two
+wall at your back.  The walls are lavishly decorated and light comes from two
 massive chandeliers hanging from the roof.
 ~
 0 1|4|1024|8192 0
@@ -1189,7 +1231,7 @@ The corridor~
 The corridor stretches northwards.  There is no other exit here.  You notice
 that this place is kept in immaculate order,  there is no tarnishing or fading,
 no sign of dust,  even the air smells fresh.  The walls around you are made of
-some plyable texti le,  and are spotlessly clean.
+some pliable textile,  and are spotlessly clean.
 ~
 0 1|8|1024|8192 0
 D0
@@ -1198,7 +1240,7 @@ D0
 0 -1 13631
 S
 #13631
-The corridor ~
+The corridor~
 The corridor runs northwards.  You can see a dead end to the south.  There are
 doors west and east here.
 ~
@@ -1241,8 +1283,8 @@ D3
 S
 #13633
 The Staircase.~
-You are standing at the foot of a marvellous staircase.  The bannister has been
-carvefully carved out of the trunk of a monsterous tree and the rail has an
+You are standing at the foot of a marvellous staircase.  The banister has been
+carefully carved out of the trunk of a monstrous tree and the rail has an
 assortment of tasteful designs on it.
 ~
 0 1|8|1024|8192 0
@@ -1313,14 +1355,14 @@ The study~
 You are standing in a large study.  There is a comfortable looking sofa sitting
 next to a rather modest fireplace,  and a small desk and bookcase lie within
 handy reach of each other.  A small chest sits in one corner of the room,  and
-there is ample ligh t from a large,  glowing orb floating just beneath the
+there is ample light from a large,  glowing orb floating just beneath the
 ceiling.
 ~
 0 1|8|1024|8192 0
 D1
 ~
 ~
-8 13602 13635
+8 13604 13635
 S
 #13638
 The kitchen~
@@ -1354,7 +1396,7 @@ bowl.  You are at a loss to explain it...
 D2
 ~
 ~
-8 13603 13636
+8 13602 13636
 S
 #13640
 The pantry~
@@ -1371,7 +1413,7 @@ S
 #13641
 The crypt~
 This large stone monolith contains the remains of someone this tribe of people
-definately revered and worshiped.  A pile of gems lies in one corner and a stone
+definitely revered and worshiped.  A pile of gems lies in one corner and a stone
 altar lies in the middle with some skeletal remains lying in state.  The
 skeleton has been decomposing for a very long time and most of the bones have
 crumbled into dust.
@@ -1391,7 +1433,7 @@ The dining room~
 This large room contains a massive table used for dining.  It has 12 ornate
 chairs,  sparklingly polished silverware,  clear crystal goblets,  and delicate
 china plates.  The walls are covered in banners denoting houses of a forgotten
-civilization.  You a lso notice that everything here is spotlessly clean.
+civilization.  You also notice that everything here is spotlessly clean.
 ~
 0 1|8|1024|8192 0
 D0
@@ -1426,7 +1468,7 @@ The eastern canyon wall~
 You are climbing up the side of the canyon wall.  You can see a ledge above your
 head.  The valley of lush green forest stretches away covering the valley floor
 to the other side of the canyon,  which towers skyward from somewhere underneath
-the undergrow th.  Below you,  you can see a clearing in the jungle.
+the undergrowth.  Below you,  you can see a clearing in the jungle.
 ~
 0 1024|2048|8192 5
 D4
@@ -1478,7 +1520,7 @@ The large cave~
 The cave widens out.  You can see a smaller cave off to the north,  while the
 passage swings southwards.  This cave has a small rack with dried meat hanging
 off it sitting near the eastern wall.  A small fireplace sits nearby with small
-embers still glowi ng hotly,  filling the cave with warmth.
+embers still glowing hotly,  filling the cave with warmth.
 ~
 0 1|4|8|1024|8192 0
 D0
@@ -1538,7 +1580,7 @@ The drawing room~
 You are standing in a small library.  Shelves line the walls up to the ceiling.
 There is a nice comfortable sofa and a large polished wooden table in the middle
 of the room.  Obviously,  this was the place where the hosts entertained guests
-before dining .  But on what?  You shiver uncomfortably as your mind races over
+before dining.  But on what?  You shiver uncomfortably as your mind races over
 the possibilities...
 ~
 0 8|1024|8192 0
@@ -1628,7 +1670,7 @@ E 1 13620 100 12
 E 1 13623 100 17
 *
 M 1 13610 1 13636           rakasha to The master bedroom
-E 1 13634 100 1             key to rakasha
+G 1 13634 100               key to rakshasa
 O 1 13619 100 13641         Daeron's Shield to The crypt
 *
 M 1 13611 1 13649           Jakor the Hermit to The hermits cave
@@ -1688,20 +1730,18 @@ S
 
 
 #SPECIALS
-M  13600 spec_breath_acid           A Rhinoceros Beetle
-M  13601 spec_poison                the Bulette
-M  13602 spec_cast_adept            Torba the Shaman Healer
-M  13604 spec_breath_acid           the Black Dragon
-M  13608 spec_cast_psionicist       the Lizardman Shaman
-M  13609 spec_cast_psionicist       Kiqir the Giant Wizard
-M  13610 spec_demon                 Rakasasha
-M  13611 spec_cast_psionicist       Jakor the Hermit
-M  13612 spec_breath_lightning      the Giant Servant
-M  13613 spec_breath_fire           the Giant Cook
-M  13614 spec_cast_psionicist       the Giant Maid
-M  13615 spec_breath_gas            the Black Phasebeast
-M  13616 spec_breath_fire           the Giant Red Roc
-M  13617 spec_poison                the Rabid Ape
+M 13600 spec_breath_acid_anatomical
+M 13601 spec_poison_bite
+M 13602 spec_cast_adept
+M 13608 spec_cast_psionicist
+M 13609 spec_cast_psionicist
+M 13610 spec_demon
+M 13611 spec_cast_psionicist
+M 13612 spec_breath_lightning_anatomical
+M 13613 spec_breath_fire_anatomical
+M 13614 spec_cast_psionicist
+M 13616 spec_breath_fire_anatomical
+M 13617 spec_poison_bite
 S
 
 

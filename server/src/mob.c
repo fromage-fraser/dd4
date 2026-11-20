@@ -3976,6 +3976,75 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_breath_any_anatomical", "", "", 10,
                 MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 6500
+        },
+        {
+                /* The local acid-spitting beetle keeps its own special. */
+                "rhinoceros_beetle", "insect", "icon1", "icon2",
+                0, 0, PART_HUSK_SHELL | PART_HORNS | PART_FANGS,
+                PART_HORNS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                120, 350, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 366
+        },
+        {
+                "bulette", "quadrupedal_hybrid", "icon1", "icon2",
+                0, 0, BODY_NO_SPEECH | BODY_HUGE | PART_SCALES
+                    | PART_HUSK_SHELL | PART_CLAWS | PART_FANGS | PART_TAIL,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                290, 1800, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 366
+        },
+        {
+                "jaguar", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_HIDE | AFF_SNEAK | AFF_INFRARED | AFF_SWIM,
+                PART_PAWS | PART_CLAWS | PART_FANGS | PART_TAIL,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                75, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 200
+        },
+        {
+                /* Slow native regeneration replaces ordinary tick healing. */
+                "humanoid_gargantua", "humanoid", "icon1", "icon2",
+                0, 0, BODY_HUGE | BODY_NO_SPEECH, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                3000, 300000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_GIANT, 0
+        },
+        {
+                /* Its human disguise changes appearance, not its living body. */
+                "rakshasa", "humanoid", "icon1", "icon2",
+                0, 0, PART_CLAWS | PART_FANGS, PART_CLAWS | PART_FANGS,
+                RES_MAGIC, 0, RES_NONMAGIC,
+                0, 0, 0, 0,
+                183, 125, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_cast_mage", "", "", 10,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                /* A conscious cloud has no jaws or solid organs. */
+                "black_phasebeast", "mysterious_being", "icon1", "icon2",
+                ACT_BLINK, AFF_FLYING, BODY_BLOODLESS | BODY_ANALGIC,
+                0, 0, 0, RES_POISON,
+                0, 0, 0, 0,
+                0, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_gas_cloud", "", "", 5,
+                MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "great_ape", "humanoid", "icon1", "icon2",
+                0, 0, BODY_NO_SPEECH | PART_FANGS, PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                180, 180, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 0
         }
 };
 
@@ -5022,6 +5091,38 @@ static const CREATURE_TRAIT_CHANGE tiamat_avatar_trait_changes[] =
         {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE rhinoceros_beetle_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8}
+};
+static const CREATURE_TRAIT_CHANGE bulette_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -12}
+};
+static const CREATURE_TRAIT_CHANGE jaguar_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE humanoid_gargantua_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_NATIVE_REGEN_MIN_HP, 4},
+        {CREATURE_TRAIT_NATIVE_REGEN_LEVEL_DIVISOR, 25},
+        {CREATURE_TRAIT_NATIVE_REGEN_INTERVAL, 3},
+        {CREATURE_TRAIT_NATIVE_REGEN_DELAY, 3},
+        {CREATURE_TRAIT_NATIVE_REGEN_SUPPRESSION, 3},
+        {CREATURE_TRAIT_NATIVE_REGEN_TRAUMA_INTERVAL, 0}
+};
+static const CREATURE_TRAIT_CHANGE rakshasa_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -14},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE great_ape_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -5029,6 +5130,12 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"rhinoceros_beetle", NULL, rhinoceros_beetle_trait_changes, TRAIT_ITEMS(rhinoceros_beetle_trait_changes)},
+        {"bulette", NULL, bulette_trait_changes, TRAIT_ITEMS(bulette_trait_changes)},
+        {"jaguar", NULL, jaguar_trait_changes, TRAIT_ITEMS(jaguar_trait_changes)},
+        {"humanoid_gargantua", NULL, humanoid_gargantua_trait_changes, TRAIT_ITEMS(humanoid_gargantua_trait_changes)},
+        {"rakshasa", NULL, rakshasa_trait_changes, TRAIT_ITEMS(rakshasa_trait_changes)},
+        {"great_ape", NULL, great_ape_trait_changes, TRAIT_ITEMS(great_ape_trait_changes)},
         {"draconian", NULL, draconian_trait_changes, TRAIT_ITEMS(draconian_trait_changes)},
         {"undead_draconian", NULL, undead_draconian_trait_changes, TRAIT_ITEMS(undead_draconian_trait_changes)},
         {"adult_black_dragon", NULL, adult_black_dragon_trait_changes, TRAIT_ITEMS(adult_black_dragon_trait_changes)},
@@ -8667,6 +8774,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_innate_fade", 5 },
                 { "spec_wisp_lightning", 10 },
                 { "spec_acid_spray", 10 },
+                { "spec_gas_cloud", 10 },
                 { "spec_golem_haste", 5 },
                 { "spec_vine_grip", 5 },
                 { "spec_otyugh", 5 },
