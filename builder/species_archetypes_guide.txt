@@ -2,9 +2,9 @@ DRAGON'S DOMAIN
 SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
-Edition: 20 November 2026
-Based on master 5f2db2665294509e42e842409fa1eef532cdeb4d (PR #994),
-with the accompanying Great Pyramid changes.
+Edition: 21 November 2026
+Based on master e78edc4256315c616ba39f830c5a3cd578064fcf (PR #995),
+with the accompanying Ancalador changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -911,10 +911,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 268, so this single example would make 269.
+guide's checked revision it is 273, so this single example would make 274.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 268.
+valid index. This example would receive index 273.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1612,7 +1612,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 268;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 273;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1722,9 +1722,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 268; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 273; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-35 body rows, 268 archetype rows, 50 internal traits and 125 Scribe
+35 body rows, 273 archetype rows, 50 internal traits and 126 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -3399,6 +3399,133 @@ All18portraits/60roomimages were reviewed and retained. No matching.src
 exists; all four other real source exports remain unchanged, including
 exact Eakos regeneration.
 
+Ancalador
+---------
+
+The catalogue has 273 archetypes, 35 basic body species, 50 internal
+traits, 126 Scribe special names and 637 skill rows. Five profiles append
+at 268-272: undead_riding_beetle, green_slime, crystal_spider, umber_hulk
+and ochre_jelly. All 268 earlier resolved profiles and all 35 bodies stay
+unchanged. These creatures use existing internal traits, not new ACT
+flags, area fields or individual trait commands. Their
+HP/damage/critical/haste modifiers are zero. Existing Rare/Elite/Boss HP
+multipliers apply once.
+
+undead_riding_beetle is an insect with six legs, head, eyes, shell and
+biting mandibles represented by fangs. Cancel inherited heart/brain/guts
+through XOR; add No Heart, Bloodless, Analgic and Soulless. No Arms/No
+Speech come from insect. It is Undead, Mountable and Mindless, with
+physical remains and no flight or casting. Estimated defaults are 120 cm
+high/350 kg/300 cm long/Large. Natural armour is-7, Dark is resisted, Holy
+is vulnerable, and Cold/Poison/Drain/Sleep/Hold/ Paralysis are immune.
+Profile XP is 0. Preserve local Sanctuary/Sentinel and cap 2: one
+initially and a second on refill.
+
+green_slime is an organic amorphous_organism: organless, without head,
+eyes, limbs or speech, Mindless/Bloodless/Analgic, with physical residue.
+Defaults are 20 cm high/40 kg/100 cm long/Small. Existing
+natural_attack_type 7 and natural_damage_type acid change ordinary contact
+without another hit. Acid/Poison/Sleep/Charm/Hold/Paralysis are immune;
+Fire/Cold work normally. No instant transformation, Cure Disease kill
+hook, item destruction or full weapon immunity is added. Profile XP is+5.
+Existing green_ooze is unchanged.
+
+crystal_spider is a conscious living-crystal arachnid: eight legs, head,
+eyes, fanged mandibles and shell, but no arms/heart/brain/guts. It is
+Inorganic, Bloodless, Analgic and unable to speak; it is not automatically
+Mindless or Soulless. It leaves crystal remains. Green defaults are 90
+cm/350 kg/200 cm/Large; yellow individual replacements are 65 cm/180
+kg/150 cm/Medium. Natural armour-5, Piercing/Slash resistance, Poison
+immunity and Sonic vulnerability apply. Both inherit spec_poison_bite.
+Profile XP is+5, plus ordinary weighted special XP. Keep their original
+behaviours: green Wimpy/passive, yellow Aggressive. Their glow stays
+descriptive. Move glove 16816 and arsenal buckler 16812 to carried loot,
+retaining all seven knife resets inside the buckler. The current reset
+engine loads only one copy of a vnum into a container, so actual contents
+stay at one knife. Worn item bonuses no longer apply to the spider.
+
+umber_hulk is an intelligent, speaking humanoid-shaped biped with ordinary
+organs, two arms/two legs, scales, claws, fanged mandibles and Infrared.
+Four eyes use existing Eye anatomy, not a new body bit or area field.
+Defaults are 244 cm/750 kg/Large/unknown length; height follows 2e, mass
+is estimated. Natural armour is-8. It inherits spec_confusing_gaze rather
+than gas breath. Profile XP is 0; the special adds+5 through ordinary
+weighted special XP. No additional attacks, burrowing exits or cave-ins
+are added.
+
+spec_confusing_gaze attempts its power 20 percent of eligible selected
+opportunities, against the current fighting opponent only. Source must be
+awake/able to act/corporeal, with head/eyes and no Blind/Eye Trauma/Head
+Trauma. The viewer must be awake, have usable eyes, not be blind or
+suffering Eye Trauma, and be able to see the source. An invisible target
+remains eligible if it can see the source. A source hidden from the viewer
+cannot affect it. Silence and Cone of Silence do not stop the gaze.
+Ordinary safety, ordered- player, mindlessness/object exclusions,
+resistance and antimagic still apply.
+
+The gaze uses the existing Confusion condition and resistance-aware save
+once. Failure gives hitroll-((level/5)+1),
+Intelligence/Wisdom-((level/15)+1), for URANGE(1,level/30,3)ticks. All
+three affect records share the duration. Existing Confusion is never
+stacked/refreshed. No HP damage or bystander effect occurs. Recheck death
+identity, room, opponent, action/anatomy/sight/permissions after messages
+and saves, since they can trigger another action. Antimagic is checked
+once through native spell activation. This callback adds no player spell;
+the ordinary Confusion spell is unchanged.
+
+ochre_jelly is an organic amorphous_organism with organless
+Mindless/Bloodless/ Analgic anatomy, no speech and physical residue.
+Defaults 40 cm/150 kg/180 cm/ Medium. Contact becomes acidic through
+existing traits. Electricity/Acid/ Poison/Sleep/Charm/Hold/Paralysis are
+immune. No splitting/population mechanic is added. Existing
+spec_acid_spray retains the old acid-breath payload and sampling without
+inventing a mouth. Keep Sanctuary/Aggressive and all undigested loot.
+Profile XP is+5 plus ordinary weighted special XP.
+
+Putrid zombie 16800 adds its described claws and MobAttackParts claw
+selection. Asp 16801 reuses asp and its existing venom; clear old No Heart
+and duplicate limb/speech/tail XOR. Morticia 16802 is a living human
+necromancer at 170 cm/ 60 kg/Medium/Boss. A spec_cast_undead callback
+names dark spells, not an undead species. Preserve her female identity,
+casting, Scavenger/Sentinel, senses, Sanctuary and equipped treasures.
+
+Lazarus 16803 and Crypt Keeper 16806 reuse zombie but cancel inherited
+Mindless and No Speech through existing individual affect/body XOR fields.
+Keep Bloodless/Analgic/Soulless, undead protections and remains.
+Intelligence does not automatically restore a soul. Lazarus 175 cm/65
+kg/Medium/Rare keeps thief/ blowgun; Keeper 160 cm/45 kg/Medium/Rare keeps
+repairman/cackling/mace/heldBloodstone. The hermit 16807 is human 175
+cm/75 kg/Medium/Common; change neutral sex to male to match pronouns and
+portrait. His 600 year story remains mysterious.
+
+Wraith knights 16805 keep their individual No Speech and explicit 100
+percent mage override, six falchions and Common rank. Inherited wraith
+physiology, protections and phasing apply; clear duplicate No Corpse XOR.
+Flame dwellers 16809 reuse the developed fire_elemental 300 cm/unknown
+mass/Large, with fire contact/protections and individual No Speech plus
+100 percent spec_breath_fire_anatomical. Its ordinary head/injury
+restrictions still apply.
+
+Petrified Warden 16812 is a conscious awakened_golem at individual 600 cm/
+5000 kg/Large/Elite. Preserve authored HUGE, legacy tail, No Speech and No
+Corpse; restore a head for its visage and add positive Tail anatomy. No
+Heart/ Inorganic are inherited without duplicate XOR. Keep
+mind/soul/darkcasting/ Sentinel/senses/guisarme, with no automatic undead
+identity, wings, flight or slow spell. Granite key 16818 moves HOLD to
+inventory. Three necromancers 16815 remain Common humans 175 cm/75
+kg/Medium; retain mage/Flying/Sanctuary/senses/ Aggressive/Wimpy/Sentinel
+and all gear. Skeleton key 16805 moves HOLD to inventory on its original
+designated owner.
+
+All original mob placements/caps remain:48 initial/49 refill inhabitants
+and 27 top-level carried items plus its one nested knife. All seven knife
+reset rows remain. Only four E-to-G resets change. All 28 objects/stats,58
+roomflags/exits/locks and NO_UNDEAD 16809 stay. Approved spelling/grammar
+fixes affect Keeper/hulk, lung 16808, amphitheatre 16847 and Lazarus reset
+comments. The amphitheatre title becomes The Macabre Amphitheatre. No
+matching.src exists; four other real exports stay unchanged, including
+exact Eakos regeneration. Artwork replacements are separate staged assets.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 35 current rows, including reserved. The index is not an
@@ -3446,7 +3573,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 268 current table rows follow, grouped by body. Numeric IDs are for
+All 273 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -3462,7 +3589,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (84)
+HUMANOID (85)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -3716,6 +3843,9 @@ HUMANOID (84)
   [258] ethereal_servitor: h/w/l 175 / ? / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [271] umber_hulk: h/w/l 244 / 750 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_confusing_gaze; policy auto
 
 DRAGON (14)
 ------------
@@ -4146,7 +4276,7 @@ CRUSTACEAN (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-AMORPHOUS_ORGANISM (4)
+AMORPHOUS_ORGANISM (6)
 ------------------------
   [ 91] green_ooze: h/w/l 30 / 80 / 150; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -4159,6 +4289,12 @@ AMORPHOUS_ORGANISM (4)
         specials 1:spec_mimic; policy auto
   [240] black_pudding: h/w/l 60 / 450 / 244; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_acid_spray; policy auto
+  [269] green_slime: h/w/l 20 / 40 / 100; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [272] ochre_jelly: h/w/l 40 / 150 / 180; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_acid_spray; policy auto
 
 FISH (5)
@@ -4242,7 +4378,7 @@ INSECT_SWARM (2)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_poison; policy auto
 
-ARACHNID (6)
+ARACHNID (7)
 --------------
   [114] web_spider: h/w/l 35 / 15 / 70; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -4262,8 +4398,11 @@ ARACHNID (6)
   [183] small_scorpion: h/w/l ? / 1 / 20; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
+  [270] crystal_spider: h/w/l 90 / 350 / 200; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_poison_bite; policy auto
 
-INSECT (2)
+INSECT (3)
 ------------
   [119] giant_wasp: h/w/l 60 / 35 / 150; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -4271,6 +4410,9 @@ INSECT (2)
   [135] bee: h/w/l ? / ? / 2; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_poison; policy auto
+  [268] undead_riding_beetle: h/w/l 120 / 350 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 ARACHNOID_HUMANOID (2)
 ------------------------
@@ -5077,6 +5219,7 @@ Check native helpers, safety, active-slot policies and XP before reusing one.
     spec_grell
     spec_horn_gore
     spec_terrifying_roar
+    spec_confusing_gaze
     spec_guard
     spec_guardian_daemon
     spec_janitor
@@ -5157,8 +5300,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/5f2db2665294509e42e842409fa1eef532cdeb4d
-  Base PR994 plus the accompanying Great Pyramid patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/e78edc4256315c616ba39f830c5a3cd578064fcf
+  Base PR995 plus the accompanying Ancalador patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -5168,9 +5311,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 82/153 areas (53.6%) and 1259/4131 mob
-definitions (30.5%) merged and verified. The Great Pyramid adds 18 definitions.
-After its merge is verified, completion becomes 83/153 areas (54.2%) and
-1277/4131 definitions (30.9%).
+The live conversion is currently 83/153 areas (54.2%) and 1277/4131 mob
+definitions (30.9%) merged and verified. Ancalador adds 16 definitions.
+After its merge is verified, completion becomes 84/153 areas (54.9%) and
+1293/4131 definitions (31.3%).
 
 END OF GUIDE

@@ -12,8 +12,10 @@ with a yellowish tinge, and sharp, dirt-encrusted claws.
 ~
 2 0 0 S
 60 8 4 1d6+165 2d7+1
-0 0
+8589934592 0
 8 8 0
+< zombie~ common~
+MobAttackParts 8589934592
 #16801
 asp snake~
 the deadly asp~
@@ -24,8 +26,9 @@ it.
 ~
 32 8|32|32768|65536 0 S
 60 9 2 2d6+150 3d6+0
-60|512 0
+0 0
 8 8 0
+< asp~ common~
 #16802
 morticia guildhead~
 Morticia~
@@ -42,6 +45,9 @@ wrote,
 85 0 -2 3b6+425 2d8+7
 0 0
 8 8 2
+< human~ boss~
+MobHeight 170
+MobWeight 60
 #16803
 lazarus assassin physician~
 Lazarus~
@@ -51,10 +57,11 @@ This master herbalist was found too valuable to the Guild as a maker
 of both soothing balms and poisons.  Even death could not release
 him... the necromancers just reanimated him.
 ~
-2 8|32|128 -900 S
+2 8|32|128|562949953421312 -900 S
 75 2 0 2e8+222 2d10+2
-0 0
+32 0
 8 8 1
+< zombie~ rare~
 #16804
 beetle undead~
 the undead riding beetle~
@@ -64,10 +71,11 @@ A fine example of Necromancy, this giant beast can travel for miles
 with no need for food nor water.  A most economical mount -- and
 sporty too!
 ~
-2|131072 128 -300 S
+2 128 -300 S
 63 10 2 1d6+150 2d6+1
-52 0
+0 0
 8 8 1
+< undead_riding_beetle~ common~
 #16805
 wraith knight~
 the wraith knight~
@@ -79,21 +87,25 @@ drawn, like some ethereal beefeater.
 ~
 2|32 8|32|128|512 -800 S
 68 6 1 1d8+185 2d8+2
-96 0
+32 0
 8 8 1
+< wraith~ common~
 #16806
 keeper~
 the Crypt Keeper~
 The Crypt Keeper, grinning at you maliciously, is here.
 ~
-The dessicated little fellow cackles with mad glee as he approaches
+The desiccated little fellow cackles with mad glee as he approaches
 you.  He twitches from excitement so much that his scraggly hair
 jostles as he flashes his dull yellow teeth.
 ~
-2|32 8 -1000 S
+2|32 8|562949953421312 -1000 S
 72 9 2 3d6+510 3d6+8
-0 0
+32 0
 8 8 1
+< zombie~ rare~
+MobHeight 160
+MobWeight 45
 #16807
 hermit~
 the hermit~
@@ -125,7 +137,8 @@ You can get no more out of him.
 2 0 500 S
 60 11 4 2d8+125 2d6+1
 0 0
-8 8 0
+8 8 1
+< human~ common~
 #16808
 slime blob~
 the green slime~
@@ -135,8 +148,9 @@ It looks like animated mucous, dissolving and eating all it touches.
 ~
 2|32 8|32 0 S
 60 15 4 1d10+75 1d8+1
-63 0
+0 0
 8 8 0
+< green_slime~ common~
 #16809
 dweller flame~
 the flame dweller~
@@ -148,8 +162,9 @@ enjoying itself.
 ~
 2 8|32|128 -50 S
 74 7 1 1d10+175 2d8+1
-96 0
+32 0
 8 8 0
+< fire_elemental~ common~
 #16810
 spider green~
 the green crystal spider~
@@ -161,8 +176,9 @@ in irritation with you.
 ~
 128 8|32|128 -400 S
 70 13 3 2d6+96 2d5+1
-52 0
+0 0
 8 8 0
+< crystal_spider~ common~
 #16811
 spider yellow~
 the yellow crystal spider~
@@ -173,8 +189,13 @@ to be made of living crystalline substance which glows yellow.
 ~
 32 8|32 -350 S
 70 14 4 1d8+85 2d4+1
-52 0
+0 0
 8 8 0
+< crystal_spider~ common~
+MobHeight 65
+MobWeight 180
+MobLength 150
+MobSize 1
 #16812
 warden petrified~
 the Petrified Warden~
@@ -184,20 +205,24 @@ It wears the sneer of cold command upon its stony visage.
 ~
 2 8|32 -700 S
 74 10 2 2d4+155 2d7+1
-1009 0
+32|64|128|512|2147483648 0
 8 8 0
+< awakened_golem~ elite~
+MobHeight 600
+MobWeight 5000
 #16813
 hulk umber~
 the umber hulk~
 A lumbering umber hulk is here.
 ~
-This great beast has huge mandibles and a mammals' mouth, angry animal
+This great beast has huge mandibles and a mammal's mouth, angry animal
 eyes set between unreadable insect eyes.  The effect is confusing.
 ~
 32 128 -750 S
 76 3 0 3d6+225 3d6+2
 0 0
 8 8 0
+< umber_hulk~ common~
 #16814
 jello ochre~
 the ochre jello~
@@ -208,8 +233,9 @@ it.  From past unfortunates, you presume.
 ~
 32 128 -700 S
 70 5 1 2d6+196 2d8+2
-63 0
+0 0
 8 8 0
+< ochre_jelly~ common~
 #16815
 necromancer~
 the Necromancer~
@@ -223,6 +249,7 @@ and malignant salves.
 75 6 1 1d6+210 2d8+2
 0 0
 8 8 1
+< human~ common~
 #0
 
 
@@ -786,7 +813,7 @@ All you can see upwards in a great glare followed by gusts of hot wind.
 S
 #16808
 A Dragon Lung~
-Ancient fires burns here, awaiting the rebirth of their master.
+Ancient fires burn here, awaiting the rebirth of their master.
 ~
 0 8 0
 D5
@@ -1481,8 +1508,8 @@ door coffin~
 1 -1 16847
 S
 #16847
-The Macabre Amphitheather~
-You are in on a wide, circular ledge overlooking a large slab of
+The Macabre Amphitheatre~
+You are on a wide, circular ledge overlooking a large slab of
 stone in the chamber below.  Crude seats are fashioned here from the
 surrounding porous rock and the walls are decorated with various
 bonesaws and a quote in blood, 'That fell arrest without bail.'  A
@@ -1703,7 +1730,7 @@ M 1 16801 3 16854        Asp
 M 1 16802 1 16853        Morticia
 E 1 16809 2 16                  Heartseeker
 E 1 16810 20 11                 Scarab Shield
-M 1 16803 1 16846        Lazerus
+M 1 16803 1 16846        Lazarus
 E 1 16806 10 16                 Blowgun
 M 1 16804 2 16845        Undead Beetle
 M 1 16805 6 16848        Wraith Knight
@@ -1728,10 +1755,10 @@ M 1 16809 2 16808        Flame Dweller
 M 1 16809 2 16811        Flame Dweller
 M 1 16810 5 16817        Green Spider
 M 1 16810 5 16819        Green Spider
-E 1 16816 5 9                   Minstrel's Glove
+G 1 16816 5                   Minstrel's Glove
 M 1 16810 5 16821        Green Spider
 M 1 16810 5 16823        Green Spider
-E 1 16812 7 11                  Arsenal Shield
+G 1 16812 7                  Arsenal Shield
 P 1 16813 49 16812                       Throwing Knife
 P 1 16813 49 16812                       Throwing Knife
 P 1 16813 49 16812                       Throwing Knife
@@ -1747,7 +1774,7 @@ M 1 16811 5 16825        Yellow Spider
 M 1 16811 5 16823        Yellow Spider
 M 1 16812 1 16826        Warden
 E 1 16815 16 16                 Guisarme
-E 1 16818 1 17                  Granite Key
+G 1 16818 1                  Granite Key
 M 1 16813 6 16829        Umber Hulk
 M 1 16813 6 16833        Umber Hulk
 M 1 16813 6 16836        Umber Hulk
@@ -1771,7 +1798,7 @@ E 1 16820 15 16                 Grave Beater
 G 1 16801 5                     Chalice
 M 1 16815 3 16851        Necromancer
 E 1 16820 15 16                 Grave Beater
-E 1 16805 1 17                  Skeleton Key
+G 1 16805 1                  Skeleton Key
 M 1 16815 3 16852        Necromancer
 E 1 16820 15 16                 Grave Beater
 G 1 16819 1                     Flesh
@@ -1792,7 +1819,7 @@ D 1 16827 0 1           Pancreas To Stone Corridor
 D 1 16856 2 1
 D 1 16852 3 1           Guildhall To Altar
 D 1 16853 1 1
-D 1 16847 1 1           Amphitheatre To Lazerus' Private Chambers
+D 1 16847 1 1           Amphitheatre To Lazarus' Private Chambers
 D 1 16846 3 1
 D 1 16853 5 2           Altar To Darken Pit
 D 1 16854 4 2
@@ -1800,18 +1827,13 @@ S
 
 
 #SPECIALS
-M  16802 spec_cast_undead       Morticia
-M  16803 spec_thief             Lazarus
-M  16804 spec_cast_undead       the undead riding beetle
-M  16805 spec_cast_mage         the wraith knight
-M  16806 spec_repairman         the Crypt Keeper
-M  16809 spec_breath_fire       the flame dweller
-M  16810 spec_poison            the green crystal spider
-M  16811 spec_poison            the yellow crystal spider
-M  16812 spec_cast_undead       the Petrified Warden
-M  16813 spec_breath_gas        the umber hulk
-M  16814 spec_breath_acid       the ochre jello
-M  16815 spec_cast_mage         the Necromancer
+M 16802 spec_cast_undead
+M 16803 spec_thief
+M 16805 spec_cast_mage
+M 16806 spec_repairman
+M 16809 spec_breath_fire_anatomical
+M 16812 spec_cast_undead
+M 16815 spec_cast_mage
 S
 
 
