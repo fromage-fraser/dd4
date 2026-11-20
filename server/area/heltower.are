@@ -11,10 +11,11 @@ The Griffon flies here looking for prey.
 ~
 The griffon flies down at you with a loud shriek, claws extended.
 ~
-2|32|64|128 32|524288 0 S
+2|32|64|128 0 0 S
 37 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< griffin~ common~
 #13501
 Pteranodon~
 a pteranodon~
@@ -22,10 +23,11 @@ A pteranodon hovers here.
 ~
 A large pteranodon glides out of the mist toward you.
 ~
-2|32|64|128 32|524288 0 S
+2|32|64|128 32 0 S
 25 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< pteranodon~ common~
 #13502
 psi-beast psi beast~
 a Psi-beast~
@@ -37,19 +39,21 @@ psionically probes your mind.
 ~
 4|32|64|128 32768|65536 0 S
 30 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 0
+< psi_beast~ common~
 #13503
 Flamewing Flame Wing~
 a flamewing~
-A flamewing flys here.
+A flamewing flies here.
 ~
-The fiery, bat-like creature erupts from the sea of flames hurtle towards you.
+The fiery, bat-like creature erupts from the sea of flames and hurtles towards you.
 ~
-32|64 256|524288 0 S
+32|64 256 0 S
 30 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 0
+< fire_bat~ common~
 #13504
 giant~
 the Fire Giant~
@@ -62,18 +66,22 @@ club and gets ready to squash you.
 42 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< fire_giant~ common~
 #13505
 Shark~
 a shark~
-A massive shark swims here
+A massive shark swims here.
 ~
 The huge shark swims towards you with frightening speed. Its jaws open to
 reveal row upon row of razor sharp teeth.
 ~
 4|32|64|128 8|32|32768 0 S
 30 0 0 0d0+0 0d0+0
-44|512 0
+128 0
 8 8 0
+< shark~ common~
+MobWeight 1500
+MobLength 600
 #13506
 Death old lady Hag~
 Death Hag~
@@ -82,10 +90,12 @@ An old lady tends some roses. Upon seeing you she shrieks and attacks...
 The Death Hag looks like an emaciated old lady with dirty 8 inch talons,
 and terrifying fangs.
 ~
-2|32|64|128 8|32|512 -500 S
+2|32|64|128 8|32 -500 S
 37 0 0 0d0+0 0d0+0
-0 0
+17179869184 0
 8 8 2
+< green_hag~ common~
+MobAttackParts 17179869184
 #13507
 fire elemental~
 a Fire Elemental~
@@ -95,21 +105,23 @@ The Elemental appears to be a massive, humanoid inferno.
 ~
 64 32768|65536 0 S
 49 0 0 0d0+0 0d0+0
-96 0
+32 0
 8 8 0
 
+< fire_elemental~ common~
 #13508
 Water Elemental~
-an Water Elemental~
+a Water Elemental~
 A Water Elemental is here.
 ~
 The Water Elemental appears to be a large humanoid made completely of water.
 ~
 64 2|32768 0 S
 42 0 0 0d0+0 0d0+0
-96 0
+32 0
 8 8 0
 
+< water_elemental~ common~
 #13509
 Air Elemental~
 an Air Elemental~
@@ -117,11 +129,13 @@ An Air Elemental is here.
 ~
 The Air Elemental looks like a mini-tornado.
 ~
-64 2|32768|524288 0 S
+64 2|32768 0 S
 42 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
 
+< air_elemental~ common~
+MobHeight 300
 #13510
 Earth Elemental~
 an Earth Elemental~
@@ -132,15 +146,16 @@ emerges from the ground before your very eyes
 ~
 64 32768|65536|524288 0 S
 54 0 0 0d0+0 0d0+0
-48|256 0
+32 0
 8 8 0
 
+< earth_elemental~ common~
 #13511
 Hel~
 Hel~
 Hel sits on a throne here. 'Ahhh...Visitors' she says.
 ~
-The Hel stares back at you and laughs.
+Hel stares back at you and laughs.
 
 "If this is what you're after," she says, dangling a key, "... then come and get
 it!"
@@ -151,8 +166,8 @@ stumbling back involuntarily.
 2|64 8|32|128|512|524288 -900 S
 52 0 0 0d0+0 0d0+0
 0 0
-8 8 1
-< reserved~ rare~
+8 8 2
+< humanoid_avatar~ rare~
 #13512
 Tentacle~
 Tentacle~
@@ -163,9 +178,10 @@ coral.
 ~
 2|32|64|128 8 0 S
 30 0 0 0d0+0 0d0+0
-63 0
-8 8 1
+0 0
+8 8 0
 
+< giant_squid_tentacle~ common~
 #13513
 Leviathan squid giant creature~
 Leviathan~
@@ -176,9 +192,10 @@ any movement.
 ~
 2|4|32|64 8|65536 0 S
 42 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
 
+< giant_squid~ common~
 #13514
 Fire~
 The Fire~
@@ -188,11 +205,12 @@ The Fire~
 ~
 2|32|64 2|8|32|512|8192 0 S
 100 0 0 0d0+0 0d0+0
-127|256 0
+0 0
 8 8 0
 
+< fire_hazard~ common~
 #13515
-_Mad_jammer~
+_Mad_jammer soul gem orb~
 The Soul Gem~
 The Soul Gem floats in the centre of the room.
 ~
@@ -201,9 +219,10 @@ light. Small shadows can be seen moving around inside its cloudy depths.
 ~
 2|64|512 8|32|128|512|8192 0 S
 70 0 0 0d0+0 0d0+0
-127|256 0
-8 8 1
+0 0
+8 8 0
 
+< soul_gem~ common~
 #0
 
 
@@ -416,7 +435,7 @@ Ring~
 
 Ring of the Shadow~
 
-A small .~
+A shadowy ring rests here.~
 
 ~
 
@@ -3596,31 +3615,26 @@ E 1 13506 100 16
 
 M 1 13505 1 13565                       a shark to In the water
 
-E 1 13519 100 6
 
 *
 
 M 1 13505 1 13575                       a shark to Underwater
 
-E 1 13519 100 6
 
 *
 
 M 1 13505 1 13573                       a shark to Underwater
 
-E 1 13519 100 6
 
 *
 
 M 1 13505 1 13567                       a shark to In the water
 
-E 1 13519 100 6
 
 *
 
 M 1 13505 1 13560                       a shark to In the water
 
-E 1 13519 100 6
 
 *
 
@@ -3699,6 +3713,7 @@ G 1 13517 100
 *
 
 M 1 13515 1 13583
+E 1 13511 100 16                       Soul Gem projection
 
 O 1 13503 100 13517                     a small pile of treasure to The Mist
 
@@ -3737,9 +3752,7 @@ P 1 13508 100 13512                     a platinum crown to container chest
 O 1 13510 3 13583            Staff of Daeron to The Fane of the Soul Gem
 *
 
-M 1 13515 1 13583                       Soul Gem to The Fane of the Soul Gem
 
-E 1 13511 100 16
 
 S
 
@@ -3748,33 +3761,17 @@ S
 
 
 #SPECIALS
-
-M  13500 spec_fido                      a griffon
-
-M  13502 spec_cast_psionicist                   a Psi-beast
-
-M  13503 spec_breath_fire                       a flamewing
-
-M  13504 spec_fido                      the Fire Giant
-
-M  13505 spec_fido                      a shark
-
-M  13506 spec_cast_undead                       Death Hag
-
-M  13507 spec_breath_fire                        a Fire Elemental
-
-M  13508 spec_breath_frost                      an Water Elemental
-
-M  13509 spec_breath_gas                        an Air Elemental
-
-M  13511 spec_cast_psionicist           Hel
-
-M  13513 spec_fido                      Leviathan
-
-M  13514 spec_breath_fire                       The Flames
-
-M  13515 spec_cast_orb                        Soul Gem
-
+M 13500 spec_fido
+M 13505 spec_fido
+M 13506 spec_cast_undead
+M 13507 spec_breath_fire_anatomical
+M 13508 spec_breath_frost_anatomical
+M 13509 spec_gas_cloud
+M 13511 spec_cast_psionicist
+M 13514 spec_fire_surge
+M 13504 spec_fido
+N 13504 2 spec_giant
+P 13504 50 50 0
 S
 
 

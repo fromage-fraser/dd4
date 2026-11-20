@@ -633,6 +633,36 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        /* A cephalopod keeps its organs; a separately targeted limb does not. */
+        {
+                "cephalopod",
+                0, AFF_SWIM,
+                BODY_NO_LEGS | BODY_NO_SPEECH | PART_HEAD | PART_EYE
+                    | PART_ARMS | PART_MANY_ARMS | PART_TENTACLES
+                    | PART_HEART | PART_BRAINS | PART_GUTS,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
+        },
+        {
+                "living_appendage",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_LEGS | BODY_NO_HEART
+                    | BODY_NO_SPEECH | BODY_NO_CORPSE | PART_ARMS | PART_TENTACLES,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 };
 
@@ -4045,6 +4075,112 @@ const struct mob_type mob_table[MAX_MOB] =
                 180, 180, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 0
+        },
+        /* Keep each creature's body and role separate from its encounter rank. */
+        {
+                "pteranodon", "winged_reptile", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_SCALES | PART_BEAK,
+                PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                120, 30, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 250
+        },
+        {
+                "psi_beast", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_NO_SPEECH | PART_TAIL | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_cast_psionicist", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "fire_giant", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE,
+                0, RES_FIRE, 0, 0,
+                0, 0, 0, 0,
+                549, 3400, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_giant", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_GIANT, 0
+        },
+        {
+                "shark", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "water_elemental", "elemental_being", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_LEGS | BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC
+                    | PART_HEAD | PART_EYE | PART_ARMS,
+                0, 0, 0, RES_NONMAGIC | RES_POISON | RES_SLEEP | RES_DRAIN
+                    | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                300, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "earth_elemental", "elemental_being", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC
+                    | PART_HEAD | PART_EYE | PART_ARMS | PART_HANDS
+                    | PART_FINGERS | PART_2_LEGS | PART_FEET,
+                0, 0, 0, RES_NONMAGIC | RES_POISON | RES_SLEEP | RES_DRAIN
+                    | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                300, 1500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "humanoid_avatar", "humanoid", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                180, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "giant_squid_tentacle", "living_appendage", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE,
+                PART_TENTACLES, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 100, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_tentacle_grip", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 600
+        },
+        {
+                "giant_squid", "cephalopod", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_FINS | PART_BEAK,
+                PART_TENTACLES | PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 2000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_squid", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1830
+        },
+        {
+                "soul_gem", "limbless_construct", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                20, 10, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_cast_orb", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 20
         }
 };
 
@@ -5123,6 +5259,44 @@ static const CREATURE_TRAIT_CHANGE great_ape_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
 };
 
+static const CREATURE_TRAIT_CHANGE pteranodon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE psi_beast_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE fire_giant_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_ROCK_THROW_PERCENT, 15},
+        {CREATURE_TRAIT_ROCK_DAMAGE_DICE, 2},
+        {CREATURE_TRAIT_ROCK_DAMAGE_SIDES, 10},
+        {CREATURE_TRAIT_ROCK_DAILY_AMMO, 4},
+        {CREATURE_TRAIT_ROCK_CATCH_PERCENT, 50}
+};
+static const CREATURE_TRAIT_CHANGE shark_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE water_elemental_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE earth_elemental_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE giant_squid_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -5130,6 +5304,13 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"pteranodon", NULL, pteranodon_trait_changes, TRAIT_ITEMS(pteranodon_trait_changes)},
+        {"psi_beast", NULL, psi_beast_trait_changes, TRAIT_ITEMS(psi_beast_trait_changes)},
+        {"fire_giant", NULL, fire_giant_trait_changes, TRAIT_ITEMS(fire_giant_trait_changes)},
+        {"shark", NULL, shark_trait_changes, TRAIT_ITEMS(shark_trait_changes)},
+        {"water_elemental", NULL, water_elemental_trait_changes, TRAIT_ITEMS(water_elemental_trait_changes)},
+        {"earth_elemental", NULL, earth_elemental_trait_changes, TRAIT_ITEMS(earth_elemental_trait_changes)},
+        {"giant_squid", NULL, giant_squid_trait_changes, TRAIT_ITEMS(giant_squid_trait_changes)},
         {"rhinoceros_beetle", NULL, rhinoceros_beetle_trait_changes, TRAIT_ITEMS(rhinoceros_beetle_trait_changes)},
         {"bulette", NULL, bulette_trait_changes, TRAIT_ITEMS(bulette_trait_changes)},
         {"jaguar", NULL, jaguar_trait_changes, TRAIT_ITEMS(jaguar_trait_changes)},
@@ -8775,6 +8956,9 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_wisp_lightning", 10 },
                 { "spec_acid_spray", 10 },
                 { "spec_gas_cloud", 10 },
+                { "spec_fire_surge", 10 },
+                { "spec_tentacle_grip", 5 },
+                { "spec_squid", 5 },
                 { "spec_golem_haste", 5 },
                 { "spec_vine_grip", 5 },
                 { "spec_otyugh", 5 },

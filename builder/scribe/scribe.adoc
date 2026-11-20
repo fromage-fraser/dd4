@@ -14980,3 +14980,243 @@ period in The Staircase. (13633); its exact GUI filename is
 current portraits/room images were reviewed; no regeneration is needed.
 Media publication is separate from the source patch. There is no matching
 .src; all four other real source exports stay unchanged, including Eakos.
+
+
+Hel's Tower
+-----------
+
+The current catalogue has 296 archetypes (MAX_MOB), 37 body species
+(MAX_SPECIES), 50 internal traits, 130 Scribe special names and 637 skill
+rows, including the existing reserved rows where applicable. Two bodies
+append: cephalopod 35 and living_appendage 36. Ten profiles append at
+286-295 in this order: pteranodon, psi_beast, fire_giant, shark,
+water_elemental, earth_elemental, humanoid_avatar, giant_squid_tentacle,
+giant_squid and soul_gem. All 286 earlier profiles, 35 earlier bodies and
+player opt-ins stay unchanged. There are no new area fields, trait names,
+body-part categories, player skills or individual trait commands.
+
+All ten new profiles have zero HP, damage, critical, haste and profile XP
+modifiers. Ordinary special XP still applies: spec_tentacle_grip +5,
+spec_squid +5 and spec_fire_surge +10. These allowances are not new rank
+or HP multipliers.
+
+Dimensions below are descriptive centimetres and whole kilograms. They do
+not replace combat size or imply HUGE. Unspecified zero is not a claim
+that a creature has no mass. Second-edition entries inform the griffin,
+pteranodon, Fire Giant, hag, elementals and giant squid; most masses,
+natural armour values and the combat adaptations are agreed DD4 design
+estimates. Psi-beast, avatar, Gem and hazard interpretations follow the
+actual area prose and roles. No measurement follows from rank alone.
+
+Griffon 13500 reuses griffin/quadrupedal_hybrid: 152 cm height, 275 cm
+length, 600 kg, Large without HUGE. Keep inherited wings, feathers,
+claws/beak attacks, flight and Detect Hidden, plus individual spec_fido.
+Its existing natural armour remains -20; it is not replaced with -7.
+
+pteranodon 13501 uses winged_reptile: living reptilian organs, wings,
+flight, beak anatomy and ordinary beak contact. Its archetype XOR cancels
+inherited scales for the described leathery covering, and adds no fangs or
+venom. Defaults are 120 cm height, 250 cm body length, 30 kg, Large,
+natural armour -3. The reference's roughly nine-metre wingspan is not its
+body length; do not put that wingspan in MobLength or Scribe length.
+
+psi_beast 13502 is the described psychic monkey, using humanoid anatomy
+with clawed hands, fangs, tail and No Speech. Ordinary claw/bite contact,
+natural armour -3 and spec_cast_psionicist belong to its profile. Defaults
+are 100 cm height, 150 cm length, 70 kg, Medium. Keep individual Hide and
+Sneak and all authored behaviour. Psionic casting gives no automatic
+psychic immunity and adds no extra ordinary attack stream.
+
+Flamewing 13503 reuses fire_bat/elemental_being at 30 cm height, 61 cm
+length, Small, with mass unspecified. Keep the current fiery-bat anatomy,
+fang attack, fire immunity, flight, Infrared and anatomical fire ability.
+Its authored faerie-fire glow stays. It is not an ordinary mammalian bat.
+
+fire_giant 13504 is a living humanoid in the giant combat family, with
+HUGE, Large, natural armour -5 and Fire resistance. Defaults are 549 cm
+height and 3400 kg, length unspecified. The second-edition 18-foot and
+7500-pound measurements inform those values; Fire resistance is a DD4
+adaptation of its source defences. The profile selects spec_giant. This
+individual explicitly uses spec_fido/spec_giant at 50/50 to retain corpse
+feeding. Its separate rock combat pulse still attempts at 15 percent,
+using 2d10 plus the existing level term, four daily throws and 50 percent
+catching. Special selection does not halve that separate rock pulse.
+Preserve the massive club, scavenging, aggression and Sentinel role.
+
+shark uses fish anatomy, Swim, fins, tail, fangs, an ordinary piercing
+bite and natural armour -4. Shared defaults are 300 cm length, 200 kg,
+Large, height unspecified, without HUGE. Massive local shark 13505
+overrides length to 600 cm and weight to 1500 kg and adds HUGE. Preserve
+spec_fido, stealth and Detect Invisible/Detect Hidden. Remove only its
+five obsolete teeth 13519 equipment resets: that invisible no-take item
+was worn at the neck, not wielded. Keep the unused object definition and
+all unrelated loot. The native fangs now supply the actual bite.
+
+Death Hag 13506 reuses living green_hag at 165 cm height, 55 kg, Medium,
+length unspecified, with existing claw anatomy/contact, Magic resistance
+and natural armour -12. The individual adds anatomical fangs and bite. Her
+title and spec_cast_undead do not make her Undead. Keep her mind, soul,
+intentional hostile spell list and ring 13509. Green hag is the agreed
+closest reusable interpretation, not a subtype named by the prose.
+
+Fire Elemental 13507 reuses the rebuilt fire_elemental physiology, fire
+contact and defences at 300 cm height, Large, other measurements unknown.
+Keep local No Speech/Hide/Sneak and its individual
+spec_breath_fire_anatomical. That wrapper retains the authored attack with
+ordinary head/trauma eligibility; older fire elementals gain no new
+breath.
+
+water_elemental 13508 is thinking water using elemental_being. It has
+targetable head, eyes and arms, no ordinary legs or biological heart,
+brain or guts, and no corpse. It is inorganic, bloodless and ANALGIC, with
+mind and soul retained, Swim, natural armour -8 and magical blunt natural
+contact. Defaults are 300 cm height, 500 kg, Large, length unknown. It is
+immune to Nonmagic, Poison, Sleep, Drain, Hold and Paralysis, with no
+invented Cold immunity or electrical vulnerability. Keep its local
+muteness, Invisibility, Sneak and authored frost attack through
+spec_breath_frost_anatomical. The estimated mass describes a substantial
+mobile volume of water, not a new density simulation.
+
+Air Elemental 13509 keeps the existing conscious, organless cloud body,
+flight, Pass Door, Nonmagic resistance and natural armour -8. Only this
+individual receives descriptive height 300 cm, Large, with mass and length
+unknown. Preserve Invisibility/Sneak and its authored poison-gas ability
+through spec_gas_cloud; the cloud does not need imaginary jaws. Do not
+upgrade older air elementals to Nonmagic immunity or add whirlwind kills.
+
+earth_elemental 13510 is a thinking rocky humanoid using elemental_being,
+with targetable head, eyes, arms, hands and legs, no biological heart,
+brain or guts, no corpse, and inorganic/bloodless/ANALGIC physiology. Mind
+and soul remain. It has natural armour -8, magical blunt contact and the
+same Nonmagic/Poison/Sleep/Drain/Hold/Paralysis immunities as Water.
+Defaults are 300 cm height, 1500 kg, Large, length unknown. Keep local
+muteness, Hide/Sneak and authored magical flight. Ordinary shared earth
+elementals do not acquire flight from this individual exception.
+
+Hel 13511 uses humanoid_avatar: an ordinary living, minded, soul-bearing
+humanoid manifestation, not automatically Undead or invulnerable. Defaults
+are 180 cm height, 70 kg, Medium, length unspecified. Her actual sex is
+female 2, agreeing with room 13581 and the retained female portrait. Keep
+her existing Rare rank, psionic casting, Sanctuary, flight, senses and
+peaceful Sentinel behaviour, plus all five carried items. Her silver key
+13517 still opens Mrinthas 13073 down to 13100; tower entry 13074 north to
+13500 and recall 13073 stay intact.
+
+living_appendage is a minimal living arm/tentacle body: no head, eyes,
+legs, heart, speech or independent corpse. It remains organic, has blood,
+feels pain and keeps mind and soul. Do not add ACT_OBJECT, Mindless or
+Soulless. giant_squid_tentacle 13512 uses this body, with ordinary
+tentacle contact and spec_tentacle_grip. Defaults are 600 cm length, 100
+kg, Large and HUGE, height unspecified. HUGE represents attachment to an
+enormous owner. Existing arm targeting/trauma and Regenerate apply; no new
+stinger, target category or injury is introduced. The independently reset
+entities stay independent: no automatic owner linkage, summons or
+despawning. Keep authored aggression, Sentinel, Wimpy and senses; sex
+becomes neutral 0.
+
+cephalopod is a reusable living body with head, eyes, normal organs and
+multiple arms/tentacles, without ordinary legs or speech. giant_squid adds
+fins/beak, Swim, natural armour -7 and ordinary beak/tentacle attacks. Its
+defaults are 1830 cm length, 2000 kg, Large and HUGE, height unknown. The
+second-edition 60-foot example informs length; mass is a DD4 estimate.
+Leviathan 13513 uses this profile and spec_squid, retaining Hide, Detect
+Invisible, scavenging, Sentinel and aggression. Multiple arms do not add
+weapon slots or extra attack streams. Its rank stays Common.
+
+Ordinary beaks use piercing contact, while tentacles use the existing
+slashing whip contact. Head loss removes beak eligibility; unusable arms
+or arm trauma remove tentacle eligibility. Regenerate uses the existing
+injury repair rules. These are choices within the ordinary attack, not
+additional strikes or an override of a valid wielded weapon.
+
+spec_tentacle_grip reuses the existing source-tracked tentacle grip
+condition and vine-grip rules with tentacle messages. It has a 25 percent
+attempt against an eligible close opponent and the ordinary NONMAGIC|HOLD
+save. Usable arms are required; arm trauma, HUGE targets, existing holds,
+unsafe rooms/areas and ordered contexts prevent it. The hold does not
+stack, refresh or add crushing damage. It expires on the next ordinary
+character update; existing cures, separation, source movement/death and
+logout cleanup release it without removing another source's hold.
+spec_squid uses that same grip during combat and spec_fido corpse feeding
+while idle. Both new specials add ordinary special XP +5 each; neither
+creates a learnable player skill or a new condition.
+
+The shared grasping_limb_grip helper rechecks source/target identity,
+room, opponent, available limbs and permissions after saves and messages.
+spec_vine_grip keeps its existing vine wording and rules. Corpse feeding
+also rechecks actor/corpse state after messages. These guards preserve the
+existing outcome when triggers move, kill or alter an actor or corpse;
+they are not extra attacks, damage or new corpse-feeding rewards.
+
+The Fire 13514 reuses fire_hazard/environmental_hazard, an impersonal
+Mindless/Soulless/organless danger with fire immunity, Cold/Water
+vulnerability and ordinary fire contact. Height, length and mass remain
+unknown; size stays Medium. Preserve level 100, Invisibility, aggression
+and Sentinel. Its individual spec_fire_surge preserves the old
+single-target Fire Breath payload and attack-selection sampling while
+describing a surge of fire instead of jaws. It needs no mouth/head and
+adds ordinary special XP +10. This does not add ACT_OBJECT,
+invulnerability or NO_FIGHT, and does not change other fire_hazard users.
+
+Fire surge retains the old one-in-four sampling of each eligible attacker,
+not a guaranteed hit on the current opponent. Normal native action,
+ordered-player, room/area safety and antimagic restrictions still apply.
+It rechecks actors, room, opponent and permissions after messages before
+calling the same Fire Breath spell. It adds no room-wide fire attack.
+
+soul_gem 13515 uses limbless_construct for a conscious floating, speaking
+gem: no anatomical organs, head, eyes, limbs or corpse; inorganic,
+bloodless and ANALGIC. The profile cancels inherited No Speech and keeps
+mind and soul. Never add ACT_OBJECT: has_soul rejects it, contradicting
+the trapped souls. Neither Mindless nor Soulless is added. Estimated
+defaults are 20 cm height, 20 cm length, 10 kg, Small; sex is neutral 0.
+Keep 100 percent spec_cast_orb, its healing/support and existing vampire
+safeguards, Sanctuary, senses, protection and NO_QUEST. Keep _Mad_jammer
+and add soul/gem/orb keywords. Its original Orb's Blast 13511 is a magical
+projection, not an anatomical weapon; do not invent arms to justify it.
+Move its E reset immediately after the first successful Gem M and remove
+only the final redundant Gem M. Preserve the Gem's cap/location. Its
+restored defence if attacked does not replace orb healing.
+
+Only Hel remains Rare (2x HP once); the other fifteen definitions are
+Common, including Leviathan, the Fire Giant and the level-100 hazard.
+Names, levels, HP dice letters, size and sourcebook rarity do not promote
+rank. Racial HP/damage/critical/haste modifiers are not rank multipliers.
+Keep every authored alignment, level, aggression/passivity, Sentinel, Stay
+Area, Wimpy, scavenging and other deliberate individual outcomes.
+
+Recompute individual flag masks against resolved species/profile defaults:
+template = species XOR archetype; individual mask = template XOR desired
+final flags. Remove obsolete duplicates rather than repeating inherited
+flight, Detect Hidden, No Arms or No Speech and cancelling them. Keep the
+approved new anatomy/physiology while preserving local exceptions.
+Dimensions replace independently; ordinary special slots and their full
+selection vector use their own override rules, never XOR. In particular,
+Fire Giant explicitly keeps fido/giant 50/50, while the Gem keeps orb 100.
+Traits remain code-only species/profile data, with no area syntax added.
+
+Keep all 84 room flags/doors/exits, 20 object definitions and the
+quest-key chain. Preserve original reset counts/caps/placements apart from
+the five obsolete shark equipment rows and redundant final Gem M described
+above. Do not fill every apparent shark, tentacle or elemental placement:
+the existing caps deliberately remain. The old world has 19 initial mobs
+and 26 after three refills, carrying eight objects; the repaired Gem
+projection adds one carried item without adding a mob. Psi-beasts grow
+from four to eight and flamewings from one to four. There is no matching
+.src; the four other real source/area exports, including Eakos, stay
+unchanged.
+
+Correct flys to flies, the flamewing sentence, an Water Elemental to a
+Water Elemental, The Hel to Hel, the missing shark period and ring 13509's
+broken ground text to A shadowy ring rests here. Keep displayed room
+names. Exact dd-gui lookup preserves punctuation: supply unchanged copies
+custom_rooms/13554_falling_upwards!.png and
+custom_rooms/13555_splash!!.png from the old underscore filenames,
+retaining those aliases. The Water grammar correction also needs
+mobs/13508_a_water_elemental.png copied from
+mobs/13508_an_water_elemental.png. Do not remove punctuation with a
+general slug rule. Approved separate portrait work makes Leviathan a
+long-mantled squid with fins/feeding tentacles and The Fire an impersonal
+fire hazard; keep Hel's female portrait and the other thirteen. Media
+delivery/publication is separate from applying the source patch; these
+builder notes do not claim publication or regeneration has occurred.
