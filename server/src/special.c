@@ -67,6 +67,9 @@ DECLARE_SPEC_FUN( spec_wisp_lightning );
 DECLARE_SPEC_FUN( spec_golem_haste );
 DECLARE_SPEC_FUN( spec_acid_spray );
 DECLARE_SPEC_FUN( spec_gas_cloud );
+DECLARE_SPEC_FUN( spec_squid );
+DECLARE_SPEC_FUN( spec_tentacle_grip );
+DECLARE_SPEC_FUN( spec_fire_surge );
 DECLARE_SPEC_FUN( spec_elemental_burst );
 DECLARE_SPEC_FUN( spec_otyugh );
 DECLARE_SPEC_FUN( spec_cast_adept           );
@@ -203,6 +206,9 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_golem_haste")) return spec_golem_haste;
         if (!str_cmp(name, "spec_acid_spray")) return spec_acid_spray;
         if (!str_cmp(name, "spec_gas_cloud")) return spec_gas_cloud;
+        if (!str_cmp(name, "spec_squid")) return spec_squid;
+        if (!str_cmp(name, "spec_tentacle_grip")) return spec_tentacle_grip;
+        if (!str_cmp(name, "spec_fire_surge")) return spec_fire_surge;
         if (!str_cmp(name, "spec_elemental_burst")) return spec_elemental_burst;
         if (!str_cmp(name, "spec_otyugh")) return spec_otyugh;
         if (!str_cmp(name, "spec_cast_adept"))           return spec_cast_adept;
@@ -345,6 +351,9 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_golem_haste) return "spec_golem_haste";
         if (special == spec_acid_spray) return "spec_acid_spray";
         if (special == spec_gas_cloud) return "spec_gas_cloud";
+        if (special == spec_squid) return "spec_squid";
+        if (special == spec_tentacle_grip) return "spec_tentacle_grip";
+        if (special == spec_fire_surge) return "spec_fire_surge";
         if (special == spec_elemental_burst) return "spec_elemental_burst";
         if (special == spec_otyugh) return "spec_otyugh";
         if (special == spec_cast_adept) return "spec_cast_adept";
@@ -1278,8 +1287,10 @@ bool spec_fido( CHAR_DATA *ch )
         OBJ_DATA *obj_next;
         OBJ_DATA *corpse;
         OBJ_DATA *corpse_next;
+        ROOM_INDEX_DATA *room;
+        int deaths;
 
-        if ( !IS_AWAKE( ch ) )
+        if (!ch || ch->deleted || !ch->in_room || !IS_AWAKE(ch))
                 return FALSE;
 
         for ( corpse = ch->in_room->contents; corpse; corpse = corpse_next )
@@ -1292,7 +1303,13 @@ bool spec_fido( CHAR_DATA *ch )
                 if ( corpse->item_type != ITEM_CORPSE_NPC )
                         continue;
 
+                room = ch->in_room;
+                deaths = action_deaths(ch);
                 act( "$n savagely devours a corpse.", ch, NULL, NULL, TO_ROOM );
+                if (!action_character_in_room(ch, room, deaths)
+                || corpse->deleted || corpse->in_room != room
+                || corpse->item_type != ITEM_CORPSE_NPC)
+                        return TRUE;
                 for ( obj = corpse->contains; obj; obj = obj_next )
                 {
                         obj_next = obj->next_content;
@@ -5669,6 +5686,57 @@ bool spec_gas_cloud(CHAR_DATA *ch)
         return TRUE;
 }
 
+/* Recheck the actors after a message, save or antimagic response can move them. */
+static bool fire_surge_unchanged(CHAR_DATA *ch, CHAR_DATA *opponent,
+    CHAR_DATA *victim, ROOM_INDEX_DATA *room, int source_deaths,
+    int opponent_deaths, int target_deaths)
+{
+        return action_character_in_room(ch, room, source_deaths)
+            && action_character_in_room(opponent, room, opponent_deaths)
+            && action_character_in_room(victim, room, target_deaths)
+            && innate_spell_ready(ch) && native_combat_opponent(ch) == opponent
+            && ch->position == POS_FIGHTING && victim->hit > 0 && victim->fighting == ch
+            && !is_safe(ch, victim) && !IS_SET(room->room_flags, ROOM_SAFE)
+            && !(room->area && IS_SET(room->area->area_flags, AREA_FLAG_SAFE));
+}
+
+/* The same fire spell and attacker sampling do not require a mouth. */
+bool spec_fire_surge(CHAR_DATA *ch)
+{
+        CHAR_DATA *opponent = native_combat_opponent(ch), *victim;
+        ROOM_INDEX_DATA *room;
+        int sn, source_deaths, opponent_deaths, target_deaths;
+
+        if (!opponent || !innate_spell_ready(ch)
+        || ch->position != POS_FIGHTING)
+                return FALSE;
+        room = ch->in_room;
+        for (victim = room->people; victim; victim = victim->next_in_room)
+                if (!victim->deleted && victim != ch && victim->hit > 0
+                && victim->position != POS_DEAD && victim->fighting == ch
+                && !number_bits(2))
+                        break;
+        if (!victim)
+                return FALSE;
+        source_deaths = action_deaths(ch);
+        opponent_deaths = action_deaths(opponent);
+        target_deaths = action_deaths(victim);
+        if (!fire_surge_unchanged(ch, opponent, victim, room,
+                source_deaths, opponent_deaths, target_deaths))
+                return FALSE;
+        sn = skill_lookup("fire breath");
+        if (sn < 0 || antimagic_blocks_activation(ch, RES_MAGIC))
+                return FALSE;
+        if (!fire_surge_unchanged(ch, opponent, victim, room,
+                source_deaths, opponent_deaths, target_deaths))
+                return TRUE;
+        act("A surge of flame lashes out from $n!", ch, NULL, NULL, TO_ROOM);
+        if (fire_surge_unchanged(ch, opponent, victim, room,
+                source_deaths, opponent_deaths, target_deaths))
+                cast_native_spell(skill_table[sn].spell_fun, sn, ch->level, ch, victim);
+        return TRUE;
+}
+
 /* Keep the usual Haste condition short before messages can trigger an action. */
 static void spell_golem_haste(int sn, int level, CHAR_DATA *ch, void *vo)
 {
@@ -5719,7 +5787,25 @@ bool spec_golem_haste(CHAR_DATA *ch)
 }
 
 /* Living vines use the same short, source-tracked grip as other grasping limbs. */
-bool spec_vine_grip(CHAR_DATA *ch)
+/* A save or a room message can change which limbs and actors are available. */
+static bool grasping_limb_unchanged(CHAR_DATA *ch, CHAR_DATA *victim,
+    ROOM_INDEX_DATA *room, int source_deaths, int target_deaths, bool vines)
+{
+        CHAR_DATA *issuer;
+        return action_character_in_room(ch, room, source_deaths)
+            && action_character_in_room(victim, room, target_deaths)
+            && native_combat_opponent(ch) == victim && ch->target_id
+            && HAS_ARMS(ch) && !IS_AFFECTED(ch, AFF_ARM_TRAUMA)
+            && (vines || (ch->body_form & PART_TENTACLES))
+            && ch->ghost_phase == GHOST_PHASE_NONE
+            && !get_ordered_player(ch, &issuer) && can_see(ch, victim)
+            && !IS_HUGE(victim) && !IS_SET(room->room_flags, ROOM_SAFE)
+            && !(room->area && IS_SET(room->area->area_flags, AREA_FLAG_SAFE))
+            && get_contact_resistance_result(ch, victim, RES_NONMAGIC | RES_HOLD)
+                != RES_RESULT_IMMUNE;
+}
+
+static bool grasping_limb_grip(CHAR_DATA *ch, bool vines)
 {
         CHAR_DATA *victim = native_combat_opponent(ch), *issuer;
         ROOM_INDEX_DATA *room;
@@ -5743,9 +5829,9 @@ bool spec_vine_grip(CHAR_DATA *ch)
         target_deaths = action_deaths(victim);
         if (saves_resistance_effect(ch, ch->level, victim, RES_NONMAGIC | RES_HOLD))
                 return TRUE;
-        if (!action_character_in_room(ch, room, source_deaths)
-        || !action_character_in_room(victim, room, target_deaths)
-        || ch->fighting != victim)
+        if (!grasping_limb_unchanged(ch, victim, room,
+                source_deaths, target_deaths, vines)
+        || IS_AFFECTED(victim, AFF_HOLD) || is_affected(victim, gsn_tentacle_grip))
                 return TRUE;
 
         memset(&af, 0, sizeof(af));
@@ -5754,10 +5840,48 @@ bool spec_vine_grip(CHAR_DATA *ch)
         af.location = APPLY_NONE;
         af.bitvector = AFF_HOLD;
         affect_to_char_source(victim, &af, AFFECT_SOURCE_CREATURE, ch->target_id);
-        act("$n's vines close around you!", ch, NULL, victim, TO_VICT);
-        act("Your vines close around $N!", ch, NULL, victim, TO_CHAR);
-        act("$n's vines close around $N!", ch, NULL, victim, TO_NOTVICT);
+        act(vines ? "$n's vines close around you!" : "$n grips you tightly!",
+            ch, NULL, victim, TO_VICT);
+        if (!grasping_limb_unchanged(ch, victim, room,
+                source_deaths, target_deaths, vines))
+                return TRUE;
+        act(vines ? "Your vines close around $N!" : "You grip $N tightly!",
+            ch, NULL, victim, TO_CHAR);
+        if (!grasping_limb_unchanged(ch, victim, room,
+                source_deaths, target_deaths, vines))
+                return TRUE;
+        act(vines ? "$n's vines close around $N!" : "$n grips $N tightly!",
+            ch, NULL, victim, TO_NOTVICT);
         return TRUE;
+}
+
+/* Vines keep their existing grip and wording. */
+bool spec_vine_grip(CHAR_DATA *ch)
+{
+        return grasping_limb_grip(ch, TRUE);
+}
+
+/* A tentacle uses arm trauma, without needing a head, eyes or a snake's tail. */
+bool spec_tentacle_grip(CHAR_DATA *ch)
+{
+        if (!ch || !(ch->body_form & PART_TENTACLES))
+                return FALSE;
+        return grasping_limb_grip(ch, FALSE);
+}
+
+/* Keep corpse feeding while idle and grasping while fighting. */
+bool spec_squid(CHAR_DATA *ch)
+{
+        CHAR_DATA *issuer;
+
+        if (!native_power_ready(ch) || ch->hit <= 0
+        || ch->ghost_phase != GHOST_PHASE_NONE
+        || IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+        || get_ordered_player(ch, &issuer))
+                return FALSE;
+        if (ch->fighting || is_in_combat(ch))
+                return spec_tentacle_grip(ch);
+        return spec_fido(ch);
 }
 
 /* The viewer needs to see the eyes; the viewer need not be visible. */
