@@ -154,6 +154,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         giant_ground_beetle giant_maggot homunculus chreffn sea_hag guardian_naga basilisk lemure ettin
         modron_tridrone modron_quadrone modron_pentadrone modron_decaton modron_nonaton modron_octon modron_septon modron_hexton modron_quinton modron_tertian primus_manifestation
         hollyphant planetar lesser_shedu dretch chasme babau yagnoloth kostchtchie_avatar nabassu cloud_dragon solar wemic gorgimera giant_squirrel
+        megalodon vampire_squid spider_crab sea_anemone anglerfish sea_lion sea_snake cuttlefish jellyfish goblin_shark porcupinefish giant_lobster giant_octopus sahuagin
 /;
 
 my %mob_act = (

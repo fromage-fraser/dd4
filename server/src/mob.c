@@ -4995,6 +4995,147 @@ const struct mob_type mob_table[MAX_MOB] =
                 100, 80, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 240
+        },
+        /* Authored behaviour and venom roles remain individual area choices. */
+        {
+                "megalodon", "fish", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 50000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 2000
+        },
+        {
+                "vampire_squid", "cephalopod", "icon1", "icon2",
+                0, 0,
+                PART_FINS | PART_BEAK,
+                PART_TENTACLES | PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 30
+        },
+        {
+                "spider_crab", "crustacean", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_CLAWS,
+                PART_CLAWS, 0, 0, 0,
+                0, 0, 0, 0,
+                40, 15, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 60
+        },
+        {
+                "sea_anemone", "radial_invertebrate", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_TENTACLES,
+                PART_TENTACLES, 0, 0, 0,
+                0, 0, 0, 0,
+                50, 20, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "anglerfish", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS | PART_SCALES,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 10, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 80
+        },
+        {
+                "sea_lion", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_FINS | PART_FANGS | PART_TAIL,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                80, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 220
+        },
+        {
+                "sea_snake", "serpentine_reptile", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 2, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 180
+        },
+        {
+                "cuttlefish", "cephalopod", "icon1", "icon2",
+                0, 0,
+                PART_FINS | PART_BEAK,
+                PART_TENTACLES | PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 10, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 120
+        },
+        {
+                "jellyfish", "radial_invertebrate", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_TENTACLES,
+                PART_TENTACLES, 0, 0, 0,
+                0, 0, 0, 0,
+                30, 5, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "goblin_shark", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 350
+        },
+        {
+                "porcupinefish", "fish", "icon1", "icon2",
+                0, 0,
+                PART_BEAK | PART_SCALES | PART_SHARPSCALES,
+                PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 2, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 50
+        },
+        {
+                "giant_lobster", "crustacean", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_CLAWS | PART_TAIL,
+                PART_CLAWS, 0, 0, 0,
+                0, 0, 0, 0,
+                60, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 250
+        },
+        {
+                "giant_octopus", "cephalopod", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_BEAK,
+                PART_TENTACLES | PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 10000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 2000
+        },
+        {
+                "sahuagin", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_FINS | PART_TAIL | PART_SCALES | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                183, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
         }
 };
 
@@ -6530,6 +6671,40 @@ static const CREATURE_TRAIT_CHANGE giant_squirrel_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
 };
 
+/* These living marine bodies share passive values, not active roles. */
+static const CREATURE_TRAIT_CHANGE marine_head_traits[] =
+{
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE marine_sting_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 16}
+};
+static const CREATURE_TRAIT_CHANGE marine_armour_2_head_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -2},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE marine_armour_3_head_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE marine_armour_4_head_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE marine_armour_5_head_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE marine_armour_6_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -6537,6 +6712,19 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"megalodon", NULL, marine_armour_5_head_traits, TRAIT_ITEMS(marine_armour_5_head_traits)},
+        {"vampire_squid", NULL, marine_head_traits, TRAIT_ITEMS(marine_head_traits)},
+        {"sea_anemone", NULL, marine_sting_traits, TRAIT_ITEMS(marine_sting_traits)},
+        {"anglerfish", NULL, marine_armour_2_head_traits, TRAIT_ITEMS(marine_armour_2_head_traits)},
+        {"sea_lion", NULL, marine_armour_3_head_traits, TRAIT_ITEMS(marine_armour_3_head_traits)},
+        {"sea_snake", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
+        {"cuttlefish", NULL, marine_armour_2_head_traits, TRAIT_ITEMS(marine_armour_2_head_traits)},
+        {"jellyfish", NULL, marine_sting_traits, TRAIT_ITEMS(marine_sting_traits)},
+        {"goblin_shark", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
+        {"porcupinefish", NULL, marine_armour_3_head_traits, TRAIT_ITEMS(marine_armour_3_head_traits)},
+        {"giant_lobster", NULL, marine_armour_6_traits, TRAIT_ITEMS(marine_armour_6_traits)},
+        {"giant_octopus", NULL, marine_armour_3_head_traits, TRAIT_ITEMS(marine_armour_3_head_traits)},
+        {"sahuagin", NULL, marine_armour_5_head_traits, TRAIT_ITEMS(marine_armour_5_head_traits)},
         {"hollyphant", NULL, hollyphant_trait_changes, TRAIT_ITEMS(hollyphant_trait_changes)},
         {"planetar", NULL, planetar_trait_changes, TRAIT_ITEMS(planetar_trait_changes)},
         {"lesser_shedu", NULL, lesser_shedu_trait_changes, TRAIT_ITEMS(lesser_shedu_trait_changes)},

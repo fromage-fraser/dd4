@@ -12,15 +12,16 @@ have ever lived; he must be 20 metres long!  His jaws are full of gigantic
 serrated teeth, and open wide enough for a full-grown man to walk around
 inside them. Best hope he's not hungry.
 ~
-4|32|64 8|32|512|33554432|67108864 -250 S
+4|32|64 33554984 -250 S
 20 0 0 0d0+0 0d0+0
-172|512 0
+0 0
 8 8 1
 >all_greet_prog 1~
 mpecho The megalodon lunges suddenly at you!
 mpkill $n
 ~
 |
+< megalodon~ common~
 #27001
 vampire squid~
 a vampire squid~
@@ -30,47 +31,47 @@ The vampire squid is a blood-red cephalopod with milky blue eyes and spiny
 tentacles. It floats peacefully through the sea, waiting for food to fall
 into its clutches.
 ~
-64 8|32|512|67108864 50 S
+64 552 50 S
 18 0 0 0d0+0 0d0+0
-40 0
+0 0
 8 8 2
 >rand_prog 2~
-mpecho {bA cloud of black ink forms in the water.{x
+mpecho {bA cloud of glowing mucus forms in the water.{x
 mppeace
 sneak
 north
 hide
 ~
 >rand_prog 2~
-mpecho {bA cloud of black ink forms in the water.{x
+mpecho {bA cloud of glowing mucus forms in the water.{x
 mppeace
 sneak
 south
 hide
 ~
 >rand_prog 2~
-mpecho {bA cloud of black ink forms in the water.{x
+mpecho {bA cloud of glowing mucus forms in the water.{x
 mppeace
 sneak
 east
 hide
 ~
 >rand_prog 2~
-mpecho {bA cloud of black ink forms in the water.{x
+mpecho {bA cloud of glowing mucus forms in the water.{x
 mppeace
 sneak
 west
 hide
 ~
 >rand_prog 2~
-mpecho {bA cloud of black ink forms in the water.{x
+mpecho {bA cloud of glowing mucus forms in the water.{x
 mppeace
 sneak
 up
 hide
 ~
 >rand_prog 2~
-mpecho {bA cloud of black ink forms in the water.{x
+mpecho {bA cloud of glowing mucus forms in the water.{x
 mppeace
 sneak
 down
@@ -80,6 +81,7 @@ hide
 vis
 ~
 |
+< vampire_squid~ common~
 #27002
 spider crab~
 a spider crab~
@@ -89,14 +91,15 @@ The spider crab is large and heavy for a crab, with very long legs.  It
 doesn't seem much interested in you, busying itself looking for food
 and material to camouflage itself with.
 ~
-4|64 512|67108864 0 S
+4|64 512 0 S
 22 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 2
 >rand_prog 5~
 mpasound ::KLALKLAKALKALKAK::
 ~
 |
+< spider_crab~ common~
 #27003
 sea anemone~
 a sea anemone~
@@ -106,10 +109,11 @@ The garishly-colored sea anemone spends most of its time attached to
 rocks waiting for fish to pass close enough to get ensnared in its
 venom-filled tentacles.
 ~
-2|64 8|32|256|67108864 -100 S
+2|64 296 -100 S
 21 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< sea_anemone~ common~
 #27004
 anglerfish fish~
 the anglerfish~
@@ -120,10 +124,11 @@ long fang-like teeth that angle inwards for efficient prey grabbing.
 It is an ambush predator, lying camouflaged in dark nooks and crannies
 for unsuspecting prey to wander by.  Will you be on the menu today?
 ~
-2|32|64 8|32|512|65536|8388608|67108864 0 S
+2|32|64 8454696 0 S
 24 0 0 0d0+0 0d0+0
-44|512 0
+0 0
 8 8 2
+< anglerfish~ common~
 #27005
 baby dolphin~
 a baby dolphin~
@@ -133,9 +138,9 @@ While technically a baby, this bottlenose dolphin probably still
 weighs over 200lbs. He seems to be swimming rather frantically about,
 as though he's desperately looking for someone or something.
 ~
-64|128 8|32|512|67108864 500 S
+64|128 552 500 S
 20 0 0 0d0+0 0d0+0
-44|512 0
+0 0
 8 8 1
 >rand_prog 5~
 mpasound ::ickickiiiick!::
@@ -145,6 +150,8 @@ mpasound ::ickickiiiick!::
     follow kjhsdf
 ~
 |
+< dolphin~ common~
+MobWeight 100
 #27006
 dolphin female kjhsdf~
 the female dolphin~
@@ -154,9 +161,9 @@ This large, female bottlenose dolphin is swimming frantically about;
 you get the feeling she's looking for someone or something.
 Better not get in her way!
 ~
-64 8|32|512|67108864 600 S
+64 552 600 S
 23 0 0 0d0+0 0d0+0
-44|512 0
+0 0
 8 8 2
 >all_greet_prog 100~
 follow baby
@@ -166,6 +173,10 @@ kiss baby
 mpasound ::ICKICKICKIIICKCICK!::
 ~
 |
+< dolphin~ common~
+MobWeight 300
+MobLength 300
+MobSize 2
 #27007
 sea lion sealion~
 a sea lion~
@@ -176,14 +187,15 @@ and a big chest and belly.  It resembles nothing so much as a playful
 aquatic dog.  It's curious about you, but more interested in finding
 something to eat.  Arf arf!
 ~
-64 8|32|512|67108864 0 S
+64 552 0 S
 21 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 0
 >rand_prog 3~
 mpasound {W::Arf!:: ::Arf Arf!::{x
 ~
 |
+< sea_lion~ common~
 #27008
 sea snake seasnake~
 a sea snake~
@@ -196,10 +208,11 @@ will respond aggressively if provoked.
 Some sea snakes are venomous, but you're not sure how to tell which
 is which.
 ~
-64 8|32|512|32768|67108864 0 S
+64 33320 0 S
 19 0 0 0d0+0 0d0+0
-44|512 0
+0 0
 8 8 1
+< sea_snake~ common~
 #27009
 sea snake seasnake~
 a sea snake~
@@ -212,15 +225,16 @@ will respond aggressively if provoked.
 Some sea snakes are venomous, but you're not sure how to tell which
 is which.
 ~
-64 8|32|512|32768|67108864 -300 S
+64 33320 -300 S
 19 0 0 0d0+0 0d0+0
-44|512 0
+0 0
 8 8 2
 >greet_prog 2~
 mpecho A {Bs{We{Ba {Ws{Bn{Wa{Bk{We{x lashes out suddenly at you!
 mpkill $n
 ~
 |
+< sea_snake~ common~
 #27010
 cuttlefish~
 a cuttlefish~
@@ -235,9 +249,9 @@ This one is unusually large and has a somewhat fearsome demeanour, but
 doesn't appear to be too bothered by your presence, as it has decided
 you're unlikely to make a good meal.
 ~
-64 8|32|512|1048576|67108864 -270 S
+64 552 -270 S
 17 0 0 0d0+0 0d0+0
-40 0
+0 0
 8 8 2
 >rand_prog 3~
 mpecho A {Mcuttlefish{x attempts to blend in with its surroundings...
@@ -247,6 +261,7 @@ hide
 vis
 ~
 |
+< cuttlefish~ common~
 #27011
 jellyfish~
 a jellyfish~
@@ -256,10 +271,11 @@ Gelatinous and transparent, the jellyfish pulsates its domelike bell
 to push itself through the water, as its long, stinging tentacles
 dangle underneath it.
 ~
-4|64 256|32768|1048576|67108864 0 S
+4|64 33024 0 S
 15 0 0 0d0+0 0d0+0
-59 0
+0 0
 8 8 0
+< jellyfish~ common~
 #27012
 jellyfish~
 a jellyfish~
@@ -269,14 +285,15 @@ Gelatinous and transparent, the jellyfish pulsates its domelike bell
 to push itself through the water, as its long tentacles dangle
 underneath it.
 ~
-4|64 256|32768|1048576|67108864 0 S
+4|64 33024 0 S
 15 0 0 0d0+0 0d0+0
-59 0
+0 0
 8 8 1
 >fight_prog 5~
     c paralysis $n
 ~
 |
+< jellyfish~ common~
 #27013
 goblin shark~
 a goblin shark~
@@ -287,9 +304,9 @@ snout, and highly protrusile jaws containing prominent nail-like teeth.
 Happier at greater depths, you suspect there's some reason these sizeable
 predators have migrated closer to the surface.
 ~
-64 8|32|512|67108864 -125 S
+64 552 -125 S
 16 0 0 0d0+0 0d0+0
-44|512 0
+0 0
 8 8 2
 >greet_prog 10~
 mpecho A {Ggoblin shark{x turns suddenly to attack you!
@@ -300,6 +317,7 @@ mpecho A {Ggoblin shark{x turns suddenly to attack you!
 mpkill $n
 ~
 |
+< goblin_shark~ common~
 #27014
 porcupinefish fish porcupine~
 a porcupinefish~
@@ -309,10 +327,11 @@ This largeish, round fish is covered in sharp spines, which radiate
 outwards when it is inflated.  You know some porcupinefish species
 are poisonous, but aren't sure how to tell which ones.
 ~
-64 8|32|512|8192|67108864 0 S
+64 8744 0 S
 15 0 0 0d0+0 0d0+0
-44|512 0
+0 0
 8 8 2
+< porcupinefish~ common~
 #27015
 porcupine fish porcupinefish~
 a porcupinefish~
@@ -322,10 +341,11 @@ This largeish, round fish is covered in sharp spines, which radiate
 outwards when it is inflated.  You know some porcupinefish species
 are poisonous, but aren't sure how to tell which ones.
 ~
-64 8|32|512|8192|67108864 -300 S
+64 8744 -300 S
 15 0 0 0d0+0 0d0+0
-44|512 0
+0 0
 8 8 1
+< porcupinefish~ common~
 #27016
 a giant lobster~
 a giant lobster~
@@ -336,14 +356,15 @@ which terminates in a heavily-armoured, muscular tail. Three of its
 five pairs of legs have claws, including the first pair, which are much
 larger than the others.
 ~
-64 8192|67108864 -60 S
+64 8192 -60 S
 23 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 2
 >rand_prog 5~
 mpasound ::CLACKCLACKCLACK::
 ~
 |
+< giant_lobster~ common~
 #27017
 kraken octopus~
 the kraken~
@@ -353,9 +374,9 @@ The largest octopus you've ever seen resides here; it looks big enough
 to pull a sailing ship underwater, and seems VERY angry at your intrusion
 into its domain!
 ~
-2|32|64 8|32|512|8192|8388608|67108864 0 S
+2|32|64 8397352 0 S
 25 0 0 0d0+0 0d0+0
-168 0
+0 0
 8 8 2
 >all_greet_prog 100~
 mpecho {GThe huge kraken lunges at you, its tentacles flailing!{x
@@ -368,7 +389,7 @@ mpasound ::shLOooOOOoOooRp::
 mpasound ::SHLOoOOoOOOOORP::
 ~
 |
-< reserved~ elite~
+< giant_octopus~ elite~
 #27018
 sahuagin warrior~
 a sahuagin warrior~
@@ -379,122 +400,54 @@ finned tail and webbed feet and arms.  You can tell by his armour and
 demeanour that this one is a guard of some sort, but employed by whom
 to do what you couldn't say.
 ~
-64 8|32|512|67108864 -400 S
+64 552 -400 S
 23 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >all_greet_prog 100~
-if race($n) == 19
-    if sex($n) == 1
-        say Brother!  What are you doing so far from Ota'ar Dar?
-        say No, it doesn't matter.  I have a very important job to do...
-        if rand(20)
-            sigh
-            north
-            break
-        else
-        if rand(20)
-            sigh
-            east
-            break
-        else
-        if rand(20)
-            sigh
-            south
-            break
-        else
-        if rand(20)
-            sigh
-            down
-            break
-        else
-        if rand(20)
-            sigh
-            west
-            break
-        endif
-        endif
-        endif
-        endif
-        endif
-        endif
-        endif
-    else
-    if sex($n) == 2
-        say Sister!  What are you doing so far from Ota'ar Dar?
-        say No, it doesn't matter.  I have a very important job to do...
-        if rand(20)
-            sigh
-            north
-            break
-        else
-        if rand(20)
-            sigh
-            east
-            break
-        else
-        if rand(20)
-            sigh
-            south
-            break
-        else
-        if rand(20)
-            sigh
-            down
-            break
-        else
-        if rand(20)
-            sigh
-            west
-            break
-        endif
-        endif
-        endif
-        endif
-        endif
-        endif
-        endif
-    else
-    if sex($n) == 3
-        say Clutchmate!  What are you doing so far from Ota'ar Dar?
-        say No, it doesn't matter.  I have a very important job to do...
-        if rand(20)
-            sigh
-            north
-            break
-        else
-        if rand(20)
-            sigh
-            east
-            break
-        else
-        if rand(20)
-            sigh
-            south
-            break
-        else
-        if rand(20)
-            sigh
-            down
-            break
-        else
-        if rand(20)
-            sigh
-            west
-            break
-        endif
-        endif
-        endif
-        endif
-        endif
-        endif
-        endif
-    endif
-    endif
-    endif
+if race($n) != 19
+    break
+endif
+if sex($n) == 1
+    say Brother!  What are you doing so far from Ota'ar Dar?
+    say No, it doesn't matter.  I have a very important job to do...
+endif
+if sex($n) == 2
+    say Sister!  What are you doing so far from Ota'ar Dar?
+    say No, it doesn't matter.  I have a very important job to do...
+endif
+if sex($n) == 0
+    say Clutchmate!  What are you doing so far from Ota'ar Dar?
+    say No, it doesn't matter.  I have a very important job to do...
+endif
+if rand(20)
+    sigh
+    north
+    break
+endif
+if rand(20)
+    sigh
+    east
+    break
+endif
+if rand(20)
+    sigh
+    south
+    break
+endif
+if rand(20)
+    sigh
+    down
+    break
+endif
+if rand(20)
+    sigh
+    west
+    break
 endif
 ~
 |
+< sahuagin~ common~
 #0
 
 
@@ -722,7 +675,7 @@ a potion of breathe water~
 A potion of breathe water.~
 ~
 10 64 1|4096|8192|16384
-50~ armor~ ~ ~
+50~ armor~ breathe water~ ~
 1 0 0
 #27021
 letter seal~
@@ -3710,6 +3663,7 @@ M  27001 spec_fido			    a vampire squid
 M  27002 spec_fido			    a spider crab
 M  27003 spec_poison			a sea anemone
 M  27004 spec_fido			    the anglerfish
+M  27005 none                      baby dolphin keeps its existing role
 M  27006 spec_small_whale	    a female dolphin
 M  27007 spec_fido			    a sea lion
 M  27009 spec_poison			a sea snake
