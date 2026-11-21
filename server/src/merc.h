@@ -2952,6 +2952,11 @@ struct char_data
         bool bounded_power_running;
         unsigned int bounded_power_generation;
         int retriever_ray_cooldown;
+        int paralysing_gas_cooldown;
+        int paralysing_gas_used;
+        int paralysing_gas_day;
+        int paralysing_gas_month;
+        int paralysing_gas_year;
         CHAR_DATA *body_wrap_source;
         CHAR_DATA *body_wrap_target;
         AFFECT_DATA *body_wrap_affect;
@@ -3684,8 +3689,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 350
-#define MAX_SPECIES 38
+#define MAX_MOB 361
+#define MAX_SPECIES 39
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -5985,6 +5990,7 @@ DECLARE_SPEC_FUN(spec_lurker_wrap);
 DECLARE_SPEC_FUN(spec_water_weird_wrap);
 DECLARE_SPEC_FUN(spec_succubus_fascination);
 DECLARE_SPEC_FUN(spec_retriever_rays);
+DECLARE_SPEC_FUN(spec_paralysing_gas);
 void creature_elemental_reaction(CHAR_DATA *victim, int contact_damage, unsigned long int types);
 
 /* These are registry IDs, not bits in an ACT word. */
@@ -6041,6 +6047,9 @@ typedef enum creature_trait
         CREATURE_TRAIT_DISPLACEMENT_MELEE_PENALTY,
         CREATURE_TRAIT_SPELL_SAVE_BONUS_PERCENT,
         CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS,
+        CREATURE_TRAIT_PARALYSING_GAS_CHANCE,
+        CREATURE_TRAIT_PARALYSING_GAS_DAILY_USES,
+        CREATURE_TRAIT_PARALYSING_GAS_COOLDOWN,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Internal damage kinds keep trait strengths small and named. */

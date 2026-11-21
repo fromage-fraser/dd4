@@ -681,6 +681,22 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        {
+                "geometric_being",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_ARMS | BODY_NO_LEGS
+                    | PART_EYE | PART_HEART | PART_BRAINS | PART_GUTS,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 };
 
@@ -4728,6 +4744,116 @@ const struct mob_type mob_table[MAX_MOB] =
                 396, 1100, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_GIANT, MOB_TEMPLATE_UNSET
+        },
+        {
+                "modron_tridrone", "tripodal_organism", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | BODY_NO_ARMS | BODY_NO_SPEECH | PART_ARMS | PART_MANY_ARMS | PART_HANDS | PART_FINGERS,
+                0, RES_COLD | RES_FIRE | RES_ACID, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN,
+                0, 0, 0, 0,
+                150, 60, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "modron_quadrone", "geometric_being", "icon1", "icon2",
+                0, AFF_INFRARED,
+                BODY_NO_CORPSE | BODY_NO_ARMS | BODY_NO_LEGS | PART_ARMS | PART_MANY_ARMS | PART_HANDS | PART_FINGERS | PART_2_LEGS | PART_FEET,
+                0, RES_COLD | RES_FIRE | RES_ACID, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN,
+                0, 0, 0, 0,
+                150, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "modron_pentadrone", "geometric_being", "icon1", "icon2",
+                0, AFF_INFRARED,
+                BODY_NO_CORPSE | BODY_NO_ARMS | BODY_NO_LEGS | PART_ARMS | PART_MANY_ARMS | PART_MANY_LEGS | PART_FEET,
+                0, RES_COLD | RES_FIRE | RES_ACID, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN,
+                0, 0, 0, 0,
+                180, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_paralysing_gas", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "modron_decaton", "geometric_being", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | BODY_NO_ARMS | BODY_NO_LEGS | PART_ARMS | PART_MANY_ARMS | PART_TENTACLES | PART_2_LEGS | PART_FEET,
+                0, RES_COLD | RES_FIRE | RES_ACID | RES_MAGIC, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN | RES_PSYCHIC,
+                0, 0, 0, 0,
+                160, 150, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_cast_cleric", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "modron_nonaton", "geometric_being", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | BODY_NO_ARMS | BODY_NO_LEGS | PART_ARMS | PART_MANY_ARMS | PART_TENTACLES | PART_2_LEGS | PART_FEET,
+                0, RES_COLD | RES_FIRE | RES_ACID | RES_MAGIC, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN | RES_PSYCHIC,
+                0, 0, 0, 0,
+                240, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_cleric", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "modron_octon", "geometric_being", "icon1", "icon2",
+                0, AFF_FLYING | AFF_SWIM,
+                BODY_NO_CORPSE | BODY_NO_ARMS | PART_ARMS | PART_MANY_ARMS | PART_TENTACLES,
+                0, RES_COLD | RES_FIRE | RES_ACID | RES_MAGIC, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN | RES_PSYCHIC,
+                0, 0, 0, 0,
+                240, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_cleric", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "modron_septon", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_CORPSE | PART_ARMS | PART_HANDS | PART_FINGERS | PART_MANY_ARMS | PART_TENTACLES,
+                0, RES_COLD | RES_FIRE | RES_ACID | RES_MAGIC, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN | RES_PSYCHIC,
+                0, 0, 0, 0,
+                180, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_cast_cleric", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "modron_hexton", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | PART_MANY_ARMS | PART_TENTACLES | PART_CLAWS | PART_WINGS,
+                PART_TENTACLES, RES_COLD | RES_FIRE | RES_ACID | RES_MAGIC, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN | RES_PSYCHIC,
+                0, 0, 0, 0,
+                270, 180, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_cleric", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "modron_quinton", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | PART_MANY_ARMS | PART_TAIL | PART_WINGS,
+                0, RES_COLD | RES_FIRE | RES_ACID | RES_MAGIC, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN | RES_PSYCHIC,
+                0, 0, 0, 0,
+                270, 220, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_cleric", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "modron_tertian", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | BODY_HUGE | PART_HORNS | PART_TAIL,
+                PART_TAILATTACK, RES_COLD | RES_FIRE | RES_ACID | RES_MAGIC, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN | RES_PSYCHIC,
+                0, 0, 0, 0,
+                366, 350, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_mage", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "primus_manifestation", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | BODY_HUGE,
+                0, RES_COLD | RES_FIRE | RES_ACID | RES_MAGIC, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN | RES_PSYCHIC,
+                0, 0, 0, 0,
+                450, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_mage", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
         }
 };
 
@@ -4835,6 +4961,9 @@ typedef enum creature_trait_effect
         TRAIT_DISPLACEMENT,
         TRAIT_SPELL_SAVE_BONUS,
         TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS,
+        TRAIT_PARALYSING_GAS_CHANCE,
+        TRAIT_PARALYSING_GAS_DAILY_USES,
+        TRAIT_PARALYSING_GAS_COOLDOWN,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -4954,7 +5083,10 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"armed_melee_damage", TRAIT_ARMED_MELEE_DAMAGE, NULL},
         {"displacement_melee_penalty", TRAIT_DISPLACEMENT, NULL},
         {"spell_save_bonus_pct", TRAIT_SPELL_SAVE_BONUS, NULL},
-        {"head_trauma_blocks_attacks", TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, NULL}
+        {"head_trauma_blocks_attacks", TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, NULL},
+        {"paralysing_gas_chance", TRAIT_PARALYSING_GAS_CHANCE, NULL},
+        {"paralysing_gas_daily_uses", TRAIT_PARALYSING_GAS_DAILY_USES, NULL},
+        {"paralysing_gas_cooldown", TRAIT_PARALYSING_GAS_COOLDOWN, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -5954,7 +6086,8 @@ static const CREATURE_TRAIT_CHANGE chimera_dragon_head_trait_changes[] =
 static const CREATURE_TRAIT_CHANGE modron_secundus_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -16},
-        {CREATURE_TRAIT_FEAR_IMMUNITY, 1}
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
 };
 
 static const CREATURE_TRAIT_CHANGE golden_handmaid_trait_changes[] =
@@ -6101,6 +6234,77 @@ static const CREATURE_TRAIT_CHANGE ettin_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -7}
 };
 
+/* These planar bodies keep their minds, souls and living inner organs. */
+static const CREATURE_TRAIT_CHANGE modron_tridrone_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE modron_quadrone_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE modron_pentadrone_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1},
+        {CREATURE_TRAIT_PARALYSING_GAS_CHANCE, 25},
+        {CREATURE_TRAIT_PARALYSING_GAS_DAILY_USES, 5},
+        {CREATURE_TRAIT_PARALYSING_GAS_COOLDOWN, 5}
+};
+static const CREATURE_TRAIT_CHANGE modron_decaton_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE modron_nonaton_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE modron_octon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -9},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE modron_septon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -11},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE modron_hexton_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -12},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE modron_quinton_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -13},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE modron_tertian_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -15},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE primus_manifestation_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -6108,6 +6312,17 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"modron_tridrone", NULL, modron_tridrone_trait_changes, TRAIT_ITEMS(modron_tridrone_trait_changes)},
+        {"modron_quadrone", NULL, modron_quadrone_trait_changes, TRAIT_ITEMS(modron_quadrone_trait_changes)},
+        {"modron_pentadrone", NULL, modron_pentadrone_trait_changes, TRAIT_ITEMS(modron_pentadrone_trait_changes)},
+        {"modron_decaton", NULL, modron_decaton_trait_changes, TRAIT_ITEMS(modron_decaton_trait_changes)},
+        {"modron_nonaton", NULL, modron_nonaton_trait_changes, TRAIT_ITEMS(modron_nonaton_trait_changes)},
+        {"modron_octon", NULL, modron_octon_trait_changes, TRAIT_ITEMS(modron_octon_trait_changes)},
+        {"modron_septon", NULL, modron_septon_trait_changes, TRAIT_ITEMS(modron_septon_trait_changes)},
+        {"modron_hexton", NULL, modron_hexton_trait_changes, TRAIT_ITEMS(modron_hexton_trait_changes)},
+        {"modron_quinton", NULL, modron_quinton_trait_changes, TRAIT_ITEMS(modron_quinton_trait_changes)},
+        {"modron_tertian", NULL, modron_tertian_trait_changes, TRAIT_ITEMS(modron_tertian_trait_changes)},
+        {"primus_manifestation", NULL, primus_manifestation_trait_changes, TRAIT_ITEMS(primus_manifestation_trait_changes)},
         {"giant_ground_beetle", NULL, giant_ground_beetle_trait_changes, TRAIT_ITEMS(giant_ground_beetle_trait_changes)},
         {"homunculus", NULL, homunculus_trait_changes, TRAIT_ITEMS(homunculus_trait_changes)},
         {"chreffn", NULL, chreffn_trait_changes, TRAIT_ITEMS(chreffn_trait_changes)},
@@ -6670,7 +6885,10 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_BLOOD_REACTION_QUANTITY
                                     || effect == TRAIT_LICH_CHILL_TOUCH
                                     || effect == TRAIT_BOW_ACCURACY
-                                    || effect == TRAIT_ELEMENTAL_REACTION_QUANTITY)
+                                    || effect == TRAIT_ELEMENTAL_REACTION_QUANTITY
+                                    || effect == TRAIT_PARALYSING_GAS_CHANCE
+                                    || effect == TRAIT_PARALYSING_GAS_DAILY_USES
+                                    || effect == TRAIT_PARALYSING_GAS_COOLDOWN)
                                 && profile->changes[i].value < 0)
                                         issues++;
                                 if (effect == TRAIT_NATURAL_DAMAGE_TYPE
@@ -9760,6 +9978,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 /* These short status actions have no new XP premium. */
                 { "spec_homunculus_sleep_bite", 0 },
                 { "spec_basilisk_stiffening_gaze", 0 },
+                { "spec_paralysing_gas", 0 }, /* No new XP premium for the short gas Hold. */
                 { "spec_fido", 0 },
                 { "spec_thief", 0 },
                 { "spec_janitor", 0 },

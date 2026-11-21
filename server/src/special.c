@@ -61,6 +61,7 @@ DECLARE_SPEC_FUN( spec_terrifying_roar );
 DECLARE_SPEC_FUN( spec_confusing_gaze );
 DECLARE_SPEC_FUN( spec_homunculus_sleep_bite );
 DECLARE_SPEC_FUN( spec_basilisk_stiffening_gaze );
+DECLARE_SPEC_FUN( spec_paralysing_gas );
 DECLARE_SPEC_FUN( spec_breath_crystal );
 DECLARE_SPEC_FUN( spec_sprite );
 DECLARE_SPEC_FUN( spec_vine_grip );
@@ -207,6 +208,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_confusing_gaze")) return spec_confusing_gaze;
         if (!str_cmp(name, "spec_homunculus_sleep_bite")) return spec_homunculus_sleep_bite;
         if (!str_cmp(name, "spec_basilisk_stiffening_gaze")) return spec_basilisk_stiffening_gaze;
+        if (!str_cmp(name, "spec_paralysing_gas")) return spec_paralysing_gas;
         if (!str_cmp(name, "spec_breath_crystal")) return spec_breath_crystal;
         if (!str_cmp(name, "spec_sprite")) return spec_sprite;
         if (!str_cmp(name, "spec_vine_grip")) return spec_vine_grip;
@@ -359,6 +361,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_confusing_gaze) return "spec_confusing_gaze";
         if (special == spec_homunculus_sleep_bite) return "spec_homunculus_sleep_bite";
         if (special == spec_basilisk_stiffening_gaze) return "spec_basilisk_stiffening_gaze";
+        if (special == spec_paralysing_gas) return "spec_paralysing_gas";
         if (special == spec_breath_crystal) return "spec_breath_crystal";
         if (special == spec_sprite) return "spec_sprite";
         if (special == spec_vine_grip) return "spec_vine_grip";
@@ -9008,7 +9011,7 @@ enum bounded_power_kind
 {
         BOUNDED_LURKER_WRAP, BOUNDED_WATER_WRAP,
         BOUNDED_FASCINATION, BOUNDED_RETRIEVER_RAY,
-        BOUNDED_SLEEP_BITE, BOUNDED_STIFFENING_GAZE
+        BOUNDED_SLEEP_BITE, BOUNDED_STIFFENING_GAZE, BOUNDED_PARALYSING_GAS
 };
 typedef struct bounded_power_context
 {
@@ -9038,6 +9041,7 @@ static bool bounded_power_unchanged(const BOUNDED_POWER_CONTEXT *c)
         || is_safe(ch, victim))
                 return FALSE;
         if (c->kind != BOUNDED_LURKER_WRAP && c->kind != BOUNDED_SLEEP_BITE
+        && c->kind != BOUNDED_PARALYSING_GAS
         && !innate_spell_ready(ch))
                 return FALSE;
         if (c->kind == BOUNDED_LURKER_WRAP || c->kind == BOUNDED_WATER_WRAP)
@@ -9047,6 +9051,14 @@ static bool bounded_power_unchanged(const BOUNDED_POWER_CONTEXT *c)
                 return !IS_HUGE(victim)
                     && get_contact_resistance_result(ch, victim, types) != RES_RESULT_IMMUNE;
         }
+        if (c->kind == BOUNDED_PARALYSING_GAS)
+                /* The body emits this gas; it needs neither eyes nor a voice. */
+                return gsn_paralysis > 0 && can_be_poisoned(victim)
+                    && !IS_AFFECTED(victim, AFF_NON_CORPOREAL | AFF_HOLD)
+                    && victim->ghost_phase == GHOST_PHASE_NONE
+                    && !is_affected(victim, gsn_paralysis)
+                    && get_resistance_result(victim,
+                        RES_POISON | RES_PARALYSIS | RES_HOLD) != RES_RESULT_IMMUNE;
         if (c->kind == BOUNDED_SLEEP_BITE)
                 /* Physical venom needs a reachable body, not speech or sight. */
                 return gsn_sleep > 0 && HAS_HEAD(ch)
@@ -9127,6 +9139,8 @@ void update_bounded_creature_powers(void)
         CHAR_DATA *ch;
         for (ch = char_list; ch; ch = ch->next)
         {
+                if (ch->paralysing_gas_cooldown > 0)
+                        --ch->paralysing_gas_cooldown;
                 if (ch->retriever_ray_cooldown > 0)
                         --ch->retriever_ray_cooldown;
                 if (ch->body_wrap_affect && --ch->body_wrap_pulses <= 0)
@@ -9387,6 +9401,63 @@ bool spec_basilisk_stiffening_gaze(CHAR_DATA *ch)
 done:
         if (magic_started)
                 end_magic_activation(&activation);
+        end_bounded_power(&c);
+        return attempted;
+}
+
+
+/* A short physical paralysis, with a daily supply and room to recover. */
+bool spec_paralysing_gas(CHAR_DATA *ch)
+{
+        BOUNDED_POWER_CONTEXT c;
+        AFFECT_DATA af;
+        bool attempted = FALSE, saved;
+        int chance, uses, cooldown;
+
+        if (!ch || !IS_NPC(ch) || ch->paralysing_gas_cooldown > 0)
+                return FALSE;
+        chance = URANGE(0, creature_trait_value(ch,
+            CREATURE_TRAIT_PARALYSING_GAS_CHANCE), 100);
+        uses = URANGE(0, creature_trait_value(ch,
+            CREATURE_TRAIT_PARALYSING_GAS_DAILY_USES), 100);
+        cooldown = URANGE(1, creature_trait_value(ch,
+            CREATURE_TRAIT_PARALYSING_GAS_COOLDOWN), 100);
+        if (chance == 0 || uses == 0)
+                return FALSE;
+        if (ch->paralysing_gas_day != time_info.day
+        || ch->paralysing_gas_month != time_info.month
+        || ch->paralysing_gas_year != time_info.year)
+        {
+                ch->paralysing_gas_day = time_info.day;
+                ch->paralysing_gas_month = time_info.month;
+                ch->paralysing_gas_year = time_info.year;
+                ch->paralysing_gas_used = 0;
+        }
+        if (ch->paralysing_gas_used >= uses
+        || !begin_bounded_power(ch, BOUNDED_PARALYSING_GAS, &c))
+                return FALSE;
+        if (number_percent() > chance || !bounded_power_unchanged(&c))
+                goto done;
+        /* Reserve both limits before saves or messages can trigger another action. */
+        attempted = TRUE;
+        ++ch->paralysing_gas_used;
+        ch->paralysing_gas_cooldown = cooldown;
+        saved = saves_resistance_effect(ch, ch->level, c.victim,
+            RES_POISON | RES_PARALYSIS | RES_HOLD);
+        if (!bounded_power_unchanged(&c))
+                goto done;
+        if (!bounded_power_message(&c, "$n releases paralysing gas towards you!", TO_VICT)
+        || !bounded_power_message(&c, "You release paralysing gas towards $N!", TO_CHAR)
+        || !bounded_power_message(&c, "$n releases paralysing gas towards $N!", TO_NOTVICT)
+        || saved)
+                goto done;
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_paralysis;
+        af.duration = 0; /* Ordinary affect expiry and paralysis cures apply. */
+        af.location = APPLY_NONE;
+        af.bitvector = AFF_HOLD;
+        affect_to_char_source(c.victim, &af, AFFECT_SOURCE_CREATURE, c.source_id);
+done:
         end_bounded_power(&c);
         return attempted;
 }

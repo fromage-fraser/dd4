@@ -3926,6 +3926,19 @@ void spell_regenerate(int sn, int level, CHAR_DATA *ch, void *vo)
 
         repair_regeneration_trauma(victim, 7);
 
+        /* Regrow control after physical gas; ordinary spell paralysis stays. */
+        {
+                AFFECT_DATA *af, *next;
+                for (af = victim->affected; af; af = next)
+                {
+                        next = af->next;
+                        if (!af->deleted && af->type == gsn_paralysis
+                        && af->duration >= 0
+                        && af->source_type == AFFECT_SOURCE_CREATURE)
+                                affect_remove(victim, af);
+                }
+        }
+
         if (repaired > 0
         ||  spell_support_affect_count(victim) < old_affect_count
         ||  (old_affected_by & ~victim->affected_by) != 0)
