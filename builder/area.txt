@@ -12138,3 +12138,101 @@ titles and old public files. Regenerate only maggot 7005 as eyeless and
 limbless, and basilisk 7043 with four distinct pairs of legs. Media files
 are packaged separately from source; staging and live publication are
 separate steps. No GUI code or image-tool configuration change is made.
+
+
+The Plane of Nirvana
+-------------------
+
+The twelve Nirvana creatures now use reusable modron archetypes. Tridrone
+uses tripodal_organism; quadrone, pentadrone, decaton, nonaton and octon use
+the new geometric_being body. Septon through Primus use humanoid. The new
+body is a living core with eyes and internal organs, without a separate
+head. Its profiles supply the appropriate arms, tentacles and legs. It
+keeps blood, pain, a mind, a soul and speech. Headless does not mean
+brainless or mute. Metallic artwork does not establish inorganic anatomy.
+
+New archetypes are modron_tridrone, modron_quadrone, modron_pentadrone,
+modron_decaton, modron_nonaton, modron_octon, modron_septon, modron_hexton,
+modron_quinton, modron_tertian and primus_manifestation. Existing
+modron_secundus is reused. Extra limbs do not multiply attack streams.
+The archetype catalogue has 361 rows and the body catalogue has 39 rows;
+append new rows without moving existing entries. The trait registry has
+54 entries and Scribe recognises 138 special-function names.
+
+All modrons leave no corpse: their bodies disintegrate, but their carried
+equipment still drops. Cold, Fire and Acid are resisted; Sleep, Charm,
+Hold and Drain are immune. Fear immunity and the existing illusion trait
+apply. The latter currently protects against Ventriloquism, not every
+effect which someone might call an illusion. modron_secundus gains only
+this illusion trait; its existing measurements and other properties stay.
+
+The three lower forms do not gain Magic resistance or blanket Psychic
+immunity. Hierarchs, from decaton upwards, have ordinary Magic resistance
+and Psychic immunity. These are DD4 adaptations of the second-edition
+Modron entry, not a new percentage-based spell rejection system. Primus is
+a fightable local manifestation with its existing mage role and loot.
+
+Natural armour by archetype is tridrone -5, quadrone -6, pentadrone -7,
+decaton -8, nonaton -10, octon -9, septon -11, hexton -12, quinton -13,
+tertian -15, secundus -16 and Primus -20. Nonaton and octon intentionally
+do not follow a smooth sequence. Original area armour/build fields stay.
+No enchanted-weapon threshold or Nonmagic immunity is added.
+
+Quadrone and pentadrone gain Infrared. Decaton floats on gas; octon flies
+and swims through its collar; septon swims; hexton and quinton have wings
+and flight; Primus flies. The ordinary quadrone is wingless. Pentadrone
+has no permanent flight. Existing Secundus stays grounded without
+Infrared or HUGE. Tertian and Primus have HUGE in addition to Large.
+
+Hexton has two hands and four claw-tipped tentacles. Tentacles provide
+ordinary slash contact and obey arm trauma; claw anatomy does not add the
+generic claw selector. Tertian's mace-tail uses the existing blunt tail
+attack and tail-trauma gate. Regenerate restores injured eligibility.
+Quinton's prehensile tail is not a mace-tail weapon.
+
+spec_paralysing_gas is a physical combat emission. Pentadrone supplies
+paralysing_gas_chance=25, paralysing_gas_daily_uses=5 and
+paralysing_gas_cooldown=5 through its code-only trait list. These are not
+Scribe commands, area fields or individual mob overrides. A new creature
+can reuse the routine by supplying these traits in its archetype and
+selecting the special through the normal active-special system. Assigning
+the special alone does not invent a supply or chance.
+
+Chance and daily uses accept 0..100; zero disables the power. Cooldown is
+measured in combat pulses, clamped to 1..100 when the power is active.
+The approved pentadrone limit is five releases per game calendar day and
+five combat rounds between releases. The runtime character owns its used
+count and cooldown. A new day, month or year replenishes the daily supply;
+the cooldown still runs. These counters are transient and are not saved
+into area files or player files.
+
+Gas targets only the current corporeal, poison-susceptible opponent.
+Poison, Paralysis and Hold immunity/save rules apply. A failed save adds
+the existing paralysis condition until the next ordinary affect tick,
+without damage, stacking or refreshing an existing Hold. Freedom,
+Regenerate and ordinary expiry apply. Physical gas needs neither a head
+nor speech and can work in NO_MAGIC. Combat safety, actor identity and
+movement/death/combat-change guards still apply. Limits are reserved before
+messages or saves can cause a nested action. A resisted release spends a
+charge; an ineligible attempt does not.
+
+Decaton, nonaton and octon gain ordinary cleric casting. Existing tridrone
+thief, septon/hexton/quinton cleric and tertian/secundus/Primus mage roles
+remain. Local aggression, passivity, levels, alignments, Scavenger,
+Sentinel and Stay Area choices remain area design. More arms, titles and
+HP dice letters do not establish encounter rank.
+
+Nirvana's Tertian 8109 is Rare, Secundus 8110 is Elite and Primus 8111 is
+Boss. The other nine are Common. Local masculine prose is reflected by
+sex male on 8105, 8107, 8110 and 8111; other definitions remain neuter.
+Ranks and sex remain individual choices, not archetype-wide assumptions.
+
+Whole-number height/weight estimates are listed in the current catalogue.
+Tertian's height follows the authored twelve feet; Secundus retains its
+approved 300 cm/150 kg. Measurements are descriptive, and unspecified
+length is not a claim of zero physical length. No fractional weights or
+new area columns are introduced. The sixty room flags, routes, doors,
+resets and all five Primus equipment pieces are preserved. There is no
+matching Nirvana Scribe source. The two corrected room titles need media
+filenames generated from their corrected text, preserving hyphens as the
+current dd-gui Lua does.

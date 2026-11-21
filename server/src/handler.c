@@ -1444,7 +1444,10 @@ void affect_strip( CHAR_DATA *ch, int sn )
                  * owning source.
                  */
                 if (paf->type == sn
-                &&  paf->source_type == AFFECT_SOURCE_NONE)
+                && (paf->source_type == AFFECT_SOURCE_NONE
+                    /* Physical gas uses the ordinary paralysis cures. */
+                    || (sn == gsn_paralysis && paf->duration >= 0
+                        && paf->source_type == AFFECT_SOURCE_CREATURE)))
                 {
                         affect_remove(ch, paf);
                 }

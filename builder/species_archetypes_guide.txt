@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 22 November 2026
-Based on master fd187ce572a7326c6c66b911029d0935080afcb2 (PR #1004),
-with the accompanying Sewer changes.
+Based on master c24861ff70bd3e24723f9712a1df75bcfb704ff8 (PR #1005),
+with the accompanying Plane of Nirvana changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -15,6 +15,10 @@ The examples teach the system. Names starting with tutorial_ are deliberately
 fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
+
+The current tables contain 39 bodies, 361 archetypes, 54 internal traits
+and 138 Scribe special names. Earlier area notes sometimes record the
+counts at that step; use the current appendices when adding entries.
 
 The server code is the final authority. This is a dated guide, not a promise
 that the tables will never change. Check the current source before copying
@@ -911,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 350, so this single example would make 351.
+guide's checked revision it is 361, so this single example would make 362.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 350.
+valid index. This example would receive index 361.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1045,7 +1049,7 @@ It supplies ordinary living organs, four legs and no humanoid arms/speech.
 It doesn't prescribe a natural attack, dimensions, defences, active power or
 combat bonus for every future creature using it.
 
-Increase MAX_SPECIES by one:38 would become 39 at this revision. Append
+Increase MAX_SPECIES by one:39 would become 40 at this revision. Append
 without reordering older bodies. Add an archetype which names the new body
 in its species field, and increase MAX_MOB if that archetype is also new.
 Scribe selects the archetype, never the new body's name directly.
@@ -1613,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 350;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 361;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1723,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 350; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 361; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-38 body rows, 350 archetype rows, 51 internal traits and 137 Scribe
+39 body rows, 361 archetype rows, 54 internal traits and 138 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -2496,7 +2500,7 @@ exists. Both mob portraits and all 50 room images stay unchanged.
 Wyvern's Tower
 --------------
 
-The catalogue now has 245 archetypes, 35 basic body species, 50 internal
+The catalogue at this step had 245 archetypes, 35 basic body species, 50 internal
 traits, 124 Scribe special names and 637 skill rows. The new body is
 hexapodal_mammal at index 34. The five archetypes append at 238-242:
 killer_frog, giant_flytrap, black_pudding, clay_golem and displacer_beast.
@@ -2787,7 +2791,7 @@ retained; no image generation or publication accompanies this step.
 The Magic Garden
 ----------------
 
-The catalogue now has 249 archetypes, 35 basic body species, 50 internal
+The catalogue at this step had 249 archetypes, 35 basic body species, 50 internal
 traits, 124 Scribe special names and 637 skill rows. water_drake,
 water_spirit, animated_vine and pixie append at indices 245 through 248.
 Earlier indices, shared profiles, body defaults and player opt-ins stay.
@@ -2911,7 +2915,7 @@ retained; no image generation accompanies this patch.
 Chapel Catacombs
 ----------------
 
-The catalogue now has 255 archetypes, 35 basic body species, 50 internal
+The catalogue at this step had 255 archetypes, 35 basic body species, 50 internal
 traits, 124 Scribe special names and 637 skill rows. Six profiles append
 at 249-254: mi_go, nightgaunt, hunting_horror, infernal_servitor,
 rock_slug and djinni. Earlier indices stay. Existing trait and special
@@ -3530,7 +3534,7 @@ exact Eakos regeneration. Artwork replacements are separate staged assets.
 The Dragon Tower
 ----------------
 
-The catalogue now has 279 archetypes, 35 body species, 50 internal traits,
+The catalogue at this step had 279 archetypes, 35 body species, 50 internal traits,
 126 Scribe special names and 637 skill rows. Six profiles append at IDs
 273-278: draconian, undead_draconian, adult_black_dragon,
 ancient_green_dragon, phase_dragon and tiamat_avatar. All 273 earlier
@@ -3644,7 +3648,7 @@ nonsexual court clothing.
 The Valley of Dreams
 --------------------
 
-The catalogue now has 286 archetypes, 35 body species, 50 internal traits,
+The catalogue at this step had 286 archetypes, 35 body species, 50 internal traits,
 127 Scribe special names and 637 skill rows. Seven profiles append at
 279-285: rhinoceros_beetle, bulette, jaguar, humanoid_gargantua, rakshasa,
 black_phasebeast and great_ape. All 279 earlier profiles and all bodies
@@ -3799,7 +3803,7 @@ Media publication is separate from the source patch. There is no matching
 Hel's Tower
 -----------
 
-The current catalogue has 296 archetypes (MAX_MOB), 37 body species
+The catalogue at this earlier step had 296 archetypes (MAX_MOB), 37 body species
 (MAX_SPECIES), 50 internal traits, 130 Scribe special names and 637 skill
 rows, including the existing reserved rows where applicable. Two bodies
 append: cephalopod 35 and living_appendage 36. Ten profiles append at
@@ -4424,7 +4428,7 @@ applying this source patch; these notes make no publication claim.
 Olympus
 -------
 
-The catalogue now has 319 archetypes, 37 body species, 51 internal traits,
+The catalogue at this step had 319 archetypes, 37 body species, 51 internal traits,
 131 Scribe special names and 637 skill rows, including reserved rows where
 applicable. Three profiles append at indices 316-318: golden_handmaid,
 chimera and pegasus. All earlier profiles, bodies and trait IDs remain
@@ -4609,7 +4613,7 @@ patch; these builder notes do not claim live publication has occurred.
 Ghost Town
 ----------
 
-The current catalogue contains 334 archetypes, 37 body species, 51
+The catalogue at this earlier step contained 334 archetypes, 37 body species, 51
 internal traits, 135 Scribe special names and 637 skill rows. The fifteen
 profiles append at indices 319-333, in order: demon, revenant_spirit,
 haunt, crypt_thing, lurker_above, succubus, gray_ooze, nightmare,
@@ -4873,7 +4877,7 @@ separate from applying this source patch.
 The Astral Plane
 ----------------
 
-The current catalogue has 341 archetypes, 37 body species, 51 internal
+The catalogue at this earlier step had 341 archetypes, 37 body species, 51 internal
 traits, 135 Scribe special names and 637 skill rows. The seven new
 profiles use existing bodies. There are no new area fields, body-part
 flags, trait IDs, player skills or special-function names. Earlier
@@ -5023,7 +5027,7 @@ source patch.
 The Sewer
 ---------
 
-The catalogue now has 350 archetypes, 38 body species, 51 internal traits,
+The catalogue at this step had 350 archetypes, 38 body species, 51 internal traits,
 137 Scribe special names and 637 skill rows. The new body is
 multipedal_reptile, index 37. It represents a living reptile with more
 than four legs, using the existing ManyLegs flag. An eight-legged basilisk
@@ -5226,6 +5230,103 @@ limbless, and basilisk 7043 with four distinct pairs of legs. Media files
 are packaged separately from source; staging and live publication are
 separate steps. No GUI code or image-tool configuration change is made.
 
+The Plane of Nirvana
+-------------------
+
+The twelve Nirvana creatures now use reusable modron archetypes. Tridrone
+uses tripodal_organism; quadrone, pentadrone, decaton, nonaton and octon use
+the new geometric_being body. Septon through Primus use humanoid. The new
+body is a living core with eyes and internal organs, without a separate
+head. Its profiles supply the appropriate arms, tentacles and legs. It
+keeps blood, pain, a mind, a soul and speech. Headless does not mean
+brainless or mute. Metallic artwork does not establish inorganic anatomy.
+
+New archetypes are modron_tridrone, modron_quadrone, modron_pentadrone,
+modron_decaton, modron_nonaton, modron_octon, modron_septon, modron_hexton,
+modron_quinton, modron_tertian and primus_manifestation. Existing
+modron_secundus is reused. Extra limbs do not multiply attack streams.
+The archetype catalogue has 361 rows and the body catalogue has 39 rows;
+append new rows without moving existing entries. The trait registry has
+54 entries and Scribe recognises 138 special-function names.
+
+All modrons leave no corpse: their bodies disintegrate, but their carried
+equipment still drops. Cold, Fire and Acid are resisted; Sleep, Charm,
+Hold and Drain are immune. Fear immunity and the existing illusion trait
+apply. The latter currently protects against Ventriloquism, not every
+effect which someone might call an illusion. modron_secundus gains only
+this illusion trait; its existing measurements and other properties stay.
+
+The three lower forms do not gain Magic resistance or blanket Psychic
+immunity. Hierarchs, from decaton upwards, have ordinary Magic resistance
+and Psychic immunity. These are DD4 adaptations of the second-edition
+Modron entry, not a new percentage-based spell rejection system. Primus is
+a fightable local manifestation with its existing mage role and loot.
+
+Natural armour by archetype is tridrone -5, quadrone -6, pentadrone -7,
+decaton -8, nonaton -10, octon -9, septon -11, hexton -12, quinton -13,
+tertian -15, secundus -16 and Primus -20. Nonaton and octon intentionally
+do not follow a smooth sequence. Original area armour/build fields stay.
+No enchanted-weapon threshold or Nonmagic immunity is added.
+
+Quadrone and pentadrone gain Infrared. Decaton floats on gas; octon flies
+and swims through its collar; septon swims; hexton and quinton have wings
+and flight; Primus flies. The ordinary quadrone is wingless. Pentadrone
+has no permanent flight. Existing Secundus stays grounded without
+Infrared or HUGE. Tertian and Primus have HUGE in addition to Large.
+
+Hexton has two hands and four claw-tipped tentacles. Tentacles provide
+ordinary slash contact and obey arm trauma; claw anatomy does not add the
+generic claw selector. Tertian's mace-tail uses the existing blunt tail
+attack and tail-trauma gate. Regenerate restores injured eligibility.
+Quinton's prehensile tail is not a mace-tail weapon.
+
+spec_paralysing_gas is a physical combat emission. Pentadrone supplies
+paralysing_gas_chance=25, paralysing_gas_daily_uses=5 and
+paralysing_gas_cooldown=5 through its code-only trait list. These are not
+Scribe commands, area fields or individual mob overrides. A new creature
+can reuse the routine by supplying these traits in its archetype and
+selecting the special through the normal active-special system. Assigning
+the special alone does not invent a supply or chance.
+
+Chance and daily uses accept 0..100; zero disables the power. Cooldown is
+measured in combat pulses, clamped to 1..100 when the power is active.
+The approved pentadrone limit is five releases per game calendar day and
+five combat rounds between releases. The runtime character owns its used
+count and cooldown. A new day, month or year replenishes the daily supply;
+the cooldown still runs. These counters are transient and are not saved
+into area files or player files.
+
+Gas targets only the current corporeal, poison-susceptible opponent.
+Poison, Paralysis and Hold immunity/save rules apply. A failed save adds
+the existing paralysis condition until the next ordinary affect tick,
+without damage, stacking or refreshing an existing Hold. Freedom,
+Regenerate and ordinary expiry apply. Physical gas needs neither a head
+nor speech and can work in NO_MAGIC. Combat safety, actor identity and
+movement/death/combat-change guards still apply. Limits are reserved before
+messages or saves can cause a nested action. A resisted release spends a
+charge; an ineligible attempt does not.
+
+Decaton, nonaton and octon gain ordinary cleric casting. Existing tridrone
+thief, septon/hexton/quinton cleric and tertian/secundus/Primus mage roles
+remain. Local aggression, passivity, levels, alignments, Scavenger,
+Sentinel and Stay Area choices remain area design. More arms, titles and
+HP dice letters do not establish encounter rank.
+
+Nirvana's Tertian 8109 is Rare, Secundus 8110 is Elite and Primus 8111 is
+Boss. The other nine are Common. Local masculine prose is reflected by
+sex male on 8105, 8107, 8110 and 8111; other definitions remain neuter.
+Ranks and sex remain individual choices, not archetype-wide assumptions.
+
+Whole-number height/weight estimates are listed in the current catalogue.
+Tertian's height follows the authored twelve feet; Secundus retains its
+approved 300 cm/150 kg. Measurements are descriptive, and unspecified
+length is not a claim of zero physical length. No fractional weights or
+new area columns are introduced. The sixty room flags, routes, doors,
+resets and all five Primus equipment pieces are preserved. There is no
+matching Nirvana Scribe source. The two corrected room titles need media
+filenames generated from their corrected text, preserving hyphens as the
+current dd-gui Lua does.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -5270,13 +5371,14 @@ farm_mammal examples remain in the code; presence is not design approval.
     35  cephalopod
     36  living_appendage
     37  multipedal_reptile
+    38  geometric_being
 
 New physical variants should reuse these where they fit. A body name alone
 does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 350 current table rows follow, grouped by body. Numeric IDs are for
+All 361 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -5292,7 +5394,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (112)
+HUMANOID (117)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -5630,6 +5732,21 @@ HUMANOID (112)
   [349] ettin: h/w/l 396 / 1100 / ?; Large; family giant
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [356] modron_septon: h/w/l 180 / 90 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_cleric; policy auto
+  [357] modron_hexton: h/w/l 270 / 180 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_cleric; policy auto
+  [358] modron_quinton: h/w/l 270 / 220 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_cleric; policy auto
+  [359] modron_tertian: h/w/l 366 / 350 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_mage; policy auto
+  [360] primus_manifestation: h/w/l 450 / 500 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_mage; policy auto
 
 DRAGON (19)
 ------------
@@ -6411,7 +6528,7 @@ RADIAL_INVERTEBRATE (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_engulf; policy auto
 
-TRIPODAL_ORGANISM (2)
+TRIPODAL_ORGANISM (3)
 -----------------------
   [212] otyugh: h/w/l 140 / 400 / 210; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
@@ -6419,6 +6536,9 @@ TRIPODAL_ORGANISM (2)
   [257] neo_otyugh: h/w/l 160 / 650 / 244; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials 1:spec_otyugh; policy auto
+  [350] modron_tridrone: h/w/l 150 / 60 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 HEXAPODAL_MAMMAL (1)
 ----------------------
@@ -6444,9 +6564,27 @@ MULTIPEDAL_REPTILE (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_basilisk_stiffening_gaze; policy auto
 
+GEOMETRIC_BEING (5)
+---------------------
+  [351] modron_quadrone: h/w/l 150 / 100 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [352] modron_pentadrone: h/w/l 180 / 100 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_paralysing_gas; policy auto
+  [353] modron_decaton: h/w/l 160 / 150 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_cleric; policy auto
+  [354] modron_nonaton: h/w/l 240 / 200 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_cleric; policy auto
+  [355] modron_octon: h/w/l 240 / 150 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_cleric; policy auto
+
 APPENDIX C. COMPLETE CURRENT TRAIT REFERENCE
 ===========================================
-The named registry currently contains 51 traits. These are internal
+The named registry currently contains 54 traits. These are internal
 profile values, not Scribe fields. Zero disables an inherited value.
 The general validator uses-100..100 plus the effect-specific limits.
 Use named enum constants for natural damage rather than memorised numbers.
@@ -6723,6 +6861,26 @@ A listed parameter needs its existing consumer and any capability/special gate.
     Regenerate can restore eligibility by healing the head injury.
     MSTAT uses the normal named-registry value/origin displays.
     Internal species/archetype data only; no individual area/Scribe field.
+
+51. paralysing_gas_chance
+    Value: 0..100 percent; 0 disables the gas special.
+    Consumed by spec_paralysing_gas. Pentadrone uses 25.
+
+52. paralysing_gas_daily_uses
+    Value: 0..100 releases per game calendar day; 0 disables the power.
+    Pentadrone uses 5. A resisted release spends one charge, while a blocked
+    attempt does not. Runtime counters reset on day/month/year rollover.
+
+53. paralysing_gas_cooldown
+    Value: 0..100 combat pulses, clamped to 1..100 for an active power.
+    Pentadrone uses 5. The counter advances once per combat pulse, including
+    when the creature cannot act. Daily replenishment does not cancel it.
+
+These three values live in code-only species/archetype trait lists. They
+are not new area fields, Scribe commands or individual overrides. The
+special supplies physical paralysis, normal immunity/saves and combat
+safety; assigning parameters does not select an active special by itself.
+All three appear in MSTAT's existing value and origin displays.
 
 APPENDIX D. SCRIBE FLAG AND MASK REFERENCE
 ==========================================
@@ -7195,6 +7353,7 @@ Check anatomy, safety, effect cleanup, selection percentages and XP.
     spec_orange_grung
     spec_otyugh
     spec_paralysing_bite
+    spec_paralysing_gas
     spec_poison
     spec_poison_bite
     spec_poison_claw
@@ -7265,8 +7424,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/fd187ce572a7326c6c66b911029d0935080afcb2
-  Base PR1004 plus the accompanying Sewer patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/c24861ff70bd3e24723f9712a1df75bcfb704ff8
+  Base PR1005 plus the accompanying Nirvana patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -7276,9 +7435,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 92/153 areas (60.1%) and 1501/4131 mob
-definitions (36.3%) merged and verified. Sewer adds 24 definitions.
-After its merge is verified, completion becomes 93/153 areas (60.8%) and
-1525/4131 definitions (36.9%).
+The live conversion is currently 93/153 areas (60.8%) and 1525/4131 mob
+definitions (36.9%) merged and verified. Nirvana adds 12 definitions.
+After its merge is verified, completion becomes 94/153 areas (61.4%) and
+1537/4131 definitions (37.2%).
 
 END OF GUIDE
