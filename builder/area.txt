@@ -12236,3 +12236,132 @@ resets and all five Primus equipment pieces are preserved. There is no
 matching Nirvana Scribe source. The two corrected room titles need media
 filenames generated from their corrected text, preserving hyphens as the
 current dd-gui Lua does.
+
+
+Yggdrasil
+---------
+
+Yggdrasil's fifteen definitions use fourteen new archetypes and the
+existing frost_giant. All basic bodies already exist. The catalogue has
+375 archetypes, 39 bodies, 60 internal traits and 140 Scribe special names.
+Keep old indices stable; no new area fields or individual trait overrides
+are introduced. Use archetype names in Scribe and let the body/archetype
+resolver supply inherited values before applying the area's XOR masks.
+
+New archetypes are hollyphant, planetar, lesser_shedu, dretch, chasme,
+babau, yagnoloth, kostchtchie_avatar, nabassu, cloud_dragon, solar, wemic,
+gorgimera and giant_squirrel. The catalogue lists their current dimensions,
+defences and body choices. These are corporeal creatures with organs,
+blood, pain, minds, souls and ordinary remains. Celestial or fiendish
+identity does not imply Undead, Mindless, Inorganic, Soulless or NoCorpse.
+
+The shared hollyphant is a small winged elephant, 45 cm high, 30 kg and
+61 cm long. Yggdrasil deliberately keeps its authored large variant:
+150 cm high, 500 kg, 240 cm long and Large without HUGE. These are absolute
+MobHeight/MobWeight/MobLength/MobSize replacements, not XOR operations.
+Wings, flight, trunk and tusks belong to the archetype; NoArms and NoSpeech
+remain. NoSpeech does not prevent trumpeting. The carried hollyphant tusk
+9908 remains a wand, not a detachable body-part weapon.
+
+Planetar and Solar have wings, flight and ordinary ACT_REGENERATOR
+regeneration. Planetar resists Magic/Fire and is immune to Cold,
+Electricity, Poison, Drain and Charm; Acid remains effective. Solar resists
+Magic and is immune to Cold, Electricity, Acid, Poison, Drain, Charm and
+Hold, and has Infrared. Planetar retains its local mage role, Solar its
+cleric role. Their physical flesh, pain and souls remain.
+
+lesser_shedu uses a human head on a winged equine body, with hooves,
+NoArms and speech. It inherits the existing psionic caster; psionic
+abilities do not automatically grant Psychic resistance. Wemic is a
+human upper torso and arms over a four-legged lion body with paws,
+foreclaws and tail. Its local thief role remains an area choice.
+
+Dretch, Chasme, Babau, Kostchtchie and Nabassu resist Magic/Fire/Cold and
+are immune to Electricity/Poison. Babau's protective slime becomes
+Slash/Pierce resistance, without corroding carried weapons. Its skeletal
+appearance is living leathery flesh. Chasme has a human head/proboscis,
+two grasping arms, four walking legs and fly wings. Nabassu has leathery
+wings, claws and fangs; the profile does not create a feeding/maturation
+system. Dretch keeps the authored Wimpy and Scavenger behaviour.
+
+Yagnodemon 9906 uses yagnoloth while retaining its old displayed name and
+keywords, with yagnoloth added as a keyword. Its unequal arms remain
+descriptive. It resists Magic, is immune to Acid/Fire/Poison and vulnerable
+to Cold; it does not inherit the tanar'ri Electricity immunity. The local
+spec_demon is a casting role, not a species classifier. Its polearm stays.
+
+Kostchtchie's fightable avatar uses the book's 28-foot stature, 853 cm,
+with an estimated 8000 kg mass, Large and HUGE. It joins the giant combat
+family without inheriting frost giant rocks. Keep its demon caster,
+resting position and cold-iron hammer. The listed conservative defences
+do not import a full divine immunity package.
+
+Cloud Dragon remains a physical winged dragon. Its cold breath uses
+spec_breath_frost_anatomical and Cold immunity. Its age is unspecified;
+no age-based fear, Magic resistance or extra tail attack is inferred.
+There is no permanent NonCorporeal or PassDoor cloud form. The old raw
+NoArms bit is cleared so it does not cancel the dragon body's NoArms.
+
+Ratatosk remains the local giant squirrel courier, 100 cm high, 80 kg and
+240 cm long, Medium without HUGE. It retains NoArms/NoSpeech, its senses
+and Sanctuary, with ordinary paws/claws/tail. This does not turn it into
+the separate humanoid gliding squirrel-folk or grant powered flight.
+Clear the duplicated raw NoArms/NoSpeech mask rather than cancelling the
+new inherited defaults. Hollyphant needs the same XOR cleanup.
+
+Hollyphant uses cleric 70 / holy trumpet 30. spec_holy_trumpet has a 25%
+attempt chance when selected, three releases per game calendar day and
+a five-combat-round cooldown. It deals max(1, level/2) Magic/Holy damage
+to the current opponent; a successful save halves it. It requires a usable
+head and trunk. Magical Silence, applicable silence restrictions, cone of
+silence, NO_MAGIC and antimagic block it. NoSpeech alone does not. There
+is no area damage, deafness or extra action. An ineligible or antimagic-
+blocked attempt spends no daily use; an actual resisted release does.
+
+The trumpet's parameters are code-only holy_trumpet_chance,
+holy_trumpet_daily_uses and holy_trumpet_cooldown. Chance/daily uses accept
+0..100, with zero disabling the routine. Cooldown accepts 0..100 and is
+clamped to 1..100 for an active power. Daily supply resets when the game
+day/month/year changes; the cooldown continues. Counters are runtime-only.
+
+Chasme uses demon 70 / lulling drone 30. spec_lulling_drone makes a 25%
+attempt when selected, with a five-combat-round cooldown. It applies
+ordinary magical Sleep until the next affect tick, without damage,
+stacking or refreshing. Normal saves, immunity, cures, wake restrictions
+and damage wake-up apply. It targets the current awake opponent and needs
+a usable head and fly wings. Silence/cone of silence/NO_MAGIC/antimagic
+and normal combat safety still apply. No conversational language is needed.
+The communication-channel deaf setting is not physical hearing immunity.
+Code-only lulling_drone_chance and lulling_drone_cooldown follow the same
+chance/cooldown limits as the trumpet; there is no daily supply limit.
+
+Gorgimera has lion, red-dragon and gorgon heads, lion forequarters, gorgon
+hindquarters and a winged dragon body. ManyHead is anatomical: this does
+not create independent head HP or extra attack streams. Whole-head trauma
+uses the current shared head-injury model. Its fire 50 / gas 50 vector
+selects one action. Fire uses the existing anatomical wrapper. Gas reuses
+spec_paralysing_gas, with a 25% attempt when selected, two releases daily
+and a five-round cooldown. The gas is brief physical paralysis with
+existing Poison/Paralysis/Hold protections, next-tick expiry and
+Freedom/Regenerate cures; it does not transform anyone into stone.
+
+New code-only paralysing_gas_requires_head is a 0/1 opt-in. Gorgimera sets
+1, so missing head or head trauma blocks its gas. Default 0 preserves the
+headless Pentadrone and its original 25% / five daily uses / five-round
+cooldown. The physical gas still works in NO_MAGIC. Different creatures
+own separate supplies and counters. This is a trait, not a Scribe command.
+
+Kostchtchie 9907 is Boss, Solar 9910 Elite, Planetar 9901 and Ratatosk 9914
+Rare; the other eleven stay Common. Original HP/build fields remain,
+with the normal rank multiplier applied once. Existing frost_giant 142
+stays unchanged: 640 cm/3600 kg/Large/HUGE, Cold immunity, natural armour
+-15 and its existing rock throw/catch routines. Shared elephant, chimera,
+ratfolk and earlier planar profiles keep their approved behaviour.
+
+Planetar 9901, Babau 9905 and Ratatosk 9914 use male to match their authored
+he/his references and compatible portraits. Other sexes stay. Every
+original aggression/passivity/Scavenger/Wimpy/Sentinel/StayArea choice,
+alignment, placement/cap/order, object/loot and room flag/exit/door is
+preserved. There is no matching Yggdrasil .src. Room titles 9902/9917/9918
+correct Yggrasil to Yggdrasil and need the matching GUI-derived media names.
+The corresponding room pictures retain their pixels.

@@ -4854,6 +4854,147 @@ const struct mob_type mob_table[MAX_MOB] =
                 450, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_cast_mage", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        /* These planar visitors keep their living bodies, minds and souls. */
+        {
+                "hollyphant", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_TRUNK | PART_TUSKS | PART_TAIL,
+                PART_TUSKS, RES_MAGIC, 0, RES_POISON,
+                0, 0, 0, 0,
+                45, 30, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_cast_cleric", "spec_holy_trumpet", "", 0, {70, 30, 0},
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 61
+        },
+        {
+                "planetar", "humanoid", "icon1", "icon2",
+                ACT_REGENERATOR, AFF_FLYING,
+                PART_WINGS | PART_FEATHERS,
+                0, RES_MAGIC | RES_FIRE, 0, RES_COLD | RES_ELECTRICITY | RES_POISON | RES_DRAIN | RES_CHARM,
+                0, 0, 0, 0,
+                244, 120, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_mage", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "lesser_shedu", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_SPEECH | PART_WINGS | PART_FEATHERS | PART_HOOVES | PART_TAIL,
+                PART_HOOVES, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                160, 600, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_psionicist", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 250
+        },
+        {
+                "dretch", "humanoid", "icon1", "icon2",
+                0, 0,
+                PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, RES_MAGIC | RES_FIRE | RES_COLD, 0, RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                110, 45, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "chasme", "insect", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_ARMS | BODY_NO_SPEECH | PART_MANY_LEGS | PART_ARMS | PART_HANDS | PART_FINGERS | PART_4_LEGS | PART_FEET | PART_EAR | PART_WINGS | PART_CLAWS,
+                PART_CLAWS, RES_MAGIC | RES_FIRE | RES_COLD, 0, RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                90, 60, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_demon", "spec_lulling_drone", "", 0, {70, 30, 0},
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 213
+        },
+        {
+                "babau", "humanoid", "icon1", "icon2",
+                0, 0,
+                PART_CLAWS | PART_HORNS,
+                PART_CLAWS | PART_HORNS, RES_MAGIC | RES_FIRE | RES_COLD | RES_SLASH | RES_PIERCE, 0, RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                213, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "yagnoloth", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_SCALES,
+                0, RES_MAGIC, RES_COLD, RES_ACID | RES_FIRE | RES_POISON,
+                0, 0, 0, 0,
+                366, 450, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "kostchtchie_avatar", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE,
+                0, RES_MAGIC | RES_FIRE | RES_COLD, 0, RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                853, 8000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_GIANT, 0
+        },
+        {
+                "nabassu", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, RES_MAGIC | RES_FIRE | RES_COLD, 0, RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                213, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "cloud_dragon", "dragon", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_HUGE,
+                PART_TAILATTACK, 0, 0, RES_COLD,
+                0, 0, 0, 0,
+                300, 2500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_frost_anatomical", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1200
+        },
+        {
+                "solar", "humanoid", "icon1", "icon2",
+                ACT_REGENERATOR, AFF_FLYING | AFF_INFRARED,
+                PART_WINGS | PART_FEATHERS,
+                0, RES_MAGIC, 0, RES_COLD | RES_ELECTRICITY | RES_ACID | RES_POISON | RES_DRAIN | RES_CHARM | RES_HOLD,
+                0, 0, 0, 0,
+                274, 160, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_cleric", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "wemic", "centauroid_mammal", "icon1", "icon2",
+                0, 0,
+                PART_PAWS | PART_CLAWS | PART_TAIL,
+                PART_CLAWS, 0, 0, 0,
+                0, 0, 0, 0,
+                213, 350, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_thief", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 305
+        },
+        {
+                "gorgimera", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_SPEECH | PART_MANY_HEAD | PART_WINGS | PART_TAIL | PART_SCALES | PART_PAWS | PART_HOOVES | PART_CLAWS | PART_FANGS | PART_HORNS,
+                PART_CLAWS | PART_FANGS | PART_HORNS, 0, 0, 0,
+                0, 0, 0, 0,
+                150, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_fire_anatomical", "spec_paralysing_gas", "", 0, {50, 50, 0},
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 350
+        },
+        {
+                "giant_squirrel", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0,
+                PART_PAWS | PART_CLAWS | PART_TAIL,
+                PART_CLAWS, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 80, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 240
         }
 };
 
@@ -4964,6 +5105,12 @@ typedef enum creature_trait_effect
         TRAIT_PARALYSING_GAS_CHANCE,
         TRAIT_PARALYSING_GAS_DAILY_USES,
         TRAIT_PARALYSING_GAS_COOLDOWN,
+        TRAIT_PARALYSING_GAS_REQUIRES_HEAD,
+        TRAIT_HOLY_TRUMPET_CHANCE,
+        TRAIT_HOLY_TRUMPET_DAILY_USES,
+        TRAIT_HOLY_TRUMPET_COOLDOWN,
+        TRAIT_LULLING_DRONE_CHANCE,
+        TRAIT_LULLING_DRONE_COOLDOWN,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -5086,7 +5233,13 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"head_trauma_blocks_attacks", TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, NULL},
         {"paralysing_gas_chance", TRAIT_PARALYSING_GAS_CHANCE, NULL},
         {"paralysing_gas_daily_uses", TRAIT_PARALYSING_GAS_DAILY_USES, NULL},
-        {"paralysing_gas_cooldown", TRAIT_PARALYSING_GAS_COOLDOWN, NULL}
+        {"paralysing_gas_cooldown", TRAIT_PARALYSING_GAS_COOLDOWN, NULL},
+        {"paralysing_gas_requires_head", TRAIT_PARALYSING_GAS_REQUIRES_HEAD, NULL},
+        {"holy_trumpet_chance", TRAIT_HOLY_TRUMPET_CHANCE, NULL},
+        {"holy_trumpet_daily_uses", TRAIT_HOLY_TRUMPET_DAILY_USES, NULL},
+        {"holy_trumpet_cooldown", TRAIT_HOLY_TRUMPET_COOLDOWN, NULL},
+        {"lulling_drone_chance", TRAIT_LULLING_DRONE_CHANCE, NULL},
+        {"lulling_drone_cooldown", TRAIT_LULLING_DRONE_COOLDOWN, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -6305,6 +6458,78 @@ static const CREATURE_TRAIT_CHANGE primus_manifestation_trait_changes[] =
         {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE hollyphant_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -14},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1},
+        {CREATURE_TRAIT_HOLY_TRUMPET_CHANCE, 25},
+        {CREATURE_TRAIT_HOLY_TRUMPET_DAILY_USES, 3},
+        {CREATURE_TRAIT_HOLY_TRUMPET_COOLDOWN, 5}
+};
+static const CREATURE_TRAIT_CHANGE planetar_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -17}
+};
+static const CREATURE_TRAIT_CHANGE lesser_shedu_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+static const CREATURE_TRAIT_CHANGE dretch_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE chasme_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -15},
+        {CREATURE_TRAIT_LULLING_DRONE_CHANCE, 25},
+        {CREATURE_TRAIT_LULLING_DRONE_COOLDOWN, 5}
+};
+static const CREATURE_TRAIT_CHANGE babau_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -13},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE yagnoloth_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -14}
+};
+static const CREATURE_TRAIT_CHANGE kostchtchie_avatar_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
+};
+static const CREATURE_TRAIT_CHANGE nabassu_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE cloud_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE solar_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20}
+};
+static const CREATURE_TRAIT_CHANGE wemic_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE gorgimera_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1},
+        {CREATURE_TRAIT_PARALYSING_GAS_CHANCE, 25},
+        {CREATURE_TRAIT_PARALYSING_GAS_DAILY_USES, 2},
+        {CREATURE_TRAIT_PARALYSING_GAS_COOLDOWN, 5},
+        {CREATURE_TRAIT_PARALYSING_GAS_REQUIRES_HEAD, 1}
+};
+static const CREATURE_TRAIT_CHANGE giant_squirrel_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -6312,6 +6537,20 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"hollyphant", NULL, hollyphant_trait_changes, TRAIT_ITEMS(hollyphant_trait_changes)},
+        {"planetar", NULL, planetar_trait_changes, TRAIT_ITEMS(planetar_trait_changes)},
+        {"lesser_shedu", NULL, lesser_shedu_trait_changes, TRAIT_ITEMS(lesser_shedu_trait_changes)},
+        {"dretch", NULL, dretch_trait_changes, TRAIT_ITEMS(dretch_trait_changes)},
+        {"chasme", NULL, chasme_trait_changes, TRAIT_ITEMS(chasme_trait_changes)},
+        {"babau", NULL, babau_trait_changes, TRAIT_ITEMS(babau_trait_changes)},
+        {"yagnoloth", NULL, yagnoloth_trait_changes, TRAIT_ITEMS(yagnoloth_trait_changes)},
+        {"kostchtchie_avatar", NULL, kostchtchie_avatar_trait_changes, TRAIT_ITEMS(kostchtchie_avatar_trait_changes)},
+        {"nabassu", NULL, nabassu_trait_changes, TRAIT_ITEMS(nabassu_trait_changes)},
+        {"cloud_dragon", NULL, cloud_dragon_trait_changes, TRAIT_ITEMS(cloud_dragon_trait_changes)},
+        {"solar", NULL, solar_trait_changes, TRAIT_ITEMS(solar_trait_changes)},
+        {"wemic", NULL, wemic_trait_changes, TRAIT_ITEMS(wemic_trait_changes)},
+        {"gorgimera", NULL, gorgimera_trait_changes, TRAIT_ITEMS(gorgimera_trait_changes)},
+        {"giant_squirrel", NULL, giant_squirrel_trait_changes, TRAIT_ITEMS(giant_squirrel_trait_changes)},
         {"modron_tridrone", NULL, modron_tridrone_trait_changes, TRAIT_ITEMS(modron_tridrone_trait_changes)},
         {"modron_quadrone", NULL, modron_quadrone_trait_changes, TRAIT_ITEMS(modron_quadrone_trait_changes)},
         {"modron_pentadrone", NULL, modron_pentadrone_trait_changes, TRAIT_ITEMS(modron_pentadrone_trait_changes)},
@@ -6888,7 +7127,13 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_ELEMENTAL_REACTION_QUANTITY
                                     || effect == TRAIT_PARALYSING_GAS_CHANCE
                                     || effect == TRAIT_PARALYSING_GAS_DAILY_USES
-                                    || effect == TRAIT_PARALYSING_GAS_COOLDOWN)
+                                    || effect == TRAIT_PARALYSING_GAS_COOLDOWN
+                                    || effect == TRAIT_PARALYSING_GAS_REQUIRES_HEAD
+                                    || effect == TRAIT_HOLY_TRUMPET_CHANCE
+                                    || effect == TRAIT_HOLY_TRUMPET_DAILY_USES
+                                    || effect == TRAIT_HOLY_TRUMPET_COOLDOWN
+                                    || effect == TRAIT_LULLING_DRONE_CHANCE
+                                    || effect == TRAIT_LULLING_DRONE_COOLDOWN)
                                 && profile->changes[i].value < 0)
                                         issues++;
                                 if (effect == TRAIT_NATURAL_DAMAGE_TYPE
@@ -6909,7 +7154,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_STONE_DEATH
                                     || effect == TRAIT_LIGHT_RESPONSE
                                     || effect == TRAIT_MAGICAL_NATURAL_ATTACKS
-                                    || effect == TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS)
+                                    || effect == TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS
+                                    || effect == TRAIT_PARALYSING_GAS_REQUIRES_HEAD)
                                 && (profile->changes[i].value < 0
                                     || profile->changes[i].value > 1))
                                         issues++;
@@ -9979,6 +10225,8 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_homunculus_sleep_bite", 0 },
                 { "spec_basilisk_stiffening_gaze", 0 },
                 { "spec_paralysing_gas", 0 }, /* No new XP premium for the short gas Hold. */
+                { "spec_holy_trumpet", 0 },
+                { "spec_lulling_drone", 0 },
                 { "spec_fido", 0 },
                 { "spec_thief", 0 },
                 { "spec_janitor", 0 },

@@ -62,6 +62,8 @@ DECLARE_SPEC_FUN( spec_confusing_gaze );
 DECLARE_SPEC_FUN( spec_homunculus_sleep_bite );
 DECLARE_SPEC_FUN( spec_basilisk_stiffening_gaze );
 DECLARE_SPEC_FUN( spec_paralysing_gas );
+DECLARE_SPEC_FUN( spec_holy_trumpet );
+DECLARE_SPEC_FUN( spec_lulling_drone );
 DECLARE_SPEC_FUN( spec_breath_crystal );
 DECLARE_SPEC_FUN( spec_sprite );
 DECLARE_SPEC_FUN( spec_vine_grip );
@@ -209,6 +211,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_homunculus_sleep_bite")) return spec_homunculus_sleep_bite;
         if (!str_cmp(name, "spec_basilisk_stiffening_gaze")) return spec_basilisk_stiffening_gaze;
         if (!str_cmp(name, "spec_paralysing_gas")) return spec_paralysing_gas;
+        if (!str_cmp(name, "spec_holy_trumpet")) return spec_holy_trumpet;
+        if (!str_cmp(name, "spec_lulling_drone")) return spec_lulling_drone;
         if (!str_cmp(name, "spec_breath_crystal")) return spec_breath_crystal;
         if (!str_cmp(name, "spec_sprite")) return spec_sprite;
         if (!str_cmp(name, "spec_vine_grip")) return spec_vine_grip;
@@ -362,6 +366,8 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_homunculus_sleep_bite) return "spec_homunculus_sleep_bite";
         if (special == spec_basilisk_stiffening_gaze) return "spec_basilisk_stiffening_gaze";
         if (special == spec_paralysing_gas) return "spec_paralysing_gas";
+        if (special == spec_holy_trumpet) return "spec_holy_trumpet";
+        if (special == spec_lulling_drone) return "spec_lulling_drone";
         if (special == spec_breath_crystal) return "spec_breath_crystal";
         if (special == spec_sprite) return "spec_sprite";
         if (special == spec_vine_grip) return "spec_vine_grip";
@@ -9011,7 +9017,8 @@ enum bounded_power_kind
 {
         BOUNDED_LURKER_WRAP, BOUNDED_WATER_WRAP,
         BOUNDED_FASCINATION, BOUNDED_RETRIEVER_RAY,
-        BOUNDED_SLEEP_BITE, BOUNDED_STIFFENING_GAZE, BOUNDED_PARALYSING_GAS
+        BOUNDED_SLEEP_BITE, BOUNDED_STIFFENING_GAZE, BOUNDED_PARALYSING_GAS,
+        BOUNDED_HOLY_TRUMPET, BOUNDED_LULLING_DRONE
 };
 typedef struct bounded_power_context
 {
@@ -9052,13 +9059,34 @@ static bool bounded_power_unchanged(const BOUNDED_POWER_CONTEXT *c)
                     && get_contact_resistance_result(ch, victim, types) != RES_RESULT_IMMUNE;
         }
         if (c->kind == BOUNDED_PARALYSING_GAS)
-                /* The body emits this gas; it needs neither eyes nor a voice. */
-                return gsn_paralysis > 0 && can_be_poisoned(victim)
+                /* Body emitters keep working headless; breath users opt in. */
+                return (creature_trait_value(ch,
+                        CREATURE_TRAIT_PARALYSING_GAS_REQUIRES_HEAD) <= 0
+                        || usable_breath_head(ch))
+                    && gsn_paralysis > 0 && can_be_poisoned(victim)
                     && !IS_AFFECTED(victim, AFF_NON_CORPOREAL | AFF_HOLD)
                     && victim->ghost_phase == GHOST_PHASE_NONE
                     && !is_affected(victim, gsn_paralysis)
                     && get_resistance_result(victim,
                         RES_POISON | RES_PARALYSIS | RES_HOLD) != RES_RESULT_IMMUNE;
+        if (c->kind == BOUNDED_HOLY_TRUMPET
+        || c->kind == BOUNDED_LULLING_DRONE)
+        {
+                if (!usable_breath_head(ch) || is_affected(ch, gsn_silence)
+                || is_silenced(ch)
+                || IS_SET(c->room->room_flags, ROOM_CONE_OF_SILENCE))
+                        return FALSE;
+                if (c->kind == BOUNDED_HOLY_TRUMPET)
+                        return (ch->body_form & PART_TRUNK)
+                            && get_resistance_result(victim,
+                                RES_MAGIC | RES_HOLY) != RES_RESULT_IMMUNE;
+                return gsn_sleep > 0 && (ch->body_form & PART_WINGS)
+                    && IS_AWAKE(victim) && !is_mindless(victim)
+                    && !IS_AFFECTED(victim, AFF_SLEEP)
+                    && !is_affected(victim, gsn_sleep)
+                    && get_resistance_result(victim,
+                        RES_MAGIC | RES_SLEEP) != RES_RESULT_IMMUNE;
+        }
         if (c->kind == BOUNDED_SLEEP_BITE)
                 /* Physical venom needs a reachable body, not speech or sight. */
                 return gsn_sleep > 0 && HAS_HEAD(ch)
@@ -9139,6 +9167,10 @@ void update_bounded_creature_powers(void)
         CHAR_DATA *ch;
         for (ch = char_list; ch; ch = ch->next)
         {
+                if (ch->holy_trumpet_cooldown > 0)
+                        --ch->holy_trumpet_cooldown;
+                if (ch->lulling_drone_cooldown > 0)
+                        --ch->lulling_drone_cooldown;
                 if (ch->paralysing_gas_cooldown > 0)
                         --ch->paralysing_gas_cooldown;
                 if (ch->retriever_ray_cooldown > 0)
@@ -9458,6 +9490,117 @@ bool spec_paralysing_gas(CHAR_DATA *ch)
         af.bitvector = AFF_HOLD;
         affect_to_char_source(c.victim, &af, AFFECT_SOURCE_CREATURE, c.source_id);
 done:
+        end_bounded_power(&c);
+        return attempted;
+}
+
+
+/* One short burst of holy sparks, rather than every sourcebook trumpet mode. */
+bool spec_holy_trumpet(CHAR_DATA *ch)
+{
+        BOUNDED_POWER_CONTEXT c;
+        MAGIC_ACTIVATION_DATA activation;
+        bool attempted = FALSE, magic_started = FALSE, saved;
+        int chance, uses, cooldown, dam;
+
+        if (!ch || !IS_NPC(ch) || ch->holy_trumpet_cooldown > 0)
+                return FALSE;
+        chance = URANGE(0, creature_trait_value(ch,
+            CREATURE_TRAIT_HOLY_TRUMPET_CHANCE), 100);
+        uses = URANGE(0, creature_trait_value(ch,
+            CREATURE_TRAIT_HOLY_TRUMPET_DAILY_USES), 100);
+        cooldown = URANGE(1, creature_trait_value(ch,
+            CREATURE_TRAIT_HOLY_TRUMPET_COOLDOWN), 100);
+        if (chance == 0 || uses == 0)
+                return FALSE;
+        if (ch->holy_trumpet_day != time_info.day
+        || ch->holy_trumpet_month != time_info.month
+        || ch->holy_trumpet_year != time_info.year)
+        {
+                ch->holy_trumpet_day = time_info.day;
+                ch->holy_trumpet_month = time_info.month;
+                ch->holy_trumpet_year = time_info.year;
+                ch->holy_trumpet_used = 0;
+        }
+        if (ch->holy_trumpet_used >= uses
+        || !begin_bounded_power(ch, BOUNDED_HOLY_TRUMPET, &c))
+                return FALSE;
+        if (number_percent() > chance || !bounded_power_unchanged(&c))
+                goto done;
+        attempted = TRUE;
+        begin_magic_activation(&activation, ch);
+        magic_started = TRUE;
+        if (antimagic_blocks_activation(ch, RES_MAGIC | RES_HOLY)
+        || !bounded_power_unchanged(&c))
+                goto done;
+        /* Reserve before saves or sound messages can cause another action. */
+        ++ch->holy_trumpet_used;
+        ch->holy_trumpet_cooldown = cooldown;
+        saved = saves_resistance_effect(ch, ch->level, c.victim,
+            RES_MAGIC | RES_HOLY);
+        if (!bounded_power_unchanged(&c))
+                goto done;
+        if (!bounded_power_message(&c, "$n trumpets a burst of holy sparks towards you!", TO_VICT)
+        || !bounded_power_message(&c, "You trumpet holy sparks towards $N!", TO_CHAR)
+        || !bounded_power_message(&c, "$n trumpets holy sparks towards $N!", TO_NOTVICT))
+                goto done;
+        dam = UMAX(1, ch->level / 2);
+        if (saved)
+                dam /= 2;
+        damage_with_resistance_types(ch, c.victim, dam, TYPE_UNDEFINED,
+            FALSE, RES_MAGIC | RES_HOLY);
+done:
+        if (magic_started)
+                end_magic_activation(&activation);
+        end_bounded_power(&c);
+        return attempted;
+}
+
+/* This magical drone briefly sleeps one opponent, without poison or a bite. */
+bool spec_lulling_drone(CHAR_DATA *ch)
+{
+        BOUNDED_POWER_CONTEXT c;
+        MAGIC_ACTIVATION_DATA activation;
+        AFFECT_DATA af;
+        bool attempted = FALSE, magic_started = FALSE, saved;
+        int chance, cooldown;
+
+        if (!ch || !IS_NPC(ch) || ch->lulling_drone_cooldown > 0)
+                return FALSE;
+        chance = URANGE(0, creature_trait_value(ch,
+            CREATURE_TRAIT_LULLING_DRONE_CHANCE), 100);
+        cooldown = URANGE(1, creature_trait_value(ch,
+            CREATURE_TRAIT_LULLING_DRONE_COOLDOWN), 100);
+        if (chance == 0
+        || !begin_bounded_power(ch, BOUNDED_LULLING_DRONE, &c))
+                return FALSE;
+        if (number_percent() > chance || !bounded_power_unchanged(&c))
+                goto done;
+        attempted = TRUE;
+        begin_magic_activation(&activation, ch);
+        magic_started = TRUE;
+        if (antimagic_blocks_activation(ch, RES_MAGIC | RES_SLEEP)
+        || !bounded_power_unchanged(&c))
+                goto done;
+        ch->lulling_drone_cooldown = cooldown;
+        saved = saves_resistance_effect(ch, ch->level, c.victim,
+            RES_MAGIC | RES_SLEEP);
+        if (!bounded_power_unchanged(&c) || saved)
+                goto done;
+        if (!bounded_power_message(&c, "$n's lulling drone makes you drowsy!", TO_VICT)
+        || !bounded_power_message(&c, "Your lulling drone settles over $N!", TO_CHAR)
+        || !bounded_power_message(&c, "$n directs a lulling drone towards $N!", TO_NOTVICT))
+                goto done;
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_sleep;
+        af.duration = 0; /* Normal Sleep expiry, cures and damage wake-up apply. */
+        af.bitvector = AFF_SLEEP;
+        affect_to_char(c.victim, &af);
+        /* Last: sleep can stop combat, dismount or move the target. */
+        force_sleep(c.victim, ch);
+done:
+        if (magic_started)
+                end_magic_activation(&activation);
         end_bounded_power(&c);
         return attempted;
 }

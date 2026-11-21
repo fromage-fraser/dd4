@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 22 November 2026
-Based on master c24861ff70bd3e24723f9712a1df75bcfb704ff8 (PR #1005),
-with the accompanying Plane of Nirvana changes.
+Based on master 5ddeb7e805fa05bf5d0548b407329b397c580407 (PR #1006),
+with the accompanying Yggdrasil changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,8 +16,8 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 39 bodies, 361 archetypes, 54 internal traits
-and 138 Scribe special names. Earlier area notes sometimes record the
+The current tables contain 39 bodies, 375 archetypes, 60 internal traits
+and 140 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
 The server code is the final authority. This is a dated guide, not a promise
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 361, so this single example would make 362.
+guide's checked revision it is 375, so this single example would make 376.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 361.
+valid index. This example would receive index 375.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 361;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 375;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 361; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 375; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-39 body rows, 361 archetype rows, 54 internal traits and 138 Scribe
+39 body rows, 375 archetype rows, 60 internal traits and 140 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -5327,6 +5327,134 @@ matching Nirvana Scribe source. The two corrected room titles need media
 filenames generated from their corrected text, preserving hyphens as the
 current dd-gui Lua does.
 
+Yggdrasil
+---------
+
+Yggdrasil's fifteen definitions use fourteen new archetypes and the
+existing frost_giant. All basic bodies already exist. The catalogue has
+375 archetypes, 39 bodies, 60 internal traits and 140 Scribe special names.
+Keep old indices stable; no new area fields or individual trait overrides
+are introduced. Use archetype names in Scribe and let the body/archetype
+resolver supply inherited values before applying the area's XOR masks.
+
+New archetypes are hollyphant, planetar, lesser_shedu, dretch, chasme,
+babau, yagnoloth, kostchtchie_avatar, nabassu, cloud_dragon, solar, wemic,
+gorgimera and giant_squirrel. The catalogue lists their current dimensions,
+defences and body choices. These are corporeal creatures with organs,
+blood, pain, minds, souls and ordinary remains. Celestial or fiendish
+identity does not imply Undead, Mindless, Inorganic, Soulless or NoCorpse.
+
+The shared hollyphant is a small winged elephant, 45 cm high, 30 kg and
+61 cm long. Yggdrasil deliberately keeps its authored large variant:
+150 cm high, 500 kg, 240 cm long and Large without HUGE. These are absolute
+MobHeight/MobWeight/MobLength/MobSize replacements, not XOR operations.
+Wings, flight, trunk and tusks belong to the archetype; NoArms and NoSpeech
+remain. NoSpeech does not prevent trumpeting. The carried hollyphant tusk
+9908 remains a wand, not a detachable body-part weapon.
+
+Planetar and Solar have wings, flight and ordinary ACT_REGENERATOR
+regeneration. Planetar resists Magic/Fire and is immune to Cold,
+Electricity, Poison, Drain and Charm; Acid remains effective. Solar resists
+Magic and is immune to Cold, Electricity, Acid, Poison, Drain, Charm and
+Hold, and has Infrared. Planetar retains its local mage role, Solar its
+cleric role. Their physical flesh, pain and souls remain.
+
+lesser_shedu uses a human head on a winged equine body, with hooves,
+NoArms and speech. It inherits the existing psionic caster; psionic
+abilities do not automatically grant Psychic resistance. Wemic is a
+human upper torso and arms over a four-legged lion body with paws,
+foreclaws and tail. Its local thief role remains an area choice.
+
+Dretch, Chasme, Babau, Kostchtchie and Nabassu resist Magic/Fire/Cold and
+are immune to Electricity/Poison. Babau's protective slime becomes
+Slash/Pierce resistance, without corroding carried weapons. Its skeletal
+appearance is living leathery flesh. Chasme has a human head/proboscis,
+two grasping arms, four walking legs and fly wings. Nabassu has leathery
+wings, claws and fangs; the profile does not create a feeding/maturation
+system. Dretch keeps the authored Wimpy and Scavenger behaviour.
+
+Yagnodemon 9906 uses yagnoloth while retaining its old displayed name and
+keywords, with yagnoloth added as a keyword. Its unequal arms remain
+descriptive. It resists Magic, is immune to Acid/Fire/Poison and vulnerable
+to Cold; it does not inherit the tanar'ri Electricity immunity. The local
+spec_demon is a casting role, not a species classifier. Its polearm stays.
+
+Kostchtchie's fightable avatar uses the book's 28-foot stature, 853 cm,
+with an estimated 8000 kg mass, Large and HUGE. It joins the giant combat
+family without inheriting frost giant rocks. Keep its demon caster,
+resting position and cold-iron hammer. The listed conservative defences
+do not import a full divine immunity package.
+
+Cloud Dragon remains a physical winged dragon. Its cold breath uses
+spec_breath_frost_anatomical and Cold immunity. Its age is unspecified;
+no age-based fear, Magic resistance or extra tail attack is inferred.
+There is no permanent NonCorporeal or PassDoor cloud form. The old raw
+NoArms bit is cleared so it does not cancel the dragon body's NoArms.
+
+Ratatosk remains the local giant squirrel courier, 100 cm high, 80 kg and
+240 cm long, Medium without HUGE. It retains NoArms/NoSpeech, its senses
+and Sanctuary, with ordinary paws/claws/tail. This does not turn it into
+the separate humanoid gliding squirrel-folk or grant powered flight.
+Clear the duplicated raw NoArms/NoSpeech mask rather than cancelling the
+new inherited defaults. Hollyphant needs the same XOR cleanup.
+
+Hollyphant uses cleric 70 / holy trumpet 30. spec_holy_trumpet has a 25%
+attempt chance when selected, three releases per game calendar day and
+a five-combat-round cooldown. It deals max(1, level/2) Magic/Holy damage
+to the current opponent; a successful save halves it. It requires a usable
+head and trunk. Magical Silence, applicable silence restrictions, cone of
+silence, NO_MAGIC and antimagic block it. NoSpeech alone does not. There
+is no area damage, deafness or extra action. An ineligible or antimagic-
+blocked attempt spends no daily use; an actual resisted release does.
+
+The trumpet's parameters are code-only holy_trumpet_chance,
+holy_trumpet_daily_uses and holy_trumpet_cooldown. Chance/daily uses accept
+0..100, with zero disabling the routine. Cooldown accepts 0..100 and is
+clamped to 1..100 for an active power. Daily supply resets when the game
+day/month/year changes; the cooldown continues. Counters are runtime-only.
+
+Chasme uses demon 70 / lulling drone 30. spec_lulling_drone makes a 25%
+attempt when selected, with a five-combat-round cooldown. It applies
+ordinary magical Sleep until the next affect tick, without damage,
+stacking or refreshing. Normal saves, immunity, cures, wake restrictions
+and damage wake-up apply. It targets the current awake opponent and needs
+a usable head and fly wings. Silence/cone of silence/NO_MAGIC/antimagic
+and normal combat safety still apply. No conversational language is needed.
+The communication-channel deaf setting is not physical hearing immunity.
+Code-only lulling_drone_chance and lulling_drone_cooldown follow the same
+chance/cooldown limits as the trumpet; there is no daily supply limit.
+
+Gorgimera has lion, red-dragon and gorgon heads, lion forequarters, gorgon
+hindquarters and a winged dragon body. ManyHead is anatomical: this does
+not create independent head HP or extra attack streams. Whole-head trauma
+uses the current shared head-injury model. Its fire 50 / gas 50 vector
+selects one action. Fire uses the existing anatomical wrapper. Gas reuses
+spec_paralysing_gas, with a 25% attempt when selected, two releases daily
+and a five-round cooldown. The gas is brief physical paralysis with
+existing Poison/Paralysis/Hold protections, next-tick expiry and
+Freedom/Regenerate cures; it does not transform anyone into stone.
+
+New code-only paralysing_gas_requires_head is a 0/1 opt-in. Gorgimera sets
+1, so missing head or head trauma blocks its gas. Default 0 preserves the
+headless Pentadrone and its original 25% / five daily uses / five-round
+cooldown. The physical gas still works in NO_MAGIC. Different creatures
+own separate supplies and counters. This is a trait, not a Scribe command.
+
+Kostchtchie 9907 is Boss, Solar 9910 Elite, Planetar 9901 and Ratatosk 9914
+Rare; the other eleven stay Common. Original HP/build fields remain,
+with the normal rank multiplier applied once. Existing frost_giant 142
+stays unchanged: 640 cm/3600 kg/Large/HUGE, Cold immunity, natural armour
+-15 and its existing rock throw/catch routines. Shared elephant, chimera,
+ratfolk and earlier planar profiles keep their approved behaviour.
+
+Planetar 9901, Babau 9905 and Ratatosk 9914 use male to match their authored
+he/his references and compatible portraits. Other sexes stay. Every
+original aggression/passivity/Scavenger/Wimpy/Sentinel/StayArea choice,
+alignment, placement/cap/order, object/loot and room flag/exit/door is
+preserved. There is no matching Yggdrasil .src. Room titles 9902/9917/9918
+correct Yggrasil to Yggdrasil and need the matching GUI-derived media names.
+The corresponding room pictures retain their pixels.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -5378,7 +5506,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 361 current table rows follow, grouped by body. Numeric IDs are for
+All 375 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -5394,7 +5522,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (117)
+HUMANOID (124)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -5747,8 +5875,29 @@ HUMANOID (117)
   [360] primus_manifestation: h/w/l 450 / 500 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_mage; policy auto
+  [362] planetar: h/w/l 244 / 120 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_mage; policy auto
+  [364] dretch: h/w/l 110 / 45 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_demon; policy auto
+  [366] babau: h/w/l 213 / 90 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_demon; policy auto
+  [367] yagnoloth: h/w/l 366 / 450 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_demon; policy auto
+  [368] kostchtchie_avatar: h/w/l 853 / 8000 / ?; Large; family giant
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_demon; policy auto
+  [369] nabassu: h/w/l 213 / 90 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_demon; policy auto
+  [371] solar: h/w/l 274 / 160 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_cleric; policy auto
 
-DRAGON (19)
+DRAGON (20)
 ------------
   [ 16] dracolich: h/w/l ? / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -5807,6 +5956,9 @@ DRAGON (19)
   [340] small_red_dragon: h/w/l 150 / 500 / 610; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_fire_anatomical; policy auto
+  [370] cloud_dragon: h/w/l 300 / 2500 / 1200; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_frost_anatomical; policy auto
 
 QUADRUPEDAL_REPTILE (7)
 -------------------------
@@ -5961,7 +6113,7 @@ BIPEDAL_CONSTRUCT (13)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-QUADRUPEDAL_MAMMAL (44)
+QUADRUPEDAL_MAMMAL (48)
 ------------------------
   [  1] goat: h/w/l 70 / 55 / 110; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6095,6 +6247,18 @@ QUADRUPEDAL_MAMMAL (44)
   [326] nightmare: h/w/l 183 / 700 / 270; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [361] hollyphant: h/w/l 45 / 30 / 61; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_cleric, 2:spec_holy_trumpet; policy 70/30/0
+  [363] lesser_shedu: h/w/l 160 / 600 / 250; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_psionicist; policy auto
+  [373] gorgimera: h/w/l 150 / 500 / 350; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_fire_anatomical, 2:spec_paralysing_gas; policy 50/50/0
+  [374] giant_squirrel: h/w/l 100 / 80 / 240; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 HEAD_ONLY (5)
 ---------------
@@ -6177,7 +6341,7 @@ LIMBLESS_CONSTRUCT (6)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_orb; policy auto
 
-CENTAUROID_MAMMAL (3)
+CENTAUROID_MAMMAL (4)
 -----------------------
   [ 59] centaur: h/w/l 260 / 600 / 250; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -6188,6 +6352,9 @@ CENTAUROID_MAMMAL (3)
   [204] lamia: h/w/l 150 / 140 / 210; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_lamia; policy auto
+  [372] wemic: h/w/l 213 / 350 / 305; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_thief; policy auto
 
 QUADRUPEDAL_HYBRID (6)
 ------------------------
@@ -6429,7 +6596,7 @@ ARACHNID (8)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_retriever_rays; policy auto
 
-INSECT (5)
+INSECT (6)
 ------------
   [119] giant_wasp: h/w/l 60 / 35 / 150; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6446,6 +6613,9 @@ INSECT (5)
   [341] giant_ground_beetle: h/w/l 40 / 15 / 100; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [365] chasme: h/w/l 90 / 60 / 213; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_demon, 2:spec_lulling_drone; policy 70/30/0
 
 ARACHNOID_HUMANOID (2)
 ------------------------
@@ -6584,7 +6754,7 @@ GEOMETRIC_BEING (5)
 
 APPENDIX C. COMPLETE CURRENT TRAIT REFERENCE
 ===========================================
-The named registry currently contains 54 traits. These are internal
+The named registry currently contains 60 traits. These are internal
 profile values, not Scribe fields. Zero disables an inherited value.
 The general validator uses-100..100 plus the effect-specific limits.
 Use named enum constants for natural damage rather than memorised numbers.
@@ -6881,6 +7051,40 @@ are not new area fields, Scribe commands or individual overrides. The
 special supplies physical paralysis, normal immunity/saves and combat
 safety; assigning parameters does not select an active special by itself.
 All three appear in MSTAT's existing value and origin displays.
+
+54. paralysing_gas_requires_head
+    Value: 0 or 1; default 0 preserves body-emitted gas.
+    When 1, spec_paralysing_gas needs a head without head trauma.
+    Gorgimera opts in; existing Pentadrone remains 0.
+
+55. holy_trumpet_chance
+    Value: 0..100 percent; 0 disables the special. Hollyphant uses 25.
+
+56. holy_trumpet_daily_uses
+    Value: 0..100 releases per game calendar day; 0 disables the special.
+    Hollyphant uses 3. Each actor owns its supply. The game day, month or
+    year changing replenishes uses without cancelling an active cooldown.
+
+57. holy_trumpet_cooldown
+    Value: 0..100 combat pulses, clamped to 1..100 while active.
+    Hollyphant uses 5. Ineligible/antimagic-blocked attempts spend no use;
+    actual resisted releases do. Runtime counters are not area fields.
+
+58. lulling_drone_chance
+    Value: 0..100 percent; 0 disables the special. Chasme uses 25.
+    Applies only when spec_lulling_drone is the selected active role.
+
+59. lulling_drone_cooldown
+    Value: 0..100 combat pulses, clamped to 1..100 while active.
+    Chasme uses 5. The counter advances during ordinary combat pulses,
+    including when the creature cannot act. No daily supply is imposed.
+
+These six traits are code-only species/archetype values. Assigning them
+does not select a special; Scribe's ordinary sp/sp2/spchance controls the
+role vector. No individual trait override or Scribe trait command exists.
+The existing MSTAT registry displays values and their origins/removals.
+The audible powers honour magical Silence, cone of silence and antimagic.
+Conversational NoSpeech and channel deaf settings are separate properties.
 
 APPENDIX D. SCRIBE FLAG AND MASK REFERENCE
 ==========================================
@@ -7333,6 +7537,7 @@ Check anatomy, safety, effect cleanup, selection percentages and XP.
     spec_grell
     spec_guard
     spec_guardian_daemon
+    spec_holy_trumpet
     spec_homunculus_sleep_bite
     spec_horn_gore
     spec_innate_fade
@@ -7344,6 +7549,7 @@ Check anatomy, safety, effect cleanup, selection percentages and XP.
     spec_large_whale
     spec_lich
     spec_lightning_discharge
+    spec_lulling_drone
     spec_lurker_wrap
     spec_manticore
     spec_mast_vampire
@@ -7424,8 +7630,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/c24861ff70bd3e24723f9712a1df75bcfb704ff8
-  Base PR1005 plus the accompanying Nirvana patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/5ddeb7e805fa05bf5d0548b407329b397c580407
+  Base PR1006 plus the accompanying Yggdrasil patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -7435,9 +7641,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 93/153 areas (60.8%) and 1525/4131 mob
-definitions (36.9%) merged and verified. Nirvana adds 12 definitions.
-After its merge is verified, completion becomes 94/153 areas (61.4%) and
-1537/4131 definitions (37.2%).
+The live conversion is currently 94/153 areas (61.4%) and 1537/4131 mob
+definitions (37.2%) merged and verified. Yggdrasil adds 15 definitions.
+After its merge is verified, completion becomes 95/153 areas (62.1%) and
+1552/4131 definitions (37.6%).
 
 END OF GUIDE
