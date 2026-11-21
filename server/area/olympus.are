@@ -18,22 +18,27 @@ You see before you the greatest of the Olympians.  It seems as if he could
 destroy you with a thought.  Every glance penetrates deep into your soul.
 You now know what true fear is.
 ~
-2|4 2|8|32|128|8192|524288 1000 S
+2|4|2147483648 2|8|32|128|8192|524288 1000 S
 52 0 -10 35b35+1000 20d3+25
 0 2000000
 8 8 1
+< humanoid_avatar~ boss~
+MobHeight 190
+MobWeight 100
 #902
 prometheus~
 Prometheus~
 Prometheus is here, playing with a match.
 ~
-This mortal risked the wrath of Zeus to give the gift of fire to humans.  He
+This captive Titan risked the wrath of Zeus to give the gift of fire to humans.  He
 looks up at you and smiles.
 ~
 2|4 2|8|32|128|8192|524288 1000 S
 41 0 -7 31d31+310 15d2+20
 0 300000
 8 8 1
+< humanoid_avatar~ common~
+MobWeight 75
 #903
 hermes~
 Hermes~
@@ -47,6 +52,9 @@ even notice your presence.
 43 0 -7 33d33+330 20d2+20
 0 400000
 8 8 1
+< humanoid_avatar~ rare~
+MobHeight 175
+MobWeight 65
 #904
 poseidon~
 Poseidon~
@@ -60,6 +68,9 @@ have a seat.
 48 0 -10 35d35+1000 20d3+25
 0 2000000
 6 8 1
+< humanoid_avatar~ elite~
+MobHeight 190
+MobWeight 95
 #905
 apollo~
 Apollo~
@@ -73,6 +84,8 @@ that he knows more than music.
 44 0 -8 34d34+340 15d3+25
 0 550000
 8 8 1
+< humanoid_avatar~ rare~
+MobWeight 75
 #906
 ares~
 Ares~
@@ -85,6 +98,9 @@ and says 'I am very busy.  What do you want?'
 45 0 -10 35d35+1500 10d2+25
 0 2000000
 8 8 1
+< humanoid_avatar~ elite~
+MobHeight 190
+MobWeight 110
 #907
 athena~
 Athena~
@@ -97,6 +113,8 @@ you and invites you to join her.
 43 0 -7 33d33+330 15d2+10
 0 300000
 8 8 2
+< humanoid_avatar~ rare~
+MobWeight 75
 #908
 hephaestus smith~
 Hephaestus~
@@ -104,12 +122,15 @@ Hephaestus the Smith is here, crafting a fine weapon.
 ~
 This God is the only one who is not physically perfect.  He is lame and very
 ugly.  You get the impression that he is kind, however, and would go out of his
-way to help you.  He is attended by three golden maidens.
+way to help you.  He is attended by golden maidens.
 ~
 2|4 2|8|32|128|8192|524288 1000 S
 38 0 -7 33d33+330 12d2+26
 0 550000
 8 8 1
+< humanoid_avatar~ rare~
+MobHeight 175
+MobWeight 90
 #909
 handmaid golden~
 A Golden Maiden~
@@ -122,6 +143,7 @@ gold.  She seems to be very lifelike as she assists the smith in his work.
 25 0 0 2d8+250 2d8+2
 0 21000
 8 8 2
+< golden_handmaid~ common~
 #910
 soldier~
 A Soldier~
@@ -134,6 +156,9 @@ realise that Ares would not have any weaklings working for him.
 27 0 0 2d8+250 3d6+12
 0 15000
 8 8 1
+< human~ common~
+MobHeight 180
+MobWeight 85
 #911
 musician apprentice~
 an apprentice musician~
@@ -146,6 +171,8 @@ immortal Apollo.
 8 9 4 2d8+80 2d5+2
 0 2000
 8 8 1
+< human~ common~
+MobWeight 70
 #912
 boy serving servant~
 A serving boy~
@@ -157,6 +184,10 @@ This boy is truly lucky to be able to serve Athena herself.
 6 15 7 2d8+200 2d3+2
 0 1000
 8 8 1
+< human~ common~
+MobHeight 140
+MobWeight 35
+MobSize 0
 #913
 hound dog war~
 A hound of war~
@@ -165,10 +196,15 @@ A large hound snarls at you.
 This great beast can barely be called a dog.  It has been bred to cause fear
 on the battle field, and you have no doubt that it does its job well.
 ~
-2|4|32 2|8|32|128|524288 -600 S
+2|4|32|2147483648 2|8|32|128|524288 -600 S
 23 0 0 1d8+450 2d12+10
-32 45000
+0 45000
 8 8 0
+< dog~ common~
+MobHeight 85
+MobWeight 70
+MobLength 150
+MobSize 2
 #914
 Odin~
 Odin~
@@ -182,6 +218,10 @@ presence.
 49 0 -10 35d35+1000 10d2+25
 0 2000000
 8 8 1
+< humanoid_avatar~ elite~
+MobHeight 210
+MobWeight 110
+MobSize 2
 #915
 grocer greengrocer julius~
 Julius the Green Grocer~
@@ -196,6 +236,8 @@ of delicious looking foods.
 37 0 -4 1d1+1999 3d10+10
 0 110000
 8 8 1
+< human~ common~
+MobWeight 95
 #916
 alchemist~
 the Alchemist~
@@ -209,6 +251,9 @@ arcane supplies.
 39 0 -8 1d1+1999 25d2+50
 0 100000
 8 8 1
+< human~ common~
+MobHeight 170
+MobWeight 60
 #917
 clive~
 Clive the Weapons Master~
@@ -221,6 +266,9 @@ paid off.
 40 0 -10 30d30+300 10d3+20
 0 200000
 8 8 1
+< human~ rare~
+MobHeight 195
+MobWeight 110
 #918
 armourer samuel~
 Samuel the Armourer~
@@ -233,6 +281,9 @@ He doesn't like what you've been doing in his city.
 30 0 -3 1d8+400 10d3+20
 0 60000
 8 8 1
+< human~ common~
+MobHeight 195
+MobWeight 110
 #919
 ra sun god~
 Ra the Sun God~
@@ -246,6 +297,9 @@ to be trifled with.
 46 0 -10 1d8+2500 25d2+25
 0 3000000
 8 8 1
+< humanoid_avatar~ elite~
+MobHeight 185
+MobWeight 80
 #920
 chimera~
 a chimera~
@@ -254,10 +308,11 @@ A chimera prowls the cell.
 This bizarre creature has three heads - one of a goat, one of a lion, and one
 of a dragon.  It growls at you as you enter the cell, then suddenly attacks!
 ~
-2|4|32 2|8|32|128|524288 -1000 S
+2|4|32 2|8|32|128 -1000 S
 20 0 -3 20d20+200 5d5+15
 0 75000
 8 8 1
+< chimera~ common~
 #921
 hera~
 Hera~
@@ -270,6 +325,8 @@ to rest and sit for a while.
 50 0 -10 1d8+1500 15d3+15
 0 1500000
 8 8 2
+< humanoid_avatar~ elite~
+MobHeight 175
 #922
 roc~
 a roc~
@@ -278,10 +335,11 @@ A roc is here.
 This is a giant bird.  It looks at you quizzically, then makes a noise and
 looks away.
 ~
-4 2|8|32|128|8192|524288 0 S
+4 2|8|32|128|8192 0 S
 15 0 0 1d8+400 3d8+6
-36 40000
+0 40000
 8 8 0
+< roc~ common~
 #923
 citizen resident~
 A citizen~
@@ -293,6 +351,7 @@ He looks happy and carefree.  He smiles and tips his hat to you.
 4 16 6 1d8+60 2d4+1
 0 500
 8 8 1
+< human~ common~
 #924
 pegasus horse~
 a pegasus~
@@ -301,21 +360,24 @@ A large horse with wings is here.
 This horse is snow white with large wings.  Although it doesn't look very
 threatening, it seems as though it would be dangerous if provoked.
 ~
-131072 2|8|32|128|8192|524288 0 S
+131072 2|8|32|128|8192 0 S
 8 12 4 1d8+110 2d5+3
-800 3000
+0 3000
 8 8 0
+< pegasus~ common~
 #925
 cook~
 A Cook~
 A cook is here, hard at work.
 ~
-This man looks as is he has been spending WAY too much time in the kitchen.
+This man looks as if he has been spending WAY too much time in the kitchen.
 ~
 2|4 2|8|32|128|8192|524288 1000 S
 5 15 5 1d8+75 2d4+2
-36 1000
+0 1000
 8 8 1
+< human~ common~
+MobWeight 110
 #926
 jailer~
 The Jailer~
@@ -328,6 +390,9 @@ prisoners.
 13 8 2 1d8+620 2d6+1
 0 13000
 8 8 1
+< human~ common~
+MobHeight 180
+MobWeight 90
 #0
 
 
@@ -372,7 +437,7 @@ spear ares~
 the Spear of Ares~
 A wicked spear rests on the ground here.~
 ~
-9 32|64|512|134217728 1|8192
+5 32|64|512|134217728 1|8192
 0~ 5~ 5~ 2~
 18 200000 10000
 A
@@ -494,7 +559,7 @@ fan~
 a fan made of peacock feathers~
 A fan made of peacock feathers.~
 ~
-13 0 1
+13 0 1|16384
 0~ 0~ 0~ 0~
 1 1 1
 #916
@@ -502,7 +567,7 @@ lute~
 a lute~
 A lute.~
 ~
-13 0 1
+36 0 1|16384
 0~ 0~ 0~ 0~
 1 1 1
 #917
@@ -531,8 +596,8 @@ A pear is here.~
 1 1000 25
 #920
 orange~
-a orange~
-A orange is here.~
+an orange~
+An orange is here.~
 ~
 26 0 1
 24~ armor~ ~ ~
@@ -1479,19 +1544,18 @@ S
 
 
 #SPECIALS
-M   901 spec_cast_cleric
-M   902 spec_breath_fire
-M   904 spec_cast_mage
-M   905 spec_cast_adept
-M   907 spec_cast_adept
-M   908 spec_breath_lightning
-M   909 spec_guard
-M   914 spec_breath_any
-M   919 spec_breath_any
-M   920 spec_breath_fire
-M   921 spec_cast_cleric
-M   922 spec_poison
-M   926 spec_cast_mage
+M 901 spec_cast_cleric
+M 902 spec_breath_fire
+M 904 spec_cast_mage
+M 905 spec_cast_adept
+M 907 spec_cast_adept
+M 908 spec_breath_lightning
+M 909 spec_guard
+M 914 spec_breath_any
+M 919 spec_breath_any
+M 920 spec_breath_fire_anatomical
+M 921 spec_cast_cleric
+M 926 spec_cast_mage
 S
 
 

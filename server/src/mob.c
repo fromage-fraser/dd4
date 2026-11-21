@@ -4383,6 +4383,37 @@ const struct mob_type mob_table[MAX_MOB] =
                 300, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_cast_mage", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        /* Olympus constructs keep their minds; the winged beasts stay living. */
+        {
+                "golden_handmaid", "bipedal_construct", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC,
+                0, 0, 0, RES_POISON | RES_SLEEP | RES_DRAIN,
+                0, 0, 0, 0,
+                170, 1250, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "chimera", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_SPEECH | PART_MANY_HEAD | PART_WINGS | PART_TAIL | PART_HORNS | PART_FANGS | PART_CLAWS | PART_PAWS | PART_HOOVES | PART_SCALES,
+                PART_CLAWS | PART_FANGS | PART_HORNS, 0, 0, 0,
+                0, 0, 0, 0,
+                150, 400, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_fire_anatomical", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "pegasus", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_FLYING | AFF_DETECT_GOOD | AFF_DETECT_EVIL,
+                PART_HOOVES | PART_TAIL | PART_WINGS | PART_FEATHERS,
+                PART_HOOVES, 0, 0, 0,
+                0, 0, 0, 0,
+                170, 700, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 260
         }
 };
 
@@ -5612,6 +5643,20 @@ static const CREATURE_TRAIT_CHANGE modron_secundus_trait_changes[] =
         {CREATURE_TRAIT_FEAR_IMMUNITY, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE golden_handmaid_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE chimera_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE pegasus_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -5619,6 +5664,9 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"golden_handmaid", NULL, golden_handmaid_trait_changes, TRAIT_ITEMS(golden_handmaid_trait_changes)},
+        {"chimera", NULL, chimera_trait_changes, TRAIT_ITEMS(chimera_trait_changes)},
+        {"pegasus", NULL, pegasus_trait_changes, TRAIT_ITEMS(pegasus_trait_changes)},
         {"chimera_goat_head", NULL, chimera_goat_head_trait_changes, TRAIT_ITEMS(chimera_goat_head_trait_changes)},
         {"chimera_lion_head", NULL, chimera_lion_head_trait_changes, TRAIT_ITEMS(chimera_lion_head_trait_changes)},
         {"chimera_dragon_head", NULL, chimera_dragon_head_trait_changes, TRAIT_ITEMS(chimera_dragon_head_trait_changes)},
