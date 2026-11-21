@@ -64,6 +64,7 @@ DECLARE_SPEC_FUN( spec_sprite );
 DECLARE_SPEC_FUN( spec_vine_grip );
 DECLARE_SPEC_FUN( spec_innate_fade );
 DECLARE_SPEC_FUN( spec_wisp_lightning );
+DECLARE_SPEC_FUN( spec_lightning_discharge );
 DECLARE_SPEC_FUN( spec_golem_haste );
 DECLARE_SPEC_FUN( spec_acid_spray );
 DECLARE_SPEC_FUN( spec_gas_cloud );
@@ -203,6 +204,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_vine_grip")) return spec_vine_grip;
         if (!str_cmp(name, "spec_innate_fade")) return spec_innate_fade;
         if (!str_cmp(name, "spec_wisp_lightning")) return spec_wisp_lightning;
+        if (!str_cmp(name, "spec_lightning_discharge")) return spec_lightning_discharge;
         if (!str_cmp(name, "spec_golem_haste")) return spec_golem_haste;
         if (!str_cmp(name, "spec_acid_spray")) return spec_acid_spray;
         if (!str_cmp(name, "spec_gas_cloud")) return spec_gas_cloud;
@@ -348,6 +350,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_vine_grip) return "spec_vine_grip";
         if (special == spec_innate_fade) return "spec_innate_fade";
         if (special == spec_wisp_lightning) return "spec_wisp_lightning";
+        if (special == spec_lightning_discharge) return "spec_lightning_discharge";
         if (special == spec_golem_haste) return "spec_golem_haste";
         if (special == spec_acid_spray) return "spec_acid_spray";
         if (special == spec_gas_cloud) return "spec_gas_cloud";
@@ -3303,10 +3306,20 @@ bool spec_thief( CHAR_DATA *ch )
 
                 if ( IS_AWAKE( victim ) && number_percent( ) >= ch->level )
                 {
-                        act( "You discover $n's hands in your wallet!",
-                            ch, NULL, victim, TO_VICT );
-                        act( "$N discovers $n's hands in $S wallet!",
-                            ch, NULL, victim, TO_NOTVICT );
+                        ROOM_INDEX_DATA *room = ch->in_room;
+                        int source_deaths = action_deaths(ch);
+                        int target_deaths = action_deaths(victim);
+
+                        act(HAS_ARMS(ch) ? "You discover $n's hands in your wallet!"
+                            : "You catch $n trying to steal from your wallet!",
+                            ch, NULL, victim, TO_VICT);
+                        if (!action_character_in_room(ch, room, source_deaths)
+                        || !action_character_in_room(victim, room, target_deaths)
+                        || ch->hit <= 0 || victim->hit <= 0)
+                                return TRUE;
+                        act(HAS_ARMS(ch) ? "$N discovers $n's hands in $S wallet!"
+                            : "$N catches $n trying to steal from $S wallet!",
+                            ch, NULL, victim, TO_NOTVICT);
                         return TRUE;
                 }
                 else
@@ -5441,6 +5454,24 @@ static bool innate_spell_ready(CHAR_DATA *ch)
                 && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_NO_MAGIC));
 }
 
+/* Messages, sounds and antimagic responses can change either combatant. */
+static bool elemental_release_unchanged(CHAR_DATA *ch, CHAR_DATA *opponent,
+    CHAR_DATA *victim, ROOM_INDEX_DATA *room, int source_deaths,
+    int opponent_deaths, int target_deaths)
+{
+        if (!action_character_in_room(ch, room, source_deaths)
+        || !action_character_in_room(opponent, room, opponent_deaths)
+        || !innate_spell_ready(ch) || native_combat_opponent(ch) != opponent
+        || ch->position != POS_FIGHTING
+        || IS_SET(room->room_flags, ROOM_SAFE)
+        || (room->area && IS_SET(room->area->area_flags, AREA_FLAG_SAFE)))
+                return FALSE;
+
+        /* Gas keeps its original room-wide spell rather than a sampled victim. */
+        return !victim || (action_character_in_room(victim, room, target_deaths)
+            && victim->hit > 0 && victim->fighting == ch && !is_safe(ch, victim));
+}
+
 /* Keep the old elemental mix and target sampling without inventing a mouth. */
 bool spec_elemental_burst(CHAR_DATA *ch)
 {
@@ -5457,27 +5488,26 @@ bool spec_elemental_burst(CHAR_DATA *ch)
                 "Acid sprays from $n!", "Scalding steam erupts from $n!",
                 "Scalding steam erupts from $n!", "A freezing blast erupts from $n!"
         };
-        CHAR_DATA *victim;
-        int choice, sn;
+        CHAR_DATA *opponent = native_combat_opponent(ch), *victim = NULL;
+        ROOM_INDEX_DATA *room;
+        int choice, sn, source_deaths, opponent_deaths, target_deaths = 0;
 
-        if (!innate_spell_ready(ch) || IS_SET(ch->act, ACT_NO_FIGHT)
-        || ch->position != POS_FIGHTING || !ch->fighting
-        || ch->fighting->deleted || ch->fighting->hit <= 0
-        || ch->fighting->in_room != ch->in_room
-        || is_safe(ch, ch->fighting)
-        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
-        || (ch->in_room->area
-            && IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE)))
+        if (!opponent)
+                return FALSE;
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        opponent_deaths = action_deaths(opponent);
+        if (!elemental_release_unchanged(ch, opponent, NULL, room,
+                source_deaths, opponent_deaths, 0))
                 return FALSE;
 
         choice = number_bits(3);
         sn = skill_lookup((char *)spells[choice]);
         if (sn < 0)
                 return FALSE;
-        victim = NULL;
         if (choice != 3)
         {
-                for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
+                for (victim = room->people; victim; victim = victim->next_in_room)
                 {
                         if (victim == ch || victim->deleted || victim->hit <= 0
                         || victim->position == POS_DEAD || victim->fighting != ch
@@ -5488,13 +5518,67 @@ bool spec_elemental_burst(CHAR_DATA *ch)
                 }
                 if (!victim)
                         return FALSE;
+                target_deaths = action_deaths(victim);
         }
-        /* The discharge is magic even when the old spell lists only an element. */
+        /* One activation decision also covers payloads with no RES_MAGIC bit. */
         if (antimagic_blocks_activation(ch, RES_MAGIC))
                 return FALSE;
+        if (!elemental_release_unchanged(ch, opponent, victim, room,
+                source_deaths, opponent_deaths, target_deaths))
+                return TRUE;
         act((char *)messages[choice], ch, NULL, NULL, TO_ROOM);
+        if (!elemental_release_unchanged(ch, opponent, victim, room,
+                source_deaths, opponent_deaths, target_deaths))
+                return TRUE;
         if (choice == 5 || choice == 6)
-                sound_emit_room(ch->in_room, "sfx.spell.cast.steam_breath", -1, NULL);
+        {
+                sound_emit_room(room, "sfx.spell.cast.steam_breath", -1, NULL);
+                if (!elemental_release_unchanged(ch, opponent, victim, room,
+                        source_deaths, opponent_deaths, target_deaths))
+                        return TRUE;
+        }
+        return cast_native_spell(skill_table[sn].spell_fun, sn, ch->level, ch, victim);
+}
+
+/* Keep the old lightning payload and attacker sampling, without idle fading. */
+bool spec_lightning_discharge(CHAR_DATA *ch)
+{
+        CHAR_DATA *opponent = native_combat_opponent(ch), *victim;
+        ROOM_INDEX_DATA *room;
+        int sn, source_deaths, opponent_deaths, target_deaths;
+
+        if (!opponent)
+                return FALSE;
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        opponent_deaths = action_deaths(opponent);
+        if (!elemental_release_unchanged(ch, opponent, NULL, room,
+                source_deaths, opponent_deaths, 0))
+                return FALSE;
+
+        /* Head, eyes and speech are not required for a material discharge. */
+        for (victim = room->people; victim; victim = victim->next_in_room)
+        {
+                if (victim == ch || victim->deleted || victim->hit <= 0
+                || victim->position == POS_DEAD || victim->fighting != ch
+                || is_safe(ch, victim))
+                        continue;
+                if (!number_bits(2))
+                        break;
+        }
+        if (!victim)
+                return FALSE;
+        target_deaths = action_deaths(victim);
+        sn = skill_lookup("lightning breath");
+        if (sn < 0 || antimagic_blocks_activation(ch, RES_MAGIC))
+                return FALSE;
+        if (!elemental_release_unchanged(ch, opponent, victim, room,
+                source_deaths, opponent_deaths, target_deaths))
+                return TRUE;
+        act("Lightning arcs from $n towards $N!", ch, NULL, victim, TO_ROOM);
+        if (!elemental_release_unchanged(ch, opponent, victim, room,
+                source_deaths, opponent_deaths, target_deaths))
+                return TRUE;
         return cast_native_spell(skill_table[sn].spell_fun, sn, ch->level, ch, victim);
 }
 
