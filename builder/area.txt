@@ -11121,3 +11121,211 @@ unchanged pixels under that name and keep the old alias. Approved separate
 portrait replacements depict Magneto as one humanoid inside an electrical
 field and the imp with its established wings. Generation and live
 publication are separate from applying this source patch.
+
+
+Cyclops Caves
+-------------
+
+The catalogue now contains 316 archetypes, 37 body species, 51 internal
+traits, 131 Scribe special names and 637 skill rows, including reserved
+rows where applicable. Four profiles append at indices 312-315:
+chimera_goat_head, chimera_lion_head, chimera_dragon_head and
+modron_secundus. All earlier profiles and bodies remain unchanged. There
+is no new body, special function, spell, skill or area field. One internal
+trait appends at ID 50; all previous trait IDs 0-49 remain unchanged.
+Scribe gains only the four archetype names, not a trait command.
+
+Twenty-five local cyclopes reuse cyclops. The shared true-cyclops defaults
+remain 610 cm height, 4000 kg, Large, HUGE and natural armour -8, with
+living humanoid organs and giant-family matching. The earlier Canyon
+cyclops keeps those defaults. This area describes smaller cyclopes, so the
+ordinary adults use individual 305 cm height and 320 kg, still Large. The
+local override cancels inherited HUGE on every cyclops except Xoric. Large
+size and HUGE are separate properties; rank does not supply either.
+
+The two nine-foot guards, 14005 and 14006, use 274 cm and 227 kg. The
+father, 14013, uses 260 cm and 300 kg; child 14015 uses 150 cm, 70 kg and
+Medium size. The broad construction supervisor, 14020, uses 335 cm and 700
+kg; the muscular smith, 14032, uses 305 cm and 450 kg. The smaller thief,
+14038, uses 229 cm and 150 kg. Xoric alone keeps HUGE, with 457 cm height
+and 1100 kg. Length stays unspecified on these humanoids. The explicit
+feet/pounds in the area inform the guard and king conversions; other
+masses and stature refinements are DD4 estimates. All dimensions remain
+descriptive whole-number centimetres/kilograms.
+
+The three chimera heads reuse existing head_only. That body supplies a
+head, eyes and ears, with No Arms, No Legs and No Heart. It does not make
+a creature inorganic, mindless, bloodless, pain-insensitive or soulless.
+Those artificial properties belong to preserved_head and
+animated_toy_head, which are not used here. The living heads retain blood,
+pain, mind, soul and speech eligibility. No Heart means no heart in this
+local head body; the blood helper does not require a heart to recognise
+organic blood. Add normal brain anatomy without inventing chest organs or
+humanoid limbs.
+
+chimera_goat_head has horn anatomy and an ordinary horn attack, natural
+armour -4, 50 cm height, 75 cm length, 25 kg and Small size.
+chimera_lion_head has fangs and an ordinary bite, armour -5, 60 cm height,
+75 cm length, 35 kg and Small size. chimera_dragon_head has scales/fangs
+and an ordinary bite, armour -8, 75 cm height, 100 cm length, 50 kg and
+Medium size. None is HUGE. These measurements are DD4 estimates for heads,
+not the sourcebook's five-foot shoulder height for a whole chimera. Armour
+adapts the source's regional ACs through the established 10-AC rule.
+
+The second-edition chimera is one living, low-intelligence hybrid with
+limited speech. Its goat horns and lion/dragon bites inform these heads;
+low intelligence does not mean AFF_MINDLESS. Keep the area's three
+independent reset encounters, one of each in room 14034, with their
+original caps, levels, sexes, alignments and aggression/passivity. They
+gain no extra attack stream, owner link, fourth body mob, shared HP or
+linked death. Each head has No Corpse, so it drops its existing treasure
+without leaving an invented whole-creature corpse. Mind and soul remain
+intact.
+
+Keep goat horn 14026 at HEAD, lion mane 14025 at NECK_1 and dragon tooth
+14027 at WIELD. The tooth remains its original ordinary piercing weapon,
+not a newly flagged ITEM_BODY_PART. Valid wielded weapons take precedence
+over natural contact, so the equipped tooth still supplies the dragon
+head's ordinary hit. Do not invent arms for it, move its reset, or claim
+that head trauma disables this ordinary weapon. The anatomical breath
+wrapper also has its existing head-trauma gate. Regenerate follows the
+existing injury rules; it does not recreate an owner body or duplicate the
+tooth.
+
+The new internal trait head_trauma_blocks_attacks defaults to 0 and is
+enabled with value 1 only on these three new head profiles. With head
+trauma, their head-dependent natural attack parts are excluded from the
+usable attack mask. This supplies the agreed injury gate without changing
+ordinary bites, horns, tusks or beaks on the earlier 312 profiles. It does
+not remove stored anatomy, affect other natural parts or suppress a valid
+ordinary wielded weapon. Healing head trauma restores native eligibility
+through the existing rules. MSTAT identifies the trait through the generic
+registry and its normal value/origin displays. It remains code-only
+species/archetype data: no per-mob area field or Scribe command is added.
+
+The dragon head keeps its authored mixed breath through individual 100
+percent spec_breath_any_anatomical. This retains Fire 1/8, Lightning 2/8,
+Gas 1/8, Acid 1/8, Steam 2/8 and Frost 1/8. Gas keeps its existing
+room-wide payload; a single selected special is not a promise that every
+payload has one target. The wrapper needs a usable head and rejects head
+trauma. It adds no daily limit, petrification, prismatic flash or extra
+cast. The sourcebook's fire-only breath does not overwrite this deliberate
+DD4 encounter. Goat and lion gain no new active specials or roar proc.
+
+modron_secundus uses humanoid, not a mindless construct profile. Defaults
+are estimated 300 cm height, 150 kg and Large size, with length
+unspecified and no HUGE. Ordinary head/eyes/ears, brain,
+arms/hands/fingers, legs/feet, heart and guts remain, with blood, pain,
+mind, soul and speech. The original second-edition Planescape text does
+not specify every organ or establish inorganic or soulless matter. These
+are conservative DD4 physiology choices. No Corpse represents the source's
+disintegration on death; belongings still drop normally. Corpselessness
+does not require removing mind or soul.
+
+Secundus has natural armour -16, adapting source AC -6 with the usual
+10-AC mapping. Standard Magic, Cold, Fire and Acid resistance is used,
+with Sleep, Charm, Hold, Drain and Psychic immunity and the existing
+fear_immunity trait set to 1. These are agreed DD4 translations. Standard
+Magic resistance is not copied 90 percent immunity. The elemental flags
+give a stronger reduction than the source's small per-die adjustment.
+Psychic immunity maps the hierarchs' protection from psionic attacks; it
+does not make this highly intelligent creature Mindless or grant it
+psionic powers. Secundus uses existing defence traits; no individual trait
+syntax is added for him.
+
+Local Secundus 14033 keeps level 42, alignment -1000, neutral sex,
+aggression, Sentinel, Stay Area, Sanctuary, Detect Invisible/Detect Hidden
+and a single 100 percent mage special. Its viceroy identity and the note
+to Primus support the Modron classification; canonical planar alignment
+does not replace the area's evil envoy role. No extra priest slot, stun
+lock, teleport, flight, Pass Door, summoning, invulnerability or No Fight
+is added. All four new profiles have zero HP, damage, critical, haste and
+profile XP modifiers. Ordinary special XP and individual ranks still
+apply.
+
+The torture victim, human prisoner, psionic prisoner and fanatic priest
+reuse human. The victim uses 175 cm and 55 kg; the other three use 175 cm
+and 75 kg. The dwarven prisoner uses dwarf with individual 122 cm height,
+70 kg and Small size; the elf mage prisoner uses elf at 150 cm and 45 kg,
+Medium. Their living ancestry and existing training/defences are distinct
+from their prison roles. The minotaur envoy reuses minotaur at 230 cm and
+250 kg, Large, without HUGE. No additional caster role is inferred for the
+elf prisoner merely from the word mage in his description.
+
+Leia reuses humanoid_avatar at 180 cm and 70 kg, Medium. Keep her female
+sex, good alignment, Rare rank, flight/senses/Sanctuary/protection, quest
+and practice flags, individual spec_cast_adept and the existing lessons:
+teacher base 50 and Astral Vortex 100. Her warded chamber 14135 stays
+NO_UNDEAD. A divine title does not add invulnerability or a paid healer
+role. Incidental adept aid does not set ACT_IS_HEALER; the existing
+helpful-spell safeguards for undead and vampires remain in force.
+
+The smith keeps individual spec_repairman, his hammer, apron/gloves and
+all loot. That routine fixes bashed doors and a valid reciprocal exit; it
+does not repair player equipment or enable a new Tinker service. Keep the
+furnace hazard and both workshop doors. All original cleric, mage,
+psionic, archmage and assassin roles remain individual rather than being
+copied into every cyclops. Xoric keeps spec_assassin and his unshielded
+authored state, matching the prisoner's clue about magical shielding. Do
+not give him Sanctuary merely because he is the king.
+
+The thief's accidental raw body value 1000 is replaced with the intended
+living, tailless cyclops anatomy and explicit HUGE cancellation. That
+number was body data, not a monetary reward; actual gold stays zero. Add
+individual spec_thief to fulfil his stated profession, retaining dual
+weapons, all existing senses/stealth/flaming, No Charm and Rare rank.
+Psionic 14023 changes from sex 2 to male 1, agreeing with his pronouns and
+existing male portrait. The cook stays female 2; all other sexes stay.
+
+Five definitions are Elite: Battlemaster 14002, elite guard 14009, cleric
+14021, minotaur 14030 and priest 14034. Five are Rare: Beastmaster 14001,
+Leia 14012, mage 14022, Secundus 14033 and thief 14038. Xoric 14011
+remains Boss; the other 26 are Common. Apply the existing HP multiplier
+once: Rare 2x, Elite 5x, Boss 7x. HP dice letters, body size and family
+ties do not supply a rank or an extra racial HP multiplier.
+
+Recompute individual flag masks against species XOR archetype defaults. In
+particular, remove repeated head No Arms/No Legs/No Heart bits rather than
+cancelling the restrictions. Cancel inherited HUGE on the smaller local
+cyclopes while leaving the shared profile and earlier Canyon mob
+unchanged. Preserve all deliberate aggression/passivity, Sentinel, Stay
+Area, Wimpy, No Quest, No Charm, levels, alignments and local senses.
+Dimensions replace independently; special names and their complete
+selection vector are not XOR masks. Traits remain internal profile data.
+
+Guard 14006 still spawns standing and remains aggressive. Correct its
+description and room 14012 to a drowsy but watchful guard rather than
+inventing a sleeping-spawn mechanism. Elite guard 14009 holds the actual
+dull staff, so the description no longer calls it a yellow wand. Keep
+equipment, item use and the original limited spell/item opportunities.
+
+Both throne-door sides, 14108 west and 14109 east, now use existing
+obsidian key 14030, replacing the mismatched key values. The direct route
+therefore opens once that key is obtained; the secret passage remains.
+This is an agreed design repair, not proof of the author's original
+intent. Preserve locked reset states and door modes, the rusty-key/chest/
+obsidian-key chain, Xoric's light orb 14021 and the statue gate. The orb
+remains valid in LIGHT and opens its route by object identity; it is not
+retyped as an ordinary key. All original object stats and wear slots stay.
+
+Room 14105 describes Secundus as a modron rather than a demon. Other minor
+spelling and grammar repairs preserve identities and intended encounters.
+Keep all 131 room flags/sectors/exits apart from the two approved key
+values, all 77 objects, original reset counts/caps/order, 55 initial
+inhabitants and 77 after refill, and 125 initial carried items rising to
+162. There is no matching .src. The four other real source exports,
+including exact Eakos regeneration, remain unchanged.
+
+Exact GUI names preserve punctuation. Trim only room 14087's accidental
+trailing title space and retain its period; supply unchanged pixels as
+custom_rooms/14087_the_palace_corridor..png. Room 14091 becomes An
+apparent dead end, with custom_rooms/14091_an_apparent_dead_end.png. Keep
+the old image aliases. The latter avoids a literal question mark that
+ordinary Windows cache filenames cannot represent.
+
+Approved separate artwork replacements cover the female cyclops cook
+14037, cyclops family room 14027, unfinished wooden bridge room 14069 and
+underground river/cliff rooms 14072, 14073, 14076 and 14077. Preserve the
+unfinished gap and underground setting. Keep the male psionic and three
+head portraits. Media generation and live publication are separate from
+applying this source patch; these notes make no publication claim.
