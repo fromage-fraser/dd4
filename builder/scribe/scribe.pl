@@ -150,6 +150,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         chimera_goat_head chimera_lion_head chimera_dragon_head modron_secundus
         golden_handmaid chimera pegasus
         demon revenant_spirit haunt crypt_thing lurker_above succubus gray_ooze nightmare retriever cambion orcus_avatar water_weird kampflut animated_evil_tree tree_spirit
+        astral_manifestation githyanki githzerai night_hag invisible_stalker mind_flayer small_red_dragon
 /;
 
 my %mob_act = (

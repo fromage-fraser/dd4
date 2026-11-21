@@ -761,6 +761,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 {WNovember 2026{x
+- Convert Astral Plane creatures; repair anatomy and mixed caster/breath roles.
 - Convert Ghost Town creatures; fix healer, chest key and symbol equipment.
 - Convert Olympus creatures; correct the spear, holdable fan and playable lute.
 - Convert Cyclops Caves creatures; fix head anatomy, injury checks and throne-door keys.

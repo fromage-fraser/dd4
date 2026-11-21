@@ -4550,6 +4550,76 @@ const struct mob_type mob_table[MAX_MOB] =
                 175, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "spec_cast_adept", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "astral_manifestation", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_NO_EYES | BODY_NO_HEART | BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_INORGANIC | BODY_BLOODLESS | BODY_ANALGIC | PART_EAR | PART_EYE | PART_HEART | PART_BRAINS | PART_GUTS,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                180, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "githyanki", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED,
+                PART_FANGS,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                175, 65, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "githzerai", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED,
+                0,
+                0, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                175, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "night_hag", "humanoid", "icon1", "icon2",
+                0, 0,
+                PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, RES_MAGIC | RES_NONMAGIC, 0, RES_FIRE | RES_COLD | RES_CHARM | RES_SLEEP,
+                0, 0, 0, 0,
+                152, 50, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "invisible_stalker", "elemental_being", "icon1", "icon2",
+                0, AFF_INVISIBLE | AFF_FLYING,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC,
+                0, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                244, MOB_TEMPLATE_UNSET, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "mind_flayer", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED,
+                PART_TENTACLES,
+                0, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                183, 65, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "small_red_dragon", "dragon", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_HUGE,
+                PART_TAILATTACK, 0, 0, RES_FIRE,
+                0, 0, 0, 0,
+                150, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_fire_anatomical", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 610
         }
 };
 
@@ -5861,6 +5931,29 @@ static const CREATURE_TRAIT_CHANGE death_knight_trait_changes[] =
         {CREATURE_TRAIT_TURN_IMMUNITY, 1}
 };
 
+/* These reviewed profiles use existing traits; no shared defaults change. */
+static const CREATURE_TRAIT_CHANGE night_hag_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE invisible_stalker_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_BLUNT}
+};
+static const CREATURE_TRAIT_CHANGE mind_flayer_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE small_red_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -5868,6 +5961,10 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"night_hag", NULL, night_hag_trait_changes, TRAIT_ITEMS(night_hag_trait_changes)},
+        {"invisible_stalker", NULL, invisible_stalker_trait_changes, TRAIT_ITEMS(invisible_stalker_trait_changes)},
+        {"mind_flayer", NULL, mind_flayer_trait_changes, TRAIT_ITEMS(mind_flayer_trait_changes)},
+        {"small_red_dragon", NULL, small_red_dragon_trait_changes, TRAIT_ITEMS(small_red_dragon_trait_changes)},
         {"revenant_spirit", NULL, revenant_spirit_trait_changes, TRAIT_ITEMS(revenant_spirit_trait_changes)},
         {"haunt", NULL, haunt_trait_changes, TRAIT_ITEMS(haunt_trait_changes)},
         {"crypt_thing", NULL, crypt_thing_trait_changes, TRAIT_ITEMS(crypt_thing_trait_changes)},
