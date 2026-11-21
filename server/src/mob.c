@@ -4181,6 +4181,167 @@ const struct mob_type mob_table[MAX_MOB] =
                 20, 10, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "spec_cast_orb", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 20
+        },
+        /* Canyon material forms retain minds and souls; hosts stay living. */
+        {
+                "cyclops", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                610, 4000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_GIANT, 0
+        },
+        {
+                "mixed_elemental", "elemental_being", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | PART_HEAD | PART_EYE | PART_ARMS | PART_HANDS | PART_FINGERS | PART_2_LEGS | PART_FEET,
+                0, RES_NONMAGIC, 0, RES_POISON | RES_SLEEP | RES_DRAIN,
+                0, 0, 0, 0,
+                175, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "lightning_elemental", "elemental_being", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_NO_LEGS | PART_HEAD | PART_EYE | PART_ARMS,
+                0, 0, 0, RES_ELECTRICITY | RES_NONMAGIC | RES_POISON | RES_SLEEP | RES_DRAIN | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                300, 0, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_lightning_discharge", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "element_bound_humanoid", "humanoid", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                175, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "water_mote", "elemental_being", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS,
+                0, RES_NONMAGIC, 0, RES_POISON | RES_SLEEP | RES_DRAIN,
+                0, 0, 0, 0,
+                5, 10, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "fire_mote", "elemental_being", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS,
+                0, RES_NONMAGIC, RES_COLD | RES_WATER, RES_POISON | RES_SLEEP | RES_DRAIN | RES_FIRE,
+                0, 0, 0, 0,
+                50, 0, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "ice_mote", "elemental_being", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS,
+                0, RES_NONMAGIC, RES_FIRE, RES_POISON | RES_SLEEP | RES_DRAIN | RES_COLD,
+                0, 0, 0, 0,
+                0, 0, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 2
+        },
+        {
+                "stone_mote", "elemental_being", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS,
+                0, RES_NONMAGIC, 0, RES_POISON | RES_SLEEP | RES_DRAIN,
+                0, 0, 0, 0,
+                0, 1, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 10
+        },
+        {
+                "lightning_mote", "elemental_being", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS,
+                0, RES_NONMAGIC, 0, RES_POISON | RES_SLEEP | RES_DRAIN | RES_ELECTRICITY,
+                0, 0, 0, 0,
+                0, 0, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 10
+        },
+        {
+                "acid_elemental", "elemental_being", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS,
+                0, RES_NONMAGIC, 0, RES_POISON | RES_SLEEP | RES_DRAIN | RES_ACID,
+                0, 0, 0, 0,
+                30, 50, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_acid_spray", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "lava_elemental", "elemental_being", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | PART_HEAD | PART_EYE | PART_ARMS,
+                0, RES_NONMAGIC, RES_COLD | RES_WATER, RES_POISON | RES_SLEEP | RES_DRAIN | RES_FIRE,
+                0, 0, 0, 0,
+                100, 400, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "mud_elemental", "elemental_being", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | PART_HEAD | PART_EYE | PART_ARMS | PART_HANDS | PART_FINGERS | PART_2_LEGS | PART_FEET,
+                0, RES_NONMAGIC, 0, RES_POISON | RES_SLEEP | RES_DRAIN,
+                0, 0, 0, 0,
+                100, 200, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "mist_elemental", "elemental_being", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS,
+                0, RES_NONMAGIC, 0, RES_POISON | RES_SLEEP | RES_DRAIN,
+                0, 0, 0, 0,
+                150, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 200
+        },
+        {
+                "energy_mote", "elemental_being", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS,
+                0, RES_NONMAGIC, 0, RES_POISON | RES_SLEEP | RES_DRAIN,
+                0, 0, 0, 0,
+                0, 0, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_lightning_discharge", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "dust_elemental", "elemental_being", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS,
+                0, RES_NONMAGIC, 0, RES_POISON | RES_SLEEP | RES_DRAIN,
+                0, 0, 0, 0,
+                100, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_thief", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "air_eddy", "elemental_being", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS,
+                0, RES_NONMAGIC, 0, RES_POISON | RES_SLEEP | RES_DRAIN,
+                0, 0, 0, 0,
+                50, 0, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_thief", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 100
         }
 };
 
@@ -5297,6 +5458,96 @@ static const CREATURE_TRAIT_CHANGE giant_squid_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -7}
 };
 
+static const CREATURE_TRAIT_CHANGE cyclops_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8}
+};
+static const CREATURE_TRAIT_CHANGE mixed_elemental_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ENERGY},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE lightning_elemental_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ELECTRICITY},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE water_mote_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_WATER},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE fire_mote_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_FIRE},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE ice_mote_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_COLD},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE stone_mote_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_BLUNT},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE lightning_mote_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ELECTRICITY},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE acid_elemental_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ACID},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE lava_elemental_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_FIRE},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE mud_elemental_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_BLUNT},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE mist_elemental_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_BLUNT},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE energy_mote_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ENERGY},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE dust_elemental_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_BLUNT},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE air_eddy_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_BLUNT},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -5304,6 +5555,21 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"cyclops", NULL, cyclops_trait_changes, TRAIT_ITEMS(cyclops_trait_changes)},
+        {"mixed_elemental", NULL, mixed_elemental_trait_changes, TRAIT_ITEMS(mixed_elemental_trait_changes)},
+        {"lightning_elemental", NULL, lightning_elemental_trait_changes, TRAIT_ITEMS(lightning_elemental_trait_changes)},
+        {"water_mote", NULL, water_mote_trait_changes, TRAIT_ITEMS(water_mote_trait_changes)},
+        {"fire_mote", NULL, fire_mote_trait_changes, TRAIT_ITEMS(fire_mote_trait_changes)},
+        {"ice_mote", NULL, ice_mote_trait_changes, TRAIT_ITEMS(ice_mote_trait_changes)},
+        {"stone_mote", NULL, stone_mote_trait_changes, TRAIT_ITEMS(stone_mote_trait_changes)},
+        {"lightning_mote", NULL, lightning_mote_trait_changes, TRAIT_ITEMS(lightning_mote_trait_changes)},
+        {"acid_elemental", NULL, acid_elemental_trait_changes, TRAIT_ITEMS(acid_elemental_trait_changes)},
+        {"lava_elemental", NULL, lava_elemental_trait_changes, TRAIT_ITEMS(lava_elemental_trait_changes)},
+        {"mud_elemental", NULL, mud_elemental_trait_changes, TRAIT_ITEMS(mud_elemental_trait_changes)},
+        {"mist_elemental", NULL, mist_elemental_trait_changes, TRAIT_ITEMS(mist_elemental_trait_changes)},
+        {"energy_mote", NULL, energy_mote_trait_changes, TRAIT_ITEMS(energy_mote_trait_changes)},
+        {"dust_elemental", NULL, dust_elemental_trait_changes, TRAIT_ITEMS(dust_elemental_trait_changes)},
+        {"air_eddy", NULL, air_eddy_trait_changes, TRAIT_ITEMS(air_eddy_trait_changes)},
         {"pteranodon", NULL, pteranodon_trait_changes, TRAIT_ITEMS(pteranodon_trait_changes)},
         {"psi_beast", NULL, psi_beast_trait_changes, TRAIT_ITEMS(psi_beast_trait_changes)},
         {"fire_giant", NULL, fire_giant_trait_changes, TRAIT_ITEMS(fire_giant_trait_changes)},
@@ -8954,6 +9220,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_sprite", 5 },
                 { "spec_innate_fade", 5 },
                 { "spec_wisp_lightning", 10 },
+                { "spec_lightning_discharge", 10 },
                 { "spec_acid_spray", 10 },
                 { "spec_gas_cloud", 10 },
                 { "spec_fire_surge", 10 },

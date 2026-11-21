@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 21 November 2026
-Based on master 4a87534bdba7238b21bcac09dc8b38c40ceb07b3 (PR #998),
-with the accompanying Hel's Tower changes.
+Based on master 586f3a1cd6057f944b9fa9792c7b0ac4b0740005 (PR #999),
+with the accompanying Elemental Canyon changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -911,10 +911,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 296, so this single example would make 297.
+guide's checked revision it is 312, so this single example would make 313.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 296.
+valid index. This example would receive index 312.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1579,8 +1579,9 @@ height, 140 kg, 210 cm length, Medium size and natural armour -7. It gains
 no Wisdom drain, charm power or automatic pet status. Friendly city lamias
 keep their authored behaviour; the profile name is not a wild-lamia preset.
 
-stone_golem uses bipedal_construct. Its normal limbs remain targetable, but
-it is mindless, mute, inorganic, heartless, bloodless, soulless and ANALGIC.
+stone_golem uses bipedal_construct. It has normal anatomical limbs, but
+the target skill refuses inorganic NPCs. It is mindless, mute, inorganic,
+heartless, bloodless, soulless and ANALGIC.
 It has no brain or guts. Defaults are 290 cm, 900 kg, Large size and natural
 armour -5. It has ordinary RES_MAGIC, immunity to nonmagical contact,
 poison, sleep, drain, charm, hold and paralysis, plus magical blunt pound
@@ -1612,7 +1613,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 296;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 312;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1722,9 +1723,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 296; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 312; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-37 body rows, 296 archetype rows, 50 internal traits and 130 Scribe
+37 body rows, 312 archetype rows, 50 internal traits and 131 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -3880,7 +3881,7 @@ ordinary head/trauma eligibility; older fire elementals gain no new
 breath.
 
 water_elemental 13508 is thinking water using elemental_being. It has
-targetable head, eyes and arms, no ordinary legs or biological heart,
+material head, eyes and arms, no ordinary legs or biological heart,
 brain or guts, and no corpse. It is inorganic, bloodless and ANALGIC, with
 mind and soul retained, Swim, natural armour -8 and magical blunt natural
 contact. Defaults are 300 cm height, 500 kg, Large, length unknown. It is
@@ -3898,7 +3899,7 @@ through spec_gas_cloud; the cloud does not need imaginary jaws. Do not
 upgrade older air elementals to Nonmagic immunity or add whirlwind kills.
 
 earth_elemental 13510 is a thinking rocky humanoid using elemental_being,
-with targetable head, eyes, arms, hands and legs, no biological heart,
+with material head, eyes, arms, hands and legs, no biological heart,
 brain or guts, no corpse, and inorganic/bloodless/ANALGIC physiology. Mind
 and soul remain. It has natural armour -8, magical blunt contact and the
 same Nonmagic/Poison/Sleep/Drain/Hold/Paralysis immunities as Water.
@@ -4034,6 +4035,185 @@ fire hazard; keep Hel's female portrait and the other thirteen. Media
 delivery/publication is separate from applying the source patch; these
 builder notes do not claim publication or regeneration has occurred.
 
+Elemental Canyon
+----------------
+
+This revision has 312 archetypes, 37 body species, 50 internal traits, 131
+Scribe special names and 637 skill rows, including reserved rows. Sixteen
+profiles append at IDs 296-311; all earlier IDs stay unchanged. There are
+no new body species, area fields, player skills or trait names. Traits
+remain internal species/archetype data. They cannot be set on an
+individual mob through a new area or Scribe command.
+
+The new profiles are cyclops, mixed_elemental, lightning_elemental,
+element_bound_humanoid, water_mote, fire_mote, ice_mote, stone_mote,
+lightning_mote, acid_elemental, lava_elemental, mud_elemental,
+mist_elemental, energy_mote, dust_elemental and air_eddy. An archetype
+describes the creature; its encounter rank and job remain individual.
+
+cyclops is a living humanoid in the giant family. It has normal organs,
+blood, pain, mind and soul, with Large size, HUGE and natural armour -8.
+Its 610 cm height follows the second-edition true cyclops, not the much
+smaller cyclopskin. Its 4000 kg mass is a DD4 estimate. Existing eye
+anatomy handles its single eye without a new body flag or target category.
+Canyon's cyclops 9202 keeps cleric casting and Sanctuary. It does not gain
+Detect Invisible or an additional boulder special: the vendor's existing
+invisibility elixir must still provide a route past it.
+
+mixed_elemental uses elemental_being for conscious magical matter. It has
+material head, eyes, arms, hands and legs, without biological heart, brain
+or guts. It is inorganic, bloodless and ANALGIC, leaves no ordinary
+corpse, and retains mind and soul. Do not add Mindless, Soulless or
+ACT_OBJECT merely because a creature is made of an element. Defaults are
+175 cm height, Medium, with mass and length unspecified. It resists
+Nonmagic rather than being immune, so ordinary weapons still work at the
+existing resistance reduction. Poison, Sleep and Drain do not work on this
+physiology. Its one ordinary natural contact is magical Energy; there are
+no extra strikes, racial damage/HP bonuses or natural armour bonus. It
+does not automatically fly or pass through doors.
+
+Canyon's tiny, small, medium, large and HUGE forms override the shared
+height/size as needed: 30 cm/Small, 100 cm/Small, 175 cm/Medium, 300
+cm/Large and 600 cm/Large with HUGE. The Rare guardian stays at the 175
+cm/Medium default. Rank does not enlarge its body. Definition 9237 is
+loaded but has no reset; conversion does not invent a live placement.
+
+The Earth, Fire, Air and Water Rulers reuse the established profiles. Keep
+their existing distinctions: Air has Nonmagic resistance, while Earth,
+Fire and Water have their established immunity. Their authored
+cleric/fire/gas/acid roles remain individual; Water still releases acid,
+not an invented frost attack. Sanctuary and all deliberate behaviour stay.
+No ruler receives an extra room attack from descriptive prose.
+
+lightning_elemental is conscious electrical matter using elemental_being.
+It has material head, eyes and arms, no ordinary legs or biological
+organs, no blood or corpse, and inorganic/ANALGIC physiology with mind and
+soul retained. It flies and has natural armour -8 and magical electrical
+natural contact. It is immune to Electricity, Nonmagic, Poison, Sleep,
+Drain, Hold and Paralysis. Defaults are 300 cm height, Large; length and
+mass remain unspecified. Described dazzling light and noise do not
+automatically add blindness or deafness attacks.
+
+The twelve smaller material profiles also use elemental_being, keep mind
+and soul, and have inorganic/bloodless/ANALGIC physiology without
+biological organs or ordinary corpses. They have Nonmagic resistance and
+Poison/Sleep/Drain immunity, without the full-sized armour bonus. Do not
+invent human limbs for a puddle, snowflake, spark or dust cloud. The lava
+beast and mud monster can form material heads and limbs. Material anatomy
+is separate from biological organs. The existing target skill still
+refuses inorganic NPCs, even when they have material heads or arms. Do not
+remove that flesh-and-blood restriction as part of classification; the
+living bound humanoids remain ordinary targets.
+
+Natural contact follows the material: water_mote uses Water; fire_mote and
+lava_elemental use Fire; ice_mote uses Cold; lightning_mote uses
+Electricity; acid_elemental uses Acid; energy_mote uses Energy. Stone,
+mud, mist, dust and air eddies use Blunt. These are the contact types of
+one ordinary magical natural attack, not extra attacks or overrides of a
+valid wielded weapon. Fire/lava are Fire-immune and vulnerable to Cold and
+Water; ice is Cold-immune and vulnerable to Fire; electricity and acid are
+immune to their own type. No extra chemical cross-immunities, equipment
+destruction, engulfing or damage aura is inferred. Water and mud can Swim.
+Snowflake, spark, mist, particle, dust and eddy can fly; ordinary flame,
+pebble and lava remain grounded.
+
+Dimensions are descriptive centimetres and whole kilograms. Unknown zero
+means unspecified, not physically massless. The tiny particle's
+measurements stay unspecified rather than adding fractional units or
+pretending it is one centimetre across. Its "too small to see" prose does
+not add actual Invisibility. Other minor-form measurements and most masses
+are agreed DD4 estimates, not sourcebook measurements.
+
+element_bound_humanoid is a living host, rather than a full elemental. Use
+ordinary humanoid organs, blood, pain, mind, soul and corpse; defaults are
+175 cm height, 75 kg, Medium, length unspecified. Blue Flame, Magneto, Ice
+Bandit, Rock Monster and Hurricane use this profile. Their exact ancestry
+is not identified as human. Existing MobResists overrides supply Fire,
+Electricity, Cold, Pierce+Slash and Nonmagic resistance respectively;
+Hurricane also gains local magical flight. Their old powers, weapons,
+local muteness and authored behaviour stay. Blue Flame and Magneto lose
+their old No Corpse flags. Ice Bandit's 100 kg and Rock Monster's 225 kg
+estimates include the enclosing shell. Do not turn binding prose into
+permanent Hold, a rescue quest, an automatic elemental touch, undeath or a
+new creature released on death.
+
+The climber, magician, Rainbow Cult warrior, illusionist, alchemist and
+vendor reuse human. Occupation or magical training does not make a person
+elemental. The baby rainbow dragon reuses dragon_hatchling, with 91 cm
+height, 250 cm length, 70 kg and Medium size, normal dragon anatomy/flight
+and its individual anatomical mixed breath. It gains no adult prism flash
+or HUGE. The little imp reuses imp at 61 cm/12 kg, Small, including
+established wings/flight/regeneration/defences. Its individual spec_thief
+makes its described stealing real; keep its scavenging, Hide, Sneak and
+Wimpy. Shared imp behaviour is unchanged.
+
+spec_lightning_discharge is a combat-only release of the existing
+Lightning Breath payload for forms that need no imaginary mouth. It
+retains the old one-in-four sampling of each eligible attacker; it is not
+a guaranteed strike on the current opponent. It adds no idle Invisibility,
+unlike the existing wisp special. Ordinary native-action, ordered-player,
+safe-room/area and antimagic restrictions apply, with state checks after
+messages before the spell runs. Ordinary special XP applies; this is not a
+learnable player spell or extra attack stream.
+
+Existing mouthless fire, gas and acid releases keep the corresponding old
+spell effects. The mixed forms use spec_elemental_burst with the old
+distribution: Fire 1/8, Lightning 2/8, Gas 1/8, Acid 1/8, Steam 2/8 and
+Frost 1/8. Post-message guards preserve safety if a trigger changes the
+actors or room, without adding a second cast or changing the older
+Sentinel Pass cave slime. Dust and eddy keep the normal thief chances and
+coin accounting, with discovery wording that does not invent hands.
+
+Five rulers are Elite (5x HP once); cyclops and guardian are Rare (2x HP
+once); the other thirty definitions stay Common. HP dice letters, level
+130 on the vendor and the word HUGE are not rank markers. Preserve all
+original levels, alignment, aggression/passivity, Sentinel, Stay Area,
+Wimpy, scavenging and other deliberate behaviour. Recompute area flag
+masks against species XOR archetype, so inherited traits are not
+accidentally cancelled by repeated bits. Individual dimensions are
+absolute replacements; specials and their selection vector are not XOR.
+
+Seven actual sex fields become male 1: cyclops 9202, rulers 9208-9212 and
+illusionist 9233. Their pronouns and existing portraits agree. Vendor 9238
+loses only undefined ACT value 16. Preserve his valid LOSE_FAME flag,
+level 130, shop 105/15, all-day hours, mage defence, lantern and original
+stock. Do not add No Quest, No Experience or a healer role. Existing
+invisibility elixir 9231 remains unchanged.
+
+Correct the alchemist's wand/staff resets from WIELD to HOLD. This really
+enables NPC zap/brandish and charge consumption in combat; the existing
+equipment XP modifier drops by five per corrected instance. Move the
+second baby dragon's ice staff to carried inventory, preserving the drop
+without inventing arms or enabling staff use. Its ordinary claw/fang
+selection becomes available and its equipment XP modifier drops by ten.
+Preserve spells, initial charges, object counts and caps; charges may then
+be spent through normal combat. Keep existing valid held magic items on
+minor forms: current zap/brandish has no arm or speech gate. Moving the
+invalid held scroll to inventory also removes its five-point equipment XP
+modifier. No compensating combat bonus is added for these corrections.
+
+Move invalid worn dust, water jugs and the scroll to inventory; move the
+lava lamp to LIGHT. Earth ring 9201 changes from Furniture to Treasure
+while retaining its wearable flags and Intelligence/Wisdom bonuses; do not
+introduce armour randomisation or change bracelet 9212, also equipped in
+Underdark. Remove only the unsupported Sword of Illusions stat-card line;
+do not invent missing quest treasure.
+
+Keep displayed "an eddie" as the author's Fast Eddie wordplay; add eddy as
+a keyword and fix ordinary "eddie current" prose. Minor grammar
+corrections preserve identities and displayed room names. Keep all 55 room
+flags/sectors/exits, magical water/air walkways, original mob
+placements/caps and unrelated loot. There is no matching Canyon .src; the
+four existing real source exports, including Eakos, stay unchanged.
+
+Current dd-gui preserves punctuation. Room 9204's final period means its
+exact filename is
+custom_rooms/9204_a_blind_curve_on_the_mountain_path..png. Supply
+unchanged pixels under that name and keep the old alias. Approved separate
+portrait replacements depict Magneto as one humanoid inside an electrical
+field and the imp with its established wings. Generation and live
+publication are separate from applying this source patch.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -4083,7 +4263,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 296 current table rows follow, grouped by body. Numeric IDs are for
+All 312 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -4099,7 +4279,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (93)
+HUMANOID (95)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -4378,6 +4558,12 @@ HUMANOID (93)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_giant; policy auto
   [292] humanoid_avatar: h/w/l 180 / 70 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [296] cyclops: h/w/l 610 / 4000 / ?; Large; family giant
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [299] element_bound_humanoid: h/w/l 175 / 75 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -4810,7 +4996,7 @@ QUADRUPEDAL_HYBRID (6)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-ELEMENTAL_BEING (7)
+ELEMENTAL_BEING (21)
 ---------------------
   [  2] fire_elemental: h/w/l 300 / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
@@ -4833,6 +5019,48 @@ ELEMENTAL_BEING (7)
   [291] earth_elemental: h/w/l 300 / 1500 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [297] mixed_elemental: h/w/l 175 / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [298] lightning_elemental: h/w/l 300 / ? / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_lightning_discharge; policy auto
+  [300] water_mote: h/w/l 5 / 10 / 100; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [301] fire_mote: h/w/l 50 / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [302] ice_mote: h/w/l ? / ? / 2; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [303] stone_mote: h/w/l ? / 1 / 10; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [304] lightning_mote: h/w/l ? / ? / 10; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [305] acid_elemental: h/w/l 30 / 50 / 100; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_acid_spray; policy auto
+  [306] lava_elemental: h/w/l 100 / 400 / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [307] mud_elemental: h/w/l 100 / 200 / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [308] mist_elemental: h/w/l 150 / ? / 200; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [309] energy_mote: h/w/l ? / ? / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_lightning_discharge; policy auto
+  [310] dust_elemental: h/w/l 100 / ? / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_thief; policy auto
+  [311] air_eddy: h/w/l 50 / ? / 100; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_thief; policy auto
 
 CRUSTACEAN (2)
 ----------------
@@ -5730,6 +5958,7 @@ Check native helpers, safety, active-slot policies and XP before reusing one.
     spec_aboleth
     spec_acid_spray
     spec_gas_cloud
+    spec_lightning_discharge
     spec_fire_surge
     spec_tentacle_grip
     spec_squid
@@ -5889,8 +6118,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/4a87534bdba7238b21bcac09dc8b38c40ceb07b3
-  Base PR998 plus the accompanying Hel's Tower patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/586f3a1cd6057f944b9fa9792c7b0ac4b0740005
+  Base PR999 plus the accompanying Elemental Canyon patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -5900,9 +6129,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 86/153 areas (56.2%) and 1330/4131 mob
-definitions (32.2%) merged and verified. Hel's Tower adds 16 definitions.
-After its merge is verified, completion becomes 87/153 areas (56.9%) and
-1346/4131 definitions (32.6%).
+The live conversion is currently 87/153 areas (56.9%) and 1346/4131 mob
+definitions (32.6%) merged and verified. Elemental Canyon adds 37 definitions.
+After its merge is verified, completion becomes 88/153 areas (57.5%) and
+1383/4131 definitions (33.5%).
 
 END OF GUIDE

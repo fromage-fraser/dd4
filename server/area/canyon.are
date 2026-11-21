@@ -10,10 +10,11 @@ A mountain climber is making the same trek that you are.
 ~
 He wants to see what's on the other side of the mountain too.
 ~
-68 0 500 S
+4|64 0 500 S
 3 16 8 10d5+15 1d6+1
 0 500
 8 8 1
+< human~ common~
 #9202
 cyclops~
 the cyclops~
@@ -21,10 +22,11 @@ A hungry cyclops snarls at you!
 ~
 He looks like he's about to have dinner (maybe it's you?).
 ~
-98 128 -700 S
+2|32|64 128 -700 S
 22 0 -5 1d4+1100 1d4+25
 0 80000
-8 8 0
+8 8 1
+< cyclops~ rare~
 #9203
 tiny elemental~
 a tiny elemental~
@@ -34,8 +36,11 @@ Rather small for an elemental form, looks like a reject.
 ~
 64 0 0 S
 1 20 9 1d20+0 1d3+1
-96 100
+32 100
 8 8 0
+< mixed_elemental~ common~
+MobHeight 30
+MobSize 0
 #9204
 elemental guardian~
 the elemental guardian~
@@ -45,8 +50,9 @@ You can't tell which kind of elemental it is, maybe it's a bit o' all of them?
 ~
 2 0 0 S
 20 5 -5 0d0+1000 4d4+5
-256 100000
+0 100000
 8 8 0
+< mixed_elemental~ rare~
 #9205
 small elemental~
 a small elemental~
@@ -54,10 +60,13 @@ A small, rather non-descript elemental.
 ~
 A small elemental, a resident of the canyon.
 ~
-66 0 0 S
+2|64 0 0 S
 5 16 5 0d0+60 2d4+0
-256 800
+0 800
 8 8 0
+< mixed_elemental~ common~
+MobHeight 100
+MobSize 0
 #9206
 medium elemental~
 a medium elemental~
@@ -65,20 +74,24 @@ A medium-sized elemental.
 ~
 A medium elemental, a resident of the canyon.
 ~
-66 0 10 S
+2|64 0 10 S
 10 11 2 10d10+125 2d6+1
-96 4000
+32 4000
 8 8 0
+< mixed_elemental~ common~
 #9207
 large elemental~
 a large elemental~
 A large elemental.
 ~
 A large elemental, a resident of the canyon.~
-66 0 20 S
+2|64 0 20 S
 15 6 0 10d10+190 2d8+2
-96 21000
+32 21000
 8 8 0
+< mixed_elemental~ common~
+MobHeight 300
+MobSize 2
 #9208
 earth elemental ruler~
 the Earth Ruler~
@@ -90,8 +103,9 @@ he begins and the rock wall ends.
 ~
 2 128 0 S
 30 -2 -13 30e30+1000 2d6+25
-256 400000
-8 8 0
+0 400000
+8 8 1
+< earth_elemental~ elite~
 #9209
 fire elemental ruler~
 the Fire Ruler~
@@ -101,8 +115,9 @@ As you look at him he seems to blend in with the fire in his throne.
 ~
 2 128 0 S
 30 -5 -10 30e30+1000 4d5+5
-96 300000
-8 8 0
+32 300000
+8 8 1
+< fire_elemental~ elite~
 #9210
 air elemental ruler~
 The Air Ruler~
@@ -112,8 +127,10 @@ As you peer at him you seem to be looking at the sky itself.
 ~
 2 128 0 S
 30 0 -10 30d30+1000 9d3+9
-96 350000
-8 8 0
+0 350000
+8 8 1
+< air_elemental~ elite~
+MobHeight 300
 #9211
 lightning elemental ruler~
 The Lightning Ruler~
@@ -125,7 +142,8 @@ You rub your eyes and look and the ruler is there grinning at you.
 2 128 0 S
 30 0 -6 30e30+1000 4d6+15
 0 350000
-8 8 0
+8 8 1
+< lightning_elemental~ elite~
 #9212
 water elemental ruler~
 The Water Ruler~
@@ -137,7 +155,8 @@ as you get scared, it reforms in elemental form.
 2 128 0 S
 30 0 -10 30e30+1000 7d3+5
 0 350000
-8 8 0
+8 8 1
+< water_elemental~ elite~
 #9214
 water puddle elemental~
 a puddle~
@@ -147,8 +166,9 @@ It trickles along the ground and gets your feet wet.
 ~
 64 0 0 S
 8 13 3 10d10+200 2d5+1
-96 4000
+32 4000
 8 8 0
+< water_mote~ common~
 #9215
 fire flame elemental~
 a flame~
@@ -158,8 +178,9 @@ It smolders along the grass aimlessly.
 ~
 64 0 0 S
 4 17 6 5d10+0 2d4+0
-96 500
+32 500
 8 8 0
+< fire_mote~ common~
 #9216
 snowflake snow flake ice elemental~
 a small snowflake~
@@ -169,8 +190,9 @@ It looks a little blue.
 ~
 64 0 520 S
 3 19 8 1d5+30 1d5+0
-96 200
+32 200
 8 8 0
+< ice_mote~ common~
 #9217
 pebble rock earth stone elemental~
 a small rock~
@@ -180,8 +202,9 @@ It seems to be a small living pebble!
 ~
 64 0 0 S
 3 18 6 4d10+5 1d6+1
-96 350
+32 350
 8 8 0
+< stone_mote~ common~
 #9218
 spark lightning energy elemental~
 a small spark~
@@ -191,8 +214,9 @@ Zipping from place to place at the speed of light is tough work.
 ~
 64 0 0 S
 4 16 6 10d5+0 1d8+1
-96 500
+32 500
 8 8 0
+< lightning_mote~ common~
 #9219
 acid blob elemental~
 a small blob of acid~
@@ -202,8 +226,9 @@ The magical blob of acid is a cross between lightning and water.
 ~
 64 0 0 S
 9 11 2 1d10+120 5d2+2
-63 4000
+32 4000
 8 8 0
+< acid_elemental~ common~
 #9220
 lava elemental~
 a lava beast~
@@ -213,8 +238,9 @@ The magical lava beast is a cross between fire and earth.
 ~
 64 0 0 S
 8 13 3 1d10+120 5d2+2
-256 4000
+0 4000
 8 8 0
+< lava_elemental~ common~
 #9221
 mud elemental~
 a mud monster~
@@ -224,8 +250,9 @@ The magical mud monster is a cross between water and earth.
 ~
 64 0 0 S
 7 14 4 1d12+86 2d4+1
-256 1000
+0 1000
 8 8 0
+< mud_elemental~ common~
 #9222
 mist elemental~
 an elemental mist~
@@ -235,8 +262,9 @@ The magical mist is a cross between water and air.
 ~
 64 0 0 S
 6 16 50 6d10+20 1d8+0
-96 1000
+32 1000
 8 8 0
+< mist_elemental~ common~
 #9223
 particle elemental~
 a particle~
@@ -246,8 +274,9 @@ The magical manifestation of energy.
 ~
 64 0 0 S
 5 16 6 5d4+70 1d5+5
-96 800
+32 800
 8 8 0
+< energy_mote~ common~
 #9224
 dust elemental~
 a dust cloud~
@@ -257,19 +286,21 @@ The magical dust cloud is a cross between air and earth.
 ~
 64 0 0 S
 6 15 4 9d9+4 1d8+1
-96 980
+32 980
 8 8 0
+< dust_elemental~ common~
 #9225
-eddie elemental~
+eddie eddy elemental~
 an eddie~
-A small eddie current swirls junk around here.
+A small eddy current swirls junk around here.
 ~
-The magical eddie current is a manifestation of an air elemental.
+The magical eddy current is a manifestation of an air elemental.
 ~
 64 0 0 S
 2 19 8 5d5+0 1d6+0
-96 150
+32 150
 8 8 0
+< air_eddy~ common~
 #9226
 blue flame~
 the Blue Flame~
@@ -278,10 +309,12 @@ The Blue Flame burns mysteriously here.
 As you look you see what seems to be a face and almost a
 humanoid figure somehow trapped in the fire.
 ~
-66 0 -100 S
+2|64 0 -100 S
 26 -3 -4 1d100+550 6d3+12
-96 100000
+32 100000
 8 8 0
+< element_bound_humanoid~ common~
+MobResists 1
 #9227
 magneto~
 the Magneto~
@@ -289,10 +322,12 @@ The Magneto considers zapping you for the heck of it.
 ~
 A humanoid figure seems to be trapped in the field of the Magneto.
 ~
-66 0 -150 S
+2|64 0 -150 S
 22 0 -8 3d10+350 3d8+5
-96 75000
+32 75000
 8 8 0
+< element_bound_humanoid~ common~
+MobResists 4
 #9228
 ice bandit~
 the Ice Bandit~
@@ -304,6 +339,9 @@ A humanoid figure encased in ice but still apparently alive.
 24 -2 -9 2d10+480 2d8+13
 0 150000
 8 8 0
+< element_bound_humanoid~ common~
+MobWeight 100
+MobResists 2
 #9229
 rock monster~
 the Rock Monster~
@@ -311,10 +349,13 @@ The Rock Monster considers you in stoney silence.
 ~
 A humanoid figure trapped in stone seems alive.
 ~
-66 0 -310 S
+2|64 0 -310 S
 23 0 -6 40d10+550 3d8+4
 0 60000
 8 8 0
+< element_bound_humanoid~ common~
+MobWeight 225
+MobResists 32|64
 #9230
 hurricane~
 the Hurricane~
@@ -322,10 +363,12 @@ A Hurricane rages across the sky.
 ~
 A humanoid figure is trapped in the rushing wind.
 ~
-66 32768 -10 S
+2|64 32768|524288 -10 S
 28 -4 -7 0d0+700 4d6+6
 0 350000
 8 8 0
+< element_bound_humanoid~ common~
+MobResists 8192
 #9231
 magician~
 an elemental magician~
@@ -334,10 +377,11 @@ An elemental magician seeks magical stones for a spell.
 The elemental magician has come here in search of the fabled
 Stone of Surrender which can be used to render opponents senseless.
 ~
-66 2 -50 S
+2|64 2 -50 S
 17 6 2 1d11+200 3d5+3
 0 30000
 8 8 0
+< human~ common~
 #9232
 rainbow warrior~
 a rainbow warrior~
@@ -350,6 +394,7 @@ the elemental forces.
 18 1 0 0d0+340 3d6+4
 0 35000
 8 8 0
+< human~ common~
 #9233
 illusionist~
 an illusionist~
@@ -357,12 +402,12 @@ The illusionist seeks the aid of the elemental forces.
 ~
 He seeks their aid for a powerful new spell of deception.
 
-[weapon]            The Sword of Illusions
 ~
-66 0 -50 S
+2|64 0 -50 S
 12 10 3 10d6+150 2d7+0
 0 13900
-8 8 0
+8 8 1
+< human~ common~
 #9234
 alchemist~
 an alchemist~
@@ -374,6 +419,7 @@ Rare herbs are rumored to grow only in the canyon.
 13 8 1 1d2+270 2d7+1
 0 15000
 8 8 0
+< human~ common~
 #9235
 baby rainbow dragon~
 a baby rainbow dragon~
@@ -381,10 +427,11 @@ A baby rainbow dragon plays among the elements here.
 ~
 It's only a baby by dragon standards.
 ~
-66 40 0 S
+2|64 0 0 S
 16 4 -1 0d0+400 1d16+6
 0 25000
 8 8 0
+< dragon_hatchling~ common~
 #9236
 imp~
 a little imp~
@@ -396,17 +443,21 @@ The little bugger steals stuff and is generally obnoxious.
 5 15 1 1d10+100 1d4+3
 0 1000
 8 8 0
+< imp~ common~
 #9237
 HUGE elemental~
 a HUGE elemental~
 A HUGE elemental form stands here.
 ~
-HUGE, need i say more?
+HUGE, need I say more?
 ~
-66 0 30 S
+2|64 0 30 S
 20 1 0 0d0+750 3d6+4
 128 40000
 8 8 0
+< mixed_elemental~ common~
+MobHeight 600
+MobSize 2
 #9238
 vendor~
 the elixir vendor~
@@ -414,10 +465,11 @@ A vendor is willing to sell you elixirs.
 ~
 The vendor leans on his cart, holding a hooded lantern and peering at you.
 ~
-82|32768 0 900 S
+2|64|32768 0 900 S
 130 -20 -10 0d0+10000 0d0+300
 0 1
 8 8 1
+< human~ common~
 #0
 
 
@@ -428,7 +480,7 @@ ring earth~
 the earth ring~
 A dark ring which seems to absorb all the light around it lies here.~
 ~
-12 256 3
+8 256 3
 0~ 0~ 0~ 0~
 5 100000 2000
 A
@@ -582,7 +634,7 @@ A fire wand lies forgotten on the ground.~
 #9216
 staff ice~
 an ice staff~
-A ice staff lies forgotten on the ground.~
+An ice staff lies forgotten on the ground.~
 ~
 4 1 16385
 21~ 3~ 3~ frost breath~
@@ -590,7 +642,7 @@ A ice staff lies forgotten on the ground.~
 #9217
 staff earthquake~
 elemental staff of earthquake~
-A earthquake staff lies forgotten on the ground.~
+An earthquake staff lies forgotten on the ground.~
 ~
 4 1 16385
 7~ 3~ 3~ earthquake~
@@ -803,7 +855,7 @@ S
 #9204
 A Blind Curve on the Mountain Path.~
 This looks like a normal mountain path, but it is NOT!  This section of the
-path is habitated by a huge (and of course, man-eating) Cyclops.  The path
+path is inhabited by a huge (and of course, man-eating) Cyclops.  The path
 makes its final ascent to an overlook.
 ~
 92 0 5
@@ -857,7 +909,7 @@ D5
 S
 #9207
 Entrance to Elemental Canyon~
-You are awed by the sounds and sights of great powers at works here.
+You are awed by the sounds and sights of great powers at work here.
 Elemental servants bustle back and forth doing the biddings of the elemental
 rulers.  You see a sort of cross roads to the north, and you can climb up to
 the overlook here.
@@ -876,7 +928,7 @@ S
 The Floor of the Canyon~
 Various elemental forms wander the floor of the canyon.  Some seem to be
 going about their business, while others seem to have no business at all.
-In general, it is calm, yet there is always a incessant buzz of things
+In general, it is calm, yet there is always an incessant buzz of things
 going on about.  The canyon continues north and east.
 ~
 92 0 3
@@ -921,7 +973,7 @@ S
 The Floor of the Canyon~
 Various elemental forms wander the floor of the canyon.  Some seem to be
 going about their business, while others seem to have no business at
-all.  In general, it is calm, yet there is always a incessant buzz of
+all.  In general, it is calm, yet there is always an incessant buzz of
 things going on about.  The canyon floor extends north and west.  There is a
 cave mouth set into the canyon wall to the east.
 ~
@@ -1605,7 +1657,7 @@ S
 #9251
 Lightning Causeway~
 Up a set of stairs carved into the hill you see intermittent flashes of
-lightning.  A continuous hum also comes form that direction.  To the west
+lightning.  A continuous hum also comes from that direction.  To the west
 is the electric playground.
 ~
 92 0 4
@@ -1671,7 +1723,7 @@ S
 #9255
 Floating in Air~
 Last you knew, you were walking on the mesa.  Abruptly the path dropped
-from beneath your feet much to quick for you to recover.  Instead of
+from beneath your feet much too quickly for you to recover.  Instead of
 plunging to your death, you seemingly miss the ground and begin walking
 on air.  The space to the north and east seems just thin air, but you can
 walk there.  The pathway you came from is to the south.
@@ -1846,7 +1898,7 @@ M 0 9203 8 9208
 M 0 9203 8 9210
 M 0 9203 8 9217
 M 0 9203 8 9219
-E 1 9225 10 17
+G 1 9225 10
 M 0 9203 8 9215
 M 0 9203 8 9215
 M 0 9203 8 9218
@@ -1856,7 +1908,7 @@ M 0 9205 5 9250
 M 0 9205 5 9209
 M 0 9205 5 9234
 M 0 9205 5 9222
-E 1 9224 10 17
+G 1 9224 10
 M 0 9206 4 9246
 M 0 9206 4 9212
 E 1 9221 10 17
@@ -1869,7 +1921,7 @@ E 1 9220 16 16
 M 0 9207 5 9242
 M 0 9207 5 9209
 M 0 9207 5 9218
-E 1 9223 10 17
+G 1 9223 10
 M 0 9226 1 9238
 E 1 9226 10 16
 M 0 9227 1 9238
@@ -1892,12 +1944,12 @@ M 0 9233 4 9253
 M 0 9233 4 9218
 M 0 9233 4 9255
 M 0 9234 6 9230
-E 1 9218 10 16
+E 1 9218 10 17
 M 0 9234 6 9238
-E 1 9217 10 16
+E 1 9217 10 17
 M 0 9235 2 9249
 M 0 9235 2 9257
-E 1 9216 10 16
+G 1 9216 10
 M 0 9236 7 9202
 M 0 9236 7 9207
 M 0 9236 7 9237
@@ -1909,7 +1961,7 @@ M 0 9214 8 9233
 E 1 9216 5 17
 M 0 9214 8 9234
 M 0 9214 8 9235
-E 1 9224 10 17
+G 1 9224 10
 M 0 9214 8 9230
 M 0 9214 8 9231
 M 0 9214 8 9232
@@ -1952,7 +2004,7 @@ M 0 9225 8 9259
 M 0 9225 8 9260
 M 0 9225 8 9260
 M 0 9225 8 9255
-E 1 9225 10 17
+G 1 9225 10
 M 0 9219 4 9228
 M 0 9219 4 9229
 M 0 9219 4 9238
@@ -1964,7 +2016,7 @@ M 0 9216 4 9225
 M 0 9220 4 9238
 M 0 9220 4 9242
 M 0 9220 4 9220
-E 1 9222 10 17
+E 1 9222 10 0
 M 0 9220 4 9221
 M 0 9221 4 9222
 M 0 9221 4 9222
@@ -1981,7 +2033,7 @@ M 0 9223 4 9210
 E 1 9221 10 17
 M 0 9224 4 9227
 M 0 9224 4 9222
-E 1 9225 10 5
+G 1 9225 10
 M 0 9224 4 9259
 M 0 9224 4 9257
 S
@@ -1995,29 +2047,30 @@ S
 
 
 #SPECIALS
-M  9202 spec_cast_cleric        * cyclops
-M  9204 spec_breath_any         * elemental guardian
-M  9207 spec_breath_any         * large elemental
-M  9208 spec_cast_cleric        * earth ruler
-M  9209 spec_breath_fire        * fire ruler
-M  9210 spec_breath_gas         * air ruler
-M  9211 spec_breath_lightning   * lightning ruler
-M  9212 spec_breath_acid        * water ruler
-M  9219 spec_breath_acid        * acid blob
-M  9223 spec_breath_lightning   * elemental particle
-M  9224 spec_thief              * dust
-M  9225 spec_thief              * 'fast' eddie
-M  9226 spec_breath_fire        * the Blue Flame
-M  9227 spec_breath_lightning   * the Magneto
-M  9228 spec_breath_frost       * the Ice Bandit
-M  9230 spec_breath_gas         * the Hurricane
-M  9231 spec_cast_mage          * elemental magician
-M  9232 spec_cast_cleric        * rainbow warrior
-M  9233 spec_cast_mage          * the illusionist
-M  9234 spec_thief              * the alchemist
-M  9235 spec_breath_any         * baby rainbow dragon
-M  9237 spec_breath_any         * HUGE elemental
-M  9238 spec_cast_mage          * Elixir vendor
+M 9202 spec_cast_cleric
+M 9204 spec_elemental_burst
+M 9207 spec_elemental_burst
+M 9208 spec_cast_cleric
+M 9209 spec_fire_surge
+M 9210 spec_gas_cloud
+M 9211 spec_lightning_discharge
+M 9212 spec_acid_spray
+M 9219 spec_acid_spray
+M 9223 spec_lightning_discharge
+M 9224 spec_thief
+M 9225 spec_thief
+M 9226 spec_fire_surge
+M 9227 spec_lightning_discharge
+M 9228 spec_breath_frost_anatomical
+M 9230 spec_gas_cloud
+M 9231 spec_cast_mage
+M 9232 spec_cast_cleric
+M 9233 spec_cast_mage
+M 9234 spec_thief
+M 9235 spec_breath_any_anatomical
+M 9236 spec_thief
+M 9237 spec_elemental_burst
+M 9238 spec_cast_mage
 S
 
 

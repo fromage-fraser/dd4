@@ -143,6 +143,10 @@ my %mob_archetype = map { $_ => 1 } qw/
         black_phasebeast great_ape
         pteranodon psi_beast fire_giant shark water_elemental earth_elemental
         humanoid_avatar giant_squid_tentacle giant_squid soul_gem
+        cyclops mixed_elemental lightning_elemental element_bound_humanoid
+        water_mote fire_mote ice_mote stone_mote
+        lightning_mote acid_elemental lava_elemental mud_elemental
+        mist_elemental energy_mote dust_elemental air_eddy
 /;
 
 my %mob_act = (
@@ -399,7 +403,7 @@ my @mob_spec = qw/
     spec_faerie_dragon      spec_duergar            spec_swallow            spec_poison_palm spec_poison_claw spec_breath_brass spec_paralysing_bite spec_myconid_spores spec_engulf spec_camel_spit spec_manticore spec_alhoon
     spec_cast_slow
     spec_beholder spec_lamia spec_mimic spec_cast_construct_adept
-    spec_executioner_local spec_grell spec_flind spec_otyugh spec_horn_gore spec_terrifying_roar spec_confusing_gaze spec_breath_crystal spec_elemental_burst spec_sprite spec_innate_fade spec_vine_grip spec_wisp_lightning spec_acid_spray spec_gas_cloud spec_fire_surge spec_tentacle_grip spec_squid spec_golem_haste
+    spec_executioner_local spec_grell spec_flind spec_otyugh spec_horn_gore spec_terrifying_roar spec_confusing_gaze spec_breath_crystal spec_elemental_burst spec_sprite spec_innate_fade spec_vine_grip spec_wisp_lightning spec_acid_spray spec_gas_cloud spec_lightning_discharge spec_fire_surge spec_tentacle_grip spec_squid spec_golem_haste
 /;
 
 my %obj_ex = (
