@@ -11780,3 +11780,154 @@ retriever 8829 with four walking legs/four bladed forelimbs and no
 scorpion tail/stinger. Keep the priest-spirit revenant and feminine tree
 spirit portraits. Image generation into staging and live publication are
 separate from applying this source patch.
+
+
+The Astral Plane
+----------------
+
+The current catalogue has 341 archetypes, 37 body species, 51 internal
+traits, 135 Scribe special names and 637 skill rows. The seven new
+profiles use existing bodies. There are no new area fields, body-part
+flags, trait IDs, player skills or special-function names. Earlier
+profiles and player trait choices stay unchanged.
+
+The seven profiles are astral_manifestation, githyanki, githzerai,
+night_hag, invisible_stalker, mind_flayer and small_red_dragon. Use the
+compiled catalogue for their stable indices. Body species describes
+anatomy, the archetype supplies the creature's defaults, and the local
+definition supplies its encounter and exceptions. Keep traits internal to
+species/archetypes. All seven profiles have zero HP, damage, critical,
+haste and profile XP modifiers; ordinary engine special XP still applies.
+
+astral_manifestation is a featureless solid magical humanoid. It keeps
+arms, hands, legs and a head shape, mind and soul, without biological
+organs, blood, physical eyes, speech or corpse. It is Inorganic and
+ANALGIC. Apparent height is 180 cm, Medium; mass is unspecified. No golem,
+undead or weapon-immunity package is inferred. Local guardian 1900 keeps
+its authored magical perception, sanctuary and protection. Ordinary
+visibility logic does not require physical eyes, although blindness and
+other applicable restrictions still work.
+
+githyanki is a living humanoid with ordinary organs, blood, pain, mind,
+soul and voice. It has Infrared and anatomical fangs, without an ordinary
+bite selector. Defaults 175 cm/65 kg/Medium. Do not infer innate armour,
+Magic resistance or Psychic resistance from psionic ability. Local thief
+and mage roles remain individual. Hunter 1905 is 170/60; the two gish
+1910/1911 are 165/60. Knight 1908 and protector 1909 are explicitly a foot
+taller:205/90/Large, without HUGE. Other githyanki use 175/65.
+
+githzerai is a living humanoid without assumed fangs. Defaults 175 cm/70
+kg/ Medium, Infrared and ordinary Magic resistance. Ordinary RES_MAGIC is
+our bounded adaptation of book magic resistance, not literal percentage
+spell rejection or a new Psychic/control immunity. Prisoner 1916 keeps his
+authored evil alignment and passive behaviour.
+
+night_hag is a living speaking fiend with claws/fangs, natural armour-10,
+Magic/Nonmagic resistance, Fire/Cold/Charm/Sleep immunity and the existing
+fear_immunity trait. Defaults 152 cm/50 kg/Medium. Its ordinary claw/fang
+selectors use normal attack opportunities and applicable trauma gates.
+Nonmagic resistance deliberately softens the book's weapon barrier; no new
+silver/cold-iron/+3 weapon threshold, dream attack, permanent soul theft
+or disease subsystem is added. Local 1902 keeps mage 100 and its authored
+NoCorpse exception.
+
+invisible_stalker is a thinking, souled air vortex. Its body has no animal
+organs, blood, corpse, wings or ordinary speech. It is Inorganic and
+ANALGIC, with natural armour-7, ordinary Magic resistance, Invisible,
+Flying and ordinary blunt contact. Apparent height 244 cm/Large; mass and
+length unspecified. It gains neither PassDoor nor Nonmagic immunity.
+
+mind_flayer is a living warm-blooded humanoid, with hands and four facial
+tentacles. It retains ordinary organs, blood, pain, mind, soul and voice.
+Defaults 183 cm/65 kg/Medium, natural armour-5, ordinary Magic resistance
+and Infrared. Facial tentacles are anatomical only: an arm-gated tentacle
+grip is not a mouth attack. Do not add a beak, brain extraction or broad
+psionic/control immunity. Tortured prisoner 1917 keeps mage 100 and its
+low authored level; hunched posture does not create permanent trauma. The
+undead alhoon is a different creature.
+
+small_red_dragon has living dragon anatomy, wings, tail, claws/fangs,
+natural armour-10 and Fire immunity. Defaults 150 cm shoulder height, 610
+cm total length, estimated 500 kg/Large,HUGE. The area gives twenty feet
+in length; exact age is not asserted. No adult fear, Magic resistance,
+missile immunity or adult tail attack is added. Ordinary claw/fang attacks
+use existing trauma rules. Local 1918 cancels inherited Flying because it
+is chained, retaining wings and Sentinel/nonaggression. This is not a new
+hard binding, summoning or teleport restriction.
+
+The nightmare 1901 reuses the approved nightmare profile and cancels wings
+individually while retaining magical flight, fire hoof contact, Mountable
+and existing 183 cm shoulder/270 cm length/700 kg/Large defaults. Ghost
+Town's explicitly winged nightmare stays unchanged. Ordinary fang attacks
+are not added by the anatomical fang bit.
+
+Soulless wanderer 1904 reuses human with individual Soulless and Mindless.
+Keep its living organs and blood; do not add Undead, Inorganic, Bloodless
+or ANALGIC. The existing can_experience_pain rule already rejects Mindless
+creatures, so pain-based effects remain ineffective through that inference
+even without an explicit ANALGIC flag. These properties stay independent:
+soul absence alone does not remove a mind. Its 175 cm/65 kg measurements
+are a gaunt-adult estimate.
+
+The lich-queen 1913 reuses lich,175 cm/45 kg/Medium, with her authored
+female identity. Lord Gith 1914 and ghost 1915 reuse ghost, apparent 175
+cm/ Medium with mass unspecified. Lord Gith is the local male dead
+founder, not a rewrite of another setting's character. He keeps undead
+casting and gains the existing fear aura. Ghost 1915 remains silent but
+minded: its envy, intention and authored casting are not cancelled by the
+phrase destroyed mind. No new drain or possession power is added.
+
+Blast 1919 reuses fire_hazard/environmental_hazard: nonbiological,
+Mindless/Soulless and Inorganic, without organs, blood or corpse. Its
+existing Mindless state makes it insensible to pain without an explicit
+ANALGIC flag. Fire ordinary contact/immunity and Cold/Water vulnerability
+inherit. Its measurements stay unspecified, Medium. Use existing
+spec_fire_surge at 100 percent, not the unreviewed fire_elemental
+development example. The surge calls the same fire-breath spell and
+attacker sampling as legacy breath, with flame messaging rather than an
+open maw. Existing native readiness, action-validity, safety and antimagic
+checks apply. It needs neither a physical head nor speech;100 percent
+selection is not a guaranteed activation. Damage and item-burning rules
+are unchanged.
+
+Repeated legacy M special records are replacements, not additions. An M
+record clears the vector before assigning its routine. Queen 1913's mage
+was therefore overwritten by undead casting; dragon 1918's fire breath was
+overwritten by mage casting. Use the existing special slots and chance
+vector to preserve both roles: queen mage 50/undead 50, dragon
+anatomical-fire 50/mage 50. The equal split is an approved design choice,
+not a recovered historical probability. There are no extra actions. The
+queen's individual vector intentionally replaces shared spec_lich.
+
+Raw body 6000 on guardian 1907 and 3000 on gish 1910 contradict their
+living humanoid descriptions. Recompute local XOR masks against the
+resolved profile, restoring normal organs, limbs, speech and remains. Do
+not copy these raw numbers into a templated mob or claim they were old
+gold amounts: their historical origin was not established. Likewise,
+preserve deliberate local mute/corpseless and wing/flight exceptions by
+computing the final resolved result rather than assuming zero means no
+body.
+
+Ranks are individual: Lord Gith 1914 Boss, queen 1913 Elite, knight 1908
+and protector 1909 Rare; the other 16 definitions Common. HP dice letters
+are not rank markers. Keep authored build rolls; ordinary rank multipliers
+apply once. Rank does not determine dimensions. Unknown mass is not zero
+physical mass, and all numeric measurements remain descriptive whole
+units.
+
+Keep all sexes, levels, alignments, aggression/passivity, WIMPY, Sentinel,
+StayArea and other authored behaviour. Keep original objects, equipment,
+placements, caps and reset order. Initial population 62 carries 88 items;
+three refills produce 75/108. All 80 room flags, sectors, exits, maze
+randomisation, unlocked prison doors and the one-way locked gateway
+remain. Preserve NO_UNDEAD 1905/1906. Queen's black pentagram 1924 is the
+correct key; pouch 1925 is a money object, not a broken container. Silvery
+weapon prose does not by itself mean ITEM_SILVER.
+
+Only narrow prose corrections are made to gish 1910, ghost 1915, rooms
+1906/ 1977 and flaming stone 1913. Mob short names and room titles stay,
+keeping media filenames stable. No matching Astral Scribe source exists.
+All 100 portrait/room filenames match current dd-gui. Repaint only fire
+blast 1919 as impersonal furnace flames, without a monster face/body.
+Staging image generation and live publication are separate from this
+source patch.
