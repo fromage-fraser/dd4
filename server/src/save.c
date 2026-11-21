@@ -216,10 +216,26 @@ static void fread_drained_condition(CHAR_DATA *ch, FILE *fp)
 void fwrite_char (CHAR_DATA *ch, FILE *fp)
 {
         AFFECT_DATA *paf;
+        unsigned long int saved_affected_by;
+        bool other_hold;
         int sn, i;
 
         if (IS_NPC(ch))
                 return;
+
+        /* The one-pulse wrap has no owner or timer after a restart. */
+        saved_affected_by = ch->affected_by;
+        if (ch->body_wrap_affect
+        && (affect_effective_bits(ch, ch->body_wrap_affect) & AFF_HOLD))
+        {
+                other_hold = IS_SET(ch->intrinsic_affected_by, AFF_HOLD);
+                for (paf = ch->affected; paf && !other_hold; paf = paf->next)
+                        if (paf != ch->body_wrap_affect && !paf->deleted
+                        && (affect_effective_bits(ch, paf) & AFF_HOLD))
+                                other_hold = TRUE;
+                if (!other_hold)
+                        REMOVE_BIT(saved_affected_by, AFF_HOLD);
+        }
 
         fprintf(fp, "#PLAYER\n");
         fwrite_drained_condition(ch, fp);
@@ -270,7 +286,7 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
         fprintf(fp, "Exp         %d\n",         ch->exp);
         fprintf(fp, "Act         %lu\n",        ch->act);
         fprintf(fp, "Status      %d\n",         ch->status);
-        fprintf(fp, "AffdBy      %lu\n",        ch->affected_by);
+        fprintf(fp, "AffdBy      %lu\n",        saved_affected_by);
         fprintf(fp, "Pos         %d\n",         ch->position == POS_FIGHTING ? POS_STANDING : ch->position);
         fprintf(fp, "Prac        %d\n",         ch->pcdata->str_prac);
         fprintf(fp, "SplPrac     %d\n",         ch->pcdata->int_prac);
@@ -436,7 +452,7 @@ void fwrite_char (CHAR_DATA *ch, FILE *fp)
 
         for (paf = ch->affected; paf; paf = paf->next)
         {
-                if (paf->deleted)
+                if (paf->deleted || paf == ch->body_wrap_affect)
                         continue;
 
                 if (paf->source_type == AFFECT_SOURCE_NONE)

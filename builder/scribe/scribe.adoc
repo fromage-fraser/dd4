@@ -15794,3 +15794,268 @@ approved artwork replacement is the human male jailer 926, matching the
 accepted identity. All other portraits, room images and sex fields stay.
 Image generation and publication are separate from applying this source
 patch; these builder notes do not claim live publication has occurred.
+
+
+Ghost Town
+----------
+
+The current catalogue contains 334 archetypes, 37 body species, 51
+internal traits, 135 Scribe special names and 637 skill rows. The fifteen
+profiles append at indices 319-333, in order: demon, revenant_spirit,
+haunt, crypt_thing, lurker_above, succubus, gray_ooze, nightmare,
+retriever, cambion, orcus_avatar, water_weird, kampflut,
+animated_evil_tree and tree_spirit. No basic species, trait ID, body-part
+flag, player skill or area-file field is added. Earlier indices and player
+trait opt-ins stay unchanged.
+
+The new specials are spec_lurker_wrap, spec_water_weird_wrap,
+spec_succubus_fascination and spec_retriever_rays. They use the existing
+special-selection mechanism; a 100 percent slot chooses the routine, not a
+guaranteed successful action. Their attempts and saves are separate. All
+fifteen new profiles have zero HP, damage, critical, haste and profile XP
+modifiers. Normal engine special XP still applies. Rank multipliers remain
+individual encounter decisions and apply once.
+
+Species supplies a basic body, the archetype supplies the reviewed
+creature, and the local mobile supplies its exceptions. Recompute all
+individual XOR masks against the resolved template. Old raw values such as
+36, 63, 96, 160, 180, 191 and 314 cannot simply be pasted back after
+adding inheritance. Dimensions are scalar replacements, and special
+selection vectors are not XOR masks. Traits stay internal to species and
+archetypes: there is no new Scribe trait or individual trait override.
+
+The generic demon profile is a living, speaking humanoid with normal
+organs, blood, pain, mind and soul. It resists Fire and Cold and is immune
+to Electricity and Poison. Its sole role is spec_demon. Lesser demon 8806
+uses 180 cm/90 kg/Medium; greater 8810 uses individual 240 cm/250 kg/Large
+and retains its authored magical flight. An unnamed demon does not become
+a Balor or Marilith and gains no invented wings, tail or extra limbs. It
+does not inherit the unrelated fiery_demon's anatomy or fire powers.
+
+revenant_spirit and haunt use humanoid-shaped ghost physiology and the
+existing semi-material phasing/contact rules. They retain minds and souls
+without animal organs, biological blood or ordinary corpses. Local silence
+and other authored effects stay. Their apparent height is 175 cm, Medium,
+with mass unspecified. The priest-spirit 8807 follows its explicit local
+description and portrait rather than the usual book corpse-host. It has
+turn_immunity 1 and holy_water_immunity 1. Haunt 8808 has turn immunity.
+Neither gains a new drain, possession, permanent Dexterity loss or
+killer-terror attack against strangers. Keep their authored passivity.
+
+crypt_thing is a minded, speaking skeletal guardian with claws and normal
+skeletal remains, without animal organs/blood. It is inorganic and ANALGIC
+but not Mindless or Soulless. It has natural armour-7,
+Nonmagic/Charm/Hold/Sleep/Poison/Drain immunity and turn_immunity 1. Its
+183 cm/12 kg/Medium defaults follow a six-foot skeleton with an estimated
+mass. Preserve passive/sentinel behaviour and evil alignment. The book's
+scattering teleport is omitted, keeping this area's routing intact.
+
+lurker_above is a living flat manta/carpet, without a separate head, eyes,
+limbs, tail or wings. Internal gas sacs provide flight. It retains
+internal organs, blood, pain, an animal mind and soul. Natural armour is
+-4, and ordinary contact is blunt. It has no Trapper heat/cold immunity.
+Its 30 cm height is thickness;610 cm length represents its approximately
+twenty-foot span. Mass 300 kg is an estimate. It is Large and HUGE.
+
+The lurker and water weird use body wrapping against their current
+non-HUGE combat opponent. Each routine has a 25 percent attempt, a normal
+Hold save and at most one combat pulse of source-owned Hold. It cannot
+stack or refresh an existing hold. Moving either participant, ending
+combat, death/extraction or curing the hold releases the ownership. No
+extra damage, forced movement, lethal suffocation or drowning timer is
+added. The physical lurker and supernatural water weird share cleanup
+while retaining their appropriate antimagic and contact restrictions.
+Head/eye/arm/tail anatomy is not required for a whole-body wrap. The
+transient wrap and its own Hold bit are not saved with a player; other
+independent Hold providers and persistent effects still save normally.
+
+succubus is a living, speaking winged humanoid with claws and fang
+anatomy. Defaults 183 cm/65 kg/Medium; natural armour-10; Fire,
+Electricity and Poison immunity; Cold, Magic and Nonmagic resistance. Its
+ordinary attack selects claws, without an extra fang attack stream.
+Nonmagic resistance is a softened adaptation of the book weapon barrier,
+and ordinary Magic resistance is not literal 30 percent spell rejection.
+
+spec_succubus_fascination has a 25 percent attempt against the current
+opponent. Normal Charm/Psychic saves, immunity and werewolf protections
+apply. Failure adds one combat pulse of wait, not followers or control.
+Usable eyes/head and normal safety/antimagic checks apply. As with the
+existing vampire-gaze policy, an invisible combat opponent is not rejected
+just because the source cannot see that target. It does not harass idle
+characters or add a kiss/life-drain package. Ordinary Charm's player
+restriction and disabled Domination remain unchanged.
+
+gray_ooze is organic, headless, eyeless, limbless, bloodless and ANALGIC,
+with an animal mind and soul. Defaults 20 cm thickness/244 cm length/120
+kg, Medium. It has natural armour-2, Fire/Cold/Poison immunity and
+ordinary Magic resistance. Existing traits give acid ordinary contact, not
+ranged acid spray. Weapons and electricity are not made immune; an
+electric spell may still include Magic in its normal resistance
+calculation. There is no automatic equipment destruction, splitting or
+psionics.
+
+nightmare is a living horse-shaped fiend, with ordinary organs, blood,
+pain, mind, soul and remains, plus hooves, tail, source-specific wings and
+anatomical fangs. It cannot speak. Defaults 183 cm shoulder height, 270 cm
+length/700 kg/Large, without HUGE. Armour-14 and existing magical Fire
+ordinary-contact traits apply to its hoof attacks. Fangs do not add an
+ordinary attack selector. Retain authored flight and Mountable; no new
+rider-alignment restriction, general fire immunity, smoke cloud or
+gas/fire breath is inferred. The local winged variant is deliberate.
+
+retriever is a living construct, not a mindless inorganic golem. Keep
+organs/blood/pain, mind and soul. It has four walking legs and four bladed
+forelimbs, a usable head/gem eyes and mandibles. Cancel inherited
+NoArms/ManyLegs and use the existing four-leg/many-arm/claw anatomy,
+without inventing fingers, a scorpion tail or stinger. It cannot speak.
+Defaults 366 cm height/450 cm length/2000 kg/Large,HUGE; armour-8;
+ordinary claws and the existing generic fear aura. Normal living-target
+effects, including Charm/Sleep, remain possible; no blanket golem or
+mundane- weapon immunity is added. Source non-Mountable stays despite the
+word steed. Weapon-category-dependent regeneration is deferred.
+
+spec_retriever_rays has a 25 percent attempt and at least three combat
+pulses between attempts. One current-opponent ray is Fire, Cold, Lightning
+or stiffening, with equal selection. Elemental raw damage starts at
+level/2 before normal saves and resistance. Stiffening gives Slow until
+the next tick, without refreshing an existing Slow; it is not permanent
+petrification. Usable eyes/head and appropriate visibility, safety and
+antimagic checks apply. It does not use the unrelated full beholder power
+list or attack bystanders.
+
+cambion is a living humanoid half-fiend, with scales, anatomical fangs,
+normal organs/blood/pain/mind/soul and speech. Defaults 198 cm/100
+kg/Medium; armour-4; Electricity/Poison immunity and Fire/Cold/Magic
+resistance. The local scout retains Hide, senses, Scavenger, WIMPY and no
+caster special. Conditional book wizard abilities do not make every scout
+a wizard. No unsupported wings, tail or noble subtype is added.
+
+orcus_avatar represents the described local twenty-foot corpulent humanoid
+manifestation, with horns/hooves and humanoid arms/hands. It is living,
+minded and souled, with voice and normal organs/blood/pain. Being Prince
+of the Undead does not itself set ACT_UNDEAD. Defaults 610 cm and
+estimated 3000 kg/Large,HUGE. Preserve Boss, psionicist 100, Sentinel,
+WIMPY and nonaggression. Exact second-edition Orcus statistics were not
+verified, so no new god-power immunity/instant-kill/summoning package is
+invented. There are no new ordinary horn/hoof attack selectors.
+
+water_weird is a thinking liquid elemental without separate head, eyes,
+limbs, animal organs, blood or speech. It is inorganic and ANALGIC,
+retaining mind and soul. Defaults 91 cm raised height/305 cm length/250
+kg, Large without HUGE; armour-6; Fire/Pierce/Slash resistance and
+Poison/Drain immunity. Existing traits give water ordinary contact and the
+saved body wrap described above. Keep its well's existing Town terrain.
+Cold-slowing, purify-water destruction, automatic reformation and forced
+drowning are deferred rather than approximated by unrelated flags or
+terrain changes.
+
+kampflut is an organic hungry oak with tentacle branches, walking roots
+and a toothed maw. It has head/arms/legs but no eyes, animal heart or
+guts/blood. It is ANALGIC with mind and soul, without speech. Defaults 600
+cm/4000 kg/Large,HUGE; armour-5 and Fire vulnerability. Ordinary
+fang/tentacle attacks use the existing attack rules and existing
+head-trauma opt-in. spec_tentacle_grip keeps its own 25 percent attempt.
+Preserve neutral alignment and nonaggression. No exact second-edition
+kampflut entry was verified; this is the DD 4 description, using treant
+only as an anatomy/bark/fire analogy. Walking roots support its authored
+wandering rather than adding a new rooted movement restriction.
+
+animated_evil_tree is an organic animated plant with branch arms and
+walking roots/legs, without animal blood/organs; ANALGIC, minded and
+souled, without speech. Defaults 450 cm/2000 kg/Large,HUGE; armour-5, Fire
+vulnerability and ordinary branch-pound contact. Clear the old Inorganic
+outcome. The local tree 8825 changes alignment 0 to-400 because its prose
+explicitly calls it evil, while keeping nonaggression.
+
+tree_spirit is a nonundead feminine wood-and-leaf humanoid manifestation
+matching the portrait. It has head, senses, hands/fingers, branch arms and
+root legs, mind/soul/speech, but no animal organs/blood or normal corpse.
+It is ANALGIC. Apparent height 175 cm/Medium; mass unspecified. Keep
+original Regenerator, invisibility, senses and spec_cast_adept 100. Local
+8826 gains ACT_IS_HEALER so its promised paid healing works. Refuge 8892
+already has NoMob|Safe|Healing|NoUndead: preserve every flag. Its
+safe-rest protection needs no new guard special. It does not acquire
+additional priest or undead-healer services from its creature identity.
+
+The existing death_knight development placeholder is rebuilt for its first
+actual area use:185 cm/140 kg/Medium, without HUGE; natural armour -10,
+ordinary Magic resistance, turn_immunity 1 and the existing generic fear
+aura. Keep Dark resistance, Holy vulnerability and Poison/Sleep/ Drain
+immunity; add Charm/Hold immunity. It is corporeal undead with
+head/limbs/voice, mind/soul and normal remains, without physiological
+heart/guts/blood. It is not Mindless, Inorganic or NoCorpse. Keep the
+existing spec_death_knight 100, without a new spell catalogue, reflection
+or inferred fear immunity. Ordinary Magic resistance is not literal 75
+percent spell rejection. Local 8827 keeps its original Rare rank.
+
+The normal vampire profile gains PART_FANGS anatomy only; its ordinary
+attack selector, specials and player abilities stay unchanged. Ten earlier
+converted dependants have no raw fang override that cancels it. Keep their
+other individual exceptions. This change does not add fangs to an
+unrelated player form or change vampire-bat dimensions.
+
+Reuse established spectre/wraith/wight/ghost/lich/dracolich/zombie/rat/
+spider/plant/slime mechanics for the remaining mobiles. Shambling 8812
+uses a corporeal zombie interpretation; its generic spirit paragraph is
+also used by the corporeal wight. Preserve spec_cast_undead 100 and cancel
+inherited Mindless individually, as in earlier intelligent zombies.
+Rotting corpse 8818 remains the normal mindless zombie.
+
+Keep all authored singleton roles: vampire brothers 8804 master-vampire,
+Baron 8834 ordinary vampire, lich 8805 archmage, demons demon, Master 8819
+mage, Orcus 8831 psionicist and tree spirit adept. Dragon 8811 retains its
+gas breath through spec_breath_gas_anatomical 100, rather than silently
+switching to generic 70/30 dracolich/mixed breath. Its shared passive
+defences/anatomy/fear still inherit. Venomous spider 8814 changes generic
+Poison to existing anatomical Poison Bite. Spider 8833 keeps no venom
+special, WIMPY and nonaggression. Xantharus 8817 remains human and gains
+individual mage 100 to match his explicitly described mage role.
+
+The giant rat and both spiders explicitly stand ten feet high: individual
+305 cm height, with respective 600 cm/3000 kg and 500 cm/1000 kg estimated
+length/mass. They are Large and HUGE. Shambling mound 8820 explicitly
+stands twelve feet high:366 cm/1500 kg/Large,HUGE. Dracolich 8811 uses
+estimated 300 cm height/1200 cm length/1500 kg/Large,HUGE. Black pudding
+8822 keeps its individual HUGE in addition to the established Large
+defaults. All other dimensions follow the resolved profiles or documented
+individual estimates. Measurements remain descriptive whole units;
+unspecified mass does not mean zero physical mass and rank does not
+determine size.
+
+Only two new rank promotions occur: lich 8805 Rare and dragon 8811 Elite.
+Preserve Master 8819 Elite, knight 8827 Rare, Orcus 8831 Boss and Baron
+8834 Elite. The remaining 29 definitions stay Common. Rank HP multipliers
+apply once: Rare 2x,Elite 5x,Boss 7x. HP dice letters and book rarity are
+not ranks.
+
+Chest 8806 uses the Master's actual key 8820 instead of missing object
+8120. Container flags change 8 to 13, retaining Locked and adding
+Closeable and Closed without Pickproof. This matters because item
+retrieval tests the Closed flag. Preserve the hoard 8805 contents/reset
+and original loot. Unholy Symbol 8817 remains its permanent Light item;
+its equipment reset changes HOLD 17 to LIGHT 0. Holy Symbol 8818 stays its
+authored magical light, without an unrelated holy-focus/priest-service
+redesign.
+
+Correct sex 0 to male 1 for 8804,8805,8807,8808,8827,8831 and 8834,
+matching explicit local prose and inspected portraits. Keep every other
+sex, all levels and all alignments except evil tree 8825. Correct the
+lich's he as returned and the lurker's abberration typos, without renaming
+media subjects. Preserve aggression/passivity, WIMPY, Sentinel, movement,
+magical senses and all other authored behaviour. Keep intentional local
+NoSpeech/NoCorpse outcomes on spirits, wight and Baron. Tree healer 8826
+is the explicitly supported speech correction.
+
+All 100 room flags/sectors/exits/door routing and ward 8892 are unchanged.
+Keep all placements, reset caps/order and original objects except the
+approved chest fields and one Light equipment slot. Initial population is
+44 with 23 carried objects; three refills produce 62/23. There is no
+matching .src, shop, teacher or mob program. The four real Scribe exports
+elsewhere, including exact Eakos regeneration, remain unchanged.
+
+All 35 portrait and 100 room-image filenames match current dd-gui rules.
+Regenerate only lurker 8815 as a flat limbless ceiling manta/carpet and
+retriever 8829 with four walking legs/four bladed forelimbs and no
+scorpion tail/stinger. Keep the priest-spirit revenant and feminine tree
+spirit portraits. Image generation into staging and live publication are
+separate from applying this source patch.

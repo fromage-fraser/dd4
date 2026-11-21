@@ -1190,32 +1190,17 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "death_knight", "humanoid", "icon1", "icon2",
-
-                /* Intelligent corporeal undead. */
-                ACT_UNDEAD, 0,
-
-                0,
-                0,
-
-                RES_DARK,
-                RES_HOLY,
-                RES_POISON | RES_SLEEP | RES_DRAIN,
-
+                /* The knight keeps his mind and voice, without living circulation. */
+                ACT_UNDEAD | ACT_FEAR_AURA, 0,
+                BODY_NO_HEART | BODY_BLOODLESS | PART_HEART | PART_BRAINS | PART_GUTS,
+                0, RES_DARK | RES_MAGIC, RES_HOLY,
+                RES_POISON | RES_SLEEP | RES_DRAIN | RES_CHARM | RES_HOLD,
                 0, 0, 0, 0,
-
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-
-                /* Martial/spell behaviour comes separately. */
-                "spec_death_knight", "", "",
-
-                0,
-                MOB_SPECIAL_CHANCES_AUTO,
-                MOB_TEMPLATE_UNSET,
-                CREATURE_FAMILY_NONE,
-                MOB_TEMPLATE_UNSET
+                185, 140, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_death_knight", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         },
-        VAMPIRE_ARCHETYPE("vampire", "humanoid", 0, 0, 0,
+        VAMPIRE_ARCHETYPE("vampire", "humanoid", 0, PART_FANGS, 0,
             CHAR_SIZE_MEDIUM, 175, 75, MOB_TEMPLATE_UNSET),
         {
                 "lich", "humanoid", "icon1", "icon2",
@@ -4414,6 +4399,157 @@ const struct mob_type mob_table[MAX_MOB] =
                 170, 700, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 260
+        },
+        /* Ghost Town gives these bodies their first proper profiles. */
+        {
+                "demon", "humanoid", "icon1", "icon2",
+                0, 0,
+                0,
+                0, RES_FIRE | RES_COLD, 0, RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                180, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_demon", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "revenant_spirit", "humanoid", "icon1", "icon2",
+                ACT_UNDEAD, 0,
+                BODY_NO_HEART | BODY_NO_CORPSE | BODY_INORGANIC | PART_HEART | PART_BRAINS | PART_GUTS,
+                0, 0, 0, RES_NONMAGIC,
+                0, 0, 0, 0,
+                175, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_SEMI_MATERIAL, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "haunt", "humanoid", "icon1", "icon2",
+                ACT_UNDEAD, 0,
+                BODY_NO_HEART | BODY_NO_CORPSE | BODY_INORGANIC | PART_HEART | PART_BRAINS | PART_GUTS,
+                0, 0, 0, RES_NONMAGIC,
+                0, 0, 0, 0,
+                175, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_SEMI_MATERIAL, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "crypt_thing", "humanoid", "icon1", "icon2",
+                ACT_UNDEAD, 0,
+                BODY_NO_HEART | BODY_INORGANIC | PART_HEART | PART_BRAINS | PART_GUTS | PART_CLAWS | BODY_BLOODLESS | BODY_ANALGIC,
+                PART_CLAWS, 0, 0, RES_POISON | RES_DRAIN | RES_SLEEP | RES_CHARM | RES_HOLD | RES_NONMAGIC,
+                0, 0, 0, 0,
+                183, 12, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "lurker_above", "limbless_invertebrate", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_HUGE | PART_HEAD | PART_EYE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                30, 300, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_lurker_wrap", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 610
+        },
+        {
+                "succubus", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS, RES_COLD | RES_NONMAGIC | RES_MAGIC, 0, RES_FIRE | RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                183, 65, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_succubus_fascination", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "gray_ooze", "amorphous_organism", "icon1", "icon2",
+                0, 0,
+                BODY_ANALGIC,
+                0, RES_MAGIC, 0, RES_FIRE | RES_COLD | RES_POISON,
+                0, 0, 0, 0,
+                20, 120, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 244
+        },
+        {
+                "nightmare", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_TAIL | PART_FANGS | PART_HOOVES,
+                PART_HOOVES, 0, 0, 0,
+                0, 0, 0, 0,
+                183, 700, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 270
+        },
+        {
+                "retriever", "arachnid", "icon1", "icon2",
+                ACT_FEAR_AURA, 0,
+                BODY_NO_ARMS | BODY_HUGE | PART_ARMS | PART_MANY_ARMS | PART_4_LEGS | PART_MANY_LEGS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS, 0, 0, 0,
+                0, 0, 0, 0,
+                366, 2000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_retriever_rays", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 450
+        },
+        {
+                "cambion", "humanoid", "icon1", "icon2",
+                0, 0,
+                PART_SCALES | PART_FANGS,
+                0, RES_FIRE | RES_COLD | RES_MAGIC, 0, RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                198, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "orcus_avatar", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_HORNS | PART_HOOVES,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                610, 3000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "water_weird", "elemental_being", "icon1", "icon2",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_SPEECH | BODY_BLOODLESS | BODY_ANALGIC,
+                0, RES_FIRE | RES_PIERCE | RES_SLASH, 0, RES_POISON | RES_DRAIN,
+                0, 0, 0, 0,
+                91, 250, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_water_weird_wrap", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 305
+        },
+        {
+                "kampflut", "plant", "icon1", "icon2",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_ARMS | BODY_NO_LEGS | BODY_HUGE | PART_HEAD | PART_ARMS | PART_2_LEGS | PART_FEET | PART_TENTACLES | PART_FANGS,
+                PART_TENTACLES | PART_FANGS, 0, RES_FIRE, 0,
+                0, 0, 0, 0,
+                600, 4000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_tentacle_grip", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "animated_evil_tree", "plant", "icon1", "icon2",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_LEGS | BODY_HUGE | PART_ARMS | PART_2_LEGS | PART_FEET,
+                0, 0, RES_FIRE, 0,
+                0, 0, 0, 0,
+                450, 2000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "tree_spirit", "plant", "icon1", "icon2",
+                0, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_SPEECH | BODY_NO_CORPSE | PART_HEAD | PART_ARMS | PART_2_LEGS | PART_HANDS | PART_FEET | PART_FINGERS | PART_EAR | PART_EYE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                175, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_cast_adept", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -5657,6 +5793,74 @@ static const CREATURE_TRAIT_CHANGE pegasus_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
 };
 
+static const CREATURE_TRAIT_CHANGE revenant_spirit_trait_changes[] =
+{
+        {CREATURE_TRAIT_TURN_IMMUNITY, 1},
+        {CREATURE_TRAIT_HOLY_WATER_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE haunt_trait_changes[] =
+{
+        {CREATURE_TRAIT_TURN_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE crypt_thing_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7},
+        {CREATURE_TRAIT_TURN_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE lurker_above_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_BLUNT}
+};
+static const CREATURE_TRAIT_CHANGE succubus_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
+};
+static const CREATURE_TRAIT_CHANGE gray_ooze_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -2},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_ACID}
+};
+static const CREATURE_TRAIT_CHANGE nightmare_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -14},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_FIRE},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE retriever_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8}
+};
+static const CREATURE_TRAIT_CHANGE cambion_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE water_weird_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_WATER},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE kampflut_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE animated_evil_tree_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 7},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_BLUNT}
+};
+static const CREATURE_TRAIT_CHANGE death_knight_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_TURN_IMMUNITY, 1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -5664,6 +5868,19 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"revenant_spirit", NULL, revenant_spirit_trait_changes, TRAIT_ITEMS(revenant_spirit_trait_changes)},
+        {"haunt", NULL, haunt_trait_changes, TRAIT_ITEMS(haunt_trait_changes)},
+        {"crypt_thing", NULL, crypt_thing_trait_changes, TRAIT_ITEMS(crypt_thing_trait_changes)},
+        {"lurker_above", NULL, lurker_above_trait_changes, TRAIT_ITEMS(lurker_above_trait_changes)},
+        {"succubus", NULL, succubus_trait_changes, TRAIT_ITEMS(succubus_trait_changes)},
+        {"gray_ooze", NULL, gray_ooze_trait_changes, TRAIT_ITEMS(gray_ooze_trait_changes)},
+        {"nightmare", NULL, nightmare_trait_changes, TRAIT_ITEMS(nightmare_trait_changes)},
+        {"retriever", NULL, retriever_trait_changes, TRAIT_ITEMS(retriever_trait_changes)},
+        {"cambion", NULL, cambion_trait_changes, TRAIT_ITEMS(cambion_trait_changes)},
+        {"water_weird", NULL, water_weird_trait_changes, TRAIT_ITEMS(water_weird_trait_changes)},
+        {"kampflut", NULL, kampflut_trait_changes, TRAIT_ITEMS(kampflut_trait_changes)},
+        {"animated_evil_tree", NULL, animated_evil_tree_trait_changes, TRAIT_ITEMS(animated_evil_tree_trait_changes)},
+        {"death_knight", NULL, death_knight_trait_changes, TRAIT_ITEMS(death_knight_trait_changes)},
         {"golden_handmaid", NULL, golden_handmaid_trait_changes, TRAIT_ITEMS(golden_handmaid_trait_changes)},
         {"chimera", NULL, chimera_trait_changes, TRAIT_ITEMS(chimera_trait_changes)},
         {"pegasus", NULL, pegasus_trait_changes, TRAIT_ITEMS(pegasus_trait_changes)},

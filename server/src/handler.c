@@ -1388,6 +1388,18 @@ void affect_remove( CHAR_DATA *ch, AFFECT_DATA *paf )
         if (paf->deleted)
                 return;
 
+        /* A cure/dispel owns this affect, not the victim's own prey. */
+        if (ch->body_wrap_affect == paf)
+        {
+                CHAR_DATA *source = ch->body_wrap_source;
+                if (source && source->target_id == ch->body_wrap_source_id
+                && source->body_wrap_target == ch)
+                        source->body_wrap_target = NULL;
+                ch->body_wrap_affect = NULL;
+                ch->body_wrap_source = NULL;
+                ch->body_wrap_source_id = 0;
+                ch->body_wrap_pulses = 0;
+        }
         was_charmed = IS_AFFECTED(ch, AFF_CHARM) != 0;
         affect_modify( ch, paf, FALSE, NULL );
 
@@ -1724,10 +1736,46 @@ static bool char_is_in_room_list(const CHAR_DATA *ch)
 /*
  * Move a char out of a room.
  */
+/* Remove only the new wrap, leaving every other Hold provider intact. */
+void clear_body_wrap(CHAR_DATA *victim)
+{
+        AFFECT_DATA *af;
+        CHAR_DATA *source;
+
+        if (!victim || !(af = victim->body_wrap_affect))
+                return;
+        source = victim->body_wrap_source;
+        if (source && source->target_id == victim->body_wrap_source_id
+        && source->body_wrap_target == victim)
+                source->body_wrap_target = NULL;
+        victim->body_wrap_affect = NULL;
+        victim->body_wrap_source = NULL;
+        victim->body_wrap_source_id = 0;
+        victim->body_wrap_pulses = 0;
+        if (!af->deleted)
+                affect_remove(victim, af);
+}
+
+/* Invalidate callbacks even if someone leaves and returns at once. */
+void release_body_wraps(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+        if (!ch)
+                return;
+        ++ch->bounded_power_generation;
+        victim = ch->body_wrap_target;
+        ch->body_wrap_target = NULL;
+        if (victim && victim->body_wrap_source == ch
+        && victim->body_wrap_source_id == ch->target_id)
+                clear_body_wrap(victim);
+        clear_body_wrap(ch);
+}
+
 void char_from_room( CHAR_DATA *ch )
 {
         OBJ_DATA *obj;
 
+        release_body_wraps(ch);
         clear_rescue_retaliation(ch);
         clear_fall_source(ch);
 
@@ -2716,6 +2764,7 @@ void extract_char( CHAR_DATA *ch, bool fPull )
         OBJ_DATA  *obj_next;
         extern bool delete_char;
 
+        release_body_wraps(ch);
         clear_rescue_retaliation(ch);
         invalidate_fall_source(ch);
         release_creature_grips(ch);
