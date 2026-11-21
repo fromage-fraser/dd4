@@ -20,8 +20,13 @@ flesh for breakfast and is strongly intent on having the same for dinner.
 ~
 64 32768 -250 S
 12 9 -2 12d12+120 2d6+5
-63 4000
+32|128 4000
 5 5 0
+< mud_elemental~ common~
+MobHeight 250
+MobWeight 600
+MobLength 0
+MobSize 2
 #7001
 bat~
 the small bat~
@@ -31,10 +36,12 @@ You have never in your entire life seen such a mean looking small creature,
 though it looks rather peaceful, hanging there. The thought of arousing this
 cruel creature doesn't seem appealing.
 ~
-96 32768 -500 S
+32|64 32768 -500 S
 1 20 4 5d2+6 1d5+0
-32 20
+0 20
 4 4 0
+< bat~ common~
+MobLength 10
 #7002
 rat~
 the great sewer rat~
@@ -43,8 +50,9 @@ The huge hungry-looking sewer rat sits here.
 ~
 32 512 -1000 S
 5 16 5 5d5+50 2d4+0
-36 600
+0 600
 8 8 1
+< giant_rat~ common~
 #7003
 spider~
 the small spider~
@@ -53,8 +61,12 @@ The small hairy spider.
 ~
 32 32768 -700 S
 1 20 3 1d12+8 1d4+0
-52 100
+0 100
 8 8 1
+< web_spider~ common~
+MobHeight 2
+MobWeight 0
+MobLength 8
 #7004
 beetle~
 the giant earth beetle~
@@ -63,8 +75,9 @@ The giant mean-looking earth beetle crawls towards you.
 ~
 0 512 -300 S
 8 13 3 8d8+80 2d5+1
-52 2000
+0 2000
 8 8 1
+< giant_ground_beetle~ common~
 #7005
 maggot~
 the maggot~
@@ -73,18 +86,20 @@ The giant maggot crawls toward you.
 ~
 0 512 300 S
 3 17 9 2d5+35 1d7+0
-63 350
+0 350
 8 8 1
+< giant_maggot~ common~
 #7006
 snake~
 the slithering snake~
 The snake slithers towards you.
 ~
 ~
-33 512 -500 S
+1|32 512 -500 S
 4 16 7 4d4+40 1d9+0
-52 500
+0 500
 8 8 0
+< snake~ common~
 #7007
 wanderer~
 the evil wanderer~
@@ -92,10 +107,12 @@ The evil wanderer stares at you.
 ~
 The evil wanderer is very thin.  He is dressed in a grey cloak.
 ~
-132 512 -1000 S
+4|128 512 -1000 S
 10 11 2 10d10+100 2d6+1
 0 2500
 8 8 1
+< human~ common~
+MobWeight 55
 #7008
 homonculus homo~
 the homonculus~
@@ -105,10 +122,11 @@ The Homonculus appears in a man-like form, about 18'' tall, it has a
 greenish, reptilian skin, leathery wings, and a bat-like mouth, with
 teeth gleaming yellow.
 ~
-0 520 -780 S
+0 8|512 -780 S
 11 10 -1 11d11+110 2d6+2
 0 3500
 8 8 0
+< homunculus~ common~
 #7010
 chreffn~
 the evil chreffn~
@@ -117,10 +135,11 @@ The chreffn are crawling here, looking around with their yellow eyes.
 The head and torso of a chreffn is copper-covered, with yellow,
 glowing eyes. The lower body is in an orange shading.
 ~
-132 32776 -830 S
+4|128 8|32768 -830 S
 12 9 2 2d26+148 2d7+1
 0 5000
 8 8 0
+< chreffn~ common~
 #7011
 morkoth shadowy~
 the shadowy morkoth~
@@ -130,10 +149,11 @@ It's a five-foot-tall shadow monster. The appearance of this creature lies
 somewhere between that of a human and a rat. It breathes very heavily, while
 staring at you with a look in its eyes that suggest immense hunger.
 ~
-160 512 -900 S
+32|128 512 -900 S
 10 11 0 10d10+100 2d6+2
 32 3000
 8 8 0
+< ratfolk~ common~
 #7013
 mud monster mudmonster~
 the horrifying mudmonster~
@@ -143,23 +163,29 @@ It looks like something out of a horror movie. It strongly resembles a huge
 humanoid figure made up from mud alone.  It had human flesh for breakfast and is
 strongly intent on having the same for dinner.
 ~
-96 32768 -250 S
+32|64 32768 -250 S
 12 9 -2 12d12+120 2d6+5
-63 8000
+32|128 8000
 5 5 0
+< mud_elemental~ common~
+MobHeight 250
+MobWeight 600
+MobLength 0
+MobSize 2
 #7040
 red dragon~
 the red dragon~
 The red fierce-looking dragon stares at you angrily.
 ~
 The red dragon stares at you, angrily, as it wakes when you
-arrives.  It says 'Oh, human YOU woke me up ... Hsss', while
+arrive.  It says 'Oh, human YOU woke me up ... Hsss', while
 it moves closer.  'Can one NEVER sleep in peace ... Hsss'.
 ~
-1|2|32|16384 520 -1000 S
+1|2|32|16384 8|512 -1000 S
 30 -10 -10 30e30+300 3d4+30
 0 450000
 8 8 0
+< small_red_dragon~ boss~
 #7041
 sea hag~
 the sea hag~
@@ -173,33 +199,36 @@ beauty.
 14 7 1 1d8+172 2d8+1
 0 18000
 8 8 2
+< sea_hag~ common~
 #7042
 guardian naga~
 the guardian naga~
 The guardian naga looks kindly at you.
 ~
-The naga are a snake-liked creature. She is covered in green-gold
-scale with silvery triangles along her back. Her eyes are golden.
-She notice that you look at her, and she says: 'Watch out. This way
+The naga is a snake-like creature. She is covered in green-gold
+scales with silvery triangles along her back. Her eyes are golden.
+She notices that you look at her, and she says: 'Watch out. This way
 leads to some evil creatures'.
 ~
 2 512 700 S
 12 9 2 1d18+148 2d7+1
 0 13500
 8 8 2
+< guardian_naga~ common~
 #7043
 basilisk~
 the scaled basilisk~
 The scaled basilisk crawls towards you slowly.
 ~
-The basilisk is a reptilian monster. It has eight legs, and a strong
+The basilisk is a reptilian monster. It has eight legs and strong
 toothy jaws. It is dull brown with yellowish underbelly. Its eyes are
 glowing pale green.
 ~
-36 520 -250 S
+4|32 8|512 -250 S
 13 11 0 1d12+160 2d7+2
-36 16000
+0 16000
 8 8 1
+< basilisk~ common~
 #7044
 lemure blob~
 the lemure blob~
@@ -207,13 +236,14 @@ The lemure blob slithers terribly precisely towards you for an attack!
 ~
 This looks like a vaguely human blob. Big black yellow eyes, and a
 mouth going a little bit out from the face. The lemure does not look
-interested in you at all, but anyway it attacks. It looks like it's
+interested in you at all, but anyway it attacks. It looks like its
 mind has been burned out.
 ~
 32 32768 -500 S
 5 16 6 3d5+57 2d4+0
-60 1000
+0 1000
 8 8 0
+< lemure~ common~
 #7045
 jones cruncher ettin~
 Jones~
@@ -223,23 +253,25 @@ At the first sight you thought Jones was an orc, but when it came
 closer you saw his second head. He wears an animal skin dress,
 filthy and moth eaten. Jones really stinks...
 ~
-36 512 -480 S
+4|32 0 -480 S
 10 11 2 10d10+100 2d6+4
 0 4000
 5 5 1
+< ettin~ common~
 #7046
 herald mouse killer ettin~
 Herald~
 Herald 'Mouse-Killer' the ettin is standing here looking confused.
 ~
-When you look at Herald, you feel pity. His dress are really poor,
-and the one of his heads hangs down. At the rope around his stomach
-hangs dead mouses and rats. He does not smell good.
+When you look at Herald, you feel pity. His clothes are really poor,
+and one of his heads hangs down. From the rope around his stomach
+hang dead mice and rats. He does not smell good.
 ~
-4 512 +200 S
+4 0 +200 S
 6 14 4 6d6+60 1d8+0
 0 1000
 5 5 1
+< ettin~ common~
 #7200
 master mind mindflayer~
 the master mindflayer~
@@ -249,10 +281,13 @@ It's a seven foot tall humanoid dressed in a purple cloak, and swinging a
 black and purple rod above its head as if it was going to attack you any
 moment now. In the middle of its head are four tentacles with sharp points.
 ~
-37 520 -800 S
+1|4|32 8 -800 S
 14 7 0 14d14+140 3d4+4
 0 18000
 8 8 0
+< mind_flayer~ elite~
+MobHeight 213
+MobWeight 85
 #7201
 senior mind mindflayer~
 the senior mindflayer~
@@ -262,10 +297,13 @@ This is a horrifying monster indeed, 6'6" high. Dressed in purple and black,
 and carrying a large mace in its hand. In the center of its head are four large
 tentacles with very sharp points.
 ~
-37 520 -600 S
+1|4|32 8 -600 S
 8 13 2 8d8+80 2d4+3
 0 3000
 8 8 0
+< mind_flayer~ rare~
+MobHeight 198
+MobWeight 75
 #7202
 junior mind mindflayer~
 the junior mindflayer~
@@ -275,10 +313,11 @@ This mindflayer is six foot high. It has a small mace in its belt, and is
 dressed in purple and black cloth. It has four small tentacles in the
 center of its head.
 ~
-37 520 -350 S
+1|4|32 8 -350 S
 6 15 4 6d6+60 1d4+3
 0 1500
 8 8 0
+< mind_flayer~ common~
 #7203
 wererat rat were~
 the ugly wererat~
@@ -287,10 +326,14 @@ An ugly wererat is here, looking at you with a strange flicker in his eyes.
 The wererat is about four foot tall. It looks very much like rat, except
 that it is standing.
 ~
-100 512 -700 S
+4|32|64 512 -700 S
 6 15 3 4d6+69 2d4+2
 0 1200
-8 8 0
+8 8 1
+< wererat~ common~
+MobHeight 122
+MobWeight 35
+MobSize 0
 #7204
 rat gigantic~
 the gigantic rat~
@@ -299,10 +342,15 @@ There is a gigantic rat here, looking at you hungrily.
 The gigantic rat is about ten foot long from head to tail and has claws
 the size of your head looking very nasty.
 ~
-34 512 -800 S
+2|32 512 -800 S
 12 9 -2 12d12+120 2d6+2
-0 10000
+128 10000
 4 8 1
+< giant_rat~ common~
+MobHeight 80
+MobWeight 100
+MobLength 305
+MobSize 2
 #0
 
 
@@ -483,8 +531,8 @@ claw red redclaw~
 a red dragon claw~
 On the floor rests an enormous red claw.~
 ~
-5 64|512 8193
-0~ 4~ 4~ 5~
+5 64|512|67108864 8193
+4~ 4~ 4~ 5~
 19 1800 900
 T
 bone/dragonscale~
@@ -717,7 +765,7 @@ claws dragonclaws red~
 a pair of red dragon claws~
 You can see a pair of large red dragon claws on the floor.~
 ~
-12 64|512 129
+9 64|512 129
 9~ 0~ 0~ 0~
 4 900 1000
 A
@@ -4778,8 +4826,8 @@ E 1 7305 99 7           Equip Red Legs on Red
 E 1 7306 99 9           Equip Red Claws (Hands) on Red
 E 1 7307 99 6           Equip Red Skull on Red
 E 1 7308 99 11          Equip Red Shield on Red
-E 1 7309 99 10          Equip Red Arms on Red
-E 1 7310 99 8           Equip Red Rear Claws (Feet) on Red
+E 1 7309 99 8          Equip Red Arms on Red
+E 1 7310 99 10           Equip Red Rear Claws (Feet) on Red
 E 1 7216 99 16          Equip Red Dragon Claw Weapon on Red
 E 1 7303 99 17          Equip Red DragonOrb on Red
 M 0 7041 2 7444          Load The Sea Hag
@@ -4800,17 +4848,19 @@ S
 
 
 #SPECIALS
-M  7006 spec_poison
-M  7040 spec_breath_fire
+M  7006 spec_poison_bite
+M  7040 spec_breath_fire_anatomical
 M  7041 spec_cast_undead
 M  7042 spec_cast_cleric
-M  7043 spec_breath_any
+N  7042 2 spec_poison_bite
+P  7042 50 50 0
+M  7043 spec_basilisk_stiffening_gaze
 *
 M  7200 spec_cast_mage
 M  7201 spec_cast_mage
 M  7202 spec_cast_mage
-M  7203 spec_poison
-M  7204 spec_poison
+M  7203 spec_poison_bite
+M  7204 spec_poison_bite
 S
 
 

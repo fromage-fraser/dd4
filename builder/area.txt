@@ -11931,3 +11931,210 @@ All 100 portrait/room filenames match current dd-gui. Repaint only fire
 blast 1919 as impersonal furnace flames, without a monster face/body.
 Staging image generation and live publication are separate from this
 source patch.
+
+
+The Sewer
+---------
+
+The catalogue now has 350 archetypes, 38 body species, 51 internal traits,
+137 Scribe special names and 637 skill rows. The new body is
+multipedal_reptile, index 37. It represents a living reptile with more
+than four legs, using the existing ManyLegs flag. An eight-legged basilisk
+is neither an arachnid nor a quadruped. No new body-part flag or area
+field is needed. All earlier indices and player trait choices stay
+unchanged.
+
+Nine profiles append at 341-349: giant_ground_beetle, giant_maggot,
+homunculus, chreffn, sea_hag, guardian_naga, basilisk, lemure and ettin.
+They have zero HP, damage, critical, haste and profile XP modifiers. The
+two new routines also have explicit special XP bonuses of zero, rather
+than falling through to the legacy default. Rank remains an individual
+encounter decision and its HP multiplier applies once.
+
+Use species for the basic body, the archetype for the creature's shared
+defaults, and the individual mobile for local differences. Recompute every
+XOR operand against the final inherited flags. Old raw 36/52/60/63 are not
+complete modern anatomy definitions. A zero local mask means inherit
+unchanged, not no organs. Dimensions are scalar replacements; local length
+0 can deliberately clear an inherited length to unspecified. Traits stay
+internal to species and archetypes, with no individual trait field or
+Scribe trait command.
+
+giant_ground_beetle uses insect with six walking legs, mandibles,
+head/eyes/normal organs, mind and soul. Its fang selector represents
+mandibular contact, with the existing head-trauma gate. Natural armour-4;
+40 cm height/100 cm length/15 kg/Small are local design estimates. It
+gains no rhinoceros horn, venom or extra special.
+
+giant_maggot uses limbless_invertebrate with a reduced head/mouth and
+normal living organs, but no eyes, arms, legs or speech. Keep blood, mind,
+soul and pain sensitivity.25 cm height/100 cm length/8 kg/Small are
+estimates. Ordinary contact stays; there is no new poison, swallow or
+immunity package. Eyeless follows the local authored NoEyes setting.
+
+homunculus is a living manufactured humanoid, not an inorganic golem. It
+has wings/fangs/hands, normal organs, blood, pain, mind and soul, without
+speech. Height 46 cm rounds the local 18in;2 kg/Small are estimates. It
+flies, has natural armour-4 and ordinary fang attacks with the existing
+head-trauma gate. No creator binding, owner field, shared death damage,
+resurrection or generic construct immunities are added.
+
+spec_homunculus_sleep_bite has a 25percent attempt against its current
+combat opponent. It needs usable head/configured fangs and a reachable,
+poison-susceptible body. Normal Poison/Sleep saves, immunities and
+inferred eligibility apply. It adds no HP damage. Failure applies the
+existing Sleep condition with duration 0: the venom's restriction expires
+at the next ordinary affect tick, after which normal waking is possible.
+It never refreshes existing Sleep. Normal forced sleep, dismount/fall,
+combat stopping, waking and damage rules remain. Physical venom needs
+neither speech nor sight and can work in a no-magic area; it is not an
+extra spell cast. No long-duration helplessness or new disease is added.
+
+chreffn uses a conservative living humanoid body under copper-like
+covering, with organs/blood/pain/mind/soul/voice. Natural armour-2 and 150
+cm/50 kg/Medium are design choices. The local identity is not securely
+identified in a monster book. Copper colouring or armour does not
+establish a solid-metal golem, absent soul or elemental immunity. No new
+claw attack selector or special is inferred from the portrait.
+
+sea_hag is a living speaking aquatic humanoid with claws and the local
+fang/horn anatomy.165 cm/55 kg/Medium are estimates. Natural armour-3,
+ordinary Magic resistance, Swim and the existing fear aura are bounded
+adaptations. Ordinary claws follow general hag anatomy; fang/horn bits
+alone add no extra bite/gore. Local 7041 keeps its authored
+spec_cast_undead 100 but gains no ACT_UNDEAD. No instant-death glance,
+multiday paralysis, Strength drain, covey or night-hag immunity package.
+
+guardian_naga uses serpentine_reptile, cancelling inherited NoSpeech for
+the speaking human-headed serpent. It keeps living head/eyes/organs,
+blood/mind/soul, scales/tail/fangs, without arms or legs. Length 610 cm
+rounds 20ft; raised height 100 cm/180 kg/Large,HUGE are
+estimates/adaptations. Natural armour-7; no automatic Magic or Poison
+immunity. Its two roles are cleric 50/poison-bite 50, using existing
+slots/chances rather than overwriting either role. This is not an extra
+action or guaranteed activation. Preserve kindly Sentinel and local
+sex/alignment/Infrared. No ranged venom spit, persistent coil timer or
+invented spellcasting arms.
+
+basilisk uses multipedal_reptile with eight legs, normal living reptilian
+organs, eyes/scales/tail, NoArms/NoSpeech and ordinary fang attacks with
+the existing head-trauma gate. Natural armour-6. Length 213 cm rounds 7ft;
+height 45 cm/90 kg/Medium are estimates. It is not HUGE. The identified
+ordinary basilisk does not inherit greater-basilisk poison or random
+dragon breath. Local 7043 replaces spec_breath_any with the new gaze.
+
+spec_basilisk_stiffening_gaze has a 25percent attempt against one current
+fleshy/organic combat opponent. Both actors need usable physical eyes;
+source blindness/head/eye trauma and target blindness/eye trauma prevent
+it. The viewer must see the source's eyes, while an invisible viewer is
+not rejected merely because the source cannot see it. Normal Magic/Hold
+saves/resistance, antimagic and safety apply. Failure adds ordinary Slow
+with duration 0 and-1Dexterity until the next affect tick. It cannot stack
+or refresh existing Slow. Normal Slow cures remain. No damage, permanent
+petrification, item conversion, stat loss, idle victims or instant death.
+Mindlessness or ANALGIC alone does not protect against physical
+stiffening.
+
+Both new routines reuse the existing bounded-action identity/generation
+and reentry guards. Messages, saves, combat changes, movement, death,
+extraction and ordered-player context must not redirect an old attempt
+onto a replacement actor or opponent. Neither adds an extra normal attack
+stream, and neither needs ordinary speech. The physical bite and
+supernatural gaze keep their different contact/magic restrictions.
+
+lemure is organic devil flesh with a usable face/eyes and clawed arms,
+without a normal heart, walking legs or speech. It is Mindless but still
+souled, and is neither undead nor inorganic. Keep blood; no explicit
+Bloodless or ANALGIC is added. Existing Mindless inference nevertheless
+makes pain effects ineffective. Natural armour-3, Fire/Poison immunity,
+Cold resistance and ordinary Regenerator are adaptations.152 cm follows
+five feet;75 kg/Medium is estimated. No regeneration from ashes, holy-only
+permanent death, general devil spell list or extra attacks.
+
+ettin is a living speaking two-headed humanoid giant with normal
+organs/blood/pain/mind/soul and the giant family. It has Infrared, natural
+armour-7 and HUGE.396 cm rounds 13ft;1100 kg/Large are estimates. Both
+Jones 7045 and Herald 7046 use the same adult defaults. Poor clothes or a
+drooping head do not establish a juvenile or permanent trauma. ManyHead
+still uses the single existing head injury group; it adds no attack,
+independent head health, surprise immunity or rock throwing. Keep Jones
+aggressive and Herald passive.
+
+Mudmonsters 7000/7013 reuse mud_elemental with individual 250 cm/600 kg/
+Large,HUGE, NoSpeech and unspecified length 0. Keep minded/souled mud,
+Bloodless/Analgic/Inorganic/NoCorpse, existing magical blunt contact,
+Nonmagic resistance and Poison/Sleep/Drain immunity. This identifies mud
+substance, not a forced planar biography.7000 stays passive and 7013
+aggressive; both keep Sneak. Do not substitute a plant shambling mound.
+
+Bat 7001 keeps 10 cm length with mass unspecified; spider 7003 uses 2 cm
+height/8 cm length/unknown mass instead of web_spider's larger defaults.
+Neither gains venom. Rat 7002 reuses giant_rat 30 cm/8 kg/60 cm/Small,
+keeping its ring 7190 reset. Wanderer 7007 stays a thin human 175 cm/55
+kg/Medium. Local morkoth 7011 reuses ratfolk 152 cm/45 kg/Medium with
+NoSpeech: its human-rat shadow appearance is not an aquatic
+beaked/tentacled morkoth, undead spirit, incorporeality or new hypnotic
+power. Preserve aggression and WIMPY. Names alone never supply anatomy or
+a spell catalogue.
+
+Red dragon 7040 reuses small_red_dragon 150 cm shoulder/610 cm total/500
+kg/ Large,HUGE, with Fire immunity, armour-10, ordinary claws/fangs and
+anatomical fire 100. Those measurements are explicit reuse-first design
+estimates, not recovered Sewer facts or an exact age. Keep its wings/
+flight and original fire-only role. Do not copy Astral 1918's local Flying
+cancellation or 50/50mage exception, or infer adult fear/Magic
+resistance/tail attacks/Cold vulnerability from level or rank.
+
+The only shared profile change is small_red_dragon's existing
+BODY_WEAPON_LOOT trait opt-in. It lets a TAKE-able attached weapon detach
+into ordinary loot on death or dismemberment. Sewer claw 7216 gains
+ITEM_BODY_PART with weapon value[0]=4 for the foreleg. Preserve
+TAKE/MAGIC/anti-good,4d 4/base fields/bonuses and current randomization;
+do not add DONOT_RANDOMISE. Foreleg category 4 deliberately keeps the
+existing leg-trauma rules; no new leg restriction is introduced. Astral
+1918 has no attached body weapon, so its actual behaviour stays.
+
+Keep armour 7304-7310 as ordinary equipment and loot: current body-part
+armour extraction would destroy those drops.7307 is explicitly crafted to
+resemble a skull, and the leggings/shield/guards are equipment. Correct
+7306 from Furniture 12 to Armor 9. Swap only the two incorrect resets:
+rear claws 7309 belong in Feet 8, arm guards 7310 in Arms 10. Orb 7303
+stays an external held staff. Weapon/light body regions use value[0];
+armour would use value[1], never overwrite armour value[0]AC.
+
+Mindflayers 7200/7201/7202 reuse the living profile and mage 100 roles.
+Explicit 7ft/6ft 6/6ft heights become 213/198/183 cm;85/75/65 kg are
+estimates. Their tentacle-themed rods/maces are ordinary weapons, not
+their own facial tentacles. No new brain extraction or forced psionicist
+role. Wererat 7203 reuses the reviewed profile with individual 122 cm/35
+kg/Small, male 1 from his in the long description. Preserve its armour-5,
+Nonmagic immunity/silver bypass andXP+10; no disease transmission,
+shapeshift or shared rebuild. Gigantic rat 7204 has explicit 305 cm total
+length, estimated 80 cm/100 kg/Large,HUGE. Keep existing venom on snake,
+wererat and huge rat through spec_poison_bite 100 and normal anatomy
+checks, without adding poison to unrelated ordinary animals.
+
+Ranks: dragon 7040 Boss, master mindflayer 7200 Elite, senior 7201 Rare;
+the other 21 definitions Common. HP dice letters and book morale labels
+are not ranks. Keep original builds and apply rank HP once. Dimensions are
+descriptive whole units; unspecified mass does not mean zero mass. Rank,
+poor equipment and level alone never establish age or body size.
+
+All 177 room records/flags/sectors/exits/doors remain byte-identical, with
+no new NO_UNDEAD flag. All placements/caps/order/loot remain except the
+two corrected equipment slots. Population 57 carries 32 items initially;
+refills produce 94/32. Keep all authored aggression/passivity, WIMPY,
+Sentinel, StayArea, levels, alignments and senses. Only 7203 changes sex;
+all other sexes remain. Narrow look-description grammar changes affect
+7040/7042/7043/7044/7046 without changing names or long descriptions. No
+matching .src exists. Shared Redferne armour 7217-7224/lights/money and
+all other real-source exports remain unchanged.
+
+All 201 media images exist. Exact GUI lookup matches all 24mob names and
+158of 177rooms.19 room images need unchanged-byte copies restoring hyphens
+or final periods in their basenames. A title ending in a period
+legitimately produces a filename ending..png. Keep all authored room
+titles and old public files. Regenerate only maggot 7005 as eyeless and
+limbless, and basilisk 7043 with four distinct pairs of legs. Media files
+are packaged separately from source; staging and live publication are
+separate steps. No GUI code or image-tool configuration change is made.
