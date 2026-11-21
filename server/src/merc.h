@@ -2957,6 +2957,12 @@ struct char_data
         int paralysing_gas_day;
         int paralysing_gas_month;
         int paralysing_gas_year;
+        int holy_trumpet_cooldown;
+        int holy_trumpet_used;
+        int holy_trumpet_day;
+        int holy_trumpet_month;
+        int holy_trumpet_year;
+        int lulling_drone_cooldown;
         CHAR_DATA *body_wrap_source;
         CHAR_DATA *body_wrap_target;
         AFFECT_DATA *body_wrap_affect;
@@ -3689,7 +3695,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 361
+#define MAX_MOB 375
 #define MAX_SPECIES 39
 #define MAX_RANK 6
 
@@ -5991,6 +5997,8 @@ DECLARE_SPEC_FUN(spec_water_weird_wrap);
 DECLARE_SPEC_FUN(spec_succubus_fascination);
 DECLARE_SPEC_FUN(spec_retriever_rays);
 DECLARE_SPEC_FUN(spec_paralysing_gas);
+DECLARE_SPEC_FUN(spec_holy_trumpet);
+DECLARE_SPEC_FUN(spec_lulling_drone);
 void creature_elemental_reaction(CHAR_DATA *victim, int contact_damage, unsigned long int types);
 
 /* These are registry IDs, not bits in an ACT word. */
@@ -6050,6 +6058,12 @@ typedef enum creature_trait
         CREATURE_TRAIT_PARALYSING_GAS_CHANCE,
         CREATURE_TRAIT_PARALYSING_GAS_DAILY_USES,
         CREATURE_TRAIT_PARALYSING_GAS_COOLDOWN,
+        CREATURE_TRAIT_PARALYSING_GAS_REQUIRES_HEAD,
+        CREATURE_TRAIT_HOLY_TRUMPET_CHANCE,
+        CREATURE_TRAIT_HOLY_TRUMPET_DAILY_USES,
+        CREATURE_TRAIT_HOLY_TRUMPET_COOLDOWN,
+        CREATURE_TRAIT_LULLING_DRONE_CHANCE,
+        CREATURE_TRAIT_LULLING_DRONE_COOLDOWN,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Internal damage kinds keep trait strengths small and named. */
