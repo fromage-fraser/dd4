@@ -148,6 +148,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         lightning_mote acid_elemental lava_elemental mud_elemental
         mist_elemental energy_mote dust_elemental air_eddy
         chimera_goat_head chimera_lion_head chimera_dragon_head modron_secundus
+        golden_handmaid chimera pegasus
 /;
 
 my %mob_act = (

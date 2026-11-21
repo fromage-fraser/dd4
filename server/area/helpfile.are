@@ -761,6 +761,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 {WNovember 2026{x
+- Convert Olympus creatures; correct the spear, holdable fan and playable lute.
 - Convert Cyclops Caves creatures; fix head anatomy, injury checks and throne-door keys.
 - Convert Elemental Canyon creatures; correct their equipment and elemental powers.
 - Convert Hel's Tower creatures; fix Hel, shark teeth and the Soul Gem's defence.

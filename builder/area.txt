@@ -11329,3 +11329,189 @@ underground river/cliff rooms 14072, 14073, 14076 and 14077. Preserve the
 unfinished gap and underground setting. Keep the male psionic and three
 head portraits. Media generation and live publication are separate from
 applying this source patch; these notes make no publication claim.
+
+
+Olympus
+-------
+
+The catalogue now has 319 archetypes, 37 body species, 51 internal traits,
+131 Scribe special names and 637 skill rows, including reserved rows where
+applicable. Three profiles append at indices 316-318: golden_handmaid,
+chimera and pegasus. All earlier profiles, bodies and trait IDs remain
+unchanged. Scribe gains only these three archetype names. There is no new
+body, trait, flag, special function, player ability or area-file format.
+
+The Olympian figures use the existing humanoid_avatar, retaining living
+humanoid organs, blood, pain, mind, soul, speech and ordinary remains. A
+divine name does not automatically confer Undead physiology, gigantic
+dimensions, invulnerability or extra priest services. All authored magical
+flags stay, including Invisibility, flight, senses, Sanctuary, Protection
+and Hermes's Sneak. Preserve aggression/passivity, Sentinel, scavenging
+and the other individual behaviours as well. Deliberate magical flight
+does not require inventing anatomical wings on a humanoid manifestation.
+
+Prometheus 902 is the captive Titan, represented by humanoid_avatar rather
+than the unrelated giant-monster titan archetype. His description now says
+This captive Titan rather than This mortal. That corrects identity without
+changing his body size, imprisonment, fire special or encounter role.
+Hephaestus's lameness remains descriptive; it does not add a permanent
+injury or new movement penalty. His description says golden maidens rather
+than promising exactly three: the existing resets produce two initially
+and four after refill, and those counts stay unchanged.
+
+Avatar dimensions are individual descriptive estimates. Zeus uses 190 cm
+height and 100 kg; Prometheus 180 cm and 75 kg; Hermes 175 cm and 65 kg;
+Poseidon 190 cm and 95 kg; Apollo and Athena 180 cm and 75 kg; Ares 190 cm
+and 110 kg; Hephaestus 175 cm and 90 kg; Odin 210 cm and 110 kg; Ra 185 cm
+and 80 kg; Hera 175 cm and 70 kg. Odin is Large; the others are Medium.
+All have unspecified length and none is HUGE. Rank does not enlarge them.
+
+golden_handmaid uses bipedal_construct for an intelligent, speaking golden
+servant. It has head, eyes, ears, arms, hands, fingers, two legs and feet,
+but no biological heart or fleshy organs. It is inorganic, bloodless and
+explicitly ANALGIC, retaining a mind and soul. Do not infer Mindless or
+Soulless from its material. It leaves no ordinary corpse; its original
+carried gold nugget and other loot still drop. Its estimated 170 cm
+height, 1250 kg mass and Medium size describe a human-shaped solid-gold
+body, without HUGE. The mass does not create a new mineable resource or
+saleable corpse. Length remains unspecified.
+
+The handmaid has natural armour -4 and Poison, Sleep and Drain immunity.
+It gains no blanket Magic or Nonmagic immunity, new charm protection, fire
+resistance or racial guard occupation. Local handmaid 909 retains
+individual 100 percent spec_guard. Its mind, soul and voice remain real
+gameplay properties despite pain-insensitivity and lack of organic blood.
+The existing target skill rejects inorganic NPCs even when they have
+material limbs; this conversion does not remove that restriction. This
+archetype is an agreed DD4 interpretation of the area, not a claimed
+Monstrous Manual entry for golden servants.
+
+chimera uses quadrupedal_mammal for one complete living hybrid. It has
+ordinary organs, blood, pain, mind, soul and remains, with multiple heads,
+wings, tail, goat horns/rear hooves, lion paws/claws and dragon
+scales/fangs. It can fly and retains limited speech by cancelling the
+body's No Speech default. Natural armour is -5, an averaged DD4
+adaptation. Defaults are 150 cm shoulder height, 300 cm length, 400 kg and
+Large without HUGE. The height approximates the second-edition five-foot
+shoulder measurement; length and mass are estimates. No elemental immunity
+follows from breathing fire, and low intelligence does not mean
+AFF_MINDLESS.
+
+Its ordinary natural attack selects claws, fangs or horns through the
+existing combat rules, once per normal attack opportunity. Rear-hoof
+anatomy adds no extra attack selector, six-hit stream or automatic kick.
+The existing head_trauma_blocks_attacks trait is enabled with value 1:
+head trauma disables its head-dependent natural parts, while usable claws
+remain. The existing single head injury also blocks its anatomical fire
+breath. There is no new per-head injury system; Regenerate repairs
+supported trauma through the ordinary rules. This extends the existing
+opt-in trait to the full chimera without changing its ID or earlier
+consumers.
+
+The shared chimera selects spec_breath_fire_anatomical at 100 percent,
+retaining the original Olympus fire payload and opportunity frequency. It
+does not acquire the mixed breath of Cyclops Caves' independent dragon
+head. Conversely, those three earlier head entities remain independent,
+with their own anatomy, corpselessness, armour and authored mixed breath.
+Do not combine their HP or introduce owner links when adding this full
+body.
+
+pegasus is an organic quadrupedal mammal with normal horse organs, blood,
+pain, mind, soul and remains, plus tail, hooves and feathered wings. It
+flies, cannot speak, uses the existing ordinary hoof attack and has
+natural armour -4 with Detect Good and Detect Evil. Defaults are 170 cm
+shoulder height, 260 cm length, 700 kg and Large without HUGE. The source
+has differing rounded shoulder measurements; 170 cm is the agreed
+descriptive choice. The weight rounds the source's over-1500-pound
+description; length is a DD4 estimate. These are ordinary pegasus
+defaults, not Greater Pegasus magic resistance or a new diving/rear-kick
+attack.
+
+Local pegasus 924 loses its accidental Inorganic override and keeps its
+authored neutral alignment, Mount status and existing rider rules. No new
+good-only rider restriction, saddle system or player movement ability is
+added. Recompute its body mask rather than retaining the old raw value
+800. The inherited wings, flight, tail, hooves and organic physiology must
+survive the species/profile/individual XOR layers.
+
+The warhound 913 reuses dog, with individual 85 cm shoulder height, 150 cm
+length, 70 kg and Large size. Keep its ordinary fang bite and the intended
+silence/no-arms outcome. Roc 922 reuses the established bird profile at
+250 cm height, 450 cm length, 650 kg and Large with HUGE. Keep its native
+claws/beak and flight; remove the old spec_poison because neither this
+description nor the agreed ordinary roc supplies venom. Only the roc is
+HUGE among this area's 26 definitions. Shared dog and roc defaults and
+their earlier encounters stay unchanged.
+
+The soldier, apprentice musician, serving boy, Julius, alchemist, Clive,
+Samuel, citizen, cook and jailer reuse human. Their height/weight
+estimates are respectively 180 cm/85 kg, 175/70, 140/35, 175/95, 170/60,
+195/110, 195/110, 175/75, 175/110 and 180/90. The serving boy is Small and
+the other nine are Medium, with length unspecified and no HUGE. The cook
+remains male and gains the normal human arms and voice by clearing raw
+body 36. All actual levels, alignments and sexes remain unchanged across
+the area. Jailer 926 is human, not an inferred ogre from the old portrait.
+
+Zeus 901 and warhound 913 receive the existing generic ACT_FEAR_AURA
+individually. This is not a new racial marker, dog-wide default, avatar
+power or new ACT bit. Existing visible-opponent rules allow one fear save
+per fight at source level plus one, subject to the normal cap. Existing
+Magic/Psychic, fear-immunity, werewolf, mindless and blindness protections
+still apply; failure attempts ordinary flee. There is no idle harassment,
+guaranteed escape, damage or extra special slot. Other authored effects,
+including flaming or invisibility where present, keep their actual
+meaning.
+
+Preserve each authored divine role as one 100 percent selection: Zeus and
+Hera use cleric casting; Prometheus fire; Poseidon and the jailer mage;
+Apollo and Athena adept aid; Hephaestus lightning; Odin and Ra mixed
+breath. The handmaid retains guard. No shop/healer/caster role is inferred
+merely from a profession or divine title. Julius remains the sole
+shopkeeper; other stores intentionally refuse players. The apprentice
+keeps Practice. Unarmed Clive may select his carried bow or axe through
+existing NPC AI; do not add an equipment reset to turn that conditional
+behavior into a guaranteed armed spawn. All three new profiles have zero
+HP, damage, critical, haste and profile XP modifiers; normal special XP
+still applies.
+
+Zeus is Boss. Poseidon, Ares, Odin, Ra and Hera are Elite. Hermes, Apollo,
+Athena, Hephaestus and weapons master Clive are Rare. The other fifteen,
+including captive Prometheus, chimera, pegasus and handmaid, stay Common.
+The existing rank HP multiplier applies once: Rare 2x, Elite 5x and Boss
+7x. Neither sourcebook rarity nor profession, level or an HP dice letter
+supplies an additional rank, body-size change or racial combat multiplier.
+
+Spear object 903 changes from Armour to Weapon, retaining its authored
+build values 0/5/5/2, affects, extra/wear flags and Ares's WIELD reset.
+This enables normal weapon generation and stabbing contact; it is a real
+combat correction, not just a display label. Fan 915 remains cheap Trash
+and gains HOLD alongside TAKE. Lute 916 becomes Instrument 36, with
+TAKE|HOLD wear mask 16385. Its existing HOLD resets stay, so the original
+lutes can be held and used under the existing song rules. This gives no
+new song skill, bard special or automatic musical ability to an NPC.
+
+Correct object 920's orange wording to an orange/An orange, and the cook's
+as is to as if. Preserve media-visible names, including Bed Room. Room and
+reset bytes are unchanged: all 47 room flags, sectors, exits, locks,
+placements, caps, reset order and the four NO_UNDEAD wards at 910, 931,
+948 and 951 remain. Keep all 28 object definitions and unrelated loot. The
+world retains 41 initial inhabitants with 61 carried objects and 59
+inhabitants with 75 objects after three refills. There are no teachers,
+programs or matching .src. The four real source exports elsewhere,
+including exact Eakos regeneration, remain unchanged.
+
+As each profile is assigned, recompute the individual XOR mask from the
+intended final result. Repeating inherited No Arms/No Speech or flight can
+cancel the desired properties. In particular, clear the cook's accidental
+limb/speech restrictions, keep the dog's silence and preserve the roc's
+flight/no-arms result. Scalars such as dimensions use replacement rules;
+special names and their complete selection vector are not XOR masks.
+Traits remain internal species/archetype data, not individual Scribe
+fields.
+
+All 26 portrait names and 47 room-image names already match the current
+GUI rules; no filename copy or room-title change is needed. The only
+approved artwork replacement is the human male jailer 926, matching the
+accepted identity. All other portraits, room images and sex fields stay.
+Image generation and publication are separate from applying this source
+patch; these builder notes do not claim live publication has occurred.
