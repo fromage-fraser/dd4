@@ -663,6 +663,24 @@ const struct species_type species_table[MAX_SPECIES] =
                 NULL, NULL, NULL,
                 MOB_SPECIAL_CHANCES_INHERIT, GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        {
+                "multipedal_reptile",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_MANY_LEGS | PART_HEART | PART_BRAINS
+                    | PART_GUTS | PART_FEET | PART_EAR | PART_EYE
+                    | PART_TAIL | PART_SCALES,
+                0,
+                0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL,
+                MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE,
+                MOB_TEMPLATE_UNSET
         }
 };
 
@@ -4620,6 +4638,96 @@ const struct mob_type mob_table[MAX_MOB] =
                 150, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_breath_fire_anatomical", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 610
+        },
+        {
+                "giant_ground_beetle", "insect", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                40, 15, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "giant_maggot", "limbless_invertebrate", "icon1", "icon2",
+                0, 0,
+                BODY_NO_EYES | PART_EYE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                25, 8, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "homunculus", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_SPEECH | PART_WINGS | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                46, 2, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_homunculus_sleep_bite", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "chreffn", "humanoid", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                150, 50, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "sea_hag", "humanoid", "icon1", "icon2",
+                ACT_FEAR_AURA, AFF_SWIM,
+                PART_CLAWS | PART_FANGS | PART_HORNS,
+                PART_CLAWS, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                165, 55, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "guardian_naga", "serpentine_reptile", "icon1", "icon2",
+                0, 0,
+                BODY_NO_SPEECH | BODY_HUGE | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 180, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_cleric", "spec_poison_bite", "", 0, {50, 50, 0},
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 610
+        },
+        {
+                "basilisk", "multipedal_reptile", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                45, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_basilisk_stiffening_gaze", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 213
+        },
+        {
+                "lemure", "amorphous_organism", "icon1", "icon2",
+                ACT_REGENERATOR, AFF_MINDLESS,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_ARMS | BODY_BLOODLESS | PART_HEAD | PART_EYE | PART_ARMS | PART_HANDS | PART_FINGERS | PART_CLAWS,
+                PART_CLAWS, RES_COLD, 0, RES_FIRE | RES_POISON,
+                0, 0, 0, 0,
+                152, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "ettin", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED,
+                BODY_HUGE | PART_HEAD | PART_MANY_HEAD,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                396, 1100, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_GIANT, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -5951,7 +6059,46 @@ static const CREATURE_TRAIT_CHANGE mind_flayer_trait_changes[] =
 static const CREATURE_TRAIT_CHANGE small_red_dragon_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1},
+        {CREATURE_TRAIT_BODY_WEAPON_LOOT, 1}
+};
+
+/* These Sewer profiles use the existing internal traits. */
+static const CREATURE_TRAIT_CHANGE giant_ground_beetle_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
         {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE homunculus_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE chreffn_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -2}
+};
+static const CREATURE_TRAIT_CHANGE sea_hag_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE guardian_naga_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE basilisk_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE lemure_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE ettin_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7}
 };
 
 /* Add body defaults here when a reviewed species needs them. */
@@ -5961,6 +6108,14 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"giant_ground_beetle", NULL, giant_ground_beetle_trait_changes, TRAIT_ITEMS(giant_ground_beetle_trait_changes)},
+        {"homunculus", NULL, homunculus_trait_changes, TRAIT_ITEMS(homunculus_trait_changes)},
+        {"chreffn", NULL, chreffn_trait_changes, TRAIT_ITEMS(chreffn_trait_changes)},
+        {"sea_hag", NULL, sea_hag_trait_changes, TRAIT_ITEMS(sea_hag_trait_changes)},
+        {"guardian_naga", NULL, guardian_naga_trait_changes, TRAIT_ITEMS(guardian_naga_trait_changes)},
+        {"basilisk", NULL, basilisk_trait_changes, TRAIT_ITEMS(basilisk_trait_changes)},
+        {"lemure", NULL, lemure_trait_changes, TRAIT_ITEMS(lemure_trait_changes)},
+        {"ettin", NULL, ettin_trait_changes, TRAIT_ITEMS(ettin_trait_changes)},
         {"night_hag", NULL, night_hag_trait_changes, TRAIT_ITEMS(night_hag_trait_changes)},
         {"invisible_stalker", NULL, invisible_stalker_trait_changes, TRAIT_ITEMS(invisible_stalker_trait_changes)},
         {"mind_flayer", NULL, mind_flayer_trait_changes, TRAIT_ITEMS(mind_flayer_trait_changes)},
@@ -9602,6 +9757,9 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 int bonus;
         } exceptions[] =
         {
+                /* These short status actions have no new XP premium. */
+                { "spec_homunculus_sleep_bite", 0 },
+                { "spec_basilisk_stiffening_gaze", 0 },
                 { "spec_fido", 0 },
                 { "spec_thief", 0 },
                 { "spec_janitor", 0 },

@@ -151,6 +151,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         golden_handmaid chimera pegasus
         demon revenant_spirit haunt crypt_thing lurker_above succubus gray_ooze nightmare retriever cambion orcus_avatar water_weird kampflut animated_evil_tree tree_spirit
         astral_manifestation githyanki githzerai night_hag invisible_stalker mind_flayer small_red_dragon
+        giant_ground_beetle giant_maggot homunculus chreffn sea_hag guardian_naga basilisk lemure ettin
 /;
 
 my %mob_act = (
@@ -409,6 +410,7 @@ my @mob_spec = qw/
     spec_beholder spec_lamia spec_mimic spec_cast_construct_adept
     spec_executioner_local spec_grell spec_flind spec_otyugh spec_horn_gore spec_terrifying_roar spec_confusing_gaze spec_breath_crystal spec_elemental_burst spec_sprite spec_innate_fade spec_vine_grip spec_wisp_lightning spec_acid_spray spec_gas_cloud spec_lightning_discharge spec_fire_surge spec_tentacle_grip spec_squid spec_golem_haste
     spec_lurker_wrap spec_water_weird_wrap spec_succubus_fascination spec_retriever_rays
+    spec_homunculus_sleep_bite spec_basilisk_stiffening_gaze
 /;
 
 my %obj_ex = (

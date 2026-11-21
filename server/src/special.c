@@ -59,6 +59,8 @@ DECLARE_SPEC_FUN( spec_flind );
 DECLARE_SPEC_FUN( spec_horn_gore );
 DECLARE_SPEC_FUN( spec_terrifying_roar );
 DECLARE_SPEC_FUN( spec_confusing_gaze );
+DECLARE_SPEC_FUN( spec_homunculus_sleep_bite );
+DECLARE_SPEC_FUN( spec_basilisk_stiffening_gaze );
 DECLARE_SPEC_FUN( spec_breath_crystal );
 DECLARE_SPEC_FUN( spec_sprite );
 DECLARE_SPEC_FUN( spec_vine_grip );
@@ -203,6 +205,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_horn_gore")) return spec_horn_gore;
         if (!str_cmp(name, "spec_terrifying_roar")) return spec_terrifying_roar;
         if (!str_cmp(name, "spec_confusing_gaze")) return spec_confusing_gaze;
+        if (!str_cmp(name, "spec_homunculus_sleep_bite")) return spec_homunculus_sleep_bite;
+        if (!str_cmp(name, "spec_basilisk_stiffening_gaze")) return spec_basilisk_stiffening_gaze;
         if (!str_cmp(name, "spec_breath_crystal")) return spec_breath_crystal;
         if (!str_cmp(name, "spec_sprite")) return spec_sprite;
         if (!str_cmp(name, "spec_vine_grip")) return spec_vine_grip;
@@ -353,6 +357,8 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_horn_gore) return "spec_horn_gore";
         if (special == spec_terrifying_roar) return "spec_terrifying_roar";
         if (special == spec_confusing_gaze) return "spec_confusing_gaze";
+        if (special == spec_homunculus_sleep_bite) return "spec_homunculus_sleep_bite";
+        if (special == spec_basilisk_stiffening_gaze) return "spec_basilisk_stiffening_gaze";
         if (special == spec_breath_crystal) return "spec_breath_crystal";
         if (special == spec_sprite) return "spec_sprite";
         if (special == spec_vine_grip) return "spec_vine_grip";
@@ -9001,7 +9007,8 @@ bool spec_gold_grung (CHAR_DATA *ch)
 enum bounded_power_kind
 {
         BOUNDED_LURKER_WRAP, BOUNDED_WATER_WRAP,
-        BOUNDED_FASCINATION, BOUNDED_RETRIEVER_RAY
+        BOUNDED_FASCINATION, BOUNDED_RETRIEVER_RAY,
+        BOUNDED_SLEEP_BITE, BOUNDED_STIFFENING_GAZE
 };
 typedef struct bounded_power_context
 {
@@ -9030,7 +9037,8 @@ static bool bounded_power_unchanged(const BOUNDED_POWER_CONTEXT *c)
         || (c->room->area && IS_SET(c->room->area->area_flags, AREA_FLAG_SAFE))
         || is_safe(ch, victim))
                 return FALSE;
-        if (c->kind != BOUNDED_LURKER_WRAP && !innate_spell_ready(ch))
+        if (c->kind != BOUNDED_LURKER_WRAP && c->kind != BOUNDED_SLEEP_BITE
+        && !innate_spell_ready(ch))
                 return FALSE;
         if (c->kind == BOUNDED_LURKER_WRAP || c->kind == BOUNDED_WATER_WRAP)
         {
@@ -9039,9 +9047,30 @@ static bool bounded_power_unchanged(const BOUNDED_POWER_CONTEXT *c)
                 return !IS_HUGE(victim)
                     && get_contact_resistance_result(ch, victim, types) != RES_RESULT_IMMUNE;
         }
+        if (c->kind == BOUNDED_SLEEP_BITE)
+                /* Physical venom needs a reachable body, not speech or sight. */
+                return gsn_sleep > 0 && HAS_HEAD(ch)
+                    && !IS_AFFECTED(ch, AFF_HEAD_TRAUMA)
+                    && IS_SET(ch->body_form, PART_FANGS)
+                    && (mob_usable_attack_parts(ch) & PART_FANGS)
+                    && can_be_poisoned(victim) && !is_mindless(victim)
+                    && victim->ghost_phase == GHOST_PHASE_NONE
+                    && !IS_AFFECTED(victim, AFF_SLEEP)
+                    && !is_affected(victim, gsn_sleep)
+                    && get_contact_resistance_result(ch, victim,
+                        RES_NONMAGIC | RES_POISON | RES_SLEEP) != RES_RESULT_IMMUNE;
         if (!HAS_HEAD(ch) || !HAS_EYES(ch)
         || IS_AFFECTED(ch, AFF_BLIND | AFF_EYE_TRAUMA | AFF_HEAD_TRAUMA))
                 return FALSE;
+        if (c->kind == BOUNDED_STIFFENING_GAZE)
+                /* A viewer can be invisible and still see the basilisk's eyes. */
+                return gsn_slow > 0 && IS_AWAKE(victim) && HAS_EYES(victim)
+                    && !IS_AFFECTED(victim, AFF_BLIND | AFF_EYE_TRAUMA | AFF_NON_CORPOREAL)
+                    && victim->ghost_phase == GHOST_PHASE_NONE
+                    && has_organic_body(victim) && can_see(victim, ch)
+                    && !IS_AFFECTED(victim, AFF_SLOW)
+                    && !is_affected(victim, gsn_slow)
+                    && get_resistance_result(victim, RES_MAGIC | RES_HOLD) != RES_RESULT_IMMUNE;
         if (c->kind == BOUNDED_FASCINATION)
                 /* The viewer must see these eyes; the viewer may be invisible. */
                 return IS_AWAKE(victim) && HAS_EYES(victim)
@@ -9280,6 +9309,81 @@ bool spec_retriever_rays(CHAR_DATA *ch)
                 /* This is typed ray damage, not the spell's other side effects. */
                 damage_with_resistance_types(ch, c.victim, dam, sn, FALSE, types);
         }
+done:
+        if (magic_started)
+                end_magic_activation(&activation);
+        end_bounded_power(&c);
+        return attempted;
+}
+
+
+/* Sleeping venom uses the ordinary Sleep condition, without an extra hit. */
+bool spec_homunculus_sleep_bite(CHAR_DATA *ch)
+{
+        BOUNDED_POWER_CONTEXT c;
+        AFFECT_DATA af;
+        bool attempted = FALSE, saved;
+
+        if (!begin_bounded_power(ch, BOUNDED_SLEEP_BITE, &c))
+                return FALSE;
+        if (number_percent() > 25)
+                goto done;
+        attempted = TRUE;
+        if (!bounded_power_unchanged(&c))
+                goto done;
+        saved = saves_resistance_effect(ch, ch->level, c.victim,
+            RES_POISON | RES_SLEEP);
+        if (!bounded_power_unchanged(&c) || saved)
+                goto done;
+        if (!bounded_power_message(&c, "$n's tiny fangs deliver a sleeping venom!", TO_VICT)
+        || !bounded_power_message(&c, "Your bite delivers sleeping venom to $N!", TO_CHAR)
+        || !bounded_power_message(&c, "$n bites $N with venomous fangs.", TO_NOTVICT))
+                goto done;
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_sleep;
+        af.duration = 0; /* The venom's Sleep restriction ends at the next tick. */
+        af.bitvector = AFF_SLEEP;
+        affect_to_char(c.victim, &af);
+        /* Last: sleeping can dismount, stop combat or cause a fall. */
+        force_sleep(c.victim, ch);
+
+done:
+        end_bounded_power(&c);
+        return attempted;
+}
+
+/* This briefly stiffens flesh; it does not turn anyone into a stone object. */
+bool spec_basilisk_stiffening_gaze(CHAR_DATA *ch)
+{
+        BOUNDED_POWER_CONTEXT c;
+        MAGIC_ACTIVATION_DATA activation;
+        AFFECT_DATA af;
+        bool attempted = FALSE, magic_started = FALSE, saved;
+
+        if (!begin_bounded_power(ch, BOUNDED_STIFFENING_GAZE, &c))
+                return FALSE;
+        if (number_percent() > 25)
+                goto done;
+        attempted = TRUE;
+        begin_magic_activation(&activation, ch);
+        magic_started = TRUE;
+        if (antimagic_blocks_activation(ch, RES_MAGIC) || !bounded_power_unchanged(&c))
+                goto done;
+        saved = saves_resistance_effect(ch, ch->level, c.victim, RES_MAGIC | RES_HOLD);
+        if (!bounded_power_unchanged(&c) || saved)
+                goto done;
+        if (!bounded_power_message(&c, "$n's gaze makes your flesh stiffen!", TO_VICT)
+        || !bounded_power_message(&c, "Your gaze makes $N's flesh stiffen!", TO_CHAR)
+        || !bounded_power_message(&c, "$n fixes $N with a stiffening gaze.", TO_NOTVICT))
+                goto done;
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_slow;
+        af.duration = 0; /* Ordinary Slow expiry and cures still apply. */
+        af.location = APPLY_DEX;
+        af.modifier = -1;
+        af.bitvector = AFF_SLOW;
+        affect_to_char(c.victim, &af);
+
 done:
         if (magic_started)
                 end_magic_activation(&activation);
