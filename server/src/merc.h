@@ -3675,7 +3675,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 312
+#define MAX_MOB 316
 #define MAX_SPECIES 37
 #define MAX_RANK 6
 
@@ -6024,6 +6024,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_ARMED_MELEE_DAMAGE,
         CREATURE_TRAIT_DISPLACEMENT_MELEE_PENALTY,
         CREATURE_TRAIT_SPELL_SAVE_BONUS_PERCENT,
+        CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Internal damage kinds keep trait strengths small and named. */

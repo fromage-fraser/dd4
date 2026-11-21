@@ -4342,6 +4342,47 @@ const struct mob_type mob_table[MAX_MOB] =
                 50, 0, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "spec_thief", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 100
+        },
+        /* These living heads and the Modron keep their minds and souls. */
+        {
+                "chimera_goat_head", "head_only", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | PART_BRAINS | PART_HORNS,
+                PART_HORNS, 0, 0, 0,
+                0, 0, 0, 0,
+                50, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 75
+        },
+        {
+                "chimera_lion_head", "head_only", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | PART_BRAINS | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                60, 35, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 75
+        },
+        {
+                "chimera_dragon_head", "head_only", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | PART_BRAINS | PART_SCALES | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                75, 50, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_breath_any_anatomical", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "modron_secundus", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE,
+                0, RES_MAGIC | RES_COLD | RES_FIRE | RES_ACID, 0, RES_SLEEP | RES_CHARM | RES_HOLD | RES_DRAIN | RES_PSYCHIC,
+                0, 0, 0, 0,
+                300, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_mage", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
         }
 };
 
@@ -4448,6 +4489,7 @@ typedef enum creature_trait_effect
         TRAIT_ARMED_MELEE_DAMAGE,
         TRAIT_DISPLACEMENT,
         TRAIT_SPELL_SAVE_BONUS,
+        TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -4566,7 +4608,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"fire_cold_slow_ticks", TRAIT_ELEMENTAL_REACTION_QUANTITY, NULL},
         {"armed_melee_damage", TRAIT_ARMED_MELEE_DAMAGE, NULL},
         {"displacement_melee_penalty", TRAIT_DISPLACEMENT, NULL},
-        {"spell_save_bonus_pct", TRAIT_SPELL_SAVE_BONUS, NULL}
+        {"spell_save_bonus_pct", TRAIT_SPELL_SAVE_BONUS, NULL},
+        {"head_trauma_blocks_attacks", TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -5548,6 +5591,27 @@ static const CREATURE_TRAIT_CHANGE air_eddy_trait_changes[] =
         {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE chimera_goat_head_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE chimera_lion_head_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE chimera_dragon_head_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE modron_secundus_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -16},
+        {CREATURE_TRAIT_FEAR_IMMUNITY, 1}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -5555,6 +5619,10 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"chimera_goat_head", NULL, chimera_goat_head_trait_changes, TRAIT_ITEMS(chimera_goat_head_trait_changes)},
+        {"chimera_lion_head", NULL, chimera_lion_head_trait_changes, TRAIT_ITEMS(chimera_lion_head_trait_changes)},
+        {"chimera_dragon_head", NULL, chimera_dragon_head_trait_changes, TRAIT_ITEMS(chimera_dragon_head_trait_changes)},
+        {"modron_secundus", NULL, modron_secundus_trait_changes, TRAIT_ITEMS(modron_secundus_trait_changes)},
         {"cyclops", NULL, cyclops_trait_changes, TRAIT_ITEMS(cyclops_trait_changes)},
         {"mixed_elemental", NULL, mixed_elemental_trait_changes, TRAIT_ITEMS(mixed_elemental_trait_changes)},
         {"lightning_elemental", NULL, lightning_elemental_trait_changes, TRAIT_ITEMS(lightning_elemental_trait_changes)},
@@ -6105,7 +6173,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_FEAR_IMMUNITY
                                     || effect == TRAIT_STONE_DEATH
                                     || effect == TRAIT_LIGHT_RESPONSE
-                                    || effect == TRAIT_MAGICAL_NATURAL_ATTACKS)
+                                    || effect == TRAIT_MAGICAL_NATURAL_ATTACKS
+                                    || effect == TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS)
                                 && (profile->changes[i].value < 0
                                     || profile->changes[i].value > 1))
                                         issues++;
@@ -7691,7 +7760,10 @@ unsigned long int mob_usable_attack_parts(CHAR_DATA *mob)
         /* These features have no ordinary offensive action in this chunk. */
         parts &= ~(PART_FEATHERS | PART_HUSK_SHELL);
 
-        if (!HAS_HEAD(mob))
+        if (!HAS_HEAD(mob)
+        ||  (IS_AFFECTED(mob, AFF_HEAD_TRAUMA)
+             && creature_trait_value(mob,
+                 CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS) > 0))
                 parts &= ~(PART_FANGS | PART_HORNS | PART_TUSKS | PART_BEAK);
 
         arms_usable =

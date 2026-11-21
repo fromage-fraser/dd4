@@ -16,8 +16,11 @@ about vicious beasts and is not worried in the least by your intrusion.
 ~
 2|4|64 8|128 -400 S
 44 0 -100 1d1+2000 1d20+60
-0 0
+128 0
 8 8 1
+< cyclops~ rare~
+MobHeight 305
+MobWeight 320
 #14002
 master battlemaster cyclops~
 Battlemaster~
@@ -29,8 +32,11 @@ shouting, "Ahhhh some REAL practice for me at last. MUHAHAHAHAHAHA."
 ~
 2|32|64 8|16|32|128|512 -1000 S
 46 -2 -200 1e1+2000 1d50+50
-0 0
+128 0
 8 8 1
+< cyclops~ elite~
+MobHeight 305
+MobWeight 320
 #14003
 cyclops worker~
 the cyclops worker~
@@ -41,20 +47,26 @@ the corn. He is far too busy to notice you enter his part of the field.
 ~
 64|128 0 -500 S
 35 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14004
 supervisor cyclops~
 the supervisor~
 The workers' supervisor sits in a chair here.
 ~
-The supervisor is 10 feet tall and wields a nasty looking whip . He is also not
+The supervisor is 10 feet tall and wields a nasty looking whip. He is also not
 very happy to see you and springs to attack, yelling "HUMAN SCUM MUST DIE!"
 ~
 2|32|64 0 -1000 S
 40 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14005
 guard cyclops~
 the cyclops guard~
@@ -67,12 +79,15 @@ you would definitely not like to see heading your way.
 ~
 2|32|64 0 -1000 S
 40 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 274
+MobWeight 227
 #14006
 guard cyclops~
 the guard~
-The cyclops guard is asleep and snoring loudly.
+The cyclops guard looks drowsy but remains watchful.
 ~
 The guard towers over you; he is 9 feet tall, and you estimate him to be 500
 pounds of pure muscle. His large eye in the centre of his head is pitch black
@@ -80,8 +95,11 @@ and emanates evil.
 ~
 2|32|64 0 -1000 S
 40 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 274
+MobWeight 227
 #14007
 cyclops fisherman~
 A cyclops fisherman~
@@ -92,8 +110,11 @@ asleep.
 ~
 4|64 0 0 S
 35 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14008
 cyclops warrior~
 the cyclops warrior~
@@ -104,21 +125,27 @@ He stands 10 feet tall and wields a rather large warhammer.
 ~
 4|32|64 0 -1000 S
 42 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14009
 elite guard cyclops~
 the elite cyclops guard~
 The elite guard charges you as you enter the room.
 ~
 Looking at the huge guard you realise that he is trained not only in the art of
-warfare, but also in the art of magic, as he holds in one of his hands a yellow
-wand.
+warfare, but also in the art of magic, as he holds in one of his hands a dull
+staff.
 ~
 2|32|64 8|32|128|512 -1000 S
 48 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ elite~
+MobHeight 305
+MobWeight 320
 #14011
 king cyclops xoric~
 Xoric~
@@ -127,13 +154,15 @@ The Cyclops King, Xoric, is here in his throne room.
 The king stands 15 feet tall and is the most nasty cyclops you have seen so
 far. His face is covered with many scars from all the hard fought battles that he
 has emerged from, victorious. You shudder as you see the mighty jagged dagger he
-holds in his right hand. The orb that he holds seem to draw you to it.
+holds in his right hand. The orb that he holds seems to draw you to it.
 ~
 2|32|64 0 -1000 S
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ boss~
+< cyclops~ boss~
+MobHeight 457
+MobWeight 1100
 #14012
 goddess leia~
 Leia~
@@ -158,7 +187,7 @@ be in danger. For this I am indebted to you.
 56 0 0 0d0+0 0d0+0
 0 0
 8 8 2
-< reserved~ rare~
+< humanoid_avatar~ rare~
 & 50 'teacher base'
 & 100 'astral vortex'
 #14013
@@ -166,13 +195,16 @@ cyclops father male~
 a cyclops male~
 A cyclops male is here.
 ~
-The cyclops male stands more than eight tall and is almost as twice as wide as
+The cyclops male stands more than eight feet tall and is almost twice as wide as
 you.
 ~
 32|64|128 0 -1000 S
 37 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 260
+MobWeight 300
 #14014
 cyclops female woman~
 the cyclops female~
@@ -182,8 +214,11 @@ The cyclops female, upon seeing you, screams and calls for help.
 ~
 64|128 0 -1000 S
 33 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 2
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14015
 cyclops child~
 a cyclops child~
@@ -194,8 +229,12 @@ runs to a corner of the cave, hiding his face from you.
 ~
 64|128 0 -200 S
 20 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 150
+MobWeight 70
+MobSize 1
 #14016
 chimera head goat~
 A chimera's goat head~
@@ -206,8 +245,9 @@ look in its eyes. It would be best to stay away from those nasty looking horns.
 ~
 2|64 0 -500 S
 39 0 0 0d0+0 0d0+0
-4|8|16 0
+0 0
 8 8 1
+< chimera_goat_head~ common~
 #14017
 chimera lion head~
 A chimera's lion head~
@@ -218,20 +258,22 @@ fearsome roar sends a shiver down your spine.
 ~
 2|64 0 -1000 S
 42 0 0 0d0+0 0d0+0
-4|8|16 0
+0 0
 8 8 1
+< chimera_lion_head~ common~
 #14018
 dragon head chimera~
 A chimera's dragon head~
 The third head of a chimera, that being a dragon, prepares to breathe on you.
 ~
-The fearsome dragons head alone would be a worthy adversary, but with the
+The fearsome dragon's head alone would be a worthy adversary, but with the
 other 2 heads to contend with also, you will be lucky to escape alive.
 ~
 2|32|64 8|32 -1000 S
 45 0 0 0d0+0 0d0+0
-4|8|16 0
+0 0
 8 8 1
+< chimera_dragon_head~ common~
 #14019
 cyclops worker~
 the cyclops construction worker~
@@ -242,8 +284,11 @@ he can do all the thinking he wants.
 ~
 4|64|128 8|32 -1000 S
 35 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14020
 cyclops supervisor~
 the cyclops construction supervisor~
@@ -255,8 +300,11 @@ upon his shoulder.
 ~
 2|4|32|64 0 -1000 S
 41 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 335
+MobWeight 700
 #14021
 cleric cyclops~
 the cyclops cleric~
@@ -267,8 +315,11 @@ He does not seem pleased to see you.
 ~
 2|4|32|64 8|32|128|512 -1000 S
 48 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ elite~
+MobHeight 305
+MobWeight 320
 #14022
 Mage cyclops~
 the cyclops mage~
@@ -280,8 +331,11 @@ another and he attacks.
 ~
 2|32|64|512 8|32|128 -1000 S
 46 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ rare~
+MobHeight 305
+MobWeight 320
 #14023
 cyclops psionic~
 the cyclops psionic~
@@ -291,8 +345,11 @@ The psionic seemed to be expecting you as he attacks immediately.
 ~
 2|32|64|512 8|32|128 -1000 S
 46 0 0 0d0+0 0d0+0
-0 0
-8 8 2
+128 0
+8 8 1
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14024
 torturer cyclops~
 the cyclops torturer~
@@ -304,8 +361,11 @@ engrossed in his work to notice you enter the room.
 ~
 2|64 0 -1000 S
 44 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14025
 prisoner man victim~
 a torture victim~
@@ -321,6 +381,8 @@ With that, he collapses.
 1 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 55
 #14026
 prisoner human~
 the human prisoner~
@@ -342,13 +404,14 @@ With that you break his chains and let the prisoner go.
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #14027
 dwarf prisoner~
 the dwarven prisoner~
 A dwarf is here, chained to the wall.
 ~
 The dwarf stands only 4 feet tall but you know the fearsome fighting abilities
-of this race. He stand up and greets you then relays to you this story:
+of this race. He stands up and greets you then relays to you this story:
 
 "The jewelled cave has a mighty statue that is a gateway to other worlds. It
 has two barriers: a physical barrier which can be unlocked by an orb, and a
@@ -362,6 +425,8 @@ With that you smash his chains and free the dwarf.
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobHeight 122
 #14028
 mage prisoner elf elven~
 the mage prisoner~
@@ -381,6 +446,7 @@ With that, you break his chains.
 10 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< elf~ common~
 #14029
 human psionic prisoner~
 a human psionic prisoner~
@@ -401,6 +467,7 @@ With that, you smash his chains.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #14030
 minotaur elite guard~
 the elite minotaur guard~
@@ -413,6 +480,7 @@ furs.
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< minotaur~ elite~
 #14031
 trainee magician~
 the trainee magician~
@@ -422,8 +490,11 @@ The cyclops is training to be a magician. Maybe you will be his first victim.
 ~
 2|32|64 0 -1000 S
 38 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14032
 cyclops smithy~
 the cyclops smithy~
@@ -434,8 +505,11 @@ hear you come in. Just as well, as this cyclops has muscles on his muscles.
 ~
 2|64 0 -1000 S
 46 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 305
+MobWeight 450
 #14033
 secundus~
 secundus~
@@ -448,6 +522,7 @@ and deep-set eyes.
 42 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< modron_secundus~ rare~
 #14034
 fanatic priest~
 the fanatic priest~
@@ -465,6 +540,7 @@ clenches it at you as he attacks.
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ elite~
 #14035
 old cyclops~
 the old cyclops~
@@ -475,8 +551,11 @@ space, probably recalling some past battle.
 ~
 2|64 0 -1000 S
 35 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14036
 cyclops trainee warrior~
 the cyclops trainee~
@@ -486,8 +565,11 @@ This cyclops isn't fully trained yet, but will put up a good fight.
 ~
 2|64|128 0 -600 S
 38 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 1
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14037
 cyclops cook~
 The Cook~
@@ -497,23 +579,28 @@ The cook is here, cooking something.
 ~
 2|4|64 0 0 S
 44 0 0 0d0+0 0d0+0
-0 0
+128 0
 8 8 2
+< cyclops~ common~
+MobHeight 305
+MobWeight 320
 #14038
 cyclops thief~
 The thief~
 A thief scans the area, looking for victims.
 ~
-This cyclops is smaller than other you have seen. Its small size lets
+This cyclops is smaller than the others you have seen. Its small size lets
 it sneak in the shadows with great success. Its dual-wielded weapons will be
 a great problem for you to overcome.
 ~
 2|4|64|4096 2|8|128|2048|65536 -400 S
 45 0 0 0d0+0 0d0+0
-1000 0
+128 0
 8 8 1
-< reserved~ rare~
+< cyclops~ rare~
 
+MobHeight 229
+MobWeight 150
 #0
 
 
@@ -1575,8 +1662,8 @@ S
 #14012
 Guardhouse~
 If you were 10 foot tall then this would be a cramped guard house. The
-inhabitant of this post does seem a little cramped. Thank god for you he is
-fast asleep.
+inhabitant of this post does seem a little cramped. He looks drowsy,
+but remains watchful.
 ~
 0 1|8 0
 D3
@@ -2028,7 +2115,7 @@ D2
 E
 chimera beast~
 The chimera has the hindquarters of a large, black goat and the forequarters
-of a lion. Brownish black wings rise from its back and it possess three heads:
+of a lion. Brownish black wings rise from its back and it possesses three heads:
 that of a goat, a lion and a fierce dragon.
 ~
 S
@@ -2402,8 +2489,8 @@ blue iron door~
 S
 #14064
 The damp prison cave~
-You are stand in a small, damp, blue cave, that the cyclops apparently use
-to hold there prisoners. You hear a faint cry from the corner and see a
+You are standing in a small, damp, blue cave, that the cyclops apparently use
+to hold their prisoners. You hear a faint cry from the corner and see a
 prisoner chained to the wall. To the south you can exit this prison.
 ~
 0 1|8 0
@@ -2826,7 +2913,7 @@ door ~
 1 -1 14084
 S
 #14087
-The palace corridor. ~
+The palace corridor.~
 You stand in another part of the corridor. The many torches affixed to the wall
 light the corridor well. To the north and south you can see elegant doors.
 This main corridor in the palace extends west and east.
@@ -2894,7 +2981,7 @@ D3
 0 -1 14091
 S
 #14091
-A dead end?~
+An apparent dead end~
 The corridor appears to stop abruptly here. However two things bug you.
 Firstly you notice footprints disappear under the western wall and secondly
 there is a VERY big guard standing here. Why is a guard guarding a dead end
@@ -3188,7 +3275,7 @@ The conference room~
 You are standing in a large circular room with a very large round table in
 the middle of it. Decorations are affixed to the walls and you notice a large
 desk on the east side of the room. There are 3 figures in this room a
-minotaur, a demon and a black robed figure. The minotaur and demon charge
+minotaur, a modron and a black robed figure. The minotaur and modron charge
 toward you while the robed figure runs to the west wall and pulls a torch.
 The wall opens, he runs through it, and it closes just as quickly.
 ~
@@ -3254,7 +3341,7 @@ D3
 Two great blue doors prevent you from progressing any further.
 ~
 door great doors blue~
-8 -1 14109
+8 14030 14109
 S
 #14109
 The Throne Room~
@@ -3274,7 +3361,7 @@ secret door~
 D1
 ~
 door doors blue great~
-8 14031 14108
+8 14030 14108
 D5
 The throne opens to a secret passage
 ~
@@ -4113,17 +4200,18 @@ S
 
 
 #SPECIALS
-M 14011  spec_assassin
-M  14012 spec_cast_adept
-M  14018 spec_breath_any
-M  14021 spec_cast_cleric
-M  14022 spec_cast_mage
-M  14023 spec_cast_psionicist
-M  14029 spec_cast_psionicist
-M  14031 spec_cast_mage
-M  14032 spec_repairman
-M  14033 spec_cast_mage
-M  14034 spec_cast_archmage
+M 14011 spec_assassin
+M 14012 spec_cast_adept
+M 14018 spec_breath_any_anatomical
+M 14021 spec_cast_cleric
+M 14022 spec_cast_mage
+M 14023 spec_cast_psionicist
+M 14029 spec_cast_psionicist
+M 14031 spec_cast_mage
+M 14032 spec_repairman
+M 14033 spec_cast_mage
+M 14034 spec_cast_archmage
+M 14038 spec_thief
 S
 
 
