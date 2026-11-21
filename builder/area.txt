@@ -12365,3 +12365,168 @@ alignment, placement/cap/order, object/loot and room flag/exit/door is
 preserved. There is no matching Yggdrasil .src. Room titles 9902/9917/9918
 correct Yggrasil to Yggdrasil and need the matching GUI-derived media names.
 The corresponding room pictures retain their pixels.
+
+
+Undersea
+--------
+
+The current catalogue contains 389 archetypes, 39 basic body species,
+60 internal traits, 140 Scribe special names and 637 skill rows. Fourteen
+profiles append at 375-388; no basic body, trait ID, active special or
+player-race rule changes. All 375 earlier profiles, including Dolphin,
+remain unchanged. New HP/damage/critical/haste/profile-XP modifiers are
+zero. Natural armour uses existing code-only traits; it does not replace
+the area's authored AC/build values. Existing special XP rules remain.
+
+New names in index order: megalodon, vampire_squid, spider_crab,
+sea_anemone, anglerfish, sea_lion, sea_snake, cuttlefish, jellyfish,
+goblin_shark, porcupinefish, giant_lobster, giant_octopus and sahuagin.
+Both dolphins reuse dolphin 99 with individual absolute dimensions.
+
+All fourteen new profiles have Swim, no resistance/vulnerability/immunity
+package and no active special by default. Swim is not water breathing.
+Ordinary marine identity adds no Cold resistance, magical attack, Undead,
+Inorganic, Soulless, NoCorpse or pain immunity. Retain the area's existing
+caster, contact-poison, warrior, fido and whale roles individually.
+Sahuagin's fishlike anatomy does not change player race 19.
+
+Measurements below are height cm / whole kg / length cm, with 0 meaning
+unspecified. All are agreed descriptive DD4 estimates except the authored
+Megalodon's 20-metre length. Neither rank nor level supplies dimensions.
+Crab/lobster length excludes extended limbs; jelly length includes trailing
+tentacles. Combat size and HUGE are independent explicit settings.
+
+Vnum   Archetype          H / kg / L          Size          Armour
+27000  megalodon             0 / 50000 / 2000  Large+HUGE   -5
+27001  vampire_squid         0 /     1 /   30  Small        0
+27002  spider_crab          40 /    15 /   60  Medium       0
+27003  sea_anemone          50 /    20 /  100  Medium       0
+27004  anglerfish            0 /    10 /   80  Small        -2
+27005  dolphin               0 /   100 /  180  Medium       -5
+27006  dolphin               0 /   300 /  300  Large        -5
+27007  sea_lion             80 /   200 /  220  Large        -3
+27008  sea_snake             0 /     2 /  180  Small        -4
+27009  sea_snake             0 /     2 /  180  Small        -4
+27010  cuttlefish            0 /    10 /  120  Medium       -2
+27011  jellyfish            30 /     5 /  100  Small        0
+27012  jellyfish            30 /     5 /  100  Small        0
+27013  goblin_shark          0 /   150 /  350  Large        -4
+27014  porcupinefish         0 /     2 /   50  Small        -3
+27015  porcupinefish         0 /     2 /   50  Small        -3
+27016  giant_lobster        60 /   200 /  250  Large        -6
+27017  giant_octopus         0 / 10000 / 2000  Large+HUGE   -3
+27018  sahuagin            183 /    90 /    0  Medium       -5
+
+Megalodon stays Common: the user explicitly rejected a promotion. Kraken
+keeps its existing Elite rank; every other Undersea creature is Common.
+Rank HP multipliers still apply once, independently of profile modifiers.
+
+Fish use the existing fish body with head, eyes, brains, heart, guts,
+fins and tail, without arms, legs or ordinary speech. Megalodon, Anglerfish
+and Goblin Shark add fangs with an ordinary bite. Goblin Shark is not a
+goblinoid. Porcupinefish has beaklike tooth plates and descriptive sharp
+scales; only its beak is selected for a native ordinary attack. There is
+no automatic spine retaliation, venomous bite or added poison special.
+
+Vampire Squid, Cuttlefish and Giant Octopus use cephalopod: head, eyes,
+brain, heart, guts and many tentacled arms, without legs or speech. All
+keep usable blood, mind, pain and soul. Multiple biological hearts remain
+one ordinary heart-trauma group. Vampire Squid and Cuttlefish have fins;
+Giant Octopus does not inherit squid fins. Native tentacle/beak selection
+uses existing arm/head trauma eligibility and adds no attack stream.
+These new head attacks opt in to head_trauma_blocks_attacks, as do the
+new fang/beak profiles. Regenerate uses existing healing behaviour.
+
+Vampire Squid is a living detritus feeder, not undead or blood-draining.
+Its escape echoes describe glowing mucus rather than black ink; preserve
+all six direction/peace/sneak/hide sequences, their 2% chances, and the
+separate 7% visibility program. Cuttlefish retains hide/visibility scripts.
+The local Kraken is an enormous octopus. It gains no squid-Kraken spell
+list, extra ink poison, swallowing or new constrictor/grip special. Keep
+both existing poisoned tentacle weapons and the original attack programs.
+
+Spider Crab and Giant Lobster use crustacean: stalked eyes, brain, heart,
+guts, shell, grasping claw arms and many walking legs, without speech.
+Their haemolymph counts as usable blood; retain mind, pain and soul.
+Claws provide ordinary fallback contact rather than additional attacks.
+Spider Crab has natural armour 0 because equipped carapace 27002 already
+provides AC -20. Do not add a second shell bonus. Giant Lobster's -6 is
+a separate agreed value. Its shared claw object 27014 and all five Omu
+Central uses remain intact; no shared item/source rewrite is required.
+
+Sea Anemone and Jellyfish use radial_invertebrate: tentacled arms and a
+digestive cavity, without a separate head, eyes, central brain, biological
+heart or walking legs. They are organic and Bloodless, with mind, pain,
+soul and remains retained. Do not set Mindless, Analgic or Soulless simply
+because there is no central brain. Existing can_experience_pain also
+rejects Mindless, independently of the Analgic bit; this chunk sets neither.
+
+Both radial profiles reuse natural_attack_type 16. The existing contact
+poison routine then says "sting" instead of "bite" where that individual
+actually has poison. This passive trait supplies no poison, paralysis,
+save change or new active action. Healthy native tentacle selection still
+uses the ordinary whip contact; the trait's ordinary sting fallback is
+used only when no eligible natural selector remains. Existing contact
+poison itself has no head/arm prerequisite, and is not newly limb-gated.
+
+Keep the authored pairs distinct: sea snake 27008 has no poison, 27009
+has its original poison special; jelly 27011 has contact poison, 27012
+has its original paralysis fight program; porcupinefish 27014 is harmless,
+27015 has its original contact-poison role. A shared profile never gives
+all members the active power. Headless/NoSpeech does not invalidate the
+existing jelly fight-program spell; its ordinary casting gates remain.
+The approved movement correction removes Pass Door only from Cuttlefish
+27010 and Jellyfish 27011/27012, preserving all other effects and scripts.
+
+Sea Lion is the described real pinniped. It reuses quadrupedal_mammal
+with four flipper limbs, fins, head, ears, ordinary organs and fang bite;
+there are no human grasping arms/hands or fantasy lion/fish hybrid powers.
+Sea Snake reuses serpentine_reptile with scales, fangs and paddle-tail
+anatomy. Both keep ordinary blood, mind, pain and soul and NoSpeech.
+
+Keep both dolphins' original programmes, keywords, chances, kiss, follow
+and reunion commands exactly: mutual following is the intended behaviour.
+Baby 27005 remains Wimpy, 100 kg/180 cm/Medium, and explicitly suppresses
+the inherited active whale special. Mother 27006 keeps spec_small_whale,
+300 kg/300 cm/Large without HUGE. These are individual overrides; the
+shared Dolphin remains 90 kg/180 cm/Medium and natural armour -5.
+
+Sahuagin is a speaking, minded, souled humanoid with scales, webbed limbs,
+fins, tail, claws/fangs and ordinary brain/heart/blood. Keep spec_warrior
+and the actual race-19 dialogue. The approved area-script repair uses
+the actual interpreter's flat early-exit guard and independent sex and
+direction checks: preserve Brother/Sister/Clutchmate dialogue, the five
+sequential 20% movement choices, their order and break behaviour. No new
+interpreter rule, race value or global quest behaviour is introduced.
+
+Attached weapons retain precedence over native fallback. Keep their
+BODY_PART/poison/no-take flags, existing head/arm categories, trauma,
+disarming, Regenerate and loot behaviour. More limbs do not generate
+additional simultaneous attacks. BODY_PART staves retain staff charges
+and spell levels; never reinterpret their values as weapon-region fields.
+
+The user explicitly keeps conch 27004 as ITEM_CORPSE_NPC, byte-identical;
+do not relabel or convert it to treasure. Potion 27020 adds Breathe Water
+in a spare spell slot while retaining Armor and level 50. All other
+objects, placements/caps/order, wear slots, G-versus-E choices, original
+ACT behaviour, builds/alignments/sexes and 101 room flags/routes remain.
+There is no matching Undersea source; unrelated real sources stay intact.
+
+Within an existing $mob block, for example:
+
+    archetype porcupinefish
+    rnk common
+    height 0
+    weight 2
+    length 50
+    size 0
+
+Set its individual role separately if needed. Do not copy the poisonous
+partner's special onto a harmless variant. Use the existing explicit
+empty-special override for the baby Dolphin; omitting a special means
+inheritance, not suppression. Traits remain code-only lists with no area
+field, individual override or Scribe trait command.
+
+Current verified conversion progress is 95/153 areas (62.1%) and
+1552/4131 mob definitions (37.6%). Undersea adds 19 definitions; after
+its merge is verified, totals become 96/153 (62.7%) and 1571/4131 (38.0%).
