@@ -2586,6 +2586,10 @@ void char_update(void)
                         if (paf->deleted)
                                 continue;
 
+                        /* Body wraps expire on combat pulses, not long ticks. */
+                        if (paf == ch->body_wrap_affect)
+                                continue;
+
                         /* This duration is maintained on combat pulses. */
                         if (is_contact_paralysis(paf))
                                 continue;

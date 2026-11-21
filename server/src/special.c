@@ -187,6 +187,10 @@ SPEC_FUN *spec_lookup (const char *name )
 {
         if (!str_cmp(name, "spec_breath_any"))           return spec_breath_any;
         if (!str_cmp(name, "spec_prism_flash"))          return spec_prism_flash;
+        if (!str_cmp(name, "spec_lurker_wrap")) return spec_lurker_wrap;
+        if (!str_cmp(name, "spec_water_weird_wrap")) return spec_water_weird_wrap;
+        if (!str_cmp(name, "spec_succubus_fascination")) return spec_succubus_fascination;
+        if (!str_cmp(name, "spec_retriever_rays")) return spec_retriever_rays;
         if (!str_cmp(name, "spec_breath_acid"))          return spec_breath_acid;
         if (!str_cmp(name, "spec_breath_fire"))          return spec_breath_fire;
         if (!str_cmp(name, "spec_breath_frost"))         return spec_breath_frost;
@@ -333,6 +337,10 @@ const char *mob_special_name(SPEC_FUN *special)
 
         if (special == spec_breath_any) return "spec_breath_any";
         if (special == spec_prism_flash) return "spec_prism_flash";
+        if (special == spec_lurker_wrap) return "spec_lurker_wrap";
+        if (special == spec_water_weird_wrap) return "spec_water_weird_wrap";
+        if (special == spec_succubus_fascination) return "spec_succubus_fascination";
+        if (special == spec_retriever_rays) return "spec_retriever_rays";
         if (special == spec_breath_acid) return "spec_breath_acid";
         if (special == spec_breath_fire) return "spec_breath_fire";
         if (special == spec_breath_frost) return "spec_breath_frost";
@@ -8986,4 +8994,295 @@ bool spec_gold_grung (CHAR_DATA *ch)
 
         return TRUE;
 
+}
+
+
+/* These actions share identity guards, not a new area field or creature flag. */
+enum bounded_power_kind
+{
+        BOUNDED_LURKER_WRAP, BOUNDED_WATER_WRAP,
+        BOUNDED_FASCINATION, BOUNDED_RETRIEVER_RAY
+};
+typedef struct bounded_power_context
+{
+        CHAR_DATA *source, *victim;
+        ROOM_INDEX_DATA *room;
+        uint64_t source_id, victim_id;
+        unsigned int source_generation, victim_generation;
+        int source_deaths, victim_deaths, kind;
+} BOUNDED_POWER_CONTEXT;
+
+static bool bounded_power_unchanged(const BOUNDED_POWER_CONTEXT *c)
+{
+        CHAR_DATA *ch = c->source, *victim = c->victim, *issuer;
+        if (!action_character_in_room(ch, c->room, c->source_deaths)
+        || !action_character_in_room(victim, c->room, c->victim_deaths)
+        || ch->target_id != c->source_id || victim->target_id != c->victim_id
+        || ch->bounded_power_generation != c->source_generation
+        || victim->bounded_power_generation != c->victim_generation
+        || ch->hit <= 0 || victim->hit <= 0 || !native_power_ready(ch)
+        || ch->fighting != victim || ch->position != POS_FIGHTING
+        || IS_SET(ch->act, ACT_NO_FIGHT)
+        || IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+        || ch->ghost_phase != GHOST_PHASE_NONE
+        || get_ordered_player(ch, &issuer)
+        || IS_SET(c->room->room_flags, ROOM_SAFE)
+        || (c->room->area && IS_SET(c->room->area->area_flags, AREA_FLAG_SAFE))
+        || is_safe(ch, victim))
+                return FALSE;
+        if (c->kind != BOUNDED_LURKER_WRAP && !innate_spell_ready(ch))
+                return FALSE;
+        if (c->kind == BOUNDED_LURKER_WRAP || c->kind == BOUNDED_WATER_WRAP)
+        {
+                unsigned long types = RES_HOLD
+                    | (c->kind == BOUNDED_WATER_WRAP ? RES_MAGIC : RES_NONMAGIC);
+                return !IS_HUGE(victim)
+                    && get_contact_resistance_result(ch, victim, types) != RES_RESULT_IMMUNE;
+        }
+        if (!HAS_HEAD(ch) || !HAS_EYES(ch)
+        || IS_AFFECTED(ch, AFF_BLIND | AFF_EYE_TRAUMA | AFF_HEAD_TRAUMA))
+                return FALSE;
+        if (c->kind == BOUNDED_FASCINATION)
+                /* The viewer must see these eyes; the viewer may be invisible. */
+                return IS_AWAKE(victim) && HAS_EYES(victim)
+                    && !IS_AFFECTED(victim, AFF_BLIND | AFF_EYE_TRAUMA)
+                    && !is_mindless(victim)
+                    && !(IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+                    && can_see(victim, ch)
+                    && get_resistance_result(victim, RES_CHARM | RES_PSYCHIC) != RES_RESULT_IMMUNE;
+        return can_see(ch, victim);
+}
+
+static bool begin_bounded_power(CHAR_DATA *ch, int kind, BOUNDED_POWER_CONTEXT *c)
+{
+        CHAR_DATA *victim;
+        if (!ch || !IS_NPC(ch) || ch->bounded_power_running || !ch->target_id
+        || !(victim = ch->fighting) || victim == ch)
+                return FALSE;
+        memset(c, 0, sizeof(*c));
+        c->source = ch;
+        c->victim = victim;
+        c->room = ch->in_room;
+        c->source_id = ch->target_id;
+        c->victim_id = victim->target_id;
+        c->source_generation = ch->bounded_power_generation;
+        c->victim_generation = victim->bounded_power_generation;
+        c->source_deaths = action_deaths(ch);
+        c->victim_deaths = action_deaths(victim);
+        c->kind = kind;
+        ch->bounded_power_running = TRUE;
+        if (bounded_power_unchanged(c))
+                return TRUE;
+        ch->bounded_power_running = FALSE;
+        return FALSE;
+}
+
+static void end_bounded_power(const BOUNDED_POWER_CONTEXT *c)
+{
+        if (c->source->target_id == c->source_id)
+                c->source->bounded_power_running = FALSE;
+}
+
+static bool bounded_power_message(const BOUNDED_POWER_CONTEXT *c,
+                                 const char *text, int audience)
+{
+        if (!bounded_power_unchanged(c))
+                return FALSE;
+        act(text, c->source, NULL, c->victim, audience);
+        return bounded_power_unchanged(c);
+}
+
+/* Called once per combat pulse, including characters who cannot act. */
+void update_bounded_creature_powers(void)
+{
+        CHAR_DATA *ch;
+        for (ch = char_list; ch; ch = ch->next)
+        {
+                if (ch->retriever_ray_cooldown > 0)
+                        --ch->retriever_ray_cooldown;
+                if (ch->body_wrap_affect && --ch->body_wrap_pulses <= 0)
+                        clear_body_wrap(ch);
+        }
+}
+
+static bool body_wrap_available(const BOUNDED_POWER_CONTEXT *c)
+{
+        return bounded_power_unchanged(c) && !c->source->body_wrap_target
+            && !c->victim->body_wrap_affect
+            && !IS_AFFECTED(c->victim, AFF_HOLD)
+            && !is_affected(c->victim, gsn_tentacle_grip);
+}
+
+static bool body_wrap_still_owned(const BOUNDED_POWER_CONTEXT *c)
+{
+        AFFECT_DATA *af = c->victim->body_wrap_affect;
+        return bounded_power_unchanged(c) && af && !af->deleted
+            && c->victim->body_wrap_source == c->source
+            && c->source->body_wrap_target == c->victim
+            && af->source_type == AFFECT_SOURCE_CREATURE
+            && af->source_id == c->source_id && IS_AFFECTED(c->victim, AFF_HOLD);
+}
+
+static bool bounded_body_wrap(CHAR_DATA *ch, bool water)
+{
+        BOUNDED_POWER_CONTEXT c;
+        MAGIC_ACTIVATION_DATA activation;
+        AFFECT_DATA af;
+        bool attempted = FALSE, magic_started = FALSE, saved;
+        unsigned long types = RES_HOLD | (water ? RES_MAGIC : RES_NONMAGIC);
+
+        if (gsn_tentacle_grip <= 0
+        || !begin_bounded_power(ch, water ? BOUNDED_WATER_WRAP : BOUNDED_LURKER_WRAP, &c))
+                return FALSE;
+        if (!body_wrap_available(&c) || number_percent() > 25)
+                goto done;
+        attempted = TRUE;
+        if (water)
+        {
+                begin_magic_activation(&activation, ch);
+                magic_started = TRUE;
+                if (antimagic_blocks_activation(ch, RES_MAGIC))
+                        goto done;
+        }
+        if (!body_wrap_available(&c))
+                goto done;
+        saved = saves_resistance_effect(ch, ch->level, c.victim, types);
+        if (!body_wrap_available(&c) || saved)
+                goto done;
+
+        memset(&af, 0, sizeof(af));
+        af.type = gsn_tentacle_grip;
+        af.duration = 0; /* The runtime pulse owner, rather than char_update, expires it. */
+        af.location = APPLY_NONE;
+        af.bitvector = AFF_HOLD;
+        affect_to_char_source(c.victim, &af, AFFECT_SOURCE_CREATURE, c.source_id);
+        c.victim->body_wrap_affect = c.victim->affected;
+        c.victim->body_wrap_source = ch;
+        c.victim->body_wrap_source_id = c.source_id;
+        c.victim->body_wrap_pulses = 1;
+        ch->body_wrap_target = c.victim;
+
+        if (!bounded_power_message(&c, water
+                ? "$n's liquid body wraps around you!" : "$n enfolds you in $s broad body!", TO_VICT)
+        || !body_wrap_still_owned(&c)
+        || !bounded_power_message(&c, water
+                ? "Your liquid body wraps around $N!" : "You enfold $N in your broad body!", TO_CHAR)
+        || !body_wrap_still_owned(&c)
+        || !bounded_power_message(&c, water
+                ? "$n's liquid body wraps around $N!" : "$n enfolds $N in $s broad body!", TO_NOTVICT)
+        || !body_wrap_still_owned(&c))
+                /* A message may cure the hold or change an actor's immunity. */
+                if (c.victim->body_wrap_source == ch
+                && c.victim->body_wrap_source_id == c.source_id)
+                        clear_body_wrap(c.victim);
+done:
+        if (magic_started)
+                end_magic_activation(&activation);
+        end_bounded_power(&c);
+        return attempted;
+}
+
+bool spec_lurker_wrap(CHAR_DATA *ch)
+{
+        return bounded_body_wrap(ch, FALSE);
+}
+
+bool spec_water_weird_wrap(CHAR_DATA *ch)
+{
+        return bounded_body_wrap(ch, TRUE);
+}
+
+bool spec_succubus_fascination(CHAR_DATA *ch)
+{
+        BOUNDED_POWER_CONTEXT c;
+        MAGIC_ACTIVATION_DATA activation;
+        bool attempted = FALSE, magic_started = FALSE, saved;
+        if (!begin_bounded_power(ch, BOUNDED_FASCINATION, &c))
+                return FALSE;
+        if (c.victim->wait >= PULSE_VIOLENCE || number_percent() > 25)
+                goto done;
+        attempted = TRUE;
+        begin_magic_activation(&activation, ch);
+        magic_started = TRUE;
+        if (antimagic_blocks_activation(ch, RES_MAGIC) || !bounded_power_unchanged(&c))
+                goto done;
+        saved = saves_resistance_effect(ch, ch->level, c.victim, RES_CHARM | RES_PSYCHIC);
+        if (!bounded_power_unchanged(&c) || saved)
+                goto done;
+        if (!bounded_power_message(&c, "$n fixes you with a fascinating gaze.", TO_VICT)
+        || !bounded_power_message(&c, "You fix $N with a fascinating gaze.", TO_CHAR)
+        || !bounded_power_message(&c, "$n fixes $N with a fascinating gaze.", TO_NOTVICT))
+                goto done;
+        WAIT_STATE(c.victim, PULSE_VIOLENCE);
+done:
+        if (magic_started)
+                end_magic_activation(&activation);
+        end_bounded_power(&c);
+        return attempted;
+}
+
+bool spec_retriever_rays(CHAR_DATA *ch)
+{
+        BOUNDED_POWER_CONTEXT c;
+        MAGIC_ACTIVATION_DATA activation;
+        AFFECT_DATA af;
+        bool attempted = FALSE, magic_started = FALSE, saved;
+        int ray, sn, dam;
+        unsigned long types;
+        static const char *const spells[] = {"fireball", "chill touch", "lightning bolt", "slow"};
+        static const unsigned long elements[] = {RES_FIRE, RES_COLD, RES_ELECTRICITY, 0};
+        if (!ch || ch->retriever_ray_cooldown > 0
+        || !begin_bounded_power(ch, BOUNDED_RETRIEVER_RAY, &c))
+                return FALSE;
+        if (number_percent() > 25)
+                goto done;
+        attempted = TRUE;
+        /* Reserve before any save, antimagic message or nested action. */
+        ch->retriever_ray_cooldown = 3;
+        ray = number_range(0, 3);
+        sn = skill_lookup(spells[ray]);
+        if (sn < 0 || sn >= MAX_SKILL || !bounded_power_unchanged(&c))
+                goto done;
+        types = RES_MAGIC | elements[ray];
+        if (ray == 3)
+                types |= skill_table[sn].res_type;
+        begin_magic_activation(&activation, ch);
+        magic_started = TRUE;
+        if (antimagic_blocks_activation(ch, RES_MAGIC) || !bounded_power_unchanged(&c))
+                goto done;
+        if (ray == 3 && (is_affected(c.victim, sn) || IS_AFFECTED(c.victim, AFF_SLOW)))
+                goto done;
+        saved = saves_resistance_effect(ch, ch->level, c.victim, types);
+        if (!bounded_power_unchanged(&c))
+                goto done;
+        if (!bounded_power_message(&c, "$n's gem eye sends a ray towards you!", TO_VICT)
+        || !bounded_power_message(&c, "Your gem eye sends a ray towards $N!", TO_CHAR)
+        || !bounded_power_message(&c, "$n's gem eye sends a ray towards $N!", TO_NOTVICT))
+                goto done;
+        if (ray == 3)
+        {
+                if (saved || is_affected(c.victim, sn) || IS_AFFECTED(c.victim, AFF_SLOW)
+                || get_resistance_result(c.victim, types) == RES_RESULT_IMMUNE)
+                        goto done;
+                memset(&af, 0, sizeof(af));
+                af.type = sn;
+                af.duration = 0; /* Ordinary affect expiry at the next long tick. */
+                af.location = APPLY_DEX;
+                af.modifier = -1;
+                af.bitvector = AFF_SLOW;
+                affect_to_char(c.victim, &af);
+        }
+        else
+        {
+                dam = UMAX(1, ch->level / 2);
+                if (saved)
+                        dam /= 2;
+                /* This is typed ray damage, not the spell's other side effects. */
+                damage_with_resistance_types(ch, c.victim, dam, sn, FALSE, types);
+        }
+done:
+        if (magic_started)
+                end_magic_activation(&activation);
+        end_bounded_power(&c);
+        return attempted;
 }

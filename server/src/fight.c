@@ -249,6 +249,7 @@ void violence_update(void)
         sprintf(last_function, "entering violence_update");
 
         /* Update these durations once globally, including idle victims. */
+        update_bounded_creature_powers();
         update_contact_paralysis();
 
         /* Reconcile passive room exposure before this pulse's attacks. */
@@ -3827,7 +3828,10 @@ bool check_aura_of_fear(CHAR_DATA *ch, CHAR_DATA *victim)
 void update_pos(CHAR_DATA *victim)
 {
         if (victim->hit <= 0 || victim->position == POS_DEAD)
+        {
+                release_body_wraps(victim);
                 release_creature_grips(victim);
+        }
 
         /* Death ends the pair's right even if later healing revives it. */
         if (victim->position == POS_DEAD)
@@ -4037,6 +4041,7 @@ static void stop_fighting_internal(CHAR_DATA *ch, bool fBoth, bool preserve_unar
         {
                 if (fch == ch || (fBoth && fch->fighting == ch))
                 {
+                        release_body_wraps(fch);
                         fch->rescue_retaliation = NULL;
                         fch->fighting = NULL;
                         fch->fear_aura_checked = FALSE;

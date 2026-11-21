@@ -2948,6 +2948,15 @@ struct char_data
         CHAR_DATA *rider;
         MOB_SPECIAL_DATA specials;
         bool special_running;
+        /* These bounded native actions never persist in area/player files. */
+        bool bounded_power_running;
+        unsigned int bounded_power_generation;
+        int retriever_ray_cooldown;
+        CHAR_DATA *body_wrap_source;
+        CHAR_DATA *body_wrap_target;
+        AFFECT_DATA *body_wrap_affect;
+        uint64_t body_wrap_source_id;
+        int body_wrap_pulses;
         unsigned long int special_calls[MOB_SPECIAL_SLOTS];
         MOB_INDEX_DATA *pIndexData;
         DESCRIPTOR_DATA *desc;
@@ -3675,7 +3684,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 319
+#define MAX_MOB 334
 #define MAX_SPECIES 37
 #define MAX_RANK 6
 
@@ -5969,6 +5978,13 @@ bool antimagic_blocks_activation(CHAR_DATA *caster, unsigned long int res_types)
 bool cast_native_spell(SPELL_FUN *spell, int sn, int level, CHAR_DATA *caster, void *target);
 void spell_unmaking_ray(int sn, int level, CHAR_DATA *ch, void *vo);
 void release_creature_grips(CHAR_DATA *source);
+void clear_body_wrap(CHAR_DATA *victim);
+void release_body_wraps(CHAR_DATA *ch);
+void update_bounded_creature_powers(void);
+DECLARE_SPEC_FUN(spec_lurker_wrap);
+DECLARE_SPEC_FUN(spec_water_weird_wrap);
+DECLARE_SPEC_FUN(spec_succubus_fascination);
+DECLARE_SPEC_FUN(spec_retriever_rays);
 void creature_elemental_reaction(CHAR_DATA *victim, int contact_damage, unsigned long int types);
 
 /* These are registry IDs, not bits in an ACT word. */

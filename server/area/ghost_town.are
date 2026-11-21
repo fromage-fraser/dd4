@@ -37,8 +37,9 @@ fell domain- DEATH.
 ~
 32|64 8|32|128|524288 -250 S
 64 0 0 0d0+0 0d0+0
-96 0
+32 0
 8 8 0
+< spectre~ common~
 #8801
 wraith~
 a wraith~
@@ -50,8 +51,9 @@ fell domain- DEATH.
 ~
 64 8|32|512|524288 -125 S
 63 0 0 0d0+0 0d0+0
-96 0
+32 0
 8 8 0
+< wraith~ common~
 #8802
 wight~
 a wight~
@@ -63,8 +65,9 @@ fell domain- DEATH.
 ~
 64 8|32|128|512 -25 S
 60 0 0 0d0+0 0d0+0
-96 0
+32|64 0
 8 8 0
+< wight~ common~
 #8803
 ghost~
 a ghost~
@@ -76,8 +79,9 @@ fell domain- DEATH.
 ~
 64 8|32|128|524288|1048576 250 S
 64 0 0 0d0+0 0d0+0
-96 0
+32 0
 8 8 0
+< ghost~ common~
 #8804
 vampire~
 a vampire~
@@ -90,20 +94,22 @@ to your disturbance they have risen again!
 2|32|64|4096 8|32|128|512|8192 -1000 S
 72 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< vampire~ common~
 #8805
 lich~
 a lich~
 An insane Lich cackles hideously and unleashes a volley of spells.
 ~
 This powerful Undead is actually Xantharus' former master, whom he betrayed
-and slew. But he underestimated his master's power, and now he as returned
+and slew. But he underestimated his master's power, and now he has returned
 as a Lich, seeking revenge!
 ~
 2|32|64|4096 8|32|128|524288 -130 S
 77 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< lich~ rare~
 #8806
 demon~
 a lesser demon~
@@ -116,6 +122,7 @@ concentration of negative material energy.
 70 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< demon~ common~
 #8807
 spirit revenant~
 a revenant~
@@ -129,8 +136,9 @@ interfere.
 ~
 64|4096 8|32|128|512|8192 0 S
 75 0 0 0d0+0 0d0+0
-96 0
-8 8 0
+32 0
+8 8 1
+< revenant_spirit~ common~
 #8808
 spirit haunt~
 a haunt~
@@ -142,8 +150,9 @@ death, his spirit remained behind to haunt the area where he met his end.
 ~
 2|64 8|32|128|524288|1048576 0 S
 64 0 0 0d0+0 0d0+0
-96 0
-8 8 0
+32 0
+8 8 1
+< haunt~ common~
 #8809
 crypt thing~
 a crypt thing~
@@ -156,6 +165,7 @@ taunt you, though it will not hesitate to defend itself.
 73 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< crypt_thing~ common~
 #8810
 greater demon~
 a greater demon~
@@ -168,6 +178,10 @@ concentration of negative material energy.
 77 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< demon~ common~
+MobHeight 240
+MobWeight 250
+MobSize 2
 #8811
 undead dragon~
 an undead dragon~
@@ -177,10 +191,14 @@ This foul Dracolich is the undead spirit of a dragon that served Xantharus
 so well in life that he animated it to continue serving him after its
 death.
 ~
-2|32|64 8|32|128|512|524288 -1000 S
+2|32|64 8|32|128|512 -1000 S
 81 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< dracolich~ elite~
+MobHeight 300
+MobWeight 1500
+MobLength 1200
 #8812
 undead monster~
 an undead monster~
@@ -190,10 +208,11 @@ The spirit of some former minion of this place, this foul Undead creature
 will do its best you meet the same fate as all previous intruders in this
 fell domain- DEATH.
 ~
-64 8|32 -125 S
+64 8|32|562949953421312 -125 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< zombie~ common~
 #8813
 giant rat~
 a giant rat~
@@ -203,8 +222,13 @@ When I say GIANT, I am talking ten feet high...
 ~
 4|32|64 8|32|65536 15 S
 55 0 0 0d0+0 0d0+0
-32|128 0
+128 0
 8 8 0
+< giant_rat~ common~
+MobHeight 305
+MobWeight 3000
+MobLength 600
+MobSize 2
 #8814
 giant spider~
 a giant spider~
@@ -214,20 +238,26 @@ When I say GIANT, I am talking ten feet high...
 ~
 4|32|64 8|32|65536 -15 S
 60 0 0 0d0+0 0d0+0
-52|128 0
+128 0
 8 8 0
+< venomous_spider~ common~
+MobHeight 305
+MobWeight 1000
+MobLength 500
+MobSize 2
 #8815
 lurker above~
 a lurker above~
 A Lurker Above seeks to enfold and suffocate you!
 ~
-This foul abberration feeds on any and all that enter its lair- even the
+This foul aberration feeds on any and all that enter its lair- even the
 corporeal undead avoid it...
 ~
-2|32|64 512|524288 0 S
+2|32|64 512 0 S
 66 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< lurker_above~ common~
 #8816
 succubus~
 a succubus~
@@ -235,10 +265,11 @@ A beautiful female smiles charmingly at you, revealing sharp fangs...
 ~
 OUCH! Its a Succubus. She will charm you, then waste you. FIGHT!
 ~
-2|64 8|32|128|512|524288 -200 S
+2|64 8|32|128|512 -200 S
 66 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< succubus~ common~
 #8817
 necromancer xantharus~
 Xantharus~
@@ -253,6 +284,8 @@ to escape his terrible mistake.
 66 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 65
 #8818
 rotting corpse~
 a rotting corpse~
@@ -266,6 +299,7 @@ best thing you could do for them...
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< zombie~ common~
 #8819
 master~
 the master~
@@ -279,7 +313,9 @@ diabolically evil mage, and will not hesitate to destroy you.
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ elite~
+< human~ elite~
+MobHeight 185
+MobWeight 85
 #8820
 shambling mound~
 a shambling mound~
@@ -289,8 +325,11 @@ RUN! A twelve-foot high pile of garbage is attacking you!
 ~
 64 8192 0 S
 60 0 0 0d0+0 0d0+0
-63|128 0
+128 0
 8 8 0
+< shambling_mound~ common~
+MobHeight 366
+MobWeight 1500
 #8821
 kampflut~
 a kampflut~
@@ -302,8 +341,9 @@ evil- it is simply hungry.
 ~
 64 8192 0 S
 66 0 0 0d0+0 0d0+0
-2|8|16|32|256 0
+0 0
 8 8 0
+< kampflut~ common~
 #8822
 black pudding~
 a black pudding~
@@ -314,8 +354,9 @@ then it will devour you!
 ~
 64 8192 0 S
 70 0 0 0d0+0 0d0+0
-63|128 0
+128 0
 8 8 0
+< black_pudding~ common~
 #8823
 green slime~
 green slime~
@@ -326,8 +367,9 @@ skin...
 ~
 2|64 0 0 S
 54 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< green_slime~ common~
 #8824
 gray ooze~
 a gray ooze~
@@ -337,8 +379,9 @@ A pile of gray liquid oozes toward you.
 ~
 64 128|512|8192 0 S
 77 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< gray_ooze~ common~
 #8825
 animated tree~
 an animated tree~
@@ -346,10 +389,11 @@ An Animated Tree bashes you with its branches.
 ~
 This tree is bad and evil- it is an anti-treant :)
 ~
-64 0 0 S
+64 0 -400 S
 60 0 0 0d0+0 0d0+0
-2|8|16|32|256 0
+0 0
 8 8 0
+< animated_evil_tree~ common~
 #8826
 tree spirit~
 a tree spirit~
@@ -358,10 +402,11 @@ A Tree Spirit offers you shelter in this place of evil.
 This spirit is the only truly good creature in this place. She can guard you
 while you rest, and perhaps heal your wounds if you pay her enough...
 ~
-2|64|2048 2|4|8|32|128|512|8192 400 S
+2|64|2048|8192 2|4|8|32|128|512|8192 400 S
 87 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 2
+< tree_spirit~ common~
 #8827
 death knight~
 a death knight~
@@ -375,8 +420,8 @@ rotting face...
 2|32|64 8|32|128|512 -1000 S
 80 0 0 0d0+0 0d0+0
 0 0
-8 8 0
-< reserved~ rare~
+8 8 1
+< death_knight~ rare~
 #8828
 nightmare~
 a nightmare~
@@ -385,10 +430,11 @@ A Nightmare, loyal steed of the denizens of the Lower Planes, rests here.
 This black, winged equine hell-steed waits patiently for its master to finish
 its business here before bearing it to its next destination.
 ~
-2|64|131072 32|512|524288 -300 S
+2|64|131072 32|512 -300 S
 60 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< nightmare~ common~
 #8829
 retriever~
 a retriever~
@@ -399,8 +445,9 @@ and glowing gems for eyes.
 ~
 2|64 8|32|128|512 -400 S
 77 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< retriever~ common~
 #8830
 cambion scout~
 a cambion scout~
@@ -416,6 +463,7 @@ to his domination of all things Undead.
 66 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< cambion~ common~
 #8831
 orcus~
 Orcus~
@@ -429,9 +477,9 @@ of the powers of the Prime Material Plane by avoiding combat.
 ~
 2|64|128 2|4|8|16|32|128|512|8192 -1000 S
 87 0 0 0d0+0 0d0+0
-128 0
-8 8 0
-< reserved~ boss~
+0 0
+8 8 1
+< orcus_avatar~ boss~
 #8832
 water weird~
 a water weird~
@@ -441,8 +489,9 @@ This watery snake resides in the well, which it will fight to defend.
 ~
 2|32|64 128|8192 0 S
 66 0 0 0d0+0 0d0+0
-60 0
+0 0
 8 8 0
+< water_weird~ common~
 #8833
 giant spider~
 a giant spider~
@@ -452,8 +501,12 @@ When I say GIANT, I am talking ten feet high...
 ~
 2|4|64|128 8|32|65536 0 S
 64 0 0 0d0+0 0d0+0
-52|128 0
+128 0
 8 8 0
+< giant_spider~ common~
+MobHeight 305
+MobWeight 1000
+MobLength 500
 #8834
 baron vampire~
 a baron vampire~
@@ -465,9 +518,9 @@ to your disturbance they have risen again!
 ~
 2|32|64|4096 8|32|128|512|8192 -1000 S
 80 0 0 0d0+0 0d0+0
-96 0
-8 8 0
-< reserved~ elite~
+32|64 0
+8 8 1
+< vampire~ elite~
 #0
 
 
@@ -568,7 +621,7 @@ a chest~
 A chest sits here.~
 ~
 15 0 1
-150~ 8~ 8120~ 0~
+150~ 13~ 8820~ 0~
 100 0 0
 #8807
 robes flesh~
@@ -2741,7 +2794,7 @@ M 1 8800 1 8836   LOADS SPECTRE
 *
 M 1 8830 1 8839   LOADS CAMBION SCOUT
 E 1 8803 0 16     WIELDS SWORD OF KAS
-E 1 8817 0 17     HOLDS SYMBOL
+E 1 8817 0 0 HOLDS SYMBOL
 *
 M 1 8828 1 8842   LOADS NIGHTMARE
 *
@@ -2825,17 +2878,18 @@ R 1 8891 4
 S
 
 #SPECIALS
-M  8804 spec_mast_vampire       Baron Vampire dude
-M  8805 spec_cast_archmage      The Lich
-M  8806 spec_demon              Lesser Demon
-M  8810 spec_demon              Greater Demon
-M  8811 spec_breath_gas         The dragon
-M  8819 spec_cast_mage          The Master
-M  8826 spec_cast_adept         The Tree Spirit
-M  8831 spec_cast_psionicist    Orcus
-M  8834 spec_vampire            Other Baron Vampire dude
-M  8814 spec_poison             spider
-M  8812 spec_cast_undead        undead monster
+M 8804 spec_mast_vampire
+M 8805 spec_cast_archmage
+M 8806 spec_demon
+M 8810 spec_demon
+M 8811 spec_breath_gas_anatomical
+M 8819 spec_cast_mage
+M 8826 spec_cast_adept
+M 8831 spec_cast_psionicist
+M 8834 spec_vampire
+M 8814 spec_poison_bite
+M 8812 spec_cast_undead
+M 8817 spec_cast_mage
 S
 
 #$
