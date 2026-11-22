@@ -151,6 +151,7 @@ DECLARE_SPEC_FUN( spec_cast_archmage        );
 DECLARE_SPEC_FUN( spec_cast_priestess       );
 DECLARE_SPEC_FUN( spec_mast_vampire         );
 DECLARE_SPEC_FUN( spec_bloodsucker          );
+DECLARE_SPEC_FUN( spec_bloodsucker_bite     );
 DECLARE_SPEC_FUN( spec_spectral_minion      );
 DECLARE_SPEC_FUN( spec_celestial_repairman  );
 DECLARE_SPEC_FUN( spec_sahuagin             );
@@ -301,6 +302,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_cast_priestess"))       return spec_cast_priestess;
         if (!str_cmp(name, "spec_mast_vampire"))         return spec_mast_vampire;
         if (!str_cmp(name, "spec_bloodsucker"))          return spec_bloodsucker;
+        if (!str_cmp(name, "spec_bloodsucker_bite"))     return spec_bloodsucker_bite;
         if (!str_cmp(name, "spec_spectral_minion"))      return spec_spectral_minion;
         if (!str_cmp(name, "spec_celestial_repairman"))  return spec_celestial_repairman;
         if (!str_cmp(name, "spec_sahuagin"))             return spec_sahuagin;
@@ -456,6 +458,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_cast_priestess) return "spec_cast_priestess";
         if (special == spec_mast_vampire) return "spec_mast_vampire";
         if (special == spec_bloodsucker) return "spec_bloodsucker";
+        if (special == spec_bloodsucker_bite) return "spec_bloodsucker_bite";
         if (special == spec_spectral_minion) return "spec_spectral_minion";
         if (special == spec_celestial_repairman) return "spec_celestial_repairman";
         if (special == spec_sahuagin) return "spec_sahuagin";
@@ -4772,6 +4775,18 @@ bool spec_bloodsucker( CHAR_DATA *ch )
         }
 
         return TRUE;
+}
+
+
+/* Keep the old bloodsucking attack, but it still needs a usable mouth. */
+bool spec_bloodsucker_bite(CHAR_DATA *ch)
+{
+        if (!usable_breath_head(ch)
+        || !(ch->body_form & PART_FANGS)
+        || !(mob_usable_attack_parts(ch) & PART_FANGS))
+                return FALSE;
+
+        return spec_bloodsucker(ch);
 }
 
 

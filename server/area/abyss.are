@@ -33,31 +33,31 @@ spherical blob of jelly. It pulses and flashes blue and red before
 your eyes as it drifts through the room with no obvious means of
 locomotion.
 ~
-4|64|4096 1|524288 0 S
+4|64|4096 1 0 S
 15 0 0 0d0+0 0d0+0
-1|2|4|8|32|64 0
+0 0
 0 0 0
 >death_prog 100~
 mpecho {wThe photophore explodes, jelly goes everywhere!{x
 mpoload 7500
 ~
 |
-
+< photophore~ common~
 #7501
 mesopelag mottled shark-like creature~
 a mesopelag~
 {yA mottled, shark-like creature cruises about.{x
 ~
 The mesopelag resembles a large catshark in appearance. Its body is
-coverings with glowing spots, which complement the mottled, jaguar-like
+covered with glowing spots, which complement the mottled, jaguar-like
 patterning on its skin. It regards you now with a hungry gleam in its
 empty black eyes as it cruises the Abyss in search of prey.
 ~
-64 32|524288|8388608 -275 S
+64 8388640 -275 S
 16 0 0 0d0+0 0d0+0
-4|8|32 0
+0 0
 0 0 1
-
+< mesopelag~ common~
 #7502
 malacost large woodlouse~
 a malacost~
@@ -68,15 +68,15 @@ if you can imagine a slater the size of a large dog, flying impossibly
 through the air with a lazy swimming motion. The outer edges of its
 segmented body-plates glow an eerie blue-green in the darkness.
 ~
-64|128 512|8192|524288 175 S
+64|128 8704 175 S
 17 0 0 0d0+0 0d0+0
-8|32 0
+0 0
 0 0 2
 >death_prog 100~
 mpecho {wThe malacost spasms and curls up into a ball, lifeless.{x
 ~
 |
-
+< malacost~ common~
 #7503
 pycnogonid spider~
 a pycnogonid~
@@ -86,11 +86,11 @@ The pycnogonid is a huge flying spider with a legspan of perhaps two
 metres. Her striped legs flash blue and red as she looms before you in
 the darkness, teeth dripping with venom.
 ~
-64 512|524288 -620 S
+64 512 -620 S
 18 0 0 0d0+0 0d0+0
-4|32 0
+0 0
 0 0 2
-
+< pycnogonid~ common~
 #7504
 anthozoa~
 an anthozoa~
@@ -101,26 +101,26 @@ its unusual size, and the fact that it's hovering in the airy, inky gloom
 with no apparent means of support. It glows attractive shades of purple
 and blue. It looks hungry.
 ~
-2|32|64 524288 -25 S
+2|32|64 0 -25 S
 19 0 0 0d0+0 0d0+0
-1|2|4|8|32 0
+0 0
 0 0 0
-
+< anthozoa~ common~
 #7505
 scyph creature oval-shaped~
 a scyph~
-{GA oval-shaped creature with a domed shell lingers here.{x
+{GAn oval-shaped creature with a domed shell lingers here.{x
 ~
-The scyph is a oval-shaped limpet-like creature, about the size of
+The scyph is an oval-shaped limpet-like creature, about the size of
 a dolphin but with none of the personality. It glows with a brilliant
 green colour as it floats in space, apparently not too concerned
 about your presence and in no hurry to get anyplace.
 ~
-2|64 1|64|524288 65 S
+2|64 65 65 S
 20 0 0 0d0+0 0d0+0
-1|2|4|8|32 0
+0 0
 0 0 0
-
+< scyph~ common~
 #7506
 siph algae cloud~
 a cloud of siph~
@@ -130,16 +130,16 @@ The siph is a colony composed of a brilliant yellow algae that drifts
 aimlessly, looking for the carrion of other Abyss-dwelling organisms
 to consume.
 ~
-64|128 524288|1048576 0 S
+64|128 1048576 0 S
 22 0 0 0d0+0 0d0+0
-1|2|4|8|16|32|64 0
+0 0
 0 0 0
 >death_prog 100~
 mpecho {wThe siph cloud disperses into the Abyss.{x
 mpoload 7505
 ~
 |
-
+< siph~ common~
 #7507
 erenna jellyfish~
 an erenna~
@@ -149,16 +149,16 @@ The erenna drifts past you here, its huge jellyfish-like body glowing
 with a bright blueish tinge. Its stingers hang down below its pulsating
 gelatinous body menacingly.
 ~
-64 524288|1048576 0 S
+64 1048576 0 S
 23 0 0 0d0+0 0d0+0
-1|2|4|8|16|32|64 0
+0 0
 0 0 0
 >death_prog 100~
 mpecho {wThe erenna's body implodes, leaving only its slimy heart.{x
 mpoload 7506
 ~
 |
-
+< erenna~ common~
 #7508
 copepod shrimp~
 a copepod~
@@ -168,11 +168,11 @@ The copepod is a bizarre species of giant, flying, bioluminescent shrimp.
 It glows with a dull pink aura as it paddles through the air, oblivious
 to your presence.
 ~
-64 256|524288 26 S
+64 256 26 S
 21 0 0 0d0+0 0d0+0
-4|32 0
+0 0
 0 0 2
-
+< copepod~ common~
 #7509
 abralia squid green~
 an abralia~
@@ -188,16 +188,16 @@ It doesn't seem at all bothered by your presence; you wouldn't be
 surprised if you could jump on its back and ride it around without
 it being overly disturbed.
 ~
-64|131072 512|524288 -125 S
+64|131072 512 -125 S
 27 0 0 0d0+0 0d0+0
-8|32|64 0
+0 0
 0 0 1
 >death_prog 100~
 mpecho {wThe abralia explodes in a cloud of blue ink!{x
 mpoload 7508
 ~
 |
-
+< abralia~ common~
 #7510
 veranyi red maw teeth lure~
 the veranyi~
@@ -206,39 +206,39 @@ the veranyi~
 The veranyi is a gigantic fishlike predator. It hides away in dark corners, luring
 its unlucky prey into its gaping maw with a hypnotic, wriggling red lure.
 ~
-2|32|64 8|32|512|65536|524288|8388608 -800 S
+2|32|64 8454696 -800 S
 28 0 0 0d0+0 0d0+0
-4|8|32|128 0
+0 0
 0 0 2
-
+< veranyi~ rare~
 #7511
 calimedusae cuttlefish~
 the calimedusae~
 {cThe largest cuttlefish you've ever seen blasts towards you.{x
 ~
-The calimedusae is a magical species of cuttlefish. Huge, green and hungry it
+The calimedusae is a magical species of cuttlefish. Huge, green and hungry, it
 drifts in space here, considering you for its next meal.
 ~
-2|32|64 512|524288 -125 S
+2|32|64 512 -125 S
 29 0 0 0d0+0 0d0+0
-8|32 0
+0 0
 0 0 2
-
+< calimedusae~ rare~
 #7512
 cyclothone eel~
 the cyclothone~
 {WA long, eellike creature patrols this area. It crackles with electrical energy.{x
 ~
-The long, sinuous cyclothone resembles a electric eel in many respects, only it is much
+The long, sinuous cyclothone resembles an electric eel in many respects, only it is much
 larger, flying, and covered with many luminous spots of various colours. It's a mean
 predator and will eat anything it thinks it can overpower with its vicious electric
 attack.
 ~
-2|32|64 32|128|512|32768|524288|8388608 -675 S
+2|32|64 8422048 -675 S
 30 0 0 0d0+0 0d0+0
-4|8|32 0
+0 0
 0 0 1
-< reserved~ elite~
+< cyclothone~ elite~
 #0
 
 #OBJECTS
@@ -358,7 +358,7 @@ poisonous stingers~
 {CThe poisonous stingers of an erenna lie here.{x~
 ~
 5 1|16384|67108864 1|8192
-6~ ~ ~ 15~
+3~ ~ ~ 15~
 1 0 0
 E
 poisonous stingers~
@@ -2826,6 +2826,7 @@ M 0 7507 2 7547                 add an erenna to The Abyss
 E 0 7507 0 16                       equip {Cpoisonous stingers{x (wield)
 M 0 7508 2 7544                 add a copepod to The Abyss
 M 0 7508 2 7548                 add a copepod to The Abyss
+M 0 7509 1 7550                 add an abralia to the stronger end of the maze
 M 0 7510 1 7553                 add the veranyi to The Veranyi's Lair
 E 0 7509 0 16                       equip gaping maw (wield)
 E 0 7510 0 17                       equip {Ra wriggling red lure{x (hold)
@@ -2837,10 +2838,6 @@ G 0 7512 0                          carry some sparking oil
 S
 
 #SPECIALS
-M 7503 spec_poison              a pycnogonid
-M 7506 spec_fido                a cloud of siph
-M 7510 spec_bloodsucker         the veranyi
-M 7512 spec_cast_electric       the cyclothone
 S
 
 #$
