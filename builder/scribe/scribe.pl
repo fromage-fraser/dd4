@@ -157,6 +157,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         megalodon vampire_squid spider_crab sea_anemone anglerfish sea_lion sea_snake cuttlefish jellyfish goblin_shark porcupinefish giant_lobster giant_octopus sahuagin
         photophore mesopelag malacost pycnogonid anthozoa scyph siph erenna copepod abralia veranyi calimedusae cyclothone
         sawfish cownose_ray frilled_shark lemon_shark fiddler_ray sahuagin_baron
+        sheepshead_wrasse giant_blobfish moonfish goliath_grouper stargazer
 /;
 
 my %mob_act = (
