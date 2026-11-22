@@ -5267,6 +5267,67 @@ const struct mob_type mob_table[MAX_MOB] =
                 0, 300, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_cast_electric", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 700
+        },
+        /* Body size, arm count and venom remain separate choices. */
+        {
+                "sawfish", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 600, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_fido", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 700
+        },
+        {
+                "cownose_ray", "fish", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 75, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "frilled_shark", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 20, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 200
+        },
+        {
+                "lemon_shark", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 90, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 280
+        },
+        {
+                "fiddler_ray", "fish", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 10, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 120
+        },
+        {
+                "sahuagin_baron", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_ARMS | PART_MANY_ARMS | PART_FINS | PART_TAIL | PART_SCALES | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                244, 180, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_sahuagin_baron", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
         }
 };
 
@@ -6857,6 +6918,13 @@ static const CREATURE_TRAIT_CHANGE abyss_armour_3_traits[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
 };
 
+/* These ray tooth plates use ordinary crushing contact, without venom. */
+static const CREATURE_TRAIT_CHANGE ray_crushing_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -6864,6 +6932,12 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"sawfish", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
+        {"cownose_ray", NULL, ray_crushing_trait_changes, TRAIT_ITEMS(ray_crushing_trait_changes)},
+        {"frilled_shark", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
+        {"lemon_shark", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
+        {"fiddler_ray", NULL, ray_crushing_trait_changes, TRAIT_ITEMS(ray_crushing_trait_changes)},
+        {"sahuagin_baron", "sahuagin", NULL, 0},
         {"mesopelag", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
         {"pycnogonid", NULL, abyss_armour_6_head_traits, TRAIT_ITEMS(abyss_armour_6_head_traits)},
         {"copepod", NULL, abyss_armour_3_traits, TRAIT_ITEMS(abyss_armour_3_traits)},

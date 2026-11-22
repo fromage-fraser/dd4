@@ -16,10 +16,11 @@ transverse teeth, arranged in a way that resembles a saw. They are among the
 largest fish with some species reaching lengths of about 7–7.6 m.  This one
 looks hungry, but not especially interested in you, unless you annoy him.
 ~
-64 32768|67108864 0 S
+64 32768 0 S
 35 0 0 0d0+0 0d0+0
-4|8|32|128|512 0
+0 0
 8 8 1
+< sawfish~ common~
 #27328
 cownose ray~
 a cownose ray~
@@ -35,10 +36,11 @@ can use the barb at the base of its tail to defend itself from the threat.
 A cownose ray has a spine with 'teeth' lining its lateral edges, and is coated
 with a weak venom.
 ~
-64 512|67108864 0 S
+64 512 0 S
 36 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 8 8 2
+< cownose_ray~ common~
 #27329
 frilled shark~
 a frilled shark~
@@ -52,10 +54,11 @@ dorsal, pelvic, and anal fins located towards the tail.
 Its common name, frilled shark, derives from the fringed appearance of the
 six pairs of gill slits at the shark's throat.
 ~
-64 512|67108864 0 S
+64 512 0 S
 37 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 8 8 1
+< frilled_shark~ common~
 #27330
 lemon shark~
 a lemon shark~
@@ -70,9 +73,9 @@ concentrated in their heads, which detect electrical pulses emitted by
 potential prey and allow these nocturnal feeders to sense their prey in the
 dark.
 ~
-64 512|67108864 0 S
+64 512 0 S
 38 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 8 8 2
 >greet_prog 10~
 mpecho A <187>lemon shark<0> lunges at you as you enter!
@@ -83,6 +86,7 @@ mpecho A <187>lemon shark<0> wheels suddenly and attacks you!
 mpkill $n
 ~
 |
+< lemon_shark~ common~
 #27331
 fiddler ray~
 a fiddler ray~
@@ -100,10 +104,11 @@ properties.
 
 Fiddler rays, while shy, are quite harmless and easily approached.
 ~
-64|128 512|65536|67108864 0 S
+64|128 66048 0 S
 39 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 8 8 1
+< fiddler_ray~ common~
 #27332
 sahuagin gladiator~
 a sahuagin gladiator~
@@ -114,7 +119,7 @@ great arena that lies in the southwestern canton of Ota'ar Dar.  He seems a
 rough customer, but doesn't seem interested in acting aggressively towards you
 without provocation, which would make sense if he's usually paid to fight.
 ~
-2|64 32|4194304|67108864 -328 S
+2|64 4194336 -328 S
 38 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -140,6 +145,7 @@ emote stares askance at you
 endif
 ~
 |
+< sahuagin~ common~
 #27333
 Maliya Kaipa bard~
 Maliya Kaipa~
@@ -149,7 +155,7 @@ Relatively slight for a sahuagin, Maliya Kaipa sits here practising on a
 strange musical instrument, presumably one peculiar to the sahuagin race.
 He looks up at you, unperturbed, but watchful.
 ~
-2|64|1024 8|32|512|8388608|67108864 -120 S
+2|64|1024 8389160 -120 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -180,9 +186,12 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 & 40  'teacher base'
 & 97 'musicianship'
 & 30 'bard base'
+MobHeight 175
+MobWeight 70
 #27334
 Shael Iokua apprentice bard~
 Shael Iokua~
@@ -192,7 +201,7 @@ A slender, youthful, sahuagin, Shael is an apprentice sahuagin bard, and sits
 here practising on a strange musical instrument. He looks at you with
 unapologetic curiosity.
 ~
-2|64 32|512|67108864 -145 S
+2|64 544 -145 S
 37 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -204,6 +213,9 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 170
+MobWeight 60
 #27335
 sahuagin warrior retired~
 a retired sahuagin warrior~
@@ -213,7 +225,7 @@ This sahuagin was clearly once a warrior, to judge by his appearance and the
 objects surrounding him, but is now presumably retired, being quite long in
 the fin.
 ~
-2|64 32|67108864|9223372036854775808 -371 S
+2|64 9223372036854775840 -371 S
 37 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -246,6 +258,8 @@ snore
 endif
 ~
 |
+< sahuagin~ common~
+MobWeight 85
 #27336
 Rene Ama thief~
 Rene Ama~
@@ -255,10 +269,11 @@ This cloaked, surreptitious sahuagin doesn't remind you of any you've seen
 before, appearing to prefer stealth and shadows to brute force and invective.
 Perhaps there's something to be learned from her?
 ~
-64|128|1024|8388608 2|8|32|512|32768|65536|2097152|8388608|67108864 -470 S
+64|128|1024|8388608 10584618 -470 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< sahuagin~ common~
 & 40 'teacher base'
 & 97 'armed combat knowledge'
 & 97 'unarmed combat knowledge'
@@ -289,10 +304,11 @@ hissing sounds of the sahuagin language, thus relating the lore that they
 contain.  He seems to have a very wise demeanour, for a sahuagin--perhaps you
 can learn something from him?
 ~
-2|64|1024|8388608 8|32|512|67108864 -139 S
+2|64|1024|8388608 552 -139 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
 & 40 'teacher base'
 & 97 'archery knowledge'
 & 97 'armed combat knowledge'
@@ -319,7 +335,7 @@ A sahuagin watcher is here, tending the hatchery.
 This is a cleric of Sekolah, employed here to tend the eggs in this hatchery.
 He regards you with an uneasy suspicion.
 ~
-2|64 32|512|67108864 -645 S
+2|64 544 -645 S
 38 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -335,6 +351,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27339
 sahuagin watcher~
 a sahuagin watcher~
@@ -343,7 +360,7 @@ A sahuagin watcher is here, tending the hatchery.
 This is a cleric of Sekolah, employed here to tend the eggs in this hatchery.
 She regards you with an uneasy suspicion.
 ~
-2|64 32|512|67108864 -519 S
+2|64 544 -519 S
 37 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -359,6 +376,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27340
 drunk sahuagin~
 a very drunk sahuagin~
@@ -366,7 +384,7 @@ An extremely drunk sahuagin is here, in an absolute state.
 ~
 This sahuagin is deep in his cups and generally insensate.
 ~
-2|64 1|256|131072|67108864|9223372036854775808 -519 S
+2|64 9223372036854907137 -519 S
 37 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -410,6 +428,7 @@ mpecho The drunk sahuagin lets a long, wet, stinky one rip.
 endif
 ~
 |
+< sahuagin~ common~
 #27341
 sahuagin mother~
 a sahuagin mother~
@@ -418,10 +437,11 @@ A sahuagin mother is here, caring for her latest brood of hatchlings.
 This female sahuagin busies herself tending to the needs of her brood of
 hatchlings. She regards you with a suspicious eye.
 ~
-2|64 32|512|8192|67108864 -519 S
+2|64 8736 -519 S
 38 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< sahuagin~ common~
 #27342
 sahuagin hatchling~
 a sahuagin hatchling~
@@ -430,7 +450,7 @@ a sahuagin hatchling~
 This young male sahuagin swims about madly, playing and fighting and generally
 looking to get himself into trouble.
 ~
-64 512|67108864 -519 S
+64 512 -519 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -439,6 +459,10 @@ shout Growl! Take that stranger!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 75
+MobWeight 12
+MobSize 0
 #27343
 sahuagin hatchling~
 a sahuagin hatchling~
@@ -447,7 +471,7 @@ a sahuagin hatchling~
 This young female sahuagin swims about madly, playing and fighting and
 generally looking to get herself into trouble.
 ~
-64 512|67108864 -519 S
+64 512 -519 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -456,6 +480,10 @@ shout Rawr! I'm the biggest and toughest!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 75
+MobWeight 12
+MobSize 0
 #27344
 sahuagin hatchling~
 a sahuagin hatchling~
@@ -464,7 +492,7 @@ a sahuagin hatchling~
 This young male sahuagin swims about on the spot madly, playing and fighting
 and generally looking to get himself into trouble.
 ~
-2|64 512|67108864 -519 S
+2|64 512 -519 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -473,6 +501,10 @@ shout Growl! Take that stranger!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 75
+MobWeight 12
+MobSize 0
 #27345
 sahuagin hatchling~
 a sahuagin hatchling~
@@ -481,7 +513,7 @@ a sahuagin hatchling~
 This young female sahuagin swims about on the spot madly, playing and fighting
 and generally looking to get herself into trouble.
 ~
-2|64 512|67108864 -519 S
+2|64 512 -519 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -490,6 +522,10 @@ shout Rawr! I'm the biggest and toughest!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 75
+MobWeight 12
+MobSize 0
 #27346
 Ota'ar Dar cityguard sahuagin guard~
 an Ota'ar Dar cityguard~
@@ -500,7 +536,7 @@ pauldrons are stamped with the city's mark.  They are selected for their
 strength, youth, and loyalty to the prince. This one has been assigned
 to protect this canton's baron.
 ~
-2|64 8|32|512|8388608|67108864 -430 S
+2|64 8389160 -430 S
 38 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -515,6 +551,9 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 195
+MobWeight 110
 #27347
 Ota'ar Dar cityguard sahuagin guard~
 an Ota'ar Dar cityguard~
@@ -525,10 +564,13 @@ pauldrons are stamped with the city's mark.  They are selected for their
 strength, youth, and loyalty to the prince. This one has been assigned
 to protect this canton's baron.
 ~
-2|64 8|32|512|8388608|67108864 -430 S
+2|64 8389160 -430 S
 38 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 195
+MobWeight 110
 #27348
 wife female baron wives~
 the baron's wife~
@@ -539,7 +581,7 @@ little to do but tend to the baron's young (who are fairly independent, once
 hatched) and await his call, and so spends most of her life in relative comfort
 and ease.
 ~
-2|64 512|67108864 -370 S
+2|64 512 -370 S
 37 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -547,6 +589,7 @@ and ease.
 emote raises her eyelids at you, sleepily
 ~
 |
+< sahuagin~ common~
 #27349
 sahuagin broodling feisty female~
 a feisty sahuagin broodling~
@@ -556,7 +599,7 @@ This female sahuagin is a broodling, or young adult.  Not quite ready to leave
 the (relative) safety of her parents and clutchmates, she fights to assert her
 place in sahuagin society and within her home.
 ~
-2|64 512|67108864 -603 S
+2|64 512 -603 S
 36 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -565,6 +608,9 @@ shout You won't have my bed!  Have at you!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 175
+MobWeight 75
 #27350
 sahuagin broodling feisty male~
 a feisty sahuagin broodling~
@@ -574,7 +620,7 @@ This male sahuagin is a broodling, or young adult.  Not quite ready to leave
 the (relative) safety of his parents and clutchmates, he fights to assert his
 place in sahuagin society and within his home.
 ~
-2|64 512|67108864 -603 S
+2|64 512 -603 S
 36 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -583,18 +629,21 @@ shout Get away from my bed!  Die!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 175
+MobWeight 75
 #27351
 baron sahuagin~
 the baron~
 <248>A sahuagin baron stands here, shaking with fury.<0>
 ~
-Sahuagin barons are four-limbed mutant sahuagin.  Larger and more powerful
+Sahuagin barons are four-armed mutant sahuagin.  Larger and more powerful
 than the regular breed, they are often promoted to positions of rank and power
 within the strict sahuagin hierarchy.  This baron is in charge of the southern
 residential canton in which you now find yourself.  He is not at ALL pleased
 to see you here.
 ~
-2|64|2048 512|67108864 -603 S
+2|64|2048 512 -603 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -650,7 +699,7 @@ else
 endif
 ~
 |
-< reserved~ boss~
+< sahuagin_baron~ boss~
 #0
 
 
@@ -2491,7 +2540,6 @@ G 1 27463 100           ; give Prince's token
 S
 
 #SPECIALS
-M  27327 spec_fido              a sawfish
 M  27332 spec_warrior           a sahuagin gladiator
 M  27335 spec_warrior           a retired sahuagin warrior
 M  27336 spec_superwimpy        Rene Ama
@@ -2501,7 +2549,6 @@ M  27339 spec_cast_cleric       a sahuagin watcher
 M  27341 spec_sahuagin          a sahuagin mother
 M  27346 spec_sahuagin_guard    an Ota'ar Dar cityguard
 M  27347 spec_sahuagin_guard    an Ota'ar Dar cityguard
-M  27351 spec_sahuagin_baron    the sahuagin baron
 S
 
 #$

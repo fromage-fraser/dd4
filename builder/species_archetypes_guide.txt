@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 22 November 2026
-Based on master e6023264bcb1a70f31d7374db180bf9bf34a8dfe (PR #1008),
-with the accompanying Abyss changes.
+Based on master 49f4173d873bceb199d63b52cfea4f76418dd209 (PR #1009),
+with the accompanying Ota'ar Dar Residential South changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,7 +16,7 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 39 bodies, 402 archetypes, 60 internal traits
+The current tables contain 39 bodies, 408 archetypes, 60 internal traits
 and 141 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 402, so this single example would make 403.
+guide's checked revision it is 408, so this single example would make 409.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 402.
+valid index. This example would receive index 408.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 402;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 408;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 402; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 408; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-39 body rows, 402 archetype rows, 60 internal traits and 141 Scribe
+39 body rows, 408 archetype rows, 60 internal traits and 141 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -5800,6 +5800,196 @@ Current merged completion is 96/153 areas (62.7%) and 1571/4131 mobile
 definitions (38.0%). The Abyss adds 13 definitions; after its merge is
 verified, totals become 97/153 (63.4%) and 1584/4131 (38.3%).
 
+Ota'ar Dar Residential South
+---------------------------
+
+The current catalogue contains 408 archetypes, 39 basic body species,
+60 internal traits, 141 Scribe special names and 637 skill rows. Six
+profiles append at 402-407: sawfish, cownose_ray, frilled_shark,
+lemon_shark, fiddler_ray and sahuagin_baron. No basic body, trait ID,
+special name, engine helper, player race or individual trait field is
+added. All 402 earlier profiles, including Sahuagin 388, stay unchanged.
+New profile HP/damage/critical/haste/XP modifiers are zero; ordinary
+special XP rules remain unchanged.
+
+All five fish use the existing fish body: head, eyes, brain, heart, guts,
+fins and tail, with Swim and without ordinary arms, legs or speech.
+They retain organic bodies, usable blood, pain, minds, souls and ordinary
+remains. There is no new resistance/immunity package, Mindless, Analgic,
+Soulless, magical contact, extra melee stream or new venom power.
+
+The final user decision is explicit: Sawfish is Large, 700 cm long and
+600 kg, but NOT HUGE. Clear its old individual HUGE bit and do not inherit
+one. This supersedes historical reference notes recommending preservation
+of HUGE. Dimensions are descriptive; a long body does not itself set the
+combat restriction flag. None of this area's 25 converted mobs has HUGE.
+
+Dimensions below are height cm / whole kg / length cm. Zero means
+unspecified. Chosen masses and unmeasured heights/lengths are DD4 design
+estimates, not new claims of precise book measurements. Source Frilled
+Shark length 2 m and Lemon Shark 2.4-3.1 m/up-to-90 kg constrain their
+estimates. The Cownose's span over 2 m describes its broad pectoral fins;
+it is not body length, wing anatomy, flight or a new span field.
+
+Vnum   Archetype         H / kg / L          Size    Armour  Rank
+27327  sawfish             0 / 600 / 700  Large    -4     common
+27328  cownose_ray         0 /  75 / 300  Large    -3     common
+27329  frilled_shark       0 /  20 / 200  Medium   -4     common
+27330  lemon_shark         0 /  90 / 280  Large    -4     common
+27331  fiddler_ray         0 /  10 / 120  Medium   -3     common
+27332  sahuagin          183 /  90 /   0  Medium   -5     common
+27333  sahuagin          175 /  70 /   0  Medium   -5     common
+27334  sahuagin          170 /  60 /   0  Medium   -5     common
+27335  sahuagin          183 /  85 /   0  Medium   -5     common
+27336  sahuagin          183 /  90 /   0  Medium   -5     common
+27337  sahuagin          183 /  90 /   0  Medium   -5     common
+27338  sahuagin          183 /  90 /   0  Medium   -5     common
+27339  sahuagin          183 /  90 /   0  Medium   -5     common
+27340  sahuagin          183 /  90 /   0  Medium   -5     common
+27341  sahuagin          183 /  90 /   0  Medium   -5     common
+27342  sahuagin           75 /  12 /   0  Small    -5     common
+27343  sahuagin           75 /  12 /   0  Small    -5     common
+27344  sahuagin           75 /  12 /   0  Small    -5     common
+27345  sahuagin           75 /  12 /   0  Small    -5     common
+27346  sahuagin          195 / 110 /   0  Medium   -5     common
+27347  sahuagin          195 / 110 /   0  Medium   -5     common
+27348  sahuagin          183 /  90 /   0  Medium   -5     common
+27349  sahuagin          175 /  75 /   0  Medium   -5     common
+27350  sahuagin          175 /  75 /   0  Medium   -5     common
+27351  sahuagin_baron    244 / 180 /   0  Large    -5     boss
+
+Sawfish keeps its passive-until-provoked behaviour and existing Fido
+role. The shared profile defaults to spec_fido so an identical individual
+record may inherit it. Its existing saw weapon 27414 remains attached to
+head region 1 with its original verb 15 and all other fields intact.
+Ordinary anatomical teeth supply a bite fallback; no new rostrum flag,
+swallow power or separate attack stream is invented.
+
+Cownose Ray has crushing dental plates and an ordinary fish tail. The
+existing poisoned BODY_PART weapon 27415 already provides the barb at
+tail region 6 with sting verb 16. Preserve that item, its existing poison,
+flags, equipment resets and all current contact/saving/trauma rules.
+There is no new barb object, venom special or weak-dose poison subsystem.
+The conversion does not increase the effect merely because the prose
+mentions venom. Fiddler Ray keeps its shy, harmless and nonvenomous role;
+sharing a broad ray body shape does not give it the Cownose's weapon.
+
+Both ray profiles use natural_armour -3 and the existing
+natural_attack_type 8 for ordinary blunt crushing contact when no weapon
+or natural selector takes precedence. It is a passive attack vocabulary,
+not poison, a new player skill or a simultaneous extra attack. No new
+global mouth-trauma rule is introduced. Original attached weapons retain
+their existing regions, eligibility, precedence, disarming and Regenerate
+behaviour; ordinary NPC fallback remains governed by the existing engine.
+
+Frilled Shark is a fish with six gill pairs, an eel-like outline and
+ordinary fangs; it does not become a snake or gain constriction. Lemon
+Shark keeps its tooth attack, fins and tail. Electroreception in its prose
+adds no electrical immunity, new detection power or psychic resistance.
+Their existing shared jaw item 27416 stays intact, including its uses
+outside this area. New fang profiles reuse the existing -4 armour and
+head_trauma_blocks_attacks trait values; no old Shark profile changes.
+
+Nineteen of the twenty Sahuagin definitions reuse Sahuagin 388. Its
+humanoid body, scales, fins, tail, webbed hands/feet, ordinary claws/fangs,
+brain/heart/gut/blood, mind, pain, soul and speech remain exactly as before.
+Shared defaults stay 183 cm/90 kg/Medium, length unspecified, natural
+armour -5, Swim, no active special and no resistance package. Neither
+Undersea's Sahuagin 27018 nor player race 19 is changed.
+
+Absolute height/weight/size overrides express the individual prose:
+Maliya is slight, Shael slender and youthful, the retired warrior older,
+the cityguards selected for strength and youth, and the broodlings young
+adults. Other adults keep the shared defaults when the prose gives no
+physical reason to change them. Sex, names, attractive appearance,
+profession and rank do not automatically determine body size.
+
+The four hatchlings use 75 cm/12 kg/Small, with their ordinary Sahuagin
+anatomy, armour and combat capability retained. These are estimates for
+an early stage, not sizes derived from level 35. The 2e Sahuagin entry
+describes rapid growth, roughly one to two months to full size; no exact
+age, growth timer or child-behaviour mechanic is imposed here. Keep their
+individual wandering versus Sentinel choices, all 7% attack programs,
+sexes and authored levels/builds. Both explicit young-adult broodlings
+use 175 cm/75 kg/Medium, retaining their current behaviour and programs.
+
+The Baron alone uses new sahuagin_baron: 244 cm/180 kg/Large, without
+HUGE. It is the four-ARMED mutant; correct the old four-limbed wording.
+The humanoid's ordinary Arms bit is XOR-cancelled and ManyArms added;
+Hands/Fingers and all ordinary organs, scales, fins, tail, claws/fangs
+remain. This represents four arms rather than adding a second ordinary
+pair to four more. It creates no extra wield slots, attack stream or
+limb-specific HP. Keep both existing tridents and the four-armed portrait.
+
+The Baron's code-only trait profile has parent sahuagin, within the same
+humanoid body species. It inherits the existing -5 natural armour and
+head-trauma opt-in only. Trait parenting does not inherit ordinary flags,
+dimensions or active roles, which the new initializer supplies explicitly.
+Its default spec_sahuagin_baron preserves the original full combat role
+at 100%; existing individual regeneration remains an ACT exception in the
+area, not a new shared species behaviour.
+
+Boss 27351 stays Boss, and the other 24 remain Common. There are no rank
+promotions. Keep the original HP/build values; the Boss multiplier still
+applies once. Levels, HP dice letters, a teacher title or cityguard job
+do not turn another resident into a higher-rank encounter.
+
+Preserve all eleven original active role vectors, either as individual
+records or identical new defaults: Sawfish Fido, gladiator/retired warrior,
+Rene's superwimpy, Ota'as and both watchers' cleric roles, the mother,
+both guards and the Baron. Sahuagin 388 remains profession-neutral.
+Musicians and teachers do not receive an invented casting special.
+The three teachers' base levels and complete lesson lists stay intact.
+
+All source ACT choices, perception effects, Protection, Sanctuary,
+regeneration, aggression/passivity, Wimpy, Sentinel, StayArea and current
+sexes remain. Retired warrior 27335 and drunk 27340 retain their exact
+Slow masks, including unsigned bit 63; keep Blind/Sleep and other authored
+statuses as well. Use full-width unsigned masks or arbitrary-precision
+integers when checking them; do not round through JavaScript Number.
+New anatomy must not make old NoArms/NoLegs/NoSpeech or tail XOR fields
+cancel the intended inherited body. Swim stays resolved on the fish and
+Sahuagin, rather than being repeated in both inherited and raw masks.
+
+All 30 programs remain exact: hatchling/broodling attacks, Lemon Shark's
+10% entry/greet attacks, bard and teacher dialogue, guard appointment
+checks, the Baron's three-reinforcement branches and every existing
+condition/chance. No interpreter or generic guard change is required.
+All original placements/caps/order, gear and all 53 object definitions
+remain, including their 163 external reset uses. Keep incubator contents,
+appointment tablet/token, musical instruments and portals. Portal 27461
+actually resets in room 27670, so its existing portal picture stays.
+
+Room flags/doors/routes are unchanged and no NO_UNDEAD flags are added.
+The area's 40 rooms and the cross-area recall at Sahuagin Market 27347
+remain unwarded. No matching South .src exists; unrelated real sources
+remain byte-identical. Only Sawfish portrait 27327 is regenerated to show
+the proper toothed rostrum; all other portraits/rooms and filenames stay.
+
+Within an existing $mob block, for example:
+
+    archetype sahuagin
+    rnk common
+    height 75
+    weight 12
+    size 0
+
+This describes a hatchling without replacing its existing AI, level,
+programs or role. An ordinary adult can omit the dimension overrides.
+The mutant Baron instead uses:
+
+    archetype sahuagin_baron
+    rnk boss
+
+Sawfish uses archetype sawfish, rnk common, and the approved no-HUGE
+default. Do not copy the obsolete individual HUGE field from the old
+definition. No new area field, Scribe trait command, individual trait
+override, venom command or body-part category exists.
+
+Current verified completion is 97/153 areas (63.4%) and 1584/4131 mobile
+definitions (38.3%). After South's 25 definitions are merged and verified,
+totals become 98/153 (64.1%) and 1609/4131 (38.9%).
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -5851,7 +6041,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 402 current table rows follow, grouped by body. Numeric IDs are for
+All 408 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -5867,7 +6057,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (125)
+HUMANOID (126)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6244,6 +6434,9 @@ HUMANOID (125)
   [388] sahuagin: h/w/l 183 / 90 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [407] sahuagin_baron: h/w/l 244 / 180 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_sahuagin_baron; policy auto
 
 DRAGON (20)
 ------------
@@ -6857,7 +7050,7 @@ AMORPHOUS_ORGANISM (9)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-FISH (13)
+FISH (18)
 ----------
   [ 95] eel: h/w/l ? / 5 / 150; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6898,6 +7091,21 @@ FISH (13)
   [401] cyclothone: h/w/l ? / 300 / 700; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_electric; policy auto
+  [402] sawfish: h/w/l ? / 600 / 700; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_fido; policy auto
+  [403] cownose_ray: h/w/l ? / 75 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [404] frilled_shark: h/w/l ? / 20 / 200; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [405] lemon_shark: h/w/l ? / 90 / 280; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [406] fiddler_ray: h/w/l ? / 10 / 120; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 QUADRUPEDAL_AMPHIBIAN (3)
 ---------------------------
@@ -8057,8 +8265,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/e6023264bcb1a70f31d7374db180bf9bf34a8dfe
-  Base PR1008 plus the accompanying Abyss patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/49f4173d873bceb199d63b52cfea4f76418dd209
+  Base PR1009 plus the accompanying South patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -8068,9 +8276,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 96/153 areas (62.7%) and 1571/4131 mob
-definitions (38.0%) merged and verified. The Abyss adds 13 definitions.
-After its merge is verified, completion becomes 97/153 areas (63.4%) and
-1584/4131 definitions (38.3%).
+The live conversion is currently 97/153 areas (63.4%) and 1584/4131 mob
+definitions (38.3%) merged and verified. South adds 25 definitions.
+After its merge is verified, completion becomes 98/153 areas (64.1%) and
+1609/4131 definitions (38.9%).
 
 END OF GUIDE
