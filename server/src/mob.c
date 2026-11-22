@@ -5136,6 +5136,137 @@ const struct mob_type mob_table[MAX_MOB] =
                 183, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        /* The Abyss visitors fly magically; marine bodies do not add Swim. */
+        {
+                "photophore", "amorphous_organism", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                80, 30, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 80
+        },
+        {
+                "mesopelag", "fish", "icon1", "icon2",
+                0, AFF_FLYING | AFF_SWIM,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "malacost", "crustacean", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_ARMS | PART_ARMS | PART_EYESTALKS,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                50, 30, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "pycnogonid", "arachnid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                65, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_poison_bite", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "anthozoa", "radial_invertebrate", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_TENTACLES,
+                PART_TENTACLES, 0, 0, 0,
+                0, 0, 0, 0,
+                200, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "scyph", "limbless_invertebrate", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_LEGS | PART_HEAD | PART_EYE | PART_FEET | PART_HUSK_SHELL,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                80, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 200
+        },
+        {
+                "siph", "plant", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                200, 20, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_fido", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "erenna", "radial_invertebrate", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | BODY_NO_HEART | PART_HEART | PART_TENTACLES,
+                PART_TENTACLES, 0, 0, 0,
+                0, 0, 0, 0,
+                150, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 600
+        },
+        {
+                "copepod", "crustacean", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_TAIL,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                40, 25, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "abralia", "cephalopod", "icon1", "icon2",
+                0, AFF_FLYING | AFF_SWIM,
+                BODY_NO_CORPSE | PART_FINS | PART_BEAK,
+                PART_TENTACLES | PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 900
+        },
+        {
+                "veranyi", "fish", "icon1", "icon2",
+                0, AFF_FLYING | AFF_SWIM,
+                BODY_HUGE | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 2000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_bloodsucker_bite", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 800
+        },
+        {
+                "calimedusae", "cephalopod", "icon1", "icon2",
+                0, AFF_FLYING | AFF_SWIM,
+                PART_FINS | PART_BEAK,
+                PART_TENTACLES | PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 300, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 600
+        },
+        {
+                "cyclothone", "fish", "icon1", "icon2",
+                0, AFF_FLYING | AFF_SWIM,
+                PART_FANGS,
+                PART_FANGS, 0, 0, RES_ELECTRICITY,
+                0, 0, 0, 0,
+                0, 300, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_electric", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 700
         }
 };
 
@@ -6705,6 +6836,27 @@ static const CREATURE_TRAIT_CHANGE marine_armour_6_traits[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
 };
 
+/* Shared values leave these airborne species with their own anatomy. */
+static const CREATURE_TRAIT_CHANGE abyss_armour_6_head_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE abyss_armour_7_head_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE abyss_armour_1_head_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -1},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE abyss_armour_3_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -6712,6 +6864,13 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"mesopelag", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
+        {"pycnogonid", NULL, abyss_armour_6_head_traits, TRAIT_ITEMS(abyss_armour_6_head_traits)},
+        {"copepod", NULL, abyss_armour_3_traits, TRAIT_ITEMS(abyss_armour_3_traits)},
+        {"abralia", NULL, abyss_armour_7_head_traits, TRAIT_ITEMS(abyss_armour_7_head_traits)},
+        {"veranyi", NULL, marine_armour_2_head_traits, TRAIT_ITEMS(marine_armour_2_head_traits)},
+        {"calimedusae", NULL, marine_armour_2_head_traits, TRAIT_ITEMS(marine_armour_2_head_traits)},
+        {"cyclothone", NULL, abyss_armour_1_head_traits, TRAIT_ITEMS(abyss_armour_1_head_traits)},
         {"megalodon", NULL, marine_armour_5_head_traits, TRAIT_ITEMS(marine_armour_5_head_traits)},
         {"vampire_squid", NULL, marine_head_traits, TRAIT_ITEMS(marine_head_traits)},
         {"sea_anemone", NULL, marine_sting_traits, TRAIT_ITEMS(marine_sting_traits)},
@@ -10444,6 +10603,7 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_camel_spit", 5 },
                 { "spec_poison_bite", 5 },
                 { "spec_bloodsucker", 5 },
+                { "spec_bloodsucker_bite", 5 },
                 { "spec_superwimpy", 5 },
                 { "spec_spectral_minion", 5 },
                 { "spec_kungfu_poison", 5 },

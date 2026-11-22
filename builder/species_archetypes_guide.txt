@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 22 November 2026
-Based on master 7b0c45ac787f544cfc757e3b1675ef5ad2b79b6f (PR #1007),
-with the accompanying Undersea changes.
+Based on master e6023264bcb1a70f31d7374db180bf9bf34a8dfe (PR #1008),
+with the accompanying Abyss changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,8 +16,8 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 39 bodies, 389 archetypes, 60 internal traits
-and 140 Scribe special names. Earlier area notes sometimes record the
+The current tables contain 39 bodies, 402 archetypes, 60 internal traits
+and 141 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
 The server code is the final authority. This is a dated guide, not a promise
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 389, so this single example would make 390.
+guide's checked revision it is 402, so this single example would make 403.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 389.
+valid index. This example would receive index 402.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 389;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 402;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 389; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 402; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-39 body rows, 389 archetype rows, 60 internal traits and 140 Scribe
+39 body rows, 402 archetype rows, 60 internal traits and 141 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -5619,6 +5619,187 @@ Current verified conversion progress is 95/153 areas (62.1%) and
 1552/4131 mob definitions (37.6%). Undersea adds 19 definitions; after
 its merge is verified, totals become 96/153 (62.7%) and 1571/4131 (38.0%).
 
+The Abyss
+---------
+
+The current catalogue contains 402 archetypes, 39 basic body species,
+60 internal traits, 141 Scribe special names and 637 skill rows. Thirteen
+profiles append at 389-401, using eight existing body groups. All earlier
+389 profiles, 39 bodies, 60 trait IDs and player opt-ins stay unchanged.
+New profile HP/damage/critical/haste/XP modifiers are zero. Natural armour
+uses existing internal traits without replacing the authored area AC.
+
+New names in index order: photophore, mesopelag, malacost, pycnogonid,
+anthozoa, scyph, siph, erenna, copepod, abralia, veranyi, calimedusae and
+cyclothone. These are the area's fictional creatures, not a compulsory
+classification as real marine species. A familiar scientific-sounding
+name never overrides the actual description or authored role.
+
+This is an AIRBORNE realm: the source explicitly describes airy, inky
+gloom and impossible flight. All thirteen profiles have magical Flying,
+without invented wings or automatic Swim. Fish and cephalopod bodies
+normally supply Swim, so these archetypes XOR that inherited bit off and
+add Flying. The area must remove duplicate raw Flying bits to avoid
+cancelling it again. Flight is preserved, not exchanged for swimming.
+All ACT behaviour remains individual: do not add generic aggression,
+Sentinel, Wimpy, Mountable or NoCharm through the shared profiles.
+
+Measurements are height cm / whole kg / length cm. Zero is unspecified.
+All numeric dimensions are agreed DD4 design estimates; the explicit
+Pycnogonid two-metre leg span is a separate descriptive measurement,
+not a replacement for body length. Rank does not determine dimensions.
+Only Veranyi has HUGE, preserving the original exception. Long tentacles
+do not automatically give Abralia or Calimedusae an additional HUGE flag.
+
+Vnum  Profile        H / kg / L           Size       Armour  Rank
+7500  photophore      80 /   30 /   80  Medium       0     common
+7501  mesopelag        0 /  200 /  300  Large       -4     common
+7502  malacost        50 /   30 /  100  Medium       0     common
+7503  pycnogonid      65 /   75 /  150  Medium      -6     common
+7504  anthozoa       200 /  150 /  300  Large        0     common
+7505  scyph           80 /  200 /  200  Large        0     common
+7506  siph           200 /   20 /  300  Large        0     common
+7507  erenna         150 /  200 /  600  Large        0     common
+7508  copepod         40 /   25 /  150  Medium      -3     common
+7509  abralia          0 /  500 /  900  Large       -7     common
+7510  veranyi          0 / 2000 /  800  Large+HUGE  -2     rare
+7511  calimedusae      0 /  300 /  600  Large       -2     rare
+7512  cyclothone       0 /  300 /  700  Large       -1     elite
+
+Veranyi 7510 and Calimedusae 7511 are Rare encounters in their individual
+lairs. Cyclothone 7512 keeps its existing Elite rank. The other ten remain
+Common, including the passive mount. Existing rank HP multipliers still
+apply exactly once, separately from zero profile HP modifiers.
+
+Photophore uses amorphous_organism: an organic Bloodless blob without a
+separate head, eyes, limbs, brain or heart. NoCorpse preserves its existing
+death-jelly program rather than adding a second ordinary corpse. Retain
+individual Blind and NoCharm. NoCharm does not mean Mindless: Photophore
+keeps mind, soul and pain eligibility despite its unconventional anatomy.
+There is no new acid contact, splitting power or ooze immunity package.
+
+Mesopelag is a living shark-like fish: head/eyes, brain/heart/gut, fins,
+tail and ordinary fang bite, without arms, legs or ordinary speech. Keep
+its local senses. Its -4 armour follows the existing Shark comparison;
+no shared Shark change or additional active role is needed.
+
+Malacost is a dog-sized woodlouse/slater-like crustacean with many walking
+legs, ordinary organs/blood, segmented shell and unstalked eyes. Its XOR
+removes inherited grasping arms and eyestalks; it gains no pincers. Do not
+retain an old NoLegs exception that would contradict those walking legs.
+Natural armour is 0 because its existing equipped plates already supply
+AC -15. Keep Wimpy, Protection and the death-curl program. Shared plates
+7501 and their external Sahuagin Market equipment use remain unchanged.
+
+Pycnogonid is the explicit fictional venomous, toothed flying spider,
+not a forced reconstruction of real sea-spider mouthparts. Arachnid gives
+eight legs, head/eyes and ordinary brain/heart/gut/blood; fangs supply the
+ordinary bite. Natural armour is -6. Existing spec_poison_bite preserves
+the old poison payload and rolls, adding the existing usable head/fang
+and head-trauma checks. Its ordinary native fangs also opt into the
+existing head_trauma_blocks_attacks trait. Poison and poison_bite retain
+their existing +5 special-XP allowance; no new venom status is created.
+
+Anthozoa uses radial_invertebrate with grasping tentacles and a digestive
+cavity, without separate head/eyes/central brain/heart or walking legs.
+It is organic and Bloodless, but retains mind, soul, pain and ordinary
+remains. Restore its arm anatomy for the attached region-3 tentacle
+weapon. Keep Sentinel/aggression and its nonpoison role; resemblance to
+an anemone does not grant a new poison special.
+
+Scyph uses limbless_invertebrate with the local headless/eyeless form,
+internal brain-ganglia, heart, gut and usable blood. Its single muscular
+foot is represented by clearing NoLegs and adding Feet, with no numbered
+leg flags. Existing HAS_LEGS then permits the existing leg target group
+and weapon region 4 without inventing two legs or a new body species.
+Keep the original Blind, Hold and Sentinel as the authored stationary
+limpet encounter. This conversion does not add a global leg-trauma
+weapon gate or promise that leg trauma disables every region-4 weapon.
+Its equipped shell already supplies AC -35, so natural armour remains 0.
+
+Siph is an organic algal plant colony: no central head, eyes, limbs,
+brain, heart or gut, Bloodless and NoCorpse. Plant Analgic makes it
+insensible to pain; this is independent of its retained mind and soul.
+Do not add Mindless, Soulless, Inorganic, new resistances or poison merely
+because it is a colony. Keep fido, Wimpy, PassDoor and the dispersal/drop
+program. It has no invented grasping limb or added native damage power.
+
+Erenna is an explicit magical-jelly exception: its death program leaves
+a slimy heart, so its radial body cancels NoHeart and adds a real
+targetable Heart. It remains Bloodless, without a central brain, and
+retains mind, pain and soul. Gut and tentacle Arms remain; there is no
+Tail. Existing stinger weapon 7507 changes only its target region from
+tail 6 to arm 3. Keep the poison/weapon properties, PassDoor, NoCorpse
+and exact heart-drop program. There is no new stinger part or trauma.
+
+Copepod follows the described giant shrimp: shell, stalked eyes,
+head/brain/heart/gut, many paddling legs, feeding appendages and tail.
+Its ordinary living blood, mind, pain and soul remain. Natural armour
+is -3. The name does not force a microscopic animal or supply large
+claws, venom or a new special attack absent from the local description.
+
+Abralia and Calimedusae use cephalopod with head/eyes, brain/hearts/gut,
+usable blood, tentacled arms, beak and fins, without walking legs or
+ordinary speech. Their beaks and tentacles use existing natural attack
+selection and head/arm trauma; more arms never add simultaneous streams.
+New beak profiles opt into the existing head-trauma trait. The wielded
+Calimedusae beak retains ordinary attached-weapon precedence and rules.
+
+Abralia stays nonaggressive, Mountable and NoCorpse, with its blue-ink
+death program unchanged. Do not import Giant Squid's grip/fido special.
+The approved new reset loads one Abralia, cap 1, in room 7550 at the
+stronger end of the maze; preserve all original reset placements/caps.
+Calimedusae remains a magical hungry cuttlefish, without an invented
+spell catalogue, extra poison or new grip.
+
+Veranyi is a gigantic living fish with ordinary organs, fangs, fins,
+tail and the existing HUGE exception. Its lure is descriptive and its
+original equipment remains; no Charm/gaze is added. New
+spec_bloodsucker_bite is a narrow anatomical wrapper: require a usable
+head, no head trauma and usable native fangs, then invoke the unchanged
+spec_bloodsucker. The old routine's target, rolls, hit/drain behaviour
+and messages remain. Its XP exception is +5, equal to old bloodsucker;
+this is not a new profile-XP premium or a global bloodsucker rewrite.
+
+Cyclothone is an eel-like living fish with head/eyes, brain/heart/gut,
+fins, tail and teeth. It explicitly gains Electricity immunity as the
+approved gameplay choice; no other new resistance or immunity is added.
+Preserve the complete weighted, level-gated spec_cast_electric selection,
+including all existing non-electric spell choices, rather than replacing
+it with a mild real-eel discharge. Keep Elite, Sanctuary, aggression and
+Sentinel. Ordinary NoSpeech does not make the existing native caster
+ineligible; its existing communication guards remain authoritative.
+
+All thirteen profiles preserve organic bodies and souls. None adds
+Mindless or Undead. Photophore, Anthozoa and Erenna remain pain-capable;
+Siph alone receives plant Analgic. Preserve existing NoCorpse specifically
+on 7500, 7506, 7507 and 7509, alongside their exact death-program drops.
+Corpse choice, blood availability, organ targeting, mind and pain are
+independent properties rather than one bundled "invertebrate" package.
+
+All old builds, alignments, sexes, ACT behaviour, room flags/sectors/
+routes/randomisation, equipment and loot remain except the approved
+Abralia placement and Erenna weapon-region correction. All 60 rooms stay
+airborne as authored; no NO_UNDEAD rollout or underwater conversion is
+implied. No matching Abyss source exists; unrelated real .src exports
+remain unchanged. Only room 7553 needs an unchanged-image filename alias;
+there is no portrait repaint or gameplay dependence on new artwork.
+
+Within a complete $mob block, the ordinary authoring selection is:
+
+    archetype veranyi
+    rnk rare
+
+This inherits its body, dimensions and anatomical bloodsucker role.
+Keep authored behaviour and equipment in the individual definition. In
+other uses, ordinary sp/sp2/spchance overrides remain available. No new
+area field, trait command, individual trait override or body-part target
+category is introduced. MSTAT continues to show resolved trait origins.
+
+Current merged completion is 96/153 areas (62.7%) and 1571/4131 mobile
+definitions (38.0%). The Abyss adds 13 definitions; after its merge is
+verified, totals become 97/153 (63.4%) and 1584/4131 (38.3%).
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -5670,7 +5851,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 389 current table rows follow, grouped by body. Numeric IDs are for
+All 402 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -6451,7 +6632,7 @@ HEAD_ONLY (5)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_any_anatomical; policy auto
 
-LIMBLESS_INVERTEBRATE (13)
+LIMBLESS_INVERTEBRATE (14)
 ---------------------------
   [ 48] rock_worm: h/w/l 150 / 8000 / 800; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6490,6 +6671,9 @@ LIMBLESS_INVERTEBRATE (13)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_lurker_wrap; policy auto
   [342] giant_maggot: h/w/l 25 / 8 / 100; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [394] scyph: h/w/l 80 / 200 / 200; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -6622,7 +6806,7 @@ ELEMENTAL_BEING (23)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-CRUSTACEAN (4)
+CRUSTACEAN (6)
 ----------------
   [ 84] giant_hermit_crab: h/w/l 152 / 350 / 250; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -6636,8 +6820,14 @@ CRUSTACEAN (4)
   [386] giant_lobster: h/w/l 60 / 200 / 250; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [391] malacost: h/w/l 50 / 30 / 100; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [397] copepod: h/w/l 40 / 25 / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
-AMORPHOUS_ORGANISM (8)
+AMORPHOUS_ORGANISM (9)
 ------------------------
   [ 91] green_ooze: h/w/l 30 / 80 / 150; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -6663,8 +6853,11 @@ AMORPHOUS_ORGANISM (8)
   [348] lemure: h/w/l 152 / 75 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [389] photophore: h/w/l 80 / 30 / 80; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
-FISH (10)
+FISH (13)
 ----------
   [ 95] eel: h/w/l ? / 5 / 150; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6696,6 +6889,15 @@ FISH (10)
   [385] porcupinefish: h/w/l ? / 2 / 50; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [390] mesopelag: h/w/l ? / 200 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [399] veranyi: h/w/l ? / 2000 / 800; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_bloodsucker_bite; policy auto
+  [401] cyclothone: h/w/l ? / 300 / 700; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_electric; policy auto
 
 QUADRUPEDAL_AMPHIBIAN (3)
 ---------------------------
@@ -6760,7 +6962,7 @@ INSECT_SWARM (2)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_poison; policy auto
 
-ARACHNID (8)
+ARACHNID (9)
 --------------
   [114] web_spider: h/w/l 35 / 15 / 70; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6786,6 +6988,9 @@ ARACHNID (8)
   [327] retriever: h/w/l 366 / 2000 / 450; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_retriever_rays; policy auto
+  [392] pycnogonid: h/w/l 65 / 75 / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison_bite; policy auto
 
 INSECT (6)
 ------------
@@ -6817,7 +7022,7 @@ ARACHNOID_HUMANOID (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_cast_mage, 2:spec_paralysing_bite; policy 70/30/0
 
-PLANT (10)
+PLANT (11)
 -----------
   [136] enchanted_oak: h/w/l 1500 / 10000 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6849,6 +7054,9 @@ PLANT (10)
   [333] tree_spirit: h/w/l 175 / ? / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_adept; policy auto
+  [395] siph: h/w/l 200 / 20 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_fido; policy auto
 
 ENVIRONMENTAL_HAZARD (5)
 --------------------------
@@ -6883,7 +7091,7 @@ FUNGOID (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-RADIAL_INVERTEBRATE (3)
+RADIAL_INVERTEBRATE (5)
 -------------------------
   [188] dustdigger: h/w/l 40 / 200 / 300; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6892,6 +7100,12 @@ RADIAL_INVERTEBRATE (3)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [383] jellyfish: h/w/l 30 / 5 / 100; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [393] anthozoa: h/w/l 200 / 150 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [396] erenna: h/w/l 150 / 200 / 600; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -6913,7 +7127,7 @@ HEXAPODAL_MAMMAL (1)
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials none; policy auto
 
-CEPHALOPOD (4)
+CEPHALOPOD (6)
 ----------------
   [294] giant_squid: h/w/l ? / 2000 / 1830; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6925,6 +7139,12 @@ CEPHALOPOD (4)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [387] giant_octopus: h/w/l ? / 10000 / 2000; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [398] abralia: h/w/l ? / 500 / 900; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [400] calimedusae: h/w/l ? / 300 / 600; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -7673,6 +7893,7 @@ Check anatomy, safety, effect cleanup, selection percentages and XP.
     spec_bear
     spec_beholder
     spec_bloodsucker
+    spec_bloodsucker_bite
     spec_blue_grung
     spec_bounty
     spec_breath_acid
@@ -7836,8 +8057,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/7b0c45ac787f544cfc757e3b1675ef5ad2b79b6f
-  Base PR1007 plus the accompanying Undersea patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/e6023264bcb1a70f31d7374db180bf9bf34a8dfe
+  Base PR1008 plus the accompanying Abyss patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -7847,9 +8068,9 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 95/153 areas (62.1%) and 1552/4131 mob
-definitions (37.6%) merged and verified. Undersea adds 19 definitions.
-After its merge is verified, completion becomes 96/153 areas (62.7%) and
-1571/4131 definitions (38.0%).
+The live conversion is currently 96/153 areas (62.7%) and 1571/4131 mob
+definitions (38.0%) merged and verified. The Abyss adds 13 definitions.
+After its merge is verified, completion becomes 97/153 areas (63.4%) and
+1584/4131 definitions (38.3%).
 
 END OF GUIDE

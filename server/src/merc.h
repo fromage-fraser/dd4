@@ -3695,7 +3695,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 389
+#define MAX_MOB 402
 #define MAX_SPECIES 39
 #define MAX_RANK 6
 
@@ -5999,6 +5999,7 @@ DECLARE_SPEC_FUN(spec_retriever_rays);
 DECLARE_SPEC_FUN(spec_paralysing_gas);
 DECLARE_SPEC_FUN(spec_holy_trumpet);
 DECLARE_SPEC_FUN(spec_lulling_drone);
+DECLARE_SPEC_FUN(spec_bloodsucker_bite);
 void creature_elemental_reaction(CHAR_DATA *victim, int contact_damage, unsigned long int types);
 
 /* These are registry IDs, not bits in an ACT word. */

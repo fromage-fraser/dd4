@@ -16809,3 +16809,185 @@ field, individual override or Scribe trait command.
 Current verified conversion progress is 95/153 areas (62.1%) and
 1552/4131 mob definitions (37.6%). Undersea adds 19 definitions; after
 its merge is verified, totals become 96/153 (62.7%) and 1571/4131 (38.0%).
+
+
+The Abyss
+---------
+
+The current catalogue contains 402 archetypes, 39 basic body species,
+60 internal traits, 141 Scribe special names and 637 skill rows. Thirteen
+profiles append at 389-401, using eight existing body groups. All earlier
+389 profiles, 39 bodies, 60 trait IDs and player opt-ins stay unchanged.
+New profile HP/damage/critical/haste/XP modifiers are zero. Natural armour
+uses existing internal traits without replacing the authored area AC.
+
+New names in index order: photophore, mesopelag, malacost, pycnogonid,
+anthozoa, scyph, siph, erenna, copepod, abralia, veranyi, calimedusae and
+cyclothone. These are the area's fictional creatures, not a compulsory
+classification as real marine species. A familiar scientific-sounding
+name never overrides the actual description or authored role.
+
+This is an AIRBORNE realm: the source explicitly describes airy, inky
+gloom and impossible flight. All thirteen profiles have magical Flying,
+without invented wings or automatic Swim. Fish and cephalopod bodies
+normally supply Swim, so these archetypes XOR that inherited bit off and
+add Flying. The area must remove duplicate raw Flying bits to avoid
+cancelling it again. Flight is preserved, not exchanged for swimming.
+All ACT behaviour remains individual: do not add generic aggression,
+Sentinel, Wimpy, Mountable or NoCharm through the shared profiles.
+
+Measurements are height cm / whole kg / length cm. Zero is unspecified.
+All numeric dimensions are agreed DD4 design estimates; the explicit
+Pycnogonid two-metre leg span is a separate descriptive measurement,
+not a replacement for body length. Rank does not determine dimensions.
+Only Veranyi has HUGE, preserving the original exception. Long tentacles
+do not automatically give Abralia or Calimedusae an additional HUGE flag.
+
+Vnum  Profile        H / kg / L           Size       Armour  Rank
+7500  photophore      80 /   30 /   80  Medium       0     common
+7501  mesopelag        0 /  200 /  300  Large       -4     common
+7502  malacost        50 /   30 /  100  Medium       0     common
+7503  pycnogonid      65 /   75 /  150  Medium      -6     common
+7504  anthozoa       200 /  150 /  300  Large        0     common
+7505  scyph           80 /  200 /  200  Large        0     common
+7506  siph           200 /   20 /  300  Large        0     common
+7507  erenna         150 /  200 /  600  Large        0     common
+7508  copepod         40 /   25 /  150  Medium      -3     common
+7509  abralia          0 /  500 /  900  Large       -7     common
+7510  veranyi          0 / 2000 /  800  Large+HUGE  -2     rare
+7511  calimedusae      0 /  300 /  600  Large       -2     rare
+7512  cyclothone       0 /  300 /  700  Large       -1     elite
+
+Veranyi 7510 and Calimedusae 7511 are Rare encounters in their individual
+lairs. Cyclothone 7512 keeps its existing Elite rank. The other ten remain
+Common, including the passive mount. Existing rank HP multipliers still
+apply exactly once, separately from zero profile HP modifiers.
+
+Photophore uses amorphous_organism: an organic Bloodless blob without a
+separate head, eyes, limbs, brain or heart. NoCorpse preserves its existing
+death-jelly program rather than adding a second ordinary corpse. Retain
+individual Blind and NoCharm. NoCharm does not mean Mindless: Photophore
+keeps mind, soul and pain eligibility despite its unconventional anatomy.
+There is no new acid contact, splitting power or ooze immunity package.
+
+Mesopelag is a living shark-like fish: head/eyes, brain/heart/gut, fins,
+tail and ordinary fang bite, without arms, legs or ordinary speech. Keep
+its local senses. Its -4 armour follows the existing Shark comparison;
+no shared Shark change or additional active role is needed.
+
+Malacost is a dog-sized woodlouse/slater-like crustacean with many walking
+legs, ordinary organs/blood, segmented shell and unstalked eyes. Its XOR
+removes inherited grasping arms and eyestalks; it gains no pincers. Do not
+retain an old NoLegs exception that would contradict those walking legs.
+Natural armour is 0 because its existing equipped plates already supply
+AC -15. Keep Wimpy, Protection and the death-curl program. Shared plates
+7501 and their external Sahuagin Market equipment use remain unchanged.
+
+Pycnogonid is the explicit fictional venomous, toothed flying spider,
+not a forced reconstruction of real sea-spider mouthparts. Arachnid gives
+eight legs, head/eyes and ordinary brain/heart/gut/blood; fangs supply the
+ordinary bite. Natural armour is -6. Existing spec_poison_bite preserves
+the old poison payload and rolls, adding the existing usable head/fang
+and head-trauma checks. Its ordinary native fangs also opt into the
+existing head_trauma_blocks_attacks trait. Poison and poison_bite retain
+their existing +5 special-XP allowance; no new venom status is created.
+
+Anthozoa uses radial_invertebrate with grasping tentacles and a digestive
+cavity, without separate head/eyes/central brain/heart or walking legs.
+It is organic and Bloodless, but retains mind, soul, pain and ordinary
+remains. Restore its arm anatomy for the attached region-3 tentacle
+weapon. Keep Sentinel/aggression and its nonpoison role; resemblance to
+an anemone does not grant a new poison special.
+
+Scyph uses limbless_invertebrate with the local headless/eyeless form,
+internal brain-ganglia, heart, gut and usable blood. Its single muscular
+foot is represented by clearing NoLegs and adding Feet, with no numbered
+leg flags. Existing HAS_LEGS then permits the existing leg target group
+and weapon region 4 without inventing two legs or a new body species.
+Keep the original Blind, Hold and Sentinel as the authored stationary
+limpet encounter. This conversion does not add a global leg-trauma
+weapon gate or promise that leg trauma disables every region-4 weapon.
+Its equipped shell already supplies AC -35, so natural armour remains 0.
+
+Siph is an organic algal plant colony: no central head, eyes, limbs,
+brain, heart or gut, Bloodless and NoCorpse. Plant Analgic makes it
+insensible to pain; this is independent of its retained mind and soul.
+Do not add Mindless, Soulless, Inorganic, new resistances or poison merely
+because it is a colony. Keep fido, Wimpy, PassDoor and the dispersal/drop
+program. It has no invented grasping limb or added native damage power.
+
+Erenna is an explicit magical-jelly exception: its death program leaves
+a slimy heart, so its radial body cancels NoHeart and adds a real
+targetable Heart. It remains Bloodless, without a central brain, and
+retains mind, pain and soul. Gut and tentacle Arms remain; there is no
+Tail. Existing stinger weapon 7507 changes only its target region from
+tail 6 to arm 3. Keep the poison/weapon properties, PassDoor, NoCorpse
+and exact heart-drop program. There is no new stinger part or trauma.
+
+Copepod follows the described giant shrimp: shell, stalked eyes,
+head/brain/heart/gut, many paddling legs, feeding appendages and tail.
+Its ordinary living blood, mind, pain and soul remain. Natural armour
+is -3. The name does not force a microscopic animal or supply large
+claws, venom or a new special attack absent from the local description.
+
+Abralia and Calimedusae use cephalopod with head/eyes, brain/hearts/gut,
+usable blood, tentacled arms, beak and fins, without walking legs or
+ordinary speech. Their beaks and tentacles use existing natural attack
+selection and head/arm trauma; more arms never add simultaneous streams.
+New beak profiles opt into the existing head-trauma trait. The wielded
+Calimedusae beak retains ordinary attached-weapon precedence and rules.
+
+Abralia stays nonaggressive, Mountable and NoCorpse, with its blue-ink
+death program unchanged. Do not import Giant Squid's grip/fido special.
+The approved new reset loads one Abralia, cap 1, in room 7550 at the
+stronger end of the maze; preserve all original reset placements/caps.
+Calimedusae remains a magical hungry cuttlefish, without an invented
+spell catalogue, extra poison or new grip.
+
+Veranyi is a gigantic living fish with ordinary organs, fangs, fins,
+tail and the existing HUGE exception. Its lure is descriptive and its
+original equipment remains; no Charm/gaze is added. New
+spec_bloodsucker_bite is a narrow anatomical wrapper: require a usable
+head, no head trauma and usable native fangs, then invoke the unchanged
+spec_bloodsucker. The old routine's target, rolls, hit/drain behaviour
+and messages remain. Its XP exception is +5, equal to old bloodsucker;
+this is not a new profile-XP premium or a global bloodsucker rewrite.
+
+Cyclothone is an eel-like living fish with head/eyes, brain/heart/gut,
+fins, tail and teeth. It explicitly gains Electricity immunity as the
+approved gameplay choice; no other new resistance or immunity is added.
+Preserve the complete weighted, level-gated spec_cast_electric selection,
+including all existing non-electric spell choices, rather than replacing
+it with a mild real-eel discharge. Keep Elite, Sanctuary, aggression and
+Sentinel. Ordinary NoSpeech does not make the existing native caster
+ineligible; its existing communication guards remain authoritative.
+
+All thirteen profiles preserve organic bodies and souls. None adds
+Mindless or Undead. Photophore, Anthozoa and Erenna remain pain-capable;
+Siph alone receives plant Analgic. Preserve existing NoCorpse specifically
+on 7500, 7506, 7507 and 7509, alongside their exact death-program drops.
+Corpse choice, blood availability, organ targeting, mind and pain are
+independent properties rather than one bundled "invertebrate" package.
+
+All old builds, alignments, sexes, ACT behaviour, room flags/sectors/
+routes/randomisation, equipment and loot remain except the approved
+Abralia placement and Erenna weapon-region correction. All 60 rooms stay
+airborne as authored; no NO_UNDEAD rollout or underwater conversion is
+implied. No matching Abyss source exists; unrelated real .src exports
+remain unchanged. Only room 7553 needs an unchanged-image filename alias;
+there is no portrait repaint or gameplay dependence on new artwork.
+
+Within a complete $mob block, the ordinary authoring selection is:
+
+    archetype veranyi
+    rnk rare
+
+This inherits its body, dimensions and anatomical bloodsucker role.
+Keep authored behaviour and equipment in the individual definition. In
+other uses, ordinary sp/sp2/spchance overrides remain available. No new
+area field, trait command, individual trait override or body-part target
+category is introduced. MSTAT continues to show resolved trait origins.
+
+Current merged completion is 96/153 areas (62.7%) and 1571/4131 mobile
+definitions (38.0%). The Abyss adds 13 definitions; after its merge is
+verified, totals become 97/153 (63.4%) and 1584/4131 (38.3%).
