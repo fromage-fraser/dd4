@@ -761,6 +761,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 {WNovember 2026{x
+- Convert Ota'ar Dar North mobs; correct the smith's greeting and missing-eye anatomy.
 - Convert Ota'ar Dar South residents and fish; retain the four-armed Baron and existing venom.
 - Convert Abyss creatures; add a flying mount and anatomical bloodsucker checks.
 - Convert Undersea creatures; retain dolphin reunion, repair guard script and potion.

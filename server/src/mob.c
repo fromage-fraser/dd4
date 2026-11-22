@@ -5328,6 +5328,57 @@ const struct mob_type mob_table[MAX_MOB] =
                 244, 180, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_sahuagin_baron", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        /* These profiles keep each fish's anatomy separate from its role. */
+        {
+                "sheepshead_wrasse", "fish", "icon1", "icon2",
+                0, 0,
+                PART_SCALES | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 40, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "giant_blobfish", "fish", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 100, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 250
+        },
+        {
+                "moonfish", "fish", "icon1", "icon2",
+                0, 0,
+                PART_SCALES,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 100, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 180
+        },
+        {
+                "goliath_grouper", "fish", "icon1", "icon2",
+                0, 0,
+                PART_SCALES | BODY_HUGE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 3000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_large_whale", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1000
+        },
+        {
+                "stargazer", "fish", "icon1", "icon2",
+                0, 0,
+                PART_SCALES | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 5, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 60
         }
 };
 
@@ -6925,6 +6976,18 @@ static const CREATURE_TRAIT_CHANGE ray_crushing_trait_changes[] =
         {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8}
 };
 
+/* Soft fish and large tooth plates use ordinary crushing contact. */
+static const CREATURE_TRAIT_CHANGE blobfish_crushing_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -1},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8}
+};
+static const CREATURE_TRAIT_CHANGE grouper_crushing_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -6932,6 +6995,11 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"sheepshead_wrasse", NULL, marine_armour_3_head_traits, TRAIT_ITEMS(marine_armour_3_head_traits)},
+        {"giant_blobfish", NULL, blobfish_crushing_traits, TRAIT_ITEMS(blobfish_crushing_traits)},
+        {"moonfish", NULL, ray_crushing_trait_changes, TRAIT_ITEMS(ray_crushing_trait_changes)},
+        {"goliath_grouper", NULL, grouper_crushing_traits, TRAIT_ITEMS(grouper_crushing_traits)},
+        {"stargazer", NULL, marine_armour_3_head_traits, TRAIT_ITEMS(marine_armour_3_head_traits)},
         {"sawfish", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
         {"cownose_ray", NULL, ray_crushing_trait_changes, TRAIT_ITEMS(ray_crushing_trait_changes)},
         {"frilled_shark", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},

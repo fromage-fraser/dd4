@@ -14,9 +14,9 @@ A burly young sahuagin, Etylkrek is an apprentice sahuagin smith, and sits
 here honing his smithing techniques on a forge, beating away at pieces of iron
 and steel with hammer and tongs. He looks at you with suspicion and mild alarm.
 ~
-2|64 32|512|67108864 -341 S
+2|64 544 -341 S
 50 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >all_greet_prog 100~
 if race($n) == 19
@@ -26,6 +26,9 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 185
+MobWeight 105
 #27437
 Vrithris sahuagin smith Phorlin~
 Vrithris Phorlin~
@@ -34,9 +37,9 @@ Vrithris Phorlin is here, thumbing through a thick tome.
 A large, burly, middle-aged sahuagin, Vrithris Phorlin is busy reading a large
 book of sahuagin blacksmithing lore. He looks up at you: unafraid, but vigilant.
 ~
-2|64|1024 8|32|512|8388608|67108864 -192 S
+2|64|1024 8389160 -192 S
 55 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >all_greet_prog 100~
 if race($n) != 19
@@ -54,7 +57,7 @@ if level($n) < 40
     say You lack the experience currently to benefit from my instruction.
 break
 endif
-if subclass($n) == 16
+if class($n) == 8
     say Greetings, $n. Always happy to share my knowledge with a fellow sahuagin.
     break
 else
@@ -63,6 +66,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 & 40 'teacher base'
 & 97 'weaponsmithing'
 & 97 'armoursmithing'
@@ -73,6 +77,8 @@ endif
 & 97 'inscription'
 & 30 'engineer base'
 & 30 'runesmith base'
+MobHeight 195
+MobWeight 120
 #27438
 water elemental enslaved shackled~
 the enslaved water elemental~
@@ -87,10 +93,11 @@ This creature has been enslaved by the sahuagin masters of this dwelling, and
 forced by some probably-magical means to perform menial tasks for their spoiled
 broodlings.
 ~
-2|32|64 8|512|1048576 -1000 S
+2|32|64 1049096 -1000 S
 53 0 0 0d0+0 0d0+0
-1|2|4|8|16|64|256 0
+0 0
 8 8 0
+< water_elemental~ common~
 #27439
 sahuagin spoiled hatchling~
 a spoiled sahuagin hatchling~
@@ -100,15 +107,19 @@ This young male sahuagin swims about on the spot madly, playing and fighting
 and generally looking to get himself into trouble. He has a general air of
 entitlement to him.
 ~
-2|64 512|67108864 -619 S
+2|64 512 -619 S
 50 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >greet_prog 7~
 shout Get out of my canton, you ruffian!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 75
+MobWeight 12
+MobSize 0
 #27440
 sahuagin spoiled hatchling~
 a spoiled sahuagin hatchling~
@@ -118,15 +129,19 @@ This young female sahuagin swims about on the spot madly, playing and fighting
 and generally looking to get herself into trouble. She has a general air of
 entitlement to her.
 ~
-2|64 512|67108864 -619 S
+2|64 512 -619 S
 50 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 2
 >greet_prog 7~
 shout What are you doing here?  Riffraff!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 75
+MobWeight 12
+MobSize 0
 #27441
 sahuagin spoiled hatchling~
 a spoiled sahuagin hatchling~
@@ -135,15 +150,19 @@ a spoiled sahuagin hatchling~
 This young male sahuagin wooshes through the water with manic energy. He has a
 general air of entitlement and superiority.
 ~
-2|64 512|67108864 -619 S
+2|64 512 -619 S
 50 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >greet_prog 7~
 shout Bah! They'll let anyone in here these days!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 75
+MobWeight 12
+MobSize 0
 #27442
 sahuagin spoiled hatchling~
 a spoiled sahuagin hatchling~
@@ -153,15 +172,19 @@ This young female sahuagin is flapping her arms excitedly. She has a general
 air of entitlement and sneering disdain for individuals she sees as lower
 'caste' than herself.
 ~
-2|64 512|67108864 -619 S
+2|64 512 -619 S
 50 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 2
 >greet_prog 7~
 shout Ug! What are YOU?
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 75
+MobWeight 12
+MobSize 0
 #27443
 sahuagin watcher~
 a sahuagin watcher~
@@ -170,9 +193,9 @@ A sahuagin watcher is here, tending the hatchery.
 This is a high cleric of Sekolah, employed here to tend the eggs of sahuagin
 society's elite. He regards you with suspicion bordering on hostility.
 ~
-2|64 32|512|67108864 -745 S
+2|64 544 -745 S
 53 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >rand_prog 15~
 mpasound {gYou hear loud squelching and wriggling sounds issue from nearby.{x
@@ -186,6 +209,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27444
 sahuagin watcher~
 a sahuagin watcher~
@@ -194,9 +218,9 @@ A sahuagin watcher is here, tending the hatchery.
 This is a high cleric of Sekolah, employed here to tend the eggs of sahuagin
 society's elite. She regards you with suspicion bordering on hostility.
 ~
-2|64 32|512|67108864 -619 S
+2|64 544 -619 S
 52 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 2
 >rand_prog 15~
 mpasound {gYou hear peculiar squelching and wriggling sounds.{x
@@ -210,6 +234,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27445
 drunk sahuagin~
 a very drunk sahuagin~
@@ -217,9 +242,9 @@ A very drunk sahuagin is here, sprawled on the floor.
 ~
 This sahuagin is deep in his cups and generally insensate.
 ~
-2|64 1|256|131072|67108864|9223372036854775808 -519 S
+2|64 9223372036854907137 -519 S
 52 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >all_greet_prog 100~
 mpecho A disheveled sahuagin falls to the floor, blind drunk.
@@ -261,6 +286,7 @@ mpecho The drunk sahuagin lets a long, wet, stinky one rip.
 endif
 ~
 |
+< sahuagin~ common~
 #27446
 Bri'hr Evin'r thief~
 Bri'hr Evin'r~
@@ -270,10 +296,11 @@ This cloaked, surreptitious sahuagin doesn't remind you of any you've seen
 before, appearing to prefer stealth and shadows to brute force and invective.
 Perhaps there's something to be learned from her?
 ~
-64|128|1024|8388608 2|8|32|512|32768|65536|2097152|8388608|67108864 -470 S
+64|128|1024|8388608 10584618 -470 S
 55 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 2
+< sahuagin~ common~
 & 55 'teacher base'
 & 102 'armed combat knowledge'
 & 102 'unarmed combat knowledge'
@@ -302,9 +329,9 @@ was once an important figure in the Sekolah-worshipping hierarchy. Of a
 relatively peaceable disposition, she may be willing to share her clerical
 knowledge, even with non-sahuagin.
 ~
-2|64|1024 8|32|128|512|8192|524288|67108864|536870912 -115 S
+2|64|1024 537404072 -115 S
 55 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 2
 >rand_prog 10~
     rest
@@ -317,6 +344,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 & 55 'teacher base'
 & 102 'healing magiks'
 & 102 'harmful magiks'
@@ -346,18 +374,19 @@ the retired lieutenant~
 A retired sahuagin lieutenant glowers at you suspiciously.
 ~
 The lieutenant was once responsible for troops guarding the fortress walls,
-in the military canton of Ota'ar Dar, but how now retired and wishes only to be
+in the military canton of Ota'ar Dar, but has now retired and wishes only to be
 left in peace. He looks at you with suspicion and distrust.
 ~
-2|64 8|32|512|8388608|67108864 -370 S
+2|64 8389160 -370 S
 53 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >greet_prog 5~
 yell Out of my quarters! Intruders!
 mpkill $n
 ~
 |
+< sahuagin~ common~
 #27449
 Ota'ar Dar cityguard sahuagin guard retired~
 a retired Ota'ar Dar cityguard~
@@ -369,9 +398,9 @@ strength, youth, and loyalty to the prince. This one worked in the arena
 for several decades, until retiring with a healthy pension and a tidy sum
 of coin from all the bribes he'd taken over the years.
 ~
-2|64 32|4194304|67108864 -328 S
+2|64 4194336 -328 S
 53 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >rand_prog 1~
 if isfight($i)
@@ -395,6 +424,7 @@ emote stares askance at you
 endif
 ~
 |
+< sahuagin~ common~
 #27450
 sheepshead wrasse fish~
 a sheepshead wrasse~
@@ -406,10 +436,11 @@ forehead it has a large chin and canines that often jut out of its mouth.
 It usually feeds on shellfish and crustaceans, but this one looks large
 enough that it might consider larger prey...
 ~
-64 67108864 0 S
+64 0 0 S
 50 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 8 8 0
+< sheepshead_wrasse~ common~
 #27451
 giant blobfish fish~
 a giant blobfish~
@@ -423,10 +454,11 @@ A scavenger, it will eat any edible matter it comes across.
 
 This is a giant species, larger than an average human.  Best be cautious.
 ~
-4|64 512|1048576|67108864 0 S
+4|64 512 0 S
 51 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 8 8 1
+< giant_blobfish~ common~
 #27452
 moonfish fish~
 a moonfish~
@@ -441,10 +473,11 @@ guanine coating is easily abraded.
 
 Unique among fish, the moonfish is warm-blooded.
 ~
-64 256|512|67108864 0 S
+64 768 0 S
 52 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 8 8 1
+< moonfish~ common~
 #27453
 grouper fish goliath~
 a goliath grouper~
@@ -456,9 +489,9 @@ do not have many teeth on the edges of their jaws, but they have heavy crushing
 tooth plates inside the pharynx. They habitually eat fish, octopuses, and
 crustaceans, and there have been some reports of human fatalities.
 ~
-64 512|67108864 0 S
+64 512 0 S
 53 0 0 0d0+0 0d0+0
-4|8|32|128|512 0
+0 0
 8 8 2
 >greet_prog 10~
 mpecho A <138>goliath grouper<0> lunges at you as you swim in!
@@ -469,6 +502,7 @@ mpecho A <138>goliath grouper<0> lunges at you, mouth open wide!
 mpkill $n
 ~
 |
+< goliath_grouper~ common~
 #27454
 stargazer fish~
 a stargazer~
@@ -480,9 +514,9 @@ in sand, and leap upwards to ambush prey that pass overhead. Some species
 have a worm-shaped lure growing out of the floors of their mouths, which they
 can wiggle to attract prey's attention.
 ~
-2|64|128 2|8|32|512|32768|65536|67108864 0 S
+2|64|128 98858 0 S
 54 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 8 8 1
 >all_greet_prog 5~
 mpecho {RSharp teeth erupt from the ocean floor!{x
@@ -494,6 +528,7 @@ sneak
 hide
 ~
 |
+< stargazer~ common~
 #27455
 Ota'ar Dar cityguard sahuagin guard~
 an Ota'ar Dar cityguard~
@@ -504,7 +539,7 @@ pauldrons are stamped with the city's mark.  They are selected for their
 strength, youth, and loyalty to the prince. This one has been assigned
 to protect this canton's baron.
 ~
-2|64 8|32|512|8388608|67108864 -430 S
+2|64 8389160 -430 S
 53 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -519,6 +554,9 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 195
+MobWeight 110
 #27456
 Ota'ar Dar cityguard sahuagin guard~
 an Ota'ar Dar cityguard~
@@ -529,10 +567,13 @@ pauldrons are stamped with the city's mark.  They are selected for their
 strength, youth, and loyalty to the prince. This one has been assigned
 to protect this canton's baron.
 ~
-2|64 8|32|512|8388608|67108864 -430 S
+2|64 8389160 -430 S
 53 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 195
+MobWeight 110
 #27457
 wife female baron wives~
 the baron's wife~
@@ -543,7 +584,7 @@ little to do but tend to the baron's young (who are fairly independent, once
 hatched) and await his call, and so spends most of her life in relative comfort
 and ease.
 ~
-2|64 512|67108864 -370 S
+2|64 512 -370 S
 52 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -551,6 +592,7 @@ and ease.
 emote raises her eyelids at you, seductively
 ~
 |
+< sahuagin~ common~
 #27458
 sahuagin broodling feisty female~
 a feisty sahuagin broodling~
@@ -560,7 +602,7 @@ This female sahuagin is a broodling, or young adult.  Not quite ready to leave
 the (relative) safety of her parents and clutchmates, she fights to assert her
 place in sahuagin society and within her home.
 ~
-2|64 512|67108864 -603 S
+2|64 512 -603 S
 51 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -569,6 +611,9 @@ shout You won't have my bed!  Have at you!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 175
+MobWeight 75
 #27459
 sahuagin broodling feisty male~
 a feisty sahuagin broodling~
@@ -578,7 +623,7 @@ This male sahuagin is a broodling, or young adult.  Not quite ready to leave
 the (relative) safety of his parents and clutchmates, he fights to assert his
 place in sahuagin society and within his home.
 ~
-2|64 512|67108864 -603 S
+2|64 512 -603 S
 51 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -587,18 +632,21 @@ shout Get away from my bed!  Die!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 175
+MobWeight 75
 #27460
 baron sahuagin~
 the baron~
 <248>A sahuagin baron stands here, shaking with fury.<0>
 ~
-Sahuagin barons are four-limbed mutant sahuagin.  Larger and more powerful
+Sahuagin barons are four-armed mutant sahuagin.  Larger and more powerful
 than the regular breed, they are often promoted to positions of rank and power
 within the strict sahuagin hierarchy.  This baron is in charge of the northern
 residential canton in which you now find yourself.  He is not at ALL pleased
 to see you here.
 ~
-2|64|2048 512|67108864 -603 S
+2|64|2048 512 -603 S
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -654,7 +702,7 @@ else
 endif
 ~
 |
-< reserved~ boss~
+< sahuagin_baron~ boss~
 #27461
 stargazer fish~
 a stargazer~
@@ -669,9 +717,9 @@ can wiggle to attract prey's attention.
 Curiously, this fish has been blinded--at some point its eyes have been
 neatly cut out with a sharp implement.
 ~
-2|64|128 1|2|8|32|512|32768|65536|67108864 0 S
+2|64|128 98859 0 S
 54 0 0 0d0+0 0d0+0
-4|8|32|512 0
+33554434 0
 8 8 1
 >all_greet_prog 10~
 mpecho {RSharp teeth erupt from the ocean floor!{x
@@ -683,6 +731,7 @@ sneak
 hide
 ~
 |
+< stargazer~ common~
 #0
 
 #OBJECTS
@@ -1064,7 +1113,7 @@ The long spear evidences quality workmanship.
 #27559
 spiked pauldron lieutenant~
 a lieutenant's spiked pauldron~
-A ieutenant's spiked pauldron is here.~
+A lieutenant's spiked pauldron is here.~
 ~
 9 0 1|4
 0~ 1~ 6~ 11~
@@ -2158,7 +2207,7 @@ D5
 S
 #27717
 Northern Residential Canton's Baron's Dwelling, Reception Room~
-{gThis room is in the upper level of the Southern Residential Canton's Baron's
+{gThis room is in the upper level of the Northern Residential Canton's Baron's
 home, and is where he meets visitors and does the business of the canton,
 such as it is.  It is richly decorated and appointed, as befits his status,
 and is dominated by a magnificent high-backed chair decorated with shells and
@@ -2420,10 +2469,8 @@ M  27446  spec_superwimpy            ; Bri'hr Evin'r
 M  27447  spec_cast_cleric		     ; Wivyn Drokras
 M  27448  spec_sahuagin_lieutenant   ; retired Lieutenant
 M  27449  spec_sahuagin_guard        ; cityguard
-M  27453  spec_large_whale           ; a goliath grouper
 M  27455  spec_sahuagin_guard	     ; Baron's cityguard
 M  27456  spec_sahuagin_guard	     ; Baron's cityguard
-M  27460  spec_sahuagin_baron        ; the sahuagin baron
 S
 
 #$

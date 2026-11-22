@@ -17182,3 +17182,145 @@ override, venom command or body-part category exists.
 Current verified completion is 97/153 areas (63.4%) and 1584/4131 mobile
 definitions (38.3%). After South's 25 definitions are merged and verified,
 totals become 98/153 (64.1%) and 1609/4131 (38.9%).
+
+
+Ota'ar Dar Residential North
+---------------------------
+
+The catalogue now has 413 archetypes, 39 basic bodies, 60 internal traits,
+141 Scribe special names and 637 skills. The five new fish profiles append
+at 408-412: sheepshead_wrasse, giant_blobfish, moonfish, goliath_grouper
+and stargazer. All 408 earlier profiles, body defaults, trait IDs, special
+functions and player races stay unchanged. No new area fields are needed.
+
+Eighteen residents use humanoid/sahuagin. The Baron uses the existing
+humanoid/sahuagin_baron, and the servant uses elemental_being/water_elemental.
+The five new profiles use fish. Their HP, damage, critical, haste and XP
+modifiers are all zero. Ordinary special XP rules still apply.
+
+Dimensions below are height cm / whole kg / length cm. Zero means
+unspecified. Most measurements are descriptive DD4 estimates; the
+Grouper's 10 m length is explicit in its description. The wrasse is an
+enlarged DD4 individual, and the blobfish is explicitly larger than a
+human. These are not new real-world maximum-size claims.
+
+Vnum   Archetype          H / kg / L            Size    Armour  Rank
+27436  sahuagin           185 /  105 /    0  Medium   -5     common
+27437  sahuagin           195 /  120 /    0  Medium   -5     common
+27438  water_elemental    300 /  500 /    0  Large    -8     common
+27439  sahuagin            75 /   12 /    0  Small    -5     common
+27440  sahuagin            75 /   12 /    0  Small    -5     common
+27441  sahuagin            75 /   12 /    0  Small    -5     common
+27442  sahuagin            75 /   12 /    0  Small    -5     common
+27443  sahuagin           183 /   90 /    0  Medium   -5     common
+27444  sahuagin           183 /   90 /    0  Medium   -5     common
+27445  sahuagin           183 /   90 /    0  Medium   -5     common
+27446  sahuagin           183 /   90 /    0  Medium   -5     common
+27447  sahuagin           183 /   90 /    0  Medium   -5     common
+27448  sahuagin           183 /   90 /    0  Medium   -5     common
+27449  sahuagin           183 /   90 /    0  Medium   -5     common
+27450  sheepshead_wrasse    0 /   40 /  150  Medium   -3     common
+27451  giant_blobfish       0 /  100 /  250  Large    -1     common
+27452  moonfish             0 /  100 /  180  Large    -3     common
+27453  goliath_grouper      0 / 3000 / 1000  Large    -5     common
+27454  stargazer            0 /    5 /   60  Small    -3     common
+27455  sahuagin           195 /  110 /    0  Medium   -5     common
+27456  sahuagin           195 /  110 /    0  Medium   -5     common
+27457  sahuagin           183 /   90 /    0  Medium   -5     common
+27458  sahuagin           175 /   75 /    0  Medium   -5     common
+27459  sahuagin           175 /   75 /    0  Medium   -5     common
+27460  sahuagin_baron     244 /  180 /    0  Large    -5     boss
+27461  stargazer            0 /    5 /   60  Small    -3     common
+
+Four hatchlings inherit normal Sahuagin anatomy with individual 75 cm,
+12 kg, Small overrides. The broodlings use 175 cm/75 kg, Medium. The
+burly apprentice and master have individual measurements; stealth and
+age alone do not change the other adults' default 183 cm/90 kg bodies.
+The two active bodyguards use 195 cm/110 kg. None gains a rank from its
+profession. Only the existing Baron remains Boss, with its HP multiplier
+applied once. The Baron is 244 cm/180 kg, Large and not HUGE, with ManyArms,
+hands and fingers. Its two tridents and regeneration stay individual.
+
+Fish have heads, eyes, brain, heart, gut, fins and tails, without ordinary
+arms, legs or speech. They remain organic, blood-bearing, able to feel
+pain, with minds, souls and normal corpses. The soft blobfish has no scales.
+Wrasse and stargazer fangs use existing head-trauma handling; their
+attached jaw weapons still take precedence. The other three fish use
+ordinary crushing contact, not invented fangs or an extra attack stream.
+No new poison, electrical power or fish immunity package is added.
+
+The Grouper keeps its existing HUGE flag, 10 m length and spec_large_whale
+for its authored swallow and tail attacks. Its basic body is still fish.
+The profile supplies that same special after the redundant area record
+is removed. The Baron likewise inherits its unchanged existing special.
+All other roles and probability vectors remain individual and unchanged.
+
+WaterElemental retains the established armour -8, magical pounding and
+immunity to nonmagical attacks, poison, sleep, drain, hold and paralysis.
+It has a formed head, eyes and arms, no legs or biological heart, and no
+ordinary corpse. It is inorganic, Bloodless and Analgic while retaining
+a mind and soul. Clear obsolete individual NoHead/NoEyes/NoArms masks;
+do not XOR them into the inherited anatomy. Keep its individual frost
+breath, PassDoor, detection and aggression. Add Swim through inheritance.
+
+The giant blobfish loses only PassDoor: soft living flesh is not phasing.
+Its Scavenger, Swim and Infrared stay. The drunk's unsigned bit63 Slow,
+Blind, Sleep and other authored effects also stay exact.
+
+Stargazer 27461 has physically removed eyes. Against the normal stargazer,
+toggle PART_EYE off and BODY_NO_EYES on, and retain its original Blind
+effect and ambush programs. Do not strip its other authored senses.
+The healthy 27454 keeps its eye helmet/loot 27566; 27461 has no such reset.
+Both retain the shared attached jaws 27416, unchanged for the South sharks.
+Wrasse canines 27562 also stay unchanged. All other equipment and loot,
+including the smith's armourer's hammer, retain their existing mechanics.
+
+Vrithris 27437's greeting now tests class($n) == 8, the Smithy base class.
+Engineer 17 and Runesmith 18 belong to that class; Bard 16 belongs to Ranger 7.
+The previous subclass16 greeting was copied from a Bard and was incorrect.
+Keep the preceding race 19 and level 40 checks, foreign escort/return,
+teacher base 40 and complete lessons. The greeting is dialogue; actual
+practice still follows the existing teacher, level and prerequisite code.
+The other two teachers keep base 55 and their complete 102-rated lessons.
+Do not reduce those ratings or make the apprentice a teacher.
+
+The 33 mob programs retain their existing structure and chances. Only the
+smith's class condition changes. Keep the Baron's appointment scroll 27550 logic
+and three reinforcements per branch, loaded in 27715 and sent north to 27717.
+Preserve all aggression, passivity, Wimpy, Sentinel and StayArea choices.
+
+Correct the Baron's four-limbed wording to four-armed, the lieutenant's
+'how now retired' to 'has now retired', object27559's 'ieutenant' typo,
+and room27717's Southern/Northern mix-up in its description only. Keep
+room titles, all 40 room flags, exits and doors, recall 27347, original reset
+placements/caps/order and the other object descriptions unchanged.
+The existing world fills from 37 to 38 inhabitants as the second Grouper
+reset becomes available; this needs no reset repair.
+
+There is no matching Scribe source for this area. The four real .src
+files elsewhere, including Eakos, continue to export unchanged. Both
+shared Omu apron/hammer uses retain their existing objects. No room
+NO_UNDEAD flag is added or removed; the cross-area recall remains
+unwarded Sekolah's Supplies.
+
+All 66 media filenames agree with current dd-gui. Only the water elemental
+portrait 27438 is regenerated as translucent water. Keep the already
+four-armed Baron, eyeless stargazer and room 27715 portal image: portal 27563
+actually resets there. Media publication is separate from the code patch.
+
+For a hatchling, keep its current build and programs and add, within its
+existing $mob block:
+
+    archetype sahuagin
+    rnk common
+    height 75
+    weight 12
+    size 0
+
+The Baron instead uses archetype sahuagin_baron and rnk boss. No trait
+command or individual trait override has been added. Traits still live
+only on species and archetypes in the code, and MSTAT shows the result.
+
+Current verified completion is 98/153 areas (64.1%) and 1609/4131 definitions
+(38.9%). After North's 26 definitions are merged and verified, completion
+becomes 99/153 areas (64.7%) and 1635/4131 definitions (39.6%).
