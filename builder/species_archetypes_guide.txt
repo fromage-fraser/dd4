@@ -2,9 +2,9 @@ DRAGON'S DOMAIN
 SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
-Edition: 22 November 2026
-Based on master 16b5f2dad3146b7f9f96c5a1a8076636a17a1369 (PR #1011),
-with the accompanying Ota'ar Dar Military Fortress changes.
+Edition: 23 November 2026
+Based on master e8243b298771339adcec7e5e83944133fc107e21 (PR #1012),
+with the accompanying Ota'ar Dar Arena/Jail changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,7 +16,7 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 39 bodies, 420 archetypes, 60 internal traits
+The current tables contain 39 bodies, 425 archetypes, 60 internal traits
 and 141 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 420, so this single example would make 421.
+guide's checked revision it is 425, so this single example would make 426.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 420.
+valid index. This example would receive index 425.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 420;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 425;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 420; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 425; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-39 body rows, 420 archetype rows, 60 internal traits and 141 Scribe
+39 body rows, 425 archetype rows, 60 internal traits and 141 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -6287,6 +6287,57 @@ Current verified completion is 99/153 areas (64.7%) and 1635/4131 definitions
 (39.6%). After the Fortress's 41 definitions are merged and verified,
 completion becomes 100/153 areas (65.4%) and 1676/4131 definitions (40.6%).
 
+Ota'ar Dar Arena/Jail
+
+The five new archetypes use existing bodies. Measurements are in centimetres
+and whole kilograms. Leave a dimension unspecified when it has no useful
+meaning. A creature can be Large without having the HUGE combat flag.
+
+    Archetype            Body         Height  Weight  Length  Size
+    vodyanoi             humanoid        275     900       -  Large
+    aboleth              fish              -    1600     610  Large, HUGE
+    laghathti            cephalopod        -     350     244  Large
+    giant_alligator_gar  fish              -     150     300  Large
+    sea_elf              humanoid        190      65       -  Medium
+
+Use vodyanoi for the aquatic relative of the umber hulk. It swims, sees
+infrared and has claws, mandibles and natural armour -8. Its eel summons
+belong to the arena mob's death program. Its template supplies no gaze.
+
+An aboleth has a working head and speech. Its four fighting tentacles use
+the arm injury group. Give its jaws a head-region body weapon and its
+tentacles an arm-region one so injuring either region affects the right
+weapon. It inherits spec_aboleth and natural armour -6. The laghathti uses
+the cephalopod body, but has no central head, eyes or heart. Its jaw-tipped
+tentacles can still hold their attached weapon and it can wail. The 244 cm
+length measures its central mass, excluding the tentacles. It inherits
+spec_laghathti. Keep flight and regeneration on the arena individuals.
+
+The gar is an armoured fish with a fang bite and natural armour -6. A sea
+elf shares the elf family's sleep and charm resistance and ghoul-touch
+protection. Swim belongs to its template. Add Infrared to an individual
+when its area calls for it, as it does for both prisoners here.
+
+For the giant sea leech, start with giant_leech and set height 35, weight
+70, length 400 and size 2. It inherits a positive eye part. Toggle that
+part off as well as adding No Eyes, or its eyes will still be targetable.
+Add Tail and HUGE. It keeps the ordinary bloodsucker special and its egg.
+
+The Baron is Boss. The Arenamaster and Nuncio are Rare. All four instances
+of each gladiator stay Common. The Nuncio uses an individual cleric special.
+The jailer's guard routine belongs on 27379. The prisoner in 27378 has no
+guard duties. For the temporary keys, use the keywords 'arena' and 'pearl'
+with mpjunk. The gatekeeper still requires all five favours.
+
+Inside a sea elf's existing $mob block, for example:
+
+    archetype sea_elf
+    rnk common
+    aff infrared
+
+The two prisoners inherit Swim. If you repeat Swim in their individual
+affect masks, XOR turns it off. Keep their other individual affects.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -6338,7 +6389,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 420 current table rows follow, grouped by body. Numeric IDs are for
+All 425 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -6354,7 +6405,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (128)
+HUMANOID (130)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6740,6 +6791,12 @@ HUMANOID (128)
   [419] green_grung: h/w/l 91 / 25 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_green_grung; policy auto
+  [420] vodyanoi: h/w/l 275 / 900 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [424] sea_elf: h/w/l 190 / 65 / ?; Medium; family elf
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 DRAGON (20)
 ------------
@@ -7356,7 +7413,7 @@ AMORPHOUS_ORGANISM (9)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-FISH (27)
+FISH (29)
 ----------
   [ 95] eel: h/w/l ? / 5 / 150; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7437,6 +7494,12 @@ FISH (27)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [416] great_white_shark: h/w/l ? / 1500 / 600; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [421] aboleth: h/w/l ? / 1600 / 610; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_aboleth; policy auto
+  [423] giant_alligator_gar: h/w/l ? / 150 / 300; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -7668,7 +7731,7 @@ HEXAPODAL_MAMMAL (1)
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials none; policy auto
 
-CEPHALOPOD (6)
+CEPHALOPOD (7)
 ----------------
   [294] giant_squid: h/w/l ? / 2000 / 1830; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7688,6 +7751,9 @@ CEPHALOPOD (6)
   [400] calimedusae: h/w/l ? / 300 / 600; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [422] laghathti: h/w/l ? / 350 / 244; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_laghathti; policy auto
 
 LIVING_APPENDAGE (1)
 ----------------------
@@ -8598,8 +8664,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/16b5f2dad3146b7f9f96c5a1a8076636a17a1369
-  Base PR1011 plus the accompanying Military Fortress patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/e8243b298771339adcec7e5e83944133fc107e21
+  Base PR1012 plus the accompanying Arena/Jail patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -8609,9 +8675,8 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The live conversion is currently 99/153 areas (64.7%) and 1635/4131 mob
-definitions (39.6%) merged and verified. Military Fortress adds 41 definitions.
-After its merge is verified, completion becomes 100/153 areas (65.4%) and
-1676/4131 definitions (40.6%).
+The verified conversion covers 100/153 areas (65.4%) and 1,676/4,131 mob
+definitions (40.6%). Once the 43 Arena/Jail definitions are merged and
+verified, the totals will be 101/153 (66.0%) and 1,719/4,131 (41.6%).
 
 END OF GUIDE

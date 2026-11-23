@@ -17481,3 +17481,54 @@ internal to species/archetypes, and MSTAT shows the resolved result.
 Current verified completion is 99/153 areas (64.7%) and 1635/4131 definitions
 (39.6%). After the Fortress's 41 definitions are merged and verified,
 completion becomes 100/153 areas (65.4%) and 1676/4131 definitions (40.6%).
+
+== Ota'ar Dar Arena/Jail
+
+The five new archetypes use existing bodies. Measurements are in centimetres
+and whole kilograms. Leave a dimension unspecified when it has no useful
+meaning. A creature can be Large without having the HUGE combat flag.
+
+    Archetype            Body         Height  Weight  Length  Size
+    vodyanoi             humanoid        275     900       -  Large
+    aboleth              fish              -    1600     610  Large, HUGE
+    laghathti            cephalopod        -     350     244  Large
+    giant_alligator_gar  fish              -     150     300  Large
+    sea_elf              humanoid        190      65       -  Medium
+
+Use vodyanoi for the aquatic relative of the umber hulk. It swims, sees
+infrared and has claws, mandibles and natural armour -8. Its eel summons
+belong to the arena mob's death program. Its template supplies no gaze.
+
+An aboleth has a working head and speech. Its four fighting tentacles use
+the arm injury group. Give its jaws a head-region body weapon and its
+tentacles an arm-region one so injuring either region affects the right
+weapon. It inherits spec_aboleth and natural armour -6. The laghathti uses
+the cephalopod body, but has no central head, eyes or heart. Its jaw-tipped
+tentacles can still hold their attached weapon and it can wail. The 244 cm
+length measures its central mass, excluding the tentacles. It inherits
+spec_laghathti. Keep flight and regeneration on the arena individuals.
+
+The gar is an armoured fish with a fang bite and natural armour -6. A sea
+elf shares the elf family's sleep and charm resistance and ghoul-touch
+protection. Swim belongs to its template. Add Infrared to an individual
+when its area calls for it, as it does for both prisoners here.
+
+For the giant sea leech, start with giant_leech and set height 35, weight
+70, length 400 and size 2. It inherits a positive eye part. Toggle that
+part off as well as adding No Eyes, or its eyes will still be targetable.
+Add Tail and HUGE. It keeps the ordinary bloodsucker special and its egg.
+
+The Baron is Boss. The Arenamaster and Nuncio are Rare. All four instances
+of each gladiator stay Common. The Nuncio uses an individual cleric special.
+The jailer's guard routine belongs on 27379. The prisoner in 27378 has no
+guard duties. For the temporary keys, use the keywords 'arena' and 'pearl'
+with mpjunk. The gatekeeper still requires all five favours.
+
+Inside a sea elf's existing $mob block, for example:
+
+    archetype sea_elf
+    rnk common
+    aff infrared
+
+The two prisoners inherit Swim. If you repeat Swim in their individual
+affect masks, XOR turns it off. Keep their other individual affects.
