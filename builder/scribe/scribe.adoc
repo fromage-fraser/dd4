@@ -17569,3 +17569,45 @@ Here is the male seal's entry inside a Scribe $mob block:
 Length is in centimetres and weight in whole kilograms. The profile
 already supplies Swim. Repeating Swim in the mob's affect mask would
 switch it off. The female seal uses length 160 and weight 80.
+
+== The Seas of the Pirate Lords
+
+Use sailing_ship when the mob represents a whole crewed vessel. The hull
+has no limbs or organs. It inherits Object and HUGE and leaves wreckage
+that can hold its cargo. Set aggression, flight or the urge to flee only
+where they suit the vessel. A sailing_ship defaults to 3,000 cm long.
+The pirate trireme uses 3,500 cm and the whalers use 2,200 cm. Leave the
+height and weight unspecified when you only know the length of the hull.
+
+Use ghost_ship for a haunted vessel that can sneak, fly and turn invisible.
+It still takes ordinary physical hits. In Pirate Seas its map drops inside
+the wreckage. Repeating Object or any of those three affects on that mob
+would switch off the inherited bit.
+
+A sperm_whale swims, has a toothed bite and uses its flukes. Its defaults
+are 1,600 cm long, 40,000 kg, Large and HUGE, with natural armour -6.
+It inherits spec_large_whale. Head trauma disables its ordinary bite
+while its tail remains usable. For a smaller giant_squid, keep the
+existing archetype and adjust the individual. The one in the wreck is
+610 cm long and 100 kg. Toggle off HUGE and keep its heart, beak and
+tentacles. Its spec_squid feeds on corpses while idle and can grip an
+opponent in combat.
+
+A merfolk mob has a human upper body and a scaled fish tail with fins.
+It can speak, wield a weapon and swim. It has no ordinary legs or feet.
+The profile defaults to 175 cm long and 75 kg with natural armour -3.
+For a mermaid the size of the siren, use these lines in the $mob block:
+
+    archetype merfolk
+    rnk common
+    length 165
+    weight 60
+
+The siren's invisibility, mage casting and Sonic Blast fight program are
+individual choices. The typhoon uses the environmental_hazard body and
+inherits spec_breath_lightning. Give the storm its aggressive behaviour
+and Sanctuary on its own mob entry. A headless source flashes lightning
+without a reference to a mouth. Its storm cape falls loose when it dies.
+
+The Rastafarian shopkeeper uses the human profile and keeps Rare rank.
+Only flag an actual teacher for practice and supply a lesson list.

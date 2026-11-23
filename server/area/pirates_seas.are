@@ -37,10 +37,12 @@ A pirate raider ship is here menacing commerce!
 The ship is a single mast trireme, low to the water, and has a ram. Pirates
 man the riggings and catapults with Greek fire.
 ~
-32|134217728 0 -800 S
+32 0 -800 S
 10 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< sailing_ship~ common~
+MobLength 3500
 #17002
 trader merchant~
 The merchant trader~
@@ -49,10 +51,11 @@ A merchant trader is here, low in the water, with a full cargo.
 The merchant galley has 2 tiers of oars, and rides low in the water due
 to the full cargo hold. It is heavily guarded.
 ~
-128|134217728 0 200 S
+128 0 200 S
 15 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< sailing_ship~ common~
 #17003
 trader merchant~
 The merchant trader~
@@ -61,10 +64,11 @@ A merchant trader is here, rowing high in the water.
 The merchant galley has 2 tiers of oars, and rides high in the water due
 to the empty cargo hold. It is lightly guarded.
 ~
-128|134217728 0 200 S
+128 0 200 S
 8 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< sailing_ship~ common~
 #17004
 whaler~
 The whaler~
@@ -73,10 +77,12 @@ A whaler is here seeking its quarry.
 The whaler is a low ship with several rowboats in tow. A blood wake trails
 the ship, evidence of a successful hunt.
 ~
-134217728 0 0 S
+0 0 0 S
 8 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< sailing_ship~ common~
+MobLength 2200
 #17005
 whaler~
 The whaler~
@@ -84,10 +90,12 @@ A whaler is here seeking its quarry.
 ~
 The whaler is a low ship with several rowboats in tow.
 ~
-134217728 0 0 S
+0 0 0 S
 8 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< sailing_ship~ common~
+MobLength 2200
 #17006
 ghost ship~
 The black masted ghost ship~
@@ -96,10 +104,11 @@ A black masted ghost ship crosses the horizon, sailing on air and misery.
 The ghost ship is transparent and has rigging of an ancient make. You hear
 howls of terror coming from within the vessel.
 ~
-134217728 2|32768|524288 0 S
+0 0 0 S
 20 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
+< ghost_ship~ common~
 #17007
 whale sperm~
 The sperm whale~
@@ -109,8 +118,9 @@ The sperm whale is old and bears the scars of many hunts.
 ~
 0 0 0 S
 12 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< sperm_whale~ common~
 #17008
 squid giant~
 The giant squid~
@@ -121,15 +131,18 @@ tentacles.
 ~
 4|32 0 0 S
 12 0 0 0d0+0 0d0+0
-8|16|32 0
+128 0
 8 8 2
+< giant_squid~ common~
+MobLength 610
+MobWeight 100
 #17009
 siren~
 The siren~
 The siren of Hell's reef is here, singing her enchanting song.
 ~
-The siren is a beautiful maiden with the torso of a fish. Her song
-is very hard to resist.
+The siren has the upper body of a beautiful woman and the tail of a fish.
+Her song is very hard to resist.
 ~
 4|32 2 -500 S
 15 0 0 0d0+0 0d0+0
@@ -139,18 +152,22 @@ is very hard to resist.
 c sonic $n
 ~
 |
+< merfolk~ common~
+MobLength 165
+MobWeight 60
 #17010
 typhoon raging~
 The raging typhoon~
 A raging typhoon is here, making you seasick.
 ~
 The typhoon has high winds and towering black clouds. Lightning arcs wildly
-at its center, the sign that this is a non natural phenomena.
+at its center, a sign that this storm is unnatural.
 ~
-32|134217728 128 0 S
+32 128 0 S
 20 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
+< typhoon~ common~
 #17099
 rastafarians~
 The Rastafarians load up a huge bowl and~
@@ -158,15 +175,13 @@ You hear reggae music and smell marijuana floating across the water.
 ~
 The Rastafarians are firmly convinced that Jah will indeed provide
 for their every need, and are content to float along endlessly. They
-appear very wise in the ways of the world and may be able to teach
-you something.
+seem wise in the ways of the world and look happy to offer advice.
 ~
-4|128|512|1024|2048 128|8192 0 S
+4|128|512|2048 128|8192 0 S
 70 0 0 0d0+0 0d0+0
 0 0
 8 8 0
-< reserved~ rare~
-
+< human~ rare~
 #0
 
 
@@ -249,7 +264,7 @@ treasure lost~
 the lost treasure from the sunken ship~
 A huge gleaming pile of gold glistens here.~
 ~
-22 0 1
+20 0 1
 5~ 23~ 34~ 18~
 60 0 0
 #17009
@@ -308,9 +323,9 @@ is lit and looks like there are 2 hits left. The Rastaman
 took one hit off it when he sold it to you.
 ~
 #17099
-dreddlocks~
-dreddlocks~
-A beautiful set of dreddlocks lie on the ground.~
+dreadlocks dreddlocks~
+dreadlocks~
+A beautiful set of dreadlocks lies on the ground.~
 ~
 9 0 16
 0~ 0~ 0~ 0~
@@ -3687,7 +3702,7 @@ M 1 17009 1 17167
 O 1 17009 1 17167
 * Rastafarians
 M 1 17099 1 17141  The jahmen
-E 1 17099 0 6  Wearing dreddlocks
+E 1 17099 0 6  Wearing dreadlocks
 G 1 17098 0  a spliff
 G 1 17097 0  a banana boat
 D 1 17113 5 1  Closes hidden harbor grate
@@ -3700,10 +3715,7 @@ S
 
 
 #SPECIALS
-M  17007 spec_large_whale                       The sperm whale
-M  17008 spec_fido
 M  17009 spec_cast_mage                         The siren
-M  17010 spec_breath_lightning                  The raging typhoon
 S
 
 

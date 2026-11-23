@@ -555,8 +555,12 @@ bool dragon( CHAR_DATA *ch, char *spell_name )
                     ch, NULL, NULL, TO_ROOM);
 
         else if (sn == skill_lookup("lightning breath"))
-                act("Bolts of lightning streak from $n's mouth!",
-                    ch, NULL, NULL, TO_ROOM);
+        {
+                if (HAS_HEAD(ch))
+                        act("Bolts of lightning streak from $n's mouth!", ch, NULL, NULL, TO_ROOM);
+                else
+                        act("Bolts of lightning flash from $n!", ch, NULL, NULL, TO_ROOM);
+        }
 
         else if (sn == skill_lookup("steam breath"))
         {

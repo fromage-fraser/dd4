@@ -162,6 +162,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         vodyanoi aboleth laghathti giant_alligator_gar sea_elf
         rolling_calf three_legged_spirit_horse higue_fire_form tokoloshe
         water_spirit_avatar selkie_seal_form selkie_human_form
+        sailing_ship ghost_ship sperm_whale merfolk typhoon
 /;
 
 my %mob_act = (
