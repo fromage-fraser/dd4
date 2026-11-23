@@ -6188,28 +6188,40 @@ char *initial (const char *str)
 /*
  * Append a string to a file.
  */
-void append_file(CHAR_DATA *ch, char *file, char *str)
+bool append_file(CHAR_DATA *ch, const char *file, const char *str)
 {
         FILE *fp;
+        bool saved = FALSE;
 
-        if (IS_NPC(ch) || str[0] == '\0')
-                return;
+        if (IS_NPC(ch) || !str || !*str)
+                return FALSE;
 
-        fclose(fpReserve);
-        if (!(fp = fopen(file, "a")))
-        {
+        if (fpReserve)
+                fclose(fpReserve);
+
+        fp = fopen(file, "a");
+        if (!fp)
                 perror(file);
-                send_to_char("Could not open the file!\n\r", ch);
-        }
         else
         {
-                fprintf(fp, "[%5d] %s: %s\n",
-                        ch->in_room ? ch->in_room->vnum : 0, ch->name, str);
-                fclose(fp);
+                saved = fprintf(fp, "[%5d] %s: %s\n",
+                                ch->in_room ? ch->in_room->vnum : 0,
+                                ch->name, str) >= 0;
+                if (!saved)
+                        perror(file);
+
+                if (fclose(fp) == EOF)
+                {
+                        perror(file);
+                        saved = FALSE;
+                }
         }
 
         fpReserve = fopen(NULL_FILE, "r");
-        return;
+        if (!saved)
+                send_to_char("Could not save to the file.\n\r", ch);
+
+        return saved;
 }
 
 /*

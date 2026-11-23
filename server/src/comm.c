@@ -2913,7 +2913,7 @@ void nanny(DESCRIPTOR_DATA *d, char *argument)
                 if (IS_SET(ch->act, PLR_QUESTOR))
                 {
                         REMOVE_BIT(ch->act, PLR_QUESTOR);
-                        ch->pcdata->questgiver = NULL;
+                        ch->pcdata->quest_giver_vnum = 0;
                         ch->pcdata->countdown = 0;
                         ch->pcdata->questmob = 0;
                         ch->pcdata->questobj = 0;
@@ -4492,78 +4492,98 @@ void install_crash_handler()
  *  below the first line; Gezhp 2000
  */
 
-void send_paragraph_to_char(char *text, CHAR_DATA *ch, unsigned int indent)
+/* Keep a colour token together when wrapping. */
+static size_t paragraph_atom_size(const char *p, unsigned int *width)
 {
-        const int margin = 78;
+        size_t n;
+
+        *width = 1;
+        if ((*p == '{' || *p == '}') && p[1] && p[1] != '\n' && p[1] != '\r')
+        {
+                *width = p[1] == *p ? 1 : 0;
+                return 2;
+        }
+
+        if (*p == '<')
+        {
+                if (p[1] == '<')
+                        return 2;
+                for (n = 1; n <= 3 && isdigit((unsigned char)p[n]); n++)
+                        ;
+                if (n > 1 && p[n] == '>')
+                {
+                        *width = 0;
+                        return n + 1;
+                }
+        }
+        return 1;
+}
+
+void send_paragraph_to_char(const char *text, CHAR_DATA *ch, unsigned int indent)
+{
+        const unsigned int margin = 78;
         char buf[MAX_STRING_LENGTH];
-        int pos, max, max_line, i, j, k, l;
-        bool indent_line = FALSE;
+        size_t used = 0;
+        unsigned int padding = 0;
 
         if (!text)
                 return;
 
-        if (indent > margin / 2)
-                indent = margin / 2;
-
-        pos = 0;
-        max = strlen(text);
-
-        buf[0] = '\0';
-
-        for (i = 0; i < max; i++)
+        indent = UMIN(indent, margin / 2);
+        while (*text)
         {
-                k = 0;
-                max_line = margin;
+                const char *p = text;
+                const char *space = NULL;
+                unsigned int columns = padding;
+                size_t len;
 
-                if (indent_line)
+                while (*p && *p != '\n' && *p != '\r')
                 {
-                        for (l = 0; l < indent; l++)
-                        {
-                                strcpy(buf + pos, " ");
-                                pos++;
-                                max_line--;
-                        }
+                        unsigned int width;
+                        size_t atom = paragraph_atom_size(p, &width);
+
+                        if (columns + width > margin)
+                                break;
+                        if (*p == ' ' && p != text)
+                                space = p;
+                        columns += width;
+                        p += atom;
+                }
+
+                if (*p && *p != '\n' && *p != '\r' && *p != ' ' && space)
+                        p = space;
+
+                len = p - text;
+                if (padding + len + 2 > sizeof(buf) - used - sizeof("{x"))
+                {
+                        memcpy(buf + used, "{x", sizeof("{x"));
+                        send_to_char(buf, ch);
+                        return;
+                }
+
+                memset(buf + used, ' ', padding);
+                used += padding;
+                memcpy(buf + used, text, len);
+                used += len;
+                buf[used++] = '\n';
+                buf[used++] = '\r';
+
+                if (*p == '\n' || *p == '\r')
+                {
+                        char newline = *p++;
+                        if ((newline == '\n' && *p == '\r')
+                        ||  (newline == '\r' && *p == '\n'))
+                                p++;
                 }
                 else
-                        indent_line = TRUE;
+                        while (*p == ' ')
+                                p++;
 
-                for (j = 0; j < max_line; j++)
-                {
-                        if (i + j >= max)
-                        {
-                                break;
-                        }
-
-                        if (text[i + j] == '\n')
-                        {
-                                k = j + 1;
-                                break;
-                        }
-
-                        if (text[i + j] == ' ')
-                                k = j;
-
-                        if (text[i + j] == '{' || text[i + j] == '}')
-                                max_line += 2;
-                }
-
-                if (!k)
-                        k = max_line;
-
-                for (j = 0; j < k; j++)
-                {
-                        if (text[i + j] != '\n' && text[i + j] != '\r' && !(j == 0 && text[i + j] == ' '))
-                        {
-                                buf[pos++] = text[i + j];
-                        }
-                }
-
-                buf[pos++] = '\n';
-                buf[pos++] = '\r';
-                i += k;
+                text = p;
+                padding = indent;
         }
 
-        buf[pos] = '\0';
+        buf[used] = '\0';
         send_to_char(buf, ch);
 }
 
