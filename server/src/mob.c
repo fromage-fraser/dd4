@@ -5576,6 +5576,57 @@ const struct mob_type mob_table[MAX_MOB] =
                 175, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "sailing_ship", "limbless_construct", "icon1", "icon2",
+                ACT_OBJECT, 0,
+                BODY_HUGE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 3000
+        },
+        {
+                "ghost_ship", "limbless_construct", "icon1", "icon2",
+                ACT_OBJECT, AFF_INVISIBLE | AFF_SNEAK | AFF_FLYING,
+                BODY_HUGE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 3000
+        },
+        {
+                "sperm_whale", "cetacean", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_FANGS,
+                PART_FANGS | PART_TAILATTACK, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 40000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_large_whale", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1600
+        },
+        {
+                "merfolk", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_LEGS | PART_2_LEGS | PART_FEET
+                    | PART_TAIL | PART_FINS | PART_SCALES,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 175
+        },
+        {
+                "typhoon", "environmental_hazard", "icon1", "icon2",
+                ACT_OBJECT, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_lightning", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -7198,6 +7249,8 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"sperm_whale", NULL, abyss_armour_6_head_traits, TRAIT_ITEMS(abyss_armour_6_head_traits)},
+        {"merfolk", NULL, abyss_armour_3_traits, TRAIT_ITEMS(abyss_armour_3_traits)},
         {"selkie_seal_form", NULL, marine_armour_5_head_traits, TRAIT_ITEMS(marine_armour_5_head_traits)},
         {"tokoloshe", NULL, marine_head_traits, TRAIT_ITEMS(marine_head_traits)},
         {"vodyanoi", "umber_hulk", NULL, 0},
