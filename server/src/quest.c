@@ -256,9 +256,17 @@ void do_quest (CHAR_DATA *ch, char *argument)
                         return;
                 }
 
-                if (ch->pcdata->questmob == -1 && ch->pcdata->questgiver->short_descr)
+                if (ch->pcdata->questmob == -1)
                 {
-                        sprintf(buf, "Your quest is ALMOST complete!\n\rGet back to %s before your time runs out!\n\r",ch->pcdata->questgiver->short_descr);
+                        MOB_INDEX_DATA *giver = ch->pcdata->quest_giver_vnum > 0
+                                ? get_mob_index(ch->pcdata->quest_giver_vnum)
+                                : NULL;
+
+                        snprintf(buf, sizeof(buf),
+                                 "Your quest is ALMOST complete!\n\r"
+                                 "Get back to %s before your time runs out!\n\r",
+                                 giver && giver->short_descr && giver->short_descr[0]
+                                     ? giver->short_descr : "a questmaster");
                         send_to_char(buf, ch);
                         return;
                 }
@@ -305,7 +313,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                 }
 
                 REMOVE_BIT(ch->act, PLR_QUESTOR);
-                ch->pcdata->questgiver = NULL;
+                ch->pcdata->quest_giver_vnum = 0;
                 ch->pcdata->countdown = 0;
                 ch->pcdata->questmob = 0;
                 ch->pcdata->questobj = 0;
@@ -367,8 +375,6 @@ void do_quest (CHAR_DATA *ch, char *argument)
                 send_to_char("You can't do that here.\n\r",ch);
                 return;
         }
-
-        ch->pcdata->questgiver = questman;
 
         if (is_name(arg1, "list"))
         {
@@ -445,6 +451,8 @@ void do_quest (CHAR_DATA *ch, char *argument)
 
         if (is_name(arg1, "request"))
         {
+                int giver_vnum = questman->pIndexData ? questman->pIndexData->vnum : 0;
+
                 if (ch->position < POS_RESTING)
                 {
                         send_to_char ("Dream quests are not materially rewarded.\n\r", ch);
@@ -488,6 +496,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
 
                 if (ch->pcdata->questmob > 0 || ch->pcdata->questobj > 0)
                 {
+                        ch->pcdata->quest_giver_vnum = giver_vnum;
                         ch->pcdata->countdown = number_range(10,30);
                         SET_BIT(ch->act, PLR_QUESTOR);
                         sprintf(buf, "$N says 'You have %d minutes to complete this quest.'",ch->pcdata->countdown);
@@ -560,7 +569,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                 ch->pcdata->fame += famereward;
                                 check_fame_table(ch);
                                 REMOVE_BIT(ch->act, PLR_QUESTOR);
-                                ch->pcdata->questgiver = NULL;
+                                ch->pcdata->quest_giver_vnum = 0;
                                 ch->pcdata->countdown = 0;
                                 ch->pcdata->questmob = 0;
                                 ch->pcdata->questobj = 0;
@@ -624,7 +633,7 @@ void do_quest (CHAR_DATA *ch, char *argument)
                                         }
 
                                         REMOVE_BIT(ch->act, PLR_QUESTOR);
-                                        ch->pcdata->questgiver = NULL;
+                                        ch->pcdata->quest_giver_vnum = 0;
                                         ch->pcdata->countdown = 0;
                                         ch->pcdata->questmob = 0;
                                         ch->pcdata->questobj = 0;
@@ -1223,7 +1232,7 @@ void quest_update ()
                                         ch->pcdata->nextquest);
                                 send_to_char (buf, ch);
                                 REMOVE_BIT (ch->act, PLR_QUESTOR);
-                                ch->pcdata->questgiver = NULL;
+                                ch->pcdata->quest_giver_vnum = 0;
                                 ch->pcdata->countdown = 0;
                                 ch->pcdata->questmob = 0;
                                 ch->pcdata->questobj = 0;

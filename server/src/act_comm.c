@@ -1413,25 +1413,37 @@ void do_pose(CHAR_DATA *ch, char *argument)
         return;
 }
 
+static void report_to_file(CHAR_DATA *ch, const char *file, const char *text)
+{
+        if (IS_NPC(ch))
+                return;
+
+        while (isspace((unsigned char)*text))
+                text++;
+
+        if (!*text)
+        {
+                send_to_char("Please enter a report.\n\r", ch);
+                return;
+        }
+
+        if (append_file(ch, file, text))
+                send_to_char("Ok.  Thanks.\n\r", ch);
+}
+
 void do_bug(CHAR_DATA *ch, char *argument)
 {
-        append_file(ch, BUG_FILE, argument);
-        send_to_char("Ok.  Thanks.\n\r", ch);
-        return;
+        report_to_file(ch, BUG_FILE, argument);
 }
 
 void do_idea(CHAR_DATA *ch, char *argument)
 {
-        append_file(ch, IDEA_FILE, argument);
-        send_to_char("Ok.  Thanks.\n\r", ch);
-        return;
+        report_to_file(ch, IDEA_FILE, argument);
 }
 
 void do_typo(CHAR_DATA *ch, char *argument)
 {
-        append_file(ch, TYPO_FILE, argument);
-        send_to_char("Ok.  Thanks.\n\r", ch);
-        return;
+        report_to_file(ch, TYPO_FILE, argument);
 }
 
 /* RT code to delete yourself */
@@ -1540,23 +1552,11 @@ static bool quit_char(CHAR_DATA *ch)
                 return FALSE;
         }
 
-        /* Tournaments */
-        if (is_entered_in_tournament(ch))
+        if (tournament_status == TOURNAMENT_STATUS_RUNNING
+        &&  is_entered_in_tournament(ch) && is_still_alive_in_tournament(ch))
         {
-                if (tournament_status == TOURNAMENT_STATUS_RUNNING && is_still_alive_in_tournament(ch))
-                {
-                        send_to_char("You can't quit from a tournament!  Recall to leave.\n\r", ch);
-                        return FALSE;
-                }
-                else if (tournament_status != TOURNAMENT_STATUS_FINISHED)
-                        remove_from_tournament(ch);
-        }
-
-        if (ch == tournament_host && tournament_status != TOURNAMENT_STATUS_NONE)
-        {
-                if (tournament_status != TOURNAMENT_STATUS_FINISHED)
-                        tournament_message("The tournament has been cancelled!", ch);
-                tournament_init();
+                send_to_char("You can't quit from a tournament!  Recall to leave.\n\r", ch);
+                return FALSE;
         }
 
         /* check for auctioning items.... */
@@ -1572,6 +1572,18 @@ static bool quit_char(CHAR_DATA *ch)
                         send_to_char("Wait until you have sold the item on auction.\n\r", ch);
                         return FALSE;
                 }
+        }
+
+        /* Apply tournament changes only after all refusal checks. */
+        if (tournament_status != TOURNAMENT_STATUS_FINISHED
+        &&  is_entered_in_tournament(ch))
+                remove_from_tournament(ch);
+
+        if (ch == tournament_host && tournament_status != TOURNAMENT_STATUS_NONE)
+        {
+                if (tournament_status != TOURNAMENT_STATUS_FINISHED)
+                        tournament_message("The tournament has been cancelled!", ch);
+                tournament_init();
         }
 
         /* drop items above ch level or clan items */
@@ -2580,73 +2592,56 @@ void do_review(CHAR_DATA *ch, char *argument)
         send_to_char(usage, ch);
 }
 
+static void record_review(struct review_data *history, const char *speaker,
+                          const char *text)
+{
+        const char *when = ctime(&current_time);
+        char *entry;
+        size_t len, end;
+
+        memmove(&history[1], &history[0],
+                (REVIEW_BUFFER_LENGTH - 1) * sizeof(*history));
+        entry = history[0].buffer;
+        if (speaker)
+                snprintf(entry, REVIEW_BUFFER_SIZE - 4, "%.12s  {W%s{x: %s",
+                         when ? when + 4 : "", speaker, text);
+        else
+                snprintf(entry, REVIEW_BUFFER_SIZE - 4, "%.12s  %s",
+                         when ? when + 4 : "", text);
+
+        len = strlen(entry);
+        /* Do not let a trailing partial brace code consume the reset. */
+        end = len;
+        if (end > 0 && (entry[end - 1] == '{' || entry[end - 1] == '}'))
+        {
+                while (end > 0 && entry[end - 1] == entry[len - 1])
+                        end--;
+                len -= (len - end) % 2;
+        }
+        memcpy(entry + len, "{x\n\r", sizeof("{x\n\r"));
+        history[0].timestamp = current_time;
+}
+
 void add_to_public_review_buffer(CHAR_DATA *ch, int channel, char *text)
 {
-        int i;
-        char buf[MAX_STRING_LENGTH];
-        char *when;
+        const char *speaker = NULL;
 
-        if (channel < 0 || channel >= REVIEW_CHANNEL_COUNT || text[0] == '\0')
+        if (channel < 0 || channel >= REVIEW_CHANNEL_COUNT || !text || !*text)
                 return;
 
-        when = ctime(&current_time);
-        when[strlen(when) - 9] = '\0';
-
         if (ch)
-                sprintf(buf, "%s  {W%s{x: %s{x\n\r",
-                        &when[4],
-                        IS_NPC(ch)
-                            ? capitalize_initial(ch->short_descr)
-                        : IS_SET(ch->act, PLR_WIZINVIS)
-                            ? "Someone"
-                            : ch->name,
-                        text);
-        else
-                sprintf(buf, "%s  %s{x\n\r",
-                        &when[4],
-                        text);
+                speaker = IS_NPC(ch) ? capitalize_initial(ch->short_descr)
+                        : IS_SET(ch->act, PLR_WIZINVIS) ? "Someone" : ch->name;
 
-        for (i = REVIEW_BUFFER_LENGTH - 1; i; i--)
-        {
-                strncpy(review_buffer_public[channel][i].buffer,
-                        review_buffer_public[channel][i - 1].buffer,
-                        REVIEW_BUFFER_SIZE);
-
-                review_buffer_public[channel][i].timestamp = review_buffer_public[channel][i - 1].timestamp;
-        }
-
-        strncpy(review_buffer_public[channel][0].buffer, buf, REVIEW_BUFFER_SIZE);
-        review_buffer_public[channel][0].timestamp = current_time;
+        record_review(review_buffer_public[channel], speaker, text);
 }
 
 void add_to_clan_review_buffer(CHAR_DATA *ch, int clan, char *text)
 {
-        int i;
-        char buf[MAX_STRING_LENGTH];
-        char *when;
-
-        if (IS_NPC(ch) || clan < 1 || clan >= MAX_CLAN || text[0] == '\0')
+        if (IS_NPC(ch) || clan < 1 || clan >= MAX_CLAN || !text || !*text)
                 return;
 
-        when = ctime(&current_time);
-        when[strlen(when) - 9] = '\0';
-
-        sprintf(buf, "%s  {W%s{x: %s{x\n\r",
-                &when[4],
-                ch->name,
-                text);
-
-        for (i = REVIEW_BUFFER_LENGTH - 1; i; i--)
-        {
-                strncpy(review_buffer_clan[clan][i].buffer,
-                        review_buffer_clan[clan][i - 1].buffer,
-                        REVIEW_BUFFER_SIZE);
-
-                review_buffer_clan[clan][i].timestamp = review_buffer_clan[clan][i - 1].timestamp;
-        }
-
-        strncpy(review_buffer_clan[clan][0].buffer, buf, REVIEW_BUFFER_SIZE);
-        review_buffer_clan[clan][0].timestamp = current_time;
+        record_review(review_buffer_clan[clan], ch->name, text);
 }
 
 /*

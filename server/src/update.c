@@ -4337,7 +4337,7 @@ void msdp_update(void)
 static void gmcp_update_quest(DESCRIPTOR_DATA *d)
 {
         CHAR_DATA       *ch;
-        CHAR_DATA       *giver;
+        MOB_INDEX_DATA  *giver;
         ROOM_INDEX_DATA *questroom;
         AREA_DATA       *questarea;
         MOB_INDEX_DATA  *mob_index;
@@ -4367,7 +4367,8 @@ static void gmcp_update_quest(DESCRIPTOR_DATA *d)
         ch = d->character;
         active = IS_SET(ch->act, PLR_QUESTOR) ? 1 : 0;
 
-        giver = active ? ch->pcdata->questgiver : NULL;
+        giver_vnum = active ? ch->pcdata->quest_giver_vnum : 0;
+        giver = giver_vnum > 0 ? get_mob_index(giver_vnum) : NULL;
         questroom = active ? ch->pcdata->questroom : NULL;
         questarea = active ? ch->pcdata->questarea : NULL;
         mob_index = NULL;
@@ -4376,7 +4377,6 @@ static void gmcp_update_quest(DESCRIPTOR_DATA *d)
         mob_vnum = active ? ch->pcdata->questmob : 0;
         object_vnum = active ? ch->pcdata->questobj : 0;
         complete = 0;
-        giver_vnum = 0;
         room_vnum = questroom ? questroom->vnum : 0;
 
         status = "available";
@@ -4400,15 +4400,10 @@ static void gmcp_update_quest(DESCRIPTOR_DATA *d)
             : room_vnum)
         : 0;
 
-        if (giver && !giver->deleted)
-        {
-                giver_name = IS_NPC(giver)
-                        ? giver->short_descr
-                        : giver->name;
-
-                if (IS_NPC(giver) && giver->pIndexData)
-                        giver_vnum = giver->pIndexData->vnum;
-        }
+        if (giver && giver->short_descr)
+                giver_name = giver->short_descr;
+        else
+                giver_vnum = 0;
 
         if (active && mob_vnum != 0)
         {
