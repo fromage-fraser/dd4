@@ -18,29 +18,33 @@ Ota'ar Dar soldiers are selected at an early age for their strength and aggressi
 This one has been tasked with patrolling the fortress walls, looking for
 intruders and disturbances.
 ~
-64 512|67108864 -430 S
+64 512 -430 S
 45 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >greet_prog 4~
 shout What are you doing here?  Trespasser!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27396
 blue shark~
 a blue shark~
 A blue shark glides about hungrily.
 ~
-The blue shark, is a species of requiem shark that inhabits deep waters in the
+The blue shark is a species of requiem shark that inhabits deep waters in the
 world's temperate and tropical oceans. This one has been magically enchanted to
 serve as a mount for sahuagin cavalry, and can operate on land, under the sea,
 and in the air.
 ~
-64|131072 32|512|524288|67108864 0 S
+131136 524832 0 S
 45 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< blue_shark~ common~
 #27397
 stingray~
 a stingray~
@@ -53,10 +57,11 @@ spinal blades in their tails that may be poisoned and are used in self-defense.
 This one has been magically enchanted to serve as a mount for sahuagin cavalry,
 and can operate on land, under the sea, and in the air.
 ~
-64|131072 32|512|524288|67108864 0 S
+131136 524832 0 S
 45 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< stingray~ common~
 #27398
 hammerhead shark~
 a hammerhead shark~
@@ -69,10 +74,11 @@ flattened and laterally extended into a "hammer" shape called a cephalofoil.
 This one has been magically enchanted to serve as a mount for sahuagin cavalry,
 and can operate on land, under the sea, and in the air.
 ~
-64|131072 32|128|512|524288|67108864 0 S
+131136 524960 0 S
 45 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< hammerhead_shark~ common~
 #27399
 Ota'ar Dar cavalry cavalryman~
 an Ota'ar Dar cavalryman~
@@ -86,15 +92,18 @@ and agility.
 This one has been tasked with patrolling the fortress walls, looking for
 intruders and disturbances.
 ~
-64 32|512|67108864 -440 S
+64 544 -440 S
 46 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >greet_prog 4~
 shout Enemies!  Enemies on the wall!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27400
 Ota'ar Dar elite soldier member~
 an elite Ota'ar Dar soldier~
@@ -104,10 +113,13 @@ Ota'ar Dar elite soldiers are selected at an early age for their loyalty, size,
 strength and aggression.  This one has been tasked with guarding the gates to
 fortress interior.
 ~
-2|64 8|32|512|8388608|67108864 -470 S
+66 8389160 -470 S
 47 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 200
+MobWeight 120
 #27401
 Ota'ar Dar lieutenant~
 the wall lieutenant~
@@ -117,15 +129,16 @@ The lieutenant is responsible for all the troops guarding the fortress walls,
 and for the general security of the area. He looks at you with suspicion and
 distrust.
 ~
-2|64 8|32|512|8388608|67108864 -530 S
+66 8389160 -530 S
 48 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >greet_prog 5~
 shout The wall has been breached! To me!
 mpkill $n
 ~
 |
+< sahuagin~ rare~
 #27402
 Ota'ar Dar elite soldier~
 an elite Ota'ar Dar soldier~
@@ -135,9 +148,9 @@ Ota'ar Dar elite soldiers are selected at an early age for their loyalty, size,
 strength and aggression.  This one has been tasked with guarding the gates to
 fortress interior.
 ~
-2|64 8|32|512|8388608|67108864 -470 S
+66 8389160 -470 S
 47 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >all_greet_prog 100~
 if carrying($n) == 27515
@@ -148,6 +161,9 @@ if carrying($n) == 27515
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 200
+MobWeight 120
 #27403
 Ota'ar Dar infantry soldier member~
 an Ota'ar Dar soldier~
@@ -156,10 +172,13 @@ A member of Ota'ar Dar's infantry is here, drilling combat manoeuvres.
 Ota'ar Dar soldiers are selected at an early age for their strength and aggression.
 This one is busy drilling combat manoeuvres with his squadron.
 ~
-2|64 512|67108864 -430 S
+66 512 -430 S
 45 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27404
 Ota'ar Dar cavalry cavalryman~
 an Ota'ar Dar cavalryman~
@@ -172,10 +191,13 @@ and agility.
 
 This one is busy drilling combat manoeuvres with his squadron.
 ~
-2|64 32|512|67108864 -440 S
+66 544 -440 S
 46 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27405
 Ota'ar Dar infantry soldier member~
 an Ota'ar Dar soldier~
@@ -184,15 +206,18 @@ A member of Ota'ar Dar's infantry is here, wandering about the canton.
 This Ota'ar Dar soldier seems to be milling about with no particular purpose in
 mind.  He shoots you a suspicious look.
 ~
-64 512|67108864 -430 S
+64 512 -430 S
 46 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >greet_prog 6~
 shout A trespasser in the canton! Die!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27406
 Ota'ar Dar cavalry cavalryman~
 an Ota'ar Dar cavalryman~
@@ -201,15 +226,18 @@ An Ota'ar Dar cavalryman is here, strolling about confidently.
 The cavalryman strides about somewhat officiously.  He regards you with a keen
 mixture of contempt and suspicion.
 ~
-64 32|512|67108864 -440 S
+64 544 -440 S
 46 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >greet_prog 6~
 shout An intruder!  PERISH!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27407
 Ota'ar Dar infantry soldier member~
 an Ota'ar Dar soldier~
@@ -218,28 +246,34 @@ A member of Ota'ar Dar's infantry is here, guarding the food stores.
 The Ota'ar Dar soldier stands at attention, guarding the fortress's food stores
 as though his life depended on it (which it does).
 ~
-2|32|64 8|32|512|8388608|67108864 -410 S
+98 8389160 -410 S
 45 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >all_greet_prog 100~
 shout A thief in the food store!  Attack!
 mpkill $n
 ~
 |
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27408
 wounded cavalryman~
 a wounded cavalryman~
 A wounded cavalryman is here, being tended to by the clerics of Sekolah.
 ~
 This cavalryman has been badly injured in battle, but has been thought highly
-enough to be treated here for his wounds, rather than left to die. He regards
+enough to be treated here for his wounds, rather than left to die. He regards you
 with a mixture of confusion and alarm.
 ~
-2|64|128|33554432 32|512|67108864|17179869184|34359738368 -445 S
+33554626 51539608096 -445 S
 46 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27409
 wounded soldier infantry~
 a wounded sahuagin soldier~
@@ -249,10 +283,13 @@ This sahuagin soldier has been badly injured in battle, but has been thought
 highly enough to be treated here for his wounds, rather than left to die. He
 seems delirious and confused, and possibly not even aware you're here.
 ~
-2|64|128|33554432 1|32|256|512|67108864|9223372036854775808 -445 S
+33554626 9223372036854776609 -445 S
 45 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27410
 elite soldier infantry~
 a sick elite soldier~
@@ -262,15 +299,18 @@ This elite sahuagin soldier looks fairly well-recovered from whatever landed
 him in here, and likely only needs a few more weeks' rest to be back with his
 squadron.
 ~
-2|64 32|512|67108864 -482 S
+66 544 -482 S
 47 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >all_greet_prog 100~
 sleep
 mpecho The sound of someone blowing a trumpet underwater reverberates through the room.
 ~
 |
+< sahuagin~ common~
+MobHeight 200
+MobWeight 120
 #27411
 cleric sahuagin Sekolah~
 a cleric of Sekolah~
@@ -279,10 +319,11 @@ A cleric of Sekolah tends to the sick and wounded.
 A young female sahuagin of relatively peaceable disposition is quietly going
 about tending to the sick and wounded sahuagin in the infirmary.
 ~
-64 8|32|128|512|8192|524288|67108864 -550 S
+64 533160 -550 S
 46 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< sahuagin~ common~
 #27412
 cleric sahuagin Sekolah~
 a cleric of Sekolah~
@@ -291,10 +332,11 @@ A cleric of Sekolah tends to the sick and wounded.
 A young male sahuagin of relatively peaceable disposition is quietly going
 about tending to the sick and wounded sahuagin in the infirmary.
 ~
-64 8|32|128|512|8192|524288|67108864 -560 S
+64 533160 -560 S
 46 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
 #27413
 skate ray~
 a skate~
@@ -306,24 +348,26 @@ a ray.
 This one has been magically enchanted to serve as a mount for sahuagin cavalry,
 underwater, on land, and in the air.
 ~
-2|256|131072 32|512|524288|67108864 0 S
+131330 524832 0 S
 45 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< skate~ common~
 #27414
 blue shark~
 a blue shark~
 A blue shark is having its teeth cleaned.
 ~
-The blue shark, is a species of requiem shark that inhabits deep waters in the
+The blue shark is a species of requiem shark that inhabits deep waters in the
 world's temperate and tropical oceans. This one has been magically enchanted to
 serve as a mount for sahuagin cavalry, and can operate on land, under the sea,
 and in the air.
 ~
-2|64|131072 32|512|524288|67108864 0 S
+131138 524832 0 S
 45 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< blue_shark~ common~
 #27415
 stingray~
 a stingray~
@@ -336,10 +380,11 @@ spinal blades in their tails that may be poisoned and are used in self-defense.
 This one has been magically enchanted to serve as a mount for sahuagin cavalry,
 and can operate on land, under the sea, and in the air.
 ~
-2|64|131072 32|512|524288|67108864 0 S
+131138 524832 0 S
 45 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< stingray~ common~
 #27416
 hammerhead shark~
 a hammerhead shark~
@@ -352,10 +397,11 @@ flattened and laterally extended into a "hammer" shape called a cephalofoil.
 This one has been magically enchanted to serve as a mount for sahuagin cavalry,
 and can operate on land, under the sea, and in the air.
 ~
-2|64|131072 32|128|512|524288|67108864 0 S
+131138 524960 0 S
 45 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< hammerhead_shark~ common~
 #27417
 sahuagin mount attendant~
 a sahuagin mount attendant~
@@ -364,10 +410,11 @@ A sahuagin attendant looks after the mounts in the stable.
 This sahuagin's job is to keep the mounts battle-ready and healthy, which he
 does without complaint or fuss.  He might even enjoy it.
 ~
-2|64 512|67108864 -310 S
+66 512 -310 S
 46 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
 #27418
 sahuagin blacksmith~
 a sahuagin blacksmith~
@@ -376,10 +423,13 @@ A sahuagin blacksmith is here, pounding on a piece of metal.
 The blacksmith is large and powerfully-built, and seems preoccupied by his work.
 He barely looks up at you as you enter.
 ~
-2|64|512 32|512|67108864 -345 S
+578 544 -345 S
 46 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 200
+MobWeight 130
 #27419
 training dummy isdfughsdifgh~
 a training dummy~
@@ -389,10 +439,11 @@ This training dummy has been bolted to the floor and is used by the fortress's
 soldiers to test weapons on.  It has taken terrible punishment over the years,
 but it is very robustly constructed, and well-maintained.
 ~
-2|64|16777216|33554432|67108864|134217728|9223372036854775808 1|64|9223372036854775808 0 S
+9223372036888330304 9223372036854775873 0 S
 41 0 0 0d0+0 0d0+0
-290 0
+0 0
 8 8 0
+< training_dummy~ common~
 #27420
 Ota'ar Dar elite soldier member~
 an elite Ota'ar Dar soldier~
@@ -401,9 +452,9 @@ A elite member of Ota'ar Dar's soldiery is here, practising his combat skills.
 Ota'ar Dar elite soldiers are selected at an early age for their loyalty, size,
 strength and aggression.  This one is busy practising his combat skills.
 ~
-2|64 8|32|512|8388608|67108864 -470 S
+66 8389160 -470 S
 46 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >rand_prog 50~
 if isfight($i)
@@ -414,6 +465,9 @@ mpkill isdfughsdifgh
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 200
+MobWeight 120
 #27421
 Ota'ar Dar infantry soldier member~
 an Ota'ar Dar soldier~
@@ -422,10 +476,13 @@ A off-duty sahuagin soldier is here, resting and relaxing.
 This sahuagin soldier is off-duty and seemingly in no hurry to get back to his
 duties.
 ~
-2|64 512|67108864 -430 S
+66 512 -430 S
 46 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27422
 Ota'ar Dar cavalry cavalryman~
 an Ota'ar Dar cavalryman~
@@ -435,10 +492,13 @@ This sahuagin cavalryman is off-duty and playing some sort of gambling 'card'
 game (the 'cards' are made from seashells). He's focused pretty intently on the
 game and doesn't seem interested in you.
 ~
-2|64 32|512|67108864 -440 S
+66 544 -440 S
 47 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27423
 Ota'ar Dar infantry soldier member~
 an Ota'ar Dar soldier~
@@ -447,10 +507,13 @@ A sahuagin infantryman is here, eating something repulsive-looking.
 This sahuagin soldier is wolfing down a plate of... you're not sure what
 exactly.
 ~
-2|64 512|67108864 -390 S
+66 512 -390 S
 46 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27424
 Ota'ar Dar cavalry cavalryman~
 an Ota'ar Dar cavalryman~
@@ -459,10 +522,13 @@ An Ota'ar Dar cavalryman is eating his dinner quietly here.
 This sahuagin cavalryman is eating a plate of something strange-looking. As
 bad as the food looks, you do note he has immaculate table manners.
 ~
-2|64 32|512|67108864 -411 S
+66 544 -411 S
 47 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27425
 Ota'ar Dar infantry soldier member~
 an Ota'ar Dar soldier~
@@ -470,10 +536,13 @@ A sahuagin infantryman is here, trying to get some sleep.
 ~
 This sahuagin soldier is trying to get some sleep.
 ~
-2|64 512|131072|67108864 -390 S
+66 131584 -390 S
 46 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27426
 Ota'ar Dar cavalry cavalryman~
 an Ota'ar Dar cavalryman~
@@ -482,10 +551,13 @@ An Ota'ar Dar cavalryman is attempting to get some sleep here.
 This sahuagin cavalryman is trying his best to get some sleep between shifts
 here.
 ~
-2|64 32|512|131072|67108864 -411 S
+66 131616 -411 S
 47 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 185
+MobWeight 100
 #27427
 matronly receptionist sahuagin~
 a matronly receptionist~
@@ -494,9 +566,9 @@ A matronly sahuagin regards you frostily.
 This middle-aged female sahuagin has the job of vetting prospective visitors
 to the baron.  You doubt much gets past her.
 ~
-2|64|2048 8|32|128|512|8192|8388608|67108864 -438 S
+2114 8397480 -438 S
 47 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 2
 >move_prog 100 west~
 if carrying($n) == 27531
@@ -532,6 +604,7 @@ mpat $n mpforce $n look
 mpat $n mpecho {WThe matronly sahuagin bustles away through the western doorway.{x
 ~
 |
+< sahuagin~ common~
 #27428
 Ota'ar Dar elite soldier sahuagin guard~
 an Ota'ar Dar elite guard~
@@ -541,9 +614,9 @@ Only the finest sahuagin soldiers are chosen to be elite guards; this one has
 been assigned as a personal guard to the fortress's baron--to guard the
 entrance to his quarters where he and his wives dwell and receive visitors.
 ~
-2|64|512 8|32|512|4194304|8388608|67108864 -430 S
+578 12583464 -430 S
 49 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >all_greet_prog 100~
 if carrying($n) == 27531
@@ -555,6 +628,9 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 200
+MobWeight 120
 #27429
 triton man blue-skinned~
 a Triton~
@@ -568,10 +644,11 @@ being of lawful and good alignment, but that this also means they're likely to
 be extremely haughty and arrogant. The Triton looks at you irritably, with
 pursed lips.
 ~
-2|64|512 8|32|512|8192|4194304|67108864|1073741824 630 S
+578 1077944872 630 S
 49 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< triton~ common~
 #27430
 green grung~
 a green grung~
@@ -583,10 +660,11 @@ caste-based, with the grung's colour denoting his role.  This is a green grung,
 indicating that he is a warrior, hunter, or labourer.  He seems deeply annoyed
 to be here.
 ~
-2|64|512 8|32|512|8388608|67108864 -600 S
+578 8389160 -600 S
 49 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< green_grung~ common~
 #27431
 great white shark~
 a great white shark~
@@ -598,23 +676,24 @@ might be 6 metres from snout to tailfin. Best not to annoy it.
 The terrifying beast has been magically enchanted to serve as a mount for
 sahuagin warriors, and can operate on land, under the sea, and in the air.
 ~
-256|131072 32|512|524288|67108864 0 S
+131328 524832 0 S
 49 0 0 0d0+0 0d0+0
-172 0
+0 0
 8 8 1
+< great_white_shark~ common~
 #27432
 baron sahuagin~
 the baron~
 <248>A powerfully-built sahuagin baron studies a map on his desk intently.<0>
 ~
-Sahuagin barons are four-limbed mutant sahuagin.  Larger and more powerful
+Sahuagin barons are four-armed mutant sahuagin.  Larger and more powerful
 than the regular breed, they are often promoted to positions of rank and power
 within the strict sahuagin hierarchy.  This baron presides over all the
 soldiers and other military personnel who inhabit this fortress.
 ~
-2|64|512|2048 512|67108864 -470 S
+2626 512 -470 S
 50 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >all_greet_prog 100~
 if carrying($n) == 27531
@@ -636,7 +715,7 @@ endif
     endif
 ~
 |
-< reserved~ boss~
+< sahuagin_baron~ boss~
 #27433
 high priestess sekolah female sahuagin~
 A high priestess of Sekolah~
@@ -646,7 +725,7 @@ This older female sahuagin acts as counsellor and guide to the fortress's baron
 and her clothing and demeanour make it clear she is an important figure in the
 Sekolah-worshipping theocratic hierarchy.
 ~
-2|64|512 8|32|128|512|8192|524288|67108864|536870912 -840 S
+578 537404072 -840 S
 49 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -657,6 +736,7 @@ Sekolah-worshipping theocratic hierarchy.
     mpat $n mpecho {/}B{CThe high priestess unleashes a high-pitched cackle then slowly dematerialises...{x
 ~
 |
+< sahuagin~ rare~
 #27434
 wife female baron wives~
 the baron's wife~
@@ -666,14 +746,15 @@ Attractive for a sahuagin, this is one of the baron's wives.  She has little
 to do but tend to the baron's young and await his call, and so spends most of
 her life in relative comfort and ease.
 ~
-64 512|67108864 -370 S
+64 512 -370 S
 49 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 2
 >greet_prog 3~
 emote raises her eyelids at you seductively
 ~
 |
+< sahuagin~ common~
 #27435
 Ota'ar Dar lieutenant~
 the barracks lieutenant~
@@ -683,15 +764,16 @@ The lieutenant is responsible for all the troops in the fortress interior, and
 for the general security of that area. He looks at you with suspicion and
 distrust.
 ~
-2|64 8|32|512|8388608|67108864 -530 S
+66 8389160 -530 S
 48 0 0 0d0+0 0d0+0
-512 0
+0 0
 8 8 1
 >greet_prog 5~
 shout The wall has been breached! To me!
 mpkill $n
 ~
 |
+< sahuagin~ rare~
 #0
 
 
@@ -724,7 +806,7 @@ The long spear evidences quality workmanship.
 ~
 #27511
 spiked pauldron cavalry~
-an cavalryman's spiked pauldron~
+a cavalryman's spiked pauldron~
 A cavalryman's spiked pauldron is here.~
 ~
 9 0 1|4
@@ -2569,9 +2651,6 @@ M  27412 spec_sahuagin_cleric	    a cleric of Sekolah
 M  27427 spec_sahuagin_high_cleric  receptionist
 M  27407 spec_sahuagin_guard        Food store guys
 M  27428 spec_sahuagin_guard	    Baron's elite guard
-M  27428 spec_sahuagin_guard	    Baron's elite guard
-M  27430 spec_green_grung           Green grung
-M  27432 spec_sahuagin_baron        the sahuagin baron
 M  27433 spec_sahuagin_high_cleric  high priestess of Sekolah
 S
 
