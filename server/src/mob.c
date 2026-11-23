@@ -5450,6 +5450,58 @@ const struct mob_type mob_table[MAX_MOB] =
                 91, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "spec_green_grung", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "vodyanoi", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM | AFF_INFRARED,
+                PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                275, 900, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "aboleth", "fish", "icon1", "icon2",
+                0, 0,
+                BODY_NO_ARMS | BODY_NO_SPEECH
+                    | BODY_HUGE | PART_ARMS | PART_MANY_ARMS | PART_TENTACLES | PART_FANGS,
+                PART_TENTACLES | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 1600, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_aboleth", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 610
+        },
+        {
+                "laghathti", "cephalopod", "icon1", "icon2",
+                0, 0,
+                BODY_NO_HEAD | PART_HEAD | BODY_NO_EYES | PART_EYE
+                    | BODY_NO_HEART | PART_HEART | BODY_NO_SPEECH | PART_FINS,
+                PART_TENTACLES, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 350, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_laghathti", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 244
+        },
+        {
+                "giant_alligator_gar", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS | PART_SCALES,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "sea_elf", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                190, 65, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_ELF, 0
         }
 };
 
@@ -7072,6 +7124,10 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"vodyanoi", "umber_hulk", NULL, 0},
+        {"aboleth", NULL, marine_armour_6_traits, TRAIT_ITEMS(marine_armour_6_traits)},
+        {"giant_alligator_gar", NULL, abyss_armour_6_head_traits, TRAIT_ITEMS(abyss_armour_6_head_traits)},
+        {"sea_elf", "elf", NULL, 0},
         {"blue_shark", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
         {"stingray", NULL, ray_crushing_trait_changes, TRAIT_ITEMS(ray_crushing_trait_changes)},
         {"skate", NULL, ray_crushing_trait_changes, TRAIT_ITEMS(ray_crushing_trait_changes)},

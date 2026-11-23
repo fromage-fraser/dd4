@@ -3487,6 +3487,7 @@ bool spec_aboleth( CHAR_DATA *ch )
         while (1)
         {
             int min_level;
+            buf[0] = '\0';
             target_self = FALSE;
 
                 switch ( number_range (0, 9) )
@@ -3571,7 +3572,8 @@ bool spec_aboleth( CHAR_DATA *ch )
                 return try_undead_support_spell(sn, ch);
 
 
-        do_say(ch,buf);
+        if (CAN_SPEAK(ch) && buf[0] != '\0')
+                do_say(ch, buf);
 
         if (target_self)
                 act ("$c lifts $s hideous head up and closes one of $s three eyes.", ch, NULL, NULL, TO_ROOM);
