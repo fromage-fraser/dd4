@@ -160,6 +160,8 @@ my %mob_archetype = map { $_ => 1 } qw/
         sheepshead_wrasse giant_blobfish moonfish goliath_grouper stargazer
         blue_shark stingray skate great_white_shark training_dummy triton green_grung
         vodyanoi aboleth laghathti giant_alligator_gar sea_elf
+        rolling_calf three_legged_spirit_horse higue_fire_form tokoloshe
+        water_spirit_avatar selkie_seal_form selkie_human_form
 /;
 
 my %mob_act = (

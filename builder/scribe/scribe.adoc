@@ -17532,3 +17532,40 @@ Inside a sea elf's existing $mob block, for example:
 
 The two prisoners inherit Swim. If you repeat Swim in their individual
 affect masks, XOR turns it off. Keep their other individual affects.
+
+== Shadowsea
+
+Use ghost for a dead person who can still reason and speak. The duppies,
+jumbee, Jonah and Whooping Boy all start semi-material. Keep curses,
+movement affects and spell choices on the individual. For the jumbee,
+four mobile resets share a global maximum of four. Repeating a maximum
+of four on each reset allows four jumbees in the world.
+
+The rolling_calf and three_legged_spirit_horse share the quadrupedal
+mammal body. Both are undead, leave no corpse and start semi-material.
+The calf is HUGE, breathes fire and can wield its chain. The horse has
+three legs, swims and breathes gas. Its Shadowsea entry allows riding.
+The new profiles supply their own breath specials.
+
+Use higue_fire_form for Old Higue's headless ball of fire. It can speak,
+swim, fly and use its bloodsucker special. Its length of 50 cm gives the
+diameter. A tokoloshe is a living, invisible water sprite with a fang
+bite. The water_spirit_avatar is a human-shaped swimmer. Mami Wata's silence,
+lack of a corpse and priestess casting belong to her own entry.
+
+Selkies use two profiles. The seal swims, has flippers, bites with its
+fangs and has natural armour -5. The human form can speak and inherits
+ordinary human-shaped anatomy. In Shadowsea the seal's death program
+loads the human form and the seal drops its pelt. Give a selkie elsewhere
+its own death program if you want the same encounter.
+
+Here is the male seal's entry inside a Scribe $mob block:
+
+    archetype selkie_seal_form
+    rnk common
+    length 180
+    weight 105
+
+Length is in centimetres and weight in whole kilograms. The profile
+already supplies Swim. Repeating Swim in the mob's affect mask would
+switch it off. The female seal uses length 160 and weight 80.

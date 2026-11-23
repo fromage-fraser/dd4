@@ -5502,6 +5502,80 @@ const struct mob_type mob_table[MAX_MOB] =
                 190, 65, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_ELF, 0
+        },
+        {
+                "rolling_calf", "quadrupedal_mammal", "icon1", "icon2",
+                ACT_UNDEAD, 0,
+                BODY_NO_HEART | BODY_NO_CORPSE | BODY_INORGANIC
+                    | PART_HEART | PART_BRAINS | PART_GUTS | PART_HOOVES | PART_TAIL | BODY_HUGE,
+                0, 0, 0, RES_NONMAGIC,
+                0, 0, 0, 0,
+                180, MOB_TEMPLATE_UNSET, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_fire", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_SEMI_MATERIAL, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "three_legged_spirit_horse", "quadrupedal_mammal", "icon1", "icon2",
+                ACT_UNDEAD, AFF_SWIM,
+                BODY_NO_HEART | BODY_NO_CORPSE | BODY_INORGANIC
+                    | PART_HEART | PART_BRAINS | PART_GUTS | PART_HOOVES | PART_TAIL
+                    | PART_4_LEGS | PART_3_LEGS,
+                0, 0, 0, RES_NONMAGIC,
+                0, 0, 0, 0,
+                150, MOB_TEMPLATE_UNSET, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_gas", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_SEMI_MATERIAL, CREATURE_FAMILY_NONE, 230
+        },
+        {
+                "higue_fire_form", "mysterious_being", "icon1", "icon2",
+                0, AFF_FLAMING | AFF_FLYING | AFF_SWIM,
+                BODY_NO_SPEECH,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_bloodsucker", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 50
+        },
+        {
+                "tokoloshe", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM | AFF_INVISIBLE,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                105, 32, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "water_spirit_avatar", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                175, 65, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "selkie_seal_form", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_LEGS | BODY_NO_CORPSE | PART_4_LEGS | PART_FORELEGS
+                    | PART_FEET | PART_FINS | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 170
+        },
+        {
+                "selkie_human_form", "humanoid", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                175, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -7124,6 +7198,8 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"selkie_seal_form", NULL, marine_armour_5_head_traits, TRAIT_ITEMS(marine_armour_5_head_traits)},
+        {"tokoloshe", NULL, marine_head_traits, TRAIT_ITEMS(marine_head_traits)},
         {"vodyanoi", "umber_hulk", NULL, 0},
         {"aboleth", NULL, marine_armour_6_traits, TRAIT_ITEMS(marine_armour_6_traits)},
         {"giant_alligator_gar", NULL, abyss_armour_6_head_traits, TRAIT_ITEMS(abyss_armour_6_head_traits)},

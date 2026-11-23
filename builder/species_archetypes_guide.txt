@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 23 November 2026
-Based on master e8243b298771339adcec7e5e83944133fc107e21 (PR #1012),
-with the accompanying Ota'ar Dar Arena/Jail changes.
+Based on master af8349d1aa9ce590fe43d282473ada1cce905228 (PR #1014),
+with the accompanying Shadowsea changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,7 +16,7 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 39 bodies, 425 archetypes, 60 internal traits
+The current tables contain 39 bodies, 432 archetypes, 60 internal traits
 and 141 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 425, so this single example would make 426.
+guide's checked revision it is 432, so this single example would make 433.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 425.
+valid index. This example would receive index 432.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 425;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 432;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 425; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 432; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-39 body rows, 425 archetype rows, 60 internal traits and 141 Scribe
+39 body rows, 432 archetype rows, 60 internal traits and 141 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -6338,6 +6338,43 @@ Inside a sea elf's existing $mob block, for example:
 The two prisoners inherit Swim. If you repeat Swim in their individual
 affect masks, XOR turns it off. Keep their other individual affects.
 
+Shadowsea
+
+Use ghost for a dead person who can still reason and speak. The duppies,
+jumbee, Jonah and Whooping Boy all start semi-material. Keep curses,
+movement affects and spell choices on the individual. For the jumbee,
+four mobile resets share a global maximum of four. Repeating a maximum
+of four on each reset allows four jumbees in the world.
+
+The rolling_calf and three_legged_spirit_horse share the quadrupedal
+mammal body. Both are undead, leave no corpse and start semi-material.
+The calf is HUGE, breathes fire and can wield its chain. The horse has
+three legs, swims and breathes gas. Its Shadowsea entry allows riding.
+The new profiles supply their own breath specials.
+
+Use higue_fire_form for Old Higue's headless ball of fire. It can speak,
+swim, fly and use its bloodsucker special. Its length of 50 cm gives the
+diameter. A tokoloshe is a living, invisible water sprite with a fang
+bite. The water_spirit_avatar is a human-shaped swimmer. Mami Wata's silence,
+lack of a corpse and priestess casting belong to her own entry.
+
+Selkies use two profiles. The seal swims, has flippers, bites with its
+fangs and has natural armour -5. The human form can speak and inherits
+ordinary human-shaped anatomy. In Shadowsea the seal's death program
+loads the human form and the seal drops its pelt. Give a selkie elsewhere
+its own death program if you want the same encounter.
+
+Here is the male seal's entry inside a Scribe $mob block:
+
+    archetype selkie_seal_form
+    rnk common
+    length 180
+    weight 105
+
+Length is in centimetres and weight in whole kilograms. The profile
+already supplies Swim. Repeating Swim in the mob's affect mask would
+switch it off. The female seal uses length 160 and weight 80.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -6389,7 +6426,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 425 current table rows follow, grouped by body. Numeric IDs are for
+All 432 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -6405,7 +6442,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (130)
+HUMANOID (133)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6797,6 +6834,15 @@ HUMANOID (130)
   [424] sea_elf: h/w/l 190 / 65 / ?; Medium; family elf
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [428] tokoloshe: h/w/l 105 / 32 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [429] water_spirit_avatar: h/w/l 175 / 65 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [431] selkie_human_form: h/w/l 175 / 70 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 DRAGON (20)
 ------------
@@ -6912,7 +6958,7 @@ SERPENTINE_REPTILE (8)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-MYSTERIOUS_BEING (7)
+MYSTERIOUS_BEING (8)
 ----------------------
   [ 32] animated_mist: h/w/l ? / ? / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6935,6 +6981,9 @@ MYSTERIOUS_BEING (7)
   [284] black_phasebeast: h/w/l ? / ? / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_gas_cloud; policy auto
+  [427] higue_fire_form: h/w/l ? / ? / 50; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_bloodsucker; policy auto
 
 WINGED_MAMMAL (8)
 -------------------
@@ -7017,7 +7066,7 @@ BIPEDAL_CONSTRUCT (13)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-QUADRUPEDAL_MAMMAL (49)
+QUADRUPEDAL_MAMMAL (52)
 ------------------------
   [  1] goat: h/w/l 70 / 55 / 110; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7164,6 +7213,15 @@ QUADRUPEDAL_MAMMAL (49)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [380] sea_lion: h/w/l 80 / 200 / 220; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [425] rolling_calf: h/w/l 180 / ? / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase semi_material
+        specials 1:spec_breath_fire; policy auto
+  [426] three_legged_spirit_horse: h/w/l 150 / ? / 230; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase semi_material
+        specials 1:spec_breath_gas; policy auto
+  [430] selkie_seal_form: h/w/l ? / 90 / 170; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -8664,8 +8722,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/e8243b298771339adcec7e5e83944133fc107e21
-  Base PR1012 plus the accompanying Arena/Jail patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/af8349d1aa9ce590fe43d282473ada1cce905228
+  Base PR1014 plus the accompanying Shadowsea patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -8675,8 +8733,8 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The verified conversion covers 100/153 areas (65.4%) and 1,676/4,131 mob
-definitions (40.6%). Once the 43 Arena/Jail definitions are merged and
-verified, the totals will be 101/153 (66.0%) and 1,719/4,131 (41.6%).
+The verified conversion covers 101/153 areas (66.0%) and 1,719/4,131 mob
+definitions (41.6%). Once Shadowsea's 17 definitions are merged and
+verified, the totals will be 102/153 (66.7%) and 1,736/4,131 (42.0%).
 
 END OF GUIDE
