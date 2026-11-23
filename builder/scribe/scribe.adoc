@@ -17324,3 +17324,160 @@ only on species and archetypes in the code, and MSTAT shows the result.
 Current verified completion is 98/153 areas (64.1%) and 1609/4131 definitions
 (38.9%). After North's 26 definitions are merged and verified, completion
 becomes 99/153 areas (64.7%) and 1635/4131 definitions (39.6%).
+
+
+Ota'ar Dar Military Fortress
+---------------------------
+
+The catalogue now has 420 archetypes, 39 basic bodies, 60 internal traits,
+141 Scribe special names and 637 skills. Seven profiles append at 413-419:
+blue_shark, stingray, skate, great_white_shark, training_dummy, triton and
+green_grung. All earlier profiles, bodies, trait IDs and player races stay
+unchanged. No new area fields or special function names are needed.
+
+The Fortress uses 29 ordinary humanoid/sahuagin residents, the existing
+humanoid/sahuagin_baron and two fish/hammerhead_shark definitions. The new
+sharks, rays and skate also use fish. The triton and grung use humanoid;
+the training dummy uses limbless_construct. All seven new profiles have
+zero HP, damage, critical, haste and XP modifiers. Ordinary special XP
+rules still apply.
+
+Dimensions below are height cm / whole kg / length cm. Zero means
+unspecified. These are descriptive DD4 measurements. Triton's 213 cm and
+grung's 91 cm follow their second-edition descriptions; weights and the
+other individual measurements are estimates for these authored creatures.
+
+Vnum   Archetype           H / kg / L            Size    Armour  Rank
+27395  sahuagin            185 /  100 /    0  Medium   -5     common
+27396  blue_shark            0 /  100 /  300  Large    -4     common
+27397  stingray              0 /  150 /  300  Large    -3     common
+27398  hammerhead_shark      0 /  200 /  300  Large    -4     common
+27399  sahuagin            185 /  100 /    0  Medium   -5     common
+27400  sahuagin            200 /  120 /    0  Medium   -5     common
+27401  sahuagin            183 /   90 /    0  Medium   -5     rare
+27402  sahuagin            200 /  120 /    0  Medium   -5     common
+27403  sahuagin            185 /  100 /    0  Medium   -5     common
+27404  sahuagin            185 /  100 /    0  Medium   -5     common
+27405  sahuagin            185 /  100 /    0  Medium   -5     common
+27406  sahuagin            185 /  100 /    0  Medium   -5     common
+27407  sahuagin            185 /  100 /    0  Medium   -5     common
+27408  sahuagin            185 /  100 /    0  Medium   -5     common
+27409  sahuagin            185 /  100 /    0  Medium   -5     common
+27410  sahuagin            200 /  120 /    0  Medium   -5     common
+27411  sahuagin            183 /   90 /    0  Medium   -5     common
+27412  sahuagin            183 /   90 /    0  Medium   -5     common
+27413  skate                 0 /   35 /  180  Medium   -3     common
+27414  blue_shark            0 /  100 /  300  Large    -4     common
+27415  stingray              0 /  150 /  300  Large    -3     common
+27416  hammerhead_shark      0 /  200 /  300  Large    -4     common
+27417  sahuagin            183 /   90 /    0  Medium   -5     common
+27418  sahuagin            200 /  130 /    0  Medium   -5     common
+27419  training_dummy      175 /  100 /    0  Medium    0     common
+27420  sahuagin            200 /  120 /    0  Medium   -5     common
+27421  sahuagin            185 /  100 /    0  Medium   -5     common
+27422  sahuagin            185 /  100 /    0  Medium   -5     common
+27423  sahuagin            185 /  100 /    0  Medium   -5     common
+27424  sahuagin            185 /  100 /    0  Medium   -5     common
+27425  sahuagin            185 /  100 /    0  Medium   -5     common
+27426  sahuagin            185 /  100 /    0  Medium   -5     common
+27427  sahuagin            183 /   90 /    0  Medium   -5     common
+27428  sahuagin            200 /  120 /    0  Medium   -5     common
+27429  triton              213 /  110 /    0  Medium   -5     common
+27430  green_grung          91 /   25 /    0  Small    -3     common
+27431  great_white_shark     0 / 1500 /  600  Large    -5     common
+27432  sahuagin_baron      244 /  180 /    0  Large    -5     boss
+27433  sahuagin            183 /   90 /    0  Medium   -5     rare
+27434  sahuagin            183 /   90 /    0  Medium   -5     common
+27435  sahuagin            183 /   90 /    0  Medium   -5     rare
+
+Only lieutenants 27401 and 27435 and senior priestess 27433 become Rare.
+The existing Baron 27432 stays Boss. The other 37 definitions stay Common.
+Rank multiplies HP once: Rare twice and Boss seven times. The Baron keeps
+his four arms, hands, fingers, two tridents and individual regeneration.
+He is Large, not HUGE. Only the great white shark 27431 is HUGE.
+
+Fish have heads, eyes, brain, heart, gut, fins and tails, without ordinary
+arms, legs or speech. They remain organic, blood-bearing creatures with
+minds, souls, pain and normal corpses. Sharks have an ordinary fang bite;
+ray and skate fallback contact is crushing. Their attached weapons take
+precedence. Swim is inherited, but Flight, Mountable, Pet and Sanctuary
+remain individual enchantments exactly where the area already supplied
+them. NPCs cannot currently mount; actual NPC riding is a later project.
+This patch adds no riding mechanic or extra swallow/venom attack stream.
+
+Shared object 27236, the venomous tail spine from the Market, keeps tail
+category 6, BODY_PART, POISONED, wear 0 and its existing damage fields.
+Only value[3] changes from 0 (hit) to 16 (sting), making its physical damage
+piercing. Poison already worked. No SHARP or extra randomisation flag is
+added. Check the two Military rays and Market users 27209 and 27256 when
+changing this shared weapon. Tail trauma disables it; Regenerate restores
+its use. Shark jaws 27234 keep head category 1 and bite verb 10.
+
+The training_dummy profile is an inert target with a head and torso. It
+has no usable eyes, arms, legs, hands, heart or biological organs. It is
+Inorganic, Bloodless, Analgic, Soulless and Mindless and leaves no corpse.
+Its profile supplies Object, CantFight, NoExperience and Sentinel; the
+original area flags still resolve exactly, including StayArea, NoHeal and
+Unkillable. Blind, Hold and unsigned bit63 Slow stay. Its odd keyword
+'isdfughsdifgh' is intentional: the existing training program targets it.
+Do not rename it or treat the dummy as a living humanoid.
+
+The triton has ordinary humanoid organs, hands and feet, plus fins and
+scales, without a tail. It inherits Swim, natural armour -5 and RES_MAGIC.
+That is DD4's ordinary resistance, not 90 percent immunity. Keep his good
+alignment, protection, detection, BattleAura, equipment and unarmed envoy
+role. No conch summoning, fear or new casting routine is added.
+
+The green_grung has a living frog-like humanoid body, webbed ordinary
+hands and feet, fangs and no scales or adult tail. It inherits Swim,
+natural armour -3 and ordinary RES_POISON. This resistance is a DD4
+approximation, not blanket poison immunity. It inherits the existing
+spec_green_grung at 100 percent. Both existing venom-bite branches now
+stop if the creature has no head or has head trauma. Their original venom
+and paralysis calls stay. Other choices, including Warcry, Kick, Grapple
+and Haste, are unchanged. Do not require an explicit fangs bit inside the
+special: existing unconverted users must still be able to bite normally.
+
+The Baron and green grung inherit their existing specials after redundant
+area records are removed. One duplicate 27428 guard special is also
+removed; the remaining record supplies the same 100-percent routine.
+All other individual specials and probabilities stay exact.
+
+All 18 mob programs stay byte-for-byte unchanged. Preserve the training
+target, pass/key exchange, appointment checks, receptionist transfers,
+Baron's 'aliyank' password and gift, priestess escape, and their chances.
+Keep all aggression, passivity, injured NoHeal residents, unsigned Slow
+and Unkillable masks, builds, levels, alignments, sex, equipment, reset
+placements and caps. Do not infer rank from a profession or HP letter.
+
+Correct four-armed Baron wording, the two blue sharks' stray comma,
+the wounded cavalryman's missing 'you', and 'a cavalryman's' article on
+object 27511. Short mob names and room titles stay unchanged.
+
+All 48 room flags, routes, doors and descriptions stay unchanged. There
+are no NO_UNDEAD rooms, shops or teachers here. Recall 27347 remains
+unwarded Sekolah's Supplies in the Market. No matching Scribe source
+exists; the four real .src files elsewhere continue to export unchanged.
+
+All 89 media filenames agree with dd-gui. Regenerate only these twelve
+rooms: 27584, 27585, 27586, 27590, 27591, 27596, 27597, 27601, 27602,
+27603, 27605 and 27606. These depict underwater stone wall walks and
+upper turret platforms. Preserve the room-title colour tokens in their
+filenames. Media publication is separate from applying the code patch.
+
+For an ordinary soldier, add within its existing $mob block:
+
+    archetype sahuagin
+    rnk common
+    height 185
+    weight 100
+
+Use archetype training_dummy for the target, triton for the envoy and
+green_grung for the frog-like attacker. Keep their original individual
+flags by XORing against the resolved profile. Adding a flag already
+inherited would remove it. Do not add area trait commands: traits remain
+internal to species/archetypes, and MSTAT shows the resolved result.
+
+Current verified completion is 99/153 areas (64.7%) and 1635/4131 definitions
+(39.6%). After the Fortress's 41 definitions are merged and verified,
+completion becomes 100/153 areas (65.4%) and 1676/4131 definitions (40.6%).

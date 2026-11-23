@@ -8285,6 +8285,9 @@ bool spec_green_grung (CHAR_DATA *ch)
 
                     case  4:
                     case  5:
+                        if (!HAS_HEAD(ch) || IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+                                return FALSE;
+
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );
@@ -8305,6 +8308,9 @@ bool spec_green_grung (CHAR_DATA *ch)
                         return TRUE;
 
                     case  9:
+                        if (!HAS_HEAD(ch) || IS_AFFECTED(ch, AFF_HEAD_TRAUMA))
+                                return FALSE;
+
                         act( "You bite $N!",  ch, NULL, victim, TO_CHAR    );
                         act( "$n bites you!", ch, NULL, victim, TO_VICT    );
                         act( "$n bites $N!",  ch, NULL, victim, TO_NOTVICT );

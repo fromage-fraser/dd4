@@ -158,6 +158,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         photophore mesopelag malacost pycnogonid anthozoa scyph siph erenna copepod abralia veranyi calimedusae cyclothone
         sawfish cownose_ray frilled_shark lemon_shark fiddler_ray sahuagin_baron
         sheepshead_wrasse giant_blobfish moonfish goliath_grouper stargazer
+        blue_shark stingray skate great_white_shark training_dummy triton green_grung
 /;
 
 my %mob_act = (

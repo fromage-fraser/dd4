@@ -5379,6 +5379,77 @@ const struct mob_type mob_table[MAX_MOB] =
                 0, 5, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 60
+        },
+        /* Mount enchantments stay on the individual fish. */
+        {
+                "blue_shark", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 100, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "stingray", "fish", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "skate", "fish", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 35, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 180
+        },
+        {
+                "great_white_shark", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS | BODY_HUGE,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 1500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 600
+        },
+        {
+                "training_dummy", "limbless_construct", "icon1", "icon2",
+                ACT_OBJECT | ACT_NO_FIGHT | ACT_NO_EXPERIENCE | ACT_SENTINEL, AFF_MINDLESS,
+                BODY_NO_HEAD | PART_HEAD | BODY_NO_CORPSE | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                175, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "triton", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_FINS | PART_SCALES,
+                0, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                213, 110, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "green_grung", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_FANGS,
+                PART_FANGS, RES_POISON, 0, 0,
+                0, 0, 0, 0,
+                91, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_green_grung", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
         }
 };
 
@@ -6988,6 +7059,12 @@ static const CREATURE_TRAIT_CHANGE grouper_crushing_traits[] =
         {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8}
 };
 
+/* Tritons use the existing natural-armour trait. */
+static const CREATURE_TRAIT_CHANGE triton_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+
 /* Add body defaults here when a reviewed species needs them. */
 static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
@@ -6995,6 +7072,12 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"blue_shark", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
+        {"stingray", NULL, ray_crushing_trait_changes, TRAIT_ITEMS(ray_crushing_trait_changes)},
+        {"skate", NULL, ray_crushing_trait_changes, TRAIT_ITEMS(ray_crushing_trait_changes)},
+        {"great_white_shark", NULL, marine_armour_5_head_traits, TRAIT_ITEMS(marine_armour_5_head_traits)},
+        {"triton", NULL, triton_trait_changes, TRAIT_ITEMS(triton_trait_changes)},
+        {"green_grung", NULL, marine_armour_3_head_traits, TRAIT_ITEMS(marine_armour_3_head_traits)},
         {"sheepshead_wrasse", NULL, marine_armour_3_head_traits, TRAIT_ITEMS(marine_armour_3_head_traits)},
         {"giant_blobfish", NULL, blobfish_crushing_traits, TRAIT_ITEMS(blobfish_crushing_traits)},
         {"moonfish", NULL, ray_crushing_trait_changes, TRAIT_ITEMS(ray_crushing_trait_changes)},
