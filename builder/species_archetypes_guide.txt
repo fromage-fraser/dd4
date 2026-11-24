@@ -2,9 +2,9 @@ DRAGON'S DOMAIN
 SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
-Edition: 23 November 2026
-Based on master 30b0d15520a75ffde7bdf5fedebf19708cd536e9 (PR #1015),
-with the accompanying Pirate Seas changes.
+Edition: 24 November 2026
+Based on master 2c28c774e5f79b59f7c0b42265c6196711e294f0 (PR #1016),
+with the accompanying Pirate Isles changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,7 +16,7 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 39 bodies, 437 archetypes, 60 internal traits
+The current tables contain 40 bodies, 448 archetypes, 60 internal traits
 and 141 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 437, so this single example would make 438.
+guide's checked revision it is 448, so this single example would make 449.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 437.
+valid index. This example would receive index 448.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1049,7 +1049,7 @@ It supplies ordinary living organs, four legs and no humanoid arms/speech.
 It doesn't prescribe a natural attack, dimensions, defences, active power or
 combat bonus for every future creature using it.
 
-Increase MAX_SPECIES by one:39 would become 40 at this revision. Append
+Increase MAX_SPECIES by one:40 would become 41 at this revision. Append
 without reordering older bodies. Add an archetype which names the new body
 in its species field, and increase MAX_MOB if that archetype is also new.
 Scribe selects the archetype, never the new body's name directly.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 437;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 448;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 437; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 448; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-39 body rows, 437 archetype rows, 60 internal traits and 141 Scribe
+40 body rows, 448 archetype rows, 60 internal traits and 141 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -6417,6 +6417,42 @@ without a reference to a mouth. Its storm cape falls loose when it dies.
 The Rastafarian shopkeeper uses the human profile and keeps Rare rank.
 Only flag an actual teacher for practice and supply a lesson list.
 
+The Isles of the Pirate Lords
+
+Bivalve is the body for a clam. It swims and has a shell, heart and mantle
+eyes. It has no head, ordinary arms, legs or speech. Giant_clam uses that
+body with 120 cm shell length and 200 kg. It has no natural weapon.
+
+Use kraken for the huge squid, with 2750 cm length and 6000 kg. It inherits
+spec_squid. Shore_crab has eyestalks and pincers; its 91 cm height includes
+the stalks, while its 35 cm length describes the shell. Its full pincer
+span is 61 cm. Forged_lava_worm is animated metal with fire immunity,
+Pass Door and fire breath, at 180 cm and 90 kg. Lava_lizard is a swimming,
+fire-resistant living reptile at 180 cm and 65 kg. Fire_avatar is a sentient
+610 cm flame form with fire immunity, no speech and no corpse.
+
+Tiger_shark and mako_shark add reusable toothed fish forms. Pirate Isles
+keeps individual spec_fido on all five sharks. Aggression remains an
+individual choice. Orca has teeth, flukes, HUGE and spec_large_whale; that
+special can swallow opponents. Cave_bear has HUGE and spec_bear. The
+northern roc uses roc without Sanctuary. Dimensions for the wolf pack
+describe one wolf, and it remains one combatant.
+
+Use winged_human for the hawkpeople. Their beaked helmets and talon gloves
+are equipment. Terra_kan is a grounded, wingless bird with beak and claws.
+Its 175 cm height is standing height. It has no flight or wing attacks.
+
+The eleven chute hazards use rock_hazard with no exact dimensions.
+Their existing resets stay commented out. Keep old shoot and kracken
+keywords when correcting the visible spelling to chute and kraken.
+Match the corrected display names in the media filenames too.
+
+Hawklord's vest remains armour and his daggers load as three carried
+items. Its loops are descriptive. Vulture's harness has a Sneak affect;
+the number 26 in an old A record is APPLY_SNEAK. It does not grant
+flight. Both sides of the keep's double doors use golden key 17041.
+The frozen captive has No Quest and Unkillable to support her story.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -6466,9 +6502,11 @@ farm_mammal examples remain in the code; presence is not design approval.
 New physical variants should reuse these where they fit. A body name alone
 does not select a fully reviewed creature, assign a rank or create a power.
 
+  [39] bivalve: swimming shell-bearing mollusc; heart and mantle eyes, no head or walking limbs.
+
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 437 current table rows follow, grouped by body. Numeric IDs are for
+All 448 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -6952,7 +6990,7 @@ DRAGON (20)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_frost_anatomical; policy auto
 
-QUADRUPEDAL_REPTILE (7)
+QUADRUPEDAL_REPTILE (8)
 -------------------------
   [ 29] giant_lizard: h/w/l ? / ? / 457; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6973,6 +7011,9 @@ QUADRUPEDAL_REPTILE (7)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
   [245] water_drake: h/w/l 250 / 2500 / 1000; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [440] lava_lizard: h/w/l 45 / 65 / 180; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -7111,7 +7152,7 @@ BIPEDAL_CONSTRUCT (13)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-QUADRUPEDAL_MAMMAL (52)
+QUADRUPEDAL_MAMMAL (53)
 ------------------------
   [  1] goat: h/w/l 70 / 55 / 110; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7269,6 +7310,9 @@ QUADRUPEDAL_MAMMAL (52)
   [430] selkie_seal_form: h/w/l ? / 90 / 170; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [447] cave_bear: h/w/l 180 / 800 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_bear; policy auto
 
 HEAD_ONLY (5)
 ---------------
@@ -7333,7 +7377,7 @@ LIMBLESS_INVERTEBRATE (14)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-LIMBLESS_CONSTRUCT (9)
+LIMBLESS_CONSTRUCT (10)
 ------------------------
   [ 54] animated_vase: h/w/l 40 / 3 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7362,6 +7406,9 @@ LIMBLESS_CONSTRUCT (9)
   [433] ghost_ship: h/w/l ? / ? / 3000; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [439] forged_lava_worm: h/w/l ? / 90 / 180; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_fire; policy auto
 
 CENTAUROID_MAMMAL (4)
 -----------------------
@@ -7399,7 +7446,7 @@ QUADRUPEDAL_HYBRID (6)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-ELEMENTAL_BEING (23)
+ELEMENTAL_BEING (24)
 ---------------------
   [  2] fire_elemental: h/w/l 300 / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
@@ -7470,8 +7517,11 @@ ELEMENTAL_BEING (23)
   [338] invisible_stalker: h/w/l 244 / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [441] fire_avatar: h/w/l 610 / ? / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_fire; policy auto
 
-CRUSTACEAN (6)
+CRUSTACEAN (7)
 ----------------
   [ 84] giant_hermit_crab: h/w/l 152 / 350 / 250; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -7490,6 +7540,9 @@ CRUSTACEAN (6)
         specials none; policy auto
   [397] copepod: h/w/l 40 / 25 / 150; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [438] shore_crab: h/w/l 91 / 10 / 35; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
 AMORPHOUS_ORGANISM (9)
@@ -7522,7 +7575,7 @@ AMORPHOUS_ORGANISM (9)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-FISH (29)
+FISH (31)
 ----------
   [ 95] eel: h/w/l ? / 5 / 150; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7611,6 +7664,12 @@ FISH (29)
   [423] giant_alligator_gar: h/w/l ? / 150 / 300; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [442] tiger_shark: h/w/l ? / 450 / 400; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [443] mako_shark: h/w/l ? / 90 / 270; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 QUADRUPEDAL_AMPHIBIAN (3)
 ---------------------------
@@ -7624,7 +7683,7 @@ QUADRUPEDAL_AMPHIBIAN (3)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-BIRD (10)
+BIRD (11)
 ----------
   [ 98] seagull: h/w/l 25 / 1 / 45; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7656,8 +7715,11 @@ BIRD (10)
   [226] morepork: h/w/l 20 / ? / 29; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [445] terra_kan: h/w/l 175 / 75 / 160; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
-CETACEAN (3)
+CETACEAN (4)
 --------------
   [ 99] dolphin: h/w/l ? / 90 / 180; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7666,6 +7728,9 @@ CETACEAN (3)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_large_whale; policy auto
   [434] sperm_whale: h/w/l ? / 40000 / 1600; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_large_whale; policy auto
+  [446] orca: h/w/l ? / 3000 / 600; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_large_whale; policy auto
 
@@ -7846,7 +7911,7 @@ HEXAPODAL_MAMMAL (1)
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials none; policy auto
 
-CEPHALOPOD (7)
+CEPHALOPOD (8)
 ----------------
   [294] giant_squid: h/w/l ? / 2000 / 1830; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7869,6 +7934,9 @@ CEPHALOPOD (7)
   [422] laghathti: h/w/l ? / 350 / 244; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_laghathti; policy auto
+  [437] kraken: h/w/l ? / 6000 / 2750; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_squid; policy auto
 
 LIVING_APPENDAGE (1)
 ----------------------
@@ -7899,6 +7967,12 @@ GEOMETRIC_BEING (5)
   [355] modron_octon: h/w/l 240 / 150 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_cleric; policy auto
+
+BIVALVE (1)
+-------------
+  [444] giant_clam: h/w/l ? / 200 / 120; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 APPENDIX C. COMPLETE CURRENT TRAIT REFERENCE
 ===========================================
@@ -8779,8 +8853,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/30b0d15520a75ffde7bdf5fedebf19708cd536e9
-  Base PR1015 plus the accompanying Pirate Seas patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/2c28c774e5f79b59f7c0b42265c6196711e294f0
+  Base PR1016 plus the accompanying Pirate Isles patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -8790,8 +8864,8 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The verified conversion covers 102/153 areas (66.7%) and 1,736/4,131 mob
-definitions (42.0%). Once the 11 Pirate Seas definitions are merged and
-verified, the totals will be 103/153 (67.3%) and 1,747/4,131 (42.3%).
+The verified conversion covers 103/153 areas (67.3%) and 1,747/4,131
+definitions (42.3%). After a verified Pirate Isles merge the totals will
+be 104/153 (68.0%) and 1,807/4,131 (43.7%).
 
 END OF GUIDE
