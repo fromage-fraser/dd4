@@ -17611,3 +17611,39 @@ without a reference to a mouth. Its storm cape falls loose when it dies.
 
 The Rastafarian shopkeeper uses the human profile and keeps Rare rank.
 Only flag an actual teacher for practice and supply a lesson list.
+
+== The Isles of the Pirate Lords
+
+Bivalve is the body for a clam. It swims and has a shell, heart and mantle
+eyes. It has no head, ordinary arms, legs or speech. Giant_clam uses that
+body with 120 cm shell length and 200 kg. It has no natural weapon.
+
+Use kraken for the huge squid, with 2750 cm length and 6000 kg. It inherits
+spec_squid. Shore_crab has eyestalks and pincers; its 91 cm height includes
+the stalks, while its 35 cm length describes the shell. Its full pincer
+span is 61 cm. Forged_lava_worm is animated metal with fire immunity,
+Pass Door and fire breath, at 180 cm and 90 kg. Lava_lizard is a swimming,
+fire-resistant living reptile at 180 cm and 65 kg. Fire_avatar is a sentient
+610 cm flame form with fire immunity, no speech and no corpse.
+
+Tiger_shark and mako_shark add reusable toothed fish forms. Pirate Isles
+keeps individual spec_fido on all five sharks. Aggression remains an
+individual choice. Orca has teeth, flukes, HUGE and spec_large_whale; that
+special can swallow opponents. Cave_bear has HUGE and spec_bear. The
+northern roc uses roc without Sanctuary. Dimensions for the wolf pack
+describe one wolf, and it remains one combatant.
+
+Use winged_human for the hawkpeople. Their beaked helmets and talon gloves
+are equipment. Terra_kan is a grounded, wingless bird with beak and claws.
+Its 175 cm height is standing height. It has no flight or wing attacks.
+
+The eleven chute hazards use rock_hazard with no exact dimensions.
+Their existing resets stay commented out. Keep old shoot and kracken
+keywords when correcting the visible spelling to chute and kraken.
+Match the corrected display names in the media filenames too.
+
+Hawklord's vest remains armour and his daggers load as three carried
+items. Its loops are descriptive. Vulture's harness has a Sneak affect;
+the number 26 in an old A record is APPLY_SNEAK. It does not grant
+flight. Both sides of the keep's double doors use golden key 17041.
+The frozen captive has No Quest and Unkillable to support her story.

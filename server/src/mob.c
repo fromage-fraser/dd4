@@ -697,6 +697,14 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE,
                 MOB_TEMPLATE_UNSET
+        },
+        {
+                "bivalve", 0, AFF_SWIM,
+                BODY_NO_HEAD | BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_SPEECH | PART_HEART | PART_GUTS | PART_EYE | PART_HUSK_SHELL, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL, MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -5627,6 +5635,96 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_breath_lightning", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "kraken", "cephalopod", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_FINS | PART_BEAK, PART_TENTACLES | PART_BEAK,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 6000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_squid", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 2750
+        },
+        {
+                "shore_crab", "crustacean", "icon1", "icon2",
+                0, 0, PART_CLAWS, PART_CLAWS,
+                0, 0, 0, 0, 0, 0, 0,
+                91, 10, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 35
+        },
+        {
+                "forged_lava_worm", "limbless_construct", "icon1", "icon2",
+                0, AFF_PASS_DOOR, 0, 0,
+                0, 0, RES_FIRE, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_breath_fire", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 180
+        },
+        {
+                "lava_lizard", "quadrupedal_reptile", "icon1", "icon2",
+                0, AFF_SWIM, PART_CLAWS | PART_FANGS, PART_FANGS,
+                RES_FIRE, 0, 0, 0, 0, 0, 0,
+                45, 65, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 180
+        },
+        {
+                "fire_avatar", "elemental_being", "icon1", "icon2",
+                0, 0, BODY_NO_LEGS | BODY_NO_SPEECH | BODY_NO_CORPSE | BODY_HUGE
+                    | PART_HEAD | PART_ARMS | PART_EYE | BODY_BLOODLESS | BODY_ANALGIC, 0,
+                0, 0, RES_FIRE, 0, 0, 0, 0,
+                610, MOB_TEMPLATE_UNSET, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_fire", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "tiger_shark", "fish", "icon1", "icon2",
+                0, 0, PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 450, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 400
+        },
+        {
+                "mako_shark", "fish", "icon1", "icon2",
+                0, 0, PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 90, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 270
+        },
+        {
+                "giant_clam", "bivalve", "icon1", "icon2",
+                0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 200, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 120
+        },
+        {
+                "terra_kan", "bird", "icon1", "icon2",
+                0, 0, PART_WINGS | PART_CLAWS, PART_CLAWS | PART_BEAK,
+                0, 0, 0, 0, 0, 0, 0,
+                175, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 160
+        },
+        {
+                "orca", "cetacean", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_FANGS, PART_FANGS | PART_TAILATTACK,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 3000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_large_whale", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 600
+        },
+        {
+                "cave_bear", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_TAIL | PART_CLAWS | PART_FANGS | PART_PAWS, PART_CLAWS
+                    | PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                180, 800, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_bear", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
         }
 };
 
@@ -7249,6 +7347,14 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 };
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"kraken", "giant_squid", NULL, 0},
+        {"shore_crab", "giant_land_crab", NULL, 0},
+        {"lava_lizard", "lizard", NULL, 0},
+        {"tiger_shark", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
+        {"mako_shark", NULL, marine_armour_4_head_traits, TRAIT_ITEMS(marine_armour_4_head_traits)},
+        {"terra_kan", "hawk", NULL, 0},
+        {"orca", "sperm_whale", NULL, 0},
+        {"cave_bear", "brown_bear", NULL, 0},
         {"sperm_whale", NULL, abyss_armour_6_head_traits, TRAIT_ITEMS(abyss_armour_6_head_traits)},
         {"merfolk", NULL, abyss_armour_3_traits, TRAIT_ITEMS(abyss_armour_3_traits)},
         {"selkie_seal_form", NULL, marine_armour_5_head_traits, TRAIT_ITEMS(marine_armour_5_head_traits)},
