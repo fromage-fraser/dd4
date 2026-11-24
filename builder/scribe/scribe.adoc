@@ -17647,3 +17647,45 @@ items. Its loops are descriptive. Vulture's harness has a Sneak affect;
 the number 26 in an old A record is APPLY_SNEAK. It does not grant
 flight. Both sides of the keep's double doors use golden key 17041.
 The frozen captive has No Quest and Unkillable to support her story.
+
+== The Frozen Lands
+
+Penguin is a flightless bird that swims. It has a beak, wings used as paddles,
+ordinary legs, a heart and eyes. It is Small, 100 cm tall, 70 cm long and
+35 kg. Its ordinary beak attack stops working with head trauma. All four
+Frozen Lands penguins use it, including the underwater swimmer.
+
+Arctic_wolf and arctic_fox reuse the ordinary wolf and fox traits with cold
+resistance. The wolf has no frost breath. The fox can retain a familiar's
+individual senses and intelligence. Ice_fish swims and resists cold. Keep
+the local fish's Pass Door if the area calls for that magical property.
+
+Leopard_seal uses the existing seal form's resolved flipper anatomy and
+natural armour -5. The profile defaults to 300 cm and 350 kg. Larger
+females use length 330 and weight 450. Keep their attached tooth weapon
+and pelt. Give no separate active bite special on top of that weapon.
+
+Adult_white_dragon keeps its natural armour -20, cold immunity, magic
+resistance, HUGE and in-combat fear. The Frozen Lands adult remains good
+and nonaggressive, with its original egg-return script. Young_white_dragon
+has natural armour -7 and cold immunity. It is Large, 550 cm long,
+120 cm at the shoulder and 400 kg. It has no adult fear aura. Both use
+spec_breath_frost_anatomical so the attack needs a usable head.
+
+The smaller yeti uses the same yeti profile with individual height 190
+and weight 90. The adult alone keeps its individual frost-breath special.
+Keep the local Sanctuary, Sneak, gender and aggression choices.
+
+Frost_spirit_avatar is a sentient humanoid appearance with no ordinary
+heart or corpse, cold immunity, swimming and ordinary speech. Its defaults
+are 175 cm and 65 kg. Its lack of a heart and corpse does not remove its
+mind. The Lady keeps her equipment, frost breath, summons and retreat.
+Preserve the qswdefrt keyword because the hidden controller targets it.
+
+The White Witch keeps spec_cast_adept and also has ACT_IS_HEALER for paid
+services. The Weather Mage is Elite. The invisible summoner uses the
+existing script_controller profile with its individual WIZINVIS flag.
+
+The glacier rooms use titles without a trailing period. Current dd-gui
+therefore requests 18745_on_top_of_the_glacier.png and the equivalent
+18746 filename. Copy the existing paintings under those names.
