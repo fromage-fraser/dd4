@@ -5725,6 +5725,76 @@ const struct mob_type mob_table[MAX_MOB] =
                 180, 800, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_bear", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "penguin", "bird", "icon1", "icon2",
+                0, AFF_SWIM,
+                0,
+                PART_BEAK, RES_COLD, 0, 0,
+                0, 0, 0, 0,
+                100, 35, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 70
+        },
+        {
+                "arctic_wolf", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_DETECT_HIDDEN,
+                PART_TAIL | PART_CLAWS | PART_FANGS | PART_PAWS,
+                PART_FANGS, RES_COLD, 0, 0,
+                0, 0, 0, 0,
+                80, 50, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "ice_fish", "fish", "icon1", "icon2",
+                0, 0,
+                PART_SCALES,
+                0, RES_COLD, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 2, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 60
+        },
+        {
+                "leopard_seal", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_LEGS | PART_4_LEGS | PART_FEET | PART_FINS | PART_FANGS | PART_FORELEGS,
+                PART_FANGS, RES_COLD, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 350, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "young_white_dragon", "dragon", "icon1", "icon2",
+                0, AFF_DETECT_INVIS | AFF_DETECT_HIDDEN | AFF_INFRARED | AFF_FLYING,
+                0,
+                0, 0, 0, RES_COLD,
+                0, 0, 0, 0,
+                120, 400, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_frost_anatomical", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 550
+        },
+        {
+                "frost_spirit_avatar", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_HEART | BODY_NO_CORPSE | PART_HEART,
+                0, 0, 0, RES_COLD,
+                0, 0, 0, 0,
+                175, 65, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "arctic_fox", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_DETECT_HIDDEN,
+                PART_TAIL | PART_CLAWS | PART_FANGS | PART_PAWS,
+                PART_FANGS, RES_COLD, 0, 0,
+                0, 0, 0, 0,
+                45, 10, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 110
         }
 };
 
@@ -7345,8 +7415,18 @@ static const CREATURE_TRAIT_PROFILE species_trait_profiles[] =
 {
         {NULL, NULL, NULL, 0}
 };
+static const CREATURE_TRAIT_CHANGE frozen_bird_head_traits[] =
+{
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"penguin", NULL, frozen_bird_head_traits, TRAIT_ITEMS(frozen_bird_head_traits)},
+        {"arctic_wolf", "wolf", NULL, 0},
+        {"leopard_seal", "selkie_seal_form", NULL, 0},
+        {"young_white_dragon", NULL, abyss_armour_7_head_traits, TRAIT_ITEMS(abyss_armour_7_head_traits)},
+        {"arctic_fox", "fox", NULL, 0},
         {"kraken", "giant_squid", NULL, 0},
         {"shore_crab", "giant_land_crab", NULL, 0},
         {"lava_lizard", "lizard", NULL, 0},

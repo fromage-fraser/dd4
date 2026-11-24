@@ -12,10 +12,11 @@ The penguin looks obscenely fat and it waddles about on legs that are hidden bel
 its overhanging belly.
 
 ~
-2|64 0 0 S
+66 0 0 S
 70 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< penguin~ common~
 #18601
 fat penguin~
 the Fat Penguin~
@@ -29,6 +30,7 @@ its overhanging belly.
 70 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< penguin~ common~
 #18602
 fat penguin~
 the Fat Penguin~
@@ -40,8 +42,9 @@ its overhanging belly.
 ~
 64 0 0 S
 70 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< penguin~ common~
 #18603
 fat penguin~
 the Fat Penguin~
@@ -49,10 +52,11 @@ A fat grey penguin is trying to catch a fish.
 ~
 The obscenely fat penguin swims past you at a leisurely pace in pursuit of a fish.
 ~
-64 524288 0 S
+64 0 0 S
 70 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< penguin~ common~
 #18604
 large white wolf snow~
 the Snow Wolf~
@@ -65,8 +69,9 @@ when it notices your approach.
 ~
 64 32768 1000 S
 75 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< arctic_wolf~ common~
 #18605
 large white snow wolf~
 the Snow Wolf~
@@ -79,8 +84,9 @@ when it notices your approach.
 ~
 64 32768 1000 S
 75 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< arctic_wolf~ common~
 #18606
 large white snow wolf~
 the Snow Wolf~
@@ -93,8 +99,9 @@ when it notices your approach.
 ~
 64 32768 1000 S
 75 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 2
+< arctic_wolf~ common~
 #18607
 large white snow wolf~
 the Snow Wolf~
@@ -107,8 +114,9 @@ when it notices your approach.
 ~
 64 32768 1000 S
 75 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 2
+< arctic_wolf~ common~
 #18608
 ice fish~
 the Ice Fish~
@@ -120,10 +128,11 @@ because it has natural anti-freeze flowing through its veins.
 It has a spiky spine running down its back and large, boggly eyes.
 
 ~
-2|64 1048576 0 S
+66 1048576 0 S
 70 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 0
+< ice_fish~ common~
 #18609
 ice fish~
 the Ice Fish~
@@ -135,10 +144,11 @@ because it has natural anti-freeze flowing through its veins.
 It has a spiky spine running down its back and large, boggly eyes.
 
 ~
-2|64 1048576 0 S
+66 1048576 0 S
 70 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 0
+< ice_fish~ common~
 #18610
 ice fish~
 the Ice Fish~
@@ -152,8 +162,9 @@ It has a spiky spine running down its back and large, boggly eyes.
 ~
 64 1048576 0 S
 70 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 0
+< ice_fish~ common~
 #18611
 ice fish~
 the Ice Fish~
@@ -167,8 +178,9 @@ It has a spiky spine running down its back and large, boggly eyes.
 ~
 64 1048576 0 S
 70 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 0
+< ice_fish~ common~
 #18612
 leopard seal~
 the Leopard Seal~
@@ -179,10 +191,11 @@ grey fur that is covered with black spots and its teeth are razor sharp. It woul
 not be wise to get too close or disturb its slumber.
 
 ~
-2|64 0 0 S
+66 0 0 S
 75 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< leopard_seal~ common~
 #18613
 leopard seal~
 the Leopard Seal~
@@ -193,13 +206,16 @@ grey fur that is covered with black spots and its teeth are razor sharp. It woul
 not be wise to get too close or disturb its slumber.
 
 ~
-2|64 0 0 S
+66 0 0 S
 75 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< leopard_seal~ common~
+MobWeight 450
+MobLength 330
 #18614
 leopard seal~
-the Leopard seal~
+the Leopard Seal~
 A spotted leopard seal roars and bellows.
 ~
 The large carnivorous seal survives on a diet of penguins and fish. It has sleek
@@ -209,8 +225,9 @@ not be wise to get too close or disturb it.
 ~
 64 0 0 S
 75 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< leopard_seal~ common~
 #18615
 leopard seal~
 the Leopard Seal~
@@ -223,8 +240,11 @@ not be wise to get too close or disturb it.
 ~
 64 0 0 S
 75 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< leopard_seal~ common~
+MobWeight 450
+MobLength 330
 #18616
 snow dragon~
 the Snow Dragon~
@@ -235,9 +255,9 @@ It seems to be looking for something. It has pearly white scales and eyes the co
 of a winter sky. The dragon regards you momentarily then continues with its search.
 
 ~
-64 8|32|128|32768|524288|8388608 1000 S
+64 8421504 1000 S
 80 0 0 0d0+0 0d0+0
-128 0
+0 0
 8 8 0
 >give_prog dragon gem~
     if number($o) == 18605
@@ -261,7 +281,7 @@ of a winter sky. The dragon regards you momentarily then continues with its sear
       endif
 ~
 |
-< reserved~ elite~
+< adult_white_dragon~ elite~
 #18617
 thief~
 the Thief~
@@ -271,13 +291,16 @@ The little man is trying to hide himself from view as he goes about his thievery
 'Better hold onto your valuables tightly' you think to yourself.
 
 ~
-4|64 8|32|512|32768|65536 0 S
+68 98856 0 S
 75 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 160
+MobWeight 55
 #18618
 polar bear polarbear~
-the Polar bear~
+the Polar Bear~
 {WA large polar bear is ambling through the snow.{x
 ~
 Although it might look cute and cuddly it has very sharp teeth and claws that could
@@ -287,24 +310,29 @@ whether or not you are food as it sidles back and forth in front of you.
 ~
 64 4194304 1000 S
 80 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 1
+< polar_bear~ common~
 #18619
 polar bear polarbear~
-the Polar bear~
+the Polar Bear~
 {WA large polar bear is deep in slumber.{x
 ~
 You almost overlooked the presence of the sleeping bear as its white fur blends
 perfectly with the powdery snow. Only the restless noises of sleep that issue from
 it alerted you it was there. Although it might look cute and cuddly it has very
-sharp teeth and claws that could rip you to shreds if you got to close. It growls
+sharp teeth and claws that could rip you to shreds if you got too close. It growls
 and grunts in its slumber and its body twitches and shakes.
 
 ~
-2|64 4194304 1000 S
+66 4194304 1000 S
 80 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 2
+< polar_bear~ common~
+MobHeight 160
+MobWeight 450
+MobLength 300
 #18620
 man hunter~
 the Seal Hunter~
@@ -315,7 +343,7 @@ covered in bloodstains and gore. A hunter you assume. From the look of rage on
 his face you gather he is not impressed that you have burst into his home uninvited.
 
 ~
-2|64 8|32|512|4194304|8388608 -1000 S
+66 12583464 -1000 S
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -323,6 +351,9 @@ his face you gather he is not impressed that you have burst into his home uninvi
 say What!? who are you?...how dare you burst into my home!
 ~
 |
+< human~ common~
+MobHeight 190
+MobWeight 100
 #18621
 crazy old hermit~
 a Crazy Old Hermit~
@@ -333,10 +364,11 @@ of nonsense. He has probably spent too much time alone and it has driven him mad
 He wanders aimlessly about the room completely unaware of your arrival.
 
 ~
-2|64 8|32|8388608 0 S
+66 8388648 0 S
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #18622
 killer whale~
 the Killer Whale~
@@ -347,16 +379,16 @@ It thrashes its huge tail attempting to stay upright. If you are thrown into its
 path you will probably be crushed to death.
 
 ~
-32|64 8|32|8388608 0 S
+96 8388648 0 S
 90 0 0 0d0+0 0d0+0
-172 0
+0 0
 8 8 0
 >all_greet_prog 100~
 em lashes out at you with its tail!
 mpkill $n
 ~
 |
-< reserved~ rare~
+< orca~ rare~
 #18623
 abominable snowman~
 the Abominable Snowman~
@@ -368,10 +400,11 @@ more beast than man, his wild, terrified eyes regarding you with fear and appreh
 Better not get too close.
 
 ~
-32|64 8|32|128 1000 S
+96 168 1000 S
 85 0 0 0d0+0 0d0+0
-32 0
-8 8 0
+0 0
+8 8 1
+< yeti~ common~
 #18624
 baby snow dragon~
 the baby Snow Dragon~
@@ -379,11 +412,11 @@ A baby snow dragon is breathing clouds of frost into the air.
 ~
 The baby snow dragon is still quite large considering it is not yet fully grown.
 It has pearly white scales and eyes the colour of a winter sky. It looks at you
-curiously, then breaths a cloud of frost into the air and seems to look pleased
+curiously, then breathes a cloud of frost into the air and seems to look pleased
 with itself.
 
 ~
-64|131072 8|32|128|32768|524288 1000 S
+131136 32896 1000 S
 70 0 0 0d0+0 0d0+0
 0 0
 8 8 0
@@ -391,6 +424,7 @@ with itself.
 mpecho The baby snow dragon breathes a cloud of frost into the air.
 ~
 |
+< young_white_dragon~ common~
 #18625
 abominable snowman~
 the Abominable Snowman~
@@ -403,10 +437,13 @@ wild, terrified eyes regard you with fear and apprehension.
 Better not get too close.
 
 ~
-32|64 8|32|32768 1000 S
+96 32808 1000 S
 70 0 0 0d0+0 0d0+0
-32 0
-8 8 0
+0 0
+8 8 1
+< yeti~ common~
+MobHeight 190
+MobWeight 90
 #18626
 lady qswdefrt~
 the Lady of the Lake~
@@ -421,9 +458,9 @@ Her pale skin has a translucent quality and her sapphire blue eyes regard you wi
 interest and more than a hint of mischief.
 
 ~
-2|64|512 8|32|128|512|8192|524288|1048576|8388608 1000 S
+578 9970344 1000 S
 85 0 0 0d0+0 0d0+0
-80 0
+0 0
 8 8 2
 >hitprcnt_prog 33~
 mpecho {WThe Lady says 'May the earth turn black beneath your feet...'{x
@@ -437,7 +474,7 @@ mpgoto 18747
 endif
 ~
 |
-< reserved~ elite~
+< frost_spirit_avatar~ elite~
 #18627
 witch~
 the White Witch~
@@ -448,7 +485,7 @@ available if you need them. She is a true vision of beauty with long golden hair
 and kind green eyes. The soft tones of her voice mesmerise and entrance you.
 
 ~
-2|64 8|32|128|512|8192|524288|8388608 1000 S
+8258 8921768 1000 S
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -463,21 +500,24 @@ else
 endif
 ~
 |
+< human~ common~
+MobHeight 170
+MobWeight 60
 #18628
 fox~
 the white fox~
 A large white fox is snarling and baring its teeth at you.
 ~
 The large white fox has a thick winter coat that is burdened with snow. It must
-have been sleeping here before you disturbed it. It bares it teeth and snarls in
+have been sleeping here before you disturbed it. It bares its teeth and snarls in
 a menacing fashion. The fox doesn't seem to be attacking you yet, maybe if you
 move slowly it will let you leave without a fight. Its cold grey eyes stay fixed
 on you and seem to contain more than animal intelligence.
 
 ~
-2|64 8|32|512|8192|65536|8388608 1000 S
+66 8462856 1000 S
 80 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
 >all_greet_prog 100~
 wake
@@ -488,6 +528,7 @@ mpecho The fox raises its hackles and begins to growl.
 rest
 ~
 |
+< arctic_fox~ common~
 #18629
 man figure mage~
 the Weather Mage~
@@ -500,10 +541,11 @@ the valley below. You begin to suspect that he has something to do with the rele
 storm you have been enduring since entering this area.
 
 ~
-2|64 8|512|524288 1000 S
+66 524808 1000 S
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ elite~
 #18630
 wizinvisdewd~
 wisinvizdewd~
@@ -511,7 +553,7 @@ wisinvizdewd~
 Look at me stuff.
 
 ~
-2|64|512|4096|65536 4|8|16|32|512|32768|524288|8388608|1073741824 1000 S
+69698 1082688060 1000 S
 104 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -520,6 +562,7 @@ mpecho {WA shining silver sword cleaves upwards through the ice!{x
 mptransfer qswdefrt
 ~
 |
+< script_controller~ common~
 #0
 
 
@@ -4922,7 +4965,7 @@ D5
 0 -1 18743
 S
 #18745
-on top of the glacier.~
+On top of the glacier~
 You are on a large flat area near the top of the glacier. The wind is incredibly
 strong up here and you are having trouble remaining on your feet. Your vision
 has become limited by the driving sheets of snow being driven upon you by the
@@ -4939,7 +4982,7 @@ D2
 0 -1 18746
 S
 #18746
-on top of the glacier.~
+On top of the glacier~
 You are on a large flat area near the top of the glacier. The wind is incredibly
 strong up here and you are having trouble remaining on your feet. Your vision
 has become limited by the driving sheets of snow being driven upon you by the
@@ -5104,10 +5147,7 @@ S
 
 
 #SPECIALS
-M  18616 spec_breath_frost          the Snow Dragon
 M  18623 spec_breath_frost          the Abominable Snowman
-M  18622 spec_large_whale			a killer whale
-M  18624 spec_breath_frost          the baby Snow Dragon
 M  18626 spec_breath_frost          the Lady of the Lake
 M  18627 spec_cast_adept            the White Witch
 M  18629 spec_cast_archmage         the Weather Mage
