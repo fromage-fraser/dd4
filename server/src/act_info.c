@@ -2810,7 +2810,7 @@ void do_levels(CHAR_DATA *ch, char *argument)
 
         if (ch->level >= LEVEL_HERO)
         {
-                send_to_char("You have no use for experience now, you are immortal!\n\r", ch);
+                send_to_char("You no longer need experience to gain levels.\n\r", ch);
                 return;
         }
 

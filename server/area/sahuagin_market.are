@@ -3302,16 +3302,16 @@ had magical enchantments placed upon it, and confers a number of unusual
 abilities on the wearer.
 ~
 #27341
-driftwood staff seaweed~
-a driftwood staff wreathed with seaweed~
-A driftwood staff wreathed with seaweed has been left here.~
+driftwood wand staff seaweed~
+a driftwood wand wreathed with seaweed~
+A driftwood wand wreathed with seaweed has been left here.~
 ~
-4 64 1|16384
+3 64 1|16384
 35~ 10~ 10~ identify~
 9 0 0
 E
-driftwood staff seaweed~
-The staff looks very old, and rather ugly.  It fills you with a powerful sense
+driftwood wand staff seaweed~
+The wand looks very old, and rather ugly.  It fills you with a powerful sense
 of understanding when you place your hands on it.
 ~
 #27342
@@ -7202,7 +7202,7 @@ P 1 27326 100 27323			potion to container large glass display case
 P 1 27273 100 27295			fried whale blubber to container sturdy wooden box
 P 1 27332 100 27295			a small stash of coins to container sturdy wooden box
 O 1 27342 100 27650			an ottoman chest made of driftwood to Mala't's Quarters
-P 1 27341 100 27342			a driftwood staff wreathed with seaweed to container ottoman driftwood chest
+P 1 27341 100 27342			a driftwood wand wreathed with seaweed to container ottoman driftwood chest
 O 1 27344 100 27652			a spellcrafting bench to Mohmit's Magical Laboratory, Upper
 O 1 27344 100 27352			a spellcrafting bench to Mohmit's Magical Laboratory, Lower
 O 1 27345 100 27651			a large black cube to Mohmit's Quarters

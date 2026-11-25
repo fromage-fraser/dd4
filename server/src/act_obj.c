@@ -583,17 +583,16 @@ void do_dig(CHAR_DATA *ch, char *argument)
                         hoard->value[2] = 0;
                         hoard->value[1] = 2; /* Mark as unearthed */
 
-                        /* check for a trap */
-                        if (checkopen(ch, hoard))
-                                return;
-
-                        /* If this is a QUEST hoard, strip the flavour hint unless another buried hoard remains */
+                        /* Clear the hint at the state change, even if a trap interrupts. */
 
                         if (hoard->pIndexData && hoard->pIndexData->vnum == QUEST_HOARD && ch->in_room)
                         {
                                 if (!room_has_other_buried_hoard(ch->in_room, hoard))
                                         remove_hoard_hint(ch->in_room);
                         }
+
+                        if (checkopen(ch, hoard))
+                                return;
 
                         switch (dig_mode)
                         {
@@ -1989,6 +1988,12 @@ void do_empty(CHAR_DATA *ch, char *argument)
                                 {
                                         found = TRUE;
 
+                                        if (!can_drop_obj(ch, obj))
+                                        {
+                                                act("You can't drop $p; it stays in $P.", ch, obj, container, TO_CHAR);
+                                                continue;
+                                        }
+
                                         if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
                                         {
                                                 act("Your hands are too full to get items from $p.", ch, container, NULL, TO_CHAR);
@@ -1998,8 +2003,8 @@ void do_empty(CHAR_DATA *ch, char *argument)
                                         if (first == FALSE)
                                         {
                                                 first = TRUE;
-                                                act("{WYou remove all the items from $p.{x", ch, container, NULL, TO_CHAR);
-                                                act("{W$n removes all the items from $p.{x", ch, container, NULL, TO_ROOM);
+                                                act("{WYou remove items from $p.{x", ch, container, NULL, TO_CHAR);
+                                                act("{W$n removes items from $p.{x", ch, container, NULL, TO_ROOM);
                                         }
                                         get_obj(ch, obj, container);
 
@@ -2054,6 +2059,12 @@ void do_empty(CHAR_DATA *ch, char *argument)
                         if (can_see_obj(ch, obj))
                         {
                                 found = TRUE;
+
+                                if (!can_drop_obj(ch, obj))
+                                {
+                                        act("You can't drop $p; it stays in $P.", ch, obj, container, TO_CHAR);
+                                        continue;
+                                }
 
                                 if (ch->carry_number + get_obj_number(obj) > can_carry_n(ch))
                                 {
@@ -3731,7 +3742,7 @@ static void do_eat_activation(CHAR_DATA *ch, char *argument)
                         gain_condition(ch, COND_FULL, obj->value[0]);
                         if (ch->pcdata->condition[COND_FULL] > (MAX_FOOD - 5))
                                 send_to_char("You are full.\n\r", ch);
-                        else if (condition == 0 && ch->pcdata->condition[COND_FULL] > 0)
+                        else if (condition <= 0 && ch->pcdata->condition[COND_FULL] > 0)
                                 send_to_char("You are no longer hungry.\n\r", ch);
                 }
 
@@ -5715,6 +5726,12 @@ void do_clean(CHAR_DATA *ch, char *argument)
                 return;
         }
 
+        if (get_obj_wear(ch, arg1) != pipe)
+        {
+                send_to_char("You are not holding that pipe.\n\r", ch);
+                return;
+        }
+
         /* need to check inventory for a pipe cleaner */
 
         if (!(cleaner = get_obj_carry(ch, arg2)))
@@ -6796,7 +6813,7 @@ void do_sell(CHAR_DATA *ch, char *argument)
         CHAR_DATA keeper_balance;
         char buf[MAX_STRING_LENGTH];
         char arg[MAX_INPUT_LENGTH];
-        int cost;
+        int cost, repayment;
 
         one_argument(argument, arg);
 
@@ -6879,8 +6896,8 @@ void do_sell(CHAR_DATA *ch, char *argument)
 
         /* Plan both wallets before transferring the item or repaying a loan. */
         seller_balance = *ch;
-        if (!coins_to_char(!IS_NPC(ch) && ch->pcdata->bank < 0
-                           ? cost / 2 : cost, &seller_balance, COINS_ADD))
+        repayment = !IS_NPC(ch) && ch->pcdata->bank < 0 ? cost / 2 : 0;
+        if (!coins_to_char(cost - repayment, &seller_balance, COINS_ADD))
         {
                 send_to_char("You cannot carry that many coins.\n\r", ch);
                 if (webgate_has_web_desc(ch))
@@ -6916,12 +6933,13 @@ void do_sell(CHAR_DATA *ch, char *argument)
         act(buf, ch, obj, NULL, TO_CHAR);
         act("$n sells $p.", ch, obj, NULL, TO_ROOM);
 
-        if (!IS_NPC(ch) && ch->pcdata->bank < 0)
+        if (repayment > 0)
         {
-                act("$n tells you 'I see you have a loan with the bank, I am giving them 1/2 the sale.",
-                    keeper, NULL, ch, TO_VICT);
+                snprintf(buf, sizeof(buf), "$n tells you 'I am sending %d copper to the bank for your loan.'",
+                         repayment);
+                act(buf, keeper, NULL, ch, TO_VICT);
                 ch->reply = keeper;
-                ch->pcdata->bank += cost / 2;
+                ch->pcdata->bank += repayment;
         }
 
         if (obj->item_type == ITEM_TRASH)

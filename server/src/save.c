@@ -1609,6 +1609,32 @@ void fread_obj (CHAR_DATA *ch, FILE *fp, bool vault)
                                 {
                                         if (!obj->pIndexData)
                                                 return;
+
+                                        /* Migrate saved copies of the driftwood Identify staff. */
+                                        if (obj->pIndexData->vnum == 27341
+                                        &&  obj->pIndexData->item_type == ITEM_WAND
+                                        &&  obj->item_type == ITEM_STAFF
+                                        &&  obj->value[3] == obj->pIndexData->value[3])
+                                        {
+                                                obj->item_type = ITEM_WAND;
+                                                if (!str_cmp(obj->name, "driftwood staff seaweed"))
+                                                {
+                                                        free_string(obj->name);
+                                                        obj->name = str_dup(obj->pIndexData->name);
+                                                }
+                                                if (!str_cmp(obj->short_descr,
+                                                             "a driftwood staff wreathed with seaweed"))
+                                                {
+                                                        free_string(obj->short_descr);
+                                                        obj->short_descr = str_dup(obj->pIndexData->short_descr);
+                                                }
+                                                if (!str_cmp(obj->description,
+                                                             "A driftwood staff wreathed with seaweed has been left here."))
+                                                {
+                                                        free_string(obj->description);
+                                                        obj->description = str_dup(obj->pIndexData->description);
+                                                }
+                                        }
                                         obj->next       = object_list;
                                         object_list     = obj;
                                         obj->pIndexData->count++;

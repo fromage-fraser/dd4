@@ -2813,9 +2813,6 @@ void interpret(CHAR_DATA *ch, char *argument)
         if (argument[0] == '\0')
                 return;
 
-        if (!IS_NPC(ch))
-                REMOVE_BIT(ch->act, PLR_AFK);
-
         /* MCMP: send Client.Media.Default once, on first actual user command */
 
         if (ch->desc)
@@ -2830,6 +2827,7 @@ void interpret(CHAR_DATA *ch, char *argument)
          */
         if (!IS_NPC(ch) && IS_SET(ch->act, PLR_FREEZE))
         {
+                REMOVE_BIT(ch->act, PLR_AFK);
                 send_to_char("You're totally frozen!\n\r", ch);
                 return;
         }
@@ -2867,6 +2865,10 @@ void interpret(CHAR_DATA *ch, char *argument)
                         break;
                 }
         }
+
+        /* Let AFK toggle itself; any other input clears it as before. */
+        if (!IS_NPC(ch) && (!found || cmd_table[cmd].do_fun != do_afk))
+                REMOVE_BIT(ch->act, PLR_AFK);
 
         /* Keep sensitive arguments out of diagnostics and command snooping. */
         if (found && cmd_table[cmd].log == LOG_NEVER)
