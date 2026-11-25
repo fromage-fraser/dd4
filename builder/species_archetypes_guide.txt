@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 25 November 2026
-Based on master b6b98efb1c2c4f82baab563d6b1e54191732d832 (PR #1019),
-with the accompanying Vale of the Vampyre changes.
+Based on master 62ad298311d1f6cac78250fad73eb66ce1b32eef (PR #1020),
+with the accompanying Three Trials changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,8 +16,8 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 40 bodies, 462 archetypes, 60 internal traits
-and 141 Scribe special names. Earlier area notes sometimes record the
+The current tables contain 40 bodies, 469 archetypes, 60 internal traits
+and 142 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
 The server code is the final authority. This is a dated guide, not a promise
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 462, so this single example would make 463.
+guide's checked revision it is 469, so this single example would make 470.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 462.
+valid index. This example would receive index 469.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 462;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 469;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 462; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 469; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-40 body rows, 462 archetype rows, 60 internal traits and 141 Scribe
+40 body rows, 469 archetype rows, 60 internal traits and 142 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -5623,7 +5623,7 @@ The Abyss
 ---------
 
 The current catalogue contains 402 archetypes, 39 basic body species,
-60 internal traits, 141 Scribe special names and 637 skill rows. Thirteen
+60 internal traits, 142 Scribe special names and 637 skill rows. Thirteen
 profiles append at 389-401, using eight existing body groups. All earlier
 389 profiles, 39 bodies, 60 trait IDs and player opt-ins stay unchanged.
 New profile HP/damage/critical/haste/XP modifiers are zero. Natural armour
@@ -5804,7 +5804,7 @@ Ota'ar Dar Residential South
 ---------------------------
 
 The current catalogue contains 408 archetypes, 39 basic body species,
-60 internal traits, 141 Scribe special names and 637 skill rows. Six
+60 internal traits, 142 Scribe special names and 637 skill rows. Six
 profiles append at 402-407: sawfish, cownose_ray, frilled_shark,
 lemon_shark, fiddler_ray and sahuagin_baron. No basic body, trait ID,
 special name, engine helper, player race or individual trait field is
@@ -5994,7 +5994,7 @@ Ota'ar Dar Residential North
 ---------------------------
 
 The catalogue now has 413 archetypes, 39 basic bodies, 60 internal traits,
-141 Scribe special names and 637 skills. The five new fish profiles append
+142 Scribe special names and 637 skills. The five new fish profiles append
 at 408-412: sheepshead_wrasse, giant_blobfish, moonfish, goliath_grouper
 and stargazer. All 408 earlier profiles, body defaults, trait IDs, special
 functions and player races stay unchanged. No new area fields are needed.
@@ -6135,7 +6135,7 @@ Ota'ar Dar Military Fortress
 ---------------------------
 
 The catalogue now has 420 archetypes, 39 basic bodies, 60 internal traits,
-141 Scribe special names and 637 skills. Seven profiles append at 413-419:
+142 Scribe special names and 637 skills. Seven profiles append at 413-419:
 blue_shark, stingray, skate, great_white_shark, training_dummy, triton and
 green_grung. All earlier profiles, bodies, trait IDs and player races stay
 unchanged. No new area fields or special function names are needed.
@@ -6544,6 +6544,60 @@ existing open-maw message. The same spell, level and target are used.
 The room title Inside a fissure has no trailing period. dd-gui requests
 custom_rooms/20701_inside_a_fissure.png for it.
 
+The Three Trials
+
+Dreadguard is an unidentified nonhuman humanoid, 200 cm and 120 kg,
+with gas breath. Gordaron is a living humanoid, 190 cm and 100 kg;
+a heavier individual can override weight to 125. Neither profile
+invents a human family identity or a racial resistance.
+
+Poison_floor is an environmental hazard with no head, eyes, limbs,
+heart, speech or corpse. It inherits mindless, soulless and inorganic
+physiology and the usual hazard immunities. Its edge is 183 cm, rounded
+from six feet. Keep height and weight unspecified, and keep the
+encounter's level, aggression and placement. The profile does not
+supply Unkillable, No Fight or No Experience.
+
+Spec_poison_contact uses the existing poison special's target checks,
+rolls, level and Venom spell. Its messages describe contact rather than
+a bite. It needs no head or arm. Use it for poisonous surfaces or
+secretions. Real fangs can instead use spec_poison_bite, which checks
+the head, trauma and usable fangs.
+
+Grottobeast and Bleeder use quadrupedal_hybrid. Grottobeast has claws,
+fangs and a tail: height 180, length 400, weight 700, Large, with an
+anatomical poison bite. Bleeder has fangs and psionic casting: height
+80, length 240, weight 100, Medium. Heights are at the shoulder.
+Head trauma disables their fangs; healthy claws and tails remain
+usable. These are ordinary attack choices, not extra attacks.
+
+Giant_millipede uses myriapod with many legs and a plated husk, length
+300 and weight 100, Large. It retains poison as contact secretion.
+Ahrganite is an amorphous mage with unknown measurements. Mutable
+anatomy does not remove its mind or establish pain insensitivity.
+
+The Inquisitor uses the speaking ghost and its normal phase rules.
+The Dread uses mysterious_being, with individual size 1 (Medium) and
+unknown measurements. Its mind and full breath repertoire remain.
+Headless acid, frost and steam sources have suitable messages;
+headed sources retain the original messages and spell effects.
+
+Only the Cambion and Grottobeast are Elite. The other sixteen remain
+Common. Spawn keeps individual mage casting and Cambion keeps its
+individual undead-caster list as a living cambion. An individual
+special set replaces the archetype's whole active set.
+
+A negative random-exit count shuffles only occupied slots. Use
+rnd -4 in Scribe or R 1 <room-vnum> -4 in an area file for the
+existing cardinal exits. Absent directions remain absent. Positive
+counts and 2d/3d keep their old behaviour. Normal D resets follow
+the declared door objects after a shuffle. The Three Trials uses
+this mode for three choices and explicitly closes all three doors.
+
+Preserve shortsword 13187 as both a weapon and the grotto gate key,
+the Freebooter's copy, Jammer's complete greeting and self-purge,
+the reward objects, maze layout, authored flags and neutral sexes.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -6597,7 +6651,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 462 current table rows follow, grouped by body. Numeric IDs are for
+All 469 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -6613,7 +6667,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (139)
+HUMANOID (141)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7030,6 +7084,12 @@ HUMANOID (139)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_vampire, 2:spec_cast_undead; policy 70/30/0
   [461] bat_humanoid: h/w/l 185 / 85 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [462] dreadguard: h/w/l 200 / 120 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gas; policy auto
+  [464] gordaron: h/w/l 190 / 100 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -7552,7 +7612,7 @@ CENTAUROID_MAMMAL (4)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_thief; policy auto
 
-QUADRUPEDAL_HYBRID (6)
+QUADRUPEDAL_HYBRID (8)
 ------------------------
   [ 72] griffin: h/w/l 152 / 600 / 275; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -7572,6 +7632,12 @@ QUADRUPEDAL_HYBRID (6)
   [280] bulette: h/w/l 290 / 1800 / 366; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
+  [465] grottobeast: h/w/l 180 / 700 / 400; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison_bite; policy auto
+  [468] bleeder: h/w/l 80 / 100 / 240; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_psionicist; policy auto
 
 ELEMENTAL_BEING (24)
 ---------------------
@@ -7672,7 +7738,7 @@ CRUSTACEAN (7)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-AMORPHOUS_ORGANISM (9)
+AMORPHOUS_ORGANISM (10)
 ------------------------
   [ 91] green_ooze: h/w/l 30 / 80 / 150; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -7701,6 +7767,9 @@ AMORPHOUS_ORGANISM (9)
   [389] photophore: h/w/l 80 / 30 / 80; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [467] ahrganite: h/w/l ? / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_mage; policy auto
 
 FISH (32)
 ----------
@@ -7972,7 +8041,7 @@ PLANT (11)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_fido; policy auto
 
-ENVIRONMENTAL_HAZARD (6)
+ENVIRONMENTAL_HAZARD (7)
 --------------------------
   [159] fire_hazard: h/w/l ? / ? / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7992,12 +8061,18 @@ ENVIRONMENTAL_HAZARD (6)
   [436] typhoon: h/w/l ? / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_lightning; policy auto
+  [463] poison_floor: h/w/l ? / ? / 183; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison_contact; policy auto
 
-MYRIAPOD (1)
+MYRIAPOD (2)
 --------------
   [164] centipede: h/w/l ? / ? / 15; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [466] giant_millipede: h/w/l ? / 100 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison_contact; policy auto
 
 FUNGOID (2)
 -------------
@@ -8919,6 +8994,7 @@ Check anatomy, safety, effect cleanup, selection percentages and XP.
     spec_poison
     spec_poison_bite
     spec_poison_claw
+    spec_poison_contact
     spec_poison_palm
     spec_prism_flash
     spec_psionic_thief
@@ -8986,8 +9062,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/b6b98efb1c2c4f82baab563d6b1e54191732d832
-  Base PR1019 plus the accompanying Vale of the Vampyre patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/62ad298311d1f6cac78250fad73eb66ce1b32eef
+  Base PR1020 plus the accompanying Three Trials patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -8997,8 +9073,8 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The verified conversion covers 105/153 areas (68.6%) and 1,838/4,131
-definitions (44.5%). After a verified Vale merge the totals will be
-106/153 (69.3%) and 1,870/4,131 (45.3%).
+The verified conversion covers 106/153 areas (69.3%) and 1,870/4,131
+definitions (45.3%). After a verified Three Trials merge the totals will
+be 107/153 (69.9%) and 1,888/4,131 (45.7%).
 
 END OF GUIDE

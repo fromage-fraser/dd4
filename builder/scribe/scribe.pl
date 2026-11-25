@@ -166,6 +166,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         kraken shore_crab forged_lava_worm lava_lizard fire_avatar tiger_shark mako_shark giant_clam terra_kan orca cave_bear
         penguin arctic_wolf ice_fish leopard_seal young_white_dragon frost_spirit_avatar arctic_fox
         venomous_vampire gas_vampire vampire_mage vampire_leech great_wolf giant_bat bat_humanoid
+        dreadguard poison_floor gordaron grottobeast giant_millipede ahrganite bleeder
 /;
 
 my %mob_act = (
@@ -426,6 +427,7 @@ my @mob_spec = qw/
     spec_lurker_wrap spec_water_weird_wrap spec_succubus_fascination spec_retriever_rays
     spec_homunculus_sleep_bite spec_basilisk_stiffening_gaze
     spec_paralysing_gas spec_holy_trumpet spec_lulling_drone spec_bloodsucker_bite
+    spec_poison_contact
 /;
 
 my %obj_ex = (
@@ -1840,7 +1842,7 @@ foreach (0 .. $#rooms) {
         $room{'rnd'} = 4 if $room{'rnd'} eq '2d';
         $room{'rnd'} = 6 if $room{'rnd'} eq '3d';
 
-        if ($msg = &check_field_number_range(\%room, 'rnd', 0, 6)) {
+        if ($msg = &check_field_number_range(\%room, 'rnd', -6, 6)) {
             print "$err $msg\n";
             $room_errors{$room{'line'}}++;
         }

@@ -2896,7 +2896,7 @@ void load_resets(FILE *fp)
                 case 'R':
                         pRoomIndex = get_room_index(pReset->arg1);
 
-                        if (pReset->arg2 < 0 || pReset->arg2 > 6)
+                        if (pReset->arg2 < -6 || pReset->arg2 > 6)
                         {
                                 bug("Load_resets: 'R': bad exit %d.", pReset->arg2);
                                 exit(1);
@@ -4489,12 +4489,34 @@ void reset_area(AREA_DATA *pArea)
                                 int d0;
                                 int d1;
 
-                                for (d0 = 0; d0 < pReset->arg2 - 1; d0++)
+                                if (pReset->arg2 < 0)
                                 {
-                                        d1 = number_range(d0, pReset->arg2 - 1);
-                                        pexit = pRoomIndex->exit[d0];
-                                        pRoomIndex->exit[d0] = pRoomIndex->exit[d1];
-                                        pRoomIndex->exit[d1] = pexit;
+                                        int occupied[6];
+                                        int count = 0;
+                                        int limit = -pReset->arg2;
+
+                                        /* Keep absent directions absent in this mode. */
+                                        for (d0 = 0; d0 < limit; d0++)
+                                                if (pRoomIndex->exit[d0])
+                                                        occupied[count++] = d0;
+
+                                        for (d0 = 0; d0 < count - 1; d0++)
+                                        {
+                                                d1 = number_range(d0, count - 1);
+                                                pexit = pRoomIndex->exit[occupied[d0]];
+                                                pRoomIndex->exit[occupied[d0]] = pRoomIndex->exit[occupied[d1]];
+                                                pRoomIndex->exit[occupied[d1]] = pexit;
+                                        }
+                                }
+                                else
+                                {
+                                        for (d0 = 0; d0 < pReset->arg2 - 1; d0++)
+                                        {
+                                                d1 = number_range(d0, pReset->arg2 - 1);
+                                                pexit = pRoomIndex->exit[d0];
+                                                pRoomIndex->exit[d0] = pRoomIndex->exit[d1];
+                                                pRoomIndex->exit[d1] = pexit;
+                                        }
                                 }
                         }
                         break;
