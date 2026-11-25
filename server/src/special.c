@@ -547,8 +547,14 @@ bool dragon( CHAR_DATA *ch, char *spell_name )
                     ch, NULL, NULL, TO_ROOM);
 
         else if (sn == skill_lookup("fire breath"))
-                act("Fire bursts forth from $n's open maw!",
-                    ch, NULL, NULL, TO_ROOM);
+        {
+                if (HAS_HEAD(ch))
+                        act("Fire bursts forth from $n's open maw!",
+                            ch, NULL, NULL, TO_ROOM);
+                else
+                        act("Flames roar out from $n!",
+                            ch, NULL, NULL, TO_ROOM);
+        }
 
         else if (sn == skill_lookup("frost breath"))
                 act("An icy blast shoots forth from $n's mouth!",

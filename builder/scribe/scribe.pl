@@ -165,6 +165,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         sailing_ship ghost_ship sperm_whale merfolk typhoon
         kraken shore_crab forged_lava_worm lava_lizard fire_avatar tiger_shark mako_shark giant_clam terra_kan orca cave_bear
         penguin arctic_wolf ice_fish leopard_seal young_white_dragon frost_spirit_avatar arctic_fox
+        venomous_vampire gas_vampire vampire_mage vampire_leech great_wolf giant_bat bat_humanoid
 /;
 
 my %mob_act = (

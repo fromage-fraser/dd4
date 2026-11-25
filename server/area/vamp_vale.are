@@ -13,10 +13,12 @@ he seems to take little interest in your presence. Studying his face you see
 he is a man whose life long ago ceased to have personal purpose. He sports
 several ugly puncture wounds on his neck.
 ~
-2|4|64 0 0 S
+70 0 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 65
 #20601
 pale gypsy woman~
 the gypsy woman~
@@ -26,10 +28,13 @@ The woman's eyes are blank and unfocused and you are not sure if she has
 even registered your presence. She lies pale and unmoving on the ground before
 you and you notice her neck bears deep puncture wounds.
 ~
-2|64 256 0 S
+66 256 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
+MobHeight 165
+MobWeight 55
 #20602
 Ronan vampire~
 Ronan~
@@ -38,7 +43,7 @@ Ronan springs at you from his coffin.
 At your entrance Ronan springs from his undead slumber to the attack. He seems
 only half-human with his dripping canines and clawed hands.
 ~
-2|4|32|64 8|32|512|2048 -125 S
+102 2600 -125 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -51,6 +56,7 @@ mpecho {RAs Ronan's body is destroyed a giant black leech erupts from his skin!{
     mpmload 20626
 ~
 |
+< venomous_vampire~ rare~
 #20603
 Zelda witch~
 Zelda~
@@ -61,7 +67,7 @@ gloom that besets it. She busies herself healing and curing the injured who
 come here seeking her out, as well as studying herb and forest-lore. She
 smiles at your entrance, as if she had been waiting for you all day.
 ~
-2|64|512|1024 8|32|128|512|8192|16777216|536870912 1000 S
+1602 553657000 1000 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -89,7 +95,7 @@ give lace $n
 mpecho {WWith her dying breath Zelda whimpers, `I love you Morc...'{x
 ~
 |
-< reserved~ rare~
+< human~ rare~
 & 40 'teacher base'
 & 97 'armed combat knowledge'
 & 97 'defense knowledge'
@@ -126,6 +132,8 @@ mpecho {WWith her dying breath Zelda whimpers, `I love you Morc...'{x
 & 30 'psionic base'
 & 30 'witch base'
 & 30 'mage base'
+MobHeight 170
+MobWeight 65
 #20604
 great grey wolf large~
 the great wolf~
@@ -134,9 +142,9 @@ A large grey wolf defends the den.
 The huge grey wolf growls and snaps his jaws angrily when you look at him.
 You perceive desperate hunger in his expression.
 ~
-2|4|32|64 8|32|512|32768 0 S
+102 33288 0 S
 50 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
 >all_greet_prog 100~
 mpecho HooOoOoOowllll...
@@ -146,6 +154,7 @@ mpkill $n
 mpasound You hear an unearthly howling in the distance.
 ~
 |
+< great_wolf~ common~
 #20605
 great grey wolf large~
 the great wolf~
@@ -153,9 +162,9 @@ A large grey wolf roams the forest in search of food.
 ~
 This fearless beast silently patrols the vale in search of prey.
 ~
-4|32|64 32|512|32768 0 S
+100 33280 0 S
 50 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 2
 >all_greet_prog 100~
 mpecho HooOoOoOowllll...
@@ -164,6 +173,7 @@ mpecho HooOoOoOowllll...
 mpasound You hear an unearthly howling in the distance.
 ~
 |
+< great_wolf~ common~
 #20606
 wolf cub~
 the wolf cub~
@@ -171,9 +181,9 @@ A wolf cub is hiding in some straw.
 ~
 The tiny wolf cub tries to escape your notice by burrowing in some straw.
 ~
-2|64|128 32|512|32768|65536 0 S
+194 98816 0 S
 35 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
 >rand_prog 2~
 mpecho ::snuffle::
@@ -188,6 +198,10 @@ mpecho ::sniffle::
 hide
 ~
 |
+< wolf~ common~
+MobHeight 35
+MobWeight 8
+MobLength 70
 #20607
 female wolf~
 the female wolf~
@@ -196,10 +210,11 @@ A female wolf growls and prepares to defend her den.
 You have stumbled into the territory of a nursing female wolf. She prepares
 to defend her cubs with her life.
 ~
-2|32|64 32|512 0 S
+98 512 0 S
 45 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 2
+< wolf~ common~
 #20608
 Vincent vampire~
 Vincent~
@@ -210,7 +225,7 @@ become less human and more wolflike. Long claws protrude from his fingertips
 and he rends his chest in fury. His long canines drip foul juices and hot steam
 rises from his nostrils as his eyes fall at last upon you.
 ~
-2|32|64 8|32|512|2048 0 S
+98 2600 0 S
 56 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -223,6 +238,9 @@ mpecho {RAs Vincent's body is destroyed a giant black leech erupts from his skin
     mpmload 20626
 ~
 |
+< venomous_vampire~ elite~
+MobHeight 185
+MobWeight 85
 #20609
 wolf grey~
 the wolf~
@@ -230,10 +248,11 @@ A grey wolf moves through the shadows.
 ~
 The wolf slips quietly through the forest searching for food.
 ~
-64 32|512|32768 0 S
+64 33280 0 S
 45 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< wolf~ common~
 #20610
 wolf grey~
 the wolf~
@@ -241,10 +260,11 @@ A grey wolf moves through the shadows.
 ~
 The wolf slips quietly through the forest searching for food.
 ~
-64 32|512|32768 0 S
+64 33280 0 S
 45 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 2
+< wolf~ common~
 #20611
 gypsy man pale~
 the gypsy man~
@@ -254,10 +274,11 @@ The man pays you no attention as he wanders along his route. His glazed eyes
 bespeak unimaginable horrors experienced and there are deep puncture wounds
 in his neck.
 ~
-4|64 512 0 S
+68 512 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #20612
 gypsy woman pale~
 the gypsy woman~
@@ -267,10 +288,13 @@ The woman pays you no attention as she wanders along her route. Her glazed
 eyes bespeak unimaginable horrors experienced and there are deep puncture
 wounds in her neck.
 ~
-4|64 512 0 S
+68 512 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
+MobHeight 165
+MobWeight 55
 #20613
 rayke vampire slavemaster~
 Rayke~
@@ -279,7 +303,7 @@ Rayke the slavemaster rises at your intrusion.
 Furious at your unannounced entrance Rayke rises to his feet and grabs his
 bullwhip from its peg.
 ~
-2|32|64 8|32|512|2048 0 S
+98 2600 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -292,6 +316,9 @@ mpecho {RAs Rayke's body is destroyed a giant black leech erupts from his skin!{
     mpmload 20626
 ~
 |
+< vampire~ rare~
+MobHeight 180
+MobWeight 85
 #20614
 man gypsy pale~
 a gypsy man~
@@ -300,10 +327,11 @@ A pale man lies dying on a mattress.
 The man groans and mumbles through his fever,
 "there is no escape.. there is no way out.."
 ~
-2|64|128 256 0 S
+194 256 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #20615
 gypsy woman pale~
 a gypsy woman~
@@ -312,7 +340,7 @@ A pale woman rests on a straw mattress.
 The woman has dark circles around her eyes and is clearly exhausted. Thin
 rivulets of blood trickle from fresh puncture wounds in her throat.
 ~
-2|64 0 0 S
+66 0 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -321,6 +349,9 @@ mpecho A gypsy woman swoons and falls to the floor.
 sleep
 ~
 |
+< human~ common~
+MobHeight 165
+MobWeight 55
 #20616
 Ilyana vampire woman~
 Ilyana~
@@ -331,7 +362,7 @@ by night and returns to her underground grotto by day to dream her cold
 dreams and feed upon the lifeblood of her prey. She regards you with cold
 fury as green tendrils of smoke creep from the corners of her mouth.
 ~
-2|32|64 8|32|512|2048|65536 0 S
+98 68136 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -340,7 +371,9 @@ mpecho {RAs Ilyana's body is destroyed a giant black leech erupts from her skin!
     mpmload 20626
 ~
 |
-< reserved~ elite~
+< gas_vampire~ elite~
+MobHeight 170
+MobWeight 65
 #20617
 fire bonfire~
 the bonfire~
@@ -349,10 +382,11 @@ The fire burns with unrelenting fury.
 The huge bonfire towers above you, crackling and burning with an unnatural
 light. Such is the fury of its flame you feel it insanity to approach it any closer.
 ~
-2|64|9223372036854775808 2048 0 S
+9223372036854775874 2048 0 S
 200 0 0 0d0+0 0d0+0
-511 0
+128 0
 8 8 0
+< fire_hazard~ common~
 #20618
 man pale gypsy~
 the gypsy man~
@@ -362,10 +396,11 @@ The bleak expression on the face of this man along with the puncture marks
 on his neck lead you to believe he is in the thrall of a vampire. His suffering
 will end in death.
 ~
-2|64 0 0 S
+66 0 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #20619
 boy gypsy young~
 the gypsy boy~
@@ -374,10 +409,13 @@ A pale young boy lies motionless on the floor.
 The young boy stares at the wall unblinking, his face a mask. He is completely
 naked and you see that deep puncture wounds have been inflicted in his neck.
 ~
-2|64|128 256 0 S
+194 256 0 S
 37 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 140
+MobWeight 35
 #20620
 Gretzel vampire~
 Gretzel~
@@ -387,9 +425,9 @@ Gretzel is seven feet of lean muscle and focused anger. He howls with fury
 at your entrance into his lair and leaps from his coffin, ready to flay your
 flesh from your body and feast upon your blood.
 ~
-2|4|8|32|64 2048 -125 S
+102 2048 -125 S
 50 0 0 0d0+0 0d0+0
-0 0
+8589934592 0
 8 8 1
 >all_greet_prog 100~
 mpecho {RGretzel growls 'You have intruded. Perish.'{x
@@ -400,6 +438,9 @@ mpecho {RAs Gretzel's body is destroyed a giant black leech erupts from his skin
     mpmload 20626
 ~
 |
+< vampire~ rare~
+MobHeight 213
+MobWeight 110
 #20621
 morc man person~
 Morc~
@@ -412,7 +453,7 @@ retreated to the upper reaches of his treetop home and goes out only in
 necessity. He asks that you tell Zelda the white witch that he still thinks of
 her should your paths cross in the forest.
 ~
-2|64|512 8|32|128|512|8192|536870912 1000 S
+578 536879784 1000 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -459,6 +500,8 @@ mpgoto 20745
 mpecho {WWith his dying breath Morc gasps, `I love you Zelda...'{x
 ~
 |
+< human~ common~
+MobWeight 70
 #20622
 hungry horse~
 the hungry horse~
@@ -469,9 +512,9 @@ and defeated gaze you know it has wandered long in these evil woods. It regards
 you mournfully and with desperate hunger in its eyes. Now what do horses like
 to eat...?
 ~
-2|64|1024|131072 0 0 S
+131138 512 0 S
 45 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
 >rand_prog 2~
 if isfight($i)
@@ -512,6 +555,8 @@ mpecho The short dark-haired man waves as he fades away into nothing.
 mpgoto 9573
 ~
 |
+< horse~ common~
+MobWeight 300
 #20623
 feral cat~
 the feral cat~
@@ -521,10 +566,11 @@ This cat bears every resemblance to a scruffy example of the garden variety
 feline familiaris, yet any more than a casual glance reveals a creature
 thoroughly undomesticated in its habits.
 ~
-2|4|64|512 8|32|512 0 S
+582 40 0 S
 1 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 2
+< domestic_cat~ common~
 #20624
 zombie guard tall man~
 the zombie guardian~
@@ -533,7 +579,7 @@ The spectral form of a tall dark man stands motionless here.
 The apparition stands perhaps 6' 8". His clothes are tattered and
 torn and his eyes are devoid of both life and will.
 ~
-2|64 8|32|128|512|1048576 0 S
+66 1049256 0 S
 47 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -553,6 +599,8 @@ say You are not welcome here $n. I have been instructed to end your life.
 mpkill $n
 ~
 |
+< ghost~ common~
+MobHeight 203
 #20625
 Mavros vampire~
 Mavros~
@@ -561,7 +609,7 @@ Mavros the Vampyre Lord resides in this room.
 Mavros is a fearsome sight in his suit of black iron full-plate armour. He
 reeks of blood and death.
 ~
-2 8|32|128 0 S
+2 168 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -577,7 +625,7 @@ mpecho {RAs Mavros's body is destroyed a giant black leech erupts from his skin!
     mpmload 20626
 ~
 |
-< reserved~ elite~
+< vampire_mage~ elite~
 #20626
 leech~
 A foul black leech~
@@ -586,9 +634,9 @@ A foul black leech erupts from the body of the dead vampire!
 The leech is a hideous oozing black monstrosity whose only desire is to flee
 to somewhere safe and revive its host.
 ~
-4|128|4096 8|32|256|512|8388608 -1000 S
+4228 8389416 -1000 S
 50 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 0
 >rand_prog 2~
 if isfight($i)
@@ -598,6 +646,7 @@ mpecho $I wriggles and writhes on the ground before you.
 endif
 ~
 |
+< vampire_leech~ common~
 #20627
 guardian bat~
 the guardian bat~
@@ -606,10 +655,11 @@ A huge black bat flies through the air.
 You had no idea bats even grew this large. With a body as large as a small
 man's the demon bat falls upon you in a frenzy of screeching and flapping.
 ~
-32|64|128 8|32|512|524288 0 S
+224 552 0 S
 40 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 1
+< giant_bat~ common~
 #20628
 man bat man-bat~
 the Man-bat~
@@ -619,7 +669,7 @@ The hideous Man-bat stands rigidly at its post. Its job is to control entry
 to its Master's lair. It glares at you steadily, no flicker of emotion on its
 snouted face. Your move.
 ~
-2|64 8|32|512|524288 0 S
+66 552 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 0
@@ -635,6 +685,7 @@ mpjunk key
 say Correct $n. Proceed to my Master's chamber.
 ~
 |
+< bat_humanoid~ elite~
 #20629
 Faraq Vampire flubber~
 Faraq~
@@ -645,7 +696,7 @@ from the stories you'd heard told. He lies in his ostentatious gold coffin
 draped in nothing but a velvet cape. He seems not to be aware of your presence,
 you think you could slit his throat and end his life without even waking him up.
 ~
-2|64 8|32 -1000 S
+66 40 -1000 S
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -670,6 +721,9 @@ mpat 20742 mpforce flibber mpecho {WSuddenly, a huge flaming demon materializes 
 mpat 20742 mpforce flibber mpecho {RThe demon form of Faraq shrieks 'Fool! Did you think I could be vanquished so easily?'{x
 ~
 |
+< vampire~ common~
+MobHeight 160
+MobWeight 50
 #20630
 demon flibber ~
 the demon form of Faraq~
@@ -681,7 +735,7 @@ gaze. You perceive no capacity for mercy in his black and soulless eyes. In
 retaliation for daring to threaten his mortal host he has now bent his implacable
 will upon your utter destruction.
 ~
-4|32|64 8|32|512|2048|524288 -1000 S
+100 2600 -1000 S
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -690,6 +744,9 @@ mpecho {RThe demon form of Faraq shrieks 'Flee from my sanctuary or die!'{x
 mpkill $n
 ~
 |
+< fiery_demon~ boss~
+MobHeight 300
+MobWeight 300
 #20631
 wolf grey spy recruit~
 the spy recruit~
@@ -699,10 +756,11 @@ The wolf slips quietly through the forest searching for food. This wolf looks
 unusually intelligent and alert and moves its head about as if searching for
 something in the dark and ominous forest.
 ~
-64|4096 32|512|32768 0 S
+4160 33280 0 S
 50 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< wolf~ common~
 #0
 
 
@@ -770,8 +828,8 @@ claws~
 claws~
 The sharp claws of some beast have been hacked off and left here.~
 ~
-5 512 8192
-0~ 0~ 0~ 3~
+5 67109376 8192
+3~ 0~ 0~ 3~
 2 0 0
 #20606
 rawhide leggings skin~
@@ -1222,8 +1280,8 @@ clawed hand~
 a clawed hand~
 The clawed hand of some unfortunate creature lies on the ground.~
 ~
-5 0 8192
-0~ 0~ 0~ 3~
+5 67108864 8192
+3~ 0~ 0~ 3~
 5 0 0
 A
 24 -15
@@ -1577,8 +1635,8 @@ fangs~
 fangs~
 Some unfortunate creature has had its fangs ripped out.~
 ~
-5 16384 8192
-0~ 0~ 0~ 10~
+5 67125248 8192
+1~ 0~ 0~ 10~
 20 0 0
 E
 fangs~
@@ -3901,7 +3959,7 @@ D5
 0 -1 20701
 S
 #20701
-Inside a fissure.~
+Inside a fissure~
 It is cramped, cold and uncomfortable inside the rock fissure. It now leads
 directly down and it becomes more difficult to find footing.
 ~
@@ -4902,21 +4960,14 @@ S
 
 
 #SPECIALS
-M  20602 spec_poison            Ronan
 M  20603 spec_cast_adept        Zelda
 M  20604 spec_poison            the great wolf
 M  20605 spec_poison            the great wolf
-M  20608 spec_poison            Vincent
-M  20616 spec_breath_gas        Ilyana
 M  20617 spec_breath_fire       the bonfire
-M  20620 spec_vampire           Gretzel
 M  20621 spec_cast_cleric       Morc
 M  20622 spec_fido              the hungry horse
 M  20623 spec_fido              the feral cat
-M  20624 spec_cast_undead       the zombie guardian
-M  20625 spec_cast_undead       Mavros
 M  20628 spec_poison            the Man-bat
-M  20630 spec_demon             the demon form of Faraq
 S
 
 

@@ -5795,6 +5795,84 @@ const struct mob_type mob_table[MAX_MOB] =
                 45, 10, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 110
+        },
+        {
+                "venomous_vampire", "humanoid", "icon1", "icon2",
+                ACT_REGENERATOR | ACT_UNDEAD, 0,
+                PART_CLAWS | PART_FANGS,
+                0, RES_COLD | RES_ELECTRICITY | RES_PSYCHIC | RES_DARK, RES_HOLY | RES_WATER | RES_SILVER, RES_POISON | RES_SLEEP | RES_CHARM | RES_NONMAGIC | RES_CURSE,
+                0, 0, 0, 0,
+                175, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_vampire", "spec_poison", "",
+                0, {70, 30, 0},
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "gas_vampire", "humanoid", "icon1", "icon2",
+                ACT_REGENERATOR | ACT_UNDEAD, 0,
+                PART_FANGS,
+                0, RES_COLD | RES_ELECTRICITY | RES_PSYCHIC | RES_DARK, RES_HOLY | RES_WATER | RES_SILVER, RES_POISON | RES_SLEEP | RES_CHARM | RES_NONMAGIC | RES_CURSE,
+                0, 0, 0, 0,
+                175, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_vampire", "spec_breath_gas", "",
+                0, {70, 30, 0},
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "vampire_mage", "humanoid", "icon1", "icon2",
+                ACT_REGENERATOR | ACT_UNDEAD, 0,
+                PART_FANGS,
+                0, RES_COLD | RES_ELECTRICITY | RES_PSYCHIC | RES_DARK, RES_HOLY | RES_WATER | RES_SILVER, RES_POISON | RES_SLEEP | RES_CHARM | RES_NONMAGIC | RES_CURSE,
+                0, 0, 0, 0,
+                175, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_vampire", "spec_cast_undead", "",
+                0, {70, 30, 0},
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "vampire_leech", "limbless_invertebrate", "icon1", "icon2",
+                ACT_REGENERATOR | ACT_UNDEAD, 0,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_HEART | PART_HEAD | PART_HEART
+                    | PART_BRAINS | PART_GUTS | PART_EYE,
+                0, RES_COLD | RES_ELECTRICITY | RES_PSYCHIC | RES_DARK, RES_HOLY | RES_WATER | RES_SILVER, RES_POISON | RES_SLEEP | RES_CHARM | RES_NONMAGIC | RES_CURSE,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 8, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 100
+        },
+        {
+                "great_wolf", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_DETECT_HIDDEN,
+                PART_TAIL | PART_CLAWS | PART_FANGS | PART_PAWS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 85, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 180
+        },
+        {
+                "giant_bat", "winged_mammal", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 35, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "bat_humanoid", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                185, 85, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -7422,6 +7500,9 @@ static const CREATURE_TRAIT_CHANGE frozen_bird_head_traits[] =
 
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"great_wolf", "wolf", NULL, 0},
+        {"giant_bat", "bat", NULL, 0},
+        {"bat_humanoid", NULL, frozen_bird_head_traits, TRAIT_ITEMS(frozen_bird_head_traits)},
         {"penguin", NULL, frozen_bird_head_traits, TRAIT_ITEMS(frozen_bird_head_traits)},
         {"arctic_wolf", "wolf", NULL, 0},
         {"leopard_seal", "selkie_seal_form", NULL, 0},
