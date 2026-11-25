@@ -761,6 +761,13 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 {WNovember 2026{x
+- EMPTY leaves items you cannot drop in their containers.
+- Patron messages safely skip characters without player data.
+- The driftwood wand in Sahuagin Market now casts Identify with ZAP.
+- Shop sales give the seller the odd copper after bank loan repayment.
+- CLEAN respects the named pipe; PUSH rejects invalid directions.
+- AFK toggles off when repeated, and unearthed hoards clear their hints.
+- Correct hunger and sobriety messages and clarify several help topics.
 - Convert Frozen Lands mobs and add the White Witch's healer services.
 - Convert Pirate Isles mobs and repair key, equipment and captive details.
 - Convert Pirate Seas mobs and make the sunken treasure pay out in coins.
@@ -2177,7 +2184,7 @@ There are a number of ways to gain fame and it is generally only rewarded
 for acts of heroism or bravery.
 
 Fame can be gained by:
-    * Killing mobs 6 or levels higher than your own.
+    * Killing mobs 6 or more levels higher than your own.
     * By killing particularly famous or infamous creatures.
     * By completing quests.
     * As special reward from the Immortals.
@@ -3465,8 +3472,8 @@ WEATHER shows the current game weather.
 Syntax: pagelength
 Syntax: pagelength <<number>
 
-Pagelength without an argument sets the number of lines before page pause
-to the default of 100 lines.
+PAGELENGTH without an argument shows the current page length. The default
+is 100 lines.
 
 Pagelength with an argument sets the number of lines you wish to see on
 screen before page pausing.
@@ -3778,8 +3785,8 @@ Syntax: wimpy
 Syntax: wimpy <<number>
 
 WIMPY sets your wimpy value.  When your character takes damage that
-reduces your hit points below your wimpy value, you will automatically
-attempt to flee.
+reduces your hit points to or below your wimpy value, you will
+automatically attempt to flee if you are able. Set it to 0 to disable it.
 
 WIMPY with no argument sets your wimpy value to 20% of your maximum hit
 points.
@@ -3820,20 +3827,6 @@ equipment.
 
 BONUS INITIATE will increase the damage done by your initial attack on a mob
 or player.
-~
-
-0 WIMPY~
-Syntax: wimpy
-Syntax: wimpy <<number>
-
-WIMPY sets your wimpy value.  When your character takes damage that
-reduces your hit points below your wimpy value, you will automatically
-attempt to flee.
-
-WIMPY with no argument sets your wimpy value to 20% of your maximum hit
-points.
-
-Some monsters are wimpy.
 ~
 
 0 QUESTS~
@@ -4091,7 +4084,6 @@ the Temple Square in Midgaard, as well as others throughout the Domain.
 When you are hungry, EAT something. The baker in Midgaard sells pies,
 and other vendors are located throughout the Domain.
 
-FILL fills a drink container with liquid from a fountain.
 FILL fills a drink container with liquid from a fountain.
 ~
 
@@ -6307,7 +6299,7 @@ Syntax: deposit  <<amount> <<coin type>
 Syntax: deposit  all      <<coin type>
 Syntax: deposit  all
 Syntax: withdraw <<amount> <<coin type>
-Syntax: borrow <<amount> <<coin type>
+Syntax: borrow <<amount in copper>
 Syntax: vault
 Syntax: claim <<item>
 Syntax: claim <<item> <<container>
@@ -6426,8 +6418,9 @@ A chat channel which can be accessed only by GODs and DIRECTORs (IMMORTAL levels
 Syntax: quiet
 
 Toggles 'quiet mode' on and off.  When you are in quiet mode, you will not
-receive CHATs, INFOs, SHOUTs, MUSICs, NEWBIEs or AUCTIONs.  You will still hear
-characters SAYing things, and will receive TELLs.
+receive CHATs, INFOs, SHOUTs, MUSICs, NEWBIEs or AUCTIONs. You will still hear
+SAYs. Ordinary incoming TELLs and REPLYs are blocked; immortals can still
+reach you.
 
 If you CHAT when in quiet mode, quiet mode will automatically be turned
 off.
@@ -7470,7 +7463,8 @@ FORAGE for food makes them useful when feeling a bit peckish.
 0 'FORAGE'~
 
 This skill allows the user to find food amongst their natural surroundings.
-Note you need to be outside in appropriate terrain to be successful.
+Suitable terrain includes fields, forests, deserts, mountains, swamps and
+hills. The room can be indoors if its terrain is suitable.
 ~
 
 0 'TIGER FORM'~

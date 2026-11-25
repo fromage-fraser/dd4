@@ -1128,6 +1128,7 @@ void report_to_followers (int deity, char *message)
         {
                 if (d->connected == CON_PLAYING
                     && d->character
+                    && d->character->pcdata
                     && d->character->pcdata->deity_patron == deity)
                         send_to_char (message, d->character);
         }

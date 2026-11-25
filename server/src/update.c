@@ -1119,7 +1119,7 @@ void gain_exp(CHAR_DATA *ch, int gain)
                 if (ch->pcdata->fame < 0)
                 {
                         ch->exp = level_table[ch->level].exp_total - 1;
-                        send_to_char("You must have positive fame to level!\n\r", ch);
+                        send_to_char("You cannot level while your fame is negative!\n\r", ch);
                         return;
                 }
         }
@@ -2555,13 +2555,13 @@ void char_update(void)
                         if ((ch->pcdata->condition[COND_DRUNK] == 0) && (pre_gain_drunk > 0))
                                 send_to_char("You sober up.\n\r", ch);
 
-                        if (ch->pcdata->condition[COND_DRUNK] == 13)
+                        if (pre_gain_drunk > 13 && ch->pcdata->condition[COND_DRUNK] == 13)
                                 send_to_char("You are no longer inebriated.\n\r", ch);
 
-                        if (ch->pcdata->condition[COND_DRUNK] == 26)
+                        if (pre_gain_drunk > 26 && ch->pcdata->condition[COND_DRUNK] == 26)
                                 send_to_char("You are no longer dangerously drunk.\n\r", ch);
 
-                        if (ch->pcdata->condition[COND_DRUNK] == 39)
+                        if (pre_gain_drunk > 39 && ch->pcdata->condition[COND_DRUNK] == 39)
                                 send_to_char("You are no longer completely blind drunk.\n\r", ch);
 
                         for (gch = ch->in_room->people; gch; gch = gch->next_in_room)

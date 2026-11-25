@@ -1990,10 +1990,16 @@ void do_push (CHAR_DATA *ch, char *argument)
                 return;
         }
 
-        exit_dir = get_dir(arg2);
-        if (exit_dir < 0 || exit_dir > 5)
+        if (arg2[0] >= '0' && arg2[0] <= '5' && arg2[1] == '\0')
+                exit_dir = arg2[0] - '0';
+        else
+                for (exit_dir = DIR_NORTH; exit_dir <= DIR_DOWN; exit_dir++)
+                        if (!str_prefix(arg2, directions[exit_dir].name))
+                                break;
+
+        if (exit_dir > DIR_DOWN)
         {
-                bug("Do_move: bad push direction %d.", exit_dir);
+                send_to_char("That's not a direction!\n\r", ch);
                 return;
         }
 
