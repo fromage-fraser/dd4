@@ -761,6 +761,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 {WNovember 2026{x
+- Convert Vale mobs and repair horse reward and native weapon targeting.
 - EMPTY leaves items you cannot drop in their containers.
 - Patron messages safely skip characters without player data.
 - The driftwood wand in Sahuagin Market now casts Identify with ZAP.

@@ -13410,3 +13410,52 @@ existing script_controller profile with its individual WIZINVIS flag.
 The glacier rooms use titles without a trailing period. Current dd-gui
 therefore requests 18745_on_top_of_the_glacier.png and the equivalent
 18746 filename. Copy the existing paintings under those names.
+
+Vale of the Vampyre
+
+Venomous_vampire adds anatomical claws and uses 70% spec_vampire and
+30% spec_poison. Gas_vampire uses 70% vampire and 30% gas breath.
+Vampire_mage uses 70% vampire and 30% undead casting. Those are complete
+selection percentages for one special opportunity. Clear an old individual
+special when the intended behaviour now comes from the archetype.
+
+Vampire_leech is an undead symbiote with the ordinary vampire defences
+and regeneration, but no head, eyes, ordinary limbs or heart. It is
+100 cm long and 8 kg. It has no active vampire gaze or suck special.
+The Vale's six host death scripts create it. Its current scripts make
+it flee and wriggle; they do not reconstruct a dead host.
+
+Great_wolf defaults to 100 cm shoulder height, 180 cm body length and
+85 kg, Medium. The Vale's two great wolves retain their individual
+poison special and existing attached fangs. The small cub uses wolf
+with height 35, length 70 and weight 8. Keep the local spawn caps.
+
+Giant_bat is a living bat, 150 cm body length, 35 kg and Large.
+Bat_humanoid has a human-shaped body with hands, voice, wings and
+fangs, at 185 cm and 85 kg. The Man-bat keeps its individual poison
+special and password. Neither profile gets vampire physiology.
+
+The spectral guardian uses ghost and keeps its herald script and rags.
+Faraq uses ordinary vampire in the first stage and fiery_demon in the
+second. His two-stage script loads the original gear and moves the
+existing demon. Preserve its flibber and flubber keywords.
+
+Native claws 20605 and clawed hand 20639 are BODY_PART weapons with
+value[0] 3 for arms. Fangs 20666 use value[0] 1 for the head.
+Keep damage, attack verbs and modifiers when setting that category.
+The existing wolf fangs already use the head category. The conjured
+demon weapons and armour remain ordinary loot with their original slots.
+
+Zelda remains a teacher with base 40 and her full lesson list, plus
+spec_cast_adept. Morc keeps his cleric casting and the lace/girdle quest.
+The cursed horse uses individual Infrared to give its reward in the
+dark forest, and its empty Practice marker is removed. It keeps
+mountability and its existing feeding special. Gretzel loses the
+accidental random-questmaster marker.
+
+The inanimate fire keeps its fire special and Unkillable status.
+Headless fire sources use a flame message; ordinary heads retain the
+existing open-maw message. The same spell, level and target are used.
+
+The room title Inside a fissure has no trailing period. dd-gui requests
+custom_rooms/20701_inside_a_fissure.png for it.
