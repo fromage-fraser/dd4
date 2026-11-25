@@ -5873,6 +5873,83 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "",
                 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "dreadguard", "humanoid", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                200, 120, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_breath_gas", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "poison_floor", "environmental_hazard", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_poison_contact", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 183
+        },
+        {
+                "gordaron", "humanoid", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                190, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "grottobeast", "quadrupedal_hybrid", "icon1", "icon2",
+                0, 0,
+                BODY_NO_SPEECH | PART_TAIL | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS | PART_TAILATTACK, 0, 0, 0,
+                0, 0, 0, 0,
+                180, 700, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_poison_bite", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 400
+        },
+        {
+                "giant_millipede", "myriapod", "icon1", "icon2",
+                0, 0,
+                PART_HUSK_SHELL,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 100, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_poison_contact", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "ahrganite", "amorphous_organism", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_cast_mage", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "bleeder", "quadrupedal_hybrid", "icon1", "icon2",
+                0, 0,
+                BODY_NO_SPEECH | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                80, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_cast_psionicist", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 240
         }
 };
 
@@ -7498,8 +7575,15 @@ static const CREATURE_TRAIT_CHANGE frozen_bird_head_traits[] =
         {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE fanged_beast_trait_changes[] =
+{
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"grottobeast", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"bleeder", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
         {"great_wolf", "wolf", NULL, 0},
         {"giant_bat", "bat", NULL, 0},
         {"bat_humanoid", NULL, frozen_bird_head_traits, TRAIT_ITEMS(frozen_bird_head_traits)},

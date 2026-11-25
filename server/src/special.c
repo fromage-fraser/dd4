@@ -116,6 +116,7 @@ DECLARE_SPEC_FUN( spec_dracolich            );
 DECLARE_SPEC_FUN( spec_guard                );
 DECLARE_SPEC_FUN( spec_janitor              );
 DECLARE_SPEC_FUN( spec_poison               );
+DECLARE_SPEC_FUN( spec_poison_contact       );
 DECLARE_SPEC_FUN( spec_bear                 );
 DECLARE_SPEC_FUN( spec_elephant             );
 DECLARE_SPEC_FUN( spec_constrictor          );
@@ -267,6 +268,7 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_dracolich"))            return spec_dracolich;
         if (!str_cmp(name, "spec_janitor"))              return spec_janitor;
         if (!str_cmp(name, "spec_poison"))               return spec_poison;
+        if (!str_cmp(name, "spec_poison_contact"))       return spec_poison_contact;
         if (!str_cmp(name, "spec_bear"))                 return spec_bear;
         if (!str_cmp(name, "spec_elephant"))             return spec_elephant;
         if (!str_cmp(name, "spec_constrictor"))          return spec_constrictor;
@@ -423,6 +425,7 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_guard) return "spec_guard";
         if (special == spec_janitor) return "spec_janitor";
         if (special == spec_poison) return "spec_poison";
+        if (special == spec_poison_contact) return "spec_poison_contact";
         if (special == spec_bear) return "spec_bear";
         if (special == spec_elephant) return "spec_elephant";
         if (special == spec_constrictor) return "spec_constrictor";
@@ -543,8 +546,13 @@ bool dragon( CHAR_DATA *ch, char *spell_name )
                 return FALSE;
 
         if (sn == skill_lookup("acid breath"))
-                act("$n rears and a stream of acid spurts from $s mouth!",
-                    ch, NULL, NULL, TO_ROOM);
+        {
+                if (HAS_HEAD(ch))
+                        act("$n rears and a stream of acid spurts from $s mouth!",
+                            ch, NULL, NULL, TO_ROOM);
+                else
+                        act("A stream of acid surges from $n!", ch, NULL, NULL, TO_ROOM);
+        }
 
         else if (sn == skill_lookup("fire breath"))
         {
@@ -557,8 +565,13 @@ bool dragon( CHAR_DATA *ch, char *spell_name )
         }
 
         else if (sn == skill_lookup("frost breath"))
-                act("An icy blast shoots forth from $n's mouth!",
-                    ch, NULL, NULL, TO_ROOM);
+        {
+                if (HAS_HEAD(ch))
+                        act("An icy blast shoots forth from $n's mouth!",
+                            ch, NULL, NULL, TO_ROOM);
+                else
+                        act("An icy blast shoots forth from $n!", ch, NULL, NULL, TO_ROOM);
+        }
 
         else if (sn == skill_lookup("lightning breath"))
         {
@@ -570,8 +583,12 @@ bool dragon( CHAR_DATA *ch, char *spell_name )
 
         else if (sn == skill_lookup("steam breath"))
         {
-                act("{CSuperheated steam blasts from $n's mouth!{x",
-                    ch, NULL, NULL, TO_ROOM);
+                if (HAS_HEAD(ch))
+                        act("{CSuperheated steam blasts from $n's mouth!{x",
+                            ch, NULL, NULL, TO_ROOM);
+                else
+                        act("{CSuperheated steam blasts from $n!{x",
+                            ch, NULL, NULL, TO_ROOM);
 
                 sound_emit_room(ch->in_room,
                                 "sfx.spell.cast.steam_breath",
@@ -3115,14 +3132,22 @@ bool spec_janitor( CHAR_DATA *ch )
 }
 
 
-static bool poison_contact_special(CHAR_DATA *ch, bool palm)
+enum poison_contact_kind
+{
+        POISON_CONTACT_BITE,
+        POISON_CONTACT_PALM,
+        POISON_CONTACT_SURFACE
+};
+
+static bool poison_contact_special(CHAR_DATA *ch, enum poison_contact_kind kind)
 {
         CHAR_DATA *victim;
 
         if (!ch || !ch->in_room)
                 return FALSE;
 
-        if (palm && (!HAS_ARMS(ch) || IS_AFFECTED(ch, AFF_ARM_TRAUMA)))
+        if (kind == POISON_CONTACT_PALM
+        && (!HAS_ARMS(ch) || IS_AFFECTED(ch, AFF_ARM_TRAUMA)))
                 return FALSE;
 
         for (victim = ch->in_room->people; victim; victim = victim->next_in_room)
@@ -3137,11 +3162,17 @@ static bool poison_contact_special(CHAR_DATA *ch, bool palm)
         if (!victim)
                 return FALSE;
 
-        if (palm)
+        if (kind == POISON_CONTACT_PALM)
         {
                 act("You strike $N with your poisoned palm!", ch, NULL, victim, TO_CHAR);
                 act("$n strikes you with a poisoned palm!", ch, NULL, victim, TO_VICT);
                 act("$n strikes $N with a poisoned palm!", ch, NULL, victim, TO_NOTVICT);
+        }
+        else if (kind == POISON_CONTACT_SURFACE)
+        {
+                act("Contact with you exposes $N to poison.", ch, NULL, victim, TO_CHAR);
+                act("Contact with $n exposes you to poison!", ch, NULL, victim, TO_VICT);
+                act("Contact with $n exposes $N to poison.", ch, NULL, victim, TO_NOTVICT);
         }
         else if (creature_trait_value(ch, CREATURE_TRAIT_NATURAL_ATTACK_TYPE) == 16)
         {
@@ -3162,7 +3193,13 @@ static bool poison_contact_special(CHAR_DATA *ch, bool palm)
 
 bool spec_poison(CHAR_DATA *ch)
 {
-        return poison_contact_special(ch, FALSE);
+        return poison_contact_special(ch, POISON_CONTACT_BITE);
+}
+
+/* A poisonous surface can make contact without a mouth or hands. */
+bool spec_poison_contact(CHAR_DATA *ch)
+{
+        return poison_contact_special(ch, POISON_CONTACT_SURFACE);
 }
 
 
@@ -3319,7 +3356,7 @@ bool spec_poison_bite(CHAR_DATA *ch)
 
 bool spec_poison_palm(CHAR_DATA *ch)
 {
-        return poison_contact_special(ch, TRUE);
+        return poison_contact_special(ch, POISON_CONTACT_PALM);
 }
 
 

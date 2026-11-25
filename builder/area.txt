@@ -3738,15 +3738,18 @@ has an exit in the reverse direction, that exit should go back to room 1.
 This doesn't prevent one-way exits; room 2 doesn't HAVE to have an exit in
 the reverse direction.
 
-For the 'R' command, the second number is the vnum of a room.  The third
-number is a door number.  When this command, the doors from 0 to the
-indicated door number are shuffled.  The room will still have the same exits
-leading to the same other rooms as before, but the directions will be
-different.  Thus, a door number of 4 makes a two-dimensional maze room; a
-door number of 6 makes a three-dimensional maze room.
+For the 'R' command, the second number is the room vnum and the third
+is a direction count. Positive counts shuffle slots zero through count
+minus one, including empty slots. Four covers north, east, south and west;
+six includes up and down. Existing positive behaviour is unchanged.
 
-Use of both the 'D' and 'R' commands on the same room will yield
-unpredictable results.
+A negative count, from -1 to -6, shuffles only occupied slots in that
+range. R 1 13200 -4 keeps east/south/west positions and absent north,
+while shuffling the three destinations. Zero leaves the exits alone.
+
+D resets follow their originally declared door objects after an R shuffle.
+Set closed or locked states normally. Shuffling one room does not rewrite
+its neighbours' return exits. Check the intended one-way or return route.
 
 Any line (except an 'S' line) may have a comment at the end.
 
@@ -13459,3 +13462,57 @@ existing open-maw message. The same spell, level and target are used.
 
 The room title Inside a fissure has no trailing period. dd-gui requests
 custom_rooms/20701_inside_a_fissure.png for it.
+
+The Three Trials
+
+Dreadguard is an unidentified nonhuman humanoid, 200 cm and 120 kg,
+with gas breath. Gordaron is a living humanoid, 190 cm and 100 kg;
+a heavier individual can override weight to 125. Neither profile
+invents a human family identity or a racial resistance.
+
+Poison_floor is an environmental hazard with no head, eyes, limbs,
+heart, speech or corpse. It inherits mindless, soulless and inorganic
+physiology and the usual hazard immunities. Its edge is 183 cm, rounded
+from six feet. Keep height and weight unspecified, and keep the
+encounter's level, aggression and placement. The profile does not
+supply Unkillable, No Fight or No Experience.
+
+Spec_poison_contact uses the existing poison special's target checks,
+rolls, level and Venom spell. Its messages describe contact rather than
+a bite. It needs no head or arm. Use it for poisonous surfaces or
+secretions. Real fangs can instead use spec_poison_bite, which checks
+the head, trauma and usable fangs.
+
+Grottobeast and Bleeder use quadrupedal_hybrid. Grottobeast has claws,
+fangs and a tail: height 180, length 400, weight 700, Large, with an
+anatomical poison bite. Bleeder has fangs and psionic casting: height
+80, length 240, weight 100, Medium. Heights are at the shoulder.
+Head trauma disables their fangs; healthy claws and tails remain
+usable. These are ordinary attack choices, not extra attacks.
+
+Giant_millipede uses myriapod with many legs and a plated husk, length
+300 and weight 100, Large. It retains poison as contact secretion.
+Ahrganite is an amorphous mage with unknown measurements. Mutable
+anatomy does not remove its mind or establish pain insensitivity.
+
+The Inquisitor uses the speaking ghost and its normal phase rules.
+The Dread uses mysterious_being, with individual size 1 (Medium) and
+unknown measurements. Its mind and full breath repertoire remain.
+Headless acid, frost and steam sources have suitable messages;
+headed sources retain the original messages and spell effects.
+
+Only the Cambion and Grottobeast are Elite. The other sixteen remain
+Common. Spawn keeps individual mage casting and Cambion keeps its
+individual undead-caster list as a living cambion. An individual
+special set replaces the archetype's whole active set.
+
+A negative random-exit count shuffles only occupied slots. Use
+rnd -4 in Scribe or R 1 <room-vnum> -4 in an area file for the
+existing cardinal exits. Absent directions remain absent. Positive
+counts and 2d/3d keep their old behaviour. Normal D resets follow
+the declared door objects after a shuffle. The Three Trials uses
+this mode for three choices and explicitly closes all three doors.
+
+Preserve shortsword 13187 as both a weapon and the grotto gate key,
+the Freebooter's copy, Jammer's complete greeting and self-purge,
+the reward objects, maze layout, authored flags and neutral sexes.

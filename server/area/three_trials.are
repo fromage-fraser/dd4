@@ -13,20 +13,22 @@ A Spectral Inquisitor is accusing someone of something...
 The Inquisitor looks at you - Heretic!!
 Then it says something in Spanish.
 ~
-32|64 2|8|32 -250 S
+96 42 -250 S
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< ghost~ common~
 #13101
 Assassin~
 A Multiplanar Assassin~
 ~
 This assassin is a real professional.  Almost invisible.
 ~
-2|32|64|128 2|8|32|512|32768|65536 -300 S
+226 98858 -300 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< human~ common~
 #13102
 Dreadguard guard~
 the Dreadguard~
@@ -36,10 +38,11 @@ Foolish Mortal - you underestimate the power of the Dreadking!
 Die foolishly then.  These creatures are not human - you don't have a clue
 as to what they are!
 ~
-4|64 8|32 0 S
+68 40 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dreadguard~ common~
 #13103
 Raider~
 A Raider~
@@ -47,10 +50,11 @@ A Raider stands here - watch out!
 ~
 The Raider is pausing before its next kill - you?
 ~
-4|64 8|32|512|32768|65536 -250 S
+68 98856 -250 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< human~ common~
 #13104
 Fanatic~
 the Fanatic~
@@ -58,10 +62,11 @@ The Fanatic sees you,  screams and attacks.
 ~
 The Fanatic has a look of terror on its face.
 ~
-32|64 32|512 -100 S
+96 544 -100 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< human~ common~
 #13105
 Demonspawn spawn~
 the Spawn~
@@ -69,28 +74,31 @@ The Demonspawn stands here.  You had better leave...
 ~
 The Demonspawn looks back at you!
 ~
-2|64 32|512 -350 S
+66 544 -350 S
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< demon~ common~
 #13106
 black square~
 The Black Square~
 ~
 ~
-2|32|64 2|8|32|32768|65536 0 S
+98 98346 0 S
 100 0 0 0d0+0 0d0+0
-127|256 0
+0 0
 8 8 0
+< poison_floor~ common~
 #13107
 white square~
 The White Square~
 ~
 ~
-2|32|64 2|8|32|32768|65536 0 S
+98 98346 0 S
 100 0 0 0d0+0 0d0+0
-127|256 0
+0 0
 8 8 0
+< poison_floor~ common~
 #13108
 Cambion~
 the Cambion~
@@ -100,10 +108,11 @@ The cold,  malevolent stare send shivers through your spine.  Better get
 ready...
 This thing reeks of evil.
 ~
-2|4|32|64 8|32|512 -750 S
+102 552 -750 S
 60 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< cambion~ elite~
 #13185
 Visigoth goth visi~
 the Gordaron Visigoth~
@@ -111,10 +120,11 @@ The Gordaron Visigoth wants to swing his axe at you...
 ~
 This alien goth is obviously insane - HOMICIDALLY!
 ~
-4|32|64 8|32|512 0 S
+100 552 0 S
 49 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< gordaron~ common~
 #13186
 freebooter free booter Gordaron~
 the Gordaron Freebooter~
@@ -123,10 +133,12 @@ A Gordaron Freebooter is loitering here.
 The Freebooter looks at you,  appraising your items...
 This race must be pretty money hungry...
 ~
-4|64|128 8|32|512|32768|65536 -125 S
+196 98856 -125 S
 55 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< gordaron~ common~
+MobWeight 125
 #13187
 grotto beast~
 the Grottobeast~
@@ -137,20 +149,23 @@ differing shades and hues of light.  Its huge ugly head has two rows of
 wickedly razorlike teeth.  Its claws could rend adamantium and its tail
 could smash a house in.
 ~
-2|32|64 8|32 -900 S
+98 40 -900 S
 58 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< grottobeast~ elite~
 #13188
 Dread~
 the Dread~
 ~
 You can't kill this - let alone stare at it!
 ~
-2|32|64 2|8|32|512|32768|65536 0 S
+98 98858 0 S
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< mysterious_being~ common~
+MobSize 1
 #13189
 Yagnid~
 the Yagnid~
@@ -159,10 +174,11 @@ The Yagnid is crawling around here, feeding on moss.
 Gigantic member of the millipede family is rather harmless - I wouldn't
 provoke it though...
 ~
-2|4|64 8|32|512 0 S
+70 552 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< giant_millipede~ common~
 #13190
 Ahrganite~
 the Ahrganite~
@@ -170,10 +186,11 @@ The Ahrganite is visiting this plane of existence...
 ~
 This creature has no stable form to look at!
 ~
-4|64|128 8|32|128|65536 0 S
+196 65704 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< ahrganite~ common~
 #13191
 Bleeder~
 the Bleeder~
@@ -183,10 +200,11 @@ The Bleeder is endowed with some very large,  sharp teeth.  A green, slimy
 body with four short legs and a long neck are somewhat offset by those
 teeth...
 ~
-4|64|128 8|32|512 -100 S
+196 552 -100 S
 57 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< bleeder~ common~
 #13192
 Janitor~
 the Janitor~
@@ -195,10 +213,11 @@ The Janitor is here cleaning up the mess...
 The Janitor looks back at you!
 Better be a tidy adventurer...
 ~
-64|128|512 8|32|512 0 S
+704 552 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #13193
 Jammer Avatar~
 Jammer's Avatar~
@@ -207,7 +226,7 @@ This guy has long hair,  is dressed in leathers and has a guitar strapped
 to his back.  He doesn't have the Marshall stack floating behind him
 though...
 ~
-2|64 8|32|128|512|8192 1000 S
+66 8872 1000 S
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -227,6 +246,7 @@ mppurge $i
 endif
 ~
 |
+< humanoid_avatar~ common~
 #0
 #OBJECTS
 #13100
@@ -2799,7 +2819,10 @@ R 1 13193 4             ; Randomize The Maze of despair
 *
 M 1 13187 1 13199                     the Grottobeast to The grotto
 G 1 13187 100
-R 1 13200 3             ; Randomize The Final Test
+R 1 13200 -4            ; Shuffle the three existing choice doors
+D 1 13200 1 1           ; Close the east choice
+D 1 13200 2 1           ; Close the south choice
+D 1 13200 3 1           ; Close the west choice
 *
 M 1 13188 2 13202                      the Dread to A dead end
 *
@@ -2818,7 +2841,7 @@ M 1 13186 1 13192                      the Freebooter to The Maze of despair
 E 1 13188 100 5
 E 1 13187 100 16
 *
-M 1 13185 1 13190                      the Visigoth to The Maze of despair
+M 1 13185 2 13190                      the Visigoth to The Maze of despair
 E 1 13186 100 5
 E 1 13185 100 16
 *
@@ -2839,20 +2862,13 @@ S
 
 
 #SPECIALS
-M  13101 spec_poison                    An Assassin
-M  13102 spec_breath_gas                        the Dreadguard
-M  13103 spec_poison                    A Raider
+M  13101 spec_poison_contact                    An Assassin
+M  13103 spec_poison_contact                    A Raider
 M  13104 spec_cast_cleric                       the Fanatic
 M  13105 spec_cast_mage                 the Spawn
-M  13106 spec_poison                    The Black Square
-M  13107 spec_poison                    The White Square
 M  13108 spec_cast_undead                       the Cambion
 M  13186 spec_thief                     the Freebooter
-M  13187 spec_poison                       the Grottobeast
 M  13188 spec_breath_any                        the Dread
-M  13189 spec_poison                    the Yagnid
-M  13190 spec_cast_mage                 the Ahrganite
-M  13191 spec_cast_psionicist                   the Bleeder
 M  13192 spec_janitor                   the Janitor
 S
 
