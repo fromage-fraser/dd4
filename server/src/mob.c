@@ -1419,18 +1419,13 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "titan", "humanoid", "icon1", "icon2",
-                0, 0,
-                0, 0,
-                0, 0, 0,
+                0, 0, BODY_HUGE, 0,
+                RES_MAGIC, 0, RES_NONMAGIC,
                 0, 0, 0, 0,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
-                "", "", "",
-                0,
-                MOB_SPECIAL_CHANCES_AUTO,
-                GHOST_PHASE_NONE,
-                CREATURE_FAMILY_TITAN,
-                MOB_TEMPLATE_UNSET
+                760, 9000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_mage", "", "",
+                10, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_TITAN, MOB_TEMPLATE_UNSET
         },
         {
                 "human", "humanoid", "icon1", "icon2",
@@ -5950,6 +5945,36 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_cast_psionicist", "", "",
                 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 240
+        },
+        {
+                "three_headed_dragon", "dragon", "icon1", "icon2",
+                0, AFF_FLYING, PART_MANY_HEAD | BODY_HUGE, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                400, 6000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_any", "", "",
+                5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 2400
+        },
+        {
+                "medusa", "humanoid", "icon1", "icon2",
+                0, 0, PART_FANGS, PART_FANGS,
+                0, 0, 0,
+                0, 0, 0, 0,
+                205, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_stiffening_gaze", "spec_medusa_snake_bite", "",
+                5, {60, 40, 0}, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "acid_worm", "limbless_invertebrate", "icon1", "icon2",
+                0, 0, BODY_HUGE | PART_FANGS, PART_FANGS,
+                0, 0, RES_ACID,
+                0, 0, 0, 0,
+                100, 4000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_acid_anatomical", "", "",
+                5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 800
         }
 };
 
@@ -7580,8 +7605,17 @@ static const CREATURE_TRAIT_CHANGE fanged_beast_trait_changes[] =
         {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE titan_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
+};
+
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"titan", NULL, titan_traits, TRAIT_ITEMS(titan_traits)},
+        {"three_headed_dragon", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
+        {"medusa", NULL, marine_armour_5_head_traits, TRAIT_ITEMS(marine_armour_5_head_traits)},
+        {"acid_worm", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
         {"grottobeast", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
         {"bleeder", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
         {"great_wolf", "wolf", NULL, 0},

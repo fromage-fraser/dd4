@@ -2,9 +2,9 @@ DRAGON'S DOMAIN
 SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
-Edition: 25 November 2026
-Based on master 62ad298311d1f6cac78250fad73eb66ce1b32eef (PR #1020),
-with the accompanying Three Trials changes.
+Edition: 26 November 2026
+Based on master d65d020cb657a7b959c375f1064a9bbb03c41f31 (PR #1021),
+with the accompanying Portal changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,8 +16,8 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 40 bodies, 469 archetypes, 60 internal traits
-and 142 Scribe special names. Earlier area notes sometimes record the
+The current tables contain 40 bodies, 472 archetypes, 60 internal traits
+and 144 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
 The server code is the final authority. This is a dated guide, not a promise
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 469, so this single example would make 470.
+guide's checked revision it is 472, so this single example would make 473.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 469.
+valid index. This example would receive index 472.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 469;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 472;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 469; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 472; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-40 body rows, 469 archetype rows, 60 internal traits and 142 Scribe
+40 body rows, 472 archetype rows, 60 internal traits and 144 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -6598,6 +6598,49 @@ Preserve shortsword 13187 as both a weapon and the grotto gate key,
 the Freebooter's copy, Jammer's complete greeting and self-purge,
 the reward objects, maze layout, authored flags and neutral sexes.
 
+The Portal
+
+Use titan for a living Titan. It supplies mage casting, resistance to
+magic, immunity to mundane weapons and natural armour -10. Its height
+is 760 cm and its mass is 9,000 kg. The Portal titan has its own set
+of specials, with 70% acid breath and 30% mage casting. An individual
+set replaces the profile's entire set.
+
+Three_headed_dragon inherits the dragon's wings, scales, claws, fangs
+and tail. It flies, has many heads, and uses spec_breath_any. Shoulder
+height is 400 cm, length 2,400 cm and weight 6,000 kg. Natural armour
+is -20. Both dragons share the same profile. The titan and dragons
+are Large and have HUGE. Titan adds 10 percentage points to profile XP.
+Three_headed_dragon, medusa and acid_worm each add 5.
+
+Use medusa for a living humanoid with snakes for hair. Height is
+205 cm including the snakes, weight is 70 kg and natural armour is -5.
+By default she chooses spec_stiffening_gaze 60% of the time and
+spec_medusa_snake_bite 40%. The Portal individual uses 70% psionic
+casting, 20% gaze and 10% snake bite. Only one slot is selected each
+time. Each power still makes its own attempt roll.
+
+The gaze uses the basilisk's existing rules. An awake opponent who
+can see the creature's eyes can be affected even if the opponent is
+invisible. In eligible combat the gaze has a 25% attempt chance and
+allows a Magic/Hold save. A failed save gives ordinary Slow and -1
+Dexterity until the next long tick. Existing Slow prevents a second
+application. SAFE blocks the gaze even during a fight. All thirteen
+Portal creature rooms retain SAFE. The medusa can use her gaze if
+she fights elsewhere in a room that permits it. The snakes use the
+ordinary bite poison roll and Venom spell. Head injury disables their
+bite.
+
+Acid_worm is a living, limbless invertebrate with fangs and acid
+immunity. Use 100 cm for its diameter in the height field, 800 cm for
+length and 4,000 kg for weight. It is Large and HUGE. Its anatomical
+acid breath needs a usable head. Head trauma also disables its fangs.
+
+The five guardians are Elite. The eight acid-worms, old halfling
+and seven invisible script controllers are Common. The old halfling
+uses an individual weight of 25 kg. The actual script programs,
+placements and quest items still determine how the puzzles work.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -6651,7 +6694,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 469 current table rows follow, grouped by body. Numeric IDs are for
+All 472 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -6667,7 +6710,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (141)
+HUMANOID (142)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -6738,9 +6781,9 @@ HUMANOID (141)
   [ 26] giant: h/w/l ? / ? / ?; Small; family giant
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
-  [ 27] titan: h/w/l ? / ? / ?; Small; family titan
-        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
-        specials none; policy auto
+  [ 27] titan: h/w/l 760 / 9000 / ?; Large; family titan
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_cast_mage; policy auto
   [ 28] human: h/w/l 175 / 75 / ?; Medium; family human
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
@@ -7092,8 +7135,11 @@ HUMANOID (141)
   [464] gordaron: h/w/l 190 / 100 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [470] medusa: h/w/l 205 / 70 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_stiffening_gaze, 2:spec_medusa_snake_bite; policy 60/40/0
 
-DRAGON (21)
+DRAGON (22)
 ------------
   [ 16] dracolich: h/w/l ? / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7158,6 +7204,9 @@ DRAGON (21)
   [452] young_white_dragon: h/w/l 120 / 400 / 550; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_frost_anatomical; policy auto
+  [469] three_headed_dragon: h/w/l 400 / 6000 / 2400; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_breath_any; policy auto
 
 QUADRUPEDAL_REPTILE (8)
 -------------------------
@@ -7516,7 +7565,7 @@ HEAD_ONLY (5)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_any_anatomical; policy auto
 
-LIMBLESS_INVERTEBRATE (15)
+LIMBLESS_INVERTEBRATE (16)
 ---------------------------
   [ 48] rock_worm: h/w/l 150 / 8000 / 800; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7563,6 +7612,9 @@ LIMBLESS_INVERTEBRATE (15)
   [458] vampire_leech: h/w/l ? / 8 / 100; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [471] acid_worm: h/w/l 100 / 4000 / 800; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_breath_acid_anatomical; policy auto
 
 LIMBLESS_CONSTRUCT (10)
 ------------------------
@@ -8984,6 +9036,7 @@ Check anatomy, safety, effect cleanup, selection percentages and XP.
     spec_lurker_wrap
     spec_manticore
     spec_mast_vampire
+    spec_medusa_snake_bite
     spec_mimic
     spec_mummy
     spec_myconid_spores
@@ -9016,6 +9069,7 @@ Check anatomy, safety, effect cleanup, selection percentages and XP.
     spec_spectre
     spec_sprite
     spec_squid
+    spec_stiffening_gaze
     spec_succubus_fascination
     spec_superwimpy
     spec_swallow
@@ -9062,8 +9116,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/62ad298311d1f6cac78250fad73eb66ce1b32eef
-  Base PR1020 plus the accompanying Three Trials patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/d65d020cb657a7b959c375f1064a9bbb03c41f31
+  Base PR1021 plus the accompanying Portal patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -9073,8 +9127,8 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The verified conversion covers 106/153 areas (69.3%) and 1,870/4,131
-definitions (45.3%). After a verified Three Trials merge the totals will
-be 107/153 (69.9%) and 1,888/4,131 (45.7%).
+The verified conversion covers 107/153 areas (69.9%) and 1,888/4,131
+definitions (45.7%). After a verified Portal merge the totals will be
+108/153 (70.6%) and 1,909/4,131 (46.2%).
 
 END OF GUIDE

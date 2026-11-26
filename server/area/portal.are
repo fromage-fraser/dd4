@@ -21,6 +21,7 @@ if ispc($n)
  endif
 ~
 |
+< script_controller~ common~
 #14801
 _mob_prog2 drynax~
 _MOBPROG2 drynax~
@@ -40,6 +41,7 @@ if ispc($n)
  endif
 ~
 |
+< script_controller~ common~
 #14802
 _mobprog3 dragontail~
 _mobprog3 dragons tail~
@@ -59,6 +61,7 @@ if ispc($n)
 endif
 ~
 |
+< script_controller~ common~
 #14803
 _mob_prog4 ~
 _mob_prog4 rod in hole~
@@ -71,6 +74,7 @@ possibly have to transfer them to another room.
 1 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< script_controller~ common~
 #14804
 mob_prog5~
 mob_prog5 transfer for egg~
@@ -83,6 +87,7 @@ This guy will transfer them to the first bridge when given the egg
 1 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< script_controller~ common~
 #14805
 titan statue~
 the titan~
@@ -94,6 +99,7 @@ A huge titan faces you. Its eyes, searing blue, pierce your soul.
 83 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< titan~ elite~
 #14806
 statue hydra~
 the hydra~
@@ -106,6 +112,7 @@ of breath attacks with its many heads.
 87 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< hydra~ elite~
 #14807
 dragon~
 the 3-headed dragon~
@@ -115,10 +122,11 @@ A normal dragon brings fear into the heart of any adventurer, but
 one with 3 heads must surely be given a wide berth, for it will
 rip any opponent in half.
 ~
-2|32|64 8|32|128|512|8192|524288 -1000 S
+2|32|64 8|32|128|512|8192 -1000 S
 90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< three_headed_dragon~ elite~
 #14808
 statue medusa~
 the medusa~
@@ -132,6 +140,7 @@ your senses.
 80 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< medusa~ elite~
 #14809
 acid worm mass gelatinous huge~
 the acid-worm~
@@ -146,6 +155,7 @@ fumes rising from the rock it is dissolving.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< acid_worm~ common~
 #14810
 mob_prog6~
 mob_prog6 transfer stoneslab~
@@ -165,6 +175,7 @@ if ispc($n)
 endif
 ~
 |
+< script_controller~ common~
 #14811
 mob_prrg7~
 mobprog7 ankh~
@@ -188,6 +199,7 @@ if ispc($n)
  endif
 ~
 |
+< script_controller~ common~
 #14812
 acid worm mass gelatinous huge~
 the acid-worm~
@@ -202,6 +214,7 @@ fumes rising from the rock it is dissolving.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< acid_worm~ common~
 #14813
 acid worm mass gelatinous huge~
 the acid-worm~
@@ -216,6 +229,7 @@ fumes rising from the rock it is dissolving.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< acid_worm~ common~
 #14814
 acid worm mass gelatinous huge~
 the acid-worm~
@@ -230,6 +244,7 @@ fumes rising from the rock it is dissolving.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< acid_worm~ common~
 #14815
 acid worm mass gelatinous huge~
 the acid-worm~
@@ -244,6 +259,7 @@ fumes rising from the rock it is dissolving.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< acid_worm~ common~
 #14816
 acid worm mass gelatinous huge~
 the acid-worm~
@@ -258,6 +274,7 @@ fumes rising from the rock it is dissolving.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< acid_worm~ common~
 #14817
 acid worm mass gelatinous huge~
 the acid-worm~
@@ -272,6 +289,7 @@ fumes rising from the rock it is dissolving.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< acid_worm~ common~
 #14818
 acid worm mass gelatinous huge~
 the acid-worm~
@@ -286,6 +304,7 @@ fumes rising from the rock it is dissolving.
 85 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< acid_worm~ common~
 #14819
 hobbit old withered~
 the old hobbit~
@@ -331,6 +350,8 @@ if ispc($n)
  endif
 ~
 |
+< halfling~ common~
+MobWeight 25
 #14820
 3 three dragon~
 the 3-headed dragon~
@@ -340,10 +361,11 @@ A normal dragon brings fear into the heart of any adventurer, but
 one with 3 heads must surely be given a wide berth, for it will
 rip any opponent in half.
 ~
-2|32|64 8|32|128|512|8192|524288 -1000 S
+2|32|64 8|32|128|512|8192 -1000 S
 90 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< three_headed_dragon~ elite~
 #0
 
 
@@ -636,7 +658,7 @@ book bound~
 a roughly bound book~
 A roughly-bound book rests here in the dust.~
 ~
-5 0 1|8192
+8 0 1
 0~ 1~ 6~ 11~
 5 0 0
 E
@@ -805,7 +827,7 @@ dragon scale~
 a dragon's scale~
 A large dragon's scale lies here.~
 ~
-5 2 1|512
+9 2 1|512
 0~ 1~ 6~ 11~
 20 0 0
 A
@@ -1133,7 +1155,7 @@ Above you, dancing as the light flickers, is written one word.
 ~
 S
 #14813
-The Maze of Pain.~
+The Maze of Pain~
 The room smells foul. Decaying corpses, and skeletons litter the
 floor. The walls are covered by a red/green colored moss.
 Exits lead in all directions.
@@ -1556,7 +1578,7 @@ though something could slide inside.
 ~
 S
 #14831
-Entrance to the Maze.~
+Entrance to the Maze~
 This room is well lit. Two torches burn on either side of the tunnel.
 They seem to burn with a greenish haze, somewhat unnatural. Around
 the torches lie rocks, at varying angles. The light escaping from
@@ -1765,7 +1787,7 @@ are sure you can climb through.
 ~
 S
 #14839
-Congrats!~
+Congratulations~
 You made it through.
 Well done.
 Unfortunately the next part of the area isn't complete yet.
@@ -1886,7 +1908,7 @@ I once had 4 children - they were all boys.
 ~
 S
 #14846
-The Question.~
+The Question~
 A voice booms out from seemingly nowhere.
 
   "If thou knows what thou want, ask and you shall receive"
@@ -1894,7 +1916,7 @@ A voice booms out from seemingly nowhere.
 0 1|4|8|16384 0
 S
 #14847
-Glowing Hall.~
+Glowing Hall~
 The hallway here runs north south. To the west a wooden door, covered
 in ancient symbols pulsates with a green glow.
 ~
@@ -1933,7 +1955,7 @@ D3
 0 -1 14849
 S
 #14849
-Glowing hall ~
+Glowing hall~
 The hallway runs west-east. To the south a wooden door pulsates with
 a green hue.
 ~
@@ -2910,7 +2932,7 @@ D2
 0 -1 14913
 S
 #14906
-shake - bend in tunnel~
+Bend in the Tunnel~
 The earth here feels hot underfoot. The walls are bare rock, they
 emit great heat. You begin to cook from the intense heat.
 A red glow emanates from the west, while a blue gas creeps forward
@@ -3116,7 +3138,7 @@ D3
 0 -1 14814
 S
 #14917
-The end?~
+The End~
 Congratulations you have made it to the end. there will be another
 area after this, that is currently in construction.
 ~
@@ -3260,19 +3282,15 @@ S
 
 
 #SPECIALS
-M  14805 spec_breath_acid           the titan
-M  14806 spec_breath_any            the hydra
-M  14807 spec_breath_any            the 3-headed dragon
-M  14808 spec_cast_psionicist       the medusa
-M  14809 spec_breath_acid           the acid-worm
-M  14812 spec_breath_acid           the acid-worm
-M  14813 spec_breath_acid           the acid-worm
-M  14814 spec_breath_acid           the acid-worm
-M  14815 spec_breath_acid           the acid-worm
-M  14816 spec_breath_acid           the acid-worm
-M  14817 spec_breath_acid           the acid-worm
-M  14818 spec_breath_acid           the acid-worm
-M  14820 spec_breath_any            the 3-headed dragon
+N 14805 1 spec_breath_acid
+N 14805 2 spec_cast_mage
+N 14805 3 none
+P 14805 70 30 0
+M 14806 spec_breath_any
+N 14808 1 spec_cast_psionicist
+N 14808 2 spec_stiffening_gaze
+N 14808 3 spec_medusa_snake_bite
+P 14808 70 20 10
 S
 
 

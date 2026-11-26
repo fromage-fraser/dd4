@@ -167,6 +167,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         penguin arctic_wolf ice_fish leopard_seal young_white_dragon frost_spirit_avatar arctic_fox
         venomous_vampire gas_vampire vampire_mage vampire_leech great_wolf giant_bat bat_humanoid
         dreadguard poison_floor gordaron grottobeast giant_millipede ahrganite bleeder
+        three_headed_dragon medusa acid_worm
 /;
 
 my %mob_act = (
@@ -428,6 +429,7 @@ my @mob_spec = qw/
     spec_homunculus_sleep_bite spec_basilisk_stiffening_gaze
     spec_paralysing_gas spec_holy_trumpet spec_lulling_drone spec_bloodsucker_bite
     spec_poison_contact
+    spec_stiffening_gaze spec_medusa_snake_bite
 /;
 
 my %obj_ex = (

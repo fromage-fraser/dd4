@@ -61,6 +61,8 @@ DECLARE_SPEC_FUN( spec_terrifying_roar );
 DECLARE_SPEC_FUN( spec_confusing_gaze );
 DECLARE_SPEC_FUN( spec_homunculus_sleep_bite );
 DECLARE_SPEC_FUN( spec_basilisk_stiffening_gaze );
+DECLARE_SPEC_FUN( spec_stiffening_gaze );
+DECLARE_SPEC_FUN( spec_medusa_snake_bite );
 DECLARE_SPEC_FUN( spec_paralysing_gas );
 DECLARE_SPEC_FUN( spec_holy_trumpet );
 DECLARE_SPEC_FUN( spec_lulling_drone );
@@ -212,6 +214,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_confusing_gaze")) return spec_confusing_gaze;
         if (!str_cmp(name, "spec_homunculus_sleep_bite")) return spec_homunculus_sleep_bite;
         if (!str_cmp(name, "spec_basilisk_stiffening_gaze")) return spec_basilisk_stiffening_gaze;
+        if (!str_cmp(name, "spec_stiffening_gaze")) return spec_stiffening_gaze;
+        if (!str_cmp(name, "spec_medusa_snake_bite")) return spec_medusa_snake_bite;
         if (!str_cmp(name, "spec_paralysing_gas")) return spec_paralysing_gas;
         if (!str_cmp(name, "spec_holy_trumpet")) return spec_holy_trumpet;
         if (!str_cmp(name, "spec_lulling_drone")) return spec_lulling_drone;
@@ -369,6 +373,8 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_confusing_gaze) return "spec_confusing_gaze";
         if (special == spec_homunculus_sleep_bite) return "spec_homunculus_sleep_bite";
         if (special == spec_basilisk_stiffening_gaze) return "spec_basilisk_stiffening_gaze";
+        if (special == spec_stiffening_gaze) return "spec_stiffening_gaze";
+        if (special == spec_medusa_snake_bite) return "spec_medusa_snake_bite";
         if (special == spec_paralysing_gas) return "spec_paralysing_gas";
         if (special == spec_holy_trumpet) return "spec_holy_trumpet";
         if (special == spec_lulling_drone) return "spec_lulling_drone";
@@ -3136,7 +3142,8 @@ enum poison_contact_kind
 {
         POISON_CONTACT_BITE,
         POISON_CONTACT_PALM,
-        POISON_CONTACT_SURFACE
+        POISON_CONTACT_SURFACE,
+        POISON_CONTACT_SNAKE_HAIR
 };
 
 static bool poison_contact_special(CHAR_DATA *ch, enum poison_contact_kind kind)
@@ -3167,6 +3174,12 @@ static bool poison_contact_special(CHAR_DATA *ch, enum poison_contact_kind kind)
                 act("You strike $N with your poisoned palm!", ch, NULL, victim, TO_CHAR);
                 act("$n strikes you with a poisoned palm!", ch, NULL, victim, TO_VICT);
                 act("$n strikes $N with a poisoned palm!", ch, NULL, victim, TO_NOTVICT);
+        }
+        else if (kind == POISON_CONTACT_SNAKE_HAIR)
+        {
+                act("The snakes in your hair bite $N!", ch, NULL, victim, TO_CHAR);
+                act("The snakes in $n's hair bite you!", ch, NULL, victim, TO_VICT);
+                act("The snakes in $n's hair bite $N!", ch, NULL, victim, TO_NOTVICT);
         }
         else if (kind == POISON_CONTACT_SURFACE)
         {
@@ -3345,13 +3358,21 @@ bool spec_guardian_daemon(CHAR_DATA *ch)
         return TRUE;
 }
 
+static bool has_usable_poison_fangs(CHAR_DATA *ch)
+{
+        return usable_breath_head(ch) && (ch->body_form & PART_FANGS)
+            && (mob_usable_attack_parts(ch) & PART_FANGS);
+}
+
 bool spec_poison_bite(CHAR_DATA *ch)
 {
-        if (!usable_breath_head(ch)
-        || !(ch->body_form & PART_FANGS)
-        || !(mob_usable_attack_parts(ch) & PART_FANGS))
-                return FALSE;
-        return spec_poison(ch);
+        return has_usable_poison_fangs(ch) && spec_poison(ch);
+}
+
+bool spec_medusa_snake_bite(CHAR_DATA *ch)
+{
+        return has_usable_poison_fangs(ch)
+            && poison_contact_special(ch, POISON_CONTACT_SNAKE_HAIR);
 }
 
 bool spec_poison_palm(CHAR_DATA *ch)
@@ -9173,7 +9194,7 @@ static bool bounded_power_unchanged(const BOUNDED_POWER_CONTEXT *c)
         || IS_AFFECTED(ch, AFF_BLIND | AFF_EYE_TRAUMA | AFF_HEAD_TRAUMA))
                 return FALSE;
         if (c->kind == BOUNDED_STIFFENING_GAZE)
-                /* A viewer can be invisible and still see the basilisk's eyes. */
+                /* A viewer can be invisible and still see the creature's eyes. */
                 return gsn_slow > 0 && IS_AWAKE(victim) && HAS_EYES(victim)
                     && !IS_AFFECTED(victim, AFF_BLIND | AFF_EYE_TRAUMA | AFF_NON_CORPOREAL)
                     && victim->ghost_phase == GHOST_PHASE_NONE
@@ -9470,6 +9491,11 @@ done:
 
 /* This briefly stiffens flesh; it does not turn anyone into a stone object. */
 bool spec_basilisk_stiffening_gaze(CHAR_DATA *ch)
+{
+        return spec_stiffening_gaze(ch);
+}
+
+bool spec_stiffening_gaze(CHAR_DATA *ch)
 {
         BOUNDED_POWER_CONTEXT c;
         MAGIC_ACTIVATION_DATA activation;
