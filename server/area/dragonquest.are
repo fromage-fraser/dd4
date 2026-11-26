@@ -16,16 +16,15 @@ power cannot be rivalled.
 
 Asverna will go on and continue to hate ... but you will now end.
 ~
-2|4|32|64|512|4096 8|32|524288|16777216 -1000 S
+2|4|32|64|512|4096 8|32|16777216 -1000 S
 120 0 0 0d0+0 0d0+0
-128 0
+0 0
 8 8 2
 >all_greet_prog 100~
     if ispc($n)
         get all
         wear all
-        warcry
-        unarmed
+        emote lets out a deafening roar!
         say Nice knowing you $n!
         mpasound You hear $n screaming in terror!
         mpat 3001 mpforce executioner mpecho CHAT I sense that $n has engaged Asverna in combat!
@@ -46,12 +45,13 @@ Asverna will go on and continue to hate ... but you will now end.
     wear claw
 ~
 |
+< infernal_wyrm~ boss~
 #19201
 protector guardians dragon~
 the protector~
 A guardian of Asverna scans the area.
 ~
-This guard is on the look out for intruders so you better hope that this isn't you!
+This guard is on the lookout for intruders, so you'd better hope that isn't you!
 ~
 64|512 8|32|128|32768|524288 750 S
 111 0 0 0d0+0 0d0+0
@@ -67,6 +67,7 @@ This guard is on the look out for intruders so you better hope that this isn't y
     mpasound You hear something nearby...
 ~
 |
+< draconian~ common~
 #0
 
 
@@ -77,7 +78,7 @@ a powerful Claw~
 Some very dangerous, powerful-looking claws are here.~
 ~
 5 1|16384|67108864 0
-3~ 0~ 0~ 5~
+4~ 0~ 0~ 5~
 1 0 0
 A
 19 15
@@ -213,7 +214,7 @@ A
 #ROOMS
 #19200
 Asverna's Lair~
-You have stumbled into the Lair of the Asverna, the lost Dragon that was thought to have been
+You have stumbled into the lair of Asverna, the lost Dragon that was thought to have been
 killed by Zyklor long ago, but who has been hibernating here, waiting for the time that she
 may rise again and rule the realm.
 ~
@@ -230,7 +231,7 @@ S
 #19201
 A tight spot~
 You are in a very small enclosure, so tight that you can't turn around to go back.
-You are finding it hard to breath and are starting to feel light in the head; you
+You are finding it hard to breathe and are starting to feel light in the head; you
 concentrate--you think you can hear something! Or maybe you just imagined it...
 ~
 0 1|8|512|8192|16384 0
@@ -246,7 +247,7 @@ S
 #19202
 A tight spot~
 You are in a very small enclosure, so tight that you can't turn around to go back.
-You are finding it hard to breath and are starting to feel light in the head; you
+You are finding it hard to breathe and are starting to feel light in the head; you
 concentrate--you think you can hear something! Or maybe you just imagined it...
 ~
 0 1|8|512|8192 0
@@ -262,7 +263,7 @@ S
 #19203
 A tight spot~
 You are in a very small enclosure, so tight that you can't turn around to go back.
-You are finding it hard to breath and are starting to feel light in the head; you
+You are finding it hard to breathe and are starting to feel light in the head; you
 concentrate--you think you can hear something! Or maybe you just imagined it...
 ~
 0 1|8|512|8192 0
@@ -278,7 +279,7 @@ S
 #19204
 A tight spot~
 You are in a very small enclosure, so tight that you can't turn around to go back.
-You are finding it hard to breath and are starting to feel light in the head; you
+You are finding it hard to breathe and are starting to feel light in the head; you
 concentrate--you think you can hear something! Or maybe you just imagined it...
 ~
 0 1|8|512|8192 0
@@ -294,7 +295,7 @@ S
 #19205
 A tight spot~
 You are in a very small enclosure, so tight that you can't turn around to go back.
-You are finding it hard to breath and are starting to feel light in the head; you
+You are finding it hard to breathe and are starting to feel light in the head; you
 concentrate--you think you can hear something! Or maybe you just imagined it...
 ~
 0 1|8|512|8192 0
@@ -312,7 +313,7 @@ here giving the surrounding trees and shrubs the life they need.
 ~
 0 1|4|8|2048 3
 D1
-A thick overgrowth of tress cover the obvious entrance to some sort of cave, you think you
+A thick overgrowth of trees covers the obvious entrance to some sort of cave, you think you
 might be able to clear it away.~
 overgrown entranceway~
 1 19203 19205
@@ -368,7 +369,7 @@ S
 
 
 #SPECIALS
-M  19200 spec_breath_lightning      Asverna
+M  19200 spec_breath_lightning_anatomical Asverna
 M  19201 spec_cast_mage             the protector
 S
 

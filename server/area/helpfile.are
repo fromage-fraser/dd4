@@ -761,6 +761,7 @@ See 'HELP SUBCLASSES' for more information on subclasses.
 
 0 CHANGES~
 {WNovember 2026{x
+- Convert DragonQuest mobs and restore Asverna\'s targetable foreclaws.
 - Convert the Portal mobs and correct the quest book and dragon scale.
 - Convert Three Trials mobs; fix Visigoth placement and final-choice doors.
 - Convert Vale mobs and repair horse reward and native weapon targeting.

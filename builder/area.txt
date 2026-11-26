@@ -13559,3 +13559,36 @@ The five guardians are Elite. The eight acid-worms, old halfling
 and seven invisible script controllers are Common. The old halfling
 uses an individual weight of 25 kg. The actual script programs,
 placements and quest items still determine how the puzzles work.
+
+DragonQuest
+
+Infernal_wyrm uses the dragon body. It has four legs, wings, scales,
+claws, fangs and a tail. Flight and HUGE come from the archetype.
+The measurements are 700 cm at the shoulder, 4,500 cm long and
+30,000 kg. These are DD4 estimates for an immense old dragon.
+Natural armour is -40.
+
+Choose the creature's personal breath or casting through the existing
+special slots. Asverna uses spec_breath_lightning_anatomical at 100%.
+The breath keeps its ordinary lightning effect and attempt roll.
+A damaged head prevents that breath. The archetype leaves the special
+set empty until a builder chooses one.
+
+Asverna is Boss. The normal sevenfold rank HP multiplier applies once,
+along with the existing rank rules for equipment. The draconian
+protectors are Common and retain individual mage casting, flight,
+Sanctuary and Sneak. The single reset gradually builds their population
+to five. The existing draconian profile supplies height 190 cm,
+weight 90 kg and natural armour -4.
+
+For this four-legged dragon, both attached claw weapons use value[0]=4
+for the leg region. Their ordinary attack verb stays claw. Targeting
+a leg can tear them off through the existing body-part rules. Ordinary
+leg trauma still allows these claw attacks. A dragon's lack of arms
+therefore leaves its attached foreclaws usable. Use the existing arm
+category 3 for a creature whose claws belong to actual arms.
+
+The greeting uses an emote for Asverna's roar before her taunt and
+attack. Her executioner announcements and neighbouring sounds keep
+their existing scripts. The woodcutter's axe is both a weapon and the
+key for the upward exit. The final treetop permits recall.

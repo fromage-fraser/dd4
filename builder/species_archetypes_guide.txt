@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 26 November 2026
-Based on master d65d020cb657a7b959c375f1064a9bbb03c41f31 (PR #1021),
-with the accompanying Portal changes.
+Based on master 17043afdf51c00c1f833573d8f3cf21fb78b0880 (PR #1022),
+with the accompanying DragonQuest changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,7 +16,7 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 40 bodies, 472 archetypes, 60 internal traits
+The current tables contain 40 bodies, 473 archetypes, 60 internal traits
 and 144 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 472, so this single example would make 473.
+guide's checked revision it is 473, so this single example would make 474.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 472.
+valid index. This example would receive index 473.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 472;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 473;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 472; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 473; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-40 body rows, 472 archetype rows, 60 internal traits and 144 Scribe
+40 body rows, 473 archetype rows, 60 internal traits and 144 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -6641,6 +6641,39 @@ and seven invisible script controllers are Common. The old halfling
 uses an individual weight of 25 kg. The actual script programs,
 placements and quest items still determine how the puzzles work.
 
+DragonQuest
+
+Infernal_wyrm uses the dragon body. It has four legs, wings, scales,
+claws, fangs and a tail. Flight and HUGE come from the archetype.
+The measurements are 700 cm at the shoulder, 4,500 cm long and
+30,000 kg. These are DD4 estimates for an immense old dragon.
+Natural armour is -40.
+
+Choose the creature's personal breath or casting through the existing
+special slots. Asverna uses spec_breath_lightning_anatomical at 100%.
+The breath keeps its ordinary lightning effect and attempt roll.
+A damaged head prevents that breath. The archetype leaves the special
+set empty until a builder chooses one.
+
+Asverna is Boss. The normal sevenfold rank HP multiplier applies once,
+along with the existing rank rules for equipment. The draconian
+protectors are Common and retain individual mage casting, flight,
+Sanctuary and Sneak. The single reset gradually builds their population
+to five. The existing draconian profile supplies height 190 cm,
+weight 90 kg and natural armour -4.
+
+For this four-legged dragon, both attached claw weapons use value[0]=4
+for the leg region. Their ordinary attack verb stays claw. Targeting
+a leg can tear them off through the existing body-part rules. Ordinary
+leg trauma still allows these claw attacks. A dragon's lack of arms
+therefore leaves its attached foreclaws usable. Use the existing arm
+category 3 for a creature whose claws belong to actual arms.
+
+The greeting uses an emote for Asverna's roar before her taunt and
+attack. Her executioner announcements and neighbouring sounds keep
+their existing scripts. The woodcutter's axe is both a weapon and the
+key for the upward exit. The final treetop permits recall.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -6694,7 +6727,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 472 current table rows follow, grouped by body. Numeric IDs are for
+All 473 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -7139,7 +7172,7 @@ HUMANOID (142)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_stiffening_gaze, 2:spec_medusa_snake_bite; policy 60/40/0
 
-DRAGON (22)
+DRAGON (23)
 ------------
   [ 16] dracolich: h/w/l ? / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7207,6 +7240,9 @@ DRAGON (22)
   [469] three_headed_dragon: h/w/l 400 / 6000 / 2400; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_breath_any; policy auto
+  [472] infernal_wyrm: h/w/l 700 / 30000 / 4500; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 QUADRUPEDAL_REPTILE (8)
 -------------------------
@@ -9116,8 +9152,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/d65d020cb657a7b959c375f1064a9bbb03c41f31
-  Base PR1021 plus the accompanying Portal patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/17043afdf51c00c1f833573d8f3cf21fb78b0880
+  Base PR1022 plus the accompanying DragonQuest patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -9127,8 +9163,8 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The verified conversion covers 107/153 areas (69.9%) and 1,888/4,131
-definitions (45.7%). After a verified Portal merge the totals will be
-108/153 (70.6%) and 1,909/4,131 (46.2%).
+The verified conversion covers 108/153 areas (70.6%) and 1,909/4,131
+definitions (46.2%). After a verified DragonQuest merge the totals will
+be 109/153 (71.2%) and 1,911/4,131 (46.3%).
 
 END OF GUIDE

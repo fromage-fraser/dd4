@@ -5975,6 +5975,16 @@ const struct mob_type mob_table[MAX_MOB] =
                 "spec_breath_acid_anatomical", "", "",
                 5, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 800
+        },
+        {
+                "infernal_wyrm", "dragon", "icon1", "icon2",
+                0, AFF_FLYING, BODY_HUGE, 0,
+                0, 0, 0,
+                0, 0, 0, 0,
+                700, 30000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "",
+                0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
+                CREATURE_FAMILY_NONE, 4500
         }
 };
 
@@ -7610,8 +7620,14 @@ static const CREATURE_TRAIT_CHANGE titan_traits[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
 };
 
+static const CREATURE_TRAIT_CHANGE infernal_wyrm_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -40}
+};
+
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"infernal_wyrm", NULL, infernal_wyrm_traits, TRAIT_ITEMS(infernal_wyrm_traits)},
         {"titan", NULL, titan_traits, TRAIT_ITEMS(titan_traits)},
         {"three_headed_dragon", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
         {"medusa", NULL, marine_armour_5_head_traits, TRAIT_ITEMS(marine_armour_5_head_traits)},
