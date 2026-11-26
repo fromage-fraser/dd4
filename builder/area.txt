@@ -13516,3 +13516,46 @@ this mode for three choices and explicitly closes all three doors.
 Preserve shortsword 13187 as both a weapon and the grotto gate key,
 the Freebooter's copy, Jammer's complete greeting and self-purge,
 the reward objects, maze layout, authored flags and neutral sexes.
+
+The Portal
+
+Use titan for a living Titan. It supplies mage casting, resistance to
+magic, immunity to mundane weapons and natural armour -10. Its height
+is 760 cm and its mass is 9,000 kg. The Portal titan has its own set
+of specials, with 70% acid breath and 30% mage casting. An individual
+set replaces the profile's entire set.
+
+Three_headed_dragon inherits the dragon's wings, scales, claws, fangs
+and tail. It flies, has many heads, and uses spec_breath_any. Shoulder
+height is 400 cm, length 2,400 cm and weight 6,000 kg. Natural armour
+is -20. Both dragons share the same profile. The titan and dragons
+are Large and have HUGE. Titan adds 10 percentage points to profile XP.
+Three_headed_dragon, medusa and acid_worm each add 5.
+
+Use medusa for a living humanoid with snakes for hair. Height is
+205 cm including the snakes, weight is 70 kg and natural armour is -5.
+By default she chooses spec_stiffening_gaze 60% of the time and
+spec_medusa_snake_bite 40%. The Portal individual uses 70% psionic
+casting, 20% gaze and 10% snake bite. Only one slot is selected each
+time. Each power still makes its own attempt roll.
+
+The gaze uses the basilisk's existing rules. An awake opponent who
+can see the creature's eyes can be affected even if the opponent is
+invisible. In eligible combat the gaze has a 25% attempt chance and
+allows a Magic/Hold save. A failed save gives ordinary Slow and -1
+Dexterity until the next long tick. Existing Slow prevents a second
+application. SAFE blocks the gaze even during a fight. All thirteen
+Portal creature rooms retain SAFE. The medusa can use her gaze if
+she fights elsewhere in a room that permits it. The snakes use the
+ordinary bite poison roll and Venom spell. Head injury disables their
+bite.
+
+Acid_worm is a living, limbless invertebrate with fangs and acid
+immunity. Use 100 cm for its diameter in the height field, 800 cm for
+length and 4,000 kg for weight. It is Large and HUGE. Its anatomical
+acid breath needs a usable head. Head trauma also disables its fangs.
+
+The five guardians are Elite. The eight acid-worms, old halfling
+and seven invisible script controllers are Common. The old halfling
+uses an individual weight of 25 kg. The actual script programs,
+placements and quest items still determine how the puzzles work.
