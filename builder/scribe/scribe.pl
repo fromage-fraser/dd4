@@ -168,6 +168,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         venomous_vampire gas_vampire vampire_mage vampire_leech great_wolf giant_bat bat_humanoid
         dreadguard poison_floor gordaron grottobeast giant_millipede ahrganite bleeder
         three_headed_dragon medusa acid_worm
+        infernal_wyrm
 /;
 
 my %mob_act = (
