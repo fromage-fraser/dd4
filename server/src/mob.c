@@ -6118,6 +6118,126 @@ const struct mob_type mob_table[MAX_MOB] =
                 100, 80, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "blue_grung", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_FANGS,
+                PART_FANGS, RES_POISON, 0, 0,
+                0, 0, 0, 0,
+                91, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_blue_grung", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "purple_grung", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_FANGS,
+                PART_FANGS, RES_POISON, 0, 0,
+                0, 0, 0, 0,
+                91, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_purple_grung", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "giant_isopod", "crustacean", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_ARMS | PART_ARMS | PART_EYESTALKS | PART_TAIL,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 2, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_fido", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 50
+        },
+        {
+                "boxfish", "fish", "icon1", "icon2",
+                0, 0,
+                PART_HUSK_SHELL,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 3, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_poison_contact", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 45
+        },
+        {
+                "blacktip_shark", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 40, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 200
+        },
+        {
+                "emperor_shrimp", "crustacean", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_CLAWS | PART_TAIL,
+                PART_CLAWS, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 3
+        },
+        {
+                "dunkleosteus", "fish", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_HUSK_SHELL,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 1000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 400
+        },
+        {
+                "kappa", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_SCALES | PART_HUSK_SHELL | PART_CLAWS,
+                PART_CLAWS, 0, 0, RES_WATER,
+                0, 10, 0, 0,
+                61, 9, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_kappa", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "nixie", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_SCALES,
+                0, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                122, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_cast_water_sprite", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "dryad", "humanoid", "icon1", "icon2",
+                0, 0,
+                0,
+                0, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                152, 45, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "sea_zombie", "humanoid", "icon1", "icon2",
+                ACT_UNDEAD, AFF_SWIM | AFF_STENCH,
+                BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS | BODY_NO_EYES | PART_EYE,
+                0, RES_FIRE | RES_DARK, RES_COLD | RES_ELECTRICITY | RES_HOLY, RES_POISON | RES_SLEEP | RES_CHARM | RES_HOLD | RES_PARALYSIS | RES_PSYCHIC,
+                0, 0, 0, 0,
+                183, 85, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "merrow", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_SCALES | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                275, 160, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_OGRE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -7788,8 +7908,47 @@ static const CREATURE_TRAIT_CHANGE uchuulon_traits[] =
         {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8}
 };
 
+static const CREATURE_TRAIT_CHANGE kappa_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7},
+        {CREATURE_TRAIT_MELEE_ACCURACY, 3},
+        {CREATURE_TRAIT_NATIVE_REGEN_MIN_HP, 1},
+        {CREATURE_TRAIT_NATIVE_REGEN_LEVEL_DIVISOR, 15},
+        {CREATURE_TRAIT_NATIVE_REGEN_INTERVAL, 3},
+        {CREATURE_TRAIT_NATIVE_REGEN_DELAY, 0},
+        {CREATURE_TRAIT_NATIVE_REGEN_SUPPRESSION, 0},
+        {CREATURE_TRAIT_NATIVE_REGEN_TRAUMA_INTERVAL, 0}
+};
+static const CREATURE_TRAIT_CHANGE nixie_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE dryad_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -1}
+};
+static const CREATURE_TRAIT_CHANGE sea_zombie_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3},
+        {CREATURE_TRAIT_ILLUSION_IMMUNITY, 1},
+        {CREATURE_TRAIT_TURN_IMMUNITY, 1}
+};
+static const CREATURE_TRAIT_CHANGE merrow_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"blue_grung", "green_grung", NULL, 0},
+        {"purple_grung", "green_grung", NULL, 0},
+        {"blacktip_shark", "shark", fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"kappa", NULL, kappa_trait_changes, TRAIT_ITEMS(kappa_trait_changes)},
+        {"nixie", NULL, nixie_trait_changes, TRAIT_ITEMS(nixie_trait_changes)},
+        {"dryad", NULL, dryad_trait_changes, TRAIT_ITEMS(dryad_trait_changes)},
+        {"sea_zombie", NULL, sea_zombie_trait_changes, TRAIT_ITEMS(sea_zombie_trait_changes)},
+        {"merrow", NULL, merrow_trait_changes, TRAIT_ITEMS(merrow_trait_changes)},
         {"orange_grung", "green_grung", NULL, 0},
         {"red_grung", "green_grung", NULL, 0},
         {"gold_grung", "green_grung", NULL, 0},

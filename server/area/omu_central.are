@@ -20,9 +20,9 @@ Giant isopods prefer cold and deep waters and are noted for their resemblance to
 a woodlouse or pillbug, although far larger.  They spend most of their time on
 the ocean floor, waiting for carrion and other leftover food to scavenge.
 ~
-64 8|32|512|4194304|8388608|67108864|9223372036854775808 0 S
+64 9223372036867359272 0 S
 61 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 1
 >all_greet_prog 15~
     mpechoat $n <171>The giant isopod fearfully curls into a ball at your approach!<0>
@@ -60,6 +60,7 @@ the ocean floor, waiting for carrion and other leftover food to scavenge.
     down
 ~
 |
+< giant_isopod~ common~
 
 #28439
 giant isopod~
@@ -70,9 +71,9 @@ Giant isopods prefer cold and deep waters and are noted for their resemblance to
 a woodlouse or pillbug, although far larger.  They spend most of their time on
 the ocean floor, waiting for carrion and other leftover food to scavenge.
 ~
-64 8|32|512|4194304|8388608|67108864|9223372036854775808 0 S
+64 9223372036867359272 0 S
 61 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 2
 >all_greet_prog 15~
     mpechoat $n <171>The giant isopod fearfully curls into a ball at your approach!<0>
@@ -110,6 +111,7 @@ the ocean floor, waiting for carrion and other leftover food to scavenge.
     down
 ~
 |
+< giant_isopod~ common~
 
 #28440
 boxfish~
@@ -122,10 +124,11 @@ plates that are fused to give the fish its solid box or triangular shape.
 This hard carapace gives the fish an armored-like appearance and aids in its
 protection against predators, but at the expense of its agility.
 ~
-64 8|32|512|8388608|67108864 55 S
+64 8389160 55 S
 62 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 2
+< boxfish~ common~
 
 #28441
 boxfish~
@@ -138,10 +141,11 @@ plates that are fused to give the fish its solid box or triangular shape.
 This hard carapace gives the fish an armored-like appearance and aids in its
 protection against predators, but at the expense of its agility.
 ~
-64 8|32|512|8388608|67108864 -50 S
+64 8389160 -50 S
 62 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 1
+< boxfish~ common~
 
 #28442
 blacktip shark~
@@ -153,9 +157,9 @@ intermediate shark that takes its name from the fins that are black-tipped.
 Most notably, blacktip sharks have a reputation for devouring schools of tiny
 fish by making whirling lunges out of the ocean.
 ~
-64 8|32|512|8388608|67108864 -150 S
+64 8389160 -150 S
 63 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 1
 >greet_prog 10~
     mpechoat $n <9>A blacktip shark LUNGES at you suddenly!<0>
@@ -166,6 +170,7 @@ fish by making whirling lunges out of the ocean.
     murder $n
 ~
 |
+< blacktip_shark~ common~
 
 #28443
 blacktip shark~
@@ -177,9 +182,9 @@ intermediate shark that takes its name from the fins that are black-tipped.
 Most notably, blacktip sharks have a reputation for devouring schools of tiny
 fish by making whirling lunges out of the ocean.
 ~
-64 8|32|512|8388608|67108864 -200 S
+64 8389160 -200 S
 63 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 2
 >greet_prog 10~
     mpechoat $n <9>A blacktip shark LUNGES at you suddenly!<0>
@@ -190,6 +195,7 @@ fish by making whirling lunges out of the ocean.
     murder $n
 ~
 |
+< blacktip_shark~ common~
 
 #28444
 emperor shrimp~
@@ -200,9 +206,9 @@ Emperor shrimp are known for their unique appearance, and people often admire
 their delicate, graceful movements. They have long, slender bodies and soft,
 transparent pincers for feeding and grooming.
 ~
-64 32|512|8388608|67108864 100 S
+64 8389152 100 S
 64 0 0 0d0+0 0d0+0
-32|512 0
+0 0
 0 0 2
 >fight_prog 20~
     kick
@@ -211,6 +217,7 @@ transparent pincers for feeding and grooming.
     trip
 ~
 |
+< emperor_shrimp~ common~
 
 #28445
 emperor shrimp~
@@ -221,9 +228,9 @@ Emperor shrimp are known for their unique appearance, and people often admire
 their delicate, graceful movements. They have long, slender bodies and soft,
 transparent pincers for feeding and grooming.
 ~
-64 32|512|8388608|67108864 150 S
+64 8389152 150 S
 64 0 0 0d0+0 0d0+0
-32|512 0
+0 0
 0 0 1
 >fight_prog 20~
     kick
@@ -232,6 +239,7 @@ transparent pincers for feeding and grooming.
     trip
 ~
 |
+< emperor_shrimp~ common~
 
 #28446
 dunkleosteus~
@@ -242,13 +250,10 @@ Long thought extinct, the dunkleosteus is a huge, armour-plated fish with a very
 powerful bite (perhaps the most powerful of any fish).  An apex predator, it
 fears only encounters with others of its kind, who will attack it on sight.
 ~
-32|64 8|32|512|8192|8388608|67108864 -500 S
+96 8397352 -500 S
 65 0 0 0d0+0 0d0+0
-4|8|32|128|512 0
+0 0
 0 0 2
->fight_prog 10~
-    bite
-~
 >fight_prog 10~
     headbutt
 ~
@@ -256,6 +261,7 @@ fears only encounters with others of its kind, who will attack it on sight.
     murder dunkleosteus
 ~
 |
+< dunkleosteus~ common~
 
 #28447
 dunkleosteus~
@@ -266,13 +272,10 @@ Long thought extinct, the dunkleosteus is a huge, armour-plated fish with a very
 powerful bite (perhaps the most powerful of any fish).  An apex predator, it
 fears only encounters with others of its kind, who will attack it on sight.
 ~
-32|64 8|32|512|8192|8388608|67108864 -600 S
+96 8397352 -600 S
 65 0 0 0d0+0 0d0+0
-4|8|32|128|512 0
+0 0
 0 0 1
->fight_prog 10~
-    bite
-~
 >fight_prog 10~
     headbutt
 ~
@@ -280,6 +283,7 @@ fears only encounters with others of its kind, who will attack it on sight.
     murder dunkleosteus
 ~
 |
+< dunkleosteus~ common~
 
 #28448
 grung green~
@@ -288,10 +292,10 @@ a green grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.
 ~
-64 512|67108864 -425 S
+64 512 -425 S
 63 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -324,6 +328,7 @@ this individual, are warriors, hunters, and labourers.
     endif
 ~
 |
+< green_grung~ common~
 
 #28449
 grung green~
@@ -332,10 +337,10 @@ a green grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.
 ~
-64 512|67108864 -415 S
+64 512 -415 S
 63 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -368,6 +373,7 @@ this individual, are warriors, hunters, and labourers.
     endif
 ~
 |
+< green_grung~ common~
 
 #28450
 blue grung~
@@ -376,11 +382,11 @@ a blue grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.
 ~
-64 512|67108864 -305 S
+64 512 -305 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -413,6 +419,7 @@ grung race.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28451
 blue grung~
@@ -421,11 +428,11 @@ a blue grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.
 ~
-64 512|67108864 -335 S
+64 512 -335 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -458,6 +465,7 @@ grung race.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28452
 grung green guard~
@@ -466,11 +474,11 @@ a green grung guard~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  This individual is a
+caste-based, with the grung's colour denoting their role.  This individual is a
 green grung guard and fiercely loyal to the chief who lives in Omu's sovereign
 quarter.
 ~
-64 32|512|8388608|67108864 -725 S
+64 8389152 -725 S
 64 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -514,6 +522,7 @@ quarter.
     endif
 ~
 |
+< green_grung~ common~
 
 #28453
 grung green guard~
@@ -522,11 +531,11 @@ a green grung guard~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  This individual is a
+caste-based, with the grung's colour denoting their role.  This individual is a
 green grung guard and fiercely loyal to the chief who lives in Omu's sovereign
 quarter.
 ~
-64 32|512|8388608|67108864 -715 S
+64 8389152 -715 S
 64 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -570,6 +579,7 @@ quarter.
     endif
 ~
 |
+< green_grung~ common~
 
 #28454
 blue grung kreeg~
@@ -581,7 +591,7 @@ things lower-caste grung find generally useful.  He will generally only trade
 with grung, but has been known to make an exception for authorised visitors to
 Omu.
 ~
-2|64 32|512|8388608|67108864 -215 S
+66 8389152 -215 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -600,6 +610,7 @@ Omu.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28455
 blue grung Drobe~
@@ -608,10 +619,10 @@ Drobe~
 ~
 Drobe is a blue grung, and makes his living running Drobe's Dive, a grimy
 gambling den frequented by Omu's risk-loving citizens.  He will generally only
-allows grung to play, but has been known to make an exception for authorised
+allow grung to play, but has been known to make an exception for authorised
 visitors to Omu.
 ~
-2|64 32|512|8388608|67108864 -815 S
+66 8389152 -815 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -630,6 +641,7 @@ visitors to Omu.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28456
 blue grung Glimmer~
@@ -641,7 +653,7 @@ where he repairs items that have fallen into a state of decay.  He will
 generally only work for fellow grung, but has been known to make an exception
 for authorised visitors to Omu.
 ~
-2|64|262144 32|512|8388608|67108864 -211 S
+262210 8389152 -211 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -660,6 +672,7 @@ for authorised visitors to Omu.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28457
 blue grung Norg~
@@ -671,7 +684,7 @@ sells meat fairly cheaply to townsfolk who are not too fussy about its origin.
 He generally only sells to fellow grung, but has been known to make an exception
 for authorised visitors to Omu.
 ~
-2|64|262144 32|512|8388608|67108864 -311 S
+262210 8389152 -311 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -690,6 +703,7 @@ for authorised visitors to Omu.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28458
 blue grung Kulp~
@@ -701,7 +715,7 @@ establishment frequented by the usual collection of miscreants and lowlives
 found in grung taverns. He generally only sells to fellow grung, but has been
 known to make an exception for authorised visitors to Omu.
 ~
-2|64 512|67108864 -666 S
+66 512 -666 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -720,6 +734,7 @@ known to make an exception for authorised visitors to Omu.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28459
 blue grung Ripgip~
@@ -731,7 +746,7 @@ fletcher and bowyer, servicing the insatiable need of grung for missile weapons.
 He generally only sells to fellow grung, but has been known to make an exception
 for authorised visitors to Omu.
 ~
-2|64 32|512|8388608|67108864 -223 S
+66 8389152 -223 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -753,6 +768,7 @@ for authorised visitors to Omu.
     punch
 ~
 |
+< blue_grung~ common~
 
 #28460
 blue grung dragonhoard teller~
@@ -763,7 +779,7 @@ The teller is a blue grung, but has a more intelligent air about him than most
 of the grung you've encountered. As is typical of Dragonhoard tellers, he
 is happy to serve any and all clientele.
 ~
-2|64|524288 8|32|512|8388608|67108864 -120 S
+524354 8389160 -120 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -775,6 +791,7 @@ is happy to serve any and all clientele.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28461
 blue grung Drogk~
@@ -782,11 +799,11 @@ Drogk~
 <63>Drogk looks at you with vague menace.<0>
 ~
 Drogk is a swarthy blue grung, and makes his living as Omu's apothecary, selling
-a variety of potions, pills, ointments or variable quality and efficacy. He
+a variety of potions, pills, ointments of variable quality and efficacy. He
 generally only sells to fellow grung, but has been known to make an exception
 for authorised visitors to Omu.
 ~
-2|64 32|512|8388608|67108864 -343 S
+66 8389152 -343 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -805,6 +822,7 @@ for authorised visitors to Omu.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28462
 blue grung Vrall~
@@ -815,7 +833,7 @@ Vrall is a muscular blue grung, and makes his living forging and selling spears,
 the dominant hand-to-hand weapon of the grung. He generally only sells to fellow
 grung, but has been known to make an exception for authorised visitors to Omu.
 ~
-2|64 32|512|8388608|67108864 -373 S
+66 8389152 -373 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -834,6 +852,8 @@ grung, but has been known to make an exception for authorised visitors to Omu.
     endif
 ~
 |
+< blue_grung~ common~
+MobWeight 35
 
 #28463
 blue grung Gleeth slaver~
@@ -842,12 +862,12 @@ Gleeth~
 ~
 Gleeth is a particularly loathsome blue grung, making his living trafficking in
 the misery of his fellow intelligent creatures.  Despite the nastiness of his
-business, he is proud of his work, and would eagerly extoll the virtue and
+business, he is proud of his work, and would eagerly extol the virtue and
 superiority of his 'merchandise' were he able to speak Common, which he does not.
 Gleeth generally only sells to fellow grung, but has been known to make an
 exception for authorised visitors to Omu.
 ~
-2|64 32|512|8388608|67108864 -875 S
+66 8389152 -875 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -866,6 +886,7 @@ exception for authorised visitors to Omu.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28464
 sahuagin small sad Gersk~
@@ -875,10 +896,13 @@ A small, sad sahuagin male cowers here.
 This sahuagin really looks like he's been through the wars.  His body is
 covered in scars and bruises, and he wears an expression of resigned misery.
 ~
-128 512|4096|67108864 -225 S
+128 4608 -225 S
 60 0 0 0d0+0 0d0+0
-512 0
+0 0
 0 0 1
+< sahuagin~ common~
+MobHeight 160
+MobWeight 60
 
 #28465
 triton gloomy~
@@ -893,10 +917,11 @@ being of lawful and good alignment, but that this also means they're likely to
 be extremely haughty and arrogant. This Triton looks quite beaten-down and
 world-weary.  You imagine this is not how he saw his life turning out.
 ~
-0 8|32|512|4096|8192|4194304|67108864|1073741824 630 S
+0 1077948968 630 S
 61 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< triton~ common~
 
 #28466
 grung green unfortunate~
@@ -908,10 +933,11 @@ and was sentenced to slavery.  He looks miserable and defeated.  If you didn't
 know that he almost certainly deserved much worse, you might even feel sorry for
 him.
 ~
-0 32|512|4096|8388608|67108864 -401 S
+0 8393248 -401 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< green_grung~ common~
 
 #28467
 elf miserable female sea~
@@ -925,10 +951,11 @@ sea elf is a tall and elegant female who looks quite out of place in her
 squalid surroundings.  She is obviously miserable, traumatised, and
 uncomfortable.
 ~
-0 4|8|16|32|512|4096|8192|2097152|8388608|67108864|536870912|1073741824 845 S
+0 1621111356 845 S
 63 0 0 0d0+0 0d0+0
 0 0
 0 0 2
+< sea_elf~ common~
 
 #28468
 kappa sullen~
@@ -939,10 +966,11 @@ The kappa is of small-humanoid size and has a stooped stance; his main
 distinguishing feature is a hard shell that covers his back. His head is flat
 and pudgy, and his webbed hands end in sharp claws. He looks sullen.
 ~
-0 512|67108864 -245 S
+0 512 -245 S
 64 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< kappa~ common~
 
 #28469
 nixie female~
@@ -955,10 +983,11 @@ pointed ears, and wide, silvery eyes.  She stands about 4 feet tall, and
 is wearing colourful clothing made out of seaweed, shells, and pearls. She looks
 quite discontented.
 ~
-8388608 4|8|32|128|512|8192|32768|524288|8388608|67108864|1073741824 0 S
+8388608 1082696364 0 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 2
+< nixie~ common~
 
 #28470
 red grung Reehp healer~
@@ -969,7 +998,7 @@ Reehp is the red grung in charge of Nangnang's shrine.  He tends the shrine and
 offers healing services, typically only to fellow grung, but has been known to
 make an exception for authorised visitors to Omu.
 ~
-2|64|512|2048|4096|8192|8388608 4|8|32|128|512|8192|2097152|8388608|67108864|1073741824 -212 S
+8403522 1084236460 -212 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -988,6 +1017,7 @@ make an exception for authorised visitors to Omu.
     endif
 ~
 |
+< red_grung~ common~
 
 #28471
 red grung Doobap apprentice~
@@ -998,7 +1028,7 @@ Doobap sells healing supplies to frequenters of Nangnang's temple, typically
 only to fellow grung, but has been known to make an exception for authorised
 visitors to Omu.
 ~
-2|64|512|4096|8388608 4|8|32|512|8192|2097152|8388608|67108864|1073741824 -275 S
+8393282 1084236332 -275 S
 63 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1017,6 +1047,7 @@ visitors to Omu.
     endif
 ~
 |
+< red_grung~ common~
 
 #28472
 grung green~
@@ -1025,11 +1056,11 @@ a green grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.  This one looks a little
 lost, as if trying to recall something he's just forgotten.
 ~
-64 512|67108864 -415 S
+64 512 -415 S
 64 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1062,6 +1093,7 @@ lost, as if trying to recall something he's just forgotten.
     endif
 ~
 |
+< green_grung~ common~
 
 #28473
 grung green~
@@ -1070,10 +1102,10 @@ a green grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.
 ~
-64 512|67108864 -375 S
+64 512 -375 S
 64 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -1106,6 +1138,7 @@ this individual, are warriors, hunters, and labourers.
     endif
 ~
 |
+< green_grung~ common~
 
 #28474
 blue grung~
@@ -1114,11 +1147,11 @@ a blue grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung seems to be looking carefully for something.
 ~
-64 512|67108864 -295 S
+64 512 -295 S
 63 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1151,6 +1184,7 @@ grung race.  This grung seems to be looking carefully for something.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28475
 blue grung~
@@ -1159,11 +1193,11 @@ a blue grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung looks unusually thoughtful.
 ~
-64 512|67108864 -315 S
+64 512 -315 S
 63 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -1196,6 +1230,7 @@ grung race.  This grung looks unusually thoughtful.
     endif
 ~
 |
+< blue_grung~ common~
 
 #28476
 red grung~
@@ -1204,10 +1239,10 @@ a red grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Red grung, such as
+caste-based, with the grung's colour denoting their role.  Red grung, such as
 this individual, are the scholars and magic-users of the grung race.
 ~
-64 512|67108864 -305 S
+64 512 -305 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1240,6 +1275,7 @@ this individual, are the scholars and magic-users of the grung race.
     endif
 ~
 |
+< red_grung~ common~
 
 #28477
 red grung~
@@ -1248,11 +1284,11 @@ a red grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Red grung, such as
+caste-based, with the grung's colour denoting their role.  Red grung, such as
 this individual, are the scholars and magic-users of the grung race.  This grung
 looks deeply preoccupied by something.
 ~
-64 512|67108864 -299 S
+64 512 -299 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -1285,6 +1321,7 @@ looks deeply preoccupied by something.
     endif
 ~
 |
+< red_grung~ common~
 
 #28478
 blue grung suspicious~
@@ -1293,13 +1330,13 @@ a blue grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung looks and moves in a suspicious way, as if trying to
 avoid detection by the authorities.  You also notice he has a few words of
 Common embroidered on his clothing--perhaps he speaks it?
 ~
-64 512|32768|65536|67108864 -815 S
+64 98816 -815 S
 60 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1326,7 +1363,7 @@ Common embroidered on his clothing--perhaps he speaks it?
     if number($o) == 28711
             emote clears throat.
             mpecho {W"I imagine you want a translation?  Don't look so surprised, Common comes in very handy
-            mpecho {W in my trade.  Well as a gesture of commerical goodwill, why not?  It reads, 'I offer you
+            mpecho {W in my trade.  Well as a gesture of commercial goodwill, why not?  It reads, 'I offer you
             mpecho {W an alliance from my master. Come to the military baron and speak the word "aliyank".{X
             emote smiles unctuously.
             give scroll $n
@@ -1350,6 +1387,7 @@ Common embroidered on his clothing--perhaps he speaks it?
     endif
 ~
 |
+< blue_grung~ common~
 
 #28479
 grung green overseer~
@@ -1360,7 +1398,7 @@ This tall female green grung is the overseer of the green grung hatchery,
 selected for her strength and loyalty to her caste.  She's vigilant for the
 slightest threat to the eggs or hatchlings.
 ~
-2|32|64 8|32|128|512|8192|8388608|67108864 -370 S
+98 8397480 -370 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -1386,7 +1424,9 @@ slightest threat to the eggs or hatchlings.
     bran
 ~
 |
-< reserved~ elite~
+< green_grung~ elite~
+MobHeight 110
+MobWeight 35
 
 #28480
 grung green hatchling~
@@ -1396,10 +1436,13 @@ a green grung hatchling~
 This small green grung hatchling splashes about in the hatchling pool, oblivious
 to everything.
 ~
-2|64 67108864 0 S
+66 0 0 S
 60 0 0 0d0+0 0d0+0
-512 0
+2147483648 0
 0 0 2
+< green_grung~ common~
+MobHeight 30
+MobWeight 2
 
 #28481
 grung green hatchling~
@@ -1409,10 +1452,13 @@ a green grung hatchling~
 This small green grung hatchling is looking about innocently, mystified by his
 surroundings.
 ~
-2|64 67108864 0 S
+66 0 0 S
 60 0 0 0d0+0 0d0+0
-512 0
+2147483648 0
 0 0 1
+< green_grung~ common~
+MobHeight 30
+MobWeight 2
 
 #28482
 grung blue overseer~
@@ -1423,7 +1469,7 @@ This tall male blue grung is the overseer of the blue grung hatchery,
 selected for his strength and loyalty to his caste.  He's vigilant for the
 slightest threat to the eggs or hatchlings.
 ~
-2|32|64 8|32|128|512|8192|8388608|67108864 -330 S
+98 8397480 -330 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1449,7 +1495,9 @@ slightest threat to the eggs or hatchlings.
     bran
 ~
 |
-< reserved~ elite~
+< blue_grung~ elite~
+MobHeight 110
+MobWeight 35
 
 #28483
 grung blue hatchling~
@@ -1459,10 +1507,13 @@ a blue grung hatchling~
 This small blue grung hatchling blinks groggily, trying to comprehend the world
 she finds herself in.
 ~
-2|64 67108864 0 S
+66 0 0 S
 60 0 0 0d0+0 0d0+0
-512 0
+2147483648 0
 0 0 2
+< blue_grung~ common~
+MobHeight 30
+MobWeight 2
 
 #28484
 grung blue hatchling~
@@ -1472,10 +1523,13 @@ a blue grung hatchling~
 This small blue grung hatchling is swimming about innocently in the hatching
 pool.
 ~
-2|64 67108864 0 S
+66 0 0 S
 60 0 0 0d0+0 0d0+0
-512 0
+2147483648 0
 0 0 1
+< blue_grung~ common~
+MobHeight 30
+MobWeight 2
 
 #28485
 grung red overseer~
@@ -1486,7 +1540,7 @@ This squat male red grung is the overseer of the red grung hatchery,
 selected for his strength and loyalty to his caste.  He's vigilant for the
 slightest threat to the eggs or hatchlings.
 ~
-2|32|64 8|32|128|512|8192|8388608|67108864 -370 S
+98 8397480 -370 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1512,7 +1566,9 @@ slightest threat to the eggs or hatchlings.
     bran
 ~
 |
-< reserved~ elite~
+< red_grung~ elite~
+MobHeight 85
+MobWeight 35
 
 #28486
 grung red hatchling~
@@ -1522,10 +1578,13 @@ a red grung hatchling~
 This small red grung hatchling looks about blankly, trying to comprehend the
 world she finds herself in.
 ~
-2|64 67108864 0 S
+66 0 0 S
 60 0 0 0d0+0 0d0+0
-512 0
+2147483648 0
 0 0 2
+< red_grung~ common~
+MobHeight 30
+MobWeight 2
 
 #28487
 grung red hatchling~
@@ -1535,10 +1594,13 @@ a red grung hatchling~
 This small red grung hatchling is waddling about innocently near the hatching
 pool.
 ~
-2|64 67108864 0 S
+66 0 0 S
 60 0 0 0d0+0 0d0+0
-512 0
+2147483648 0
 0 0 1
+< red_grung~ common~
+MobHeight 30
+MobWeight 2
 
 #28488
 giant isopod~
@@ -1549,9 +1611,9 @@ Giant isopods prefer cold and deep waters and are noted for their resemblance to
 a woodlouse or pillbug, although far larger.  They spend most of their time on
 the ocean floor, waiting for carrion and other leftover food to scavenge.
 ~
-64 8|32|256|512|4096|4194304|8388608|67108864|9223372036854775808 0 S
+64 9223372036867363624 0 S
 70 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 1
 >all_greet_prog 15~
     mpechoat $n <171>The giant isopod fearfully curls into a ball at your approach!<0>
@@ -1589,6 +1651,7 @@ the ocean floor, waiting for carrion and other leftover food to scavenge.
     down
 ~
 |
+< giant_isopod~ common~
 
 #28489
 giant isopod~
@@ -1599,9 +1662,9 @@ Giant isopods prefer cold and deep waters and are noted for their resemblance to
 a woodlouse or pillbug, although far larger.  They spend most of their time on
 the ocean floor, waiting for carrion and other leftover food to scavenge.
 ~
-64 8|32|256|512|4096|4194304|8388608|67108864|9223372036854775808 0 S
+64 9223372036867363624 0 S
 70 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 2
 >all_greet_prog 15~
     mpechoat $n <171>The giant isopod fearfully curls into a ball at your approach!<0>
@@ -1639,6 +1702,7 @@ the ocean floor, waiting for carrion and other leftover food to scavenge.
     down
 ~
 |
+< giant_isopod~ common~
 
 #28490
 small sad sahuagin female~
@@ -1648,9 +1712,9 @@ A small, sad sahuagin female cowers here.
 This sahuagin really looks like she's been through the wars.  Her body is
 covered in scars and bruises, and she wears an expression of resigned misery.
 ~
-128 256|512|4096|67108864|9223372036854775808 -225 S
+128 9223372036854780672 -225 S
 65 0 0 0d0+0 0d0+0
-512 0
+0 0
 0 0 2
 >rand_prog 1~
     sleep
@@ -1665,6 +1729,9 @@ covered in scars and bruises, and she wears an expression of resigned misery.
     mpasound You hear the agitated clinking of scales.
 ~
 |
+< sahuagin~ common~
+MobHeight 160
+MobWeight 60
 
 #28491
 gloomy triton woman~
@@ -1672,14 +1739,14 @@ a gloomy triton~
 A {Bblue-skinned{x woman shuffles about gloomily.
 ~
 You recognise this blue-skinned, fairly-handsome-if-vaguely-fishy-looking
-man as a Triton, a member of a very distinctive race of undersea-dwelling
+woman as a Triton, a member of a very distinctive race of undersea-dwelling
 folk. You know that Triton dedicate themselves to protecting magical portals
 from sahuagin, kraken, and other monstrous beings of the sea and so tend towards
 being of lawful and good alignment, but that this also means they're likely to
 be extremely haughty and arrogant. This Triton looks quite beaten-down and
 world-weary.  You imagine this is not how she saw her life turning out.
 ~
-0 8|32|256|512|4096|8192|4194304|67108864|1073741824|9223372036854775808 630 S
+0 9223372037932725032 630 S
 66 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -1696,6 +1763,7 @@ world-weary.  You imagine this is not how she saw her life turning out.
     mpasound {BA shrill, keening sound can be heard in the distance.{x
 ~
 |
+< triton~ common~
 
 #28492
 grung green unfortunate~
@@ -1707,7 +1775,7 @@ and was sentenced to slavery.  He looks miserable and defeated.  If you didn't
 know that he almost certainly deserved much worse, you might even feel sorry for
 him.
 ~
-0 32|256|512|4096|8388608|67108864|9223372036854775808 -401 S
+0 9223372036863169312 -401 S
 67 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1724,6 +1792,7 @@ him.
     mpasound <118>An unwholesome ribbiting sound issues from the deep.<0>
 ~
 |
+< green_grung~ common~
 
 #28493
 miserable female sea elf~
@@ -1737,7 +1806,7 @@ sea elf is a tall and elegant female who looks quite out of place in her
 squalid surroundings.  She is obviously miserable, traumatised, and
 uncomfortable.
 ~
-0 4|8|16|32|256|512|4096|8192|2097152|8388608|67108864|536870912|1073741824|9223372036854775808 845 S
+0 9223372038475887420 845 S
 68 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -1754,6 +1823,7 @@ uncomfortable.
     mpasound <86>A feminine wail rings through the darkness.<0>
 ~
 |
+< sea_elf~ common~
 
 #28494
 sullen kappa~
@@ -1764,7 +1834,7 @@ The kappa is of small-humanoid size and has a stooped stance; her main
 distinguishing feature is a hard shell that covers her back. Her head is flat
 and pudgy, and her webbed hands end in sharp claws. She looks sullen.
 ~
-0 256|512|4096|67108864|9223372036854775808 -245 S
+0 9223372036854780672 -245 S
 69 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -1781,6 +1851,7 @@ and pudgy, and her webbed hands end in sharp claws. She looks sullen.
     mpasound <28>A loud grunt catches your ear.<0>
 ~
 |
+< kappa~ common~
 
 #28495
 male nixie~
@@ -1792,7 +1863,7 @@ This one has pale green skin, dark green hair, webbed fingers and toes,
 pointed ears, and wide, silvery eyes.  He stands about 4 feet tall, and looks
 discontented.
 ~
-8388608 4|8|32|128|256|512|4096|8192|32768|524288|8388608|67108864|1073741824|9223372036854775808 0 S
+8388608 9223372037937476524 0 S
 70 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1809,6 +1880,7 @@ discontented.
     mpasound <121>A deep sigh echoes through the gloom.<0>
 ~
 |
+< nixie~ common~
 
 #28496
 grung green guard~
@@ -1817,14 +1889,15 @@ a green grung guard~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  This individual is a
+caste-based, with the grung's colour denoting their role.  This individual is a
 green grung guard and fiercely loyal to the chief who lives in Omu's sovereign
 quarter.
 ~
-2|32|64 32|512|8388608|67108864 -725 S
+98 8389152 -725 S
 70 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< green_grung~ common~
 
 #28497
 kua-toa fish-like humanoid male~
@@ -1836,9 +1909,9 @@ hands and feet, this Kua-toa is frowning at you, obviously suspicious.  Kua-toa
 are notoriously duplicitous, willing to turn on anyone if they suspect it will
 be to their advantage, or simply out of peer pressure or fear of maltreatment.
 
-He looks as if he is miserable, but being his misery with stoicism.
+He looks as if he is miserable, but bearing his misery with stoicism.
 ~
-64 8|256|512|4096|67108864|9223372036854775808 -375 S
+64 9223372036854780160 -375 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1867,6 +1940,7 @@ He looks as if he is miserable, but being his misery with stoicism.
     rest
 ~
 |
+< kuo_toa~ common~
 
 #28498
 sea hag~
@@ -1876,7 +1950,7 @@ a hideous sea hag~
 The hideous sea hag drifts through the waters. Her rank, matted hair flows like
 dead seaweed in the current.  She looks subdued and lifeless.
 ~
-64|2048 4|8|16|256|512|4096|32768|8388608|33554432|67108864|1073741824|9223372036854775808 -876 S
+2112 9223372037970498332 -876 S
 66 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -1905,6 +1979,7 @@ dead seaweed in the current.  She looks subdued and lifeless.
     rest
 ~
 |
+< sea_hag~ common~
 
 #28499
 bullywug squat frog-like humanoid~
@@ -1915,7 +1990,7 @@ This male frog-like humanoid stands about 6' tall and has a tough, olive-coloure
 hide.  His head is huge compared to his body, with big, bulbous eyes and a wide
 mouth from which regularly erupts a long, flicking tongue. He stinks like a bog.
 ~
-64 256|4096|65536|4194304|67108864|9223372036854775808 -650 S
+64 9223372036859040000 -650 S
 67 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1938,6 +2013,8 @@ mouth from which regularly erupts a long, flicking tongue. He stinks like a bog.
     mpasound <149>The grotesque sound of a giant tongue flicking irritates your ears.<0>
 ~
 |
+< bullywug~ common~
+MobHeight 183
 
 #28500
 dryad~
@@ -1948,7 +2025,7 @@ This wood nymph belongs in an ancient forest, flitting between great trees,
 her eyes gleaming.  Tragically she has been captured by the grung and
 brought here, to their slave pit, to be used or sold.  You pity her.
 ~
-64 4|8|16|256|512|4096|32768|8388608|67108864|1073741824|9223372036854775808 0 S
+64 9223372038004052764 0 S
 68 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -1965,6 +2042,7 @@ brought here, to their slave pit, to be used or sold.  You pity her.
    mpasound Faint sobs echo through the water.
 ~
 |
+< dryad~ common~
 
 #28501
 hobgoblin~
@@ -1974,7 +2052,7 @@ A large hobgoblin is here, staggering about aimlessly.
 The hobgoblin has red, bloodshot eyes and drool dripping from its mouth.
 He seems confused, tired, sick, and angry.
 ~
-64 256|512|4096|67108864|9223372036854775808 -500 S
+64 9223372036921889024 -500 S
 69 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -1991,6 +2069,9 @@ He seems confused, tired, sick, and angry.
    mpasound You hear an angry grunting sound.
 ~
 |
+< hobgoblin~ common~
+MobHeight 210
+MobWeight 120
 
 #28502
 man pale gypsy~
@@ -2001,7 +2082,7 @@ The bleak expression on the face of this man along with the puncture marks
 on his neck lead you to believe he is in the thrall of a vampire. His suffering
 will end in death.
 ~
-64 4|16|256|512|4096|67108864|9223372036854775808 0 S
+64 9223372036921889556 0 S
 70 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -2018,18 +2099,19 @@ will end in death.
    mpasound You hear soft, muttered cursing in a language you do not understand.
 ~
 |
+< human~ common~
 
 #28503
 tokoloshe leering dwarf~
 a tokoloshe~
 {yA leering dwarf-like creature stares angrily at you.{x
 ~
-The tokoloshe is a dwarf-like water sprite with a reputation for mischeviousness
+The tokoloshe is a dwarf-like water sprite with a reputation for mischievousness
 and malevolence.  It enjoys nothing more than sneaking about while invisible and
 biting off the thumbs of sleeping people, which it then strings onto a necklace
 with those of its previous victims.  It regards you with an unwholesome leer.
 ~
-64 16|256|512|4096|67108864|1073741824|9223372036854775808 -650 S
+64 9223372037928522512 -650 S
 70 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -2043,9 +2125,10 @@ with those of its previous victims.  It regards you with an unwholesome leer.
     rest
 ~
 >rand_prog 5~
-        mpasound {yYou hear mischievious (if somewhat muted) sniggering.{x
+        mpasound {yYou hear mischievous (if somewhat muted) sniggering.{x
 ~
 |
+< tokoloshe~ common~
 
 #28504
 sea zombie~
@@ -2057,7 +2140,7 @@ discoloured flesh is foul with putrefaction. Her eye-sockets are empty,
 her lips are blackened, and her tongue protrudes hideously. You notice her
 body is encrusted with small starfish.
 ~
-64 256|512|4096|67108864|9223372036854775808 -530 S
+64 9223372036854776576 -530 S
 70 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -2074,6 +2157,7 @@ body is encrusted with small starfish.
     mpasound <106>gRoOOooooOaN...<0>
 ~
 |
+< sea_zombie~ common~
 
 #28505
 female merrow~
@@ -2085,7 +2169,7 @@ underbite, and sloping shoulders. She is also covered in tattoos that seem
 mainly to depict acts of death and destruction.  She seems confused and
 disoriented.
 ~
-64 256|512|4096|4194304|67108864|9223372036854775808 -1000 S
+64 9223372036858974976 -1000 S
 70 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -2102,6 +2186,7 @@ disoriented.
     mpasound <76>A vicious snarling erupts from the darkness.<0>
 ~
 |
+< merrow~ common~
 
 #28506
 efreeti~
@@ -2112,7 +2197,7 @@ This evil genie-like being, summoned from the Elemental Plane of Fire and
 trapped in this pit, does not appear to be happy.  Or fully in command of his
 faculties.
 ~
-64 4|256|512|2048|4096|524288|9223372036854775808 -1000 S
+64 9223372036854782724 -1000 S
 70 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -2129,6 +2214,7 @@ faculties.
     mpasound {RYou hear a loud crackling sound, as if a bonfire was burning nearby.{x
 ~
 |
+< efreeti~ common~
 
 #28507
 purple grung Nouhb~
@@ -2139,7 +2225,7 @@ Nouhb is a purple grung, responsible for the comfort and safety of green and
 blue grung under his charge. He has an air of concern about him--partly sincere,
 and partly affected.
 ~
-64 4|8|32|512|8192|2097152|8388608|67108864|1073741824 -225 S
+64 1084236332 -225 S
 63 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -2158,6 +2244,7 @@ and partly affected.
     endif
 ~
 |
+< purple_grung~ common~
 
 #28508
 grung purple overseer~
@@ -2168,7 +2255,7 @@ This tall, slender purple grung is the overseer of the purple grung hatchery,
 selected for his strength and loyalty to his caste.  He's vigilant for the
 slightest threat to the eggs or hatchlings.
 ~
-2|32|64 8|32|128|512|8192|8388608|67108864 -370 S
+98 8397480 -370 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -2194,7 +2281,8 @@ slightest threat to the eggs or hatchlings.
     bran
 ~
 |
-< reserved~ elite~
+< purple_grung~ elite~
+MobHeight 110
 
 #28509
 grung purple hatchling~
@@ -2204,10 +2292,13 @@ a purple grung hatchling~
 This small purple grung hatchling splashes about in the hatchling pool, oblivious
 to everything.
 ~
-2|64 67108864 0 S
+66 0 0 S
 60 0 0 0d0+0 0d0+0
-512 0
+2147483648 0
 0 0 2
+< purple_grung~ common~
+MobHeight 30
+MobWeight 2
 
 #28510
 grung purple hatchling~
@@ -2217,10 +2308,13 @@ a purple grung hatchling~
 This small purple grung hatchling is jumping around the hatching room, having a
 great time.
 ~
-2|64 67108864 0 S
+66 0 0 S
 60 0 0 0d0+0 0d0+0
-512 0
+2147483648 0
 0 0 1
+< purple_grung~ common~
+MobHeight 30
+MobWeight 2
 
 #28511
 grung orange overseer~
@@ -2231,7 +2325,7 @@ This tall male orange grung is the overseer of the orange grung hatchery,
 selected for his strength and loyalty to his caste.  He's vigilant for the
 slightest threat to the eggs or hatchlings, and is evidently a powerful warrior.
 ~
-2|32|64 8|32|128|512|8192|8388608|67108864 -770 S
+98 8397480 -770 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -2257,7 +2351,8 @@ slightest threat to the eggs or hatchlings, and is evidently a powerful warrior.
     bran
 ~
 |
-< reserved~ elite~
+< orange_grung~ elite~
+MobWeight 45
 
 #28512
 grung orange hatchling~
@@ -2267,10 +2362,13 @@ an orange grung hatchling~
 This small orange grung hatchling splashes about in the hatchling pool, oblivious
 to everything.
 ~
-2|64 67108864 0 S
+66 0 0 S
 60 0 0 0d0+0 0d0+0
-512 0
+2147483648 0
 0 0 2
+< orange_grung~ common~
+MobHeight 30
+MobWeight 2
 
 #28513
 grung orange hatchling~
@@ -2280,10 +2378,13 @@ an orange grung hatchling~
 This small orange grung hatchling is jumping around the hatching room, having a
 great time.
 ~
-2|64 67108864 0 S
+66 0 0 S
 60 0 0 0d0+0 0d0+0
-512 0
+2147483648 0
 0 0 1
+< orange_grung~ common~
+MobHeight 30
+MobWeight 2
 
 #28514
 grung gold overseer~
@@ -2294,7 +2395,7 @@ This female gold grung is the overseer of the gold grung hatchery,
 selected for her strength and loyalty to her caste.  She's vigilant for the
 slightest threat to the eggs or hatchlings.
 ~
-2|32|64 8|32|128|512|2048|8192|8388608|16777216|67108864 -751 S
+98 25176744 -751 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -2320,7 +2421,7 @@ slightest threat to the eggs or hatchlings.
     bran
 ~
 |
-< reserved~ elite~
+< gold_grung~ elite~
 
 #28515
 grung gold hatchling~
@@ -2330,10 +2431,13 @@ a gold grung hatchling~
 This small gold grung sits by the side of the small golden hatching pool,
 staring at you with solemn, almost regal eyes.
 ~
-2|64 67108864 0 S
+66 0 0 S
 60 0 0 0d0+0 0d0+0
-512 0
+2147483648 0
 0 0 1
+< gold_grung~ common~
+MobHeight 30
+MobWeight 2
 
 #28516
 grung green~
@@ -2342,10 +2446,10 @@ a green grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.
 ~
-2|64 512|67108864 -365 S
+66 512 -365 S
 64 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -2364,6 +2468,7 @@ this individual, are warriors, hunters, and labourers.
     endif
 ~
 |
+< green_grung~ common~
 
 #28517
 grung green juvenile~
@@ -2372,11 +2477,11 @@ a green grung juvenile~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.  This green grung is also
 a juvenile, not yet ready to take her place amongst the adults in grung society.
 ~
-2|64 512|67108864 -220 S
+66 512 -220 S
 61 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -2395,6 +2500,9 @@ a juvenile, not yet ready to take her place amongst the adults in grung society.
     endif
 ~
 |
+< green_grung~ common~
+MobHeight 70
+MobWeight 15
 
 #28518
 grung green juvenile~
@@ -2403,11 +2511,11 @@ a green grung juvenile~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.  This green grung is also
 a juvenile, not yet ready to take his place amongst the adults in grung society.
 ~
-2|64 512|67108864 -210 S
+66 512 -210 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -2426,6 +2534,9 @@ a juvenile, not yet ready to take his place amongst the adults in grung society.
     endif
 ~
 |
+< green_grung~ common~
+MobHeight 70
+MobWeight 15
 
 #28519
 grung blue~
@@ -2434,11 +2545,11 @@ a blue grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung is busy making food (it does not look appetising).
 ~
-2|64 512|67108864 -410 S
+66 512 -410 S
 63 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -2457,6 +2568,7 @@ grung race.  This grung is busy making food (it does not look appetising).
     endif
 ~
 |
+< blue_grung~ common~
 
 #28520
 grung blue juvenile~
@@ -2465,12 +2577,12 @@ a blue grung juvenile~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role. Blue grung, such as
+caste-based, with the grung's colour denoting their role. Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung is also a juvenile, not yet ready to take her place
- amongst the adults in grung society.
+amongst the adults in grung society.
 ~
-2|64 512|67108864 -320 S
+66 512 -320 S
 61 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -2489,6 +2601,9 @@ grung race.  This grung is also a juvenile, not yet ready to take her place
     endif
 ~
 |
+< blue_grung~ common~
+MobHeight 70
+MobWeight 15
 
 #28521
 grung blue juvenile~
@@ -2497,12 +2612,12 @@ a blue grung juvenile~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role. Blue grung, such as
+caste-based, with the grung's colour denoting their role. Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
-grung race.  This grung is also a juvenile, not yet ready to take her place
- amongst the adults in grung society.
+grung race.  This grung is also a juvenile, not yet ready to take his place
+amongst the adults in grung society.
 ~
-2|64 512|67108864 -310 S
+66 512 -310 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -2521,6 +2636,9 @@ grung race.  This grung is also a juvenile, not yet ready to take her place
     endif
 ~
 |
+< blue_grung~ common~
+MobHeight 70
+MobWeight 15
 
 #28522
 grung red~
@@ -2529,11 +2647,11 @@ a red grung~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Red grung, such as
+caste-based, with the grung's colour denoting their role.  Red grung, such as
 this individual, are the scholars and magic-users of the grung race.  This one
 is relaxing.
 ~
-2|64 512|67108864 -310 S
+66 512 -310 S
 63 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -2552,6 +2670,7 @@ is relaxing.
     endif
 ~
 |
+< red_grung~ common~
 
 #28523
 grung red juvenile~
@@ -2560,12 +2679,12 @@ a red grung juvenile~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role. Red grung, such as
+caste-based, with the grung's colour denoting their role. Red grung, such as
 this individual, are the scholars and magic-users of the grung race. This grung
 is also a juvenile, not yet ready to take her place amongst the adults in grung
 society.
 ~
-2|64 512|67108864 -320 S
+66 512 -320 S
 61 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -2584,6 +2703,9 @@ society.
     endif
 ~
 |
+< red_grung~ common~
+MobHeight 70
+MobWeight 15
 
 #28524
 grung red juvenile~
@@ -2592,12 +2714,12 @@ a red grung juvenile~
 ~
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Red grung, such as
+caste-based, with the grung's colour denoting their role.  Red grung, such as
 this individual, are the scholars and magic-users of the grung race. This grung
 is also a juvenile, not yet ready to take his place amongst the adults in grung
 society.
 ~
-2|64 512|67108864 -310 S
+66 512 -310 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -2616,6 +2738,9 @@ society.
     endif
 ~
 |
+< red_grung~ common~
+MobHeight 70
+MobWeight 15
 #0
 
 #OBJECTS
@@ -2757,7 +2882,7 @@ A
 #28449
 powerful jaws~
 powerful jaws~
-The powerful jaws of a dunkleosteus lies here.~
+The powerful jaws of a dunkleosteus lie here.~
 ~
 5 67108864|137438953472 8192
 1~ 0~ 0~ 8~
@@ -3343,7 +3468,7 @@ It smells (and probably tastes) like dirty socks.
 #28497
 egg addled~
 an addled egg~
-A egg lies here.  It smells bad.~
+An egg lies here.  It smells bad.~
 ~
 26 0 1
 70~ nausea~ ~ ~
@@ -6172,8 +6297,8 @@ of Omu, deep under the sea.  The city is full of coral and mud tree-like
 criss-cross the city, connecting the dwellings to each other.
 
 <34>Omu's wooden palisade prevents movement north or east, and the grung dwelling
-you can see to the west has no entrance to it form here, but you can travel
-<40>further into into the upper part of the city to the south, head down to the sea
+you can see to the west has no entrance to it from here, but you can travel
+<40>further into the upper part of the city to the south, head down to the sea
 floor, or swim up, into the huge, looming area of darkness swirling above your
 head.
 <0>
@@ -11120,10 +11245,10 @@ M 0 28468 1 28842               add a sullen kappa to The Slave Cell
 M 0 28469 1 28842               add a female nixie to The Slave Cell
 M 0 28470 1 28504               add Reehp to Nangnang Shrine
 E 0 27608 0 5                       equip [out-of-area item] (body)
-E 0 27609 0 16                      equip [out-of-area item] (wield)
+E 0 27609 0 17                      equip [out-of-area item] (hold)
 M 0 28471 1 28804               add Doobap to Nangnang Shrine Supplies
 E 0 27608 0 5                       equip [out-of-area item] (body)
-E 0 27609 0 16                      equip [out-of-area item] (wield)
+E 0 27609 0 17                      equip [out-of-area item] (hold)
 G 0 28476 0                         carry a scroll of create food and invis
 G 0 28477 0                         carry a scroll of create spring and protection
 G 0 28478 0                         carry a scroll of detect invisibility and good
@@ -11335,63 +11460,23 @@ S
 0
 
 #SPECIALS
-M 28438 spec_fido               a giant isopod
-M 28439 spec_fido               a giant isopod
-M 28440 spec_poison             a boxfish
-M 28448 spec_green_grung        a green grung
-M 28449 spec_green_grung        a green grung
-M 28450 spec_blue_grung         a blue grung
-M 28451 spec_blue_grung         a blue grung
-M 28452 spec_green_grung        a green grung guard
-M 28453 spec_green_grung        a green grung guard
-M 28454 spec_blue_grung         Kreeg
-M 28455 spec_blue_grung         Drobe
-M 28456 spec_blue_grung         Glimmer
-M 28457 spec_blue_grung         Norg
-M 28458 spec_blue_grung         Kulp
-M 28459 spec_blue_grung         Ripgip
-M 28460 spec_blue_grung         a teller
-M 28461 spec_blue_grung         Drogk
-M 28462 spec_blue_grung         Vrall
-M 28463 spec_blue_grung         Gleeth
-M 28466 spec_green_grung        an unfortunate green grung
-M 28468 spec_kappa              a sullen kappa
-M 28469 spec_cast_water_sprite  a female nixie
+M 28441 none                    a boxfish
 M 28470 spec_cast_adept         Reehp
-M 28471 spec_red_grung          Doobap
-M 28472 spec_green_grung        a green grung
-M 28473 spec_green_grung        a green grung
-M 28474 spec_blue_grung         a blue grung
-M 28475 spec_blue_grung         a blue grung
-M 28476 spec_red_grung          a red grung
-M 28477 spec_red_grung          a red grung
-M 28478 spec_blue_grung         a blue grung
-M 28479 spec_green_grung        a green grung
-M 28482 spec_blue_grung         a blue grung
-M 28485 spec_red_grung          a red grung
-M 28488 spec_fido               a giant isopod
-M 28489 spec_fido               a giant isopod
-M 28492 spec_green_grung        an unfortunate green grung
-M 28494 spec_kappa              a sullen kappa
-M 28496 spec_green_grung        a green grung guard
+M 28480 none                    a green grung hatchling
+M 28481 none                    a green grung hatchling
+M 28483 none                    a blue grung hatchling
+M 28484 none                    a blue grung hatchling
+M 28486 none                    a red grung hatchling
+M 28487 none                    a red grung hatchling
+M 28495 none                    a male nixie
 M 28500 spec_cast_druid         a dryad
 M 28503 spec_cast_mage          a tokoloshe
 M 28504 spec_cast_undead        a sea zombie
 M 28506 spec_cast_mage          an efreeti
-M 28507 spec_purple_grung       Nouhb
-M 28508 spec_purple_grung       a purple grung
-M 28511 spec_orange_grung       an orange grung
-M 28514 spec_gold_grung         a gold grung
-M 28515 spec_gold_grung         a gold grung hatchling
-M 28516 spec_green_grung        a green grung
-M 28517 spec_green_grung        a green grung juvenile
-M 28518 spec_green_grung        a green grung juvenile
-M 28519 spec_blue_grung         a blue grung
-M 28520 spec_blue_grung         a blue grung juvenile
-M 28521 spec_blue_grung         a blue grung juvenile
-M 28522 spec_red_grung          a red grung
-M 28523 spec_red_grung          a red grung juvenile
-M 28524 spec_red_grung          a red grung juvenile
+M 28509 none                    a purple grung hatchling
+M 28510 none                    a purple grung hatchling
+M 28512 none                    an orange grung hatchling
+M 28513 none                    an orange grung hatchling
 S
 
 #$

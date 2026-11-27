@@ -18,6 +18,8 @@ rl  28804
 
 $special
 xp  120
+mu  music/area/omu_central.mp3
+mv  20
 
 # ROOMS
 
@@ -1876,8 +1878,8 @@ of Omu, deep under the sea.  The city is full of coral and mud tree-like
 criss-cross the city, connecting the dwellings to each other.
 
 <34>Omu's wooden palisade prevents movement north or east, and the grung dwelling
-you can see to the west has no entrance to it form here, but you can travel
-<40>further into into the upper part of the city to the south, head down to the sea
+you can see to the west has no entrance to it from here, but you can travel
+<40>further into the upper part of the city to the south, head down to the sea
 floor, or swim up, into the huge, looming area of darkness swirling above your
 head.
 <0>
@@ -2385,6 +2387,8 @@ u   27132
 
 $room
 vn  28504
+am  ambient/room/28504.mp3
+av  25
 nm  Nangnang Shrine
 de
 <215>You stand inside the lower level of an underwater dwelling that resembles a
@@ -5003,6 +5007,8 @@ w   28951
 # MOBS
 
 $mob
+archetype giant_isopod
+rnk common
 nm giant isopod
 sh a giant isopod
 lo <224>A giant isopod crawls about looking for carrion.<0>
@@ -5015,10 +5021,9 @@ vn  28438
 lv  61
 al  0
 sx  male
-bf  has_tail no_speech no_arms no_legs
-act stay_area
-aff swim infrared det_hidden det_sneak det_invis battle_aura slow
-sp  spec_fido
+bf 0
+act 64
+aff 9223372036867359272
 mp  all_greet_prog 15
     mpechoat $n <171>The giant isopod fearfully curls into a ball at your approach!<0>
     rest
@@ -5056,6 +5061,8 @@ mp  rand_prog 15
 ~
 
 $mob
+archetype giant_isopod
+rnk common
 nm giant isopod
 sh a giant isopod
 lo <224>A giant isopod crawls about looking for carrion.<0>
@@ -5068,10 +5075,9 @@ vn  28439
 lv  61
 al  0
 sx  female
-bf  has_tail no_speech no_arms no_legs
-act stay_area
-aff swim infrared det_hidden det_sneak det_invis battle_aura slow
-sp  spec_fido
+bf 0
+act 64
+aff 9223372036867359272
 mp  all_greet_prog 15
     mpechoat $n <171>The giant isopod fearfully curls into a ball at your approach!<0>
     rest
@@ -5109,6 +5115,8 @@ mp  rand_prog 15
 ~
 
 $mob
+archetype boxfish
+rnk common
 nm boxfish
 sh a boxfish
 lo <39>A brightly-coloured boxfish drifts about somewhat clumsily.<0>
@@ -5123,12 +5131,14 @@ vn  28440
 lv  62
 al  55
 sx  female
-bf  has_tail no_speech no_arms no_legs
-act stay_area
-aff swim infrared det_hidden det_sneak det_invis
-sp  spec_poison
+bf 0
+act 64
+aff 8389160
 
 $mob
+archetype boxfish
+rnk common
+sp none
 nm boxfish
 sh a boxfish
 lo <38>A brightly-coloured boxfish drifts about somewhat clumsily.<0>
@@ -5143,11 +5153,13 @@ vn  28441
 lv  62
 al  -50
 sx  male
-bf  has_tail no_speech no_arms no_legs
-act stay_area
-aff swim infrared det_hidden det_sneak det_invis
+bf 0
+act 64
+aff 8389160
 
 $mob
+archetype blacktip_shark
+rnk common
 nm blacktip shark
 sh a blacktip shark
 lo <246>A blacktip shark cuts aggressively through the water.<0>
@@ -5161,9 +5173,9 @@ vn  28442
 lv  63
 al  -150
 sx  male
-bf  has_tail no_speech no_arms no_legs
-act stay_area
-aff swim infrared det_hidden det_sneak det_invis
+bf 0
+act 64
+aff 8389160
 mp  greet_prog 10
     mpechoat $n <9>A blacktip shark LUNGES at you suddenly!<0>
     murder $n
@@ -5174,6 +5186,8 @@ mp  entry_prog 10
 ~
 
 $mob
+archetype blacktip_shark
+rnk common
 nm blacktip shark
 sh a blacktip shark
 lo <246>A blacktip shark cuts aggressively through the water.<0>
@@ -5187,9 +5201,9 @@ vn  28443
 lv  63
 al  -200
 sx  female
-bf  has_tail no_speech no_arms no_legs
-act stay_area
-aff swim infrared det_hidden det_sneak det_invis
+bf 0
+act 64
+aff 8389160
 mp  greet_prog 10
     mpechoat $n <9>A blacktip shark LUNGES at you suddenly!<0>
     murder $n
@@ -5200,6 +5214,8 @@ mp  entry_prog 10
 ~
 
 $mob
+archetype emperor_shrimp
+rnk common
 nm emperor shrimp
 sh an emperor shrimp
 lo <166>A d<172>el<202>ic<208>at<214>e e<231>mp<230>er<229>or <228>sh<166>ri<172>mp <202>sc<208>ut<214>tl<231>es <230>gr<229>ac<228>ef<166>ul<172>ly <202>th<208>ro<214>ug<231>h t<230>he <229>wa<228>te<168>r.<0>
@@ -5212,9 +5228,9 @@ vn  28444
 lv  64
 al  100
 sx  female
-bf  has_tail no_speech
-act stay_area
-aff swim infrared det_hidden det_sneak
+bf 0
+act 64
+aff 8389152
 mp  fight_prog 20
     kick
 ~
@@ -5224,6 +5240,8 @@ mp  fight_prog 20
 ~
 
 $mob
+archetype emperor_shrimp
+rnk common
 nm emperor shrimp
 sh an emperor shrimp
 lo <166>A d<172>el<202>ic<208>at<214>e e<231>mp<230>er<229>or <228>sh<166>ri<172>mp <202>sc<208>ut<214>tl<231>es <230>gr<229>ac<228>ef<166>ul<172>ly <202>th<208>ro<214>ug<231>h t<230>he <229>wa<228>te<168>r.<0>
@@ -5236,9 +5254,9 @@ vn  28445
 lv  64
 al  150
 sx  male
-bf  has_tail no_speech
-act stay_area
-aff swim infrared det_hidden det_sneak
+bf 0
+act 64
+aff 8389152
 mp  fight_prog 20
     kick
 ~
@@ -5248,6 +5266,8 @@ mp  fight_prog 20
 ~
 
 $mob
+archetype dunkleosteus
+rnk common
 nm dunkleosteus
 sh a dunkleosteus
 lo <94>An armoured dunkleosteus hunts for prey.<0>
@@ -5260,12 +5280,9 @@ vn  28446
 lv  65
 al  -500
 sx  female
-bf  has_tail no_speech no_arms no_legs huge
-act stay_area aggressive
-aff swim infrared det_hidden det_sneak det_invis protection
-mp  fight_prog 10
-    bite
-~
+bf 0
+act 96
+aff 8397352
 mp  fight_prog 10
     headbutt
 ~
@@ -5274,6 +5291,8 @@ mp all_greet_prog 100
 ~
 
 $mob
+archetype dunkleosteus
+rnk common
 nm dunkleosteus
 sh a dunkleosteus
 lo <94>An armoured dunkleosteus hunts for prey.<0>
@@ -5286,12 +5305,9 @@ vn  28447
 lv  65
 al  -600
 sx  male
-bf  has_tail no_speech no_arms no_legs huge
-act stay_area aggressive
-aff swim infrared det_hidden det_sneak det_invis protection
-mp  fight_prog 10
-    bite
-~
+bf 0
+act 96
+aff 8397352
 mp  fight_prog 10
     headbutt
 ~
@@ -5300,22 +5316,24 @@ mp all_greet_prog 100
 ~
 
 $mob
+archetype green_grung
+rnk common
+bf 0
 nm grung green
 sh a green grung
 lo <118>A green grung is here, going about his daily business.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.
 ~
 vn  28448
 lv  63
 al  -425
 sx  male
-act stay_area
-aff swim infrared
-sp  spec_green_grung
+act 64
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5347,22 +5365,24 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype green_grung
+rnk common
+bf 0
 nm grung green
 sh a green grung
 lo <118>A green grung is here, going about her daily business.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.
 ~
 vn  28449
 lv  63
 al  -415
 sx  female
-act stay_area
-aff swim infrared
-sp  spec_green_grung
+act 64
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5394,13 +5414,16 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung
 sh a blue grung
 lo <63>A blue grung travels the city on domestic errands.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.
 ~
@@ -5408,9 +5431,8 @@ vn  28450
 lv  62
 al  -305
 sx  male
-act stay_area
-aff swim infrared
-sp  spec_blue_grung
+act 64
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5442,13 +5464,16 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung
 sh a blue grung
 lo <63>A blue grung travels the city on domestic errands.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.
 ~
@@ -5456,9 +5481,8 @@ vn  28451
 lv  62
 al  -335
 sx  female
-act stay_area
-aff swim infrared
-sp  spec_blue_grung
+act 64
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5490,13 +5514,16 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype green_grung
+rnk common
+bf 0
 nm grung green guard
 sh a green grung guard
 lo <118>A green grung guard regards you warily.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  This individual is a
+caste-based, with the grung's colour denoting their role.  This individual is a
 green grung guard and fiercely loyal to the chief who lives in Omu's sovereign
 quarter.
 ~
@@ -5504,9 +5531,8 @@ vn  28452
 lv  64
 al  -725
 sx  male
-act stay_area
-aff swim infrared det_hidden det_sneak
-sp  spec_green_grung
+act 64
+aff 8389152
 mp death_prog 80
     mpecho {GWhen the grung guard dies, his body EXPLODES into green slime!{x
     mpgoto 28821
@@ -5550,13 +5576,16 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype green_grung
+rnk common
+bf 0
 nm grung green guard
 sh a green grung guard
 lo <118>A green grung guard regards you warily.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  This individual is a
+caste-based, with the grung's colour denoting their role.  This individual is a
 green grung guard and fiercely loyal to the chief who lives in Omu's sovereign
 quarter.
 ~
@@ -5564,9 +5593,8 @@ vn  28453
 lv  64
 al  -715
 sx  male
-act stay_area
-aff swim infrared det_hidden det_sneak
-sp  spec_green_grung
+act 64
+aff 8389152
 mp death_prog 80
     mpecho {GWhen the grung guard dies, his body EXPLODES into green slime!{x
     mpgoto 28822
@@ -5610,6 +5638,9 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung kreeg
 sh Kreeg
 lo <63>Kreeg stands here, eager to trade.<0>
@@ -5623,9 +5654,8 @@ vn  28454
 lv  62
 al  -215
 sx  male
-act stay_area sentinel
-aff swim infrared det_hidden det_sneak
-sp  spec_blue_grung
+act 66
+aff 8389152
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5642,22 +5672,24 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung Drobe
 sh Drobe
 lo <63>Drobe is here, supervising the gambling.<0>
 de
 Drobe is a blue grung, and makes his living running Drobe's Dive, a grimy
 gambling den frequented by Omu's risk-loving citizens.  He will generally only
-allows grung to play, but has been known to make an exception for authorised
+allow grung to play, but has been known to make an exception for authorised
 visitors to Omu.
 ~
 vn  28455
 lv  62
 al  -815
 sx  male
-act stay_area sentinel
-aff swim infrared det_hidden det_sneak
-sp  spec_blue_grung
+act 66
+aff 8389152
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5674,6 +5706,9 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung Glimmer
 sh Glimmer
 lo <63>Glimmer is hard at work, fixing equipment.<0>
@@ -5687,9 +5722,8 @@ vn  28456
 lv  62
 al  -211
 sx  male
-act stay_area sentinel tinker
-aff swim infrared det_hidden det_sneak
-sp  spec_blue_grung
+act 262210
+aff 8389152
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5706,6 +5740,9 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung Norg
 sh Norg
 lo <63>Norg the butcher is hacking away at the carcass of... something.<0>
@@ -5719,9 +5756,8 @@ vn  28457
 lv  62
 al  -311
 sx  male
-act stay_area sentinel tinker
-aff swim infrared det_hidden det_sneak
-sp  spec_blue_grung
+act 262210
+aff 8389152
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5738,6 +5774,9 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung Kulp
 sh Kulp
 lo <63>Kulp looks at you disdainfully.<0>
@@ -5751,9 +5790,8 @@ vn  28458
 lv  62
 al  -666
 sx  male
-act stay_area sentinel
-aff swim infrared
-sp  spec_blue_grung
+act 66
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5770,6 +5808,9 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung Ripgip
 sh Ripgip
 lo <63>Ripgip looks up from his fletching, expectantly.<0>
@@ -5783,9 +5824,8 @@ vn  28459
 lv  62
 al  -223
 sx  male
-act stay_area sentinel
-aff swim infrared det_hidden det_sneak
-sp  spec_blue_grung
+act 66
+aff 8389152
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5805,6 +5845,9 @@ mp  fight_prog 20
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung dragonhoard teller
 sh a teller
 lo <63>A Dragonhoard teller sits here, ready to do business.<0>
@@ -5817,9 +5860,8 @@ vn  28460
 lv  62
 al  -120
 sx  male
-act stay_area sentinel banker
-aff swim infrared det_hidden det_sneak det_invis
-sp  spec_blue_grung
+act 524354
+aff 8389160
 mp  greet_prog 25
     if isfight($i)
         break
@@ -5830,12 +5872,15 @@ mp  greet_prog 25
 |
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung Drogk
 sh Drogk
 lo <63>Drogk looks at you with vague menace.<0>
 de
 Drogk is a swarthy blue grung, and makes his living as Omu's apothecary, selling
-a variety of potions, pills, ointments or variable quality and efficacy. He
+a variety of potions, pills, ointments of variable quality and efficacy. He
 generally only sells to fellow grung, but has been known to make an exception
 for authorised visitors to Omu.
 ~
@@ -5843,9 +5888,8 @@ vn  28461
 lv  62
 al  -343
 sx  male
-act stay_area sentinel
-aff swim infrared det_hidden det_sneak
-sp  spec_blue_grung
+act 66
+aff 8389152
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5862,6 +5906,10 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
+weight 35
 nm blue grung Vrall
 sh Vrall
 lo <63>Vrall the spearsmith scowls as you enter.<0>
@@ -5874,9 +5922,8 @@ vn  28462
 lv  62
 al  -373
 sx  male
-act stay_area sentinel
-aff swim infrared det_hidden det_sneak
-sp  spec_blue_grung
+act 66
+aff 8389152
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5893,13 +5940,16 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung Gleeth slaver
 sh Gleeth
 lo <63>Gleeth the slaver proudly displays his living wares.<0>
 de
 Gleeth is a particularly loathsome blue grung, making his living trafficking in
 the misery of his fellow intelligent creatures.  Despite the nastiness of his
-business, he is proud of his work, and would eagerly extoll the virtue and
+business, he is proud of his work, and would eagerly extol the virtue and
 superiority of his 'merchandise' were he able to speak Common, which he does not.
 Gleeth generally only sells to fellow grung, but has been known to make an
 exception for authorised visitors to Omu.
@@ -5908,9 +5958,8 @@ vn  28463
 lv  62
 al  -875
 sx  male
-act stay_area sentinel
-aff swim infrared det_hidden det_sneak
-sp  spec_blue_grung
+act 66
+aff 8389152
 mp  greet_prog 100
     if isfight($i)
         break
@@ -5927,6 +5976,10 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype sahuagin
+rnk common
+height 160
+weight 60
 nm  sahuagin small sad Gersk
 sh  a small, sad sahuagin
 lo  A small, sad sahuagin male cowers here.
@@ -5938,11 +5991,15 @@ vn  28464
 lv  60
 al  -225
 sx  male
-bf  has_tail
-act wimpy
-aff swim infrared poison
+bf 0
+act 128
+aff 4608
 
 $mob
+archetype triton
+rnk common
+act 0
+bf 0
 nm  triton gloomy
 sh  a gloomy triton
 lo A {Bblue-skinned{x man shuffles about gloomily.
@@ -5959,9 +6016,13 @@ vn  28465
 lv  61
 al  630
 sx  male
-aff swim det_invis det_hidden infrared protection battle_aura det_good poisoned
+aff 1077948968
 
 $mob
+archetype green_grung
+rnk common
+act 0
+bf 0
 nm grung green unfortunate
 sh an unfortunate green grung
 lo <118>A very unfortunate green grung simpers and mewls.<0>
@@ -5975,10 +6036,13 @@ vn  28466
 lv  62
 al  -401
 sx  male
-aff swim infrared det_hidden det_sneak poisoned
-sp  spec_green_grung
+aff 8393248
 
 $mob
+archetype sea_elf
+rnk common
+act 0
+bf 0
 nm  elf miserable female sea
 sh  a miserable female sea elf
 lo  <86>A smooth-skinned, teal-coloured sea elf female wails miserably.<0>
@@ -5994,10 +6058,14 @@ vn  28467
 lv  63
 al  845
 sx  female
-aff swim infrared det_hidden det_sneak poisoned det_evil det_invis det_magic det_curse protection detect_traps det_good
+aff 1621111356
 
 
 $mob
+archetype kappa
+rnk common
+act 0
+bf 0
 nm  kappa sullen
 sh  a sullen kappa
 lo  <28>A sullen, po-faced kappa is here.<0>
@@ -6010,10 +6078,12 @@ vn  28468
 lv  64
 al  -245
 sx  male
-sp  spec_kappa
-aff swim infrared
+aff 512
 
 $mob
+archetype nixie
+rnk common
+bf 0
 nm  nixie female
 sh  a female nixie
 lo  <121>A female nixie frowns and grumbles.<0>
@@ -6028,11 +6098,14 @@ vn  28469
 lv  65
 al  0
 sx  female
-sp  spec_cast_water_sprite
-act no_summon
-aff detect_evil detect_invis detect_hidden sanctuary infrared protection sneak fly detect_sneak swim detect_good
+act 8388608
+aff 1082696364
 
 $mob
+archetype red_grung
+rnk common
+bf 0
+sp spec_cast_adept
 nm red grung Reehp healer
 sh Reehp
 lo <160>Reehp the healer tends Nangnang's shrine.<0>
@@ -6045,9 +6118,8 @@ vn  28470
 lv  65
 al  -212
 sx  male
-act stay_area sentinel healer no_quest regenerator no_charm no_summon
-aff swim infrared det_hidden det_sneak det_invis det_evil det_good det_traps sanctuary protection
-sp  spec_cast_adept
+act 8403522
+aff 1084236460
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6064,6 +6136,9 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype red_grung
+rnk common
+bf 0
 nm red grung Doobap apprentice
 sh Doobap
 lo <160>Doobap the apprentice is here, selling temple supplies.<0>
@@ -6076,9 +6151,8 @@ vn  28471
 lv  63
 al  -275
 sx  male
-act stay_area sentinel no_quest no_charm no_summon
-aff swim infrared det_hidden det_sneak det_invis det_evil det_good det_traps protection
-sp  spec_red_grung
+act 8393282
+aff 1084236332
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6097,13 +6171,16 @@ mp  greet_prog 100
 # 'mudhole' grung follow
 
 $mob
+archetype green_grung
+rnk common
+bf 0
 nm grung green
 sh a green grung
 lo <118>A green grung is here, looking a little distracted.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.  This one looks a little
 lost, as if trying to recall something he's just forgotten.
 ~
@@ -6111,9 +6188,8 @@ vn  28472
 lv  64
 al  -415
 sx  male
-act stay_area
-aff swim infrared
-sp  spec_green_grung
+act 64
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6145,22 +6221,24 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype green_grung
+rnk common
+bf 0
 nm grung green
 sh a green grung
 lo <118>A green grung is here, minding her own business.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.
 ~
 vn  28473
 lv  64
 al  -375
 sx  female
-act stay_area
-aff swim infrared
-sp  spec_green_grung
+act 64
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6192,13 +6270,16 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung
 sh a blue grung
 lo <63>A blue grung seems to be looking carefully about for something.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung seems to be looking carefully for something.
 ~
@@ -6206,9 +6287,8 @@ vn  28474
 lv  63
 al  -295
 sx  male
-act stay_area
-aff swim infrared
-sp  spec_blue_grung
+act 64
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6240,13 +6320,16 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung
 sh a blue grung
 lo <63>A blue grung pauses thoughtfully.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung looks unusually thoughtful.
 ~
@@ -6254,9 +6337,8 @@ vn  28475
 lv  63
 al  -315
 sx  female
-act stay_area
-aff swim infrared
-sp  spec_blue_grung
+act 64
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6288,22 +6370,24 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype red_grung
+rnk common
+bf 0
 nm red grung
 sh a red grung
 lo <160>A red grung wears a fierce expression.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Red grung, such as
+caste-based, with the grung's colour denoting their role.  Red grung, such as
 this individual, are the scholars and magic-users of the grung race.
 ~
 vn  28476
 lv  65
 al  -305
 sx  male
-act stay_area
-aff swim infrared
-sp  spec_red_grung
+act 64
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6335,13 +6419,16 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype red_grung
+rnk common
+bf 0
 nm red grung
 sh a red grung
 lo <160>A red grung stares into the distance, absorbed.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Red grung, such as
+caste-based, with the grung's colour denoting their role.  Red grung, such as
 this individual, are the scholars and magic-users of the grung race.  This grung
 looks deeply preoccupied by something.
 ~
@@ -6349,9 +6436,8 @@ vn  28477
 lv  65
 al  -299
 sx  female
-act stay_area
-aff swim infrared
-sp  spec_red_grung
+act 64
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6383,13 +6469,16 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm blue grung suspicious
 sh a blue grung
 lo <63>A suspicious-looking blue grung skulks about.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung looks and moves in a suspicious way, as if trying to
 avoid detection by the authorities.  You also notice he has a few words of
@@ -6399,9 +6488,8 @@ vn  28478
 lv  60
 al  -815
 sx  male
-act stay_area
-aff swim infrared sneak hide
-sp  spec_blue_grung
+act 64
+aff 98816
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6426,7 +6514,7 @@ mp give_prog scroll
     if number($o) == 28711
             emote clears throat.
             mpecho {W"I imagine you want a translation?  Don't look so surprised, Common comes in very handy
-            mpecho {W in my trade.  Well as a gesture of commerical goodwill, why not?  It reads, 'I offer you
+            mpecho {W in my trade.  Well as a gesture of commercial goodwill, why not?  It reads, 'I offer you
             mpecho {W an alliance from my master. Come to the military baron and speak the word "aliyank".{X
             emote smiles unctuously.
             give scroll $n
@@ -6451,6 +6539,11 @@ mp  entry_prog 100
 ~
 
 $mob
+archetype green_grung
+rnk elite
+bf 0
+height 110
+weight 35
 nm grung green overseer
 sh a green grung
 lo <118>A green grung is here, watching over the hatchery.<0>
@@ -6463,10 +6556,8 @@ vn  28479
 lv  65
 al  -370
 sx  female
-act stay_area sentinel aggressive
-aff swim infrared det_invis det_hidden det_sneak protection sanctuary
-sp  spec_green_grung
-rnk elite
+act 98
+aff 8397480
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6492,6 +6583,11 @@ mp  act_prog egg.
 ~
 
 $mob
+archetype green_grung
+rnk common
+height 30
+weight 2
+sp none
 nm grung green hatchling
 sh a green grung hatchling
 lo <118>A green grung hatchling splashes about in the spawning pool.<0>
@@ -6503,11 +6599,16 @@ vn  28480
 lv  60
 al  0
 sx  female
-bf  has_tail
-act stay_area sentinel
-aff swim
+bf 2147483648
+act 66
+aff 0
 
 $mob
+archetype green_grung
+rnk common
+height 30
+weight 2
+sp none
 nm grung green hatchling
 sh a green grung hatchling
 lo <118>A green grung hatchling blinks and ribbits.<0>
@@ -6519,11 +6620,16 @@ vn  28481
 lv  60
 al  0
 sx  male
-bf  has_tail
-act stay_area sentinel
-aff swim
+bf 2147483648
+act 66
+aff 0
 
 $mob
+archetype blue_grung
+rnk elite
+bf 0
+height 110
+weight 35
 nm grung blue overseer
 sh a blue grung
 lo <63>A blue grung is here, guarding the hatchery.<0>
@@ -6536,10 +6642,8 @@ vn  28482
 lv  65
 al  -330
 sx  male
-act stay_area sentinel aggressive
-aff swim infrared det_invis det_hidden det_sneak protection sanctuary
-sp  spec_blue_grung
-rnk elite
+act 98
+aff 8397480
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6565,6 +6669,11 @@ mp  act_prog egg.
 ~
 
 $mob
+archetype blue_grung
+rnk common
+height 30
+weight 2
+sp none
 nm grung blue hatchling
 sh a blue grung hatchling
 lo <63>A blue grung hatchling blinks groggily.<0>
@@ -6576,11 +6685,16 @@ vn  28483
 lv  60
 al  0
 sx  female
-bf  has_tail
-act stay_area sentinel
-aff swim
+bf 2147483648
+act 66
+aff 0
 
 $mob
+archetype blue_grung
+rnk common
+height 30
+weight 2
+sp none
 nm grung blue hatchling
 sh a blue grung hatchling
 lo <63>A blue grung hatchling swims about in the hatching pool.<0>
@@ -6592,11 +6706,16 @@ vn  28484
 lv  60
 al  0
 sx  male
-bf  has_tail
-act stay_area sentinel
-aff swim
+bf 2147483648
+act 66
+aff 0
 
 $mob
+archetype red_grung
+rnk elite
+bf 0
+height 85
+weight 35
 nm grung red overseer
 sh a red grung
 lo <160>A red grung is here, guarding the hatchery.<0>
@@ -6609,10 +6728,8 @@ vn  28485
 lv  65
 al  -370
 sx  male
-act stay_area sentinel aggressive
-aff swim infrared det_invis det_hidden det_sneak protection sanctuary
-sp  spec_red_grung
-rnk elite
+act 98
+aff 8397480
 mp  greet_prog 100
     if isfight($i)
         break
@@ -6638,6 +6755,11 @@ mp  act_prog egg.
 ~
 
 $mob
+archetype red_grung
+rnk common
+height 30
+weight 2
+sp none
 nm grung red hatchling
 sh a red grung hatchling
 lo <160>A red grung hatchling looks about blankly.<0>
@@ -6649,11 +6771,16 @@ vn  28486
 lv  60
 al  0
 sx  female
-bf  has_tail
-act stay_area sentinel
-aff swim
+bf 2147483648
+act 66
+aff 0
 
 $mob
+archetype red_grung
+rnk common
+height 30
+weight 2
+sp none
 nm grung red hatchling
 sh a red grung hatchling
 lo <160>A red grung hatchling waddles about near the hatching pool.<0>
@@ -6665,11 +6792,13 @@ vn  28487
 lv  60
 al  0
 sx  male
-bf  has_tail
-act stay_area sentinel
-aff swim
+bf 2147483648
+act 66
+aff 0
 
 $mob
+archetype giant_isopod
+rnk common
 nm giant isopod
 sh a giant isopod
 lo <224>A giant isopod crawls about looking for carrion.<0>
@@ -6682,10 +6811,9 @@ vn  28488
 lv  70
 al  0
 sx  male
-bf  has_tail no_speech no_arms no_legs
-act stay_area
-aff swim infrared det_hidden det_sneak det_invis battle_aura slow poison faerie_fire
-sp  spec_fido
+bf 0
+act 64
+aff 9223372036867363624
 mp  all_greet_prog 15
     mpechoat $n <171>The giant isopod fearfully curls into a ball at your approach!<0>
     rest
@@ -6723,6 +6851,8 @@ mp  rand_prog 50
 ~
 
 $mob
+archetype giant_isopod
+rnk common
 nm giant isopod
 sh a giant isopod
 lo <224>A giant isopod crawls about looking for carrion.<0>
@@ -6735,10 +6865,9 @@ vn  28489
 lv  70
 al  0
 sx  female
-bf  has_tail no_speech no_arms no_legs
-act stay_area
-aff swim infrared det_hidden det_sneak det_invis battle_aura slow poison faerie_fire
-sp  spec_fido
+bf 0
+act 64
+aff 9223372036867363624
 mp  all_greet_prog 15
     mpechoat $n <171>The giant isopod fearfully curls into a ball at your approach!<0>
     rest
@@ -6776,6 +6905,10 @@ mp  rand_prog 50
 ~
 
 $mob
+archetype sahuagin
+rnk common
+height 160
+weight 60
 nm  small sad sahuagin female
 sh  a small, sad sahuagin
 lo  A small, sad sahuagin female cowers here.
@@ -6787,9 +6920,9 @@ vn  28490
 lv  65
 al  -225
 sx  female
-bf  has_tail
-act wimpy
-aff swim infrared poison slow faerie_fire
+bf 0
+act 128
+aff 9223372036854780672
 mp  rand_prog 1
     sleep
 ~
@@ -6804,12 +6937,16 @@ mp  rand_prog 5
 ~
 
 $mob
+archetype triton
+rnk common
+act 0
+bf 0
 nm  gloomy triton woman
 sh  a gloomy triton
 lo A {Bblue-skinned{x woman shuffles about gloomily.
 de
 You recognise this blue-skinned, fairly-handsome-if-vaguely-fishy-looking
-man as a Triton, a member of a very distinctive race of undersea-dwelling
+woman as a Triton, a member of a very distinctive race of undersea-dwelling
 folk. You know that Triton dedicate themselves to protecting magical portals
 from sahuagin, kraken, and other monstrous beings of the sea and so tend towards
 being of lawful and good alignment, but that this also means they're likely to
@@ -6820,7 +6957,7 @@ vn  28491
 lv  66
 al  630
 sx  female
-aff swim det_invis det_hidden infrared protection battle_aura det_good poison slow faerie_fire
+aff 9223372037932725032
 mp  rand_prog 1
     sleep
 ~
@@ -6835,6 +6972,10 @@ mp  rand_prog 5
 ~
 
 $mob
+archetype green_grung
+rnk common
+act 0
+bf 0
 nm grung green unfortunate
 sh an unfortunate green grung
 lo <118>A very unfortunate green grung simpers and mewls.<0>
@@ -6848,8 +6989,7 @@ vn  28492
 lv  67
 al  -401
 sx  male
-aff swim infrared det_hidden det_sneak poison slow faerie_fire
-sp  spec_green_grung
+aff 9223372036863169312
 mp  rand_prog 1
     sleep
 ~
@@ -6864,6 +7004,10 @@ mp  rand_prog 5
 ~
 
 $mob
+archetype sea_elf
+rnk common
+act 0
+bf 0
 nm  miserable female sea elf
 sh  a miserable female sea elf
 lo  <86>A smooth-skinned, teal-coloured sea elf female wails miserably.<0>
@@ -6879,7 +7023,7 @@ vn  28493
 lv  68
 al  845
 sx  female
-aff swim infrared det_hidden det_sneak poison det_evil det_invis det_magic det_curse protection detect_traps det_good slow faerie_fire
+aff 9223372038475887420
 mp  rand_prog 1
     sleep
 ~
@@ -6895,6 +7039,10 @@ mp  rand_prog 5
 
 
 $mob
+archetype kappa
+rnk common
+act 0
+bf 0
 nm  sullen kappa
 sh  a sullen kappa
 lo  <28>A sullen, sour-faced kappa drifts about.<0>
@@ -6907,8 +7055,7 @@ vn  28494
 lv  69
 al  -245
 sx  female
-sp  spec_kappa
-aff swim infrared poison slow faerie_fire
+aff 9223372036854780672
 mp  rand_prog 1
     sleep
 ~
@@ -6923,6 +7070,10 @@ mp  rand_prog 5
 ~
 
 $mob
+archetype nixie
+rnk common
+bf 0
+sp none
 nm  male nixie
 sh  a male nixie
 lo  <121>A male nixie sulks and sighs.<0>
@@ -6936,8 +7087,8 @@ vn  28495
 lv  70
 al  0
 sx  male
-act no_summon
-aff detect_evil detect_invis detect_hidden sanctuary infrared protection sneak fly detect_sneak swim detect_good poison slow faerie_fire
+act 8388608
+aff 9223372037937476524
 mp  rand_prog 1
     sleep
 ~
@@ -6952,13 +7103,16 @@ mp  rand_prog 5
 ~
 
 $mob
+archetype green_grung
+rnk common
+bf 0
 nm grung green guard
 sh a green grung guard
 lo <118>A green grung guard regards you warily.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  This individual is a
+caste-based, with the grung's colour denoting their role.  This individual is a
 green grung guard and fiercely loyal to the chief who lives in Omu's sovereign
 quarter.
 ~
@@ -6966,11 +7120,12 @@ vn  28496
 lv  70
 al  -725
 sx  male
-act stay_area sentinel aggressive
-aff swim infrared det_hidden det_sneak
-sp  spec_green_grung
+act 98
+aff 8389152
 
 $mob
+archetype kuo_toa
+rnk common
 nm  kua-toa fish-like humanoid male
 sh  a male Kua-toa
 lo  <135>A smallish fish-like humanoid looks grimly about.<0>
@@ -6980,15 +7135,15 @@ hands and feet, this Kua-toa is frowning at you, obviously suspicious.  Kua-toa
 are notoriously duplicitous, willing to turn on anyone if they suspect it will
 be to their advantage, or simply out of peer pressure or fear of maltreatment.
 
-He looks as if he is miserable, but being his misery with stoicism.
+He looks as if he is miserable, but bearing his misery with stoicism.
 ~
 vn  28497
 lv  65
 al  -375
 sx  male
-bf  none
-act stay_area
-aff swim infrared det_invis poison faerie_fire slow
+bf 0
+act 64
+aff 9223372036854780160
 mp  fight_prog 5
     say Blibdoolpoolp judges us all!
     c 'wrath of god'
@@ -7015,6 +7170,8 @@ mp  rand_prog 1
 ~
 
 $mob
+archetype sea_hag
+rnk common
 nm  sea hag
 sh  a hideous sea hag
 lo  <63>A hideous sea hag drifts about listlessly.<0>
@@ -7026,9 +7183,9 @@ vn  28498
 lv  66
 al  -876
 sx  female
-bf  none
-act stay_area regenerator
-aff swim infrared sneak det_good det_magic det_evil det_invis det_sneak deter poison slow faerie_fire
+bf 0
+act 2112
+aff 9223372037970498332
 mp	all_greet_prog 15
     if isgood ($n)
         yell uGgg!
@@ -7055,6 +7212,9 @@ mp  rand_prog 1
 ~
 
 $mob
+archetype bullywug
+rnk common
+height 183
 nm  bullywug squat frog-like humanoid
 sh  a bullywug
 lo  <149>A squat, frog-like humanoid slopes about.<0>
@@ -7067,9 +7227,9 @@ vn  28499
 lv  67
 al  -650
 sx  male
-bf  none
-act stay_area
-aff swim hidden battle_aura poison slow faerie_fire
+bf 0
+act 64
+aff 9223372036859040000
 mp  fight_prog 10
     headbutt
 ~
@@ -7090,6 +7250,9 @@ mp  rand_prog 5
 ~
 
 $mob
+archetype dryad
+rnk common
+sp spec_cast_druid
 nm  dryad
 vn  28500
 sh  a dryad
@@ -7102,10 +7265,9 @@ brought here, to their slave pit, to be used or sold.  You pity her.
 lv  68
 al  0
 sx  female
-bf  none
-act stay_area
-aff swim infrared sneak det_good det_magic det_evil det_invis det_sneak poison slow faerie_fire
-sp  spec_cast_druid
+bf 0
+act 64
+aff 9223372038004052764
 mp  rand_prog 2
     wake
 ~
@@ -7120,6 +7282,10 @@ mp rand_prog 5
 ~
 
 $mob
+archetype hobgoblin
+rnk common
+height 210
+weight 120
 nm  hobgoblin
 vn  28501
 sh  the large hobgoblin
@@ -7131,9 +7297,9 @@ He seems confused, tired, sick, and angry.
 lv  69
 al  -500
 sx  male
-bf  none
-act stay_area
-aff swim infrared poison slow faerie_fire
+bf 0
+act 64
+aff 9223372036921889024
 mp  rand_prog 2
     wake
 ~
@@ -7148,6 +7314,8 @@ mp rand_prog 5
 ~
 
 $mob
+archetype human
+rnk common
 nm  man pale gypsy
 vn  28502
 sh  the gypsy man
@@ -7160,9 +7328,9 @@ will end in death.
 lv  70
 al  0
 sx  male
-bf  none
-act stay_area
-aff swim infrared det_magic det_evil poison slow faerie_fire
+bf 0
+act 64
+aff 9223372036921889556
 mp  rand_prog 2
     wake
 ~
@@ -7177,12 +7345,15 @@ mp rand_prog 5
 ~
 
 $mob
+archetype tokoloshe
+rnk common
+sp spec_cast_mage
 nm tokoloshe leering dwarf
 vn  28503
 sh  a tokoloshe
 lo {yA leering dwarf-like creature stares angrily at you.{x
 de
-The tokoloshe is a dwarf-like water sprite with a reputation for mischeviousness
+The tokoloshe is a dwarf-like water sprite with a reputation for mischievousness
 and malevolence.  It enjoys nothing more than sneaking about while invisible and
 biting off the thumbs of sleeping people, which it then strings onto a necklace
 with those of its previous victims.  It regards you with an unwholesome leer.
@@ -7190,10 +7361,9 @@ with those of its previous victims.  It regards you with an unwholesome leer.
 lv  70
 al -650
 sx  male
-bf  none
-act stay_area
-aff swim infrared det_magic det_good poison slow faerie_fire
-sp spec_cast_mage
+bf 0
+act 64
+aff 9223372037928522512
 mp  rand_prog 2
     wake
 ~
@@ -7204,10 +7374,13 @@ mp  rand_prog 1
     rest
 ~
 mp  rand_prog 5
-        mpasound {yYou hear mischievious (if somewhat muted) sniggering.{x
+        mpasound {yYou hear mischievous (if somewhat muted) sniggering.{x
 ~
 
 $mob
+archetype sea_zombie
+rnk common
+sp spec_cast_undead
 nm sea zombie
 vn 28504
 sh a sea zombie
@@ -7221,10 +7394,9 @@ body is encrusted with small starfish.
 lv  70
 al  -530
 sx  female
-bf  none
-act stay_area
-aff swim infrared poison slow faerie_fire
-sp  spec_cast_undead
+bf 0
+act 64
+aff 9223372036854776576
 mp  rand_prog 2
     wake
 ~
@@ -7239,6 +7411,8 @@ mp  rand_prog 5
 ~
 
 $mob
+archetype merrow
+rnk common
 nm  female merrow
 vn  28505
 sh  a female merrow
@@ -7252,9 +7426,9 @@ disoriented.
 lv  70
 al  -1000
 sx  female
-bf  none
-act stay_area
-aff swim infrared poison slow faerie_fire battle_aura
+bf 0
+act 64
+aff 9223372036858974976
 mp  rand_prog 2
     wake
 ~
@@ -7269,6 +7443,9 @@ mp  rand_prog 5
 ~
 
 $mob
+archetype efreeti
+rnk common
+sp spec_cast_mage
 vn  28506
 nm  efreeti
 sh  an efreeti
@@ -7278,13 +7455,12 @@ This evil genie-like being, summoned from the Elemental Plane of Fire and
 trapped in this pit, does not appear to be happy.  Or fully in command of his
 faculties.
 ~
-sp  spec_cast_mage
 lv  70
 al  -1000
 sx  male
-bf  none
-act stay_area
-aff fly infrared poison slow faerie_fire detect_evil fireshield
+bf 0
+act 64
+aff 9223372036854782724
 mp  rand_prog 2
     wake
 ~
@@ -7299,6 +7475,9 @@ mp  rand_prog 5
 ~
 
 $mob
+archetype purple_grung
+rnk common
+bf 0
 nm purple grung Nouhb
 sh Nouhb
 lo <129>Nouhb wanders Omu, ensuring his underlings' comfort and safety.<0>
@@ -7311,9 +7490,8 @@ vn  28507
 lv  63
 al  -225
 sx  male
-act stay_area
-aff swim infrared det_hidden det_sneak det_invis det_evil det_good det_traps protection
-sp  spec_purple_grung
+act 64
+aff 1084236332
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7330,6 +7508,10 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype purple_grung
+rnk elite
+bf 0
+height 110
 nm grung purple overseer
 sh a purple grung
 lo <129>A purple grung is here, guarding the hatchery.<0>
@@ -7342,10 +7524,8 @@ vn  28508
 lv  65
 al  -370
 sx  male
-act stay_area sentinel aggressive
-aff swim infrared det_invis det_hidden det_sneak protection sanctuary
-sp  spec_purple_grung
-rnk elite
+act 98
+aff 8397480
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7371,6 +7551,11 @@ mp  act_prog egg.
 ~
 
 $mob
+archetype purple_grung
+rnk common
+height 30
+weight 2
+sp none
 nm grung purple hatchling
 sh a purple grung hatchling
 lo <129>A purple grung hatchling plays in the spawning pool.<0>
@@ -7382,11 +7567,16 @@ vn  28509
 lv  60
 al  0
 sx  female
-bf  has_tail
-act stay_area sentinel
-aff swim
+bf 2147483648
+act 66
+aff 0
 
 $mob
+archetype purple_grung
+rnk common
+height 30
+weight 2
+sp none
 nm grung purple hatchling
 sh a purple grung hatchling
 lo <129>A purple grung hatchling jumps about merrily.<0>
@@ -7398,11 +7588,15 @@ vn  28510
 lv  60
 al  0
 sx  male
-bf  has_tail
-act stay_area sentinel
-aff swim
+bf 2147483648
+act 66
+aff 0
 
 $mob
+archetype orange_grung
+rnk elite
+bf 0
+weight 45
 nm grung orange overseer
 sh an orange grung
 lo <208>An orange grung is here, watching over the hatchery.<0>
@@ -7415,10 +7609,8 @@ vn  28511
 lv  65
 al  -770
 sx  male
-act stay_area sentinel aggressive
-aff swim infrared det_invis det_hidden det_sneak protection sanctuary
-sp  spec_orange_grung
-rnk elite
+act 98
+aff 8397480
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7444,6 +7636,11 @@ mp  act_prog egg.
 ~
 
 $mob
+archetype orange_grung
+rnk common
+height 30
+weight 2
+sp none
 nm grung orange hatchling
 sh an orange grung hatchling
 lo <208>An orange grung hatchling ribbits thoughtfully.<0>
@@ -7455,11 +7652,16 @@ vn  28512
 lv  60
 al  0
 sx  female
-bf  has_tail
-act stay_area sentinel
-aff swim
+bf 2147483648
+act 66
+aff 0
 
 $mob
+archetype orange_grung
+rnk common
+height 30
+weight 2
+sp none
 nm grung orange hatchling
 sh an orange grung hatchling
 lo <208>An orange grung hatchling plays merrily.<0>
@@ -7471,11 +7673,14 @@ vn  28513
 lv  60
 al  0
 sx  male
-bf  has_tail
-act stay_area sentinel
-aff swim
+bf 2147483648
+act 66
+aff 0
 
 $mob
+archetype gold_grung
+rnk elite
+bf 0
 nm grung gold overseer
 sh a gold grung
 lo <220>A gold grung is here, watching over the hatchery.<0>
@@ -7488,10 +7693,8 @@ vn  28514
 lv  65
 al  -751
 sx  female
-act stay_area sentinel aggressive
-aff swim infrared det_invis det_hidden det_sneak protection sanctuary globe flaming
-rnk elite
-sp  spec_gold_grung
+act 98
+aff 25176744
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7517,6 +7720,10 @@ mp  act_prog egg.
 ~
 
 $mob
+archetype gold_grung
+rnk common
+height 30
+weight 2
 nm grung gold hatchling
 sh a gold grung hatchling
 lo <220>A gold grung hatchling stares at you solemnly.<0>
@@ -7528,28 +7735,29 @@ vn  28515
 lv  60
 al  0
 sx  male
-bf  has_tail
-act stay_area sentinel
-aff swim
-sp  spec_gold_grung
+bf 2147483648
+act 66
+aff 0
 
 $mob
+archetype green_grung
+rnk common
+bf 0
 nm grung green
 sh a green grung
 lo <118>A green grung is here, doing domestic chores.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.
 ~
 vn  28516
 lv  64
 al  -365
 sx  female
-act stay_area sentinel
-aff swim infrared
-sp  spec_green_grung
+act 66
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7566,13 +7774,18 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype green_grung
+rnk common
+bf 0
+height 70
+weight 15
 nm grung green juvenile
 sh a green grung juvenile
 lo <118>A green grung juvenile is relaxing here.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.  This green grung is also
 a juvenile, not yet ready to take her place amongst the adults in grung society.
 ~
@@ -7580,9 +7793,8 @@ vn  28517
 lv  61
 al  -220
 sx  female
-act stay_area sentinel
-aff swim infrared
-sp  spec_green_grung
+act 66
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7599,13 +7811,18 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype green_grung
+rnk common
+bf 0
+height 70
+weight 15
 nm grung green juvenile
 sh a green grung juvenile
 lo <118>A green grung juvenile stares at you, curious.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Green grung, such as
+caste-based, with the grung's colour denoting their role.  Green grung, such as
 this individual, are warriors, hunters, and labourers.  This green grung is also
 a juvenile, not yet ready to take his place amongst the adults in grung society.
 ~
@@ -7613,9 +7830,8 @@ vn  28518
 lv  62
 al  -210
 sx  male
-act stay_area sentinel
-aff swim infrared
-sp  spec_green_grung
+act 66
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7632,13 +7848,16 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
 nm grung blue
 sh a blue grung
 lo <63>A blue grung is here, preparing food.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Blue grung, such as
+caste-based, with the grung's colour denoting their role.  Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung is busy making food (it does not look appetising).
 ~
@@ -7646,9 +7865,8 @@ vn  28519
 lv  63
 al  -410
 sx  male
-act stay_area sentinel
-aff swim infrared
-sp  spec_blue_grung
+act 66
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7665,24 +7883,28 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
+height 70
+weight 15
 nm grung blue juvenile
 sh a blue grung juvenile
 lo <63>A blue grung juvenile lounges about here.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role. Blue grung, such as
+caste-based, with the grung's colour denoting their role. Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
 grung race.  This grung is also a juvenile, not yet ready to take her place
- amongst the adults in grung society.
+amongst the adults in grung society.
 ~
 vn  28520
 lv  61
 al  -320
 sx  female
-act stay_area sentinel
-aff swim infrared
-sp  spec_blue_grung
+act 66
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7699,24 +7921,28 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype blue_grung
+rnk common
+bf 0
+height 70
+weight 15
 nm grung blue juvenile
 sh a blue grung juvenile
 lo <63>A blue grung juvenile is irritated by your intrusion.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role. Blue grung, such as
+caste-based, with the grung's colour denoting their role. Blue grung, such as
 this individual, are the artisans, shopkeepers, and domestic workers of the
-grung race.  This grung is also a juvenile, not yet ready to take her place
- amongst the adults in grung society.
+grung race.  This grung is also a juvenile, not yet ready to take his place
+amongst the adults in grung society.
 ~
 vn  28521
 lv  62
 al  -310
 sx  male
-act stay_area sentinel
-aff swim infrared
-sp  spec_blue_grung
+act 66
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7733,13 +7959,16 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype red_grung
+rnk common
+bf 0
 nm grung red
 sh a red grung
 lo <160>A red grung is here, relaxing.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Red grung, such as
+caste-based, with the grung's colour denoting their role.  Red grung, such as
 this individual, are the scholars and magic-users of the grung race.  This one
 is relaxing.
 ~
@@ -7747,9 +7976,8 @@ vn  28522
 lv  63
 al  -310
 sx  female
-act stay_area sentinel
-aff swim infrared
-sp  spec_red_grung
+act 66
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7766,13 +7994,18 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype red_grung
+rnk common
+bf 0
+height 70
+weight 15
 nm grung red juvenile
 sh a red grung juvenile
 lo <160>A red grung juvenile is playing here.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role. Red grung, such as
+caste-based, with the grung's colour denoting their role. Red grung, such as
 this individual, are the scholars and magic-users of the grung race. This grung
 is also a juvenile, not yet ready to take her place amongst the adults in grung
 society.
@@ -7781,9 +8014,8 @@ vn  28523
 lv  61
 al  -320
 sx  female
-act stay_area sentinel
-aff swim infrared
-sp  spec_red_grung
+act 66
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7800,13 +8032,18 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype red_grung
+rnk common
+bf 0
+height 70
+weight 15
 nm grung red juvenile
 sh a red grung juvenile
 lo <160>A red grung juvenile looks at you askance.<0>
 de
 Grung are a race of small, froglike humanoids.  They are fiercely territorial,
 and see themselves as superior to all other creatures.  Their society is
-caste-based, with the grung's colour denoting his role.  Red grung, such as
+caste-based, with the grung's colour denoting their role.  Red grung, such as
 this individual, are the scholars and magic-users of the grung race. This grung
 is also a juvenile, not yet ready to take his place amongst the adults in grung
 society.
@@ -7815,9 +8052,8 @@ vn  28524
 lv  62
 al  -310
 sx  male
-act stay_area sentinel
-aff swim infrared
-sp  spec_red_grung
+act 66
+aff 512
 mp  greet_prog 100
     if isfight($i)
         break
@@ -7988,7 +8224,7 @@ ap  ac  -200
 $obj
 nm  powerful jaws
 sh  powerful jaws
-lo  The powerful jaws of a dunkleosteus lies here.
+lo  The powerful jaws of a dunkleosteus lie here.
 vn  28449
 ty  weapon
 v0  head
@@ -8673,7 +8909,7 @@ It smells (and probably tastes) like dirty socks.
 $obj
 nm  egg addled
 sh  an addled egg
-lo  A egg lies here.  It smells bad.
+lo  An egg lies here.  It smells bad.
 vn  28497
 ty  pill
 v0  70
@@ -9742,15 +9978,14 @@ mb      28470
 rm      28504
 num 1
 body    27608
-wield   27609
-
+hold    27609
 # Doobap to Nangnang Shrine Supplies
 $addmob
 mb      28471
 rm      28804
 num 1
 body    27608
-wield   27609
+hold    27609
 inv     28476
 inv     28477
 inv     28478
