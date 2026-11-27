@@ -22,6 +22,9 @@ xp  120
 # MOBS
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An orange grung chiefsguard patrols the quarter.<0>
@@ -34,9 +37,8 @@ vn  28704
 lv  65
 al  -770
 sx  male
-act stay_area aggressive
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 96
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -53,6 +55,9 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An orange grung chiefsguard patrols the quarter.<0>
@@ -65,9 +70,8 @@ vn  28705
 lv  66
 al  -775
 sx  female
-act stay_area aggressive
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 96
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -88,6 +92,8 @@ mp  act_prog unlocks~
 ~
 
 $mob
+archetype sharptooth_catfish
+rnk common
 nm sharptooth catfish
 sh a sharptooth
 lo <94>A sharptooth catfish slithers about in the mud.<0>
@@ -103,9 +109,9 @@ vn  28706
 lv  65
 al  -110
 sx  female
-act stay_area
-aff swim infrared det_invis det_hidden sneak
-bf  no_speech no_arms no_legs has_tail
+act 64
+aff 33320
+bf 0
 sp  spec_cast_electric
 mp  rand_prog 1
     mpecho <94>::slither::<0>
@@ -120,6 +126,8 @@ mp  rand_prog 1
 ~
 
 $mob
+archetype sharptooth_catfish
+rnk common
 nm sharptooth catfish
 sh a sharptooth
 lo <94>A sharptooth catfish slithers about in the mud.<0>
@@ -135,9 +143,9 @@ vn  28707
 lv  65
 al  -110
 sx  male
-act stay_area
-aff swim infrared det_invis det_hidden sneak
-bf  no_speech no_arms no_legs has_tail
+act 64
+aff 33320
+bf 0
 sp  spec_cast_electric
 mp  rand_prog 1
     mpecho <94>::shlllerp::<0>
@@ -152,6 +160,10 @@ mp  rand_prog 1
 ~
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
+weight 45
 nm Kullugrib grung armourer
 sh Kullugrib
 lo <208>Kullugrib the armourer hammers away here.<0>
@@ -163,9 +175,8 @@ vn  28708
 lv  66
 al  -795
 sx  male
-act stay_area sentinel
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 66
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -182,6 +193,8 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype headless_training_dummy
+rnk common
 nm training dummy fghdfdhhdfrg
 sh a training dummy
 lo A training dummy is here, ready to take a beating.
@@ -194,25 +207,29 @@ vn  28709
 lv  66
 al  0
 sx  neuter
-act stay_area sentinel no_experience no_heal objectlike unkillable cannot_fight
-aff blind hold infrared slow
-bf  no_eyes no_speech inorganic no_head
+act 9223372036888330304
+aff 9223372036854776385
+bf 0
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
+height 95
+weight 40
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>A muscular female chiefsguard trains here intensely.<0>
 de
-This squat but musclar female orange grung is a member of the chiefsguard.  She
+This squat but muscular female orange grung is a member of the chiefsguard.  She
 is busy training her combat skills.
 ~
 vn  28710
 lv  66
 al  -801
 sx  female
-act stay_area sentinel
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 66
+aff 8397352
 mp  rand_prog 50
     if isfight($i)
         break
@@ -223,6 +240,9 @@ mp  rand_prog 50
 ~
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An orange grung chiefsguard is busy eating here.<0>
@@ -235,9 +255,8 @@ vn  28711
 lv  66
 al  -710
 sx  male
-act stay_area sentinel
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 66
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -254,6 +273,9 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An orange grung chiefsguard chews studiously.<0>
@@ -266,9 +288,8 @@ vn  28712
 lv  66
 al  -735
 sx  female
-act stay_area sentinel
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 66
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -285,6 +306,9 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An orange grung chiefsguard dozes fitfully.<0>
@@ -296,9 +320,8 @@ vn  28713
 lv  66
 al  -711
 sx  male
-act stay_area sentinel
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 66
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -351,6 +374,9 @@ mp  rand_prog 1
 ~
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An orange grung chiefsguard is relaxing here.<0>
@@ -363,9 +389,8 @@ vn  28714
 lv  66
 al  -766
 sx  female
-act stay_area sentinel
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 66
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -419,6 +444,9 @@ mp  rand_prog 1
 ~
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An orange grung chiefsguard stands at attention.<0>
@@ -431,9 +459,8 @@ vn  28715
 lv  66
 al  -800
 sx  male
-act stay_area aggressive sentinel
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 98
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -454,6 +481,8 @@ mp  act_prog unlocks~
 ~
 
 $mob
+archetype octopus
+rnk common
 nm octopus sinister
 sh an octopus
 lo <140>A sinister-looking octopus slithers about.<0>
@@ -466,9 +495,9 @@ vn  28716
 lv  66
 al  0
 sx  female
-act stay_area
-aff swim infrared det_invis det_hidden sneak
-bf  no_speech no_legs
+act 64
+aff 33320
+bf 0
 mp  fight_prog 25
     if affspell($n) == 74
         break
@@ -521,6 +550,10 @@ mp  rand_prog 1
 ~
 
 $mob
+archetype red_grung
+rnk common
+bf 0
+weight 35
 nm Krek'tok grung receptionist
 sh Krek'tok
 lo <160>Krek'tok is here, patiently receiving the chief's visitors.<0>
@@ -534,9 +567,8 @@ vn  28717
 lv  67
 al  -805
 sx  female
-act stay_area sentinel
-aff swim infrared det_invis det_hidden det_sneak protection sanctuary
-sp  spec_red_grung
+act 66
+aff 8397480
 mp  greet_prog 100
     if isfight($i)
         break
@@ -553,20 +585,23 @@ mp  rand_prog 2
 ~
 
 $mob
+archetype sahuagin
+rnk common
+bf 0
 nm advisor sahuagin
 sh a sahuagin advisor
 lo A sahuagin advisor regards you imperiously.
 de
 This older male sahuagin acts as counsellor and guide to elite figures in the
-sahuagin hieirarchy.  His clothing and demeanour make it clear he is an
+sahuagin hierarchy.  His clothing and demeanour make it clear he is an
 important figure in the Sekolah-worshipping theocratic hierarchy.
 ~
 vn  28718
 lv  67
 al  -840
 sx  male
-act stay_area
-aff swim infrared det_invis det_hidden flying sanctuary protection det_curse
+act 64
+aff 537404072
 sp  spec_sahuagin_high_cleric
 mp hitprcnt_prog 10
     mpecho {/}B{CThe sahuagin advisor gestures directly at you! Everything goes blue...{x{/{x
@@ -576,6 +611,9 @@ mp hitprcnt_prog 10
 ~
 
 $mob
+archetype triton
+rnk common
+bf 0
 nm triton man blue-skinned
 sh a Triton
 lo A {Bblue-skinned man{x struts about here impatiently.
@@ -592,8 +630,8 @@ vn  28719
 lv  67
 al  625
 sx  male
-act stay_area
-aff swim detect_invis detect_hidden infrared protection battle_aura detect_good
+act 64
+aff 1077944872
 mp  rand_prog 1
     if isfight($i)
         break
@@ -610,6 +648,9 @@ mp  rand_prog 1
 ~
 
 $mob
+archetype sea_elf
+rnk common
+bf 0
 nm female sea elf
 sh a female sea elf
 lo <86>A smooth-skinned, teal-coloured sea elf female drifts about distractedly.<0>
@@ -623,8 +664,8 @@ vn  28720
 lv  67
 al  890
 sx  female
-act stay_area
-aff detect_evil detect_invis detect_magic detect_hidden infrared protection detect_traps detect_sneak swim detect_curse detect_good
+act 64
+aff 1621107260
 mp  rand_prog 1
     if isfight($i)
         break
@@ -634,6 +675,9 @@ mp  rand_prog 1
 ~
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An orange grung chiefsguard patrols the chief's dwelling.<0>
@@ -646,9 +690,8 @@ vn  28721
 lv  68
 al  -785
 sx  female
-act stay_area aggressive
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 96
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -669,6 +712,9 @@ mp  act_prog unlocks~
 ~
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An orange grung chiefsguard patrols the chief's dwelling.<0>
@@ -681,9 +727,8 @@ vn  28722
 lv  68
 al  -785
 sx  male
-act stay_area aggressive
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 96
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -700,6 +745,9 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An offduty chiefsguard crouches against the wall here.<0>
@@ -711,9 +759,8 @@ vn  28723
 lv  68
 al  -731
 sx  male
-act stay_area sentinel aggressive
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 98
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -731,6 +778,9 @@ mp  greet_prog 100
 ~
 
 $mob
+archetype orange_grung
+rnk common
+bf 0
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An offduty chiefsguard is relaxing here.<0>
@@ -743,9 +793,8 @@ vn  28724
 lv  68
 al  -786
 sx  female
-act stay_area sentinel
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
+act 66
+aff 8397352
 mp  greet_prog 100
     if isfight($i)
         break
@@ -787,6 +836,9 @@ mp  rand_prog 1
 ~
 
 $mob
+archetype sea_elf
+rnk common
+bf 0
 nm male sea elf spy
 sh a male sea elf
 lo <80>A smooth-skinned male sea elf hides in the shadows.<0>
@@ -794,14 +846,14 @@ de
 Sea elves are of elven ancestry, though with enough differences to qualify as
 a distinct ancestry. They resemble elves with bluish or greenish tinted skin,
 with long, webbed fingers and toes, and visible gills on their ribs.  This
-sea elf is a tall,elegant male who seems to be doing his best to avoid detection.
+sea elf is a tall, elegant male who seems to be doing his best to avoid detection.
 ~
 vn  28725
 lv  68
 al  890
 sx  male
-act stay_area sentinel
-aff detect_invis detect_hidden infrared protection detect_sneak swim detect_curse sneak hidden invisible passdoor
+act 66
+aff 546415146
 sp  spec_superwimpy
 mp  rand_prog 1
     if isfight($i)
@@ -812,6 +864,10 @@ mp  rand_prog 1
 ~
 
 $mob
+archetype orange_grung
+rnk elite
+bf 0
+weight 45
 nm grung orange chiefsguard elite
 sh an orange grung
 lo <208>An elite orange grung chiefsguard patrols the corridor.<0>
@@ -824,11 +880,13 @@ vn  28726
 lv  69
 al  -795
 sx  female
-act stay_area aggressive
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
-
+act 96
+aff 8397352
 $mob
+archetype orange_grung
+rnk elite
+bf 0
+weight 45
 nm grung orange chiefsguard
 sh an orange grung
 lo <208>An elite orange grung chiefsguard patrols the corridor.<0>
@@ -841,12 +899,12 @@ vn  28727
 lv  69
 al  -795
 sx  male
-act stay_area aggressive
-aff swim infrared det_invis det_hidden det_sneak protection
-sp  spec_orange_grung
-
-
+act 96
+aff 8397352
 $mob
+archetype gold_grung
+rnk common
+bf 0
 nm grung gold chiefsmate
 sh a chiefsmate grung
 lo <220>A male gold grung chiefsmate is here, whiling away the hours.<0>
@@ -858,9 +916,8 @@ vn  28728
 lv  69
 al  -810
 sx  male
-act stay_area
-aff swim infrared det_invis det_hidden det_sneak protection sanctuary flaming globed
-sp  spec_gold_grung
+act 64
+aff 25176744
 mp  greet_prog 100~
     if isfight($i)
         break
@@ -877,12 +934,14 @@ mp  greet_prog 100~
 ~
 
 $mob
+archetype conger_eel
+rnk common
 nm conger eel
 sh a conger eel
 lo <138>A conger eel is looking for a meal.<0>
 de
 The conger eel is a large, elongated marine fish known for its serpentine body
-and powerful jaws.  It can grow up to 3 meters long and weight 60 kilos. Conger
+and powerful jaws.  It can grow up to 3 meters long and weigh 60 kilos. Conger
 eels have smooth, scaleless skin that ranges from grey to dark brown, and small,
 sharp teeth suited for catching fish, crustaceans, and cephalopods. Though
 nocturnal and solitary by nature, they are fierce predators and sometimes
@@ -892,18 +951,20 @@ vn  28729
 lv  67
 al  0
 sx  female
-act stay_area
-aff swim infrared det_hidden deter
-bf  no_speech no_legs no_arms has_tail
+act 64
+aff 33554976
+bf 0
 sp  spec_fido
 
 $mob
+archetype conger_eel
+rnk common
 nm conger eel
 sh a conger eel
 lo <138>A conger eel is looking for a meal.<0>
 de
 The conger eel is a large, elongated marine fish known for its serpentine body
-and powerful jaws.  It can grow up to 3 meters long and weight 60 kilos. Conger
+and powerful jaws.  It can grow up to 3 meters long and weigh 60 kilos. Conger
 eels have smooth, scaleless skin that ranges from grey to dark brown, and small,
 sharp teeth suited for catching fish, crustaceans, and cephalopods. Though
 nocturnal and solitary by nature, they are fierce predators and sometimes
@@ -913,12 +974,15 @@ vn  28730
 lv  69
 al  0
 sx  male
-act stay_area
-aff swim infrared det_hidden deter
-bf  no_speech no_legs no_arms has_tail
+act 64
+aff 33554976
+bf 0
 sp  spec_fido
 
 $mob
+archetype gold_grung
+rnk boss
+bf 0
 nm grung gold chief
 sh the Chief
 lo <220>The chief rises furiously at your intrusion.<0>
@@ -937,10 +1001,8 @@ vn  28731
 lv  70
 al  -910
 sx  female
-rnk boss
-act stay_area sentinel
-aff swim infrared det_invis det_hidden det_sneak protection sanctuary flaming globed
-sp  spec_gold_grung
+act 66
+aff 25176744
 mp  greet_prog 100~
     if isfight($i)
         break
@@ -986,6 +1048,7 @@ mp fight_prog 6
 # OBJECTS
 
 $obj
+ex silver
 nm  long silver spear
 sh  a long silver spear
 lo  A well-used and maintained long silver spear rests here.
@@ -1127,6 +1190,7 @@ ap invis -1
 ap pass_door -1
 
 $obj
+ex silver
 nm  masterwork silver spear
 sh  a masterwork silver spear
 lo  A well-used and maintained masterwork silver spear rests here.
@@ -1209,7 +1273,7 @@ vn  28721
 ty  weapon
 v0  head
 v3  bite
-ex  body_part
+ex  body_part pure
 wg  1
 we  wield
 ap  hitroll  7
@@ -1477,7 +1541,7 @@ de
 <130>This compact, round chamber hums with a quiet tension. Carved from ancient stone
 and reinforced with coral-encrusted supports, it serves as a strategic hub for
 <136>the chiefsguard. Bioluminescent kelp lanterns flicker from above, casting
-shifting green light over weapon racks, and woven reed maps A squad of orange
+shifting green light over weapon racks and woven reed maps. A squad of orange
 <137>grung warriors crouch along the edges—alert, sinewy, and poised to spring.
 
 The room smells faintly of brine and damp moss, and the air vibrates with the
@@ -1539,7 +1603,7 @@ chief’s personal refuge. The stone walls are softened by thick veils of gently
 a serene luminescence that shimmers across the room like moonlight on water.
 <202>Woven sea-grass cushions and ceremonial relics rest in niches along the walls.
 
-A large iron door lies east of here; you can also travel north and east.<0>
+A large iron door lies east of here; you can also travel north and west.<0>
 ~
 st  underwater_ground
 rf  no_mob
@@ -1839,7 +1903,7 @@ de
 <130>This compact, round chamber hums with a quiet tension. Carved from ancient stone
 and reinforced with coral-encrusted supports, it serves as a strategic hub for
 <136>the chiefsguard. Bioluminescent kelp lanterns flicker from above, casting
-shifting green light over weapon racks, and woven reed maps A squad of orange
+shifting green light over weapon racks and woven reed maps. A squad of orange
 <137>grung warriors crouch along the edges—alert, sinewy, and poised to spring.
 
 The room smells faintly of brine and damp moss, and the air vibrates with the
@@ -2102,7 +2166,7 @@ $room
 vn  28428
 nm  Chiefsguard Station - Training Arena
 de
-<214>Here lies the chiefguards training arena-—a labyrinthine stronghold of stone and
+<214>Here lies the chiefsguard's training arena—a labyrinthine stronghold of stone and
 coral built within the skeletal remains of an ancient castle. Twisted sea vines
 <208>coil around crumbling archways and phosphorescent fungi cling to the
 battlements, casting an eerie green glow over the entire area. The arena itself
@@ -2331,7 +2395,7 @@ the chiefsguard warriors rest. Barnacles and bioluminescent polyps have
 outlines the silhouettes of slumbering sentries.
 
 <139>This place hums with the silent discipline of soldiers long adapted to the
-depths. The eyes of a carved stone idol of Nangnang glares from the lintels,
+depths. The eyes of a carved stone idol of Nangnang glare from the lintels,
 <140>unblinking, as if daring intruders to cross her domain.
 
 You may travel south to the mess, or east to the upper entrance.<0>
