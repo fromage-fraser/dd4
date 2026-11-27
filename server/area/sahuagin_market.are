@@ -21,7 +21,7 @@ Pheskak is a covetous, churlish sahuagin who makes it his business to collect
 maps of the surrounding areas to sell to locals and would-be adventurers.
 Have a look and see if he has anything that tickles your fancy.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -450 S
+25203266 544 -450 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -54,6 +54,7 @@ endif
    say I try get Omu city map, but grung very secret people.
 ~
 |
+< sahuagin~ common~
 #27201
 teller dragonhoard~
 a Dragonhoard teller~
@@ -62,7 +63,7 @@ A Dragonhoard teller waits for you to make a request.
 The Dragonhoard teller waits impatiently for you to make a financial request of
 some sort.  She doesn't seem the friendly or polite type, even for a sahuagin.
 ~
-2|64|512|4096|32768|524288|8388608|16777216 32|512|67108864 -360 S
+25727554 544 -360 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -75,7 +76,7 @@ else
 		say This is a bank.  Do you have banking to do?
 	else
 		if rand(25)
-			emote huffd
+			emote huffs
 			say I'm quite busy.  Do you have an appointment?
 		else
 			say Yes, and?
@@ -84,6 +85,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27202
 dragonhoard clerk~
 a Dragonhoard clerk~
@@ -92,7 +94,7 @@ A Dragonhoard clerk is here, hard at work.
 One sahuagin Dragonhoard clerk looks very much like another: hardworking,
 irritable, and sour-faced.
 ~
-2|64|67108864 32|512|67108864 -410 S
+67108930 544 -410 S
 31 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -181,6 +183,7 @@ say Why didn't I become a warrior, like my broodmate?
 endif
 ~
 |
+< sahuagin~ common~
 #27203
 Fautap tinker~
 Fautap~
@@ -190,7 +193,7 @@ The sahuagin Fautap is Ota'ar Dar's tinker.  While unfriendly, he is moderately
 competent at repairwork, and should be able to attend to your damaged and degrading
 items for a (hefty!) fee.
 ~
-2|64|512|4096|32768|262144|8388608|16777216 32|512|67108864 -470 S
+25465410 544 -470 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -211,6 +214,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27204
 Shauak shopkeeper~
 Shauak~
@@ -220,7 +224,7 @@ Shauak is a tall, thin sahuagin, with a weary look on his worn face.  He has
 little patience for fools or lollygaggers, so if you don't want to wear out
 your welcome, you might want to purchase something from him.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -370 S
+25203266 544 -370 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -242,6 +246,10 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 200
+MobWeight 80
+
 #27205
 Cluh'g Mani guildmaster warrior~
 Cluh'g Mani, Warrior Guildmaster of Ota'ar Dar~
@@ -253,7 +261,7 @@ you have no doubt he is a savage and capable fighter, even if a veteran.
 
 He regards you coldly, waiting for you to make the first move.
 ~
-2|64|1024 8|32|512|4194304|8388608|67108864 -700 S
+1090 12583464 -700 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -265,6 +273,7 @@ else
 endif
 ~
 |
+< sahuagin_baron~ elite~
 & 30 'teacher base'
 & 87 'armed combat knowledge'
 & 87 'defense knowledge'
@@ -282,7 +291,7 @@ magically-enhanced sharks and rays that sahuagin use as mounts. She is
 surprisingly good-natured for a sahuagin, seeming merely 'rude' by the
 standards of most other civilised races.
 ~
-2|64|512|1024|4096|32768|8388608|16777216 32|512|67108864 -330 S
+25204290 544 -330 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -303,6 +312,7 @@ endif
 endif
 ~
 |
+< sahuagin~ common~
 & 30 'teacher base'
 & 87 'riding techniques'
 & 87 'knowledge'
@@ -317,40 +327,43 @@ a ray.
 This one has been magically enchanted to serve as a mount for sahuagin warriors,
 underwater, on land, and in the air.
 ~
-256|131072 32|512|524288|67108864 0 S
+131328 524832 0 S
 30 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< skate~ common~
 #27208
 blue shark~
 a blue shark~
 A blue shark glides about hungrily.
 ~
-The blue shark, is a species of requiem shark that inhabits deep waters in the
+The blue shark is a species of requiem shark that inhabits deep waters in the
 world's temperate and tropical oceans. This one has been magically enchanted to
 serve as a mount for sahuagin warriors, and can operate on land, under the sea,
 and in the air.
 ~
-256|131072 32|512|524288|67108864 0 S
+131328 524832 0 S
 45 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< blue_shark~ common~
 #27209
 stingray~
 a stingray~
 A stingray glares at you, bristling with menace.
 ~
-The stingray is a kind of ray that are common in coastal tropical and
+The stingray is a kind of ray that is common in coastal tropical and
 subtropical marine waters throughout the world. They have up to three sharp
 spinal blades in their tails that may be poisoned and are used in self-defense.
 
 This one has been magically enchanted to serve as a mount for sahuagin warriors,
 and can operate on land, under the sea, and in the air.
 ~
-256|131072 32|512|524288|67108864 0 S
+131328 524832 0 S
 60 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< stingray~ common~
 #27210
 hammerhead shark~
 a hammerhead shark~
@@ -363,10 +376,11 @@ flattened and laterally extended into a "hammer" shape called a cephalofoil.
 This one has been magically enchanted to serve as a mount for sahuagin warriors,
 and can operate on land, under the sea, and in the air.
 ~
-256|131072 32|128|512|524288|67108864 0 S
+131328 524960 0 S
 75 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< hammerhead_shark~ common~
 #27211
 giant manta ray~
 a giant manta ray~
@@ -379,10 +393,11 @@ combat, especially when ridden and controlled by an experienced warrior.
 This manta has been magically enchanted to serve as a mount for sahuagin
 warriors, and can operate on land, under the sea, and in the air.
 ~
-256|131072 32|128|512|524288|67108864 0 S
+131328 524960 0 S
 90 0 0 0d0+0 0d0+0
-172 0
+0 0
 8 8 2
+< giant_manta_ray~ common~
 #27212
 great white shark~
 a great white shark~
@@ -394,10 +409,11 @@ might be 6 metres from snout to tail fin. Best not to annoy it.
 The terrifying beast has been magically enchanted to serve as a mount for
 sahuagin warriors, and can operate on land, under the sea, and in the air.
 ~
-256|131072 32|128|512|524288|67108864 0 S
+131328 524960 0 S
 100 0 0 0d0+0 0d0+0
-172|512 0
+0 0
 8 8 1
+< great_white_shark~ common~
 #27213
 Reaver Maeril questmaster~
 Reaver Maeril~
@@ -410,7 +426,7 @@ violent life.
 
 Type 'HELP QUEST' to see how you can interact with him.
 ~
-2|8|64|512|4096|32768|8388608|16777216 8|32|128|512|8388608|67108864 -700 S
+25203274 8389288 -700 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -418,6 +434,9 @@ Type 'HELP QUEST' to see how you can interact with him.
 emote smiles at your entrance, then waits patiently for you to speak
 ~
 |
+< sahuagin~ common~
+MobWeight 105
+
 #27214
 Therem Drinkmaster~
 Therem the Drinkmaster~
@@ -428,7 +447,7 @@ male sahuagin you've seen.  He has managed Ota'ar's popular drinking
 establishment, "Drinker's Den," for a decade now and would be happy to sell
 you any of the various foul liquids concocted in this city.
 ~
-2|64|512|4096|32768|8388608|16777216 8|32|512|67108864 -150 S
+25203266 552 -150 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -449,6 +468,10 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 165
+MobWeight 70
+
 #27215
 Reaver Tiareo~
 Reaver Tiareo~
@@ -458,10 +481,11 @@ Reaver Tiareo is the receptionist and first point of contact for entrants into
 the Reaver guildhall. She often sets new initiates tasks to test their mettle
 and suitability as Reavers. If you're interested, ask her about a 'quest'.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -670 S
+25203266 544 -670 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< sahuagin~ common~
 #27216
 Holo Orl'as~
 Holo Orl'as~
@@ -471,7 +495,7 @@ Holo Orl'as is a trim and rather elegantly-dressed individual (for a sahuagin).
 Gorge Palace is his establishment. You can pay for your meals here and take
 them with you, or travel upstairs to the bar/lounge to eat them.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -220 S
+25203266 544 -220 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -497,6 +521,9 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobWeight 80
+
 #27217
 surly sahuagin warrior~
 a surly sahuagin warrior~
@@ -505,7 +532,7 @@ A surly sahuagin warrior sits here, nursing a drink.
 A surly sahuagin sits here, drinking something foul-tasting.  He doesn't look
 like he wants to be disturbed.
 ~
-2|64 32|512|67108864 -800 S
+66 544 -800 S
 32 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -531,6 +558,7 @@ emote stares at you, angrily
 endif
 ~
 |
+< sahuagin~ common~
 #27218
 lecherous sahuagin~
 a lecherous sahuagin~
@@ -539,10 +567,11 @@ A lecherous sahuagin is on the lookout for a mate.
 This sahuagin female appears deep in her cups, and is busy hitting on anyone
 who can't get away from her fast enough.
 ~
-2|64 32|512|67108864 -500 S
+66 544 -500 S
 33 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< sahuagin~ common~
 #27219
 sahuagin diner~
 a sahuagin diner~
@@ -551,7 +580,7 @@ A sahuagin diner is here, scoffing down something foul.
 This sahuagin is busy scoffing down some foul-smelling, fishy slop and pays
 little attention to your intrusion.
 ~
-2|64 32|512|67108864 -520 S
+66 544 -520 S
 31 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -591,6 +620,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27220
 sahuagin diner female~
 a sahuagin diner~
@@ -600,7 +630,7 @@ A female sahuagin is here, gluttonously consuming a plate of mermaid's purses,
 the egg capsules of some species of shark (or related animal).  She doesn't
 seem at all interested in or bothered by you.
 ~
-2|64 32|512|67108864 -412 S
+66 544 -412 S
 32 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -633,6 +663,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27221
 Ffeka lootsmith sahuagin~
 Ffeka the Lootsmith~
@@ -642,7 +673,7 @@ Ffeka the Lootsmith is a trader in treasure, gems, and the like and the
 proprietor of The Kraken's Den.  He is greedy, unscrupulous, pays a pittance,
 and sells at an outrageous markup.  You have been warned.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -710 S
+25203266 544 -710 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -663,6 +694,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27222
 dryad~
 a dryad~
@@ -672,7 +704,7 @@ This wood nymph belongs in an ancient forest, flitting between great trees,
 her eyes gleaming.  Tragically she has been captured by the sahuagin and
 brought here, to their slave market, to be sold.  You pity her.
 ~
-2|64 512|32768|524288 0 S
+66 557568 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -680,6 +712,7 @@ brought here, to their slave market, to be sold.  You pity her.
         mpecho Faint sobs echo through the sea.
 ~
 |
+< dryad~ common~
 #27223
 malacost large woodlouse~
 a malacost~
@@ -691,14 +724,15 @@ before you, making lazy swimming motions. The outer edges of its segmented
 body-plates glow an eerie blue-green.  You doubt it has any understanding
 of where it is or how it got here.
 ~
-2|64|128 512|8192|524288|67108864 175 S
+194 67117568 175 S
 31 0 0 0d0+0 0d0+0
-40 0
+0 0
 8 8 2
 >death_prog 100~
 mpecho {wThe malacost spasms and curls up into a ball, lifeless.{x
 ~
 |
+< malacost~ common~
 #27224
 hobgoblin~
 the large hobgoblin~
@@ -707,13 +741,17 @@ A large hobgoblin is here, wondering where it all went wrong.
 The hobgoblin has red, bloodshot eyes and drool dripping from its mouth.
 He seems confused and angry.
 ~
-2|4|64 0 -500 S
+70 0 -500 S
 32 11 2 1d10+120 2d6+1
 0 0
 8 8 1
+< hobgoblin~ common~
+MobHeight 210
+MobWeight 120
+
 #27225
 criosphinx sphinx~
-A criosphinx~
+a criosphinx~
 A criosphinx calmly watches everything.
 ~
 The criosphinx is a calm and friendly creature, having the head of a ram atop
@@ -722,10 +760,11 @@ and in poking occasional fun at his easily confused lesser cousins.  He doesn't
 seem perturbed by having been captured and brought here, which is itself
 perturbing.
 ~
-2|64 8 300 S
+66 8 300 S
 33 -3 -2 23d23+230 3d10+15
 0 0
 8 8 1
+< criosphinx~ common~
 #27226
 wolf cub~
 the wolf cub~
@@ -734,9 +773,9 @@ A wolf cub tries to hide from everyone.
 The tiny wolf cub tries to escape your notice by burrowing in the sand.  He's not
 having much luck. Poor thing.
 ~
-2|4|64 8|32|8388608 0 S
+70 8388616 0 S
 34 0 0 0d0+0 0d0+0
-40 0
+0 0
 8 8 1
 >rand_prog 1~
 mpecho ::snuffle::
@@ -751,19 +790,25 @@ mpecho ::sniffle::
 hide
 ~
 |
+< wolf~ common~
+MobHeight 30
+MobLength 60
+MobWeight 5
+
 #27227
 pirate wandering crewman~
-A Wandering Crewman~
+a wandering crewman~
 A crewman wanders aimlessly here.
 ~
 He looks fit and healthy from climbing the riggings in high seas and
 strong winds. However, he may be wishing he'd done a little less
 wandering and a little more looking out for sahuagin raiders right now.
 ~
-2|64 0 -300 S
+66 0 -300 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #27228
 Aernth slavemaster~
 Aernth the Slavemaster~
@@ -775,7 +820,7 @@ and selling them profitably here, at the slavemarket. He takes a deeply
 unwholesome pleasure in his business and it makes your skin crawl to even
 share a space with him.
 ~
-2|64 32|512|67108864 -1000 S
+66 544 -1000 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -786,6 +831,7 @@ share a space with him.
 	mppurge
 ~
 |
+< sahuagin~ common~
 #27229
 Luanar teha barehands~
 Luanar 'Barehands' Teha~
@@ -795,7 +841,7 @@ Luanar 'Barehands' Teha owns this brawlarium and trains sahuagin warriors in
 weaponless combat.  Not overly-tall but very wide and muscular, he is an
 intimidating presence.
 ~
-2|64|1024 8|32|512|4194304|8388608|67108864 -310 S
+1090 12583464 -310 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -814,6 +860,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 & 30 'teacher base'
 & 87 'combat knowledge'
 & 87 'unarmed combat knowledge'
@@ -824,6 +871,9 @@ endif
 & 87 'martial arts'
 & 87 'combination moves'
 & 30 'artist base'
+MobHeight 175
+MobWeight 115
+
 #27230
 Pha'la Imd'st receptionist~
 Pha'la Imd'st~
@@ -833,7 +883,7 @@ Pha'la Imd'st is a female sahuagin of middling years.  She acts as the
 Barehands Brawlarium's receptionist, and is curious as to what business you
 have here.
 ~
-2|64 32|512|67108864 -438 S
+66 544 -438 S
 31 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -845,6 +895,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27231
 Kaumav baker~
 Kaumav the baker~
@@ -854,7 +905,7 @@ Kaumav is an older female sahuagin and owns 'The Fisher's Crust,' the Ota'ar
 Dar bakery/eaterie. She seems to work very hard, which seems a pity given how
 unappetising her wares are.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -200 S
+25203266 544 -200 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -875,6 +926,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27232
 Slymah diceboss~
 Slymah~
@@ -884,7 +936,7 @@ Slymah is a short, greasy, fat sahuagin and the owner of 'Sekolah's Whim
 Casino,' a lower-class Ota'ar Dar gambling den.  To see what game he's
 offering, try to 'bet' or 'wager' some gold coins.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -430 S
+25203266 544 -430 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -907,17 +959,21 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 160
+MobWeight 110
+
 #27233
 Ahomar Weaponsmith~
 Ahomar the Weaponsmith~
-Ahomar the Weaponsmith is here, sellings weapons for sahuagin warriors.
+Ahomar the Weaponsmith is here, selling weapons for sahuagin warriors.
 ~
 Ahomar the Weaponsmith is a tall, grim, well-muscled sahuagin. He sells
 weapons suitable for sahuagin warriors, making many of them in the forge he
 shares with Zigrysk, to the east.  He is also happy to buy
 weapons, though he's not known to pay great prices.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -400 S
+25203266 544 -400 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -929,7 +985,7 @@ else
 		say You look too weak to wield a sahuagin weapon.  Are you in the right place?
 	else
 		if rand(25)
-			say Crossbows, tridents, scimtars, nets, and spears.  Have a look.
+			say Crossbows, tridents, scimitars, nets, and spears.  Have a look.
 		else
 			say Hello.  Here to buy a weapon?
 		endif
@@ -937,6 +993,10 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 200
+MobWeight 115
+
 #27234
 Bilani~
 Bilani~
@@ -948,7 +1008,7 @@ specifically how they may be used to infuse potions with divine (and
 other) effects. She sells a variety of such potions here, and invites
 you to sample and purchase them.
 ~
-2|64|512|4096|32768|8388608|16777216 8|32|128|512|67108864 -190 S
+25203266 680 -190 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -968,6 +1028,9 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobWeight 65
+
 #27235
 Zigrysk~
 Zigrysk~
@@ -977,7 +1040,7 @@ Zigrysk is a young sahuagin of average height who has an unusual curiosity
 about the surface-dwelling races.  He has made it his business to supply
 things that they need to operate in the underwater realm.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -220 S
+25203266 544 -220 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -998,6 +1061,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27236
 ~
 Nirlisk the Healer~
@@ -1007,10 +1071,11 @@ Nirlisk looks at you in a way you'd be tempted to describe as 'fondly,' for a
 sahuagin.  She explains that she is the resident healer of this temple to
 Sekolah, and just to say 'HEAL' to her if you'd like a list of her services.
 ~
-2|64|512|4096|8192|32768|8388608|16777216 8|32|128|512|2048|8192|16777216|67108864 -75 S
+25211458 16788136 -75 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< sahuagin~ common~
 #27237
 Testris torturer~
 Testris the Torturer~
@@ -1022,10 +1087,11 @@ participate in their favourite hobby.  He's also happy to demonstrate the
 use of the equipment upstairs... for a fee.  Read the shop sign for
 demonstration prices.
 ~
-2|64 8|32|512|8192|67108864 -900 S
+66 8744 -900 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
 #27238
 Malu Thubyr~
 Malu Thubyr, Servant of Sekolah~
@@ -1033,10 +1099,10 @@ Malu Thubyr is here, selling temple supplies.
 ~
 Malu Thubyr is a youngish, small sahuagin, with a slightly obsequious
 demeanour. He sells high-quality clerical goods to sahuagin and foreigner
-alike in a dedicated part of Sekolah's Ota'ar Dah temple, 'the House of
+alike in a dedicated part of Sekolah's Ota'ar Dar temple, 'the House of
 the Joyful Hunter'.
 ~
-2|64|512|4096|32768|8388608|16777216 8|32|128|512|8192|67108864 -160 S
+25203266 8872 -160 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1057,6 +1123,10 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 160
+MobWeight 60
+
 #27239
 Mafite Kilim Sekolah matron~
 Mafite Kilim, Sekolah matron~
@@ -1067,7 +1137,7 @@ it clear she is an important figure in the Sekolah-worshipping hierarchy.
 She has little time for foreigners, but may be of some use to sahuagin,
 especially fellow clerics of Sekolah.
 ~
-2|64|1024 8|32|128|512|8192|524288|67108864|536870912 -840 S
+1090 537404072 -840 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -1079,6 +1149,7 @@ else
 endif
 ~
 |
+< sahuagin~ elite~
 & 30 'teacher base'
 & 90 'healing magiks'
 & 90 'harmful magiks'
@@ -1110,10 +1181,11 @@ An acolyte of Sekolah is going about his business.
 A young male sahuagin of relatively peaceable disposition is quietly going
 about his business here.
 ~
-2|64 8|32|512|8192|524288|67108864 -650 S
+66 533032 -650 S
 31 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
 #27241
 acolyte sahuagin Sekolah~
 an acolyte of Sekolah~
@@ -1122,10 +1194,11 @@ An acolyte of Sekolah is going about her business.
 A young female sahuagin of relatively peaceable disposition is quietly going
 about her business here.
 ~
-2|64 8|32|512|8192|524288|67108864 -550 S
+66 533032 -550 S
 32 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< sahuagin~ common~
 #27242
 Mala't Sage identifier~
 Mala't the Sage~
@@ -1134,7 +1207,7 @@ Mala't the Sage is here, happy to help you identify your artefacts.
 A knowledgeable and sagacious older sahuagin, Mala't has set up shop here
 identifying artefacts for those lacking the skill to.
 ~
-2|64|512|4096|32768|1048576|8388608|16777216 8|32|512|8192|524288|67108864 -125 S
+26251842 533032 -125 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1155,6 +1228,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #27243
 Mohmit~
 Mohmit~
@@ -1171,7 +1245,7 @@ He is a swarthy, reasonably cheerful, somewhat rotund, and rather short
 gentleman, who is eager to sell you his wares.  Perhaps a little TOO eager,
 as he talks to you incessantly as you browse the shelves in the shop.
 ~
-2|64|512|4096|32768|8388608|16777216 8|32|128|512|8192|524288|67108864 -30 S
+25203266 67642024 -30 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1221,6 +1295,10 @@ say But THIS seaweed glows EXTRA HARD!
 say I wouldn't wipe my ARSE with Midgaardian brewing supplies!  We only deal with QUALITY here!
 ~
 |
+< human~ common~
+MobHeight 160
+MobWeight 90
+
 #27244
 citizen Ota'ar Dar sahuagin female~
 a citizen of Ota'ar Dar~
@@ -1229,10 +1307,11 @@ A female citizen of Ota'ar Dar goes about her business here.
 This fairly nondescript female sahuagin is just going about her business,
 running errands and the like.
 ~
-64|128 32|512|67108864 -330 S
+192 544 -330 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< sahuagin~ common~
 #27245
 citizen Ota'ar Dar sahuagin male~
 a citizen of Ota'ar Dar~
@@ -1241,10 +1320,11 @@ A male citizen of Ota'ar Dar goes about his business here.
 This fairly nondescript male sahuagin is just going about his business,
 running errands and the like.
 ~
-64 32|512|67108864 -276 S
+64 544 -276 S
 31 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
 #27246
 sahuagin thief~
 a sahuagin thief~
@@ -1253,10 +1333,11 @@ A sahuagin thief lurks in the shadows, looking for marks to pickpocket.
 The sahuagin thief wears dark clothing and sticks to the shadows, darting out
 to stealthily separate inattentive individuals from their valuables.
 ~
-64 32|512|32768|65536|67108864 -620 S
+64 98848 -620 S
 32 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
 #27247
 Ota'ar Dar crier sahuagin~
 the Ota'ar Dar crier~
@@ -1265,7 +1346,7 @@ The Ota'ar Dar crier is here, relaying the Prince's proclamations.
 Ota'ar Dar's crier is a tall, smartly-dressed sahuagin whose job it is to
 travel the city and share the Prince's proclamations with the populace.
 ~
-64 32|512|67108864 -379 S
+64 544 -379 S
 33 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1280,7 +1361,7 @@ endif
 if isfight($i)
 break
 else
-say Hear ye all!  The market canton is open to canal traffic, but some other cantons remain inaccesible!
+say Hear ye all!  The market canton is open to canal traffic, but some other cantons remain inaccessible!
 endif
 ~
 >rand_prog 1~
@@ -1368,6 +1449,9 @@ say Omu city passes increasingly hard to come by--citizens who need to travel th
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 200
+
 #27248
 manta ray~
 a manta ray~
@@ -1377,10 +1461,11 @@ A manta is a large ray with triangular pectoral fins, horn-shaped cephalic
 fins, and a large, forward-facing mouth.  This one appears to be going lazily
 about its business, searching for zooplankton to feed on.
 ~
-64|128 32|512|32768|67108864 34 S
+192 33312 34 S
 34 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< manta_ray~ common~
 #27249
 mako shark~
 a mako shark~
@@ -1390,10 +1475,11 @@ The shortfin mako shark is a large mackerel shark, and can reach a length of
 4 metres.  It is notorious for the power of its bite and speed of its movement
 --best be cautious around it!
 ~
-4|64 32|512|32768|67108864 0 S
+68 33312 0 S
 35 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< mako_shark~ common~
 #27250
 Ota'ar Dar cityguard sahuagin guard~
 an Ota'ar Dar cityguard~
@@ -1403,10 +1489,11 @@ Ota'ar Dar cityguards look very much like sahuagin soldiers, but their
 pauldrons are stamped with the city's mark.  They are selected for their
 strength, youth, and loyalty to the prince.
 ~
-64 32|512|67108864 -430 S
+64 544 -430 S
 33 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
 #27251
 shady sahuagin~
 a shady sahuagin~
@@ -1416,10 +1503,14 @@ This short, thin, nervous-looking sahuagin beckons you over.  He says he buys
 and sells various items and offers much better prices than most of the
 shopkeepers here, as he keeps his overheads low.
 ~
-4|64|128 32|512|32768|67108864 -710 S
+196 33312 -710 S
 34 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
+MobHeight 160
+MobWeight 55
+
 #27252
 electric eel~
 an electric eel~
@@ -1428,10 +1519,11 @@ An electric eel wriggles its way through the water.
 This rather large electric eel hums and crackles. Best be cautious about
 bothering it.
 ~
-4|64 8|32|512|67108864 0 S
+68 552 0 S
 32 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 0
+< giant_electric_eel~ common~
 #27253
 tiger shark~
 a tiger shark~
@@ -1442,23 +1534,31 @@ from the dark stripes down its body, which resemble a tiger's pattern, but fade
 as the shark matures.  It's minding its own business right now, but taking a
 look at its fearsome jaws, you're in no hurry to distract it.
 ~
-4|64 32|512|67108864 -75 S
+68 544 -75 S
 31 0 0 0d0+0 0d0+0
-172 0
+128 0
 8 8 1
+< tiger_shark~ common~
+MobLength 550
+MobWeight 600
+
 #27254
 bull shark~
 a bull shark~
-An bad-tempered bull shark swims here, looking for prey.
+A bad-tempered bull shark swims here, looking for prey.
 ~
 Bull sharks are known for their aggressive nature, and the frequency of their
 attacks on humans.  This one is female, a couple of metres long, large and
 stout, and has an extremely bad attitude.
 ~
-4|64 32|512|67108864 -670 S
+68 544 -670 S
 30 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< bull_shark~ common~
+MobLength 200
+MobWeight 100
+
 #27255
 devil fish~
 a devil fish~
@@ -1468,10 +1568,11 @@ A species of ray, the devil fish is a bit smaller than the oceanic and reef
 rays, but can still reach a disk size of 3.5 metres.  Additionally it is the
 only member of its species with a tail spine.
 ~
-64 32|512|67108864 0 S
+64 544 0 S
 31 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< devil_ray~ common~
 #27256
 spotted eagle ray~
 a spotted eagle ray~
@@ -1483,10 +1584,11 @@ pelvic fins, are several venomous, barbed stingers. Spotted eagle rays commonly
 feed on small fish and crustaceans, and will sometimes dig with their snouts
 to look for food buried in the sand of the sea bed.
 ~
-4|64 32|512|67108864 -300 S
+68 544 -300 S
 32 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< spotted_eagle_ray~ common~
 #27257
 sahuagin warrior trainee~
 a sahuagin warrior trainee~
@@ -1495,7 +1597,7 @@ A sahuagin warrior trainee practises with weapons here.
 The sahuagin warrior trainee is here, testing his weapon skills with other
 recruits.
 ~
-2|64 32|512|67108864 -500 S
+66 544 -500 S
 32 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1514,6 +1616,7 @@ emote sighs heavily
 endif
 ~
 |
+< sahuagin~ common~
 #27258
 Reaver Ciy'yn sahuagin~
 Reaver Ciy'yn~
@@ -1525,10 +1628,13 @@ exploration have left him scarred and world-weary.  He doesn't seem
 at all impressed that you've wandered into his presence, and
 impatiently awaits an explanation.
 ~
-2|64 32|512|67108864 -800 S
+66 544 -800 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ elite~
+MobWeight 75
+
 #27259
 Reaver recruit~
 a Reaver recruit~
@@ -1537,10 +1643,11 @@ A Reaver recruit is milling about here, awaiting his next deployment.
 This sahuagin is a recent recruit to the Reaver fold.  He is currently relaxing
 before his next trip of exploration and conquest.
 ~
-2|64 32|512|67108864 -420 S
+66 544 -420 S
 32 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
 #27260
 reaver recruit~
 a Reaver recruit~
@@ -1549,14 +1656,15 @@ A Reaver recruit is sleeping here.
 This sahuagin is a recent recruit to the Reaver fold.  She is currently
 catching up on sleep before her next trip of exploration and conquest.
 ~
-2|64 32|512|131072|67108864 -370 S
+66 131616 -370 S
 32 0 0 0d0+0 0d0+0
 0 0
-8 8 1
+8 8 2
 >all_greet_prog 100~
 	sleep
 ~
 |
+< sahuagin~ common~
 #27261
 Filani slavemistress sahuagin~
 Filani the Slavemistress~
@@ -1568,7 +1676,7 @@ raiders and selling them profitably here, at the slavemarket.  She takes
 a deep pleasure in her business and it makes your skin crawl to even share
 a space with her.
 ~
-2|64 32|512|67108864 -1000 S
+66 544 -1000 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -1579,6 +1687,7 @@ a space with her.
 	mppurge
 ~
 |
+< sahuagin~ common~
 #27262
 giant sea-worm sea worm~
 a giant sea-worm~
@@ -1588,36 +1697,39 @@ This hideous sea worm must be 4 metres long.  Bright pink, smooth, and eyeless,
 it uses its electrical and other senses to navigate the ocean's depths in its
 relentless quest for sustenance.
 ~
-4|32|64|128 1|8|32|512|32768|524288|67108864 0 S
+228 557609 0 S
 35 0 0 0d0+0 0d0+0
-46 0
+0 0
 8 8 0
+< giant_sea_worm~ common~
 #27263
 acolyte of Sekolah~
 an acolyte of Sekolah~
 An acolyte of Sekolah concentrates on ritual spell-weaving.
 ~
-This fierce-looking sahuagin acolyte of Sekolah wear a different robe from the
+This fierce-looking sahuagin acolyte of Sekolah wears a different robe from the
 ones you've seen before now.  You wonder if he has been specially trained or
 set aside for some purpose.
 ~
-2|32|64 8|32|512|8192|524288|67108864 -1000 S
+98 533032 -1000 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< sahuagin~ common~
 #27264
 acolyte Sekolah~
 an acolyte of Sekolah~
 An acolyte of Sekolah concentrates on ritual spell-weaving.
 ~
-This fierce-looking sahuagin acolyte of Sekolah wear a different robe from the
-ones you've seen before now.  You wonder if he has been specially trained or
+This fierce-looking sahuagin acolyte of Sekolah wears a different robe from the
+ones you've seen before now.  You wonder if she has been specially trained or
 set aside for some purpose.
 ~
-2|32|64 8|32|512|8192|524288|67108864 -1000 S
+98 533032 -1000 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< sahuagin~ common~
 #27265
 small sad sahuagin Sogesk~
 a small, sad sahuagin~
@@ -1627,7 +1739,7 @@ This sahuagin really looks like he's been through the wars.  His body is
 covered in scars and bruises, and he wears an expression of resigned misery
 so clear it translates between any pair of sentient races.
 ~
-64|128 4|1024|65536|67108864 0 S
+192 66564 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1648,6 +1760,10 @@ sigh
 endif
 ~
 |
+< sahuagin~ common~
+MobHeight 160
+MobWeight 60
+
 #27266
 Dae'yn pit critter sahuaginr~
 Dae'yn~
@@ -1657,7 +1773,7 @@ Dae'yn is a lean, taciturn sahuagin and a pit critter working at 'Sekolah's
 Whim Casino,' a lower-class Ota'ar Dar gambling den.  To see what game he's
 offering, try to 'bet' or 'wager' some gold coins here.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -430 S
+25203266 544 -430 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1679,16 +1795,19 @@ else
 endif
 ~
 |
+< sahuagin~ common~
+MobWeight 75
+
 #27477
 Gresnyk~
 Gresnyk the Tobacconist~
 Gresnyk puffs on a pipe, ready to be of service.
 ~
 Gresnyk almost seems cheerful for a sahuagin.  Certainly quite relaxed. He
-wear a jaunty brown cap and smokes something through a long, reedy brown
+wears a jaunty brown cap and smokes something through a long, reedy brown
 pipe.  He regards you with evident amusement.
 ~
-2|64|512|4096|32768|8388608|16777216 32|512|67108864 -150 S
+25203266 544 -150 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -1709,6 +1828,7 @@ else
 endif
 ~
 |
+< sahuagin~ common~
 #0
 
 #MOBPROGS
@@ -2139,7 +2259,7 @@ venomous tail spine~
 a venomous tail spine~
 The venomous tail spine of a stingray lies here.~
 ~
-5 16384|67108864 0
+5 137506078720 0
 6~ 0~ 0~ 16~
 1 0 0
 #27237
@@ -4195,7 +4315,7 @@ Sekolah Way South, Lower~
 {CYou stand in the middle of a pedestrian throughfare on the sandy ocean floor,
 amongst the inhabited ruins of a great, ancient city.  To the south a huge gate
 looms, cutting off access to this canton from the rest of the city.  To the east
-you see the entrance to a shop.  The sign above it reads "Phesak's Maps".
+you see the entrance to a shop.  The sign above it reads "Pheskak's Maps".
 
 The road continues north, and you may also swim upwards, towards a huge, ominous
 area of darkness in the water above. You notice, however, that the canton wall to
@@ -6650,7 +6770,7 @@ ALL their time underwater.  He mentions if you want to try any of his
 smokeables, you can go upstairs, to an "air" room he has had specially-created
 for the purpose.
 
-Form here you can exit the store west, to Sekolah Way, or head up to the second
+From here you can exit the store west, to Sekolah Way, or head up to the second
 floor of the building.{x
 ~
 0 8 12
@@ -7261,7 +7381,6 @@ S
 
 
 #SPECIALS
-M  27205 spec_sahuagin_baron	        Cluh'g Mani
 M  27233 spec_warrior 			        Ahomar
 M  27217 spec_warrior 			        A surly sahuagin warrior
 M  27218 spec_cast_hooker	            A lecherous sahuagin
@@ -7276,11 +7395,9 @@ M  27243 spec_cast_archmage		        Mohmit
 M  27234 spec_cast_cleric		        Bilani
 M  27246 spec_thief				        a sahuagin thief
 M  27250 spec_sahuagin_guard			an Ota'ar Dar cityguard
-M  27262 spec_poison			        a giant sea-worm
 M  27263 spec_sahuagin_cleric	        an acolyte of Sekolah
 M  27264 spec_sahuagin_cleric	        an acolyte of Sekolah
 M  27252 spec_cast_electric		        an electric eel
-M  27262 spec_cast_electric	            giant sea worm
 M  27225 spec_cast_cleric               criosphinx
 S
 

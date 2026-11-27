@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 28 November 2026
-Based on master 4520559bb5b76dbdc5f3b3ac4ea1009f9703809a (PR #1025),
-with the accompanying Omu Central changes.
+Based on master cb80da9b3493bf6440597840385bb655be7ed243 (PR #1026),
+with the accompanying Otaar Dar Market Canton changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,7 +16,7 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 40 bodies, 499 archetypes, 60 internal traits
+The current tables contain 40 bodies, 505 archetypes, 60 internal traits
 and 146 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 499, so this single example would make 500.
+guide's checked revision it is 505, so this single example would make 506.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 499.
+valid index. This example would receive index 505.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 499;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 505;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 499; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 505; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-40 body rows, 499 archetype rows, 60 internal traits and 146 Scribe
+40 body rows, 505 archetype rows, 60 internal traits and 146 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -7057,6 +7057,115 @@ Use --force with the importer only when deliberately replacing its
 output. Both conversion directions are checked when a current .src
 exists. Do not flatten inherited defaults into individual raw flags.
 
+Ota'ar Dar - Market Canton
+
+All 68 Market Canton mob definitions now use species and archetypes.
+Six new profiles bring the table to 505: manta_ray, giant_manta_ray,
+bull_shark, devil_ray, spotted_eagle_ray and giant_sea_worm. They reuse
+existing bodies, traits and special names. No area fields, trait IDs
+or ACT identity flags are added. Earlier ordinary profile defaults stay.
+
+Forty-six ordinary sahuagin use the existing humanoid/sahuagin profile,
+normally 183 cm/90 kg/Medium, with swimming, claws/fangs and natural
+armour -5. Explicitly tall, short, slender, fat and muscular individuals
+use absolute dimension overrides. Cluh'g Mani uses sahuagin_baron,
+244 cm/180 kg/Large, with four arms and his existing baron special.
+Only he, Mafite Kilim and Reaver Ciy'yn gain Elite rank. The other 65
+definitions remain Common. Elite HP is multiplied by five once.
+
+The four new ray profiles use fish bodies with tails, no arms/legs or
+speech, ordinary crushing mouths and natural armour -3. Manta_ray is
+500 cm/1200 kg/Large; giant_manta_ray is 950 cm/3500 kg/Large and keeps
+the encounter's existing HUGE flag. Devil_ray is 450 cm/300 kg/Large;
+spotted_eagle_ray is 500 cm/200 kg/Large. Length includes the tail.
+The latter two keep their existing native tail-spine weapons. The
+ordinary devil-ray spine is not poisoned. The spotted eagle ray and
+stingray already have venomous spine 27236; no poison special is added.
+That weapon gains pure/DONOT_RANDOMISE while retaining POISONED,
+BODY_PART, no TAKE, tail region 6, sting verb 16 and all modifiers.
+Keep every reset and other-area user of these shared weapons.
+
+Bull_shark uses a fish body, anatomical fangs, head-gated bites and
+natural armour -4. Its defaults are 250 cm/150 kg/Large. Female 27254
+is individually 200 cm/100 kg, matching her description. No HUGE flag
+or active special is added. Existing shark, skate and stingray profiles
+are reused elsewhere. Tiger shark 27253 individually uses 550 cm/600 kg
+and retains HUGE; other tiger sharks keep their existing defaults.
+Great white 27212 replaces its old tail marker with anatomical PART_TAIL
+and retains HUGE. The six enchanted mounts keep Flying, Pet and
+Mountable, without gaining wings.
+
+Giant_sea_worm is a living limbless invertebrate, 400 cm/150 kg/Large,
+with a head, no eyes, no arms/legs/speech and swimming. Its sole active
+special is spec_cast_electric at 100%. The old spec_poison line was
+overwritten by the later electric entry and is removed. No venom,
+fangs, swallowing, natural armour or HUGE flag is added. Keep its
+existing Blind/Flying and other affects; a proper nonvisual-senses
+design remains separate work. Its description mentions electrical
+sensing, not an extra offensive power. The separate Eakos sea wyrm
+29234 uses spec_breath_gas and is unchanged.
+
+The wolf cub reuses wolf at 30 cm shoulder height, 60 cm length and
+5 kg/Small. Restore its legs while preserving its authored level, jaw
+weapon and working hide greeting. The malacost reuses its existing
+50 cm/100 cm long/30 kg/Medium profile, with proper walking legs and
+the existing carapace 7501; no second armour bonus is added.
+The unusually large hobgoblin is individually 210 cm/120 kg/Medium.
+
+The ram-headed criosphinx uses its existing winged quadrupedal profile,
+229 cm high/400 cm long/400 kg/Large, with natural armour -10. Its
+individual Cleric special stays at 100%, replacing the default active
+horn-gore special. Ordinary claws and horns remain configured.
+Electric eel 27252 reuses giant_electric_eel, 300 cm/30 kg/Medium,
+including Electricity immunity, with its own spec_cast_electric at
+100%. Preserve its eight external script loads and their equipment.
+
+Wolf, criosphinx and giant_electric_eel now use the existing
+head_trauma_blocks_attacks trait. Ordinary fangs/horns require a
+working head. Usable claws and independent casting remain available.
+Warg, arctic_wolf and great_wolf inherit the wolf change through their
+existing trait parents, so their head attacks follow the same rule.
+This is shared archetype data and applies to earlier users too; it
+does not depend on a particular area or vnum. The trait registry still
+contains 60 IDs and the Scribe special list still contains 146 names.
+
+The dryad stays a living humanoid with Druid casting and her authored
+Flying affect. The crewman and Mohmit are living humans. Mohmit's
+short, rotund build uses 160 cm/90 kg/Medium. Recruit 27260 is female,
+matching her description; her sleep greeting and portrait stay.
+The female acolyte's pronoun and the agreed small spelling errors are
+corrected. No room titles or media names change.
+
+Keep every deliberate aggression, wimpy, sentinel and service flag,
+all four lesson lists/ceilings, the 15 shops and their prices, gambling,
+quest dialogue, all 85 mob programs and the original reset caps/order.
+The population starts at 95 inhabitants/251 carried items and reaches
+96/252 on refills, as before. All 104 room flags/exits remain unchanged.
+Dimensions and masses are descriptive DD4 estimates; rank supplies no
+height or weight. These changes do not add NPC mounting.
+
+There is no authored sahuagin_market.src. The area remains .are only.
+Temporary importer/exporter copies are used for conversion checks;
+they are not a new authored source to commit. Preserve raw individual
+XOR values, selection/rank, dimensions, specials, programs, lessons,
+native sections, sound settings, objects and resets in both directions.
+All four existing authored sources remain supported and checked.
+
+From the repository root on Linux:
+
+    python3 builder/scribe/are2src.py server/area/sahuagin_market.are /tmp/sahuagin_market-check.src
+    perl builder/scribe/scribe.pl /tmp/sahuagin_market-check.src /tmp/sahuagin_market-roundtrip.are
+
+In PowerShell from C:\Games\dd4:
+
+    python .\builder\scribe\are2src.py .\server\area\sahuagin_market.are "$env:USERPROFILE\Downloads\sahuagin_market-check.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\sahuagin_market-check.src" "$env:USERPROFILE\Downloads\sahuagin_market-roundtrip.are"
+
+When editing one of the existing authored .src files, export it with
+Scribe, then import/export a separate check copy to test the other
+direction. Keep the authored original. Use the importer's --force
+option only when deliberately replacing its output.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -7110,7 +7219,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 499 current table rows follow, grouped by body. Numeric IDs are for
+All 505 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -8032,7 +8141,7 @@ HEAD_ONLY (5)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_any_anatomical; policy auto
 
-LIMBLESS_INVERTEBRATE (16)
+LIMBLESS_INVERTEBRATE (17)
 ---------------------------
   [ 48] rock_worm: h/w/l 150 / 8000 / 800; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8082,6 +8191,9 @@ LIMBLESS_INVERTEBRATE (16)
   [471] acid_worm: h/w/l 100 / 4000 / 800; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_breath_acid_anatomical; policy auto
+  [504] giant_sea_worm: h/w/l ? / 150 / 400; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_electric; policy auto
 
 LIMBLESS_CONSTRUCT (10)
 ------------------------
@@ -8299,7 +8411,7 @@ AMORPHOUS_ORGANISM (10)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_mage; policy auto
 
-FISH (38)
+FISH (43)
 ----------
   [ 95] eel: h/w/l ? / 5 / 150; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8413,6 +8525,21 @@ FISH (38)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [493] dunkleosteus: h/w/l ? / 1000 / 400; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [499] manta_ray: h/w/l ? / 1200 / 500; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [500] giant_manta_ray: h/w/l ? / 3500 / 950; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [501] bull_shark: h/w/l ? / 150 / 250; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [502] devil_ray: h/w/l ? / 300 / 450; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [503] spotted_eagle_ray: h/w/l ? / 200 / 500; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -9003,10 +9130,11 @@ A listed parameter needs its existing consumer and any capability/special gate.
 50. head_trauma_blocks_attacks
     Value: opt-in enable; default 0, enabled value 1
     When enabled, head trauma blocks head-dependent natural attack parts
-    (fangs, horns, tusks and beak) in the usable attack mask. The three
-    chimera head profiles, full chimera and kampflut opt in. Stored anatomy,
-    usable claws and other parts remain unchanged. Valid ordinary wielded
-    weapons and all earlier profiles retain their existing behavior.
+    (fangs, horns, tusks and beak) in the usable attack mask. Examples include
+    chimera/kampflut, wolf and its warg/arctic_wolf/great_wolf descendants,
+    criosphinx and giant_electric_eel. Stored anatomy, usable claws and
+    independent casting remain unchanged. Valid ordinary wielded weapons
+    keep their existing rules. The profile applies to all its NPC users.
     Regenerate can restore eligibility by healing the head injury.
     MSTAT uses the normal named-registry value/origin displays.
     Internal species/archetype data only; no individual area/Scribe field.
@@ -9613,8 +9741,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/4520559bb5b76dbdc5f3b3ac4ea1009f9703809a
-  Base PR1025 plus the accompanying Omu Central patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/cb80da9b3493bf6440597840385bb655be7ed243
+  Base PR1026 plus the accompanying Otaar Dar Market Canton patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -9624,7 +9752,7 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-With this Omu Central revision, the conversion covers
-112/153 areas (73.2%) and 2,049/4,131 definitions (49.6%).
+With this Otaar Dar Market Canton revision, the conversion covers
+113/153 areas (73.9%) and 2,117/4,131 definitions (51.2%).
 
 END OF GUIDE
