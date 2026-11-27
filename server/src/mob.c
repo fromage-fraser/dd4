@@ -5985,6 +5985,67 @@ const struct mob_type mob_table[MAX_MOB] =
                 "", "", "",
                 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
                 CREATURE_FAMILY_NONE, 4500
+        },
+        {
+                "giant_sea_python", "serpentine_reptile", "icon1", "icon2",
+                0, AFF_SWIM, BODY_HUGE | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 800, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_constrictor", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1200
+        },
+        {
+                "kuo_toa", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM | AFF_INFRARED | AFF_DETECT_INVIS, 0, 0,
+                RES_ELECTRICITY, RES_FIRE, RES_POISON | RES_PARALYSIS,
+                0, 0, 0, 0,
+                150, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "bullywug", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM, PART_LONG_TONGUE, 0, 0, 0, 0,
+                0, 0, 0, 0,
+                175, 80, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "kopru", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM | AFF_INFRARED,
+                BODY_NO_LEGS | BODY_NO_SPEECH | PART_2_LEGS | PART_FEET
+                    | PART_TAIL | PART_TENTACLES | PART_FANGS | PART_CLAWS,
+                PART_CLAWS | PART_FANGS | PART_TAILATTACK, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                100, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_fascinating_gaze", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 200
+        },
+        {
+                "vampiric_ixzan", "fish", "icon1", "icon2",
+                ACT_REGENERATOR, AFF_INFRARED, PART_FANGS, PART_FANGS,
+                RES_BLUNT, 0, 0, 0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 100, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_draining_bite", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 250
+        },
+        {
+                "water_naga", "serpentine_reptile", "icon1", "icon2",
+                0, AFF_SWIM, BODY_NO_SPEECH | PART_FANGS, PART_FANGS,
+                0, 0, 0, 0, 0, 0, 0,
+                80, 100, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_poison_bite", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 305
+        },
+        {
+                "uchuulon", "crustacean", "icon1", "icon2",
+                0, AFF_SWIM | AFF_INFRARED,
+                PART_MANY_LEGS | PART_4_LEGS | PART_CLAWS | PART_TENTACLES | PART_TAIL,
+                PART_CLAWS, RES_MAGIC, 0, RES_POISON, 0, 0, 0, 0,
+                100, 290, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_poison_contact", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 244
         }
 };
 
@@ -7625,8 +7686,45 @@ static const CREATURE_TRAIT_CHANGE infernal_wyrm_traits[] =
         {CREATURE_TRAIT_NATURAL_ARMOUR, -40}
 };
 
+static const CREATURE_TRAIT_CHANGE kuo_toa_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_SUNLIGHT_SENSITIVE, -1}
+};
+static const CREATURE_TRAIT_CHANGE bullywug_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE kopru_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -2},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE vampiric_ixzan_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE water_naga_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE uchuulon_traits[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8}
+};
+
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"giant_sea_python", "constrictor_snake", fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"kuo_toa", NULL, kuo_toa_traits, TRAIT_ITEMS(kuo_toa_traits)},
+        {"bullywug", NULL, bullywug_traits, TRAIT_ITEMS(bullywug_traits)},
+        {"kopru", NULL, kopru_traits, TRAIT_ITEMS(kopru_traits)},
+        {"vampiric_ixzan", NULL, vampiric_ixzan_traits, TRAIT_ITEMS(vampiric_ixzan_traits)},
+        {"water_naga", NULL, water_naga_traits, TRAIT_ITEMS(water_naga_traits)},
+        {"uchuulon", NULL, uchuulon_traits, TRAIT_ITEMS(uchuulon_traits)},
         {"infernal_wyrm", NULL, infernal_wyrm_traits, TRAIT_ITEMS(infernal_wyrm_traits)},
         {"titan", NULL, titan_traits, TRAIT_ITEMS(titan_traits)},
         {"three_headed_dragon", NULL, scaled_armour_trait_changes, TRAIT_ITEMS(scaled_armour_trait_changes)},
@@ -11402,6 +11500,8 @@ static int mob_special_exp_bonus(SPEC_FUN *special)
                 { "spec_poison", 5 },
                 { "spec_bear", 5 },
                 { "spec_constrictor", 5 },
+                { "spec_fascinating_gaze", 5 },
+                { "spec_draining_bite", 10 },
                 { "spec_electric_eel", 10 },
                 { "spec_cooshee", 5 },
                 { "spec_brownie", 5 },

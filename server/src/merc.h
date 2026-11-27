@@ -3695,7 +3695,7 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 473
+#define MAX_MOB 480
 #define MAX_SPECIES 40
 #define MAX_RANK 6
 
@@ -5995,6 +5995,8 @@ void update_bounded_creature_powers(void);
 DECLARE_SPEC_FUN(spec_lurker_wrap);
 DECLARE_SPEC_FUN(spec_water_weird_wrap);
 DECLARE_SPEC_FUN(spec_succubus_fascination);
+DECLARE_SPEC_FUN(spec_fascinating_gaze);
+DECLARE_SPEC_FUN(spec_draining_bite);
 DECLARE_SPEC_FUN(spec_retriever_rays);
 DECLARE_SPEC_FUN(spec_paralysing_gas);
 DECLARE_SPEC_FUN(spec_holy_trumpet);

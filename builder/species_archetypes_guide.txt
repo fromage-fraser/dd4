@@ -2,9 +2,9 @@ DRAGON'S DOMAIN
 SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
-Edition: 26 November 2026
-Based on master 17043afdf51c00c1f833573d8f3cf21fb78b0880 (PR #1022),
-with the accompanying DragonQuest changes.
+Edition: 27 November 2026
+Based on master 00b180fc8a5ae7170d3ac4ba34cafdce8c0c4ef4 (PR #1023),
+with the accompanying Omu Canals changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,8 +16,8 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 40 bodies, 473 archetypes, 60 internal traits
-and 144 Scribe special names. Earlier area notes sometimes record the
+The current tables contain 40 bodies, 480 archetypes, 60 internal traits
+and 146 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
 The server code is the final authority. This is a dated guide, not a promise
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 473, so this single example would make 474.
+guide's checked revision it is 480, so this single example would make 481.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 473.
+valid index. This example would receive index 480.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 473;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 480;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 473; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 480; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-40 body rows, 473 archetype rows, 60 internal traits and 144 Scribe
+40 body rows, 480 archetype rows, 60 internal traits and 144 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -6674,6 +6674,165 @@ attack. Her executioner announcements and neighbouring sounds keep
 their existing scripts. The woodcutter's axe is both a weapon and the
 key for the upward exit. The final treetop permits recall.
 
+Omu Canals
+
+The seven appended archetypes are giant_sea_python, kuo_toa, bullywug,
+kopru, vampiric_ixzan, water_naga and uchuulon. They reuse existing body
+species. Plesiosaur, sea_hag and green_grung are reused unchanged.
+All 23 canal definitions remain Common. Biological rarity alone does
+not make the vampiric ixzan an encounter of Rare rank.
+
+Giant sea python is a swimming serpentine reptile with fangs, HUGE,
+Large size, length 1,200 cm, mass 800 kg and natural armour -4.
+It inherits spec_constrictor. The two existing scripts still attempt
+to swallow only Small targets. Plesiosaurus keeps its individual
+spec_small_whale and the shared 1,500 cm/5,000 kg measurements.
+The sea hag keeps regeneration and all six of her programs.
+
+Kuo-toa is a swimming humanoid, 150 cm/70 kg, with natural armour -6,
+Poison and Paralysis immunity, Electricity resistance, Fire vulnerability
+and the existing NPC sunlight penalty of -1. The male is 80 kg and
+the slender female 55 kg. Visible Kua-toa names and portraits keep
+their original spelling. The archetype XP adjustment is +5.
+
+Bullywug is a swimming humanoid with a long tongue and natural armour
+-4. Default dimensions are 175 cm/80 kg. The male is 183 cm/80 kg,
+the female 168 cm/65 kg and the flabby male 175 cm/100 kg. The last
+retains his individual NoSpeech override and gas-breath program.
+
+Kopru has a humanoid torso, arms and clawed hands, fangs and mouth
+tentacles, with no walking legs. Its three tails share the existing
+tail region. It cannot speak. Height is 100 cm, total length 200 cm,
+mass 100 kg and size Medium. Natural armour is -2, Magic resistance
+applies and head trauma disables its fang attack. The XP adjustment
+is +5. The male inherits spec_fascinating_gaze. The female uses 70%
+spec_cast_mage and 30% spec_fascinating_gaze, keeping her own scripts.
+The existing attached tail weapon remains a physical sting.
+
+Vampiric ixzan is a living, mindful fish-shaped ray with fangs and
+regeneration. It is Large, 250 cm long and 100 kg; its approximately
+300 cm wingspan is descriptive. Natural armour is -6 and it resists
+Blunt. Its XP adjustment is +10. The two individuals select their
+existing archmage/priestess special at 75% and spec_draining_bite at
+25%. The template does not grant humanoid vampire powers or Undead.
+
+Water naga is a speaking serpentine reptile with fangs, Large size,
+raised head height 80 cm, length 305 cm, mass 100 kg and natural
+armour -5. It inherits spec_poison_bite. The two existing scripted
+spell repertoires remain individual choices.
+
+Uchuulon uses the crustacean body with four walking legs, two pincers,
+mouth tentacles and a fanned tail. It is Large, 100 cm high, 244 cm
+long and 290 kg, with natural armour -6, Magic resistance and Poison
+immunity. Its ordinary pincer attack crushes. Spec_poison_contact
+models the mucus; the ambush and paralysis programs remain. The XP
+adjustment is +5. These are archetype XP adjustments; the ordinary
+weighted special reward calculation still applies.
+
+The six green grung retain their existing trap, bow, camouflage and
+shop behaviour. Their shared Small profile supplies 91 cm/25 kg.
+Original equipment, trap properties, shop prices, pass, key, room flags
+and reset order/caps are preserved. Attached fang weapons continue
+to use the head region and the existing trauma/disarm lifecycle.
+
+Spec_fascinating_gaze is the reusable name for the existing bounded
+Succubus fascination. It attempts 25% of the times its special slot
+is selected. The viewer must see the creature's usable eyes; an
+invisible viewer can still be affected. Charm/Psychic saves and
+immunity, safety, head/eye trauma and antimagic checks still apply.
+An unsaved gaze imposes one combat pulse of wait. The older
+spec_succubus_fascination name remains available with identical code.
+
+Spec_draining_bite attempts 15% of the times its slot is selected.
+It needs usable fangs, a usable head and a living combat target.
+It uses ordinary Energy Drain, including saves, damage and Drained.
+It does not consume blood. Vampire PCs, undead NPCs and object NPCs
+are excluded. Existing Drained rules cap stacks at five, allow one
+new stack per 30 seconds and recover a stack in 180 seconds at the
+ordinary recovery rate. Existing faster recovery and remedies apply.
+
+Special selection percentages and attempt percentages are different.
+For example, an ixzan selecting a bite 25% of the time and attempting
+it 15% of those selections has a nominal 3.75% attempt rate before
+other restrictions. It does not get an additional bite every round.
+
+The missing say command in the female Kua-toa's first fight program
+is restored. The ixzan and uchuulon grammar is corrected. All other
+programs and authored aggressive/passive behaviour are preserved.
+
+Converting between area files and Scribe source
+
+Scribe now has both directions. Run these from C:\Games\dd4 in
+PowerShell. Python 3.10 or newer and Perl must be available on PATH.
+The Python importer uses only the standard library and invokes Perl
+to verify its own output. Install no extra Python packages for it.
+
+Area to source:
+
+    python .\builder\scribe\are2src.py .\server\area\omu_canals.are "$env:USERPROFILE\Downloads\omu_canals-converted.src"
+
+Source to area:
+
+    perl .\builder\scribe\scribe.pl .\server\area\omu_canals.src "$env:USERPROFILE\Downloads\omu_canals-generated.are"
+
+To compile the reverse-converted source:
+
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\omu_canals-converted.src" "$env:USERPROFILE\Downloads\omu_canals-roundtrip.are"
+
+Use a separate output file while reviewing a conversion. The importer
+refuses an existing destination unless you add --force. It also refuses
+to overwrite its own input or the Scribe compiler. Use --scribe PATH
+only when you deliberately need another matching compiler version.
+Do not apply the generated file until the command succeeds.
+
+The importer checks a complete round trip before it writes the source.
+It compares game data, including raw individual XOR masks, archetypes,
+ranks, dimensions, optional fields, programs, object values, traps,
+shops, weighted specials and the exact reset sequence. It does not
+flatten inherited defaults into each mob. Source comments, whitespace,
+keyword spelling and section order need not match the original source.
+An exported .are cannot recover comments that existed only in .src.
+Keep an existing authored .src when possible and update the pair.
+
+Ordinary mob, object and room fields are emitted as editable Scribe
+blocks when Scribe can reproduce the same data. Some older records
+contain values which those friendly fields cannot represent. Resets,
+shops, specials and other retained sections use readable native blocks:
+
+    $native RESETS END_NATIVE_RESETS
+    M 0 28422 1 28410
+    S
+    END_NATIVE_RESETS
+
+The block contains the section's native contents, including its ordinary
+terminator. Do not repeat the #RESETS header inside it. Native vnums
+are absolute: Scribe does not add the area base vnum inside a native
+block. Retain line order, caps, comments and any conditional reset links.
+Do not mix native RESETS with $addmob or $addobj, native SPECIALS with
+sp/sp2/sp3, or any other native section with ordinary fields generating
+that same section. Scribe rejects these conflicts.
+
+The marker is an arbitrary unique word on a line by itself. The importer
+chooses one absent from the retained section. Keep the spelling of the
+opening and closing marker identical. Do not leave a native block open.
+
+For a help-only file or legacy syntax the importer cannot safely parse,
+it retains the whole file in $native FILE END_NATIVE_FILE. That is an
+explicit preservation fallback, not a claim to have validated that old
+data against the server's loading rules. It compiles back to the same
+text. A native FILE must stand alone, without an $area or other blocks.
+Its complete original headers and #$ terminator remain inside it.
+
+For every future Scribe change, test both directions. Update the forward
+compiler and importer together whenever a new field or section needs it.
+Run the converter tests from the repository root:
+
+    python -m unittest discover -s .\builder\scribe\tests -v
+
+Also round-trip the actual affected area, check its source export and
+boot the generated area in an isolated world. A converter passing its
+own comparison does not replace the ordinary gameplay checks.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -6727,7 +6886,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 473 current table rows follow, grouped by body. Numeric IDs are for
+All 480 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -6743,7 +6902,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (142)
+HUMANOID (145)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7171,6 +7330,15 @@ HUMANOID (142)
   [470] medusa: h/w/l 205 / 70 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_stiffening_gaze, 2:spec_medusa_snake_bite; policy 60/40/0
+  [474] kuo_toa: h/w/l 150 / 70 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [475] bullywug: h/w/l 175 / 80 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [476] kopru: h/w/l 100 / 100 / 200; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_fascinating_gaze; policy auto
 
 DRAGON (23)
 ------------
@@ -7271,7 +7439,7 @@ QUADRUPEDAL_REPTILE (8)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-SERPENTINE_REPTILE (8)
+SERPENTINE_REPTILE (10)
 ------------------------
   [ 30] giant_pit_viper: h/w/l ? / ? / 366; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7297,6 +7465,12 @@ SERPENTINE_REPTILE (8)
   [381] sea_snake: h/w/l ? / 2 / 180; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [473] giant_sea_python: h/w/l ? / 800 / 1200; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_constrictor; policy auto
+  [478] water_naga: h/w/l 80 / 100 / 305; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison_bite; policy auto
 
 MYSTERIOUS_BEING (8)
 ----------------------
@@ -7802,7 +7976,7 @@ ELEMENTAL_BEING (24)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_fire; policy auto
 
-CRUSTACEAN (7)
+CRUSTACEAN (8)
 ----------------
   [ 84] giant_hermit_crab: h/w/l 152 / 350 / 250; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -7825,6 +7999,9 @@ CRUSTACEAN (7)
   [438] shore_crab: h/w/l 91 / 10 / 35; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
+  [479] uchuulon: h/w/l 100 / 290 / 244; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_poison_contact; policy auto
 
 AMORPHOUS_ORGANISM (10)
 ------------------------
@@ -7859,7 +8036,7 @@ AMORPHOUS_ORGANISM (10)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_mage; policy auto
 
-FISH (32)
+FISH (33)
 ----------
   [ 95] eel: h/w/l ? / 5 / 150; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7957,6 +8134,9 @@ FISH (32)
   [450] ice_fish: h/w/l ? / 2 / 60; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [477] vampiric_ixzan: h/w/l ? / 100 / 250; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials 1:spec_draining_bite; policy auto
 
 QUADRUPEDAL_AMPHIBIAN (3)
 ---------------------------
@@ -9152,8 +9332,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/17043afdf51c00c1f833573d8f3cf21fb78b0880
-  Base PR1022 plus the accompanying DragonQuest patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/00b180fc8a5ae7170d3ac4ba34cafdce8c0c4ef4
+  Base PR1023 plus the accompanying Omu Canals patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -9163,8 +9343,7 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-The verified conversion covers 108/153 areas (70.6%) and 1,909/4,131
-definitions (46.2%). After a verified DragonQuest merge the totals will
-be 109/153 (71.2%) and 1,911/4,131 (46.3%).
+With this Omu Canals revision, the conversion covers 110/153 areas
+(71.9%) and 1,934/4,131 definitions (46.8%).
 
 END OF GUIDE

@@ -169,6 +169,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         dreadguard poison_floor gordaron grottobeast giant_millipede ahrganite bleeder
         three_headed_dragon medusa acid_worm
         infernal_wyrm
+        giant_sea_python kuo_toa bullywug kopru vampiric_ixzan water_naga uchuulon
 /;
 
 my %mob_act = (
@@ -431,6 +432,7 @@ my @mob_spec = qw/
     spec_paralysing_gas spec_holy_trumpet spec_lulling_drone spec_bloodsucker_bite
     spec_poison_contact
     spec_stiffening_gaze spec_medusa_snake_bite
+    spec_fascinating_gaze spec_draining_bite
 /;
 
 my %obj_ex = (
@@ -710,6 +712,7 @@ close $fh;
 
 print "Reading source...\n";
 
+my @native_sections;
 my ($fatal, $line, $msg, %area, @recall, @special, @mobs, @objs, @objsets, @rooms, @room_media, @addmobs, @helps, @addobjs, @shops, @games);
 
 while (1) {
@@ -723,7 +726,29 @@ while (1) {
 
     #  Area information
 
-    if ($header eq 'area') {
+    if ($header eq 'native') {
+        my ($section, $end) = $next =~ /^\$native[ \t]+([A-Z_]+)[ \t]+([A-Za-z_][A-Za-z_0-9]*)\s*$/;
+        my %allowed = map { $_ => 1 } qw/
+            FILE RECALL AREA_SPECIAL HELPS MOBILES MOBPROGS OBJECTS OBJECT_SETS
+            ROOMS ROOMS_AMBIENT EXITS_SFX RESETS GAMES SHOPS SPECIALS
+        /;
+        die "Invalid native section at line $line\n"
+                unless $section && $allowed{$section};
+        my $body = '';
+        my $closed = 0;
+        while (@source) {
+            my $raw = shift @source;
+            $line++;
+            if ($raw =~ /^\Q$end\E\r?\n?$/) {
+                $closed = 1;
+                last;
+            }
+            $body .= $raw;
+        }
+        die "Unterminated native $section section\n" unless $closed;
+        push @native_sections, [$section, $body];
+    }
+    elsif ($header eq 'area') {
         while (@source) {
             my ($field, $data) = &get_field_data(\@source);
 
@@ -1176,6 +1201,21 @@ while (1) {
     }
 }
 
+my @native_files = grep { $_->[0] eq 'FILE' } @native_sections;
+if (@native_files) {
+    die "A native FILE must be the only source block\n"
+            if @native_files != 1 || @native_sections != 1 || %area
+            || @recall || @special || @mobs || @objs || @objsets
+            || @rooms || @room_media || @addmobs || @helps
+            || @addobjs || @shops || @games || $fatal;
+    open(my $native_output, '>', $destination_file)
+            or die "Could not write $destination_file: $!\n";
+    print {$native_output} $native_files[0]->[1];
+    close($native_output) or die "Could not close $destination_file: $!\n";
+    print "Retained the native file without changing its records.\n";
+    exit 0;
+}
+
 if ($fatal) {
     print "\nAborted\n";
     exit 0;
@@ -1196,7 +1236,7 @@ sub get_field_data(\@\$) {
         return (0, 'BREAK') if !$next;
 
         if ($next =~ /(^\$\w+)/) {
-            unshift @source, $1;
+            unshift @source, $next;
             return (0, 'BREAK');
         }
 
@@ -1245,7 +1285,7 @@ sub get_text_block(\@) {
         return (0, 'unterminated text block') unless $next;
 
         if ($next =~ /(^\$\w+)/) {
-            unshift @source, $1;
+            unshift @source, $next;
             return (0, 'header found in text block');
         }
 
@@ -3116,6 +3156,21 @@ sub is_number($) {
 #  Report any errors
 #
 
+# A section has one source of data, either native records or friendly fields.
+my %ordinary_sections = (
+    RECALL => scalar @recall, AREA_SPECIAL => scalar @special,
+    HELPS => scalar @helps, MOBILES => scalar @mobs,
+    OBJECTS => scalar @objs, OBJECT_SETS => scalar @objsets,
+    ROOMS => scalar @rooms, ROOMS_AMBIENT => scalar @room_media,
+    RESETS => scalar @resets, GAMES => scalar @games,
+    SHOPS => scalar @shops, SPECIALS => scalar @specials
+);
+foreach my $native (@native_sections) {
+    die "Native $native->[0] conflicts with ordinary source fields\n"
+            if $ordinary_sections{$native->[0]};
+}
+
+
 if ($area_errors || keys %recall_errors || keys %special_errors || keys %mob_errors
         || keys %obj_errors || keys %room_errors || keys %addmob_errors
         || keys %addobj_errors || keys %help_errors || keys %shop_errors
@@ -3523,6 +3578,12 @@ if (@specials) {
         print AREA;
     }
     print AREA "S\n\n";
+}
+
+foreach my $native (@native_sections) {
+    print AREA "#$native->[0]\n$native->[1]";
+    print AREA "\n" unless $native->[1] =~ /\n\z/;
+    print AREA "\n";
 }
 
 print AREA "#\$\n";
