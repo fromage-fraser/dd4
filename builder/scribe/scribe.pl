@@ -174,6 +174,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         octopus headless_training_dummy
         blue_grung purple_grung giant_isopod boxfish blacktip_shark emperor_shrimp
         dunkleosteus kappa nixie dryad sea_zombie merrow
+        manta_ray giant_manta_ray bull_shark devil_ray spotted_eagle_ray giant_sea_worm
 /;
 
 my %mob_act = (

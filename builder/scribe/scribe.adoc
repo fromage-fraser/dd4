@@ -18256,3 +18256,112 @@ To export the authored source directly:
 Use --force with the importer only when deliberately replacing its
 output. Both conversion directions are checked when a current .src
 exists. Do not flatten inherited defaults into individual raw flags.
+
+== Ota'ar Dar - Market Canton
+
+All 68 Market Canton mob definitions now use species and archetypes.
+Six new profiles bring the table to 505: manta_ray, giant_manta_ray,
+bull_shark, devil_ray, spotted_eagle_ray and giant_sea_worm. They reuse
+existing bodies, traits and special names. No area fields, trait IDs
+or ACT identity flags are added. Earlier ordinary profile defaults stay.
+
+Forty-six ordinary sahuagin use the existing humanoid/sahuagin profile,
+normally 183 cm/90 kg/Medium, with swimming, claws/fangs and natural
+armour -5. Explicitly tall, short, slender, fat and muscular individuals
+use absolute dimension overrides. Cluh'g Mani uses sahuagin_baron,
+244 cm/180 kg/Large, with four arms and his existing baron special.
+Only he, Mafite Kilim and Reaver Ciy'yn gain Elite rank. The other 65
+definitions remain Common. Elite HP is multiplied by five once.
+
+The four new ray profiles use fish bodies with tails, no arms/legs or
+speech, ordinary crushing mouths and natural armour -3. Manta_ray is
+500 cm/1200 kg/Large; giant_manta_ray is 950 cm/3500 kg/Large and keeps
+the encounter's existing HUGE flag. Devil_ray is 450 cm/300 kg/Large;
+spotted_eagle_ray is 500 cm/200 kg/Large. Length includes the tail.
+The latter two keep their existing native tail-spine weapons. The
+ordinary devil-ray spine is not poisoned. The spotted eagle ray and
+stingray already have venomous spine 27236; no poison special is added.
+That weapon gains pure/DONOT_RANDOMISE while retaining POISONED,
+BODY_PART, no TAKE, tail region 6, sting verb 16 and all modifiers.
+Keep every reset and other-area user of these shared weapons.
+
+Bull_shark uses a fish body, anatomical fangs, head-gated bites and
+natural armour -4. Its defaults are 250 cm/150 kg/Large. Female 27254
+is individually 200 cm/100 kg, matching her description. No HUGE flag
+or active special is added. Existing shark, skate and stingray profiles
+are reused elsewhere. Tiger shark 27253 individually uses 550 cm/600 kg
+and retains HUGE; other tiger sharks keep their existing defaults.
+Great white 27212 replaces its old tail marker with anatomical PART_TAIL
+and retains HUGE. The six enchanted mounts keep Flying, Pet and
+Mountable, without gaining wings.
+
+Giant_sea_worm is a living limbless invertebrate, 400 cm/150 kg/Large,
+with a head, no eyes, no arms/legs/speech and swimming. Its sole active
+special is spec_cast_electric at 100%. The old spec_poison line was
+overwritten by the later electric entry and is removed. No venom,
+fangs, swallowing, natural armour or HUGE flag is added. Keep its
+existing Blind/Flying and other affects; a proper nonvisual-senses
+design remains separate work. Its description mentions electrical
+sensing, not an extra offensive power. The separate Eakos sea wyrm
+29234 uses spec_breath_gas and is unchanged.
+
+The wolf cub reuses wolf at 30 cm shoulder height, 60 cm length and
+5 kg/Small. Restore its legs while preserving its authored level, jaw
+weapon and working hide greeting. The malacost reuses its existing
+50 cm/100 cm long/30 kg/Medium profile, with proper walking legs and
+the existing carapace 7501; no second armour bonus is added.
+The unusually large hobgoblin is individually 210 cm/120 kg/Medium.
+
+The ram-headed criosphinx uses its existing winged quadrupedal profile,
+229 cm high/400 cm long/400 kg/Large, with natural armour -10. Its
+individual Cleric special stays at 100%, replacing the default active
+horn-gore special. Ordinary claws and horns remain configured.
+Electric eel 27252 reuses giant_electric_eel, 300 cm/30 kg/Medium,
+including Electricity immunity, with its own spec_cast_electric at
+100%. Preserve its eight external script loads and their equipment.
+
+Wolf, criosphinx and giant_electric_eel now use the existing
+head_trauma_blocks_attacks trait. Ordinary fangs/horns require a
+working head. Usable claws and independent casting remain available.
+Warg, arctic_wolf and great_wolf inherit the wolf change through their
+existing trait parents, so their head attacks follow the same rule.
+This is shared archetype data and applies to earlier users too; it
+does not depend on a particular area or vnum. The trait registry still
+contains 60 IDs and the Scribe special list still contains 146 names.
+
+The dryad stays a living humanoid with Druid casting and her authored
+Flying affect. The crewman and Mohmit are living humans. Mohmit's
+short, rotund build uses 160 cm/90 kg/Medium. Recruit 27260 is female,
+matching her description; her sleep greeting and portrait stay.
+The female acolyte's pronoun and the agreed small spelling errors are
+corrected. No room titles or media names change.
+
+Keep every deliberate aggression, wimpy, sentinel and service flag,
+all four lesson lists/ceilings, the 15 shops and their prices, gambling,
+quest dialogue, all 85 mob programs and the original reset caps/order.
+The population starts at 95 inhabitants/251 carried items and reaches
+96/252 on refills, as before. All 104 room flags/exits remain unchanged.
+Dimensions and masses are descriptive DD4 estimates; rank supplies no
+height or weight. These changes do not add NPC mounting.
+
+There is no authored sahuagin_market.src. The area remains .are only.
+Temporary importer/exporter copies are used for conversion checks;
+they are not a new authored source to commit. Preserve raw individual
+XOR values, selection/rank, dimensions, specials, programs, lessons,
+native sections, sound settings, objects and resets in both directions.
+All four existing authored sources remain supported and checked.
+
+From the repository root on Linux:
+
+    python3 builder/scribe/are2src.py server/area/sahuagin_market.are /tmp/sahuagin_market-check.src
+    perl builder/scribe/scribe.pl /tmp/sahuagin_market-check.src /tmp/sahuagin_market-roundtrip.are
+
+In PowerShell from C:\Games\dd4:
+
+    python .\builder\scribe\are2src.py .\server\area\sahuagin_market.are "$env:USERPROFILE\Downloads\sahuagin_market-check.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\sahuagin_market-check.src" "$env:USERPROFILE\Downloads\sahuagin_market-roundtrip.are"
+
+When editing one of the existing authored .src files, export it with
+Scribe, then import/export a separate check copy to test the other
+direction. Keep the authored original. Use the importer's --force
+option only when deliberately replacing its output.

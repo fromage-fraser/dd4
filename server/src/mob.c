@@ -6238,6 +6238,66 @@ const struct mob_type mob_table[MAX_MOB] =
                 275, 160, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_OGRE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "manta_ray", "fish", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 1200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 500
+        },
+        {
+                "giant_manta_ray", "fish", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 3500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 950
+        },
+        {
+                "bull_shark", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 250
+        },
+        {
+                "devil_ray", "fish", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 300, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 450
+        },
+        {
+                "spotted_eagle_ray", "fish", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 500
+        },
+        {
+                "giant_sea_worm", "limbless_invertebrate", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_EYES | PART_EYE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_cast_electric", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 400
         }
 };
 
@@ -6708,7 +6768,8 @@ static const CREATURE_TRAIT_CHANGE fox_trait_changes[] =
 };
 static const CREATURE_TRAIT_CHANGE wolf_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 static const CREATURE_TRAIT_CHANGE warg_trait_changes[] =
 {
@@ -7247,7 +7308,8 @@ static const CREATURE_TRAIT_CHANGE gynosphinx_trait_changes[] =
 };
 static const CREATURE_TRAIT_CHANGE criosphinx_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 static const CREATURE_TRAIT_CHANGE androsphinx_trait_changes[] =
 {
@@ -7941,6 +8003,12 @@ static const CREATURE_TRAIT_CHANGE merrow_trait_changes[] =
 
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"manta_ray", "stingray", NULL, 0},
+        {"giant_manta_ray", "manta_ray", NULL, 0},
+        {"bull_shark", "shark", fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"devil_ray", "stingray", NULL, 0},
+        {"spotted_eagle_ray", "stingray", NULL, 0},
+        {"giant_electric_eel", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
         {"blue_grung", "green_grung", NULL, 0},
         {"purple_grung", "green_grung", NULL, 0},
         {"blacktip_shark", "shark", fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
