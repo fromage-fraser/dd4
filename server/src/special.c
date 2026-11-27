@@ -199,6 +199,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_lurker_wrap")) return spec_lurker_wrap;
         if (!str_cmp(name, "spec_water_weird_wrap")) return spec_water_weird_wrap;
         if (!str_cmp(name, "spec_succubus_fascination")) return spec_succubus_fascination;
+        if (!str_cmp(name, "spec_fascinating_gaze")) return spec_fascinating_gaze;
+        if (!str_cmp(name, "spec_draining_bite")) return spec_draining_bite;
         if (!str_cmp(name, "spec_retriever_rays")) return spec_retriever_rays;
         if (!str_cmp(name, "spec_breath_acid"))          return spec_breath_acid;
         if (!str_cmp(name, "spec_breath_fire"))          return spec_breath_fire;
@@ -358,6 +360,8 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_lurker_wrap) return "spec_lurker_wrap";
         if (special == spec_water_weird_wrap) return "spec_water_weird_wrap";
         if (special == spec_succubus_fascination) return "spec_succubus_fascination";
+        if (special == spec_fascinating_gaze) return "spec_fascinating_gaze";
+        if (special == spec_draining_bite) return "spec_draining_bite";
         if (special == spec_retriever_rays) return "spec_retriever_rays";
         if (special == spec_breath_acid) return "spec_breath_acid";
         if (special == spec_breath_fire) return "spec_breath_fire";
@@ -1427,7 +1431,7 @@ bool spec_ghast(CHAR_DATA *ch)
 #define WIGHT_DRAIN_CHANCE 20
 #define SPECTRE_DRAIN_CHANCE 30
 
-static bool undead_energy_drain_special(
+static bool native_energy_drain_special(
     CHAR_DATA *ch,
     int chance,
     const char *room_message,
@@ -1510,7 +1514,7 @@ static bool undead_energy_drain_special(
  */
 bool spec_wight(CHAR_DATA *ch)
 {
-        return undead_energy_drain_special(
+        return native_energy_drain_special(
             ch,
             WIGHT_DRAIN_CHANCE,
             "{d$n reaches toward $N with a deathly-cold hand.{x",
@@ -1718,7 +1722,7 @@ bool spec_spectre(CHAR_DATA *ch)
          * Semi-material and explicitly unphased spectres use the stronger
          * spectre drain chance.
          */
-        return undead_energy_drain_special(
+        return native_energy_drain_special(
             ch,
             SPECTRE_DRAIN_CHANCE,
             "{d$n reaches into $N's body with a spectral hand.{x",
@@ -3367,6 +3371,25 @@ static bool has_usable_poison_fangs(CHAR_DATA *ch)
 bool spec_poison_bite(CHAR_DATA *ch)
 {
         return has_usable_poison_fangs(ch) && spec_poison(ch);
+}
+
+/* These fangs drain life force through the existing Energy Drain spell. */
+bool spec_draining_bite(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim;
+
+        if (!has_usable_poison_fangs(ch) || !(victim = ch->fighting)
+        || IS_SET(ch->act, ACT_NO_FIGHT)
+        || IS_SET(ch->in_room->room_flags, ROOM_SAFE)
+        || IS_SET(ch->in_room->area->area_flags, AREA_FLAG_SAFE)
+        || (IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+        || IS_AFFECTED(ch, AFF_NON_CORPOREAL)
+        || is_safe(ch, victim))
+                return FALSE;
+
+        return native_energy_drain_special(ch, 15,
+            "$n's fangs draw life force from $N!",
+            "$n's fangs bite into you and drain your life force!");
 }
 
 bool spec_medusa_snake_bite(CHAR_DATA *ch)
@@ -9359,6 +9382,11 @@ bool spec_water_weird_wrap(CHAR_DATA *ch)
 }
 
 bool spec_succubus_fascination(CHAR_DATA *ch)
+{
+        return spec_fascinating_gaze(ch);
+}
+
+bool spec_fascinating_gaze(CHAR_DATA *ch)
 {
         BOUNDED_POWER_CONTEXT c;
         MAGIC_ACTIVATION_DATA activation;

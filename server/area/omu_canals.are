@@ -19,9 +19,9 @@ the cold, pressurized waters, navigating the sea floor with an eerie grace.
 
 It seems hungry, but particular.  Let's hope you're not on the menu.
 ~
-64 512|32768|33554432|67108864 0 S
+65 33587712 0 S
 65 0 0 0d0+0 0d0+0
-4|8|32|128|512 0
+0 0
 0 0 1
 >fight_prog 15~
     if size ($n) == 0
@@ -30,6 +30,7 @@ It seems hungry, but particular.  Let's hope you're not on the menu.
     endif
 ~
 |
+< giant_sea_python~ common~
 
 #28401
 giant sea python~
@@ -41,9 +42,9 @@ the cold, pressurized waters, gliding over the sea floor with an eerie grace.
 
 It seems hungry, but particular.  Let's hope you're not on the menu.
 ~
-64 512|32768|33554432|67108864 0 S
+65 33587712 0 S
 65 0 0 0d0+0 0d0+0
-4|8|32|128|512 0
+0 0
 0 0 2
 >fight_prog 15~
     if size ($n) == 0
@@ -52,6 +53,7 @@ It seems hungry, but particular.  Let's hope you're not on the menu.
     endif
 ~
 |
+< giant_sea_python~ common~
 
 #28402
 plesiosaurus~
@@ -62,10 +64,11 @@ A plesiosaurus, with its long neck and four strong flippers, moves efficiently
 through the deep sea. Its head, small compared to its body, but full of
 razor-sharp teeth, scans its surroundings, alert for any signs of prey.
 ~
-32|64 512|8192|67108864 0 S
+97 8704 0 S
 70 0 0 0d0+0 0d0+0
-4|32|512 0
+0 0
 0 0 2
+< plesiosaur~ common~
 
 #28403
 sea hag~
@@ -78,7 +81,7 @@ she moves with purpose, searching for victims. Her rank, matted hair flows like
 dead seaweed in the current, and her gnarled hands clutch at the empty space
 before her, ready to clutch, stab, and strangle.
 ~
-64|2048 4|8|16|512|32768|8388608|33554432|67108864|1073741824 -876 S
+2113 1115718172 -876 S
 64 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -108,6 +111,7 @@ before her, ready to clutch, stab, and strangle.
     vis
 ~
 |
+< sea_hag~ common~
 
 #28404
 kua-toa fish-like humanoid male~
@@ -122,7 +126,7 @@ be to their advantage, or simply out of peer pressure or fear of maltreatment.
 He looks well-equipped for combat, no doubt expecting to find trouble in these
 underwater canals.
 ~
-64 8|512|67108864 -375 S
+65 0 -375 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -139,6 +143,8 @@ underwater canals.
     c 'flamestrike' $n
 ~
 |
+< kuo_toa~ common~
+MobWeight 80
 
 #28405
 kua-toa fish-like humanoid female~
@@ -153,12 +159,12 @@ be to their advantage, or simply out of peer pressure or fear of maltreatment.
 She looks well-equipped for combat, no doubt expecting to find trouble in these
 underwater canals.
 ~
-64 8|512|67108864 -391 S
+65 0 -391 S
 62 0 0 0d0+0 0d0+0
 0 0
 0 0 2
 >fight_prog 5~
-    Visit your judgment upon this villain, great BOOOAL!
+    say Visit your judgment upon this villain, great BOOOAL!
     c 'wrath of god'
 ~
 >fight_prog 10~
@@ -170,6 +176,8 @@ underwater canals.
     c 'flamestrike' $n
 ~
 |
+< kuo_toa~ common~
+MobWeight 55
 
 #28406
 bullywug squat frog-like humanoid~
@@ -180,7 +188,7 @@ This male frog-like humanoid stands about 6' tall and has a tough, olive-coloure
 hide.  His head is huge compared to his body, with big, bulbous eyes and a wide
 mouth from which regularly erupts a long, flicking tongue. He stinks like a bog.
 ~
-64 65536|4194304|67108864 -650 S
+65 4259840 -650 S
 63 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -194,6 +202,8 @@ mouth from which regularly erupts a long, flicking tongue. He stinks like a bog.
     cham
 ~
 |
+< bullywug~ common~
+MobHeight 183
 
 #28407
 bullywug squat frog-like humanoid~
@@ -205,7 +215,7 @@ emerald-coloured hide.  Her head is huge compared to her body, with big, bulbous
 eyes and a wide mouth from which regularly erupts a long, flicking tongue.
 She stinks like a terrestrial bog.
 ~
-64 65536|4194304|67108864 -650 S
+65 4259840 -650 S
 63 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -219,6 +229,9 @@ She stinks like a terrestrial bog.
     cham
 ~
 |
+< bullywug~ common~
+MobHeight 168
+MobWeight 65
 
 #28408
 bullywug frog-like flabby humanoid~
@@ -230,7 +243,7 @@ flabby body.  His head is huge compared to his body, with big, bulbous eyes and
 a very wide mouth from which regularly erupts a long, flicking tongue. He stinks
 like a bog.
 ~
-64 65536|4194304|67108864 -700 S
+65 4259840 -700 S
 63 0 0 0d0+0 0d0+0
 32 0
 0 0 1
@@ -243,6 +256,8 @@ like a bog.
     cham
 ~
 |
+< bullywug~ common~
+MobWeight 100
 
 #28409
 kopru eel grotesque creature~
@@ -254,9 +269,9 @@ tails tipped with stingers.  Its mouth contains fangs surrounded by a number of
 small, prehensile tentacles, and its muscular arms end in webbed hands with
 clawed fingers.
 ~
-64 512|67108864 -1000 S
+65 0 -1000 S
 63 0 0 0d0+0 0d0+0
-8|32|512 0
+0 0
 0 0 1
 >fight_prog 10~
     c 'ultrablast' $n
@@ -265,6 +280,7 @@ clawed fingers.
     c 'synaptic blast' $n
 ~
 |
+< kopru~ common~
 
 #28410
 kopru eel grotesque creature~
@@ -276,14 +292,15 @@ tails tipped with stingers.  Its mouth contains fangs surrounded by a number of
 small, prehensile tentacles, and its muscular arms end in webbed hands with
 clawed fingers.
 ~
-64 512|67108864 -1000 S
+65 0 -1000 S
 64 0 0 0d0+0 0d0+0
-8|32|512 0
+0 0
 0 0 2
 >fight_prog 1~
     c 'ultrablast' $n
 ~
 |
+< kopru~ common~
 
 #28411
 ixzan manta ray fanged~
@@ -292,13 +309,14 @@ an ixzan~
 ~
 Ixzan are similar in appearance to manta rays, but dusky in appearance, fanged,
 sentient, and live only in the darkest and deepest waters.  They tend to avoid
-conflict with humanoids, but are more than ready to defend themselves if attack.
+conflict with humanoids, but are more than ready to defend themselves if attacked.
 This looks like an ixzan of the rare 'vampiric' subtype.
 ~
-64|131072 512|67108864 -890 S
+131137 0 -890 S
 66 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 1
+< vampiric_ixzan~ common~
 
 #28412
 ixzan manta ray fanged~
@@ -307,13 +325,14 @@ an ixzan~
 ~
 Ixzan are similar in appearance to manta rays, but dusky in appearance, fanged,
 sentient, and live only in the darkest and deepest waters.  They tend to avoid
-conflict with humanoids, but are more than ready to defend themselves if attack.
+conflict with humanoids, but are more than ready to defend themselves if attacked.
 This looks like an ixzan of the rare 'vampiric' subtype.
 ~
-64|131072 512|67108864 -899 S
+131137 0 -899 S
 66 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 2
+< vampiric_ixzan~ common~
 
 #28413
 water naga~
@@ -325,9 +344,9 @@ serpent-like body undulates through the water, scales shimmering with subtle
 hues of blue and green. The naga's face, surprisingly humanlike in his aspect,
 manifests a gaze that is both penetrating and calm.
 ~
-64 4|8|16|512|8192|67108864|1073741824 -75 S
+65 1073750556 -75 S
 67 0 0 0d0+0 0d0+0
-4|8|512 0
+0 0
 0 0 1
 >fight_prog 5~
     c 'dispel magic' $n
@@ -348,6 +367,7 @@ endif
     c 'acid blast' $n
 ~
 |
+< water_naga~ common~
 
 #28414
 water naga~
@@ -359,9 +379,9 @@ serpent-like body undulates through the water, scales shimmering with subtle
 hues of blue and green. The naga's face, surprisingly humanlike in her aspect,
 manifests a gaze that is both penetrating and calm.
 ~
-64 4|8|16|512|8192|32768|67108864|1073741824 -83 S
+65 1073783324 -83 S
 67 0 0 0d0+0 0d0+0
-4|8|512 0
+0 0
 0 0 2
 >fight_prog 5~
     c 'lightning bolt' $n
@@ -385,13 +405,14 @@ endif
     c 'paralysis' $n
 ~
 |
+< water_naga~ common~
 
 #28415
 uchuulon chuul~
 an uchuulon~
 <128>What looks like a translucent chuul covered in mucus lurks here.<0>
 ~
-Uchuulons resembled ordinary chuuls in size and shape: a hideous combination of
+Uchuulons resemble ordinary chuuls in size and shape: a hideous combination of
 crustacean, insect, and serpent some 8 ft long and weighing approximately 290 kg,
 with a mass of tentacles in front of the mouth, two large claws, and a fanned
 tail. They differ in that their carapace is softer, translucent, and coated in a
@@ -400,9 +421,9 @@ thick mucus.
 Ambush predators, they tend to hide in mud and darkness and lunge at their prey
 when the opportunity arises.
 ~
-2|64 2|8|32|512|65536|8388608|67108864 -837 S
+67 8454186 -837 S
 68 0 0 0d0+0 0d0+0
-32|512 0
+0 0
 0 0 1
 >all_greet_prog 20~
     murder $n
@@ -412,13 +433,14 @@ when the opportunity arises.
     c 'paralysis' $n
 ~
 |
+< uchuulon~ common~
 
 #28416
 uchuulon chuul~
 an uchuulon~
 <128>What looks like a translucent chuul covered in mucus lurks here.<0>
 ~
-Uchuulons resembled ordinary chuuls in size and shape: a hideous combination of
+Uchuulons resemble ordinary chuuls in size and shape: a hideous combination of
 crustacean, insect, and serpent some 8 ft long and weighing approximately 290 kg,
 with a mass of tentacles in front of the mouth, two large claws, and a fanned
 tail. They differ in that their carapace is softer, translucent, and coated in a
@@ -427,9 +449,9 @@ thick mucus.
 Ambush predators, they tend to hide in mud and darkness and lunge at their prey
 when the opportunity arises.
 ~
-2|64 2|8|32|512|65536|8388608|67108864 -891 S
+67 8454186 -891 S
 68 0 0 0d0+0 0d0+0
-32|512 0
+0 0
 0 0 2
 >all_greet_prog 20~
     murder $n
@@ -442,6 +464,7 @@ when the opportunity arises.
     headbutt
 ~
 |
+< uchuulon~ common~
 
 #28417
 grung hunter~
@@ -454,7 +477,7 @@ caste-based, with the grung's colour denoting his role.  By his attire you would
 assume this green grung is a hunter, busy going about and setting and checking
 traps.
 ~
-64 8|32|512|2097152|8388608|67108864 -625 S
+65 10486312 -625 S
 60 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -486,6 +509,7 @@ traps.
     endif
 ~
 |
+< green_grung~ common~
 
 #28418
 grung hunter~
@@ -498,7 +522,7 @@ caste-based, with the grung's colour denoting his role.  By his attire you would
 assume this green grung is a hunter, busy going about and setting and checking
 traps.
 ~
-64 8|32|512|2097152|8388608|67108864 -592 S
+65 10486312 -592 S
 60 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -530,6 +554,7 @@ traps.
     endif
 ~
 |
+< green_grung~ common~
 
 #28419
 grung hunter~
@@ -542,7 +567,7 @@ caste-based, with the grung's colour denoting his role.  By his attire you would
 assume this green grung is a hunter, busy going about and setting and checking
 traps.
 ~
-64 8|32|512|2097152|8388608|67108864 -670 S
+65 10486312 -670 S
 60 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -574,6 +599,7 @@ traps.
     endif
 ~
 |
+< green_grung~ common~
 
 #28420
 grung hunter~
@@ -586,7 +612,7 @@ caste-based, with the grung's colour denoting his role.  By his attire you would
 assume this green grung is a hunter, busy going about and setting and checking
 traps.
 ~
-64 8|32|512|2097152|8388608|67108864 -615 S
+65 10486312 -615 S
 60 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -618,6 +644,7 @@ traps.
     endif
 ~
 |
+< green_grung~ common~
 
 #28421
 grung warrior~
@@ -629,7 +656,7 @@ and see themselves as superior to all other creatures.  Their society is
 caste-based, with the grung's colour denoting his role.  By his attire you would
 assume this green grung is a warrior, looking for intruders on grung territory.
 ~
-64 8|32|512|4194304|67108864 -700 S
+65 4194856 -700 S
 60 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -641,6 +668,7 @@ assume this green grung is a warrior, looking for intruders on grung territory.
     shoot $n
 ~
 |
+< green_grung~ common~
 
 #28422
 grung traitor shifty~
@@ -652,7 +680,7 @@ and see themselves as superior to all other creatures.  Their society is
 caste-based, with the grung's colour denoting his role.  This green grung looks
 nervous and skittish, and is avoiding your gaze.  Curious.
 ~
-64 8|32|512|32768|65536|2097152|8388608|67108864 -75 S
+65 10584616 -75 S
 60 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -661,6 +689,7 @@ nervous and skittish, and is avoiding your gaze.  Curious.
     hide
 ~
 |
+< green_grung~ common~
 #0
 
 #OBJECTS
@@ -3149,19 +3178,18 @@ S
 
 #SPECIALS
 M 28402 spec_small_whale        a plesiosaurus
-M 28410 spec_cast_mage          a kopru
-M 28411 spec_cast_archmage      an ixzan
-M 28412 spec_cast_priestess     an ixzan
-M 28413 spec_poison             a water naga
-M 28414 spec_poison             a water naga
-M 28415 spec_poison             an uchuulon
-M 28416 spec_poison             an uchuulon
-M 28417 spec_green_grung        a grung hunter
-M 28418 spec_green_grung        a grung hunter
-M 28419 spec_green_grung        a grung hunter
-M 28420 spec_green_grung        a grung hunter
-M 28421 spec_green_grung        a grung warrior
-M 28422 spec_green_grung        a grung traitor
+N 28410 1 spec_cast_mage
+N 28410 2 spec_fascinating_gaze
+N 28410 3 none
+P 28410 70 30 0
+N 28411 1 spec_cast_archmage
+N 28411 2 spec_draining_bite
+N 28411 3 none
+P 28411 75 25 0
+N 28412 1 spec_cast_priestess
+N 28412 2 spec_draining_bite
+N 28412 3 none
+P 28412 75 25 0
 S
 
 #$

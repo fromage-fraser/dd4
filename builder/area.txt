@@ -13592,3 +13592,162 @@ The greeting uses an emote for Asverna's roar before her taunt and
 attack. Her executioner announcements and neighbouring sounds keep
 their existing scripts. The woodcutter's axe is both a weapon and the
 key for the upward exit. The final treetop permits recall.
+
+Omu Canals
+
+The seven appended archetypes are giant_sea_python, kuo_toa, bullywug,
+kopru, vampiric_ixzan, water_naga and uchuulon. They reuse existing body
+species. Plesiosaur, sea_hag and green_grung are reused unchanged.
+All 23 canal definitions remain Common. Biological rarity alone does
+not make the vampiric ixzan an encounter of Rare rank.
+
+Giant sea python is a swimming serpentine reptile with fangs, HUGE,
+Large size, length 1,200 cm, mass 800 kg and natural armour -4.
+It inherits spec_constrictor. The two existing scripts still attempt
+to swallow only Small targets. Plesiosaurus keeps its individual
+spec_small_whale and the shared 1,500 cm/5,000 kg measurements.
+The sea hag keeps regeneration and all six of her programs.
+
+Kuo-toa is a swimming humanoid, 150 cm/70 kg, with natural armour -6,
+Poison and Paralysis immunity, Electricity resistance, Fire vulnerability
+and the existing NPC sunlight penalty of -1. The male is 80 kg and
+the slender female 55 kg. Visible Kua-toa names and portraits keep
+their original spelling. The archetype XP adjustment is +5.
+
+Bullywug is a swimming humanoid with a long tongue and natural armour
+-4. Default dimensions are 175 cm/80 kg. The male is 183 cm/80 kg,
+the female 168 cm/65 kg and the flabby male 175 cm/100 kg. The last
+retains his individual NoSpeech override and gas-breath program.
+
+Kopru has a humanoid torso, arms and clawed hands, fangs and mouth
+tentacles, with no walking legs. Its three tails share the existing
+tail region. It cannot speak. Height is 100 cm, total length 200 cm,
+mass 100 kg and size Medium. Natural armour is -2, Magic resistance
+applies and head trauma disables its fang attack. The XP adjustment
+is +5. The male inherits spec_fascinating_gaze. The female uses 70%
+spec_cast_mage and 30% spec_fascinating_gaze, keeping her own scripts.
+The existing attached tail weapon remains a physical sting.
+
+Vampiric ixzan is a living, mindful fish-shaped ray with fangs and
+regeneration. It is Large, 250 cm long and 100 kg; its approximately
+300 cm wingspan is descriptive. Natural armour is -6 and it resists
+Blunt. Its XP adjustment is +10. The two individuals select their
+existing archmage/priestess special at 75% and spec_draining_bite at
+25%. The template does not grant humanoid vampire powers or Undead.
+
+Water naga is a speaking serpentine reptile with fangs, Large size,
+raised head height 80 cm, length 305 cm, mass 100 kg and natural
+armour -5. It inherits spec_poison_bite. The two existing scripted
+spell repertoires remain individual choices.
+
+Uchuulon uses the crustacean body with four walking legs, two pincers,
+mouth tentacles and a fanned tail. It is Large, 100 cm high, 244 cm
+long and 290 kg, with natural armour -6, Magic resistance and Poison
+immunity. Its ordinary pincer attack crushes. Spec_poison_contact
+models the mucus; the ambush and paralysis programs remain. The XP
+adjustment is +5. These are archetype XP adjustments; the ordinary
+weighted special reward calculation still applies.
+
+The six green grung retain their existing trap, bow, camouflage and
+shop behaviour. Their shared Small profile supplies 91 cm/25 kg.
+Original equipment, trap properties, shop prices, pass, key, room flags
+and reset order/caps are preserved. Attached fang weapons continue
+to use the head region and the existing trauma/disarm lifecycle.
+
+Spec_fascinating_gaze is the reusable name for the existing bounded
+Succubus fascination. It attempts 25% of the times its special slot
+is selected. The viewer must see the creature's usable eyes; an
+invisible viewer can still be affected. Charm/Psychic saves and
+immunity, safety, head/eye trauma and antimagic checks still apply.
+An unsaved gaze imposes one combat pulse of wait. The older
+spec_succubus_fascination name remains available with identical code.
+
+Spec_draining_bite attempts 15% of the times its slot is selected.
+It needs usable fangs, a usable head and a living combat target.
+It uses ordinary Energy Drain, including saves, damage and Drained.
+It does not consume blood. Vampire PCs, undead NPCs and object NPCs
+are excluded. Existing Drained rules cap stacks at five, allow one
+new stack per 30 seconds and recover a stack in 180 seconds at the
+ordinary recovery rate. Existing faster recovery and remedies apply.
+
+Special selection percentages and attempt percentages are different.
+For example, an ixzan selecting a bite 25% of the time and attempting
+it 15% of those selections has a nominal 3.75% attempt rate before
+other restrictions. It does not get an additional bite every round.
+
+The missing say command in the female Kua-toa's first fight program
+is restored. The ixzan and uchuulon grammar is corrected. All other
+programs and authored aggressive/passive behaviour are preserved.
+
+Converting between area files and Scribe source
+
+Scribe now has both directions. Run these from C:\Games\dd4 in
+PowerShell. Python 3.10 or newer and Perl must be available on PATH.
+The Python importer uses only the standard library and invokes Perl
+to verify its own output. Install no extra Python packages for it.
+
+Area to source:
+
+    python .\builder\scribe\are2src.py .\server\area\omu_canals.are "$env:USERPROFILE\Downloads\omu_canals-converted.src"
+
+Source to area:
+
+    perl .\builder\scribe\scribe.pl .\server\area\omu_canals.src "$env:USERPROFILE\Downloads\omu_canals-generated.are"
+
+To compile the reverse-converted source:
+
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\omu_canals-converted.src" "$env:USERPROFILE\Downloads\omu_canals-roundtrip.are"
+
+Use a separate output file while reviewing a conversion. The importer
+refuses an existing destination unless you add --force. It also refuses
+to overwrite its own input or the Scribe compiler. Use --scribe PATH
+only when you deliberately need another matching compiler version.
+Do not apply the generated file until the command succeeds.
+
+The importer checks a complete round trip before it writes the source.
+It compares game data, including raw individual XOR masks, archetypes,
+ranks, dimensions, optional fields, programs, object values, traps,
+shops, weighted specials and the exact reset sequence. It does not
+flatten inherited defaults into each mob. Source comments, whitespace,
+keyword spelling and section order need not match the original source.
+An exported .are cannot recover comments that existed only in .src.
+Keep an existing authored .src when possible and update the pair.
+
+Ordinary mob, object and room fields are emitted as editable Scribe
+blocks when Scribe can reproduce the same data. Some older records
+contain values which those friendly fields cannot represent. Resets,
+shops, specials and other retained sections use readable native blocks:
+
+    $native RESETS END_NATIVE_RESETS
+    M 0 28422 1 28410
+    S
+    END_NATIVE_RESETS
+
+The block contains the section's native contents, including its ordinary
+terminator. Do not repeat the #RESETS header inside it. Native vnums
+are absolute: Scribe does not add the area base vnum inside a native
+block. Retain line order, caps, comments and any conditional reset links.
+Do not mix native RESETS with $addmob or $addobj, native SPECIALS with
+sp/sp2/sp3, or any other native section with ordinary fields generating
+that same section. Scribe rejects these conflicts.
+
+The marker is an arbitrary unique word on a line by itself. The importer
+chooses one absent from the retained section. Keep the spelling of the
+opening and closing marker identical. Do not leave a native block open.
+
+For a help-only file or legacy syntax the importer cannot safely parse,
+it retains the whole file in $native FILE END_NATIVE_FILE. That is an
+explicit preservation fallback, not a claim to have validated that old
+data against the server's loading rules. It compiles back to the same
+text. A native FILE must stand alone, without an $area or other blocks.
+Its complete original headers and #$ terminator remain inside it.
+
+For every future Scribe change, test both directions. Update the forward
+compiler and importer together whenever a new field or section needs it.
+Run the converter tests from the repository root:
+
+    python -m unittest discover -s .\builder\scribe\tests -v
+
+Also round-trip the actual affected area, check its source export and
+boot the generated area in an isolated world. A converter passing its
+own comparison does not replace the ordinary gameplay checks.
