@@ -6046,6 +6046,78 @@ const struct mob_type mob_table[MAX_MOB] =
                 100, 290, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_poison_contact", "", "", 5, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 244
+        },
+        {
+                "orange_grung", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_FANGS,
+                PART_FANGS, RES_POISON, 0, 0,
+                0, 0, 0, 0,
+                110, 35, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_orange_grung", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "red_grung", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_FANGS,
+                PART_FANGS, RES_POISON, 0, 0,
+                0, 0, 0, 0,
+                91, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_red_grung", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "gold_grung", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_FANGS,
+                PART_FANGS, RES_POISON, 0, 0,
+                0, 0, 0, 0,
+                91, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_gold_grung", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "sharptooth_catfish", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 60, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 200
+        },
+        {
+                "conger_eel", "fish", "icon1", "icon2",
+                0, 0,
+                PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 60, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "octopus", "cephalopod", "icon1", "icon2",
+                0, 0,
+                PART_BEAK,
+                PART_TENTACLES | PART_BEAK, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 15, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "headless_training_dummy", "bipedal_construct", "icon1", "icon2",
+                ACT_OBJECT | ACT_NO_FIGHT | ACT_NO_EXPERIENCE | ACT_SENTINEL, AFF_MINDLESS,
+                BODY_NO_HEAD | BODY_NO_EYES | BODY_NO_SPEECH | BODY_NO_CORPSE
+                    | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS
+                    | PART_HEAD | PART_EYE | PART_EAR,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 80, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -7718,6 +7790,12 @@ static const CREATURE_TRAIT_CHANGE uchuulon_traits[] =
 
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"orange_grung", "green_grung", NULL, 0},
+        {"red_grung", "green_grung", NULL, 0},
+        {"gold_grung", "green_grung", NULL, 0},
+        {"sharptooth_catfish", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"conger_eel", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"octopus", "giant_octopus", NULL, 0},
         {"giant_sea_python", "constrictor_snake", fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
         {"kuo_toa", NULL, kuo_toa_traits, TRAIT_ITEMS(kuo_toa_traits)},
         {"bullywug", NULL, bullywug_traits, TRAIT_ITEMS(bullywug_traits)},

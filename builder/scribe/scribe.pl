@@ -170,6 +170,8 @@ my %mob_archetype = map { $_ => 1 } qw/
         three_headed_dragon medusa acid_worm
         infernal_wyrm
         giant_sea_python kuo_toa bullywug kopru vampiric_ixzan water_naga uchuulon
+        orange_grung red_grung gold_grung sharptooth_catfish conger_eel
+        octopus headless_training_dummy
 /;
 
 my %mob_act = (

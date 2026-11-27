@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 27 November 2026
-Based on master 00b180fc8a5ae7170d3ac4ba34cafdce8c0c4ef4 (PR #1023),
-with the accompanying Omu Canals changes.
+Based on master c0752910e3c2bd02c867870a597e03ed55d14ac4 (PR #1024),
+with the accompanying Omu Sovereign Quarter changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,7 +16,7 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 40 bodies, 480 archetypes, 60 internal traits
+The current tables contain 40 bodies, 487 archetypes, 60 internal traits
 and 146 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 480, so this single example would make 481.
+guide's checked revision it is 487, so this single example would make 488.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 480.
+valid index. This example would receive index 487.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 480;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 487;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 480; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 487; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-40 body rows, 480 archetype rows, 60 internal traits and 144 Scribe
+40 body rows, 487 archetype rows, 60 internal traits and 144 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -6833,6 +6833,118 @@ Also round-trip the actual affected area, check its source export and
 boot the generated area in an isolated world. A converter passing its
 own comparison does not replace the ordinary gameplay checks.
 
+Omu Sovereign Quarter
+
+Seven archetypes are added: orange_grung, red_grung, gold_grung,
+sharptooth_catfish, conger_eel, octopus and headless_training_dummy.
+They reuse four existing body species. The existing sahuagin, triton
+and sea_elf profiles supply the other visitors. No new area fields,
+body species, trait IDs, player abilities or special names are needed.
+
+The three grung colours share green_grung's humanoid anatomy, swimming,
+fangs, Poison resistance and natural armour -3. Their trait profiles
+inherit green_grung's internal traits. Ordinary flags and measurements
+still come from each archetype's own row and its humanoid body; trait
+inheritance does not copy another archetype's ordinary flags.
+Each colour inherits its existing special at 100%. The individual
+duplicate sp lines are removed from the authored source.
+
+Orange grung defaults to 110 cm and 35 kg for the explicitly tall
+chiefsguard. Kullugrib is 45 kg; the squat muscular trainee is
+95 cm/40 kg. The two robust elite guards are 110 cm/45 kg.
+Red and gold grungs default to 91 cm/25 kg. Krek'tok is individually
+35 kg because her description calls her plump. All remain Small.
+These masses and individual heights are DD4 estimates.
+
+Only 28726 and 28727 gain Elite rank. Their own descriptions call
+them elite and particularly robust. The other guards stay Common.
+The female chief already has Boss rank and keeps it. Chiefsmates,
+the armourer, receptionist and visiting advisers stay Common.
+The ordinary fivefold Elite and sevenfold Boss HP multipliers apply
+once; rank does not make a mob taller or heavier.
+
+Sharptooth_catfish is an ordinary fish body with fangs, Medium size,
+length 200 cm and mass 60 kg, as described in the area. The two
+individuals retain spec_cast_electric. That casting remains an area
+choice rather than a default power for every catfish.
+
+Conger_eel is Medium, 300 cm long and 60 kg, using the description's
+upper adult measurements. Both individuals retain spec_fido.
+The fish archetypes add no poison, electricity, armour or HUGE flag.
+Their ordinary fang attacks respect head trauma.
+
+Octopus uses the cephalopod body, with a beak and ordinary tentacle
+and beak attack candidates. It has natural armour -3 and estimated
+300 cm total length including the arms, 15 kg and Medium size.
+It has no HUGE flag or automatic venom. Head trauma disables the
+beak; arm trauma disables tentacles. Keep its existing scripted
+Paralysis and six directional ink escapes. Its affspell 74 test is
+the current Paralysis skill number and still avoids recasting it.
+
+Headless_training_dummy uses bipedal_construct. It has arms and legs,
+but no head or eyes, matching its authored flags and portrait. The
+older training_dummy uses a limbless body with a head; keep that
+profile unchanged for its existing users. This new dummy is 100 cm,
+80 kg and Small, with mindless, inorganic, bloodless, ANALGIC,
+soulless, speechless and corpseless properties. Preserve its original
+Unkillable, NoHeal, NoFight, NoExperience, Object, Sentinel/StayArea,
+Blind, Hold and Slow settings. Its lack of walking is already handled
+by those movement restrictions. Do not remove its constructed limbs.
+
+The advisor keeps spec_sahuagin_high_cleric and the existing
+183 cm/90 kg sahuagin profile. The triton keeps 213 cm/110 kg and
+Magic resistance. Both sea elves keep 190 cm/65 kg; the male spy
+retains spec_superwimpy. Their other authored affects and scripts stay.
+
+The physical bite choices in spec_orange_grung and spec_gold_grung
+now use the same missing-head/head-trauma check as green grungs.
+Healthy typed and older untyped users retain the original poison,
+Fear and peace effects. Regenerate can repair the head trauma.
+Other actions, including Haste, keep their existing rules. Red-grung
+Poison is cast as a spell; it is not one of these physical bites.
+
+The long silver spear 28704 and masterwork silver spear 28714 now
+carry the ordinary silver extra flag. A name containing silver does
+not supply that combat property by itself. Other bonuses and slots
+are unchanged.
+
+Conger teeth 28721 keep BODY_PART, no TAKE, value[0]=1 for the head
+region, value[3]=10 for bite, their bonuses and all seven equip resets.
+Scribe ex body_part pure adds DONOT_RANDOMISE to keep their authored
+modifiers rather than loot affixes. Ordinary level-based weapon damage
+creation still follows the existing engine rules. Head trauma disables
+the attached weapon without hiding it from inventory/equipment queries;
+Regenerate restores its use while it remains attached.
+
+The Omu citypass suppresses greeting-script attacks. Ordinary automatic
+aggression can still attack pass holders. The conversion preserves
+those authored flags and scripts. It does not add a faction system.
+The chief's accepted clasp 27632, global one-bag reward cap and reward
+28730 are unchanged. Training, emergency transfer, shop prices, five
+chiefsmates, 49 programs, all room flags and reset order/caps stay.
+The population remains 56 with 151 carried items after refills.
+
+Keep omu_sovereign.src and omu_sovereign.are together. Both conversion
+directions are checked with the current Scribe tools. When a current
+authored source exists, use the importer output as a separate check
+copy and keep the authored source as the editable original. Do not
+flatten inherited flags into raw individual XOR overrides.
+
+From the repository root on Linux:
+
+    python3 builder/scribe/are2src.py server/area/omu_sovereign.are /tmp/omu_sovereign.src
+    perl builder/scribe/scribe.pl /tmp/omu_sovereign.src /tmp/omu_sovereign-roundtrip.are
+
+In PowerShell from C:\Games\dd4:
+
+    python .\builder\scribe\are2src.py .\server\area\omu_sovereign.are "$env:USERPROFILE\Downloads\omu_sovereign-converted.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\omu_sovereign-converted.src" "$env:USERPROFILE\Downloads\omu_sovereign-roundtrip.are"
+
+Add --force to the importer only when deliberately replacing its output.
+For source-less area reviews, do not create a new authored source just
+to perform this check. Scribe tooling updates still need both directions
+to remain supported and tested.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -6886,7 +6998,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 480 current table rows follow, grouped by body. Numeric IDs are for
+All 487 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -6902,7 +7014,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (145)
+HUMANOID (148)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7339,6 +7451,15 @@ HUMANOID (145)
   [476] kopru: h/w/l 100 / 100 / 200; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_fascinating_gaze; policy auto
+  [480] orange_grung: h/w/l 110 / 35 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_orange_grung; policy auto
+  [481] red_grung: h/w/l 91 / 25 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_red_grung; policy auto
+  [482] gold_grung: h/w/l 91 / 25 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_gold_grung; policy auto
 
 DRAGON (23)
 ------------
@@ -7541,7 +7662,7 @@ WINGED_REPTILE (3)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-BIPEDAL_CONSTRUCT (13)
+BIPEDAL_CONSTRUCT (14)
 -----------------------
   [ 38] animated_soft_toy: h/w/l 30 / 1 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7580,6 +7701,9 @@ BIPEDAL_CONSTRUCT (13)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
   [316] golden_handmaid: h/w/l 170 / 1250 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [486] headless_training_dummy: h/w/l 100 / 80 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -8036,7 +8160,7 @@ AMORPHOUS_ORGANISM (10)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_mage; policy auto
 
-FISH (33)
+FISH (35)
 ----------
   [ 95] eel: h/w/l ? / 5 / 150; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8137,6 +8261,12 @@ FISH (33)
   [477] vampiric_ixzan: h/w/l ? / 100 / 250; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials 1:spec_draining_bite; policy auto
+  [483] sharptooth_catfish: h/w/l ? / 60 / 200; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [484] conger_eel: h/w/l ? / 60 / 300; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 QUADRUPEDAL_AMPHIBIAN (3)
 ---------------------------
@@ -8387,7 +8517,7 @@ HEXAPODAL_MAMMAL (1)
         HP+0 dam+0 crit+0 swift+0 XP+10; phase none
         specials none; policy auto
 
-CEPHALOPOD (8)
+CEPHALOPOD (9)
 ----------------
   [294] giant_squid: h/w/l ? / 2000 / 1830; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8413,6 +8543,9 @@ CEPHALOPOD (8)
   [437] kraken: h/w/l ? / 6000 / 2750; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_squid; policy auto
+  [485] octopus: h/w/l ? / 15 / 300; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 LIVING_APPENDAGE (1)
 ----------------------
@@ -9332,8 +9465,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/00b180fc8a5ae7170d3ac4ba34cafdce8c0c4ef4
-  Base PR1023 plus the accompanying Omu Canals patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/c0752910e3c2bd02c867870a597e03ed55d14ac4
+  Base PR1024 plus the accompanying Omu Sovereign Quarter patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -9343,7 +9476,7 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-With this Omu Canals revision, the conversion covers 110/153 areas
-(71.9%) and 1,934/4,131 definitions (46.8%).
+With this Omu Sovereign Quarter revision, the conversion covers
+111/153 areas (72.5%) and 1,962/4,131 definitions (47.5%).
 
 END OF GUIDE

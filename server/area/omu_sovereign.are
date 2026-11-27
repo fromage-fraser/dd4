@@ -18,7 +18,7 @@ This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. He's fit and vigilant, and regards you with deep
 suspicion.
 ~
-32|64 8|32|512|8192|8388608|67108864 -770 S
+96 8397352 -770 S
 65 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -37,6 +37,7 @@ suspicion.
     endif
 ~
 |
+< orange_grung~ common~
 
 #28705
 grung orange chiefsguard~
@@ -47,7 +48,7 @@ This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. She is fit and vigilant, and regards you with deep
 suspicion.
 ~
-32|64 8|32|512|8192|8388608|67108864 -775 S
+96 8397352 -775 S
 66 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -70,6 +71,7 @@ suspicion.
     murder $n
 ~
 |
+< orange_grung~ common~
 
 #28706
 sharptooth catfish~
@@ -83,9 +85,9 @@ a paler colour on its underbelly.
 It's busy grubbing about in the mud for food, and doesn't seem to have much
 interest in you.
 ~
-64 8|32|512|32768|67108864 -110 S
+64 33320 -110 S
 65 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 2
 >rand_prog 1~
     mpecho <94>::slither::<0>
@@ -97,6 +99,7 @@ interest in you.
     mpecho <94>::fllllllup::<0>
 ~
 |
+< sharptooth_catfish~ common~
 
 #28707
 sharptooth catfish~
@@ -110,9 +113,9 @@ a paler colour on its underbelly.
 It's busy grubbing about in the mud for food, and doesn't seem to have much
 interest in you.
 ~
-64 8|32|512|32768|67108864 -110 S
+64 33320 -110 S
 65 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 1
 >rand_prog 1~
     mpecho <94>::shlllerp::<0>
@@ -124,6 +127,7 @@ interest in you.
     mpecho <94>::blllloop::<0>
 ~
 |
+< sharptooth_catfish~ common~
 
 #28708
 Kullugrib grung armourer~
@@ -133,7 +137,7 @@ Kullugrib~
 This muscular orange grung is the chiefsguard's armourer.  He is a grim and
 surly grung, who has little to say and likes to keep it that way.
 ~
-2|64 8|32|512|8192|8388608|67108864 -795 S
+66 8397352 -795 S
 66 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -152,6 +156,8 @@ surly grung, who has little to say and likes to keep it that way.
     endif
 ~
 |
+< orange_grung~ common~
+MobWeight 45
 
 #28709
 training dummy fghdfdhhdfrg~
@@ -162,20 +168,21 @@ This training dummy has been bolted to the floor and is used by the chiefsguard
 soldiers to test their weapons on.  It has been fashioned to crudely resemble a
 muscular grung warrior.
 ~
-2|64|16777216|33554432|67108864|134217728|9223372036854775808 1|64|512|9223372036854775808 0 S
+9223372036888330304 9223372036854776385 0 S
 66 0 0 0d0+0 0d0+0
-1|2|32|256 0
+0 0
 0 0 0
+< headless_training_dummy~ common~
 
 #28710
 grung orange chiefsguard~
 an orange grung~
 <208>A muscular female chiefsguard trains here intensely.<0>
 ~
-This squat but musclar female orange grung is a member of the chiefsguard.  She
+This squat but muscular female orange grung is a member of the chiefsguard.  She
 is busy training her combat skills.
 ~
-2|64 8|32|512|8192|8388608|67108864 -801 S
+66 8397352 -801 S
 66 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -188,6 +195,9 @@ is busy training her combat skills.
     endif
 ~
 |
+< orange_grung~ common~
+MobHeight 95
+MobWeight 40
 
 #28711
 grung orange chiefsguard~
@@ -198,7 +208,7 @@ This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. He's busy eating, and less vigilant than he
 typically would be.
 ~
-2|64 8|32|512|8192|8388608|67108864 -710 S
+66 8397352 -710 S
 66 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -217,6 +227,7 @@ typically would be.
     endif
 ~
 |
+< orange_grung~ common~
 
 #28712
 grung orange chiefsguard~
@@ -227,7 +238,7 @@ This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. She is fit and vigilant, but busy chewing
 something strange-looking right now.
 ~
-2|64 8|32|512|8192|8388608|67108864 -735 S
+66 8397352 -735 S
 66 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -246,6 +257,7 @@ something strange-looking right now.
     endif
 ~
 |
+< orange_grung~ common~
 
 #28713
 grung orange chiefsguard~
@@ -255,7 +267,7 @@ an orange grung~
 This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. He's relaxing, and feels safe where he is.
 ~
-2|64 8|32|512|8192|8388608|67108864 -711 S
+66 8397352 -711 S
 66 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -308,6 +320,7 @@ defend the chief at all costs. He's relaxing, and feels safe where he is.
     endif
 ~
 |
+< orange_grung~ common~
 
 #28714
 grung orange chiefsguard~
@@ -318,7 +331,7 @@ This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. She's relaxing, and regards you with only mild
 curiosity.
 ~
-2|64 8|32|512|8192|8388608|67108864 -766 S
+66 8397352 -766 S
 66 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -371,6 +384,7 @@ curiosity.
     endif
 ~
 |
+< orange_grung~ common~
 
 #28715
 grung orange chiefsguard~
@@ -381,7 +395,7 @@ This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. He's fit and vigilant, and regards you with deep
 suspicion.  His job is to guard the upper entrance of the chiefsguard station.
 ~
-2|32|64 8|32|512|8192|8388608|67108864 -800 S
+98 8397352 -800 S
 66 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -404,6 +418,7 @@ suspicion.  His job is to guard the upper entrance of the chiefsguard station.
     murder $n
 ~
 |
+< orange_grung~ common~
 
 #28716
 octopus sinister~
@@ -414,9 +429,9 @@ The sinister-looking purple octopus is slithering about looking for a meal. She
 is not aggressive, but you don't doubt she would take a dim view of being
 interrupted while hunting.
 ~
-64 8|32|512|32768|67108864 0 S
+64 33320 0 S
 66 0 0 0d0+0 0d0+0
-8|32 0
+0 0
 0 0 2
 >fight_prog 25~
     if affspell($n) == 74
@@ -469,6 +484,7 @@ interrupted while hunting.
     hide
 ~
 |
+< octopus~ common~
 
 #28717
 Krek'tok grung receptionist~
@@ -480,7 +496,7 @@ visit the chief.  She is a plump and rather officious-looking female red grung,
 but you don't doubt she could make your life unpleasant if she had to.  You get
 a definite feeling of unctuous corruptibility from her.
 ~
-2|64 8|32|128|512|8192|8388608|67108864 -805 S
+66 8397480 -805 S
 67 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -499,6 +515,8 @@ a definite feeling of unctuous corruptibility from her.
     endif
 ~
 |
+< red_grung~ common~
+MobWeight 35
 
 #28718
 advisor sahuagin~
@@ -506,10 +524,10 @@ a sahuagin advisor~
 A sahuagin advisor regards you imperiously.
 ~
 This older male sahuagin acts as counsellor and guide to elite figures in the
-sahuagin hieirarchy.  His clothing and demeanour make it clear he is an
+sahuagin hierarchy.  His clothing and demeanour make it clear he is an
 important figure in the Sekolah-worshipping theocratic hierarchy.
 ~
-64 8|32|128|512|8192|524288|67108864|536870912 -840 S
+64 537404072 -840 S
 67 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -520,6 +538,7 @@ important figure in the Sekolah-worshipping theocratic hierarchy.
     mpat $n mpecho {/}B{CThe advisor grins evilly before slowly dematerialising...{x
 ~
 |
+< sahuagin~ common~
 
 #28719
 triton man blue-skinned~
@@ -534,7 +553,7 @@ sense of duty often aligns them with law and goodness, but they are equally
 infamous for their imperious demeanour and lofty airs. This one regards you with
 narrowed eyes and a tight-lipped frown—impatient, aloof, and all business.
 ~
-64 8|32|512|8192|4194304|67108864|1073741824 625 S
+64 1077944872 625 S
 67 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -553,6 +572,7 @@ narrowed eyes and a tight-lipped frown—impatient, aloof, and all business.
     endif
 ~
 |
+< triton~ common~
 
 #28720
 female sea elf~
@@ -564,7 +584,7 @@ a distinct ancestry. They resemble elves with bluish or greenish tinted skin,
 with long, webbed fingers and toes, and visible gills on their ribs.  This
 sea elf is a tall and elegant female who looks pensive and preoccupied.
 ~
-64 4|8|16|32|512|8192|2097152|8388608|67108864|536870912|1073741824 890 S
+64 1621107260 890 S
 67 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -576,6 +596,7 @@ sea elf is a tall and elegant female who looks pensive and preoccupied.
     endif
 ~
 |
+< sea_elf~ common~
 
 #28721
 grung orange chiefsguard~
@@ -586,7 +607,7 @@ This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. She is fit and vigilant, and regards you with deep
 suspicion.
 ~
-32|64 8|32|512|8192|8388608|67108864 -785 S
+96 8397352 -785 S
 68 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -609,6 +630,7 @@ suspicion.
     murder $n
 ~
 |
+< orange_grung~ common~
 
 #28722
 grung orange chiefsguard~
@@ -619,7 +641,7 @@ This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. He is fit and vigilant, and regards you with deep
 suspicion.
 ~
-32|64 8|32|512|8192|8388608|67108864 -785 S
+96 8397352 -785 S
 68 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -638,6 +660,7 @@ suspicion.
     endif
 ~
 |
+< orange_grung~ common~
 
 #28723
 grung orange chiefsguard~
@@ -647,7 +670,7 @@ an orange grung~
 This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. Despite being off duty he is quite alert.
 ~
-2|32|64 8|32|512|8192|8388608|67108864 -731 S
+98 8397352 -731 S
 68 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -667,6 +690,7 @@ defend the chief at all costs. Despite being off duty he is quite alert.
     endif
 ~
 |
+< orange_grung~ common~
 
 #28724
 grung orange chiefsguard~
@@ -677,7 +701,7 @@ This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. She's relaxing, and regards you with only mild
 curiosity.
 ~
-2|64 8|32|512|8192|8388608|67108864 -786 S
+66 8397352 -786 S
 68 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -719,6 +743,7 @@ curiosity.
     endif
 ~
 |
+< orange_grung~ common~
 
 #28725
 male sea elf spy~
@@ -728,9 +753,9 @@ a male sea elf~
 Sea elves are of elven ancestry, though with enough differences to qualify as
 a distinct ancestry. They resemble elves with bluish or greenish tinted skin,
 with long, webbed fingers and toes, and visible gills on their ribs.  This
-sea elf is a tall,elegant male who seems to be doing his best to avoid detection.
+sea elf is a tall, elegant male who seems to be doing his best to avoid detection.
 ~
-2|64 2|8|32|512|8192|32768|65536|1048576|8388608|67108864|536870912 890 S
+66 546415146 890 S
 68 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -742,6 +767,7 @@ sea elf is a tall,elegant male who seems to be doing his best to avoid detection
     endif
 ~
 |
+< sea_elf~ common~
 
 #28726
 grung orange chiefsguard elite~
@@ -752,10 +778,12 @@ This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. She is fit and vigilant, and regards you with deep
 suspicion.  She seems particularly robust.
 ~
-32|64 8|32|512|8192|8388608|67108864 -795 S
+96 8397352 -795 S
 69 0 0 0d0+0 0d0+0
 0 0
 0 0 2
+< orange_grung~ elite~
+MobWeight 45
 
 #28727
 grung orange chiefsguard~
@@ -766,10 +794,12 @@ This tall orange grung is a member of the chiefsguard, powerful troops sworn to
 defend the chief at all costs. He is fit and vigilant, and regards you with deep
 suspicion. He seems particularly robust.
 ~
-32|64 8|32|512|8192|8388608|67108864 -795 S
+96 8397352 -795 S
 69 0 0 0d0+0 0d0+0
 0 0
 0 0 1
+< orange_grung~ elite~
+MobWeight 45
 
 #28728
 grung gold chiefsmate~
@@ -779,7 +809,7 @@ a chiefsmate grung~
 This male gold grung is one of the chief's mating partners.  He has little to do
 with his days but indulge in minor luxuries and await her call.
 ~
-64 8|32|128|512|2048|8192|8388608|16777216|67108864 -810 S
+64 25176744 -810 S
 69 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -798,6 +828,7 @@ with his days but indulge in minor luxuries and await her call.
     endif
 ~
 |
+< gold_grung~ common~
 
 #28729
 conger eel~
@@ -805,16 +836,17 @@ a conger eel~
 <138>A conger eel is looking for a meal.<0>
 ~
 The conger eel is a large, elongated marine fish known for its serpentine body
-and powerful jaws.  It can grow up to 3 meters long and weight 60 kilos. Conger
+and powerful jaws.  It can grow up to 3 meters long and weigh 60 kilos. Conger
 eels have smooth, scaleless skin that ranges from grey to dark brown, and small,
 sharp teeth suited for catching fish, crustaceans, and cephalopods. Though
 nocturnal and solitary by nature, they are fierce predators and sometimes
 mistaken for sea snakes due to their sinuous appearance.
 ~
-64 32|512|33554432|67108864 0 S
+64 33554976 0 S
 67 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 2
+< conger_eel~ common~
 
 #28730
 conger eel~
@@ -822,16 +854,17 @@ a conger eel~
 <138>A conger eel is looking for a meal.<0>
 ~
 The conger eel is a large, elongated marine fish known for its serpentine body
-and powerful jaws.  It can grow up to 3 meters long and weight 60 kilos. Conger
+and powerful jaws.  It can grow up to 3 meters long and weigh 60 kilos. Conger
 eels have smooth, scaleless skin that ranges from grey to dark brown, and small,
 sharp teeth suited for catching fish, crustaceans, and cephalopods. Though
 nocturnal and solitary by nature, they are fierce predators and sometimes
 mistaken for sea snakes due to their sinuous appearance.
 ~
-64 32|512|33554432|67108864 0 S
+64 33554976 0 S
 69 0 0 0d0+0 0d0+0
-4|8|32|512 0
+0 0
 0 0 1
+< conger_eel~ common~
 
 #28731
 grung gold chief~
@@ -848,7 +881,7 @@ her voice commanding and melodic.
 Fierce, cunning, and deeply traditional, she maintains order through ritual,
 fear, and an unshakable belief in her own superiority.
 ~
-2|64 8|32|128|512|2048|8192|8388608|16777216|67108864 -910 S
+66 25176744 -910 S
 70 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -892,7 +925,7 @@ fear, and an unshakable belief in her own superiority.
    cast confusion $n
 ~
 |
-< reserved~ boss~
+< gold_grung~ boss~
 #0
 
 #OBJECTS
@@ -901,7 +934,7 @@ long silver spear~
 a long silver spear~
 A well-used and maintained long silver spear rests here.~
 ~
-5 0 1|8192
+5 8589934592 1|8192
 0~ 0~ 0~ 11~
 11 0 0
 A
@@ -1049,7 +1082,7 @@ masterwork silver spear~
 a masterwork silver spear~
 A well-used and maintained masterwork silver spear rests here.~
 ~
-5 0 1|8192
+5 8589934592 1|8192
 0~ 0~ 0~ 11~
 11 0 0
 A
@@ -1121,7 +1154,7 @@ row teeth sharp~
 a row of sharp teeth~
 Sharp teeth lie scattered here.~
 ~
-5 67108864 8192
+5 67108864|137438953472 8192
 1~ 0~ 0~ 10~
 1 0 0
 A
@@ -1381,7 +1414,7 @@ Chief's Dwelling - Guardroom~
 <130>This compact, round chamber hums with a quiet tension. Carved from ancient stone
 and reinforced with coral-encrusted supports, it serves as a strategic hub for
 <136>the chiefsguard. Bioluminescent kelp lanterns flicker from above, casting
-shifting green light over weapon racks, and woven reed maps A squad of orange
+shifting green light over weapon racks and woven reed maps. A squad of orange
 <137>grung warriors crouch along the edges—alert, sinewy, and poised to spring.
 
 The room smells faintly of brine and damp moss, and the air vibrates with the
@@ -1448,7 +1481,7 @@ chief’s personal refuge. The stone walls are softened by thick veils of gently
 a serene luminescence that shimmers across the room like moonlight on water.
 <202>Woven sea-grass cushions and ceremonial relics rest in niches along the walls.
 
-A large iron door lies east of here; you can also travel north and east.<0>
+A large iron door lies east of here; you can also travel north and west.<0>
 ~
 0 4 12
 D 0
@@ -1807,7 +1840,7 @@ Chief's Dwelling - Guardroom~
 <130>This compact, round chamber hums with a quiet tension. Carved from ancient stone
 and reinforced with coral-encrusted supports, it serves as a strategic hub for
 <136>the chiefsguard. Bioluminescent kelp lanterns flicker from above, casting
-shifting green light over weapon racks, and woven reed maps A squad of orange
+shifting green light over weapon racks and woven reed maps. A squad of orange
 <137>grung warriors crouch along the edges—alert, sinewy, and poised to spring.
 
 The room smells faintly of brine and damp moss, and the air vibrates with the
@@ -2103,7 +2136,7 @@ S
 
 #28428
 Chiefsguard Station - Training Arena~
-<214>Here lies the chiefguards training arena-—a labyrinthine stronghold of stone and
+<214>Here lies the chiefsguard's training arena—a labyrinthine stronghold of stone and
 coral built within the skeletal remains of an ancient castle. Twisted sea vines
 <208>coil around crumbling archways and phosphorescent fungi cling to the
 battlements, casting an eerie green glow over the entire area. The arena itself
@@ -2376,7 +2409,7 @@ the chiefsguard warriors rest. Barnacles and bioluminescent polyps have
 outlines the silhouettes of slumbering sentries.
 
 <139>This place hums with the silent discipline of soldiers long adapted to the
-depths. The eyes of a carved stone idol of Nangnang glares from the lintels,
+depths. The eyes of a carved stone idol of Nangnang glare from the lintels,
 <140>unblinking, as if daring intruders to cross her domain.
 
 You may travel south to the mess, or east to the upper entrance.<0>
@@ -2752,30 +2785,12 @@ S
 0
 
 #SPECIALS
-M 28704 spec_orange_grung       an orange grung
-M 28705 spec_orange_grung       an orange grung
 M 28706 spec_cast_electric      a sharptooth
 M 28707 spec_cast_electric      a sharptooth
-M 28708 spec_orange_grung       Kullugrib
-M 28710 spec_orange_grung       an orange grung
-M 28711 spec_orange_grung       an orange grung
-M 28712 spec_orange_grung       an orange grung
-M 28713 spec_orange_grung       an orange grung
-M 28714 spec_orange_grung       an orange grung
-M 28715 spec_orange_grung       an orange grung
-M 28717 spec_red_grung          Krek'tok
-M 28718 spec_sahuagin_high_cleric 	a sahuagin advisor
-M 28721 spec_orange_grung       an orange grung
-M 28722 spec_orange_grung       an orange grung
-M 28723 spec_orange_grung       an orange grung
-M 28724 spec_orange_grung       an orange grung
+M 28718 spec_sahuagin_high_cleric	a sahuagin advisor
 M 28725 spec_superwimpy         a male sea elf
-M 28726 spec_orange_grung       an orange grung
-M 28727 spec_orange_grung       an orange grung
-M 28728 spec_gold_grung         a chiefsmate grung
 M 28729 spec_fido               a conger eel
 M 28730 spec_fido               a conger eel
-M 28731 spec_gold_grung         the Chief
 S
 
 #$

@@ -18032,3 +18032,115 @@ other restrictions. It does not get an additional bite every round.
 The missing say command in the female Kua-toa's first fight program
 is restored. The ixzan and uchuulon grammar is corrected. All other
 programs and authored aggressive/passive behaviour are preserved.
+
+== Omu Sovereign Quarter
+
+Seven archetypes are added: orange_grung, red_grung, gold_grung,
+sharptooth_catfish, conger_eel, octopus and headless_training_dummy.
+They reuse four existing body species. The existing sahuagin, triton
+and sea_elf profiles supply the other visitors. No new area fields,
+body species, trait IDs, player abilities or special names are needed.
+
+The three grung colours share green_grung's humanoid anatomy, swimming,
+fangs, Poison resistance and natural armour -3. Their trait profiles
+inherit green_grung's internal traits. Ordinary flags and measurements
+still come from each archetype's own row and its humanoid body; trait
+inheritance does not copy another archetype's ordinary flags.
+Each colour inherits its existing special at 100%. The individual
+duplicate sp lines are removed from the authored source.
+
+Orange grung defaults to 110 cm and 35 kg for the explicitly tall
+chiefsguard. Kullugrib is 45 kg; the squat muscular trainee is
+95 cm/40 kg. The two robust elite guards are 110 cm/45 kg.
+Red and gold grungs default to 91 cm/25 kg. Krek'tok is individually
+35 kg because her description calls her plump. All remain Small.
+These masses and individual heights are DD4 estimates.
+
+Only 28726 and 28727 gain Elite rank. Their own descriptions call
+them elite and particularly robust. The other guards stay Common.
+The female chief already has Boss rank and keeps it. Chiefsmates,
+the armourer, receptionist and visiting advisers stay Common.
+The ordinary fivefold Elite and sevenfold Boss HP multipliers apply
+once; rank does not make a mob taller or heavier.
+
+Sharptooth_catfish is an ordinary fish body with fangs, Medium size,
+length 200 cm and mass 60 kg, as described in the area. The two
+individuals retain spec_cast_electric. That casting remains an area
+choice rather than a default power for every catfish.
+
+Conger_eel is Medium, 300 cm long and 60 kg, using the description's
+upper adult measurements. Both individuals retain spec_fido.
+The fish archetypes add no poison, electricity, armour or HUGE flag.
+Their ordinary fang attacks respect head trauma.
+
+Octopus uses the cephalopod body, with a beak and ordinary tentacle
+and beak attack candidates. It has natural armour -3 and estimated
+300 cm total length including the arms, 15 kg and Medium size.
+It has no HUGE flag or automatic venom. Head trauma disables the
+beak; arm trauma disables tentacles. Keep its existing scripted
+Paralysis and six directional ink escapes. Its affspell 74 test is
+the current Paralysis skill number and still avoids recasting it.
+
+Headless_training_dummy uses bipedal_construct. It has arms and legs,
+but no head or eyes, matching its authored flags and portrait. The
+older training_dummy uses a limbless body with a head; keep that
+profile unchanged for its existing users. This new dummy is 100 cm,
+80 kg and Small, with mindless, inorganic, bloodless, ANALGIC,
+soulless, speechless and corpseless properties. Preserve its original
+Unkillable, NoHeal, NoFight, NoExperience, Object, Sentinel/StayArea,
+Blind, Hold and Slow settings. Its lack of walking is already handled
+by those movement restrictions. Do not remove its constructed limbs.
+
+The advisor keeps spec_sahuagin_high_cleric and the existing
+183 cm/90 kg sahuagin profile. The triton keeps 213 cm/110 kg and
+Magic resistance. Both sea elves keep 190 cm/65 kg; the male spy
+retains spec_superwimpy. Their other authored affects and scripts stay.
+
+The physical bite choices in spec_orange_grung and spec_gold_grung
+now use the same missing-head/head-trauma check as green grungs.
+Healthy typed and older untyped users retain the original poison,
+Fear and peace effects. Regenerate can repair the head trauma.
+Other actions, including Haste, keep their existing rules. Red-grung
+Poison is cast as a spell; it is not one of these physical bites.
+
+The long silver spear 28704 and masterwork silver spear 28714 now
+carry the ordinary silver extra flag. A name containing silver does
+not supply that combat property by itself. Other bonuses and slots
+are unchanged.
+
+Conger teeth 28721 keep BODY_PART, no TAKE, value[0]=1 for the head
+region, value[3]=10 for bite, their bonuses and all seven equip resets.
+Scribe ex body_part pure adds DONOT_RANDOMISE to keep their authored
+modifiers rather than loot affixes. Ordinary level-based weapon damage
+creation still follows the existing engine rules. Head trauma disables
+the attached weapon without hiding it from inventory/equipment queries;
+Regenerate restores its use while it remains attached.
+
+The Omu citypass suppresses greeting-script attacks. Ordinary automatic
+aggression can still attack pass holders. The conversion preserves
+those authored flags and scripts. It does not add a faction system.
+The chief's accepted clasp 27632, global one-bag reward cap and reward
+28730 are unchanged. Training, emergency transfer, shop prices, five
+chiefsmates, 49 programs, all room flags and reset order/caps stay.
+The population remains 56 with 151 carried items after refills.
+
+Keep omu_sovereign.src and omu_sovereign.are together. Both conversion
+directions are checked with the current Scribe tools. When a current
+authored source exists, use the importer output as a separate check
+copy and keep the authored source as the editable original. Do not
+flatten inherited flags into raw individual XOR overrides.
+
+From the repository root on Linux:
+
+    python3 builder/scribe/are2src.py server/area/omu_sovereign.are /tmp/omu_sovereign.src
+    perl builder/scribe/scribe.pl /tmp/omu_sovereign.src /tmp/omu_sovereign-roundtrip.are
+
+In PowerShell from C:\Games\dd4:
+
+    python .\builder\scribe\are2src.py .\server\area\omu_sovereign.are "$env:USERPROFILE\Downloads\omu_sovereign-converted.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\omu_sovereign-converted.src" "$env:USERPROFILE\Downloads\omu_sovereign-roundtrip.are"
+
+Add --force to the importer only when deliberately replacing its output.
+For source-less area reviews, do not create a new authored source just
+to perform this check. Scribe tooling updates still need both directions
+to remain supported and tested.
