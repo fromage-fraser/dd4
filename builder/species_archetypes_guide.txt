@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 28 November 2026
-Based on master cb80da9b3493bf6440597840385bb655be7ed243 (PR #1026),
-with the accompanying Otaar Dar Market Canton changes.
+Based on master 5212459c2a3613ac45dd3ff2f6a893091d3f5e46 (PR #1027),
+with the accompanying Prince's Fortress changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -7166,6 +7166,84 @@ Scribe, then import/export a separate check copy to test the other
 direction. Keep the authored original. Use the importer's --force
 option only when deliberately replacing its output.
 
+Prince's Fortress
+
+All 45 definitions now use reviewed species and archetypes: 42 living
+humanoid/human people, two quadrupedal_mammal/horse mounts and one
+quadrupedal_mammal/pig. No new archetype, body, trait ID, area field or
+special-function name is added. The catalogue stays at 505 archetypes,
+40 body species, 60 traits and 146 Scribe special names.
+
+The eight ambiguous portraits are approved as humans: guards 29800,
+29801, 29804, 29843 and 29844, ambassador Snypre 29828, advisor Drogar
+29829 and diplomat 29838. Their portraits are replaced to match. Job
+titles do not add racial powers. Most humans use 175 cm/75 kg/Medium.
+The thin twelve-year-old stableboy uses 145 cm/35 kg; choirboy 140/35;
+gardener 165/50; fletcher 175/55; smith 190/110; cook 175/105;
+kitchenboy 150/45; Dowager Mother 180/95; royal guards 190/105.
+These are descriptive whole-number estimates, not new combat rules.
+
+The Prince's Own guards 29840 and 29841 gain Elite rank, applying
+fivefold rank HP once. Captain 29802 stays Rare, Milli 29834 stays
+Elite and Makras 29842 stays Boss. All other forty definitions stay
+Common. Rank never supplies height, weight or new aggression.
+
+Moonraker 29810 and Sundancer 29811 use horse: 150 cm shoulder height,
+450 kg, 230 cm long, Large, with hooves/tail, NoArms/NoSpeech, ordinary
+hoof attacks and natural armour -3. Keep Mountable and the authored
+behaviour. Sundancer is female, matching her description and retained
+white-horse portrait. Neither horse gains HUGE. Pig 29812 uses the
+existing domestic pig at 75 cm/120 kg/130 cm long/Medium, with a fang
+bite and hooves/tail anatomy. Raw body masks become 0 on these three
+animals so XOR does not cancel inherited NoArms/NoSpeech.
+
+Pig now opts into the existing head_trauma_blocks_attacks trait. An
+injured head disables its ordinary fang attack, without removing the
+stored anatomy or changing independent powers. This is shared pig
+data, so existing pigs 616 in New Ofcol and 1106 in the Shire follow
+the same rule. No global trauma rule or new per-mob trait field is
+introduced. Regenerate uses its existing recovery rules.
+
+Merchant 29803 keeps his concealed identity and frost power, using
+spec_breath_frost_anatomical so ordinary head restrictions apply.
+He gains no invented dragon/undead physiology or cold immunity.
+Keep the priest's Cleric special and Sanctuary, Winster's Psionicist,
+Crinnan's Mage and Milli's existing special and bribe. Wintergern is
+an explicitly bogus court mage and remains without real spellcasting.
+Rudolf gains no invented teacher list. The minstrel's lute 29911 was
+already an instrument held in slot 17 beside his wielded knife.
+
+Winster 29832 now resets in his own chemical workshop, room 29908.
+Drogar stays with Snypre and Rutger stays with Crinnan. Keep all reset
+caps, equipment, keys, loot and fourteen original programs. The real
+1000-copper secretary payment, appointment ticket and both guard keys
+work; the fletcher accepts potpie 3009 and retains his globe hint.
+Keep deliberate aggression/passivity, the secretary's Wimpy flag and
+the guards' authored sleep flavour. Rooms 29851-29854 retain their
+NO_UNDEAD flags, and every other room flag and exit stays unchanged.
+Room 29912 receives only the agreed sees/seems spelling correction.
+
+There is no authored prince_fortress.src. Keep the area as .are only;
+do not commit an imported check copy as an authored source. Where a
+current matching .src exists, maintain and test both directions. Use
+the existing importer/exporter without flattening raw XOR, selections,
+ranks, dimensions, specials, programs, equipment, metadata or resets.
+
+Linux, from the repository root, for a separate check copy:
+
+    python3 builder/scribe/are2src.py server/area/prince_fortress.are /tmp/prince-fortress-check.src
+    perl builder/scribe/scribe.pl /tmp/prince-fortress-check.src /tmp/prince-fortress-roundtrip.are
+
+PowerShell, from C:\Games\dd4:
+
+    python .\builder\scribe\are2src.py .\server\area\prince_fortress.are "$env:USERPROFILE\Downloads\prince-fortress-check.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\prince-fortress-check.src" "$env:USERPROFILE\Downloads\prince-fortress-roundtrip.are"
+
+The importer requires --force only when intentionally replacing its
+output. Keep the authored original when testing the other direction.
+The exact dd-gui portrait name for 29801 is
+mobs/29801_the_off-duty_guard.png; retain the older underscore alias.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -9132,7 +9210,7 @@ A listed parameter needs its existing consumer and any capability/special gate.
     When enabled, head trauma blocks head-dependent natural attack parts
     (fangs, horns, tusks and beak) in the usable attack mask. Examples include
     chimera/kampflut, wolf and its warg/arctic_wolf/great_wolf descendants,
-    criosphinx and giant_electric_eel. Stored anatomy, usable claws and
+    criosphinx, giant_electric_eel and pig. Stored anatomy, usable claws and
     independent casting remain unchanged. Valid ordinary wielded weapons
     keep their existing rules. The profile applies to all its NPC users.
     Regenerate can restore eligibility by healing the head injury.
@@ -9741,8 +9819,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/cb80da9b3493bf6440597840385bb655be7ed243
-  Base PR1026 plus the accompanying Otaar Dar Market Canton patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/5212459c2a3613ac45dd3ff2f6a893091d3f5e46
+  Base PR1027 plus the accompanying Prince's Fortress patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -9752,7 +9830,7 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-With this Otaar Dar Market Canton revision, the conversion covers
-113/153 areas (73.9%) and 2,117/4,131 definitions (51.2%).
+With this Prince's Fortress revision, the conversion covers
+114/153 areas (74.5%) and 2,162/4,131 definitions (52.3%).
 
 END OF GUIDE

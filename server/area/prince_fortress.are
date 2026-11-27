@@ -9,10 +9,11 @@ The gate guard is asleep in a chair.
 ~
 The gate guard is deeply asleep, and snoring loudly.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29801
 guard off-duty~
 the off-duty guard~
@@ -20,10 +21,11 @@ The off-duty guard growls something unintelligible and attacks.
 ~
 The off-duty guard is very annoyed that his beauty sleep has been disturbed.
 ~
-2|32|64 0 0 S
+98 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29802
 captain guard~
 the captain of the guard~
@@ -31,11 +33,11 @@ The captain of the guard glares at you disdainfully.
 ~
 The captain of the guard is dressed up for something important.
 ~
-2|32|64 0 0 S
+98 0 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ rare~
+< human~ rare~
 #29803
 merchant~
 the merchant~
@@ -44,10 +46,11 @@ The merchant glares at you from beneath his cowl.
 The merchant is robed and deeply cowled, and although you can't see his face,
 you feel chilled in his presence.
 ~
-2|64 0 -500 S
+66 0 -500 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29804
 gate guard~
 the gate guard~
@@ -55,10 +58,11 @@ The gate guard is asleep in a chair.
 ~
 The gate guard is deeply asleep, and snoring loudly.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29805
 guard~
 the guard~
@@ -75,6 +79,7 @@ is good at following orders but not much else.
 say Halt! Who goes there?
 ~
 |
+< human~ common~
 #29806
 guard~
 the guard~
@@ -91,6 +96,7 @@ is good at following orders but not much else.
 say Halt! Who goes there?
 ~
 |
+< human~ common~
 #29807
 guard~
 the guard~
@@ -107,6 +113,7 @@ is good at following orders but not much else.
 say Halt! Who goes there?
 ~
 |
+< human~ common~
 #29808
 guard~
 the guard~
@@ -123,6 +130,7 @@ is good at following orders but not much else.
 say Halt! Who goes there?
 ~
 |
+< human~ common~
 #29809
 boy stable stableboy~
 the stableboy~
@@ -130,10 +138,14 @@ The stableboy is here, sweeping out the stalls.
 ~
 The stableboy is quite young, only about twelve years old, and very skinny.
 ~
-2|64 0 0 S
+66 0 0 S
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 145
+MobWeight 35
+
 #29810
 moonraker stallion mount~
 Moonraker~
@@ -141,10 +153,11 @@ A beautiful black stallion stands here proudly.
 ~
 Embroidery on the stallion's bridle proclaims him to be "Moonraker".
 ~
-2|64|131072 0 0 S
+131138 0 0 S
 25 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< horse~ common~
 #29811
 sundancer palfrey mount~
 Sundancer~
@@ -152,10 +165,11 @@ A beautiful white palfrey stands here demurely.
 ~
 Embroidery on the palfrey's bridle proclaims her to be "Sundancer".
 ~
-2|64|131072 0 0 S
+131138 0 0 S
 25 0 0 0d0+0 0d0+0
-36 0
-8 8 1
+0 0
+8 8 2
+< horse~ common~
 #29812
 pig~
 a pig~
@@ -163,10 +177,11 @@ A pig lies here, wallowing in the mud.
 ~
 The pig is dirty and smelly, but obviously very happy in its muddy home.
 ~
-2|64 0 0 S
+66 0 0 S
 25 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< pig~ common~
 #29813
 sinner man~
 the sinner~
@@ -175,10 +190,11 @@ The sinner is sitting here, confessing his sins.
 The sinner looks like a very evil man, who is dressed in a big coat to
 conceal his identity.
 ~
-2|64 0 -1000 S
+66 0 -1000 S
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29814
 priest~
 the priest~
@@ -186,10 +202,11 @@ The priest sits here, taking confession from someone.
 ~
 The priest looks very priestly and good.
 ~
-2|64 128 1000 S
+66 128 1000 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29815
 choirboy boy choir~
 the choirboy~
@@ -197,10 +214,14 @@ The choirboy stands here, singing a hymn.
 ~
 The choirboy looks cherubic and is rapt in his hymn.
 ~
-2|64 0 500 S
+66 0 500 S
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 140
+MobWeight 35
+
 #29816
 gardener~
 the gardener~
@@ -209,10 +230,14 @@ The gardener looks very unhappy that you trampled her vegetables.
 The gardener is a young, skinny woman who obviously takes her job very
 seriously.
 ~
-2|32|64 0 0 S
+98 0 0 S
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
+MobHeight 165
+MobWeight 50
+
 #29817
 fletcher~
 the fletcher~
@@ -221,7 +246,7 @@ The fletcher looks imploringly at you.
 The fletcher is skinny and has definitely seen better days.  He begs you
 for some sustenance.
 ~
-2|64 8|32|8388608 0 S
+66 8388648 0 S
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -241,6 +266,9 @@ say oh thankyou, I am eternally grateful!  I lost my favourite treasure, a brass
 endif
 ~
 |
+< human~ common~
+MobWeight 55
+
 #29818
 smith~
 the smith~
@@ -249,10 +277,14 @@ The smith stands here, hammering on something.
 The smith is a big, powerfully-built man who looks like he could smash you to
 a pulp with that hammer of his.
 ~
-2|32|64 0 0 S
+98 0 0 S
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 190
+MobWeight 110
+
 #29819
 cook~
 the cook~
@@ -260,10 +292,13 @@ The cook stands here, chopping meat.
 ~
 The cook is a big beefy woman who will never win a beauty contest.
 ~
-2|64 0 0 S
+66 0 0 S
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
+MobWeight 105
+
 #29820
 kitchenboy boy~
 the kitchenboy~
@@ -271,10 +306,14 @@ The kitchenboy is here, cowering in the corner.
 ~
 The kitchenboy seems to be terrified of something, the cook perhaps?
 ~
-2|64 0 0 S
+66 0 0 S
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 150
+MobWeight 45
+
 #29821
 guard~
 the guard~
@@ -291,6 +330,7 @@ is good at following orders but not much else.
 say Halt! Who goes there?
 ~
 |
+< human~ common~
 #29822
 guard~
 the guard~
@@ -307,6 +347,7 @@ is good at following orders but not much else.
 say Halt! Who goes there?
 ~
 |
+< human~ common~
 #29823
 guard~
 the guard~
@@ -323,6 +364,7 @@ is good at following orders but not much else.
 say Halt! Who goes there?
 ~
 |
+< human~ common~
 #29824
 guard~
 the guard~
@@ -339,6 +381,7 @@ is good at following orders but not much else.
 say Halt! Who goes there?
 ~
 |
+< human~ common~
 #29825
 rudolf tutor~
 Rudolf~
@@ -347,10 +390,11 @@ Rudolf the tutor stands here, looking knowledgeable.
 Rudolf is obviously a learned man.  Just looking at him you can tell he is a
 scholar.  You guess that means he won't be a very good fighter.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29826
 Jeeves butler~
 Jeeves~
@@ -360,10 +404,11 @@ Jeeves is a butler to the core: immaculately presented, hair slicked
 down, he cuts a fine silhouette.  He must have been schooled at one of the
 top establishments.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29827
 mother dowager woman~
 the Dowager Mother~
@@ -372,10 +417,14 @@ The Prince's Dowager mother stands here regally.
 She is tall, plump, and aristocratic.  She looks like the sort of petty
 noblewoman who would believe anything she hears.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
+MobHeight 180
+MobWeight 95
+
 #29828
 snypre spy diplomat ambassador~
 Snypre~
@@ -384,10 +433,11 @@ Snypre the ambassador stands furtively in the corner.
 Snypre is dressed in white, with a red sash, the mark of an ambassador.  But
 you know as well as he does that an ambassador is really a spy.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29829
 drogar advisor~
 Drogar~
@@ -396,10 +446,11 @@ Drogar the diplomatic advisor stands here nervously.
 Drogar looks nervous, as if he has been caught doing something he shouldn't
 and wants to cover it up.  You wonder how he got in here without being seen.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29830
 traveller man~
 the traveller~
@@ -408,10 +459,11 @@ The traveller sits on his bed, polishing his boots.
 The traveller looks road-weary and travel-sore.  He looks like he has
 travelled a very long way, and just wants some peace and quiet.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29831
 wintergern magician~
 Wintergern~
@@ -421,10 +473,11 @@ Wintergern is obviously a swindler.  If you couldn't pick that up from his
 books or his clothes, you must be blind.  He is obviously a charlatan out for
 kicks or money.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29832
 Winster alchemist~
 Winster~
@@ -433,10 +486,11 @@ Winster the alchemist stands here, holding a flask.
 Winster looks like a typical mad alchemist type: frizzy white hair,
 wild eyes, white robe.
 ~
-2|64 0 0 S
+66 0 0 S
 32 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29833
 cousin man~
 the Prince's cousin~
@@ -445,10 +499,11 @@ The Prince's cousin stands here, looking disdainfully at you.
 The cousin looks very rich and very sure of himself.  He holds his rapier like
 he knows how to use it.
 ~
-2|32|64 0 0 S
+98 0 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29834
 Milli chirurgeon~
 Milli~
@@ -458,7 +513,7 @@ Milli is one good-looking woman.  You deduce that the Prince probably thinks
 so too, and that the nice palfrey you saw in the stables probably belongs to
 her.  She looks sultrily at you.
 ~
-2|64 0 0 S
+66 0 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -467,7 +522,7 @@ say Yeah baby, you know quality when you see it
 emote stretches out on the bed and beckons $n.
 ~
 |
-< reserved~ elite~
+< human~ elite~
 #29835
 Rutger warplanner~
 Rutger~
@@ -476,10 +531,11 @@ Rutger the War Planner stands here, glaring at you.
 Rutger looks like one mean guy, and you decide its probably not a good idea to
 cross him in any way.
 ~
-2|32|64 0 0 S
+98 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29836
 Crinnan counsellor~
 Crinnan~
@@ -488,10 +544,11 @@ Crinnan the Prince's chancellor stands here, scowling at you.
 Crinnan is obviously not used to being interrupted, and he glares at you
 angrily, muttering something low under his breath.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29837
 minstrel man~
 the minstrel~
@@ -500,10 +557,11 @@ The minstrel sits on his bed, composing a tune.
 The minstrel mustn't be a very good one, judging by his scruffy clothes and
 shoes.  However, his lute is beautiful and finely crafted.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29838
 diplomat man~
 the diplomat~
@@ -512,10 +570,11 @@ The guest diplomat stands here, preening.
 The guest diplomat looks splendid in his diplomatic robe and sash, and he knows
 it.  He is preening himself in the mirror like a concubine.
 ~
-2|64 0 0 S
+66 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29839
 secretary woman~
 the secretary~
@@ -524,7 +583,7 @@ The secretary sits here, smiling at you.
 The secretary is smiling and painfully cheerful.  Her demeanour changes very
 quickly when you pull your weapon on her.
 ~
-2|64|128 8|32|8388608 0 S
+194 8388648 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 2
@@ -535,6 +594,7 @@ give ticket $n
 unlock north
 ~
 |
+< human~ common~
 #29840
 guard~
 the Prince's Own Guard~
@@ -543,7 +603,7 @@ The Prince's Own Guard stands rigidly at attention here.
 The Prince's Own looks like he won't take anything from anyone.  Tough, big
 and mean, he won't let anyone in without an appointment.
 ~
-2|64 8|32|8388608 0 S
+66 8388648 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -553,6 +613,10 @@ unlock north
 bow $n
 ~
 |
+< human~ elite~
+MobHeight 190
+MobWeight 105
+
 #29841
 guard~
 the Prince's Own Guard~
@@ -561,7 +625,7 @@ The Prince's Own Guard stands rigidly at attention here.
 The Prince's Own looks like he won't take anything from anyone.  Tough, big
 and mean, he won't let anyone in without an appointment.
 ~
-2|64 8|32|8388608 0 S
+66 8388648 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
@@ -571,6 +635,10 @@ unlock north
 bow $n
 ~
 |
+< human~ elite~
+MobHeight 190
+MobWeight 105
+
 #29842
 prince Makras~
 Makras the Prince~
@@ -580,11 +648,11 @@ Prince Makras is dressed to impress, and looks cool, calm and collected on the
 surface.  But you detect a slightly crazed look in his eye, and his fingers
 drum nervously on the arms of his throne.
 ~
-2|64 0 -1000 S
+66 0 -1000 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ boss~
+< human~ boss~
 #29843
 guard~
 the gate guard~
@@ -593,10 +661,11 @@ The gate guard stands to attention here.
 The gate guard looks slovenly and very bored, he hardly notices your existence
 before you attack him.
 ~
-2|64 0 0 S
+66 0 0 S
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #29844
 guard~
 the gate guard~
@@ -605,10 +674,11 @@ The gate guard stands to attention here.
 The gate guard looks slovenly and very bored, he hardly notices your existence
 before you attack him.
 ~
-2|64 0 0 S
+66 0 0 S
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #0
 
 
@@ -3677,7 +3747,7 @@ S
 The Throne Room~
 You enter the throne room of the prince, and stand amazed.  There are huge,
 priceless hangings on the walls, and the carpet is pure Highland wool.  The
-throne itself sees to be made of solid gold, and the prince himself is
+throne itself seems to be made of solid gold, and the prince himself is
 dressed in exquisitely embroidered velvet.
 ~
 0 1|8 0
@@ -3967,7 +4037,7 @@ E 1 29868 100 6
 E 1 29857 100 8
 E 1 29869 100 17
 *
-M 1 29832 1 29903           Winster to Wintergern's Room
+M 1 29832 1 29908           Winster to Winster's room
 E 1 29871 100 5
 E 1 29857 100 8
 E 1 29870 100 17
@@ -4052,7 +4122,7 @@ S
 
 
 #SPECIALS
-M  29803 spec_breath_frost          the merchant
+M  29803 spec_breath_frost_anatomical          the merchant
 M  29814 spec_cast_cleric           the priest
 M  29832 spec_cast_psionicist       Winster
 M  29836 spec_cast_mage             Crinnan
