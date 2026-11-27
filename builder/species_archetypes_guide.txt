@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 28 November 2026
-Based on master 5212459c2a3613ac45dd3ff2f6a893091d3f5e46 (PR #1027),
-with the accompanying Prince's Fortress changes.
+Based on master 74a9a27d7bc5b12a2dc43e32f8f4674b424f3b9f (PR #1028),
+with the accompanying City of Thieves changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,7 +16,7 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 40 bodies, 505 archetypes, 60 internal traits
+The current tables contain 40 bodies, 508 archetypes, 60 internal traits
 and 146 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 505, so this single example would make 506.
+guide's checked revision it is 508, so this single example would make 509.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 505.
+valid index. This example would receive index 508.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 505;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 508;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 505; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 508; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-40 body rows, 505 archetype rows, 60 internal traits and 146 Scribe
+40 body rows, 508 archetype rows, 60 internal traits and 146 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -7244,6 +7244,120 @@ output. Keep the authored original when testing the other direction.
 The exact dd-gui portrait name for 29801 is
 mobs/29801_the_off-duty_guard.png; retain the older underscore alias.
 
+City of Thieves
+
+All 54 definitions now use species and archetypes. Three new profiles
+bring the catalogue to 508, with the existing 40 body species, 60 traits
+and 146 Scribe special names unchanged. No area field or ACT identity
+flag is added. Every earlier ordinary profile record stays unchanged.
+
+Bay is a small brown humanoid, 100 cm/25 kg/Small, with no new powers.
+The room explicitly calls the creatures bays and their game bays ball.
+Keep their six resets, wooden stick, leather ball and the joke.
+Carnivorous_bush uses plant at 150 cm/60 kg/Medium. It is Bloodless and
+Analgic, without animal head/eyes/heart/arms/legs or speech. Its mind,
+ordinary attacks and stationary behaviour stay. Do not infer Mindless
+or Soulless from its anatomy or lack of pain, or add a grasping special.
+
+Giant_centipede uses myriapod, chitin, many legs and a fang bite, at
+30 cm long/Small. Height and sub-kilogram mass remain unspecified.
+It shares the existing centipede armour -1 and head-injury trait, and
+uses spec_poison_bite as its sole active special. The AD&D 2e reference
+supports its roughly one-foot size and venom. Ordinary DD4 Poison is
+an adaptation; no hours-long paralysis or instant-death effect is added.
+The earlier vegetarian centipedes retain their nonvenomous behaviour.
+
+Spirit Stalker 23500 uses corporeal wight physiology with individual
+spec_poison at 100%, replacing the default active drain. Keep Hide,
+aggression and every ordinary lootable weapon. Lizardine 23504 uses
+lizardman, with arms and speech restored to match the armchair/portrait.
+Spitting remains flavour. Hag 23527 uses green_hag and becomes female,
+with its reviewed claws, infrared, armour -8 and RES_MAGIC. The Serpent
+Queen 23529 and vendor 23549 are humans; the queen keeps Elite.
+
+Zanbar Bone 23542 uses skeleton with individual XOR exceptions for an
+intelligent mind, speech and working magical eyes. He retains skeletal
+Bloodless/Analgic physiology, Assassin, Sanctuary/detection, key and loot.
+Boss rank applies sevenfold HP once. Serpent Queen and Sin stay Elite;
+all other 51 definitions stay Common. The claw and fingers are ordinary
+lootable weapons, not new attached body parts. The room's black robe,
+black helm and green eyes guide the replacement portrait.
+
+Moon dog 23501 uses dog at 70 cm/35 kg/120 cm long/Medium, retaining its
+evil alignment, glowing coat, collars and Fido behaviour. Large wolf
+23507 uses great_wolf, 100 cm/85 kg/180 cm long/Medium. Keep aggression
+and Fido. Wild dog 23517 stays passive. Its food corpse is an authored
+container with contents; preserve it. Death hawk 23538 stays a living
+hawk with its authored Flying/aggression and three placements.
+
+Fireimp 23508 reuses imp with the existing regeneration, armour -8,
+magic/nonmagic resistance and fire/cold/electricity immunity. Retain its
+authored alignment and use spec_breath_fire_anatomical for its existing
+fire power. Sin 23550 is a human Elite, with Flying, his pill shop and
+all original breath choices through spec_breath_any_anatomical. These
+adaptations add no unrelated venom or dragon/demon identity to Sin.
+The madman's Poison, fat man's Mage and all thief/Guard roles remain.
+
+Vampire 23535, mummy 23536 and zombie 23537 now inherit real undead
+physiology. Remove their generic spec_cast_undead entries: the vampire
+uses spec_vampire, the mummy spec_mummy and the zombie no caster special.
+Vampire and Madam Star 23515 become female too. The vampire's wingless
+Flying, mummy's aggression and zombie's existing arm remain. The loose
+arm is described as still attached.
+
+Dog, snake, giant_rat, centipede, imp, lizardman and hawk now opt into
+head_trauma_blocks_attacks. Their ordinary fangs/beaks need a working
+head; other eligible claws/talons, valid weapons and independent magic
+keep their existing rules. Terra_kan inherits through its hawk trait
+parent, and giant_centipede through centipede. These are shared profile
+changes, covering the 41 earlier users across 26 areas too. Regenerate
+uses its existing recovery behaviour. No individual trait field is added.
+
+The snake and centipede inherit their reviewed living organs instead of
+the old NoHeart flag. Snake/rat tails use the anatomical tail rather than
+the legacy marker. Raw XOR masks preserve the intended negative anatomy
+of animals, plants and the many-legged centipede. Keep all deliberate
+aggression/passivity, detection and magical Flying. No new HUGE is added.
+
+Thirteen definitions have descriptive dimension overrides: moon dog,
+tall gate guard, two boys, fat mage, strongman, Madam Star, blacksmith,
+prisoner, tattooist, locksmith, bank clerk and Grub Hayden. The horse keeps
+Mountable and its reviewed 150 cm/450 kg/230 cm long/Large measurements.
+Dimensions stay whole-number descriptive estimates, separate from rank.
+NPC mounting is not added.
+
+Keep boy 23512 and troll 23534 unspawned. No reset/script/code load was
+found; converting their definitions does not justify a new population.
+The troll keeps Guard in place of its default active giant special, with
+passive regeneration. Keep all eight shops, prices/stock, banking,
+equipment, keys, loot, population caps and placements. The bank clerk's
+Banker/aggression/detection are deliberate. Initial/refilled counts remain
+91 inhabitants/283 carried items and 95/293. All room flags/exits stay.
+Only the approved small grammar/capitalisation corrections are made.
+
+Four portraits are replaced: Madam Star's plump/yellow-shawl appearance,
+the female mad woman, robed skeletal Zanbar Bone, and the human vendor.
+The exact room filenames are:
+    custom_rooms/23503_j._b._wraggins,_locksmith.png
+    custom_rooms/23520_mugged!.png
+Retain their old aliases. Existing room pictures need no regeneration.
+
+There is no authored city_thieves.src; keep the area as .are only.
+Check copies must preserve raw XOR, selections, ranks, dimensions,
+specials, programs, objects, metadata and resets in both directions.
+When a current matching .src exists, maintain and test that source too.
+
+Linux, from the repository root, using separate check copies:
+    python3 builder/scribe/are2src.py server/area/city_thieves.are /tmp/city-thieves-check.src
+    perl builder/scribe/scribe.pl /tmp/city-thieves-check.src /tmp/city-thieves-roundtrip.are
+
+PowerShell, from C:\Games\dd4:
+    python .\builder\scribe\are2src.py .\server\area\city_thieves.are "$env:USERPROFILE\Downloads\city-thieves-check.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\city-thieves-check.src" "$env:USERPROFILE\Downloads\city-thieves-roundtrip.are"
+
+Use importer --force only when intentionally replacing its output.
+Keep an authored original when testing the reverse direction.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -7297,7 +7411,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 505 current table rows follow, grouped by body. Numeric IDs are for
+All 508 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -7313,7 +7427,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (155)
+HUMANOID (156)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7779,6 +7893,9 @@ HUMANOID (155)
         specials none; policy auto
   [498] merrow: h/w/l 275 / 160 / ?; Large; family ogre
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [505] bay: h/w/l 100 / 25 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
 DRAGON (23)
@@ -8756,7 +8873,7 @@ ARACHNOID_HUMANOID (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_cast_mage, 2:spec_paralysing_bite; policy 70/30/0
 
-PLANT (11)
+PLANT (12)
 -----------
   [136] enchanted_oak: h/w/l 1500 / 10000 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8791,6 +8908,9 @@ PLANT (11)
   [395] siph: h/w/l 200 / 20 / 300; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_fido; policy auto
+  [506] carnivorous_bush: h/w/l 150 / 60 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 ENVIRONMENTAL_HAZARD (7)
 --------------------------
@@ -8816,7 +8936,7 @@ ENVIRONMENTAL_HAZARD (7)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_poison_contact; policy auto
 
-MYRIAPOD (2)
+MYRIAPOD (3)
 --------------
   [164] centipede: h/w/l ? / ? / 15; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8824,6 +8944,9 @@ MYRIAPOD (2)
   [466] giant_millipede: h/w/l ? / 100 / 300; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_poison_contact; policy auto
+  [507] giant_centipede: h/w/l ? / ? / 30; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison_bite; policy auto
 
 FUNGOID (2)
 -------------
@@ -9210,7 +9333,8 @@ A listed parameter needs its existing consumer and any capability/special gate.
     When enabled, head trauma blocks head-dependent natural attack parts
     (fangs, horns, tusks and beak) in the usable attack mask. Examples include
     chimera/kampflut, wolf and its warg/arctic_wolf/great_wolf descendants,
-    criosphinx, giant_electric_eel and pig. Stored anatomy, usable claws and
+    criosphinx, giant_electric_eel, pig, dog, snake, giant_rat, centipede,
+    imp, lizardman and hawk/terra_kan. Stored anatomy, usable claws and
     independent casting remain unchanged. Valid ordinary wielded weapons
     keep their existing rules. The profile applies to all its NPC users.
     Regenerate can restore eligibility by healing the head injury.
@@ -9819,8 +9943,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/5212459c2a3613ac45dd3ff2f6a893091d3f5e46
-  Base PR1027 plus the accompanying Prince's Fortress patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/74a9a27d7bc5b12a2dc43e32f8f4674b424f3b9f
+  Base PR1028 plus the accompanying City of Thieves patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -9830,7 +9954,7 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-With this Prince's Fortress revision, the conversion covers
-114/153 areas (74.5%) and 2,162/4,131 definitions (52.3%).
+With this City of Thieves revision, the conversion covers
+115/153 areas (75.2%) and 2,216/4,131 definitions (53.6%).
 
 END OF GUIDE
