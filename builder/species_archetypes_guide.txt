@@ -2,9 +2,9 @@ DRAGON'S DOMAIN
 SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
-Edition: 27 November 2026
-Based on master c0752910e3c2bd02c867870a597e03ed55d14ac4 (PR #1024),
-with the accompanying Omu Sovereign Quarter changes.
+Edition: 28 November 2026
+Based on master 4520559bb5b76dbdc5f3b3ac4ea1009f9703809a (PR #1025),
+with the accompanying Omu Central changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,7 +16,7 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 40 bodies, 487 archetypes, 60 internal traits
+The current tables contain 40 bodies, 499 archetypes, 60 internal traits
 and 146 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 487, so this single example would make 488.
+guide's checked revision it is 499, so this single example would make 500.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 487.
+valid index. This example would receive index 499.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 487;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 499;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 487; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 499; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-40 body rows, 487 archetype rows, 60 internal traits and 144 Scribe
+40 body rows, 499 archetype rows, 60 internal traits and 146 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -6945,6 +6945,118 @@ For source-less area reviews, do not create a new authored source just
 to perform this check. Scribe tooling updates still need both directions
 to remain supported and tested.
 
+Omu Central
+
+Twelve new archetypes bring the table to 499: blue_grung, purple_grung,
+giant_isopod, boxfish, blacktip_shark, emperor_shrimp, dunkleosteus,
+kappa, nixie, dryad, sea_zombie and merrow. They reuse existing bodies,
+trait IDs and special names. All earlier profiles keep their defaults.
+No new area fields or individual trait overrides are introduced.
+
+Blue and purple grungs share green_grung's internal traits, with natural
+armour -3. Each row supplies its own humanoid anatomy, swimming, fangs,
+Poison resistance and existing colour special at 100%. Trait parents
+do not copy ordinary flags. Their physical bites now require a working
+head; the other choices and original spell payloads remain unchanged.
+Older untyped users do not need an added fang flag to keep their bites.
+
+The eleven hatchlings are 30 cm/2 kg with anatomical tails. Ten clear
+their inherited active special with sp none. Gold hatchling 28515 keeps
+its existing gold special. Six juveniles use 70 cm/15 kg and retain
+their existing colour abilities and levels. All six hatchery keepers
+remain Elite, with the usual fivefold HP applied once. Nobody gains
+a new rank. Individual tall, squat, muscular and small descriptions
+are represented with height/weight overrides, independently of rank.
+
+Giant_isopod is a 50 cm/2 kg Small crustacean with many walking legs,
+ordinary eyes rather than eyestalks, a tail and no grasping arms.
+It is speechless and inherits Fido scavenging. Its existing carapace
+provides its armour; no second natural-armour bonus is added.
+
+Boxfish is a 45 cm/3 kg Small fish with a rigid shell. Female 28440
+uses spec_poison_contact, a surface defence which does not need a
+working head. Male 28441 explicitly uses sp none and has no poison
+special. Keep this individual exception when editing or converting
+the source. Neither gets Poison immunity or an extra armour bonus.
+
+Blacktip_shark is Medium, 200 cm/40 kg, with head-gated fangs and
+natural armour -4. It does not gain HUGE. Emperor_shrimp is Small,
+3 cm long, with claws and a tail; its sub-kilogram weight stays
+unspecified because the field stores whole kilograms. The female
+keeps body-part claw weapon 27014 and the existing kick/trip scripts.
+
+Dunkleosteus is Large and HUGE, 400 cm/1000 kg. Keep carapace 28448
+and head-category crushing-jaw weapon 28449, including its +50 hit
+and +50 damage. Do not add duplicate fangs, armour or damage bonuses.
+Only its two ineffective fight_prog bite calls are removed. Ordinary
+jaw attacks, headbutt and conspecific aggression scripts stay.
+
+Kappa is Small, 61 cm/9 kg, with swimming, scales, shell, claws, Water
+immunity and its existing special. It has natural armour -7, melee
+accuracy +3 and +10 percent ordinary one_hit damage, not flat damage
+or a spell bonus. Native regeneration restores max(1, level/15) HP
+every three seconds. It has no wound delay, fire/acid suppression,
+automatic limb repair or extra Regenerator flag. Its XP adjustment
+is +5 percentage points. Bowl, salt-water and death-curse rules await
+a separate gameplay decision.
+
+Nixie is Small, 122 cm/25 kg, with swimming, Magic resistance and
+natural armour -3. Female 28469 keeps the water-sprite caster; male
+28495 explicitly clears it. Both keep their authored magical Flying
+affect without gaining wings. Dryad is a living humanoid, Medium,
+152 cm/45 kg, with Magic resistance and natural armour -1. Her green
+skin does not make her a plant, wooden construct or undead. Individual
+28500 keeps swimming and Druid casting. Both XP adjustments are +5.
+
+Sea_zombie is an intelligent, speech-capable drowned one: Medium,
+183 cm/85 kg, swimming and undead, bloodless, ANALGIC, soulless and
+eyeless. It has natural armour -3, Fire/Dark resistance, Cold,
+Electricity and Holy vulnerability; Poison, Sleep, Charm, Hold,
+Paralysis and Psychic immunity; illusion and turn immunity; and the
+existing carrion-stench aura. Individual 28504 keeps undead casting,
+Slow, Faerie Fire and its other conditions. Only its contradictory
+Poisoned affect is removed. It is not mindless. XP adjustment is +10.
+Disease on hit remains deferred.
+
+Merrow is a living, legged aquatic ogre: Large, 275 cm/160 kg, with
+swimming, scales, claws, fangs, Ogre family matching and natural
+armour -6. It gains no HUGE flag, regeneration or extra special.
+Its ordinary head attacks respect head trauma. XP adjustment is +5.
+
+Reehp keeps his individual Adept special, overriding red-grung casting.
+The other intentional Mage/Druid/Undead casters stay individual too.
+Only Reehp's and Doobap's staff 27609 resets move from wield to hold,
+so the existing brandish command can use them. The six hatchery staves
+were already held. Keep all deliberate aggression, service flags,
+prices, gambling, keys, rewards, gear bonuses and reset caps. The
+initial 170 inhabitants/201 carried objects reach 208/205 on refills,
+as before. All 243 room flags and exits remain unchanged.
+
+Keep omu_central.src and omu_central.are together. The authored source
+now includes the area's existing music/area/omu_central.mp3 at volume
+20 and room 28504's ambient/room/28504.mp3 at volume 25. Conversion
+must retain this audio, all 168 remaining mob programs, raw individual
+XOR masks, ranks, dimensions, specials, equipment, resets and metadata.
+Use importer output as a check copy; keep the authored source editable.
+
+From the repository root on Linux:
+
+    python3 builder/scribe/are2src.py server/area/omu_central.are /tmp/omu_central.src
+    perl builder/scribe/scribe.pl /tmp/omu_central.src /tmp/omu_central-roundtrip.are
+
+In PowerShell from C:\Games\dd4:
+
+    python .\builder\scribe\are2src.py .\server\area\omu_central.are "$env:USERPROFILE\Downloads\omu_central-converted.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\omu_central-converted.src" "$env:USERPROFILE\Downloads\omu_central-roundtrip.are"
+
+To export the authored source directly:
+
+    perl .\builder\scribe\scribe.pl .\server\area\omu_central.src "$env:USERPROFILE\Downloads\omu_central-export.are"
+
+Use --force with the importer only when deliberately replacing its
+output. Both conversion directions are checked when a current .src
+exists. Do not flatten inherited defaults into individual raw flags.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -6998,7 +7110,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 487 current table rows follow, grouped by body. Numeric IDs are for
+All 499 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -7014,7 +7126,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (148)
+HUMANOID (155)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -7460,6 +7572,27 @@ HUMANOID (148)
   [482] gold_grung: h/w/l 91 / 25 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_gold_grung; policy auto
+  [487] blue_grung: h/w/l 91 / 25 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_blue_grung; policy auto
+  [488] purple_grung: h/w/l 91 / 25 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_purple_grung; policy auto
+  [494] kappa: h/w/l 61 / 9 / ?; Small; family none
+        HP+0 dam+10 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_kappa; policy auto
+  [495] nixie: h/w/l 122 / 25 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials 1:spec_cast_water_sprite; policy auto
+  [496] dryad: h/w/l 152 / 45 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
+  [497] sea_zombie: h/w/l 183 / 85 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
+  [498] merrow: h/w/l 275 / 160 / ?; Large; family ogre
+        HP+0 dam+0 crit+0 swift+0 XP+5; phase none
+        specials none; policy auto
 
 DRAGON (23)
 ------------
@@ -8100,7 +8233,7 @@ ELEMENTAL_BEING (24)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_fire; policy auto
 
-CRUSTACEAN (8)
+CRUSTACEAN (10)
 ----------------
   [ 84] giant_hermit_crab: h/w/l 152 / 350 / 250; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
@@ -8126,6 +8259,12 @@ CRUSTACEAN (8)
   [479] uchuulon: h/w/l 100 / 290 / 244; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials 1:spec_poison_contact; policy auto
+  [489] giant_isopod: h/w/l ? / 2 / 50; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_fido; policy auto
+  [492] emperor_shrimp: h/w/l ? / ? / 3; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 AMORPHOUS_ORGANISM (10)
 ------------------------
@@ -8160,7 +8299,7 @@ AMORPHOUS_ORGANISM (10)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_mage; policy auto
 
-FISH (35)
+FISH (38)
 ----------
   [ 95] eel: h/w/l ? / 5 / 150; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8265,6 +8404,15 @@ FISH (35)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [484] conger_eel: h/w/l ? / 60 / 300; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [490] boxfish: h/w/l ? / 3 / 45; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_poison_contact; policy auto
+  [491] blacktip_shark: h/w/l ? / 40 / 200; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [493] dunkleosteus: h/w/l ? / 1000 / 400; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -9465,8 +9613,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/c0752910e3c2bd02c867870a597e03ed55d14ac4
-  Base PR1024 plus the accompanying Omu Sovereign Quarter patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/4520559bb5b76dbdc5f3b3ac4ea1009f9703809a
+  Base PR1025 plus the accompanying Omu Central patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -9476,7 +9624,7 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-With this Omu Sovereign Quarter revision, the conversion covers
-111/153 areas (72.5%) and 1,962/4,131 definitions (47.5%).
+With this Omu Central revision, the conversion covers
+112/153 areas (73.2%) and 2,049/4,131 definitions (49.6%).
 
 END OF GUIDE

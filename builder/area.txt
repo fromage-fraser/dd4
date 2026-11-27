@@ -13863,3 +13863,115 @@ Add --force to the importer only when deliberately replacing its output.
 For source-less area reviews, do not create a new authored source just
 to perform this check. Scribe tooling updates still need both directions
 to remain supported and tested.
+
+Omu Central
+
+Twelve new archetypes bring the table to 499: blue_grung, purple_grung,
+giant_isopod, boxfish, blacktip_shark, emperor_shrimp, dunkleosteus,
+kappa, nixie, dryad, sea_zombie and merrow. They reuse existing bodies,
+trait IDs and special names. All earlier profiles keep their defaults.
+No new area fields or individual trait overrides are introduced.
+
+Blue and purple grungs share green_grung's internal traits, with natural
+armour -3. Each row supplies its own humanoid anatomy, swimming, fangs,
+Poison resistance and existing colour special at 100%. Trait parents
+do not copy ordinary flags. Their physical bites now require a working
+head; the other choices and original spell payloads remain unchanged.
+Older untyped users do not need an added fang flag to keep their bites.
+
+The eleven hatchlings are 30 cm/2 kg with anatomical tails. Ten clear
+their inherited active special with sp none. Gold hatchling 28515 keeps
+its existing gold special. Six juveniles use 70 cm/15 kg and retain
+their existing colour abilities and levels. All six hatchery keepers
+remain Elite, with the usual fivefold HP applied once. Nobody gains
+a new rank. Individual tall, squat, muscular and small descriptions
+are represented with height/weight overrides, independently of rank.
+
+Giant_isopod is a 50 cm/2 kg Small crustacean with many walking legs,
+ordinary eyes rather than eyestalks, a tail and no grasping arms.
+It is speechless and inherits Fido scavenging. Its existing carapace
+provides its armour; no second natural-armour bonus is added.
+
+Boxfish is a 45 cm/3 kg Small fish with a rigid shell. Female 28440
+uses spec_poison_contact, a surface defence which does not need a
+working head. Male 28441 explicitly uses sp none and has no poison
+special. Keep this individual exception when editing or converting
+the source. Neither gets Poison immunity or an extra armour bonus.
+
+Blacktip_shark is Medium, 200 cm/40 kg, with head-gated fangs and
+natural armour -4. It does not gain HUGE. Emperor_shrimp is Small,
+3 cm long, with claws and a tail; its sub-kilogram weight stays
+unspecified because the field stores whole kilograms. The female
+keeps body-part claw weapon 27014 and the existing kick/trip scripts.
+
+Dunkleosteus is Large and HUGE, 400 cm/1000 kg. Keep carapace 28448
+and head-category crushing-jaw weapon 28449, including its +50 hit
+and +50 damage. Do not add duplicate fangs, armour or damage bonuses.
+Only its two ineffective fight_prog bite calls are removed. Ordinary
+jaw attacks, headbutt and conspecific aggression scripts stay.
+
+Kappa is Small, 61 cm/9 kg, with swimming, scales, shell, claws, Water
+immunity and its existing special. It has natural armour -7, melee
+accuracy +3 and +10 percent ordinary one_hit damage, not flat damage
+or a spell bonus. Native regeneration restores max(1, level/15) HP
+every three seconds. It has no wound delay, fire/acid suppression,
+automatic limb repair or extra Regenerator flag. Its XP adjustment
+is +5 percentage points. Bowl, salt-water and death-curse rules await
+a separate gameplay decision.
+
+Nixie is Small, 122 cm/25 kg, with swimming, Magic resistance and
+natural armour -3. Female 28469 keeps the water-sprite caster; male
+28495 explicitly clears it. Both keep their authored magical Flying
+affect without gaining wings. Dryad is a living humanoid, Medium,
+152 cm/45 kg, with Magic resistance and natural armour -1. Her green
+skin does not make her a plant, wooden construct or undead. Individual
+28500 keeps swimming and Druid casting. Both XP adjustments are +5.
+
+Sea_zombie is an intelligent, speech-capable drowned one: Medium,
+183 cm/85 kg, swimming and undead, bloodless, ANALGIC, soulless and
+eyeless. It has natural armour -3, Fire/Dark resistance, Cold,
+Electricity and Holy vulnerability; Poison, Sleep, Charm, Hold,
+Paralysis and Psychic immunity; illusion and turn immunity; and the
+existing carrion-stench aura. Individual 28504 keeps undead casting,
+Slow, Faerie Fire and its other conditions. Only its contradictory
+Poisoned affect is removed. It is not mindless. XP adjustment is +10.
+Disease on hit remains deferred.
+
+Merrow is a living, legged aquatic ogre: Large, 275 cm/160 kg, with
+swimming, scales, claws, fangs, Ogre family matching and natural
+armour -6. It gains no HUGE flag, regeneration or extra special.
+Its ordinary head attacks respect head trauma. XP adjustment is +5.
+
+Reehp keeps his individual Adept special, overriding red-grung casting.
+The other intentional Mage/Druid/Undead casters stay individual too.
+Only Reehp's and Doobap's staff 27609 resets move from wield to hold,
+so the existing brandish command can use them. The six hatchery staves
+were already held. Keep all deliberate aggression, service flags,
+prices, gambling, keys, rewards, gear bonuses and reset caps. The
+initial 170 inhabitants/201 carried objects reach 208/205 on refills,
+as before. All 243 room flags and exits remain unchanged.
+
+Keep omu_central.src and omu_central.are together. The authored source
+now includes the area's existing music/area/omu_central.mp3 at volume
+20 and room 28504's ambient/room/28504.mp3 at volume 25. Conversion
+must retain this audio, all 168 remaining mob programs, raw individual
+XOR masks, ranks, dimensions, specials, equipment, resets and metadata.
+Use importer output as a check copy; keep the authored source editable.
+
+From the repository root on Linux:
+
+    python3 builder/scribe/are2src.py server/area/omu_central.are /tmp/omu_central.src
+    perl builder/scribe/scribe.pl /tmp/omu_central.src /tmp/omu_central-roundtrip.are
+
+In PowerShell from C:\Games\dd4:
+
+    python .\builder\scribe\are2src.py .\server\area\omu_central.are "$env:USERPROFILE\Downloads\omu_central-converted.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\omu_central-converted.src" "$env:USERPROFILE\Downloads\omu_central-roundtrip.are"
+
+To export the authored source directly:
+
+    perl .\builder\scribe\scribe.pl .\server\area\omu_central.src "$env:USERPROFILE\Downloads\omu_central-export.are"
+
+Use --force with the importer only when deliberately replacing its
+output. Both conversion directions are checked when a current .src
+exists. Do not flatten inherited defaults into individual raw flags.
