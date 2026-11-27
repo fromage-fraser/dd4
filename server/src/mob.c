@@ -6298,6 +6298,36 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_cast_electric", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 400
+        },
+        {
+                "bay", "humanoid", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 25, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "carnivorous_bush", "plant", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                150, 60, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "giant_centipede", "myriapod", "icon1", "icon2",
+                0, 0,
+                PART_FANGS | PART_HUSK_SHELL,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_poison_bite", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 30
         }
 };
 
@@ -6554,7 +6584,8 @@ static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
 
 static const CREATURE_TRAIT_CHANGE snake_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 static const CREATURE_TRAIT_CHANGE wererat_trait_changes[] =
 {
@@ -6709,7 +6740,8 @@ static const CREATURE_TRAIT_CHANGE centaur_trait_changes[] =
 };
 static const CREATURE_TRAIT_CHANGE lizardman_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -10}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 static const CREATURE_TRAIT_CHANGE darkenbeast_trait_changes[] =
 {
@@ -6869,7 +6901,8 @@ static const CREATURE_TRAIT_CHANGE hydra_trait_changes[] =
 
 static const CREATURE_TRAIT_CHANGE imp_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -8}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
 static const CREATURE_TRAIT_CHANGE cooshee_trait_changes[] =
@@ -6990,7 +7023,8 @@ static const CREATURE_TRAIT_CHANGE constrictor_trait_changes[] =
 };
 static const CREATURE_TRAIT_CHANGE centipede_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -1}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -1},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
 static const CREATURE_TRAIT_CHANGE shadow_fiend_trait_changes[] =
@@ -8003,6 +8037,10 @@ static const CREATURE_TRAIT_CHANGE merrow_trait_changes[] =
 
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"dog", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"giant_rat", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"hawk", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"giant_centipede", "centipede", NULL, 0},
         {"pig", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
         {"manta_ray", "stingray", NULL, 0},
         {"giant_manta_ray", "manta_ray", NULL, 0},

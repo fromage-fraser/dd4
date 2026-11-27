@@ -14162,3 +14162,117 @@ The importer requires --force only when intentionally replacing its
 output. Keep the authored original when testing the other direction.
 The exact dd-gui portrait name for 29801 is
 mobs/29801_the_off-duty_guard.png; retain the older underscore alias.
+
+City of Thieves
+
+All 54 definitions now use species and archetypes. Three new profiles
+bring the catalogue to 508, with the existing 40 body species, 60 traits
+and 146 Scribe special names unchanged. No area field or ACT identity
+flag is added. Every earlier ordinary profile record stays unchanged.
+
+Bay is a small brown humanoid, 100 cm/25 kg/Small, with no new powers.
+The room explicitly calls the creatures bays and their game bays ball.
+Keep their six resets, wooden stick, leather ball and the joke.
+Carnivorous_bush uses plant at 150 cm/60 kg/Medium. It is Bloodless and
+Analgic, without animal head/eyes/heart/arms/legs or speech. Its mind,
+ordinary attacks and stationary behaviour stay. Do not infer Mindless
+or Soulless from its anatomy or lack of pain, or add a grasping special.
+
+Giant_centipede uses myriapod, chitin, many legs and a fang bite, at
+30 cm long/Small. Height and sub-kilogram mass remain unspecified.
+It shares the existing centipede armour -1 and head-injury trait, and
+uses spec_poison_bite as its sole active special. The AD&D 2e reference
+supports its roughly one-foot size and venom. Ordinary DD4 Poison is
+an adaptation; no hours-long paralysis or instant-death effect is added.
+The earlier vegetarian centipedes retain their nonvenomous behaviour.
+
+Spirit Stalker 23500 uses corporeal wight physiology with individual
+spec_poison at 100%, replacing the default active drain. Keep Hide,
+aggression and every ordinary lootable weapon. Lizardine 23504 uses
+lizardman, with arms and speech restored to match the armchair/portrait.
+Spitting remains flavour. Hag 23527 uses green_hag and becomes female,
+with its reviewed claws, infrared, armour -8 and RES_MAGIC. The Serpent
+Queen 23529 and vendor 23549 are humans; the queen keeps Elite.
+
+Zanbar Bone 23542 uses skeleton with individual XOR exceptions for an
+intelligent mind, speech and working magical eyes. He retains skeletal
+Bloodless/Analgic physiology, Assassin, Sanctuary/detection, key and loot.
+Boss rank applies sevenfold HP once. Serpent Queen and Sin stay Elite;
+all other 51 definitions stay Common. The claw and fingers are ordinary
+lootable weapons, not new attached body parts. The room's black robe,
+black helm and green eyes guide the replacement portrait.
+
+Moon dog 23501 uses dog at 70 cm/35 kg/120 cm long/Medium, retaining its
+evil alignment, glowing coat, collars and Fido behaviour. Large wolf
+23507 uses great_wolf, 100 cm/85 kg/180 cm long/Medium. Keep aggression
+and Fido. Wild dog 23517 stays passive. Its food corpse is an authored
+container with contents; preserve it. Death hawk 23538 stays a living
+hawk with its authored Flying/aggression and three placements.
+
+Fireimp 23508 reuses imp with the existing regeneration, armour -8,
+magic/nonmagic resistance and fire/cold/electricity immunity. Retain its
+authored alignment and use spec_breath_fire_anatomical for its existing
+fire power. Sin 23550 is a human Elite, with Flying, his pill shop and
+all original breath choices through spec_breath_any_anatomical. These
+adaptations add no unrelated venom or dragon/demon identity to Sin.
+The madman's Poison, fat man's Mage and all thief/Guard roles remain.
+
+Vampire 23535, mummy 23536 and zombie 23537 now inherit real undead
+physiology. Remove their generic spec_cast_undead entries: the vampire
+uses spec_vampire, the mummy spec_mummy and the zombie no caster special.
+Vampire and Madam Star 23515 become female too. The vampire's wingless
+Flying, mummy's aggression and zombie's existing arm remain. The loose
+arm is described as still attached.
+
+Dog, snake, giant_rat, centipede, imp, lizardman and hawk now opt into
+head_trauma_blocks_attacks. Their ordinary fangs/beaks need a working
+head; other eligible claws/talons, valid weapons and independent magic
+keep their existing rules. Terra_kan inherits through its hawk trait
+parent, and giant_centipede through centipede. These are shared profile
+changes, covering the 41 earlier users across 26 areas too. Regenerate
+uses its existing recovery behaviour. No individual trait field is added.
+
+The snake and centipede inherit their reviewed living organs instead of
+the old NoHeart flag. Snake/rat tails use the anatomical tail rather than
+the legacy marker. Raw XOR masks preserve the intended negative anatomy
+of animals, plants and the many-legged centipede. Keep all deliberate
+aggression/passivity, detection and magical Flying. No new HUGE is added.
+
+Thirteen definitions have descriptive dimension overrides: moon dog,
+tall gate guard, two boys, fat mage, strongman, Madam Star, blacksmith,
+prisoner, tattooist, locksmith, bank clerk and Grub Hayden. The horse keeps
+Mountable and its reviewed 150 cm/450 kg/230 cm long/Large measurements.
+Dimensions stay whole-number descriptive estimates, separate from rank.
+NPC mounting is not added.
+
+Keep boy 23512 and troll 23534 unspawned. No reset/script/code load was
+found; converting their definitions does not justify a new population.
+The troll keeps Guard in place of its default active giant special, with
+passive regeneration. Keep all eight shops, prices/stock, banking,
+equipment, keys, loot, population caps and placements. The bank clerk's
+Banker/aggression/detection are deliberate. Initial/refilled counts remain
+91 inhabitants/283 carried items and 95/293. All room flags/exits stay.
+Only the approved small grammar/capitalisation corrections are made.
+
+Four portraits are replaced: Madam Star's plump/yellow-shawl appearance,
+the female mad woman, robed skeletal Zanbar Bone, and the human vendor.
+The exact room filenames are:
+    custom_rooms/23503_j._b._wraggins,_locksmith.png
+    custom_rooms/23520_mugged!.png
+Retain their old aliases. Existing room pictures need no regeneration.
+
+There is no authored city_thieves.src; keep the area as .are only.
+Check copies must preserve raw XOR, selections, ranks, dimensions,
+specials, programs, objects, metadata and resets in both directions.
+When a current matching .src exists, maintain and test that source too.
+
+Linux, from the repository root, using separate check copies:
+    python3 builder/scribe/are2src.py server/area/city_thieves.are /tmp/city-thieves-check.src
+    perl builder/scribe/scribe.pl /tmp/city-thieves-check.src /tmp/city-thieves-roundtrip.are
+
+PowerShell, from C:\Games\dd4:
+    python .\builder\scribe\are2src.py .\server\area\city_thieves.are "$env:USERPROFILE\Downloads\city-thieves-check.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\city-thieves-check.src" "$env:USERPROFILE\Downloads\city-thieves-roundtrip.are"
+
+Use importer --force only when intentionally replacing its output.
+Keep an authored original when testing the reverse direction.

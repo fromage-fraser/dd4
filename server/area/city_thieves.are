@@ -9,10 +9,11 @@ A spirit stalker stands here.
 ~
 This assassin looks like he could kill death itself.
 ~
-2|32|64 65536 -500 S
+98 65536 -500 S
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< wight~ common~
 #23501
 moon dog~
 a moon dog~
@@ -20,10 +21,16 @@ A moondog stands here ready to pounce.
 ~
 A strange glow emanates from the dog's coat.
 ~
-2|64 0 -500 S
+66 0 -500 S
 40 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< dog~ common~
+MobHeight 70
+MobWeight 35
+MobLength 120
+MobSize 1
+
 #23502
 city guard~
 a city guard~
@@ -31,10 +38,14 @@ A guard stands to attention here.
 ~
 The guard is covered in black clothing.
 ~
-2|4|64 0 0 S
+70 0 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 185
+MobWeight 85
+
 #23503
 boy~
 the boy~
@@ -42,10 +53,15 @@ A boy lurks in the shadows.
 ~
 He is wearing rags of the street.
 ~
-4|64 0 0 S
+68 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 130
+MobWeight 30
+MobSize 0
+
 #23504
 lizard lizardine~
 a lizardine~
@@ -53,10 +69,11 @@ The green lizardine flicks its tongue at you.
 ~
 The lizardine spits in your direction.
 ~
-2|64 0 0 S
+66 0 0 S
 29 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< lizardman~ common~
 #23505
 half orc~
 a half orc~
@@ -64,10 +81,11 @@ A half orc grunts at you as you enter.
 ~
 The handaxe at his belt looks really sharp.
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< half_orc~ common~
 #23506
 thief thieves~
 the thief~
@@ -75,10 +93,11 @@ A thief lurks in the shadow here.
 ~
 The thief glares back at you with hate.
 ~
-64 32768|65536 0 S
+64 98304 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23507
 wolf~
 the wolf~
@@ -86,10 +105,11 @@ A large wolf snarls at the end of its leash.
 ~
 The wolf snaps against its leash.
 ~
-2|32|64 0 0 S
+98 0 0 S
 35 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< great_wolf~ common~
 #23508
 fire imp fireimp~
 a fireimp~
@@ -97,10 +117,11 @@ A fire imp glares at you.
 ~
 It looks like it wants to hurt you.
 ~
-2|32|64 524288 0 S
+98 0 0 S
 37 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< imp~ common~
 #23509
 fat man fatman~
 the fat man~
@@ -108,10 +129,13 @@ A fat man smirks at you here.
 ~
 He looks like he knows something.
 ~
-2|4|64 524288 0 S
+70 524288 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 140
+
 #23510
 mad man madman~
 the madman~
@@ -119,21 +143,23 @@ A madman curses at the road here.
 ~
 His eyes are glazed over and he looks at you like you are food.
 ~
-2|4|64 0 0 S
+70 0 0 S
 42 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23511
 Ogre~
 the ogre~
-A ogre stands here muttering to himself.
+An ogre stands here muttering to himself.
 ~
 The ogre has lumps all over his face.
 ~
-2|4|64 0 0 S
+70 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< ogre~ common~
 #23512
 small boy~
 the boy~
@@ -141,10 +167,15 @@ A small boy sits in the gutter.
 ~
 "What you want, mister?"
 ~
-2|4|64 0 0 S
+70 0 0 S
 30 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 125
+MobWeight 25
+MobSize 0
+
 #23513
 dwarf thief~
 the dwarf~
@@ -152,10 +183,11 @@ A dwarf stands here waiting for someone to mug.
 ~
 He snarls at you.
 ~
-2|4|32|64 8 0 S
+102 8 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
 #23514
 care chested man~
 the bare chested man~
@@ -163,10 +195,14 @@ A bare chested man stands here with a cannonball.
 ~
 Want to play catch with me WIMP?
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 200
+MobWeight 130
+
 #23515
 woman~
 the woman~
@@ -174,10 +210,14 @@ A woman sits here gazing into a crystal ball.
 ~
 She smiles at you and says, "Tis a pity you are going to die soon".
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
-8 8 1
+8 8 2
+< human~ common~
+MobHeight 165
+MobWeight 95
+
 #23516
 snake~
 the snake~
@@ -185,10 +225,11 @@ A snake slithers along the ground here.
 ~
 Its beady eyes focus on you.
 ~
-2|64 0 0 S
+66 0 0 S
 35 0 0 0d0+0 0d0+0
-60|512 0
+0 0
 8 8 1
+< snake~ common~
 #23517
 wild dog~
 the wild dog~
@@ -196,10 +237,11 @@ A wild dog feeds on a rotting corpse.
 ~
 It snarls at you and prepares to protect its kill.
 ~
-2|64 0 0 S
+66 0 0 S
 36 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< dog~ common~
 #23518
 pirate~
 the pirate~
@@ -207,10 +249,11 @@ A pirate stands here looking to kill someone.
 ~
 He snarls at you.
 ~
-2|4|64 0 0 S
+70 0 0 S
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23519
 mad woman~
 the mad woman~
@@ -218,21 +261,23 @@ A mad woman struggles here.
 ~
 She is chewing on her straitjacket.
 ~
-2|64 0 0 S
+66 0 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #23520
 bay bays~
 the bay~
 A bay stands here playing with a ball.
 ~
-The bay smile at you.
+The bay smiles at you.
 ~
-2|64 0 0 S
+66 0 0 S
 37 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< bay~ common~
 #23521
 goblin small boy~
 the goblin~
@@ -240,21 +285,23 @@ A small boy lies here face down in the gutter.
 ~
 The goblin lies in wait.
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< goblin~ common~
 #23522
 candlemaker elf~
 the candlemaker~
-A Elven candlemaker stands here.
+An elven candlemaker stands here.
 ~
 He smiles at you.
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< elf~ common~
 #23523
 silver smith~
 the silversmith~
@@ -262,10 +309,11 @@ A silversmith smiles at you as you enter.
 ~
 "Well, what do you want?"
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23524
 drunk man~
 the drunk~
@@ -273,10 +321,11 @@ A drunk staggers towards you here.
 ~
 "Ish tooo basd ya going ta bee dead."
 ~
-4|64 0 0 S
+68 0 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23525
 giant centipede~
 the centipede~
@@ -284,10 +333,11 @@ A giant centipede crawls towards you.
 ~
 Whoa, look at all those legs!
 ~
-2|64 0 0 S
+66 0 0 S
 43 0 0 0d0+0 0d0+0
-4|16|32 0
+0 0
 8 8 1
+< giant_centipede~ common~
 #23526
 giant rat~
 the rat~
@@ -295,21 +345,23 @@ A giant rat snarls at you.
 ~
 Its teeth look rather large.
 ~
-2|64 0 0 S
+66 0 0 S
 40 0 0 0d0+0 0d0+0
-36|512 0
+0 0
 8 8 1
+< giant_rat~ common~
 #23527
 woman hag~
 the hag~
-A old hag curses and spits at you.
+An old hag curses and spits at you.
 ~
 Her eyes shy away from the light.
 ~
-2|64 0 0 S
+66 0 0 S
 45 0 0 0d0+0 0d0+0
 0 0
-8 8 1
+8 8 2
+< green_hag~ common~
 #23528
 murderer~
 the murderer~
@@ -317,10 +369,11 @@ A murderer looks to kill someone.
 ~
 He looks like he wants to kill you.
 ~
-2|32|64 0 0 S
+98 0 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23529
 serpent queen~
 the serpent queen~
@@ -328,11 +381,11 @@ A serpent queen glares down at you.
 ~
 She is wearing a lavish dress.
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
-< reserved~ elite~
+< human~ elite~
 #23530
 blacksmith smith~
 the blacksmith~
@@ -340,10 +393,14 @@ A blacksmith stands here.
 ~
 He has muscles in places you never knew existed.
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 190
+MobWeight 110
+
 #23531
 prisoner man~
 the prisoner~
@@ -351,10 +408,13 @@ A prisoner crawls towards you.
 ~
 He pleads for help to remove the chain.
 ~
-2|64 0 0 S
+66 0 0 S
 33 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 55
+
 #23532
 leaf beast bush shrub~
 the leaf beast~
@@ -362,10 +422,11 @@ A bush glares at you like you are food.
 ~
 The leaf beast looks deadly.
 ~
-2|64 0 0 S
+66 0 0 S
 48 0 0 0d0+0 0d0+0
-63 0
+0 0
 8 8 1
+< carnivorous_bush~ common~
 #23533
 tattooist man jimmy~
 the tattooist~
@@ -373,10 +434,14 @@ A tattooist snorts at you as you enter.
 ~
 He has tattoos all over his body.
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 190
+MobWeight 110
+
 #23534
 troll guard~
 the troll~
@@ -384,10 +449,11 @@ A troll guard DEMANDS to see your pass.
 ~
 He looks mean.
 ~
-2|64 0 0 S
+66 0 0 S
 45 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< troll~ common~
 #23535
 vampire woman~
 the vampire~
@@ -395,10 +461,11 @@ A woman dressed in black smiles at you.
 ~
 She has rather long sharp teeth.
 ~
-2|64 524288 -500 S
+66 524288 -500 S
 43 0 0 0d0+0 0d0+0
 0 0
-8 8 1
+8 8 2
+< vampire~ common~
 #23536
 mummy~
 the mummy~
@@ -406,10 +473,11 @@ A mummy lumbers toward you.
 ~
 It is bandaged from head to toe.
 ~
-2|32|64 0 0 S
+98 0 0 S
 43 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< mummy~ common~
 #23537
 zombie man~
 the zombie~
@@ -417,10 +485,11 @@ A zombie fixes its eyes on you.
 ~
 It looks like its arm is about to come off.
 ~
-2|64 0 0 S
+66 0 0 S
 43 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< zombie~ common~
 #23538
 death hawk~
 the death hawk~
@@ -428,10 +497,11 @@ A death hawk dives from above at you.
 ~
 The feathers glow evilly.
 ~
-2|32|64 524288 0 S
+98 0 0 S
 40 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< hawk~ common~
 #23539
 mayor~
 the mayor~
@@ -439,10 +509,11 @@ The mayor smiles and shakes your hand.
 ~
 He smiles like a politician. YEEECH.
 ~
-4|64 524288 0 S
+68 524288 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23540
 Lock Smith dwarf locksmith~
 the locksmith~
@@ -450,10 +521,13 @@ A dwarven locksmith smiles as you enter.
 ~
 He looks very Strong.
 ~
-2|4|64 0 0 S
+70 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
+MobWeight 95
+
 #23542
 zanbar bone~
 Zanbar Bone~
@@ -461,10 +535,11 @@ Zanbar Bone stands here ready to attack.
 ~
 Oh my god RUN!
 ~
-2|32|64 8|32|128 -1000 S
+98 562949953421480 -1000 S
 58 0 0 0d0+0 0d0+0
-0 0
+33554466 0
 8 8 1
+< skeleton~ boss~
 #23543
 guard city~
 the city guard~
@@ -476,17 +551,19 @@ He looks really mean.
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23544
 inn keeper bar tender~
 the inn keeper~
-A inn keeper stands here spilling ale over the bar.
+An inn keeper stands here spilling ale over the bar.
 ~
 He smiles and burps in your direction.
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23545
 florist~
 the florist~
@@ -494,10 +571,11 @@ A florist moves about the room and attends to her flowers.
 ~
 The florist looks up and smiles.
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #23546
 jeweller~
 the jeweller~
@@ -505,10 +583,11 @@ A jeweller stands here with a cheesy smile on his face.
 ~
 He smiles at you, showing off his few remaining black teeth.
 ~
-2|4|64 0 0 S
+70 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23547
 man~
 the man~
@@ -516,10 +595,11 @@ A man stands here looking for a bargain.
 ~
 The man eyes you suspiciously.
 ~
-2|64 0 0 S
+66 0 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23548
 woman~
 the woman~
@@ -527,10 +607,11 @@ A woman stands here looking through clothing.
 ~
 She smiles back at you.
 ~
-2|64 0 0 S
+66 0 0 S
 40 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #23549
 vendor~
 the vendor~
@@ -539,10 +620,11 @@ The vendor peddles his wares here.
 "Psst, have I got a deal for you!"
 "Look at my list of wares."
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #23550
 sin man black~
 Sin~
@@ -554,7 +636,7 @@ SIN and die!
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ elite~
+< human~ elite~
 #23551
 horse~
 the horse~
@@ -562,10 +644,11 @@ A horse stands here tied to a post.
 ~
 It whinnies and snorts at you with eyes full of terror.
 ~
-2|64|131072 0 0 S
+131138 0 0 S
 30 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< horse~ common~
 #23552
 dwarf thief~
 the dwarf~
@@ -573,10 +656,11 @@ A dwarf stands here waiting for someone to mug.
 ~
 He snarls at you.
 ~
-4|32|64 8 0 S
+100 8 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< dwarf~ common~
 #23553
 surly Dragonhoard clerk~
 a surly Dragonhoard clerk~
@@ -586,10 +670,13 @@ A thin, fierce-looking man, you'd guess him to be a local employee of
 Dragonhoard's.  By the suspicion he regards you with, you'd imagine he
 has to contend with a fair amount of attempted robberies and the like.
 ~
-2|32|64|524288 8 0 S
+524386 8 0 S
 35 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 60
+
 #23554
 Grub Hayden man thin swarthy~
 Grub Hayden~
@@ -599,10 +686,13 @@ Grub Hayden is a dark-complexioned and unhygienic-looking man, all bone, dirt
 and sinew.  While quick to smile, this does not improve his aspect, as he
 has lost most of his teeth, and the few that remain are blackened and rotten.
 ~
-2|64 0 0 S
+66 0 0 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 55
+
 #0
 
 
@@ -2308,7 +2398,7 @@ D4
 S
 #23551
 On the wall~
-From the top of the wall you see that encircles a group of brown creatures
+From the top of the wall you see that it encircles a group of brown creatures
 playing some kind of game with a wooden stick and a small leather ball.
 You realise that these creatures are bays, playing their favourite game
 'bays ball'.
@@ -3203,7 +3293,7 @@ S
 A Black Room~
 Before you stands a black robed skeleton with green translucent eyes, wearing
 a black helm on his skull.
-Zanbar bone ATTACKS!
+Zanbar Bone ATTACKS!
 ~
 0 1|8|8192 0
 D0
@@ -3932,19 +4022,16 @@ M  23501 spec_fido              a moon dog
 M  23502 spec_guard             a city guard
 M  23506 spec_thief             the thief
 M  23507 spec_fido              the wolf
-M  23508 spec_breath_fire       a fireimp
+M  23508 spec_breath_fire_anatomical       a fireimp
 M  23509 spec_cast_mage         the fat man
 M  23510 spec_poison            the madman
 M  23513 spec_thief             the dwarf
-M  23516 spec_poison            the snake
+M  23516 spec_poison_bite            the snake
 M  23518 spec_guard             the pirate
 M  23534 spec_guard             the troll
-M  23535 spec_cast_undead       the vampire
-M  23536 spec_cast_undead       the mummy
-M  23537 spec_cast_undead       the zombie
 M  23542 spec_assassin          Zanbar Bone
 M  23543 spec_guard             the city guard
-M  23550 spec_breath_any        Sin
+M  23550 spec_breath_any_anatomical        Sin
 S
 
 
