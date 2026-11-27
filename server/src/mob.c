@@ -8003,6 +8003,7 @@ static const CREATURE_TRAIT_CHANGE merrow_trait_changes[] =
 
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"pig", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
         {"manta_ray", "stingray", NULL, 0},
         {"giant_manta_ray", "manta_ray", NULL, 0},
         {"bull_shark", "shark", fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
