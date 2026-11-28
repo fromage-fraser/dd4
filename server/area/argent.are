@@ -10,10 +10,12 @@ A shifty looking bandit eyes your possessions.
 The bandit looks ragged and underfed.  His eyes gleam as they float over your
 clothing and possessions.  "Spare a coin, friend?" he grins.
 ~
-64|128 0 -100 S
+192 0 -100 S
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 55
 #25201
 bandit thief~
 a bandit~
@@ -22,10 +24,11 @@ A bandit fingers her sharp dagger.
 This robber stares at you eagerly, her sharp stiletto in hand.  She winks and
 blows you a kiss, and you unconsciously protect your purse with your hand.
 ~
-64|128 0 -100 S
+192 0 -100 S
 16 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< human~ common~
 #25202
 bandit thief leader~
 the bandit leader~
@@ -34,14 +37,17 @@ The bandit leader demands you hand over your gold.
 The bandit leader is muscular and tall.  His dirty clothes are somewhat finer
 than those of his ragged band.  He grins widely.
 ~
-64|1024 0 -200 S
+1088 0 -200 S
 17 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
 & 15 'teacher base'
 & 75 'thievery skills'
 & 75 'armed combat knowledge'
 & 75 'stealth techniques'
+MobHeight 185
+MobWeight 95
 #25203
 guard outpost~
 an outpost guard~
@@ -50,10 +56,11 @@ An outpost guard stands by the gate.
 The guard stands by the gate, eyeing you carefully.  It is unlikely that you
 will ever become friends.  "What's the password?" he grunts.
 ~
-2|64 0 1000 S
+66 0 1000 S
 16 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25204
 soldier outpost~
 an outpost soldier~
@@ -66,6 +73,8 @@ holding his sword awkwardly in his slightly oversized suit of armour.
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 65
 #25205
 commander outpost~
 the outpost commander~
@@ -79,6 +88,9 @@ features.
 17 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ rare~
+MobHeight 195
+MobWeight 115
 #25206
 soldier outpost~
 an outpost soldier~
@@ -91,6 +103,7 @@ legionaries, who he realises are better equipped and superior fighters.
 15 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25207
 legionnaire soldier~
 a legionnaire~
@@ -102,6 +115,7 @@ The finely armoured legionnaire engages his opponents with studied precision.
 17 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25208
 centurion~
 a centurion~
@@ -115,6 +129,9 @@ as rabble.  "Onwards, boys!" he roars.  "Let's clean up this rat hole!"
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ elite~
+MobHeight 195
+MobWeight 105
 #25209
 mammoth~
 a mammoth~
@@ -125,8 +142,9 @@ The animal looks crazed and has been ill-kept and tortured.
 ~
 64 0 0 S
 21 0 0 0d0+0 0d0+0
-128|36 0
+0 0
 8 8 1
+< mammoth~ common~
 #25210
 jailer suetonius~
 Suetonius~
@@ -136,11 +154,12 @@ Suetonius drools as he leans over you, his obese body oozing sweat and covered
 in grime.  He giggles like a little girl.  "On your knees," he gloats.  "You're
 gonna hurt in the morning!"
 ~
-2|64 0 -200 S
+66 0 -200 S
 18 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ rare~
+< human~ rare~
+MobWeight 140
 #25211
 prisoner miserable~
 a miserable prisoner~
@@ -149,10 +168,12 @@ A miserable prisoner looks dejected and wretched.
 The prisoner cowers at your approach.  When questioned, he whimpers and mutters
 something unintelligible.
 ~
-64|128 0 100 S
+192 0 100 S
 12 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 55
 #25212
 guard prison~
 a prison guard~
@@ -160,10 +181,11 @@ A prison guard patrols the corridors.
 ~
 The guard looks mean and scowls as you advance.
 ~
-32|64 0 -15 S
+96 0 -15 S
 17 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25213
 gladiator~
 a gladiator~
@@ -176,6 +198,7 @@ crowd cheers him on as he formulates his attack.
 18 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25214
 levisticus~
 Levisticus~
@@ -184,11 +207,11 @@ Levisticus deftly swings his barbed net for the cheering crowd.
 Levisticus raises a fist and the bloodthirsty crowd roars!  His large net looks
 vicious: he can wield it with great skill, and deadly efficiency.
 ~
-2|64 0 100 S
+66 0 100 S
 21 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ elite~
+< human~ elite~
 #25215
 lion starved~
 a starved lion~
@@ -197,10 +220,12 @@ A starved lion eyes you hungrily.
 The wild eyed lion is skin and bone, having been starved into a mad frenzy
 that provides maximum entertainment for the crowd.
 ~
-32|64 0 0 S
+96 0 0 S
 17 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 1
+< lion~ common~
+MobWeight 110
 #25216
 pagan terrified~
 a terrified pagan~
@@ -209,10 +234,11 @@ A terrified pagan runs for cover.
 The hapless pagan prays fervently for his god to rescue him from the
 surrounding madness.  Meanwhile, god cheers on Levisticus.
 ~
-64|128 0 0 S
+192 0 0 S
 8 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25217
 griffin~
 a griffin~
@@ -222,10 +248,14 @@ This magnificent beast is part lion, part dragon and part eagle.  Captured
 from its mountain nest, this exotic creature enthralls the crowd as it
 massacres its opponents.
 ~
-64 524288 0 S
+64 0 0 S
 20 0 0 0d0+0 0d0+0
-36 0
+4294967296 0
 8 8 2
+< griffin~ common~
+MobHeight 200
+MobWeight 900
+MobLength 350
 #25218
 werepanther panther~
 a werepanther~
@@ -234,16 +264,17 @@ A werepanther looks crazed and distraught.
 The werepanther morphs from its human form into a sleek black wildcat, and
 pounces!
 ~
-32|64 0 -150 S
+96 0 -150 S
 18 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< werepanther_beast_form~ common~
 #25219
 gorgon~
 a gorgon~
 A gorgon hisses at you.
 ~
-This hideously ugly hag bears her jagged fangs at you, her head of serpents
+This hideously ugly hag bares her jagged fangs at you, her head of serpents
 writhing in agony - each snake has been beheaded to prevent the monster from
 turning her captors into stone.
 ~
@@ -251,6 +282,7 @@ turning her captors into stone.
 17 0 0 0d0+0 0d0+0
 0 0
 8 8 2
+< medusa~ common~
 #25220
 rhinoceros rhino~
 a rhinoceros~
@@ -260,8 +292,9 @@ The rhino charges headlong across the sand, horns lowered.
 ~
 64 8 0 S
 19 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 2
+< rhinoceros~ common~
 #25221
 weretiger tiger~
 a weretiger~
@@ -273,6 +306,8 @@ The weretiger has become enraged after being captive and starved for so long.
 22 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< weretiger~ common~
+MobWeight 120
 #25222
 catullus animal keeper~
 Catullus~
@@ -284,10 +319,11 @@ hearing the door open he says, "Go give der tigerman some of der meat, den
 give him a good hittin."  He looks up and does a double take.  "Hey!  You
 not Androcles!"
 ~
-2|64 0 -400 S
+66 0 -400 S
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25223
 merchant~
 a merchant~
@@ -296,22 +332,24 @@ A merchant goes about his business.
 The merchant wanders about the streets looking for a good bargain, expertly
 weighing up prices and eventual profits.
 ~
-64|128 0 150 S
+192 0 150 S
 18 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25224
 nobleman noble~
 a nobleman~
 A nobleman frowns at you.
 ~
-Clad in a luxuriant toga, the nobleman sums you up a lowly plebeian.  He avoids
+Clad in a luxuriant toga, the nobleman sums you up as a lowly plebeian.  He avoids
 having to even look at you, and keeps one hand on his money belt.
 ~
 64 0 0 S
 19 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25225
 senator~
 a senator~
@@ -324,6 +362,7 @@ to discuss important matters of state, and the repainting of his summer villa.
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25226
 athocles orator~
 Athocles~
@@ -335,10 +374,11 @@ uneasily, as the crowd is becoming increasingly restless as Athocles reveals
 several incidents of injustice against common folk performed by the ruling
 noble class.
 ~
-2|64 8192 400 S
+66 8192 400 S
 23 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25227
 watchman watch~
 a watchman~
@@ -350,6 +390,9 @@ The watchman is muscular and sports several ugly scars.
 21 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobHeight 180
+MobWeight 90
 #25228
 captain watch~
 the captain of the watch~
@@ -363,7 +406,9 @@ positioning armour, all the time joking but having complete authority.
 24 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ elite~
+< human~ elite~
+MobHeight 170
+MobWeight 95
 #25229
 charger horse~
 a charger~
@@ -372,10 +417,14 @@ A large and well groomed horse snorts at you.
 The charger is a magnificent beast, muscular and with a smooth, gleaming coat.
 It whinnies and snorts ferociously as you wander about the stables.
 ~
-2|131072 0 0 S
+131074 0 0 S
 17 0 0 0d0+0 0d0+0
 0 0
-8 8 2
+8 8 1
+< horse~ common~
+MobHeight 165
+MobWeight 600
+MobLength 260
 #25230
 pirate scurvy~
 a scurvy pirate~
@@ -385,10 +434,11 @@ The pirate is sunburned and rough cut, running about the deck with an insane,
 toothless grin.  With nothing to lose, he hacks at the merchant ship's crew
 with reckless abandon.
 ~
-4|64 0 -350 S
+68 0 -350 S
 22 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25231
 redbeard red beard pirate captain~
 Redbeard~
@@ -403,19 +453,20 @@ you'll be next!  Hahahar!"
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 1
-< reserved~ boss~
+< human~ boss~
 #25232
 sailor~
 a sailor~
 A sailor tries desperately to defend the merchant ship.
 ~
-The terrified sailor does his best to beat of the pirates' attack, although
+The terrified sailor does his best to beat off the pirates' attack, although
 the battle is all but lost for the crew of the merchant ship.
 ~
 64 0 100 S
 16 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #25233
 oarsman~
 an oarsman~
@@ -423,10 +474,12 @@ An oarsman tries desperately to escape his shackles.
 ~
 The grubby oarsman is thin and grubby, trying in vain to escape his chains.
 ~
-2|64 0 0 S
+66 0 0 S
 14 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
+MobWeight 55
 #25234
 hydra~
 a hydra~
@@ -436,10 +489,11 @@ The hydra is enormous, rising out of the choppy sea and making quickly for you
 as you flounder in the waves.  Not less than four heads belong to this monster,
 each baring rows of razor sharp teeth.
 ~
-2|64 0 0 S
+66 0 0 S
 25 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< hydra~ common~
 #25235
 fury ~
 a fury~
@@ -451,10 +505,11 @@ Her tortured face moans as you step into the cave, her eyes jet black, her
 mouth lined with teeth like needles.  She curses you, and tightens her grip
 about her brilliant, gleaming sword.
 ~
-2|64|512 524288 -200 S
+578 0 -200 S
 25 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 2
+< fury~ common~
 #25236
 harpy~
 a harpy~
@@ -463,27 +518,31 @@ A ferocious harpy swoops down out of the sky.
 Part woman and part dragon, the harpy dives out of the clouds, screeching
 awfully.
 ~
-64 524288 -200 S
+64 0 -200 S
 23 0 0 0d0+0 0d0+0
-4 0
+17596491501572 0
 8 8 2
 >fight_prog 8~
 c sonic $n
 ~
 |
+< harpy~ common~
 #25237
 giant~
 a giant~
 A giant towers above you.
 ~
 The giant is at least nine feet tall, and built like a dragon.  His skin is
-a dull grey colour, and there is not one hair on his body.  He wears a make
-shift tunic and wields a gigantic hammer.
+a dull grey colour, and there is not one hair on his body.  He wears a makeshift tunic and wields a gigantic wooden club.
 ~
 64 0 0 S
 24 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< giant~ common~
+MobHeight 300
+MobWeight 400
+MobSize 2
 #25238
 lizard dragon~
 a dragon lizard~
@@ -494,8 +553,11 @@ jungle in search of offal and rotting carcasses.
 ~
 64 0 0 S
 25 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< giant_lizard~ common~
+MobHeight 90
+MobWeight 250
 #25239
 legionnaire soldier~
 a legionnaire~
@@ -507,6 +569,7 @@ The legionnaire eyes you suspiciously.
 20 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #0
 
 
@@ -1078,7 +1141,7 @@ A
 19 3
 E
 cutlass sword~
-The cutlass has been crudely fashioned and is in very bad conditioned, yet can
+The cutlass has been crudely fashioned and is in very bad condition, yet can
 still inflict serious damage.
 ~
 #25241
@@ -1168,7 +1231,7 @@ A
 19 3
 E
 club wooden~
-Roughly carved from a tree trunk or limb, the hammer is a crude but devastating
+Roughly carved from a tree trunk or limb, the club is a crude but devastating
 weapon.
 ~
 #25246
@@ -1481,7 +1544,7 @@ S
 #25214
 The Courtyard~
 Soldiers work busily with their equipment in this large courtyard, which
-spreads to the north and east.  A climbs up into one of the outpost's towers.
+spreads to the north and east.  A ladder climbs up into one of the outpost's towers.
 ~
 0 0 1
 D0
@@ -1535,7 +1598,7 @@ S
 #25218
 Barracks~
 This room serves as living quarters for the outpost's soldiers.  Several solid
-bunks line the walls, and a large table and bench sits and the end of the room.
+bunks line the walls, and a large table and bench sits at the end of the room.
 ~
 0 0 0
 D3
@@ -1676,7 +1739,7 @@ Several of the figures snicker, and you hear sheaths ring as metal blades are
 drawn.  As you ready for battle, something whacks the back of your head and you
 see stars.  Falling to the ground, the snickers turn into cruel laughter. "A
 present for my dear uncle," you hear the first voice sneer.  You quickly fall
-unconscious.  You wake periodically as you a carried over a soldier's back.
+unconscious.  You wake periodically as you are carried over a soldier's back.
 What seems like hours later, you are hauled to your feet and shoved roughly
 to the east, a door clanging shut behind you.
 ~
@@ -1691,7 +1754,7 @@ Dank Prison Cell~
 You are in a tiny cell.  The walls are covered with slime, while dirty straw
 layers the floor.  The room is filthy and smells absolutely disgusting.  A tiny
 grilled window near the ceiling lets sunlight penetrate the gloom, as well as
-allowing storm water pour into the cell when it rains in the streets above.
+allowing storm water to pour into the cell when it rains in the streets above.
 ~
 0 1|1048576 0
 D3
@@ -1802,7 +1865,7 @@ S
 #25234
 Jailer's Room~
 Although a mess, the jailer's quarters are comparative luxury when compared to
-the rest of the dungeon.  An oil lamps lights the room, which contains sparse
+the rest of the dungeon.  An oil lamp lights the room, which contains sparse
 items of furniture.
 ~
 0 0 0
@@ -1990,7 +2053,7 @@ confuses you at the same time.  The roar of animals pierces the air, with the
 pathetic screams of the less successful fighters intermingling the cries.
 In the stands above you, soldiers hurl citizens that are not making enough
 noise into the arena with the gladiators.  Anxious people nearby make as much
-commotion as they can.  "Kill the swine!  Up Levisiticus!"  You can head north
+commotion as they can.  "Kill the swine!  Up Levisticus!"  You can head north
 and east from here.
 ~
 0 0 2
@@ -2350,8 +2413,8 @@ D3
 S
 #25264
 City Street~
-You travel along the city street, which travels south.  A large market lays to
-the east, while a waterfront can been seen to the west.
+You travel along the city street, which travels south.  A large market lies to
+the east, while a waterfront can be seen to the west.
 ~
 0 0 1
 D1
@@ -2390,7 +2453,7 @@ S
 #25266
 City Street~
 The street makes a turn here leading west and north.  Large horses are being
-lead by small boys into a long stable via a gate to the west.  A small door
+led by small boys into a long stable via a gate to the west.  A small door
 stands to the south, leading into a tall building.
 ~
 0 0 1
@@ -2526,7 +2589,7 @@ S
 #25276
 Waterfront~
 The waterfront is alive with merchantmen and sailors, who organize the carting
-of goods off several vessels which have just docked.  A ships captain stands
+of goods off several vessels which have just docked.  A ship's captain stands
 on the wharf as men load equipment onto his ship.  "Boarding now!" he yells.
 "Those leaving for Cyprises must board now.  Have your tickets ready, we leave
 shortly!"  The gangway lays directly behind the captain to the north, while
@@ -2553,7 +2616,7 @@ and the captain instructs the oarsmen to row the vessel out of the harbour.
 The ship makes rapid progress away from the mainland, heading in an easterly
 direction.  After several hours, a sailor reports from the crow's nest high
 above the deck.  "Captain!" he yells.  "There's a ship approaching from the
-south."  You all scan the southern horizon: a tiny specks sits in the distance.
+south."  You all scan the southern horizon: a tiny speck sits in the distance.
 The captain mutters to himself.  "Stay on course."
 ~
 0 4 1
@@ -2565,7 +2628,7 @@ S
 #25278
 Pirates!~
 The strange vessel makes rapid headway, and it soon becomes apparent the ship
-is charging strait for yours.  The captain is anxious and orders his men to
+is charging straight for yours.  The captain is anxious and orders his men to
 row harder, but it is no use: the ship closes in fast.  From about half a mile
 distant, a volley of flaming arrows is shot from the vessel, which the crew
 have identified as belonging to the dreaded pirate Redbeard, who they believe
@@ -2625,7 +2688,7 @@ D2
 S
 #25281
 Main Deck~
-The deck and hull has been smashed in several places here and sea water pours
+The deck and hull have been smashed in several places here and sea water pours
 in beneath you.  You can climb northwards up the deck or head east along the
 bow.
 ~
@@ -2675,7 +2738,7 @@ the pirates try to salvage as much of the goods from below deck as they can.
 The rogues swarm from the ship as the main deck begins to slide under the
 rough waves, and the galleon pulls away.  You realise you are in desperate
 trouble.  You step up onto the edge of the forecastle and peer over the bow.
-The sea is rough and in one spot foaming and trashing.  You say a prayer and
+The sea is rough and in one spot foaming and thrashing.  You say a prayer and
 dive into the water as the merchant ship sinks to its grave.
 ~
 0 4 1
@@ -2870,7 +2933,7 @@ D2
 S
 #25296
 Jungle~
-The thick jungle is alive with noise and the trashing of branches.  You can
+The thick jungle is alive with noise and the thrashing of branches.  You can
 force a path through the bushes to the east, or head back to the waterfall to
 the north.
 ~
@@ -3323,10 +3386,9 @@ S
 M  25200 spec_thief                     a bandit
 M  25201 spec_thief                     a bandit
 M  25202 spec_thief                     the bandit leader
-M  25217 spec_breath_fire                       a griffin
+M  25217 spec_breath_fire_anatomical                       a griffin
 M  25219 spec_cast_mage                 a gorgon
-M  25234 spec_poison                    a hydra
-M  25235 spec_cast_undead                       a fury
+M  25234 spec_poison_bite                    a hydra
 M  25203 spec_repairman                 gate guard
 M  25212 spec_repairman                 prison guard
 S
