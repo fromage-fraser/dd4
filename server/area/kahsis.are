@@ -19,10 +19,11 @@ This huge creature was created with powerful enchantments, and exists only to
 fulfil its given task: in this case, to destroy any intruders.  The guardian
 raises its great warhammer...
 ~
-2|32|64 2|8|32|512|32768|65536 0 S
+98 98858 0 S
 40 0 0 0d0+0 0d0+0
-304 0
+0 0
 8 8 0
+< enchanted_guardian~ common~
 #25001
 skah makuit wizard mage~
 Skah Makuit~
@@ -35,10 +36,11 @@ and we have much to plan."  He gives you a cursory glance, and snickers.  "You
 are lucky that I am tired after being trapped for ssso long.  I have errandsss
 to run, now: begone!"
 ~
-2|64 8|512|524288 -500 S
+66 524808 -500 S
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< snakeman~ common~
 #25002
 pain warrior armoured huge~
 Pain~
@@ -50,10 +52,14 @@ heavy brow.  He is clearly not human, but some foul spawn of evil magicks.
 He bares his fangs and raises three fingers of his hand, and your body writhes
 in agony.
 ~
-2|64 0 0 S
+66 0 0 S
 52 0 0 0d0+0 0d0+0
-0 0
+17179869184 0
 8 8 1
+< enchanted_warrior~ elite~
+MobHeight 300
+MobWeight 350
+MobAttackParts 17179869184
 #25003
 snakeman snake~
 a snakeman~
@@ -63,10 +69,11 @@ This humanoid snake has been created from the dying body of some hapless
 human wretch.  The snakeman has been asleep for many years, but is quickly
 regaining his health.
 ~
-4|32|64 512|32768 -500 S
+100 33280 -500 S
 42 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< snakeman~ common~
 #25004
 lizardman lizard~
 a lizardman~
@@ -75,10 +82,14 @@ A lizardman rasps and hisses.
 This eight foot tall humanoid has teeth that could tear your flesh to pieces
 in a second.  His slitted eyes reveal a malice that chills your bones.
 ~
-4|32|64 512|32768 -500 S
+100 33280 -500 S
 40 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< lizardman~ common~
+MobHeight 244
+MobWeight 150
+MobSize 2
 #25005
 kahsis knight~
 a Kahsis knight~
@@ -88,10 +99,11 @@ This warrior looks to be a fearsome opponent.  Strong and intelligent, these
 reptilian knights are the Kahsis Commanders' most trusted and valued fighters.
 Upon spotting you, the knight engages you with studied precision.
 ~
-32|64 512|32768 -500 S
+96 33280 -500 S
 44 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< lizardman~ common~
 #25006
 mehk sektat cleric ~
 Mehk Sektat~
@@ -101,10 +113,11 @@ The cleric hisses incantations in some obscene language.  Without turning
 around he stops chanting and addresses you.  "It hasss been ssso long, sssince
 I have killed outsssidersss..."  He begins to laugh.
 ~
-2|64 512|524288 -600 S
+66 524800 -600 S
 48 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< snakeman~ common~
 #25007
 kahsis footsoldier foot soldier~
 a Kahsis footsoldier~
@@ -113,10 +126,11 @@ A Kahsis footsoldier prepares for battle.
 The lizardman footsoldier is muscular and skilled at combat.  It fingers its
 long scimitar.
 ~
-4|32|64 512|32768 -500 S
+100 33280 -500 S
 43 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< lizardman~ common~
 #25008
 kahsis necromancer mage wizard~
 a Kahsis necromancer~
@@ -126,23 +140,28 @@ Snakemen proved adept at mastering the perverse arts of necromancy, and the
 Kahsis magicians grew to become a powerful sect feared by many reptiles.
 The necromancer floats high above you, surrounded by luxuriant robes.
 ~
-4|32|64 512|32768|524288 -800 S
+100 557568 -800 S
 44 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< snakeman~ common~
 #25009
 serpent snake~
 a Serpent~
 An immense serpent lies coiled before the altar.
 ~
-This black and red ribboned serpent is simply enormous, and lays coiled on the
+This black and red ribboned serpent is simply enormous, and lies coiled on the
 floor before the dust covered idol.  A yellow eye stares unblinking towards
 you, the slitted pupil becoming increasingly wider.
 ~
-2|64 0 0 S
+66 0 0 S
 46 0 0 0d0+0 0d0+0
-60|128 0
+128 0
 8 8 0
+< snake~ common~
+MobWeight 200
+MobLength 800
+MobSize 2
 #25010
 makis fighter warrior~
 Makis~
@@ -154,10 +173,14 @@ and a large tattoo of a winged serpent adorns his left arm.  He raises his
 sword and waits for your charge.  "Foolsss, you have cursssed your peoplesss
 for an eternity..."
 ~
-2|64 512 -500 S
+66 512 -500 S
 50 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< snakeman~ rare~
+MobHeight 220
+MobWeight 140
+MobSize 2
 #25011
 geth mektis engineer serpent~
 Geth Mektis~
@@ -167,24 +190,32 @@ The engineer is huge and powerfully built.  He stands over pieces of piping and
 metal fittings, banging away with his iron hammer.  He might not be aware of
 your presence in the room.
 ~
-2|64 512 -400 S
+66 512 -400 S
 50 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< snakeman~ common~
+MobHeight 250
+MobWeight 180
+MobSize 2
 #25012
 anguish skeleton~
 Anguish~
 A huge skeleton stands motionless in the centre of the room.
 ~
-The skeleton is gigantic, the roughly humaniod bones yellowed and cracked.
-Dim lights within the eye sockets betray some evil magic or enchancement has
+The skeleton is gigantic, the roughly humanoid bones yellowed and cracked.
+Dim lights within the eye sockets betray some evil magic or enchantment has
 animated this beast.  It carries a huge bone spear, and watches you patiently,
 a gruesome skull in a perpetual grin.
 ~
-2|64 0 0 S
+66 0 0 S
 55 0 0 0d0+0 0d0+0
-16|32|256 0
+33554562 0
 8 8 0
+< skeleton~ elite~
+MobHeight 350
+MobWeight 70
+MobSize 2
 #25013
 crocodileman crocodile~
 a crocodileman~
@@ -195,10 +226,11 @@ sergeants, keeping Kahsis's soldiers in strict order.  Smart and extremely
 strong, the crocodileman's jaws could swallow your head whole: a position that
 he has all intention of getting you into.
 ~
-4|32|64 512|32768 -500 S
+100 33280 -500 S
 48 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< crocodileman~ common~
 #25014
 bat cave~
 a cave bat~
@@ -207,24 +239,31 @@ A large bat hangs from the roof of the tunnel.
 The bat is large and hairy, hanging from the rocky roof of the tunnel, flimsy
 wings wrapped tightly about its body.
 ~
-2|64 65536|524288 0 S
+66 65536 0 S
 20 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 0
+< bat~ common~
+MobWeight 1
+MobLength 30
 #25015
 crocodile~
 a crocodile~
 A gigantic crocodile watches you intently.
 ~
 The crocodile stares at you as you move about, waiting for the right moment to
-crack your spine and half and drag you down for the death-roll.  Large,
+crack your spine in half and drag you down for the death-roll.  Large,
 extremely tough and devoid of emotion or affection, these crocs make excellent
 pets for the serpent horde.
 ~
-64|128 0 0 S
+192 0 0 S
 46 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< crocodile~ common~
+MobHeight 80
+MobWeight 700
+MobLength 600
 #25016
 snake water~
 a water snake~
@@ -233,22 +272,25 @@ A glistening water snake slithers away from you.
 The water snake is brightly coloured and glossy.  It speeds through the water
 here like a living arrow.
 ~
-64|128 0 0 S
+192 67108864 0 S
 35 0 0 0d0+0 0d0+0
-60 0
+0 0
 8 8 0
+< snake~ common~
+MobLength 150
 #25017
 viper snake~
 a viper~
 A viper rests here.
 ~
-The viper carries large red stripes on its back.  It lays coiled lazily,
+The viper carries large red stripes on its back.  It lies coiled lazily,
 watching for danger.
 ~
-64|128|512 0 0 S
+704 0 0 S
 25 0 0 0d0+0 0d0+0
-60 0
+0 0
 8 8 0
+< snake~ common~
 #25018
 python snake~
 a python~
@@ -257,10 +299,13 @@ A python crawls slowly by.
 This serpent is thick and very long, with a skull almost as large as your own.
 These snakes are not venomous, but prefer to squeeze their prey to death.
 ~
-64|128 0 0 S
+192 0 0 S
 35 0 0 0d0+0 0d0+0
-60 0
+0 0
 8 8 0
+< constrictor_snake~ common~
+MobWeight 150
+MobLength 800
 #25019
 asp snake~
 an asp~
@@ -268,10 +313,13 @@ An asp hisses at you.
 ~
 This small, dark coloured snake carries an impressive set of fangs.
 ~
-64|128|512 0 0 S
+704 0 0 S
 20 0 0 0d0+0 0d0+0
-60 0
+0 0
 8 8 0
+< snake~ common~
+MobWeight 0
+MobLength 60
 #25020
 cobra snake~
 a cobra~
@@ -280,10 +328,14 @@ A hooded cobra rears before you.
 Black scales on the inside of the snake's hood give the appearance of eyes.
 The snake is much larger than what you'd expect normal reptiles to grow to.
 ~
-64|128 0 0 S
+192 0 0 S
 35 0 0 0d0+0 0d0+0
-60 0
+0 0
 8 8 0
+< snake~ common~
+MobWeight 8
+MobLength 300
+MobSize 1
 #25021
 snake weed~
 a weed snake~
@@ -291,56 +343,64 @@ A weed snake races by.
 ~
 The weed snake is small and harmless.  It races away at your approach.
 ~
-64|128|512 0 0 S
+704 0 0 S
 15 0 0 0d0+0 0d0+0
-60 0
+0 0
 8 8 0
+< snake~ common~
+MobWeight 0
+MobLength 50
 #25022
 burbis ~
 Burbis~
 Burbis sharpens his cleaver at the other side of this chamber.
 ~
-The crocodileman is truly a goliath, thick sweet oozing down his muscular green
+The crocodileman is truly a goliath, thick sweat oozing down his muscular green
 body as he works busily with a whetstone.  After a few moments, he begins to
 make a horrible rasping sound.  You slowly realise that this monster is
 laughing at you.
 ~
-2|64 0 -600 S
+66 0 -600 S
 52 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< crocodileman~ rare~
+MobHeight 300
+MobWeight 350
 #25023
 steam jet~
 a jet of steam~
 A boiling jet of steam bursts through a broken pipe.
 ~
 A thick, strong jet of steam fires downwards onto the floor.  Some sort of
-object can just be made out in its midst.  You are likely to get hurt eihter
+object can just be made out in its midst.  You are likely to get hurt either
 trying to retrieve the object or blocking the broken pipe.
 ~
-2|64 524288 0 S
+66 524288 0 S
 45 0 0 0d0+0 0d0+0
-63|64|256 0
+0 0
 8 8 0
+< steam_jet~ common~
 #25024
 seht haskahsisk~
 Seht Haskahsisk~
-Seht Haskahsisk the necomancer carefully reads some diagrams.
+Seht Haskahsisk the necromancer carefully reads some diagrams.
 ~
 The necromancer looks up at you, studies you for a second, then returns to his
-work.  "Your not allowed in here..." he lectures, a wide grin forming across
+work.  "You're not allowed in here..." he lectures, a wide grin forming across
 his face.  "I sssussspect that you have ssseen far too much for your own good."
 You are unsure whether the veiled threat should be taken seriously, but ready
 for battle.  Seht does not make a move, and continues.  "Off with you... I have
 thingsss to do, and have no time for petty squabblesss with adventurersss who
-have bitten off more that they can chew."  The smile disappears, and a taloned
+have bitten off more than they can chew."  The smile disappears, and a taloned
 hand moves nearer to a large sheathed dagger.
 ~
-2|64 8|32|512|524288 -500 S
+66 524840 -500 S
 55 0 0 0d0+0 0d0+0
-0 0
-8 8 0
-< reserved~ elite~
+8589934592 0
+8 8 1
+< snakeman~ elite~
+MobAttackParts 8589934592
 #25025
 brass robot machinery~
 a brass robot~
@@ -351,10 +411,11 @@ Bursts of vapour regularly escape from exhaust ports, and the robot constantly
 wobbles and jiggles.  Enchanted mirrors watch you carefully, hidden circuitry
 wrestling with what action should be taken against you.
 ~
-2|64 512 0 S
+66 512 0 S
 50 0 0 0d0+0 0d0+0
-304 0
+0 0
 8 8 0
+< brass_automaton~ common~
 #25026
 stormtrooper storm trooper~
 a Kahsis stormtrooper~
@@ -365,10 +426,11 @@ serpentmen fearsome opponents, their very presence terrifying.  Red skulls
 painted on their plate armour represent individual kills in battle... this
 warrior has slaughtered more people than you've had hot dinners.
 ~
-4|32|64 32768 -500 S
+100 32768 -500 S
 48 0 0 0d0+0 0d0+0
 0 0
-8 8 0
+8 8 1
+< snakeman~ common~
 #25027
 agony knight~
 Agony~
@@ -378,11 +440,13 @@ Magic flames lick about the form of this knight, whose features are masked by
 dull, shifting clouds that cloak his body.  Two points of intense light have
 replaced his eyes, and for a second you feel you hear a horrible screaming.
 ~
-2|64 512 0 S
+66 512 0 S
 60 0 0 0d0+0 0d0+0
 96 0
-8 8 0
-< reserved~ elite~
+8 8 1
+< enchanted_warrior~ elite~
+MobHeight 300
+MobWeight 300
 #25028
 kahsis queen~
 Kahsis~
@@ -397,11 +461,13 @@ falls and her face becomes terrifying to behold.  "Have no illusssionsss, I
 will easssily dessstroy you.  The pagan godsss can not help you now, even if
 they gathered the courage to do ssso.  Prepare..."
 ~
-2|64 8|32|128|512|524288 -1000 S
+66 524968 -1000 S
 70 0 0 0d0+0 0d0+0
 96 0
 8 8 2
-< reserved~ boss~
+< humanoid_avatar~ boss~
+MobHeight 175
+MobWeight 60
 #25029
 kahsis serpent snake~
 Kahsis~
@@ -409,14 +475,14 @@ A gigantic serpent coils over you!
 ~
 Kahsis has returned in a last effort to defeat you.  The gigantic serpent is
 covered in scales as strong as steel and as large as your hand, her fangs are
-razor sharp and filed with vile poisons.  Screeching and bellowing foul
+razor sharp and filled with vile poisons.  Screeching and bellowing foul
 incantations you now no longer understand, Kahsis rears for her final victory.
 ~
-2|64 8|32|512 -1000 S
+66 552 -1000 S
 60 0 0 0d0+0 0d0+0
-60|128 0
-8 8 0
-< reserved~ rare~
+0 0
+8 8 2
+< serpent_avatar~ rare~
 
 #0
 
@@ -566,7 +632,7 @@ You spot an oddly shaped helmet and visor here.~
 10 0 0
 E
 helmet~
-This brass helmet and visor are shaped for a head other than a humans...
+This brass helmet and visor are shaped for a head other than a human's...
 ~
 #25009
 axe spiked~
@@ -887,7 +953,7 @@ The rest is unreadable.
 #25030
 journal book leather bound~
 a leather bound journal~
-A small, leather bound jounal rests here.~
+A small, leather bound journal rests here.~
 ~
 13 0 1|16384
 0~ 1~ 6~ 11~
@@ -966,7 +1032,7 @@ Made from polished snakescale that gleams brilliantly in the light, these
 leggings feel like silk and seem to mould themselves about your calves.
 ~
 #25034
-plate kahsis amour~
+plate kahsis amour armour armor~
 some Kahsis plate armour~
 Robust plate armour stands here.~
 ~
@@ -1560,7 +1626,7 @@ Dense forest lies to the south.
 S
 #25002
 Dark Forest~
-A smooth and very tall cliff rises to the north.  It is completely unpassable.
+A smooth and very tall cliff rises to the north.  It is completely impassable.
 You might be able to force a trail east through the undergrowth, which is
 becoming a little less clinging and matted.  The cliff face contains some
 weathered engravings, organized into what appears to be archaic hand writing.
@@ -1658,7 +1724,7 @@ A large pool is visible in a clearing to the south.
 S
 #25006
 Light Forest~
-The forest is much lighter here and you can travel relatively easier.  Your
+The forest is much lighter here and you can travel more easily.  Your
 spirits lift as you march through the sunny woods.  You can travel north and
 south from here.
 ~
@@ -1696,7 +1762,7 @@ Grassy Clearing~
 You emerge into a large grassy clearing.  It is filled with upright stones,
 huge pillars of roughly hewn granite organized into two opposing rows.  They
 are covered in lichen and weeds, and look extremely weathered.  A larger,
-rounder formation can been seen to the north: it appears at first to be a
+rounder formation can be seen to the north: it appears at first to be a
 huge snake's head with open jaws.  The wind howls through the stones, and you
 consider returning south through the forest, to somewhere less sinister.
 ~
@@ -1753,7 +1819,7 @@ a staircase that will enable to to penetrate the gloom beyond.
 S
 #25010
 Dim Tunnel~
-A poorly lit tunnel extends from the serpent' mouth, and is filled with rubble
+A poorly lit tunnel extends from the serpent's mouth, and is filled with rubble
 and stone debris.  It is long and drops sharply.  You make out the outline of
 a sturdy door at the northern end of the passage.  You must now be well under
 ground.
@@ -2804,7 +2870,7 @@ S
 #25058
 Hall of Serpents~
 Statues of disturbingly strange beasts stand in the centre of the wide hall,
-their bright paint faded and replaced by dust and grim.  You may head north and
+their bright paint faded and replaced by dust and grime.  You may head north and
 south along the hall; doors open west and east of here.
 ~
 0 1|4|8 0
@@ -3241,7 +3307,7 @@ A door stands in the west wall.
 S
 #25080
 Boggy Corridor~
-Water seeps from underneath a wooden door directly west.  Mud and grim also
+Water seeps from underneath a wooden door directly west.  Mud and grime also
 cover the floor at this end of the corridor, which stretches east.
 ~
 0 1|8 11
@@ -3643,7 +3709,7 @@ S
 #25098
 Air Shaft~
 You climb carefully down the roughly cut shaft.  The air is very hot and dry,
-and you perspire heavily.  Ten feet into the shoot you feel a deep rumble from
+and you perspire heavily.  Ten feet into the chute you feel a deep rumble from
 below.  A dim light grows beneath you, and the rumble turns into a terrific
 roar.  A little voice talks to you inside your head.  It says, "If I were you,
 I'd start climbing out of this hole, right now..."  You whole-heartedly agree.
@@ -3780,7 +3846,7 @@ The chamber stretches west.
 S
 #25105
 The Door of Agony~
-A inpenetrable iron door towers to the north, covered in symbols and arcane
+An impenetrable iron door towers to the north, covered in symbols and arcane
 writing.  Doors open to the west and east, while the Grand Hall returns south.
 ~
 0 1|4|8 0
@@ -3857,7 +3923,7 @@ surgical instruments.  The writings are all written in unreadable script.
 S
 #25108
 Transformation Laboratory~
-The grisly remains of some creature still lays strapped to a bench here.  The
+The grisly remains of some creature still lie strapped to a bench here.  The
 skeleton's ribs lie torn outwards, the spine crushed and mangled.  The chamber
 stretches east and south.
 ~
@@ -3909,7 +3975,7 @@ The chamber stretches west.
 S
 #25111
 Hall of the Tooth~
-This passage is narrow and filled with rubble.  A archway opens west, and doors
+This passage is narrow and filled with rubble.  An archway opens west, and doors
 lead to the north, east and south of here.
 ~
 0 1|8 0
@@ -3936,7 +4002,7 @@ The hall carries on westwards.
 S
 #25112
 Side Chamber~
-This alcove is now empty, choked with dust and grim.
+This alcove is now empty, choked with dust and grime.
 ~
 0 1|8 0
 D2
@@ -3947,7 +4013,7 @@ A door stands to the south.
 S
 #25113
 Side Chamber~
-This alcove is now empty, choked with dust and grim.
+This alcove is now empty, choked with dust and grime.
 ~
 0 1|8 0
 D0
@@ -3958,7 +4024,7 @@ A door stands to the north.
 S
 #25114
 Hall of the Tooth~
-The hall end here with a sturdy door directly west.  Archways are visible to
+The hall ends here with a sturdy door directly west.  Archways are visible to
 the north and south, while the corridor returns east.
 ~
 0 1|8 0
@@ -4177,7 +4243,7 @@ S
 Sunny Field~
 You scramble out of the ground and onto a sunny field of grass.  A huge cloud
 of dust and rubble escapes from the hole before it finally collapses in on
-itself.  You lay exhausted in the warm sun, and thank the gods that you have
+itself.  You lie exhausted in the warm sun, and thank the gods that you have
 survived.  A brilliant light blazes in the sky above you, and the ghostly
 outline of the maiden and a stout dwarven warrior stand before you.  You
 scramble to your feet.  The maiden cries tears of joy, and reaches forward to
@@ -5062,23 +5128,21 @@ S
 
 #SPECIALS
 M  25001 spec_cast_archmage                 Skah Makuit
-M  25002 spec_poison                    Pain
+M  25002 spec_poison_bite                    Pain
 M  25006 spec_cast_cleric                       Mehk Sektat
 M  25008 spec_cast_mage                 a Kahsis Necromancer
-M  25009 spec_poison                    a Serpent
+M  25009 spec_poison_bite                    a Serpent
 M  25010 spec_warrior                    Makis
-M  25011 spec_poison                    Geth Mektis
-M  25012 spec_breath_gas                        Anguish
-M  25017 spec_poison                    a viper
-M  25019 spec_poison                    an asp
-M  25020 spec_poison                    a cobra
-M  25023 spec_breath_gas                        a jet of steam
+M  25011 spec_poison_bite                    Geth Mektis
+M  25012 spec_breath_gas_anatomical                        Anguish
+M  25017 spec_poison_bite                    a viper
+M  25019 spec_poison_bite                    an asp
+M  25020 spec_poison_bite                    a cobra
 M  25024 spec_cast_archmage                 Seht Haskahsisk
 M  25025 spec_cast_judge                        a brass robot
 M  25026 spec_sahuagin                       a Kahsis stormtrooper
-M  25027 spec_breath_any                        Agony
+M  25027 spec_breath_any_anatomical                        Agony
 M  25028 spec_cast_priestess                 Kahsis
-M  25029 spec_breath_fire                    Kahsis
 S
 
 

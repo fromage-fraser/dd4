@@ -18695,3 +18695,131 @@ PowerShell, from C:\Games\dd4:
 
 Use importer --force only when intentionally replacing its output.
 Keep an authored original when testing the reverse direction.
+
+== Kahsis
+
+All 30 definitions now use species and archetypes. Seven new archetypes
+bring the catalogue to 520, with 40 body species, 60 internal traits and
+146 Scribe special names. These are DD4 interpretations of this area's
+descriptions, equipment and transformation lore. The journal explains
+that Kahsis transformed humans into her reptilian soldiers.
+
+enchanted_guardian uses bipedal_construct. It is Mindless, Bloodless,
+Analgic and Soulless, with NoHeart and NoSpeech. It has natural armour -5
+and Poison/Drain/Sleep/Charm/Hold/Paralysis immunity. Defaults are estimated
+300 cm tall, 600 kg and Large. It stays physically attackable and leaves
+its loot. The two Keepers retain their aggression, stealth and senses;
+they are constructs, so room 25011's existing undead ward is appropriate.
+
+snakeman uses humanoid: a scaled, snake-headed biped with hands, legs,
+fangs and an ordinary fang attack. Defaults are 200 cm, 100 kg, Medium
+and natural armour -5. It has no general venom, regeneration, infection
+or hypnosis. Keep senses and caster roles individual. Skah, Mehk, Makis,
+Seht and the explicitly identified serpentfolk use this approved reading.
+Seht alone adds taloned hands and a claw attack through existing body
+and MobAttackParts XOR fields. Necromancy does not make him undead.
+
+crocodileman also uses humanoid, with scales, tail, claws, fangs, Swim
+and ordinary claw/fang attacks. It belongs to the lizardman family and
+has natural armour -6. Defaults are 250 cm, 200 kg and Large; Burbis is
+individually 300 cm and 350 kg. The ordinary sergeants stay Common.
+
+enchanted_warrior uses humanoid at 250 cm, 200 kg and Large, with no
+extra natural armour. Pain and Agony each have a larger individual build.
+Pain adds fangs and a fang attack locally, retaining his existing poison
+through spec_poison_bite. Agony retains his mixed breath through
+spec_breath_any_anatomical and his authored NoSpeech/NoCorpse. Neither
+gets an inferred undead or fiend identity. Pain's gesture and Agony's
+fiery halo remain descriptive rather than new spells or immunities.
+
+Anguish uses the existing skeleton at 350 cm, 70 kg, Large plus HUGE.
+Keep the normal undead physiology and skeletal defences. His magical
+eye lights are an individual visual exception: remove inherited NoEyes
+and add eyes through XOR. Keep NoSpeech, ordinary loot and the gas breath
+payload through spec_breath_gas_anatomical. He resets outside the ward.
+
+steam_jet uses environmental_hazard. It is headless, eyeless, armless,
+legless, corpseless, Inorganic, Bloodless, Analgic, Soulless and Mindless.
+It inherits Poison/Drain/Sleep/Charm/Hold/Paralysis/Psychic immunity.
+Dimensions are unspecified and size is Medium. Its native special is
+the existing spec_breath_steam, without the anatomical mouth guard: a
+broken pipe has no head. Existing Steam Breath damage, heat resistance,
+saving throw and item-soaking/destruction rules apply. Keep it physically
+attackable, with pipe 25047 available as loot. It adds no nonmagic barrier.
+
+brass_automaton uses bipedal_construct at 250 cm, 700 kg, Large and
+natural armour -6. It has a head, mirror eyes, arms, hands, feet and claw
+anatomy. The described circuitry has a mind, while the body is Inorganic,
+NoHeart, NoSpeech, Bloodless, Analgic and Soulless. Mind, pain and soul
+are independent properties. Poison/Drain/Sleep immunity applies; mental
+effects remain possible. The two robots keep their individual Judge100
+role, potions and lootable hydraulic claw gloves as hand-slot armour.
+Those gloves are not converted into body-part weapons or a new proc.
+
+serpent_avatar uses serpentine_reptile at 1200 cm long, 1500 kg and
+Large plus HUGE. It has a living heart, blood, scales, tail and fangs,
+with natural armour -15. Its two native specials choose Fire Breath70
+or Poison Bite30, each through the existing anatomical guard. This
+replaces the old Fire100 role; it does not chain both attacks in one
+selection. The returning wounded Kahsis retains her Rare rank and key,
+becomes female as the prose describes, and keeps NoSpeech for her
+unintelligible incantations. The human-looking Boss uses humanoid_avatar,
+175 cm/60 kg/Medium, keeping Priestess100, NoCorpse, NoSpeech and her
+telepathic frozen-lip voice. Both Queen forms already reset separately;
+no automatic death transformation or shared hit-point pool is added.
+
+The stormtrooper keeps its full spec_sahuagin override: protection,
+healing, offensive spells, Berserk and idle provocation are its authored
+role. A special's name does not determine a creature's species. Other
+caster/fighter roles and the existing Agony breath distribution stay.
+
+Ordinary animals reuse bat, crocodile, snake and constrictor_snake.
+Living snakes regain normal hearts. Water snakes get Swim without
+venom; the python gets the existing level-scaled constrictor special.
+Weed snakes remain harmless, and the existing venom roles use their
+fang-dependent wrapper. Keep the crocodiles' and snakes' Wimpy/passive
+settings and the three NoQuest flags. No population caps are changed.
+
+Crocodile gains stored fangs to match its existing fang attack. Bat,
+crocodile and constrictor_snake now use the existing head-injury trait.
+Bat descendants inherit it. A head injury pauses head-dependent attacks,
+while stored anatomy, usable claws and valid weapons retain their rules.
+Regenerate restores eligibility by curing the injury on creatures it
+can heal; the existing holy-healing rules still apply to undead NPCs.
+All previous armour and echolocation values stay. Nineteen earlier definitions across
+twelve areas use affected profiles; giant_sea_python already had the gate.
+
+Pain and Anguish become Elite; Makis and Burbis become Rare. Keep the
+existing Elite Seht/Agony, Boss human Queen and Rare serpent Queen.
+The other 22 definitions stay Common. Rank HP factors apply once, and
+rank retains its usual equipment bonus/randomisation effects. HP build
+letters are not ranks. All dimensions are descriptive estimates, with
+whole kg and numeric size 0/1/2. Use a zero measurement override when
+leaving an inherited measurement unknown, such as the small asp's mass.
+
+Preserve every deliberate behaviour, room flag, ward, seal key, object
+stat, reset placement/cap/order, area music, reset message and exp_mod115.
+The initial population remains131 with361 carried objects, refilling to
+136 with361 as before. Nine sex fields follow explicit he/her wording;
+28 small text repairs preserve the complete descriptions and dialogue.
+
+Makis, Seht and the bipedal robot get corrected portraits. Sunny Field's
+new art includes the exhausted traveller, collapsed opening and the
+explicitly described ghostly maiden and Mord Maggard. The full room
+story remains. Copy room25120's existing image to the exact GUI filename
+custom_rooms/25120_crash!.png and keep its old crash_.png alias.
+
+There is no current authored Kahsis.src. Temporary conversions are useful
+checks but do not replace or invent an authored source. Preserve raw
+XOR, specials, metadata, loot and resets in both directions. When a
+matching source exists, update and test that pair together.
+
+Linux, from the repository root, using separate check copies:
+    python3 builder/scribe/are2src.py server/area/kahsis.are /tmp/kahsis-check.src
+    perl builder/scribe/scribe.pl /tmp/kahsis-check.src /tmp/kahsis-roundtrip.are
+
+PowerShell, from C:\Games\dd4:
+    python .\builder\scribe\are2src.py .\server\area\kahsis.are "$env:USERPROFILE\Downloads\kahsis-check.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\kahsis-check.src" "$env:USERPROFILE\Downloads\kahsis-roundtrip.are"
+
+Use importer --force only when intentionally replacing its output.

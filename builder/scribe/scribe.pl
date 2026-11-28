@@ -177,6 +177,8 @@ my %mob_archetype = map { $_ => 1 } qw/
         manta_ray giant_manta_ray bull_shark devil_ray spotted_eagle_ray giant_sea_worm
         bay carnivorous_bush giant_centipede
         mammoth rhinoceros werepanther_beast_form weretiger fury
+        enchanted_guardian snakeman crocodileman enchanted_warrior steam_jet
+        brass_automaton serpent_avatar
 /;
 
 my %mob_act = (
