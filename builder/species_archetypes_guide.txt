@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 29 November 2026
-Based on master 175b03e869792a954a2aaf080d47a9510f163b5d (PR #1032),
-with the accompanying Bastion of Shadows changes.
+Based on master febe49b9940657650e8fa332cc745a8d195e7497 (PR #1033),
+with the accompanying Eakos Canals changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -12,11 +12,10 @@ Scribe and area files. Creating a reusable species or archetype does mean
 editing a few tables in the server, so those steps are explained as well.
 
 The examples teach the system. Names starting with tutorial_ are deliberately
-fictional examples, not proposals to add creatures to the live game. No
-project files were changed to produce this guide. The examples were checked
-in a separate working copy outside the official checkout.
+fictional examples, not proposals to add creatures to the live game. The examples were checked in a separate working copy outside the
+official checkout.
 
-The current tables contain 40 bodies, 532 archetypes, 60 internal traits
+The current tables contain 41 bodies, 554 archetypes, 61 internal traits
 and 148 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
@@ -915,10 +914,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 532, so this single example would make 533.
+guide's checked revision it is 554, so this single example would make 555.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 532.
+valid index. This example would receive index 554.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1049,7 +1048,7 @@ It supplies ordinary living organs, four legs and no humanoid arms/speech.
 It doesn't prescribe a natural attack, dimensions, defences, active power or
 combat bonus for every future creature using it.
 
-Increase MAX_SPECIES by one:40 would become 41 at this revision. Append
+Increase MAX_SPECIES by one: 41 would become 42 at this revision. Append
 without reordering older bodies. Add an archetype which names the new body
 in its species field, and increase MAX_MOB if that archetype is also new.
 Scribe selects the archetype, never the new body's name directly.
@@ -1617,7 +1616,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 532;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 554;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1726,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 532; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 554; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-40 body rows, 532 archetype rows, 60 internal traits and 148 Scribe
+41 body rows, 554 archetype rows, 61 internal traits and 148 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -7895,20 +7894,255 @@ directions, preserving raw XOR, individual exceptions, vectors, scripts,
 metadata, equipment and reset order without flattening inherited defaults.
 
 Linux, from the repository root, using separate check copies:
-    python3 builder/scribe/are 2src.py server/area/bastion.are /tmp/bastion-check.src
+    python3 builder/scribe/are2src.py server/area/bastion.are /tmp/bastion-check.src
     perl builder/scribe/scribe.pl /tmp/bastion-check.src /tmp/bastion-roundtrip.are
 
 PowerShell, from C:\Games\dd4:
-    python .\builder\scribe\are 2src.py .\server\area\bastion.are "$env:USERPROFILE\Downloads\bastion-check.src"
+    python .\builder\scribe\are2src.py .\server\area\bastion.are "$env:USERPROFILE\Downloads\bastion-check.src"
     perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\bastion-check.src" "$env:USERPROFILE\Downloads\bastion-roundtrip.are"
 
 Use importer --force only when intentionally replacing its output.
 
+Eakos Canals species conversion
+------------------------------
+
+This revision adds marine_reptile at body index 40 and 22 archetypes at
+indices 532-553. The current tables contain 41 bodies, 554 archetypes,
+61 internal traits and the existing 148 Scribe special names. Earlier
+indices and player opt-ins stay. No new area field, body flag, special
+function or player skill is introduced. The three existing profiles
+water_weird, venomous_spider and sea_anemone supply their reviewed defaults.
+
+All 38 Eakos definitions 29200-29237 now select their creature archetypes.
+Every original rank is kept, including Common Auralithra. Rare/Elite/Boss
+HP factors still apply once; no new rank promotion is hidden in a profile.
+All new HP/damage/critical/haste modifiers are zero. Scrag copies the
+ordinary troll's +10 profile XP adjustment; the other new entries use zero.
+The area's exp_mod remains 112. Dimensions remain descriptive centimetres
+and whole kilograms, separate from combat size and HUGE.
+
+marine_reptile describes a living reptile with head, eyes, heart, brains,
+guts, four flippers and tail, without hands or walking legs. The fins
+use the existing anatomical flag, rather than a new limb-count field.
+The mosasaur uses this body. Existing plesiosaur and other approved body
+outcomes stay. Lorwyn merrow use their own speaking, tailed merfolk-like
+profile; the older merrow archetype is the large ogre-family creature.
+
+The water weird keeps the existing elemental profile, magical water
+contact, defences and bounded wrap. Its individual body XOR restores the
+described head, eyes, arms/hands/fingers and coiling tail while retaining
+NoLegs, NoHeart, NoCorpse, Inorganic, Bloodless and Analgic. It remains
+neuter, minded and souled. Intelligence does not require animal brains.
+The scions are living humanoids with claws/fangs/scales and NoCorpse;
+their original male/female human-corpse death programs still run.
+
+The new native_regen_requires_water trait is code-only, index 60. Zero
+leaves the current regeneration environment rules alone. One requires
+water for native HP and trauma recovery. Scrag uses one, inherits the
+ordinary troll recovery parameters and disables rock throwing. Its
+natural armour is -17. Remove its old Regenerator ACT bit so native
+healing owns the stream; it does not receive two regeneration systems.
+
+Underwater and Underwater Ground count as immersion. Surface-water
+sectors count while the creature is not Flying; flying above a lake
+does not immerse it. Magical flight underwater still leaves it in water.
+DD4 does not distinguish fresh water from salt water in these sectors.
+Dry time earns no HP or stored trauma progress. Existing Fire/Acid
+suppression deadlines remain, and Poison, Slow, NoHeal, delay and interval
+rules still apply. Native recovery does not recreate a disarmed object.
+The new trait appears in MSTAT with its origin, like the other traits.
+There is no Scribe trait command or per-mobile trait override.
+
+Vapour imps are living fiends with blood, pain, mind and soul eligibility,
+and the area's original NoCorpse. Their profile gives Cold, Poison,
+Sleep, Charm, Hold, Paralysis and Nonmagic immunity plus magical cold
+unarmed contact. Keep their individual Undead-caster/Demon roles and
+the female's NoSpeech. Flight/PassDoor does not introduce a permanent
+incorporeal form, automatic cloning or an undead identity.
+
+Keep the harpy's and ocean sprites' authored wingless Flying and NoSpeech
+exceptions. Ashiera have innate wingless flight and swimming, natural
+armour -6 and Fire vulnerability. Their original cold-magic programs
+remain their local coldfire delivery, including the vampire safeguards.
+Using cold magic does not grant Cold immunity. Ocean striders keep their
+separate Warrior/Priestess roles and their original speech exception.
+
+All 101 program bodies stay, including mucus spit, bubble, swallow,
+flukeslap, ambushes, banter, defence and drops. The newborn seahorse is
+deliberately loaded only by its father's death program, with six separate
+50-percent birth checks. Keep that script, the newborn's level and
+PassDoor, but remove Mount. Its 10cm height/15cm length and Small size
+describe a minute newborn; unspecified whole-kg weight is not zero mass.
+The adults keep their mounts and 180cm/250kg/300cm Large measurements.
+
+The existing poisoned spine weapon 29227 already uses torso category 7.
+Keep its poison and body-part flags without adding a second poison power
+or a new stinger body part. Imp claws 29240 change only category 0 to arm
+category 3, allowing arm targeting, trauma and the existing disarm rules.
+Regenerate heals injury and retained attached weapons, without spawning
+an object that was already detached. The anemone's tentacles use the
+existing arm region and usable-attack-part checks; ordinary NPC fallback
+rules are unchanged. Keep its original poison/paralysis/swallow delivery.
+
+Move nine redundant M specials to native defaults: Wretchglow/pearl dragon
+Steam Breath, anguillian bloodsucking, ocean-sprite casting, sea-wyrm and
+myrmyxicus Gas Breath, and spider poison bite. Use the existing anatomical
+breath/bite wrappers. Keep the striders' and imps' individual roles and
+the anemone poison special. Natural anatomy does not add extra attack
+streams, and many_arms records the myrmyxicus's four arms without granting
+automatic additional attacks. All earlier special-selection rules stay.
+
+Preserve all 132 rooms, flags, sectors, exits, locked gates, recall 27347,
+53 objects, spawn caps, reset order and placements. Initial/refilled
+population stays 63 with 87 carried objects. Shared jaws 29209 receive
+generic sea-creature ground wording; the water net loses its unfinished
+ground description; claws gain the correct vicious keyword while keeping
+viscious; and the two athrough typos become through. Other messages,
+jokes, area metadata, music, ambience and individual Foley stay.
+
+Eakos has an authored source. Update eakos_canals.src and generate its
+eakos_canals.are together, then test both conversion directions. Reverse
+conversion preserves game data and raw XOR; it need not preserve the
+author's exact spacing or comments. Use a separate reverse output so
+the authored source is not accidentally replaced. From the project root:
+
+Linux:
+    perl builder/scribe/scribe.pl server/area/eakos_canals.src /tmp/eakos-forward.are
+    python3 builder/scribe/are2src.py /tmp/eakos-forward.are /tmp/eakos-roundtrip.src
+    perl builder/scribe/scribe.pl /tmp/eakos-roundtrip.src /tmp/eakos-roundtrip.are
+
+PowerShell:
+    perl .\builder\scribe\scribe.pl .\server\area\eakos_canals.src "$env:USERPROFILE\Downloads\eakos-forward.are"
+    python .\builder\scribe\are2src.py "$env:USERPROFILE\Downloads\eakos-forward.are" "$env:USERPROFILE\Downloads\eakos-roundtrip.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\eakos-roundtrip.src" "$env:USERPROFILE\Downloads\eakos-roundtrip.are"
+
+All 170 exact dd-gui portrait/room filenames already match. Current art
+fits the descriptions and no media change is needed for this revision.
+With this conversion, coverage is 120/153 areas (78.4%) and 2,380/4,131
+loaded definitions (57.6%). Count it complete after merge verification.
+
+Creature measurements and individual decisions
+
+29200 giant_sea_slug / limbless_invertebrate; common; H/W/L 100/1500/800; Large.
+-2; Blunt immunity; keep the programmed mucus spit, Slow and Regenerator.
+
+29201 marple / fish; common; H/W/L ?/5/60; Small.
+Ordinary living fish; no extra elemental resistance; keep both bubble programs and protection/senses.
+
+29202 marple / fish; common; H/W/L ?/5/60; Small.
+Ordinary living fish; no extra elemental resistance; keep both bubble programs and protection/senses.
+
+29203 ingkludd / limbless_invertebrate; common; H/W/L 60/90/150; Medium.
+-6 shell armour; genuinely headless/eyeless; retain Blind, Slow, protection and its sonic shriek.
+
+29204 deepsea_harpy / humanoid; common; H/W/L 175/60/?; Medium.
+-3; taloned hands, fins and ordinary humanoid limbs. Retain authored Flying and NoSpeech; a wordless song need not mean articulate speech.
+
+29205 water_giant / humanoid; common; H/W/L 600/1800/?; Large.
+-6; giant family; HUGE; keep the trident and blizzard program. No new rock throwing or elemental immunity.
+
+29206 water_giant / humanoid; elite; H/W/L 550/1400/?; Large.
+Same giant profile; individual slimmer dimensions reflect the explicit svelte description; keep her net and Fury of Nature.
+
+29207 lorwyn_merrow / humanoid; common; H/W/L ?/80/210; Medium.
+-3; merfolk-style tail/fins/scales replace legs. Keep speech, authored senses, banter, targets and psychic magic. Not the ogre-family merrow.
+
+29208 lorwyn_merrow / humanoid; common; H/W/L ?/80/210; Medium.
+-3; merfolk-style tail/fins/scales replace legs. Keep speech, authored senses, banter, targets and psychic magic. Not the ogre-family merrow.
+
+29209 deinosuchus / quadrupedal_reptile; elite; H/W/L 100/5000/1000; Large.
+-8; HUGE, scales, fangs, tail and four legs. Preserve jaw weapons, Regenerator and all swallow/aggression programs.
+
+29210 deinosuchus / quadrupedal_reptile; elite; H/W/L 100/5000/1000; Large.
+-8; HUGE, scales, fangs, tail and four legs. Preserve jaw weapons, Regenerator and all swallow/aggression programs.
+
+29211 mosasaur / marine_reptile; rare; H/W/L ?/7000/1200; Large.
+-8; HUGE, head/eyes/organs, four flippers, scales, fangs and tail. No walking legs, hands or arms; keep flukeslap, swallow and toy drop.
+
+29212 wretchglow / quadrupedal_reptile; boss; H/W/L 300/7000/1500; Large.
+-10; HUGE, scales, claws/fangs/tail; preserve Regenerator, lure, Steam Breath and all attack/greaves programs.
+
+29213 deep_scion / humanoid; common; H/W/L 180/80/?; Medium.
+-4; scales/claws/fangs; living thinking humanoids. Keep NoCorpse and each sex-matched human-corpse death program, plus Synaptic Blast.
+
+29214 deep_scion / humanoid; common; H/W/L 180/80/?; Medium.
+-4; scales/claws/fangs; living thinking humanoids. Keep NoCorpse and each sex-matched human-corpse death program, plus Synaptic Blast.
+
+29215 water_weird / elemental_being; elite; H/W/L 180/250/305; Large.
+Reuse armour -6, Fire/Pierce/Slash resistance, Poison/Drain immunity, magical water contact and bounded wrap. Individually restore the described upper body/head/eyes/arms and add a coiling tail; retain no animal organs/blood/pain/corpse and keep all four original spells.
+
+29216 anguillian / humanoid; rare; H/W/L ?/70/183; Medium.
+-4; genuine NoEyes/Blind; short legs, arm pincers, mouth fangs and tail. Native spec_bloodsucker_bite keeps the old bloodsucking payload with a usable-mouth guard; equipment and broods stay.
+
+29217 anguillian / humanoid; rare; H/W/L ?/70/183; Medium.
+-4; genuine NoEyes/Blind; short legs, arm pincers, mouth fangs and tail. Native spec_bloodsucker_bite keeps the old bloodsucking payload with a usable-mouth guard; equipment and broods stay.
+
+29218 ocean_strider / humanoid; elite; H/W/L 610/1800/?; Large.
+-10; HUGE, fangs and real tail; Magic resistance. Keep their separate Warrior/Priestess roles, equipped jaws/sword/wand, NoSpeech and corpse-looting retaliation.
+
+29219 ocean_strider / humanoid; elite; H/W/L 610/1800/?; Large.
+-10; HUGE, fangs and real tail; Magic resistance. Keep their separate Warrior/Priestess roles, equipped jaws/sword/wand, NoSpeech and corpse-looting retaliation.
+
+29220 pearl_dragon / dragon; common; H/W/L 300/6000/1800; Large.
+-8; HUGE, wings/claws/fangs/tail; Magic resistance and native anatomical Steam Breath. Keep flight, speech, charming flee program, hoard, digging response and every death drop.
+
+29221 stone_urchin / radial_invertebrate; common; H/W/L 60/35/90; Medium.
+-6 shell armour; headless/eyeless/heartless and without arm limbs; ordinary living flesh with the radial body blood rule. Retain Blind/Hide and existing poisoned torso-category spine weapons. No extra poison proc.
+
+29222 stone_urchin / radial_invertebrate; common; H/W/L 60/35/90; Medium.
+-6 shell armour; headless/eyeless/heartless and without arm limbs; ordinary living flesh with the radial body blood rule. Retain Blind/Hide and existing poisoned torso-category spine weapons. No extra poison proc.
+
+29223 scrag / humanoid; common; H/W/L 305/300/?; Large.
+-17; troll family, scales/claws/fangs. Reuse troll timed regeneration and trauma recovery, fire/acid suppression and +10 XP adjustment; only in water. Disable inherited rock throwing; replace the old Regenerator bit rather than stack two systems. Keep NoSpeech, all attacks and flesh/coin drops.
+
+29224 scrag / humanoid; common; H/W/L 305/300/?; Large.
+-17; troll family, scales/claws/fangs. Reuse troll timed regeneration and trauma recovery, fire/acid suppression and +10 XP adjustment; only in water. Disable inherited rock throwing; replace the old Regenerator bit rather than stack two systems. Keep NoSpeech, all attacks and flesh/coin drops.
+
+29225 ashiera / humanoid; common; H/W/L 168/85/?; Medium.
+-6; innate wingless flight and swimming; Fire vulnerability, as in the 2e entry. Existing glaciation/chill-touch programs supply the local coldfire adaptation; retain vampire guards and gear. No Cold immunity inferred from using cold magic.
+
+29226 ashiera / humanoid; common; H/W/L 168/85/?; Medium.
+-6; innate wingless flight and swimming; Fire vulnerability, as in the 2e entry. Existing glaciation/chill-touch programs supply the local coldfire adaptation; retain vampire guards and gear. No Cold immunity inferred from using cold magic.
+
+29227 ocean_sprite / humanoid; common; H/W/L 61/4/?; Small.
+-4; wingless aquatic fey, ordinary living organs and speech; native spec_cast_water_sprite. Preserve authored magical Flying, invisibility, passivity/Wimpy, equipment and two different flesh-drop chances.
+
+29228 ocean_sprite / humanoid; common; H/W/L 61/4/?; Small.
+-4; wingless aquatic fey, ordinary living organs and speech; native spec_cast_water_sprite. Preserve authored magical Flying, invisibility, passivity/Wimpy, equipment and two different flesh-drop chances.
+
+29229 giant_seahorse / fish; common; H/W/L 180/250/300; Large.
+-6 bony plating; fins, tail and a suction mouth, without limbs or speech. Retain Mount, bubble attacks and the father-only six birth checks. No HUGE.
+
+29230 giant_seahorse / fish; common; H/W/L 180/250/300; Large.
+-6 bony plating; fins, tail and a suction mouth, without limbs or speech. Retain Mount, bubble attacks and the father-only six birth checks. No HUGE.
+
+29231 newborn_giant_seahorse / fish; common; H/W/L 10/?/15; Small.
+Soft newborn armour: no armour bonus. Weight is unspecified, not a fractional or zero-mass claim. Remove Mount; preserve authored PassDoor, level80, bubble attack and scripted birth-only population.
+
+29232 vapour_imp / humanoid; rare; H/W/L 61/12/?; Small.
+-6; claw/fang/horn/tail anatomy; Cold/Poison/Sleep/Charm/Hold/Paralysis/Nonmagic immunity and magical cold unarmed contact. These are living fiends, with mind/blood/pain/soul, and authored NoCorpse. Retain Regenerator, Flying/PassDoor, separate Undead-caster/Demon roles and female NoSpeech. No new permanent noncorporeality, clones or form-switching system.
+
+29233 vapour_imp / humanoid; rare; H/W/L 61/12/?; Small.
+-6; claw/fang/horn/tail anatomy; Cold/Poison/Sleep/Charm/Hold/Paralysis/Nonmagic immunity and magical cold unarmed contact. These are living fiends, with mind/blood/pain/soul, and authored NoCorpse. Retain Regenerator, Flying/PassDoor, separate Undead-caster/Demon roles and female NoSpeech. No new permanent noncorporeality, clones or form-switching system.
+
+29234 sea_wyrm / serpentine_reptile; elite; H/W/L ?/900/760; Large.
+-6; HUGE, wingless/limbless dragon-shaped serpent with scales/fangs/tail; native anatomical Gas Breath. Preserve all swallow/egg programs and authored senses/NoCharm/NoSummon.
+
+29235 myrmyxicus / humanoid; boss; H/W/L ?/2200/760; Large.
+-10; HUGE, four arms represented by existing many_arms, horns, fangs, claws, six tentacles, tail and no legs. Fire/Cold/Acid/Magic resistance, Electricity/Poison immunity, magical natural attacks and native anatomical Gas Breath; keep scythe, existing acid/nausea/hex scripts and shield drop. No automatic extra attacks from the arm count.
+
+29236 venomous_spider / arachnid; common; H/W/L 90/120/180; Large.
+Reuse -6 armour, fangs/leg anatomy and the existing guarded poison bite, with individual aquatic dimensions and existing Swim. Preserve her mind, hiding, ambush and gland drop; remove the redundant old spec_poison override.
+
+29237 sea_anemone / radial_invertebrate; common; H/W/L 300/2000/600; Large.
+Reuse tentacle anatomy and sting wording, with individual HUGE/dimensions. Tentacles use the existing arm targeting region, including its trauma gate. Keep rooted Hold/Sentinel, the original spec_poison and paralysis/swallow programs; no second poison special.
+
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
-These are the 37 current rows, including reserved. The index is not an
-area vnum or a value to put in Scribe archetype. Older elemental and
-farm_mammal examples remain in the code; presence is not design approval.
+These are the 41 current rows, including reserved. An index is not an
+area vnum or a Scribe archetype. Reuse a body where its anatomy fits.
+Older development examples still need review before real use.
 
      0  reserved
      1  humanoid
@@ -7949,15 +8183,16 @@ farm_mammal examples remain in the code; presence is not design approval.
     36  living_appendage
     37  multipedal_reptile
     38  geometric_being
+    39  bivalve
+    40  marine_reptile
 
-New physical variants should reuse these where they fit. A body name alone
-does not select a fully reviewed creature, assign a rank or create a power.
-
-  [39] bivalve: swimming shell-bearing mollusc; heart and mantle eyes, no head or walking limbs.
+marine_reptile has four flippers, a tail and living reptilian organs,
+without hands or walking legs. Eakos mosasaur selects it through its
+archetype; there is no new area field for body species.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 532 current table rows follow, grouped by body. Numeric IDs are for
+All 554 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -7973,7 +8208,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (166)
+HUMANOID (177)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8473,8 +8708,41 @@ HUMANOID (166)
   [530] spectral_minion: h/w/l 175 / ? / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [535] deepsea_harpy: h/w/l 175 / 60 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [536] water_giant: h/w/l 600 / 1800 / ?; Large; family giant
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [537] lorwyn_merrow: h/w/l ? / 80 / 210; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [541] deep_scion: h/w/l 180 / 80 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [542] anguillian: h/w/l ? / 70 / 183; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_bloodsucker_bite; policy auto
+  [543] ocean_strider: h/w/l 610 / 1800 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [546] scrag: h/w/l 305 / 300 / ?; Large; family troll
+        HP+0 dam+0 crit+0 swift+0 XP+10; phase none
+        specials none; policy auto
+  [547] ashiera: h/w/l 168 / 85 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [548] ocean_sprite: h/w/l 61 / 4 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_cast_water_sprite; policy auto
+  [551] vapour_imp: h/w/l 61 / 12 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [553] myrmyxicus: h/w/l ? / 2200 / 760; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gas_anatomical; policy auto
 
-DRAGON (24)
+DRAGON (25)
 ------------
   [ 16] dracolich: h/w/l ? / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8548,8 +8816,11 @@ DRAGON (24)
   [527] shadow_dragon: h/w/l 300 / 3000 / 1200; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_draining_breath; policy auto
+  [544] pearl_dragon: h/w/l 300 / 6000 / 1800; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_steam_anatomical; policy auto
 
-QUADRUPEDAL_REPTILE (8)
+QUADRUPEDAL_REPTILE (10)
 -------------------------
   [ 29] giant_lizard: h/w/l ? / ? / 457; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8575,8 +8846,14 @@ QUADRUPEDAL_REPTILE (8)
   [440] lava_lizard: h/w/l 45 / 65 / 180; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [538] deinosuchus: h/w/l 100 / 5000 / 1000; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [540] wretchglow: h/w/l 300 / 7000 / 1500; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_steam_anatomical; policy auto
 
-SERPENTINE_REPTILE (11)
+SERPENTINE_REPTILE (12)
 ------------------------
   [ 30] giant_pit_viper: h/w/l ? / ? / 366; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8611,6 +8888,9 @@ SERPENTINE_REPTILE (11)
   [519] serpent_avatar: h/w/l ? / 1500 / 1200; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_fire_anatomical, 2:spec_poison_bite; policy 70/30/0
+  [552] sea_wyrm: h/w/l ? / 900 / 760; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gas_anatomical; policy auto
 
 MYSTERIOUS_BEING (10)
 ----------------------
@@ -8945,7 +9225,7 @@ HEAD_ONLY (5)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_any_anatomical; policy auto
 
-LIMBLESS_INVERTEBRATE (18)
+LIMBLESS_INVERTEBRATE (20)
 ---------------------------
   [ 48] rock_worm: h/w/l 150 / 8000 / 800; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -9001,6 +9281,12 @@ LIMBLESS_INVERTEBRATE (18)
   [520] blood_worm: h/w/l ? / 250 / 600; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_bloodsucker_bite; policy auto
+  [532] giant_sea_slug: h/w/l 100 / 1500 / 800; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [534] ingkludd: h/w/l 60 / 90 / 150; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 LIMBLESS_CONSTRUCT (10)
 ------------------------
@@ -9218,7 +9504,7 @@ AMORPHOUS_ORGANISM (10)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_mage; policy auto
 
-FISH (43)
+FISH (46)
 ----------
   [ 95] eel: h/w/l ? / 5 / 150; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -9347,6 +9633,15 @@ FISH (43)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [503] spotted_eagle_ray: h/w/l ? / 200 / 500; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [533] marple: h/w/l ? / 5 / 60; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [549] giant_seahorse: h/w/l 180 / 250 / 300; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [550] newborn_giant_seahorse: h/w/l 10 / ? / 15; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -9575,7 +9870,7 @@ FUNGOID (2)
         HP+0 dam+0 crit+0 swift+0 XP+5; phase none
         specials none; policy auto
 
-RADIAL_INVERTEBRATE (5)
+RADIAL_INVERTEBRATE (6)
 -------------------------
   [188] dustdigger: h/w/l 40 / 200 / 300; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -9590,6 +9885,9 @@ RADIAL_INVERTEBRATE (5)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [396] erenna: h/w/l 150 / 200 / 600; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [545] stone_urchin: h/w/l 60 / 35 / 90; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -9677,9 +9975,15 @@ BIVALVE (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
+MARINE_REPTILE (1)
+--------------------
+  [539] mosasaur: h/w/l ? / 7000 / 1200; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+
 APPENDIX C. COMPLETE CURRENT TRAIT REFERENCE
 ===========================================
-The named registry currently contains 60 traits. These are internal
+The named registry currently contains 61 traits. These are internal
 profile values, not Scribe fields. Zero disables an inherited value.
 The general validator uses-100..100 plus the effect-specific limits.
 Use named enum constants for natural damage rather than memorised numbers.
@@ -10016,6 +10320,16 @@ role vector. No individual trait override or Scribe trait command exists.
 The existing MSTAT registry displays values and their origins/removals.
 The audible powers honour magical Silence, cone of silence and antimagic.
 Conversational NoSpeech and channel deaf settings are separate properties.
+
+60. native_regen_requires_water
+    Value: 0 or 1. Zero retains ordinary native regeneration rules.
+    One requires immersion for native HP and trauma recovery. Scrag uses
+    one; no earlier profile changes. Water includes underwater sectors,
+    or surface-water sectors while not Flying. Dry time earns no healing
+    or stored trauma progress; Fire/Acid suppression deadlines stay.
+    See update_native_regeneration in update.c and the existing native
+    regeneration parameters. Define it in mob.c profiles only, never in
+    a source/area field. MSTAT displays the value and its origin.
 
 APPENDIX D. SCRIBE FLAG AND MASK REFERENCE
 ==========================================

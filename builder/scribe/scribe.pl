@@ -182,6 +182,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         blood_worm mist_wolf nighthunter dream_shadow skeletal_hound
         winged_demon mist_horror shadow_dragon
         soul_collector angel spectral_minion giant_raven
+        giant_sea_slug marple ingkludd deepsea_harpy water_giant lorwyn_merrow deinosuchus mosasaur wretchglow deep_scion anguillian ocean_strider pearl_dragon stone_urchin scrag ashiera ocean_sprite giant_seahorse newborn_giant_seahorse vapour_imp sea_wyrm myrmyxicus
 /;
 
 my %mob_act = (
