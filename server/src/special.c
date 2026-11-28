@@ -59,6 +59,8 @@ DECLARE_SPEC_FUN( spec_flind );
 DECLARE_SPEC_FUN( spec_horn_gore );
 DECLARE_SPEC_FUN( spec_terrifying_roar );
 DECLARE_SPEC_FUN( spec_confusing_gaze );
+DECLARE_SPEC_FUN( spec_confusing_presence );
+DECLARE_SPEC_FUN( spec_draining_breath );
 DECLARE_SPEC_FUN( spec_homunculus_sleep_bite );
 DECLARE_SPEC_FUN( spec_basilisk_stiffening_gaze );
 DECLARE_SPEC_FUN( spec_stiffening_gaze );
@@ -213,6 +215,8 @@ SPEC_FUN *spec_lookup (const char *name )
         if (!str_cmp(name, "spec_flind")) return spec_flind;
         if (!str_cmp(name, "spec_horn_gore")) return spec_horn_gore;
         if (!str_cmp(name, "spec_terrifying_roar")) return spec_terrifying_roar;
+        if (!str_cmp(name, "spec_confusing_presence")) return spec_confusing_presence;
+        if (!str_cmp(name, "spec_draining_breath")) return spec_draining_breath;
         if (!str_cmp(name, "spec_confusing_gaze")) return spec_confusing_gaze;
         if (!str_cmp(name, "spec_homunculus_sleep_bite")) return spec_homunculus_sleep_bite;
         if (!str_cmp(name, "spec_basilisk_stiffening_gaze")) return spec_basilisk_stiffening_gaze;
@@ -374,6 +378,8 @@ const char *mob_special_name(SPEC_FUN *special)
         if (special == spec_flind) return "spec_flind";
         if (special == spec_horn_gore) return "spec_horn_gore";
         if (special == spec_terrifying_roar) return "spec_terrifying_roar";
+        if (special == spec_confusing_presence) return "spec_confusing_presence";
+        if (special == spec_draining_breath) return "spec_draining_breath";
         if (special == spec_confusing_gaze) return "spec_confusing_gaze";
         if (special == spec_homunculus_sleep_bite) return "spec_homunculus_sleep_bite";
         if (special == spec_basilisk_stiffening_gaze) return "spec_basilisk_stiffening_gaze";
@@ -6099,15 +6105,15 @@ bool spec_squid(CHAR_DATA *ch)
         return spec_fido(ch);
 }
 
-/* The viewer needs to see the eyes; the viewer need not be visible. */
-static bool confusing_gaze_opponent_unchanged(CHAR_DATA *ch, CHAR_DATA *victim,
-    ROOM_INDEX_DATA *room, int source_deaths, int target_deaths)
+/* The viewer needs to see the source; the viewer need not be visible. */
+static bool confusing_visual_opponent_unchanged(CHAR_DATA *ch, CHAR_DATA *victim,
+    ROOM_INDEX_DATA *room, int source_deaths, int target_deaths, bool needs_eyes)
 {
         return action_character_in_room(ch, room, source_deaths)
             && action_character_in_room(victim, room, target_deaths)
             && innate_spell_ready(ch) && native_combat_opponent(ch) == victim
-            && HAS_HEAD(ch) && HAS_EYES(ch)
-            && !IS_AFFECTED(ch, AFF_BLIND | AFF_EYE_TRAUMA | AFF_HEAD_TRAUMA)
+            && (!needs_eyes || (HAS_HEAD(ch) && HAS_EYES(ch)
+                && !IS_AFFECTED(ch, AFF_BLIND | AFF_EYE_TRAUMA | AFF_HEAD_TRAUMA)))
             && IS_AWAKE(victim) && HAS_EYES(victim)
             && !IS_AFFECTED(victim, AFF_BLIND | AFF_EYE_TRAUMA)
             && can_see(victim, ch) && !is_mindless(victim)
@@ -6118,13 +6124,38 @@ static bool confusing_gaze_opponent_unchanged(CHAR_DATA *ch, CHAR_DATA *victim,
             && !(room->area && IS_SET(room->area->area_flags, AREA_FLAG_SAFE));
 }
 
+static bool confusing_gaze_opponent_unchanged(CHAR_DATA *ch, CHAR_DATA *victim,
+    ROOM_INDEX_DATA *room, int source_deaths, int target_deaths)
+{
+        return confusing_visual_opponent_unchanged(ch, victim, room,
+            source_deaths, target_deaths, TRUE);
+}
+
+/* Both visual powers use the same short Confusion penalties. */
+static void apply_short_confusion(int sn, int level, CHAR_DATA *victim)
+{
+        AFFECT_DATA af;
+
+        memset(&af, 0, sizeof(af));
+        af.type = sn;
+        af.duration = URANGE(1, level / 30, 3);
+        af.bitvector = AFF_CONFUSION;
+        af.location = APPLY_HITROLL;
+        af.modifier = -((level / 5) + 1);
+        affect_to_char(victim, &af);
+        af.location = APPLY_INT;
+        af.modifier = -((level / 15) + 1);
+        affect_to_char(victim, &af);
+        af.location = APPLY_WIS;
+        affect_to_char(victim, &af);
+}
+
 /* Keep ordinary Confusion's save and penalties, with a short gaze duration. */
 static void spell_confusing_gaze(int sn, int level, CHAR_DATA *ch, void *vo)
 {
         CHAR_DATA *victim = (CHAR_DATA *)vo;
         ROOM_INDEX_DATA *room = ch->in_room;
         int source_deaths = action_deaths(ch), target_deaths = action_deaths(victim);
-        AFFECT_DATA af;
         bool saved;
 
         if (!confusing_gaze_opponent_unchanged(ch, victim, room,
@@ -6140,18 +6171,7 @@ static void spell_confusing_gaze(int sn, int level, CHAR_DATA *ch, void *vo)
                     ch, NULL, victim, TO_VICT);
                 return;
         }
-        memset(&af, 0, sizeof(af));
-        af.type = sn;
-        af.duration = URANGE(1, level / 30, 3);
-        af.bitvector = AFF_CONFUSION;
-        af.location = APPLY_HITROLL;
-        af.modifier = -((level / 5) + 1);
-        affect_to_char(victim, &af);
-        af.location = APPLY_INT;
-        af.modifier = -((level / 15) + 1);
-        affect_to_char(victim, &af);
-        af.location = APPLY_WIS;
-        affect_to_char(victim, &af);
+        apply_short_confusion(sn, level, victim);
         act("$n's gaze leaves you utterly confused!", ch, NULL, victim, TO_VICT);
 }
 
@@ -6186,6 +6206,111 @@ bool spec_confusing_gaze(CHAR_DATA *ch)
                 source_deaths, target_deaths))
                 cast_native_spell(spell_confusing_gaze, gsn_confusion,
                     ch->level, ch, victim);
+        return TRUE;
+}
+
+/* An unsettling shape needs a sighted viewer, rather than eyes of its own. */
+static void spell_confusing_presence(int sn, int level, CHAR_DATA *ch, void *vo)
+{
+        CHAR_DATA *victim = (CHAR_DATA *)vo;
+        ROOM_INDEX_DATA *room = ch->in_room;
+        int source_deaths = action_deaths(ch), target_deaths = action_deaths(victim);
+        bool saved;
+
+        if (!confusing_visual_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths, FALSE))
+                return;
+        saved = saves_resistance_effect(ch, level, victim, skill_table[sn].res_type);
+        if (!confusing_visual_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths, FALSE))
+                return;
+        if (saved)
+        {
+                act("You look away before $n's shifting shape can confuse you.",
+                    ch, NULL, victim, TO_VICT);
+                return;
+        }
+        apply_short_confusion(sn, level, victim);
+        act("$n's shifting shape leaves you utterly confused!", ch, NULL, victim, TO_VICT);
+}
+
+bool spec_confusing_presence(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        ROOM_INDEX_DATA *room;
+        int source_deaths, target_deaths;
+
+        if (!victim || gsn_confusion <= 0)
+                return FALSE;
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        target_deaths = action_deaths(victim);
+        if (!confusing_visual_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths, FALSE) || number_percent() > 20)
+                return FALSE;
+        if (!confusing_visual_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths, FALSE))
+                return TRUE;
+        act("Your shifting shape threatens to confuse $N.", ch, NULL, victim, TO_CHAR);
+        if (!confusing_visual_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths, FALSE))
+                return TRUE;
+        act("$n's shape shifts strangely before your eyes.", ch, NULL, victim, TO_VICT);
+        if (!confusing_visual_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths, FALSE))
+                return TRUE;
+        act("$n's shape shifts strangely before $N.", ch, NULL, victim, TO_NOTVICT);
+        if (confusing_visual_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths, FALSE))
+                cast_native_spell(spell_confusing_presence, gsn_confusion,
+                    ch->level, ch, victim);
+        return TRUE;
+}
+
+static bool draining_breath_opponent_unchanged(CHAR_DATA *ch, CHAR_DATA *victim,
+    ROOM_INDEX_DATA *room, int source_deaths, int target_deaths)
+{
+        return action_character_in_room(ch, room, source_deaths)
+            && action_character_in_room(victim, room, target_deaths)
+            && innate_spell_ready(ch) && native_combat_opponent(ch) == victim
+            && HAS_HEAD(ch) && !IS_AFFECTED(ch, AFF_HEAD_TRAUMA)
+            && !IS_UNDEAD(victim)
+            && !(IS_NPC(victim) && IS_SET(victim->act, ACT_OBJECT))
+            && !IS_SET(room->room_flags, ROOM_SAFE)
+            && !(room->area && IS_SET(room->area->area_flags, AREA_FLAG_SAFE));
+}
+
+/* Use the existing drain spell so its saves, stacking and cures stay together. */
+bool spec_draining_breath(CHAR_DATA *ch)
+{
+        CHAR_DATA *victim = native_combat_opponent(ch);
+        ROOM_INDEX_DATA *room;
+        int source_deaths, target_deaths;
+
+        if (!victim || gsn_energy_drain <= 0)
+                return FALSE;
+        room = ch->in_room;
+        source_deaths = action_deaths(ch);
+        target_deaths = action_deaths(victim);
+        if (!draining_breath_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths) || number_percent() > 25)
+                return FALSE;
+        if (!draining_breath_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                return TRUE;
+        act("You breathe a stream of draining shadow at $N.", ch, NULL, victim, TO_CHAR);
+        if (!draining_breath_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                return TRUE;
+        act("$n breathes a stream of draining shadow at you!", ch, NULL, victim, TO_VICT);
+        if (!draining_breath_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                return TRUE;
+        act("$n breathes a stream of draining shadow at $N.", ch, NULL, victim, TO_NOTVICT);
+        if (draining_breath_opponent_unchanged(ch, victim, room,
+                source_deaths, target_deaths))
+                cast_native_spell(skill_table[gsn_energy_drain].spell_fun,
+                    gsn_energy_drain, ch->level, ch, victim);
         return TRUE;
 }
 
