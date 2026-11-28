@@ -181,6 +181,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         brass_automaton serpent_avatar
         blood_worm mist_wolf nighthunter dream_shadow skeletal_hound
         winged_demon mist_horror shadow_dragon
+        soul_collector angel spectral_minion giant_raven
 /;
 
 my %mob_act = (
