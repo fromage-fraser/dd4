@@ -3347,7 +3347,7 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "crocodile", "quadrupedal_reptile", "icon1", "icon2",
-                0, AFF_SWIM, PART_CLAWS, PART_FANGS,
+                0, AFF_SWIM, PART_CLAWS | PART_FANGS, PART_FANGS,
                 0, 0, 0, 0, 0, 0, 0,
                 45, 150, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "", "", "", 5,
@@ -6378,6 +6378,76 @@ const struct mob_type mob_table[MAX_MOB] =
                 175, 65, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
                 "spec_cast_undead", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "enchanted_guardian", "bipedal_construct", "icon1", "icon2",
+                0, AFF_MINDLESS,
+                BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS | BODY_NO_SPEECH,
+                0, 0, 0, RES_POISON | RES_DRAIN | RES_SLEEP | RES_CHARM | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                300, 600, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "snakeman", "humanoid", "icon1", "icon2",
+                0, 0,
+                PART_SCALES | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                200, 100, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "crocodileman", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_TAIL | PART_SCALES | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                250, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_LIZARDMAN, MOB_TEMPLATE_UNSET
+        },
+        {
+                "enchanted_warrior", "humanoid", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                250, 200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "steam_jet", "environmental_hazard", "icon1", "icon2",
+                0, 0,
+                BODY_BLOODLESS | BODY_ANALGIC,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_breath_steam", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "brass_automaton", "bipedal_construct", "icon1", "icon2",
+                0, 0,
+                BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS | BODY_NO_SPEECH | PART_CLAWS,
+                0, 0, 0, RES_POISON | RES_DRAIN | RES_SLEEP,
+                0, 0, 0, 0,
+                250, 700, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "serpent_avatar", "serpentine_reptile", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 1500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_fire_anatomical", "spec_poison_bite", "", 0, {70, 30, 0},
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1200
         }
 };
 
@@ -6693,7 +6763,8 @@ static const CREATURE_TRAIT_CHANGE elf_trait_changes[] =
 
 static const CREATURE_TRAIT_CHANGE bat_trait_changes[] =
 {
-        {CREATURE_TRAIT_ECHOLOCATION, 1}
+        {CREATURE_TRAIT_ECHOLOCATION, 1},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 static const CREATURE_TRAIT_CHANGE spectre_trait_changes[] =
 {
@@ -7072,7 +7143,8 @@ static const CREATURE_TRAIT_CHANGE elephant_trait_changes[] =
 
 static const CREATURE_TRAIT_CHANGE constrictor_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 static const CREATURE_TRAIT_CHANGE centipede_trait_changes[] =
 {
@@ -7216,7 +7288,8 @@ static const CREATURE_TRAIT_CHANGE grell_trait_changes[] =
 };
 static const CREATURE_TRAIT_CHANGE crocodile_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 static const CREATURE_TRAIT_CHANGE flind_trait_changes[] =
 {
@@ -8114,8 +8187,38 @@ static const CREATURE_TRAIT_CHANGE weretiger_trait_changes[] =
         {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE enchanted_guardian_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE snakeman_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE crocodileman_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE brass_automaton_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+static const CREATURE_TRAIT_CHANGE serpent_avatar_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -15},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"enchanted_guardian", NULL, enchanted_guardian_trait_changes, TRAIT_ITEMS(enchanted_guardian_trait_changes)},
+        {"snakeman", NULL, snakeman_trait_changes, TRAIT_ITEMS(snakeman_trait_changes)},
+        {"crocodileman", NULL, crocodileman_trait_changes, TRAIT_ITEMS(crocodileman_trait_changes)},
+        {"enchanted_warrior", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"brass_automaton", NULL, brass_automaton_trait_changes, TRAIT_ITEMS(brass_automaton_trait_changes)},
+        {"serpent_avatar", NULL, serpent_avatar_trait_changes, TRAIT_ITEMS(serpent_avatar_trait_changes)},
         {"mammoth", "elephant", mammoth_trait_changes, TRAIT_ITEMS(mammoth_trait_changes)},
         {"rhinoceros", NULL, rhinoceros_trait_changes, TRAIT_ITEMS(rhinoceros_trait_changes)},
         {"werepanther_beast_form", NULL, werepanther_trait_changes, TRAIT_ITEMS(werepanther_trait_changes)},

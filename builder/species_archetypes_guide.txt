@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 28 November 2026
-Based on master baaeac490f4b5bf6ff0de35f2fd4c5f30c354bfc (PR #1029),
-with the accompanying Argentium changes.
+Based on master 81abce4ad2e57fb975d6d457a990b6f189693e55 (PR #1030),
+with the accompanying Kahsis changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,7 +16,7 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 40 bodies, 513 archetypes, 60 internal traits
+The current tables contain 40 bodies, 520 archetypes, 60 internal traits
 and 146 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 513, so this single example would make 514.
+guide's checked revision it is 520, so this single example would make 521.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 513.
+valid index. This example would receive index 520.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 513;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 520;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 513; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 520; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-40 body rows, 513 archetype rows, 60 internal traits and 146 Scribe
+40 body rows, 520 archetype rows, 60 internal traits and 146 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -7496,6 +7496,134 @@ PowerShell, from C:\Games\dd4:
 Use importer --force only when intentionally replacing its output.
 Keep an authored original when testing the reverse direction.
 
+Kahsis
+
+All 30 definitions now use species and archetypes. Seven new archetypes
+bring the catalogue to 520, with 40 body species, 60 internal traits and
+146 Scribe special names. These are DD4 interpretations of this area's
+descriptions, equipment and transformation lore. The journal explains
+that Kahsis transformed humans into her reptilian soldiers.
+
+enchanted_guardian uses bipedal_construct. It is Mindless, Bloodless,
+Analgic and Soulless, with NoHeart and NoSpeech. It has natural armour -5
+and Poison/Drain/Sleep/Charm/Hold/Paralysis immunity. Defaults are estimated
+300 cm tall, 600 kg and Large. It stays physically attackable and leaves
+its loot. The two Keepers retain their aggression, stealth and senses;
+they are constructs, so room 25011's existing undead ward is appropriate.
+
+snakeman uses humanoid: a scaled, snake-headed biped with hands, legs,
+fangs and an ordinary fang attack. Defaults are 200 cm, 100 kg, Medium
+and natural armour -5. It has no general venom, regeneration, infection
+or hypnosis. Keep senses and caster roles individual. Skah, Mehk, Makis,
+Seht and the explicitly identified serpentfolk use this approved reading.
+Seht alone adds taloned hands and a claw attack through existing body
+and MobAttackParts XOR fields. Necromancy does not make him undead.
+
+crocodileman also uses humanoid, with scales, tail, claws, fangs, Swim
+and ordinary claw/fang attacks. It belongs to the lizardman family and
+has natural armour -6. Defaults are 250 cm, 200 kg and Large; Burbis is
+individually 300 cm and 350 kg. The ordinary sergeants stay Common.
+
+enchanted_warrior uses humanoid at 250 cm, 200 kg and Large, with no
+extra natural armour. Pain and Agony each have a larger individual build.
+Pain adds fangs and a fang attack locally, retaining his existing poison
+through spec_poison_bite. Agony retains his mixed breath through
+spec_breath_any_anatomical and his authored NoSpeech/NoCorpse. Neither
+gets an inferred undead or fiend identity. Pain's gesture and Agony's
+fiery halo remain descriptive rather than new spells or immunities.
+
+Anguish uses the existing skeleton at 350 cm, 70 kg, Large plus HUGE.
+Keep the normal undead physiology and skeletal defences. His magical
+eye lights are an individual visual exception: remove inherited NoEyes
+and add eyes through XOR. Keep NoSpeech, ordinary loot and the gas breath
+payload through spec_breath_gas_anatomical. He resets outside the ward.
+
+steam_jet uses environmental_hazard. It is headless, eyeless, armless,
+legless, corpseless, Inorganic, Bloodless, Analgic, Soulless and Mindless.
+It inherits Poison/Drain/Sleep/Charm/Hold/Paralysis/Psychic immunity.
+Dimensions are unspecified and size is Medium. Its native special is
+the existing spec_breath_steam, without the anatomical mouth guard: a
+broken pipe has no head. Existing Steam Breath damage, heat resistance,
+saving throw and item-soaking/destruction rules apply. Keep it physically
+attackable, with pipe 25047 available as loot. It adds no nonmagic barrier.
+
+brass_automaton uses bipedal_construct at 250 cm, 700 kg, Large and
+natural armour -6. It has a head, mirror eyes, arms, hands, feet and claw
+anatomy. The described circuitry has a mind, while the body is Inorganic,
+NoHeart, NoSpeech, Bloodless, Analgic and Soulless. Mind, pain and soul
+are independent properties. Poison/Drain/Sleep immunity applies; mental
+effects remain possible. The two robots keep their individual Judge100
+role, potions and lootable hydraulic claw gloves as hand-slot armour.
+Those gloves are not converted into body-part weapons or a new proc.
+
+serpent_avatar uses serpentine_reptile at 1200 cm long, 1500 kg and
+Large plus HUGE. It has a living heart, blood, scales, tail and fangs,
+with natural armour -15. Its two native specials choose Fire Breath70
+or Poison Bite30, each through the existing anatomical guard. This
+replaces the old Fire100 role; it does not chain both attacks in one
+selection. The returning wounded Kahsis retains her Rare rank and key,
+becomes female as the prose describes, and keeps NoSpeech for her
+unintelligible incantations. The human-looking Boss uses humanoid_avatar,
+175 cm/60 kg/Medium, keeping Priestess100, NoCorpse, NoSpeech and her
+telepathic frozen-lip voice. Both Queen forms already reset separately;
+no automatic death transformation or shared hit-point pool is added.
+
+The stormtrooper keeps its full spec_sahuagin override: protection,
+healing, offensive spells, Berserk and idle provocation are its authored
+role. A special's name does not determine a creature's species. Other
+caster/fighter roles and the existing Agony breath distribution stay.
+
+Ordinary animals reuse bat, crocodile, snake and constrictor_snake.
+Living snakes regain normal hearts. Water snakes get Swim without
+venom; the python gets the existing level-scaled constrictor special.
+Weed snakes remain harmless, and the existing venom roles use their
+fang-dependent wrapper. Keep the crocodiles' and snakes' Wimpy/passive
+settings and the three NoQuest flags. No population caps are changed.
+
+Crocodile gains stored fangs to match its existing fang attack. Bat,
+crocodile and constrictor_snake now use the existing head-injury trait.
+Bat descendants inherit it. A head injury pauses head-dependent attacks,
+while stored anatomy, usable claws and valid weapons retain their rules.
+Regenerate restores eligibility by curing the injury on creatures it
+can heal; the existing holy-healing rules still apply to undead NPCs.
+All previous armour and echolocation values stay. Nineteen earlier definitions across
+twelve areas use affected profiles; giant_sea_python already had the gate.
+
+Pain and Anguish become Elite; Makis and Burbis become Rare. Keep the
+existing Elite Seht/Agony, Boss human Queen and Rare serpent Queen.
+The other 22 definitions stay Common. Rank HP factors apply once, and
+rank retains its usual equipment bonus/randomisation effects. HP build
+letters are not ranks. All dimensions are descriptive estimates, with
+whole kg and numeric size 0/1/2. Use a zero measurement override when
+leaving an inherited measurement unknown, such as the small asp's mass.
+
+Preserve every deliberate behaviour, room flag, ward, seal key, object
+stat, reset placement/cap/order, area music, reset message and exp_mod115.
+The initial population remains131 with361 carried objects, refilling to
+136 with361 as before. Nine sex fields follow explicit he/her wording;
+28 small text repairs preserve the complete descriptions and dialogue.
+
+Makis, Seht and the bipedal robot get corrected portraits. Sunny Field's
+new art includes the exhausted traveller, collapsed opening and the
+explicitly described ghostly maiden and Mord Maggard. The full room
+story remains. Copy room25120's existing image to the exact GUI filename
+custom_rooms/25120_crash!.png and keep its old crash_.png alias.
+
+There is no current authored Kahsis.src. Temporary conversions are useful
+checks but do not replace or invent an authored source. Preserve raw
+XOR, specials, metadata, loot and resets in both directions. When a
+matching source exists, update and test that pair together.
+
+Linux, from the repository root, using separate check copies:
+    python3 builder/scribe/are2src.py server/area/kahsis.are /tmp/kahsis-check.src
+    perl builder/scribe/scribe.pl /tmp/kahsis-check.src /tmp/kahsis-roundtrip.are
+
+PowerShell, from C:\Games\dd4:
+    python .\builder\scribe\are2src.py .\server\area\kahsis.are "$env:USERPROFILE\Downloads\kahsis-check.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\kahsis-check.src" "$env:USERPROFILE\Downloads\kahsis-roundtrip.are"
+
+Use importer --force only when intentionally replacing its output.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -7549,7 +7677,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 513 current table rows follow, grouped by body. Numeric IDs are for
+All 520 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -7565,7 +7693,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (158)
+HUMANOID (161)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8041,6 +8169,15 @@ HUMANOID (158)
   [512] fury: h/w/l 175 / 65 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_undead; policy auto
+  [514] snakeman: h/w/l 200 / 100 / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [515] crocodileman: h/w/l 250 / 200 / ?; Large; family lizardman
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [516] enchanted_warrior: h/w/l 250 / 200 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 DRAGON (23)
 ------------
@@ -8141,7 +8278,7 @@ QUADRUPEDAL_REPTILE (8)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-SERPENTINE_REPTILE (10)
+SERPENTINE_REPTILE (11)
 ------------------------
   [ 30] giant_pit_viper: h/w/l ? / ? / 366; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8173,6 +8310,9 @@ SERPENTINE_REPTILE (10)
   [478] water_naga: h/w/l 80 / 100 / 305; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_poison_bite; policy auto
+  [519] serpent_avatar: h/w/l ? / 1500 / 1200; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_fire_anatomical, 2:spec_poison_bite; policy 70/30/0
 
 MYSTERIOUS_BEING (8)
 ----------------------
@@ -8243,7 +8383,7 @@ WINGED_REPTILE (3)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-BIPEDAL_CONSTRUCT (14)
+BIPEDAL_CONSTRUCT (16)
 -----------------------
   [ 38] animated_soft_toy: h/w/l 30 / 1 / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8285,6 +8425,12 @@ BIPEDAL_CONSTRUCT (14)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
   [486] headless_training_dummy: h/w/l 100 / 80 / ?; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [513] enchanted_guardian: h/w/l 300 / 600 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [518] brass_automaton: h/w/l 250 / 700 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
@@ -9065,7 +9211,7 @@ PLANT (12)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-ENVIRONMENTAL_HAZARD (7)
+ENVIRONMENTAL_HAZARD (8)
 --------------------------
   [159] fire_hazard: h/w/l ? / ? / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -9088,6 +9234,9 @@ ENVIRONMENTAL_HAZARD (7)
   [463] poison_floor: h/w/l ? / ? / 183; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_poison_contact; policy auto
+  [517] steam_jet: h/w/l ? / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_steam; policy auto
 
 MYRIAPOD (3)
 --------------
@@ -9489,7 +9638,9 @@ A listed parameter needs its existing consumer and any capability/special gate.
     criosphinx, giant_electric_eel, pig, dog, snake, giant_rat, centipede,
     imp, lizardman, hawk/terra_kan, elephant/mastodon/mammoth, griffin,
     lion, harpy, giant_lizard, rhinoceros, werepanther_beast_form,
-    weretiger and fury. Stored anatomy, usable claws and
+    weretiger, fury, bat and its descendants, crocodile, constrictor_snake,
+    snakeman, crocodileman, enchanted_warrior and serpent_avatar.
+    Stored anatomy, usable claws and
     independent casting remain unchanged. Valid ordinary wielded weapons
     keep their existing rules. The profile applies to all its NPC users.
     Regenerate can restore eligibility by healing the head injury.
@@ -10098,8 +10249,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/baaeac490f4b5bf6ff0de35f2fd4c5f30c354bfc
-  Base PR1029 plus the accompanying Argentium patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/81abce4ad2e57fb975d6d457a990b6f189693e55
+  Base PR1030 plus the accompanying Kahsis patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -10109,7 +10260,7 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-With this Argentium revision, the conversion covers
-116/153 areas (75.8%) and 2,256/4,131 definitions (54.6%).
+With this Kahsis revision, the conversion covers
+117/153 areas (76.5%) and 2,286/4,131 definitions (55.3%).
 
 END OF GUIDE
