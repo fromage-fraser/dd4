@@ -18954,3 +18954,152 @@ PowerShell, from C:\Games\dd4:
     perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\despair-check.src" "$env:USERPROFILE\Downloads\despair-roundtrip.are"
 
 Use importer --force only when intentionally replacing its output.
+
+== Bastion of Shadows
+
+All 30 definitions now use species and archetypes. Four profiles append at
+IDs 528–531: soul_collector, angel, spectral_minion and giant_raven. MAX_MOB
+is 532, with 40 body species,60 internal traits and 148 Scribe special names.
+The Shadow Lord reuses the existing cambion at 328. His claws and ordinary
+claw/fang attacks are individual body and MobAttackParts additions.
+No new body, trait ID, ACT identity flag, area field or player spell is added.
+
+soul_collector uses humanoid at 185cm/70kg/Medium, without extra armour or
+resistance. It has a mind, blood, pain and soul eligibility. Keep NoHeart
+and NoCorpse, cancelling the positive inherited heart as well as adding
+the absence flag. Those properties do not infer Undead, Inorganic,
+Bloodless, Analgic or Soulless. The type's native special is the existing
+spec_fascinating_gaze. This individual overrides the full set with
+spec_cast_undead 80% / spec_fascinating_gaze 20% / none 0%. The caster's name
+does not define its species.
+
+The existing gaze has a 25% attempt after selection and a Charm/Psychic
+save. A failed save causes one combat-pulse hesitation, without persistent
+domination or charm ownership. It needs a usable source head/eyes and an
+awake, sighted, minded non-object opponent who can see it; that opponent
+may be invisible. Existing action, safety, native magic, order and callback
+checks apply. The 80/20 vector chooses one special, without a free extra
+action. Preserve the Collector's silver eyes, voice, gear and original role.
+
+angel uses humanoid at 185cm/75kg/Medium, with feathered wings, Flying and
+natural armour-4. Resist Magic/Acid/Cold/Electricity; Poison immunity.
+Keep ordinary mind, blood, pain and soul, with no compulsory caster,
+regeneration, teleport, reverence aura or Nonmagic immunity. This is a
+generic DD4 celestial, rather than automatically a planetar or solar.
+
+All individual alignments and caster choices stay. The cloud angel 30619
+keeps its existing Elite rank, androgynous sex0, Adept 100 and held golden
+harp, which is already a musical instrument. Four Dark Angels keep the
+Undead caster and three Fallen Angels keep Archmage; the two captives
+gain no caster. None becomes undead because of a special's name.
+
+Preserve the actual wing damage described by the loot. Item 30612 says
+the captives' primary feathers are clipped;30637 describes the fallen
+ones' down-only wings without flight feathers. Cancel inherited Flying
+on 30605/30606/30624–30626 through raw affect XOR. Keep the wings and all
+other authored affects, including the captives' Faerie Fire. Their fatigue
+description does not add a permanent Drained condition. Dark/fallen angels
+30620–30626 retain their repeated NoHeart exception: cancel the positive
+inherited heart too. NoHeart does not automatically remove blood, pain
+or soul; the wing description explicitly describes bleeding.
+
+spectral_minion uses humanoid at 175cm/unspecified mass/Medium, preserving
+apparent head, eyes and limbs while cancelling fleshy heart/brain/guts.
+It is Undead, Flying, NoHeart, NoCorpse, NoSpeech, Inorganic, Bloodless and
+Analgic, while keeping a mind and soul. Natural armour-8, Magic/Dark
+resistance, Holy vulnerability and Nonmagic/Cold/Poison/Drain/Sleep/Charm/
+Hold/Paralysis immunity apply. Use existing turn_immunity and
+magical_natural_attacks traits. All ordinary unarmed DD4 attacks and loot
+stay; no life drain, instant Remove Curse kill or automatic ghost phase
+is added.
+
+Keep spec_spectral_minion on the six individuals. That routine contains
+40 fixed Bastion destinations, so it must not become the reusable type's
+native default. Its current movement already checks undead room access.
+Preserve all destinations, timers, greet attacks, Sentinel and aggression.
+The cloud sanctuary 30802 stays warded and outside its destination list.
+
+cambion already uses humanoid at 198cm/100kg/Medium, with natural armour-4,
+fangs/scales, Magic/Fire/Cold resistance and Electricity/Poison immunity.
+Its existing trait list gains the head-attack guard; older users 8830 and
+13108 have no ordinary attack parts and keep their existing combat roles.
+The Shadow Lord is individually120kg, adds claws and ordinary claw/fang
+attacks, and retains Psionicist 100, speech, magic flight/PassDoor, NoQuest,
+Boss rank, all original armour/sword/shield and key. Do not add compulsory
+wings, a Demon caster, summoning or a fear aura to this type.
+
+giant_raven uses bird at 100cm standing height,25kg and 150cm beak-to-tail,
+Large without HUGE. The estimated 3m wingspan stays descriptive prose.
+Use ordinary feathered bird anatomy, Flying, beak/claw contacts, natural
+armour-6 and the head-attack guard. There is no new resistance or special.
+Its traits have their own small list; the ordinary raven stays unchanged.
+
+The local Crow 30629 keeps the falconry hood, foot restraint, NoQuest and
+Sentinel. Cancel inherited positive eyes to preserve its existing NoEyes
+eye-targeting/visual-power restriction. This does not mean general blindness:
+can_see does not test HAS_EYES, and its ordinary perception stays unchanged.
+No Blind affect or new global vision rule is introduced. It is not a mount.
+
+Stone Gargoyles reuse gargoyle with a local240cm/400kg/Large build. Keep
+the conscious stone physiology, armour-5, magical natural attacks, Poison/
+Nonmagic immunity and Archmage100. Clear duplicate NoHeart/Inorganic raw
+bits. Add the existing head-attack guard to gargoyle: an injured head stops
+fang/horn contacts while claws and valid weapons retain their rules.
+All five earlier users 1602–1605 and 8321 keep their other properties.
+
+Hungry Demons reuse demon, locally160cm/100kg/Medium with claw anatomy and
+ordinary claw attacks. Keep NoSpeech, magic flight and the full Fido 100
+override. Dark Demons and the private mount reuse winged_demon with their
+actual bony wing drops, tail, claws/fangs, normal living organs, existing
+defences and authored NoSpeech/PassDoor/mount behaviour. The two stable
+demons keep Demon 100. The private mount uses 300cm/450kg/Large without HUGE,
+and keeps Fire Breath through spec_breath_fire_anatomical, including its
+head guard. Existing player mount roles stay; NPC riding is a separate task.
+
+Dark Stalkers are humans at 175cm/75kg/Medium, retaining stealth, flight,
+passivity and Sentinel differences. The name does not force the unrelated
+tabletop dark-stalker species.30612 now receives the six-item assassin kit
+already used by 30607–30611: dagger 30625/wield16, jerkin 30626/body5,
+boots 30627/feet8, pants 30628/legs7, hood 30629/head6 and star 30630/hold17.
+All 111 original item placements stay; carried items become 117 before and
+after refills, with the same37 inhabitants.
+
+The Weaponsmith uses orc: his prose leaves species open and the existing
+portrait is clearly orcish. Local180cm/95kg dimensions reflect his build.
+Keep male1, passivity, forge, gear and whetstone; no shop or teacher role
+is added. Longsword 30638's attack verb changes from hit (0) to slash (11), with
+all other item data preserved. Whetstone 30656 is also used by Omu Central;
+its definition, that area's source and both reset uses remain unchanged.
+
+The private mount and Collector become Rare. Preserve the existing Elite
+cloud angel and Boss Shadow Lord; the other 26 definitions stay Common.
+Rank HP factors apply once. Rank follows encounter design, not HP letters,
+job titles or level alone. Dimensions use whole kg and numeric size0/1/2.
+
+Preserve all 210 room flags/exits, ward30802, keys/portals/contents,13 inline
+programs, original spawn caps/placements/order, area exp_mod110 and all
+deliberate behaviour, sex and alignment fields. Nine small wording fixes
+and the crow reset's old owl comment preserve meaning and reset arguments.
+Keep wings, energy, souls and shadows as their authored armour/loot types;
+no wing targeting region or extra body weapon is invented.
+
+Five angel portraits and the two captive-cell scenes show the described
+clipped or down-only wings. Room 30747 keeps its title with a final period;
+dd-gui therefore requests custom_rooms/30747_a_trophy_room..png. Copy the
+existing image to that exact path and retain the old a_trophy_room_.png
+alias. All other filenames and artwork stay.
+
+There is no current authored Bastion.src. Temporary checks do not invent
+one in the repository. When a source pair exists, update and test both
+directions, preserving raw XOR, individual exceptions, vectors, scripts,
+metadata, equipment and reset order without flattening inherited defaults.
+
+Linux, from the repository root, using separate check copies:
+    python3 builder/scribe/are 2src.py server/area/bastion.are /tmp/bastion-check.src
+    perl builder/scribe/scribe.pl /tmp/bastion-check.src /tmp/bastion-roundtrip.are
+
+PowerShell, from C:\Games\dd4:
+    python .\builder\scribe\are 2src.py .\server\area\bastion.are "$env:USERPROFILE\Downloads\bastion-check.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\bastion-check.src" "$env:USERPROFILE\Downloads\bastion-roundtrip.are"
+
+Use importer --force only when intentionally replacing its output.

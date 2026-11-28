@@ -15,14 +15,18 @@ The stone gargoyle sits with its wings folded. Here and there you can see
 cracks and chips on its body as if it has been here for eternity. It appears
 to be lifeless, though you can't really be sure.
 ~
-2|32|64 8|32|512|8192|524288|4194304|8388608 0 S
+98 12591656 0 S
 85 0 0 0d0+0 0d0+0
-272 0
+0 0
 8 8 0
 >all_greet_prog 100~
 mpkill $n
 ~
 |
+< gargoyle~ common~
+MobHeight 240
+MobWeight 400
+MobSize 2
 #30601
 hungry demon~
 the Hungry Demon~
@@ -31,14 +35,18 @@ The hungry demon is scratching at the ground and scavenging for food.
 The demon is howling and whining with hunger as it scratches and claws the
 ground looking for buried scraps of food.
 ~
-32|64 8|32|512|8192|524288|8388608 0 S
+96 8921640 0 S
 80 0 0 0d0+0 0d0+0
-32 0
+8589934624 0
 8 8 0
 >all_greet_prog 100~
 mpkill $n
 ~
 |
+< demon~ common~
+MobHeight 160
+MobWeight 100
+MobAttackParts 8589934592
 #30602
 dark demon~
 the Dark Demon~
@@ -48,7 +56,7 @@ The dark demon has smooth, mottled-grey flesh and sinister red eyes that
 regard you with deathly intensity. It howls now and then, baring its sharp
 fangs and flapping its bony wings.
 ~
-2|131072 8|32|512|8192|524288|1048576|8388608 -1000 S
+131074 9445928 -1000 S
 80 0 0 0d0+0 0d0+0
 32 0
 8 8 0
@@ -56,6 +64,7 @@ fangs and flapping its bony wings.
 mpecho The dark demon screeches and howls.
 ~
 |
+< winged_demon~ common~
 #30603
 mount~
 the Shadow Lord's mount~
@@ -65,7 +74,7 @@ A large demon screeches and howls in a maddened frenzy and large globs of
 saliva drip from its jaws. It rampages about the room scratching and clawing
 at the walls of its stall.
 ~
-2|32|64|131072 8|32|512|2048|8192|524288|1048576|8388608 -1000 S
+131170 9447976 -1000 S
 110 0 0 0d0+0 0d0+0
 32 0
 8 8 0
@@ -76,6 +85,9 @@ mpkill $n
 mpasound {wLoud screeching and howling issues from somewhere nearby.{x
 ~
 |
+< winged_demon~ rare~
+MobHeight 300
+MobWeight 450
 #30604
 soul collector~
 the Soul Collector~
@@ -84,14 +96,15 @@ The Soul Collector is heating a poker in a brazier of hot coals.
 The Soul Collector regards you with cold silver eyes and you begin to feel
 mesmerised by them as he advances slowly towards you.
 ~
-2|64 8|32|512|524288|1048576|8388608 -1000 S
+66 9962024 -1000 S
 100 0 0 0d0+0 0d0+0
-80 0
+0 0
 8 8 1
 >all_greet_prog 100~
 mpecho {wA menacing voice says "Ah, another soul for the master..."{x
 ~
 |
+< soul_collector~ rare~
 #30605
 angel captive~
 a Captive Angel~
@@ -102,24 +115,26 @@ one and you don't get any response from trying to attract its attention.
 Either the ordeal it has suffered or something beyond your grasp has
 drained it of all its will to communicate.
 ~
-2|64 8|256|512 1000 S
+66 525064 1000 S
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< angel~ common~
 #30606
 captive angel~
 a Captive Angel~
-The pale figure of an  angel is being held captive here.
+The pale figure of an angel is being held captive here.
 ~
 This battered looking angel has obviously been tortured in more ways than
 one and you don't get any response from trying to attract its attention.
 Either the ordeal it has suffered or something beyond your grasp has drained
 it of all its will to communicate.
 ~
-2|64 8|256|512 1000 S
+66 525064 1000 S
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< angel~ common~
 #30607
 dark stalker assassin~
 the Dark Stalker~
@@ -129,10 +144,11 @@ The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
 Something metallic glimmers in the darkness.
 ~
-64 8|32|512|32768|65536|524288|8388608 -1000 S
+64 9011752 -1000 S
 95 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #30608
 dark stalker assassin~
 the Dark Stalker~
@@ -142,10 +158,11 @@ The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
 Something metallic glimmers in the darkness.
 ~
-64 8|32|512|32768|65536|524288|8388608 -1000 S
+64 9011752 -1000 S
 95 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #30609
 dark stalker assassin~
 the Dark Stalker~
@@ -155,10 +172,11 @@ The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
 Something metallic glimmers in the darkness.
 ~
-64 8|32|512|32768|65536|524288|8388608 -1000 S
+64 9011752 -1000 S
 95 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #30610
 dark stalker assassin~
 the Dark Stalker~
@@ -168,10 +186,11 @@ The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
 Something metallic glimmers in the darkness.
 ~
-64 8|32|512|32768|65536|524288|8388608 -1000 S
+64 9011752 -1000 S
 95 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #30611
 dark stalker assassin~
 the Dark Stalker~
@@ -181,10 +200,11 @@ The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
 Something metallic glimmers in the darkness.
 ~
-2|64 8|32|512|32768|65536|524288|8388608 -1000 S
+66 9011752 -1000 S
 95 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #30612
 dark stalker assassin~
 the Dark Stalker~
@@ -194,112 +214,119 @@ The dark figure is crouched in a patch of shadow.
 It is very still, trying not to be detected.
 Something metallic glimmers in the darkness.
 ~
-2|64 8|32|512|32768|65536|524288|8388608 -1000 S
+66 9011752 -1000 S
 95 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< human~ common~
 #30613
 spectral figure minion~
 the Spectral Minion~
 A spectral figure shimmers before you.
 ~
-The spectral figure shimmers and wavers like a mirage, it disappears then
+The spectral figure shimmers and wavers like a mirage. It disappears then
 reappears a moment later. With each visitation it issues an inhuman cry that
 causes a shiver to run down your spine.
 ~
-2|32|64 8|32|512|524288|1048576|8388608 0 S
+98 9437736 0 S
 90 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
 >all_greet_prog 100~
 mpkill $n
 ~
 |
+< spectral_minion~ common~
 #30614
 spectral figure minion~
 the Spectral Minion~
 A spectral figure shimmers before you.
 ~
-The spectral figure shimmers and wavers like a mirage, it disappears then
+The spectral figure shimmers and wavers like a mirage. It disappears then
 reappears a moment later. With each visitation it issues an inhuman cry that
 causes a shiver to run down your spine.
 ~
-2|32|64 8|32|512|524288|1048576|8388608 0 S
+98 9437736 0 S
 90 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
 >all_greet_prog 100~
 mpkill $n
 ~
 |
+< spectral_minion~ common~
 #30615
 spectral figure minion~
 the Spectral Minion~
 A spectral figure shimmers before you.
 ~
-The spectral figure shimmers and wavers like a mirage, it disappears then
+The spectral figure shimmers and wavers like a mirage. It disappears then
 reappears a moment later. With each visitation it issues an inhuman cry that
 causes a shiver to run down your spine.
 ~
-2|32|64 8|32|512|524288|1048576|8388608 0 S
+98 9437736 0 S
 90 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
 >all_greet_prog 100~
 mpkill $n
 ~
 |
+< spectral_minion~ common~
 #30616
 spectral figure minion~
 the Spectral Minion~
 A spectral figure shimmers before you.
 ~
-The spectral figure shimmers and wavers like a mirage, it disappears then
+The spectral figure shimmers and wavers like a mirage. It disappears then
 reappears a moment later. With each visitation it issues an inhuman cry
 that causes a shiver to run down your spine.
 ~
-2|32|64 8|32|512|524288|1048576|8388608 0 S
+98 9437736 0 S
 90 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
 >all_greet_prog 100~
 mpkill $n
 ~
 |
+< spectral_minion~ common~
 #30617
 spectral figure minion~
 the Spectral Minion~
 A spectral figure shimmers before you.
 ~
-The spectral figure shimmers and wavers like a mirage, it disappears then
+The spectral figure shimmers and wavers like a mirage. It disappears then
 reappears a moment later. With each visitation it issues an inhuman cry that
 causes a shiver to run down your spine.
 ~
-2|32|64 8|32|512|524288|1048576|8388608 0 S
+98 9437736 0 S
 90 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
 >all_greet_prog 100~
 mpkill $n
 ~
 |
+< spectral_minion~ common~
 #30618
 spectral figure minion~
 the Spectral Minion~
 A spectral figure shimmers before you.
 ~
-The spectral figure shimmers and wavers like a mirage, it disappears then
+The spectral figure shimmers and wavers like a mirage. It disappears then
 reappears a moment later. With each visitation it issues an inhuman cry that
 causes a shiver to run down your spine.
 ~
-2|32|64 8|32|512|524288|1048576|8388608 0 S
+98 9437736 0 S
 90 0 0 0d0+0 0d0+0
-96 0
+0 0
 8 8 0
 >all_greet_prog 100~
 mpkill $n
 ~
 |
+< spectral_minion~ common~
 #30619
 Angel~
 the Angel~
@@ -310,11 +337,11 @@ serenity. It is sitting gracefully on a nearby cloud, strumming a golden
 harp and singing an enchanting song. Floating above the angel's head a
 golden halo is shining in the sun and long white robes billow out around it.
 ~
-2|64 8|32|128|512|524288|8388608|536870912 1000 S
+66 545260200 1000 S
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 0
-< reserved~ elite~
+< angel~ elite~
 #30620
 dark angel~
 the Dark Angel~
@@ -324,10 +351,11 @@ The angel has a pale complexion and jet black hair, the same colour as its
 eyes. It spreads its large feathered wings and regards you with a menacing
 look.
 ~
-2|64 8|32|512|524288|4194304|8388608 -1000 S
+66 12583464 -1000 S
 100 0 0 0d0+0 0d0+0
-16 0
+262160 0
 8 8 0
+< angel~ common~
 #30621
 dark angel~
 the Dark Angel~
@@ -337,10 +365,11 @@ The angel has a pale complexion and jet black hair, the same colour as its
 eyes. It spreads its large feathered wings and regards you with a menacing
 look.
 ~
-2|64 8|32|512|524288|4194304|8388608 -1000 S
+66 12583464 -1000 S
 100 0 0 0d0+0 0d0+0
-16 0
+262160 0
 8 8 0
+< angel~ common~
 #30622
 dark angel~
 the Dark Angel~
@@ -350,10 +379,11 @@ The angel has a pale complexion and jet black hair, the same colour as its
 eyes. It spreads its large feathered wings and regards you with a menacing
 look.
 ~
-2|64 8|32|512|524288|4194304|8388608 -1000 S
+66 12583464 -1000 S
 100 0 0 0d0+0 0d0+0
-16 0
+262160 0
 8 8 0
+< angel~ common~
 #30623
 dark angel~
 the Dark Angel~
@@ -363,10 +393,11 @@ The angel has a pale complexion and jet black hair, the same colour as its
 eyes. It spreads its large feathered wings and regards you with a menacing
 look.
 ~
-2|64 8|32|512|524288|4194304|8388608 -1000 S
+66 12583464 -1000 S
 100 0 0 0d0+0 0d0+0
-16 0
+262160 0
 8 8 0
+< angel~ common~
 #30624
 fallen angel~
 the Fallen Angel~
@@ -376,10 +407,11 @@ The angel doesn't seem to be interested in your presence. It has a vacant
 expression on its pale face and there is no spark of life in its steely
 grey eyes.
 ~
-64 8|32|512|8388608 0 S
+64 8913448 0 S
 100 0 0 0d0+0 0d0+0
-16 0
+262160 0
 8 8 0
+< angel~ common~
 #30625
 fallen angel~
 the Fallen Angel~
@@ -389,10 +421,11 @@ The angel doesn't seem to be interested in your presence. It has a vacant
 expression on its pale face and there is no spark of life in its steely
 grey eyes.
 ~
-64 8|32|512|8388608 0 S
+64 8913448 0 S
 100 0 0 0d0+0 0d0+0
-16 0
+262160 0
 8 8 0
+< angel~ common~
 #30626
 fallen angel~
 the Fallen Angel~
@@ -402,10 +435,11 @@ The angel doesn't seem to be interested in your presence. It has a vacant
 expression on its pale face and there is no spark of life in its steely
 grey eyes.
 ~
-64 8|32|512|8388608 0 S
+64 8913448 0 S
 100 0 0 0d0+0 0d0+0
-16 0
+262160 0
 8 8 0
+< angel~ common~
 #30627
 weapon smith weaponsmith~
 the Weaponsmith~
@@ -416,10 +450,13 @@ before continuing with his task. His muscles bunch and ripple as he
 skilfully runs the whetstone down the blade. He seems to be too intent
 upon his work to notice you have arrived.
 ~
-2|64 8|32|512 0 S
+66 40 0 S
 100 0 0 0d0+0 0d0+0
 0 0
 8 8 1
+< orc~ common~
+MobHeight 180
+MobWeight 95
 #30628
 shadow lord~
 the Shadow Lord~
@@ -431,16 +468,18 @@ attempting to stand upright. His feet seem to be human but his hands
 have long claws protruding from the ends of his bony fingers. He grinds
 his teeth in his lumpy head and seems to be regarding you as a tasty morsel.
 ~
-2|32|64|512 8|32|512|2048|8192|524288|1048576|8388608 -1000 S
+610 9972264 -1000 S
 115 0 0 0d0+0 0d0+0
-0 0
+8589934592 0
 8 8 1
 >all_greet_prog 100~
 mpecho {wThe Shadow Lord turns towards you and shrieks, "You dare to disturb me!"{x
 mpkill $n
 ~
 |
-< reserved~ boss~
+< cambion~ boss~
+MobWeight 120
+MobAttackParts 25769803776
 #30629
 giant crow~
 the Giant crow~
@@ -450,10 +489,11 @@ The huge crow is secured to its perch with a heavy thong that is tied
 around one of its feet. Its head and eyes are covered by a leather hood
 with black feathers sprouting from the top.
 ~
-2|64|512 8|32|512|8192|524288|8388608 0 S
+578 8397352 0 S
 95 0 0 0d0+0 0d0+0
-38 0
+33554434 0
 8 8 0
+< giant_raven~ common~
 #0
 
 
@@ -476,7 +516,7 @@ A
 17 -100
 E
 chipped stone wings~
-The large stone wings are chipped and cracked in many places, They must be
+The large stone wings are chipped and cracked in many places. They must be
 very old.
 
 ~
@@ -636,7 +676,7 @@ being a victim of its employment makes you feel more than a little uncomfortable
 #30612
 clipped wings~
 clipped wings~
-A pair of white feathered wings at lying here.~
+A pair of white feathered wings are lying here.~
 ~
 9 1024 1|1024
 0~ 0~ 0~ 0~
@@ -1116,7 +1156,7 @@ a longsword~
 A longsword has been abandoned here.~
 ~
 5 2|16777216 1|8192
-0~ 0~ 0~ 0~
+0~ 0~ 0~ 11~
 3 0 0
 A
 18 10
@@ -6021,6 +6061,12 @@ E 1 30637 100 12
 *
 *
 M 1 30612 1 30767           the Dark Stalker to A dark corridor
+E 1 30625 100 16
+E 1 30626 100 5
+E 1 30627 100 8
+E 1 30628 100 7
+E 1 30629 100 6
+E 1 30630 100 17
 *
 M 1 30622 1 30768           the Dark Angel to A cold room
 E 1 30608 100 4
@@ -6053,7 +6099,7 @@ E 1 30647 100 7
 E 1 30649 100 11
 G 1 30654 100
 *
-M 1 30629 1 30786           the Giant owl to shadow lords chambers
+M 1 30629 1 30786           the Giant crow to shadow lords chambers
 E 1 30650 100 6
 E 1 30651 100 8
 D 1 30641 2 2           ; Floating In the shadows Lock South
@@ -6160,8 +6206,11 @@ S
 M  30600 spec_cast_archmage         the Gargoyle
 M  30601 spec_fido                  the Hungry Demon
 M  30602 spec_demon                 the Dark Demon
-M  30603 spec_breath_fire           the Shadow Lords mount
-M  30604 spec_cast_undead           the Soul Collector
+M  30603 spec_breath_fire_anatomical           the Shadow Lords mount
+N 30604 1 spec_cast_undead
+N 30604 2 spec_fascinating_gaze
+N 30604 3 none
+P 30604 80 20 0
 M  30613 spec_spectral_minion       the Spectral Minion
 M  30614 spec_spectral_minion       the Spectral Minion
 M  30615 spec_spectral_minion       the Spectral Minion

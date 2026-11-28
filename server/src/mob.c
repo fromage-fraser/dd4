@@ -6528,6 +6528,46 @@ const struct mob_type mob_table[MAX_MOB] =
                 300, 3000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_draining_breath", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1200
+        },
+        {
+                "soul_collector", "humanoid", "icon1", "icon2",
+                0, 0,
+                PART_HEART | BODY_NO_HEART | BODY_NO_CORPSE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                185, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_fascinating_gaze", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "angel", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_FEATHERS,
+                0, RES_MAGIC | RES_ACID | RES_COLD | RES_ELECTRICITY, 0, RES_POISON,
+                0, 0, 0, 0,
+                185, 75, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "spectral_minion", "humanoid", "icon1", "icon2",
+                ACT_UNDEAD, AFF_FLYING,
+                PART_HEART | PART_BRAINS | PART_GUTS | BODY_NO_HEART | BODY_NO_CORPSE | BODY_NO_SPEECH | BODY_INORGANIC | BODY_BLOODLESS | BODY_ANALGIC,
+                0, RES_MAGIC | RES_DARK, RES_HOLY, RES_NONMAGIC | RES_COLD | RES_POISON | RES_DRAIN | RES_SLEEP | RES_CHARM | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                175, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "giant_raven", "bird", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_CLAWS,
+                PART_BEAK | PART_CLAWS, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 25, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
         }
 };
 
@@ -7473,7 +7513,8 @@ static const CREATURE_TRAIT_CHANGE shambling_mound_trait_changes[] =
 static const CREATURE_TRAIT_CHANGE gargoyle_trait_changes[] =
 {
         {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
-        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
 static const CREATURE_TRAIT_CHANGE killer_frog_trait_changes[] =
@@ -7844,7 +7885,8 @@ static const CREATURE_TRAIT_CHANGE retriever_trait_changes[] =
 };
 static const CREATURE_TRAIT_CHANGE cambion_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 static const CREATURE_TRAIT_CHANGE water_weird_trait_changes[] =
 {
@@ -8315,8 +8357,27 @@ static const CREATURE_TRAIT_CHANGE shadow_dragon_trait_changes[] =
         {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE angel_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE spectral_minion_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_TURN_IMMUNITY, 1},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE giant_raven_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"angel", NULL, angel_trait_changes, TRAIT_ITEMS(angel_trait_changes)},
+        {"spectral_minion", NULL, spectral_minion_trait_changes, TRAIT_ITEMS(spectral_minion_trait_changes)},
+        {"giant_raven", NULL, giant_raven_trait_changes, TRAIT_ITEMS(giant_raven_trait_changes)},
         {"blood_worm", NULL, blood_worm_trait_changes, TRAIT_ITEMS(blood_worm_trait_changes)},
         {"mist_wolf", "wolf", mist_wolf_trait_changes, TRAIT_ITEMS(mist_wolf_trait_changes)},
         {"nighthunter", NULL, nighthunter_trait_changes, TRAIT_ITEMS(nighthunter_trait_changes)},
