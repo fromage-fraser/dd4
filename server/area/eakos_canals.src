@@ -41,14 +41,16 @@ feeds among the drowned stones.
 lv  70
 sx  neuter
 al  0
-act regenerator scavenger stay_area
-aff slow swim infrared
-bf  no_speech has_tail no_arms no_legs huge
+act 2116
+aff 9223372036854776320
+bf 512
 mp  fight_prog 10
 spit $n
 ~
 ff  underwater
 ff  underwater_ground
+archetype giant_sea_slug
+rnk common
 
 $mob
 vn  29201
@@ -64,15 +66,17 @@ the dark rocks below.
 lv  71
 sx  female
 al  300
-act stay_area wimpy
-aff det_good infrared protection swim
-bf  has_tail no_arms no_legs no_speech
+act 192
+aff 1073750528
+bf 512
 mp  rand_prog 3
 mpasound <69>A violent stream of bubbles catches your eye.<0>
 ~
 mp  fight_prog 10
 bubble $n
 ~
+archetype marple
+rnk common
 
 $mob
 vn  29202
@@ -88,15 +92,17 @@ the dark rocks below.
 lv  71
 sx  male
 al  315
-act stay_area wimpy
-aff det_good infrared protection swim
-bf  has_tail no_arms no_legs no_speech
+act 192
+aff 1073750528
+bf 512
 mp  rand_prog 3
 mpasound <69>A violent stream of bubbles catches your eye.<0>
 ~
 mp  fight_prog 10
 bubble $n
 ~
+archetype marple
+rnk common
 
 $mob
 vn  29203
@@ -114,9 +120,9 @@ water.
 lv  71
 sx  neuter
 al  -95
-act stay_area
-aff slow swim protection blind battle_aura infrared
-bf  no_speech no_eyes no_head
+act 64
+aff 9223372036858978816
+bf 0
 mp  rand_prog 3
 mpasound <218>A piercing titter echoes through the deep water.<0>
 ~
@@ -124,6 +130,8 @@ mp  fight_prog 8
 mpechoat $n <218>The ingkludd shrieks at you through its foul-looking breathing-hole!<0>
 c sonic $n
 ~
+archetype ingkludd
+rnk common
 
 $mob
 vn  29204
@@ -139,9 +147,9 @@ mournful song trembles through the crushing dark.
 lv  72
 sx  female
 al  -290
-act stay_area no_charm
-aff swim fly infrared protection
-bf  no_speech
+act 4160
+aff 532992
+bf 32
 mp  rand_prog 2
 mpasound <37>A mournful song echoes through the deep.<0>
 ~
@@ -154,6 +162,8 @@ else
         c 'paralysis' $n
 endif
 ~
+archetype deepsea_harpy
+rnk common
 
 $mob
 vn  29205
@@ -169,9 +179,9 @@ every movement with quiet confidence.
 lv  73
 sx  male
 al  -125
-act stay_area
-aff swim infrared battle_aura det_magic det_good
-bf  huge
+act 64
+aff 1077936656
+bf 0
 mp  fight_prog 8
 if inrflag($n) ==  131072
         break
@@ -180,6 +190,8 @@ else
         c glaciation $n
 endif
 ~
+archetype water_giant
+rnk common
 
 $mob
 vn  29206
@@ -196,13 +208,16 @@ give way.
 lv  73
 sx  female
 al  -155
-act stay_area
-aff swim infrared battle_aura det_magic det_good
-bf  huge
+act 64
+aff 1077936656
+bf 0
 rnk elite
 mp  fight_prog 8
 c 'fury of nature' $n
 ~
+archetype water_giant
+height 550
+weight 1400
 
 $mob
 vn  29207
@@ -218,9 +233,9 @@ bargain than with a blade.
 lv  73
 sx  male
 al  0
-act stay_area no_charm
-aff swim det_hidden det_invis det_sneak infrared protection
-bf  none
+act 4160
+aff 8397352
+bf 0
 mp  fight_prog 5
 if affspell($n) == 565
     break
@@ -265,6 +280,8 @@ say What a fine anchor you would make—heavy, dull, and a massive drag on every
 mp  rand_prog 1
 say I’d tell you to get a backbone, but you’d just slither away.
 ~
+archetype lorwyn_merrow
+rnk common
 
 $mob
 vn  29208
@@ -280,9 +297,9 @@ quietly outmanoeuvre.
 lv  73
 sx  female
 al  0
-act stay_area no_charm
-aff swim det_hidden det_invis det_sneak infrared protection
-bf  none
+act 4160
+aff 8397352
+bf 0
 mp  fight_prog 10
 if affspell($n) == 277
         break
@@ -330,6 +347,8 @@ else
 endif
 ^
 ~
+archetype lorwyn_merrow
+rnk common
 
 $mob
 vn  29209
@@ -346,9 +365,9 @@ the deep, dark ocean, hunting for prey.  Today might be your unlucky day.
 lv  74
 sx  female
 al  0
-act stay_area regenerator
-aff swim det_hidden det_sneak infrared battle_aura deter slow
-bf  huge has_tail no_speech no_arms
+act 2112
+aff 9223372036900913696
+bf 512
 rnk elite
 mp  fight_prog 6
 swallow $n
@@ -359,6 +378,7 @@ mpkill $n
 mp  entry_prog 5
 mpkill $n
 ~
+archetype deinosuchus
 
 $mob
 vn  29210
@@ -375,9 +395,9 @@ predator.  Whelp.
 lv  74
 sx  male
 al  0
-act stay_area regenerator
-aff swim det_hidden det_sneak infrared battle_aura deter slow
-bf  huge has_tail no_speech no_arms
+act 2112
+aff 9223372036900913696
+bf 512
 rnk elite
 mp  fight_prog 8
 swallow $n
@@ -388,6 +408,7 @@ mpkill $n
 mp  entry_prog 7
 mpkill $n
 ~
+archetype deinosuchus
 
 $mob
 vn  29211
@@ -406,9 +427,9 @@ swallowing it whole.
 lv  75
 sx  female
 al  -55
-act stay_area
-aff swim infrared det_sneak det_hidden sneak
-bf  huge has_tail no_speech no_arms no_legs
+act 64
+aff 8421920
+bf 512
 rnk rare
 mp  fight_prog 10
 swallow $n
@@ -430,6 +451,7 @@ mp  death_prog 100
 mpecho Something is expelled from the mosasaur's body...
 mpoload 29252 75
 ~
+archetype mosasaur
 
 $mob
 vn  29212
@@ -448,11 +470,10 @@ understands what has found them.
 lv  75
 sx  male
 al  -55
-act stay_area regenerator
-aff swim infrared det_sneak sneak det_hidden hide det_magic battle_aura
-bf  huge has_tail no_speech no_arms
+act 2112
+aff 12681776
+bf 512
 rnk boss
-sp  spec_breath_steam
 mp  greet_prog 15
 mpkill $n
 ~
@@ -462,6 +483,7 @@ mpkill $n
 mp  death_prog 100
 mpoload 29248 83
 ~
+archetype wretchglow
 
 $mob
 vn  29213
@@ -478,9 +500,9 @@ becomes swift, predatory, and horribly at home.
 lv  75
 sx  male
 al  -1000
-act stay_area
-aff swim infrared det_evil det_good protection
-bf  no_corpse
+act 64
+aff 1073750532
+bf 0
 mp  fight_prog 9
 c 'synaptic blast' $n
 ~
@@ -492,6 +514,8 @@ mpoload 29216
 
 
 ~
+archetype deep_scion
+rnk common
 
 $mob
 vn  29214
@@ -509,9 +533,9 @@ feel like a cruel memory wearing a monster’s skin.
 lv  75
 sx  female
 al  -1000
-act stay_area
-aff swim infrared det_evil det_good protection
-bf  no_corpse
+act 64
+aff 1073750532
+bf 0
 mp  fight_prog 10
 c 'synaptic blast' $n
 ~
@@ -521,6 +545,8 @@ mpoload 29217
 
 
 ~
+archetype deep_scion
+rnk common
 
 $mob
 vn  29215
@@ -538,9 +564,9 @@ living down.
 lv  76
 sx  neuter
 al  -1000
-act stay_area regenerator
-aff swim infrared det_evil det_good invis passdoor protection sneak det_invis det_magic det_sneak fly hide
-bf  no_corpse no_speech inorganic no_legs has_tail
+act 2112
+aff 1150919198
+bf 2191529543
 rnk elite
 mp  fight_prog 5
 if inrflag($n) ==  131072
@@ -560,6 +586,8 @@ c 'fury of nature' $n
 mp  fight_prog 5
 bubble $n
 ~
+archetype water_weird
+height 180
 
 $mob
 vn  29216
@@ -577,11 +605,11 @@ in lightless trenches rather than mortal seas.
 lv  78
 sx  male
 al  -375
-act regenerator stay_area scavenger
-aff blind swim
-bf  no_eyes has_tail
+act 2116
+aff 0
+bf 512
 rnk rare
-sp  spec_bloodsucker
+archetype anguillian
 
 $mob
 vn  29217
@@ -600,11 +628,11 @@ as she is on guard for anything foolish enough to come near her brood.
 lv  78
 sx  female
 al  -385
-act regenerator stay_area scavenger
-aff blind swim
-bf  no_eyes has_tail
+act 2116
+aff 0
+bf 512
 rnk rare
-sp  spec_bloodsucker
+archetype anguillian
 
 $mob
 vn  29218
@@ -614,15 +642,15 @@ lo  A towering ocean strider plows through the water, black-and-white skin gleam
 de
 This enormous aquatic fey resembles a strange union of giant elf and orca, 
 standing nearly twenty feet tall with smooth, glossy black-and-white skin, sharp 
-teeth and a powerful tail. He moves athrough the deep undersea as though it were 
+teeth and a powerful tail. He moves through the deep undersea as though it were
 solid ground, carrying himself with eerie grace and terrible confidence.
 ~
 lv  79
 sx  male
 al  0
-act stay_area
-aff battle_aura det_evil det_hidden det_sneak swim det_invis
-bf  huge no_speech
+act 64
+aff 12582956
+bf 32
 rnk elite
 sp  spec_warrior
 mp  act_prog p from the corpse of
@@ -630,6 +658,7 @@ mpecho {RAn ocean strider looks at you with fury and disgust!{x
 murder $n
 
 ~
+archetype ocean_strider
 
 $mob
 vn  29219
@@ -639,21 +668,22 @@ lo  A huge ocean strider marches through the water, her piebald skin shimmering.
 de
 This enormous aquatic fey resembles a strange union of giant elf and orca, 
 standing nearly twenty feet tall with smooth, glossy black-and-white skin, sharp 
-teeth and a powerful tail. She moves athrough the deep undersea as though it 
+teeth and a powerful tail. She moves through the deep undersea as though it
 were solid ground, carrying herself with haughty grace and terrible confidence.
 ~
 lv  79
 sx  female
 al  0
-act stay_area
-aff battle_aura det_evil det_hidden det_sneak swim det_invis
-bf  huge no_speech
+act 64
+aff 12582956
+bf 32
 rnk elite
 sp  spec_cast_priestess
 mp  act_prog p from the corpse of
 mpecho {RAn ocean strider looks at you with fury and disgust!{x
 murder $n
 ~
+archetype ocean_strider
 
 $mob
 vn  29220
@@ -671,10 +701,9 @@ seems as though every treasure here is an extension of her own pale splendour.
 lv  80
 sx  female
 al  0
-act sentinel stay_area
-aff det_curse det_evil det_good det_invis det_sneak det_magic det_hidden fly protection sanctuary swim
-bf  huge has_tail no_arms
-sp  spec_breath_steam
+act 66
+aff 1619009724
+bf 512
 mp  fight_prog 5
 swallow $n
 ~
@@ -695,6 +724,8 @@ mpoload 29247 83
 mpoload 29226 80
 mpcost hide cost 10000
 ~
+archetype pearl_dragon
+rnk common
 
 $mob
 vn  29221
@@ -711,9 +742,9 @@ flex almost imperceptibly, waiting to pierce careless flesh.
 lv  79
 sx  male
 al  0
-act stay_area sentinel
-aff blind hide swim
-bf  no_speech no_arms no_eyes no_head no_heart no_legs
+act 66
+aff 65537
+bf 0
 mp  all_greet_prog 10
 mpechoat $n {WYou accidentally step on a stone urchin!{x
 mpkill $n
@@ -722,6 +753,8 @@ mp  death_prog 100
 mpoload 29228
 mpotimer chunk 100
 ~
+archetype stone_urchin
+rnk common
 
 $mob
 vn  29222
@@ -738,9 +771,9 @@ flex almost imperceptibly, waiting to pierce careless flesh.
 lv  79
 sx  female
 al  0
-act stay_area sentinel
-aff blind hide swim
-bf  no_speech no_arms no_eyes no_head no_heart no_legs
+act 66
+aff 65537
+bf 0
 mp  all_greet_prog 10
 mpechoat $n {WYou accidentally step on a stone urchin!{x
 mpkill $n
@@ -749,6 +782,8 @@ mp  death_prog 100
 mpoload 29228
 mpotimer chunk 100
 ~
+archetype stone_urchin
+rnk common
 
 $mob
 vn  29223
@@ -764,9 +799,9 @@ as though tasting blood in the current.
 lv  80
 sx  female
 al  -485
-act regenerator stay_area
-aff swim infrared det_good det_hidden
-bf  no_speech
+act 64
+aff 1073741856
+bf 32
 mp  fight_prog 9
 c starve $n
 ~
@@ -777,6 +812,8 @@ mp  death_prog 50
 mpoload 29229
 mpotimer chunk 100
 ~
+archetype scrag
+rnk common
 
 $mob
 vn  29224
@@ -792,9 +829,9 @@ as though tasting blood in the current.
 lv  80
 sx  male
 al  -435
-act regenerator stay_area
-aff swim infrared det_good det_hidden
-bf  no_speech
+act 64
+aff 1073741856
+bf 32
 mp  fight_prog 9
 c starve $n
 ~
@@ -805,6 +842,8 @@ mp  death_prog 50
 mpoload 29230
 mpotimer chunk 100
 ~
+archetype scrag
+rnk common
 
 $mob
 vn  29225
@@ -821,9 +860,9 @@ fog-wrapped magic of his wild-blooded race.
 lv  80
 sx  male
 al  -120
-act stay_area
-aff swim fly
-bf  none
+act 64
+aff 0
+bf 0
 mp  fight_prog 8
 if inrflag($n) ==  131072
         break
@@ -841,6 +880,8 @@ or subclass($n) != 12
     c 'chill touch' $n
 endif
 ~
+archetype ashiera
+rnk common
 
 $mob
 vn  29226
@@ -857,9 +898,9 @@ her people show in sea or sky.
 lv  80
 sx  female
 al  -125
-act stay_area
-aff swim fly
-bf  none
+act 64
+aff 0
+bf 0
 mp  fight_prog 8
 if inrflag($n) ==  131072
         break
@@ -877,6 +918,8 @@ or subclass($n) != 12
     c 'chill touch' $n
 endif
 ~
+archetype ashiera
+rnk common
 
 $mob
 vn  29227
@@ -892,14 +935,15 @@ sunken treasure ornament his vivid eelskin clothing.
 lv  81
 sx  male
 al  850
-act no_charm stay_area wimpy no_summon
-aff det_evil det_good det_invis invis swim fly sanctuary infrared det_curse protection
-bf  none
-sp  spec_cast_water_sprite
+act 8392896
+aff 1611145870
+bf 0
 mp  death_prog 50
 mpoload 29239
 mpotimer chunk 200
 ~
+archetype ocean_sprite
+rnk common
 
 $mob
 vn  29228
@@ -915,14 +959,15 @@ decorated with coral, pearls and tiny treasures gathered from the ocean floor.
 lv  81
 sx  female
 al  850
-act no_charm stay_area wimpy no_summon
-aff det_evil det_good det_invis invis swim fly sanctuary infrared det_curse protection
-bf  none
-sp  spec_cast_water_sprite
+act 8392896
+aff 1611145870
+bf 0
 mp  death_prog 25
 mpoload 29239
 mpotimer chunk 200
 ~
+archetype ocean_sprite
+rnk common
 
 $mob
 vn  29229
@@ -937,9 +982,9 @@ beneath its plated belly.
 lv  82
 sx  male
 al  750
-act stay_area mount
-aff protection swim
-bf  no_arms no_legs has_tail
+act 131136
+aff 8192
+bf 512
 mp  fight_prog 10
 bubble $n
 ~
@@ -963,6 +1008,8 @@ if rand(50)
 mpmload 29231
 endif
 ~
+archetype giant_seahorse
+rnk common
 
 $mob
 vn  29230
@@ -977,12 +1024,14 @@ grips coral when the current grows strong.
 lv  82
 sx  female
 al  750
-act stay_area mount
-aff protection swim
-bf  has_tail no_arms no_legs
+act 131136
+aff 8192
+bf 512
 mp  fight_prog 10
 bubble $n
 ~
+archetype giant_seahorse
+rnk common
 
 $mob
 vn  29231
@@ -997,12 +1046,14 @@ translucent armour and tightly curled tail mark it as scarcely born.
 lv  80
 sx  male
 al  350
-act stay_area mount wimpy
-aff protection swim passdoor
-bf  has_tail no_arms no_legs
+act 192
+aff 1056768
+bf 512
 mp  fight_prog 10
 bubble $n
 ~
+archetype newborn_giant_seahorse
+rnk common
 
 $mob
 vn  29232
@@ -1018,9 +1069,9 @@ delight.
 lv  83
 sx  male
 al  -1000
-act stay_area no_charm regenerator
-aff passdoor swim fly infrared det_good det_magic det_invis
-bf  no_corpse has_tail
+act 6208
+aff 1142424088
+bf 512
 rnk rare
 sp  spec_cast_undead
 mp  fight_prog 2
@@ -1029,6 +1080,7 @@ c inebriate $n
 mp  fight_prog 1
 c parch $n
 ~
+archetype vapour_imp
 
 $mob
 vn  29233
@@ -1043,9 +1095,9 @@ around her blazing red eyes and needle-toothed smile.
 lv  83
 sx  female
 al  -1000
-act stay_area no_charm regenerator
-aff passdoor swim fly infrared det_good det_magic det_invis
-bf  no_corpse has_tail no_speech
+act 6208
+aff 1142424088
+bf 544
 rnk rare
 sp  spec_demon
 mp  fight_prog 1
@@ -1054,6 +1106,7 @@ c banish $n
 mp  fight_prog 1
 c starve $n
 ~
+archetype vapour_imp
 
 $mob
 vn  29234
@@ -1070,11 +1123,10 @@ predatory teeth.
 lv  84
 sx  male
 al  -75
-act stay_area no_summon no_charm
-aff det_curse det_evil det_good det_hidden det_invis det_magic det_sneak det_traps swim
-bf  no_speech huge has_tail no_arms no_legs
+act 8392768
+aff 1621098556
+bf 512
 rnk elite
-sp  spec_breath_gas
 mp  fight_prog 8
 swallow $n
 ~
@@ -1092,6 +1144,7 @@ mpoload 29245
 mpotimer egg 150
 endif
 ~
+archetype sea_wyrm
 
 $mob
 vn  29235
@@ -1108,11 +1161,10 @@ slavering lamprey mouth.
 lv  85
 sx  male
 al  -1000
-act no_charm stay_area regenerator no_summon
-aff det_curse det_hidden det_magic det_sneak det_evil det_invis det_good infrared protection swim globe
-bf  huge has_tail no_legs
+act 8394816
+aff 1635787324
+bf 512
 rnk boss
-sp  spec_breath_gas
 mp  fight_prog 7
 c 'acid breath' $n
 ~
@@ -1131,6 +1183,7 @@ endif
 mp  death_prog 100
 mpoload 29249 83
 ~
+archetype myrmyxicus
 
 $mob
 vn  29236
@@ -1149,16 +1202,21 @@ into her drowned lair.
 lv  82
 sx  female
 al  -440
-act stay_area sentinel
-aff hide infrared det_sneak swim
-bf  no_arms no_speech
-sp  spec_poison
+act 66
+aff 75563520
+bf 0
 mp  greet_prog 8
 mpkill $n
 ~
 mp  death_prog 60
 mpoload 29250 80
 ~
+archetype venomous_spider
+rnk common
+height 90
+weight 120
+length 180
+size 2
 
 $mob
 vn  29237
@@ -1176,9 +1234,9 @@ drawing the victim down into the pulsing mouth at her centre.
 lv  82
 sx  female
 al  0
-act no_charm sentinel stay_area
-aff hold det_sneak det_invis infrared protection swim
-bf  no_speech no_arms no_eyes no_head no_heart no_legs huge
+act 4162
+aff 8397384
+bf 128
 sp  spec_poison
 mp  greet_prog 7
 mpkill $n
@@ -1192,6 +1250,12 @@ swallow $n
 ~
 
 # OBJECTS
+archetype sea_anemone
+rnk common
+height 300
+weight 2000
+length 600
+size 2
 
 $obj
 vn  29200
@@ -1291,7 +1355,7 @@ $obj
 vn  29206
 nm  water net
 sh  a water net
-lo  A new object lies here.
+lo  A carefully woven water net drifts here.
 ty  weapon
 wg  30
 ex  magic
@@ -1304,7 +1368,7 @@ ap  crit -8
 
 $obj
 vn  29207
-nm  viscious claws
+nm  vicious viscious claws
 sh  vicious claws
 lo  The claws of some deep sea creature lie here.
 ty  weapon
@@ -1345,7 +1409,7 @@ $obj
 vn  29209
 nm  massive jaws
 sh  massive jaws
-lo  The massive jaws of some crocodilian creature lie here.
+lo  The massive jaws of some huge sea creature lie here.
 ty  weapon
 wg  60
 ex  body_part no_remove steady sharp
@@ -1794,6 +1858,7 @@ ap  resist_cold -1
 ap  resist_heat -1
 ap  resist_lightning -1
 ap  save_spell -15
+v0 arm
 
 $obj
 vn  29241

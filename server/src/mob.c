@@ -705,6 +705,20 @@ const struct species_type species_table[MAX_SPECIES] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
                 NULL, NULL, NULL, MOB_SPECIAL_CHANCES_INHERIT,
                 GHOST_PHASE_NONE, MOB_TEMPLATE_UNSET
+        },
+        /* Four flippers and a tail give this reptile its aquatic body plan. */
+        {
+                "marine_reptile", 0, AFF_SWIM,
+                BODY_NO_ARMS | BODY_NO_LEGS | BODY_NO_SPEECH
+                    | PART_HEAD | PART_EYE | PART_HEART | PART_BRAINS
+                    | PART_GUTS | PART_FINS | PART_TAIL,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET,
+                NULL, NULL, NULL, MOB_SPECIAL_CHANCES_INHERIT,
+                GHOST_PHASE_NONE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -6568,6 +6582,226 @@ const struct mob_type mob_table[MAX_MOB] =
                 100, 25, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "giant_sea_slug", "limbless_invertebrate", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_HUGE,
+                0, 0, 0, RES_BLUNT,
+                0, 0, 0, 0,
+                100, 1500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 800
+        },
+        {
+                "marple", "fish", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                MOB_TEMPLATE_UNSET, 5, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 60
+        },
+        {
+                "ingkludd", "limbless_invertebrate", "icon1", "icon2",
+                0, AFF_SWIM | AFF_BLIND,
+                BODY_NO_HEAD | BODY_NO_EYES | PART_HEAD | PART_EYE | PART_HUSK_SHELL,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                60, 90, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 150
+        },
+        {
+                "deepsea_harpy", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                PART_CLAWS | PART_FINS,
+                PART_CLAWS, 0, 0, 0,
+                0, 0, 0, 0,
+                175, 60, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "water_giant", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_HUGE,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                600, 1800, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_GIANT, MOB_TEMPLATE_UNSET
+        },
+        {
+                "lorwyn_merrow", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_LEGS | PART_2_LEGS | PART_FEET | PART_FINS | PART_TAIL | PART_SCALES,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 80, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 210
+        },
+        {
+                "deinosuchus", "quadrupedal_reptile", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_HUGE | PART_SCALES | PART_FANGS | PART_TAIL,
+                PART_FANGS | PART_TAILATTACK, 0, 0, 0,
+                0, 0, 0, 0,
+                100, 5000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1000
+        },
+        {
+                "mosasaur", "marine_reptile", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_SCALES | PART_FANGS,
+                PART_FANGS | PART_TAILATTACK, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 7000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1200
+        },
+        {
+                "wretchglow", "quadrupedal_reptile", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_HUGE | PART_SCALES | PART_CLAWS | PART_FANGS | PART_TAIL,
+                PART_CLAWS | PART_FANGS | PART_TAILATTACK, 0, 0, 0,
+                0, 0, 0, 0,
+                300, 7000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_steam_anatomical", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1500
+        },
+        {
+                "deep_scion", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_CORPSE | PART_SCALES | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                180, 80, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "anguillian", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM | AFF_BLIND,
+                BODY_NO_EYES | PART_EYE | PART_FINS | PART_CLAWS | PART_FANGS | PART_TAIL,
+                PART_CLAWS | PART_FANGS | PART_TAILATTACK, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 70, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_bloodsucker_bite", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 183
+        },
+        {
+                "ocean_strider", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_HUGE | PART_FANGS | PART_TAIL,
+                PART_FANGS | PART_TAILATTACK, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                610, 1800, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "pearl_dragon", "dragon", "icon1", "icon2",
+                0, AFF_SWIM | AFF_FLYING,
+                BODY_HUGE | PART_WINGS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS | PART_TAILATTACK, RES_MAGIC, 0, 0,
+                0, 0, 0, 0,
+                300, 6000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_steam_anatomical", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1800
+        },
+        {
+                "stone_urchin", "radial_invertebrate", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_NO_ARMS | PART_ARMS | PART_MANY_ARMS | PART_HUSK_SHELL,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                60, 35, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 90
+        },
+        {
+                "scrag", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM | AFF_INFRARED,
+                PART_SCALES | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                305, 300, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 10, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_TROLL, MOB_TEMPLATE_UNSET
+        },
+        {
+                "ashiera", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM | AFF_FLYING,
+                0,
+                0, 0, RES_FIRE, 0,
+                0, 0, 0, 0,
+                168, 85, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "ocean_sprite", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                61, 4, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "spec_cast_water_sprite", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "giant_seahorse", "fish", "icon1", "icon2",
+                0, 0,
+                PART_HUSK_SHELL,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                180, 250, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 300
+        },
+        {
+                "newborn_giant_seahorse", "fish", "icon1", "icon2",
+                0, 0,
+                0,
+                0, 0, 0, 0,
+                0, 0, 0, 0,
+                10, 0, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 15
+        },
+        {
+                "vapour_imp", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_NO_CORPSE | PART_CLAWS | PART_FANGS | PART_HORNS | PART_TAIL,
+                PART_CLAWS | PART_FANGS, 0, 0, RES_COLD | RES_POISON | RES_SLEEP | RES_CHARM | RES_HOLD | RES_PARALYSIS | RES_NONMAGIC,
+                0, 0, 0, 0,
+                61, 12, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "sea_wyrm", "serpentine_reptile", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_HUGE | PART_SCALES | PART_FANGS | PART_TAIL,
+                PART_FANGS | PART_TAILATTACK, 0, 0, 0,
+                0, 0, 0, 0,
+                0, 900, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_gas_anatomical", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 760
+        },
+        {
+                "myrmyxicus", "humanoid", "icon1", "icon2",
+                0, AFF_SWIM,
+                BODY_HUGE | BODY_NO_LEGS | PART_2_LEGS | PART_FEET | PART_MANY_ARMS | PART_CLAWS | PART_FANGS | PART_HORNS | PART_TENTACLES | PART_TAIL,
+                PART_CLAWS | PART_FANGS | PART_HORNS | PART_TENTACLES | PART_TAILATTACK, RES_FIRE | RES_COLD | RES_ACID | RES_MAGIC, 0, RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                0, 2200, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_breath_gas_anatomical", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 760
         }
 };
 
@@ -6684,6 +6918,7 @@ typedef enum creature_trait_effect
         TRAIT_HOLY_TRUMPET_COOLDOWN,
         TRAIT_LULLING_DRONE_CHANCE,
         TRAIT_LULLING_DRONE_COOLDOWN,
+        TRAIT_NATIVE_REGEN_REQUIRES_WATER,
         TRAIT_EFFECT_COUNT
 } CREATURE_TRAIT_EFFECT;
 
@@ -6812,7 +7047,8 @@ static const CREATURE_TRAIT_DEFINITION creature_trait_definitions[] =
         {"holy_trumpet_daily_uses", TRAIT_HOLY_TRUMPET_DAILY_USES, NULL},
         {"holy_trumpet_cooldown", TRAIT_HOLY_TRUMPET_COOLDOWN, NULL},
         {"lulling_drone_chance", TRAIT_LULLING_DRONE_CHANCE, NULL},
-        {"lulling_drone_cooldown", TRAIT_LULLING_DRONE_COOLDOWN, NULL}
+        {"lulling_drone_cooldown", TRAIT_LULLING_DRONE_COOLDOWN, NULL},
+        {"native_regen_requires_water", TRAIT_NATIVE_REGEN_REQUIRES_WATER, NULL}
 };
 
 static const CREATURE_TRAIT_CHANGE guardian_daemon_trait_changes[] =
@@ -8373,8 +8609,139 @@ static const CREATURE_TRAIT_CHANGE giant_raven_trait_changes[] =
         {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE giant_sea_slug_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -2},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE ingkludd_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 8},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_BLUNT}
+};
+static const CREATURE_TRAIT_CHANGE deepsea_harpy_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE water_giant_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+static const CREATURE_TRAIT_CHANGE lorwyn_merrow_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+};
+static const CREATURE_TRAIT_CHANGE deinosuchus_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE mosasaur_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE wretchglow_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE deep_scion_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE anguillian_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE ocean_strider_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE pearl_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE stone_urchin_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 16},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_PIERCE}
+};
+static const CREATURE_TRAIT_CHANGE scrag_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -17},
+        {CREATURE_TRAIT_ROCK_THROW_PERCENT, 0},
+        {CREATURE_TRAIT_NATIVE_REGEN_REQUIRES_WATER, 1}
+};
+static const CREATURE_TRAIT_CHANGE ashiera_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6}
+};
+static const CREATURE_TRAIT_CHANGE ocean_sprite_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE giant_seahorse_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 12},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_BLUNT}
+};
+static const CREATURE_TRAIT_CHANGE newborn_giant_seahorse_trait_changes[] =
+{
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1},
+        {CREATURE_TRAIT_NATURAL_ATTACK_TYPE, 12},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_BLUNT}
+};
+static const CREATURE_TRAIT_CHANGE vapour_imp_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1},
+        {CREATURE_TRAIT_NATURAL_DAMAGE_TYPE, NATURAL_DAMAGE_COLD},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE sea_wyrm_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE myrmyxicus_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -10},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1},
+        {CREATURE_TRAIT_MAGICAL_NATURAL_ATTACKS, 1}
+};
+
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"giant_sea_slug", NULL, giant_sea_slug_trait_changes, TRAIT_ITEMS(giant_sea_slug_trait_changes)},
+        {"ingkludd", NULL, ingkludd_trait_changes, TRAIT_ITEMS(ingkludd_trait_changes)},
+        {"deepsea_harpy", NULL, deepsea_harpy_trait_changes, TRAIT_ITEMS(deepsea_harpy_trait_changes)},
+        {"water_giant", NULL, water_giant_trait_changes, TRAIT_ITEMS(water_giant_trait_changes)},
+        {"lorwyn_merrow", NULL, lorwyn_merrow_trait_changes, TRAIT_ITEMS(lorwyn_merrow_trait_changes)},
+        {"deinosuchus", NULL, deinosuchus_trait_changes, TRAIT_ITEMS(deinosuchus_trait_changes)},
+        {"mosasaur", NULL, mosasaur_trait_changes, TRAIT_ITEMS(mosasaur_trait_changes)},
+        {"wretchglow", NULL, wretchglow_trait_changes, TRAIT_ITEMS(wretchglow_trait_changes)},
+        {"deep_scion", NULL, deep_scion_trait_changes, TRAIT_ITEMS(deep_scion_trait_changes)},
+        {"anguillian", NULL, anguillian_trait_changes, TRAIT_ITEMS(anguillian_trait_changes)},
+        {"ocean_strider", NULL, ocean_strider_trait_changes, TRAIT_ITEMS(ocean_strider_trait_changes)},
+        {"pearl_dragon", NULL, pearl_dragon_trait_changes, TRAIT_ITEMS(pearl_dragon_trait_changes)},
+        {"stone_urchin", NULL, stone_urchin_trait_changes, TRAIT_ITEMS(stone_urchin_trait_changes)},
+        {"scrag", "troll", scrag_trait_changes, TRAIT_ITEMS(scrag_trait_changes)},
+        {"ashiera", NULL, ashiera_trait_changes, TRAIT_ITEMS(ashiera_trait_changes)},
+        {"ocean_sprite", NULL, ocean_sprite_trait_changes, TRAIT_ITEMS(ocean_sprite_trait_changes)},
+        {"giant_seahorse", NULL, giant_seahorse_trait_changes, TRAIT_ITEMS(giant_seahorse_trait_changes)},
+        {"newborn_giant_seahorse", NULL, newborn_giant_seahorse_trait_changes, TRAIT_ITEMS(newborn_giant_seahorse_trait_changes)},
+        {"vapour_imp", NULL, vapour_imp_trait_changes, TRAIT_ITEMS(vapour_imp_trait_changes)},
+        {"sea_wyrm", NULL, sea_wyrm_trait_changes, TRAIT_ITEMS(sea_wyrm_trait_changes)},
+        {"myrmyxicus", NULL, myrmyxicus_trait_changes, TRAIT_ITEMS(myrmyxicus_trait_changes)},
         {"angel", NULL, angel_trait_changes, TRAIT_ITEMS(angel_trait_changes)},
         {"spectral_minion", NULL, spectral_minion_trait_changes, TRAIT_ITEMS(spectral_minion_trait_changes)},
         {"giant_raven", NULL, giant_raven_trait_changes, TRAIT_ITEMS(giant_raven_trait_changes)},
@@ -9115,7 +9482,8 @@ static int validate_trait_profiles(const CREATURE_TRAIT_PROFILE *profiles,
                                     || effect == TRAIT_LIGHT_RESPONSE
                                     || effect == TRAIT_MAGICAL_NATURAL_ATTACKS
                                     || effect == TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS
-                                    || effect == TRAIT_PARALYSING_GAS_REQUIRES_HEAD)
+                                    || effect == TRAIT_PARALYSING_GAS_REQUIRES_HEAD
+                                    || effect == TRAIT_NATIVE_REGEN_REQUIRES_WATER)
                                 && (profile->changes[i].value < 0
                                     || profile->changes[i].value > 1))
                                         issues++;

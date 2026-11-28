@@ -25,14 +25,15 @@ a glistening trail over the silt. Its mottled hide shifts between dull violet,
 grey and sickly green, and its fleshy horns sway blindly in the current as it 
 feeds among the drowned stones.
 ~
-4|64|2048 512|67108864|9223372036854775808 0 S
+2116 9223372036854776320 0 S
 70 0 0 0d0+0 0d0+0
-4|8|32|128|512 0
+512 0
 0 0 0
 >fight_prog 10~
 spit $n
 ~
 |
+< giant_sea_slug~ common~
 FStepUnderwater sfx.foley.mob.29200.underwater~
 FStepUnderwaterGround sfx.foley.mob.29200.underwater_ground~
 
@@ -46,9 +47,9 @@ scales glowing in bands of pink, gold, and sea-green. It flicks its delicate
 fins with cheerful energy, scattering tiny sparks of light as it darts between 
 the dark rocks below.
 ~
-64|128 512|8192|67108864|1073741824 300 S
+192 1073750528 300 S
 71 0 0 0d0+0 0d0+0
-4|8|32|512 0
+512 0
 0 0 2
 >rand_prog 3~
 mpasound <69>A violent stream of bubbles catches your eye.<0>
@@ -57,6 +58,7 @@ mpasound <69>A violent stream of bubbles catches your eye.<0>
 bubble $n
 ~
 |
+< marple~ common~
 
 #29202
 marple fish~
@@ -68,9 +70,9 @@ scales glowing in bands of pink, gold, and sea-green. It flicks its delicate
 fins with cheerful energy, scattering tiny sparks of light as it darts between 
 the dark rocks below.
 ~
-64|128 512|8192|67108864|1073741824 315 S
+192 1073750528 315 S
 71 0 0 0d0+0 0d0+0
-4|8|32|512 0
+512 0
 0 0 1
 >rand_prog 3~
 mpasound <69>A violent stream of bubbles catches your eye.<0>
@@ -79,6 +81,7 @@ mpasound <69>A violent stream of bubbles catches your eye.<0>
 bubble $n
 ~
 |
+< marple~ common~
 
 #29203
 ingkludd misshapen shelled creature~
@@ -92,9 +95,9 @@ pore-like breathing opening, but the moment anything disturbs it, the ingkludd
 erupts into a piercing, bubbling shriek that carries horribly through the dark 
 water.
 ~
-64 1|512|8192|4194304|67108864|9223372036854775808 -95 S
+64 9223372036858978816 -95 S
 71 0 0 0d0+0 0d0+0
-1|2|32 0
+0 0
 0 0 0
 >rand_prog 3~
 mpasound <218>A piercing titter echoes through the deep water.<0>
@@ -104,6 +107,7 @@ mpechoat $n <218>The ingkludd shrieks at you through its foul-looking breathing-
 c sonic $n
 ~
 |
+< ingkludd~ common~
 
 #29204
 deepsea harpy~
@@ -115,7 +119,7 @@ wings and her pale, sharp face framed by drifting strands of hair. She moves
 with eerie grace above the ocean floor, taloned hands flexing as her thin, 
 mournful song trembles through the crushing dark.
 ~
-64|4096 512|8192|524288|67108864 -290 S
+4160 532992 -290 S
 72 0 0 0d0+0 0d0+0
 32 0
 0 0 2
@@ -132,6 +136,7 @@ else
 endif
 ~
 |
+< deepsea_harpy~ common~
 
 #29205
 water giant~
@@ -143,9 +148,9 @@ skin rippling like the ocean around it. Broad-shouldered and powerfully built,
 he carries a massive coral-forged trident, his calm, watchful gaze following 
 every movement with quiet confidence.
 ~
-64 16|512|4194304|67108864|1073741824 -125 S
+64 1077936656 -125 S
 73 0 0 0d0+0 0d0+0
-128 0
+0 0
 0 0 1
 >fight_prog 8~
 if inrflag($n) ==  131072
@@ -156,6 +161,7 @@ else
 endif
 ~
 |
+< water_giant~ common~
 
 #29206
 water giantess~
@@ -168,15 +174,17 @@ dark seaweed-like hair drift behind her as she bears a beautifully crafted water
 net, her calm but commanding presence making even the fiercest sea creatures 
 give way.
 ~
-64 16|512|4194304|67108864|1073741824 -155 S
+64 1077936656 -155 S
 73 0 0 0d0+0 0d0+0
-128 0
+0 0
 0 0 2
 >fight_prog 8~
 c 'fury of nature' $n
 ~
 |
-< reserved~ elite~
+< water_giant~ elite~
+MobHeight 550
+MobWeight 1400
 
 #29207
 lorwyn merrow~
@@ -188,7 +196,7 @@ calm, precise and faintly theatrical. His voice is smooth and persuasive, and
 he seems far more likely to defeat an enemy with argument, oath or clever 
 bargain than with a blade.
 ~
-64|4096 8|32|512|8192|8388608|67108864 0 S
+4160 8397352 0 S
 73 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -237,6 +245,7 @@ say What a fine anchor you would make—heavy, dull, and a massive drag on every
 say I’d tell you to get a backbone, but you’d just slither away.
 ~
 |
+< lorwyn_merrow~ common~
 
 #29208
 lorwyn merrow~
@@ -248,7 +257,7 @@ trailing like silk through the water. Her expression is warm but unreadable,
 and every word she speaks feels carefully chosen to flatter, challenge or 
 quietly outmanoeuvre.
 ~
-64|4096 8|32|512|8192|8388608|67108864 0 S
+4160 8397352 0 S
 73 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -300,6 +309,7 @@ endif
 ^
 ~
 |
+< lorwyn_merrow~ common~
 
 #29209
 deinosuchus crocodile~
@@ -312,9 +322,9 @@ cold and watchful above a mouth built for crushing bone, and every slow
 movement suggests terrible strength held in patient reserve. It swims through 
 the deep, dark ocean, hunting for prey.  Today might be your unlucky day.
 ~
-64|2048 32|512|4194304|8388608|33554432|67108864|9223372036854775808 0 S
+2112 9223372036900913696 0 S
 74 0 0 0d0+0 0d0+0
-4|32|128|512 0
+512 0
 0 0 2
 >fight_prog 6~
 swallow $n
@@ -326,7 +336,7 @@ mpkill $n
 mpkill $n
 ~
 |
-< reserved~ elite~
+< deinosuchus~ elite~
 
 #29210
 deinosuchus crocodile~
@@ -339,9 +349,9 @@ watch from above a massive jaw built to crush bone, and every slow movement
 through the deep oceanic environ carries the weight of a patient, primeval 
 predator.  Whelp.
 ~
-64|2048 32|512|4194304|8388608|33554432|67108864|9223372036854775808 0 S
+2112 9223372036900913696 0 S
 74 0 0 0d0+0 0d0+0
-4|32|128|512 0
+512 0
 0 0 1
 >fight_prog 8~
 swallow $n
@@ -353,7 +363,7 @@ mpkill $n
 mpkill $n
 ~
 |
-< reserved~ elite~
+< deinosuchus~ elite~
 
 #29211
 mosasaur~
@@ -368,9 +378,9 @@ devouring the survivors. Though slow and awkward on land, in the water it is a
 monstrous hunter, capable of dragging large prey down into the dark and 
 swallowing it whole.
 ~
-64 32|512|32768|8388608|67108864 -55 S
+64 8421920 -55 S
 75 0 0 0d0+0 0d0+0
-4|8|32|128|512 0
+512 0
 0 0 2
 >fight_prog 10~
 swallow $n
@@ -393,7 +403,7 @@ mpecho Something is expelled from the mosasaur's body...
 mpoload 29252 75
 ~
 |
-< reserved~ rare~
+< mosasaur~ rare~
 
 #29212
 wretchglow spinosaurid silhouette bioluminescent~
@@ -408,9 +418,9 @@ terrible speed and razor-sharp teeth. Its glow is beautiful from a distance,
 but once the great shape behind it emerges from the murk the watcher 
 understands what has found them.
 ~
-64|2048 16|32|512|32768|65536|4194304|8388608|67108864 -55 S
+2112 12681776 -55 S
 75 0 0 0d0+0 0d0+0
-4|32|128|512 0
+512 0
 0 0 1
 >greet_prog 15~
 mpkill $n
@@ -422,7 +432,7 @@ mpkill $n
 mpoload 29248 83
 ~
 |
-< reserved~ boss~
+< wretchglow~ boss~
 
 #29213
 deep scion~
@@ -435,9 +445,9 @@ claws, and the cold stare of something that no longer belongs to land. You're
 told it moves with awkward heaviness out of water, but here in the depths it 
 becomes swift, predatory, and horribly at home.
 ~
-64 4|512|8192|67108864|1073741824 -1000 S
+64 1073750532 -1000 S
 75 0 0 0d0+0 0d0+0
-64 0
+0 0
 0 0 1
 >fight_prog 9~
 c 'synaptic blast' $n
@@ -451,6 +461,7 @@ mpoload 29216
 
 ~
 |
+< deep_scion~ common~
 
 #29214
 deep scion female~
@@ -464,9 +475,9 @@ jaws open with a hunger that no longer seems human. She still carries faint
 traces of the woman she once was, but only enough to make the transformation 
 feel like a cruel memory wearing a monster’s skin.
 ~
-64 4|512|8192|67108864|1073741824 -1000 S
+64 1073750532 -1000 S
 75 0 0 0d0+0 0d0+0
-64 0
+0 0
 0 0 2
 >fight_prog 10~
 c 'synaptic blast' $n
@@ -478,6 +489,7 @@ mpoload 29217
 
 ~
 |
+< deep_scion~ common~
 
 #29215
 water weird serpentine living woman translucent~
@@ -491,9 +503,9 @@ the place it protects. Silent and eerily intelligent, it waits unseen until
 disturbed, then rises in a sudden liquid surge to seize, coil, and drag the 
 living down.
 ~
-64|2048 2|4|8|16|512|8192|32768|65536|524288|1048576|8388608|67108864|1073741824 -1000 S
+2112 1150919198 -1000 S
 76 0 0 0d0+0 0d0+0
-8|32|64|256|512 0
+2191529543 0
 0 0 0
 >fight_prog 5~
 if inrflag($n) ==  131072
@@ -514,7 +526,8 @@ c 'fury of nature' $n
 bubble $n
 ~
 |
-< reserved~ elite~
+< water_weird~ elite~
+MobHeight 180
 
 #29216
 anguillian~
@@ -528,11 +541,11 @@ pincers. Its blunt, eyeless, jawless face is dominated by a circular mouth
 ringed with teeth, flanked by spiny fins, giving it the look of something bred 
 in lightless trenches rather than mortal seas.
 ~
-4|64|2048 1|67108864 -375 S
+2116 0 -375 S
 78 0 0 0d0+0 0d0+0
-2|512 0
+512 0
 0 0 1
-< reserved~ rare~
+< anguillian~ rare~
 
 #29217
 anguillian~
@@ -547,11 +560,11 @@ pincers. Her pincers flex at the slightest disturbance, and her circular,
 tooth-ringed mouth at the centre of her eyeless head opens and closes silently 
 as she is on guard for anything foolish enough to come near her brood.
 ~
-4|64|2048 1|67108864 -385 S
+2116 0 -385 S
 78 0 0 0d0+0 0d0+0
-2|512 0
+512 0
 0 0 2
-< reserved~ rare~
+< anguillian~ rare~
 
 #29218
 ocean strider~
@@ -560,12 +573,12 @@ A towering ocean strider plows through the water, black-and-white skin gleaming.
 ~
 This enormous aquatic fey resembles a strange union of giant elf and orca, 
 standing nearly twenty feet tall with smooth, glossy black-and-white skin, sharp 
-teeth and a powerful tail. He moves athrough the deep undersea as though it were 
+teeth and a powerful tail. He moves through the deep undersea as though it were
 solid ground, carrying himself with eerie grace and terrible confidence.
 ~
-64 4|8|32|4194304|8388608|67108864 0 S
+64 12582956 0 S
 79 0 0 0d0+0 0d0+0
-32|128 0
+32 0
 0 0 1
 >act_prog p from the corpse of~
 mpecho {RAn ocean strider looks at you with fury and disgust!{x
@@ -573,7 +586,7 @@ murder $n
 
 ~
 |
-< reserved~ elite~
+< ocean_strider~ elite~
 
 #29219
 ocean strider~
@@ -582,19 +595,19 @@ A huge ocean strider marches through the water, her piebald skin shimmering.
 ~
 This enormous aquatic fey resembles a strange union of giant elf and orca, 
 standing nearly twenty feet tall with smooth, glossy black-and-white skin, sharp 
-teeth and a powerful tail. She moves athrough the deep undersea as though it 
+teeth and a powerful tail. She moves through the deep undersea as though it
 were solid ground, carrying herself with haughty grace and terrible confidence.
 ~
-64 4|8|32|4194304|8388608|67108864 0 S
+64 12582956 0 S
 79 0 0 0d0+0 0d0+0
-32|128 0
+32 0
 0 0 2
 >act_prog p from the corpse of~
 mpecho {RAn ocean strider looks at you with fury and disgust!{x
 murder $n
 ~
 |
-< reserved~ elite~
+< ocean_strider~ elite~
 
 #29220
 Auralithra pearl dragon~
@@ -608,9 +621,9 @@ the undersea current moves over her. She watches in perfect stillness, her
 clawed feet clutching at her hoard, her bearing regal and ancient, and it almost 
 seems as though every treasure here is an extension of her own pale splendour.
 ~
-2|64 4|8|16|32|128|8192|524288|8388608|67108864|536870912|1073741824 0 S
+66 1619009724 0 S
 80 0 0 0d0+0 0d0+0
-4|128|512 0
+512 0
 0 0 2
 >fight_prog 5~
 swallow $n
@@ -633,6 +646,7 @@ mpoload 29226 80
 mpcost hide cost 10000
 ~
 |
+< pearl_dragon~ common~
 
 #29221
 stone urchin sea-urchin~
@@ -645,9 +659,9 @@ spines radiate from its rounded body, each one dark at the base and pale at the
 tip with a faint venomous sheen. When the current shifts too near, the spines 
 flex almost imperceptibly, waiting to pierce careless flesh.
 ~
-2|64 1|65536|67108864 0 S
+66 65537 0 S
 79 0 0 0d0+0 0d0+0
-1|2|4|8|16|32 0
+0 0
 0 0 1
 >all_greet_prog 10~
 mpechoat $n {WYou accidentally step on a stone urchin!{x
@@ -658,6 +672,7 @@ mpoload 29228
 mpotimer chunk 100
 ~
 |
+< stone_urchin~ common~
 
 #29222
 stone urchin sea-urchin~
@@ -670,9 +685,9 @@ spines radiate from its rounded body, each one dark at the base and pale at the
 tip with a faint venomous sheen. When the current shifts too near, the spines 
 flex almost imperceptibly, waiting to pierce careless flesh.
 ~
-2|64 1|65536|67108864 0 S
+66 65537 0 S
 79 0 0 0d0+0 0d0+0
-1|2|4|8|16|32 0
+0 0
 0 0 2
 >all_greet_prog 10~
 mpechoat $n {WYou accidentally step on a stone urchin!{x
@@ -683,6 +698,7 @@ mpoload 29228
 mpotimer chunk 100
 ~
 |
+< stone_urchin~ common~
 
 #29223
 scrag deep-sea deepsea troll~
@@ -694,7 +710,7 @@ green hide slick with slime and barnacle scars. Its black eyes gleam with crude
 hunger beneath ropes of kelp-like hair, while its ragged mouth opens and closes 
 as though tasting blood in the current.
 ~
-64|2048 32|512|67108864|1073741824 -485 S
+64 1073741856 -485 S
 80 0 0 0d0+0 0d0+0
 32 0
 0 0 2
@@ -709,6 +725,7 @@ mpoload 29229
 mpotimer chunk 100
 ~
 |
+< scrag~ common~
 
 #29224
 scrag deep-sea deepsea troll~
@@ -720,7 +737,7 @@ green hide slick with slime and barnacle scars. His black eyes gleam with crude
 hunger beneath ropes of kelp-like hair, while his ragged mouth opens and closes 
 as though tasting blood in the current.
 ~
-64|2048 32|512|67108864|1073741824 -435 S
+64 1073741856 -435 S
 80 0 0 0d0+0 0d0+0
 32 0
 0 0 1
@@ -735,6 +752,7 @@ mpoload 29230
 mpotimer chunk 100
 ~
 |
+< scrag~ common~
 
 #29225
 ashiera~
@@ -747,7 +765,7 @@ through the deep water. Ridged blue-grey folds sweep back from his brow, while
 a faint chill gathers around his fingertips, hinting at the coldfire and 
 fog-wrapped magic of his wild-blooded race.
 ~
-64 524288|67108864 -120 S
+64 0 -120 S
 80 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -769,6 +787,7 @@ or subclass($n) != 12
 endif
 ~
 |
+< ashiera~ common~
 
 #29226
 ashiera~
@@ -781,7 +800,7 @@ sweep back from her brow, while her slick, close-fitting garments cling to her
 body as she moves through the water with the same hard, territorial confidence 
 her people show in sea or sky.
 ~
-64 524288|67108864 -125 S
+64 0 -125 S
 80 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -803,6 +822,7 @@ or subclass($n) != 12
 endif
 ~
 |
+< ashiera~ common~
 
 #29227
 ocean sprite~
@@ -814,7 +834,7 @@ slick light-blue skin, with coarse green hair drifting around the gills of his
 neck. Webbing joins his fingers and toes, while shells, pearls and fragments of 
 sunken treasure ornament his vivid eelskin clothing.
 ~
-64|128|4096|8388608 2|4|8|128|512|8192|524288|67108864|536870912|1073741824 850 S
+8392896 1611145870 850 S
 81 0 0 0d0+0 0d0+0
 0 0
 0 0 1
@@ -823,6 +843,7 @@ mpoload 29239
 mpotimer chunk 200
 ~
 |
+< ocean_sprite~ common~
 
 #29228
 ocean sprite~
@@ -834,7 +855,7 @@ smooth blue skin that shines softly in the filtered light. Her seaweed-textured
 hair floats around delicate neck-gills, and her bright eelskin garments are 
 decorated with coral, pearls and tiny treasures gathered from the ocean floor.
 ~
-64|128|4096|8388608 2|4|8|128|512|8192|524288|67108864|536870912|1073741824 850 S
+8392896 1611145870 850 S
 81 0 0 0d0+0 0d0+0
 0 0
 0 0 2
@@ -843,6 +864,7 @@ mpoload 29239
 mpotimer chunk 200
 ~
 |
+< ocean_sprite~ common~
 
 #29229
 giant seahorse~
@@ -853,9 +875,9 @@ This enormous seahorse moves with stately power, its ridged plates, curling tail
 and crown-like crest marking a mature male whose swollen brood pouch rests 
 beneath its plated belly.
 ~
-64|131072 8192|67108864 750 S
+131136 8192 750 S
 82 0 0 0d0+0 0d0+0
-4|8|512 0
+512 0
 0 0 1
 >fight_prog 10~
 bubble $n
@@ -881,6 +903,7 @@ mpmload 29231
 endif
 ~
 |
+< giant_seahorse~ common~
 
 #29230
 giant seahorse~
@@ -891,14 +914,15 @@ This towering seahorse has a slender, elegant body covered in overlapping bony
 plates, with delicate fins, a long tubular snout and a tightly coiled tail that 
 grips coral when the current grows strong.
 ~
-64|131072 8192|67108864 750 S
+131136 8192 750 S
 82 0 0 0d0+0 0d0+0
-4|8|512 0
+512 0
 0 0 2
 >fight_prog 10~
 bubble $n
 ~
 |
+< giant_seahorse~ common~
 
 #29231
 baby tiny seahorse~
@@ -909,14 +933,15 @@ Newly released from its father’s brood pouch, this minute seahorse drifts
 unsteadily through the water. Its delicate fins beat rapidly, while its soft, 
 translucent armour and tightly curled tail mark it as scarcely born.
 ~
-64|128|131072 8192|1048576|67108864 350 S
+192 1056768 350 S
 80 0 0 0d0+0 0d0+0
-4|8|512 0
+512 0
 0 0 1
 >fight_prog 10~
 bubble $n
 ~
 |
+< newborn_giant_seahorse~ common~
 
 #29232
 vapour imp~
@@ -928,9 +953,9 @@ tail, curved horns and a huge drooping nose above a grin of tiny teeth; red
 vapour seeps constantly from his pores, and his blazing eyes gleam with vicious 
 delight.
 ~
-64|2048|4096 8|16|512|524288|1048576|67108864|1073741824 -1000 S
+6208 1142424088 -1000 S
 83 0 0 0d0+0 0d0+0
-64|512 0
+512 0
 0 0 1
 >fight_prog 2~
 c inebriate $n
@@ -939,7 +964,7 @@ c inebriate $n
 c parch $n
 ~
 |
-< reserved~ rare~
+< vapour_imp~ rare~
 
 #29233
 vapour imp~
@@ -950,9 +975,9 @@ This diminutive crimson fiend has long ears, slender horns, sharp claws and a
 sinuous pointed tail, while crimson vapour curls from her skin and gathers 
 around her blazing red eyes and needle-toothed smile.
 ~
-64|2048|4096 8|16|512|524288|1048576|67108864|1073741824 -1000 S
+6208 1142424088 -1000 S
 83 0 0 0d0+0 0d0+0
-32|64|512 0
+544 0
 0 0 2
 >fight_prog 1~
 c banish $n
@@ -961,7 +986,7 @@ c banish $n
 c starve $n
 ~
 |
-< reserved~ rare~
+< vapour_imp~ rare~
 
 #29234
 sea wyrm~
@@ -974,9 +999,9 @@ serene, sinuous grace. Though normally placid, its muscular coils could crush a
 small vessel, while a deep breath swells within its throat behind rows of 
 predatory teeth.
 ~
-64|4096|8388608 4|8|16|32|2097152|8388608|67108864|536870912|1073741824 -75 S
+8392768 1621098556 -75 S
 84 0 0 0d0+0 0d0+0
-4|8|32|128|512 0
+512 0
 0 0 1
 >fight_prog 8~
 swallow $n
@@ -996,7 +1021,7 @@ mpotimer egg 150
 endif
 ~
 |
-< reserved~ elite~
+< sea_wyrm~ elite~
 
 #29235
 myrmyxicus monstrous~
@@ -1009,9 +1034,9 @@ horns. Tall spines rise along its back, while four muscular arms surround its
 chest, six octopoid tentacles ring its waist, and its eel-like body ends in a 
 slavering lamprey mouth.
 ~
-64|2048|4096|8388608 4|8|16|32|512|8192|8388608|16777216|67108864|536870912|1073741824 -1000 S
+8394816 1635787324 -1000 S
 85 0 0 0d0+0 0d0+0
-8|128|512 0
+512 0
 0 0 1
 >fight_prog 7~
 c 'acid breath' $n
@@ -1032,7 +1057,7 @@ endif
 mpoload 29249 83
 ~
 |
-< reserved~ boss~
+< myrmyxicus~ boss~
 
 #29236
 giant water spider~
@@ -1047,9 +1072,9 @@ she has a cold, deliberate intelligence, waiting beneath the murk until the
 right moment to unfold from the shadows and drag the struggling victim deeper 
 into her drowned lair.
 ~
-2|64 512|65536|8388608|67108864 -440 S
+66 75563520 -440 S
 82 0 0 0d0+0 0d0+0
-4|32 0
+0 0
 0 0 2
 >greet_prog 8~
 mpkill $n
@@ -1058,6 +1083,11 @@ mpkill $n
 mpoload 29250 80
 ~
 |
+< venomous_spider~ common~
+MobHeight 90
+MobLength 180
+MobWeight 120
+MobSize 2
 
 #29237
 giant sea anemone~
@@ -1071,9 +1101,9 @@ ghost-pink, blue-white, and bruised violet, but every soft movement hides a
 paralysing hunger. When prey drifts near, her tendrils close with sudden grace, 
 drawing the victim down into the pulsing mouth at her centre.
 ~
-2|64|4096 8|64|512|8192|8388608|67108864 0 S
+4162 8397384 0 S
 82 0 0 0d0+0 0d0+0
-1|2|4|8|16|32|128 0
+128 0
 0 0 2
 >greet_prog 7~
 mpkill $n
@@ -1086,6 +1116,11 @@ c paralysis $n
 swallow $n
 ~
 |
+< sea_anemone~ common~
+MobHeight 300
+MobLength 600
+MobWeight 2000
+MobSize 2
 #0
 
 #OBJECTS
@@ -1194,7 +1229,7 @@ A
 #29206
 water net~
 a water net~
-A new object lies here.~
+A carefully woven water net drifts here.~
 ~
 5 64 1|8192
 0~ 0~ 0~ 9~
@@ -1209,7 +1244,7 @@ A
 50 -8
 
 #29207
-viscious claws~
+vicious viscious claws~
 vicious claws~
 The claws of some deep sea creature lie here.~
 ~
@@ -1249,7 +1284,7 @@ body, but encourages it to remember older, stranger shapes.
 #29209
 massive jaws~
 massive jaws~
-The massive jaws of some crocodilian creature lie here.~
+The massive jaws of some huge sea creature lie here.~
 ~
 5 4096|16777216|67108864|274877906944 8192
 1~ 0~ 0~ 10~
@@ -1659,7 +1694,7 @@ sharp claws~
 A heap of small, red claws lie here.~
 ~
 5 16|512|2048|16777216|67108864 8192
-0~ 0~ 0~ 3~
+3~ 0~ 0~ 3~
 1 0 0
 A
 39 -1
@@ -5718,19 +5753,10 @@ P 0 29224 0 29223               put a pile of coins inside A dragon's hoard
 S
 
 #SPECIALS
-M 29212 spec_breath_steam       a wretchglow
-M 29216 spec_bloodsucker        an anguillian
-M 29217 spec_bloodsucker        an anguillian
 M 29218 spec_warrior            an ocean strider
 M 29219 spec_cast_priestess     an ocean strider
-M 29220 spec_breath_steam       Auralithra
-M 29227 spec_cast_water_sprite  an ocean sprite
-M 29228 spec_cast_water_sprite  an ocean sprite
 M 29232 spec_cast_undead        a vapour imp
 M 29233 spec_demon              a vapour imp
-M 29234 spec_breath_gas         a sea wyrm
-M 29235 spec_breath_gas         a myrmyxicus
-M 29236 spec_poison             a giant water spider
 M 29237 spec_poison             a giant sea anemone
 S
 

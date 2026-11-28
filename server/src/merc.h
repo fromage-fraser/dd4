@@ -3695,8 +3695,8 @@ typedef enum resistance_result
         RES_RESULT_VULNERABLE
 } RESISTANCE_RESULT;
 
-#define MAX_MOB 532
-#define MAX_SPECIES 40
+#define MAX_MOB 554
+#define MAX_SPECIES 41
 #define MAX_RANK 6
 
 /* mob_spec_data Brutus */
@@ -6067,6 +6067,7 @@ typedef enum creature_trait
         CREATURE_TRAIT_HOLY_TRUMPET_COOLDOWN,
         CREATURE_TRAIT_LULLING_DRONE_CHANCE,
         CREATURE_TRAIT_LULLING_DRONE_COOLDOWN,
+        CREATURE_TRAIT_NATIVE_REGEN_REQUIRES_WATER,
         CREATURE_TRAIT_COUNT
 } CREATURE_TRAIT;
 /* Internal damage kinds keep trait strengths small and named. */

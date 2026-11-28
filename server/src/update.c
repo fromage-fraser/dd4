@@ -1248,6 +1248,26 @@ void notify_native_regeneration_damage(CHAR_DATA *victim, int actual_damage,
         }
 }
 
+/* Some creatures need water for their native healing to work. */
+static bool native_regeneration_has_water(CHAR_DATA *ch)
+{
+        if (creature_trait_value(ch, CREATURE_TRAIT_NATIVE_REGEN_REQUIRES_WATER) <= 0)
+                return TRUE;
+        if (!ch->in_room)
+                return FALSE;
+        switch (ch->in_room->sector_type)
+        {
+        case SECT_UNDERWATER:
+        case SECT_UNDERWATER_GROUND:
+                return TRUE;
+        case SECT_WATER_SWIM:
+        case SECT_WATER_NOSWIM:
+                return !IS_AFFECTED(ch, AFF_FLYING);
+        default:
+                return FALSE;
+        }
+}
+
 void update_native_regeneration(void)
 {
         CHAR_DATA *ch;
@@ -1268,6 +1288,19 @@ void update_native_regeneration(void)
                 if (ch->deleted || ch->position == POS_DEAD || ch->hit <= 0)
                 {
                         clear_native_regeneration(ch);
+                        continue;
+                }
+
+                if (!native_regeneration_has_water(ch))
+                {
+                        /* Dry time earns no healing, but fire/acid pauses still stand. */
+                        interval = UMAX(1, creature_trait_value(ch,
+                            CREATURE_TRAIT_NATIVE_REGEN_INTERVAL));
+                        ch->native_regen_updated = current_time;
+                        ch->native_regen_trauma_seconds = 0;
+                        if (ch->native_regen_next != 0)
+                                ch->native_regen_next = UMAX(ch->native_regen_next,
+                                    current_time + interval);
                         continue;
                 }
 
