@@ -176,6 +176,7 @@ my %mob_archetype = map { $_ => 1 } qw/
         dunkleosteus kappa nixie dryad sea_zombie merrow
         manta_ray giant_manta_ray bull_shark devil_ray spotted_eagle_ray giant_sea_worm
         bay carnivorous_bush giant_centipede
+        mammoth rhinoceros werepanther_beast_form weretiger fury
 /;
 
 my %mob_act = (

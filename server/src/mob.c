@@ -2611,7 +2611,7 @@ const struct mob_type mob_table[MAX_MOB] =
         },
         {
                 "hydra", "quadrupedal_reptile", "icon1", "icon2",
-                0, 0, BODY_HUGE | PART_MANY_HEAD | PART_FANGS, PART_FANGS,
+                0, AFF_SWIM, BODY_HUGE | PART_MANY_HEAD | PART_FANGS, PART_FANGS,
                 0, 0, 0, 0, 0, 0, 0,
                 250, 3000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO, GHOST_PHASE_NONE,
@@ -6328,6 +6328,56 @@ const struct mob_type mob_table[MAX_MOB] =
                 MOB_TEMPLATE_UNSET, MOB_TEMPLATE_UNSET, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
                 "spec_poison_bite", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 30
+        },
+        {
+                "mammoth", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_TAIL | PART_TUSKS | PART_TRUNK,
+                PART_TUSKS | PART_FORELEGS, 0, 0, 0,
+                0, 0, 0, 0,
+                400, 8000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_elephant", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 700
+        },
+        {
+                "rhinoceros", "quadrupedal_mammal", "icon1", "icon2",
+                0, 0,
+                PART_TAIL | PART_HORNS | PART_HOOVES,
+                PART_HORNS, 0, 0, 0,
+                0, 0, 0, 0,
+                150, 1500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_horn_gore", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 350
+        },
+        {
+                "werepanther_beast_form", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_INFRARED,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, RES_NONMAGIC,
+                0, 0, 0, 0,
+                75, 80, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 220
+        },
+        {
+                "weretiger", "humanoid", "icon1", "icon2",
+                0, AFF_INFRARED,
+                PART_TAIL | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, RES_NONMAGIC,
+                0, 0, 0, 0,
+                220, 160, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "fury", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_NO_CORPSE | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                175, 65, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_cast_undead", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
         }
 };
 
@@ -6864,7 +6914,8 @@ static const CREATURE_TRAIT_CHANGE wormkin_trait_changes[] =
 
 static const CREATURE_TRAIT_CHANGE harpy_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -3}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -3},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
 static const CREATURE_TRAIT_CHANGE air_elemental_trait_changes[] =
@@ -7010,11 +7061,13 @@ static const CREATURE_TRAIT_CHANGE fire_hazard_trait_changes[] =
 
 static const CREATURE_TRAIT_CHANGE lion_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 static const CREATURE_TRAIT_CHANGE elephant_trait_changes[] =
 {
-        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
 static const CREATURE_TRAIT_CHANGE constrictor_trait_changes[] =
@@ -8035,8 +8088,40 @@ static const CREATURE_TRAIT_CHANGE merrow_trait_changes[] =
         {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE griffin_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -20},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE mammoth_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5}
+};
+static const CREATURE_TRAIT_CHANGE rhinoceros_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE werepanther_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -5},
+        {CREATURE_TRAIT_SILVER_BYPASSES_NONMAGIC, 1},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE weretiger_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -7},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"mammoth", "elephant", mammoth_trait_changes, TRAIT_ITEMS(mammoth_trait_changes)},
+        {"rhinoceros", NULL, rhinoceros_trait_changes, TRAIT_ITEMS(rhinoceros_trait_changes)},
+        {"werepanther_beast_form", NULL, werepanther_trait_changes, TRAIT_ITEMS(werepanther_trait_changes)},
+        {"weretiger", "wererat", weretiger_trait_changes, TRAIT_ITEMS(weretiger_trait_changes)},
+        {"fury", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"giant_lizard", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
         {"dog", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
         {"giant_rat", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
         {"hawk", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
@@ -8405,8 +8490,8 @@ static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
         {"manticore", NULL, manticore_trait_changes, TRAIT_ITEMS(manticore_trait_changes)},
         {"faerie_dragon", NULL, black_hatchling_trait_changes,
             TRAIT_ITEMS(black_hatchling_trait_changes)},
-        {"griffin", NULL, scaled_armour_trait_changes,
-            TRAIT_ITEMS(scaled_armour_trait_changes)},
+        {"griffin", NULL, griffin_trait_changes,
+            TRAIT_ITEMS(griffin_trait_changes)},
         {"dragon_hatchling", NULL, black_hatchling_trait_changes,
             TRAIT_ITEMS(black_hatchling_trait_changes)},
         {"black_dragon_hatchling", NULL, black_hatchling_trait_changes,

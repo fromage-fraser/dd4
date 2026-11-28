@@ -18557,3 +18557,141 @@ PowerShell, from C:\Games\dd4:
 
 Use importer --force only when intentionally replacing its output.
 Keep an authored original when testing the reverse direction.
+
+== Argentium
+
+All 40 definitions use species and archetypes. Five new profiles bring
+the catalogue to 513 archetypes, with 40 bodies, 60 internal traits and
+146 Scribe special names. No area field or ACT identity bit is added.
+Hydra gains Swim; every other earlier ordinary profile resolves as before.
+Shared head-injury changes are described separately below.
+
+Mammoth uses quadrupedal_mammal with elephant trunk, tusks, forelegs,
+tail and the existing spec_elephant. It shares elephant's traits within
+the same body and replaces natural armour with -5. Defaults are estimated
+400 cm shoulder height, 8000 kg, 700 cm long, Large plus HUGE. The 2e
+Elephant/Mammoth entry supports the woolly anatomy and 10-14ft height.
+No new aggression, Cold resistance, fire-fear effect or ivory loot is added.
+
+Rhinoceros also uses quadrupedal_mammal: horns, hoofed feet, tail and an
+ordinary horn attack, natural armour -4. Defaults are estimated 150 cm
+shoulder height, 1500 kg, 350 cm long and Large without HUGE. It uses
+spec_horn_gore: a 15 percent attempt for 2d max(4,(level+1)/2) physical
+damage, with existing head, trauma, sight, action, safety and resistance
+checks. The later official Basic Rules rhinoceros is the horn-gore
+reference; this DD4 adaptation adds no running charge or knockdown.
+The Argentium rhino keeps its authored Detect Invisible and passivity.
+
+Werepanther_beast_form is a full quadrupedal black cat, as the area text
+explicitly describes after the transformation. Defaults are 75 cm at the
+shoulder, 80 kg, 220 cm long and Medium, with paws, claws, fangs, tail,
+infrared and armour -5. Weretiger is a humanoid hybrid, 220 cm/160 kg/Large,
+with claws, fangs, tail, infrared and armour -7. The starved Argentium
+individual weighs 120 kg. Its Detect Invisible and passive behaviour stay.
+
+Both werecats use ordinary nonmagic immunity and the existing
+silver_bypasses_nonmagic trait: silver deals ordinary damage, without
+another vulnerability multiplier. The 2e Weretiger supplies the hybrid
+and silver/magic defence model; the panther is an explicit DD4 adaptation.
+No NPC infection, automatic form-changing loop or player Werewolf-only
+fear/drain/control bonus is added. Weretiger may share wererat traits
+because both use humanoid. The quadrupedal werepanther has its own sparse
+trait list; trait parents must not cross body species.
+
+Fury is a living, thinking divine avenger using humanoid, at estimated
+175 cm/65 kg/Medium. The sword's lore says Ares sent the Furies to kill
+Xerces. Flight, needle fangs and NoCorpse fit this character. The profile
+keeps the authored spec_cast_undead spell repertoire, not an Undead flag.
+The old individual duplicate special is removed. NoSpeech is removed
+because she explicitly curses. Keep NoQuest, Sentinel and Xerces' sword.
+Corpse absence does not imply incorporeality, nonmagic immunity,
+Mindless, Bloodless, Analgic or Soulless. Her ordinary living physiology,
+mind, pain and soul remain distinct properties.
+
+The starved lion uses lion with 110 kg on its adult frame. Griffin 25217
+keeps its explicit lion/dragon/eagle identity, with individual scales
+alongside the eagle feathers, larger 200 cm/900 kg/350 cm measurements,
+and its authored fire payload through spec_breath_fire_anatomical.
+Keep ordinary beak/claws and flight; no new fire immunity, tail attack
+or HUGE is inferred from the adjective gigantic.
+
+Gorgon 25219 uses medusa physiology but keeps its name and Mage100
+override. Every hair snake is explicitly beheaded, so that override
+continues to replace both native gaze and hair-snake bite. Facial fangs
+remain ordinary anatomy. Do not restore petrification from another
+version of the creature. Detect Invisible and female sex stay.
+
+Hydra 25234 uses the reviewed many-headed reptile, 250 cm/3000 kg/900 cm,
+Large/HUGE, with shared Swim. Its individual generic Poison becomes
+spec_poison_bite, preserving the payload through the existing anatomical
+guard. The ordinary attack cadence remains. MANY_HEAD describes anatomy;
+it does not add per-head attacks, hit points, severing or regrowth.
+Ordinary hydras and Lernaean regrowing hydras need separate design before
+those mechanics are implemented. Keep its Common rank and passivity.
+
+Harpy 25236 is explicitly part woman and part dragon, with NoArms.
+Keep the winged forelimb interpretation: remove inherited positive
+arms/hands/fingers and feathers locally, add scales, retain head, legs,
+feet, wings, claws/fangs and speech. Its original fight_prog8 still uses
+c sonic $n, which resolves to Sonic Blast through ordinary casting.
+No new charm song is added. The other harpy users keep their normal arms.
+
+Giant 25237 remains a generic giant family, individually 300 cm/400 kg/
+Large. Grey skin and nine-foot height do not establish a stone giant.
+Keep its actual wooden club; correct the hammer references in the mob
+and object prose. No new rock throwing, stone-giant armour or HUGE.
+Dragon lizard uses giant_lizard at 90 cm/250 kg/457 cm/Large, with ordinary
+fangs and its flightless carrion flavour. No fire, poison or automatic
+corpse consumption is inferred.
+
+Elephant, its mastodon child, griffin, lion, harpy and giant_lizard now
+use the existing head_trauma_blocks_attacks trait, with every earlier
+armour value preserved. All five new profiles also use that gate;
+mammoth inherits through elephant. A damaged head blocks ordinary
+fangs/horns/tusks/beak, without changing stored anatomy, remaining usable
+claws/limbs or valid wielded weapons. Existing Regenerate restores
+eligibility by curing the injury. Hydra is not given this single-head
+opt-in. No individual trait field or new registry ID is introduced.
+
+All 27 people use human. Bandit leader 25202 and outpost commander 25205
+become Rare; commanding centurion 25208 becomes Elite. Preserve existing
+Rare25210, Elite25214/25228 and Boss25231. All other 33 stay Common.
+Rare/Elite/Boss HP multipliers 2/5/7 apply once. HP letters are not rank.
+Sixteen individual dimension overrides follow the approved descriptions;
+all weights remain whole kg and size overrides use numeric 0/1/2.
+
+Charger 25229 uses horse at 165 cm/600 kg/260 cm/Large. Change its female
+sex field to male because both stable rooms explicitly describe stallions.
+Keep Mountable and Sentinel; NPC mounting remains separate future work.
+All other sexes stay. The bandit leader's Practice flag is legitimate:
+teacher base15, Thievery Skills75, Armed Combat Knowledge75 and Stealth
+Techniques75. Both guard Repairman roles repair bashed doors; keep them.
+Levisticus retains his working barbed-net weapon, not a new item type.
+
+Preserve all deliberate aggression/passivity, Wimpy, Sentinel, alignments,
+equipment, keys, tickets, teachers, reset order/caps and room flags/exits.
+No shops or ward flags are added. Population remains81 inhabitants and
+167carried objects before and after refills. Omu traitor28422 uses shared
+knife25201, which stays unchanged with Omu's source. Only the approved
+small grammar/name/club corrections alter room/mobile/object prose.
+
+Four portraits are replaced: human Levisticus, draconic fire griffin,
+full black werepanther and gorgon with beheaded hair snakes. Exact GUI
+room lookup is custom_rooms/25278_pirates!.png; copy the existing picture
+there and retain custom_rooms/25278_pirates_.png. No room art is repainted.
+
+There is no current authored Argentium.src. Do not invent one. Temporary
+conversion copies must preserve raw XOR, selections, ranks, dimensions,
+specials, teacher entries, programs, objects, metadata and resets.
+When a current matching source exists, update and test that pair too.
+
+Linux, from the repository root, using separate check copies:
+    python3 builder/scribe/are2src.py server/area/argent.are /tmp/argent-check.src
+    perl builder/scribe/scribe.pl /tmp/argent-check.src /tmp/argent-roundtrip.are
+
+PowerShell, from C:\Games\dd4:
+    python .\builder\scribe\are2src.py .\server\area\argent.are "$env:USERPROFILE\Downloads\argent-check.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\argent-check.src" "$env:USERPROFILE\Downloads\argent-roundtrip.are"
+
+Use importer --force only when intentionally replacing its output.
+Keep an authored original when testing the reverse direction.
