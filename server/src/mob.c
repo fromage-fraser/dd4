@@ -6448,6 +6448,86 @@ const struct mob_type mob_table[MAX_MOB] =
                 0, 1500, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
                 "spec_breath_fire_anatomical", "spec_poison_bite", "", 0, {70, 30, 0},
                 GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1200
+        },
+        {
+                "blood_worm", "limbless_invertebrate", "icon1", "icon2",
+                0, 0,
+                BODY_HUGE | PART_FANGS,
+                PART_FANGS, 0, RES_FIRE, 0,
+                0, 0, 0, 0,
+                0, 250, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_bloodsucker_bite", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 600
+        },
+        {
+                "mist_wolf", "quadrupedal_mammal", "icon1", "icon2",
+                0, AFF_DETECT_HIDDEN,
+                PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                120, 80, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_breath_gas_anatomical", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 200
+        },
+        {
+                "nighthunter", "humanoid", "icon1", "icon2",
+                0, 0,
+                BODY_NO_SPEECH | PART_HUSK_SHELL | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, 0, 0, 0,
+                0, 0, 0, 0,
+                220, 140, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "dream_shadow", "mysterious_being", "icon1", "icon2",
+                0, AFF_FLYING,
+                BODY_BLOODLESS | BODY_ANALGIC,
+                0, 0, 0, RES_POISON | RES_SLEEP,
+                0, 0, 0, 0,
+                0, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "spec_confusing_presence", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "skeletal_hound", "quadrupedal_mammal", "icon1", "icon2",
+                ACT_UNDEAD, AFF_MINDLESS,
+                PART_HEART | PART_BRAINS | PART_GUTS | PART_EAR | BODY_NO_HEART | BODY_INORGANIC | BODY_BLOODLESS | BODY_ANALGIC | BODY_SOULLESS | PART_TAIL | PART_PAWS | PART_CLAWS | PART_FANGS,
+                PART_FANGS, RES_PIERCE | RES_SLASH | RES_DARK, RES_BLUNT | RES_HOLY, RES_POISON | RES_SLEEP | RES_DRAIN | RES_COLD | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                50, 8, CHAR_SIZE_SMALL, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 90
+        },
+        {
+                "winged_demon", "humanoid", "icon1", "icon2",
+                0, AFF_FLYING,
+                PART_WINGS | PART_TAIL | PART_CLAWS | PART_FANGS,
+                PART_CLAWS | PART_FANGS, RES_FIRE | RES_COLD, 0, RES_ELECTRICITY | RES_POISON,
+                0, 0, 0, 0,
+                220, 160, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, MOB_TEMPLATE_UNSET
+        },
+        {
+                "mist_horror", "mysterious_being", "icon1", "icon2",
+                ACT_UNDEAD | ACT_FEAR_AURA, AFF_FLYING,
+                BODY_BLOODLESS | BODY_ANALGIC,
+                0, RES_MAGIC, 0, RES_NONMAGIC | RES_HOLY | RES_POISON | RES_DRAIN | RES_SLEEP | RES_CHARM | RES_HOLD | RES_PARALYSIS,
+                0, 0, 0, 0,
+                0, 0, CHAR_SIZE_MEDIUM, MOB_TEMPLATE_UNSET,
+                "", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 0
+        },
+        {
+                "shadow_dragon", "dragon", "icon1", "icon2",
+                ACT_FEAR_AURA, AFF_FLYING,
+                BODY_HUGE,
+                0, RES_MAGIC | RES_DARK, 0, RES_DRAIN,
+                0, 0, 0, 0,
+                300, 3000, CHAR_SIZE_LARGE, MOB_TEMPLATE_UNSET,
+                "spec_draining_breath", "", "", 0, MOB_SPECIAL_CHANCES_AUTO,
+                GHOST_PHASE_NONE, CREATURE_FAMILY_NONE, 1200
         }
 };
 
@@ -8211,8 +8291,39 @@ static const CREATURE_TRAIT_CHANGE serpent_avatar_trait_changes[] =
         {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
 };
 
+static const CREATURE_TRAIT_CHANGE blood_worm_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE mist_wolf_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -4}
+};
+static const CREATURE_TRAIT_CHANGE nighthunter_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -6},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+static const CREATURE_TRAIT_CHANGE mist_horror_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -8}
+};
+static const CREATURE_TRAIT_CHANGE shadow_dragon_trait_changes[] =
+{
+        {CREATURE_TRAIT_NATURAL_ARMOUR, -15},
+        {CREATURE_TRAIT_HEAD_TRAUMA_BLOCKS_ATTACKS, 1}
+};
+
 static const CREATURE_TRAIT_PROFILE archetype_trait_profiles[] =
 {
+        {"blood_worm", NULL, blood_worm_trait_changes, TRAIT_ITEMS(blood_worm_trait_changes)},
+        {"mist_wolf", "wolf", mist_wolf_trait_changes, TRAIT_ITEMS(mist_wolf_trait_changes)},
+        {"nighthunter", NULL, nighthunter_trait_changes, TRAIT_ITEMS(nighthunter_trait_changes)},
+        {"skeletal_hound", "dog", NULL, 0},
+        {"winged_demon", NULL, fanged_beast_trait_changes, TRAIT_ITEMS(fanged_beast_trait_changes)},
+        {"mist_horror", NULL, mist_horror_trait_changes, TRAIT_ITEMS(mist_horror_trait_changes)},
+        {"shadow_dragon", NULL, shadow_dragon_trait_changes, TRAIT_ITEMS(shadow_dragon_trait_changes)},
         {"enchanted_guardian", NULL, enchanted_guardian_trait_changes, TRAIT_ITEMS(enchanted_guardian_trait_changes)},
         {"snakeman", NULL, snakeman_trait_changes, TRAIT_ITEMS(snakeman_trait_changes)},
         {"crocodileman", NULL, crocodileman_trait_changes, TRAIT_ITEMS(crocodileman_trait_changes)},

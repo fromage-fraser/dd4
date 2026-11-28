@@ -14542,3 +14542,134 @@ PowerShell, from C:\Games\dd4:
     perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\kahsis-check.src" "$env:USERPROFILE\Downloads\kahsis-roundtrip.are"
 
 Use importer --force only when intentionally replacing its output.
+
+The Swamp of Despair
+
+All 26 definitions now use species and archetypes. Eight new profiles
+bring the catalogue to 528 archetypes, 40 body species, 60 internal traits
+and 148 Scribe special names. The existing numeric builds, sex, alignment,
+aggression/passivity, Sentinel, Wimpy and local Flying choices stay.
+Only the unique Shadow Dragon becomes Elite; the other 25 stay Common.
+HP build letters are not ranks. Rank HP factors apply once.
+
+blood_worm uses limbless_invertebrate, with a head, eyes, heart, fangs
+and ordinary fang attack. It has natural armour -6, Fire vulnerability
+and spec_bloodsucker_bite, retaining the existing bloodsucking payload
+with the normal head/fang guard. Defaults are 600 cm long, 250 kg, Large
+plus HUGE; height is unspecified. The three hatchlings override length
+to 60 cm, weight to 1 kg and size to Small, and cancel HUGE through body XOR.
+They retain their different authored behaviour and local Flying.
+
+mist_wolf uses quadrupedal_mammal, with tail, paws, claws, fangs, ordinary
+fang attack and DetectHidden. Natural armour is -4; defaults120 cm at
+the shoulder, 80 kg, 200 cm long, Medium. Its trait profile shares wolf's
+head gate within the same body species. The native special is
+spec_breath_gas_anatomical: keep the existing room-wide Gas Breath
+payload and ordinary head checks. These are living, minded wolves with
+blood, pain and souls. Their neutrality, Wimpy/passivity, flight,
+stealth and local senses stay. No phasing or nonmagic immunity is added.
+
+nighthunter uses humanoid,220 cm/140 kg/Large, natural armour -6, shell,
+claws and fangs, ordinary claw/fang attacks and NoSpeech. It has a normal
+living mind and heart. The individual retains Fido, flight, aggression,
+senses and protective effects; its frightening appearance does not
+infer an undead identity or fiend immunities.
+
+dream_shadow uses mysterious_being: headless, eyeless, armless, legless,
+NoHeart, NoSpeech, NoCorpse and Inorganic, with Bloodless and Analgic.
+It retains a mind and soul eligibility. Measurements are unspecified,
+size Medium, with Flying and Poison/Sleep immunity. It remains physically
+attackable and is not undead. Its spec_confusing_presence has a 20 percent
+opportunity when selected against its current opponent. The viewer must
+be awake, sighted, able to see the source, mind-bearing, non-object and
+not already Confused. Source eyes/head and their injuries do not govern
+this presence. Ordinary action, room, safety, native magic and ordered
+player restrictions apply, with rechecks after messages and the save.
+The ordinary Confusion save and penalties apply: duration
+URANGE(1,level/30,3) affect ticks, hitroll -((level/5)+1) and INT/WIS
+-((level/15)+1). It affects one opponent. The existing confusing gaze
+still needs the source's usable head/eyes, including for umber_hulk;
+the viewer need not be visible to either visual power's source.
+
+skeletal_hound uses quadrupedal_mammal at 50 cm/8 kg/90 cm/Small, with tail,
+paws, claws, fangs and ordinary bite. Remove fleshy heart/brain/guts/ear
+parts through archetype XOR. Magical visual awareness stays. It is
+Undead, Mindless, Inorganic, Bloodless, Analgic, Soulless and NoHeart,
+with the body's NoArms/NoSpeech. Match ordinary skeleton defences:
+Pierce/Slash/Dark resistance, Blunt/Holy vulnerability and
+Poison/Sleep/Drain/Cold/Hold/Paralysis immunity. It shares dog's head
+gate within the same body species. The two old generic undead casters
+are removed. Keep their authored flight, behaviour and loot.
+
+Shadow Crawlers reuse giant_ground_beetle,40 cm/15 kg/100 cm/Small.
+They regain normal living hearts. The chitinous black armour 30411 worn
+by four creatures becomes ITEM_ARMOR (9) instead of NPC-corpse type 23.
+Its values, applies, weight, flags and placements stay; ordinary armour
+handling and randomisation now apply.
+
+winged_demon uses humanoid,220 cm/160 kg/Large, with wings, tail, claws,
+fangs, ordinary claw/fang attacks and Flying. It has a normal heart and
+head gate, Fire/Cold resistance and Electricity/Poison immunity.
+Only 30420 keeps the authored Demon caster; 30421 remains physical.
+Its spiked tail 30416 becomes ITEM_BODY_PART with region 6, retaining
+its slice verb, bonuses, weight, TAKE and loot. Tail targeting, trauma
+and existing Regenerate rules can now recognize the attachment.
+
+mist_horror uses mysterious_being with unspecified measurements and
+Medium size. It is an Undead, Flying, Bloodless, Analgic, minded spirit
+that retains soul eligibility. Natural armour -8, Magic resistance and
+Nonmagic/Holy/Poison/Drain/Sleep/Charm/Hold/Paralysis immunity apply.
+Use the existing in-combat fear aura. It remains turnable: Holy damage
+immunity does not cancel Turn Undead. No phasing, automatic room-wide
+spell cancellation or new shape-changing field is added.
+
+shadow_dragon uses dragon, 300 cm at the shoulder, 3000 kg, 1200 cm long,
+Large plus HUGE, natural armour -15, Flying and existing fear aura.
+Dragon anatomy already supplies wings, tail, scales, claws and fangs;
+do not repeat those bits in its archetype XOR. Add Magic/Dark resistance
+and Drain immunity, without an undead identity or acid immunity.
+spec_draining_breath has a 25 percent opportunity when selected to use
+the existing native Energy Drain payload on one living current opponent.
+It needs a usable head and no head trauma, and rechecks actors, room,
+action, safety and native magic permissions after each message. Skip
+undead and object targets. Existing spell damage/save, Drained stacking,
+five-stack cap,30-second stack cooldown, recovery and Vitalize/Restoration
+cures apply. No new player spell or tabletop level removal is added.
+
+Both equipped dragon claws 30422 use body-weapon region 4, legs, rather
+than region 3, arms. A NoArms dragon can now attack with those weapons.
+Target Legs can disarm them. Keep the existing policy that leg trauma
+alone does not disable such attacks; no shared leg-trauma gate is added.
+All flags, verbs, bonuses, two equipped copies and loot remain.
+HowTos region 5 means HEART, not wings.
+
+Lost Ones are living humans, 175 cm/55 kg/Medium, with their original gear,
+flight and behaviour. Their three skeletal portraits become gaunt living
+people; the two adult worm portraits become limbless red worms. All 137
+mob/room filenames already match dd-gui, so no filename alias is needed.
+
+The Genie reuses djinni, 320 cm/200 kg/Large and natural armour -6, keeping
+the authored Archmage 100 override instead of native Fade. Preserve its
+individual NoHeart/NoCorpse by cancelling the positive inherited heart
+as well as adding NoHeart. That does not infer Bloodless, Analgic or
+Soulless. Keep its behaviour, protective effects, equipment and held
+golden flute, which is already a musical instrument. The ancient helm's
+zero-count ground reset is valid and still loads one helm in 30490.
+
+Preserve all 111 room flags/exits, all 26 spawn placements/caps, 39 carried
+items, all reset arguments/order, egg/cherry/portal/corpse contents and
+inline mobile scripts. Seventeen small prose repairs and two reset
+comments change wording only. No current matching authored source exists.
+Temporary checks do not invent a new repository .src. When a matching
+source exists, update it and test both directions without flattening
+inheritance, raw masks, specials, scripts or other game data.
+
+Linux, from the repository root, using separate check copies:
+    python3 builder/scribe/are2src.py server/area/theswampofdespair.are /tmp/despair-check.src
+    perl builder/scribe/scribe.pl /tmp/despair-check.src /tmp/despair-roundtrip.are
+
+PowerShell, from C:\Games\dd4:
+    python .\builder\scribe\are2src.py .\server\area\theswampofdespair.are "$env:USERPROFILE\Downloads\despair-check.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\despair-check.src" "$env:USERPROFILE\Downloads\despair-roundtrip.are"
+
+Use importer --force only when intentionally replacing its output.

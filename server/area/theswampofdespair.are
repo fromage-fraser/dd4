@@ -10,10 +10,11 @@ A large red worm rears up and hisses at you.
 A very large worm writhes before you, the bright red of its skin warns you that
 it might be dangerous.
 ~
-2|32|64 8|524288 -1000 S
+98 524296 -1000 S
 75 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 2
+< blood_worm~ common~
 #30401
 blood worm~
 the Blood Worm~
@@ -22,10 +23,11 @@ A large red worm rears up and hisses at you.
 A very large worm writhes before you, the bright red of its skin warns you that
 it might be dangerous.
 ~
-64 8|524288 -1000 S
+64 524296 -1000 S
 75 0 0 0d0+0 0d0+0
-44 0
+0 0
 8 8 1
+< blood_worm~ common~
 #30402
 Blood worm~
 the Blood Worm~
@@ -34,14 +36,18 @@ A small red worm wriggles about your feet.
 A newly hatched worm wriggles about here. It doesn't seem to be of any threat to
 you, however the bright red of its skin warns you that it might be dangerous.
 ~
-2|64 8|524288 -1000 S
+66 524296 -1000 S
 65 0 0 0d0+0 0d0+0
-44 0
+128 0
 8 8 0
 >rand_prog 25~
 mpasound You hear something slithering in the darkness...
 ~
 |
+< blood_worm~ common~
+MobWeight 1
+MobLength 60
+MobSize 0
 #30403
 Blood worm~
 the Blood Worm~
@@ -50,14 +56,18 @@ A small red worm wriggles about your feet.
 A newly hatched worm wriggles about here. It doesn't seem to be of any threat to
 you, however the bright red of its skin warns you that it might be dangerous.
 ~
-64 8|524288 -1000 S
+64 524296 -1000 S
 65 0 0 0d0+0 0d0+0
-44 0
+128 0
 8 8 0
 >rand_prog 25~
 mpasound You hear something slithering in the darkness...
 ~
 |
+< blood_worm~ common~
+MobWeight 1
+MobLength 60
+MobSize 0
 #30404
 blood worm~
 the Blood Worm~
@@ -66,14 +76,18 @@ A small red worm wriggles about your feet.
 A newly hatched worm wriggles about here. It doesn't seem to be of any threat to
 you, however the bright red of its skin warns you that it might be dangerous.
 ~
-64 8|524288 -1000 S
+64 524296 -1000 S
 65 0 0 0d0+0 0d0+0
-44 0
+128 0
 8 8 0
 >rand_prog 25~
 mpasound You hear something slithering in the darkness...
 ~
 |
+< blood_worm~ common~
+MobWeight 1
+MobLength 60
+MobSize 0
 #30405
 lost~
 the Lost One~
@@ -83,10 +97,12 @@ As you look at this poor, pathetic creature you realize what will become of you
 if the despair of this awful swamp manages to drain your will to live. There
 seems to be no life left in its hollow eyes, just an empty void.
 ~
-64 8|524288 0 S
+64 524296 0 S
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< human~ common~
+MobWeight 55
 #30406
 lost~
 the Lost One~
@@ -96,10 +112,12 @@ As you look at this poor, pathetic creature you realize what will become of you
 if the despair of this awful swamp manages to drain your will to live. There
 seems to be no life left in its hollow eyes, just an empty void.
 ~
-64 8|524288 0 S
+64 524296 0 S
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< human~ common~
+MobWeight 55
 #30407
 lost~
 the Lost One~
@@ -109,10 +127,12 @@ As you look at this poor pathetic creature you realize what will become of you
 if the despair of this awful swamp manages to drain your will to live. There
 seems to be no life left in its hollow eyes just an empty void.
 ~
-64 8|524288 0 S
+64 524296 0 S
 65 0 0 0d0+0 0d0+0
 0 0
 8 8 0
+< human~ common~
+MobWeight 55
 #30408
 mist wolf~
 the Mist Wolf~
@@ -121,10 +141,11 @@ A large white wolf is almost obscured by the mist.
 The wolf has cold silver eyes and a form that is not completely stable.
 It fades in and out of the mist that it seems to be exhaling.
 ~
-64|128 8|512|32768|65536|524288 0 S
+192 623112 0 S
 65 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< mist_wolf~ common~
 #30409
 mist wolf~
 the Mist Wolf~
@@ -133,10 +154,11 @@ A large white wolf is almost obscured by the mist.
 The wolf has cold silver eyes and a form that is not completely stable.
 It fades in and out of the mist that it seems to be exhaling.
 ~
-64|128 8|512|32768|65536|524288 0 S
+192 623112 0 S
 65 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< mist_wolf~ common~
 #30410
 mist wolf~
 the Mist Wolf~
@@ -145,10 +167,11 @@ A large white wolf is almost obscured by the mist.
 The wolf has cold silver eyes and a form that is not completely stable.
 It fades in and out of the mist that it seems to be exhaling.
 ~
-64|128 8|512|32768|65536|524288 0 S
+192 623112 0 S
 65 0 0 0d0+0 0d0+0
-36 0
+0 0
 8 8 0
+< mist_wolf~ common~
 #30411
 night hunter nighthunter~
 the Nighthunter~
@@ -158,12 +181,13 @@ This hideous creature is leering at you as it crouches and prepares to
 attack. There are sharp spikes protruding down its spine and its glowing yellow
 eyes fix on your throat. It licks its lips with a long forked tongue. You
 wonder if you might be having a nightmare, for where else could this terrible
-vision come.
+vision come from.
 ~
-32|64 8|32|512|8192|32768|65536|524288|4194304|8388608 -1000 S
+96 13214248 -1000 S
 75 0 0 0d0+0 0d0+0
-32 0
+0 0
 8 8 1
+< nighthunter~ common~
 #30412
 dream shadow~
 the Dream Shadow~
@@ -173,10 +197,11 @@ As you look into the shadow strange visions fill your mind and you wonder
 if you are suffering from hallucinations or going insane. You break into
 a cold sweat before managing to tear your gaze away.
 ~
-64 8|512|32768|524288 -1000 S
+64 33288 -1000 S
 75 0 0 0d0+0 0d0+0
-127 0
+0 0
 8 8 0
+< dream_shadow~ common~
 #30413
 dream shadow~
 the Dream Shadow~
@@ -186,10 +211,11 @@ As you look into the shadow strange visions fill your mind and you wonder
 if you are suffering from hallucinations or going insane. You break into
 a cold sweat before managing to tear your gaze away.
 ~
-64 8|512|32768|524288 -1000 S
+64 33288 -1000 S
 75 0 0 0d0+0 0d0+0
-127 0
+0 0
 8 8 0
+< dream_shadow~ common~
 #30414
 dream shadow~
 the Dream Shadow~
@@ -199,10 +225,11 @@ As you look into the shadow strange visions fill your mind and you wonder
 if you are suffering from hallucinations or going insane. You break into
 a cold sweat before managing to tear your gaze away.
 ~
-64 8|512|32768|524288 -1000 S
+64 33288 -1000 S
 75 0 0 0d0+0 0d0+0
-127 0
+0 0
 8 8 0
+< dream_shadow~ common~
 #30415
 undead skeleton dog~
 the Undead Dog~
@@ -211,10 +238,11 @@ The skeleton of a dog is standing guard over a pile of bones.
 The undead creature seems to be guarding a pile of half-buried bones. It regards
 you warily and issues a menacing growl as it crouches lower over its bone pile.
 ~
-2|32|64 8|32|512|524288|8388608 -1000 S
+98 8913448 -1000 S
 75 0 0 0d0+0 0d0+0
-52 0
+0 0
 8 8 0
+< skeletal_hound~ common~
 #30416
 undead skeleton dog~
 the Undead Dog~
@@ -223,10 +251,11 @@ The skeleton of a dog is standing guard over a pile of bones.
 The undead creature seems to be guarding a pile of half-buried bones. It regards
 you warily and issues a menacing growl as it crouches lower over its bone pile.
 ~
-2|32|64 8|32|512|524288|8388608 -1000 S
+98 8913448 -1000 S
 75 0 0 0d0+0 0d0+0
-52 0
+0 0
 8 8 0
+< skeletal_hound~ common~
 #30417
 shadow crawler bug~
 the Shadow Crawler~
@@ -236,10 +265,11 @@ A rather large black bug with a hard chitinous shell snaps its sharp mandibles
 and looks at you with its beady eyes before scurrying off to another pool of
 shadow.
 ~
-64 8|512|32768|65536|524288 -1000 S
+64 623112 -1000 S
 75 0 0 0d0+0 0d0+0
-52 0
+0 0
 8 8 0
+< giant_ground_beetle~ common~
 #30418
 shadow crawler bug~
 the Shadow Crawler~
@@ -249,10 +279,11 @@ A rather large black bug with a hard chitinous shell snaps its sharp mandibles
 and looks at you with its beady eyes before scurrying off to another pool of
 shadow.
 ~
-64 8|512|32768|65536|524288 -1000 S
+64 623112 -1000 S
 75 0 0 0d0+0 0d0+0
-52 0
+0 0
 8 8 0
+< giant_ground_beetle~ common~
 #30419
 shadow crawler bug~
 the Shadow Crawler~
@@ -262,10 +293,11 @@ A rather large black bug with a hard chitinous shell snaps its sharp mandibles
 and looks at you with its beady eyes before scurrying off to another pool of
 shadow.
 ~
-64 8|512|32768|65536|524288 -1000 S
+64 623112 -1000 S
 75 0 0 0d0+0 0d0+0
-52 0
+0 0
 8 8 0
+< giant_ground_beetle~ common~
 #30420
 night wing demon nightwing bat~
 the Nightwing~
@@ -275,10 +307,11 @@ The strange creature hovering before you beats its wings furiously to keep its
 large body airborne. Its lumpy misshapen face is contorted in rage and you have
 to cover your ears to protect them from the shrill screeching issuing from it.
 ~
-64 8|512 -1000 S
+64 520 -1000 S
 70 0 0 0d0+0 0d0+0
-16 0
+0 0
 8 8 0
+< winged_demon~ common~
 #30421
 night wing demon bat~
 the Nightwing~
@@ -288,10 +321,11 @@ The strange creature hovering before you beats its wings furiously to keep its
 large body airborne. Its lumpy misshapen face is contorted in rage and you have
 to cover your ears to protect them from the shrill screeching issuing from it.
 ~
-64 8|512 -1000 S
+64 520 -1000 S
 70 0 0 0d0+0 0d0+0
-16 0
+0 0
 8 8 0
+< winged_demon~ common~
 #30422
 mist horror~
 the Mist Horror~
@@ -299,17 +333,18 @@ A ghastly vision of horror forms in the mist before you.
 ~
 As you look deeper into the mist all your fears and nightmares from the past
 come rushing back, crowding your mind and threatening to overthrow what remains
-of your sanity. you clutch your head and begin to imagine that something is
+of your sanity. You clutch your head and begin to imagine that something is
 actually trying to get inside it.
 ~
-64 2|8|512|32768|524288 -1000 S
+64 33290 -1000 S
 70 0 0 0d0+0 0d0+0
-95 0
+0 0
 8 8 0
 >rand_prog 3~
 mpecho You hear haunting voices whispering in your head...
 ~
 |
+< mist_horror~ common~
 #30423
 mist horror~
 the Mist Horror~
@@ -317,17 +352,18 @@ A ghastly vision of horror forms in the mist before you.
 ~
 As you look deeper into the mist all your fears and nightmares from the past
 come rushing back, crowding your mind and threatening to overthrow what remains
-of your sanity. you clutch your head and begin to imagine that something is
+of your sanity. You clutch your head and begin to imagine that something is
 actually trying to get inside it.
 ~
-64 2|8|512|32768|524288 -1000 S
+64 33290 -1000 S
 70 0 0 0d0+0 0d0+0
-95 0
+0 0
 8 8 0
 >rand_prog 3~
 mpecho You hear haunting voices whispering in your head...
 ~
 |
+< mist_horror~ common~
 #30424
 shadow dragon black~
 the Shadow Dragon~
@@ -338,9 +374,9 @@ black and blends perfectly into the gloom and shadows that surround it. In fact,
 the shadows seem to be a part of it somehow - as if they were emanating from its
 body.
 ~
-64 8|32|512|8192|32768|65536|524288|8388608 -1000 S
+64 8495656 -1000 S
 80 0 0 0d0+0 0d0+0
-132 0
+0 0
 8 8 0
 >rand_prog 15~
 mpecho Strange snuffling noises issue from the shadows...
@@ -355,6 +391,7 @@ endif
 hide
 ~
 |
+< shadow_dragon~ elite~
 #30425
 genie~
 the Genie~
@@ -364,10 +401,11 @@ The genie has a menacing look on its face as it hovers in the air before you.
 Contrary to what knowledge you have about genies granting wishes, you gather
 rather quickly that this one has no intentions of such niceties.
 ~
-32|64 8|32|512|2048|8192|32768|524288|8388608|16777216 0 S
+96 25209384 0 S
 80 0 0 0d0+0 0d0+0
-80 0
+262224 0
 8 8 0
+< djinni~ common~
 #0
 
 
@@ -421,7 +459,7 @@ A pair of ripped leggings lie on the ground here.~
 #30404
 faded cloak~
 a faded cloak~
-A pile faded cloth has been left here.~
+A pile of faded cloth has been left here.~
 ~
 9 0 1|1024
 0~ 0~ 0~ 0~
@@ -513,7 +551,7 @@ chitinous black armor~
 chitinous black armor~
 The shell of some kind of strange creature has been left here.~
 ~
-23 16|2048 1|8
+9 16|2048 1|8
 0~ 0~ 0~ 0~
 5 0 0
 A
@@ -592,8 +630,8 @@ tail spiked~
 a spiked tail~
 A long thin tail with a spiked tip is lying at your feet.~
 ~
-5 0 1|8192
-0~ 0~ 0~ 2~
+5 0|67108864 1|8192
+6~ 0~ 0~ 2~
 2 0 0
 A
 2 5
@@ -604,7 +642,7 @@ A
 E
 spiked tail~
 A long thin tail with wickedly sharp spikes at the tip, which are obviously
-for the owners protection.
+for the owner's protection.
 ~
 #30417
 swamp slime~
@@ -671,16 +709,16 @@ A
 9 100
 E
 dark unnatural shadows~
-The dark mass of shadows are writhing and swirling in a very disturbing way,
-almost as if they alive.
+The dark mass of shadows is writhing and swirling in a very disturbing way,
+almost as if they are alive.
 ~
 #30422
 sharp claws~
 sharp claws~
-Sharp claws have ripped from a large beast and left here.~
+Sharp claws have been ripped from a large beast and left here.~
 ~
 5 4096|16777216|67108864 1|8192
-3~ 0~ 0~ 5~
+4~ 0~ 0~ 5~
 5 0 0
 A
 1 2
@@ -690,13 +728,13 @@ A
 18 50
 E
 sharp claws~
-These claws are very long and wickedly sharp they
+These claws are very long and wickedly sharp; they
 must have been severed from a mighty beast of some kind.
 ~
 #30423
 sharp claws~
 sharp claws~
-Sharp claws have ripped from a large beast and left here.~
+Sharp claws have been ripped from a large beast and left here.~
 ~
 9 16777216 1|64
 0~ 0~ 0~ 0~
@@ -711,7 +749,7 @@ A
 2 2
 E
 sharp claws~
-These claws are very long and wickedly sharp they
+These claws are very long and wickedly sharp; they
 must have been severed from a mighty beast of some kind.
 ~
 #30424
@@ -775,7 +813,7 @@ A small pile of silk has been left here.~
 #30428
 slippers red~
 a pair of red slippers~
-A peculiar pair of red slippers have been left here.~
+A peculiar pair of red slippers has been left here.~
 ~
 9 64 1|64
 0~ 0~ 0~ 0~
@@ -789,7 +827,7 @@ A
 E
 slippers red~
 What odd looking slippers these are. They are made from bright red velvet and
-they curl up at toes where they have tiny bells dangling on them.
+they curl up at the toes where they have tiny bells dangling on them.
 ~
 #30429
 chain rope gold~
@@ -1821,7 +1859,7 @@ Dry Land~
 You emerge from the mist and are temporarily blinded by bright sunlight. You
 squint and blink several times before realising you are standing on dry land. As
 you turn in a circle you see the mist quivering all about the edge of the small
-island, But it seems unable to advance further. Perhaps this would be a good
+island. But it seems unable to advance further. Perhaps this would be a good
 place to rest and gather your strength before pushing on again.
 ~
 0 4|8|1024|65536 4
@@ -2744,7 +2782,7 @@ A Dark cavern~
 You are aware of the faint dripping of water down the stone walls but your main
 attention is being held by the pools of shadows that surround you. Too much time
 spent in this cold damp place is making your mind play tricks on you. You can
-see a crack in the ceiling above your head, Maybe if you prayed really loudly
+see a crack in the ceiling above your head. Maybe if you prayed really loudly
 the gods might hear your prayers from here, otherwise you'll have to return the
 way you came as the cavern has come to an abrupt dead end.
 ~
@@ -2817,7 +2855,7 @@ You are aware of the faint dripping of water down the stone walls but your main
 attention is being held by the pools of shadows that surround you. Too much time
 spent in this cold damp place is making your mind play tricks on you. The cavern
 continues towards the west. It also looks as if you might be able to scale the
-wall here, There seems to be an opening above you.
+wall here. There seems to be an opening above you.
 ~
 0 1|8|8192 0
 D2
@@ -3000,7 +3038,7 @@ S
 A Dark cavern~
 The cavern seems to have opened into a larger chamber. The walls are almost
 completely smooth here and you find yourself wondering what could have worn them
-away. The floor however is a different matter entirely, It has large grooves and
+away. The floor however is a different matter entirely. It has large grooves and
 scores in it.
 ~
 0 1|8|8192 0
@@ -3562,7 +3600,7 @@ M 1 30400 1 30454           the Blood Worm to A slimy burrow.
 *
 M 1 30401 1 30447           the Blood Worm to A slimy burrow.
 *
-M 1 30402 1 30456           the Blood Worm to A slimy burrow.
+M 1 30402 1 30456           the Blood Worm to An Egg chamber
 *
 M 1 30403 1 30452           the Blood Worm to A slimy burrow.
 *
@@ -3616,7 +3654,7 @@ O 1 30410 100 30410         a dead tree to Lost in the mist
 O 1 30410 100 30424         a dead tree to Lost in the mist
 O 1 30410 100 30444         a dead tree to Lost in the mist
 *
-M 1 30411 1 30444           the Nighthunter to Lost in the mist
+M 1 30411 1 30444           the Nighthunter to Before the cliff
 E 1 30411 100 5
 E 1 30412 100 8
 E 1 30437 100 16
@@ -3691,17 +3729,7 @@ S
 
 
 #SPECIALS
-M  30400 spec_bloodsucker
-M  30401 spec_bloodsucker
-M  30402 spec_bloodsucker
-M  30403 spec_bloodsucker
-M  30404 spec_bloodsucker
-M  30408 spec_breath_gas            the Mist Wolf
-M  30409 spec_breath_gas            the Mist Wolf
-M  30410 spec_breath_gas            the Mist Wolf
 M  30411 spec_fido                  the Nighthunter
-M  30415 spec_cast_undead           the Undead Dog
-M  30416 spec_cast_undead           the Undead Dog
 M  30420 spec_demon                 the Nightwing
 M  30425 spec_cast_archmage         the Genie
 S

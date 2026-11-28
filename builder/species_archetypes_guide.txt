@@ -3,8 +3,8 @@ SPECIES AND ARCHETYPES: A BUILDER'S HOW-TO
 =======================================
 
 Edition: 28 November 2026
-Based on master 81abce4ad2e57fb975d6d457a990b6f189693e55 (PR #1030),
-with the accompanying Kahsis changes.
+Based on master 00013099343dcbb4df535070f4a5e43e0e836e0c (PR #1031),
+with the accompanying Swamp of Despair changes.
 
 This guide is for a builder who can describe and balance a creature, but
 doesn't spend their day writing C. You can use most of the system through
@@ -16,8 +16,8 @@ fictional examples, not proposals to add creatures to the live game. No
 project files were changed to produce this guide. The examples were checked
 in a separate working copy outside the official checkout.
 
-The current tables contain 40 bodies, 520 archetypes, 60 internal traits
-and 146 Scribe special names. Earlier area notes sometimes record the
+The current tables contain 40 bodies, 528 archetypes, 60 internal traits
+and 148 Scribe special names. Earlier area notes sometimes record the
 counts at that step; use the current appendices when adding entries.
 
 The server code is the final authority. This is a dated guide, not a promise
@@ -915,10 +915,10 @@ with its documented arguments or copy a compatible full row. Don't guess
 which hidden fields the macro supplies.
 
 Increase MAX_MOB in merc.h by the number of entries actually added. At this
-guide's checked revision it is 520, so this single example would make 521.
+guide's checked revision it is 528, so this single example would make 529.
 Use the current value when doing real work, not this historical number.
 MAX_MOB is the number of rows, including the reserved row, not the largest
-valid index. This example would receive index 520.
+valid index. This example would receive index 528.
 
 Do not increase MAX_SPECIES when reusing an existing body. Do not add an
 ACT bit, an area-file column or a trait ID merely to add this archetype.
@@ -1617,7 +1617,7 @@ THALOS: NATIVE POWERS AND ACTIVATIONS
 Thalos creatures
 ----------------
 
-beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 520;
+beholder, lamia and mimic occupy IDs 203-205. MAX_MOB is now 528;
 earlier profiles keep their indices. No basic species or area field
 is added. The internal trait catalogue gains antimagic_gaze_pct.
 The ordinary archetype field selects these creatures in Scribe.
@@ -1727,9 +1727,9 @@ The baby beholder and tame lamias in Old Thalos keep their existing powers.
 Golem Settlement and awakened golems
 -----------------------------------
 
-awakened_golem occupies ID 206. MAX_MOB is now 520; all earlier indices
+awakened_golem occupies ID 206. MAX_MOB is now 528; all earlier indices
 stay unchanged. It uses the existing bipedal_construct body. There are
-40 body rows, 520 archetype rows, 60 internal traits and 146 Scribe
+40 body rows, 528 archetype rows, 60 internal traits and 148 Scribe
 special-function names. No area field, body flag or trait ID is added.
 
 These golems are independent people with families, jobs and spellcasting.
@@ -7624,6 +7624,137 @@ PowerShell, from C:\Games\dd4:
 
 Use importer --force only when intentionally replacing its output.
 
+The Swamp of Despair
+
+All 26 definitions now use species and archetypes. Eight new profiles
+bring the catalogue to 528 archetypes, 40 body species, 60 internal traits
+and 148 Scribe special names. The existing numeric builds, sex, alignment,
+aggression/passivity, Sentinel, Wimpy and local Flying choices stay.
+Only the unique Shadow Dragon becomes Elite; the other 25 stay Common.
+HP build letters are not ranks. Rank HP factors apply once.
+
+blood_worm uses limbless_invertebrate, with a head, eyes, heart, fangs
+and ordinary fang attack. It has natural armour -6, Fire vulnerability
+and spec_bloodsucker_bite, retaining the existing bloodsucking payload
+with the normal head/fang guard. Defaults are 600 cm long, 250 kg, Large
+plus HUGE; height is unspecified. The three hatchlings override length
+to 60 cm, weight to 1 kg and size to Small, and cancel HUGE through body XOR.
+They retain their different authored behaviour and local Flying.
+
+mist_wolf uses quadrupedal_mammal, with tail, paws, claws, fangs, ordinary
+fang attack and DetectHidden. Natural armour is -4; defaults120 cm at
+the shoulder, 80 kg, 200 cm long, Medium. Its trait profile shares wolf's
+head gate within the same body species. The native special is
+spec_breath_gas_anatomical: keep the existing room-wide Gas Breath
+payload and ordinary head checks. These are living, minded wolves with
+blood, pain and souls. Their neutrality, Wimpy/passivity, flight,
+stealth and local senses stay. No phasing or nonmagic immunity is added.
+
+nighthunter uses humanoid,220 cm/140 kg/Large, natural armour -6, shell,
+claws and fangs, ordinary claw/fang attacks and NoSpeech. It has a normal
+living mind and heart. The individual retains Fido, flight, aggression,
+senses and protective effects; its frightening appearance does not
+infer an undead identity or fiend immunities.
+
+dream_shadow uses mysterious_being: headless, eyeless, armless, legless,
+NoHeart, NoSpeech, NoCorpse and Inorganic, with Bloodless and Analgic.
+It retains a mind and soul eligibility. Measurements are unspecified,
+size Medium, with Flying and Poison/Sleep immunity. It remains physically
+attackable and is not undead. Its spec_confusing_presence has a 20 percent
+opportunity when selected against its current opponent. The viewer must
+be awake, sighted, able to see the source, mind-bearing, non-object and
+not already Confused. Source eyes/head and their injuries do not govern
+this presence. Ordinary action, room, safety, native magic and ordered
+player restrictions apply, with rechecks after messages and the save.
+The ordinary Confusion save and penalties apply: duration
+URANGE(1,level/30,3) affect ticks, hitroll -((level/5)+1) and INT/WIS
+-((level/15)+1). It affects one opponent. The existing confusing gaze
+still needs the source's usable head/eyes, including for umber_hulk;
+the viewer need not be visible to either visual power's source.
+
+skeletal_hound uses quadrupedal_mammal at 50 cm/8 kg/90 cm/Small, with tail,
+paws, claws, fangs and ordinary bite. Remove fleshy heart/brain/guts/ear
+parts through archetype XOR. Magical visual awareness stays. It is
+Undead, Mindless, Inorganic, Bloodless, Analgic, Soulless and NoHeart,
+with the body's NoArms/NoSpeech. Match ordinary skeleton defences:
+Pierce/Slash/Dark resistance, Blunt/Holy vulnerability and
+Poison/Sleep/Drain/Cold/Hold/Paralysis immunity. It shares dog's head
+gate within the same body species. The two old generic undead casters
+are removed. Keep their authored flight, behaviour and loot.
+
+Shadow Crawlers reuse giant_ground_beetle,40 cm/15 kg/100 cm/Small.
+They regain normal living hearts. The chitinous black armour 30411 worn
+by four creatures becomes ITEM_ARMOR (9) instead of NPC-corpse type 23.
+Its values, applies, weight, flags and placements stay; ordinary armour
+handling and randomisation now apply.
+
+winged_demon uses humanoid,220 cm/160 kg/Large, with wings, tail, claws,
+fangs, ordinary claw/fang attacks and Flying. It has a normal heart and
+head gate, Fire/Cold resistance and Electricity/Poison immunity.
+Only 30420 keeps the authored Demon caster; 30421 remains physical.
+Its spiked tail 30416 becomes ITEM_BODY_PART with region 6, retaining
+its slice verb, bonuses, weight, TAKE and loot. Tail targeting, trauma
+and existing Regenerate rules can now recognize the attachment.
+
+mist_horror uses mysterious_being with unspecified measurements and
+Medium size. It is an Undead, Flying, Bloodless, Analgic, minded spirit
+that retains soul eligibility. Natural armour -8, Magic resistance and
+Nonmagic/Holy/Poison/Drain/Sleep/Charm/Hold/Paralysis immunity apply.
+Use the existing in-combat fear aura. It remains turnable: Holy damage
+immunity does not cancel Turn Undead. No phasing, automatic room-wide
+spell cancellation or new shape-changing field is added.
+
+shadow_dragon uses dragon, 300 cm at the shoulder, 3000 kg, 1200 cm long,
+Large plus HUGE, natural armour -15, Flying and existing fear aura.
+Dragon anatomy already supplies wings, tail, scales, claws and fangs;
+do not repeat those bits in its archetype XOR. Add Magic/Dark resistance
+and Drain immunity, without an undead identity or acid immunity.
+spec_draining_breath has a 25 percent opportunity when selected to use
+the existing native Energy Drain payload on one living current opponent.
+It needs a usable head and no head trauma, and rechecks actors, room,
+action, safety and native magic permissions after each message. Skip
+undead and object targets. Existing spell damage/save, Drained stacking,
+five-stack cap,30-second stack cooldown, recovery and Vitalize/Restoration
+cures apply. No new player spell or tabletop level removal is added.
+
+Both equipped dragon claws 30422 use body-weapon region 4, legs, rather
+than region 3, arms. A NoArms dragon can now attack with those weapons.
+Target Legs can disarm them. Keep the existing policy that leg trauma
+alone does not disable such attacks; no shared leg-trauma gate is added.
+All flags, verbs, bonuses, two equipped copies and loot remain.
+HowTos region 5 means HEART, not wings.
+
+Lost Ones are living humans, 175 cm/55 kg/Medium, with their original gear,
+flight and behaviour. Their three skeletal portraits become gaunt living
+people; the two adult worm portraits become limbless red worms. All 137
+mob/room filenames already match dd-gui, so no filename alias is needed.
+
+The Genie reuses djinni, 320 cm/200 kg/Large and natural armour -6, keeping
+the authored Archmage 100 override instead of native Fade. Preserve its
+individual NoHeart/NoCorpse by cancelling the positive inherited heart
+as well as adding NoHeart. That does not infer Bloodless, Analgic or
+Soulless. Keep its behaviour, protective effects, equipment and held
+golden flute, which is already a musical instrument. The ancient helm's
+zero-count ground reset is valid and still loads one helm in 30490.
+
+Preserve all 111 room flags/exits, all 26 spawn placements/caps, 39 carried
+items, all reset arguments/order, egg/cherry/portal/corpse contents and
+inline mobile scripts. Seventeen small prose repairs and two reset
+comments change wording only. No current matching authored source exists.
+Temporary checks do not invent a new repository .src. When a matching
+source exists, update it and test both directions without flattening
+inheritance, raw masks, specials, scripts or other game data.
+
+Linux, from the repository root, using separate check copies:
+    python3 builder/scribe/are2src.py server/area/theswampofdespair.are /tmp/despair-check.src
+    perl builder/scribe/scribe.pl /tmp/despair-check.src /tmp/despair-roundtrip.are
+
+PowerShell, from C:\Games\dd4:
+    python .\builder\scribe\are2src.py .\server\area\theswampofdespair.are "$env:USERPROFILE\Downloads\despair-check.src"
+    perl .\builder\scribe\scribe.pl "$env:USERPROFILE\Downloads\despair-check.src" "$env:USERPROFILE\Downloads\despair-roundtrip.are"
+
+Use importer --force only when intentionally replacing its output.
+
 APPENDIX A. CURRENT BODY SPECIES
 ================================
 These are the 37 current rows, including reserved. The index is not an
@@ -7677,7 +7808,7 @@ does not select a fully reviewed creature, assign a rank or create a power.
 
 APPENDIX B. CURRENT ARCHETYPES
 ==============================
-All 520 current table rows follow, grouped by body. Numeric IDs are for
+All 528 current table rows follow, grouped by body. Numeric IDs are for
 cross-checking code only. Do not reorder the table or use an ID in source.
 h=height cm, w=whole kg, l=length cm; ?=unspecified measurement.
 Size is the resolved Small/Medium/Large metadata, separate from HUGE.
@@ -7693,7 +7824,7 @@ RESERVED (1)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-HUMANOID (161)
+HUMANOID (163)
 --------------
   [  3] skeleton: h/w/l 175 / 12 / ?; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8178,8 +8309,14 @@ HUMANOID (161)
   [516] enchanted_warrior: h/w/l 250 / 200 / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [522] nighthunter: h/w/l 220 / 140 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
+  [525] winged_demon: h/w/l 220 / 160 / ?; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
-DRAGON (23)
+DRAGON (24)
 ------------
   [ 16] dracolich: h/w/l ? / ? / ?; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8250,6 +8387,9 @@ DRAGON (23)
   [472] infernal_wyrm: h/w/l 700 / 30000 / 4500; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [527] shadow_dragon: h/w/l 300 / 3000 / 1200; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_draining_breath; policy auto
 
 QUADRUPEDAL_REPTILE (8)
 -------------------------
@@ -8314,7 +8454,7 @@ SERPENTINE_REPTILE (11)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_fire_anatomical, 2:spec_poison_bite; policy 70/30/0
 
-MYSTERIOUS_BEING (8)
+MYSTERIOUS_BEING (10)
 ----------------------
   [ 32] animated_mist: h/w/l ? / ? / ?; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8340,6 +8480,12 @@ MYSTERIOUS_BEING (8)
   [427] higue_fire_form: h/w/l ? / ? / 50; Small; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_bloodsucker; policy auto
+  [523] dream_shadow: h/w/l ? / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_confusing_presence; policy auto
+  [526] mist_horror: h/w/l ? / ? / ?; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 WINGED_MAMMAL (9)
 -------------------
@@ -8434,7 +8580,7 @@ BIPEDAL_CONSTRUCT (16)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
 
-QUADRUPEDAL_MAMMAL (60)
+QUADRUPEDAL_MAMMAL (62)
 ------------------------
   [  1] goat: h/w/l 70 / 55 / 110; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8616,6 +8762,12 @@ QUADRUPEDAL_MAMMAL (60)
   [510] werepanther_beast_form: h/w/l 75 / 80 / 220; Medium; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials none; policy auto
+  [521] mist_wolf: h/w/l 120 / 80 / 200; Medium; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_breath_gas_anatomical; policy auto
+  [524] skeletal_hound: h/w/l 50 / 8 / 90; Small; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials none; policy auto
 
 HEAD_ONLY (5)
 ---------------
@@ -8635,7 +8787,7 @@ HEAD_ONLY (5)
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_breath_any_anatomical; policy auto
 
-LIMBLESS_INVERTEBRATE (17)
+LIMBLESS_INVERTEBRATE (18)
 ---------------------------
   [ 48] rock_worm: h/w/l 150 / 8000 / 800; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
@@ -8688,6 +8840,9 @@ LIMBLESS_INVERTEBRATE (17)
   [504] giant_sea_worm: h/w/l ? / 150 / 400; Large; family none
         HP+0 dam+0 crit+0 swift+0 XP+0; phase none
         specials 1:spec_cast_electric; policy auto
+  [520] blood_worm: h/w/l ? / 250 / 600; Large; family none
+        HP+0 dam+0 crit+0 swift+0 XP+0; phase none
+        specials 1:spec_bloodsucker_bite; policy auto
 
 LIMBLESS_CONSTRUCT (10)
 ------------------------
@@ -10125,6 +10280,7 @@ Check anatomy, safety, effect cleanup, selection percentages and XP.
     spec_clan_guard
     spec_cleric_adept
     spec_confusing_gaze
+    spec_confusing_presence
     spec_constrictor
     spec_cooshee
     spec_death_knight
@@ -10249,8 +10405,8 @@ Natural part selection and an equipped weapon are separate mechanisms.
 SOURCE AND VALIDATION NOTES
 ===========================
 Owning source revision:
-  https://github.com/fromage-fraser/dd4/commit/81abce4ad2e57fb975d6d457a990b6f189693e55
-  Base PR1030 plus the accompanying Kahsis patch; earlier fixes are preserved.
+  https://github.com/fromage-fraser/dd4/commit/00013099343dcbb4df535070f4a5e43e0e836e0c
+  Base PR1031 plus the accompanying Swamp of Despair patch; earlier fixes are preserved.
 
 The current catalogues were extracted through the actual C template resolver
 and current Scribe maps. Both tables include their reserved entries.
@@ -10260,7 +10416,7 @@ That is a tutorial verification, not a proposed production patch or a full
 live-game validation of a new creature. All preparation stays outside the
 official checkout; the user applies and merges the supplied patch.
 
-With this Kahsis revision, the conversion covers
-117/153 areas (76.5%) and 2,286/4,131 definitions (55.3%).
+With this Swamp of Despair revision, the conversion covers
+118/153 areas (77.1%) and 2,312/4,131 definitions (56.0%).
 
 END OF GUIDE
